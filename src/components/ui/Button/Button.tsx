@@ -1,11 +1,12 @@
 import { FC } from 'react';
+import cn from 'classnames';
 
 import styles from './Button.module.css';
 
 interface IButtonProps {
   primary?: boolean;
   backgroundColor?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: 's' | 'm' | 'l';
   label: string;
   onClick?: () => void;
 }
@@ -13,16 +14,16 @@ interface IButtonProps {
 export const Button: FC<IButtonProps> = (props) => {
   const {
     primary = false,
-    size = 'medium',
+    size = 'm',
     backgroundColor,
     label,
   } = props;
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const mode = primary ? 'primary' : 'secondary';
 
   return (
     <button
       type="button"
-      className={[styles['storybook-button'], styles[`storybook-button--${size}`], styles[mode]].join(' ')}
+      className={cn(styles.button, styles[mode], styles[size])}
       style={{ backgroundColor }}
       {...props}
     >
