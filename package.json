@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -p 3001",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint:css": "stylelint \"src/**/*.css\""
   },
   "repository": {
     "type": "git",
