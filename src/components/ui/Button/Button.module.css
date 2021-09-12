@@ -1,12 +1,11 @@
 .button {
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 700;
+  width: 100%;
   border: 0;
   border-radius: 3em;
   cursor: pointer;
-  display: inline-block;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
   line-height: 1;
-  width: 100%;
 
   @media (min-width: $mobile-landscape) {
     width: initial;
@@ -14,27 +13,27 @@
 }
 
 .primary {
-  color: var(--white);
   background-color: var(--blue);
+  color: var(--white);
 }
 
 .secondary {
-  color: var(--black);
   background-color: transparent;
   box-shadow: var(--black-15) 0 0 0 1px inset;
+  color: var(--black);
 }
 
 .s {
-  font-size: 12px;
   padding: 10px 16px;
+  font-size: 12px;
 }
 
 .m {
-  font-size: 14px;
   padding: 11px 20px;
+  font-size: 14px;
 }
 
 .l {
-  font-size: 16px;
   padding: 12px 24px;
+  font-size: 16px;
 }
