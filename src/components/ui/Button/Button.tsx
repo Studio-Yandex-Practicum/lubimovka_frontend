@@ -17,6 +17,7 @@ export const Button: FC<IButtonProps> = (props) => {
     size = 'm',
     backgroundColor,
     label,
+    ...restButtonProps
   } = props;
   const mode = primary ? 'primary' : 'secondary';
 
@@ -25,7 +26,7 @@ export const Button: FC<IButtonProps> = (props) => {
       type="button"
       className={cn(styles.button, styles[mode], styles[size])}
       style={{ backgroundColor }}
-      {...props}
+      {...restButtonProps}
     >
       {label}
     </button>

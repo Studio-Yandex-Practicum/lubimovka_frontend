@@ -1,3 +1,5 @@
+import '../src/shared/styles/palette.css';
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
