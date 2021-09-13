@@ -1,7 +1,7 @@
 {
   "name": "lubimovka_frontend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Фронтенд проекта «Любимовка»",
   "main": "index.js",
   "scripts": {
     "postinstall": "next telemetry disable",
@@ -17,8 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/Studio-Yandex-Practicum/lubimovka_frontend.git"
   },
-  "author": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/Studio-Yandex-Practicum/lubimovka_frontend/issues"
   },
