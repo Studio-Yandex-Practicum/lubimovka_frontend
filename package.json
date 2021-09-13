@@ -8,10 +8,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint:js": "eslint src/** --cache --ext .jsx,.js,.tsx,.ts",
+    "lint:css": "stylelint **/*.css --cache --allow-empty-input --fix",
     "storybook": "start-storybook -p 3001",
-    "build-storybook": "build-storybook",
-    "lint:css": "stylelint **/*.css --cache --allow-empty-input --fix"
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -35,8 +35,12 @@
     "@storybook/addon-links": "6.3.8",
     "@storybook/react": "6.3.8",
     "@types/react": "17.0.20",
+    "@typescript-eslint/eslint-plugin": "4.31.0",
+    "@typescript-eslint/parser": "4.31.0",
     "babel-loader": "8.2.2",
     "classnames": "2.3.1",
+    "eslint": "7.32.0",
+    "eslint-plugin-react": "7.25.1",
     "lint-staged": "11.1.2",
     "postcss-mixins": "8.1.0",
     "postcss-nested": "5.0.6",
@@ -52,6 +56,7 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*.css": "stylelint **/*.css --cache --allow-empty-input"
+    "*.css": "stylelint **/*.css --cache --allow-empty-input",
+    "**/*.(ts|js)?(x)": "eslint --cache"
   }
 }
