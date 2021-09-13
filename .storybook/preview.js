@@ -1,3 +1,4 @@
+import '../src/shared/styles/fonts.css';
 import '../src/shared/styles/palette.css';
 
 export const parameters = {

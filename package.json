@@ -10,8 +10,8 @@
     "start": "next start",
     "lint:js": "eslint src/** --cache --ext .jsx,.js,.tsx,.ts",
     "lint:css": "stylelint **/*.css --cache --allow-empty-input --fix",
-    "storybook": "start-storybook -p 3001",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -s public -p 3001",
+    "build-storybook": "build-storybook -s public"
   },
   "repository": {
     "type": "git",
