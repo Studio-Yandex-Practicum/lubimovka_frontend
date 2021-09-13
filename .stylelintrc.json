@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-idiomatic-order"
+  ],
+  "rules": {
+    "number-leading-zero": "never",
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["define-mixin", "mixin"]
+      }
+    ]
+  }
+}
