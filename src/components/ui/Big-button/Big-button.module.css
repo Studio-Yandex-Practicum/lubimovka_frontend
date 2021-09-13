@@ -1,0 +1,74 @@
+.button {
+  display: flex;
+  width: 240px;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 18px 16px;
+  border: 0;
+  background: var(--white);
+  cursor: pointer;
+  outline: 0;
+  text-transform: uppercase;
+  transition: all .4s linear;
+
+  &:hover {
+    background-color: #242424;
+    color: #ecebe8;
+  }
+}
+
+@define-mixin arrow $direction {
+  .arrow-$direction {
+    display: flex;
+
+    &::after {
+      width: 20px;
+      height: 20px;
+      background: center no-repeat;
+      content: '';
+      transition: all .4s linear;
+
+      @mixin-content;
+    }
+
+    &:hover::after {
+      filter: invert(100%);
+    }
+  }
+}
+
+@mixin arrow down {
+  background-image: url('images/arrow-down.svg');
+}
+
+@mixin arrow right {
+  background-image: url('images/arrow-right.svg');
+}
+
+@mixin arrow diagonal {
+  background-image: url('images/arrow-diagonal.svg');
+}
+
+.font {
+  color: #242424;
+  font-family: Formular, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 22px;
+}
+
+.accent {
+  background-color: #b7c09d;
+}
+
+.border-full {
+  border: 1px solid #000;
+}
+
+.border-top {
+  border: 0;
+  border-top: 1px solid #000;
+}
