@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "next telemetry disable",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
