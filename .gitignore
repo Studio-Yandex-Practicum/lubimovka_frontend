@@ -4,3 +4,8 @@ node_modules
 
 .stylelintcache
 .eslintcache
+
+.vscode
+.idea
+
+.DS_Store
