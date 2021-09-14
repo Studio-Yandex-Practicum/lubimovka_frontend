@@ -1,5 +1,6 @@
 .headline {
   margin: 0;
+  color: var(--coal);
   font-family: 'PP Neue Machina', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
