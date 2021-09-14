@@ -1,0 +1,42 @@
+.headline {
+  margin: 0;
+  font-family: 'PP Neue Machina', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: -.01em;
+}
+
+.h1 {
+  font-size: 72px;
+  line-height: 70px;
+}
+
+.h2 {
+  font-size: 64px;
+  line-height: 60px;
+}
+
+.h3 {
+  font-size: 56px;
+  line-height: 56px;
+}
+
+.h4 {
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.h5 {
+  font-size: 36px;
+  line-height: 38px;
+}
+
+.h6 {
+  font-size: 28px;
+  line-height: 32px;
+}
+
+.h7 {
+  font-size: 20px;
+  line-height: 24px;
+}
