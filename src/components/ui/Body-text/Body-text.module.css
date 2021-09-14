@@ -1,0 +1,27 @@
+.text {
+  margin: 0;
+  font-family: 'Formular', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.large {
+  font-size: 20px;
+  letter-spacing: -.01em;
+  line-height: 28px;
+}
+
+.medium {
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.small {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.caption {
+  font-size: 14px;
+  line-height: 17px;
+}
