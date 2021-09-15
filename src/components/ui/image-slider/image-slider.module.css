@@ -1,5 +1,6 @@
 .navigationWrapper {
   position: relative;
+  box-sizing: border-box;
   padding: 0 74px;
 }
 
@@ -17,4 +18,25 @@
 .arrowRight {
   right: 5px;
   left: auto;
+}
+
+@media screen and (max-width: $mobile-landscape) {
+  .navigationWrapper {
+    padding: 68px 0 0;
+  }
+
+  .arrow {
+    top: 0;
+    transform: translateY(0);
+  }
+
+  .arrowLeft {
+    right: 124px;
+    left: auto;
+  }
+
+  .arrowRight {
+    right: 24px;
+    left: auto;
+  }
 }
