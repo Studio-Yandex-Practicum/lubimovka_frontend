@@ -18,7 +18,7 @@ export const ArrowMock: FC<ArrowMockProps> = (props) => {
       xmlns="http://www.w3.org/2000/svg"
       onClick={onClick}
     >
-      <circle cx="25" cy="25" r="25" fill="#242424"/>
+      <circle display="block" cx="25" cy="25" r="25" fill="#242424"/>
     </svg>
   );
 };
