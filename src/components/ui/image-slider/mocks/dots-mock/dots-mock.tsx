@@ -3,14 +3,14 @@ import cn from 'classnames';
 
 import styles from './dots-mock.module.css';
 
-interface dotsMockProps {
+interface IDotsMockProps {
   className: string;
   count: number;
   currentSlide: number;
   onClick: (idx: number) => void;
 }
 
-export const DotsMock: FC<dotsMockProps> = ({ className, count, currentSlide, onClick }) => {
+export const DotsMock: FC<IDotsMockProps> = ({ className, count, currentSlide, onClick }) => {
   return (
     <div className={styles.dots}>
       {[...Array.from(Array(count).keys())].map((idx) => {

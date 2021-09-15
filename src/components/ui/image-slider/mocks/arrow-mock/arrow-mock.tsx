@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-interface ArrowMockProps {
+interface IArrowMockProps {
   className?: string;
   direction?: 'right' | 'left';
   onClick?: () => void
 }
 
-export const ArrowMock: FC<ArrowMockProps> = (props) => {
+export const ArrowMock: FC<IArrowMockProps> = (props) => {
   const { className, onClick } = props;
 
   return (
