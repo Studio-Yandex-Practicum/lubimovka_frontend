@@ -1,0 +1,20 @@
+.navigationWrapper {
+  position: relative;
+  padding: 0 74px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.arrowLeft {
+  left: 5px;
+}
+
+.arrowRight {
+  right: 5px;
+  left: auto;
+}
