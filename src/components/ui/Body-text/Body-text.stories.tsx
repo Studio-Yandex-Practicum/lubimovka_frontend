@@ -13,23 +13,23 @@ const Template: ComponentStory<typeof BodyText> = (args) => <BodyText {...args} 
 export const BodyText_large = Template.bind({});
 BodyText_large.args = {
   size: 'large',
-  text: 'Body text large',
+  children: 'Body text',
 };
 
 export const BodyText_medium = Template.bind({});
 BodyText_medium.args = {
   size: 'medium',
-  text: 'Body text medium',
+  children: 'Body text medium',
 };
 
 export const BodyText_small = Template.bind({});
 BodyText_small.args = {
   size: 'small',
-  text: 'Body text small',
+  children: 'Body text small',
 };
 
 export const BodyText_caption = Template.bind({});
 BodyText_caption.args = {
   size: 'caption',
-  text: 'Caption text',
+  children: 'Caption text',
 };
