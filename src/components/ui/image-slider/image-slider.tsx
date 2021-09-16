@@ -41,14 +41,18 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
     <div className={cn(styles.container, className)}>
       <div className={styles.navigationWrapper}>
         <div ref={sliderRef} className='keen-slider'>
-          {images.map((card, id) => (
-            <img
-              key={id}
-              className='keen-slider__slide'
-              src={card.image}
-              alt={card.caption}
-              draggable={false}
-            />
+          {images.map((card, idx) => (
+            <div
+              key={idx}
+              className={cn('keen-slider__slide', styles.slide)}
+            >
+              <img
+                className={styles.image}
+                src={card.image}
+                alt={card.caption}
+                draggable={false}
+              />
+            </div>
           ))}
         </div>
         {slider && (

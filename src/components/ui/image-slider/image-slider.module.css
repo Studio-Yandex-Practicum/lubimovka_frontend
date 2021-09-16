@@ -4,6 +4,26 @@
   padding: 0 74px;
 }
 
+.slide {
+  position: relative;
+}
+
+.slide::before {
+  display: block;
+  width: 100%;
+  padding-top: calc((7 / 11) * 100%);
+  content: "";
+}
+
+.image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  transform: translateY(-50%) translateX(-50%);
+}
+
 .arrow {
   position: absolute;
   top: 50%;
