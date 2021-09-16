@@ -13,7 +13,7 @@ interface BigButtonInterface {
 const BigButton: React.FC<BigButtonInterface> = ({isAccent = false, arrow, label, border, onClick}) => {
   return (
     <button
-      className={cn(styles.button_font, styles.button, isAccent && styles.accent, styles[arrow], styles[border])}
+      className={cn(styles.font, styles.button, isAccent && styles.accent, styles[arrow], styles[border])}
       onClick={onClick}
     >
       {label}

@@ -7,7 +7,7 @@
   justify-content: space-between;
   padding: 16px 16px 18px 16px;
   border: 0;
-  background: var(--white);
+  background: #ece8e8;
   cursor: pointer;
   outline: 0;
   text-transform: uppercase;
@@ -40,15 +40,15 @@
 }
 
 @mixin arrow down {
-  background-image: url('images/arrow-down.svg');
+  background-image: url('icons/arrow-down.svg');
 }
 
 @mixin arrow right {
-  background-image: url('images/arrow-right.svg');
+  background-image: url('icons/arrow-right.svg');
 }
 
 @mixin arrow diagonal {
-  background-image: url('images/arrow-diagonal.svg');
+  background-image: url('icons/arrow-diagonal.svg');
 }
 
 .font {
