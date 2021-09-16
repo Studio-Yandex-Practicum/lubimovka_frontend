@@ -19,7 +19,7 @@ const fakeData: TImageItem[] = [
 ];
 
 export default {
-  title: 'Example/ImageSlider',
+  title: 'UI/ImageSlider',
   component: ImageSlider,
   decorators: [
     (Story) => (
