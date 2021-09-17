@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { BodyText } from './Body-text';
+import { BodyText } from './body-text';
 
 export default {
   title: 'Text/Body text',

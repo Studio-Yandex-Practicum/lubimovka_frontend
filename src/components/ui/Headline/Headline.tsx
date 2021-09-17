@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import cn from 'classnames';
 
-import styles from './Headline.module.css';
+import styles from './headline.module.css';
 
 interface HeadlineProps {
   level: 1 | 2 | 3 | 4 | 5 | 6 | 7

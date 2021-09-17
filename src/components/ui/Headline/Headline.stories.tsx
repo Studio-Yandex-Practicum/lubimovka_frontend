@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Headline } from './Headline';
+import { Headline } from './headline';
 
 export default {
   title: 'Text/Headline',

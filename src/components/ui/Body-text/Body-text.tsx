@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import cn from 'classnames';
 
-import styles from './Body-text.module.css';
+import styles from './body-text.module.css';
 
 interface BodyTextProps {
   size: 'large' | 'medium' | 'small' | 'caption'

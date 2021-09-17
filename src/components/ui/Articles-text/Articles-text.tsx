@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import cn from 'classnames';
 
-import styles from './Articles-text.module.css';
+import styles from './articles-text.module.css';
 
 interface ArticlesTextProps {
   content: string[]

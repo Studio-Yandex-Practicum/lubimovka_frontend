@@ -1,1 +1,1 @@
-export * from './Body-text';
+export * from './body-text';

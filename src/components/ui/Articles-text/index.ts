@@ -1,1 +1,1 @@
-export * from './Articles-text';
+export * from './articles-text';
