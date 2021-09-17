@@ -1,0 +1,11 @@
+node_modules
+
+.next
+
+.stylelintcache
+.eslintcache
+
+.vscode
+.idea
+
+.DS_Store
