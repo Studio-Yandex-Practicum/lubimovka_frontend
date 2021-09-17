@@ -27,6 +27,7 @@ const PersonCard: React.FC<IPersonCardProps> = (props) => {
     <div className={cn(styles[`container_${mode}`])}>
       <div className={cn(styles[`img_container_${mode}`])}>
         <img className={styles.img} src={link} alt={name}/>
+        {/*добавить иконку к кнопке*/}
         {mode === 'volunteer' && response &&
         <button className={styles.comment}></button>}
       </div>
@@ -34,7 +35,7 @@ const PersonCard: React.FC<IPersonCardProps> = (props) => {
             у карточек волонтера заголовок h7 на десктопе и h6 в мобилке,
             у участников везде h6*/}
       <h6 className={styles.name}>{name}</h6>
-
+      {/*заменить p на body-text*/}
       {mode === 'participant' && about &&
       <p className={styles.about}>{about}</p>}
     </div>
