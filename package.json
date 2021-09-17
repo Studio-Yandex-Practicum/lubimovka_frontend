@@ -11,7 +11,8 @@
     "lint:js": "eslint src/** --cache --ext .jsx,.js,.tsx,.ts",
     "lint:css": "stylelint **/*.css --cache --allow-empty-input --fix",
     "storybook": "start-storybook -s public -p 3001",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "adr:log": "adr-log -d docs/adr -i docs/adr/index.md"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "@types/react": "17.0.20",
     "@typescript-eslint/eslint-plugin": "4.31.0",
     "@typescript-eslint/parser": "4.31.0",
+    "adr-log": "2.2.0",
     "babel-loader": "8.2.2",
     "classnames": "2.3.1",
     "eslint": "7.32.0",
