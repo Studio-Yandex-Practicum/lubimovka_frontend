@@ -21,6 +21,33 @@
   object-fit: cover;
 }
 
+.comment {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  border: 0;
+  background-color: #ecebe8;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.comment:focus-visible {
+  outline: none;
+}
+
+.comment:hover {
+  bottom: 9px;
+  left: 9px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
 .name {
   overflow: hidden;
   margin: 16px 0 0 0;
