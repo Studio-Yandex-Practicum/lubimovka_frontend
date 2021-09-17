@@ -11,3 +11,5 @@ storybook-static
 .idea
 
 .DS_Store
+
+.gitattributes
