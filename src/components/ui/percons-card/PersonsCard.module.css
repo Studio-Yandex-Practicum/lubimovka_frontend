@@ -60,6 +60,18 @@
   text-overflow: ellipsis;
 }
 
+.about {
+  overflow: hidden;
+  margin: 8px 0 0 35px;
+  color: #242424;
+  font-family: 'Formular', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 22px;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 414px) {
   .container_volunteer {
     width: 213px;
