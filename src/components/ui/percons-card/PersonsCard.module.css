@@ -1,0 +1,51 @@
+.container_volunteer {
+  width: 180px;
+}
+
+.container_participant {
+  width: 213px;
+}
+
+.img_container_volunteer {
+  position: relative;
+  height: 228px;
+}
+
+.img_container_participant {
+  height: 265px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.name {
+  overflow: hidden;
+  margin: 16px 0 0 0;
+  color: #242424;
+  font-family: 'PP Neue Machina', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 24px;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 414px) {
+  .container_volunteer {
+    width: 213px;
+  }
+
+  .img_container_volunteer {
+    position: relative;
+    height: 265px;
+  }
+
+  .name {
+    max-height: 64px;
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
