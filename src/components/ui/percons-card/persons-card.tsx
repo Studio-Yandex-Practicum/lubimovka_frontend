@@ -3,6 +3,7 @@ import React from 'react';
 import cn from 'classnames';
 
 import styles from './PersonsCard.module.css';
+import {Icon} from '../icon';
 
 interface IPersonCardProps {
   participant: boolean,
@@ -29,7 +30,9 @@ const PersonCard: React.FC<IPersonCardProps> = (props) => {
         <img className={styles.img} src={link} alt={name}/>
         {/*добавить иконку к кнопке*/}
         {mode === 'volunteer' && response &&
-        <button className={styles.comment}></button>}
+        <button className={styles.comment}>
+          <Icon glyph={'comment'} />
+        </button>}
       </div>
       {/*заменить h6 на Headline,
             у карточек волонтера заголовок h7 на десктопе и h6 в мобилке,
