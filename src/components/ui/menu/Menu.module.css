@@ -1,0 +1,12 @@
+.menu {
+  display: inline-flex;
+  background-color: aquamarine;
+}
+
+.s {
+  column-gap: 24px;
+}
+
+.l {
+  column-gap: 16px;
+}

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
 const breakpoints = require('./src/shared/breakpoints');
@@ -18,4 +20,4 @@ module.exports = {
     ],
     'postcss-nested',
   ],
-}
+};
