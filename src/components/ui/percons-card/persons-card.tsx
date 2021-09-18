@@ -28,7 +28,6 @@ const PersonCard: React.FC<IPersonCardProps> = (props) => {
     <div className={cn(styles[`container_${mode}`])}>
       <div className={cn(styles[`img_container_${mode}`])}>
         <img className={styles.img} src={link} alt={name}/>
-        {/*добавить иконку к кнопке*/}
         {mode === 'volunteer' && response &&
         <button className={styles.comment}>
           <Icon glyph={'comment'} />
