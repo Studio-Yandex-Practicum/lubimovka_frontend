@@ -2,6 +2,10 @@
 
 .container_volunteer {
   width: 180px;
+
+  @media (max-width: $mobile-landscape) {
+    width: 213px;
+  }
 }
 
 .container_participant {
@@ -11,6 +15,10 @@
 .img_container_volunteer {
   position: relative;
   height: 228px;
+
+  @media (max-width: $mobile-landscape) {
+    height: 265px;
+  }
 }
 
 .img_container_participant {
@@ -64,6 +72,11 @@
   font-weight: normal;
   line-height: 24px;
   text-overflow: ellipsis;
+
+  @media (max-width: $mobile-landscape) {
+    font-size: 28px;
+    line-height: 32px;
+  }
 }
 
 .about {
@@ -76,21 +89,4 @@
   font-weight: 300;
   line-height: 22px;
   text-overflow: ellipsis;
-}
-
-@media (max-width: 414px) {
-  .container_volunteer {
-    width: 213px;
-  }
-
-  .img_container_volunteer {
-    position: relative;
-    height: 265px;
-  }
-
-  .name {
-    max-height: 64px;
-    font-size: 28px;
-    line-height: 32px;
-  }
 }
