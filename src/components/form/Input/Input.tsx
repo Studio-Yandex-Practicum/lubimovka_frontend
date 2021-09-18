@@ -1,4 +1,5 @@
 import { FC, InputHTMLAttributes } from 'react';
+import './Input.module.css';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
