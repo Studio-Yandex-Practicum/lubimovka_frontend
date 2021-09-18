@@ -1,0 +1,43 @@
+@define-mixin headline {
+  margin: 0;
+  color: var(--coal);
+  font-family: 'PP Neue Machina', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: -.01em;
+}
+
+@define-mixin headline_1 {
+  font-size: 72px;
+  line-height: 70px;
+}
+
+@define-mixin headline_2 {
+  font-size: 64px;
+  line-height: 60px;
+}
+
+@define-mixin headline_3 {
+  font-size: 56px;
+  line-height: 56px;
+}
+
+@define-mixin headline_4 {
+  font-size: 40px;
+  line-height: 40px;
+}
+
+@define-mixin headline_5 {
+  font-size: 36px;
+  line-height: 38px;
+}
+
+@define-mixin headline_6 {
+  font-size: 28px;
+  line-height: 32px;
+}
+
+@define-mixin headline_7 {
+  font-size: 20px;
+  line-height: 24px;
+}
