@@ -1,0 +1,72 @@
+.card {
+  display: flex;
+  width: 366px;
+  flex-flow: column nowrap;
+  border: 1px solid red;
+
+  /* temporary property, remove when var global scope */
+  background-color: #ecebe8;
+
+  @media (min-width: $mobile-landscape) {
+    width: 748px;
+    flex-flow: row nowrap;
+  }
+}
+
+.imgContainer {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+
+  @media (min-width: $mobile-landscape) {
+    width: 360px;
+    height: 500px;
+  }
+}
+
+/* Every even card has its image aligned to the right side
+ * until screen less than $mobile-landscape */
+.card:nth-child(even) > .imgContainer {
+  justify-content: flex-end;
+}
+
+.image {
+  width: 214px;
+  height: 297px;
+
+  @media (min-width: $mobile-landscape) {
+    width: 360px;
+    height: 500px;
+  }
+}
+
+.textContainer {
+  flex: 1 1 1;
+}
+
+.title {
+  max-width: 267px;
+  padding: 0;
+  border: 1px solid red;
+  margin: 24px 0 16px;
+  color: var(--black);
+  font: normal normal 28px/32px 'Neue Machina', sans-serif;
+  letter-spacing: -.5px;
+
+  @media (min-width: $mobile-landscape) {
+    margin: 0 0 16px 32px;
+    font: normal normal 40px/40px 'Neue Machina', sans-serif;
+  }
+}
+
+.text {
+  padding: 0;
+  margin: 0 0 0 86px;
+  color: var(--black);
+  font: normal normal 20px/24px 'Neue Machina', sans-serif;
+  letter-spacing: -.5px;
+
+  @media (min-width: $mobile-landscape) {
+    margin: 0 0 0 88px;
+  }
+}
