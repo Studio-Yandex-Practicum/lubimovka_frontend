@@ -10,12 +10,13 @@ interface ICardProps {
   direct: string;
 }
 export const EventСard: FC<ICardProps> = (props) => {
-  const { img, time, location, title, description, playwright, direct } = props;
+  const { time, location, title, description, playwright, direct } = props;
+
   return (
     <>
       <div className={styles.event}>
-        <div className={`${img ? styles.content : styles.contentNoImage}`}>
-          {img && <img src={img} alt={title} className={styles.image} />}
+        <div className={`${styles.content} ${!props.img ? styles.contentNoImage : ''}`}>
+          {props.img && <img src={props.img} alt={title} className={styles.image} />}
           <div className={styles.data}>
             <p className={styles.time}>{time}</p>
             <p className={styles.location}>{location}</p>

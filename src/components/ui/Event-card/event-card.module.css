@@ -1,5 +1,5 @@
 .event {
-  max-width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -22,23 +22,12 @@
 }
 
 .contentNoImage {
-  display: flex;
   width: 80%;
-  box-sizing: border-box;
-  justify-content: space-between;
-  border-top: 1px solid #242424;
   margin: 0 auto;
   margin-top: -1px;
 
-  @media (max-width: 1072px) {
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-
   @media (max-width: $mobile-landscape) {
     width: 100%;
-    justify-content: space-between;
-    padding: 0 20px;
   }
 }
 
@@ -57,10 +46,12 @@
 
   @media (max-width: $tablet-portrait) {
     padding-left: 0;
+    margin-left: 10px;
   }
 
   @media (max-width: $mobile-landscape) {
     margin-bottom: 0;
+    margin-left: 0;
   }
 }
 
