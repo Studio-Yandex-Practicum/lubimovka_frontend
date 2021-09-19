@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes } from 'react';
+import {FC, InputHTMLAttributes} from 'react';
 import './Input.module.css';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -6,12 +6,12 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }
 
-const Input: FC<InputProps> = () => {
+const Input: FC<InputProps> = (props) => {
   return (
     <form>
       <div className="inputComponent">
         <label/>
-        <input className="input" name="input" type="text" placeholder="Ваше имя" minLength={2} maxLength={30} required/>
+        <input className="input" name={props.name} type={props.type} placeholder={props.placeholder} minLength={2} maxLength={30} required/>
         <span className="inputError"/>
       </div>
     </form>
