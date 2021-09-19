@@ -56,7 +56,7 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*.css": "stylelint **/*.css --cache --allow-empty-input",
+    "*.css": "stylelint **/*.css --cache --allow-empty-input --fix",
     "**/*.(ts|js)?(x)": "eslint --cache"
   }
 }
