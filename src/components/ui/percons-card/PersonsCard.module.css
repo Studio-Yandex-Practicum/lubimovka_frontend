@@ -44,8 +44,6 @@
   padding: 0;
   border: 0;
   background-color: var(--beige);
-  background-position: center;
-  background-repeat: no-repeat;
   border-radius: 50%;
   cursor: pointer;
 }
