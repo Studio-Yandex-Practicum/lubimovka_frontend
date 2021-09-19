@@ -63,15 +63,17 @@
 }
 
 .name {
+  display: -webkit-box;
   overflow: hidden;
   margin: 16px 0 0 0;
+  -webkit-box-orient: vertical;
   color: var(--coal);
   font-family: 'PP Neue Machina', sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: normal;
+  -webkit-line-clamp: 2;
   line-height: 24px;
-  text-overflow: ellipsis;
 
   @media (max-width: $mobile-landscape) {
     font-size: 28px;
@@ -80,13 +82,15 @@
 }
 
 .about {
+  display: -webkit-box;
   overflow: hidden;
   margin: 8px 0 0 35px;
+  -webkit-box-orient: vertical;
   color: var(--coal);
   font-family: 'Formular', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 300;
+  -webkit-line-clamp: 2;
   line-height: 22px;
-  text-overflow: ellipsis;
 }
