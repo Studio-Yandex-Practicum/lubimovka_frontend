@@ -1,5 +1,10 @@
 /* добавить глобальные переменные */
 
+.container {
+  position: relative;
+  line-height: 0;
+}
+
 .container_volunteer {
   width: 180px;
 
@@ -12,28 +17,25 @@
   width: 213px;
 }
 
-.img_container_volunteer {
-  position: relative;
+.img_volunteer {
+  width: 100%;
   height: 228px;
+  object-fit: cover;
 
   @media (max-width: $mobile-landscape) {
     height: 265px;
   }
 }
 
-.img_container_participant {
-  height: 265px;
-}
-
-.img {
+.img_participant {
   width: 100%;
-  height: 100%;
+  height: 265px;
   object-fit: cover;
 }
 
 .comment {
   position: absolute;
-  bottom: 14px;
+  top: 170px;
   left: 14px;
   display: flex;
   width: 45px;
@@ -54,7 +56,7 @@
 }
 
 .comment:hover {
-  bottom: 9px;
+  top: 165px;
   left: 9px;
   width: 55px;
   height: 55px;

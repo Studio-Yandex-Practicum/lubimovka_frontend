@@ -25,14 +25,13 @@ const PersonCard: React.FC<IPersonCardProps> = (props) => {
   const mode = participant ? 'participant' : 'volunteer';
 
   return (
-    <div className={cn(styles[`container_${mode}`])}>
-      <div className={cn(styles[`img_container_${mode}`])}>
-        <img className={styles.img} src={link} alt={name}/>
-        {mode === 'volunteer' && response &&
-        <button className={styles.comment}>
-          <Icon glyph={'comment'} />
-        </button>}
-      </div>
+    <div className={cn(styles.container, styles[`container_${mode}`])}>
+      <img className={cn(styles[`img_${mode}`])} src={link} alt={name}/>
+      {mode === 'volunteer' && response &&
+      <button className={styles.comment}>
+        <Icon glyph={'comment'}/>
+      </button>}
+
       {/*заменить h6 на Headline,
             у карточек волонтера заголовок h7 на десктопе и h6 в мобилке,
             у участников везде h6*/}
