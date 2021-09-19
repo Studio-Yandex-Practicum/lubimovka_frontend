@@ -1,0 +1,31 @@
+.tags {
+  display: inline-block;
+  padding: 4px 7px 7px 7px;
+  border: 1px solid #242424;
+  border-top: none;
+  margin: 0;
+  background: #e5e5e5;
+  color: #242424;
+  font-family: "Formular", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 23px;
+  text-align: left;
+  transition: 300ms;
+}
+
+.tags:hover {
+  padding: 4px 8px 8px 8px;
+  border: none;
+  background: #242424;
+  color: #fff;
+}
+
+.tags:active {
+  padding: 4px 8px 8px 8px;
+  border: none;
+  background: #242424;
+  color: #fff;
+}
