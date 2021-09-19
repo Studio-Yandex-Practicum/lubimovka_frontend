@@ -2,7 +2,7 @@ import React from 'react';
 
 import cn from 'classnames';
 
-import styles from './PersonsCard.module.css';
+import styles from './persons-card.module.css';
 import {Icon} from '../icon';
 
 interface IPersonCardProps {
