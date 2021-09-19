@@ -36,10 +36,10 @@ const PersonCard: React.FC<IPersonCardProps> = (props) => {
       {/*заменить h6 на Headline,
             у карточек волонтера заголовок h7 на десктопе и h6 в мобилке,
             у участников везде h6*/}
-      <h6 className={styles.name}>{name}</h6>
+      <h6 className={styles.name} title={name}>{name}</h6>
       {/*заменить p на body-text*/}
       {mode === 'participant' && about &&
-      <p className={styles.about}>{about}</p>}
+      <p className={styles.about} title={about}>{about}</p>}
     </div>
   );
 };
