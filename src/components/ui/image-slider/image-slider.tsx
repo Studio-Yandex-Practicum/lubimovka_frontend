@@ -9,7 +9,7 @@ import styles from './image-slider.module.css';
 import 'keen-slider/keen-slider.min.css';
 
 export type TImageItem = {
-  image: string;
+  imageURI: string;
   caption: string;
 }
 
@@ -34,15 +34,15 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
   return (
     <div className={cn(styles.navigationWrapper, className)}>
       <div ref={sliderRef} className='keen-slider'>
-        {images.map((card, idx) => (
+        {images.map((image, idx) => (
           <div
             key={idx}
             className={cn('keen-slider__slide', styles.slide)}
           >
             <img
               className={styles.image}
-              src={card.image}
-              alt={card.caption}
+              src={image.imageURI}
+              alt={image.caption}
               draggable={false}
             />
           </div>
