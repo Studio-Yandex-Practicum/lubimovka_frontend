@@ -10,12 +10,11 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconPlace: 'iconPlaceLeft' | 'iconPlaceRight';
   border: 'borderNone' | 'borderTopLeft' | 'borderTopRight' | 'borderBottomLeft' | 'borderBottomRight' | 'borderTop' | 'borderFull';
   label: string;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: () => void;
 }
 
 const Button: FC<IButtonProps> = (props) => {
-  const {accent, size, icon, iconPlace, label, border, ...restButtonProps} = props;
-  console.log(styles);
+  const {accent = false, size, icon, iconPlace, label, border, ...restButtonProps} = props;
   return  (
     <button
       className={cn(styles.button, accent && styles.accent, styles[border], styles[iconPlace], size && styles['sizeFixed'], size && styles[size])}
