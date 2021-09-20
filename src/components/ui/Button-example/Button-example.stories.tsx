@@ -1,16 +1,16 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Button } from './Button';
+import { ButtonExample } from './Button-example';
 
 export default {
-  title: 'Example/Button',
-  component: Button,
+  title: 'Example/Button-example',
+  component: ButtonExample,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Button>;
+} as ComponentMeta<typeof ButtonExample>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof ButtonExample> = (args) => <ButtonExample {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

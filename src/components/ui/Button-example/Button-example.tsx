@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import cn from 'classnames';
 
-import styles from './Button.module.css';
+import styles from './Button-example.module.css';
 
 interface IButtonProps {
   primary?: boolean;
@@ -11,7 +11,7 @@ interface IButtonProps {
   onClick?: () => void;
 }
 
-export const Button: FC<IButtonProps> = (props) => {
+export const ButtonExample: FC<IButtonProps> = (props) => {
   const {
     primary = false,
     size = 'm',
