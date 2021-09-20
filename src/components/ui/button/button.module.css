@@ -78,6 +78,10 @@
   padding: 4px 31px 7px 0;
 }
 
+.button.iconPlaceLeft.borderNone {
+  padding: 4px 10px 7px 31px;
+}
+
 .button.iconPlaceLeft {
   padding-left: 28px;
 }
@@ -119,7 +123,8 @@
   left: 0;
 }
 
-.iconPlaceLeft.sizeFixed.button {
+.iconPlaceLeft.sizeFixed.button.m,
+.iconPlaceLeft.sizeFixed.button.s {
   justify-content: flex-end;
 }
 
@@ -128,8 +133,8 @@
   right: 0;
 }
 
-.iconPlaceRight.borderTopLeft .icon,
-.iconPlaceRight.borderNone .icon {
+.borderNone .icon,
+.iconPlaceRight.borderTopLeft .icon {
   top: 0;
 }
 
