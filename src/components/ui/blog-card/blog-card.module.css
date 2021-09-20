@@ -6,6 +6,7 @@
   box-sizing: border-box;
   flex-direction: column;
   background: transparent;
+  cursor: pointer;
 }
 
 .card:nth-child(1) {
