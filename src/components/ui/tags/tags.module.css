@@ -1,11 +1,11 @@
 .tags {
   display: inline-block;
   padding: 4px 7px 7px 7px;
-  border: 1px solid #242424;
+  border: 1px solid var(--coal);
   border-top: none;
   margin: 0;
-  background: #e5e5e5;
-  color: #242424;
+  background: var(--beige);
+  color: var(--coal);
   font-family: "Formular", Arial, Helvetica, sans-serif;
   font-size: 18px;
   font-style: normal;
@@ -19,13 +19,13 @@
 .tags:hover {
   padding: 4px 8px 8px 8px;
   border: none;
-  background: #242424;
-  color: #fff;
+  background: var(--coal);
+  color: var(--white);
 }
 
 .tags:active {
   padding: 4px 8px 8px 8px;
   border: none;
-  background: #242424;
-  color: #fff;
+  background: var(--coal);
+  color: var(--white);
 }
