@@ -16,6 +16,7 @@ BlogCard_default.args = {
   author: 'Лара Бессмертная',
   heading: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
+  argTypes: { onClick: { action: 'clicked' } },
 };
 
 const CardBlockStyles = {
@@ -41,6 +42,7 @@ BlogCard_in_grid_first.args = {
   author: 'Лара Бессмертная',
   heading: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
+  argTypes: { onClick: { action: 'clicked' } },
 };
 
 export const BlogCard_in_grid_some = (args) => (
@@ -73,4 +75,5 @@ BlogCard_in_grid_some.args = {
   author: 'Лара Бессмертная',
   heading: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
+  argTypes: { onClick: { action: 'clicked' } },
 };
