@@ -31,6 +31,10 @@
   font-style: normal;
   font-weight: 300;
   line-height: 1.25;
+
+  @media (max-width: $mobile-landscape) {
+    padding-left: 30px;
+  }
 }
 
 .heading {
