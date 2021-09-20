@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Button from './button';
 
 export default {
-  title: 'Button',
+  title: 'UI/Button',
   component: Button,
 } as ComponentMeta<typeof Button>;
 
@@ -12,7 +12,7 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Projects = Template.bind({});
 Projects.args = {
-  icon: 'icon-arrow-left',
+  icon: 'arrow-left',
   label: 'Проекты',
   border: 'border-bottom-right',
   iconPlace: 'icon-place-right',
@@ -20,8 +20,8 @@ Projects.args = {
 
 export const ShowMore = Template.bind({});
 ShowMore.args = {
-  size: 'l',
-  icon: 'icon-arrow-down',
+  size: 'm',
+  icon: 'arrow-down',
   label: 'Показать ещё',
   border: 'border-top-left',
   iconPlace: 'icon-place-right',
@@ -29,8 +29,8 @@ ShowMore.args = {
 
 export const Minimize = Template.bind({});
 Minimize.args = {
-  size: 'l',
-  icon: 'icon-arrow-down',
+  size: 'm',
+  icon: 'arrow-up',
   label: 'Свернуть',
   border: 'border-top-left',
   iconPlace: 'icon-place-right',
@@ -39,7 +39,7 @@ Minimize.args = {
 export const AboutShowArrowDown = Template.bind({});
 AboutShowArrowDown.args = {
   size: 'm',
-  icon: 'icon-arrow-down',
+  icon: 'arrow-down',
   label: 'О спектакле',
   border: 'border-bottom-left',
   iconPlace: 'icon-place-right',
@@ -48,7 +48,7 @@ AboutShowArrowDown.args = {
 export const AboutShowArrowRight = Template.bind({});
 AboutShowArrowRight.args = {
   size: 'm',
-  icon: 'icon-arrow-right',
+  icon: 'arrow-right',
   label: 'О спектакле',
   border: 'border-bottom-left',
   iconPlace: 'icon-place-left',
@@ -56,7 +56,7 @@ AboutShowArrowRight.args = {
 
 export const AddFile = Template.bind({});
 AddFile.args = {
-  icon: 'icon-plus',
+  icon: 'plus',
   label: 'Добавить файл',
   border: 'border-bottom-left',
   iconPlace: 'icon-place-left',
@@ -64,8 +64,40 @@ AddFile.args = {
 
 export const Download = Template.bind({});
 Download.args = {
-  icon: 'icon-arrow-down',
+  icon: 'arrow-down',
   label: 'Скачать',
   border: 'border-none',
   iconPlace: 'icon-place-right',
 };
+
+export const DownloadPlay = Template.bind({});
+DownloadPlay.args = {
+  size: 'l',
+  accent: true,
+  icon: 'arrow-down',
+  label: 'Скачать пьесу',
+  border: 'border-top',
+  iconPlace: 'icon-place-right',
+};
+
+export const LookReading = Template.bind({});
+LookReading.args = {
+  size: 'l',
+  accent: true,
+  icon: 'arrow-45',
+  label: 'Скачать пьесу',
+  border: 'border-top',
+  iconPlace: 'icon-place-right',
+};
+
+export const Send = Template.bind({});
+Send.args = {
+  size: 'l',
+  accent: false,
+  icon: 'arrow-right',
+  label: 'Скачать пьесу',
+  border: 'border-full',
+  iconPlace: 'icon-place-right',
+};
+
+

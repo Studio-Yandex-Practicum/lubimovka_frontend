@@ -1,22 +1,31 @@
 import styles from './button.module.css';
-import React from 'react';
+import {FC, MouseEventHandler, ButtonHTMLAttributes} from 'react';
+import {Icon, IIconProps} from '../icon';
 import cn from 'classnames';
 
-
-
-interface IButtonInterface {
-  size?: 'm' | 'l';
-  icon: 'icon-arrow-down' | 'icon-arrow-diagonal' | 'icon-arrow-right' | 'icon-arrow-left' | 'icon-plus';
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  accent: boolean,
+  icon: IIconProps['glyph'];
+  size?: 's' | 'm' | 'l';
   iconPlace: 'icon-place-left' | 'icon-place-right';
-  border: 'border-none' | 'border-top-left' | 'border-top-right' | 'border-bottom-left' | 'border-bottom-right';
+  border: 'border-none' | 'border-top-left' | 'border-top-right' | 'border-bottom-left' | 'border-bottom-right' | 'border-top' | 'border-full';
   label: string;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button: React.FC<IButtonInterface> = ({size , icon, iconPlace, label, border, onClick}) => {
+const Button: FC<IButtonProps> = (props) => {
+  const {accent, size, icon, iconPlace, label, border, ...restButtonProps} = props;
   console.log(styles);
-  return (
-    <button className={cn(styles.button, styles.font, styles[border], styles[icon], styles[iconPlace], size && styles['size-fixed'], size && styles[size])}>{label}</button>
+  return  (
+    <button
+      className={cn(styles.button, accent && styles.accent, styles[border], styles[iconPlace], size && styles['size-fixed'], size && styles[size])}
+      type='button'
+      {...restButtonProps}
+    >
+      {iconPlace == 'icon-place-left' && <Icon className={styles.icon} glyph={icon}/>}
+      {label}
+      {iconPlace === 'icon-place-right' && <Icon className={styles.icon} glyph={icon}/>}
+    </button>
   );
 };
 

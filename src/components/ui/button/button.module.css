@@ -5,8 +5,14 @@
   box-sizing: border-box;
   align-items: center;
   border: 0;
-  background: #ece8e8;
+  background: var(--beige);
+  color: var(--coal);
   cursor: pointer;
+  font-family: Formular, Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 14px;
   outline: 0;
   text-transform: uppercase;
 
@@ -17,13 +23,13 @@
     left: 0;
     width: 0;
     height: 100%;
-    background-color: #242424;
+    background-color: var(--coal);
     content: '';
     transition: width .2s ease-in, transform .1s linear;
   }
 
   &:hover {
-    color: #ece8e8;
+    color: var(--beige);
 
     &::before {
       width: 100%;
@@ -35,138 +41,98 @@
   }
 }
 
-.size-fixed.l {
-  width: 210px;
+.icon {
+  position: absolute;
+  box-sizing: border-box;
 }
 
 .size-fixed.m {
+  width: 210px;
+}
+
+.size-fixed.s {
   width: 155px;
 }
 
+.size-fixed.l {
+  width: 240px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 18px 16px;
+  line-height: 22px;
+}
+
+.l .icon {
+  position: initial;
+}
+
+.accent {
+  background-color: var(--light-green);
+}
+
 .button.icon-place-right {
-  padding-right: 0;
+  padding-right: 25px;
+}
+
+.button.icon-place-right.border-none {
+  padding: 4px 31px 7px 0;
 }
 
 .button.icon-place-left {
   padding-left: 28px;
 }
 
-.icon-place-left.icon-arrow-right::after {
-  top: 26%;
-  left: 0;
-}
-
-.icon-place-left.icon-plus::after {
-  position: absolute;
-  top: 8%;
-  left: 0;
-}
-
-.font {
-  color: #242424;
-  font-family: Formular, Arial, sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 14px;
-}
-
 .border-top-left {
   padding: 10px 12px 8px 9px;
-  border-top: 1px solid #242424;
-  border-left: 1px solid #242424;
+  border-top: 1px solid var(--coal);
+  border-left: 1px solid var(--coal);
 }
 
 .border-top-right {
   padding: 10px 9px 8px 12px;
-  border-top: 1px solid #242424;
-  border-right: 1px solid #242424;
-}
-
-.border-top-right.icon-arrow-down::after,
-.border-top-left.icon-arrow-down::after {
-  top: -1px;
-  right: 0;
+  border-top: 1px solid var(--coal);
+  border-right: 1px solid var(--coal);
 }
 
 .border-bottom-left {
   padding: 8px 12px 10px 8px;
-  border-bottom: 1px solid #242424;
-  border-left: 1px solid #242424;
+  border-bottom: 1px solid var(--coal);
+  border-left: 1px solid var(--coal);
 }
 
 .border-bottom-right {
   padding: 9px 10px;
-  border-right: 1px solid #242424;
-  border-bottom: 1px solid #242424;
+  border-right: 1px solid var(--coal);
+  border-bottom: 1px solid var(--coal);
 }
 
-.border-bottom-right.icon-arrow-down::after,
-.border-bottom-left.icon-arrow-down::after {
+.border-top {
+  border-top: 1px solid var(--coal);
+}
+
+.border-full {
+  border: 1px solid var(--coal);
+}
+
+.icon-place-left .icon {
+  top: 3px;
+  left: 0;
+}
+
+.icon-place-left.size-fixed.button {
+  justify-content: flex-end;
+}
+
+.icon-place-right .icon {
   top: 3px;
   right: 0;
 }
 
+.icon-place-right.border-top-left .icon,
+.icon-place-right.border-none .icon {
+  top: 0;
+}
+
 .border-none {
   border: 0;
-}
-
-@define-mixin icon $content {
-  .icon-$content {
-    display: flex;
-
-    &::after {
-      background: center no-repeat;
-      content: '';
-      transition: filter .1s ease-in;
-      @mixin-content;
-    }
-
-    &:hover::after {
-      filter: invert(100%);
-    }
-  }
-
-  .size-fixed.icon-$content::after {
-    position: absolute;
-    box-sizing: border-box;
-  }
-}
-
-@mixin icon arrow-right {
-  width: 21px;
-  height: 13px;
-  background-image: url('icons/arrow-right.svg');
-}
-
-@mixin icon arrow-left {
-  width: 21px;
-  height: 13px;
-  padding-left: 4px;
-  background-image: url('icons/arrow-left.svg');
-}
-
-@mixin icon arrow-down {
-  width: 25px;
-  height: 25px;
-  background-image: url('icons/arrow-down.svg');
-
-  .border-top-left {
-    top: -1px;
-    right: 0;
-  }
-}
-
-@mixin icon arrow-up {
-  top: 1px;
-  right: 10px;
-  width: 13px;
-  height: 21px;
-  background-image: url('icons/arrow-up.svg');
-}
-
-@mixin icon plus {
-  width: 25px;
-  height: 25px;
-  background-image: url('icons/plus.svg');
 }
