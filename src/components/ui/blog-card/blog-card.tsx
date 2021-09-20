@@ -16,10 +16,10 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
       <div className={styles.img_container}>
         <img className={styles.img} src={image} alt="изображение пьесы" />
       </div>
-      <div>
-        <p>{author}</p>
-        <h6>{heading}</h6>
-        <p>{description}</p>
+      <div className={styles.content}>
+        <p className={styles.author}>{author}</p>
+        <h6 className={styles.heading}>{heading}</h6>
+        <p className={styles.description}>{description}</p>
       </div>
     </li>
   );
