@@ -1,13 +1,12 @@
-# Журнал Архитектурных Решений
+# Лог архитектурных решений
 
-В этом журнале перечислены архитектурные решения для фронтенда проекта «Любимовка».
+<!-- adrlog -->
 
-<!-- adrlog -- Восстановите содержимое с помощью "adr-log -i". Вы можете установить его с помощью "npm install-g adr-log" -->
-
-- [ADR-0000](0000-использовать-маркдаун-записи-архитектурных-решений.md) - Использовать маркдаун записи архитектурных решений
+- [ADR-0000](0000-use-markdown-architectural-decision-records.md) - Использование Markdown Architectural Decision Records
+- [ADR-0001](0001-image-slider-library.md) - Библиотека для слайдера изображений
 
 <!-- adrlogstop -->
 
-Для новых ADR, пожалуйста, используйте [template.md](template.md) в качестве основы.
-Более подробная информация о MADR доступна по адресу <https://adr.github.io/madr/>.
-Общая информация о записях архитектурных решений доступна по адресу <https://adr.github.io/>.
+Для новых записей следует использовать [template.md](template.md).
+Про MADR <https://adr.github.io/madr/>.
+Про architectural decision records <https://adr.github.io/>.
