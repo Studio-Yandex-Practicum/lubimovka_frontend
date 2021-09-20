@@ -26,6 +26,8 @@
 .content {
   display: flex;
   flex-direction: column;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 .author {
