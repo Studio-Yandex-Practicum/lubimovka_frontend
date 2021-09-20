@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ImageSlider } from './image-slider';
-import { TImageItem } from 'components/ui/image-slider';
+import { TImageItem } from './image-slider';
 
 const fakeData: TImageItem[] = [
   {
