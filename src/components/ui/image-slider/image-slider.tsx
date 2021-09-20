@@ -33,7 +33,19 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
 
   return (
     <div className={cn(styles.navigationWrapper, className)}>
-      <div ref={sliderRef} className='keen-slider'>
+      {slider && (
+        <>
+          <ArrowMock
+            className={cn(styles.arrow, styles.arrowLeft)}
+            onClick={slider.prev}
+          />
+          <ArrowMock
+            className={cn(styles.arrow, styles.arrowRight)}
+            onClick={slider.next}
+          />
+        </>
+      )}
+      <div ref={sliderRef} className={cn('keen-slider', styles.slider)}>
         {images.map((image, idx) => (
           <div
             key={idx}
@@ -48,18 +60,6 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
           </div>
         ))}
       </div>
-      {slider && (
-        <>
-          <ArrowMock
-            className={cn(styles.arrow, styles.arrowLeft)}
-            onClick={slider.prev}
-          />
-          <ArrowMock
-            className={cn(styles.arrow, styles.arrowRight)}
-            onClick={slider.next}
-          />
-        </>
-      )}
       {slider && <DotsMock
         className={styles.dots}
         count={slider.details().size}

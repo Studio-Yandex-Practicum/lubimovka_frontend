@@ -4,7 +4,14 @@
   padding: 0 74px;
 
   @media (max-width: $mobile-landscape) {
-    padding: 68px 0 0;
+    padding: 0;
+    text-align: right;
+  }
+}
+
+.slider {
+  @media (max-width: $mobile-landscape) {
+    margin-top: 19px;
   }
 }
 
@@ -34,26 +41,28 @@
   transform: translateY(-50%);
 
   @media (max-width: $mobile-landscape) {
-    top: 0;
+    position: static;
+    display: inline-block;
     transform: translateY(0);
+  }
+}
+
+.arrow:last-of-type {
+  @media (max-width: $mobile-landscape) {
+    margin-right: 24px;
+  }
+}
+
+.arrow:not(:last-of-type) {
+  @media (max-width: $mobile-landscape) {
+    margin-right: 51px;
   }
 }
 
 .arrowLeft {
   left: 0;
-
-  @media (max-width: $mobile-landscape) {
-    right: 124px;
-    left: auto;
-  }
 }
 
 .arrowRight {
   right: 0;
-  left: auto;
-
-  @media (max-width: $mobile-landscape) {
-    right: 24px;
-    left: auto;
-  }
 }

@@ -15,6 +15,7 @@ export const ArrowMock: FC<IArrowMockProps> = (props) => {
   return (
     <svg
       className={cn(styles.arrow, className)}
+      display="block"
       width="50"
       height="50"
       fill="none"
