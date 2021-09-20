@@ -12,9 +12,9 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   const { image, author, heading, description } = props;
 
   return (
-    <li>
-      <div>
-        <img src={image} alt="изображение пьесы" />
+    <li className={styles.card}>
+      <div className={styles.img_container}>
+        <img className={styles.img} src={image} alt="изображение пьесы" />
       </div>
       <div>
         <p>{author}</p>
