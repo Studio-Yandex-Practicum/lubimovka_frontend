@@ -49,6 +49,11 @@
   border-radius: 50%;
   cursor: pointer;
   transition: width 400ms cubic-bezier(.6, 0, .5, 1), height 400ms cubic-bezier(.6, 0, .5, 1);
+
+  @media (max-width: $mobile-landscape) {
+    top: 208px;
+    left: 16px;
+  }
 }
 
 .comment:focus-visible {
@@ -60,6 +65,11 @@
   left: 9px;
   width: 55px;
   height: 55px;
+
+  @media (max-width: $mobile-landscape) {
+    top: 203px;
+    left: 21px;
+  }
 }
 
 .name {
