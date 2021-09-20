@@ -91,6 +91,6 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 300;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
   line-height: 22px;
 }
