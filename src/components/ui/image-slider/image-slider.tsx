@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import cn from 'classnames';
 
@@ -31,12 +31,6 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
     },
   });
 
-  const onPrev = useCallback(() => slider.prev(), [slider]);
-  const onNext = useCallback(() => slider.next(), [slider]);
-  const onDotClick = useCallback((idx) => slider.moveToSlideRelative(idx), [slider]);
-
-  const getImagesCount = useCallback(() => slider.details().size, [slider]);
-
   return (
     <div className={cn(styles.container, className)}>
       <div className={styles.navigationWrapper}>
@@ -59,20 +53,20 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
           <>
             <ArrowMock
               className={cn(styles.arrow, styles.arrowLeft)}
-              onClick={onPrev}
+              onClick={slider.prev}
             />
             <ArrowMock
               className={cn(styles.arrow, styles.arrowRight)}
-              onClick={onNext}
+              onClick={slider.next}
             />
           </>
         )}
       </div>
       {slider && <DotsMock
         className={styles.dots}
-        count={getImagesCount()}
+        count={slider.details().size}
         currentSlide={currentSlide}
-        onClick={onDotClick}
+        onClick={(idx) => slider.moveToSlideRelative(idx)}
       />}
     </div>
   );
