@@ -31,7 +31,6 @@
 .arrow {
   position: absolute;
   top: 50%;
-  cursor: pointer;
   transform: translateY(-50%);
 
   @media (max-width: $mobile-landscape) {

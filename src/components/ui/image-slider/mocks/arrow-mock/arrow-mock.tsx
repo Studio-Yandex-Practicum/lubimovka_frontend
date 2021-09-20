@@ -1,4 +1,7 @@
 import { FC } from 'react';
+import cn from 'classnames';
+
+import styles from './arrow-mock.module.css';
 
 interface IArrowMockProps {
   className?: string;
@@ -11,7 +14,7 @@ export const ArrowMock: FC<IArrowMockProps> = (props) => {
 
   return (
     <svg
-      className={className}
+      className={cn(styles.arrow, className)}
       width="50"
       height="50"
       fill="none"
