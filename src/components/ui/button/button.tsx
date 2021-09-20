@@ -7,8 +7,8 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   accent: boolean,
   icon: IIconProps['glyph'];
   size?: 's' | 'm' | 'l';
-  iconPlace: 'icon-place-left' | 'icon-place-right';
-  border: 'border-none' | 'border-top-left' | 'border-top-right' | 'border-bottom-left' | 'border-bottom-right' | 'border-top' | 'border-full';
+  iconPlace: 'iconPlaceLeft' | 'iconPlaceRight';
+  border: 'borderNone' | 'borderTopLeft' | 'borderTopRight' | 'borderBottomLeft' | 'borderBottomRight' | 'borderTop' | 'borderFull';
   label: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
@@ -18,13 +18,13 @@ const Button: FC<IButtonProps> = (props) => {
   console.log(styles);
   return  (
     <button
-      className={cn(styles.button, accent && styles.accent, styles[border], styles[iconPlace], size && styles['size-fixed'], size && styles[size])}
+      className={cn(styles.button, accent && styles.accent, styles[border], styles[iconPlace], size && styles['sizeFixed'], size && styles[size])}
       type='button'
       {...restButtonProps}
     >
-      {iconPlace == 'icon-place-left' && <Icon className={styles.icon} glyph={icon}/>}
+      {iconPlace == 'iconPlaceLeft' && <Icon className={styles.icon} glyph={icon}/>}
       {label}
-      {iconPlace === 'icon-place-right' && <Icon className={styles.icon} glyph={icon}/>}
+      {iconPlace === 'iconPlaceRight' && <Icon className={styles.icon} glyph={icon}/>}
     </button>
   );
 };
