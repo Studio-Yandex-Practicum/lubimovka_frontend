@@ -36,14 +36,6 @@ export const Desktop = Template.bind({});
 Desktop.args = {
   images: fakeData
 };
-
-export const Mobile = Template.bind({});
-Mobile.args = {
-  images: fakeData
-};
-Mobile.parameters = {
-  viewport: {
-    defaultViewport: 'mobile2'
-  },
+Desktop.parameters = {
   layout: 'fullscreen'
 };
