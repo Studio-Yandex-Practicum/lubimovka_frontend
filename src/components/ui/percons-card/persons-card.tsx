@@ -22,12 +22,12 @@ const PersonCard: React.FC<IPersonCardProps> = (props) => {
     response,
   } = props;
 
-  const mode = participant ? 'participant' : 'volunteer';
+  const mode = participant ? 'Participant' : 'Volunteer';
 
   return (
-    <div className={cn(styles.container, styles[`container_${mode}`])}>
-      <img className={cn(styles[`img_${mode}`])} src={link} alt={name}/>
-      {mode === 'volunteer' && response &&
+    <div className={cn(styles.container, styles[`container${mode}`])}>
+      <img className={cn(styles[`img${mode}`])} src={link} alt={name}/>
+      {mode === 'Volunteer' && response &&
       <button className={styles.comment}>
         <Icon glyph={'comment'}/>
       </button>}
@@ -37,7 +37,7 @@ const PersonCard: React.FC<IPersonCardProps> = (props) => {
             у участников везде h6*/}
       <h6 className={styles.name} title={name}>{name}</h6>
       {/*заменить p на body-text*/}
-      {mode === 'participant' && about &&
+      {mode === 'Participant' && about &&
       <p className={styles.about} title={about}>{about}</p>}
     </div>
   );
