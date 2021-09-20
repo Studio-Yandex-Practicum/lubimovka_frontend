@@ -48,7 +48,7 @@
   background-color: #fff; /* var(--beige); */
   border-radius: 50%;
   cursor: pointer;
-  transition: width 400ms cubic-bezier(.6, 0, .5, 1), height 400ms cubic-bezier(.6, 0, .5, 1);
+  transition: width 400ms cubic-bezier(.6, 0, .5, 1), height 400ms cubic-bezier(.6, 0, .5, 1), top 400ms cubic-bezier(.6, 0, .5, 1), left 400ms cubic-bezier(.6, 0, .5, 1);
 
   @media (max-width: $mobile-landscape) {
     top: 208px;
@@ -68,7 +68,7 @@
 
   @media (max-width: $mobile-landscape) {
     top: 203px;
-    left: 21px;
+    left: 11px;
   }
 }
 
