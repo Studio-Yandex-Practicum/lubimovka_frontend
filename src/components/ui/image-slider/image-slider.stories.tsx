@@ -32,10 +32,10 @@ export default {
 
 const Template: ComponentStory<typeof ImageSlider> = (args) => <ImageSlider {...args} />;
 
-export const Desktop = Template.bind({});
-Desktop.args = {
+export const Default = Template.bind({});
+Default.args = {
   images: fakeData
 };
-Desktop.parameters = {
+Default.parameters = {
   layout: 'fullscreen'
 };
