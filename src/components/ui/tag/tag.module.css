@@ -1,4 +1,4 @@
-.tags {
+.tag {
   display: inline-block;
   padding: 4px 7px 7px 7px;
   border: 1px solid var(--coal);
@@ -16,14 +16,14 @@
   transition: 300ms;
 }
 
-.tags:hover {
+.tag:hover {
   padding: 4px 8px 8px 8px;
   border: none;
   background: var(--coal);
   color: var(--white);
 }
 
-.tags:active {
+.tag:active {
   padding: 4px 8px 8px 8px;
   border: none;
   background: var(--coal);
