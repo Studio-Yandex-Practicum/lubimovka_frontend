@@ -34,6 +34,9 @@
 }
 
 .heading {
+  align-self: flex-start;
+  padding: 0;
+  margin: 0;
   color: var(--coal);
   font-family: 'PP Neue Machina', Helvetica, Arial, sans-serif;
   font-size: 28px;
