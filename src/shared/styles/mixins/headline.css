@@ -7,37 +7,37 @@
   letter-spacing: -.01em;
 }
 
-@define-mixin headline_1 {
+@define-mixin headline1 {
   font-size: 72px;
   line-height: 70px;
 }
 
-@define-mixin headline_2 {
+@define-mixin headline2 {
   font-size: 64px;
   line-height: 60px;
 }
 
-@define-mixin headline_3 {
+@define-mixin headline3 {
   font-size: 56px;
   line-height: 56px;
 }
 
-@define-mixin headline_4 {
+@define-mixin headline4 {
   font-size: 40px;
   line-height: 40px;
 }
 
-@define-mixin headline_5 {
+@define-mixin headline5 {
   font-size: 36px;
   line-height: 38px;
 }
 
-@define-mixin headline_6 {
+@define-mixin headline6 {
   font-size: 28px;
   line-height: 32px;
 }
 
-@define-mixin headline_7 {
+@define-mixin headline7 {
   font-size: 20px;
   line-height: 24px;
 }
