@@ -14,7 +14,7 @@ interface ILinkProps {
   withIcon: boolean;
   icon?: boolean;
   iconSide?: boolean;
-  section?: 'footer' | 'noFooter';
+  section?: 'noFooter' | 'infoFooter' | 'footer';
   onClick?: () => void;
 }
 
@@ -39,7 +39,7 @@ export const Link: FC<ILinkProps> = (props) => {
       {visible === '1' && place === '1' && <img src={iconType} className={cn(styles.placeLeft)}/>}
       <a
         href=""
-        className={cn(styles.link, styles[size], styles[textDecoration])}
+        className={cn(styles.link, styles[size], styles[textDecoration], styles[section])}
         {...restButtonProps}
       >
         {label}

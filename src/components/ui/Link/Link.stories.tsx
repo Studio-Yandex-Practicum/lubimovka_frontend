@@ -27,14 +27,6 @@ LinkInTextBlocks.args = {
   withIcon: false
 };
 
-export const LinkInFooter = Template.bind({});
-LinkInFooter.args = {
-  size: 'xs',
-  label: 'Контакты',
-  withIcon: false,
-  section: 'footer'
-};
-
 export const LinkWithArrowRight = Template.bind({});
 LinkWithArrowRight.args = {
   size: 'm',
@@ -71,3 +63,20 @@ LinkNumber.args = {
   icon: true,
   iconSide: false
 };
+
+export const LinkInfoInFooter = Template.bind({});
+LinkInfoInFooter.args = {
+  size: 'xs',
+  label: 'Контакты',
+  withIcon: false,
+  section: 'infoFooter'
+};
+
+export const LinkInFooter = Template.bind({});
+LinkInFooter.args = {
+  size: 'xs',
+  label: 'shishki.collective',
+  withIcon: false,
+  section: 'footer'
+};
+
