@@ -13,26 +13,30 @@
 }
 
 .delete {
+  display: flex;
+  align-items: center;
+  padding: 0;
   border: none;
-  margin-left: 9px;
   background-color: transparent;
-  background-image: url(/deleteFile.svg);
-  background-position: 0;
-  background-repeat: no-repeat;
-  background-size: 9px;
   cursor: pointer;
 }
 
+.iconDelete {
+  margin-right: 3px;
+}
+
 .name {
+  overflow: hidden;
   margin: 0;
   margin-right: 9px;
-  margin-left: 12px;
   color: #ecebe8;
   font-family: 'Formular', sans-serif;
   font-size: 20px;
   font-weight: 300;
   letter-spacing: -.01em;
   line-height: 28px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .message {
@@ -50,18 +54,16 @@
 }
 
 .add {
+  display: flex;
   width: 100%;
   max-width: 182px;
   max-height: 31px;
-  padding: 7px 12px 7px 28px;
+  align-items: center;
+  padding: 0;
   border: none;
   border-bottom: 1px solid #242424;
   border-left: 1px solid #242424;
   background-color: transparent;
-  background-image: url(/addFile.svg);
-  background-position: 0;
-  background-repeat: no-repeat;
-  background-size: 25px;
   color: #242424;
   cursor: pointer;
   font-family: 'Formular', sans-serif;
@@ -69,4 +71,10 @@
   font-weight: 300;
   line-height: 14px;
   text-transform: uppercase;
+}
+
+.iconPlus {
+  width: 25px;
+  height: 25px;
+  margin-right: 3px;
 }

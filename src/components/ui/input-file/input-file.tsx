@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect, FC } from 'react';
 import cn from 'classnames';
 
+import { Icon } from '../icon';
+
 import styles from './input-file.module.css';
 
 interface IInputFileProps {
@@ -9,7 +11,7 @@ interface IInputFileProps {
 
 export const InputFile: FC<IInputFileProps> = ({ typesListFiles }): JSX.Element => {
   // * Поднять Sate
-  // Выбранный файл. fileList это выбранный файл
+  // Выбранный файл. fileList это выбранный файл. Отдавать на сервер
   const [ file, setFile ] = useState<null | File>(null);
   // Если existsFile false, кнопку заблокировать. Можно просто использовать file
   const [ existsValidFile, setExistsValidFile ] = useState(false);
@@ -59,13 +61,14 @@ export const InputFile: FC<IInputFileProps> = ({ typesListFiles }): JSX.Element 
   };
 
   const isValidFile = (isValidName: boolean, file: File): void => {
+    const fileName = file.name;
     // Если имя файла валидно
     if (isValidName) {
       // Файл заношу для отправки на сервер
       setFile(file);
       // Кнопка формы может быть доступна
       setExistsValidFile(true);
-      setNameFile(file.name);
+      setNameFile(fileName);
       // Убираю текст ошибки
       setMessageError('');
       return;
@@ -75,7 +78,7 @@ export const InputFile: FC<IInputFileProps> = ({ typesListFiles }): JSX.Element 
     setFile(null);
     // Кнопка формы не должна быть доступна
     setExistsValidFile(false);
-    setNameFile(file.name);
+    setNameFile(fileName);
     setMessageError('Файл содержит кириллицу, пожалуйста, переименуйте его.');
   };
 
@@ -127,7 +130,11 @@ export const InputFile: FC<IInputFileProps> = ({ typesListFiles }): JSX.Element 
             <button
               onClick={ handlerDeteleFile }
               className={ cn(styles.delete) }
-            ></button>
+            >
+              {
+                <Icon glyph='cross' className={styles.iconDelete} fill='white' />
+              }
+            </button>
             <p className={ cn(styles.name) }>
               { nameFile }
             </p>
@@ -152,6 +159,9 @@ export const InputFile: FC<IInputFileProps> = ({ typesListFiles }): JSX.Element 
         onClick={ triggerInput }
         className={ cn(styles.add) }
       >
+        {
+          <Icon glyph='plus' className={styles.iconPlus} />
+        }
         { textButton }
       </button>
     </div>
