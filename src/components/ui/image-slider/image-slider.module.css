@@ -17,13 +17,13 @@
 
 .slide {
   position: relative;
-}
 
-.slide::before {
-  display: block;
-  width: 100%;
-  padding-top: calc((7 / 11) * 100%);
-  content: "";
+  &::before {
+    display: block;
+    width: 100%;
+    padding-top: calc((7 / 11) * 100%);
+    content: "";
+  }
 }
 
 .image {
@@ -45,17 +45,17 @@
     display: inline-block;
     transform: translateY(0);
   }
-}
 
-.arrow:last-of-type {
-  @media (max-width: 728px) {
-    margin-right: 24px;
+  &:last-of-type {
+    @media (max-width: 728px) {
+      margin-right: 24px;
+    }
   }
-}
 
-.arrow:not(:last-of-type) {
-  @media (max-width: 728px) {
-    margin-right: 51px;
+  &:not(:last-of-type) {
+    @media (max-width: 728px) {
+      margin-right: 51px;
+    }
   }
 }
 
