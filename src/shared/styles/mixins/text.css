@@ -6,23 +6,23 @@
   font-weight: 300;
 }
 
-@define-mixin text_large {
+@define-mixin textLarge {
   font-size: 20px;
   letter-spacing: -.01em;
   line-height: 28px;
 }
 
-@define-mixin text_medium {
+@define-mixin textMedium {
   font-size: 18px;
   line-height: 23px;
 }
 
-@define-mixin text_small {
+@define-mixin textSmall {
   font-size: 16px;
   line-height: 22px;
 }
 
-@define-mixin text_caption {
+@define-mixin textCaption {
   font-size: 14px;
   line-height: 17px;
 }
