@@ -1,0 +1,9 @@
+.title {
+  @mixin headline;
+  @mixin headline4;
+}
+
+.paragraph {
+  @mixin text;
+  @mixin textLarge;
+}
