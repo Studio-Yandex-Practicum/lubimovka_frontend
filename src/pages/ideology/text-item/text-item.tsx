@@ -13,11 +13,11 @@ const TextItem: FC<TextItemProps> = (props) => {
   const { number, title, children } = props;
 
   return (
-    <>
-      <p className={style.paragraph}>{number}</p>
+    <article className={style.article}>
+      <p className={cn(style.paragraph, style.numberBox)}>{number}</p>
       <h4 className={style.title}>{title}</h4>
-      <p className={style.paragraph}>{children}</p>
-    </>
+      <p className={cn(style.paragraph, style.textBox)}>{children}</p>
+    </article>
   );
 };
 

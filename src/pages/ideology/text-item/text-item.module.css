@@ -1,4 +1,14 @@
+.article {
+  display: flex;
+  width: 587px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 .title {
+  width: 100%;
+
   @mixin headline;
   @mixin headline4;
 }
@@ -6,4 +16,16 @@
 .paragraph {
   @mixin text;
   @mixin textLarge;
+}
+
+.textBox {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 17px 0 61px;
+}
+
+.numberBox {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 0 16px 61px;
 }

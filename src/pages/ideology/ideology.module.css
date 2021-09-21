@@ -1,4 +1,6 @@
 .title {
+  width: 448px;
+
   @mixin headline;
   @mixin headline2;
 }
