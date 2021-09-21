@@ -70,74 +70,74 @@
   background-color: var(--light-green);
 }
 
-.button.iconPlaceRight {
+.button.right {
   padding-right: 25px;
 }
 
-.button.iconPlaceRight.borderNone {
+.button.right.none {
   padding: 4px 31px 7px 0;
 }
 
-.button.iconPlaceLeft.borderNone {
+.button.left.none {
   padding: 4px 10px 7px 31px;
 }
 
-.button.iconPlaceLeft {
+.button.left {
   padding-left: 28px;
 }
 
-.borderTopLeft {
+.topLeft {
   padding: 10px 12px 8px 9px;
   border-top: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
 }
 
-.borderTopRight {
+.topRight {
   padding: 10px 9px 8px 12px;
   border-top: 1px solid var(--coal);
   border-right: 1px solid var(--coal);
 }
 
-.borderBottomLeft {
+.bottomLeft {
   padding: 8px 12px 10px 8px;
   border-bottom: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
 }
 
-.borderBottomRight {
+.bottomRight {
   padding: 9px 10px;
   border-right: 1px solid var(--coal);
   border-bottom: 1px solid var(--coal);
 }
 
-.borderTop {
+.top {
   border-top: 1px solid var(--coal);
 }
 
-.borderFull {
+.full {
   border: 1px solid var(--coal);
 }
 
-.iconPlaceLeft .icon {
+.none {
+  border: 0;
+}
+
+.left .icon {
   top: 3px;
   left: 0;
 }
 
-.iconPlaceLeft.sizeFixed.button.m,
-.iconPlaceLeft.sizeFixed.button.s {
+.left.sizeFixed.button.m,
+.left.sizeFixed.button.s {
   justify-content: flex-end;
 }
 
-.iconPlaceRight .icon {
+.right .icon {
   top: 3px;
   right: 0;
 }
 
-.borderNone .icon,
-.iconPlaceRight.borderTopLeft .icon {
+.none .icon,
+.right.topLeft .icon {
   top: 0;
-}
-
-.borderNone {
-  border: 0;
 }
