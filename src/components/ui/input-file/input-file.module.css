@@ -1,0 +1,72 @@
+.addFile {
+  display: flex;
+  width: 100%;
+  max-width: 222px;
+  flex-direction: column;
+}
+
+.conteiner {
+  display: flex;
+  min-height: 32px;
+  margin-bottom: 6px;
+  background-color: #242424;
+}
+
+.delete {
+  border: none;
+  margin-left: 9px;
+  background-color: transparent;
+  background-image: url(/deleteFile.svg);
+  background-position: 0;
+  background-repeat: no-repeat;
+  background-size: 9px;
+  cursor: pointer;
+}
+
+.name {
+  margin: 0;
+  margin-right: 9px;
+  margin-left: 12px;
+  color: #ecebe8;
+  font-family: 'Formular', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: -.01em;
+  line-height: 28px;
+}
+
+.message {
+  margin: 0;
+  margin-bottom: 14px;
+  color: #eb5757;
+  font-family: 'Formular', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 17px;
+}
+
+.input {
+  display: none;
+}
+
+.add {
+  width: 100%;
+  max-width: 182px;
+  max-height: 31px;
+  padding: 7px 12px 7px 28px;
+  border: none;
+  border-bottom: 1px solid #242424;
+  border-left: 1px solid #242424;
+  background-color: transparent;
+  background-image: url(/addFile.svg);
+  background-position: 0;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  color: #242424;
+  cursor: pointer;
+  font-family: 'Formular', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 14px;
+  text-transform: uppercase;
+}
