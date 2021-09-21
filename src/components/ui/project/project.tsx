@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import cn from 'classnames';
-import { Icon } from '../../icon/icon';
+import { Icon } from '../icon/icon';
 
-import styles from './Project.module.css';
+import styles from './project.module.css';
 
 interface IProjectProps {
   data: {
