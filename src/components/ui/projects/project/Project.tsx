@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import cn from 'classnames';
+import { Icon } from '../../icon/icon';
 
 import styles from './Project.module.css';
 
-interface ProjectProps {
+interface IProjectProps {
   data: {
     imgUrl: string;
     imgAlt: string;
@@ -12,7 +13,7 @@ interface ProjectProps {
   }
 }
 
-const Project: FC<ProjectProps> = (props) => {
+const Project: FC<IProjectProps> = (props) => {
   const {
     imgUrl,
     imgAlt,
@@ -28,9 +29,14 @@ const Project: FC<ProjectProps> = (props) => {
         <img className={cn(styles.image)} src={imgUrl} alt={imgAlt} />
       </div>
       <div className={cn(styles.textContainer)}>
-        <h2 lang="ru" className={cn(styles.title)}>
-          {title}
-        </h2>
+        <div className={cn(styles.title)}>
+          <span className={cn(styles.titleText)}>
+            {title}
+          </span>
+          <span className={cn(styles.titleArrow)}>
+            <Icon glyph="arrow-right" fill='#000' focusable="false" />
+          </span>
+        </div>
         <article
           className={cn(styles.text)}
         >
