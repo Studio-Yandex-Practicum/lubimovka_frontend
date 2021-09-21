@@ -85,7 +85,7 @@
   -webkit-line-clamp: 2;
   line-height: 24px;
   overflow-wrap: break-word;
-  word-wrap: break-word;
+  word-break: break-word;
 
   @media (max-width: $mobile-landscape) {
     font-size: 28px;
@@ -106,5 +106,5 @@
   -webkit-line-clamp: 4;
   line-height: 22px;
   overflow-wrap: break-word;
-  word-wrap: break-word;
+  word-break: break-word;
 }
