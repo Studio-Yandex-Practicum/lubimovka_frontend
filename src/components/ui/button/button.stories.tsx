@@ -73,7 +73,7 @@ Download.args = {
 export const DownloadPlay = Template.bind({});
 DownloadPlay.args = {
   size: 'l',
-  view: 'secondary',
+  view: 'transparent',
   icon: 'arrow-down',
   label: 'Скачать пьесу',
   border: 'top',
@@ -93,7 +93,7 @@ LookReading.args = {
 export const Send = Template.bind({});
 Send.args = {
   size: 'l',
-  view: 'primary',
+  view: 'transparent',
   icon: 'arrow-right',
   label: 'Отправить',
   border: 'full',

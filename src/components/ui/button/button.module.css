@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   border: 0;
-  background: transparent;
+  background-color: var(--beige);
   color: var(--coal);
   cursor: pointer;
   font-family: Formular, Arial, sans-serif;
@@ -60,6 +60,10 @@
 
 .secondary {
   background-color: var(--light-green);
+}
+
+.transparent {
+  background-color: transparent;
 }
 
 .left.button {

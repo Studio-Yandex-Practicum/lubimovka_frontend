@@ -4,7 +4,7 @@ import cn from 'classnames';
 import styles from './button.module.css';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  view?: 'primary' | 'secondary',
+  view?: 'primary' | 'secondary' | 'transparent',
   icon?: IIconProps['glyph'];
   size?: 's' | 'm' | 'l';
   iconPlace?: 'left' | 'right';
