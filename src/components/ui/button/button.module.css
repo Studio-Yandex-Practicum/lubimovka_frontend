@@ -66,8 +66,8 @@
   padding-left: 0;
 }
 
-.button.left.none {
-  padding: 4px 10px 7px 31px;
+.left.button.l {
+  padding-left: 16px;
 }
 
 .topLeft {
@@ -113,5 +113,4 @@
 .none {
   padding: 0;
   border: 0;
-  background-color: transparent;
 }
