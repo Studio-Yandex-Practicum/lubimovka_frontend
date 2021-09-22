@@ -1,13 +1,14 @@
 .content {
   display: flex;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1200px;
   box-sizing: border-box;
   justify-content: space-between;
   border-top: 1px solid var(--coal);
 
   @media (max-width: 1072px) {
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 
   @media (max-width: $mobile-landscape) {
@@ -16,19 +17,21 @@
   }
 }
 
-.contentNoImage {
-  width: 80%;
-  max-width: 1400px;
-  margin: 0 auto;
-  margin-top: -1px;
+.content:first-of-type {
+  border: none;
+}
 
-  @media (max-width: $mobile-landscape) {
-    width: 100%;
-  }
+.imgContainer {
+  width: 100%;
+  max-width: 151px;
+}
+
+.contentNoImage {
+  margin-top: -3px;
 }
 
 .image {
-  max-width: 151px;
+  max-width: 100%;
   object-fit: contain;
 }
 
@@ -52,7 +55,7 @@
   }
 }
 
-.data:first-of-type {
+.data:nth-of-type(2) {
   @media (max-width: $mobile-landscape) {
     order: -1;
     margin-bottom: 0;
@@ -70,9 +73,7 @@
   font-size: 28px;
   line-height: 32px;
 
-  @mixin headline
-
-    @media (max-width: $mobile-landscape) {
+  @mixin headline @media (max-width: $mobile-landscape) {
     font-size: 20px;
     line-height: 24px;
   }
@@ -129,7 +130,8 @@
 }
 
 .button {
-  width: 154px;
+  width: 100%;
+  max-width: 154px;
   height: 31px;
   align-self: center;
   margin: 0;

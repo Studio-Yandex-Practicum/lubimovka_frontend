@@ -16,9 +16,11 @@ export const EventСard: FC<ICardProps> = (props) => {
       <div
         className={`${styles.content} ${!props.img ? styles.contentNoImage : ''}`}
       >
-        {props.img && (
-          <img src={props.img} alt={title} className={styles.image} />
-        )}
+        <div className={styles.imgContainer}>
+          {props.img && (
+            <img src={props.img} alt={title} className={styles.image} />
+          )}
+        </div>
         <div className={styles.data}>
           <p className={styles.time}>{time}</p>
           <p className={styles.location}>{location}</p>

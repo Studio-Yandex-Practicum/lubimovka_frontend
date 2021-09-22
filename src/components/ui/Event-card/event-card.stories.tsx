@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { EventСard } from './event-card';
 
 export default {
-  title: 'Example/EventСard',
+  title: 'UI/EventСard',
   component: EventСard,
 } as ComponentMeta<typeof EventСard>;
 
