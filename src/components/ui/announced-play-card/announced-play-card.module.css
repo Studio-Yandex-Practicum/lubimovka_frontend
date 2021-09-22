@@ -1,0 +1,255 @@
+.cardEvents {
+  display: flex;
+  width: 419px;
+  flex-direction: row;
+  font-family: 'Formular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  list-style-type: none;
+
+  @media (max-width: $mobile-landscape) {
+    padding: 32px 0;
+    border-top: var(--coal) solid 1px;
+    border-bottom: var(--coal) solid 1px;
+  }
+}
+
+.coverEvents {
+  width: 120px;
+  padding-right: 31px;
+  object-fit: cover;
+}
+
+/* .coverEvents:nth-child(odd) {
+  display: none;
+} */
+
+.infoEvents {
+  display: flex;
+  width: 269px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.dateInfo {
+  display: flex;
+  flex-direction: row;
+}
+
+.bodyText {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 28px;
+}
+
+.date {
+  padding: 0;
+  margin: 0;
+  margin-right: 44px;
+
+  @media (max-width: $mobile-landscape) {
+    margin-right: 46px;
+  }
+}
+
+.timeEvents {
+  padding: 0;
+  margin: 0;
+}
+
+.title {
+  padding-top: 16px;
+}
+
+.h5 {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 38px;
+}
+
+.h6 {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.credits {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0 0 30px;
+
+  @media (max-width: $mobile-landscape) {
+    margin-left: 0;
+  }
+}
+
+.creditsEntry {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+.description {
+  width: 150px;
+  padding-top: 20px;
+}
+
+.caption {
+  font-size: 14px;
+  font-weight: 300px;
+  line-height: 17px;
+}
+
+.button {
+  display: flex;
+  width: 154px;
+  height: 31px;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  border: none;
+  border-bottom: var(--coal) solid 1px;
+  border-left: var(--coal) solid 1px;
+  background-color: var(--white);
+  outline: none;
+
+  @media (max-width: $mobile-landscape) {
+    margin-left: -151px;
+  }
+}
+
+.button:hover {
+  background-color: var(--coal);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.buttonName {
+  padding: 0;
+  margin: 0;
+  line-height: 14px;
+}
+
+.buttonEvents {
+  margin-bottom: 16px;
+}
+
+.buttonEvents:last-child {
+  margin-bottom: 0;
+}
+
+.buttonIcon {
+  width: 20px;
+  margin-right: 9px;
+}
+
+.button:hover .buttonIcon > path {
+  fill: var(--white);
+}
+
+.smalltext {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 22px;
+}
+
+.cardFestival {
+  display: flex;
+  max-width: 1200px;
+  flex-direction: row;
+  border-top: var(--coal) solid 1px;
+  font-family: 'Formular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  list-style-type: none;
+
+  @media (max-width: $tablet-landscape) {
+    position: relative;
+    max-width: 414px;
+    flex-direction: column;
+    padding-right: 26px;
+    padding-left: 26px;
+  }
+}
+
+.coverFestival {
+  width: 151px;
+  padding-right: 28px;
+  object-fit: cover;
+
+  @media (max-width: $tablet-landscape) {
+    position: absolute;
+    top: 0;
+    right: 13.5px;
+    width: 127px;
+    padding: 0;
+  }
+}
+
+.timeFestival {
+  padding-top: 16px;
+  margin: 0;
+
+  @media (max-width: $tablet-landscape) {
+    padding-top: 20px;
+  }
+}
+
+.location {
+  padding-top: 16px;
+  margin: 0;
+
+  @media (max-width: $tablet-landscape) {
+    padding-top: 0;
+  }
+}
+
+.infoFestival {
+  display: flex;
+  max-width: 150px;
+  flex-direction: column;
+  padding-right: 30px;
+}
+
+.infoPlay {
+  max-width: 329px;
+  padding-right: 32px;
+
+  @media (max-width: $tablet-landscape) {
+    max-width: 381px;
+  }
+}
+
+.titleFestival {
+  padding-top: 16px;
+
+  @media (max-width: $tablet-landscape) {
+    padding-top: 111px;
+  }
+}
+
+.synopsis {
+  padding-top: 16px;
+  margin: 0;
+
+  @media (max-width: $tablet-landscape) {
+    margin-left: 64px;
+  }
+}
+
+.creditsFestival {
+  display: flex;
+  max-width: 229px;
+  flex-direction: column;
+  padding-top: 67px;
+  padding-right: 26px;
+
+  @media (max-width: $tablet-landscape) {
+    padding-top: 24px;
+  }
+}
+
+.buttonFestival {
+  margin-top: 67px;
+
+  @media (max-width: $tablet-landscape) {
+    margin-top: 16px;
+    margin-left: 216px;
+  }
+}

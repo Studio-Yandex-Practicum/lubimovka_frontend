@@ -1,0 +1,127 @@
+.card {
+  display: flex;
+  max-width: 240px;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  font-family: 'Formular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  list-style-type: none;
+
+  @media (max-width: $mobile-landscape) {
+    max-width: 244px;
+  }
+}
+
+.container {
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--light-green);
+}
+
+.button {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 55px;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+  padding-left: 16px;
+  border: none;
+  border-top: var(--coal) solid 1px;
+  background-color: var(--light-green);
+  cursor: pointer;
+  outline: none;
+  visibility: hidden;
+
+  @media (max-width: $mobile-landscape) {
+    visibility: visible;
+  }
+}
+
+.button::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--coal);
+  content: '';
+  transition: width .2s ease-in, transform .1s linear;
+}
+
+.button:hover {
+  background-color: var(--coal);
+  color: var(--white);
+}
+
+.button:hover::before {
+  right: auto;
+  left: 0%;
+  width: 100%;
+}
+
+.button:active::before {
+  transform: scale(1.075);
+}
+
+.container:hover .button {
+  visibility: visible;
+}
+
+.buttonName {
+  padding: 0;
+  margin: 0;
+}
+
+.buttonIcon {
+  height: 21px;
+}
+
+.button:hover .buttonIcon > path {
+  fill: var(--white);
+}
+
+.h7 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.smalltext {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.title {
+  margin: 24px auto 67px 24px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 16px 0 auto;
+}
+
+.author:hover {
+  background-color: var(--coal);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.city {
+  margin-top: 4px;
+}
+
+.year {
+  margin: 0;
+}
