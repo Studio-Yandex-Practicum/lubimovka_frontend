@@ -39,6 +39,18 @@
   &:active::before {
     transform: scale(1.075);
   }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &:disabled:hover {
+    color: var(--coal);
+
+    &::before {
+      width: 0;
+    }
+  }
 }
 
 .addon {

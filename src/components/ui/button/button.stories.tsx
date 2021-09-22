@@ -101,3 +101,16 @@ Send.args = {
   label: 'Отправить',
   border: 'full',
 };
+
+export const FormButtonDisabled = Template.bind({});
+FormButtonDisabled.args = {
+  width: '360px',
+  size: 'l',
+  view: 'transparent',
+  rightAddon: <Icon glyph="ok"/>,
+  label: 'Отправлено',
+  border: 'full',
+  disabled: true,
+};
+
+
