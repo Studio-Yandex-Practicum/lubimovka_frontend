@@ -16,14 +16,12 @@ Projects.args = {
   rightAddon: <Icon glyph="arrow-left" />,
   label: 'Проекты',
   border: 'bottomRight',
-  iconPlace: 'right',
-
 };
 
 export const ShowMore = Template.bind({});
 ShowMore.args = {
   size: 'm',
-  rightAddon:  <Icon glyph="arrow-down" />,
+  rightAddon: <Icon glyph="arrow-down" />,
   label: 'Показать ещё',
   border: 'topLeft',
 };
@@ -31,7 +29,7 @@ ShowMore.args = {
 export const Minimize = Template.bind({});
 Minimize.args = {
   size: 'm',
-  rightAddon:  <Icon glyph="arrow-up" />,
+  rightAddon: <Icon glyph="arrow-up" />,
   label: 'Свернуть',
   border: 'topLeft',
 };
@@ -61,7 +59,7 @@ AddFile.args = {
 
 export const Download = Template.bind({});
 Download.args = {
-  rightAddon:  <Icon glyph="arrow-down" />,
+  rightAddon: <Icon glyph="arrow-down" />,
   view: 'transparent',
   label: 'Скачать',
   border: 'none',

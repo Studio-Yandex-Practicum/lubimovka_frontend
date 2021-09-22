@@ -1,5 +1,4 @@
-import {FC, MouseEvent, ButtonHTMLAttributes, ReactNode} from 'react';
-import {Icon} from '../icon';
+import {FC, MouseEvent, ButtonHTMLAttributes} from 'react';
 import cn from 'classnames';
 import styles from './button.module.css';
 
@@ -8,18 +7,17 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   leftAddon?: React.ReactNode;
   rightAddon?: React.ReactNode;
   size?: 's' | 'm' | 'l';
-  iconPlace?: 'left' | 'right';
   border?: 'none' | 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' | 'top' | 'full';
   label: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const Button: FC<IButtonProps> = (props) => {
-  const {view = 'primary', size, leftAddon, rightAddon, iconPlace, label, border = 'none', ...restButtonProps} = props;
+  const {view = 'primary', size, leftAddon, rightAddon, label, border = 'none', ...restButtonProps} = props;
 
   return  (
     <button
-      className={cn(styles.button, styles[view], styles[border], leftAddon && styles.leftAddon, rightAddon && styles.rightAddon, size && styles['sizeFixed'], size && styles[size])}
+      className={cn(styles.button, styles[view], styles[border], (leftAddon || rightAddon) && styles.addon, leftAddon && styles.leftAddon, rightAddon && styles.rightAddon,  size && (leftAddon || rightAddon) && styles['sizeFixed'], size && styles[size])}
       type='button'
       {...restButtonProps}
     >

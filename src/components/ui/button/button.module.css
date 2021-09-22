@@ -41,8 +41,7 @@
   }
 }
 
-.leftAddon,
-.rightAddon {
+.addon {
   justify-content: space-between;
 }
 
@@ -56,6 +55,9 @@
 
 .sizeFixed.l {
   width: 240px;
+}
+
+.l {
   align-items: center;
   justify-content: space-between;
   padding: 16px 16px 18px 16px;
@@ -79,35 +81,53 @@
 }
 
 .topLeft {
-  padding: 0 0 6px 9px;
+  padding: 8px 9px 8px 12px;
   border-top: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
 }
 
-.topLeft .label {
+.topLeft.addon {
+  padding: 0 0 6px 9px;
+}
+
+.topLeft.addon .label,
+.topRight.addon .label {
   padding-top: 5px;
 }
 
 .topRight {
-  padding: 10px 9px 8px 12px;
+  padding: 8px 9px 8px 12px;
   border-top: 1px solid var(--coal);
   border-right: 1px solid var(--coal);
 }
 
+.topRight.addon {
+  padding: 0 0 6px 9px;
+}
+
 .bottomLeft {
-  padding: 3px 4px 2px 8px;
+  padding: 7px 12px 9px 9px;
   border-bottom: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
 }
 
-.bottomLeft.leftAddon {
+.bottomLeft.addon {
+  padding: 3px 4px 2px 8px;
+}
+
+.bottomLeft.addon.leftAddon {
   padding-right: 12px;
+  padding-left: 0;
 }
 
 .bottomRight {
-  padding: 2px 0 4px 10px;
+  padding: 7px 10px 9px 10px;
   border-right: 1px solid var(--coal);
   border-bottom: 1px solid var(--coal);
+}
+
+.bottomRight.addon {
+  padding: 2px 0 4px 10px;
 }
 
 .top {
@@ -119,6 +139,10 @@
 }
 
 .none {
-  padding: 0;
+  padding: 4px 4px 7px 4px;
   border: 0;
+}
+
+.none.addon {
+  padding: 0;
 }
