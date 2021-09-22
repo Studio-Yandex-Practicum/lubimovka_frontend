@@ -4,8 +4,9 @@
   display: flex;
   box-sizing: border-box;
   align-items: center;
+  justify-content: space-between;
   border: 0;
-  background: var(--beige);
+  background: transparent;
   color: var(--coal);
   cursor: pointer;
   font-family: Formular, Arial, sans-serif;
@@ -41,11 +42,6 @@
   }
 }
 
-.icon {
-  position: absolute;
-  box-sizing: border-box;
-}
-
 .sizeFixed.m {
   width: 210px;
 }
@@ -62,34 +58,26 @@
   line-height: 22px;
 }
 
-.l .icon {
-  position: initial;
-}
-
 .accent {
   background-color: var(--light-green);
 }
 
-.button.right {
-  padding-right: 25px;
-}
-
-.button.right.none {
-  padding: 4px 31px 7px 0;
+.left.button {
+  padding-left: 0;
 }
 
 .button.left.none {
   padding: 4px 10px 7px 31px;
 }
 
-.button.left {
-  padding-left: 28px;
-}
-
 .topLeft {
-  padding: 10px 12px 8px 9px;
+  padding: 0 0 6px 9px;
   border-top: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
+}
+
+.topLeft .label {
+  padding-top: 5px;
 }
 
 .topRight {
@@ -99,13 +87,17 @@
 }
 
 .bottomLeft {
-  padding: 8px 12px 10px 8px;
+  padding: 3px 4px 2px 8px;
   border-bottom: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
 }
 
+.bottomLeft.left {
+  padding-right: 12px;
+}
+
 .bottomRight {
-  padding: 9px 10px;
+  padding: 2px 0 4px 10px;
   border-right: 1px solid var(--coal);
   border-bottom: 1px solid var(--coal);
 }
@@ -119,25 +111,7 @@
 }
 
 .none {
+  padding: 0;
   border: 0;
-}
-
-.left .icon {
-  top: 3px;
-  left: 0;
-}
-
-.left.sizeFixed.button.m,
-.left.sizeFixed.button.s {
-  justify-content: flex-end;
-}
-
-.right .icon {
-  top: 3px;
-  right: 0;
-}
-
-.none .icon,
-.right.topLeft .icon {
-  top: 0;
+  background-color: transparent;
 }

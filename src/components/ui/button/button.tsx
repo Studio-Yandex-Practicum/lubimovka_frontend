@@ -1,7 +1,7 @@
-import styles from './button.module.css';
 import {FC, MouseEvent, ButtonHTMLAttributes} from 'react';
 import {Icon, IIconProps} from '../icon';
 import cn from 'classnames';
+import styles from './button.module.css';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   accent?: boolean,
@@ -22,7 +22,7 @@ export const Button: FC<IButtonProps> = (props) => {
       {...restButtonProps}
     >
       {icon && iconPlace == 'left' && <Icon className={styles.icon} glyph={icon}/>}
-      {label}
+      <span className={styles.label}>{label}</span>
       {icon && iconPlace === 'right' && <Icon className={styles.icon} glyph={icon}/>}
     </button>
   );

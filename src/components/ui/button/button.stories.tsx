@@ -38,7 +38,7 @@ Minimize.args = {
 
 export const AboutShowArrowDown = Template.bind({});
 AboutShowArrowDown.args = {
-  size: 'm',
+  size: 's',
   icon: 'arrow-down',
   label: 'О спектакле',
   border: 'bottomLeft',
@@ -47,7 +47,7 @@ AboutShowArrowDown.args = {
 
 export const AboutShowArrowRight = Template.bind({});
 AboutShowArrowRight.args = {
-  size: 'm',
+  size: 's',
   icon: 'arrow-right',
   label: 'О спектакле',
   border: 'bottomLeft',
