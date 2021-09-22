@@ -1,0 +1,22 @@
+.menuItem {
+  color: inherit;
+}
+
+.active {
+  &::before {
+    content: '(';
+  }
+
+  &::after {
+    content: ')';
+  }
+}
+
+.l {
+  font-size: 48px;
+}
+
+.disabled {
+  color: gray;
+  pointer-events: none;
+}
