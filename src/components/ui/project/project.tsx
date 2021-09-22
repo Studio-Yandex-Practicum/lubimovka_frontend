@@ -1,8 +1,11 @@
 import { FC } from 'react';
-import cn from 'classnames';
+import classname from 'classnames/bind';
+
 import { Icon } from '../icon/icon';
 
 import styles from './project.module.css';
+
+const cn = classname.bind(styles);
 
 interface IProjectProps {
   data: {
@@ -23,22 +26,22 @@ const Project: FC<IProjectProps> = (props) => {
 
   return (
     <li
-      className={cn(styles.card)}
+      className={cn('card')}
     >
-      <div className={cn(styles.imgContainer)}>
-        <img className={cn(styles.image)} src={imgUrl} alt={imgAlt} />
+      <div className={cn('imgContainer')}>
+        <img className={cn('image')} src={imgUrl} alt={imgAlt} />
       </div>
-      <div className={cn(styles.textContainer)}>
-        <div className={cn(styles.title)}>
-          <span className={cn(styles.titleText)}>
+      <div>
+        <div className={cn('title')}>
+          <span className={cn('titleText')}>
             {title}
           </span>
-          <span className={cn(styles.titleArrow)}>
+          <span className={cn('titleArrow')}>
             <Icon glyph="arrow-right" fill='#000' focusable="false" />
           </span>
         </div>
         <article
-          className={cn(styles.text)}
+          className={cn('text')}
         >
           {text}
         </article>
