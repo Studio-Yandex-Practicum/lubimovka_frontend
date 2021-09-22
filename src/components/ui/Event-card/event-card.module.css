@@ -34,6 +34,7 @@
 
 .data {
   display: grid;
+  max-width: 329px;
   padding-top: 16px;
   padding-left: 10px;
   margin-bottom: 44px;
@@ -66,7 +67,6 @@
 }
 
 .time {
-  max-width: 150px;
   font-size: 28px;
   line-height: 32px;
 
@@ -79,7 +79,6 @@
 }
 
 .location {
-  max-width: 127px;
   font-size: 16px;
   line-height: 22px;
 
@@ -87,14 +86,13 @@
 }
 
 .title {
-  max-width: 286px;
   font-size: 28px;
   line-height: 32px;
 
-  @mixin headline; }
+  @mixin headline;
+}
 
 .description {
-  max-width: 329px;
   font-size: 16px;
   line-height: 22px;
 
@@ -102,6 +100,12 @@
 
   @media (max-width: $tablet-portrait) {
     margin: 0 auto;
+  }
+
+  @media (max-width: $mobile-landscape) {
+    max-width: 302px;
+    margin: 0;
+    margin-left: auto;
   }
 }
 
