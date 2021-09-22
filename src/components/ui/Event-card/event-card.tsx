@@ -14,7 +14,7 @@ export const EventСard: FC<ICardProps> = (props) => {
   return (
     <>
       <div
-        className={`${styles.content} ${!props.img ? styles.contentNoImage : ''}`}
+        className={styles.content}
       >
         <div className={styles.imgContainer}>
           {props.img && (
