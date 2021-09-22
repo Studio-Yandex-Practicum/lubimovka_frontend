@@ -1,0 +1,80 @@
+.addFile {
+  display: flex;
+  width: 100%;
+  max-width: 222px;
+  flex-direction: column;
+}
+
+.conteiner {
+  display: flex;
+  min-height: 32px;
+  margin-bottom: 6px;
+  background-color: var(--coal);
+}
+
+.delete {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.iconDelete {
+  margin-right: 3px;
+}
+
+.name {
+  overflow: hidden;
+  margin: 0;
+  margin-right: 9px;
+  color: var(--beige);
+  font-family: 'Formular', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: -.01em;
+  line-height: 28px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.message {
+  margin: 0;
+  margin-bottom: 14px;
+  color: #eb5757;
+  font-family: 'Formular', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 17px;
+}
+
+.input {
+  display: none;
+}
+
+.add {
+  display: flex;
+  width: 100%;
+  max-width: 182px;
+  max-height: 31px;
+  align-items: center;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid var(--coal);
+  border-left: 1px solid var(--coal);
+  background-color: transparent;
+  color: var(--coal);
+  cursor: pointer;
+  font-family: 'Formular', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.iconPlus {
+  width: 25px;
+  height: 25px;
+  margin-right: 3px;
+}
