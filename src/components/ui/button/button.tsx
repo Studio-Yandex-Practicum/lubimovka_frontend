@@ -1,11 +1,12 @@
-import {FC, MouseEvent, ButtonHTMLAttributes} from 'react';
-import {Icon, IIconProps} from '../icon';
+import {FC, MouseEvent, ButtonHTMLAttributes, ReactNode} from 'react';
+import {Icon} from '../icon';
 import cn from 'classnames';
 import styles from './button.module.css';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   view?: 'primary' | 'secondary' | 'transparent',
-  icon?: IIconProps['glyph'];
+  leftAddon?: React.ReactNode;
+  rightAddon?: React.ReactNode;
   size?: 's' | 'm' | 'l';
   iconPlace?: 'left' | 'right';
   border?: 'none' | 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' | 'top' | 'full';
@@ -14,16 +15,17 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: FC<IButtonProps> = (props) => {
-  const {view = 'primary', size, icon, iconPlace, label, border = 'none', ...restButtonProps} = props;
+  const {view = 'primary', size, leftAddon, rightAddon, iconPlace, label, border = 'none', ...restButtonProps} = props;
+
   return  (
     <button
-      className={cn(styles.button, styles[view], styles[border], iconPlace && styles[iconPlace], size && styles['sizeFixed'], size && styles[size])}
+      className={cn(styles.button, styles[view], styles[border], leftAddon && styles.leftAddon, rightAddon && styles.rightAddon, size && styles['sizeFixed'], size && styles[size])}
       type='button'
       {...restButtonProps}
     >
-      {icon && iconPlace == 'left' && <Icon className={styles.icon} glyph={icon}/>}
+      {leftAddon && leftAddon}
       <span className={styles.label}>{label}</span>
-      {icon && iconPlace === 'right' && <Icon className={styles.icon} glyph={icon}/>}
+      {rightAddon && rightAddon}
     </button>
   );
 };

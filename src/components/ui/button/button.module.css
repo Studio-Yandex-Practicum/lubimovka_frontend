@@ -4,7 +4,6 @@
   display: flex;
   box-sizing: border-box;
   align-items: center;
-  justify-content: space-between;
   border: 0;
   background-color: var(--beige);
   color: var(--coal);
@@ -42,6 +41,11 @@
   }
 }
 
+.leftAddon,
+.rightAddon {
+  justify-content: space-between;
+}
+
 .sizeFixed.m {
   width: 210px;
 }
@@ -66,11 +70,11 @@
   background-color: transparent;
 }
 
-.left.button {
+.leftAddon.button {
   padding-left: 0;
 }
 
-.left.button.l {
+.leftAddon.button.l {
   padding-left: 16px;
 }
 
@@ -96,7 +100,7 @@
   border-left: 1px solid var(--coal);
 }
 
-.bottomLeft.left {
+.bottomLeft.leftAddon {
   padding-right: 12px;
 }
 
