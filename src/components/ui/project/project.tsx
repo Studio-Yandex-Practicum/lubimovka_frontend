@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import classname from 'classnames/bind';
+import classNames from 'classnames/bind';
 
 import { Icon } from '../icon/icon';
 
 import styles from './project.module.css';
 
-const cn = classname.bind(styles);
+const cn = classNames.bind(styles);
 
 interface IProjectProps {
   data: {
@@ -16,7 +16,7 @@ interface IProjectProps {
   }
 }
 
-const Project: FC<IProjectProps> = (props) => {
+export const Project: FC<IProjectProps> = (props) => {
   const {
     imgUrl,
     imgAlt,
@@ -49,5 +49,3 @@ const Project: FC<IProjectProps> = (props) => {
     </li>
   );
 };
-
-export default Project;
