@@ -18,7 +18,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
 
   return (
     <li className={styles.card} onClick={handleCardClick}>
-      <div className={styles.img_container}>
+      <div className={styles.imgContainer}>
         <img className={styles.img} src={image} alt="изображение пьесы" />
       </div>
       <div className={styles.content}>
