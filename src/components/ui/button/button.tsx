@@ -4,7 +4,7 @@ import cn from 'classnames';
 import styles from './button.module.css';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  accent?: boolean,
+  view?: 'primary' | 'secondary',
   icon?: IIconProps['glyph'];
   size?: 's' | 'm' | 'l';
   iconPlace?: 'left' | 'right';
@@ -14,10 +14,10 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: FC<IButtonProps> = (props) => {
-  const {accent = false, size, icon, iconPlace, label, border = 'none', ...restButtonProps} = props;
+  const {view = 'primary', size, icon, iconPlace, label, border = 'none', ...restButtonProps} = props;
   return  (
     <button
-      className={cn(styles.button, accent && styles.accent, styles[border], iconPlace && styles[iconPlace], size && styles['sizeFixed'], size && styles[size])}
+      className={cn(styles.button, styles[view], styles[border], iconPlace && styles[iconPlace], size && styles['sizeFixed'], size && styles[size])}
       type='button'
       {...restButtonProps}
     >
