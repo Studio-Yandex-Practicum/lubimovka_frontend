@@ -45,18 +45,6 @@
   justify-content: space-between;
 }
 
-.sizeFixed.m {
-  width: 210px;
-}
-
-.sizeFixed.s {
-  width: 155px;
-}
-
-.sizeFixed.l {
-  width: 240px;
-}
-
 .l {
   align-items: center;
   justify-content: space-between;

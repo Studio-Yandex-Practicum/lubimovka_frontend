@@ -13,6 +13,7 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Projects = Template.bind({});
 Projects.args = {
+  size: 's',
   rightAddon: <Icon glyph="arrow-left" />,
   label: 'Проекты',
   border: 'bottomRight',
@@ -20,7 +21,8 @@ Projects.args = {
 
 export const ShowMore = Template.bind({});
 ShowMore.args = {
-  size: 'm',
+  width: '210px',
+  size: 's',
   rightAddon: <Icon glyph="arrow-down" />,
   label: 'Показать ещё',
   border: 'topLeft',
@@ -28,7 +30,8 @@ ShowMore.args = {
 
 export const Minimize = Template.bind({});
 Minimize.args = {
-  size: 'm',
+  width: '210px',
+  size: 's',
   rightAddon: <Icon glyph="arrow-up" />,
   label: 'Свернуть',
   border: 'topLeft',
@@ -36,6 +39,7 @@ Minimize.args = {
 
 export const AboutShowArrowDown = Template.bind({});
 AboutShowArrowDown.args = {
+  width: '155px',
   size: 's',
   rightAddon: <Icon glyph="arrow-down" />,
   label: 'О спектакле',
@@ -44,6 +48,7 @@ AboutShowArrowDown.args = {
 
 export const AboutShowArrowRight = Template.bind({});
 AboutShowArrowRight.args = {
+  width: '154px',
   size: 's',
   leftAddon: <Icon glyph="arrow-right"  />,
   label: 'О спектакле',
@@ -52,6 +57,7 @@ AboutShowArrowRight.args = {
 
 export const AddFile = Template.bind({});
 AddFile.args = {
+  size: 's',
   leftAddon:  <Icon glyph="plus" />,
   label: 'Добавить файл',
   border: 'bottomLeft',
@@ -59,6 +65,7 @@ AddFile.args = {
 
 export const Download = Template.bind({});
 Download.args = {
+  size: 's',
   rightAddon: <Icon glyph="arrow-down" />,
   view: 'transparent',
   label: 'Скачать',
@@ -67,8 +74,9 @@ Download.args = {
 
 export const DownloadPlay = Template.bind({});
 DownloadPlay.args = {
+  width: '210px',
   size: 'l',
-  view: 'primary',
+  view: 'secondary',
   rightAddon: <Icon glyph="arrow-down" />,
   label: 'Скачать пьесу',
   border: 'top',
@@ -76,6 +84,7 @@ DownloadPlay.args = {
 
 export const LookReading = Template.bind({});
 LookReading.args = {
+  width: '210px',
   size: 'l',
   view: 'secondary',
   rightAddon: <Icon glyph="arrow-45" />,
@@ -85,6 +94,7 @@ LookReading.args = {
 
 export const Send = Template.bind({});
 Send.args = {
+  width: '210px',
   size: 'l',
   view: 'transparent',
   rightAddon: <Icon glyph="arrow-right" />,
