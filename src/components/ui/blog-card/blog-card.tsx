@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import styles from './blog-card.module.css';
 
 interface BlogCardProps {
@@ -6,18 +6,18 @@ interface BlogCardProps {
   author: string;
   heading: string;
   description: string;
-  onClick?: (evt) => void;
+  onClick?: (evt: React.MouseEvent) => React.MouseEvent;
 }
 
 export const BlogCard: FC<BlogCardProps> = (props) => {
   const { image, author, heading, description, onClick } = props;
 
-  function handleCardClick(evt) {
-    onClick(evt);
+  function handleCardClick(evt: React.MouseEvent) {
+    onClick ? onClick(evt) : null;
   }
 
   return (
-    <li className={styles.card} onClick={handleCardClick}>
+    <li className={styles.card} onClick={onClick && handleCardClick}>
       <div className={styles.imgContainer}>
         <img className={styles.img} src={image} alt="изображение пьесы" />
       </div>
