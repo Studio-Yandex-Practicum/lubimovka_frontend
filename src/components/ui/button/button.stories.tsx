@@ -74,7 +74,7 @@ Download.args = {
 
 export const DownloadPlay = Template.bind({});
 DownloadPlay.args = {
-  width: '210px',
+  width: '240px',
   size: 'l',
   view: 'secondary',
   rightAddon: <Icon glyph="arrow-down" />,
@@ -84,7 +84,7 @@ DownloadPlay.args = {
 
 export const LookReading = Template.bind({});
 LookReading.args = {
-  width: '210px',
+  width: '240px',
   size: 'l',
   view: 'secondary',
   rightAddon: <Icon glyph="arrow-45" />,
@@ -94,7 +94,7 @@ LookReading.args = {
 
 export const Send = Template.bind({});
 Send.args = {
-  width: '210px',
+  width: '240px',
   size: 'l',
   view: 'transparent',
   rightAddon: <Icon glyph="arrow-right" />,
@@ -113,4 +113,13 @@ FormButtonDisabled.args = {
   disabled: true,
 };
 
-
+export const BackButton = Template.bind({});
+BackButton.args = {
+  size: 's',
+  view: 'transparent',
+  rightAddon: <Icon glyph="arrow-left"/>,
+  label: 'Бибилиотека',
+  border: 'bottomRight',
+  disabled: true,
+  isLink: true,
+};
