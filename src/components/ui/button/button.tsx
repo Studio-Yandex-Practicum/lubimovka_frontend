@@ -11,14 +11,15 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   width?: string
+  className?: string,
 }
 
 export const Button: FC<IButtonProps> = (props) => {
-  const {view = 'primary', size, leftAddon, rightAddon, label, width, border = 'none', ...restButtonProps} = props;
+  const {view = 'primary', size, leftAddon, rightAddon, label, width, border = 'none', className, ...restButtonProps} = props;
 
   return  (
     <button
-      className={cn(styles.button, styles[view], styles[border], (leftAddon || rightAddon) && styles.addon, leftAddon && styles.leftAddon, rightAddon && styles.rightAddon, size === 'l' && styles.l)}
+      className={cn(styles.button, styles[view], styles[border], (leftAddon || rightAddon) && styles.addon, leftAddon && styles.leftAddon, rightAddon && styles.rightAddon, size === 'l' && styles.l, className)}
       type='button'
       style = {{width}}
       {...restButtonProps}
