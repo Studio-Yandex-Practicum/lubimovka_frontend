@@ -1,6 +1,6 @@
 import {FC, HTMLAttributes} from 'react';
 import cn from 'classnames';
-import styles from '../Button/Button.module.css';
+import styles from './slider-controls.module.css';
 
 interface ISliderControlsProps extends HTMLAttributes<HTMLButtonElement>{
   type: string;
@@ -11,7 +11,7 @@ interface ISliderControlsProps extends HTMLAttributes<HTMLButtonElement>{
 export const SliderControls: FC<ISliderControlsProps> = (props) => {
   const { className } = props;
   return (
-    <button className={cn(styles.sliderControl, className)}>
+    <button className={cn(styles.sliderControl, className)} type='button'>
       <div className={cn(styles.firstCircle)} />
       <div className={cn(styles.secondCircle)}/>
     </button>
