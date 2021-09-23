@@ -1,16 +1,24 @@
 .section {
-  box-sizing: border-box;
-  padding: 127px 109px 267px;
   background-color: var(--beige);
+}
+
+.section_second {
+  background-color: var(--white);
 }
 
 .container {
   display: flex;
-  max-width: 1200px;
+  max-width: 1440px;
+  box-sizing: border-box;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  padding: 127px 109px 165px;
   margin: 0 auto;
+}
+
+.container_second {
+  padding: 93px 109px 267px;
 }
 
 .list_shift_right {
