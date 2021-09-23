@@ -24,6 +24,3 @@ Participant.args = {
   about: 'Драматург, сценарист, преподаватель',
   participant: true,
 };
-
-
-
