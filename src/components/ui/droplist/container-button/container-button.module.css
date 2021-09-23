@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--coal);
+  border-top: none;
+  background-color: transparent;
+  color: var(--coal);
+  cursor: pointer;
+  transition: background-color .4s ease-out, color .2s ease;
+}
+
+.container:hover {
+  background-color: var(--coal);
+  color: var(--beige);
+}
+
+.iconArrowDown {
+  width: 25px;
+  height: 25px;
+  margin-right: 9px;
+}
+
+.container:hover .iconArrowDown {
+  fill: var(--white);
+}
+
+.text {
+  @mixin textLarge;
+
+  margin: 0;
+  margin-left: 15px;
+  color: inherit;
+  font-family: 'Formular', sans-serif;
+  font-weight: 300;
+}
