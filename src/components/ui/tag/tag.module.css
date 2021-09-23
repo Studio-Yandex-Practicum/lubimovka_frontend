@@ -1,6 +1,6 @@
 .tag {
   display: inline-block;
-  padding: 4px 7px 7px 7px;
+  padding: 4px 8px 8px 8px;
   border: 1px solid var(--coal);
   border-top: none;
   margin: 0;
@@ -17,15 +17,15 @@
 }
 
 .tag:hover {
-  padding: 4px 8px 8px 8px;
-  border: none;
+  border: 1px solid transparent;
+  border-top: none;
   background: var(--coal);
   color: var(--white);
 }
 
 .tag_active {
-  padding: 4px 8px 8px 8px;
-  border: none;
+  border: 1px solid transparent;
+  border-top: none;
   background: var(--coal);
   color: var(--white);
 }
