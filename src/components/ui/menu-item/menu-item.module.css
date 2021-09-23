@@ -1,22 +1,60 @@
 .menuItem {
-  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration-line: none;
+
+  --parenthesis-width: .7em;
+  --parenthesis-height: 1.6em;
+
+  &::before {
+    width: var(--parenthesis-width);
+    height: var(--parenthesis-height);
+    background: no-repeat center/contain url('../../../shared/images/left-parenthesis.svg');
+    content: '';
+    visibility: hidden;
+  }
+
+  &::after {
+    width: var(--parenthesis-width);
+    height: var(--parenthesis-height);
+    background: no-repeat center/contain url('../../../shared/images/left-parenthesis.svg');
+    content: '';
+    transform: scaleX(-1);
+    visibility: hidden;
+  }
+
+  &:hover {
+    &::before {
+      visibility: visible;
+    }
+
+    &::after {
+      visibility: visible;
+    }
+  }
 }
 
 .active {
   &::before {
-    content: '(';
+    visibility: visible;
   }
 
   &::after {
-    content: ')';
+    visibility: visible;
   }
 }
 
-.l {
-  font-size: 48px;
+.inactive {
+  opacity: .2;
 }
 
-.disabled {
-  color: gray;
-  pointer-events: none;
+.m {
+  @mixin text;
+  @mixin textSmall;
+}
+
+.l {
+  @mixin headline;
+  @mixin headline6;
 }

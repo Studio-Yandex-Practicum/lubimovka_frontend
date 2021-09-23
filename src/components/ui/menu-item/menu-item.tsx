@@ -1,31 +1,31 @@
 import { FC } from 'react';
 import NextLink from 'next/link';
-import classNames from 'classnames/bind';
+import cn from 'classnames/bind';
 
 import styles from './menu-item.module.css';
 
-interface IMenuItem {
+interface IMenuItemProps {
   href: string,
   title: string,
   active?: boolean,
-  disabled?: boolean,
+  inactive?: boolean,
   size: 'm' | 'l',
 }
 
-const cx = classNames.bind(styles);
+const cx = cn.bind(styles);
 
-export const MenuItem: FC<IMenuItem> = (props) => {
+export const MenuItem: FC<IMenuItemProps> = (props) => {
   const {
     href,
     title,
     active = false,
-    disabled = false,
+    inactive = false,
     size = 'm',
   } = props;
 
   return (
     <NextLink href={href}>
-      <a className={cx('menuItem', size, { active, disabled })}>
+      <a className={cx('menuItem', size, { active, inactive })}>
         {title}
       </a>
     </NextLink>
