@@ -1,13 +1,20 @@
-@keyframes Background {
+@keyframes BackgroundColor {
   from {
-    /* background-image: url("../src/images/arr2.svg"); */
     background-color: transparent;
   }
 
   to {
     background-color: #242424;
+  }
+}
 
-    /* background-image: url("../src/images/arr3.svg"); */
+@keyframes Fill {
+  from {
+    fill: #242424;
+  }
+
+  to {
+    fill: #fff;
   }
 }
 
@@ -20,44 +27,58 @@
   background-color: transparent;
   border-radius: 50%;
   cursor: pointer;
+  outline: none;
 }
 
 .sliderControl:hover {
-  animation: Background .1s .2s;
+  animation: BackgroundColor .05s .2s;
   animation-fill-mode: forwards;
-}
-
-.firstCircle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50px;
-  height: 50px;
-  box-sizing: border-box;
-  border: 1px solid #242424;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  background-color: transparent;
-  border-radius: 50%;
-  transform: rotate(135deg);
-}
-
-.secondCircle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50px;
-  height: 50px;
-  box-sizing: border-box;
-  border: 1px solid #242424;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  background-color: transparent;
-  border-radius: 50%;
-  transform: rotate(135deg);
 }
 
 .sliderControl:hover .secondCircle {
   transform: rotate(315deg);
   transition: transform .3s;
+}
+
+.sliderControl:hover .secondCircleLeft {
+  transform: rotate(-225deg);
+  transition: transform .3s;
+}
+
+.sliderControl:active {
+  transform: scale(1.1);
+}
+
+.arrow {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+
+.sliderControl:hover .arrow {
+  animation: Fill .05s .2s;
+  animation-fill-mode: forwards;
+}
+
+.sliderControl:active .arrow {
+  transform: scale(.9);
+}
+
+.circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #242424;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  background-color: transparent;
+  border-radius: 50%;
+  transform: rotate(135deg);
+}
+
+.left {
+  transform: rotate(-45deg);
 }
