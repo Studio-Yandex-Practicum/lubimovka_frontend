@@ -1,18 +1,30 @@
-import {FC, HTMLAttributes} from 'react';
+import {FC} from 'react';
 import cn from 'classnames';
 import styles from './slider-controls.module.css';
 import {Icon} from '../icon';
 
-interface ISliderControlsProps extends HTMLAttributes<HTMLButtonElement>{
-  type: string;
+interface ISliderControlsProps {
+  type?: string;
   className?: string;
   onClick?: () => void;
 }
 
-export const LeftSlider: FC<ISliderControlsProps> = (props) => {
-  const { className } = props;
+interface ISliderProps {
+  disabled?: boolean;
+  onClick?: (index: number) => void;
+}
+
+export const SliderControls: FC<ISliderControlsProps> = () => {
+  return(<>
+    <LeftSlider/>
+    <RightSlider/>
+  </>);
+};
+
+export const LeftSlider: FC<ISliderProps> = (props) => {
+  const { onClick, disabled } = props;
   return (
-    <button className={cn(styles.sliderControl, className)} type='button'>
+    <button className={cn(styles.sliderControl, disabled ? styles.disabled : '')} type='button' onClick={() => onClick}>
       <div className={cn(styles.circle, styles.firstCircle, styles.left)} />
       <div className={cn(styles.circle, styles.secondCircleLeft, styles.left)}/>
       <Icon glyph={'arrow-left'} className={cn(styles.arrow)}/>
@@ -20,10 +32,10 @@ export const LeftSlider: FC<ISliderControlsProps> = (props) => {
   );
 };
 
-export const RightSlider: FC<ISliderControlsProps> = (props) => {
-  const { className } = props;
+export const RightSlider: FC<ISliderProps> = (props) => {
+  const { onClick, disabled } = props;
   return (
-    <button className={cn(styles.sliderControl, className)} type='button'>
+    <button className={cn(styles.sliderControl, disabled ? styles.disabled : '')} type='button' onClick={() => onClick}>
       <div className={cn(styles.circle, styles.firstCircle)} />
       <div className={cn(styles.circle, styles.secondCircle)}/>
       <Icon glyph={'arrow-right'} className={cn(styles.arrow)}/>
