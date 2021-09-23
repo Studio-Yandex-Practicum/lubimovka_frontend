@@ -19,6 +19,9 @@ MonthsDroplist.args = {
     'Сентябрь', 'Октябрь',
     'Ноябрь', 'Декабрь',
   ],
+  handlerSubmitDroplist: string => {
+    console.log(string);
+  }
 };
 
 export const YearsDroplist = Template.bind({});
@@ -29,4 +32,7 @@ YearsDroplist.args = {
     2014, 2017,
     2020, 2021,
   ],
+  handlerSubmitDroplist: string => {
+    console.log(string);
+  }
 };

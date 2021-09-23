@@ -9,13 +9,12 @@ import styles from './droplist.module.css';
 import DroplistItems from './droplist-items/droplist-items';
 import ListSelected from './list-selected/list-selected';
 
-interface IDropdownProps {
-  /* selectList: Array<string>,
-  setSelectList: React.Dispatch<SetStateAction<string[]>> */
+interface IDroplistProps {
   dataType: Array<string> | Array<number>,
+  handlerSubmitDroplist: (selectList: string[]) => void,
 }
 
-export const Droplist: FC<IDropdownProps> = ({ /* selectList, setSelectList, */ dataType }): JSX.Element => {
+export const Droplist: FC<IDroplistProps> = ({ dataType, handlerSubmitDroplist }): JSX.Element => {
   // Выбранный список пользователем. Вынести в компонент формы.
   const [ selectList, setSelectList ] = useState<string[]>([]);
 
@@ -34,6 +33,7 @@ export const Droplist: FC<IDropdownProps> = ({ /* selectList, setSelectList, */ 
 
   const handlerSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    handlerSubmitDroplist(selectList);
   };
 
   return (
