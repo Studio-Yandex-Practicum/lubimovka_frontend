@@ -1,6 +1,10 @@
 .inputComponent {
-  max-width: 359px;
+  max-width: 360px;
 }
+
+/* @media (min-width: $mobile-landscape) {
+  max-width: 365px;
+} */
 
 .input {
   width: 100%;
@@ -8,7 +12,7 @@
   border: none;
   border-bottom: 1px solid #242424;
   margin: 0;
-  background: #ecebe8;
+  background: var(--beige);
   font-family: "Formular", SansSerif, serif;
   font-size: 16px;
   line-height: 22px;
@@ -16,15 +20,7 @@
 }
 
 /* Атрибут placeholder выводит текст внутри поля формы, который исчезает при получении фокуса */
-.input:focus::-webkit-input-placeholder {
-  color: transparent;
-}
-
-.input:focus::-moz-placeholder {
-  color: transparent;
-}
-
-.input:focus:-ms-input-placeholder {
+.input:focus::placeholder {
   color: transparent;
 }
 
@@ -33,8 +29,8 @@
   top: calc(100% + 5px);
   left: 0;
   margin: 0 0 4px;
-  background: #ecebe8;
-  color: rgba(255, 0, 0, 1);
+  background: var(--beige);
+  color: rgba(235, 87, 87, 1);
   font-size: 12px;
   line-height: 22px;
   visibility: hidden;
