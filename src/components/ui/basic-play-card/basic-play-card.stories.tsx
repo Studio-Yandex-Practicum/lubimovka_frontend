@@ -13,9 +13,16 @@ const Template: ComponentStory<typeof BasicPlayCard> = (args) => <BasicPlayCard 
 
 export const Default = Template.bind({});
 Default.args = {
-  title: 'Конкретные разговоры пожилых супругов ни о чём',
-  authorFirstName: 'Екатерина',
-  authorLastName: 'Августеняк',
-  city: 'Санкт-Петербург',
-  year: '2020',
+  play: {
+    title: 'Конкретные разговоры пожилых супругов ни о чём',
+    city: 'Санкт-Петербург',
+    year: '2020',
+    linkView: 'https://lubimovka.ru/',
+    linkDownload: 'https://lubimovka.ru/',
+  },
+  author: {
+    id: 1,
+    firstName: 'Екатерина',
+    lastName: 'Августеняк',
+  }
 };
