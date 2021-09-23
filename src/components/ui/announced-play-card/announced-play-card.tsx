@@ -12,8 +12,8 @@ interface IAnnouncedPlayCardProps {
   location?: string;
   title: string;
   synopsis?: string;
-  playwright: string;
-  director: string;
+  playwrightArray: string [];
+  directorArray: string [];
   buttonData: [{
     buttonName: string;
     buttonLink: string;
@@ -29,17 +29,12 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     location,
     title,
     synopsis,
-    playwright,
-    director,
+    playwrightArray,
+    directorArray,
     buttonData,
     coverResourceUrl,
     ...restAnnouncedPlayCardProps
   } = props;
-
-  const playwrightArray = playwright.split(',');
-  const playwrightFinal = playwrightArray[playwrightArray.length - 1];
-  const directorArray = director.split(',');
-  const directorArrayFinal = directorArray[directorArray.length - 1];
 
   return !festival ? (
     <li
@@ -57,30 +52,30 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         <div className={cn(styles.h5,styles.title)}>{title}</div>
         <div className={cn(styles.credits)}>
           {
-            playwrightArray.length > 1 ?
-              (<p className={cn(styles.smalltext,styles.creditsEntry)}>
-                Драматурги: {playwrightArray.slice(0, -1).join(', ')} и {playwrightFinal}
-              </p>)
-              :
-              (<p className={cn(styles.smalltext,styles.creditsEntry)}>
-                Драматург: {playwright}
-              </p>)
+           playwrightArray.length > 1 ?
+            (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+              Драматурги: {playwrightArray.join(', ').replace(/, ([^,]*)$/, ' и $1')}
+            </p>)
+            :
+            (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+              Драматург: {playwrightArray}
+            </p>)
           }
           {
             directorArray.length > 1 ?
               (<p className={cn(styles.smalltext,styles.creditsEntry)}>
-                Режиссёры: {directorArray.slice(0, -1).join(', ')} и {directorArrayFinal}
+                Режиссёры: {directorArray.join(', ').replace(/, ([^,]*)$/, ' и $1')}
               </p>)
               :
               (<p className={cn(styles.smalltext,styles.creditsEntry)}>
-                Режиссёр: {director}
+                Режиссёр: {directorArray}
               </p>)
           }
         </div>
         <p className={cn(styles.caption, styles.description)}>читка проекта Любимовка.Ещё</p>
         {
-          buttonData.map((i) => {
-            return <Link key={i} href={i.buttonLink}>
+          buttonData.map((i,k) => {
+            return <Link key={k} href={i.buttonLink} passHref>
               <button className={cn(styles.button,styles.buttonEvents)}>
                 <ButtonIconInternal className={cn(styles.buttonIcon)} alt="Иконка кнопки"/>
                 <p className={cn(styles.buttonName, styles.smalltext)}>{i.buttonName.toUpperCase()}</p>
@@ -107,30 +102,30 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         <p className={cn(styles.smalltext, styles.synopsis)}>{synopsis}</p>
       </div>
       <div className={cn(styles.creditsFestival)}>
-        {
-          playwrightArray.length > 1 ?
+      {
+           playwrightArray.length > 1 ?
             (<p className={cn(styles.smalltext,styles.creditsEntry)}>
-              Драматурги: {playwrightArray.slice(0, -1).join(', ')} и {playwrightFinal}
+              Драматурги: {playwrightArray.join(', ').replace(/, ([^,]*)$/, ' и $1')}
             </p>)
             :
             (<p className={cn(styles.smalltext,styles.creditsEntry)}>
-              Драматург: {playwright}
+              Драматург: {playwrightArray}
             </p>)
-        }
-        {
-          directorArray.length > 1 ?
-            (<p className={cn(styles.smalltext,styles.creditsEntry)}>
-              Режиссёры: {directorArray.slice(0, -1).join(', ')} и {directorArrayFinal}
-            </p>)
-            :
-            (<p className={cn(styles.smalltext,styles.creditsEntry)}>
-                Режиссёр: {director}
-            </p>)
-        }
+          }
+          {
+            directorArray.length > 1 ?
+              (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+                Режиссёры: {directorArray.join(', ').replace(/, ([^,]*)$/, ' и $1')}
+              </p>)
+              :
+              (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+                Режиссёр: {directorArray}
+              </p>)
+          }
       </div>
       {
-        buttonData.map((i) => {
-          return <Link key={i} href={i.buttonLink}>
+        buttonData.map((i,k) => {
+          return <Link key={k} href={i.buttonLink} passHref>
             <button className={cn(styles.button, styles.buttonFestival)}>
               <ButtonIconInternal className={cn(styles.buttonIcon)} alt="Иконка кнопки"/>
               <p className={cn(styles.buttonName, styles.smalltext)}>{i.buttonName.toUpperCase()}</p>

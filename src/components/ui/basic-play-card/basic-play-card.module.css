@@ -116,10 +116,6 @@
   fill: var(--white);
 }
 
-.linkReset {
-  text-decoration: none;
-}
-
 .h7 {
   font-size: 20px;
   font-weight: 400;

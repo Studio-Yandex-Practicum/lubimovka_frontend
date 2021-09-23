@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import cn from 'classnames';
+import Link from 'next/link';
 import ButtonIconExternal from './images/arrow-external.svg';
 import ButtonIconDownload from './images/arrow-download.svg';
 
@@ -38,24 +39,24 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
           <a href={play.linkView} className={cn(styles.linkReset)}>
             <button className={cn(styles.button)}>
               <p className={cn(styles.buttonName, styles.smalltext)}>CМОТРЕТЬ ЧИТКУ</p>
-              <ButtonIconExternal className={cn(styles.buttonIcon)} alt="Иконка перехода на внешний источник"/>
+              <ButtonIconExternal className={cn(styles.buttonIcon)} alt="Иконка кнопки"/>
             </button>
           </a>
           <a href={play.linkDownload} className={cn(styles.linkReset)}>
             <button className={cn(styles.button)}>
               <p className={cn(styles.buttonName, styles.smalltext)}>СКАЧАТЬ ПЬЕСУ</p>
-              <ButtonIconDownload className={cn(styles.buttonIcon)} alt="Иконка скачивания"/>
+              <ButtonIconDownload className={cn(styles.buttonIcon)} alt="Иконка кнопки"/>
             </button>
           </a>
         </div>
       </div>
       <div className={cn(styles.info)}>
-        <a href={`/authors/${author.id}`} className={cn(styles.linkReset)}>
+        <Link href={`/authors/${author.id}`} passHref>
           <div className={cn(styles.author)}>
             <div className={cn(styles.h7)}>{author.firstName}</div>
             <div className={cn(styles.h7)}>{author.lastName}</div>
           </div>
-        </a>
+        </Link>
         <div className={cn(styles.smalltext, styles.city)}>{play.city}</div>
         <div className={cn(styles.smalltext, styles.year)}>{play.year}</div>
       </div>
