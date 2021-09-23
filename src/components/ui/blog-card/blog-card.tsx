@@ -6,18 +6,14 @@ interface BlogCardProps {
   author: string;
   heading: string;
   description: string;
-  onClick?: (evt: React.MouseEvent) => React.MouseEvent;
+  onClick?: React.MouseEventHandler<HTMLLIElement>;
 }
 
 export const BlogCard: FC<BlogCardProps> = (props) => {
   const { image, author, heading, description, onClick } = props;
 
-  function handleCardClick(evt: React.MouseEvent) {
-    onClick ? onClick(evt) : null;
-  }
-
   return (
-    <li className={styles.card} onClick={onClick && handleCardClick}>
+    <li className={styles.card} onClick={onClick}>
       <div className={styles.imgContainer}>
         <img className={styles.img} src={image} alt={`изображение статьи: ${heading}`} />
       </div>
