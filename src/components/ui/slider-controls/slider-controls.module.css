@@ -1,0 +1,63 @@
+@keyframes Background {
+  from {
+    /* background-image: url("../src/images/arr2.svg"); */
+    background-color: transparent;
+  }
+
+  to {
+    background-color: #242424;
+
+    /* background-image: url("../src/images/arr3.svg"); */
+  }
+}
+
+.sliderControl {
+  position: relative;
+  width: 100%;
+  max-width: 50px;
+  min-height: 50px;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.sliderControl:hover {
+  animation: Background .1s .2s;
+  animation-fill-mode: forwards;
+}
+
+.firstCircle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #242424;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  background-color: transparent;
+  border-radius: 50%;
+  transform: rotate(135deg);
+}
+
+.secondCircle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #242424;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  background-color: transparent;
+  border-radius: 50%;
+  transform: rotate(135deg);
+}
+
+.sliderControl:hover .secondCircle {
+  transform: rotate(315deg);
+  transition: transform .3s;
+}
