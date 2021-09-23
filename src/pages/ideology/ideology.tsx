@@ -8,6 +8,7 @@ import style from './ideology.module.css';
 const Ideology: NextPage = () => (
   <div className={style.page}>
     <section className={style.section}>
+      <article className={cn(style.picture, style.picture_actors)} />
       <div className={style.container}>
         <div className={cn(style.list, style.list_shift_right)}>
           <p className={style.paragraph}>1</p>
@@ -28,7 +29,8 @@ const Ideology: NextPage = () => (
       </div>
     </section>
 
-    <section className={style.section_second}>
+    <section className={cn(style.section, style.section_second)}>
+      <article className={cn(style.picture, style.picture_audience)} />
       <div className={cn(style.container, style.container_second)}>
         <div className={style.list}>
           <p className={style.paragraph}>2</p>

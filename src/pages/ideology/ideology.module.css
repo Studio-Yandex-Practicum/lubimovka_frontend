@@ -1,4 +1,5 @@
 .section {
+  position: relative;
   background-color: var(--beige);
 }
 
@@ -38,4 +39,24 @@
 .paragraph {
   @mixin text;
   @mixin textLarge;
+}
+
+.picture {
+  position: absolute;
+  overflow: hidden;
+  width: 660px;
+  height: 330px;
+  object-fit: cover;
+}
+
+.picture_actors {
+  top: 268px;
+  left: 0;
+  background-image: url('./images/actors.jpg');
+}
+
+.picture_audience {
+  top: 277px;
+  right: 0;
+  background-image: url('./images/audience.jpg');
 }
