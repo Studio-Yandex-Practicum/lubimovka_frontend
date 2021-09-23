@@ -1,13 +1,14 @@
 import {FC, InputHTMLAttributes} from 'react';
+
+import cn from 'classnames';
+
 import styles from './input.module.css';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  default?: string;
   name: string;
   type: string;
   placeholder: string;
   formNoValidate?: boolean | undefined;
-  label: string;
   minLength: number;
   maxLength: number;
   onClick?: () => void;
@@ -15,10 +16,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input: FC<InputProps> = (props) => {
   return (
-    <div className={styles.inputComponent}>
-      <label className="input"/>
-      <input onClick={props.onClick} name={props.name} type={props.type} placeholder={props.placeholder} minLength={props.minLength} maxLength={props.maxLength} required/>
-      <span className="inputError"/>
+    <div className={cn(styles.inputComponent)}>
+      <label />
+      <input onClick={props.onClick} className={cn(styles.input)} name={props.name} type={props.type} placeholder={props.placeholder} minLength={props.minLength} maxLength={props.maxLength} required/>
+      <span className="inputError">{props.formNoValidate}</span>
     </div>
   );
 };
