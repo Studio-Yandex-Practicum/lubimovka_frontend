@@ -11,12 +11,12 @@
 
 .imgContainer {
   display: flex;
-  width: 100%;
+  overflow: hidden;
+  width: 214px;
   justify-content: flex-start;
 
   @media (min-width: $mobile-landscape) {
     display: block;
-    overflow: hidden;
     width: 360px;
     height: 500px;
   }
@@ -25,22 +25,22 @@
 /* Every even card has its image aligned to the right side
  * until screen less than $mobile-landscape */
 .card:nth-child(even) > .imgContainer {
-  justify-content: flex-end;
+  align-self: flex-end;
 }
 
 .image {
   width: 214px;
   height: 297px;
+  transition: transform .4s cubic-bezier(.6, 0, .5, 1);
 
   @media (min-width: $mobile-landscape) {
     width: 360px;
     height: 500px;
-    transition: transform .4s cubic-bezier(.6, 0, .5, 1);
   }
 }
 
 .image:hover {
-  transform: scale(1.2, 1.2);
+  transform: scale(1.2);
 }
 
 .title {
@@ -48,13 +48,13 @@
   padding: 0;
   margin: 24px 0 16px;
   color: var(--black);
-  font: normal normal 28px/32px 'Neue Machina', sans-serif;
+  font: normal normal 28px/32px 'PP Neue Machina', sans-serif;
   letter-spacing: -.5px;
 
   @media (min-width: $mobile-landscape) {
     max-width: 356px;
     margin: 46px 0 16px 32px;
-    font: normal normal 40px/40px 'Neue Machina', sans-serif;
+    font: normal normal 40px/40px 'PP Neue Machina', sans-serif;
   }
 }
 
@@ -64,18 +64,9 @@
   }
 }
 
-.titleText {
-  display: inline-block;
-  padding: 0 8px 0 0;
-  vertical-align: middle;
-}
-
 .titleArrow {
-  display: inline-flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
+  margin: 0 0 0 8px;
+  vertical-align: text-top;
 
   @media (min-width: $mobile-landscape) {
     display: none;
@@ -87,7 +78,7 @@
   padding: 0;
   margin: 0 0 0 86px;
   color: var(--black);
-  font: normal normal 20px/24px 'Neue Machina', sans-serif;
+  font: normal normal 20px/24px 'PP Neue Machina', sans-serif;
   letter-spacing: -.5px;
 
   @media (min-width: $mobile-landscape) {
