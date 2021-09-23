@@ -99,9 +99,12 @@
 }
 
 .button {
+  position: relative;
+  z-index: 1;
   display: flex;
   width: 154px;
   height: 31px;
+  box-sizing: border-box;
   flex-direction: row;
   align-items: center;
   padding: 0;
@@ -116,10 +119,32 @@
   }
 }
 
-.button:hover {
+.button::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
   background-color: var(--coal);
+  content: '';
+  transition: width .2s ease-in, transform .1s linear;
+}
+
+.button:hover {
   color: var(--white);
   cursor: pointer;
+}
+
+.button:hover::after {
+  right: auto;
+  left: 0%;
+  width: 100%;
+  transition: width .2s ease-in, transform .1s linear;
+}
+
+.button:active::after {
+  transform: scale(1.075);
 }
 
 .buttonName {
