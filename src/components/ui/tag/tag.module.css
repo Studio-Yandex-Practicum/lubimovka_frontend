@@ -23,7 +23,7 @@
   color: var(--white);
 }
 
-.tag:active {
+.tag_active {
   padding: 4px 8px 8px 8px;
   border: none;
   background: var(--coal);

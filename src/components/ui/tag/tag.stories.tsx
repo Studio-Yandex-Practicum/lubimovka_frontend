@@ -11,5 +11,11 @@ const Template: ComponentStory<typeof Tag> = (args) => <Tag {...args} />;
 
 export const Example = Template.bind({});
 Example.args = {
-  label: 'внеконкурсная программа'
+  label: 'внеконкурсная программа',
+  selected: false
+};
+export const SelectExample = Template.bind({});
+SelectExample.args = {
+  label: 'внеконкурсная программа',
+  selected: true
 };

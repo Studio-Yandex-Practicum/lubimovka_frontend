@@ -4,16 +4,17 @@ import styles from './tag.module.css';
 
 interface ITagProps {
   label: string;
+  selected: boolean;
 }
 
 export const Tag: FC<ITagProps> = (props) => {
   const {
-    label
+    label, selected
   } = props;
 
   return (
     <div
-      className={cn(styles.tag)}
+      className={selected ? cn(styles.tag, styles.tag_active) : cn(styles.tag)}
     >
       {label}
     </div>
