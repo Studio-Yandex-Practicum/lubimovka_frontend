@@ -16,7 +16,7 @@ const TextItem: FC<TextItemProps> = (props) => {
     <article className={style.article}>
       <p className={cn(style.paragraph, style.numberBox)}>{number}</p>
       <h4 className={style.title}>{title}</h4>
-      <p className={cn(style.paragraph, style.textBox)}>{children}</p>
+      <div className={style.textBox}>{children}</div>
     </article>
   );
 };

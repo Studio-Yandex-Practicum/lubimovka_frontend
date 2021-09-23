@@ -41,6 +41,16 @@
   @mixin textLarge;
 }
 
+.paragraph_text {
+  margin-top: 36px;
+  text-indent: 23px;
+}
+
+.paragraph_text:first-of-type {
+  margin-top: 0;
+  text-indent: 0;
+}
+
 .picture {
   position: absolute;
   overflow: hidden;
