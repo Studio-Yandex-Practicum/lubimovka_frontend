@@ -34,14 +34,13 @@
 }
 
 .text {
+  @mixin textLarge;
+
   margin: 0;
   margin-left: 15px;
   color: inherit;
   font-family: 'Formular', sans-serif;
-  font-size: 20px;
   font-weight: 300;
-  letter-spacing: -.01em;
-  line-height: 28px;
 }
 
 .list {

@@ -22,22 +22,20 @@
 }
 
 .item {
+  @mixin textMedium;
+
   display: inline-block;
   padding: 4px 8px 8px;
   background: var(--coal);
   color: var(--white);
   font-family: 'Formular', sans-serif;
-  font-size: 18px;
   font-style: normal;
   font-weight: 300;
-  line-height: 23px;
   text-align: center;
 }
 
 .button {
   display: flex;
-
-  /* max-width: 25px; */
   width: 100%;
   min-height: 35px;
   align-items: center;
