@@ -26,27 +26,26 @@
 }
 
 .name {
+  @mixin textLarge;
+
   overflow: hidden;
   margin: 0;
   margin-right: 9px;
   color: var(--beige);
   font-family: 'Formular', sans-serif;
-  font-size: 20px;
   font-weight: 300;
-  letter-spacing: -.01em;
-  line-height: 28px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .message {
+  @mixin textCaption;
+
   margin: 0;
   margin-bottom: 14px;
   color: #eb5757;
   font-family: 'Formular', sans-serif;
-  font-size: 14px;
   font-weight: 300;
-  line-height: 17px;
 }
 
 .input {
@@ -54,6 +53,8 @@
 }
 
 .add {
+  @mixin text;
+
   display: flex;
   width: 100%;
   max-width: 182px;
@@ -64,11 +65,8 @@
   border-bottom: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
   background-color: transparent;
-  color: var(--coal);
   cursor: pointer;
-  font-family: 'Formular', sans-serif;
   font-size: 16px;
-  font-weight: 300;
   line-height: 14px;
   text-transform: uppercase;
 }

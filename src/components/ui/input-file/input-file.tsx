@@ -10,12 +10,7 @@ interface IInputFileProps {
 }
 
 export const InputFile: FC<IInputFileProps> = ({ typesListFiles }): JSX.Element => {
-  // * Поднять Sate
-  // Выбранный файл. fileList это выбранный файл. Отдавать на сервер
   const [ file, setFile ] = useState<null | File>(null);
-  // Если existsFile false, кнопку заблокировать. Можно просто использовать file
-  const [ existsValidFile, setExistsValidFile ] = useState(false);
-  // *
 
   // Текст кнопки
   const [ textButton, setTextButton ] = useState('Добавить файл');
@@ -66,8 +61,6 @@ export const InputFile: FC<IInputFileProps> = ({ typesListFiles }): JSX.Element 
     if (isValidName) {
       // Файл заношу для отправки на сервер
       setFile(file);
-      // Кнопка формы может быть доступна
-      setExistsValidFile(true);
       setNameFile(fileName);
       // Убираю текст ошибки
       setMessageError('');
@@ -76,8 +69,6 @@ export const InputFile: FC<IInputFileProps> = ({ typesListFiles }): JSX.Element 
     //Если имя файла не валидно
     // Удаляю файл
     setFile(null);
-    // Кнопка формы не должна быть доступна
-    setExistsValidFile(false);
     setNameFile(fileName);
     setMessageError('Файл содержит кириллицу, пожалуйста, переименуйте его.');
   };
@@ -102,8 +93,6 @@ export const InputFile: FC<IInputFileProps> = ({ typesListFiles }): JSX.Element 
 
     // Файл удаляю для отправки на сервер
     setFile(null);
-    // Кнопка не должна быть активной
-    setExistsValidFile(false);
     setNameFile('');
     setMessageError('');
 
