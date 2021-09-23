@@ -6,20 +6,25 @@
 
   --parenthesis-width: .7em;
   --parenthesis-height: 1.6em;
+  --parenthesis-color: var(--coal);
 
   &::before {
     width: var(--parenthesis-width);
     height: var(--parenthesis-height);
-    background: no-repeat center/contain url('../../../shared/images/left-parenthesis.svg');
+    background-color: var(--parenthesis-color);
     content: '';
+    -webkit-mask: no-repeat center/contain url('../../../shared/images/left-parenthesis.svg');
+    mask: no-repeat center/contain url('../../../shared/images/left-parenthesis.svg');
     visibility: hidden;
   }
 
   &::after {
     width: var(--parenthesis-width);
     height: var(--parenthesis-height);
-    background: no-repeat center/contain url('../../../shared/images/left-parenthesis.svg');
+    background-color: var(--parenthesis-color);
     content: '';
+    -webkit-mask: no-repeat center/contain url('../../../shared/images/left-parenthesis.svg');
+    mask: no-repeat center/contain url('../../../shared/images/left-parenthesis.svg');
     transform: scaleX(-1);
     visibility: hidden;
   }
