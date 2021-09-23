@@ -45,11 +45,11 @@
   }
 }
 
-.button::before {
+.button::after {
   position: absolute;
   z-index: -1;
   top: 0;
-  right: 0;
+  left: 0;
   width: 0;
   height: 100%;
   background-color: var(--coal);
@@ -58,21 +58,48 @@
 }
 
 .button:hover {
-  background-color: var(--coal);
   color: var(--white);
 }
 
-.button:hover::before {
+.button:hover::after {
   right: auto;
   left: 0%;
   width: 100%;
+  transition: width .2s ease-in, transform .1s linear;
 }
 
-.button:active::before {
+.button:active::after {
   transform: scale(1.075);
 }
 
+/*
+!!!
+Варианты анимации для появления кнопок:
+*/
+
+/* @keyframes horizontal-move {
+  0% { left: -50px; }
+  50% { left: -25px; }
+  100% { left: 0; }
+} */
+
+/* @keyframes vertical-move {
+  0% { bottom: -50px; }
+  50% { bottom: -25px; }
+  100% { bottom: 0; }
+} */
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  50% { opacity: 50%; }
+  100% { opacity: 100%; }
+}
+
 .container:hover .button {
+  /* animation: horizontal-move .2s ease-in; */
+
+  /* animation: vertical-move .2s ease-in; */
+  animation: fade-in .5s ease-in;
   visibility: visible;
 }
 
