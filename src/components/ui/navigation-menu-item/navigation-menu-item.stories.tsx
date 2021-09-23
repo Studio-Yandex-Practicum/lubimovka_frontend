@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { MenuItem } from './menu-item';
+import { NavigationMenuItem } from './navigation-menu-item';
 
 export default {
-  title: 'UI/MenuItem',
-  component: MenuItem,
-} as ComponentMeta<typeof MenuItem>;
+  title: 'UI/NavigationMenuItem',
+  component: NavigationMenuItem,
+} as ComponentMeta<typeof NavigationMenuItem>;
 
-const Template: ComponentStory<typeof MenuItem> = (args) => <MenuItem {...args} />;
+const Template: ComponentStory<typeof NavigationMenuItem> = (args) => <NavigationMenuItem {...args} />;
 
 export const Regular = Template.bind({});
 Regular.args = {

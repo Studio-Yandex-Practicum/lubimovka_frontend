@@ -2,19 +2,19 @@ import { FC } from 'react';
 import NextLink from 'next/link';
 import cn from 'classnames/bind';
 
-import styles from './menu-item.module.css';
+import styles from './navigation-menu-item.module.css';
 
-interface IMenuItemProps {
+export interface INavigationMenuItemProps {
   href: string,
   title: string,
   active?: boolean,
   inactive?: boolean,
-  size: 'm' | 'l',
+  size?: 'm' | 'l',
 }
 
 const cx = cn.bind(styles);
 
-export const MenuItem: FC<IMenuItemProps> = (props) => {
+export const NavigationMenuItem: FC<INavigationMenuItemProps> = (props) => {
   const {
     href,
     title,
