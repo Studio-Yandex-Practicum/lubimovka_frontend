@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, /* SetStateAction */ } from 'react';
 import cn from 'classnames';
 
 import { Icon } from '../icon';
@@ -10,14 +10,17 @@ import DroplistItems from './droplist-items/droplist-items';
 import ListSelected from './list-selected/list-selected';
 
 interface IDropdownProps {
-  type: 'months' | 'years',
+  /* selectList: Array<string>,
+  setSelectList: React.Dispatch<SetStateAction<string[]>> */
+  dataType: Array<string> | Array<number>,
 }
 
-export const Droplist: FC<IDropdownProps> = ({ type }): JSX.Element => {
+export const Droplist: FC<IDropdownProps> = ({ /* selectList, setSelectList, */ dataType }): JSX.Element => {
+  // Выбранный список пользователем. Вынести в компонент формы.
+  const [ selectList, setSelectList ] = useState<string[]>([]);
+
   // Список для вывода
   const [ list, getList ] = useState<string[] | number[]>([]);
-  // Выбранный список пользователем
-  const [ selectList, setSelectList ] = useState<string[]>([]);
   // Выбран ли Dropdown
   const [ activeDropdown, setActiveDropdown ] = useState(false);
 
@@ -26,23 +29,7 @@ export const Droplist: FC<IDropdownProps> = ({ type }): JSX.Element => {
   };
 
   useEffect(() => {
-    // Год и месяцы приходят от сервера
-    const years: number[] = [];
-    for (let i = 2009; i <= 2021; i++) {
-      years.push(i);
-    }
-    const months = [
-      'Январь', 'Февраль',
-      'Март', 'Апрель',
-      'Май', 'Июнь',
-      'Июль', 'Август',
-      'Сентябрь', 'Октябрь',
-      'Ноябрь', 'Декабрь',
-    ];
-    switch (type) {
-    case 'months': getList(months); break;
-    case 'years': getList(years); break;
-    }
+    getList(dataType);
   }, []);
 
   const handlerSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
