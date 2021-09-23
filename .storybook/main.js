@@ -41,18 +41,31 @@ module.exports = {
 
     config.module.rules.push({
       test: /\.svg$/,
-      use: [
+      oneOf: [
         {
-          loader: '@svgr/webpack',
-          options: {
-            svgoConfig: {
-              plugins: {
-                removeViewBox: false,
+          issuer: {
+            test: /\.(js|ts)x?$/,
+          },
+          use: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                svgoConfig: {
+                  plugins: {
+                    removeViewBox: false,
+                  }
+                }
               }
             }
-          }
+          ],
+        },
+        {
+          issuer: {
+            test: /\.css$/,
+          },
+          loader: 'url-loader',
         }
-      ],
+      ]
     })
 
     config.resolve.plugins = config.resolve.plugins || [];
