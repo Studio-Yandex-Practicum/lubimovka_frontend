@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, FC } from 'react';
+import React, { useRef, useState, useEffect, FC, SetStateAction } from 'react';
 import cn from 'classnames';
 
 import { Icon } from '../icon';
@@ -6,10 +6,12 @@ import { Icon } from '../icon';
 import styles from './input-file.module.css';
 
 interface IInputFileProps {
+  /* setFile: React.Dispatch<SetStateAction<File | null>>, */
   typesListFiles?: string[],
 }
 
-export const InputFile: FC<IInputFileProps> = ({ typesListFiles }): JSX.Element => {
+export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }): JSX.Element => {
+  // Так должен выглядит state, который нужно поднять
   const [ file, setFile ] = useState<null | File>(null);
 
   // Текст кнопки
