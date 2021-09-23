@@ -19,7 +19,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   return (
     <li className={styles.card} onClick={onClick && handleCardClick}>
       <div className={styles.imgContainer}>
-        <img className={styles.img} src={image} alt="изображение пьесы" />
+        <img className={styles.img} src={image} alt={`изображение статьи: ${heading}`} />
       </div>
       <div className={styles.content}>
         <p className={styles.author}>{author}</p>
