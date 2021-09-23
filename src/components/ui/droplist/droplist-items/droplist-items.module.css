@@ -1,0 +1,40 @@
+.item {
+  position: relative;
+  display: block;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 30px;
+  margin-bottom: 1px;
+  background-color: transparent;
+  color: var(--coal);
+  cursor: pointer;
+  font-family: 'Formular', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: -.01em;
+  line-height: 28px;
+}
+
+.item:last-of-type {
+  margin-bottom: 0;
+}
+
+.item:hover {
+  background-color: var(--beige);
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--coal);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.checkbox {
+  display: none;
+}
