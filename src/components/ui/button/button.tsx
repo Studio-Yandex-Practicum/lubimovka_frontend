@@ -1,12 +1,13 @@
-import React, {FC, MouseEvent, ButtonHTMLAttributes} from 'react';
+import React, {FC, ButtonHTMLAttributes} from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
 import styles from './button.module.css';
+import {Icon, IIconProps} from '../icon';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   view?: 'primary' | 'secondary' | 'transparent',
-  leftAddon?: React.ReactNode;
-  rightAddon?: React.ReactNode;
+  iconPlace?: 'left' | 'right',
+  icon?: IIconProps['glyph'],
   size?: 's' | 'l';
   border?: 'none' | 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' | 'top' | 'full';
   label: string;
@@ -21,9 +22,9 @@ export const Button: FC<IButtonProps> = (props) => {
     view = 'primary',
     href = '/',
     size,
-    leftAddon,
     isLink,
-    rightAddon,
+    icon,
+    iconPlace,
     label,
     width,
     border = 'none',
@@ -35,17 +36,17 @@ export const Button: FC<IButtonProps> = (props) => {
     styles.button,
     styles[view],
     styles[border],
-    (leftAddon || rightAddon) && styles.addon,
-    leftAddon && styles.leftAddon,
-    rightAddon && styles.rightAddon,
+    icon && styles.addon,
+    iconPlace === 'left' && styles.leftAddon,
+    iconPlace === 'right' && styles.rightAddon,
     size === 'l' && styles.l,
     [className]
   );
   const buttonChildren = (
     <React.Fragment>
-      {leftAddon && leftAddon}
+      {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
       {<span className={styles.label}>{label}</span>}
-      {rightAddon && rightAddon}
+      {iconPlace === 'right' && icon && <Icon glyph={icon}/>}
     </React.Fragment>
   );
 
