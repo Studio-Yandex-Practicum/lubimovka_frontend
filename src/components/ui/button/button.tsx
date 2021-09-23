@@ -10,10 +10,8 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 's' | 'l';
   border?: 'none' | 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' | 'top' | 'full';
   label: string;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   width?: string
   className?: string,
-  disabled?: boolean,
   isLink?: boolean,
   href?: string,
 }
