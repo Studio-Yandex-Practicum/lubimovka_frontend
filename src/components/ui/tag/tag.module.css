@@ -3,17 +3,12 @@
   padding: 4px 8px 8px 8px;
   border: 1px solid var(--coal);
   border-top: none;
-  margin: 0;
   background: var(--beige);
-  color: var(--coal);
-  font-family: "Formular", Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 300;
-  letter-spacing: 0;
-  line-height: 23px;
   text-align: left;
   transition: 300ms;
+
+  @mixin text;
+  @mixin textMedium;
 }
 
 .tag:hover {
