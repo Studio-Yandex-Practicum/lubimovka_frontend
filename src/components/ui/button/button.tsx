@@ -51,7 +51,7 @@ export const Button: FC<IButtonProps> = (props) => {
   );
 
   return (
-    !isLink ?
+    !isLink &&
       <button
         className={classes}
         type='button'
@@ -60,7 +60,7 @@ export const Button: FC<IButtonProps> = (props) => {
         {...restButtonProps}>
         {buttonChildren}
       </button>
-      :
+      ||
       <Link href={href}>
         <a
           className={cn(classes, styles.link)}>
