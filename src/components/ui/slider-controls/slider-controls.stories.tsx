@@ -1,14 +1,12 @@
 import {ComponentStory, ComponentMeta} from '@storybook/react';
-import {SliderControls} from './slider-controls';
+import {RightSlider} from './slider-controls';
 
 export default {
   title: 'UI/SliderControls',
-  component: SliderControls,
-} as ComponentMeta<typeof SliderControls>;
+  component: RightSlider,
+} as ComponentMeta<typeof RightSlider>;
 
-const Template: ComponentStory<typeof SliderControls> = (args) => <SliderControls {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  type: 'button',
-};
+const RightTemplate: ComponentStory<typeof RightSlider> = (args) => <RightSlider {...args} />;
+
+export const Right = RightTemplate.bind({});

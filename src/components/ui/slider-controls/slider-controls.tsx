@@ -9,15 +9,21 @@ interface ISliderControlsProps extends HTMLAttributes<HTMLButtonElement>{
   onClick?: () => void;
 }
 
-export const SliderControls: FC<ISliderControlsProps> = (props) => {
+export const LeftSlider: FC<ISliderControlsProps> = (props) => {
   const { className } = props;
-  return (props.className === 'left' ?
+  return (
     <button className={cn(styles.sliderControl, className)} type='button'>
       <div className={cn(styles.circle, styles.firstCircle, styles.left)} />
       <div className={cn(styles.circle, styles.secondCircleLeft, styles.left)}/>
       <Icon glyph={'arrow-left'} className={cn(styles.arrow)}/>
     </button>
-    : <button className={cn(styles.sliderControl, className)} type='button'>
+  );
+};
+
+export const RightSlider: FC<ISliderControlsProps> = (props) => {
+  const { className } = props;
+  return (
+    <button className={cn(styles.sliderControl, className)} type='button'>
       <div className={cn(styles.circle, styles.firstCircle)} />
       <div className={cn(styles.circle, styles.secondCircle)}/>
       <Icon glyph={'arrow-right'} className={cn(styles.arrow)}/>
