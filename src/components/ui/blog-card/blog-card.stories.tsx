@@ -5,7 +5,7 @@ import { BlogCard } from './blog-card';
 
 export default {
   component: BlogCard,
-  title: 'Blog Card',
+  title: 'UI/Blog Card',
   argTypes: {
     onClick: { action: 'clicked' },
   },
