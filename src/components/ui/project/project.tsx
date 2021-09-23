@@ -32,19 +32,15 @@ export const Project: FC<IProjectProps> = (props) => {
         <img className={cn('image')} src={imgUrl} alt={imgAlt} />
       </div>
       <div>
-        <div className={cn('title')}>
-          <span className={cn('titleText')}>
-            {title}
-          </span>
-          <span className={cn('titleArrow')}>
-            <Icon glyph="arrow-right" fill='#000' focusable="false" />
-          </span>
-        </div>
-        <article
+        <h6 className={cn('title')}>
+          {title}
+          <Icon className={cn('titleArrow')} glyph="arrow-right" fill='#000' focusable="false" />
+        </h6>
+        <p
           className={cn('text')}
         >
           {text}
-        </article>
+        </p>
       </div>
     </li>
   );
