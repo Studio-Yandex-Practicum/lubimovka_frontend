@@ -9,10 +9,23 @@ export default {
 
 const Template: ComponentStory<typeof MenuItem> = (args) => <MenuItem {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  title: 'Афиша',
+export const Regular = Template.bind({});
+Regular.args = {
+  title: 'Библиотека',
   href: '#',
-  active: true,
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  title: 'Авторы',
+  href: '#',
+  size: 'l',
+};
+
+export const Inactive = Template.bind({});
+Inactive.args = {
+  title: 'Авторы',
+  href: '#',
+  inactive: true,
   size: 'l',
 };
