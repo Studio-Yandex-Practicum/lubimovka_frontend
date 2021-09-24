@@ -48,3 +48,26 @@ export const LIBRARY_TABS = [
   },
 ];
 
+export const SOCIAL_MENU_ITEMS = [
+  {
+    title: 'fb',
+    href: '#'
+  },
+  {
+    title: 'inst',
+    href: '#'
+  },
+  {
+    title: 'ytube',
+    href: '#'
+  },
+  {
+    title: 'tlgrm',
+    href: '#'
+  },
+  {
+    title: 'vk',
+    href: '#'
+  },
+];
+
