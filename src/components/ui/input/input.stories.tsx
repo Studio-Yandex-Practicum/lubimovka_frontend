@@ -8,7 +8,7 @@ export default {
   argTypes: {
     value: {
       control: {
-        disable: true,
+        disable: false,
       }
     }
   }
@@ -23,7 +23,7 @@ Default.args = {
 
 export const Email = Template.bind({});
 Email.args = {
-  type: 'email',
+  type: 'e-mail',
 };
 
 export const Password = Template.bind({});

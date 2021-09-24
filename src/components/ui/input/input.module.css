@@ -1,39 +1,41 @@
 .inputComponent {
   max-width: 360px;
-}
 
-/* @media (min-width: $mobile-landscape) {
-  max-width: 365px;
-} */
+  @media (min-width: $mobile-landscape) {
+    max-width: 365px;
+  }
+}
 
 .input {
   width: 100%;
-  padding: 0 0 8px 0;
+  padding: 8px 0;
   border: none;
-  border-bottom: 1px solid #242424;
+  border-bottom: 1px solid var(--coal);
   margin: 0;
   background: var(--beige);
-  font-family: "Formular", SansSerif, serif;
-  font-size: 16px;
-  line-height: 22px;
+
+  @mixin text;
+  @mixin textSmall;
+
   outline: none;
 }
 
-/* Атрибут placeholder выводит текст внутри поля формы, который исчезает при получении фокуса */
+/* Атрибут placeholder выводит текст внутри поля формы, который исчезает при получении фокуса.
+ Вендорные префиксы убраны, потому что их ставит автопрефиксер */
 .input:focus::placeholder {
   color: transparent;
 }
 
 .inputError {
   position: absolute;
-  top: calc(100% + 5px);
+  top: 4px;
   left: 0;
   margin: 0 0 4px;
   background: var(--beige);
   color: rgba(235, 87, 87, 1);
   font-size: 12px;
   line-height: 22px;
-  visibility: hidden;
+  visibility: visible;
 }
 
 .inputError:last-of-type {
