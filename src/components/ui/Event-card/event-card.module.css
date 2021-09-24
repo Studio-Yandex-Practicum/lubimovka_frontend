@@ -34,7 +34,7 @@
 
 .data {
   display: grid;
-  max-width: 329px;
+  width: 20%;
   padding-top: 16px;
   padding-left: 10px;
   margin-bottom: 44px;
@@ -49,6 +49,10 @@
   @media (max-width: $mobile-landscape) {
     margin-bottom: 0;
     margin-left: 0;
+  }
+
+  @media (max-width: 320px) {
+    width: 82px;
   }
 }
 
@@ -101,13 +105,14 @@
   }
 
   @media (max-width: $mobile-landscape) {
-    max-width: 302px;
+    width: 80%;
     margin: 0;
     margin-left: auto;
   }
 }
 
 .creators {
+  width: 20%;
   align-self: center;
   padding: 0;
   font-size: 16px;

@@ -16,9 +16,9 @@ const Template: ComponentStory<typeof EventСard> = (args) => {
         time="13:00"
         location="Площадка «8/3»"
         title="Что я узнал"
-        description="Гости расскажут о своём творческом и организационном опыте."
-        playwright="Ольга Казакова"
-        direct="Катя Ганюшина"
+        description="Гости"
+        playwright="Ольга Ка"
+        direct="Катя"
       />
       <EventСard {...args} />
     </>
