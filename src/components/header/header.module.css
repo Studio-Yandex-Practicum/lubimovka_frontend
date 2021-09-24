@@ -1,7 +1,7 @@
 @define-mixin separator {
   position: absolute;
   top: 11px;
-  right: 0;
+  right: -1px;
   bottom: 0;
   width: 1px;
   background-color: var(--black);
@@ -74,12 +74,12 @@
 }
 
 .button {
-  @mixin text;
-
   min-width: min(calc(165 * (100vw / 1440)), 165px);
-  padding: 0;
-  border: 0;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: clamp(8px, calc(16 * (100vw / 1440)), 16px);
+  justify-content: center;
+  font-size: clamp(8px, calc(14 * (100vw / 1440)), 14px);
+
+  & svg {
+    width: min(calc(25 * (100vw / 1440)), 25px);
+    height: min(calc(25 * (100vw / 1440)), 25px);
+  }
 }
