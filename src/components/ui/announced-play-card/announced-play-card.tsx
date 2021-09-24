@@ -49,7 +49,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           <p className={cn(styles.bodyText, styles.date)}>{date}</p>
           <p className={cn(styles.bodyText, styles.timeEvents)}>{time}</p>
         </div>
-        <div className={cn(styles.h5,styles.title)}>{title}</div>
+        <h5 className={cn(styles.h5,styles.title)}>{title}</h5>
         <div className={cn(styles.credits)}>
           {
             playwrightArray.length > 1 ?
@@ -92,11 +92,11 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     >
       <img className={cn(styles.coverFestival)} src={coverResourceUrl}></img>
       <div className={cn(styles.infoFestival)}>
-        <p className={cn(styles.h6, styles.timeFestival)}>{time}</p>
+        <h6 className={cn(styles.h6, styles.timeFestival)}>{time}</h6>
         <p className={cn(styles.smalltext, styles.location)}>{location}</p>
       </div>
       <div className={cn(styles.infoPlay)}>
-        <div className={cn(styles.h6,styles.titleFestival)}>{title}</div>
+        <h6 className={cn(styles.h6,styles.titleFestival)}>{title}</h6>
         <p className={cn(styles.smalltext, styles.synopsis)}>{synopsis}</p>
       </div>
       <div className={cn(styles.creditsFestival)}>
