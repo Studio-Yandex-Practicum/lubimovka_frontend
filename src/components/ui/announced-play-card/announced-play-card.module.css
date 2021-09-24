@@ -63,12 +63,14 @@
   font-size: 36px;
   font-weight: 400;
   line-height: 38px;
+  margin: 0;
 }
 
 .h6 {
   font-size: 28px;
   font-weight: 400;
   line-height: 32px;
+  margin: 0;
 }
 
 .credits {
@@ -185,7 +187,7 @@
   font-family: 'Formular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   list-style-type: none;
 
-  @media (max-width: $tablet-landscape) {
+  @media (max-width: $tablet-portrait) {
     position: relative;
     max-width: 414px;
     flex-direction: column;
@@ -195,12 +197,17 @@
 }
 
 .coverFestival {
-  width: 127px;
-  height: 161px;
+  width: 151px;
+  height: 191px;
   padding-right: 28px;
   object-fit: cover;
 
   @media (max-width: $tablet-landscape) {
+    width: 127px;
+    height: 161px;
+  }
+
+  @media (max-width: $tablet-portrait) {
     position: absolute;
     top: 0;
     right: 23px;
@@ -208,11 +215,22 @@
   }
 }
 
+.infoFestival {
+  display: flex;
+  max-width: 150px;
+  flex-direction: column;
+  padding-right: 53px;
+
+  @media (max-width: $tablet-landscape) {
+    padding-right: 32px;
+  }
+}
+
 .timeFestival {
   padding-top: 16px;
   margin: 0;
 
-  @media (max-width: $tablet-landscape) {
+  @media (max-width: $tablet-portrait) {
     padding-top: 20px;
   }
 }
@@ -221,16 +239,9 @@
   padding-top: 16px;
   margin: 0;
 
-  @media (max-width: $tablet-landscape) {
+  @media (max-width: $tablet-portrait) {
     padding-top: 0;
   }
-}
-
-.infoFestival {
-  display: flex;
-  max-width: 150px;
-  flex-direction: column;
-  padding-right: 30px;
 }
 
 .infoPlay {
@@ -238,6 +249,11 @@
   padding-right: 32px;
 
   @media (max-width: $tablet-landscape) {
+    max-width: 229px;
+    padding-right: 28px;
+  }
+
+  @media (max-width: $tablet-portrait) {
     max-width: 381px;
     padding-right: 8px;
   }
@@ -246,7 +262,7 @@
 .titleFestival {
   padding-top: 16px;
 
-  @media (max-width: $tablet-landscape) {
+  @media (max-width: $tablet-portrait) {
     padding-top: 111px;
   }
 }
@@ -255,7 +271,7 @@
   padding-top: 16px;
   margin: 0;
 
-  @media (max-width: $tablet-landscape) {
+  @media (max-width: $tablet-portrait) {
     margin-left: 88px;
   }
 }
@@ -265,9 +281,13 @@
   max-width: 229px;
   flex-direction: column;
   padding-top: 67px;
-  padding-right: 26px;
+  padding-right: 32px;
 
   @media (max-width: $tablet-landscape) {
+    padding-right: 28px;
+  }
+
+  @media (max-width: $tablet-portrait) {
     max-width: 318px;
     padding-top: 24px;
   }
@@ -276,7 +296,7 @@
 .buttonFestival {
   margin-top: 67px;
 
-  @media (max-width: $tablet-landscape) {
+  @media (max-width: $tablet-portrait) {
     margin-top: 16px;
     align-self: flex-end;
   }
