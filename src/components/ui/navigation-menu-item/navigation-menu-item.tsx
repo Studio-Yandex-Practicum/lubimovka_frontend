@@ -9,7 +9,7 @@ export interface INavigationMenuItemProps {
   title: string,
   active?: boolean,
   inactive?: boolean,
-  size?: 'm' | 'l',
+  size?: 'm' | 'l' | 'auto',
   className?: string,
 }
 

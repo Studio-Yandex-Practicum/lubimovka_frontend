@@ -64,3 +64,9 @@
   @mixin headline;
   @mixin headline6;
 }
+
+.auto {
+  @mixin text;
+
+  font-size: clamp(8px, calc(16 * (100vw / 1440)), 16px);
+}
