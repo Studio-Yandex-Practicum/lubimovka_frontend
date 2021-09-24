@@ -139,11 +139,11 @@
 }
 
 .title {
-  margin: 24px 31px auto 24px;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
   overflow: hidden;
+  margin: 24px 31px auto 24px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
 }
 
 .info {
