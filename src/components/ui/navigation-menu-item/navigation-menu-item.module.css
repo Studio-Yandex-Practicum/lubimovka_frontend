@@ -3,6 +3,7 @@
   align-items: center;
   cursor: pointer;
   text-decoration-line: none;
+  white-space: nowrap;
 
   --parenthesis-width: .7em;
   --parenthesis-height: 1.6em;
