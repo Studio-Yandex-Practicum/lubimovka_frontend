@@ -35,7 +35,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
     >
       <div className={cn(styles.container)}>
         <p className={cn(styles.h7, styles.title)}>{play.title}</p>
-        <div className={cn(styles.buttonContainer)}>
+        <div>
           <Link href={play.linkView}>
             <button className={cn(styles.button)}>
               <p className={cn(styles.buttonName, styles.smalltext)}>CМОТРЕТЬ ЧИТКУ</p>

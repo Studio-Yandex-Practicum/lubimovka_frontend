@@ -14,8 +14,15 @@
 
 .coverEvents {
   width: 120px;
+  height: 161px;
   padding-right: 31px;
   object-fit: cover;
+
+  @media (max-width: $mobile-landscape) {
+    width: 92px;
+    height: 123px;
+  }
+
 }
 
 /* .cardEvents:nth-child(odd) > .coverEvents {
@@ -155,8 +162,7 @@
   margin-bottom: 16px;
 
   @media (max-width: $mobile-landscape) {
-    margin-left: -151px;
-    margin-right: 184px;
+    margin-left: -121px;
   }
 }
 
