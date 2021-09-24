@@ -139,7 +139,11 @@
 }
 
 .title {
-  margin: 24px auto 67px 24px;
+  margin: 24px 31px auto 24px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .info {
@@ -159,7 +163,12 @@
   cursor: pointer;
 }
 
+.authorName {
+  margin: 0;
+}
+
 .city {
+  margin: 0;
   margin-top: 4px;
 }
 
