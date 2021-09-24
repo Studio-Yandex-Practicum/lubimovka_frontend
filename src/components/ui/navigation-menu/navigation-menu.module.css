@@ -1,0 +1,10 @@
+.list {
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.column {
+  flex-direction: column;
+}
