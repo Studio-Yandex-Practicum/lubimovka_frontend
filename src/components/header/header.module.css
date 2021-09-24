@@ -1,30 +1,38 @@
-.header {
-  @mixin text;
-  @mixin textSmall;
+@define-mixin separator {
+  position: absolute;
+  top: 11px;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--black);
+  content: '';
+}
 
+.header {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid var(--black);
 }
 
+.logoLink {
+  display: block;
+  margin: min(calc(15 * (100vw / 1440)), 15px) min(calc(4 * (100vw / 1440)), 4px) min(calc(11 * (100vw / 1440)), 11px) min(calc(30 * (100vw / 1440)), 30px);
+  line-height: 0;
+}
+
 .logo {
-  margin: 15px 4px 11px 30px;
+  width: min(calc(43 * (100vw / 1440)), 43px);
+  height: min(calc(35 * (100vw / 1440)), 35px);
   color: var(--black);
 }
 
 .navigation {
   position: relative;
   flex: 1;
-  padding: 0 17px;
+  padding: 0 min(calc(17 * (100vw / 1440)), 17px);
 
   &::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: var(--black);
-    content: '';
+    @mixin separator;
   }
 }
 
@@ -41,32 +49,36 @@
 .socialList {
   position: relative;
   display: flex;
-  padding: 0 17px;
+  padding: 0 min(calc(17 * (100vw / 1440)), 17px);
   margin: 0;
   list-style: none;
 
   &::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: var(--black);
-    content: '';
+    @mixin separator;
   }
 }
 
 .socialLink {
+  @mixin text;
+  @mixin textSmall;
+
   display: inline-flex;
   height: 100%;
   align-items: center;
-  padding: 0 8px;
+  padding: 0 min(calc(8 * (100vw / 1440)), 8px);
   color: var(--black);
   cursor: pointer;
+  font-size: clamp(8px, calc(16 * (100vw / 1440)), 16px);
   text-decoration-line: none;
 }
 
 .button {
-  min-width: 165px;
+  @mixin text;
+
+  min-width: min(calc(165 * (100vw / 1440)), 165px);
+  padding: 0;
+  border: 0;
+  background-color: transparent;
   cursor: pointer;
+  font-size: clamp(8px, calc(16 * (100vw / 1440)), 16px);
 }
