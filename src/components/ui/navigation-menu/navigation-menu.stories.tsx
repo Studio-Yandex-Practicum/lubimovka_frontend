@@ -22,7 +22,7 @@ export const Mobile = Template.bind({});
 Mobile.args = {
   items: NAVIGATION_MENU_ITEMS,
   size: 'l',
-  className: styles.column,
+  direction: 'column',
   itemClassName: styles.columnItem,
 };
 

@@ -1,5 +1,10 @@
-.list {
+.navigationMenu {
   display: inline-flex;
+}
+
+.list {
+  display: inherit;
+  flex: inherit;
   padding: 0;
   margin: 0;
   list-style: none;

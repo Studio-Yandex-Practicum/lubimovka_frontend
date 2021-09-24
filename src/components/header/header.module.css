@@ -28,6 +28,7 @@
 
 .navigation {
   position: relative;
+  display: flex;
   flex: 1;
   padding: 0 min(calc(17 * (100vw / 1440)), 17px);
 
