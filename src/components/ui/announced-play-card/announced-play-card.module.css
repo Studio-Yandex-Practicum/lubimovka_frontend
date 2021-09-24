@@ -56,7 +56,7 @@
 }
 
 .title {
-  padding-top: 16px;
+  margin-top: 16px;
 }
 
 .h5 {
@@ -114,9 +114,6 @@
   background-color: var(--white);
   outline: none;
 
-  @media (max-width: $mobile-landscape) {
-    margin-left: -151px;
-  }
 }
 
 .button::after {
@@ -155,6 +152,10 @@
 
 .buttonEvents {
   margin-bottom: 16px;
+
+  @media (max-width: $mobile-landscape) {
+    margin-left: -151px;
+  }
 }
 
 .buttonEvents:last-child {
@@ -188,21 +189,21 @@
     position: relative;
     max-width: 414px;
     flex-direction: column;
-    padding-right: 26px;
-    padding-left: 26px;
+    padding-right: 23px;
+    padding-left: 24px;
   }
 }
 
 .coverFestival {
-  width: 151px;
+  width: 127px;
+  height: 161px;
   padding-right: 28px;
   object-fit: cover;
 
   @media (max-width: $tablet-landscape) {
     position: absolute;
     top: 0;
-    right: 13.5px;
-    width: 127px;
+    right: 23px;
     padding: 0;
   }
 }
@@ -238,6 +239,7 @@
 
   @media (max-width: $tablet-landscape) {
     max-width: 381px;
+    padding-right: 8px;
   }
 }
 
@@ -254,7 +256,7 @@
   margin: 0;
 
   @media (max-width: $tablet-landscape) {
-    margin-left: 64px;
+    margin-left: 88px;
   }
 }
 
@@ -266,6 +268,7 @@
   padding-right: 26px;
 
   @media (max-width: $tablet-landscape) {
+    max-width: 318px;
     padding-top: 24px;
   }
 }
@@ -275,6 +278,6 @@
 
   @media (max-width: $tablet-landscape) {
     margin-top: 16px;
-    margin-left: 216px;
+    align-self: flex-end;
   }
 }
