@@ -18,9 +18,9 @@
   object-fit: cover;
 }
 
-.cardEvents:nth-child(odd) > .coverEvents {
+/* .cardEvents:nth-child(odd) > .coverEvents {
   display: none;
-}
+} */
 
 .infoEvents {
   display: flex;
@@ -156,6 +156,7 @@
 
   @media (max-width: $mobile-landscape) {
     margin-left: -151px;
+    margin-right: 184px;
   }
 }
 
@@ -170,6 +171,13 @@
 
 .button:hover .buttonIcon > path {
   fill: var(--white);
+}
+
+.buttonEventsContainer {
+  @media (max-width: $mobile-landscape) {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 .smalltext {
