@@ -10,6 +10,7 @@ export interface INavigationMenuItemProps {
   active?: boolean,
   inactive?: boolean,
   size?: 'm' | 'l',
+  className?: string,
 }
 
 const cx = cn.bind(styles);
@@ -21,11 +22,12 @@ export const NavigationMenuItem: FC<INavigationMenuItemProps> = (props) => {
     active = false,
     inactive = false,
     size = 'm',
+    className,
   } = props;
 
   return (
     <NextLink href={href}>
-      <a className={cx('menuItem', size, { active, inactive })}>
+      <a className={cx('menuItem', className, size, { active, inactive })}>
         {title}
       </a>
     </NextLink>
