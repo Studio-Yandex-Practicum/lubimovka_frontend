@@ -52,14 +52,14 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         <div className={cn(styles.h5,styles.title)}>{title}</div>
         <div className={cn(styles.credits)}>
           {
-           playwrightArray.length > 1 ?
-            (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+            playwrightArray.length > 1 ?
+              (<p className={cn(styles.smalltext,styles.creditsEntry)}>
               Драматурги: {playwrightArray.join(', ').replace(/, ([^,]*)$/, ' и $1')}
-            </p>)
-            :
-            (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+              </p>)
+              :
+              (<p className={cn(styles.smalltext,styles.creditsEntry)}>
               Драматург: {playwrightArray}
-            </p>)
+              </p>)
           }
           {
             directorArray.length > 1 ?
@@ -102,8 +102,8 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         <p className={cn(styles.smalltext, styles.synopsis)}>{synopsis}</p>
       </div>
       <div className={cn(styles.creditsFestival)}>
-      {
-           playwrightArray.length > 1 ?
+        {
+          playwrightArray.length > 1 ?
             (<p className={cn(styles.smalltext,styles.creditsEntry)}>
               Драматурги: {playwrightArray.join(', ').replace(/, ([^,]*)$/, ' и $1')}
             </p>)
@@ -111,17 +111,17 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             (<p className={cn(styles.smalltext,styles.creditsEntry)}>
               Драматург: {playwrightArray}
             </p>)
-          }
-          {
-            directorArray.length > 1 ?
-              (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+        }
+        {
+          directorArray.length > 1 ?
+            (<p className={cn(styles.smalltext,styles.creditsEntry)}>
                 Режиссёры: {directorArray.join(', ').replace(/, ([^,]*)$/, ' и $1')}
-              </p>)
-              :
-              (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+            </p>)
+            :
+            (<p className={cn(styles.smalltext,styles.creditsEntry)}>
                 Режиссёр: {directorArray}
-              </p>)
-          }
+            </p>)
+        }
       </div>
       {
         buttonData.map((i,k) => {

@@ -18,9 +18,9 @@
   object-fit: cover;
 }
 
-/* .coverEvents:nth-child(odd) {
+.cardEvents:nth-child(odd) > .coverEvents {
   display: none;
-} */
+}
 
 .infoEvents {
   display: flex;

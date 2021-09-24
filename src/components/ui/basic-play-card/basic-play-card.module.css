@@ -77,11 +77,21 @@
 Варианты анимации для появления кнопок:
 */
 
+/*
+Выезд кнопок слева направо
+Нужно раскомментировать анимацию ниже + в .container:hover .button 'horizontal-move'
+*/
+
 /* @keyframes horizontal-move {
   0% { left: -50px; }
   50% { left: -25px; }
   100% { left: 0; }
 } */
+
+/*
+Выезд кнопок снизу вверх
+Нужно раскомментировать анимацию ниже + в .container:hover .button 'vertical-move'
+*/
 
 /* @keyframes vertical-move {
   0% { bottom: -50px; }
