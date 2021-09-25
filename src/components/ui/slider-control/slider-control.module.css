@@ -1,0 +1,101 @@
+@keyframes backgroundColor {
+  from {
+    background-color: transparent;
+  }
+
+  to {
+    background-color: var(--coal);
+  }
+}
+
+@keyframes fill {
+  from {
+    fill: var(--coal);
+  }
+
+  to {
+    fill: var(--white);
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+
+.circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid var(--coal);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  background-color: transparent;
+  border-radius: 50%;
+  transform: rotate(135deg);
+}
+
+.left {
+  transform: rotate(-45deg);
+}
+
+.sliderControl {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:focus {
+    outline-color: currentColor;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &:disabled .arrow {
+    animation: unset;
+    fill: var(--black-15);
+  }
+
+  &:disabled .circle {
+    border-color: var(--black-15);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  &:hover:enabled {
+    animation: backgroundColor .05s .15s;
+    animation-fill-mode: forwards;
+  }
+
+  &:hover:enabled .secondCircle {
+    transform: rotate(315deg);
+    transition: transform .2s;
+  }
+
+  &:hover:enabled .secondCircleLeft {
+    transform: rotate(-225deg);
+    transition: transform .2s;
+  }
+
+  &:hover:enabled .arrow {
+    animation: fill .05s .2s;
+    animation-fill-mode: forwards;
+  }
+
+  &:active:enabled {
+    transform: scale(1.1);
+  }
+
+  &:active:enabled .arrow {
+    transform: scale(.9);
+  }
+}
