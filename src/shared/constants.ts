@@ -1,4 +1,5 @@
 import { INavigationMenuItemProps } from '../components/ui/navigation-menu-item';
+import { TSocialItem } from 'components/header';
 
 export const NAVIGATION_MENU_ITEMS: INavigationMenuItemProps[] = [
   {
@@ -48,7 +49,7 @@ export const LIBRARY_TABS = [
   },
 ];
 
-export const SOCIAL_MENU_ITEMS = [
+export const SOCIAL_LIST_ITEMS: TSocialItem[] = [
   {
     title: 'fb',
     href: '#'

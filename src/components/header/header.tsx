@@ -5,18 +5,13 @@ import cn from 'classnames/bind';
 import { NavigationMenu } from 'components/ui/navigation-menu';
 import { Button } from 'components/ui/button';
 import Logo from 'shared/images/logo.svg';
-import { NAVIGATION_MENU_ITEMS, SOCIAL_MENU_ITEMS } from 'shared/constants';
+import { NAVIGATION_MENU_ITEMS, SOCIAL_LIST_ITEMS } from 'shared/constants';
 
 import styles from './header.module.css';
 
 const cx = cn.bind(styles);
 
-export type NavigationMenuItem = {
-  title: string;
-  path: string;
-};
-
-export type SocialItem = {
+export type TSocialItem = {
   title: string;
   href: string;
 };
@@ -37,7 +32,7 @@ export const Header: FC = () => {
         linkClassName={cx('navigationLink')}
       />
       <ul className={cx('socialList')}>
-        {SOCIAL_MENU_ITEMS.map((item, idx) => (
+        {SOCIAL_LIST_ITEMS.map((item, idx) => (
           <li key={idx}>
             <a href={'#'} className={cx('socialLink')}>
               {item.title}
