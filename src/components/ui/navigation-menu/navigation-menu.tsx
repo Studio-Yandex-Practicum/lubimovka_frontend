@@ -8,7 +8,6 @@ import styles from './navigation-menu.module.css';
 interface INavigationMenuProps {
   items: INavigationMenuItemProps[];
   size?: INavigationMenuItemProps['size'];
-  direction?: 'row' | 'column';
   className?: string;
   itemClassName?: string;
   linkClassName?: string;
@@ -20,7 +19,6 @@ export const NavigationMenu: FC<INavigationMenuProps> = (props) => {
   const {
     items,
     size = 'm',
-    direction = 'row',
     className,
     itemClassName,
     linkClassName,
@@ -28,7 +26,7 @@ export const NavigationMenu: FC<INavigationMenuProps> = (props) => {
 
   return (
     <nav className={cx('navigationMenu', [className])}>
-      <ul className={cx('list', [direction])}>
+      <ul className={cx('list')}>
         {items.map((item, idx) => (
           <li
             key={idx}

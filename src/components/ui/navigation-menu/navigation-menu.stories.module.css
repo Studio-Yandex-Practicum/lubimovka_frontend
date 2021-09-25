@@ -1,3 +1,7 @@
+.column {
+  flex-direction: column;
+}
+
 .rowItem:not(:last-child) {
   margin-right: 24px;
 }

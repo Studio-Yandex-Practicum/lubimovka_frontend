@@ -5,11 +5,8 @@
 .list {
   display: inherit;
   flex: inherit;
+  flex-direction: inherit;
   padding: 0;
   margin: 0;
   list-style: none;
-}
-
-.column {
-  flex-direction: column;
 }
