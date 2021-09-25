@@ -34,7 +34,7 @@ export const Header: FC = () => {
       <ul className={cx('socialList')}>
         {SOCIAL_LIST_ITEMS.map((item, idx) => (
           <li key={idx}>
-            <a href={'#'} className={cx('socialLink')}>
+            <a href={item.href} className={cx('socialLink')}>
               {item.title}
             </a>
           </li>
