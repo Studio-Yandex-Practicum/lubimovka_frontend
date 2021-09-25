@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Project } from './project';
+import { ProjectCard } from './project-card';
 
 export default {
   title: 'Example/project',
-  component: Project,
-} as ComponentMeta<typeof Project>;
+  component: ProjectCard,
+} as ComponentMeta<typeof ProjectCard>;
 
-const Template: ComponentStory<typeof Project> = (args) => <Project {...args} />;
+const Template: ComponentStory<typeof ProjectCard> = (args) => <ProjectCard {...args} />;
 
 export const LubimovkaMore = Template.bind({});
 LubimovkaMore.args = {  
