@@ -1,3 +1,4 @@
+import 'keen-slider/keen-slider.min.css';
 import '../src/shared/styles/fonts.css';
 import '../src/shared/styles/palette.css';
 
