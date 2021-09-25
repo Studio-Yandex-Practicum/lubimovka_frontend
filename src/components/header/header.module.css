@@ -1,6 +1,6 @@
 @define-mixin separator {
   position: absolute;
-  top: 11px;
+  top: min(calc(11 * (100vw / 1440)), 11px);
   right: -1px;
   bottom: 0;
   width: 1px;
