@@ -9,7 +9,7 @@ interface IListSelectedProps {
   selectList: string[],
 }
 
-const ListSelected: FC<IListSelectedProps> = ({ selectList }): JSX.Element => {
+export const ListSelected: FC<IListSelectedProps> = ({ selectList }): JSX.Element => {
 
   return (
     <div className={ cn(styles.container, {
@@ -32,5 +32,3 @@ const ListSelected: FC<IListSelectedProps> = ({ selectList }): JSX.Element => {
     </div>
   );
 };
-
-export default ListSelected;

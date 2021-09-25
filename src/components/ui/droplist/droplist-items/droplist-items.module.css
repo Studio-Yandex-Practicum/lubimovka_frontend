@@ -10,14 +10,19 @@
   margin-bottom: 1px;
   background-color: transparent;
   cursor: pointer;
-}
+  text-transform: lowercase;
 
-.item:last-of-type {
-  margin-bottom: 0;
-}
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 
-.item:hover {
-  background-color: var(--beige);
+  &:hover {
+    background-color: var(--beige);
+  }
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 }
 
 .circle {

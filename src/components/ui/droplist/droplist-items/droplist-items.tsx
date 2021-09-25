@@ -8,7 +8,7 @@ interface IDroplistItemsProps {
   setSelectList: React.Dispatch<SetStateAction<string[]>>,
 }
 
-const DroplistItems: FC<IDroplistItemsProps> = ({ month, setSelectList }): JSX.Element => {
+export const DroplistItems: FC<IDroplistItemsProps> = ({ month, setSelectList }): JSX.Element => {
   const [ activeCheckbox, setActiveCheckbox ] = useState(false);
 
   const hendlerCheckbox = (event: React.MouseEvent<HTMLInputElement>) => {
@@ -37,9 +37,7 @@ const DroplistItems: FC<IDroplistItemsProps> = ({ month, setSelectList }): JSX.E
       [styles.active]: activeCheckbox,
     })}>
       {
-        activeCheckbox ?
-          <span className={ cn(styles.circle) } /> :
-          null
+        activeCheckbox && <span className={ cn(styles.circle) } />
       }
       { month }
       <input
@@ -51,5 +49,3 @@ const DroplistItems: FC<IDroplistItemsProps> = ({ month, setSelectList }): JSX.E
     </label>
   );
 };
-
-export default DroplistItems;

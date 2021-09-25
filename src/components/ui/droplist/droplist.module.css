@@ -6,19 +6,20 @@
 .list {
   overflow: auto;
   max-height: 0;
+  margin-bottom: 26px;
   transition: all .1s ease-out;
   visibility: hidden;
-}
 
-.list::-webkit-scrollbar {
-  width: 4px;
-  height: 92px;
-  background-color: transparent;
-}
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 92px;
+    background-color: transparent;
+  }
 
-.list::-webkit-scrollbar-thumb {
-  height: 92px;
-  background-color: var(--coal);
+  &::-webkit-scrollbar-thumb {
+    height: 92px;
+    background-color: var(--coal);
+  }
 }
 
 .active {

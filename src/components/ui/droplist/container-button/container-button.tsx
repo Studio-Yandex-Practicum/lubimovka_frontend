@@ -9,7 +9,7 @@ interface IContainerButtonProps {
   setActiveDropdown: React.Dispatch<SetStateAction<boolean>>,
 }
 
-const ContainerButton: FC<IContainerButtonProps> = ({ setActiveDropdown }) => {
+export const ContainerButton: FC<IContainerButtonProps> = ({ setActiveDropdown }) => {
   const clickActiveDropdown = (): void => {
     setActiveDropdown(state => {
       return !state;
@@ -30,5 +30,3 @@ const ContainerButton: FC<IContainerButtonProps> = ({ setActiveDropdown }) => {
     </div>
   );
 };
-
-export default ContainerButton;

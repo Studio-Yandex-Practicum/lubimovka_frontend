@@ -9,11 +9,12 @@ export default {
 
 const Template: ComponentStory<typeof Droplist> = (args) => <Droplist {...args} />;
 
+// Формирую массив dataType самостоятельно, из БД
 export const MonthsDroplist = Template.bind({});
 MonthsDroplist.args = {
   dataType: [
-    'Январь', 'Февраль',
-    'Март', 'Апрель',
+    'ЯНВАРЬ', 'ФЕВРАЛЬ',
+    'МАРТ', 'АПРЕЛЬ',
     'Май', 'Июнь',
     'Июль', 'Август',
     'Сентябрь', 'Октябрь',
@@ -21,9 +22,11 @@ MonthsDroplist.args = {
   ],
   handlerSubmitDroplist: string => {
     console.log(string);
-  }
+  },
+  maxWidth: 240,
 };
 
+// Формирую массив dataType самостоятельно, из БД
 export const YearsDroplist = Template.bind({});
 YearsDroplist.args = {
   dataType: [
@@ -34,5 +37,24 @@ YearsDroplist.args = {
   ],
   handlerSubmitDroplist: string => {
     console.log(string);
-  }
+  },
+  maxWidth: '150',
+};
+
+// Использую массив dataType по умолчанию
+export const DefaultMonthsDroplist = Template.bind({});
+DefaultMonthsDroplist.args = {
+  dataType: 'months',
+  handlerSubmitDroplist: string => {
+    console.log(string);
+  },
+};
+
+// Использую массив dataType по умолчанию
+export const DefaultYearsDroplist = Template.bind({});
+DefaultYearsDroplist.args = {
+  dataType: 'years',
+  handlerSubmitDroplist: string => {
+    console.log(string);
+  },
 };
