@@ -10,4 +10,21 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: 'lubimovka',
+    values: [
+      {
+        name: 'lubimovka',
+        value: '#ecebe8',
+      },
+      {
+        name: 'white',
+        value: '#fff',
+      },
+      {
+        name: 'black',
+        value: '#fff',
+      },
+    ],
+  },
 }
