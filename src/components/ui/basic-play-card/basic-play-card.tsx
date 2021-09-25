@@ -3,6 +3,7 @@ import cn from 'classnames';
 import Link from 'next/link';
 import ButtonIconExternal from './images/arrow-external.svg';
 import ButtonIconDownload from './images/arrow-download.svg';
+import { Button } from '../button'
 
 import styles from './basic-play-card.module.css';
 
@@ -11,8 +12,8 @@ interface IBasicPlayCardProps {
     title: string;
     city: string;
     year: string;
-    linkView: string;
-    linkDownload: string;
+    // linkView: string;
+    // linkDownload: string;
   };
   author: {
     id: number,
@@ -36,7 +37,26 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       <div className={cn(styles.container)}>
         <p className={cn(styles.h7, styles.title)}>{play.title}</p>
         <div>
-          <Link href={play.linkView}>
+          <Button
+            width='240px'
+            size='l'
+            view='secondary'
+            iconPlace='right'
+            icon='arrow-45'
+            label='Смотреть читку'
+            border='top'
+          />
+          <Button
+            width='240px'
+            size='l'
+            view='secondary'
+            iconPlace='right'
+            icon='arrow-down'
+            label='Скачать пьесу'
+            border='top'
+          />
+
+          {/* <Link href={play.linkView}>
             <button className={cn(styles.button)}>
               <p className={cn(styles.buttonName, styles.smalltext)}>CМОТРЕТЬ ЧИТКУ</p>
               <ButtonIconExternal className={cn(styles.buttonIcon)} alt="Иконка кнопки"/>
@@ -47,7 +67,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
               <p className={cn(styles.buttonName, styles.smalltext)}>СКАЧАТЬ ПЬЕСУ</p>
               <ButtonIconDownload className={cn(styles.buttonIcon)} alt="Иконка кнопки"/>
             </button>
-          </Link>
+          </Link> */}
         </div>
       </div>
       <div className={cn(styles.info)}>
