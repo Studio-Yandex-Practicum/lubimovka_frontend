@@ -73,7 +73,6 @@ Download.args = {
   size: 's',
   iconPlace: 'right',
   icon: 'arrow-down',
-  view: 'transparent',
   label: 'Скачать',
   border: 'none',
 };
@@ -104,7 +103,6 @@ export const Send = Template.bind({});
 Send.args = {
   width: '240px',
   size: 'l',
-  view: 'transparent',
   iconPlace: 'right',
   icon: 'arrow-right',
   label: 'Отправить',
@@ -115,7 +113,6 @@ export const FormButtonDisabled = Template.bind({});
 FormButtonDisabled.args = {
   width: '360px',
   size: 'l',
-  view: 'transparent',
   iconPlace: 'right',
   icon: 'ok',
   label: 'Отправлено',
@@ -126,11 +123,9 @@ FormButtonDisabled.args = {
 export const BackButton_Link = Template.bind({});
 BackButton_Link.args = {
   size: 's',
-  view: 'transparent',
   iconPlace: 'right',
   icon: 'arrow-left',
   label: 'Бибилиотека',
   border: 'bottomRight',
-  disabled: true,
   isLink: true,
 };

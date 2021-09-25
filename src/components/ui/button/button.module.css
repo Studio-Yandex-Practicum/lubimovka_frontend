@@ -1,18 +1,18 @@
 .button {
+  @mixin text;
+
   position: relative;
   z-index: 1;
   display: flex;
   box-sizing: border-box;
   align-items: center;
   border: 0;
-  background-color: var(--beige);
+  background-color: transparent;
   cursor: pointer;
   font-size: 16px;
   line-height: 14px;
   outline: 0;
   text-transform: uppercase;
-
-  @mixin text;
 
   &::before {
     position: absolute;
@@ -57,26 +57,22 @@
 
 .l.button,
 .l.button.addon {
+  @mixin textSmall;
+
   align-items: center;
   justify-content: space-between;
   padding: 16px 16px 18px 16px;
-
-  @mixin textSmall;
 }
 
 .secondary {
   background-color: var(--light-green);
 }
 
-.transparent {
-  background-color: transparent;
-}
-
-.leftAddon.button {
+.left.button {
   padding-left: 0;
 }
 
-.leftAddon.button.l {
+.left.button.l {
   padding-left: 16px;
 }
 
