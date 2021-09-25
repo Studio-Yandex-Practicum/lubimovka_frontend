@@ -7,7 +7,7 @@ import styles from './project.module.css';
 
 const cn = classNames.bind(styles);
 
-interface IProjectProps {
+interface IProjectCardProps {
   data: {
     imgUrl: string;
     imgAlt: string;
@@ -16,7 +16,7 @@ interface IProjectProps {
   }
 }
 
-export const Project: FC<IProjectProps> = (props) => {
+export const ProjectCard: FC<IProjectCardProps> = (props) => {
   const {
     imgUrl,
     imgAlt,
