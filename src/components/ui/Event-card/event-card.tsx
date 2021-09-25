@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styles from './event-card.module.css';
+import {Button} from '../button/button';
 interface ICardProps {
   img?: string;
   time: string;
@@ -33,7 +34,7 @@ export const EventСard: FC<ICardProps> = (props) => {
           <li>Драматург: {playwright}</li>
           <li>Режиссер: {direct}</li>
         </ul>
-        <button className={styles.button}></button>
+        <Button className={styles.button} size ='s' iconPlace='left' icon='arrow-right' label='Регистрация' border='bottomLeft' view='transparent' ></Button>
       </div>
     </>
   );
