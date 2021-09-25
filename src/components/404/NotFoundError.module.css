@@ -1,0 +1,120 @@
+.error {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: 1px;
+  background: #ecebe8;
+  color: #242424;
+  font-family: 'Formular', Helvetica, Arial, sans-serif;
+
+  @media (max-width: 728px) {
+    padding: 32px 24px;
+  }
+}
+
+.logoContainer {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+}
+
+.contentContainer {
+  display: flex;
+  max-width: 720px;
+  flex-direction: column;
+  margin: 83px 152px 0 auto;
+
+  @media (max-width: 728px) {
+    margin: 0;
+  }
+
+  @media (max-width: 992px) {
+    margin: 83px auto 0;
+  }
+}
+
+.title {
+  margin: 0 auto 25px 0;
+  font-feature-settings: 'ss01' on;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: -.01em;
+  line-height: 28px;
+
+  @media (max-width: 728px) {
+    margin-bottom: 11px;
+  }
+}
+
+.subtitle {
+  max-width: 720px;
+  margin: 0 0 24px 0;
+  font-family: 'PP Neue Machina', Helvetica, Arial, sans-serif;
+  font-size: 56px;
+  font-weight: 400;
+  letter-spacing: -.01em;
+  line-height: 56px;
+
+  @media (max-width: 728px) {
+    margin-bottom: 16px;
+    font-size: 36px;
+    line-height: 38px;
+  }
+}
+
+.text {
+  max-width: 415px;
+  margin: 0 0 0 60px;
+  font-family: 'PP Neue Machina', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  letter-spacing: -.01em;
+  line-height: 24px;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 40px 0 0 60px;
+  list-style-type: none;
+  white-space: nowrap;
+
+  @media (max-width: 728px) {
+    flex-direction: column;
+  }
+}
+
+.listItem {
+  @media (max-width: 728px) {
+    margin-bottom: 34px;
+  }
+}
+
+.lines {
+  position: relative;
+  width: 100%;
+}
+
+.link {
+  box-sizing: border-box;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #242424;
+  border-left: 1px solid #242424;
+  margin-right: 8px;
+  color: #333;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.lineContainer {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+}
+
+.line {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+}
