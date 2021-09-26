@@ -14,26 +14,47 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 127px 109px 165px;
+  padding: 127px 70px 165px;
   margin: 0 auto;
+
+  @media (max-width: $laptop) {
+    padding: 336px 24px 100px;
+  }
 }
 
 .container_second {
-  padding: 93px 109px 267px;
+  padding: 93px 70px 267px;
+
+  @media (max-width: $laptop) {
+    padding: 228px 24px 150px;
+  }
 }
 
 .list_shift_right {
   align-self: flex-end;
+
+  @media (max-width: $mobile-landscape) {
+    align-self: flex-start;
+  }
 }
 
 .title {
   @mixin headline;
   @mixin headline2;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+  }
 }
 
 .titleBox {
   width: 448px;
   margin: 0 0 51px 12px;
+
+  @media (max-width: $tablet-portrait) {
+    width: 323px;
+    margin: 0 0 24px;
+  }
 }
 
 .paragraph {
@@ -51,22 +72,49 @@
   text-indent: 0;
 }
 
+.numberBox {
+  box-sizing: border-box;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0 0 16px 36px;
+  }
+}
+
 .picture {
   position: absolute;
   overflow: hidden;
   width: 660px;
   height: 330px;
-  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media (max-width: $laptop) {
+    width: 420px;
+    height: 218px;
+  }
+
+  @media (max-width: $tablet-landscape) {
+    width: 391px;
+    height: 200px;
+  }
 }
 
 .picture_actors {
   top: 268px;
   left: 0;
   background-image: url('./images/actors.jpg');
+
+  @media (max-width: $laptop) {
+    top: 99px;
+  }
 }
 
 .picture_audience {
   top: 277px;
   right: 0;
   background-image: url('./images/audience.jpg');
+
+  @media (max-width: $laptop) {
+    top: 0;
+  }
 }

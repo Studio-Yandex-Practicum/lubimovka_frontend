@@ -11,7 +11,7 @@ const Ideology: NextPage = () => (
       <article className={cn(style.picture, style.picture_actors)} />
       <div className={style.container}>
         <div className={cn(style.list, style.list_shift_right)}>
-          <p className={style.paragraph}>1</p>
+          <p className={cn(style.paragraph, style.numberBox)}>1</p>
           <h2 className={cn(style.title, style.titleBox)}>Мы твердо верим, что</h2>
 
           <TextItem number='1.1' title='Театр может и должен помогать обществу осмыслять меняющуюся реальность внутри и вокруг человека'>
@@ -34,7 +34,7 @@ const Ideology: NextPage = () => (
       <article className={cn(style.picture, style.picture_audience)} />
       <div className={cn(style.container, style.container_second)}>
         <div className={style.list}>
-          <p className={style.paragraph}>2</p>
+          <p className={cn(style.paragraph, style.numberBox)}>2</p>
           <h2 className={cn(style.title, style.titleBox)}>Мы искренне хотим</h2>
 
           <TextItem number='2.1' title='Открывать театральному миру новых авторов. '>

@@ -5,6 +5,10 @@
   align-items: flex-start;
   justify-content: flex-start;
   margin-bottom: 72px;
+
+  @media (max-width: $tablet-portrait) {
+    width: 366px;
+  }
 }
 
 .article:last-child {
@@ -16,6 +20,10 @@
 
   @mixin headline;
   @mixin headline4;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+  }
 }
 
 .paragraph {
@@ -27,10 +35,18 @@
   width: 100%;
   box-sizing: border-box;
   padding: 16px 17px 0 61px;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 16px 0 0;
+  }
 }
 
 .numberBox {
   width: 100%;
   box-sizing: border-box;
   padding: 0 0 16px 61px;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0 0 16px 33px;
+  }
 }
