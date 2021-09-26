@@ -67,9 +67,11 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
       className={cn(styles.cardEvents)}
       {...restAnnouncedPlayCardProps}
     >
-      <div className={cn(styles.coverEvents)}>
-        <img className={cn(styles.coverEvents)} src={coverResourceUrl}></img>
-      </div>
+      {buttonLinks.length === 2 &&
+        <div className={cn(styles.coverEvents)}>
+          <img className={cn(styles.coverEvents)} src={coverResourceUrl}></img>
+        </div>
+      }
       <div className={cn(styles.infoEvents)}>
         <div className={cn(styles.dateInfo)}>
           <p className={cn(styles.bodyText, styles.date)}>{date}</p>
