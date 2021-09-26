@@ -6,18 +6,11 @@
   padding: 4px 8px 8px 8px;
   border: 1px solid var(--coal);
   border-top: none;
-  background: transparent;
   text-align: left;
   transition: 300ms;
 
-  &:hover {
-    border: 1px solid transparent;
-    border-top: none;
-    background: var(--coal);
-    color: var(--white);
-  }
-
-  &_active {
+  &:hover,
+  &.active {
     border: 1px solid transparent;
     border-top: none;
     background: var(--coal);

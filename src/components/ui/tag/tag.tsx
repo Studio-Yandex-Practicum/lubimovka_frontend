@@ -14,7 +14,7 @@ export const Tag: FC<ITagProps> = (props) => {
 
   return (
     <div
-      className={selected ? cn(styles.tag, styles.tag_active) : cn(styles.tag)}
+      className={selected ? cn(styles.tag, styles.active) : cn(styles.tag)}
     >
       {label}
     </div>
