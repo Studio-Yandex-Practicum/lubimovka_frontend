@@ -57,8 +57,8 @@ export const Button: FC<IButtonProps> = (props) => {
         {buttonChildren}
       </button>
       ||
-      <Link href={href} {...restButtonProps}>
-        <a
+      <Link href={href} {...restButtonProps} >
+        <a  style={{width}}
           className={cx(classes, 'link')}>
           {buttonChildren}
         </a>
