@@ -1,26 +1,26 @@
 .tag {
+  @mixin text;
+  @mixin textMedium;
+
   display: inline-block;
   padding: 4px 8px 8px 8px;
   border: 1px solid var(--coal);
   border-top: none;
-  background: var(--beige);
+  background: transparent;
   text-align: left;
   transition: 300ms;
 
-  @mixin text;
-  @mixin textMedium;
-}
+  &:hover {
+    border: 1px solid transparent;
+    border-top: none;
+    background: var(--coal);
+    color: var(--white);
+  }
 
-.tag:hover {
-  border: 1px solid transparent;
-  border-top: none;
-  background: var(--coal);
-  color: var(--white);
-}
-
-.tag_active {
-  border: 1px solid transparent;
-  border-top: none;
-  background: var(--coal);
-  color: var(--white);
+  &_active {
+    border: 1px solid transparent;
+    border-top: none;
+    background: var(--coal);
+    color: var(--white);
+  }
 }
