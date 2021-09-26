@@ -18,10 +18,6 @@ export const SliderButton: FC<ISliderButtonProps> = (props) => {
   const left = direction === 'left';
   const arrowIcon = left ? 'arrow-left' : 'arrow-right';
 
-  const sliderButtonStyles = cx({
-    sliderButton: true,
-  });
-
   const firstCircleStyles = cx({
     circle: true,
     firstCircle: true,
@@ -36,7 +32,7 @@ export const SliderButton: FC<ISliderButtonProps> = (props) => {
   });
 
   return(
-    <button className={`${sliderButtonStyles} ${className}`} type='button' {...restProps}>
+    <button className={cn(styles.sliderButton, className)} type='button' {...restProps}>
       <div className={firstCircleStyles} />
       <div className={secondCircleStyles}/>
       <Icon glyph={arrowIcon} className={cn(styles.arrow)}/>
