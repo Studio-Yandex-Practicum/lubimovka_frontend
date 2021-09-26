@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import Link from 'next/link';
-import { Button } from '../button'
+import { Button } from '../button';
 
 import styles from './basic-play-card.module.css';
 

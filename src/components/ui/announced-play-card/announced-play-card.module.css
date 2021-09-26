@@ -30,6 +30,7 @@
 
 .infoEvents {
   display: flex;
+
   /* width: 269px; */
   flex-direction: column;
   justify-content: space-evenly;
@@ -97,9 +98,9 @@
 }
 
 .description {
-  margin: 0;
   width: 150px;
   padding-top: 20px;
+  margin: 0;
 }
 
 .caption {
@@ -109,14 +110,13 @@
 }
 
 .buttonEvents {
-  margin-bottom: 16px;
   width: 154px;
   justify-content: flex-start;
+  margin-bottom: 16px;
 
   @media (max-width: $mobile-landscape) {
     margin-right: 26px;
-    margin-bottom: 0px;
-
+    margin-bottom: 0;
   }
 }
 
@@ -255,8 +255,8 @@
 }
 
 .buttonFestivalContainer {
-  margin-top: 67px;
   width: 154px;
+  margin-top: 67px;
 
   @media (max-width: $tablet-portrait) {
     align-self: flex-end;
