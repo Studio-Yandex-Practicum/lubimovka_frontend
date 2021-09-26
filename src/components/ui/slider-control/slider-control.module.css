@@ -61,7 +61,6 @@
   }
 
   &:disabled .arrow {
-    animation: unset;
     fill: var(--black-15);
   }
 
