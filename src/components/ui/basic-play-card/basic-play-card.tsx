@@ -10,6 +10,8 @@ interface IBasicPlayCardProps {
     title: string;
     city: string;
     year: string;
+    linkView: string;
+    linkDownload: string;
   };
   author: {
     id: number,
@@ -34,35 +36,27 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         <p className={cn(styles.h7, styles.title)}>{play.title}</p>
         <div>
           <Button
-            width='240px'
+            className={styles.buttonCustom}
             size='l'
-            view='secondary'
+            view='transparent'
             iconPlace='right'
             icon='arrow-45'
             label='Смотреть читку'
             border='top'
+            isLink={true}
+            href={play.linkView}
           />
           <Button
-            width='240px'
+            className={styles.buttonCustom}
             size='l'
-            view='secondary'
+            view='transparent'
             iconPlace='right'
             icon='arrow-down'
             label='Скачать пьесу'
             border='top'
+            isLink={true}
+            href={play.linkDownload}
           />
-          {/* <Link href={play.linkView}>
-            <button className={cn(styles.button)}>
-              <p className={cn(styles.buttonName, styles.smalltext)}>CМОТРЕТЬ ЧИТКУ</p>
-              <ButtonIconExternal className={cn(styles.buttonIcon)} alt="Иконка кнопки"/>
-            </button>
-          </Link>
-          <Link href={play.linkDownload}>
-            <button className={cn(styles.button)}>
-              <p className={cn(styles.buttonName, styles.smalltext)}>СКАЧАТЬ ПЬЕСУ</p>
-              <ButtonIconDownload className={cn(styles.buttonIcon)} alt="Иконка кнопки"/>
-            </button>
-          </Link> */}
         </div>
       </div>
       <div className={cn(styles.info)}>

@@ -21,57 +21,6 @@
   background-color: var(--light-green);
 }
 
-.button {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  width: 100%;
-  height: 55px;
-  box-sizing: border-box;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding-right: 20px;
-  padding-left: 16px;
-  border: none;
-  border-top: var(--coal) solid 1px;
-  background-color: var(--light-green);
-  cursor: pointer;
-  outline: none;
-  visibility: hidden;
-
-  @media (max-width: $mobile-landscape) {
-    visibility: visible;
-  }
-}
-
-.button::after {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: var(--coal);
-  content: '';
-  transition: width .2s ease-in, transform .1s linear;
-}
-
-.button:hover {
-  color: var(--white);
-}
-
-.button:hover::after {
-  right: auto;
-  left: 0%;
-  width: 100%;
-  transition: width .2s ease-in, transform .1s linear;
-}
-
-.button:active::after {
-  transform: scale(1.075);
-}
-
 /*
 !!!
 Варианты анимации для появления кнопок:
@@ -105,25 +54,21 @@
   100% { opacity: 100%; }
 }
 
-.container:hover .button {
+.buttonCustom {
+  width: 100%;
+  visibility: hidden;
+
+  @media (max-width: $mobile-landscape) {
+    visibility: visible;
+  }
+}
+
+.container:hover .buttonCustom {
   /* animation: horizontal-move .2s ease-in; */
 
   /* animation: vertical-move .2s ease-in; */
   animation: fade-in .5s ease-in;
   visibility: visible;
-}
-
-.buttonName {
-  padding: 0;
-  margin: 0;
-}
-
-.buttonIcon {
-  height: 21px;
-}
-
-.button:hover .buttonIcon > path {
-  fill: var(--white);
 }
 
 .h7 {

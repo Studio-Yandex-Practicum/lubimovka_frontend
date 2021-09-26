@@ -85,7 +85,6 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             <Button
               view='transparent'
               className={styles.buttonEvents}
-              width='154px'
               size='s'
               iconPlace='left'
               icon='arrow-right'
@@ -97,7 +96,6 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             <Button
               view='transparent'
               className={styles.buttonEvents}
-              width='154px'
               size='s'
               iconPlace='left'
               icon='arrow-right'
@@ -113,7 +111,6 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             <Button
               view='transparent'
               className={styles.buttonEvents}
-              width='154px'
               size='s'
               iconPlace='left'
               icon='arrow-right'
@@ -149,7 +146,6 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           <Button
             view='transparent'
             className={styles.buttonFestival}
-            width='154px'
             size='s'
             iconPlace='left'
             icon='arrow-right'
