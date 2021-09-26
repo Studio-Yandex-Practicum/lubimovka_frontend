@@ -20,7 +20,6 @@
 }
 
 .dotActive {
-  animation-fill-mode: forwards;
   background-color: var(--coal);
   transform: scale(1.35);
 }
