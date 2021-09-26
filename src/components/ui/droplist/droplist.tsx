@@ -12,12 +12,14 @@ import { ContainerButton } from './index';
 import { createList } from './index';
 
 interface IDroplistProps {
-  dataType: Array<string> | Array<number> | 'years' | 'months',
+  type: 'years' | 'months';
   handlerSubmitDroplist: (selectList: string[]) => void,
+  data?: Array<string> | Array<number>,
   maxWidth?: string | number,
+  widthSelectedItem?: string | number,
 }
 
-export const Droplist: FC<IDroplistProps> = ({ dataType, handlerSubmitDroplist, maxWidth }): JSX.Element => {
+export const Droplist: FC<IDroplistProps> = ({ type, handlerSubmitDroplist, data, maxWidth, widthSelectedItem }): JSX.Element => {
   // Выбранный список пользователем. Вынести в компонент формы.
   const [ selectList, setSelectList ] = useState<string[]>([]);
 
@@ -27,6 +29,8 @@ export const Droplist: FC<IDroplistProps> = ({ dataType, handlerSubmitDroplist, 
   const [ activeDropdown, setActiveDropdown ] = useState(false);
   // Максимальная ширина всего компонента
   const [ maxWidthDroplist, setmaxWidthDroplist ] = useState('300');
+  // Ширина элементов выбранного списка
+  const [ defaultWidthSelectedItem, setDefaultWidthSelectedItem ] = useState('');
 
   // Записывает длину основного блока, если она передана в state
   const addmaxWidthDroplist = () => {
@@ -38,18 +42,34 @@ export const Droplist: FC<IDroplistProps> = ({ dataType, handlerSubmitDroplist, 
     }
   };
 
+  // Записывает длину основного блока, если она передана в state
+  const addWidthSelectedItem = () => {
+    if (widthSelectedItem) {
+      setDefaultWidthSelectedItem(widthSelectedItem.toString());
+      return;
+    }
+    switch (type) {
+    case 'months': setDefaultWidthSelectedItem('110'); break;
+    case 'years': setDefaultWidthSelectedItem('59'); break;
+    }
+  };
+
   useEffect(() => {
     // Если передают свой объект
-    if (Array.isArray(dataType)) {
-      getList(dataType);
+    if (Array.isArray(data)) {
+      getList(data);
       return;
     }
     // createList формирует отдельные массивы зависящий от передаваемого типа списка
-    const list = createList(dataType);
+    const list = createList(type);
     if (list) {
       getList(list);
     }
+  }, []);
+
+  useEffect(() => {
     addmaxWidthDroplist();
+    addWidthSelectedItem();
   }, []);
 
   const handlerSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -61,7 +81,10 @@ export const Droplist: FC<IDroplistProps> = ({ dataType, handlerSubmitDroplist, 
   const renderListSelected = (): JSX.Element | null => {
     if (activeDropdown && selectList.length > 0) {
       return (
-        <ListSelected selectList={ selectList } />
+        <ListSelected 
+          selectList={ selectList } 
+          defaultWidthSelectedItem={ defaultWidthSelectedItem } 
+        />
       );
     }
     return null;

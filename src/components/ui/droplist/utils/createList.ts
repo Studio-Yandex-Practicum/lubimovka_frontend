@@ -20,9 +20,9 @@ const createYearList = (data: Date): number[] => {
   return yearList;
 };
 
-export const createList = (dataType: string): string[] | number[] | void => {
+export const createList = (type: string): string[] | number[] | void => {
   const data: Date = new Date();
-  switch (dataType) {
+  switch (type) {
   case 'months': return createMonthList(data);
   case 'years': return createYearList(data);
   }
