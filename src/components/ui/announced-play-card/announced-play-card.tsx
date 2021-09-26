@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import cn from 'classnames';
-import Link from 'next/link';
-import ButtonIconInternal from './images/arrow-internal.svg';
+import { Button } from '../button';
 
 import styles from './announced-play-card.module.css';
 
@@ -14,10 +13,7 @@ interface IAnnouncedPlayCardProps {
   synopsis?: string;
   playwrightArray: string [];
   directorArray: string [];
-  buttonData: [{
-    buttonName: string;
-    buttonLink: string;
-  }];
+  buttonLinks: string [];
   coverResourceUrl: string;
 }
 
@@ -31,7 +27,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     synopsis,
     playwrightArray,
     directorArray,
-    buttonData,
+    buttonLinks,
     coverResourceUrl,
     ...restAnnouncedPlayCardProps
   } = props;
@@ -73,15 +69,49 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           }
         </div>
         <p className={cn(styles.caption, styles.description)}>читка проекта Любимовка.Ещё</p>
-        {
-          buttonData.map((i,k) => {
-            return <Link key={k} href={i.buttonLink} passHref>
-              <button className={cn(styles.button,styles.buttonEvents)}>
-                <ButtonIconInternal className={cn(styles.buttonIcon)} alt="Иконка кнопки"/>
-                <p className={cn(styles.buttonName, styles.smalltext)}>{i.buttonName.toUpperCase()}</p>
-              </button>
-            </Link>;
-          })
+        {buttonLinks.length === 2 &&
+          <div className={cn(styles.buttonEventsContainer)}>
+            <Button
+              view='transparent'
+              className={styles.buttonEvents}
+              width='154px'
+              size='s'
+              iconPlace='left'
+              icon='arrow-right'
+              label='О спектакле'
+              border='bottomLeft'
+              isLink={true}
+              href={buttonLinks[0]}
+            />
+            <Button
+              view='transparent'
+              className={styles.buttonEvents}
+              width='154px'
+              size='s'
+              iconPlace='left'
+              icon='arrow-right'
+              label='Билеты'
+              border='bottomLeft'
+              isLink={true}
+              href={buttonLinks[1]}
+            />
+          </div>
+        }
+           {buttonLinks.length === 1 &&
+          <div className={cn(styles.buttonEventsContainer)}>
+            <Button
+              view='transparent'
+              className={styles.buttonEvents}
+              width='154px'
+              size='s'
+              iconPlace='left'
+              icon='arrow-right'
+              label='Регистрация'
+              border='bottomLeft'
+              isLink={true}
+              href={buttonLinks[0]}
+            />
+          </div>
         }
       </div>
     </li>
@@ -121,15 +151,22 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             </p>)
         }
       </div>
-      {
-        buttonData.map((i,k) => {
-          return <Link key={k} href={i.buttonLink} passHref>
-            <button className={cn(styles.button, styles.buttonFestival)}>
-              <ButtonIconInternal className={cn(styles.buttonIcon)} alt="Иконка кнопки"/>
-              <p className={cn(styles.buttonName, styles.smalltext)}>{i.buttonName.toUpperCase()}</p>
-            </button>
-          </Link>;
-        })
+     {
+        buttonLinks.length > 0 &&
+        <div className={cn(styles.buttonFestivalContainer)}>
+          <Button
+            view='transparent'
+            className={styles.buttonFestival}
+            width='154px'
+            size='s'
+            iconPlace='left'
+            icon='arrow-right'
+            label='Регистрация'
+            border='bottomLeft'
+            isLink={true}
+            href={buttonLinks[0]}
+          />
+        </div>
       }
     </li>
   );

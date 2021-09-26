@@ -1,8 +1,6 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import Link from 'next/link';
-import ButtonIconExternal from './images/arrow-external.svg';
-import ButtonIconDownload from './images/arrow-download.svg';
 import { Button } from '../button'
 
 import styles from './basic-play-card.module.css';
@@ -12,8 +10,6 @@ interface IBasicPlayCardProps {
     title: string;
     city: string;
     year: string;
-    // linkView: string;
-    // linkDownload: string;
   };
   author: {
     id: number,
@@ -55,7 +51,6 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             label='Скачать пьесу'
             border='top'
           />
-
           {/* <Link href={play.linkView}>
             <button className={cn(styles.button)}>
               <p className={cn(styles.buttonName, styles.smalltext)}>CМОТРЕТЬ ЧИТКУ</p>
