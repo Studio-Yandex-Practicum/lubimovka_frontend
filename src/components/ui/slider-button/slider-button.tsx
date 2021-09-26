@@ -4,22 +4,22 @@ import classNames from 'classnames/bind';
 
 import {Icon} from '../icon';
 
-import styles from './slider-control.module.css';
+import styles from './slider-button.module.css';
 
-interface ISliderControlProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ISliderButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string,
   direction: 'left' | 'right';
 }
 
 const cx = classNames.bind(styles);
 
-export const SliderControl: FC<ISliderControlProps> = (props) => {
+export const SliderButton: FC<ISliderButtonProps> = (props) => {
   const {className, direction, ...restProps } = props;
   const left = direction === 'left';
   const arrowIcon = left ? 'arrow-left' : 'arrow-right';
 
-  const sliderControlStyles = cx({
-    sliderControl: true,
+  const sliderButtonStyles = cx({
+    sliderButton: true,
   });
 
   const firstCircleStyles = cx({
@@ -36,7 +36,7 @@ export const SliderControl: FC<ISliderControlProps> = (props) => {
   });
 
   return(
-    <button className={`${sliderControlStyles} ${className}`} type='button' {...restProps}>
+    <button className={`${sliderButtonStyles} ${className}`} type='button' {...restProps}>
       <div className={firstCircleStyles} />
       <div className={secondCircleStyles}/>
       <Icon glyph={arrowIcon} className={cn(styles.arrow)}/>
