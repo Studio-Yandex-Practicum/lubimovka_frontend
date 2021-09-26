@@ -53,6 +53,12 @@
   background-color: transparent;
   background-position: right 8px center;
   cursor: pointer;
+  transition: transform .1s linear, opacity .2s ease;
+
+  &:hover {
+    opacity: .8;
+    transform: translateX(4px);
+  }
 }
 
 .iconArrowRight {
