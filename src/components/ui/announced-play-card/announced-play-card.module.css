@@ -163,9 +163,12 @@
     position: relative;
     max-width: 414px;
     flex-direction: column;
-    padding-right: 23px;
-    padding-left: 24px;
+    padding: 0 23px 48px 24px;
   }
+}
+
+.cardFestival:last-child {
+  border-bottom: var(--coal) solid 1px;
 }
 
 .coverFestival {
