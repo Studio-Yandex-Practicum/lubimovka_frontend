@@ -2,7 +2,7 @@
   background-color: var(--beige);
 }
 
-.sectionSecond {
+.section:nth-child(2) {
   background-color: var(--white);
 }
 

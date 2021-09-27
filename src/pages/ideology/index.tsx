@@ -27,7 +27,7 @@ const Ideology: NextPage = () => (
       </div>
     </section>
 
-    <section className={cn(style.section, style.sectionSecond)}>
+    <section className={cn(style.section)}>
       <div className={cn(style.container, style.containerSecond)}>
         <article className={cn(style.picture, style.pictureAudience)} />
         <div className={style.list}>
