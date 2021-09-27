@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Studio-Yandex-Practicum/lubimovka_frontend#readme",
   "dependencies": {
+    "keen-slider": "5.5.1",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
@@ -33,6 +34,7 @@
     "@storybook/addon-essentials": "6.3.8",
     "@storybook/addon-links": "6.3.8",
     "@storybook/react": "6.3.8",
+    "@svgr/webpack": "5.5.0",
     "@types/react": "17.0.20",
     "@typescript-eslint/eslint-plugin": "4.31.0",
     "@typescript-eslint/parser": "4.31.0",
@@ -55,7 +57,7 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*.css": "stylelint **/*.css --cache --allow-empty-input",
+    "*.css": "stylelint **/*.css --cache --allow-empty-input --fix",
     "**/*.(ts|js)?(x)": "eslint --cache"
   }
 }

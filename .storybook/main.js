@@ -35,6 +35,39 @@ module.exports = {
       ]
     });
 
+    config.module.rules.find(
+      rule => rule.test && rule.test.test('.svg')
+    ).exclude = /\.svg$/;
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      oneOf: [
+        {
+          issuer: {
+            test: /\.(js|ts)x?$/,
+          },
+          use: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                svgoConfig: {
+                  plugins: {
+                    removeViewBox: false,
+                  }
+                }
+              }
+            }
+          ],
+        },
+        {
+          issuer: {
+            test: /\.css$/,
+          },
+          loader: 'url-loader',
+        }
+      ]
+    })
+
     config.resolve.plugins = config.resolve.plugins || [];
 
     config.resolve.plugins.push(
