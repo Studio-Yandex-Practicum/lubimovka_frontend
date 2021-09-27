@@ -20,8 +20,6 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
   const [ nameFile, setNameFile ] = useState('');
   // Текст для ошибки
   const [ messageError, setMessageError ] = useState('');
-  // Выбран ли файл
-  const [ selectedFile, isSelectedFile ] = useState<boolean | null>(null);
 
   // inpyt type file
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -43,14 +41,8 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
 
   // Добавляю текст к кнопке и имя файла
   useEffect(() => {
-    setTextButton(selectedFile ? 'Заменить файл' : 'Добавить файл');
-    if (inputRef.current && inputRef.current.files?.length) {
-      const fileName = inputRef.current.files[0].name;
-      setNameFile(fileName);
-      return;
-    }
-    setNameFile('');
-  }, [ selectedFile ]);
+    setTextButton(nameFile ? 'Заменить файл' : 'Добавить файл');
+  }, [ nameFile ]);
 
   // Вызывает у input file его событие по умолчанию
   const fileOnClick = useCallback((): void => {
@@ -61,12 +53,10 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
   }, [ inputRef ]);
 
   const isValidFile = (isValidName: boolean, file: File): void => {
-    const fileName = file.name;
     // Если имя файла валидно
     if (isValidName) {
       // Файл заношу для отправки на сервер
       setFile(file);
-      // setNameFile(fileName);
       // Убираю текст ошибки
       setMessageError('');
       return;
@@ -74,7 +64,6 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
     //Если имя файла не валидно
     // Удаляю файл
     setFile(null);
-    // setNameFile(fileName);
     setMessageError('Файл содержит кириллицу, пожалуйста, переименуйте его.');
   };
 
@@ -85,31 +74,30 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
       const file: File = input.files[0];
       const isEnglishName = /^[\w]+.[\w]+$/;
 
-      // changeButtonText(file);
-      isSelectedFile(true);
       const isValidName: boolean = isEnglishName.test(file.name);
       isValidFile(isValidName, file);
+
+      setNameFile(file.name);
     }
   };
 
   // Удаляю файл при нажатии на крестик
-  const deleteFile = (input: HTMLInputElement): void => {
+  const fileOnDelete = (input: HTMLInputElement): void => {
     // Удаляю с тэга
     input.value = '';
 
     // Файл удаляю для отправки на сервер
     setFile(null);
-    // setNameFile('');
     setMessageError('');
 
-    isSelectedFile(false);
+    setNameFile('');
   };
 
   // Удаление файла
   const handlerDeteleFile = (): void => {
     if (inputRef.current) {
       const input: HTMLInputElement = inputRef.current;
-      deleteFile(input);
+      fileOnDelete(input);
     }
   };
 
