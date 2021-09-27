@@ -1,5 +1,4 @@
 .section {
-  position: relative;
   background-color: var(--beige);
 }
 
@@ -8,6 +7,7 @@
 }
 
 .container {
+  position: relative;
   display: flex;
   max-width: 1440px;
   box-sizing: border-box;
@@ -83,19 +83,19 @@
 .picture {
   position: absolute;
   overflow: hidden;
-  width: 660px;
-  height: 330px;
+  width: 391px;
+  height: 200px;
   background-repeat: no-repeat;
   background-size: cover;
 
-  @media (max-width: $laptop) {
+  @media (min-width: $tablet-landscape) {
     width: 420px;
     height: 218px;
   }
 
-  @media (max-width: $tablet-landscape) {
-    width: 391px;
-    height: 200px;
+  @media (min-width: $desktop) {
+    width: 660px;
+    height: 330px;
   }
 }
 
