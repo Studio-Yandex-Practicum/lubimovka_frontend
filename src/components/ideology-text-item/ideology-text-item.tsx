@@ -4,7 +4,7 @@ import cn from 'classnames';
 import style from './ideology-text-item.module.css';
 
 interface TextItemProps {
-  number: '1.1' | '1.2' | '1.3' | '2.1' | '2.2' | '2.3';
+  number: string
   title: string
   children: ReactNode
 }
