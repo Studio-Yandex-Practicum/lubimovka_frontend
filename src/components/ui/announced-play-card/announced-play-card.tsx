@@ -15,6 +15,8 @@ interface IAnnouncedPlayCardProps {
   directorArray: string [];
   buttonLinks: string [];
   coverResourceUrl: string;
+  array: string [];
+  // creditsArrayToString( array: string[]): void;
 }
 
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
