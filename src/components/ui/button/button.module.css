@@ -5,12 +5,14 @@
 
   position: relative;
   z-index: 1;
-  display: flex;
+  display: grid;
   box-sizing: border-box;
   align-items: center;
   border: 0;
   background-color: transparent;
   cursor: pointer;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: 100%;
 
   &::before {
     position: absolute;
@@ -49,10 +51,6 @@
   }
 }
 
-.addon {
-  justify-content: space-between;
-}
-
 .l.button,
 .l.button.addon {
   @mixin textLargeButton;
@@ -66,7 +64,7 @@
   background-color: var(--light-green);
 }
 
-.left.button {
+.left.button.addon {
   padding-left: 0;
 }
 

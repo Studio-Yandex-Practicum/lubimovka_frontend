@@ -129,3 +129,27 @@ BackButton_Link.args = {
   border: 'bottomRight',
   isLink: true,
 };
+
+export const Tickets = Template.bind({});
+Tickets.args = {
+  size: 's',
+  iconPlace: 'left',
+  icon: 'arrow-right',
+  label: 'Билеты',
+  border: 'bottomLeft',
+  isLink: true,
+  align: 'start',
+  gap: '9px',
+  width: '154px',
+};
+
+export const Support = Template.bind({});
+Support.args = {
+  label: 'Поддержать',
+  view: 'primary',
+  icon: 'plus',
+  iconPlace: 'left',
+  isLink: true,
+  align: 'center',
+  width: '165px',
+};

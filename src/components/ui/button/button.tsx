@@ -16,6 +16,8 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string,
   isLink?: boolean,
   href?: string,
+  align?: 'start' | 'end' | 'center' | 'space-between',
+  gap?: string
 }
 
 const cx = cn.bind(styles);
@@ -30,14 +32,16 @@ export const Button: FC<IButtonProps> = (props) => {
     iconPlace,
     label,
     width,
+    align = 'space-between',
     border = 'none',
     disabled = false,
     className = '',
+    gap = '0',
     ...restButtonProps
   } = props;
 
   const classes = cx('button', view, border, icon && 'addon', iconPlace, iconPlace, size, [className]);
-
+  const style = {width: width, justifyContent: align, columnGap: gap};
   const buttonChildren = (
     <React.Fragment>
       {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
@@ -52,13 +56,13 @@ export const Button: FC<IButtonProps> = (props) => {
         className={classes}
         type='button'
         disabled={disabled}
-        style={{width}}
+        style={style}
         {...restButtonProps}>
         {buttonChildren}
       </button>
       ||
       <Link href={href} {...restButtonProps} >
-        <a  style={{width}}
+        <a  style={style}
           className={cx(classes, 'link')}>
           {buttonChildren}
         </a>
