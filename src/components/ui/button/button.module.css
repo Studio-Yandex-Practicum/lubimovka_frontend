@@ -1,18 +1,18 @@
 .button {
+  @mixin text;
+  @mixin textButton;
+  @mixin textSmallButton;
+
   position: relative;
   z-index: 1;
-  display: flex;
+  display: grid;
   box-sizing: border-box;
   align-items: center;
   border: 0;
-  background-color: var(--beige);
+  background-color: transparent;
   cursor: pointer;
-  font-size: 16px;
-  line-height: 14px;
-  outline: 0;
-  text-transform: uppercase;
-
-  @mixin text;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: 100%;
 
   &::before {
     position: absolute;
@@ -51,32 +51,24 @@
   }
 }
 
-.addon {
-  justify-content: space-between;
-}
-
 .l.button,
 .l.button.addon {
+  @mixin textLargeButton;
+
   align-items: center;
   justify-content: space-between;
   padding: 16px 16px 18px 16px;
-
-  @mixin textSmall;
 }
 
 .secondary {
   background-color: var(--light-green);
 }
 
-.transparent {
-  background-color: transparent;
-}
-
-.leftAddon.button {
+.left.button.addon {
   padding-left: 0;
 }
 
-.leftAddon.button.l {
+.left.button.l {
   padding-left: 16px;
 }
 
