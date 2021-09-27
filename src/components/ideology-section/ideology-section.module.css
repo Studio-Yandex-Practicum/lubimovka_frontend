@@ -1,18 +1,10 @@
-.section {
-  background-color: var(--beige);
-
-  &:nth-child(2n) {
-    background-color: var(--white);
-  }
-}
-
 .container {
   position: relative;
   display: flex;
   max-width: 1440px;
   box-sizing: border-box;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: flex-start;
   padding: 127px 70px 165px;
   margin: 0 auto;
@@ -20,21 +12,63 @@
   @media (max-width: $laptop) {
     padding: 336px 24px 100px;
   }
-}
 
-.containerSecond {
-  padding: 93px 70px 267px;
-
-  @media (max-width: $laptop) {
-    padding: 228px 24px 150px;
+  @media (max-width: $mobile-landscape) {
+    align-items: flex-start;
   }
 }
 
-.listShiftRight {
-  align-self: flex-end;
+.picture {
+  position: absolute;
+  top: 268px;
+  left: 0;
+  overflow: hidden;
+  width: 391px;
+  height: 200px;
+  object-fit: cover;
 
-  @media (max-width: $mobile-landscape) {
-    align-self: flex-start;
+  @media (min-width: $tablet-landscape) {
+    width: 420px;
+    height: 218px;
+  }
+
+  @media (min-width: $desktop) {
+    width: 660px;
+    height: 330px;
+  }
+
+  @media (max-width: $laptop) {
+    top: 99px;
+  }
+}
+
+.section {
+  background-color: var(--beige);
+
+  &:nth-child(2n) {
+    background-color: var(--white);
+
+    & .container {
+      padding: 93px 70px 267px;
+
+      @media (max-width: $laptop) {
+        padding: 228px 24px 150px;
+      }
+    }
+
+    & .list {
+      align-self: flex-start;
+    }
+
+    & .picture {
+      top: 277px;
+      right: 0;
+      left: unset;
+
+      @media (max-width: $laptop) {
+        top: 0;
+      }
+    }
   }
 }
 
@@ -77,44 +111,5 @@
 
   @media (max-width: $tablet-portrait) {
     padding: 0 0 16px 36px;
-  }
-}
-
-.picture {
-  position: absolute;
-  overflow: hidden;
-  width: 391px;
-  height: 200px;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  @media (min-width: $tablet-landscape) {
-    width: 420px;
-    height: 218px;
-  }
-
-  @media (min-width: $desktop) {
-    width: 660px;
-    height: 330px;
-  }
-}
-
-.pictureActors {
-  top: 268px;
-  left: 0;
-  background-image: url('../../pages/ideology/images/actors.jpg');
-
-  @media (max-width: $laptop) {
-    top: 99px;
-  }
-}
-
-.pictureAudience {
-  top: 277px;
-  right: 0;
-  background-image: url('../../pages/ideology/images/audience.jpg');
-
-  @media (max-width: $laptop) {
-    top: 0;
   }
 }
