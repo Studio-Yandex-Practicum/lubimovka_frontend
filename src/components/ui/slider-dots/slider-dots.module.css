@@ -1,0 +1,25 @@
+.dots {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 1px solid var(--coal);
+  margin: 0 8px;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--coal);
+    transform: scale(1.35);
+  }
+}
+
+.dotActive {
+  background-color: var(--coal);
+  transform: scale(1.35);
+}
