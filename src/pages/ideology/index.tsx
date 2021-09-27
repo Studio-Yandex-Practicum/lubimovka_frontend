@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import cn from 'classnames';
 
-import TextItem from './text-item/text-item';
+import TextItem from '../../components/ideology-text-item';
 
 import style from './ideology.module.css';
 
