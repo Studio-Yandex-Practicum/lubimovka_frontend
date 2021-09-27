@@ -18,7 +18,7 @@ export const SliderDots: FC<ISliderDotsProps> = ({className, count, currentSlide
           <button
             key={index}
             onClick={() => onClick(index)}
-            className={cn(styles.dot, currentSlide === index ? styles.dotActive : '', className)}
+            className={cn(styles.dot, {[styles.dotActive]: currentSlide === index}, className)}
           />
         );
       })}
