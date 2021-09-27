@@ -37,8 +37,9 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         <div>
           <Button
             className={styles.buttonCustom}
+            width='100%'
             size='l'
-            view='transparent'
+            view='primary'
             iconPlace='right'
             icon='arrow-45'
             label='Смотреть читку'
@@ -48,8 +49,9 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
           />
           <Button
             className={styles.buttonCustom}
+            width='100%'
             size='l'
-            view='transparent'
+            view='primary'
             iconPlace='right'
             icon='arrow-down'
             label='Скачать пьесу'

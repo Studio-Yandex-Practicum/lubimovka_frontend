@@ -55,7 +55,6 @@
 }
 
 .buttonCustom {
-  width: 100%;
   visibility: hidden;
 
   @media (max-width: $mobile-landscape) {
@@ -67,6 +66,7 @@
   /* animation: horizontal-move .2s ease-in; */
 
   /* animation: vertical-move .2s ease-in; */
+
   animation: fade-in .5s ease-in;
   visibility: visible;
 }
