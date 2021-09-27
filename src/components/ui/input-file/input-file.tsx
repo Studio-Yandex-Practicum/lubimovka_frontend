@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, FC, SetStateAction } from 'react';
+import React, { useRef, useState, useEffect, FC, SetStateAction, useCallback } from 'react';
 import cn from 'classnames';
 
 import { Icon } from '../icon';
@@ -20,6 +20,8 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
   const [ nameFile, setNameFile ] = useState('');
   // Текст для ошибки
   const [ messageError, setMessageError ] = useState('');
+  // Выбран ли файл
+  const [ selectedFile, isSelectedFile ] = useState<boolean | null>(null);
 
   // inpyt type file
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -39,23 +41,24 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
     }
   }, []);
 
+  // Добавляю текст к кнопке и имя файла
+  useEffect(() => {
+    setTextButton(selectedFile ? 'Заменить файл' : 'Добавить файл');
+    if (inputRef.current && inputRef.current.files?.length) {
+      const fileName = inputRef.current.files[0].name;
+      setNameFile(fileName);
+      return;
+    }
+    setNameFile('');
+  }, [ selectedFile ]);
+
   // Вызывает у input file его событие по умолчанию
-  const triggerInput = (): void => {
+  const fileOnClick = useCallback((): void => {
     if (inputRef.current) {
       const input: HTMLInputElement = inputRef.current;
       input.click();
     }
-  };
-
-  // Если есть файл, меняю текст кнопки
-  const changeButtonText = (file: File): void => {
-    if (file) {
-      setTextButton('Заменить файл');
-    } else {
-      setTextButton('Добавить файл');
-      return;
-    }
-  };
+  }, [ inputRef ]);
 
   const isValidFile = (isValidName: boolean, file: File): void => {
     const fileName = file.name;
@@ -63,7 +66,7 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
     if (isValidName) {
       // Файл заношу для отправки на сервер
       setFile(file);
-      setNameFile(fileName);
+      // setNameFile(fileName);
       // Убираю текст ошибки
       setMessageError('');
       return;
@@ -71,7 +74,7 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
     //Если имя файла не валидно
     // Удаляю файл
     setFile(null);
-    setNameFile(fileName);
+    // setNameFile(fileName);
     setMessageError('Файл содержит кириллицу, пожалуйста, переименуйте его.');
   };
 
@@ -82,7 +85,8 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
       const file: File = input.files[0];
       const isEnglishName = /^[\w]+.[\w]+$/;
 
-      changeButtonText(file);
+      // changeButtonText(file);
+      isSelectedFile(true);
       const isValidName: boolean = isEnglishName.test(file.name);
       isValidFile(isValidName, file);
     }
@@ -95,10 +99,10 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
 
     // Файл удаляю для отправки на сервер
     setFile(null);
-    setNameFile('');
+    // setNameFile('');
     setMessageError('');
 
-    setTextButton('Добавить файл');
+    isSelectedFile(false);
   };
 
   // Удаление файла
@@ -112,12 +116,9 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
   return (
     <div className={ cn(styles.addFile) }>
       {
-        nameFile ? (
+        nameFile && (
           <div className={ cn(styles.conteiner) }>
-            <button
-              onClick={ handlerDeteleFile }
-              className={ cn(styles.delete) }
-            >
+            <button onClick={ handlerDeteleFile } className={ cn(styles.delete) } >
               {
                 <Icon glyph='cross' className={styles.iconDelete} fill='white' />
               }
@@ -127,14 +128,13 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
             </p>
           </div>
         )
-          : null
       }
       {
-        messageError ? (
+        messageError && (
           <p className={ cn(styles.message) }>
             { messageError }
           </p>
-        ) : null
+        )
       }
       <input
         type='file'
@@ -142,10 +142,7 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
         onChange={ handlerChange }
         className={ cn(styles.input) }
       />
-      <button
-        onClick={ triggerInput }
-        className={ cn(styles.add) }
-      >
+      <button onClick={ fileOnClick } className={ cn(styles.add) } >
         {
           <Icon glyph='plus' className={styles.iconPlus} />
         }

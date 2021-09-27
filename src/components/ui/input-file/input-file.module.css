@@ -27,25 +27,21 @@
 
 .name {
   @mixin textLarge;
+  @mixin text;
 
   overflow: hidden;
-  margin: 0;
   margin-right: 9px;
   color: var(--beige);
-  font-family: 'Formular', sans-serif;
-  font-weight: 300;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .message {
   @mixin textCaption;
+  @mixin text;
 
-  margin: 0;
   margin-bottom: 14px;
   color: #eb5757;
-  font-family: 'Formular', sans-serif;
-  font-weight: 300;
 }
 
 .input {
