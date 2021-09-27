@@ -1,9 +1,9 @@
 .section {
   background-color: var(--beige);
-}
 
-.section:nth-child(2) {
-  background-color: var(--white);
+  &:nth-child(2) {
+    background-color: var(--white);
+  }
 }
 
 .container {
@@ -65,11 +65,11 @@
 .paragraphText {
   margin-top: 36px;
   text-indent: 23px;
-}
 
-.paragraphText:first-of-type {
-  margin-top: 0;
-  text-indent: 0;
+  &:first-of-type {
+    margin-top: 0;
+    text-indent: 0;
+  }
 }
 
 .numberBox {
