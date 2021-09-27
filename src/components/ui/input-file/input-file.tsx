@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, FC, SetStateAction, useCallback } from 'react';
+import React, { useRef, useState, useEffect, FC, useCallback } from 'react';
 import cn from 'classnames';
 
 import { Icon } from '../icon';
@@ -6,12 +6,11 @@ import { Icon } from '../icon';
 import styles from './input-file.module.css';
 
 interface IInputFileProps {
-  /* setFile: React.Dispatch<SetStateAction<File | null>>, */
   typesListFiles?: string[],
+  cb?: (file: File) => void,
 }
 
-export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }): JSX.Element => {
-  // Так должен выглядит state, который нужно поднять
+export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Element => {
   const [ file, setFile ] = useState<null | File>(null);
 
   // Текст кнопки
@@ -23,6 +22,13 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
 
   // inpyt type file
   const inputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    // Если есть file и cb, вызываем переданный колбек
+    if (file && cb) {
+      cb(file);
+    }
+  }, [ file ]);
 
   const addSetAttribute = (input: HTMLInputElement): void => {
     if (typesListFiles && Array.isArray(typesListFiles) && input) {
@@ -37,7 +43,7 @@ export const InputFile: FC<IInputFileProps> = ({ /* setFile, */ typesListFiles }
       // Добавляю тип в атрибут input
       addSetAttribute(input);
     }
-  }, []);
+  }, [ typesListFiles ]);
 
   // Добавляю текст к кнопке и имя файла
   useEffect(() => {
