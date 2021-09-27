@@ -85,8 +85,10 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         {buttonLinks.length === 2 &&
           <div className={cn(styles.buttonEventsContainer, styles.buttonEventsContainerTwoLinks)}>
             <Button
-              view='transparent'
+              view='primary'
               className={styles.buttonEvents}
+              align='start'
+              gap='9px'
               size='s'
               iconPlace='left'
               icon='arrow-right'
@@ -96,8 +98,10 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
               href={buttonLinks[0]}
             />
             <Button
-              view='transparent'
+              view='primary'
               className={styles.buttonEvents}
+              align='start'
+              gap='9px'
               size='s'
               iconPlace='left'
               icon='arrow-right'
@@ -111,8 +115,10 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         {buttonLinks.length === 1 &&
           <div className={cn(styles.buttonEventsContainer, styles.buttonEventsContainerOneLink)}>
             <Button
-              view='transparent'
+              view='primary'
               className={styles.buttonEvents}
+              align='start'
+              gap='9px'
               size='s'
               iconPlace='left'
               icon='arrow-right'
@@ -146,8 +152,10 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         buttonLinks.length > 0 &&
         <div className={cn(styles.buttonFestivalContainer)}>
           <Button
-            view='transparent'
+            view='primary'
             className={styles.buttonFestival}
+            align='start'
+            gap='9px'
             size='s'
             iconPlace='left'
             icon='arrow-right'
