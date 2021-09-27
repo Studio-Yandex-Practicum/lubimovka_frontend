@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import {ComponentStory, ComponentMeta} from '@storybook/react';
 
 import Input from './input';
 
@@ -29,9 +29,4 @@ Email.args = {
 export const Password = Template.bind({});
 Password.args = {
   type: 'password',
-};
-
-export const Number = Template.bind({});
-Number.args = {
-  value: 'number',
 };
