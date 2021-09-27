@@ -2,7 +2,7 @@ import {ButtonHTMLAttributes, FC} from 'react';
 import cn from 'classnames';
 import classNames from 'classnames/bind';
 
-import {Icon, IIconProps} from '../icon';
+import {Icon} from '../icon';
 
 import styles from './slider-button.module.css';
 
@@ -15,10 +15,10 @@ const cx = classNames.bind(styles);
 
 export const SliderButton: FC<ISliderButtonProps> = (props) => {
   const {className, direction, ...restProps } = props;
-  const arrowIcon = {
+  const arrowIcon = ({
     left: 'arrow-left',
     right: 'arrow-right',
-  }[direction] as IIconProps['glyph'];
+  } as const)[direction];
 
   const firstCircleStyles = cx({
     circle: true,
