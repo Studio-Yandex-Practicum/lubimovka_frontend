@@ -1,4 +1,4 @@
-/* .section {
+.section {
   background-color: var(--beige);
 
   &:nth-child(2) {
@@ -102,7 +102,7 @@
 .pictureActors {
   top: 268px;
   left: 0;
-  background-image: url('./images/actors.jpg');
+  background-image: url('../../pages/ideology/images/actors.jpg');
 
   @media (max-width: $laptop) {
     top: 99px;
@@ -112,9 +112,9 @@
 .pictureAudience {
   top: 277px;
   right: 0;
-  background-image: url('./images/audience.jpg');
+  background-image: url('../../pages/ideology/images/audience.jpg');
 
   @media (max-width: $laptop) {
     top: 0;
   }
-} */
+}
