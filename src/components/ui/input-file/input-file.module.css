@@ -47,28 +47,3 @@
 .input {
   display: none;
 }
-
-.add {
-  @mixin text;
-
-  display: flex;
-  width: 100%;
-  max-width: 182px;
-  max-height: 31px;
-  align-items: center;
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid var(--coal);
-  border-left: 1px solid var(--coal);
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 14px;
-  text-transform: uppercase;
-}
-
-.iconPlus {
-  width: 25px;
-  height: 25px;
-  margin-right: 3px;
-}

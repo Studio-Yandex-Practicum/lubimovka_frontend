@@ -5,6 +5,9 @@ import { Icon } from '../icon';
 
 import styles from './input-file.module.css';
 
+// Компоненты
+import { Button } from '../Button/index';
+
 interface IInputFileProps {
   typesListFiles?: string[],
   cb?: (file: File) => void,
@@ -136,12 +139,17 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
         onChange={ handlerChange }
         className={ cn(styles.input) }
       />
-      <button onClick={ fileOnClick } className={ cn(styles.add) } >
-        {
-          <Icon glyph='plus' className={styles.iconPlus} />
-        }
-        { textButton }
-      </button>
+      <Button 
+        label={ textButton } 
+        onClick={ fileOnClick } 
+        size={ 's' } 
+        icon={ 'plus' } 
+        iconPlace={ 'left' } 
+        border={ 'bottomLeft' } 
+        width={ '182px' }
+        align={ 'start'}
+        gap={'3px'}
+      />
     </div>
   );
 };
