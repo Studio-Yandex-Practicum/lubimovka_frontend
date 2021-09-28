@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './event-card.module.css';
 import { Button } from '../button/button';
 interface ICardProps {
-  img?: string;
+  image?: string;
   time: string;
   location: string;
   title: string;
@@ -11,12 +11,12 @@ interface ICardProps {
   direct: string;
 }
 export const EventСard: FC<ICardProps> = (props) => {
-  const { time, location, title, description, playwright, direct } = props;
+  const { time, location, title, description, playwright, direct, image } = props;
   return (
     <div className={styles.content}>
       <div className={styles.imgContainer}>
-        {props.img && (
-          <img src={props.img} alt={title} className={styles.image} />
+        {image && (
+          <img src={image} alt={title} className={styles.image} />
         )}
       </div>
       <div className={styles.data}>
@@ -38,7 +38,7 @@ export const EventСard: FC<ICardProps> = (props) => {
         icon="arrow-right"
         label="Регистрация"
         border="bottomLeft"
-        view="transparent"
+        view="primary"
       ></Button>
     </div>
   );
