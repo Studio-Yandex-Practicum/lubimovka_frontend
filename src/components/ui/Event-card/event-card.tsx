@@ -31,15 +31,18 @@ export const EventСard: FC<ICardProps> = (props) => {
         <li>Драматург: {playwright}</li>
         <li>Режиссер: {direct}</li>
       </ul>
-      <Button
-        className={styles.button}
-        size="s"
-        iconPlace="left"
-        icon="arrow-right"
-        label="Регистрация"
-        border="bottomLeft"
-        view="primary"
-      ></Button>
+      <div className={styles.buttonBox}>
+        <Button
+          className={styles.button}
+          size="s"
+          iconPlace="left"
+          icon="arrow-right"
+          label="Регистрация"
+          border="bottomLeft"
+          view="primary"
+        ></Button>
+      </div>
+
     </div>
   );
 };
