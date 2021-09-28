@@ -1,22 +1,35 @@
-import {FC, InputHTMLAttributes} from 'react';
+import {FC, InputHTMLAttributes, TextareaHTMLAttributes} from 'react';
 import cn from 'classnames';
-import styles from '../input/input.module.css';
+import styles from './text-field.module.css';
 
+// ------ input ------
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  rows?: number;
-  cols?: number;
-  minLength?: number;
-  maxLength?: number;
   formNoValidate?: boolean;
 }
 
-const TextField: FC<InputProps> = (props) => {
+export const Input: FC<InputProps> = (props) => {
+  const {...restProps} = props;
+
   return (
-    <div className={cn(styles.inputComponent)}>
-      <textarea className={cn(styles.input)} />
-      <span className='inputError'>{props.formNoValidate}</span>
+    <div className={cn(styles.textFieldComponent)}>
+      <input className={cn(styles.textField)} {...restProps} />
+      <span className='error'>{props.formNoValidate}</span>
     </div>
   );
 };
 
-export default TextField;
+// ------ textarea ------
+interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+  formNoValidate?: boolean;
+}
+
+export const TextArea: FC<TextAreaProps> = (props) => {
+  const {...restProps} = props;
+
+  return (
+    <div className={cn(styles.textFieldComponent)}>
+      <textarea className={cn(styles.textField)} {...restProps} />
+      <span className='error'>{props.formNoValidate}</span>
+    </div>
+  );
+};
