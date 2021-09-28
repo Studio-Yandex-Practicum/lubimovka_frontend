@@ -7,7 +7,7 @@ import { Button } from 'components/ui/button';
 import Logo from 'shared/images/logo.svg';
 import { NAVIGATION_MENU_ITEMS, SOCIAL_LIST_ITEMS } from 'shared/constants';
 
-import styles from './header.module.css';
+import styles from './navbar.module.css';
 
 const cx = cn.bind(styles);
 
@@ -16,9 +16,9 @@ export type TSocialItem = {
   href: string;
 };
 
-export const Header: FC = () => {
+export const Navbar: FC = () => {
   return (
-    <header className={cx('header')}>
+    <header className={cx('navbar')}>
       <NextLink href={'/'}>
         <a className={cx('logoLink')}>
           <Logo className={cx('logo')} />

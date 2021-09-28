@@ -1,5 +1,5 @@
 import { INavigationMenuItemProps } from '../components/ui/navigation-menu-item';
-import { TSocialItem } from 'components/common/header';
+import { TSocialItem } from 'components/common/navbar';
 
 export const NAVIGATION_MENU_ITEMS: INavigationMenuItemProps[] = [
   {
