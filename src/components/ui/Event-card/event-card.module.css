@@ -70,34 +70,27 @@
 }
 
 .time {
-  font-size: 28px;
-  line-height: 32px;
+  @mixin headline;
+  @mixin headline6;
 
-  @mixin headline @media (max-width: $mobile-landscape) {
-    font-size: 20px;
-    line-height: 24px;
+  @media (max-width: $mobile-landscape) {
+    @mixin headline7;
   }
 }
 
 .location {
-  font-size: 16px;
-  line-height: 22px;
-
   @mixin text;
+  @mixin textSmall;
 }
 
 .title {
-  font-size: 28px;
-  line-height: 32px;
-
   @mixin headline;
+  @mixin headline6;
 }
 
 .description {
-  font-size: 16px;
-  line-height: 22px;
-
   @mixin text;
+  @mixin textSmall;
 
   @media (max-width: $tablet-portrait) {
     margin: 0 auto;
@@ -114,11 +107,10 @@
   width: 20%;
   align-self: center;
   padding: 0;
-  font-size: 16px;
-  line-height: 22px;
   list-style: none;
 
   @mixin text;
+  @mixin textSmall;
 
   @media (max-width: 1072px) {
     margin: 10px 0;
