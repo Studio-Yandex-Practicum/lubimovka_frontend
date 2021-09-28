@@ -19,7 +19,7 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
   // Текст кнопки
   const [ textButton, setTextButton ] = useState('Добавить файл');
   // Имя файла для отображения
-  const [ nameFile, setNameFile ] = useState('');
+  const [ nameFile, setNameFile ] = useState<string | null>(null);
   // Текст для ошибки
   const [ messageError, setMessageError ] = useState('');
 
@@ -53,6 +53,15 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
     setTextButton(nameFile ? 'Заменить файл' : 'Добавить файл');
   }, [ nameFile ]);
 
+  // Добавляю текст к сообщению об ошибке
+  useEffect(() => {
+    if (!nameFile) {
+      setMessageError('');
+      return;
+    }
+    setMessageError(file ? '' : 'Файл содержит кириллицу, пожалуйста, переименуйте его.');
+  }, [ file, nameFile ]);
+
   // Вызывает у input file его событие по умолчанию
   const fileOnClick = useCallback((): void => {
     if (inputRef.current) {
@@ -60,21 +69,6 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
       input.click();
     }
   }, [ inputRef ]);
-
-  const isValidFile = (isValidName: boolean, file: File): void => {
-    // Если имя файла валидно
-    if (isValidName) {
-      // Файл заношу для отправки на сервер
-      setFile(file);
-      // Убираю текст ошибки
-      setMessageError('');
-      return;
-    }
-    //Если имя файла не валидно
-    // Удаляю файл
-    setFile(null);
-    setMessageError('Файл содержит кириллицу, пожалуйста, переименуйте его.');
-  };
 
   // Когда файл выбран
   const handlerChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -84,7 +78,7 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
       const isEnglishName = /^[\w]+.[\w]+$/;
 
       const isValidName: boolean = isEnglishName.test(file.name);
-      isValidFile(isValidName, file);
+      isValidName ? setFile(file) : setFile(null);
 
       setNameFile(file.name);
     }
@@ -97,7 +91,6 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
 
     // Файл удаляю для отправки на сервер
     setFile(null);
-    setMessageError('');
 
     setNameFile('');
   };
