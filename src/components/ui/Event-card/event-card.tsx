@@ -8,12 +8,12 @@ interface IEventCardProps {
   title: string;
   description: string;
   playwright: string;
-  direct: string;
+  director: string;
 }
 export const EventСard: FC<IEventCardProps> = (props) => {
-  const { time, location, title, description, playwright, direct, image } = props;
+  const { time, location, title, description, playwright, director, image } = props;
   return (
-    <div className={styles.content}>
+    <article className={styles.content}>
       <div className={styles.imgContainer}>
         {image && (
           <img src={image} alt={title} className={styles.image} />
@@ -27,10 +27,10 @@ export const EventСard: FC<IEventCardProps> = (props) => {
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.description}>{description}</p>
       </div>
-      <ul className={styles.creators}>
-        <li>Драматург: {playwright}</li>
-        <li>Режиссер: {direct}</li>
-      </ul>
+      <dl className={styles.creators}>
+        <dt>Драматург: </dt><dd>{playwright}</dd>
+        <dt>Режиссер: </dt><dd>{director}</dd>
+      </dl>
       <div className={styles.buttonBox}>
         <Button
           className={styles.button}
@@ -43,6 +43,6 @@ export const EventСard: FC<IEventCardProps> = (props) => {
         ></Button>
       </div>
 
-    </div>
+    </article>
   );
 };

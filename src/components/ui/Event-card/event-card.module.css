@@ -107,10 +107,12 @@
 }
 
 .creators {
-  width: 20%;
+  display: grid;
   align-self: center;
   padding: 0;
-  list-style: none;
+
+  /* flex-wrap: wrap; */
+  grid-template-columns: 1fr 1fr;
 
   @mixin text;
   @mixin textSmall;
@@ -123,6 +125,16 @@
     width: 100%;
     margin-top: 24px;
   }
+}
+
+dd {
+  display: block;
+  margin: 0;
+  margin-left: 2px;
+}
+
+dt {
+  display: block;
 }
 
 .buttonBox {
