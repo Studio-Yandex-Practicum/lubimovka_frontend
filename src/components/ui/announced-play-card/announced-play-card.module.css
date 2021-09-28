@@ -1,6 +1,6 @@
 .cardEvents {
   display: flex;
-  width: 419px;
+  width: 420px;
   flex-direction: row;
   font-family: 'Formular', 'PP Neue Machina', Helvetica, Arial, sans-serif;
   list-style-type: none;
@@ -83,7 +83,7 @@
 
 .credits {
   display: flex;
-  width: 254px;
+  width: 240px;
   flex-direction: column;
   margin: 16px 0 0 30px;
 
@@ -111,7 +111,6 @@
 }
 
 .buttonEvents {
-  width: 154px;
   justify-content: flex-start;
   margin-bottom: 16px;
 
@@ -156,7 +155,6 @@
   display: flex;
   max-width: 1200px;
   flex-direction: row;
-  border-top: var(--coal) solid 1px;
   font-family: 'Formular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   list-style-type: none;
 
@@ -165,22 +163,24 @@
     max-width: 414px;
     flex-direction: column;
     padding: 0 23px 48px 24px;
+    border-top: var(--coal) solid 1px;
   }
 }
 
 .cardFestival:last-child {
-  border-bottom: var(--coal) solid 1px;
+  @media (max-width: $tablet-portrait) {
+    border-bottom: var(--coal) solid 1px;
+  }
 }
 
 .coverFestival {
   width: 151px;
-  height: 191px;
-  padding-right: 28px;
+  min-height: 191px;
   object-fit: cover;
 
   @media (max-width: $tablet-landscape) {
     width: 127px;
-    height: 161px;
+    min-height: 161px;
   }
 
   @media (max-width: $tablet-portrait) {
@@ -191,14 +191,44 @@
   }
 }
 
+.coverFestivalVoid {
+  width: 151px;
+  min-height: 191px;
+
+  @media (max-width: $tablet-landscape) {
+    width: 127px;
+    min-height: 161px;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    width: 0;
+    min-height: 0;
+  }
+}
+
 .infoFestival {
   display: flex;
   max-width: 150px;
   flex-direction: column;
   padding-right: 53px;
+  padding-bottom: 41px;
+  padding-left: 28px;
+  border-top: var(--coal) solid 1px;
+  border-bottom: var(--coal) solid 1px;
 
   @media (max-width: $tablet-landscape) {
     padding-right: 32px;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    border-top: 0;
+    border-bottom: 0;
+  }
+}
+
+.infoFestivalVoid {
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: 0;
   }
 }
 
@@ -223,6 +253,8 @@
 .infoPlay {
   max-width: 329px;
   padding-right: 32px;
+  border-top: var(--coal) solid 1px;
+  border-bottom: var(--coal) solid 1px;
 
   @media (max-width: $tablet-landscape) {
     max-width: 229px;
@@ -232,6 +264,8 @@
   @media (max-width: $tablet-portrait) {
     max-width: 381px;
     padding-right: 8px;
+    border-top: 0;
+    border-bottom: 0;
   }
 }
 
@@ -240,6 +274,12 @@
 
   @media (max-width: $tablet-portrait) {
     padding-top: 111px;
+  }
+}
+
+.titleFestivalVoid {
+  @media (max-width: $tablet-portrait) {
+    padding-top: 20px;
   }
 }
 
@@ -258,6 +298,9 @@
   flex-direction: column;
   padding-top: 67px;
   padding-right: 32px;
+  padding-bottom: 41px;
+  border-top: var(--coal) solid 1px;
+  border-bottom: var(--coal) solid 1px;
 
   @media (max-width: $tablet-landscape) {
     padding-right: 28px;
@@ -266,15 +309,27 @@
   @media (max-width: $tablet-portrait) {
     max-width: 318px;
     padding-top: 24px;
+    padding-bottom: 24px;
+    border-top: 0;
+    border-bottom: 0;
   }
 }
 
 .buttonFestivalContainer {
-  width: 154px;
-  margin-top: 67px;
+  padding-top: 67px;
+  border-top: var(--coal) solid 1px;
+  border-bottom: var(--coal) solid 1px;
 
   @media (max-width: $tablet-portrait) {
     align-self: flex-end;
-    margin-top: 16px;
+    padding-top: 0;
+
+    /* margin-top: 16px; */
+    border-top: 0;
+    border-bottom: 0;
   }
+}
+
+.buttonFestivalContainerVoid {
+  width: 154px;
 }

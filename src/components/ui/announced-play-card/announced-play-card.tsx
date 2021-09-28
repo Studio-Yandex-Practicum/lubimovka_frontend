@@ -14,7 +14,7 @@ interface IAnnouncedPlayCardProps {
   playwrightArray: string [];
   directorArray: string [];
   buttonLinks: string [];
-  coverResourceUrl: string;
+  coverResourceUrl?: string;
   array: string [];
   // creditsArrayToString( array: string[]): void;
 }
@@ -69,7 +69,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
       className={cn(styles.cardEvents)}
       {...restAnnouncedPlayCardProps}
     >
-      {buttonLinks.length === 2 &&
+      {coverResourceUrl &&
         <div className={cn(styles.coverEvents)}>
           <img className={cn(styles.coverEvents)} src={coverResourceUrl}></img>
         </div>
@@ -88,6 +88,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           <div className={cn(styles.buttonEventsContainer, styles.buttonEventsContainerTwoLinks)}>
             <Button
               view='primary'
+              width='154px'
               className={styles.buttonEvents}
               align='start'
               gap='9px'
@@ -101,6 +102,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             />
             <Button
               view='primary'
+              width='154px'
               className={styles.buttonEvents}
               align='start'
               gap='9px'
@@ -118,6 +120,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           <div className={cn(styles.buttonEventsContainer, styles.buttonEventsContainerOneLink)}>
             <Button
               view='primary'
+              width='154px'
               className={styles.buttonEvents}
               align='start'
               gap='9px'
@@ -138,35 +141,63 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
       className={cn(styles.cardFestival)}
       {...restAnnouncedPlayCardProps}
     >
-      <img className={cn(styles.coverFestival)} src={coverResourceUrl}></img>
-      <div className={cn(styles.infoFestival)}>
+      {coverResourceUrl ?
+        (<>
+          <img className={cn(styles.coverFestival)} src={coverResourceUrl}></img>
+          <div className={cn(styles.infoFestival)}>
+            <h6 className={cn(styles.h6, styles.timeFestival)}>{time}</h6>
+            <p className={cn(styles.smalltext, styles.location)}>{location}</p>
+          </div>
+          <div className={cn(styles.infoPlay)}>
+            <h6 className={cn(styles.h6,styles.titleFestival)}>{title}</h6>
+            <p className={cn(styles.smalltext, styles.synopsis)}>{synopsis}</p>
+          </div>
+        </>
+        )
+        : (
+          <>
+            <div className={cn(styles.coverFestivalVoid)} ></div>
+            <div className={cn(styles.infoFestival, styles.infoFestivalVoid)}>
+              <h6 className={cn(styles.h6, styles.timeFestival)}>{time}</h6>
+              <p className={cn(styles.smalltext, styles.location)}>{location}</p>
+            </div>
+            <div className={cn(styles.infoPlay)}>
+              <h6 className={cn(styles.h6,styles.titleFestival, styles.titleFestivalVoid)}>{title}</h6>
+              <p className={cn(styles.smalltext, styles.synopsis)}>{synopsis}</p>
+            </div>
+          </>
+        )
+      }
+      {/* <div className={cn(styles.infoFestival)}>
         <h6 className={cn(styles.h6, styles.timeFestival)}>{time}</h6>
         <p className={cn(styles.smalltext, styles.location)}>{location}</p>
       </div>
       <div className={cn(styles.infoPlay)}>
         <h6 className={cn(styles.h6,styles.titleFestival)}>{title}</h6>
         <p className={cn(styles.smalltext, styles.synopsis)}>{synopsis}</p>
-      </div>
+      </div> */}
       <div className={cn(styles.creditsFestival)}>
         {creditsRendered}
       </div>
       {
-        buttonLinks.length > 0 &&
-        <div className={cn(styles.buttonFestivalContainer)}>
-          <Button
-            view='primary'
-            className={styles.buttonFestival}
-            align='start'
-            gap='9px'
-            size='s'
-            iconPlace='left'
-            icon='arrow-right'
-            label='Регистрация'
-            border='bottomLeft'
-            isLink={true}
-            href={buttonLinks[0]}
-          />
-        </div>
+        buttonLinks.length > 0 ?
+          (
+            <div className={cn(styles.buttonFestivalContainer)}>
+              <Button
+                view='primary'
+                width='154px'
+                align='start'
+                gap='9px'
+                size='s'
+                iconPlace='left'
+                icon='arrow-right'
+                label='Регистрация'
+                border='bottomLeft'
+                isLink={true}
+                href={buttonLinks[0]}
+              />
+            </div>
+          ) : (<div className={cn(styles.buttonFestivalContainer, styles.buttonFestivalContainerVoid)}></div>)
       }
     </li>
   );
