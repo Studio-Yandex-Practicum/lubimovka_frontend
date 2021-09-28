@@ -12,4 +12,7 @@ const Template: ComponentStory<typeof InputFile> = (args) => <InputFile {...args
 export const AddFile = Template.bind({});
 AddFile.args = {
   typesListFiles: ['.pdf', '.txt'],
+  cb: (file) => {
+    console.log(file);
+  },
 };

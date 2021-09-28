@@ -1,4 +1,4 @@
-import React, { FC, SetStateAction } from 'react';
+import React, { FC, RefObject } from 'react';
 import cn from 'classnames';
 
 import { Icon } from '../../icon';
@@ -6,45 +6,33 @@ import { Icon } from '../../icon';
 import styles from './input-file-container.module.css';
 
 interface IInputFileContainerProps {
-    setFile: React.Dispatch<SetStateAction<null | File>>,
-    setNameFile: React.Dispatch<SetStateAction<string>>,
-    input: HTMLInputElement | null,
-    nameFile: string,
+    inputRef: RefObject<HTMLInputElement>,
+    file: File | null,
+    cb: (file: File | null) => void,
 }
 
 export const InputFileContainer: FC<IInputFileContainerProps> = (props): JSX.Element => {
   const {
-    setFile,
-    setNameFile,
-    input,
-    nameFile
+    inputRef,
+    file,
+    cb
   } = props;
-
-  // Удаляю файл при нажатии на крестик
-  const fileOnDelete = (input: HTMLInputElement): void => {
-    // Удаляю с тэга
-    input.value = '';
-    // Файл удаляю для отправки на сервер
-    setFile(null);
-    setNameFile('');
-  };
 
   // Удаление файла
   const handlerDeteleFile = (): void => {
-    if (input) {
-      fileOnDelete(input);
+    if (inputRef.current) {
+      inputRef.current.value = '';
+      cb(null);
     }
   };
 
   return (
     <div className={ cn(styles.conteiner) }>
       <button onClick={ handlerDeteleFile } className={ cn(styles.delete) } >
-        {
-          <Icon glyph='cross' className={styles.iconDelete} fill='white' />
-        }
+        { <Icon glyph='cross' className={styles.iconDelete} fill='white' /> }
       </button>
       <p className={ cn(styles.name) }>
-        { nameFile }
+        { file && file.name }
       </p>
     </div>
   );

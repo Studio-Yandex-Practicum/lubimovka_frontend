@@ -1,32 +1,29 @@
-import React, { useRef, useState, useEffect, FC } from 'react';
+import React, { useRef, useState, useEffect, FC, useCallback } from 'react';
 import cn from 'classnames';
 
 import styles from './input-file.module.css';
 
 // Компоненты
-import { InputFileContainer } from './index';
-import { InputFileButton } from './index';
+import { InputFileContainer } from './input-file-container';
+import { InputFileButton } from './input-file-button';
 
 interface IInputFileProps {
   typesListFiles?: string[],
-  cb?: (file: File) => void,
+  cb?: (file: File | null) => void,
 }
 
 export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Element => {
   const [ file, setFile ] = useState<null | File>(null);
-
-  // Имя файла для отображения
-  const [ nameFile, setNameFile ] = useState('');
-  // Текст для ошибки
-  const [ messageError, setMessageError ] = useState('');
 
   // inpyt type file
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     // Если есть file и cb, вызываем переданный колбек
-    if (file && cb) {
+    if (file && cb && checkFileName()) {
       cb(file);
+    } else if (cb) {
+      cb(null);
     }
   }, [ file ]);
 
@@ -45,36 +42,40 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
     }
   }, [ typesListFiles ]);
 
-  // Добавляю текст к сообщению ою ошибке
-  useEffect(() => {
-    nameFile ? 
-      setMessageError(file ? '' : 'Файл содержит кириллицу, пожалуйста, переименуйте его.') : 
-      setMessageError('');
-  }, [ file, nameFile ]);
+  const checkFileName = useCallback(() => {
+    if (!file) {
+      return false;
+    }
+    const isEnglishName = /^[\w]+.[\w]+$/;
+
+    return isEnglishName.test(file.name); 
+  }, [ file ]);
+
+  const cbButton = (file: File | null): void => {
+    setFile(file);
+  };
 
   return (
     <div className={ cn(styles.addFile) }>
       {
-        nameFile && <InputFileContainer 
-          setFile={ setFile } 
-          setNameFile={ setNameFile } 
-          input={ inputRef.current } 
-          nameFile={ nameFile } 
+        file && <InputFileContainer
+          inputRef={ inputRef } 
+          cb={ cbButton }
+          file={ file }
         />
       }
       {
-        messageError && (
+        file && !checkFileName() && (
           <p className={ cn(styles.message) }>
-            { messageError }
+            Файл содержит кириллицу, пожалуйста, переименуйте его.
           </p>
         )
       }
       {
-        <InputFileButton 
-          inputRef={ inputRef } 
-          nameFile={ nameFile } 
-          setFile={ setFile } 
-          setNameFile={ setNameFile } 
+        <InputFileButton
+          inputRef={ inputRef }
+          cb={ cbButton }
+          file={ file }
         />
       }
     </div>

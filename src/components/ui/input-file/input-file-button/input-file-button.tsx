@@ -1,4 +1,4 @@
-import React, { FC, SetStateAction, useState, useEffect, useCallback, RefObject } from 'react';
+import React, { FC, useCallback, RefObject } from 'react';
 import cn from 'classnames';
 
 import styles from './input-file-button.module.css';
@@ -8,26 +8,16 @@ import { Button } from '../../Button/index';
 
 interface IInputFileButtonProps {
   inputRef: RefObject<HTMLInputElement>,
-  nameFile: string,
-  setFile: React.Dispatch<SetStateAction<null | File>>,
-  setNameFile: React.Dispatch<SetStateAction<string>>,
+  file: File | null,
+  cb: (file: File | null) => void,
 }
 
 export const InputFileButton: FC<IInputFileButtonProps> = (props): JSX.Element => {
   const { 
     inputRef,
-    nameFile, 
-    setFile, 
-    setNameFile
+    file,
+    cb
   } = props;
-
-  // Текст кнопки
-  const [ textButton, setTextButton ] = useState('Добавить файл');
-
-  // Добавляю текст к кнопке
-  useEffect(() => {
-    setTextButton(nameFile ? 'Заменить файл' : 'Добавить файл');
-  }, [ nameFile ]);
 
   // Вызывает у input file его событие по умолчанию
   const fileOnClick = useCallback((): void => {
@@ -42,12 +32,7 @@ export const InputFileButton: FC<IInputFileButtonProps> = (props): JSX.Element =
     const input: HTMLInputElement = e.target;
     if (input.files) {
       const file: File = input.files[0];
-      const isEnglishName = /^[\w]+.[\w]+$/;
-
-      const isValidName: boolean = isEnglishName.test(file.name);
-      isValidName ? setFile(file) : setFile(null);
-
-      setNameFile(file.name);
+      cb(file);
     }
   };
 
@@ -60,7 +45,7 @@ export const InputFileButton: FC<IInputFileButtonProps> = (props): JSX.Element =
         className={ cn(styles.input) }
       />
       <Button 
-        label={ textButton } 
+        label={ file ? 'Заменить файл' : 'Добавить файл' } 
         onClick={ fileOnClick } 
         size={ 's' } 
         icon={ 'plus' } 
