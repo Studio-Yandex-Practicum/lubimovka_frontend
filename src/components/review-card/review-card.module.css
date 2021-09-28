@@ -1,0 +1,32 @@
+.card {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 72px 28px 100px;
+  background-color: var(--white);
+
+  @media (min-width: $tablet-portrait) {
+    padding: 32px 30px 24px;
+  }
+}
+
+.text {
+  @mixin text;
+  @mixin textLarge;
+
+  margin-bottom: auto;
+}
+
+.info {
+  padding: 0;
+  margin: 56px 0 0;
+}
+
+.author {
+  @mixin headline;
+  @mixin headline7;
+}
+
+.hiddenText {
+  @mixin visually-hidden;
+}
