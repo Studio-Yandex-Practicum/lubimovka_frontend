@@ -5,14 +5,14 @@ import { Icon } from '../../icon';
 
 import styles from './input-file-container.module.css';
 
-interface IInputFileContainer {
+interface IInputFileContainerProps {
     setFile: React.Dispatch<SetStateAction<null | File>>,
     setNameFile: React.Dispatch<SetStateAction<string>>,
     input: HTMLInputElement | null,
     nameFile: string,
 }
 
-export const InputFileContainer: FC<IInputFileContainer> = (props): JSX.Element => {
+export const InputFileContainer: FC<IInputFileContainerProps> = (props): JSX.Element => {
   const {
     setFile,
     setNameFile,
