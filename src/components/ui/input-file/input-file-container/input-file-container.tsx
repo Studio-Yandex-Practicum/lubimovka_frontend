@@ -1,49 +1,51 @@
-// import React, { useRef, useState, useEffect, FC, useCallback } from 'react';
-// import cn from 'classnames';
+import React, { FC, SetStateAction } from 'react';
+import cn from 'classnames';
 
-// import { Icon } from '../../icon';
+import { Icon } from '../../icon';
 
-// import styles from './input-file.module.css';
+import styles from './input-file-container.module.css';
 
-// interface IInputFileContainer {
-//     typesListFiles?: string[],
-//     cb?: (file: File) => void,
-// }
+interface IInputFileContainer {
+    setFile: React.Dispatch<SetStateAction<null | File>>,
+    setNameFile: React.Dispatch<SetStateAction<string>>,
+    input: HTMLInputElement | null,
+    nameFile: string,
+}
 
-// export const InputFileContainer: FC<IInputFileContainer> = () => {
-//     // Удаляю файл при нажатии на крестик
-//   const fileOnDelete = (input: HTMLInputElement): void => {
-//     // Удаляю с тэга
-//     input.value = '';
+export const InputFileContainer: FC<IInputFileContainer> = (props): JSX.Element => {
+  const {
+    setFile,
+    setNameFile,
+    input,
+    nameFile
+  } = props;
 
-//     // Файл удаляю для отправки на сервер
-//     setFile(null);
-//     setMessageError('');
+  // Удаляю файл при нажатии на крестик
+  const fileOnDelete = (input: HTMLInputElement): void => {
+    // Удаляю с тэга
+    input.value = '';
+    // Файл удаляю для отправки на сервер
+    setFile(null);
+    setNameFile('');
+  };
 
-//     setNameFile('');
-//   };
+  // Удаление файла
+  const handlerDeteleFile = (): void => {
+    if (input) {
+      fileOnDelete(input);
+    }
+  };
 
-//     // Удаление файла
-//     const handlerDeteleFile = (): void => {
-//         if (inputRef.current) {
-//           const input: HTMLInputElement = inputRef.current;
-//           fileOnDelete(input);
-//         }
-//       };
-
-//     return (
-//         nameFile && (
-//             <div className={ cn(styles.conteiner) }>
-//               <button onClick={ handlerDeteleFile } className={ cn(styles.delete) } >
-//                 {
-//                   <Icon glyph='cross' className={styles.iconDelete} fill='white' />
-//                 }
-//               </button>
-//               <p className={ cn(styles.name) }>
-//                 { nameFile }
-//               </p>
-//             </div>
-//           )
-//         }
-//     );
-// };
+  return (
+    <div className={ cn(styles.conteiner) }>
+      <button onClick={ handlerDeteleFile } className={ cn(styles.delete) } >
+        {
+          <Icon glyph='cross' className={styles.iconDelete} fill='white' />
+        }
+      </button>
+      <p className={ cn(styles.name) }>
+        { nameFile }
+      </p>
+    </div>
+  );
+};

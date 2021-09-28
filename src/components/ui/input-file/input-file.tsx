@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect, FC, useCallback } from 'react';
 import cn from 'classnames';
 
-import { Icon } from '../icon';
+// import { Icon } from '../icon';
 
 import styles from './input-file.module.css';
 
 // Компоненты
 import { Button } from '../Button/index';
+import { InputFileContainer } from './index';
 
 interface IInputFileProps {
   typesListFiles?: string[],
@@ -19,7 +20,7 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
   // Текст кнопки
   const [ textButton, setTextButton ] = useState('Добавить файл');
   // Имя файла для отображения
-  const [ nameFile, setNameFile ] = useState<string | null>(null);
+  const [ nameFile, setNameFile ] = useState('');
   // Текст для ошибки
   const [ messageError, setMessageError ] = useState('');
 
@@ -48,18 +49,16 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
     }
   }, [ typesListFiles ]);
 
-  // Добавляю текст к кнопке и имя файла
+  // Добавляю текст к кнопке
   useEffect(() => {
     setTextButton(nameFile ? 'Заменить файл' : 'Добавить файл');
   }, [ nameFile ]);
 
-  // Добавляю текст к сообщению об ошибке
+  // Добавляю текст к сообщению ою ошибке
   useEffect(() => {
-    if (!nameFile) {
+    nameFile ? 
+      setMessageError(file ? '' : 'Файл содержит кириллицу, пожалуйста, переименуйте его.') : 
       setMessageError('');
-      return;
-    }
-    setMessageError(file ? '' : 'Файл содержит кириллицу, пожалуйста, переименуйте его.');
   }, [ file, nameFile ]);
 
   // Вызывает у input file его событие по умолчанию
@@ -84,40 +83,15 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
     }
   };
 
-  // Удаляю файл при нажатии на крестик
-  const fileOnDelete = (input: HTMLInputElement): void => {
-    // Удаляю с тэга
-    input.value = '';
-
-    // Файл удаляю для отправки на сервер
-    setFile(null);
-
-    setNameFile('');
-  };
-
-  // Удаление файла
-  const handlerDeteleFile = (): void => {
-    if (inputRef.current) {
-      const input: HTMLInputElement = inputRef.current;
-      fileOnDelete(input);
-    }
-  };
-
   return (
     <div className={ cn(styles.addFile) }>
       {
-        nameFile && (
-          <div className={ cn(styles.conteiner) }>
-            <button onClick={ handlerDeteleFile } className={ cn(styles.delete) } >
-              {
-                <Icon glyph='cross' className={styles.iconDelete} fill='white' />
-              }
-            </button>
-            <p className={ cn(styles.name) }>
-              { nameFile }
-            </p>
-          </div>
-        )
+        nameFile && <InputFileContainer 
+          setFile={ setFile } 
+          setNameFile={ setNameFile } 
+          input={ inputRef.current } 
+          nameFile={ nameFile } 
+        />
       }
       {
         messageError && (

@@ -5,37 +5,6 @@
   flex-direction: column;
 }
 
-.conteiner {
-  display: flex;
-  min-height: 32px;
-  margin-bottom: 6px;
-  background-color: var(--coal);
-}
-
-.delete {
-  display: flex;
-  align-items: center;
-  padding: 0;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.iconDelete {
-  margin-right: 3px;
-}
-
-.name {
-  @mixin textLarge;
-  @mixin text;
-
-  overflow: hidden;
-  margin-right: 9px;
-  color: var(--beige);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .message {
   @mixin textCaption;
   @mixin text;
