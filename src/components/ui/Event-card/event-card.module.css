@@ -1,6 +1,5 @@
 .content {
   display: flex;
-  width: 100%;
   box-sizing: border-box;
   justify-content: space-between;
   border-top: 1px solid var(--coal);
@@ -21,19 +20,23 @@
 }
 
 .imgContainer {
-  width: 100%;
-  max-width: 151px;
-  max-height: 191px;
+  /* width: 100%; */
+
+  /* width: 151px;
+  max-height: 191px; */
+  width: 151px;
 }
 
 .image {
+  width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .data {
   display: grid;
-  width: 20%;
+
+  /* width: 20%; */
   padding-top: 16px;
   padding-left: 10px;
   margin-bottom: 44px;
@@ -50,9 +53,9 @@
     margin-left: 0;
   }
 
-  @media (max-width: 320px) {
+  /* @media (max-width: 320px) {
     width: 82px;
-  }
+  } */
 }
 
 .data:nth-of-type(2) {
@@ -97,9 +100,9 @@
   }
 
   @media (max-width: $mobile-landscape) {
-    width: 80%;
+    /* width: 80%; */
     margin: 0;
-    margin-left: auto;
+    margin-left: 64px;
   }
 }
 
