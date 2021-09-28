@@ -1,4 +1,4 @@
-.inputComponent {
+.textFieldComponent {
   max-width: 360px;
 
   @media (min-width: $mobile-landscape) {
@@ -6,7 +6,7 @@
   }
 }
 
-.input {
+.textField {
   @mixin text;
   @mixin textSmall;
 
@@ -17,15 +17,16 @@
   border-bottom: 1px solid var(--coal);
   margin: 0;
   outline: none;
-}
 
-/* Атрибут placeholder выводит текст внутри поля формы, который исчезает при получении фокуса.
+  /* Атрибут placeholder выводит текст внутри поля формы, который исчезает при получении фокуса.
  Вендорные префиксы убраны, потому что их ставит автопрефиксер */
-.input:focus::placeholder {
-  color: transparent;
+
+  &:focus::placeholder {
+    color: transparent;
+  }
 }
 
-.inputError {
+.error {
   @mixin text;
   @mixin textCaption;
 
