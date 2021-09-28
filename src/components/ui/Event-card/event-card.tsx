@@ -1,7 +1,7 @@
 import { FC } from 'react';
+import { Button } from 'components/ui/button/button';
 import styles from './event-card.module.css';
-import { Button } from '../button/button';
-interface ICardProps {
+interface IEventCardProps {
   image?: string;
   time: string;
   location: string;
@@ -10,7 +10,7 @@ interface ICardProps {
   playwright: string;
   direct: string;
 }
-export const EventСard: FC<ICardProps> = (props) => {
+export const EventСard: FC<IEventCardProps> = (props) => {
   const { time, location, title, description, playwright, direct, image } = props;
   return (
     <div className={styles.content}>
