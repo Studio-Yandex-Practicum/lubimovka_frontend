@@ -1,82 +1,79 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Link } from './Link';
+import { InfoLink } from './info-link';
 
 export default {
-  title: 'Link',
-  component: Link,
-} as ComponentMeta<typeof Link>;
+  title: 'InfoLink',
+  component: InfoLink,
+} as ComponentMeta<typeof InfoLink>;
 
-const Template: ComponentStory<typeof Link> = (args) => <Link {...args} />;
+const Template: ComponentStory<typeof InfoLink> = (args) => <InfoLink {...args} />;
 
 export const LinkInHeading = Template.bind({});
 LinkInHeading.args = {
-  size: 's',
-  border: 'borderBottomLeft',
+  isOutsideLink: true,
   label: 'Fb',
-  withIcon: true,
-  icon: true,
-  iconSide: true
+  icon: 'arrow-right',
+  iconPlace: 'left',
+  size: 's',
+  border: 'borderBottomLeft'
 };
 
 export const LinkInTextBlocks = Template.bind({});
 LinkInTextBlocks.args = {
-  size: 'l',
-  textDecoration: 'underline',
+  isOutsideLink: true,
   label: 'more@lubimovka.ru',
-  withIcon: false
+  size: 'l',
+  textDecoration: 'underline'
 };
 
 export const LinkWithArrowRight = Template.bind({});
 LinkWithArrowRight.args = {
-  size: 'm',
+  isOutsideLink: true,
   label: 'Казакова, 8, стр. 3',
-  withIcon: true,
-  icon: true,
-  iconSide: false
+  icon: 'arrow-right',
+  iconPlace: 'right',
+  size: 'm'
 };
 
 export const LinkWithArrow45 = Template.bind({});
 LinkWithArrow45.args = {
-  size: 'm',
+  isOutsideLink: true,
   label: 'Лера Бессмертная',
-  withIcon: true,
-  icon: false,
-  iconSide: false
+  icon: 'arrow-45',
+  iconPlace: 'right',
+  size: 'm'
 };
 
 export const LinkInTable = Template.bind({});
 LinkInTable.args = {
-  size: 'xl',
-  border: 'borderTop',
   label: 'Интервью 2020',
-  withIcon: true,
-  icon: true,
-  iconSide: false
+  icon: 'arrow-right',
+  iconPlace: 'right',
+  size: 'xl',
+  border: 'borderTop'
 };
 
 export const LinkNumber = Template.bind({});
 LinkNumber.args = {
-  size: 'number',
   label: '145',
-  withIcon: true,
-  icon: true,
-  iconSide: false
+  icon: 'arrow-right',
+  iconPlace: 'right',
+  size: 'number'
 };
 
 export const LinkInfoInFooter = Template.bind({});
 LinkInfoInFooter.args = {
-  size: 'xs',
   label: 'Контакты',
-  withIcon: false,
-  section: 'infoFooter'
+  section: 'infoFooter',
+  size: 'xs'
 };
 
 export const LinkInFooter = Template.bind({});
 LinkInFooter.args = {
-  size: 'xs',
+  isOutsideLink: true,
   label: 'shishki.collective',
-  withIcon: false,
-  section: 'footer'
+  section: 'footer',
+  size: 'xs'
 };
 
