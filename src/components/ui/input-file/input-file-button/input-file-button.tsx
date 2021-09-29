@@ -1,4 +1,4 @@
-import React, { FC, useCallback, RefObject } from 'react';
+import React, { useCallback, FC, RefObject } from 'react';
 import cn from 'classnames';
 
 import styles from './input-file-button.module.css';
@@ -8,17 +8,11 @@ import { Button } from '../../Button/index';
 
 interface IInputFileButtonProps {
   inputRef: RefObject<HTMLInputElement>,
-  file: File | null,
+  file: File | null | false,
   cb: (file: File | null) => void,
 }
 
-export const InputFileButton: FC<IInputFileButtonProps> = (props): JSX.Element => {
-  const { 
-    inputRef,
-    file,
-    cb
-  } = props;
-
+export const InputFileButton: FC<IInputFileButtonProps> = ({ inputRef, file, cb }): JSX.Element => {
   // Вызывает у input file его событие по умолчанию
   const fileOnClick = useCallback((): void => {
     if (inputRef.current) {
@@ -27,7 +21,8 @@ export const InputFileButton: FC<IInputFileButtonProps> = (props): JSX.Element =
     }
   }, [ inputRef ]);
 
-  // Когда файл выбран
+  // Когда файл выбран.
+  // Для ревью. Здесь нет зависимости чтобы обновлять код. Поэтому думаю что useCallback не нужен.
   const handlerChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const input: HTMLInputElement = e.target;
     if (input.files) {

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, FC, useCallback } from 'react';
+import React, { useRef, useState, useEffect, useCallback, FC } from 'react';
 import cn from 'classnames';
 
 import styles from './input-file.module.css';
@@ -13,7 +13,7 @@ interface IInputFileProps {
 }
 
 export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Element => {
-  const [ file, setFile ] = useState<null | File>(null);
+  const [ file, setFile ] = useState<null | false | File>(false);
 
   // inpyt type file
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -22,38 +22,29 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
     // Если есть file и cb, вызываем переданный колбек
     if (file && cb && checkFileName()) {
       cb(file);
-    } else if (cb) {
+    } else if (file === null && cb) {
       cb(null);
     }
   }, [ file ]);
 
-  const addSetAttribute = (input: HTMLInputElement): void => {
-    if (typesListFiles && Array.isArray(typesListFiles) && input) {
-      input.setAttribute('accept', typesListFiles.join(','));
-    }
-  };
-
   // Если передан typeFile
   useEffect(() => {
-    if (inputRef.current) {
+    if (inputRef.current && Array.isArray(typesListFiles)) {
       const input: HTMLInputElement = inputRef.current;
-      // Добавляю тип в атрибут input
-      addSetAttribute(input);
+      // Добавляю тип атрибута для input
+      input.setAttribute('accept', typesListFiles.join(','));
     }
   }, [ typesListFiles ]);
 
+  // Проверка на русские символы в имени файла
   const checkFileName = useCallback(() => {
-    if (!file) {
-      return false;
-    }
     const isEnglishName = /^[\w]+.[\w]+$/;
-
-    return isEnglishName.test(file.name); 
+    return file && isEnglishName.test(file.name) ? file : false;
   }, [ file ]);
 
-  const cbButton = (file: File | null): void => {
+  const cbButton = useCallback((file: File | null): void => {
     setFile(file);
-  };
+  }, [ file ]);
 
   return (
     <div className={ cn(styles.addFile) }>

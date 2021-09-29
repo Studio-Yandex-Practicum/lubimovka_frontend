@@ -1,4 +1,4 @@
-import React, { FC, RefObject } from 'react';
+import React, { useCallback, FC, RefObject } from 'react';
 import cn from 'classnames';
 
 import { Icon } from '../../icon';
@@ -11,20 +11,14 @@ interface IInputFileContainerProps {
     cb: (file: File | null) => void,
 }
 
-export const InputFileContainer: FC<IInputFileContainerProps> = (props): JSX.Element => {
-  const {
-    inputRef,
-    file,
-    cb
-  } = props;
-
+export const InputFileContainer: FC<IInputFileContainerProps> = ({ inputRef, file, cb }): JSX.Element => {
   // Удаление файла
-  const handlerDeteleFile = (): void => {
+  const handlerDeteleFile = useCallback((): void => {
     if (inputRef.current) {
       inputRef.current.value = '';
       cb(null);
     }
-  };
+  }, [ inputRef ]);
 
   return (
     <div className={ cn(styles.conteiner) }>
