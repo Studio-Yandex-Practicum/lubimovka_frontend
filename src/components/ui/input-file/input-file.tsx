@@ -8,11 +8,11 @@ import { InputFileContainer } from './input-file-container';
 import { InputFileButton } from './input-file-button';
 
 interface IInputFileProps {
-  typesListFiles?: string[],
+  typesFiles?: string[],
   cb?: (file: File | null) => void,
 }
 
-export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Element => {
+export const InputFile: FC<IInputFileProps> = ({ cb, typesFiles }): JSX.Element => {
   const [ file, setFile ] = useState<null | File>(null);
 
   // inpyt type file
@@ -29,12 +29,12 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
 
   // Если передан typeFile
   useEffect(() => {
-    if (inputRef.current && Array.isArray(typesListFiles)) {
+    if (inputRef.current && Array.isArray(typesFiles)) {
       const input: HTMLInputElement = inputRef.current;
       // Добавляю тип атрибута для input
-      input.setAttribute('accept', typesListFiles.join(','));
+      input.setAttribute('accept', typesFiles.join(','));
     }
-  }, [ typesListFiles ]);
+  }, [ typesFiles ]);
 
   // Проверка на русские символы в имени файла
   const checkFileName = useCallback(() => {
