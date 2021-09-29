@@ -35,16 +35,16 @@ PlayCardEventsViewOneButton.args = {
   coverResourceUrl: 'https://lubimovka.ru/images/production/mama_site.jpg',
 };
 
-// export const PlayCardEventsViewTwoButtonsNoCover = Template.bind({});
-// PlayCardEventsViewTwoButtonsNoCover.args = {
-//   festival:false,
-//   date:'15 декабря',
-//   time: '11:00',
-//   title: 'МАМА',
-//   playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
-//   directorArray: ['Катя Ганюшина'],
-//   buttonLinks: ['https://lubimovka.timepad.ru/event/1746579/', 'https://lubimovka.timepad.ru/event/1746502/'],
-// };
+export const PlayCardEventsViewTwoButtonsNoCover = Template.bind({});
+PlayCardEventsViewTwoButtonsNoCover.args = {
+  festival:false,
+  date:'15 декабря',
+  time: '11:00',
+  title: 'МАМА',
+  playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
+  directorArray: ['Катя Ганюшина'],
+  buttonLinks: ['https://lubimovka.timepad.ru/event/1746579/', 'https://lubimovka.timepad.ru/event/1746502/'],
+};
 
 export const PlayCardEventsViewOneButtonNoCover = Template.bind({});
 PlayCardEventsViewOneButtonNoCover.args = {
@@ -94,4 +94,16 @@ PlayCardFestivalViewNoСover.args = {
   playwrightArray: ['Ольга Казакова'],
   directorArray: ['Катя Ганюшина'],
   buttonLinks: ['https://lubimovka.timepad.ru/event/1746579/'],
+};
+
+export const PlayCardFestivalViewNoСoverNoRegistration = Template.bind({});
+PlayCardFestivalViewNoСoverNoRegistration.args = {
+  festival:true,
+  time: '13:00',
+  location: 'Площадка «8/3»',
+  title: 'Камино норте',
+  synopsis: '(Не)деликатная пьеса о психоневрологическом интернате',
+  playwrightArray: ['Ольга Казакова'],
+  directorArray: ['Катя Ганюшина'],
+  buttonLinks: [],
 };

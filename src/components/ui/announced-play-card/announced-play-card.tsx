@@ -15,8 +15,6 @@ interface IAnnouncedPlayCardProps {
   directorArray: string [];
   buttonLinks: string [];
   coverResourceUrl?: string;
-  array: string [];
-  // creditsArrayToString( array: string[]): void;
 }
 
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
@@ -34,7 +32,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     ...restAnnouncedPlayCardProps
   } = props;
 
-  const creditsArrayToString = (array) => {
+  const creditsArrayToString = (array: string []) => {
     const string = array.join(', ').replace(/, ([^,]*)$/, ' и $1');
     return string;
   };
@@ -85,7 +83,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         </div>
         <p className={cn(styles.caption, styles.description)}>читка проекта Любимовка.Ещё</p>
         {buttonLinks.length === 2 &&
-          <div className={cn(styles.buttonEventsContainer, styles.buttonEventsContainerTwoLinks)}>
+          <div className={cn(styles.buttonEventsContainer + coverResourceUrl ? styles.buttonEventsContainerTwoLinks : styles.buttonEventsContainerOneLink)}>
             <Button
               view='primary'
               width='154px'
@@ -156,26 +154,18 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         )
         : (
           <>
-            <div className={cn(styles.coverFestivalVoid)} ></div>
-            <div className={cn(styles.infoFestival, styles.infoFestivalVoid)}>
+            <div className={cn(styles.coverFestivalNoCover)} ></div>
+            <div className={cn(styles.infoFestival, styles.infoFestivalNoCover)}>
               <h6 className={cn(styles.h6, styles.timeFestival)}>{time}</h6>
               <p className={cn(styles.smalltext, styles.location)}>{location}</p>
             </div>
             <div className={cn(styles.infoPlay)}>
-              <h6 className={cn(styles.h6,styles.titleFestival, styles.titleFestivalVoid)}>{title}</h6>
+              <h6 className={cn(styles.h6,styles.titleFestival, styles.titleFestivalNoCover)}>{title}</h6>
               <p className={cn(styles.smalltext, styles.synopsis)}>{synopsis}</p>
             </div>
           </>
         )
       }
-      {/* <div className={cn(styles.infoFestival)}>
-        <h6 className={cn(styles.h6, styles.timeFestival)}>{time}</h6>
-        <p className={cn(styles.smalltext, styles.location)}>{location}</p>
-      </div>
-      <div className={cn(styles.infoPlay)}>
-        <h6 className={cn(styles.h6,styles.titleFestival)}>{title}</h6>
-        <p className={cn(styles.smalltext, styles.synopsis)}>{synopsis}</p>
-      </div> */}
       <div className={cn(styles.creditsFestival)}>
         {creditsRendered}
       </div>
@@ -197,7 +187,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
                 href={buttonLinks[0]}
               />
             </div>
-          ) : (<div className={cn(styles.buttonFestivalContainer, styles.buttonFestivalContainerVoid)}></div>)
+          ) : (<div className={cn(styles.buttonFestivalContainer, styles.buttonFestivalContainerNoButton)}></div>)
       }
     </li>
   );

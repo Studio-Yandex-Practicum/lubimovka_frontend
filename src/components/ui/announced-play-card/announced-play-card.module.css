@@ -191,7 +191,7 @@
   }
 }
 
-.coverFestivalVoid {
+.coverFestivalNoCover {
   width: 151px;
   min-height: 191px;
 
@@ -226,7 +226,7 @@
   }
 }
 
-.infoFestivalVoid {
+.infoFestivalNoCover {
   @media (max-width: $tablet-portrait) {
     padding-bottom: 0;
   }
@@ -277,7 +277,7 @@
   }
 }
 
-.titleFestivalVoid {
+.titleFestivalNoCover {
   @media (max-width: $tablet-portrait) {
     padding-top: 20px;
   }
@@ -330,6 +330,6 @@
   }
 }
 
-.buttonFestivalContainerVoid {
+.buttonFestivalContainerNoButton {
   width: 154px;
 }
