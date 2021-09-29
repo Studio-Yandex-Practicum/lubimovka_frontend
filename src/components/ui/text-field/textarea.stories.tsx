@@ -20,6 +20,5 @@ export const Default = Template.bind({});
 Default.args = {
   placeholder: 'Введите описание пьесы',
   valid: false,
-  errorMessage: 'Нужно больше букв',
-  //errorMessage: 'Описание пьессы не ввдено'
+  errorMessage: 'Описание пьесы не введено',
 };
