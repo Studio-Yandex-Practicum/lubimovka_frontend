@@ -1,5 +1,7 @@
 .textFieldComponent {
+  display: flex;
   max-width: 360px;
+  flex-direction: column;
 
   @media (min-width: $mobile-landscape) {
     max-width: 365px;
@@ -30,14 +32,6 @@
   @mixin text;
   @mixin textCaption;
 
-  position: absolute;
-  top: 4px;
-  left: 0;
-  margin-bottom: 4px;
-  background: var(--beige);
+  margin-top: 4px;
   color: var(--red);
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
 }
