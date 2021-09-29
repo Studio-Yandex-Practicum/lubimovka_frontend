@@ -8,7 +8,7 @@ import { Button } from '../../Button/index';
 
 interface IInputFileButtonProps {
   inputRef: RefObject<HTMLInputElement>,
-  file: File | null | false,
+  file: File | null,
   cb: (file: File | null) => void,
 }
 

@@ -13,7 +13,7 @@ interface IInputFileProps {
 }
 
 export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Element => {
-  const [ file, setFile ] = useState<null | false | File>(false);
+  const [ file, setFile ] = useState<null | File>(null);
 
   // inpyt type file
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -22,7 +22,7 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesListFiles }): JSX.Elem
     // Если есть file и cb, вызываем переданный колбек
     if (file && cb && checkFileName()) {
       cb(file);
-    } else if (file === null && cb) {
+    } else if (cb) {
       cb(null);
     }
   }, [ file ]);
