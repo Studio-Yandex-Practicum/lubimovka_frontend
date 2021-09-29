@@ -1,25 +1,33 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, useCallback } from 'react';
 import cn from 'classnames';
 
 import styles from './droplist.module.css';
 
 // Компоненты
-import { DroplistItems } from './index';
-import { ListSelected } from './index';
-import { ContainerButton } from './index';
+import { DroplistItems } from './droplist-items';
+import { ListSelected } from './list-selected';
+import { ContainerButton } from './container-button';
 
 // utile
-import { createList } from './index';
+import { createList } from './utils';
 
 interface IDroplistProps {
   type: 'years' | 'months';
-  handlerSubmitDroplist: (selectList: string[]) => void,
-  data?: Array<string> | Array<number>,
-  maxWidth?: string | number,
-  widthSelectedItem?: string | number,
+  cb: (selectList: string[]) => void,
+  data?: string[] | number[],
+  maxWidth?: number,
+  widthSelectedItem?: number,
 }
 
-export const Droplist: FC<IDroplistProps> = ({ type, handlerSubmitDroplist, data, maxWidth, widthSelectedItem }): JSX.Element => {
+export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
+  const {
+    type, 
+    cb, 
+    data, 
+    maxWidth, 
+    widthSelectedItem,
+  } = props;
+
   // Выбранный список пользователем. Вынести в компонент формы.
   const [ selectList, setSelectList ] = useState<string[]>([]);
 
@@ -27,32 +35,6 @@ export const Droplist: FC<IDroplistProps> = ({ type, handlerSubmitDroplist, data
   const [ list, getList ] = useState<string[] | number[]>([]);
   // Выбран ли Dropdown
   const [ activeDropdown, setActiveDropdown ] = useState(false);
-  // Максимальная ширина всего компонента
-  const [ maxWidthDroplist, setmaxWidthDroplist ] = useState('300');
-  // Ширина элементов выбранного списка
-  const [ defaultWidthSelectedItem, setDefaultWidthSelectedItem ] = useState('');
-
-  // Записывает длину основного блока, если она передана в state
-  const addmaxWidthDroplist = () => {
-    if (maxWidth) {
-      switch (typeof maxWidth) {
-      case 'number': setmaxWidthDroplist(String(maxWidth)); break;
-      case 'string': setmaxWidthDroplist(maxWidth); break;
-      }
-    }
-  };
-
-  // Записывает длину основного блока, если она передана в state
-  const addWidthSelectedItem = () => {
-    if (widthSelectedItem) {
-      setDefaultWidthSelectedItem(widthSelectedItem.toString());
-      return;
-    }
-    switch (type) {
-    case 'months': setDefaultWidthSelectedItem('110'); break;
-    case 'years': setDefaultWidthSelectedItem('59'); break;
-    }
-  };
 
   useEffect(() => {
     // Если передают свой объект
@@ -60,39 +42,51 @@ export const Droplist: FC<IDroplistProps> = ({ type, handlerSubmitDroplist, data
       getList(data);
       return;
     }
-    // createList формирует отдельные массивы зависящий от передаваемого типа списка
+    // utils функция createList формирует массивы зависящий от передаваемого типа списка.
     const list = createList(type);
     if (list) {
       getList(list);
     }
-  }, []);
+  }, [ data ]);
 
-  useEffect(() => {
-    addmaxWidthDroplist();
-    addWidthSelectedItem();
-  }, []);
-
-  const handlerSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    handlerSubmitDroplist(selectList);
+    cb(selectList);
+  }, [ selectList ]);
+
+  const cbContainer = () => {
+    setActiveDropdown(state => !state);
   };
 
-  // Рендерит компонент ListSelected при условии что список открыт и выбранный список не пустой
-  const renderListSelected = (): JSX.Element | null => {
-    if (activeDropdown && selectList.length > 0) {
-      return (
-        <ListSelected 
-          selectList={ selectList } 
-          defaultWidthSelectedItem={ defaultWidthSelectedItem } 
-        />
-      );
+  const cbItems = (value: string, activeCheckbox: boolean) => {
+    if (activeCheckbox) {
+      setSelectList(state => {
+        const newState = state.slice(0);
+        newState.push(value.toLowerCase());
+        return newState;
+      });
+      return;
     }
-    return null;
+    setSelectList(state => {
+      const previousState = state.slice(0);
+      const newState = previousState.filter((item: string | number) => item !== value.toLowerCase());
+      return newState;
+    });
+  };
+
+  const setMaxWidth = () => {
+    if (widthSelectedItem) {
+      return widthSelectedItem + 'px';
+    }
+    switch (type) {
+    case 'months': return '110px';
+    case 'years': return '59px';
+    }
   };
 
   return (
-    <div className={ cn(styles.dropdown) } style={{ maxWidth: `${maxWidthDroplist}px` }}>
-      <ContainerButton setActiveDropdown={ setActiveDropdown } />
+    <div className={ cn(styles.dropdown) } style={{ maxWidth: maxWidth && maxWidth + 'px' }}>
+      <ContainerButton cb={ cbContainer } />
       <form
         name='dropdown'
         className={ cn(styles.form) }
@@ -107,14 +101,16 @@ export const Droplist: FC<IDroplistProps> = ({ type, handlerSubmitDroplist, data
                 <DroplistItems
                   month={ month }
                   key={ i }
-                  setSelectList={ setSelectList }
+                  cb={ cbItems }
                 />
               );
             })
           }
         </div>
-        {
-          renderListSelected()
+        { 
+          activeDropdown && selectList.length > 0
+          && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth } 
+          />
         }
       </form>
     </div>

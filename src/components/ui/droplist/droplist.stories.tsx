@@ -13,15 +13,15 @@ const Template: ComponentStory<typeof Droplist> = (args) => <Droplist {...args} 
 export const MonthsDroplist = Template.bind({});
 MonthsDroplist.args = {
   type: 'months',
-  handlerSubmitDroplist: string => {
+  cb: string => {
     console.log(string);
   },
   data: [
-    'ЯНВАРЬ', 'ФЕВРАЛЬ',
-    'МАРТ', 'АПРЕЛЬ',
-    'Май', 'Июнь',
-    'Июль', 'Август',
-    'Сентябрь', 'Октябрь',
+    'January', 'February',
+    'March', 'April',
+    'MAY', 'June',
+    'JULy', 'August',
+    'September', 'Октябрь',
     'Ноябрь', 'Декабрь',
   ],
   maxWidth: 240,
@@ -31,7 +31,7 @@ MonthsDroplist.args = {
 export const YearsDroplist = Template.bind({});
 YearsDroplist.args = {
   type: 'years',
-  handlerSubmitDroplist: string => {
+  cb: string => {
     console.log(string);
   },
   data: [
@@ -40,23 +40,24 @@ YearsDroplist.args = {
     2014, 2017,
     2020, 2021,
   ],
-  maxWidth: '150',
+  maxWidth: 150,
 };
 
-// Использую массив dataType по умолчанию
+// Использую массив data по умолчанию
 export const DefaultMonthsDroplist = Template.bind({});
 DefaultMonthsDroplist.args = {
   type: 'months',
-  handlerSubmitDroplist: string => {
+  cb: string => {
     console.log(string);
   },
+  widthSelectedItem: 200,
 };
 
-// Использую массив dataType по умолчанию
+// Использую массив data по умолчанию
 export const DefaultYearsDroplist = Template.bind({});
 DefaultYearsDroplist.args = {
   type: 'years',
-  handlerSubmitDroplist: string => {
+  cb: string => {
     console.log(string);
   },
 };

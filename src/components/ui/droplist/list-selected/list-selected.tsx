@@ -7,19 +7,18 @@ import styles from './list-selected.module.css';
 
 interface IListSelectedProps {
   selectList: string[],
-  defaultWidthSelectedItem: string,
+  setMaxWidth: () => string,
 }
 
-export const ListSelected: FC<IListSelectedProps> = ({ selectList, defaultWidthSelectedItem }): JSX.Element => {
-  const stylesListItems = {
-    gridTemplateColumns: `repeat(auto-fit, max(${defaultWidthSelectedItem}px))`,
-  };
-
+export const ListSelected: FC<IListSelectedProps> = ({ selectList, setMaxWidth }): JSX.Element => {
   return (
     <div className={ cn(styles.container, {
       [styles.bottom]: selectList.length > 1,
     })}>
-      <ul className={ cn(styles.list) } style={ stylesListItems }>
+      <ul 
+        className={ cn(styles.list) } 
+        style={{ gridTemplateColumns: `repeat(auto-fit, max(${setMaxWidth()}))` }}
+      >
         {
           selectList.map((item, i) => {
             return (

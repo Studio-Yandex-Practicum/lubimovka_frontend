@@ -1,4 +1,4 @@
-import React, { FC, SetStateAction } from 'react';
+import React, { FC } from 'react';
 import cn from 'classnames';
 
 import { Icon } from '../../icon';
@@ -6,15 +6,11 @@ import { Icon } from '../../icon';
 import styles from './container-button.module.css';
 
 interface IContainerButtonProps {
-  setActiveDropdown: React.Dispatch<SetStateAction<boolean>>,
+  cb: () => void,
 }
 
-export const ContainerButton: FC<IContainerButtonProps> = ({ setActiveDropdown }) => {
-  const clickActiveDropdown = (): void => {
-    setActiveDropdown(state => {
-      return !state;
-    });
-  };
+export const ContainerButton: FC<IContainerButtonProps> = ({ cb }) => {
+  const clickActiveDropdown = (): void => cb();
 
   return (
     <div
@@ -22,11 +18,9 @@ export const ContainerButton: FC<IContainerButtonProps> = ({ setActiveDropdown }
       onClick={ clickActiveDropdown }
     >
       <p className={ cn(styles.text) }>
-          Все
+        Все
       </p>
-      {
-        <Icon glyph='arrow-down' fill='black' className={ styles.iconArrowDown } />
-      }
+      { <Icon glyph='arrow-down' fill='black' className={ styles.iconArrowDown } /> }
     </div>
   );
 };
