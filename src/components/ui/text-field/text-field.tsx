@@ -4,32 +4,34 @@ import styles from './text-field.module.css';
 
 // ------ input ------
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  formNoValidate?: boolean;
+  valid?: boolean;
+  errorMessage?: string;
 }
 
 export const Input: FC<InputProps> = (props) => {
-  const {...restProps} = props;
+  const {valid, errorMessage, ...restProps} = props;
 
   return (
     <div className={cn(styles.textFieldComponent)}>
-      <input className={cn(styles.textField)} {...restProps} />
-      <span className='error'>{props.formNoValidate}</span>
+      <input className={cn(styles.textField)} formNoValidate {...restProps}/>
+      {!valid && errorMessage && <span className={cn(styles.error)}>{errorMessage}</span>}
     </div>
   );
 };
 
 // ------ textarea ------
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  formNoValidate?: boolean;
+  valid?: boolean;
+  errorMessage?: string;
 }
 
 export const TextArea: FC<TextAreaProps> = (props) => {
-  const {...restProps} = props;
+  const {valid, errorMessage, ...restProps} = props;
 
   return (
     <div className={cn(styles.textFieldComponent)}>
       <textarea className={cn(styles.textField)} {...restProps} />
-      <span className='error'>{props.formNoValidate}</span>
+      {!valid && errorMessage && <span className={cn(styles.error)}>{errorMessage}</span>}
     </div>
   );
 };
