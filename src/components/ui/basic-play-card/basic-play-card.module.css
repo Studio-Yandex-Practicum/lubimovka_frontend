@@ -13,45 +13,18 @@
   }
 }
 
+@keyframes fade-in {
+  0% { opacity: 0; }
+  50% { opacity: 50%; }
+  100% { opacity: 100%; }
+}
+
 .container {
   display: flex;
   height: 300px;
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--light-green);
-}
-
-/*
-!!!
-Варианты анимации для появления кнопок:
-*/
-
-/*
-Выезд кнопок слева направо
-Нужно раскомментировать анимацию ниже + в .container:hover .button 'horizontal-move'
-*/
-
-/* @keyframes horizontal-move {
-  0% { left: -50px; }
-  50% { left: -25px; }
-  100% { left: 0; }
-} */
-
-/*
-Выезд кнопок снизу вверх
-Нужно раскомментировать анимацию ниже + в .container:hover .button 'vertical-move'
-*/
-
-/* @keyframes vertical-move {
-  0% { bottom: -50px; }
-  50% { bottom: -25px; }
-  100% { bottom: 0; }
-} */
-
-@keyframes fade-in {
-  0% { opacity: 0; }
-  50% { opacity: 50%; }
-  100% { opacity: 100%; }
 }
 
 .buttonCustom {
@@ -62,13 +35,13 @@
   }
 }
 
+.buttonCustom:hover {
+  animation: fade-in 2s ease-in;
+}
+
 .container:hover .buttonCustom {
-  /* animation: horizontal-move .2s ease-in; */
-
-  /* animation: vertical-move .2s ease-in; */
-
-  animation: fade-in .5s ease-in;
   visibility: visible;
+  animation: fade-in 2s ease-in;
 }
 
 .h7 {
