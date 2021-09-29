@@ -9,7 +9,7 @@ import styles from './info-link.module.css';
 
 interface ILinkProps {
   isOutsideLink?: boolean;
-  href: string;
+  href?: string;
   label: string;
   icon?: IIconProps['glyph'],
   iconPlace?: 'iconNone' | 'left' | 'right';

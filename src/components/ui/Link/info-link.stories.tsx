@@ -12,6 +12,7 @@ const Template: ComponentStory<typeof InfoLink> = (args) => <InfoLink {...args} 
 export const LinkInHeading = Template.bind({});
 LinkInHeading.args = {
   isOutsideLink: true,
+  href: 'https://www.facebook.com/sharer/sharer.php?u=https%3A//github.com/Studio-Yandex-Practicum/lubimovka_frontend',
   label: 'Fb',
   icon: 'arrow-right',
   iconPlace: 'left',
@@ -22,6 +23,7 @@ LinkInHeading.args = {
 export const LinkInTextBlocks = Template.bind({});
 LinkInTextBlocks.args = {
   isOutsideLink: true,
+  href: 'mailto://more@lubimovka.ru',
   label: 'more@lubimovka.ru',
   size: 'l',
   textDecoration: 'underline'
@@ -72,6 +74,7 @@ LinkInfoInFooter.args = {
 export const LinkInFooter = Template.bind({});
 LinkInFooter.args = {
   isOutsideLink: true,
+  href: 'https://ru.shishki.co/',
   label: 'shishki.collective',
   section: 'footer',
   size: 'xs'
