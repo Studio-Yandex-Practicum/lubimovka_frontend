@@ -19,17 +19,23 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   type: 'text',
-  placeholder: 'Введите имя'
+  placeholder: 'Введите имя',
+  valid: false,
+  errorMessage: 'Введите имя и фамилию',
 };
 
 export const Email = Template.bind({});
 Email.args = {
   type: 'e-mail',
-  placeholder: 'Введите e-mail'
+  placeholder: 'Введите e-mail',
+  valid: false,
+  errorMessage: 'Ведите правильный e-mail',
 };
 
 export const Password = Template.bind({});
 Password.args = {
   type: 'password',
-  placeholder: 'Введите пароль'
+  placeholder: 'Введите пароль',
+  valid: false,
+  errorMessage: 'Неверный пароль',
 };

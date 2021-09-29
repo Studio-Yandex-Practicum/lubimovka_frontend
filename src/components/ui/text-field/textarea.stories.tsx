@@ -18,5 +18,8 @@ const Template: ComponentStory<typeof TextArea> = (args) => <TextArea {...args} 
 
 export const Default = Template.bind({});
 Default.args = {
-  placeholder: 'Введите описание пьесы'
+  placeholder: 'Введите описание пьесы',
+  valid: false,
+  errorMessage: 'Нужно больше букв',
+  //errorMessage: 'Описание пьессы не ввдено'
 };
