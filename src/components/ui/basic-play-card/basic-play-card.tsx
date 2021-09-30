@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 import Link from 'next/link';
 import { Button } from '../button';
 
@@ -33,7 +33,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       {...restBasicPlayCardProps}
     >
       <div className={cn(styles.container)}>
-        <h6 className={cn(styles.h7, styles.title)}>{play.title}</h6>
+        <h6 className={cn(styles.title)}>{play.title}</h6>
         <div>
           <Button
             className={styles.buttonCustom}
@@ -64,8 +64,8 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       <div className={cn(styles.info)}>
         <Link href={`/authors/${author.id}`} passHref>
           <div className={cn(styles.author)}>
-            <h6 className={cn(styles.h7, styles.authorName)}>{author.firstName}</h6>
-            <h6 className={cn(styles.h7, styles.authorName)}>{author.lastName}</h6>
+            <h6 className={cn(styles.authorName)}>{author.firstName}</h6>
+            <h6 className={cn(styles.authorName)}>{author.lastName}</h6>
           </div>
         </Link>
         <p className={cn(styles.smalltext, styles.city)}>{play.city}</p>

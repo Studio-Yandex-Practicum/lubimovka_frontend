@@ -4,8 +4,6 @@
   flex-direction: column;
   padding: 0;
   margin: 0;
-  font-family: 'Formular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 400;
   list-style-type: none;
 
   @media (max-width: $mobile-landscape) {
@@ -44,7 +42,7 @@
   animation: fade-in 2s ease-in;
 }
 
-.h7 {
+/* .h7 {
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
@@ -54,9 +52,11 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
-}
+} */
 
 .title {
+  @mixin headline;
+  @mixin headline7;
   display: -webkit-box;
   overflow: hidden;
   margin: 24px 31px auto 24px;
@@ -82,14 +82,20 @@
 }
 
 .authorName {
+  @mixin headline;
+  @mixin headline7;
   margin: 0;
 }
 
 .city {
+  @mixin text;
+  @mixin textSmall;
   margin: 0;
   margin-top: 4px;
 }
 
 .year {
+  @mixin text;
+  @mixin textSmall;
   margin: 0;
 }
