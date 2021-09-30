@@ -212,6 +212,7 @@
   }
 
   @media (max-width: $mobile-landscape) {
+    padding-left: 0;
     border-top: 0;
     border-bottom: 0;
   }
@@ -260,7 +261,6 @@
 
   @media (max-width: $mobile-landscape) {
     max-width: 381px;
-    padding-right: 8px;
     border-top: 0;
     border-bottom: 0;
   }
