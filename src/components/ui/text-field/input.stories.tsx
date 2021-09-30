@@ -23,6 +23,7 @@ Default.args = {
   valid: false,
   errorMessage: 'Введите имя и фамилию',
   width: '360px',
+  height: '14px',
 };
 
 export const Email = Template.bind({});
@@ -32,6 +33,7 @@ Email.args = {
   valid: false,
   errorMessage: 'Ведите правильный e-mail',
   width: '360px',
+  height: '14px',
 };
 
 export const Password = Template.bind({});
@@ -41,4 +43,5 @@ Password.args = {
   valid: false,
   errorMessage: 'Неверный пароль',
   width: '360px',
+  height: '14px',
 };

@@ -22,4 +22,5 @@ Default.args = {
   valid: false,
   errorMessage: 'Описание пьесы не введено',
   width: '360px',
+  height: '100px',
 };

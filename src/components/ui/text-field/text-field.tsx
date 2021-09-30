@@ -6,6 +6,8 @@ import styles from './text-field.module.css';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   valid?: boolean;
   errorMessage?: string;
+  height?: string;
+  width?: string;
 }
 
 export const Input: FC<InputProps> = (props) => {
@@ -23,15 +25,16 @@ export const Input: FC<InputProps> = (props) => {
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   valid?: boolean;
   errorMessage?: string;
+  height?: string;
   width?: string;
 }
 
 export const TextArea: FC<TextAreaProps> = (props) => {
-  const { width, valid, errorMessage, ...restProps} = props;
+  const { width, height, valid, errorMessage, ...restProps} = props;
 
   return (
     <div className={cn(styles.textFieldComponent)} style={{ width }}>
-      <textarea className={cn(styles.textField)} {...restProps} style={{ height: 71, ...restProps}}/>
+      <textarea className={cn(styles.textField)} {...restProps} style={{ height, ...restProps}}/>
       {!valid && errorMessage && <span className={cn(styles.error)}>{errorMessage}</span>}
     </div>
   );
