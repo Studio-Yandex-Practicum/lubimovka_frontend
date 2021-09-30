@@ -17,7 +17,7 @@ export const DroplistItems: FC<IDroplistItemsProps> = ({ month, cb }): JSX.Eleme
 
     setActiveCheckbox(state => !state);
     cb(value, !activeCheckbox);
-  }, [ cb ]);
+  }, [ activeCheckbox ]);
 
   return (
     <label className={ cn(styles.item, {

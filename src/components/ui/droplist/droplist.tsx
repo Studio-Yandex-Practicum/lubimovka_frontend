@@ -28,7 +28,7 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
     widthSelectedItem,
   } = props;
 
-  // Выбранный список пользователем. Вынести в компонент формы.
+  // Выбранный список пользователем.
   const [ selectList, setSelectList ] = useState<string[]>([]);
 
   // Список для вывода
@@ -52,11 +52,12 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
   const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     cb(selectList);
-  }, [ selectList, cb ]);
+    setActiveDropdown(false);
+  }, [ selectList, cb, activeDropdown ]);
 
   const cbContainer = useCallback(() => {
     setActiveDropdown(state => !state);
-  }, [ setActiveDropdown ]);
+  }, [ activeDropdown ]);
 
   const cbItems = useCallback((value: string, activeCheckbox: boolean) => {
     if (activeCheckbox) {
@@ -72,7 +73,7 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
       const newState = previousState.filter((item: string | number) => item !== value.toLowerCase());
       return newState;
     });
-  }, [ setSelectList ]);
+  }, [ selectList ]);
 
   const setMaxWidth = useCallback(() => {
     if (widthSelectedItem) {
@@ -109,7 +110,7 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
         </div>
         { 
           activeDropdown && selectList.length > 0
-          && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth } 
+          && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth }
           />
         }
       </form>
