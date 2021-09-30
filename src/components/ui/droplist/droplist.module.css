@@ -6,6 +6,8 @@
 .list {
   overflow: auto;
   max-height: 0;
+  border: 1px solid #242424;
+  border-top: none;
   margin-bottom: 26px;
   transition: all .1s ease-out;
   visibility: hidden;

@@ -87,7 +87,7 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
 
   return (
     <div className={ cn(styles.dropdown) } style={{ maxWidth: maxWidth && maxWidth + 'px' }}>
-      <ContainerButton cb={ cbContainer } />
+      <ContainerButton cb={ cbContainer } activeDropdown={ activeDropdown } />
       <form
         name='dropdown'
         className={ cn(styles.form) }
@@ -110,8 +110,7 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
         </div>
         { 
           activeDropdown && selectList.length > 0
-          && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth }
-          />
+          && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth } />
         }
       </form>
     </div>

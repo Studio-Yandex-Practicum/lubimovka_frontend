@@ -28,6 +28,11 @@
   }
 }
 
+.dark {
+  background-color: var(--coal);
+  color: var(--beige);
+}
+
 .text {
   @mixin textLarge;
   @mixin text;
