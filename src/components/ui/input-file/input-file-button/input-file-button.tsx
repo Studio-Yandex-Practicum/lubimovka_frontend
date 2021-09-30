@@ -4,7 +4,7 @@ import cn from 'classnames';
 import styles from './input-file-button.module.css';
 
 // Компоненты
-import { Button } from '../../Button/index';
+import { Button } from 'components/ui/button';
 
 interface IInputFileButtonProps {
   inputRef: RefObject<HTMLInputElement>,

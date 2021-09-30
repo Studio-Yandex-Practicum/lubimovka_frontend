@@ -1,7 +1,7 @@
 import React, { useCallback, FC, RefObject } from 'react';
 import cn from 'classnames';
 
-import { Icon } from '../../icon';
+import { Icon } from 'components/ui/icon';
 
 import styles from './input-file-container.module.css';
 

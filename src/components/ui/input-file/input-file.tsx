@@ -42,7 +42,7 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesFiles }): JSX.Element 
     return file && isEnglishName.test(file.name) ? file : false;
   }, [ file ]);
 
-  const cbButton = useCallback((file: File | null): void => {
+  const cbFile = useCallback((file: File | null): void => {
     setFile(file);
   }, [ file ]);
 
@@ -51,7 +51,7 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesFiles }): JSX.Element 
       {
         file && <InputFileContainer
           inputRef={ inputRef } 
-          cb={ cbButton }
+          cb={ cbFile }
           file={ file }
         />
       }
@@ -65,7 +65,7 @@ export const InputFile: FC<IInputFileProps> = ({ cb, typesFiles }): JSX.Element 
       {
         <InputFileButton
           inputRef={ inputRef }
-          cb={ cbButton }
+          cb={ cbFile }
           file={ file }
         />
       }
