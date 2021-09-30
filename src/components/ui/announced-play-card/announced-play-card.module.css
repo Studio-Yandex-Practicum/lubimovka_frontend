@@ -126,6 +126,7 @@
 }
 
 .cardFestival {
+  position: relative;
   display: grid;
   grid-template-areas: "cover infofestival infoplay credits button";
   max-width: 1200px;
@@ -176,7 +177,7 @@
   @media (max-width: $mobile-landscape) {
     position: absolute;
     top: 0;
-    right: 23px;
+    right: 0px;
     padding: 0;
   }
 }
