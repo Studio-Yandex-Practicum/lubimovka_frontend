@@ -21,4 +21,5 @@ Default.args = {
   placeholder: 'Введите описание пьесы',
   valid: false,
   errorMessage: 'Описание пьесы не введено',
+  width: '360px',
 };

@@ -23,13 +23,14 @@ export const Input: FC<InputProps> = (props) => {
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   valid?: boolean;
   errorMessage?: string;
+  width?: string;
 }
 
 export const TextArea: FC<TextAreaProps> = (props) => {
-  const { valid, errorMessage, ...restProps} = props;
+  const { width, valid, errorMessage, ...restProps} = props;
 
   return (
-    <div className={cn(styles.textFieldComponent)} style={{ ...restProps }}>
+    <div className={cn(styles.textFieldComponent)} style={{ width }}>
       <textarea className={cn(styles.textField)} {...restProps} style={{ height: 71, ...restProps}}/>
       {!valid && errorMessage && <span className={cn(styles.error)}>{errorMessage}</span>}
     </div>
