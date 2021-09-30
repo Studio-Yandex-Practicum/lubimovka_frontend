@@ -74,14 +74,14 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
       }
       <div className={cn(styles.infoEvents)}>
         <div className={cn(styles.dateInfo)}>
-          <p className={cn(styles.bodyText, styles.date)}>{date}</p>
-          <p className={cn(styles.bodyText, styles.timeEvents)}>{time}</p>
+          <p className={cn(styles.date)}>{date}</p>
+          <p className={cn(styles.timeEvents)}>{time}</p>
         </div>
-        <h5 className={cn(styles.h5,styles.title)}>{title}</h5>
+        <h5 className={cn(styles.title)}>{title}</h5>
         <div className={cn(styles.credits)}>
           {creditsRendered}
         </div>
-        <p className={cn(styles.caption, styles.description)}>читка проекта Любимовка.Ещё</p>
+        <p className={cn(styles.description)}>читка проекта Любимовка.Ещё</p>
         {buttonLinks.length === 2 &&
           <div className={cn(styles.buttonEventsContainer, coverResourceUrl ? styles.buttonEventsContainerTwoLinks : styles.buttonEventsContainerOneLink)}>
             <Button
@@ -143,12 +143,12 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         (<>
           <img className={cn(styles.coverFestival)} src={coverResourceUrl}></img>
           <div className={cn(styles.infoFestival)}>
-            <h6 className={cn(styles.h6, styles.timeFestival)}>{time}</h6>
-            <p className={cn(styles.smalltext, styles.location)}>{location}</p>
+            <h6 className={cn(styles.timeFestival)}>{time}</h6>
+            <p className={cn(styles.location)}>{location}</p>
           </div>
           <div className={cn(styles.infoPlay)}>
-            <h6 className={cn(styles.h6,styles.titleFestival)}>{title}</h6>
-            <p className={cn(styles.smalltext, styles.synopsis)}>{synopsis}</p>
+            <h6 className={cn(styles.titleFestival)}>{title}</h6>
+            <p className={cn(styles.synopsis)}>{synopsis}</p>
           </div>
         </>
         )
@@ -156,12 +156,12 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           <>
             <div className={cn(styles.coverFestivalNoCover)} ></div>
             <div className={cn(styles.infoFestival, styles.infoFestivalNoCover)}>
-              <h6 className={cn(styles.h6, styles.timeFestival)}>{time}</h6>
-              <p className={cn(styles.smalltext, styles.location)}>{location}</p>
+              <h6 className={cn(styles.timeFestival)}>{time}</h6>
+              <p className={cn(styles.location)}>{location}</p>
             </div>
             <div className={cn(styles.infoPlay)}>
-              <h6 className={cn(styles.h6,styles.titleFestival, styles.titleFestivalNoCover)}>{title}</h6>
-              <p className={cn(styles.smalltext, styles.synopsis)}>{synopsis}</p>
+              <h6 className={cn(styles.titleFestival, styles.titleFestivalNoCover)}>{title}</h6>
+              <p className={cn(styles.synopsis)}>{synopsis}</p>
             </div>
           </>
         )

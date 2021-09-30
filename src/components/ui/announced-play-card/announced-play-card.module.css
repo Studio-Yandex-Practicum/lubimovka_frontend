@@ -2,7 +2,6 @@
   display: flex;
   width: 420px;
   flex-direction: row;
-  font-family: 'Formular', 'PP Neue Machina', Helvetica, Arial, sans-serif;
   list-style-type: none;
 
   @media (max-width: $mobile-landscape) {
@@ -38,14 +37,10 @@
 }
 
 .dateInfo {
+  @mixin text;
+  @mixin textLarge;
   display: flex;
   flex-direction: row;
-}
-
-.bodyText {
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 28px;
 }
 
 .date {
@@ -64,24 +59,14 @@
 }
 
 .title {
+  @mixin headline;
+  @mixin headline5;
   margin-top: 16px;
 }
 
-.h5 {
-  margin: 0;
-  font-size: 36px;
-  font-weight: 400;
-  line-height: 38px;
-}
-
-.h6 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 32px;
-}
-
 .credits {
+  @mixin text;
+  @mixin textSmall;
   display: flex;
   width: 240px;
   flex-direction: column;
@@ -99,15 +84,11 @@
 }
 
 .description {
+  @mixin text;
+  @mixin textCaption;
   width: 150px;
   padding-top: 20px;
   margin: 0;
-}
-
-.caption {
-  font-size: 14px;
-  font-weight: 300px;
-  line-height: 17px;
 }
 
 .buttonEvents {
@@ -142,12 +123,6 @@
   @media (max-width: $mobile-landscape) {
     margin-left: 0;
   }
-}
-
-.smalltext {
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 22px;
 }
 
 .cardFestival {
@@ -249,6 +224,8 @@
 }
 
 .timeFestival {
+  @mixin headline;
+  @mixin headline6;
   width: 150px;
   padding-top: 16px;
   margin: 0;
@@ -259,6 +236,8 @@
 }
 
 .location {
+  @mixin text;
+  @mixin textSmall;
   padding-top: 16px;
   margin: 0;
 
@@ -288,6 +267,8 @@
 }
 
 .titleFestival {
+  @mixin headline;
+  @mixin headline6;
   padding-top: 16px;
 
   @media (max-width: $mobile-landscape) {
@@ -302,6 +283,8 @@
 }
 
 .synopsis {
+  @mixin text;
+  @mixin textSmall;
   padding-top: 16px;
   margin: 0;
 
@@ -311,6 +294,8 @@
 }
 
 .creditsFestival {
+  @mixin text;
+  @mixin textSmall;
   grid-area: credits;
   display: flex;
   max-width: 229px;
