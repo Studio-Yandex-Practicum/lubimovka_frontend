@@ -1,11 +1,7 @@
 .textFieldComponent {
   display: flex;
-  max-width: 360px;
+  width: 100%;
   flex-direction: column;
-
-  @media (min-width: $mobile-landscape) {
-    max-width: 365px;
-  }
 }
 
 .textField {
@@ -13,7 +9,6 @@
   @mixin textSmall;
 
   position: relative;
-  width: 100%;
   padding: 8px 0;
   border: none;
   border-bottom: 1px solid var(--coal);

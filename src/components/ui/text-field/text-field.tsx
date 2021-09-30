@@ -13,7 +13,7 @@ export const Input: FC<InputProps> = (props) => {
 
   return (
     <div className={cn(styles.textFieldComponent)}>
-      <input className={cn(styles.textField)} formNoValidate {...restProps}/>
+      <input className={cn(styles.textField)} formNoValidate {...restProps} style={{ height: 13, ...restProps }}/>
       {!valid && errorMessage && <span className={cn(styles.error)}>{errorMessage}</span>}
     </div>
   );
@@ -30,7 +30,7 @@ export const TextArea: FC<TextAreaProps> = (props) => {
 
   return (
     <div className={cn(styles.textFieldComponent)}>
-      <textarea className={cn(styles.textField)} {...restProps} />
+      <textarea className={cn(styles.textField)} {...restProps} style={{ height: 71, ...restProps}}/>
       {!valid && errorMessage && <span className={cn(styles.error)}>{errorMessage}</span>}
     </div>
   );
