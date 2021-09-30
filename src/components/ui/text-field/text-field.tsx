@@ -9,10 +9,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input: FC<InputProps> = (props) => {
-  const {valid, errorMessage, ...restProps} = props;
+  const {width, valid, errorMessage, ...restProps} = props;
 
   return (
-    <div className={cn(styles.textFieldComponent)}>
+    <div className={cn(styles.textFieldComponent)} style={{ width }}>
       <input className={cn(styles.textField)} formNoValidate {...restProps} style={{ height: 13, ...restProps }}/>
       {!valid && errorMessage && <span className={cn(styles.error)}>{errorMessage}</span>}
     </div>
@@ -26,10 +26,10 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 }
 
 export const TextArea: FC<TextAreaProps> = (props) => {
-  const {valid, errorMessage, ...restProps} = props;
+  const { valid, errorMessage, ...restProps} = props;
 
   return (
-    <div className={cn(styles.textFieldComponent)}>
+    <div className={cn(styles.textFieldComponent)} style={{ ...restProps }}>
       <textarea className={cn(styles.textField)} {...restProps} style={{ height: 71, ...restProps}}/>
       {!valid && errorMessage && <span className={cn(styles.error)}>{errorMessage}</span>}
     </div>
