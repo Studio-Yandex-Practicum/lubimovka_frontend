@@ -111,7 +111,6 @@
 }
 
 .buttonEvents {
-  justify-content: flex-start;
   margin-bottom: 16px;
 
   @media (max-width: $mobile-landscape) {
@@ -151,7 +150,7 @@
   line-height: 22px;
 }
 
-.cardFestival {
+/* .cardFestival {
   display: flex;
   max-width: 1200px;
   flex-direction: row;
@@ -325,6 +324,208 @@
     padding-top: 0;
 
     /* margin-top: 16px; */
+    /* border-top: 0;
+    border-bottom: 0;
+  }
+} */
+
+/* .buttonFestivalContainerNoButton {
+  width: 154px;
+} */
+
+.cardFestival {
+  display: grid;
+  grid-template-areas: "cover infofestival infoplay credits button";
+  max-width: 1200px;
+  grid: repeat (5 fr);
+  font-family: 'Formular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  list-style-type: none;
+  gap: 0;
+
+  @media (max-width: $tablet-landscape) {
+    position: relative;
+    max-width: 768px;
+    grid-template-areas:
+      "cover infofestival infoplay button"
+      "credits";
+  }
+
+  @media (max-width: $mobile-landscape) {
+    position: relative;
+    max-width: 414px;
+    grid-template-areas:
+      "cover"
+      "infofestival"
+      "infoplay"
+      "credits"
+      "button";
+    padding: 0 23px 48px 24px;
+    border-top: var(--coal) solid 1px;
+  }
+}
+
+.cardFestival:last-child {
+  @media (max-width: $mobile-landscape) {
+    border-bottom: var(--coal) solid 1px;
+  }
+}
+
+.coverFestival {
+  grid-area: cover;
+  width: 151px;
+  min-height: 191px;
+  object-fit: cover;
+
+  @media (max-width: $tablet-landscape) {
+    width: 127px;
+    min-height: 161px;
+  }
+
+  @media (max-width: $mobile-landscape) {
+    position: absolute;
+    top: 0;
+    right: 23px;
+    padding: 0;
+  }
+}
+
+.coverFestivalNoCover {
+  width: 151px;
+  min-height: 191px;
+
+  @media (max-width: $tablet-landscape) {
+    width: 127px;
+    min-height: 161px;
+  }
+
+  @media (max-width: $mobile-landscape) {
+    width: 0;
+    min-height: 0;
+  }
+}
+
+.infoFestival {
+  grid-area: infofestival;
+  display: flex;
+  max-width: 150px;
+  flex-direction: column;
+  padding-right: 53px;
+  padding-bottom: 41px;
+  padding-left: 28px;
+  border-top: var(--coal) solid 1px;
+  border-bottom: var(--coal) solid 1px;
+
+  @media (max-width: $tablet-landscape) {
+    padding-right: 32px;
+  }
+
+  @media (max-width: $mobile-landscape) {
+    border-top: 0;
+    border-bottom: 0;
+  }
+}
+
+.infoFestivalNoCover {
+  @media (max-width: $mobile-landscape) {
+    padding-bottom: 0;
+  }
+}
+
+.timeFestival {
+  width: 150px;
+  padding-top: 16px;
+  margin: 0;
+
+  @media (max-width: $mobile-landscape) {
+    padding-top: 20px;
+  }
+}
+
+.location {
+  padding-top: 16px;
+  margin: 0;
+
+  @media (max-width: $mobile-landscape) {
+    padding-top: 0;
+  }
+}
+
+.infoPlay {
+  grid-area: infoplay;
+  max-width: 329px;
+  padding-right: 32px;
+  border-top: var(--coal) solid 1px;
+  border-bottom: var(--coal) solid 1px;
+
+  @media (max-width: $tablet-landscape) {
+    max-width: 229px;
+    padding-right: 28px;
+  }
+
+  @media (max-width: $mobile-landscape) {
+    max-width: 381px;
+    padding-right: 8px;
+    border-top: 0;
+    border-bottom: 0;
+  }
+}
+
+.titleFestival {
+  padding-top: 16px;
+
+  @media (max-width: $mobile-landscape) {
+    padding-top: 111px;
+  }
+}
+
+.titleFestivalNoCover {
+  @media (max-width: $mobile-landscape) {
+    padding-top: 20px;
+  }
+}
+
+.synopsis {
+  padding-top: 16px;
+  margin: 0;
+
+  @media (max-width: $mobile-landscape) {
+    margin-left: 88px;
+  }
+}
+
+.creditsFestival {
+  grid-area: credits;
+  display: flex;
+  max-width: 229px;
+  flex-direction: column;
+  padding-top: 67px;
+  padding-right: 32px;
+  border-top: var(--coal) solid 1px;
+  border-bottom: var(--coal) solid 1px;
+
+  @media (max-width: $tablet-landscape) {
+    padding-right: 28px;
+    padding-bottom: 40px;
+  }
+
+  @media (max-width: $mobile-landscape) {
+    max-width: 318px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    border-top: 0;
+    border-bottom: 0;
+  }
+}
+
+.buttonFestivalContainer {
+  grid-area: button;
+  padding-top: 67px;
+  border-top: var(--coal) solid 1px;
+  border-bottom: var(--coal) solid 1px;
+
+  @media (max-width: $mobile-landscape) {
+    align-self: flex-end;
+    padding-top: 0;
     border-top: 0;
     border-bottom: 0;
   }
