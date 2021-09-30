@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import cn from 'classnames';
 
 import { Icon } from '../../icon';
@@ -10,7 +10,7 @@ interface IContainerButtonProps {
 }
 
 export const ContainerButton: FC<IContainerButtonProps> = ({ cb }) => {
-  const clickActiveDropdown = (): void => cb();
+  const clickActiveDropdown = useCallback((): void => cb(), [ cb ]);
 
   return (
     <div

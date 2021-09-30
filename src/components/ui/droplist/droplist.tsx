@@ -52,13 +52,13 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
   const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     cb(selectList);
-  }, [ selectList ]);
+  }, [ selectList, cb ]);
 
-  const cbContainer = () => {
+  const cbContainer = useCallback(() => {
     setActiveDropdown(state => !state);
-  };
+  }, [ setActiveDropdown ]);
 
-  const cbItems = (value: string, activeCheckbox: boolean) => {
+  const cbItems = useCallback((value: string, activeCheckbox: boolean) => {
     if (activeCheckbox) {
       setSelectList(state => {
         const newState = state.slice(0);
@@ -72,9 +72,9 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
       const newState = previousState.filter((item: string | number) => item !== value.toLowerCase());
       return newState;
     });
-  };
+  }, [ setSelectList ]);
 
-  const setMaxWidth = () => {
+  const setMaxWidth = useCallback(() => {
     if (widthSelectedItem) {
       return widthSelectedItem + 'px';
     }
@@ -82,7 +82,7 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
     case 'months': return '110px';
     case 'years': return '59px';
     }
-  };
+  }, [ widthSelectedItem, type ]);
 
   return (
     <div className={ cn(styles.dropdown) } style={{ maxWidth: maxWidth && maxWidth + 'px' }}>
