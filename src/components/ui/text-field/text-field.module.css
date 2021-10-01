@@ -12,6 +12,7 @@
   padding: 8px 0;
   border: none;
   border-bottom: 1px solid var(--coal);
+  background-color: transparent;
   outline: none;
 
   /* Атрибут placeholder выводит текст внутри поля формы, который исчезает при получении фокуса.
