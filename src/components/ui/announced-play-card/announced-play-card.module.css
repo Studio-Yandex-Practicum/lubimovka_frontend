@@ -1,6 +1,6 @@
 .cardEvents {
   display: flex;
-  width: 420px;
+  max-width: 420px;
   flex-direction: row;
   list-style-type: none;
 
@@ -113,11 +113,11 @@
 }
 
 .buttonEventsContainer {
-  width: 380px;
   margin-top: 16px;
 
   @media (max-width: $mobile-landscape) {
     display: flex;
+    width: 380px;
     flex-direction: row;
   }
 }
@@ -125,7 +125,7 @@
 .buttonEventsContainerCoverExists {
   @media (max-width: $mobile-landscape) {
     margin-top: 48px;
-    margin-left: -121px;
+    margin-left: -123px;
   }
 }
 
