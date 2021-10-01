@@ -2,19 +2,24 @@ import { FC } from 'react';
 import NextLink from 'next/link';
 import cn from 'classnames/bind';
 
-import { NavigationMenu } from 'components/ui/navigation-menu';
+import { Menu } from 'components/ui/menu';
 import { Button } from 'components/ui/button';
 import Logo from 'shared/images/logo.svg';
-import { NAVIGATION_MENU_ITEMS, SOCIAL_LIST_ITEMS } from 'shared/constants';
+import { HEADER_MAIN_NAVIGATION_ITEMS, HEADER_SOCIAL_ITEMS } from 'shared/constants';
 
 import styles from './navbar.module.css';
-
 const cx = cn.bind(styles);
 
 export type TSocialItem = {
   title: string;
   href: string;
 };
+
+export type TMainNavigationItem = {
+  title: string;
+  href: string;
+  active?: boolean;
+}
 
 export const Navbar: FC = () => {
   return (
@@ -24,22 +29,31 @@ export const Navbar: FC = () => {
           <Logo className={cx('logo')} />
         </a>
       </NextLink>
-      <NavigationMenu
-        items={NAVIGATION_MENU_ITEMS}
-        size="auto"
-        className={cx('navigation')}
-        itemClassName={cx('navigationItem')}
-        linkClassName={cx('navigationLink')}
-      />
-      <ul className={cx('socialList')}>
-        {SOCIAL_LIST_ITEMS.map((item, idx) => (
-          <li key={idx}>
-            <a href={item.href} className={cx('socialLink')}>
-              {item.title}
-            </a>
-          </li>
+      <nav className={cx('navigation')}>
+        <Menu view="mainNavigation">
+          {HEADER_MAIN_NAVIGATION_ITEMS.map(({ title, href }, idx) => (
+            <Menu.Item
+              key={idx}
+              href={href}
+              type='navLink'
+            >
+              {title}
+            </Menu.Item>
+          ))}
+        </Menu>
+      </nav>
+      <Menu view="socialLinks">
+        {HEADER_SOCIAL_ITEMS.map(({ title, href }, idx) => (
+          <Menu.Item
+            key={idx}
+            href={href}
+            type='link'
+            target='_blank'
+          >
+            {title}
+          </Menu.Item>
         ))}
-      </ul>
+      </Menu>
       <Button
         className={cx('button')}
         label="Поддержать"

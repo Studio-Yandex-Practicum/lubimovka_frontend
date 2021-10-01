@@ -1,0 +1,57 @@
+.menu {
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.mainNavigation {
+  flex: inherit;
+
+  & .menuListItem {
+    flex: 1;
+  }
+
+  @media (max-width: 728px) {
+    @mixin headline;
+    @mixin headline6;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    & .menuListItem {
+      display: flex;
+    }
+  }
+}
+
+.pageNavigation {
+  & .menuListItem:not(:last-child) {
+    margin-right: 24px;
+  }
+}
+
+.socialLinks {
+  display: flex;
+}
+
+.tabs {
+  & .menuListItem:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.sectionNavigation {
+  & .menuListItem:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.footerNavigation {
+  flex-direction: column;
+
+  & .menuListItem:not(:first-child) {
+    margin-top: 15px;
+  }
+}

@@ -1,7 +1,6 @@
-import { INavigationMenuItemProps } from '../components/ui/navigation-menu-item';
-import { TSocialItem } from 'components/common/navbar';
+import { TSocialItem, TMainNavigationItem } from 'components/common/navbar';
 
-export const NAVIGATION_MENU_ITEMS: INavigationMenuItemProps[] = [
+export const HEADER_MAIN_NAVIGATION_ITEMS: TMainNavigationItem[] = [
   {
     title: 'Афиша',
     href: '/afishe',
@@ -49,7 +48,7 @@ export const LIBRARY_TABS = [
   },
 ];
 
-export const SOCIAL_LIST_ITEMS: TSocialItem[] = [
+export const HEADER_SOCIAL_ITEMS: TSocialItem[] = [
   {
     title: 'fb',
     href: '#'
