@@ -39,6 +39,7 @@
 .dateInfo {
   @mixin text;
   @mixin textLarge;
+
   display: flex;
   flex-direction: row;
 }
@@ -61,12 +62,14 @@
 .title {
   @mixin headline;
   @mixin headline5;
+
   margin-top: 16px;
 }
 
 .credits {
   @mixin text;
   @mixin textSmall;
+
   display: flex;
   width: 240px;
   flex-direction: column;
@@ -86,6 +89,7 @@
 .description {
   @mixin text;
   @mixin textCaption;
+
   width: 150px;
   padding-top: 20px;
   margin: 0;
@@ -128,12 +132,12 @@
 .cardFestival {
   position: relative;
   display: grid;
-  grid-template-areas: "cover infofestival infoplay credits button";
   max-width: 1200px;
-  grid: repeat (5 fr);
   font-family: 'Formular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  list-style-type: none;
   gap: 0;
+  grid: repeat (5 fr);
+  grid-template-areas: "cover infofestival infoplay credits button";
+  list-style-type: none;
 
   @media (max-width: $tablet-landscape) {
     position: relative;
@@ -146,14 +150,14 @@
   @media (max-width: $mobile-landscape) {
     position: relative;
     max-width: 414px;
+    padding: 0 23px 48px 24px;
+    border-top: var(--coal) solid 1px;
     grid-template-areas:
       "cover"
       "infofestival"
       "infoplay"
       "credits"
       "button";
-    padding: 0 23px 48px 24px;
-    border-top: var(--coal) solid 1px;
   }
 }
 
@@ -164,9 +168,9 @@
 }
 
 .coverFestival {
-  grid-area: cover;
   width: 151px;
   min-height: 191px;
+  grid-area: cover;
   object-fit: cover;
 
   @media (max-width: $tablet-landscape) {
@@ -177,7 +181,7 @@
   @media (max-width: $mobile-landscape) {
     position: absolute;
     top: 0;
-    right: 0px;
+    right: 0;
     padding: 0;
   }
 }
@@ -198,7 +202,6 @@
 }
 
 .infoFestival {
-  grid-area: infofestival;
   display: flex;
   max-width: 150px;
   flex-direction: column;
@@ -207,6 +210,7 @@
   padding-left: 28px;
   border-top: var(--coal) solid 1px;
   border-bottom: var(--coal) solid 1px;
+  grid-area: infofestival;
 
   @media (max-width: $tablet-landscape) {
     padding-right: 32px;
@@ -228,6 +232,7 @@
 .timeFestival {
   @mixin headline;
   @mixin headline6;
+
   width: 150px;
   padding-top: 16px;
   margin: 0;
@@ -240,6 +245,7 @@
 .location {
   @mixin text;
   @mixin textSmall;
+
   padding-top: 16px;
   margin: 0;
 
@@ -249,11 +255,11 @@
 }
 
 .infoPlay {
-  grid-area: infoplay;
   max-width: 329px;
   padding-right: 32px;
   border-top: var(--coal) solid 1px;
   border-bottom: var(--coal) solid 1px;
+  grid-area: infoplay;
 
   @media (max-width: $tablet-landscape) {
     max-width: 229px;
@@ -270,6 +276,7 @@
 .titleFestival {
   @mixin headline;
   @mixin headline6;
+
   padding-top: 16px;
 
   @media (max-width: $mobile-landscape) {
@@ -286,6 +293,7 @@
 .synopsis {
   @mixin text;
   @mixin textSmall;
+
   padding-top: 16px;
   margin: 0;
 
@@ -297,7 +305,7 @@
 .creditsFestival {
   @mixin text;
   @mixin textSmall;
-  grid-area: credits;
+
   display: flex;
   max-width: 229px;
   flex-direction: column;
@@ -305,6 +313,7 @@
   padding-right: 32px;
   border-top: var(--coal) solid 1px;
   border-bottom: var(--coal) solid 1px;
+  grid-area: credits;
 
   @media (max-width: $tablet-landscape) {
     padding-right: 28px;
@@ -321,10 +330,10 @@
 }
 
 .buttonFestivalContainer {
-  grid-area: button;
   padding-top: 67px;
   border-top: var(--coal) solid 1px;
   border-bottom: var(--coal) solid 1px;
+  grid-area: button;
 
   @media (max-width: $mobile-landscape) {
     align-self: flex-end;
