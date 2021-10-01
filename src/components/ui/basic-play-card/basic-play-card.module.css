@@ -11,12 +11,6 @@
   }
 }
 
-@keyframes fade-in {
-  0% { opacity: 0; }
-  50% { opacity: 50%; }
-  100% { opacity: 100%; }
-}
-
 .container {
   display: flex;
   height: 300px;
@@ -26,6 +20,8 @@
 }
 
 .buttonCustom {
+  opacity: 0;
+  transition: visibility .5s ease-in-out, opacity .5s ease-in-out;
   visibility: hidden;
 
   @media (max-width: $mobile-landscape) {
@@ -34,7 +30,7 @@
 }
 
 .container:hover .buttonCustom {
-  animation: fade-in .5s ease-in;
+  opacity: 1;
   visibility: visible;
 }
 
