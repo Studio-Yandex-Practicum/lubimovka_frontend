@@ -1,6 +1,6 @@
 @define-mixin separator {
   position: absolute;
-  top: min(calc(11 * (100vw / 1440)), 11px);
+  top: min(calc(11 * var(--vw-size-multiplier)), 11px);
   right: -1px;
   bottom: 0;
   width: 1px;
@@ -16,13 +16,13 @@
 
 .logoLink {
   display: block;
-  margin: min(calc(15 * (100vw / 1440)), 15px) min(calc(4 * (100vw / 1440)), 4px) min(calc(11 * (100vw / 1440)), 11px) min(calc(30 * (100vw / 1440)), 30px);
+  margin: min(calc(15 * var(--vw-size-multiplier)), 15px) min(calc(4 * var(--vw-size-multiplier)), 4px) min(calc(11 * var(--vw-size-multiplier)), 11px) min(calc(30 * var(--vw-size-multiplier)), 30px);
   line-height: 0;
 }
 
 .logo {
-  width: min(calc(43 * (100vw / 1440)), 43px);
-  height: min(calc(35 * (100vw / 1440)), 35px);
+  width: min(calc(43 * var(--vw-size-multiplier)), 43px);
+  height: min(calc(35 * var(--vw-size-multiplier)), 35px);
   color: var(--black);
 }
 
@@ -30,7 +30,7 @@
   position: relative;
   display: flex;
   flex: 1;
-  padding: 0 min(calc(17 * (100vw / 1440)), 17px);
+  padding: 0 min(calc(17 * var(--vw-size-multiplier)), 17px);
 
   &::after {
     @mixin separator;
@@ -50,7 +50,7 @@
 .socialList {
   position: relative;
   display: flex;
-  padding: 0 min(calc(17 * (100vw / 1440)), 17px);
+  padding: 0 min(calc(17 * var(--vw-size-multiplier)), 17px);
   margin: 0;
   list-style: none;
 
@@ -66,20 +66,20 @@
   display: inline-flex;
   height: 100%;
   align-items: center;
-  padding: 0 min(calc(8 * (100vw / 1440)), 8px);
+  padding: 0 min(calc(8 * var(--vw-size-multiplier)), 8px);
   color: var(--black);
   cursor: pointer;
-  font-size: clamp(8px, calc(16 * (100vw / 1440)), 16px);
+  font-size: clamp(8px, calc(16 * var(--vw-size-multiplier)), 16px);
   text-decoration-line: none;
 }
 
 .button {
-  min-width: min(calc(165 * (100vw / 1440)), 165px);
+  min-width: min(calc(165 * var(--vw-size-multiplier)), 165px);
   justify-content: center;
-  font-size: clamp(8px, calc(14 * (100vw / 1440)), 14px);
+  font-size: clamp(8px, calc(14 * var(--vw-size-multiplier)), 14px);
 
   & svg {
-    width: min(calc(25 * (100vw / 1440)), 25px);
-    height: min(calc(25 * (100vw / 1440)), 25px);
+    width: min(calc(25 * var(--vw-size-multiplier)), 25px);
+    height: min(calc(25 * var(--vw-size-multiplier)), 25px);
   }
 }
