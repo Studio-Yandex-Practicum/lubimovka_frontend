@@ -70,19 +70,6 @@
   cursor: pointer;
 }
 
-.authorName {
-  /* @mixin headline;
-  @mixin headline7; */
-
-  margin: 0;
-}
-
-/* .authorName:hover {
-  background-color: var(--coal);
-  color: var(--white);
-  cursor: pointer;
-} */
-
 .city {
   @mixin text;
   @mixin textSmall;
