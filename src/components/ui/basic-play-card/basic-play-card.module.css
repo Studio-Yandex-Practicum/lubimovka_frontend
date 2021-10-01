@@ -34,13 +34,14 @@
 }
 
 .container:hover .buttonCustom {
-  visibility: visible;
   animation: fade-in .5s ease-in;
+  visibility: visible;
 }
 
 .title {
   @mixin headline;
   @mixin headline7;
+
   display: -webkit-box;
   overflow: hidden;
   margin: 24px 31px auto 24px;
@@ -56,7 +57,11 @@
 }
 
 .author {
-  color: var(--coal);
+  @mixin headline;
+  @mixin headline7;
+
+  display: inline-block;
+  max-width: 190px;
 }
 
 .author:hover {
@@ -66,14 +71,22 @@
 }
 
 .authorName {
-  @mixin headline;
-  @mixin headline7;
+  /* @mixin headline;
+  @mixin headline7; */
+
   margin: 0;
 }
+
+/* .authorName:hover {
+  background-color: var(--coal);
+  color: var(--white);
+  cursor: pointer;
+} */
 
 .city {
   @mixin text;
   @mixin textSmall;
+
   margin: 0;
   margin-top: 4px;
 }
@@ -81,5 +94,6 @@
 .year {
   @mixin text;
   @mixin textSmall;
+
   margin: 0;
 }

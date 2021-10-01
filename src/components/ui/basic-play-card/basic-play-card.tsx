@@ -63,10 +63,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       </div>
       <div className={cn(styles.info)}>
         <Link href={`/authors/${author.id}`} passHref>
-          <div className={cn(styles.author)}>
-            <h6 className={cn(styles.authorName)}>{author.firstName}</h6>
-            <h6 className={cn(styles.authorName)}>{author.lastName}</h6>
-          </div>
+          <h6 className={cn(styles.author)}>{author.firstName}<br />{author.lastName}</h6>
         </Link>
         <p className={cn(styles.city)}>{play.city}</p>
         <p className={cn(styles.year)}>{play.year}</p>
