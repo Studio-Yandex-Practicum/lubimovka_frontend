@@ -131,7 +131,7 @@
 
 .cardFestival {
   position: relative;
-  display: grid;
+  display: inline-grid;
   max-width: 1200px;
   font-family: 'Formular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   gap: 0;
