@@ -41,21 +41,21 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     <React.Fragment>
       {
         playwrightArray.length > 1 ?
-          (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+          (<p className={cn(styles.creditsEntry)}>
         Драматурги: {creditsArrayToString (playwrightArray)}
           </p>)
           :
-          (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+          (<p className={cn(styles.creditsEntry)}>
         Драматург: {playwrightArray}
           </p>)
       }
       {
         directorArray.length > 1 ?
-          (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+          (<p className={cn(styles.creditsEntry)}>
         Режиссёры: {creditsArrayToString (directorArray)}
           </p>)
           :
-          (<p className={cn(styles.smalltext,styles.creditsEntry)}>
+          (<p className={cn(styles.creditsEntry)}>
           Режиссёр: {directorArray}
           </p>)
       }
@@ -142,27 +142,19 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
       {coverResourceUrl ?
         (<>
           <img className={cn(styles.coverFestival)} src={coverResourceUrl}></img>
-          <div className={cn(styles.infoFestival)}>
-            <h6 className={cn(styles.timeFestival)}>{time}</h6>
-            <p className={cn(styles.location)}>{location}</p>
-          </div>
-          <div className={cn(styles.infoPlay)}>
-            <h6 className={cn(styles.titleFestival)}>{title}</h6>
-            <p className={cn(styles.synopsis)}>{synopsis}</p>
-          </div>
+          <h6 className={cn(styles.timeFestival)}>{time}</h6>
+          <p className={cn(styles.location)}>{location}</p>
+          <h6 className={cn(styles.titleFestival)}>{title}</h6>
+          <p className={cn(styles.synopsis)}>{synopsis}</p>
         </>
         )
         : (
           <>
             <div className={cn(styles.coverFestivalNoCover)} ></div>
-            <div className={cn(styles.infoFestival, styles.infoFestivalNoCover)}>
-              <h6 className={cn(styles.timeFestival)}>{time}</h6>
-              <p className={cn(styles.location)}>{location}</p>
-            </div>
-            <div className={cn(styles.infoPlay)}>
-              <h6 className={cn(styles.titleFestival, styles.titleFestivalNoCover)}>{title}</h6>
-              <p className={cn(styles.synopsis)}>{synopsis}</p>
-            </div>
+            <h6 className={cn(styles.timeFestival)}>{time}</h6>
+            <p className={cn(styles.location)}>{location}</p>
+            <h6 className={cn(styles.titleFestival, styles.titleFestivalNoCover)}>{title}</h6>
+            <p className={cn(styles.synopsis)}>{synopsis}</p>
           </>
         )
       }

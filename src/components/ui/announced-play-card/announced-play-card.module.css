@@ -131,33 +131,36 @@
 
 .cardFestival {
   position: relative;
-  display: inline-grid;
+  display: grid;
   max-width: 1200px;
   border-top: var(--coal) solid 1px;
   border-bottom: var(--coal) solid 1px;
-  font-family: 'Formular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  gap: 0;
-  grid: repeat (5 fr);
-  grid-template-areas: "cover infofestival infoplay credits button";
+  grid-gap: 16px 0;
+  grid-template-areas:
+    "cover time title . ."
+    "cover location synopsis credits button";
   list-style-type: none;
+
+  @media (max-width: $tablet-landscape) {
+    position: relative;
+    max-width: 992px;
+    grid-template-areas:
+      "cover time title ."
+      "cover location synopsis button"
+      "cover . credits .";
+  }
 
   @media (max-width: $tablet-portrait) {
     position: relative;
     max-width: 768px;
-    grid-template-areas:
-      "cover infofestival infoplay button"
-      ". . credits . ";
-  }
-
-  @media (max-width: $mobile-landscape) {
-    position: relative;
-    max-width: 414px;
     padding: 0 23px 48px 24px;
-    border-top: var(--coal) solid 1px;
+    gap: 0;
     grid-template-areas:
       "cover"
-      "infofestival"
-      "infoplay"
+      "time"
+      "location"
+      "title"
+      "synopsis"
       "credits"
       "button";
   }
@@ -172,6 +175,7 @@
 .coverFestival {
   width: 151px;
   min-height: 191px;
+  padding-right: 28px;
   grid-area: cover;
   object-fit: cover;
 
@@ -180,52 +184,35 @@
     min-height: 161px;
   }
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     position: absolute;
     top: 0;
     right: 0;
+    width: 151px;
+    min-height: 191px;
     padding: 0;
+  }
+
+  @media (max-width: $mobile-landscape) {
+    width: 127px;
+    min-height: 161px;
   }
 }
 
 .coverFestivalNoCover {
   width: 151px;
   min-height: 191px;
+  padding-right: 28px;
+  grid-area: cover;
 
   @media (max-width: $tablet-landscape) {
     width: 127px;
     min-height: 161px;
   }
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     width: 0;
     min-height: 0;
-  }
-}
-
-.infoFestival {
-  display: flex;
-  max-width: 150px;
-  flex-direction: column;
-  padding-right: 53px;
-  padding-bottom: 41px;
-  padding-left: 28px;
-  grid-area: infofestival;
-
-  @media (max-width: $tablet-landscape) {
-    padding-right: 32px;
-  }
-
-  @media (max-width: $mobile-landscape) {
-    padding-left: 0;
-    border-top: 0;
-    border-bottom: 0;
-  }
-}
-
-.infoFestivalNoCover {
-  @media (max-width: $mobile-landscape) {
-    padding-bottom: 0;
   }
 }
 
@@ -233,12 +220,14 @@
   @mixin headline;
   @mixin headline6;
 
-  width: 150px;
+  max-width: 150px;
   padding-top: 16px;
+  padding-right: 30px;
   margin: 0;
+  grid-area: time;
 
-  @media (max-width: $mobile-landscape) {
-    padding-top: 20px;
+  @media (max-width: $tablet-portrait) {
+    max-width: 58px;
   }
 }
 
@@ -246,28 +235,14 @@
   @mixin text;
   @mixin textSmall;
 
-  padding-top: 16px;
+  max-width: 150px;
+  padding-right: 30px;
   margin: 0;
+  grid-area: location;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
+    max-width: 127px;
     padding-top: 0;
-  }
-}
-
-.infoPlay {
-  max-width: 329px;
-  padding-right: 32px;
-  grid-area: infoplay;
-
-  @media (max-width: $tablet-landscape) {
-    max-width: 229px;
-    padding-right: 28px;
-  }
-
-  @media (max-width: $mobile-landscape) {
-    max-width: 381px;
-    border-top: 0;
-    border-bottom: 0;
   }
 }
 
@@ -275,15 +250,20 @@
   @mixin headline;
   @mixin headline6;
 
+  max-width: 329px;
   padding-top: 16px;
+  padding-right: 32px;
+  padding-bottom: 16px;
+  margin: 0;
+  grid-area: title;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     padding-top: 111px;
   }
 }
 
 .titleFestivalNoCover {
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     padding-top: 20px;
   }
 }
@@ -292,10 +272,17 @@
   @mixin text;
   @mixin textSmall;
 
-  padding-top: 16px;
+  max-width: 329px;
+  padding-right: 32px;
+  padding-bottom: 83px;
   margin: 0;
+  grid-area: synopsis;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-landscape) {
+    padding-bottom: 0;
+  }
+
+  @media (max-width: $tablet-portrait) {
     margin-left: 88px;
   }
 }
@@ -305,22 +292,16 @@
   @mixin textSmall;
 
   display: flex;
-  max-width: 229px;
+  max-width: 299px;
   flex-direction: column;
-  padding-top: 67px;
-  padding-right: 32px;
+  padding-right: 26px;
   grid-area: credits;
 
   @media (max-width: $tablet-landscape) {
-    padding-right: 28px;
-    padding-bottom: 40px;
+    padding-bottom: 24px;
   }
 
   @media (max-width: $tablet-portrait) {
-    padding-top: 24px;
-  }
-
-  @media (max-width: $mobile-landscape) {
     max-width: 318px;
     padding-top: 24px;
     padding-bottom: 24px;
@@ -330,11 +311,11 @@
 }
 
 .buttonFestivalContainer {
-  padding-top: 67px;
   grid-area: button;
 
-  @media (max-width: $mobile-landscape) {
-    align-self: flex-end;
+  @media (max-width: $tablet-portrait) {
+    display: flex;
+    justify-content: flex-end;
     padding-top: 0;
     border-top: 0;
     border-bottom: 0;
