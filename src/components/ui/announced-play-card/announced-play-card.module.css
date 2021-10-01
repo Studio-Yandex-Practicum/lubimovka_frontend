@@ -133,6 +133,8 @@
   position: relative;
   display: inline-grid;
   max-width: 1200px;
+  border-top: var(--coal) solid 1px;
+  border-bottom: var(--coal) solid 1px;
   font-family: 'Formular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   gap: 0;
   grid: repeat (5 fr);
@@ -144,7 +146,7 @@
     max-width: 768px;
     grid-template-areas:
       "cover infofestival infoplay button"
-      "credits";
+      ". . credits . ";
   }
 
   @media (max-width: $mobile-landscape) {
@@ -208,8 +210,6 @@
   padding-right: 53px;
   padding-bottom: 41px;
   padding-left: 28px;
-  border-top: var(--coal) solid 1px;
-  border-bottom: var(--coal) solid 1px;
   grid-area: infofestival;
 
   @media (max-width: $tablet-landscape) {
@@ -257,8 +257,6 @@
 .infoPlay {
   max-width: 329px;
   padding-right: 32px;
-  border-top: var(--coal) solid 1px;
-  border-bottom: var(--coal) solid 1px;
   grid-area: infoplay;
 
   @media (max-width: $tablet-landscape) {
@@ -311,11 +309,10 @@
   flex-direction: column;
   padding-top: 67px;
   padding-right: 32px;
-  border-top: var(--coal) solid 1px;
-  border-bottom: var(--coal) solid 1px;
   grid-area: credits;
 
   @media (max-width: $tablet-landscape) {
+    padding-top: 0;
     padding-right: 28px;
     padding-bottom: 40px;
   }
@@ -331,8 +328,6 @@
 
 .buttonFestivalContainer {
   padding-top: 67px;
-  border-top: var(--coal) solid 1px;
-  border-bottom: var(--coal) solid 1px;
   grid-area: button;
 
   @media (max-width: $mobile-landscape) {
