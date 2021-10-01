@@ -1,0 +1,33 @@
+.main {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-width: 414px;
+  max-width: 1440px;
+  margin: 61px auto 0;
+  grid-template-areas:
+    "title ."
+    "events ."
+    "banners ."
+    "platforms ."
+    "shortList ."
+    "archive archive"
+    "partners .";
+  grid-template-columns: minmax(414px, 1108px) 1fr;
+  grid-template-rows: repeat(6, max-content);
+
+  @media screen and (max-width: $laptop) {
+    grid-template-areas:
+      "title"
+      "events"
+      "aside"
+      "banners"
+      "platforms"
+      "shortList"
+      "addon"
+      "archive"
+      "partners";
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(7, max-content);
+  }
+}
