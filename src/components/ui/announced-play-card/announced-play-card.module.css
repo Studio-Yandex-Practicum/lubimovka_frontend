@@ -141,7 +141,7 @@
   grid-template-areas: "cover infofestival infoplay credits button";
   list-style-type: none;
 
-  @media (max-width: $tablet-landscape) {
+  @media (max-width: $tablet-portrait) {
     position: relative;
     max-width: 768px;
     grid-template-areas:
@@ -312,9 +312,12 @@
   grid-area: credits;
 
   @media (max-width: $tablet-landscape) {
-    padding-top: 0;
     padding-right: 28px;
     padding-bottom: 40px;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    padding-top: 24px;
   }
 
   @media (max-width: $mobile-landscape) {
