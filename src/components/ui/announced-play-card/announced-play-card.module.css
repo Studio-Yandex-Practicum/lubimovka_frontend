@@ -140,7 +140,6 @@
   display: grid;
   max-width: 1200px;
   border-top: var(--coal) solid 1px;
-  border-bottom: var(--coal) solid 1px;
   grid-gap: 16px 0;
   grid-template-areas:
     "cover time title . ."
