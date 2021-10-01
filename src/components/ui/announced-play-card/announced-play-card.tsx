@@ -83,7 +83,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         </div>
         <p className={cn(styles.description)}>читка проекта Любимовка.Ещё</p>
         {buttonLinks.length === 2 &&
-          <div className={cn(styles.buttonEventsContainer, coverResourceUrl ? styles.buttonEventsContainerTwoLinks : styles.buttonEventsContainerOneLink)}>
+          <div className={cn(styles.buttonEventsContainer, coverResourceUrl && styles.buttonEventsContainerCoverExists )}>
             <Button
               view='primary'
               width='154px'
@@ -115,7 +115,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           </div>
         }
         {buttonLinks.length === 1 &&
-          <div className={cn(styles.buttonEventsContainer, styles.buttonEventsContainerOneLink)}>
+          <div className={cn(styles.buttonEventsContainer, coverResourceUrl ? styles.buttonEventsContainerCoverExists : styles.buttonEventsNoCover)}>
             <Button
               view='primary'
               width='154px'
