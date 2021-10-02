@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Button } from 'components/ui/button/button';
 import styles from './event-card.module.css';
+import { Url } from 'shared/types';
 interface IEventCardProps {
   image?: string;
   time: string;
@@ -9,9 +10,11 @@ interface IEventCardProps {
   description: string;
   playwright: string;
   director: string;
+  href?: Url;
+  button: boolean;
 }
 export const EventСard: FC<IEventCardProps> = (props) => {
-  const { time, location, title, description, playwright, director, image } = props;
+  const { time, location, title, description, playwright, director, image, href, button } = props;
   return (
     <article className={styles.content}>
       <div className={styles.imgContainer}>
@@ -32,7 +35,7 @@ export const EventСard: FC<IEventCardProps> = (props) => {
         <dt>Режиссер: </dt><dd>{director}</dd>
       </dl>
       <div className={styles.buttonBox}>
-        <Button
+        {button && <Button
           className={styles.button}
           size="s"
           iconPlace="left"
@@ -40,7 +43,9 @@ export const EventСard: FC<IEventCardProps> = (props) => {
           label="Регистрация"
           border="bottomLeft"
           view="primary"
-        ></Button>
+          href={href}
+          isLink={true}
+        ></Button>}
       </div>
 
     </article>

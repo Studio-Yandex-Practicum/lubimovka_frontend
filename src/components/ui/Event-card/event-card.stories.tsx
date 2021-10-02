@@ -12,6 +12,8 @@ const eventCardArgs = [
     director:'Катя',
     image:
     'https://images.unsplash.com/photo-1621636723658-a062df4cbb2d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
+    href: 'https://yandex.ru',
+    button: true,
   },
   {
     time:'19:00',
@@ -19,7 +21,8 @@ const eventCardArgs = [
     title:'Что я узнал о творчестве благодаря драматургам',
     description:'(Не)деликатная пьеса о психоневрологическом интернате',
     playwright:'Ольга Казакова',
-    director:'Катя Ганюшина'
+    director:'Катя Ганюшина',
+    button: false,
   },
   {
     time:'19:00',
@@ -30,6 +33,8 @@ const eventCardArgs = [
     director:'Катя Ганюшина',
     image:
     'https://images.unsplash.com/photo-1621636723658-a062df4cbb2d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
+    href: 'https://yandex.ru',
+    button: true,
   },
   {
     time:'19:00',
@@ -37,7 +42,8 @@ const eventCardArgs = [
     title:'Что я узнал',
     description:'(Не)деликатная пьеса о психоневрологическом интернате',
     playwright:'Ольга Казакова',
-    director:'Катя Ганюшина'
+    director:'Катя Ганюшина',
+    button: false,
   },
 ];
 
@@ -77,6 +83,7 @@ Event_One_Сard.args = {
   description: 'Гости расскажут о своём творческом и организационном опыте.',
   playwright: 'Ольга Казакова',
   director: 'Катя Ганюшина',
+  button: true,
 };
 
 
@@ -90,4 +97,5 @@ Event_Сard.args = {
   description: 'Гости расскажут о своём творческом и организационном опыте.',
   playwright: 'Ольга Казакова',
   director: 'Катя Ганюшина',
+  button: true,
 };
