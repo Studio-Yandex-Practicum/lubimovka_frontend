@@ -6,7 +6,6 @@
   box-sizing: border-box;
   flex-direction: column;
   background: transparent;
-  cursor: pointer;
 }
 
 .card:nth-child(1) {
@@ -39,6 +38,11 @@
   flex-direction: column;
   overflow-wrap: break-word;
   word-break: break-word;
+}
+
+/* временное св-во пока нет нашего компонента ссылки. Потом убрать */
+.content a {
+  text-decoration: none;
 }
 
 .author {

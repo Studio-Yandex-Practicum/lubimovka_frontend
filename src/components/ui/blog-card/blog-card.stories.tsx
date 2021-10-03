@@ -6,9 +6,6 @@ import { BlogCard } from './blog-card';
 export default {
   component: BlogCard,
   title: 'UI/Blog Card',
-  argTypes: {
-    onClick: { action: 'clicked' },
-  },
 } as ComponentMeta<typeof BlogCard>;
 
 const Template: ComponentStory<typeof BlogCard> = (args) => <BlogCard {...args} />;
@@ -19,6 +16,7 @@ only_first_BlogCard.args = {
   author: 'Лара Бессмертная',
   heading: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
+  link: 'https://lubimovka.ru/blog/888-int-emeleva',
 };
 only_first_BlogCard.decorators = [
   (Story) => (
@@ -45,6 +43,7 @@ rectangular_vertical_aspectRatio_BlogCard.args = {
   author: 'Лара Бессмертная',
   heading: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
+  link: 'https://lubimovka.ru/blog/888-int-emeleva',
 };
 rectangular_vertical_aspectRatio_BlogCard.decorators = [
   (Story) => (
@@ -72,6 +71,7 @@ rectangular_horizontal_aspectRatio_BlogCard.args = {
   author: 'Лара Бессмертная',
   heading: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
+  link: 'https://lubimovka.ru/blog/888-int-emeleva',
 };
 rectangular_horizontal_aspectRatio_BlogCard.decorators = [
   (Story) => (
@@ -99,6 +99,7 @@ square_aspectRatio_BlogCard.args = {
   author: 'Лара Бессмертная',
   heading: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
+  link: 'https://lubimovka.ru/blog/888-int-emeleva',
 };
 square_aspectRatio_BlogCard.decorators = [
   (Story) => (
@@ -126,6 +127,7 @@ grid_BlogCard.args = {
   author: 'Лара Бессмертная',
   heading: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
+  link: 'https://lubimovka.ru/blog/888-int-emeleva',
 };
 grid_BlogCard.decorators = [
   (Story) => (
