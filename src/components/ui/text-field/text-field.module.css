@@ -1,0 +1,32 @@
+.textFieldComponent {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.textField {
+  @mixin text;
+  @mixin textSmall;
+
+  position: relative;
+  padding: 8px 0;
+  border: none;
+  border-bottom: 1px solid var(--coal);
+  background-color: transparent;
+  outline: none;
+
+  /* Атрибут placeholder выводит текст внутри поля формы, который исчезает при получении фокуса.
+ Вендорные префиксы убраны, потому что их ставит автопрефиксер */
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+.error {
+  @mixin text;
+  @mixin textCaption;
+
+  margin-top: 4px;
+  color: var(--red);
+}
