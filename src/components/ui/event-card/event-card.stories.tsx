@@ -36,7 +36,7 @@ const cards = [
 const oneCard = cards.filter((args,index) => index === 0);
 
 export default {
-  title: 'Components/EventCard',
+  title: 'Components/eventCard',
   component: EventCard,
 } as ComponentMeta<typeof EventCard>;
 
