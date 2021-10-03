@@ -8,7 +8,7 @@ import { NavbarButton, INavbarButtonProps } from './navbar-button';
 import styles from './navbar.module.css';
 const cx = cn.bind(styles);
 
-interface Navbar {
+interface INavbarProps {
   children: ReactNode;
 }
 
@@ -18,7 +18,7 @@ interface INavbarComposition {
   Button: FC<INavbarButtonProps>;
 }
 
-const Navbar: FC & INavbarComposition = (props) => {
+const Navbar: FC<INavbarProps> & INavbarComposition = (props) => {
   const { children } = props;
 
   return (
