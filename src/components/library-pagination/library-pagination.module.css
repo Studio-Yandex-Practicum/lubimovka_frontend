@@ -23,11 +23,6 @@
   color: var(--white);
 }
 
-.letter:active {
-  background-color: var(--coal);
-  color: var(--white);
-}
-
 .letter:last-child {
   margin-right: 0;
 }
