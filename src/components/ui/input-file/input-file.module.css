@@ -1,0 +1,14 @@
+.addFile {
+  display: flex;
+  width: 100%;
+  max-width: 222px;
+  flex-direction: column;
+}
+
+.message {
+  @mixin textCaption;
+  @mixin text;
+
+  margin-bottom: 14px;
+  color: #eb5757;
+}

@@ -6,7 +6,6 @@ import { ArrowMock } from './mocks/arrow-mock';
 import { DotsMock } from './mocks/dots-mock';
 
 import styles from './image-slider.module.css';
-import 'keen-slider/keen-slider.min.css';
 
 export type TImageItem = {
   imageURI: string;

@@ -1,0 +1,31 @@
+.dropdown {
+  width: 100%;
+  max-width: 300px;
+}
+
+.list {
+  overflow: auto;
+  max-height: 0;
+  border: 1px solid #242424;
+  border-top: none;
+  margin-bottom: 26px;
+  transition: all .1s ease-out;
+  visibility: hidden;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 92px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 92px;
+    background-color: var(--coal);
+  }
+}
+
+.active {
+  display: block;
+  max-height: 310px;
+  visibility: visible;
+}

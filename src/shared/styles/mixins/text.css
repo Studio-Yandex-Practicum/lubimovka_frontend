@@ -26,3 +26,16 @@
   font-size: 14px;
   line-height: 17px;
 }
+
+@define-mixin textButton {
+  text-transform: uppercase;
+}
+
+@define-mixin textSmallButton {
+  font-size: 16px;
+  line-height: 14px;
+}
+
+@define-mixin textLargeButton {
+  @mixin textSmall;
+}

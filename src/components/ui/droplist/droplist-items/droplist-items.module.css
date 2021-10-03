@@ -1,0 +1,42 @@
+.item {
+  @mixin text;
+  @mixin textLarge;
+
+  position: relative;
+  display: block;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 30px;
+  margin-bottom: 1px;
+  background-color: transparent;
+  cursor: pointer;
+  text-transform: lowercase;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    background-color: var(--beige);
+  }
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--coal);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.checkbox {
+  display: none;
+}
