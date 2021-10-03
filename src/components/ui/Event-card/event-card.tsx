@@ -1,53 +1,97 @@
 import { FC } from 'react';
 import { Button } from 'components/ui/button/button';
+import classNames from 'classnames/bind';
 import styles from './event-card.module.css';
 import { Url } from 'shared/types';
+
 interface IEventCardProps {
-  image?: string;
-  time: string;
-  location: string;
-  title: string;
-  description: string;
-  playwright: string;
-  director: string;
-  href?: Url;
-  button: boolean;
+  image?: Url,
+  time: string,
+  location: string,
+  title: string,
+  description: string,
+  playwright?: string,
+  director?: string,
+  registrationUrl?: Url,
 }
-export const EventСard: FC<IEventCardProps> = (props) => {
-  const { time, location, title, description, playwright, director, image, href, button } = props;
+const cx = classNames.bind(styles);
+
+export const EventCard: FC<IEventCardProps> = (props) => {
+  const {
+    image,
+    time,
+    location,
+    title,
+    description,
+    playwright,
+    director,
+    registrationUrl,
+  } = props;
+
   return (
-    <article className={styles.content}>
-      <div className={styles.imgContainer}>
+    <article className={cx('card')}>
+      <h3 className={cx('title')}>
+        {title}
+      </h3>
+      <div className={cx('imageHolder')}>
         {image && (
-          <img src={image} alt={title} className={styles.image} />
+          <div className={cx('imageCanvas')}>
+            <img
+              className={cx('image')}
+              src={image}
+            />
+          </div>
         )}
       </div>
-      <div className={styles.data}>
-        <p className={styles.time}>{time}</p>
-        <p className={styles.location}>{location}</p>
-      </div>
-      <div className={styles.data}>
-        <h2 className={styles.title}>{title}</h2>
-        <p className={styles.description}>{description}</p>
-      </div>
-      <dl className={styles.creators}>
-        <dt>Драматург: </dt><dd>{playwright}</dd>
-        <dt>Режиссер: </dt><dd>{director}</dd>
+      <dl className={cx('timeLocation')}>
+        <dt className={cx('hiddenText')}>
+          Время
+        </dt>
+        <dd className={cx('time')}>
+          {time}
+        </dd>
+        <dt className={cx('hiddenText')}>
+          Место
+        </dt>
+        <dd className={cx('location')}>
+          {location}
+        </dd>
       </dl>
-      <div className={styles.buttonBox}>
-        {button && <Button
-          className={styles.button}
-          size="s"
-          iconPlace="left"
-          icon="arrow-right"
-          label="Регистрация"
-          border="bottomLeft"
-          view="primary"
-          href={href}
-          isLink={true}
-        ></Button>}
-      </div>
-
+      <p className={cx('description')}>
+        {description}
+      </p>
+      {(playwright || director) && (
+        <dl className={cx('credits')}>
+          <dt className={cx('creditsTitle')}>
+            Драматург
+          </dt>
+          <dd className={cx('creditsValue')}>
+            {playwright}
+          </dd>
+          <dt className={cx('creditsTitle')}>
+            Режиссёр
+          </dt>
+          <dd className={cx('creditsValue')}>
+            {director}
+          </dd>
+        </dl>
+      )}
+      {registrationUrl && (
+        <div className={cx('actions')}>
+          <Button size="s"
+            iconPlace="left"
+            icon="arrow-right"
+            label="Регистрация"
+            border="bottomLeft"
+            view="primary"
+            href={registrationUrl}></Button>
+          {/* <Link href={registrationUrl}>
+            <a className={cx('register')}>
+              Регистрация
+            </a>
+          </Link> */}
+        </div>
+      )}
     </article>
   );
 };
