@@ -1,68 +1,35 @@
-import { FC } from 'react';
-import NextLink from 'next/link';
+import { FC, ReactNode } from 'react';
 import cn from 'classnames/bind';
 
-import { Menu } from 'components/ui/menu';
-import { Button } from 'components/ui/button';
-import Logo from 'shared/images/logo.svg';
-import { HEADER_MAIN_NAVIGATION_ITEMS, HEADER_SOCIAL_ITEMS } from 'shared/constants';
+import { NavbarLogo } from './navbar-logo';
+import { NavbarSection, INavbarSectionProps } from './navbar-section';
+import { NavbarButton, INavbarButtonProps } from './navbar-button';
 
 import styles from './navbar.module.css';
 const cx = cn.bind(styles);
 
-export type TSocialItem = {
-  title: string;
-  href: string;
-};
-
-export type TMainNavigationItem = {
-  title: string;
-  href: string;
-  active?: boolean;
+interface Navbar {
+  children: ReactNode;
 }
 
-export const Navbar: FC = () => {
+interface INavbarComposition {
+  Logo: FC;
+  Section: FC<INavbarSectionProps>;
+  Button: FC<INavbarButtonProps>;
+}
+
+const Navbar: FC & INavbarComposition = (props) => {
+  const { children } = props;
+
   return (
     <header className={cx('navbar')}>
-      <NextLink href={'/'}>
-        <a className={cx('logoLink')}>
-          <Logo className={cx('logo')} />
-        </a>
-      </NextLink>
-      <nav className={cx('navigation')}>
-        <Menu view="mainNavigation">
-          {HEADER_MAIN_NAVIGATION_ITEMS.map(({ title, href }, idx) => (
-            <Menu.Item
-              key={idx}
-              href={href}
-              type='navLink'
-            >
-              {title}
-            </Menu.Item>
-          ))}
-        </Menu>
-      </nav>
-      <Menu view="socialLinks">
-        {HEADER_SOCIAL_ITEMS.map(({ title, href }, idx) => (
-          <Menu.Item
-            key={idx}
-            href={href}
-            type='link'
-            target='_blank'
-          >
-            {title}
-          </Menu.Item>
-        ))}
-      </Menu>
-      <Button
-        className={cx('button')}
-        label="Поддержать"
-        view="transparent"
-        icon="plus"
-        iconPlace="left"
-        href="/donation"
-        isLink
-      />
+      {children}
     </header>
   );
 };
+
+Navbar.Logo = NavbarLogo;
+Navbar.Section = NavbarSection;
+Navbar.Button = NavbarButton;
+
+export { Navbar };

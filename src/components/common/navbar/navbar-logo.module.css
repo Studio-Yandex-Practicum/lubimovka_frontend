@@ -1,0 +1,11 @@
+.navbarLogo {
+  display: block;
+  margin: min(calc(15 * var(--vw-size-multiplier)), 15px) min(calc(4 * var(--vw-size-multiplier)), 4px) min(calc(11 * var(--vw-size-multiplier)), 11px) min(calc(30 * var(--vw-size-multiplier)), 30px);
+  line-height: 0;
+}
+
+.logoImg {
+  width: min(calc(43 * var(--vw-size-multiplier)), 43px);
+  height: min(calc(35 * var(--vw-size-multiplier)), 35px);
+  color: var(--black);
+}

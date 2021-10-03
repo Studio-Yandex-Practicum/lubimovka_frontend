@@ -1,0 +1,10 @@
+.navbarButton {
+  min-width: min(calc(165 * var(--vw-size-multiplier)), 165px);
+  justify-content: center;
+  font-size: clamp(8px, calc(14 * var(--vw-size-multiplier)), 14px);
+
+  & svg {
+    width: min(calc(25 * var(--vw-size-multiplier)), 25px);
+    height: min(calc(25 * var(--vw-size-multiplier)), 25px);
+  }
+}

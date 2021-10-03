@@ -1,4 +1,4 @@
-import { TSocialItem, TMainNavigationItem } from 'components/common/navbar';
+import { TSocialItem, TMainNavigationItem } from 'components/ui/menu';
 
 export const HEADER_MAIN_NAVIGATION_ITEMS: TMainNavigationItem[] = [
   {

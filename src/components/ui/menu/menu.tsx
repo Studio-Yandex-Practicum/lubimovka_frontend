@@ -6,9 +6,20 @@ import { MenuItem, TMenuItemProps } from './menu-item';
 import styles from './menu.module.css';
 const cx = classNames.bind(styles);
 
+export type TSocialItem = {
+  title: string;
+  href: string;
+};
+
+export type TMainNavigationItem = {
+  title: string;
+  href: string;
+  active?: boolean;
+}
+
 export interface IMenuProps {
   className?: string;
-  view: 'mainNavigation' | 'pageNavigation' | 'tabs' | 'sectionNavigation' | 'footerNavigation' | 'socialLinks';
+  view: 'mainNavigation' | 'pageNavigation' | 'sectionNavigation' | 'footerNavigation' | 'tabs' | 'socialLinks';
   children: ReactNode;
 }
 
