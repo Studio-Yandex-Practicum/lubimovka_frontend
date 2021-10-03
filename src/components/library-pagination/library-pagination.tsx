@@ -26,18 +26,18 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({letters}) => {
 
   return (
     <div className={style.container}>
-      <div className={style.letters}>
+      <ul className={style.letters}>
         {letters.map((el, index) => (
-          <div key={index} className={cn(style.letter,{ [style.letterActive]: letter === el})}>
+          <li key={index} className={cn(style.letter,{ [style.letterActive]: letter === el})}>
             <label htmlFor={el} className={style.label}>{el}</label>
-            <input onClick={() => setLetter(el)} type="radio" name='letter' id={el} value={el} className={style.inputRadio}/>
-          </div>
+            <input onClick={() => setLetter(el)} type='radio' name='letter' id={el} value={el} className={style.inputRadio}/>
+          </li>
         ))}
-      </div>
+      </ul>
       <div className={style.authors}>
         <ul className={style.authorsList}>
           {authors.length > 0 && authors.map((el, index) => (
-            <li key={index} className={style.author}><a href="#" className={style.link}>{el}</a></li>
+            <li key={index} className={style.author}><a href='#' className={style.link}>{el}</a></li>
           ))}
         </ul>
         <div className={style.chosenLetter}>

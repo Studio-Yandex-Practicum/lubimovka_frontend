@@ -3,9 +3,26 @@
 }
 
 .letters {
-  display: flex;
+  display: grid;
+  box-sizing: border-box;
+  padding: 0 15px;
   border-bottom: 1px solid var(--coal);
+  margin: 0;
+  column-gap: 12px;
+  grid-auto-flow: column;
   list-style: none;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    border-top: 1px solid var(--coal);
+    background-color: var(--white);
+    column-gap: 23px;
+  }
 }
 
 .letter {
@@ -15,16 +32,11 @@
   position: relative;
   width: 36px;
   height: 46px;
-  margin-right: 12px;
 }
 
 .letterActive {
-  background-color: var(--coal);
+  background: var(--coal);
   color: var(--white);
-}
-
-.letter:last-child {
-  margin-right: 0;
 }
 
 .label {
@@ -33,10 +45,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
 
-.label:hover {
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .inputRadio {
@@ -52,9 +64,15 @@
 .authors {
   display: flex;
   max-width: 812px;
+  box-sizing: border-box;
   align-items: flex-start;
   justify-content: space-between;
+  padding: 0 36px;
   margin: 0 auto;
+
+  @media (max-width: $tablet-portrait) {
+    flex-direction: column-reverse;
+  }
 }
 
 .authorsList {
@@ -65,14 +83,19 @@
   padding: 0;
   margin: 53px 0 0;
   list-style: none;
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: 19px;
+    margin: 16px 0 0;
+  }
 }
 
 .author {
   margin-bottom: 12px;
-}
 
-.author:last-child {
-  margin-bottom: 0;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .link {
@@ -82,16 +105,20 @@
   padding: 1px 8px 3px;
   color: var(--coal);
   text-decoration: none;
-}
 
-.link:active {
-  background-color: var(--coal);
-  color: var(--white);
+  &:active {
+    background-color: var(--coal);
+    color: var(--white);
+  }
 }
 
 .chosenLetter {
   position: relative;
   margin: 309px 20px 0 0;
+
+  @media (max-width: $tablet-portrait) {
+    margin: 56px 0 0;
+  }
 }
 
 .bigLetter {
@@ -99,6 +126,10 @@
 
   font-size: 100px;
   line-height: 100px;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline3;
+  }
 }
 
 .authorsQuantity {
