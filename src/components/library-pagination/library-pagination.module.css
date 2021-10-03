@@ -53,3 +53,58 @@
   transform: translate(-50%, -50%);
   visibility: hidden;
 }
+
+.authors {
+  display: flex;
+  max-width: 812px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.authorsList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 53px 0 0;
+  list-style: none;
+}
+
+.author {
+  @mixin text;
+  @mixin textLarge;
+
+  margin-bottom: 12px;
+}
+
+.author:last-child {
+  margin-bottom: 0;
+}
+
+.chosenLetter {
+  position: relative;
+  width: 85px;
+  height: 116px;
+  margin-top: 309px;
+}
+
+.bigLetter {
+  @mixin headline;
+
+  position: absolute;
+  top: 16px;
+  left: 0;
+  font-size: 100px;
+  line-height: 100px;
+}
+
+.authorsQuantity {
+  @mixin text;
+  @mixin textLarge;
+
+  position: absolute;
+  top: 8px;
+  right: 0;
+}
