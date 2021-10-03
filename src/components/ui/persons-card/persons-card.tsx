@@ -32,11 +32,8 @@ const PersonCard: React.FC<IPersonCardProps> = (props) => {
         <Icon glyph={'comment'}/>
       </button>}
 
-      {/*заменить h6 на Headline,
-            у карточек волонтера заголовок h7 на десктопе и h6 в мобилке,
-            у участников везде h6*/}
-      <h6 className={styles.name} title={name}>{name}</h6>
-      {/*заменить p на body-text*/}
+      <h6 className={cx('name', {nameParticipant: participant, nameVolunteer: !participant})} title={name}>{name}</h6>
+
       {participant && about &&
       <p className={styles.about} title={about}>{about}</p>}
     </div>
