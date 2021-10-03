@@ -85,11 +85,6 @@ export const EventCard: FC<IEventCardProps> = (props) => {
             border="bottomLeft"
             view="primary"
             href={registrationUrl}></Button>
-          {/* <Link href={registrationUrl}>
-            <a className={cx('register')}>
-              Регистрация
-            </a>
-          </Link> */}
         </div>
       )}
     </article>
