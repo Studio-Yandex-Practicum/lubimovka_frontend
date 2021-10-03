@@ -80,17 +80,12 @@
 
 .chosenLetter {
   position: relative;
-  width: 85px;
-  height: 116px;
-  margin-top: 309px;
+  margin: 309px 20px 0 0;
 }
 
 .bigLetter {
   @mixin headline;
 
-  position: absolute;
-  top: 16px;
-  left: 0;
   font-size: 100px;
   line-height: 100px;
 }
@@ -100,6 +95,6 @@
   @mixin textLarge;
 
   position: absolute;
-  top: 8px;
-  right: 0;
+  top: -8px;
+  right: -7px;
 }
