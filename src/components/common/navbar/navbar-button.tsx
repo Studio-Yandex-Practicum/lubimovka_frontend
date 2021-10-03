@@ -18,7 +18,7 @@ export const NavbarButton: FC<INavbarButtonProps> = (props) => {
     <Button
       className={cx('navbarButton')}
       label={label}
-      view="transparent"
+      align='center'
       icon="plus"
       iconPlace="left"
       href={href}
