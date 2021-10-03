@@ -1,3 +1,55 @@
 .container {
   background-color: var(--beige);
 }
+
+.letters {
+  display: flex;
+  border-bottom: 1px solid var(--coal);
+  list-style: none;
+}
+
+.letter {
+  @mixin headline;
+  @mixin headline7;
+
+  position: relative;
+  width: 36px;
+  height: 46px;
+  margin-right: 12px;
+}
+
+.letterActive {
+  background-color: var(--coal);
+  color: var(--white);
+}
+
+.letter:active {
+  background-color: var(--coal);
+  color: var(--white);
+}
+
+.letter:last-child {
+  margin-right: 0;
+}
+
+.label {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.label:hover {
+  cursor: pointer;
+}
+
+.inputRadio {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 24px;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
