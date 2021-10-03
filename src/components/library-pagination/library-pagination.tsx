@@ -37,7 +37,7 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({letters}) => {
       <div className={style.authors}>
         <ul className={style.authorsList}>
           {authors.length > 0 && authors.map((el, index) => (
-            <li key={index} className={style.author}>{el}</li>
+            <li key={index} className={style.author}><a href="#" className={style.link}>{el}</a></li>
           ))}
         </ul>
         <div className={style.chosenLetter}>
