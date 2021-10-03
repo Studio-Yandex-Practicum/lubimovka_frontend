@@ -1,9 +1,23 @@
 @define-mixin text {
   margin: 0;
   color: var(--coal);
-  font-family: 'Formular', Arial, sans-serif;
+  font-family: "Formular", Arial, sans-serif;
   font-style: normal;
   font-weight: 300;
+}
+
+@define-mixin textNeueMachina {
+  margin: 0;
+  color: var(--coal);
+  font-family: "PP Neue Machina", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@define-mixin textSuperLarge {
+  font-size: 28px;
+  letter-spacing: -.01em;
+  line-height: 32px;
 }
 
 @define-mixin textLarge {
