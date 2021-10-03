@@ -54,4 +54,10 @@
   & .menuListItem:not(:first-child) {
     margin-top: 15px;
   }
+
+  @media (max-width: $mobile-landscape) {
+    & .menuListItem:not(:first-child) {
+      margin-top: 13px;
+    }
+  }
 }
