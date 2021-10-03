@@ -1,17 +1,12 @@
 import { FC } from 'react';
 
 import styles from './main-title.module.css';
+import {IMainPageComponent} from '../../pages/main';
 
-interface ImainTitle {
-  title: string;
-}
-
-const MainTitle: FC<ImainTitle> = ({title}) => {
+export const MainTitle: FC<IMainPageComponent> = ({data}) => {
   return (
     <section className={styles.section}>
-      <h1 className={styles.title}>{title}</h1>
+      <h1 className={styles.title}>{data.title}</h1>
     </section>
   );
 };
-
-export default MainTitle;

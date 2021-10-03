@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "title",
+    "content": {
+      "title": "Компонент Title",
+      "subtitle": ""
+    }
+  },
+  {
+    "id": 2,
+    "name": "aside",
+    "content": {
+    }
+  },
+  {
+    "id": 3,
+    "name": "events",
+    "content": {
+    }
+  },
+  {
+    "id": 4,
+    "name": "banners",
+    "content": {
+    }
+  },
+  {
+    "id": 5,
+    "name": "platforms",
+    "content": {
+    }
+  },
+  {
+    "id": 6,
+    "name": "shortList",
+    "content": {
+    }
+  },
+  {
+    "id": 7,
+    "name": "archive",
+    "content": {
+    }
+  },
+  {
+    "id": 8,
+    "name": "partners",
+    "content": {
+    }
+  }
+]

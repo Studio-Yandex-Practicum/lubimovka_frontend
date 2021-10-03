@@ -1,5 +1,6 @@
 .section {
   position: relative;
+  z-index: -1;
   display: grid;
   width: 100%;
   min-height: 1074px;

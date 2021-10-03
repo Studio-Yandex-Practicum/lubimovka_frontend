@@ -1,8 +1,11 @@
 import {NextPage} from 'next';
 import Head from 'next/head';
 import cn from 'classnames/bind';
+import {createElement, FC} from 'react';
 
-import Title from '../../components/main-title/main-title';
+import data from './assets/mock-data.json';
+import metaData from './assets/mock-title.json';
+import {MainTitle as Title} from '../../components/main-title/main-title';
 import Events from '../../components/main-events/main-events';
 import Aside from '../../components/main-aside/main-aside';
 import Banners from '../../components/main-banners/main-banners';
@@ -12,57 +15,41 @@ import Partners from '../../components/main-partners/main-partners';
 import ShortList from '../../components/main-shortList/main-shortList';
 
 import styles from './main.module.css';
-
 const cx = cn.bind(styles);
 
-interface IMainPageProps {
-  metaTitle: string,
-  title: string,
-  events: boolean,
-  aside: boolean,
-  banners: boolean,
-  platforms: boolean
-  archive: boolean,
-  partners: boolean,
-  shortList: boolean,
+export interface IMainPageComponent {
+  data: {
+    title?: string,
+    subtitle?: string,
+    photo?: string,
+  };
+}
+interface IComponents {
+  [key: string]: FC<IMainPageComponent>;
 }
 
-export const getStaticProps = () => {
-  return {
-    props: {
-      metaTitle: '',
-      title: 'Компонент Title',
-      events: true,
-      aside: true,
-      banners: true,
-      platforms: true,
-      archive: true,
-      partners: true,
-      shortList: true,
-    }
-  };
+const components: IComponents = {
+  title: Title,
+  events: Events,
+  aside: Aside,
+  banners: Banners,
+  platforms: Platforms,
+  archive: Archive,
+  partners: Partners,
+  shortList: ShortList
 };
 
-const MainPage: NextPage<IMainPageProps> = (props: IMainPageProps) => {
-  const {title, metaTitle, events, aside, banners, platforms, archive, partners, shortList} = props;
+const MainPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{metaTitle}</title>
+        <title>{metaData.title}</title>
       </Head>
       <main className={cx('main')}>
-        {title && <Title title={title}/>}
-        {events && <Events/>}
-        {aside && <Aside/>}
-        {banners && <Banners/>}
-        {platforms && <Platforms/>}
-        {shortList && <ShortList/>}
-        {archive && <Archive/>}
-        {partners && <Partners />}
+        {data.map((el) => createElement(components[el.name], {data: el.content, key: el.name}))}
       </main>
     </>
   );
 };
-
 
 export default MainPage;
