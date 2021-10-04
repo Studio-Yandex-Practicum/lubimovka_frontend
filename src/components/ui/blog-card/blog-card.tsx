@@ -14,24 +14,20 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   const { image, author, heading, description, link } = props;
 
   return (
-    <li className={styles.card}>
-      <div className={styles.imgContainer}>
-        <Link href={link}>
-          <a>
+    <Link href={link}>
+      <a className={styles.cardLinkWrapper}>
+        <li className={styles.card}>
+          <div className={styles.imgContainer}>
             <img className={styles.img} src={image} alt={`изображение статьи: ${heading}`} />
-          </a>
-        </Link>
-      </div>
-      <div className={styles.content}>
-        <p className={styles.author}>{author}</p>
-        <Link href={link}>
-          <a>
+          </div>
+          <div className={styles.content}>
+            <p className={styles.author}>{author}</p>
             <h6 className={styles.heading}>{heading}</h6>
-          </a>
-        </Link>
-        <p className={styles.description}>{description}</p>
-      </div>
-    </li>
+            <p className={styles.description}>{description}</p>
+          </div>
+        </li>
+      </a>
+    </Link>
   );
 };
 

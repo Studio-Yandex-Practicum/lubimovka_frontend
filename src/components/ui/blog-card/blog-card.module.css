@@ -1,3 +1,8 @@
+.cardLinkWrapper {
+  color: inherit;
+  text-decoration: none;
+}
+
 .card {
   position: relative;
   display: flex;
@@ -29,7 +34,7 @@
   transition: transform 400ms cubic-bezier(.6, 0, .5, 1);
 }
 
-.img:hover {
+.cardLinkWrapper:hover .img {
   transform: scale(120%);
 }
 
@@ -38,11 +43,6 @@
   flex-direction: column;
   overflow-wrap: break-word;
   word-break: break-word;
-}
-
-/* временное св-во пока нет нашего компонента ссылки. Потом убрать */
-.content a {
-  text-decoration: none;
 }
 
 .author {
