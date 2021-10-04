@@ -1,0 +1,11 @@
+.masonryGridSection {
+  width: 100%;
+}
+
+.masonryGrid {
+  display: grid;
+}
+
+.gridItem {
+  width: 100%;
+}
