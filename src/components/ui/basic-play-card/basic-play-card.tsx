@@ -15,8 +15,7 @@ interface IBasicPlayCardProps {
   };
   author: {
     id: number,
-    firstName: string;
-    lastName: string;
+    name: string;
   };
 }
 
@@ -62,9 +61,9 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         </div>
       </div>
       <div className={cn(styles.info)}>
-        <Link href={`/authors/${author.id}`} passHref>
-          <h6 className={cn(styles.author)}>{author.firstName}<br />{author.lastName}</h6>
-        </Link>
+          <Link href={`/authors/${author.id}`}>
+            <h6 className={cn(styles.authorName)}>{author.name}</h6>
+          </Link>
         <p className={cn(styles.city)}>{play.city}</p>
         <p className={cn(styles.year)}>{play.year}</p>
       </div>

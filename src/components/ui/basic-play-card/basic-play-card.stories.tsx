@@ -22,7 +22,6 @@ Default.args = {
   },
   author: {
     id: 1,
-    firstName: 'Екатерина',
-    lastName: 'Августеняк',
+    name: 'Екатерина Августеняк',
   }
 };

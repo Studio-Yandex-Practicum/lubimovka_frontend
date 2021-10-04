@@ -52,15 +52,15 @@
   margin: 16px 0 auto;
 }
 
-.author {
+.authorName {
   @mixin headline;
   @mixin headline7;
 
-  display: inline-block;
+  display: inline;
   max-width: 190px;
 }
 
-.author:hover {
+.authorName:hover {
   background-color: var(--coal);
   color: var(--white);
   cursor: pointer;
