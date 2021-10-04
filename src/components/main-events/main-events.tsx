@@ -1,19 +1,17 @@
 import { FC } from 'react';
-import MainEvent from '../main-event/main-event';
+import {MainEvent as Event} from '../main-event/main-event';
 
 import styles from './main-events.module.css';
 
-const MainEvents: FC = () => {
+export const MainEvents: FC = () => {
   return (
     <section className={styles.section}>
-      <MainEvent />
-      <MainEvent />
-      <MainEvent />
-      <MainEvent />
-      <MainEvent />
-      <MainEvent />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
     </section>
   );
 };
-
-export default MainEvents;

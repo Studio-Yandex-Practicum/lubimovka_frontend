@@ -4,7 +4,7 @@ import styles from './main-aside.module.css';
 
 const cx = cn.bind(styles);
 
-const MainAside: FC = () => {
+export const MainAside: FC = () => {
   const [activeAside, setActiveAside] = React.useState(false);
   const handleAside = () => {
     setActiveAside(!activeAside);
@@ -14,4 +14,3 @@ const MainAside: FC = () => {
   );
 };
 
-export default MainAside;
