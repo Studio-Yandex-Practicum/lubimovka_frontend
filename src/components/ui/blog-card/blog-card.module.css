@@ -15,14 +15,6 @@
   }
 }
 
-/* .cardLinkWrapper:nth-child(1) {
-  grid-column: span 2;
-
-  @media (max-width: 1024px) {
-    grid-column: auto;
-  }
-} */
-
 .card {
   position: relative;
   display: flex;
