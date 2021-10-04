@@ -13,31 +13,28 @@ const Template: ComponentStory<typeof AnnouncedPlayCard> = (args) => <AnnouncedP
 
 export const PlayCardEventsViewTwoButtons = Template.bind({});
 PlayCardEventsViewTwoButtons.args = {
-  festival:false,
   date:'15 декабря',
   time: '11:00',
   title: 'МАМА',
   playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
   directorArray: ['Катя Ганюшина'],
   buttonLinks: ['https://lubimovka.timepad.ru/event/1746579/', 'https://lubimovka.timepad.ru/event/1746502/'],
-  coverResourceUrl: 'https://lubimovka.ru/images/production/mama_site.jpg',
+  coverResourceUrl: 'https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg',
 };
 
 export const PlayCardEventsViewOneButton = Template.bind({});
 PlayCardEventsViewOneButton.args = {
-  festival:false,
   date:'15 декабря',
   time: '11:00',
   title: 'МАМА',
   playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
   directorArray: ['Катя Ганюшина'],
   buttonLinks: ['https://lubimovka.timepad.ru/event/1746579/'],
-  coverResourceUrl: 'https://lubimovka.ru/images/production/mama_site.jpg',
+  coverResourceUrl: 'https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg',
 };
 
 export const PlayCardEventsViewTwoButtonsNoCover = Template.bind({});
 PlayCardEventsViewTwoButtonsNoCover.args = {
-  festival:false,
   date:'15 декабря',
   time: '11:00',
   title: 'МАМА',
@@ -48,62 +45,10 @@ PlayCardEventsViewTwoButtonsNoCover.args = {
 
 export const PlayCardEventsViewOneButtonNoCover = Template.bind({});
 PlayCardEventsViewOneButtonNoCover.args = {
-  festival:false,
   date:'15 декабря',
   time: '11:00',
   title: 'МАМА',
   playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
   directorArray: ['Катя Ганюшина'],
   buttonLinks: ['https://lubimovka.timepad.ru/event/1746579/'],
-};
-
-
-export const PlayCardFestivalView = Template.bind({});
-PlayCardFestivalView.args = {
-  festival:true,
-  time: '13:00',
-  location: 'Площадка «8/3»',
-  title: 'Камино норте',
-  synopsis: '(Не)деликатная пьеса о психоневрологическом интернате',
-  playwrightArray: ['Ольга Казакова'],
-  directorArray: ['Катя Ганюшина'],
-  buttonLinks: ['https://lubimovka.timepad.ru/event/1746579/'],
-  coverResourceUrl: 'https://lubimovka.ru/images/7_.jpg',
-};
-
-export const PlayCardFestivalViewNoRegistration = Template.bind({});
-PlayCardFestivalViewNoRegistration.args = {
-  festival:true,
-  time: '13:00',
-  location: 'Площадка «8/3»',
-  title: 'Камино норте',
-  synopsis: '(Не)деликатная пьеса о психоневрологическом интернате',
-  playwrightArray: ['Ольга Казакова'],
-  directorArray: ['Катя Ганюшина'],
-  buttonLinks: [],
-  coverResourceUrl: 'https://lubimovka.ru/images/7_.jpg',
-};
-
-export const PlayCardFestivalViewNoСover = Template.bind({});
-PlayCardFestivalViewNoСover.args = {
-  festival:true,
-  time: '13:00',
-  location: 'Площадка «8/3»',
-  title: 'Камино норте',
-  synopsis: '(Не)деликатная пьеса о психоневрологическом интернате',
-  playwrightArray: ['Ольга Казакова'],
-  directorArray: ['Катя Ганюшина'],
-  buttonLinks: ['https://lubimovka.timepad.ru/event/1746579/'],
-};
-
-export const PlayCardFestivalViewNoСoverNoRegistration = Template.bind({});
-PlayCardFestivalViewNoСoverNoRegistration.args = {
-  festival:true,
-  time: '13:00',
-  location: 'Площадка «8/3»',
-  title: 'Камино норте',
-  synopsis: '(Не)деликатная пьеса о психоневрологическом интернате',
-  playwrightArray: ['Ольга Казакова'],
-  directorArray: ['Катя Ганюшина'],
-  buttonLinks: [],
 };

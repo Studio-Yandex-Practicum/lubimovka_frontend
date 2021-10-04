@@ -1,0 +1,55 @@
+0 verbose cli [
+0 verbose cli   '/usr/local/bin/node',
+0 verbose cli   '/usr/local/bin/npm',
+0 verbose cli   'run',
+0 verbose cli   'eslint',
+0 verbose cli   'src/components',
+0 verbose cli   'src/pages',
+0 verbose cli   'src/shared',
+0 verbose cli   '--cache',
+0 verbose cli   '--ext',
+0 verbose cli   '.jsx,.js,.tsx,.ts',
+0 verbose cli   '--fix'
+0 verbose cli ]
+1 info using npm@7.20.1
+2 info using node@v14.16.1
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 2ms
+5 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 1ms
+7 timing config:load:cli Completed in 3ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/Users/pallada/Documents/Yandex_Web/dev/lubimovka_frontend/.npmrc Completed in 2ms
+10 timing config:load:project Completed in 3ms
+11 timing config:load:file:/Users/pallada/.npmrc Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:/usr/local/etc/npmrc Completed in 0ms
+14 timing config:load:global Completed in 1ms
+15 timing config:load:validate Completed in 0ms
+16 timing config:load:credentials Completed in 1ms
+17 timing config:load:setEnvs Completed in 1ms
+18 timing config:load Completed in 12ms
+19 timing npm:load:configload Completed in 12ms
+20 timing npm:load:setTitle Completed in 0ms
+21 timing npm:load:setupLog Completed in 1ms
+22 timing config:load:flatten Completed in 4ms
+23 timing npm:load:cleanupLog Completed in 3ms
+24 timing npm:load:configScope Completed in 0ms
+25 timing npm:load:projectScope Completed in 1ms
+26 timing npm:load Completed in 23ms
+27 timing command:run-script Completed in 37ms
+28 verbose stack Error: Missing script: "eslint"
+28 verbose stack
+28 verbose stack To see a list of scripts, run:
+28 verbose stack   npm run
+28 verbose stack     at RunScript.run (/usr/local/lib/node_modules/npm/lib/run-script.js:104:13)
+29 verbose cwd /Users/pallada/Documents/Yandex_Web/dev/lubimovka_frontend
+30 verbose Darwin 20.6.0
+31 verbose argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "eslint" "src/components" "src/pages" "src/shared" "--cache" "--ext" ".jsx,.js,.tsx,.ts" "--fix"
+32 verbose node v14.16.1
+33 verbose npm  v7.20.1
+34 error Missing script: "eslint"
+34 error
+34 error To see a list of scripts, run:
+34 error   npm run
+35 verbose exit 1

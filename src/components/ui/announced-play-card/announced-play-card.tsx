@@ -5,12 +5,9 @@ import { Button } from '../button';
 import styles from './announced-play-card.module.css';
 
 interface IAnnouncedPlayCardProps {
-  festival: boolean;
-  date?: string;
+  date: string;
   time: string;
-  location?: string;
   title: string;
-  synopsis?: string;
   playwrightArray: string [];
   directorArray: string [];
   buttonLinks: string [];
@@ -19,12 +16,9 @@ interface IAnnouncedPlayCardProps {
 
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const {
-    festival,
     date,
     time,
-    location,
     title,
-    synopsis,
     playwrightArray,
     directorArray,
     buttonLinks,
@@ -62,7 +56,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     </React.Fragment>
   );
 
-  return !festival ? (
+  return (
     <li
       className={cn(styles.cardEvents)}
       {...restAnnouncedPlayCardProps}
@@ -133,54 +127,6 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           </div>
         }
       </div>
-    </li>
-  ) : (
-    <li
-      className={cn(styles.cardFestival)}
-      {...restAnnouncedPlayCardProps}
-    >
-      {coverResourceUrl ?
-        (<>
-          <img className={cn(styles.coverFestival)} src={coverResourceUrl}></img>
-          <h6 className={cn(styles.timeFestival)}>{time}</h6>
-          <p className={cn(styles.location)}>{location}</p>
-          <h6 className={cn(styles.titleFestival)}>{title}</h6>
-          <p className={cn(styles.synopsis)}>{synopsis}</p>
-        </>
-        )
-        : (
-          <>
-            <div className={cn(styles.coverFestivalNoCover)} ></div>
-            <h6 className={cn(styles.timeFestival)}>{time}</h6>
-            <p className={cn(styles.location)}>{location}</p>
-            <h6 className={cn(styles.titleFestival, styles.titleFestivalNoCover)}>{title}</h6>
-            <p className={cn(styles.synopsis)}>{synopsis}</p>
-          </>
-        )
-      }
-      <div className={cn(styles.creditsFestival)}>
-        {creditsRendered}
-      </div>
-      {
-        buttonLinks.length > 0 ?
-          (
-            <div className={cn(styles.buttonFestivalContainer)}>
-              <Button
-                view='primary'
-                width='154px'
-                align='start'
-                gap='9px'
-                size='s'
-                iconPlace='left'
-                icon='arrow-right'
-                label='Регистрация'
-                border='bottomLeft'
-                isLink={true}
-                href={buttonLinks[0]}
-              />
-            </div>
-          ) : (<div className={cn(styles.buttonFestivalContainer, styles.buttonFestivalContainerNoButton)}></div>)
-      }
     </li>
   );
 };
