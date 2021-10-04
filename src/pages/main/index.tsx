@@ -11,7 +11,6 @@ import Aside from '../../components/main-aside/main-aside';
 import Banners from '../../components/main-banners/main-banners';
 import Platforms from '../../components/main-platforms/main-platforms';
 import Archive from '../../components/main-archive/main-archive';
-import Partners from '../../components/main-partners/main-partners';
 import ShortList from '../../components/main-shortList/main-shortList';
 
 import styles from './main.module.css';
@@ -35,7 +34,6 @@ const components: IComponents = {
   banners: Banners,
   platforms: Platforms,
   archive: Archive,
-  partners: Partners,
   shortList: ShortList
 };
 
