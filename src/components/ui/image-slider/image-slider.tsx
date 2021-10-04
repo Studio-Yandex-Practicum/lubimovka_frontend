@@ -9,7 +9,7 @@ import styles from './image-slider.module.css';
 const cx = classNames.bind(styles);
 
 export type TImageItem = {
-  imageURI: string;
+  uri: string;
   caption: string;
 }
 
@@ -32,7 +32,7 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
   });
 
   return (
-    <div className={cx('navigationWrapper', className)}>
+    <div className={cx('imageSlider', className)}>
       {slider && (
         <>
           <SliderButton
@@ -55,7 +55,7 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
           >
             <img
               className={cx('image')}
-              src={image.imageURI}
+              src={image.uri}
               alt={image.caption}
               draggable={false}
             />
