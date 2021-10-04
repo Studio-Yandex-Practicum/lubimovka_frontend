@@ -63,7 +63,11 @@
   @mixin headline;
   @mixin headline5;
 
-  margin-top: 16px;
+  margin-top: 4px;
+
+  @media (max-width: $mobile-landscape) {
+    margin-top: 16px;
+  }
 }
 
 .credits {
