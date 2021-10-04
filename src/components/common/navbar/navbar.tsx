@@ -1,9 +1,9 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import cn from 'classnames/bind';
 
 import { NavbarLogo } from './navbar-logo';
-import { NavbarSection, INavbarSectionProps } from './navbar-section';
-import { NavbarButton, INavbarButtonProps } from './navbar-button';
+import { NavbarSection } from './navbar-section';
+import { NavbarButton} from './navbar-button';
 
 import styles from './navbar.module.css';
 const cx = cn.bind(styles);
@@ -12,13 +12,7 @@ interface INavbarProps {
   children: ReactNode;
 }
 
-interface INavbarComposition {
-  Logo: FC;
-  Section: FC<INavbarSectionProps>;
-  Button: FC<INavbarButtonProps>;
-}
-
-const Navbar: FC<INavbarProps> & INavbarComposition = (props) => {
+const Navbar = (props: INavbarProps): JSX.Element => {
   const { children } = props;
 
   return (

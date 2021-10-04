@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
@@ -11,7 +10,7 @@ export interface INavbarButtonProps {
   href: string;
 }
 
-export const NavbarButton: FC<INavbarButtonProps> = (props) => {
+export const NavbarButton = (props: INavbarButtonProps): JSX.Element => {
   const { label, href } = props;
 
   return (

@@ -1,7 +1,7 @@
-import { FC, Children, cloneElement, ReactNode, isValidElement } from 'react';
+import { Children, cloneElement, ReactNode, isValidElement } from 'react';
 import classNames from 'classnames/bind';
 
-import { MenuItem, TMenuItemProps } from './menu-item';
+import { MenuItem } from './menu-item';
 
 import styles from './menu.module.css';
 const cx = classNames.bind(styles);
@@ -23,11 +23,7 @@ export interface IMenuProps {
   children: ReactNode;
 }
 
-interface IMenuComposition {
-  Item: FC<TMenuItemProps>
-}
-
-const Menu: FC<IMenuProps> & IMenuComposition = (props) => {
+const Menu = (props: IMenuProps): JSX.Element => {
   const { className, view, children } = props;
 
   return (

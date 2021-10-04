@@ -1,4 +1,4 @@
-import { cloneElement, FC, ReactNode } from 'react';
+import { cloneElement, ReactNode } from 'react';
 import cn from 'classnames/bind';
 
 import styles from './navbar-section.module.css';
@@ -11,7 +11,7 @@ export interface INavbarSectionProps {
   children: ReactNode;
 }
 
-export const NavbarSection: FC<INavbarSectionProps> = (props) => {
+export const NavbarSection = (props: INavbarSectionProps): JSX.Element => {
   const {
     width = 'auto',
     Container = 'div',

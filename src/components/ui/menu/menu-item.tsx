@@ -1,4 +1,4 @@
-import { cloneElement, FC, AnchorHTMLAttributes, ButtonHTMLAttributes} from 'react';
+import { cloneElement, AnchorHTMLAttributes, ButtonHTMLAttributes} from 'react';
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 
@@ -18,7 +18,7 @@ interface IComponentProps {
 
 export type TMenuItemProps = IComponentProps & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type'> & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>;
 
-export const MenuItem: FC<TMenuItemProps> = (props) => {
+export const MenuItem = (props: TMenuItemProps): JSX.Element => {
   const { className, view, href, active, type, children, ...restProps } = props;
 
   if (href) {

@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Menu } from './menu';
+import { Menu, IMenuProps } from './menu';
 
 const EXAMPLE_ITEMS = [
   { title: 'Item1', href: '/#' },
@@ -15,7 +15,8 @@ export default {
   component: Menu,
 } as ComponentMeta<typeof Menu>;
 
-const Template: ComponentStory<typeof Menu> = ({view, ...restArgs}) => {
+const Template: ComponentStory<typeof Menu> = (props: IMenuProps) => {
+  const {view, ...restArgs} = props;
   const type = ({
     mainNavigation: 'navLink',
     pageNavigation: 'navLink',
