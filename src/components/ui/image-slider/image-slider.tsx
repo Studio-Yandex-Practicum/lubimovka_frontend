@@ -4,12 +4,13 @@ import classNames from 'classnames/bind';
 
 import { SliderButton } from '../slider-button';
 import { SliderDots } from '../slider-dots';
+import { Url } from 'shared/types';
 
 import styles from './image-slider.module.css';
 const cx = classNames.bind(styles);
 
 export type TImageItem = {
-  uri: string;
+  image: Url;
   caption: string;
 }
 
@@ -55,7 +56,7 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
           >
             <img
               className={cx('image')}
-              src={image.uri}
+              src={image.image}
               alt={image.caption}
               draggable={false}
             />
