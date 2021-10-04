@@ -1,14 +1,16 @@
 import { FC, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
-import cn from 'classnames';
+import classNames from 'classnames/bind';
 
-import { ArrowMock } from './mocks/arrow-mock';
-import { DotsMock } from './mocks/dots-mock';
+import { SliderButton } from '../slider-button';
+import { SliderDots } from '../slider-dots';
+import { Url } from 'shared/types';
 
 import styles from './image-slider.module.css';
+const cx = classNames.bind(styles);
 
 export type TImageItem = {
-  imageURI: string;
+  image: Url;
   caption: string;
 }
 
@@ -31,36 +33,38 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
   });
 
   return (
-    <div className={cn(styles.navigationWrapper, className)}>
+    <div className={cx('imageSlider', className)}>
       {slider && (
         <>
-          <ArrowMock
-            className={cn(styles.arrow, styles.arrowLeft)}
+          <SliderButton
+            direction='left'
+            className={cx('arrow', 'arrowLeft')}
             onClick={slider.prev}
           />
-          <ArrowMock
-            className={cn(styles.arrow, styles.arrowRight)}
+          <SliderButton
+            direction='right'
+            className={cx('arrow', 'arrowRight')}
             onClick={slider.next}
           />
         </>
       )}
-      <div ref={sliderRef} className={cn('keen-slider', styles.slider)}>
+      <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
         {images.map((image, idx) => (
           <div
             key={idx}
-            className={cn('keen-slider__slide', styles.slide)}
+            className={cx('keen-slider__slide', 'slide')}
           >
             <img
-              className={styles.image}
-              src={image.imageURI}
+              className={cx('image')}
+              src={image.image}
               alt={image.caption}
               draggable={false}
             />
           </div>
         ))}
       </div>
-      {slider && <DotsMock
-        className={styles.dots}
+      {slider && <SliderDots
+        className={cx('dots')}
         count={slider.details().size}
         currentSlide={currentSlide}
         onClick={(idx) => slider.moveToSlideRelative(idx)}

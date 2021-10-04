@@ -20,18 +20,21 @@ export const SliderButton: FC<ISliderButtonProps> = (props) => {
     right: 'arrow-right',
   } as const)[direction];
 
-  const firstCircleStyles = cx({
-    circle: true,
-    firstCircle: true,
-    left: direction === 'left',
-  });
+  const firstCircleStyles = cx(
+    'circle',
+    {
+      left: direction === 'left',
+    }
+  );
 
-  const secondCircleStyles = cx({
-    circle: true,
-    secondCircle: direction === 'right',
-    secondCircleLeft: direction === 'left',
-    left: direction === 'left',
-  });
+  const secondCircleStyles = cx(
+    'circle',
+    {
+      secondCircle: direction === 'right',
+      secondCircleLeft: direction === 'left',
+      left: direction === 'left',
+    }
+  );
 
   return(
     <button className={cn(styles.sliderButton, className)} type='button' {...restProps}>
