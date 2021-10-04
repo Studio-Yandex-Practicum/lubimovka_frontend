@@ -9,11 +9,12 @@
   /* для проверки */
   max-width: 1260px;
   justify-content: center;
+  padding: 0;
   margin: 0 auto;
   gap: 47px 60px;
   grid-auto-flow: dense;
   grid-template-columns: repeat(auto-fill, 270px);
-  list-style: 0;
+  list-style: none;
 }
 
 .gridItem {

@@ -1,21 +1,26 @@
 import React from 'react';
 
 import styles from './masonry-grid.module.css';
+import { BlogCard } from '../blog-card';
 
 interface MasonryGridProps {
-  // cardsData: ReadonlyArray<string | number>,
-  cardsData: any,
+  cardsData: { id: number; image: string; author: string; title: string; subtitle: string }[],
+  // cardsData: ReadonlyArray<{ id: number; image: string; author: string; title: string; subtitle: string }[]>,
 }
 
-const MasonryGrid: React.FC<MasonryGridProps> = (props) => {
-  const { cardsData } = props;
+const MasonryGrid: React.FC<MasonryGridProps> = ({ cardsData }) => {
   return (
     <section className={styles.masonryGridSection}>
       <ul className={styles.masonryGrid}>
-        {cardsData.map((card: { id: React.Key | null | undefined; }) => (
-          <li className={styles.gridItem} key={card.id}>
-            {JSON.stringify(card)}
-          </li>
+        {cardsData.map((card) => (
+          <BlogCard
+            key={card.id}
+            image={card.image}
+            author={card.author}
+            heading={card.title}
+            description={card.subtitle}
+            link="https://lubimovka.ru/blog/876-int-golovanova"
+          />
         )
         )}
       </ul>
