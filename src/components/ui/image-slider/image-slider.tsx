@@ -2,8 +2,8 @@ import { FC, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import cn from 'classnames';
 
-import { ArrowMock } from './mocks/arrow-mock';
-import { DotsMock } from './mocks/dots-mock';
+import { SliderButton } from '../slider-button';
+import { SliderDots } from '../slider-dots';
 
 import styles from './image-slider.module.css';
 
@@ -34,11 +34,13 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
     <div className={cn(styles.navigationWrapper, className)}>
       {slider && (
         <>
-          <ArrowMock
+          <SliderButton
+            direction='left'
             className={cn(styles.arrow, styles.arrowLeft)}
             onClick={slider.prev}
           />
-          <ArrowMock
+          <SliderButton
+            direction='right'
             className={cn(styles.arrow, styles.arrowRight)}
             onClick={slider.next}
           />
@@ -59,7 +61,7 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
           </div>
         ))}
       </div>
-      {slider && <DotsMock
+      {slider && <SliderDots
         className={styles.dots}
         count={slider.details().size}
         currentSlide={currentSlide}

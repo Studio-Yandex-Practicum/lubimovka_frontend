@@ -12,13 +12,13 @@ interface ISliderDotsProps {
 
 export const SliderDots: FC<ISliderDotsProps> = ({className, count, currentSlide, onClick}) => {
   return (
-    <div className={styles.dots}>
+    <div className={cn(styles.dots, className)}>
       {[...Array.from(Array(count).keys())].map((index) => {
         return (
           <button
             key={index}
             onClick={() => onClick(index)}
-            className={cn(styles.dot, {[styles.dotActive]: currentSlide === index}, className)}
+            className={cn(styles.dot, {[styles.dotActive]: currentSlide === index})}
           />
         );
       })}

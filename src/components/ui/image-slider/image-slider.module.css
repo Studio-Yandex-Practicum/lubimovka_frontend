@@ -1,7 +1,7 @@
 .navigationWrapper {
   position: relative;
   box-sizing: border-box;
-  padding: 0 74px;
+  padding: 0 77px;
 
   @media (max-width: 728px) {
     padding: 0;
@@ -37,8 +37,7 @@
 
 .arrow {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 39%;
 
   @media (max-width: 728px) {
     position: static;
@@ -65,4 +64,12 @@
 
 .arrowRight {
   right: 0;
+}
+
+.dots {
+  margin-top: 19px;
+
+  @media (max-width: 728px) {
+    margin-top: 15px;
+  }
 }
