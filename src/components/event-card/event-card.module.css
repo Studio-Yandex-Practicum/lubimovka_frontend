@@ -1,62 +1,28 @@
 .card {
+  display: grid;
+  padding-bottom: 48px;
+  gap: 16px 0;
+  grid-template:
+    "time-location image"
+    "title         title"
+    "description   description"
+    "credits       credits"
+    "actions       actions" 1fr / 1fr minmax(0, 127px);
+
   @media (min-width: $tablet-portrait) {
-    display: grid;
+    padding: 0;
     gap: 16px 32px;
     grid-template:
-      "image time-location title       .       ." auto
-      "image time-location description credits actions" 1fr / minmax(
-        0,
-        147px
-      ) minmax(0, 12.5%) minmax(0, 27.5%) minmax(0, 30%) minmax(0, 154px);
-
-    /*
-        В макете ширина изображения 151px, но так как мы компенсируем gap засчет отрицательного margin в 4px,
-        значение выше — 147px
-      */
-    overflow-x: hidden;
-  }
-
-  @media (max-width: 992px) {
-    gap: 16px 16px;
-  }
-
-  @media (max-width: $tablet-portrait) {
-    display: grid;
-
-    /* В макете указаны отступы padding: 0 23px 48px 24px, но так как у body задан внутренний отступ в 1rem (16px),
-      значения меньше на 16px */
-    padding: 0 7px 32px 8px;
-    border-bottom: 1px solid var(--coal);
-    gap: 16px 0;
-    grid-template:
-      'time-location image'
-      'title title'
-      'description description'
-      'credits credits'
-      '       . actions' 1fr / 1fr minmax(0, 151px);
+      "image time-location title       .       ."
+      "image time-location description credits actions" 1fr / minmax(0, 147px) minmax(0, 12.5%) minmax(0, 27.5%) minmax(0, 30%) minmax(0, 17.5%);
   }
 }
 
 .imageHolder {
-  position: relative;
-  margin-right: -4px;
   grid-area: image;
 
-  &::before {
-    @media (min-width: $tablet-portrait) {
-      position: absolute;
-      top: 0;
-      left: 100%;
-      display: block;
-      width: 100vw;
-      height: 1px;
-      background-color: var(--coal);
-      content: "";
-    }
-  }
-
-  @media (max-width: $tablet-portrait) {
-    margin: 0;
+  @media (min-width: $tablet-portrait) {
+    margin-right: -4px;
   }
 }
 
@@ -79,17 +45,19 @@
   @mixin headline;
   @mixin headline6;
 
-  margin-top: 15px; /* 1px на границу */
-  grid-area: title;
-
-  @media (max-width: $tablet-portrait) {
-    margin: 0;
+  @media (min-width: $tablet-portrait) {
+    margin-top: 15px;
   }
 }
 
 .timeLocation {
+  padding-right: 8px;
   margin: 0;
   grid-area: time-location;
+
+  @media (min-width: $tablet-portrait) {
+    padding: 0;
+  }
 }
 
 .hiddenText {
@@ -98,14 +66,14 @@
 
 .time {
   @mixin headline;
-  @mixin headline6;
+  @mixin headline7;
 
-  margin-top: 15px; /* 1px на границу */
+  margin-top: 19px;
 
-  @media (max-width: $tablet-portrait) {
-    @mixin headline7;
+  @media (min-width: $tablet-portrait) {
+    @mixin headline6;
 
-    margin-top: 19px;
+    margin-top: 15px;
   }
 }
 
@@ -113,10 +81,8 @@
   @mixin text;
   @mixin textSmall;
 
-  margin: 16px 0 0;
-
-  @media (max-width: $tablet-portrait) {
-    margin-top: 0;
+  @media (min-width: $tablet-portrait) {
+    margin: 16px 0 0;
   }
 }
 
@@ -124,12 +90,12 @@
   @mixin text;
   @mixin textSmall;
 
-  margin: 0 0 44px;
+  margin: 0 0 8px 64px;
   grid-area: description;
   word-wrap: break-word;
 
-  @media (max-width: $tablet-portrait) {
-    margin: 0 0 8px 63px;
+  @media (min-width: $tablet-portrait) {
+    margin: 0 0 44px;
   }
 }
 
@@ -161,9 +127,36 @@
 }
 
 .actions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
   grid-area: actions;
+}
 
-  @media (max-width: $tablet-portrait) {
-    margin-left: auto;
+.card:not(:first-child) {
+  border-top: 1px solid var(--coal);
+
+  @media (min-width: $tablet-portrait) {
+    border-top: 0;
+    overflow-x: hidden;
+  }
+
+  .imageHolder {
+    @media (min-width: $tablet-portrait) {
+      position: relative;
+    }
+
+    &::before {
+      @media (min-width: $tablet-portrait) {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        display: block;
+        width: 100vw;
+        height: 1px;
+        background-color: var(--coal);
+        content: "";
+      }
+    }
   }
 }
