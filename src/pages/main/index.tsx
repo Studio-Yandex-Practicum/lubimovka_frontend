@@ -6,13 +6,13 @@ import {createElement, FC} from 'react';
 import data from './assets/mock-data.json';
 import metaData from './assets/mock-title.json';
 
-import {MainTitle as Title} from '../../components/main-title/main-title';
-import {MainEvents as Events} from '../../components/main-events/main-events';
-import {MainAside as Aside} from '../../components/main-aside/main-aside';
-import {MainBanners as Banners} from '../../components/main-banners/main-banners';
-import {MainPlatforms as Platforms} from '../../components/main-platforms/main-platforms';
-import {MainArchive as Archive} from '../../components/main-archive/main-archive';
-import {MainShortList as ShortList} from '../../components/main-shortList/main-shortList';
+import {MainTitle} from 'components/main-title';
+import {MainEvents} from 'components/main-events';
+import {MainAside} from 'components/main-aside';
+import {MainBanners} from 'components/main-banners';
+import {MainPlatforms} from 'components/main-platforms';
+import {MainArchive} from 'components/main-archive';
+import {MainShortList} from 'components/main-shortList';
 
 import styles from './main.module.css';
 const cx = cn.bind(styles);
@@ -29,13 +29,13 @@ interface IComponents {
 }
 
 const components: IComponents = {
-  title: Title,
-  events: Events,
-  aside: Aside,
-  banners: Banners,
-  platforms: Platforms,
-  archive: Archive,
-  shortList: ShortList
+  title: MainTitle,
+  events: MainEvents,
+  aside: MainAside,
+  banners: MainBanners,
+  platforms: MainPlatforms,
+  archive: MainArchive,
+  shortList: MainShortList
 };
 
 const MainPage: NextPage = () => {
