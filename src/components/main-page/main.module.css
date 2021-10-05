@@ -10,7 +10,7 @@
     "shortList ."
     "archive archive"
     "partners .";
-  grid-template-columns: minmax($tablet-portrait, 1108px) 1fr;
+  grid-template-columns: minmax($mobile-portrait, 1108px) 1fr;
   grid-template-rows: repeat(6, max-content);
 
   @media screen and (max-width: $laptop) {
