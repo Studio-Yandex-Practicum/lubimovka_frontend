@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import mockData from './assets/mock-cardData.json';
+import mockData2 from './assets/mock-cardDataCopy.json';
 import MasonryGrid from './masonry-grid';
 
 export default {

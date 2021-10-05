@@ -3,17 +3,25 @@
 }
 
 .masonryGrid {
-  position: relative;
   display: grid;
 
   /* для проверки */
+
+  /* position: relative; */
   max-width: 1260px;
   justify-content: center;
   padding: 0;
   margin: 0 auto;
-  gap: 47px 60px;
+
+  /* gap: 47px 60px; */
   grid-auto-flow: dense;
+
+  /* grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); */
+  grid-auto-rows: 20px;
+  grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, 270px);
+
+  /* grid-template-columns: repeat(auto-fill, 270px); */
   list-style: none;
 }
 

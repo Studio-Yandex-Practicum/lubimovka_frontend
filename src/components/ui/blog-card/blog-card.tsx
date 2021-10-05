@@ -13,10 +13,11 @@ interface BlogCardProps {
 export const BlogCard: FC<BlogCardProps> = (props) => {
   const { image, author, heading, description, link } = props;
 
+
   return (
     <Link href={link}>
       <a className={styles.cardLinkWrapper}>
-        <li className={styles.card}>
+        <div className={styles.card}>
           <div className={styles.imgContainer}>
             <img className={styles.img} src={image} alt={`изображение статьи: ${heading}`} />
           </div>
@@ -25,7 +26,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
             <h6 className={styles.heading}>{heading}</h6>
             <p className={styles.description}>{description}</p>
           </div>
-        </li>
+        </div>
       </a>
     </Link>
   );
