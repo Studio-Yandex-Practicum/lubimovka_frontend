@@ -1,6 +1,20 @@
-.navbarButton {
+.navbarSupportLink {
+  @mixin text;
+
+  display: flex;
   min-width: min(calc(165 * var(--vw-size-multiplier)), 165px);
+  align-items: center;
+  justify-content: center;
+  color: var(--coal);
+  cursor: pointer;
   font-size: clamp(8px, calc(14 * var(--vw-size-multiplier)), 14px);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 350ms ease;
+
+  &:hover {
+    opacity: .8;
+  }
 
   & svg {
     width: min(calc(25 * var(--vw-size-multiplier)), 25px);

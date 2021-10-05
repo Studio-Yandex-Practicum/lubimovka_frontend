@@ -44,7 +44,7 @@
   transition: opacity 350ms ease;
 
   &:hover {
-    opacity: .9;
+    opacity: .8;
   }
 }
 

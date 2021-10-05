@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Navbar } from './navbar';
 import { Menu } from 'components/ui/menu';
 import { HEADER_MAIN_NAVIGATION_ITEMS, HEADER_SOCIAL_ITEMS } from 'shared/constants';
+import { Icon } from 'components/ui/icon';
 
 export default {
   title: 'Common/Header',
@@ -46,7 +47,10 @@ const Template: ComponentStory<typeof Navbar> = (args) => (
         ))}
       </Menu>
     </Navbar.Section>
-    <Navbar.Button label='Поддержать' href={'/donate'} />
+    <Navbar.SupportLink href={'/donate'}>
+      <Icon glyph='plus'/>
+      Поддержать
+    </Navbar.SupportLink>
   </Navbar>
 );
 
