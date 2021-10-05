@@ -12,5 +12,10 @@ const Template: ComponentStory<typeof ArticleTitle> = (args) => <ArticleTitle {.
 
 export const BlogTitle = Template.bind({});
 BlogTitle.args = {
-  text: 'тест',
+  buttonLabel: 'Блог',
+  title: '«Человек является источником жеста, смысла, правды»',
+  description: 'МК «Документальность в современном театре и современном искусстве»',
+  date: '05 октября 2020',
+  author: 'Лара Бессмертная',
+  imgLink: 'https://littletravel.ru/wp-content/uploads/2020/01/1530726597_pg-9238.jpg'
 };
