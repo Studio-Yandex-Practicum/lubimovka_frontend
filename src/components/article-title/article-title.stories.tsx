@@ -12,7 +12,7 @@ const Template: ComponentStory<typeof ArticleTitle> = (args) => <ArticleTitle {.
 
 export const BlogTitle = Template.bind({});
 BlogTitle.args = {
-  buttonLabel: 'Блог',
+  isBlog: true,
   title: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
   date: '05 октября 2020',

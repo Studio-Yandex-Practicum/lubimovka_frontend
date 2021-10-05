@@ -1,8 +1,33 @@
+.container {
+  display: grid;
+  padding: 32px 0 0 30px;
+  grid-column-gap: 30px;
+  grid-template-areas:
+    'button a a a'
+    'b title title c'
+    'b description description img'
+    'b date author img';
+}
+
+.backToBlogButton {
+  width: 90px;
+  height: 32px;
+  grid-area: button;
+}
+
+.backToNewsButton {
+  width: 125px;
+  height: 32px;
+  grid-area: button;
+}
+
 .title {
   @mixin headline;
   @mixin headline3;
 
-  max-width: 570px;
+  width: 570px;
+  margin-top: 18px;
+  grid-area: title;
 }
 
 .description {
@@ -11,15 +36,28 @@
 
   max-width: 480px;
   margin-top: 22px;
+  margin-left: 60px;
+  grid-area: description;
 }
 
 .date {
   @mixin text;
   @mixin textSmall;
+
+  grid-area: date;
+}
+
+.author {
+  @mixin text;
+  @mixin textSmall;
+
+  grid-area: author;
 }
 
 .img {
   width: 690px;
   height: 421px;
+  padding-top: 30px;
+  grid-area: img;
   object-fit: cover;
 }

@@ -7,17 +7,17 @@ import styles from './article-title.module.css';
 import {Button} from '../ui/button';
 
 interface IArticleTitle {
-  buttonLabel: 'Блог' | 'Новости',
+  isBlog: boolean,
   title: string,
   description: string,
   date: string,
-  author: string,
+  author?: string,
   imgLink: string,
 }
 
 const ArticleTitle: React.FC<IArticleTitle> = (props) => {
   const {
-    buttonLabel,
+    isBlog,
     title,
     description,
     date,
@@ -26,23 +26,29 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
   } = props;
 
   return (
-    <div className={cx('test')}>
-      <Button label={buttonLabel}
+    <div className={cx('container')}>
+      <Button className={cx({backToBlogButton:isBlog, backToNewsButton: !isBlog})}
+        label={isBlog ? 'Блог' : 'Новости'}
         size={'s'}
         iconPlace={'right'}
         icon={'arrow-left'}
         border={'bottomRight'}
         isLink={true}
         view={'primary'}
-        align={'start'}
+        align={'space-between'}
         // href={''} добавить ссылку для перехода на страницу
       />
+
+      <img className={cx('img')} src={imgLink} alt={title}/>
+
       <h3 className={cx('title')}>{title}</h3>
       <h6 className={cx('description')}>{description}</h6>
+
       <p className={cx('date')}>{date}</p>
       {/*заменить на компонент ссылки, когда будет готов*/}
-      <p>{author}</p>
-      <img className={cx('img')} src={imgLink} alt={title}/>
+      {isBlog && <p className={cx('author')}>{author}</p>}
+
+
     </div>
   );
 };
