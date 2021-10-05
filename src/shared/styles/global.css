@@ -1,5 +1,5 @@
 * {
-  min-width: $minimal;
+  min-width: $mobile-portrait;
   max-width: $desktop;
   box-sizing: border-box;
   margin: 0 auto;
