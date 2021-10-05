@@ -1,14 +1,14 @@
 import classes from './NotFoundError.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '../../images/logo.svg';
-import lines from '../../images/404lines.svg';
+import Logo from '../../images/logo.svg';
+import Lines from '../../images/404lines.svg';
 
 export default function NotFoundError() {
   return (
     <section className={classes.error}>
       <div className={classes.logoContainer}>
-        <Image className={classes.logo} src={'/images/logo.svg'} layout={'fill'}/>
+        <Logo className={classes.logo} src={'/images/logo.svg'} layout={'fill'}/>
       </div>
       <div className={classes.contentContainer}>
         <h1 className={classes.title}>Ощибка 404</h1>
@@ -22,11 +22,9 @@ export default function NotFoundError() {
       </div>
       <div className={classes.lines}>
         <div className={classes.lineContainer}>
-          <Image className={classes.line} src={'/404lines.svg'} layout='fill'/>
-          {/*<Image className={classes.line} src={lines}/>*/}
+          <Lines className={classes.line}/>
         </div>
       </div>
     </section>
-
   );
 }
