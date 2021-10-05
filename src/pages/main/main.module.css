@@ -3,8 +3,8 @@
   display: grid;
   width: 100%;
   min-width: 414px;
-  max-width: 1440px;
-  margin: 61px auto 0;
+  max-width: $desktop;
+  margin: 0 auto;
   grid-template-areas:
     "title ."
     "events ."
@@ -13,7 +13,7 @@
     "shortList ."
     "archive archive"
     "partners .";
-  grid-template-columns: minmax(414px, 1108px) 1fr;
+  grid-template-columns: minmax($tablet-portrait, 1108px) 1fr;
   grid-template-rows: repeat(6, max-content);
 
   @media screen and (max-width: $laptop) {

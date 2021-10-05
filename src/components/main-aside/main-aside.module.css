@@ -2,7 +2,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  display: flex;
+  display: block;
   width: 468px;
   height: 770px;
   background-color: yellow;
