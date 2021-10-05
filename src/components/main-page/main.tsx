@@ -4,7 +4,7 @@ import cn from 'classnames/bind';
 import {createElement, FC} from 'react';
 
 import data from './assets/mock-data.json';
-import metaData from './assets/mock-title.json';
+import metaData from './assets/mock-meta-data.json';
 
 import {MainTitle} from 'components/main-title';
 import {MainEvents} from 'components/main-events';
@@ -38,7 +38,7 @@ const components: IComponents = {
   shortList: MainShortList
 };
 
-const MainPage: NextPage = () => {
+export const MainPage: NextPage = () => {
   return (
     <>
       <Head>
@@ -50,5 +50,3 @@ const MainPage: NextPage = () => {
     </>
   );
 };
-
-export default MainPage;

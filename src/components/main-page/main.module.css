@@ -2,9 +2,6 @@
   position: relative;
   display: grid;
   width: 100%;
-  min-width: 414px;
-  max-width: $desktop;
-  margin: 0 auto;
   grid-template-areas:
     "title ."
     "events ."

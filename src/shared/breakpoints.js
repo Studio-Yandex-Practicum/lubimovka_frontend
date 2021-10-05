@@ -5,4 +5,5 @@ module.exports =  {
   'tablet-landscape': '992px',
   laptop: '1200px',
   desktop: '1400px',
+  minimal: '414px',
 };

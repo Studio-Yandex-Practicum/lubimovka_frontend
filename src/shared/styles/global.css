@@ -1,0 +1,6 @@
+* {
+  min-width: $minimal;
+  max-width: $desktop;
+  box-sizing: border-box;
+  margin: 0 auto;
+}

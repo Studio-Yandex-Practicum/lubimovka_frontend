@@ -1,9 +1,8 @@
-import { NextPage } from 'next';
+import {NextPage} from 'next';
+import {MainPage} from 'components/main-page';
 
 const Home: NextPage = () => (
-  <h1>
-    Hello, world!
-  </h1>
+  <MainPage />
 );
 
 export default Home;
