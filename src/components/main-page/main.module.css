@@ -2,6 +2,10 @@
   position: relative;
   display: grid;
   width: 100%;
+  min-width: 414px;
+  max-width: 1440px;
+  box-sizing: border-box;
+  margin: 0 auto;
   grid-template-areas:
     "title ."
     "events ."
@@ -13,7 +17,7 @@
   grid-template-columns: minmax($mobile-portrait, 1108px) 1fr;
   grid-template-rows: repeat(6, max-content);
 
-  @media screen and (max-width: $laptop) {
+  @media screen and (max-width: 728px) {
     grid-template-areas:
       "title"
       "events"
