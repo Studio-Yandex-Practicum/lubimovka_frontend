@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { Icon, IIconProps } from '../icon';
 
-import styles from './info-link.module.css';
+import styles from './info-link-v1.module.css';
 
 
 interface ILinkProps {

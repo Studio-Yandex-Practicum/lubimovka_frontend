@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { InfoLink } from './info-link';
+import { InfoLink } from './info-link-v1';
 
 export default {
   title: 'UI/InfoLink',

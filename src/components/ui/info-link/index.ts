@@ -1,1 +1,1 @@
-export * from './info-link';
+export * from './info-link-v1';
