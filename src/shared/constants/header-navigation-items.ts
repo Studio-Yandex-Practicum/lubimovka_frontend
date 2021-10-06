@@ -1,4 +1,4 @@
-import { TSocialItem, TMainNavigationItem } from 'components/ui/menu';
+import { TMainNavigationItem } from 'components/ui/menu';
 
 export const HEADER_MAIN_NAVIGATION_ITEMS: TMainNavigationItem[] = [
   {
@@ -34,40 +34,3 @@ export const HEADER_MAIN_NAVIGATION_ITEMS: TMainNavigationItem[] = [
     href: '/contacts',
   },
 ];
-
-export const LIBRARY_TABS = [
-  {
-    title: 'Пьесы',
-    href: '#',
-    active: true,
-  },
-  {
-    title: 'Авторы',
-    href: '#',
-    inactive: true,
-  },
-];
-
-export const HEADER_SOCIAL_ITEMS: TSocialItem[] = [
-  {
-    title: 'fb',
-    href: '#'
-  },
-  {
-    title: 'inst',
-    href: '#'
-  },
-  {
-    title: 'ytube',
-    href: '#'
-  },
-  {
-    title: 'tlgrm',
-    href: '#'
-  },
-  {
-    title: 'vk',
-    href: '#'
-  },
-];
-

@@ -2,7 +2,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Navbar } from './navbar';
 import { Menu } from 'components/ui/menu';
-import { HEADER_MAIN_NAVIGATION_ITEMS, HEADER_SOCIAL_ITEMS } from 'shared/constants';
+import { HEADER_MAIN_NAVIGATION_ITEMS } from 'shared/constants/header-navigation-items';
+import { HEADER_SOCIAL_ITEMS } from 'shared/constants/header-social-items';
+
 import { Icon } from 'components/ui/icon';
 
 export default {
