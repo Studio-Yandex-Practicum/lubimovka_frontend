@@ -16,7 +16,7 @@
     opacity: .8;
   }
 
-  & svg {
+  svg {
     width: min(calc(25 * var(--vw-size-multiplier)), 25px);
     height: min(calc(25 * var(--vw-size-multiplier)), 25px);
   }
