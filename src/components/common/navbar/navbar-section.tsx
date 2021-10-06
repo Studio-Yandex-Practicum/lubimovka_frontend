@@ -1,12 +1,12 @@
-import { cloneElement, ReactNode } from 'react';
-import cn from 'classnames/bind';
+import { ReactNode } from 'react';
+import classNames from 'classnames/bind';
 
 import styles from './navbar-section.module.css';
-const cx = cn.bind(styles);
+const cx = classNames.bind(styles);
 
 export interface INavbarSectionProps {
   width?: 'auto' | 'max';
-  Container?: 'nav' | 'div';
+  container?: 'nav' | 'div';
   showSeparator?: boolean;
   children: ReactNode;
 }
@@ -14,16 +14,21 @@ export interface INavbarSectionProps {
 export const NavbarSection = (props: INavbarSectionProps): JSX.Element => {
   const {
     width = 'auto',
-    Container = 'div',
+    container: Container = 'div',
     showSeparator = false,
     children
   } = props;
 
-  return cloneElement(
-    <Container />,
-    {
-      className: cx('navbarSection', [width], { separator: showSeparator }),
-    },
-    children
+  return (
+    <Container
+      className={cx(
+        'navbarSection',
+        [width],
+        {
+          separator: showSeparator
+        }
+      )}>
+      {children}
+    </Container>
   );
 };

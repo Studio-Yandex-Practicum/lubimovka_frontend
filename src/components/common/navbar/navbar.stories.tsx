@@ -22,7 +22,7 @@ export default {
 const Template: ComponentStory<typeof Navbar> = (args) => (
   <Navbar {...args}>
     <Navbar.Logo />
-    <Navbar.Section Container='nav' width='max' showSeparator>
+    <Navbar.Section container='nav' width='max' showSeparator>
       <Menu view="mainNavigation">
         {HEADER_MAIN_NAVIGATION_ITEMS.map(({ title, href }, idx) => (
           <Menu.Item
