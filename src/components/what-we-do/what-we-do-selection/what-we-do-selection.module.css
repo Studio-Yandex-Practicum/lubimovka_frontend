@@ -1,0 +1,144 @@
+.selection {
+  padding: 54px 60px 45px;
+  background-color: #ecebe8;
+}
+
+.mainTitle {
+  @mixin headline;
+  @mixin headline3;
+
+  max-width: 540px;
+  margin: 0 180px 56px auto;
+}
+
+.list {
+  display: grid;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 68px;
+  column-gap: 90px;
+  grid-template-columns: repeat(3, 360px);
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  align-content: start;
+  row-gap: 24px;
+}
+
+.number {
+  @mixin headline;
+  @mixin headline1;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline6;
+
+  min-height: 96px;
+}
+
+.desc {
+  @mixin text;
+  @mixin textSmall;
+}
+
+.poster {
+  max-width: 1320px;
+  padding: 64px 150px 60px 120px;
+  padding-top: 64px;
+  margin: 0 auto;
+  background-color: #b7c09d;
+}
+
+.posterTitle {
+  @mixin headline;
+  @mixin headline6;
+
+  display: flex;
+  max-width: 468px;
+  flex-direction: column;
+}
+
+.ampersand {
+  @mixin headline;
+  @mixin headline1;
+
+  margin-bottom: 16px;
+}
+
+.posterDesc {
+  @mixin text;
+  @mixin textSmall;
+
+  max-width: 485px;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 1439px) {
+  .list {
+    column-gap: 200px;
+    grid-template-columns: repeat(2, 360px);
+    row-gap: 42px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .list {
+    column-gap: 90px;
+    grid-template-columns: repeat(2, 360px);
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .list {
+    column-gap: 60px;
+    grid-template-columns: repeat(2, 300px);
+  }
+
+  .number {
+    @mixin headline2;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  .mainTitle {
+    margin-right: 80px;
+  }
+
+  .list {
+    grid-template-columns: repeat(2, 260px);
+  }
+
+  .number {
+    @mixin headline3;
+  }
+
+  .title {
+    @mixin headline7;
+  }
+}
+
+@media screen and (max-width: 719px) {
+  .mainTitle {
+    margin-right: 0;
+  }
+
+  .list {
+    grid-template-columns: repeat(1, 360px);
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .mainTitle {
+    @mixin headline4;
+
+    max-width: 320px;
+  }
+
+  .list {
+    grid-template-columns: repeat(1, 360px);
+  }
+}

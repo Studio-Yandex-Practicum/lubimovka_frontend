@@ -1,0 +1,174 @@
+.desc {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #ecebe8;
+  color: var(--beige);
+}
+
+.img {
+  @mixin img;
+
+  position: absolute;
+  top: -220px;
+  left: 0;
+  max-width: 720px;
+  max-height: 414px;
+}
+
+.contentReception {
+  display: flex;
+  box-sizing: border-box;
+  padding-top: 312px;
+  padding-right: 95px;
+  padding-left: 20px;
+  margin: 0 auto 190px;
+}
+
+.containerReception {
+  margin-right: 90px;
+}
+
+.mainTitle {
+  @mixin headline;
+  @mixin headline3;
+
+  min-width: 510px;
+  max-width: 600px;
+  margin-bottom: 76px;
+}
+
+.imgReception {
+  @mixin img;
+
+  display: block;
+  min-width: 365px;
+  max-width: 450px;
+  max-height: 594px;
+  margin-top: 14px;
+}
+
+.contentSelected {
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  padding-bottom: 140px;
+}
+
+.containerSelected {
+  order: 2;
+  margin-left: 90px;
+}
+
+.imgSelected {
+  @mixin img;
+
+  display: block;
+  min-width: 365px;
+  max-width: 630px;
+  max-height: 278px;
+  order: 1;
+  margin-top: 10px;
+}
+
+.containerInvite {
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin-bottom: 170px;
+  margin-left: 210px;
+}
+
+@media screen and (max-width: 1281px) {
+  .containerReception {
+    margin-right: 70px;
+  }
+
+  .containerSelected {
+    margin-left: 70px;
+  }
+
+  .mainTitle {
+    min-width: 480px;
+  }
+
+  .imgReception {
+    min-width: 350px;
+  }
+
+  .imgSelected {
+    min-width: 350px;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .contentReception {
+    flex-direction: column;
+  }
+
+  .containerReception {
+    margin-right: 0;
+  }
+
+  .imgReception {
+    max-width: 365px;
+    margin-top: 24px;
+    margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 961px) {
+  .contentSelected {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .containerSelected {
+    box-sizing: border-box;
+    padding: 0 20px;
+    margin-top: 24px;
+    margin-left: 0;
+  }
+
+  .imgSelected {
+    max-width: 510px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .contentReception {
+    padding-right: 20px;
+  }
+
+  .containerInvite {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 541px) {
+  .mainTitle {
+    @mixin headline4;
+
+    min-width: 0;
+  }
+
+  .contentReception {
+    margin: 190px 0;
+  }
+
+  .imgReception {
+    min-width: 0;
+    margin-left: 0;
+  }
+
+  .imgSelected {
+    min-width: 0;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .mainTitle {
+    @mixin headline5;
+
+    min-width: 0;
+  }
+}

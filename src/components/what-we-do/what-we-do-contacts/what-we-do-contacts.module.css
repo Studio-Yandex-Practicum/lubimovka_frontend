@@ -1,0 +1,30 @@
+.contacts {
+  padding: 72px 170px 164px 150px;
+  color: var(--white);
+}
+
+.title {
+  @mixin headline;
+  @mixin headline5;
+
+  max-width: 485px;
+  margin-bottom: 62px;
+}
+
+.desc {
+  @mixin headline;
+  @mixin headline6;
+
+  position: relative;
+  max-width: 610px;
+  margin-left: auto;
+}
+
+.asterisk {
+  @mixin headline;
+  @mixin headline1;
+
+  position: absolute;
+  top: -32px;
+  left: -32px;
+}
