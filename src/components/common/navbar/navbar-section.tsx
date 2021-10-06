@@ -7,7 +7,6 @@ const cx = classNames.bind(styles);
 export interface INavbarSectionProps {
   width?: 'auto' | 'max';
   container?: 'nav' | 'div';
-  showSeparator?: boolean;
   children: ReactNode;
 }
 
@@ -15,7 +14,6 @@ export const NavbarSection = (props: INavbarSectionProps): JSX.Element => {
   const {
     width = 'auto',
     container: Container = 'div',
-    showSeparator = false,
     children
   } = props;
 
@@ -24,9 +22,6 @@ export const NavbarSection = (props: INavbarSectionProps): JSX.Element => {
       className={cx(
         'navbarSection',
         [width],
-        {
-          separator: showSeparator
-        }
       )}>
       {children}
     </Container>

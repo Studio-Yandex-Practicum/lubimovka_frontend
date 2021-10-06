@@ -22,7 +22,7 @@ export default {
 const Template: ComponentStory<typeof Navbar> = (args) => (
   <Navbar {...args}>
     <Navbar.Logo />
-    <Navbar.Section container='nav' width='max' showSeparator>
+    <Navbar.Section container='nav' width='max'>
       <Menu view="mainNavigation">
         {HEADER_MAIN_NAVIGATION_ITEMS.map(({ title, href }, idx) => (
           <Menu.Item
@@ -35,7 +35,7 @@ const Template: ComponentStory<typeof Navbar> = (args) => (
         ))}
       </Menu>
     </Navbar.Section>
-    <Navbar.Section showSeparator>
+    <Navbar.Section>
       <Menu view="socialLinks">
         {HEADER_SOCIAL_ITEMS.map(({ title, href }, idx) => (
           <Menu.Item

@@ -11,11 +11,11 @@
   position: relative;
   display: flex;
   padding: 0 min(calc(17 * var(--vw-size-multiplier)), 17px);
-}
 
-.separator {
-  &::after {
-    @mixin separator;
+  &:not(:last-child) {
+    &::after {
+      @mixin separator;
+    }
   }
 }
 
