@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { InfoLink } from './info-link';
 
 export default {
-  title: 'InfoLink',
+  title: 'UI/InfoLink',
   component: InfoLink,
 } as ComponentMeta<typeof InfoLink>;
 
@@ -12,7 +12,7 @@ const Template: ComponentStory<typeof InfoLink> = (args) => <InfoLink {...args} 
 export const LinkInHeading = Template.bind({});
 LinkInHeading.args = {
   isOutsideLink: true,
-  href: 'https://www.facebook.com/sharer/sharer.php?u=https%3A//github.com/Studio-Yandex-Practicum/lubimovka_frontend',
+  href: 'https://www.facebook.com/festival.lubimovka',
   label: 'Fb',
   icon: 'arrow-right',
   iconPlace: 'left',
@@ -68,7 +68,7 @@ export const LinkInfoInFooter = Template.bind({});
 LinkInfoInFooter.args = {
   label: 'Контакты',
   section: 'infoFooter',
-  size: 'xs'
+  size: 'xs',
 };
 
 export const LinkInFooter = Template.bind({});
@@ -79,4 +79,3 @@ LinkInFooter.args = {
   section: 'footer',
   size: 'xs'
 };
-
