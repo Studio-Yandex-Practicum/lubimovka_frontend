@@ -9,7 +9,9 @@
   flex: inherit;
 
   .menuListItem {
-    flex: 1;
+    &:not(:first-child) {
+      margin-left: min(calc(22 * var(--vw-size-multiplier)), 22px);
+    }
   }
 }
 
