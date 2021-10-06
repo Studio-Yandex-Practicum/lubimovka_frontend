@@ -10,7 +10,7 @@ import {MainPlatforms} from 'components/main-platforms';
 import {MainArchive} from 'components/main-archive';
 import {MainShortList} from 'components/main-shortList';
 
-import styles from '../components/main-page/main.module.css';
+import styles from './index.module.css';
 const cx = cn.bind(styles);
 
 interface IMainPageProps {

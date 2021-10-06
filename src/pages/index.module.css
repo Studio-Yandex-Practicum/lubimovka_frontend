@@ -1,6 +1,7 @@
 .main {
   position: relative;
   display: grid;
+  overflow: hidden;
   width: 100%;
   min-width: 414px;
   max-width: 1440px;
@@ -12,12 +13,11 @@
     "banners ."
     "platforms ."
     "shortList ."
-    "archive archive"
-    "partners .";
-  grid-template-columns: minmax($mobile-portrait, 1108px) 1fr;
+    "archive archive";
+  grid-template-columns: minmax(500px, 1108px) 1fr;
   grid-template-rows: repeat(6, max-content);
 
-  @media screen and (max-width: 728px) {
+  @media screen and (max-width: $laptop) {
     grid-template-areas:
       "title"
       "events"
@@ -25,9 +25,7 @@
       "banners"
       "platforms"
       "shortList"
-      "addon"
-      "archive"
-      "partners";
+      "archive";
     grid-template-columns: 100%;
     grid-template-rows: repeat(7, max-content);
   }
