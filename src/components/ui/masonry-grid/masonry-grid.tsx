@@ -10,60 +10,69 @@ interface MasonryGridProps {
 
 const MasonryGrid: React.FC<MasonryGridProps> = ({ cardsData }) => {
 
+  // реф для доступа к грид-сетке
+  const gridRef = React.useRef<HTMLUListElement>(null);
+
   // ресайз грид-карточки
   function resizeGridItem(item: any) {
-    //.masonryGrid
-    const grid = document.querySelectorAll('._3OLOPd9GGOPsYE2OSWuQxU')[0];
+    const grid = gridRef.current;
 
-    // получаем все стили сетки
+    // получаем все вычесленные стили грид-сетки
     const gridStyles = window.getComputedStyle(grid);
-    // забираем высоту строки и гэпа
+
+    // забираем высоту строки и гэпа из грид-сетки
     const rowHeight = parseInt(gridStyles.getPropertyValue('grid-auto-rows'));
     const rowGap = parseInt(gridStyles.getPropertyValue('grid-row-gap'));
-    // console.log('grid:', grid);
-    // console.log('gridStyles:', gridStyles);
-    console.log('item:', item);
-
-    console.log('rowHeight:', rowHeight);
-    console.log('rowGap:', rowGap);
-    console.log('item.firstChild:', item.firstChild);
-    console.log('item.firstChild:', item.firstChild.getBoundingClientRect().height);
 
     // вычисляем нужную высоту контентной части карточки
-    // обертка содержимого карточки -> получаем ее размеры -> (высота + строчный грид гэп) / (высота грид-строки + строчный грид гэп)
     // const rowSpan = Math.ceil((item.querySelector('.card').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
-    const rowSpan = Math.ceil((item.firstChild.getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
-    console.log('rowSpan:', rowSpan);
+    const rowSpan = Math.ceil((item.firstChild.offsetHeight + rowGap) / (rowHeight + rowGap));
+
     //растягиваем карточку на нужное кол-во грид-строк
     // устанавливаем в стили карточки конечную грид-строку, до которой должна растянуться карточка
-
-    item.style.gridRowEnd = 'span ' + rowSpan;
-
-    console.log('new grid-row-end of card:', item.style.gridRowEnd);
+    // item.style.gridRowEnd = 'span ' + rowSpan;
+    item.style.setProperty('grid-row-end', 'span ' + rowSpan);
   }
+
+
 
   // ресайзим все карточки в гриде
   function resizeAllGridItems() {
-    // cardLinkWrapper
-    const allItems = document.querySelectorAll('._3_nhs-S-nxYnXy7PGYFj1U');
-    console.log('resizeAll -> allItems:', allItems);
-    for (let i = 0; i < allItems.length; i++) {
-      resizeGridItem(allItems[i]);
+    console.log('resizeAllGridItems');
+
+    // получаем всех карточки грида через реф
+    if (null !== gridRef.current) {
+      const allItems = gridRef.current.children;
+
+      for (let i = 0; i < allItems.length; i++) {
+        // здесь нужно запускать ресайз только после того, как все img в карточках будут загружены браузером.
+        // Иначе бывают ошибки иногда. Не знаю пока, как это сделать без сторонней библиотеки
+        resizeGridItem(allItems[i]);
+
+        // после вычисления позиции всех карточек, плавно отображаем сетку,
+        // чтобы не было видно, как сетка перестраивается
+        if (i === allItems.length - 1) {
+          gridRef.current.style.setProperty('opacity', '1');
+        }
+      }
     }
   }
 
   // вызываем ресайз карточек при рендере компонентов
-  window.addEventListener('load', resizeAllGridItems);
-  window.addEventListener('resize', resizeAllGridItems);
-  // React.useEffect(() => {
-  //   resizeAllGridItems();
-  //   //window.addEventListener("resize", resizeAllGridItems);
-  // }, [])
-
+  React.useLayoutEffect(() => {
+    // ставим слушатель на загрузку дом-дерева и всех стилей, картинок и скриптов
+    window.addEventListener('load', resizeAllGridItems);
+    // на ресайз
+    window.addEventListener('resize', resizeAllGridItems);
+    return () => {
+      window.removeEventListener('load', resizeAllGridItems);
+      window.removeEventListener('resize', resizeAllGridItems);
+    };
+  }, []);
 
   return (
     <section className={styles.masonryGridSection}>
-      <ul className={styles.masonryGrid}>
+      <ul className={styles.masonryGrid} ref={gridRef}>
         {cardsData.map((card) => (
           <BlogCard
             key={card.id}
@@ -72,6 +81,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ cardsData }) => {
             heading={card.title}
             description={card.subtitle}
             link="https://lubimovka.ru/blog/876-int-golovanova"
+            firstCardSizeMode="big"
           />
         )
         )}

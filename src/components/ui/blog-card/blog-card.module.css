@@ -3,7 +3,11 @@
   text-decoration: none;
 }
 
-.cardLinkWrapper:nth-child(1) {
+.regular:nth-child(1) {
+  grid-column: auto;
+}
+
+.big:nth-child(1) {
   grid-column: span 2;
 
   @media (max-width: 1024px) {
@@ -15,8 +19,6 @@
   position: relative;
   display: flex;
   width: 100%;
-
-  /* height: 100%; */
   box-sizing: border-box;
   flex-direction: column;
   background: transparent;
@@ -64,23 +66,16 @@
 .heading {
   align-self: flex-start;
   padding: 0;
-  padding-bottom: 22px;
+  padding-bottom: 16px;
   margin: 0;
-  color: var(--coal);
-  font-family: 'PP Neue Machina', Helvetica, Arial, sans-serif;
-  font-style: normal;
-  font-weight: 300;
 
+  @mixin headline;
   @mixin headline6;
 }
 
 .description {
   padding: 0 2px 0 31px;
-  margin: 0;
-  color: var(--coal);
-  font-family: 'Formular', Helvetica, Arial, sans-serif;
-  font-style: normal;
-  font-weight: 300;
 
+  @mixin text;
   @mixin textSmall;
 }
