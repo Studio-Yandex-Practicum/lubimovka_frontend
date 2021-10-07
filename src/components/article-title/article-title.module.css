@@ -1,6 +1,8 @@
 .container {
   display: grid;
+  max-width: 1440px;
   padding: 32px 0 0 30px;
+  margin: 0 auto;
   grid-column-gap: 30px;
   grid-template-areas:
     'button a a a'
@@ -25,7 +27,7 @@
   @mixin headline;
   @mixin headline3;
 
-  width: 570px;
+  max-width: 570px;
   margin-top: 18px;
   grid-area: title;
 }
@@ -44,18 +46,26 @@
   @mixin text;
   @mixin textSmall;
 
+  align-self: center;
   grid-area: date;
+  justify-self: center;
+}
+
+.dateNews {
+  padding-left: 60px;
 }
 
 .author {
   @mixin text;
   @mixin textSmall;
 
+  align-self: center;
   grid-area: author;
+  justify-self: center;
 }
 
 .img {
-  width: 690px;
+  width: 100%;
   height: 421px;
   padding-top: 30px;
   grid-area: img;

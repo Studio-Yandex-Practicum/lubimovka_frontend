@@ -44,7 +44,7 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
       <h3 className={cx('title')}>{title}</h3>
       <h6 className={cx('description')}>{description}</h6>
 
-      <p className={cx('date')}>{date}</p>
+      <p className={cx('date', {dateNews: !isBlog})}>{date}</p>
       {/*заменить на компонент ссылки, когда будет готов*/}
       {isBlog && <p className={cx('author')}>{author}</p>}
 
