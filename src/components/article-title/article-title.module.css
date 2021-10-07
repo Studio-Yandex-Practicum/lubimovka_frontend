@@ -1,6 +1,7 @@
 .container {
   display: grid;
-  max-width: 1440px;
+  width: 1440px;
+  box-sizing: border-box;
   padding: 32px 0 0 30px;
   margin: 0 auto;
   grid-column-gap: 30px;
@@ -9,18 +10,26 @@
     'b title title c'
     'b description description img'
     'b date author img';
+
+  @media (max-width: $mobile-landscape) {
+    width: 414px;
+    padding: 32px 0 0 24px;
+    grid-template-areas:
+      'button'
+      'img'
+      'date'
+      'title'
+      'description'
+      'author';
+  }
 }
 
-.backToBlogButton {
-  width: 90px;
-  height: 32px;
+.backButton {
   grid-area: button;
-}
 
-.backToNewsButton {
-  width: 125px;
-  height: 32px;
-  grid-area: button;
+  @media (max-width: $mobile-landscape) {
+    left: 60px;
+  }
 }
 
 .title {
@@ -30,6 +39,12 @@
   max-width: 570px;
   margin-top: 18px;
   grid-area: title;
+
+  @media (max-width: $mobile-landscape) {
+    @mixin headline4;
+
+    max-width: 366px;
+  }
 }
 
 .description {
@@ -40,6 +55,13 @@
   margin-top: 22px;
   margin-left: 60px;
   grid-area: description;
+
+  @media (max-width: $mobile-landscape) {
+    @mixin headline7;
+
+    max-width: 305px;
+    margin-top: 22px;
+  }
 }
 
 .date {
@@ -49,6 +71,12 @@
   align-self: center;
   grid-area: date;
   justify-self: center;
+
+  @media (max-width: $mobile-landscape) {
+    padding-top: 24px;
+    padding-left: 60px;
+    justify-self: start;
+  }
 }
 
 .dateNews {
@@ -62,12 +90,25 @@
   align-self: center;
   grid-area: author;
   justify-self: center;
+
+  @media (max-width: $mobile-landscape) {
+    padding-top: 24px;
+    padding-left: 60px;
+    justify-self: start;
+  }
 }
 
 .img {
-  width: 100%;
-  height: 421px;
+  width: 690px;
+  max-height: 421px;
   padding-top: 30px;
   grid-area: img;
   object-fit: cover;
+
+  @media (max-width: $mobile-landscape) {
+    width: 357px;
+    max-height: 218px;
+    padding-top: 40px;
+    padding-left: 30px;
+  }
 }

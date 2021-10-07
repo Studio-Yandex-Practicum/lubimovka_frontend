@@ -27,7 +27,7 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
 
   return (
     <div className={cx('container')}>
-      <Button className={cx({backToBlogButton:isBlog, backToNewsButton: !isBlog})}
+      <Button className={cx('backButton')}
         label={isBlog ? 'Блог' : 'Новости'}
         size={'s'}
         iconPlace={'right'}
@@ -36,6 +36,7 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
         isLink={true}
         view={'primary'}
         align={'space-between'}
+        width={isBlog ? '90px' : '125px'}
         // href={''} добавить ссылку для перехода на страницу
       />
 
