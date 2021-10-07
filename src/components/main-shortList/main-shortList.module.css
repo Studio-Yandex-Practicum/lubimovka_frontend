@@ -1,0 +1,17 @@
+.section {
+  display: flex;
+  width: 100%;
+  height: 240px;
+  align-items: center;
+  justify-content: center;
+  background-color: beige;
+  grid-area: shortList;
+}
+
+.title {
+  width: clamp(298px, 100%, 640px);
+  text-align: center;
+
+  @mixin text;
+  @mixin headline1;
+}
