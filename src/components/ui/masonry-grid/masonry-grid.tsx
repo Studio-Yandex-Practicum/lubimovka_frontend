@@ -4,11 +4,12 @@ import styles from './masonry-grid.module.css';
 import { BlogCard } from '../blog-card';
 
 interface MasonryGridProps {
-  cardsData: { id: number; image: string; author: string; title: string; subtitle: string }[],
+  cardsData: { id: number; image: string; author: string; title: string; subtitle: string; link: string; }[],
+  firstCardSizeMode?: 'big' | 'regular',
   // cardsData: ReadonlyArray<{ id: number; image: string; author: string; title: string; subtitle: string }[]>,
 }
 
-const MasonryGrid: React.FC<MasonryGridProps> = ({ cardsData }) => {
+const MasonryGrid: React.FC<MasonryGridProps> = ({ cardsData, firstCardSizeMode }) => {
 
   // реф для доступа к грид-сетке
   const gridRef = React.useRef<HTMLUListElement>(null);
@@ -34,11 +35,8 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ cardsData }) => {
     item.style.setProperty('grid-row-end', 'span ' + rowSpan);
   }
 
-
-
   // ресайзим все карточки в гриде
   function resizeAllGridItems() {
-    console.log('resizeAllGridItems');
 
     // получаем всех карточки грида через реф
     if (null !== gridRef.current) {
@@ -46,7 +44,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ cardsData }) => {
 
       for (let i = 0; i < allItems.length; i++) {
         // здесь нужно запускать ресайз только после того, как все img в карточках будут загружены браузером.
-        // Иначе бывают ошибки иногда. Не знаю пока, как это сделать без сторонней библиотеки
+        // Иначе бывают ошибки иногда. Не знаю пока, как это сделать без сторонней библиотеки https://imagesloaded.desandro.com/
         resizeGridItem(allItems[i]);
 
         // после вычисления позиции всех карточек, плавно отображаем сетку,
@@ -80,8 +78,8 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ cardsData }) => {
             author={card.author}
             heading={card.title}
             description={card.subtitle}
-            link="https://lubimovka.ru/blog/876-int-golovanova"
-            firstCardSizeMode="big"
+            link={card.link}
+            firstCardSizeMode={firstCardSizeMode}
           />
         )
         )}
