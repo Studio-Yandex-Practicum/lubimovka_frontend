@@ -16,10 +16,7 @@ export default {
 
 const Template: ComponentStory<typeof ArticleSection> = (args) => {
   return (
-    <ArticleSection {...args}>
-      <ArticleSection.Title style={{ maxWidth: '360px' }}>
-        {'Заголовок секции с контентом'}
-      </ArticleSection.Title>
+    <ArticleSection {...args} title={'Заголовок секции с контентом'}>
       <div
         style={{
           marginTop: '48px',

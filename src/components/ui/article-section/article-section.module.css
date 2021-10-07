@@ -2,3 +2,17 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+.title {
+  @mixin headline;
+  @mixin headline4;
+
+  max-width: 360px;
+  margin-left: 25%;
+
+  @media (max-width: 728px) {
+    @mixin headline6;
+
+    margin: 0 24px;
+  }
+}
