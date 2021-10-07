@@ -11,7 +11,19 @@ const Template: ComponentStory<typeof ShareLink> = (args) => <ShareLink {...args
 
 export const Fb = Template.bind({});
 Fb.args = {
-  social: 'fb',
+  social: 'Fb',
   label: 'Fb',
-  size: 's',
 };
+
+export const Vk = Template.bind({});
+Vk.args = {
+  social: 'Vk',
+  label: 'Vk',
+};
+
+export const Twtr = Template.bind({});
+Twtr.args = {
+  social: 'Twtr',
+  label: 'Twtr',
+};
+
