@@ -1,0 +1,140 @@
+.cardEvents {
+  display: flex;
+  max-width: 420px;
+  flex-direction: row;
+  list-style-type: none;
+
+  @media (max-width: $mobile-landscape) {
+    width: 100%;
+    padding: 32px 0;
+    border-top: var(--coal) solid 1px;
+  }
+}
+
+.cardEvents:last-child {
+  @media (max-width: $mobile-landscape) {
+    border-bottom: var(--coal) solid 1px;
+  }
+}
+
+.coverEvents {
+  width: 120px;
+  height: 161px;
+  padding-right: 31px;
+  object-fit: cover;
+
+  @media (max-width: $mobile-landscape) {
+    width: 92px;
+    height: 123px;
+  }
+}
+
+.infoEvents {
+  display: flex;
+  width: 269px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.dateInfo {
+  @mixin text;
+  @mixin textLarge;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.date {
+  padding: 0;
+  margin: 0;
+  margin-right: 44px;
+
+  @media (max-width: $mobile-landscape) {
+    margin-right: 46px;
+  }
+}
+
+.timeEvents {
+  padding: 0;
+  margin: 0;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline5;
+
+  margin-top: 4px;
+
+  @media (max-width: $mobile-landscape) {
+    margin-top: 16px;
+  }
+}
+
+.credits {
+  @mixin text;
+  @mixin textSmall;
+
+  display: flex;
+  width: 240px;
+  flex-direction: column;
+  margin: 16px 0 0 30px;
+
+  @media (max-width: $mobile-landscape) {
+    margin-left: 0;
+  }
+}
+
+.creditsEntry {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+.description {
+  @mixin text;
+  @mixin textCaption;
+
+  width: 150px;
+  padding-top: 20px;
+  margin: 0;
+
+  @media (max-width: $mobile-landscape) {
+    padding-top: 8px;
+  }
+}
+
+.buttonEvents {
+  margin-bottom: 16px;
+
+  @media (max-width: $mobile-landscape) {
+    margin-right: 26px;
+    margin-bottom: 0;
+  }
+}
+
+.buttonEvents:last-child {
+  margin-bottom: 0;
+}
+
+.buttonEventsContainer {
+  margin-top: 16px;
+
+  @media (max-width: $mobile-landscape) {
+    display: flex;
+    width: 380px;
+    flex-direction: row;
+  }
+}
+
+.buttonEventsContainerCoverExists {
+  @media (max-width: $mobile-landscape) {
+    margin-top: 48px;
+    margin-left: -123px;
+  }
+}
+
+.buttonEventsContainerNoCover {
+  @media (max-width: $mobile-landscape) {
+    margin-left: 0;
+  }
+}

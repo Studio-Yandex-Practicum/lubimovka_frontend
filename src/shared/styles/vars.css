@@ -1,0 +1,9 @@
+:root {
+  --figma-layout-width-desktop: 1440;
+
+  /*
+  Множитель для конвертации px в vw.
+  Пример использования: calc([размер из макета] * [множитель])
+  */
+  --vw-size-multiplier: calc(100vw / var(--figma-layout-width-desktop));
+}

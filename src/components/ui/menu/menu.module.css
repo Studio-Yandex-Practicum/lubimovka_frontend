@@ -1,0 +1,52 @@
+.menu {
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.mainNavigation {
+  flex: inherit;
+
+  .menuListItem {
+    &:not(:first-child) {
+      margin-left: min(calc(22 * var(--vw-size-multiplier)), 22px);
+    }
+  }
+}
+
+.pageNavigation {
+  .menuListItem:not(:last-child) {
+    margin-right: 24px;
+  }
+}
+
+.socialLinks {
+  display: flex;
+}
+
+.tabs {
+  .menuListItem:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.sectionNavigation {
+  .menuListItem:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.footerNavigation {
+  flex-direction: column;
+
+  .menuListItem:not(:first-child) {
+    margin-top: 15px;
+  }
+
+  @media (max-width: $mobile-landscape) {
+    .menuListItem:not(:first-child) {
+      margin-top: 13px;
+    }
+  }
+}
