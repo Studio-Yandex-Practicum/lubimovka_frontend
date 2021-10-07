@@ -9,5 +9,5 @@ storybook-static
 
 .vscode
 .idea
-
+.prettierrc
 .DS_Store
