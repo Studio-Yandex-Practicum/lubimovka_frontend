@@ -1,0 +1,46 @@
+.section {
+  width: 1440px;
+  background-color: var(--light-green);
+  color: var(--coal);
+}
+
+.title {
+  padding: 125px 176px 0 720px;
+  margin: 0;
+
+  @mixin headline;
+  @mixin headline2;
+}
+
+.cardContainer {
+  display: grid;
+  max-width: 1440px;
+  box-sizing: border-box;
+  padding: 54px 210px 0;
+  margin: 0 auto;
+  gap: 48px 30px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 180px));
+}
+
+.infoBlock {
+  position: relative;
+  padding-bottom: 149px;
+  margin: 69px 0 0 213px;
+}
+
+.asterisk {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+
+.info {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  max-width: 426px;
+  margin: 0;
+
+  @mixin textLarge;
+}
