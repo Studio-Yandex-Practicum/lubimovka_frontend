@@ -20,6 +20,12 @@
   line-height: 32px;
 }
 
+@define-mixin textVerySuperLarge {
+  font-size: 40px;
+  letter-spacing: -.01em;
+  line-height: 40px;
+}
+
 @define-mixin textLarge {
   font-size: 20px;
   letter-spacing: -.01em;

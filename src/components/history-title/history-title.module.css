@@ -1,0 +1,62 @@
+.section {
+  display: flex;
+  background: var(--beige);
+}
+
+.image {
+  width: 45.83vw;
+  height: 612px;
+  margin-right: 4.17vw;
+  background-position: center center;
+}
+
+.content {
+  display: flex;
+  width: 50vw;
+  flex-direction: column;
+}
+
+.dataSubtitle {
+  @mixin textVerySuperLarge;
+  @mixin textNeueMachina;
+
+  padding-top: 57px;
+  margin-bottom: 17px;
+  text-align: left;
+}
+
+.datatext {
+  @mixin textLarge;
+  @mixin text;
+
+  max-width: 28.96vw;
+  margin-bottom: 80px;
+  text-align: left;
+}
+
+.gridcontent {
+  display: grid;
+  column-gap: 4.51vw;
+  grid-template-columns: repeat(auto-fit, minmax(142px, 1fr));
+  row-gap: 66px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.element {
+  @mixin textSmall;
+  @mixin text;
+
+  max-width: 142px;
+  margin-top: 20px;
+}
+
+.button {
+  @mixin textVerySuperLarge;
+  @mixin textNeueMachina;
+
+  padding: 0;
+}

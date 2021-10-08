@@ -1,8 +1,8 @@
 .section {
   width: 100%;
   height: 97px;
-  border-bottom: 1px solid --coal;
-  background: --beige;
+  border-bottom: 1px solid var(--coal);
+  background: var(--beige);
 }
 
 .list {

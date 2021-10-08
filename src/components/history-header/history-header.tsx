@@ -9,7 +9,7 @@ interface TextItemData {
 }
 interface IHistoryHeaderProps {
   data: {
-    id: number
+
     content: Array<TextItemData>
   }
 }
