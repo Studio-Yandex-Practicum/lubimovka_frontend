@@ -6,7 +6,7 @@
   margin: 0;
   list-style-type: none;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     max-width: 244px;
   }
 }
@@ -24,7 +24,7 @@
   transition: visibility .5s ease-in-out, opacity .5s ease-in-out;
   visibility: hidden;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     visibility: visible;
   }
 }

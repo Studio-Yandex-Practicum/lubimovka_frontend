@@ -24,7 +24,7 @@
     content: '';
   }
 
-  @media screen and (max-width: $tablet-landscape) {
+  @media screen and (max-width: 992px) {
     grid-template-columns: 100%;
     row-gap: 32px;
 

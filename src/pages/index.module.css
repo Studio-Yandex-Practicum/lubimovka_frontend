@@ -17,7 +17,7 @@
   grid-template-columns: minmax(500px, 1108px) 1fr;
   grid-template-rows: repeat(6, max-content);
 
-  @media screen and (max-width: $laptop) {
+  @media screen and (max-width: 1200px) {
     grid-template-areas:
       "title"
       "events"
