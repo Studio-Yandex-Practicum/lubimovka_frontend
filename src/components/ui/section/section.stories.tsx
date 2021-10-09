@@ -1,10 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ArticleSection } from './article-section';
+import { Section } from './section';
 
 export default {
-  title: 'UI/ArticleSection',
-  component: ArticleSection,
+  title: 'UI/Section',
+  component: Section,
   decorators: [
     (Story) => (
       <div style={{margin: '0 auto', maxWidth: '1440px'}}>
@@ -12,11 +12,11 @@ export default {
       </div>
     ),
   ],
-} as ComponentMeta<typeof ArticleSection>;
+} as ComponentMeta<typeof Section>;
 
-const Template: ComponentStory<typeof ArticleSection> = (args) => {
+const Template: ComponentStory<typeof Section> = (args) => {
   return (
-    <ArticleSection {...args} title={'Заголовок секции с контентом'}>
+    <Section {...args} title={'Заголовок секции с контентом'}>
       <div
         style={{
           marginTop: '48px',
@@ -44,7 +44,7 @@ const Template: ComponentStory<typeof ArticleSection> = (args) => {
           </div>
         ))}
       </div>
-    </ArticleSection>
+    </Section>
   );
 };
 
