@@ -16,3 +16,15 @@
     margin: 0 24px;
   }
 }
+
+.plays {
+  .title {
+    margin-bottom: 48px;
+  }
+}
+
+.persons {
+  .title {
+    margin-bottom: 58px;
+  }
+}
