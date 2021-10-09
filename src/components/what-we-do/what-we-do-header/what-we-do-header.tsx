@@ -3,23 +3,34 @@ import cn from 'classnames';
 
 import styles from './what-we-do-header.module.css';
 
-// interface IWhatWeDoHeaderProps {
+interface IWhatWeDoHeaderProps {
+  data: {
+    id: number
+    title: string
+    desc: string[]
+    image: string
+  }
+}
 
-// }
-
-export const WhatWeDoHeader: FC = (): JSX.Element => {
+export const WhatWeDoHeader: FC<IWhatWeDoHeaderProps> = ({ data }): JSX.Element => {
+  const { title, desc, image } = data;
+  
   return (
     <section className={ cn(styles.header) }>
-      <h1 className={ cn(styles.title) }>
-        Фестиваль молодой драматургии Любимовка —
-      </h1>
-      <p className={ cn(styles.desc) }>
-        это независимый некоммерческий коллективный проект российских драматургов.
-        <p className={ cn(styles.text) }>
-          В первые годы своего существования фестиваль проходил в подмосковной усадьбе Константина Сергеевича Станиславского,
-          которое и дало название фестивалю.
+      <div className={ cn(styles.content) }>
+        <h1 className={ cn(styles.title) }>
+          { title }
+        </h1>
+        <p className={ cn(styles.desc) }>
+          { desc[0] }
+          <p className={ cn(styles.text) }>
+            { desc[1] }
+          </p>
         </p>
-      </p>
+      </div>
+      <div className={ cn(styles.container) }>
+        <img src={ image } className={ cn(styles.img) } />
+      </div>
     </section>
   );
 };

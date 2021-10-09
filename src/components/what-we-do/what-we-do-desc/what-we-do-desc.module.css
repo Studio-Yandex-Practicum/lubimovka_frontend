@@ -2,18 +2,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  padding-right: 24px;
   background-color: #ecebe8;
   color: var(--beige);
-}
-
-.img {
-  @mixin img;
-
-  position: absolute;
-  top: -220px;
-  left: 0;
-  max-width: 720px;
-  max-height: 414px;
 }
 
 .contentReception {
@@ -165,10 +156,22 @@
   }
 }
 
-@media screen and (max-width: 376px) {
+@media screen and (max-width: 415px) {
   .mainTitle {
     @mixin headline5;
 
     min-width: 0;
   }
 }
+
+/* @media screen and (max-width: 600px) {
+  .container {
+    top: -110px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .container {
+    top: -110px;
+  }
+} */

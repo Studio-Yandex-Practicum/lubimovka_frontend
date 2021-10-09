@@ -48,7 +48,6 @@
 .poster {
   max-width: 1320px;
   padding: 64px 150px 60px 120px;
-  padding-top: 64px;
   margin: 0 auto;
   background-color: #b7c09d;
 }
@@ -85,6 +84,12 @@
   }
 }
 
+@media screen and (max-width: 1365px) {
+  .posterTitle {
+    margin-bottom: 40px;
+  }
+}
+
 @media screen and (max-width: 1279px) {
   .list {
     column-gap: 90px;
@@ -100,6 +105,25 @@
 
   .number {
     @mixin headline2;
+  }
+
+  .poster {
+    padding: 64px 100px 60px 80px;
+  }
+}
+
+@media screen and (max-width: 719px) {
+  .selection {
+    padding: 54px 30px 45px;
+    background-color: #ecebe8;
+  }
+
+  .ampersand {
+    @mixin headline3;
+  }
+
+  .posterTitle {
+    @mixin headline7;
   }
 }
 
@@ -118,6 +142,19 @@
 
   .title {
     @mixin headline7;
+  }
+
+  .poster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 64px 0 60px;
+  }
+
+  .posterDesc {
+    max-width: 420px;
+    margin-right: 40px;
+    margin-left: auto;
   }
 }
 

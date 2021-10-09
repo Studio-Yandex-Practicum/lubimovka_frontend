@@ -1,6 +1,12 @@
 .header {
-  min-height: 740px;
-  padding: 0 60px;
+  display: block;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: -200px;
   background-color: #b7c09d;
 }
 
@@ -10,15 +16,18 @@
 
   max-width: 924px;
   margin-bottom: 53px;
+  margin-left: 62px;
 }
 
 .desc {
   @mixin headline;
   @mixin textLarge;
 
+  display: flex;
   max-width: 520px;
-  margin-right: 50px;
-  margin-left: auto;
+  flex-direction: column;
+  align-self: end;
+  margin: 0 110px 225px 85px;
   line-height: 24px;
 }
 
@@ -26,52 +35,30 @@
   margin-bottom: 0;
 }
 
-@media screen and (max-width: 1025px) {
-  .title {
-    @mixin headline3;
-  }
+.container {
+  position: relative;
+  z-index: 100;
+  max-width: 720px;
 }
 
-@media screen and (max-width: 721px) {
+.img {
+  @mixin img;
+
+  margin-left: -24px;
+}
+
+@media screen and (max-width: 601px) {
+  .content {
+    margin-bottom: -114px;
+  }
+
   .title {
     @mixin headline4;
+
+    margin: 0 24px 30px 24px;
   }
 
   .desc {
-    @mixin textMedium;
-  }
-}
-
-@media screen and (max-width: 599px) {
-  .title {
-    @mixin headline5;
-  }
-}
-
-@media screen and (max-width: 539px) {
-  .title {
-    @mixin headline6;
-  }
-
-  .desc {
-    @mixin textSmall;
-
-    margin-right: 0;
-  }
-}
-
-@media screen and (max-width: 413px) {
-  .header {
-    padding: 0 30px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .title {
-    @mixin headline7;
-  }
-
-  .desc {
-    @mixin textCaption;
+    margin: 0 24px 188px 85px;
   }
 }

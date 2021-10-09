@@ -32,8 +32,6 @@ export const WhatWeDoDesc: FC = (): JSX.Element => {
 
   return (
     <section className={ cn(styles.desc) }>
-      <img src={ mainImg } className={ cn(styles.img) } />
-
       <div className={ cn(styles.contentReception) }>
         <div className={ cn(styles.containerReception) }>
           <h2 className={ cn(styles.mainTitle) }>
@@ -51,7 +49,6 @@ export const WhatWeDoDesc: FC = (): JSX.Element => {
         </div>
         <img src={ someImg } className={ cn(styles.imgSelected) } />
       </div>
-
 
       <div className={ cn(styles.containerInvite) }>
         <DescContent title={ title[2] } desc={ desc[2] } />
