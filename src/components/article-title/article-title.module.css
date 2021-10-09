@@ -96,8 +96,7 @@
   justify-self: center;
 
   @media (max-width: 900px) {
-    padding-top: 24px;
-    padding-left: 60px;
+    padding: 24px 0 75px 60px;
     justify-self: start;
   }
 }
