@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Section } from './section';
 
 export default {
-  title: 'UI/Section',
+  title: 'Components/Section',
   component: Section,
   decorators: [
     (Story) => (
