@@ -7,7 +7,6 @@
   @mixin headline;
   @mixin headline4;
 
-  max-width: 360px;
   margin-left: 25%;
 
   @media (max-width: 728px) {
@@ -19,12 +18,14 @@
 
 .plays {
   .title {
+    max-width: 450px;
     margin-bottom: 48px;
   }
 }
 
 .persons {
   .title {
+    max-width: 450px;
     margin-bottom: 58px;
   }
 }
