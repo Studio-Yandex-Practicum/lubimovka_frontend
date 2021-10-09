@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  width: 1440px;
+  max-width: 1440px;
   box-sizing: border-box;
   padding: 32px 0 0 30px;
   margin: 0 auto;
@@ -10,9 +10,10 @@
     'b title title c'
     'b description description img'
     'b date author img';
+  grid-template-columns: min-content 1fr 1fr 2.555fr;
 
-  @media (max-width: $mobile-landscape) {
-    width: 414px;
+  @media (max-width: 900px) {
+    max-width: 414px;
     padding: 32px 0 0 24px;
     grid-template-areas:
       'button'
@@ -21,13 +22,14 @@
       'title'
       'description'
       'author';
+    grid-template-columns: 1fr;
   }
 }
 
 .backButton {
   grid-area: button;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 900px) {
     left: 60px;
   }
 }
@@ -39,8 +41,9 @@
   max-width: 570px;
   margin-top: 18px;
   grid-area: title;
+  word-break: break-word;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 900px) {
     @mixin headline4;
 
     max-width: 366px;
@@ -55,8 +58,9 @@
   margin-top: 22px;
   margin-left: 60px;
   grid-area: description;
+  word-break: break-word;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 900px) {
     @mixin headline7;
 
     max-width: 305px;
@@ -72,7 +76,7 @@
   grid-area: date;
   justify-self: center;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 900px) {
     padding-top: 24px;
     padding-left: 60px;
     justify-self: start;
@@ -91,7 +95,7 @@
   grid-area: author;
   justify-self: center;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 900px) {
     padding-top: 24px;
     padding-left: 60px;
     justify-self: start;
@@ -99,14 +103,13 @@
 }
 
 .img {
-  width: 690px;
+  width: 100%;
   max-height: 421px;
   padding-top: 30px;
   grid-area: img;
   object-fit: cover;
 
-  @media (max-width: $mobile-landscape) {
-    width: 357px;
+  @media (max-width: 900px) {
     max-height: 218px;
     padding-top: 40px;
     padding-left: 30px;
