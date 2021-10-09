@@ -7,15 +7,22 @@ const cx = classNames.bind(styles);
 interface ISectionProps extends HTMLAttributes<HTMLElement> {
   type: 'plays' | 'persons';
   title: string;
+  component?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   children: ReactNode;
 }
 
 export const Section = (props: ISectionProps): JSX.Element => {
-  const { type, title, children, ...restProps } = props;
+  const {
+    type,
+    title,
+    component: Component = 'h2',
+    children,
+    ...restProps
+  } = props;
 
   return (
     <section className={cx('section', type)} {...restProps}>
-      <h2 className={cx('title')}>{title}</h2>
+      <Component className={cx('title')}>{title}</Component>
       {children}
     </section>
   );
