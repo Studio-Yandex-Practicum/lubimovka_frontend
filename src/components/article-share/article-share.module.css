@@ -4,6 +4,11 @@
   flex-direction: row;
   margin: 0 auto;
   background-color: var(--white);
+
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+    flex-direction: column;
+  }
 }
 
 .newsContainer {
@@ -16,6 +21,13 @@
   padding-top: 72px;
   padding-bottom: 59px;
   padding-left: calc(50% - 450px);
+
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+    padding-top: 56px;
+    padding-bottom: 35px;
+    padding-left: 56px;
+  }
 }
 
 .label {
@@ -47,6 +59,11 @@
 .blogShare {
   width: 50%;
   padding-bottom: 91px;
+
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+    padding-left: 24px;
+  }
 }
 
 .newsShare {
@@ -54,13 +71,24 @@
   padding-top: 51px;
   padding-bottom: 85px;
   padding-left: 180px;
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: 24px;
+  }
 }
 
 .shareTitle {
   @mixin headline;
   @mixin headline4;
 
+  width: 420px;
   letter-spacing: -.01em;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    width: 292px;
+  }
 }
 
 .links {
@@ -69,6 +97,10 @@
   left: 231px;
   display: flex;
   gap: 8px;
+
+  @media (max-width: $tablet-portrait) {
+    left: 164px;
+  }
 }
 
 /* удалить стиль после добавления компонента ссылок */
