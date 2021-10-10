@@ -20,5 +20,5 @@ BlogShare.args = {
 
 export const NewsShare = Template.bind({});
 NewsShare.args = {
-
+  isBlog: false,
 };

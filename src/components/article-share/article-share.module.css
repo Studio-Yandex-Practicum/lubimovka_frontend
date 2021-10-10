@@ -42,15 +42,18 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 91px;
 }
 
 .blogShare {
   width: 50%;
+  padding-bottom: 91px;
 }
 
 .newsShare {
   width: 100%;
+  padding-top: 51px;
+  padding-bottom: 85px;
+  padding-left: 180px;
 }
 
 .shareTitle {

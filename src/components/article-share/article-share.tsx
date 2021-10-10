@@ -36,19 +36,20 @@ const ArticleShare: React.FC<IArticleShare> = (props) => {
 
   return (
     <div className={cx('container', {newsContainer: !isBlog})}>
-      <div className={cx('creators')}>
-        { authors &&
-         renderCreators('Текст', authors)
-        }
+      { (authors || photographers || illustrators) &&
+        <div className={cx('creators')}>
+          {authors &&
+            renderCreators('Текст', authors)
+          }
 
-        { photographers &&
-        renderCreators('Фото', photographers)
-        }
+          {photographers &&
+            renderCreators('Фото', photographers)
+          }
 
-        { illustrators &&
-        renderCreators('Иллюстрации', illustrators)
-        }
-      </div>
+          {illustrators &&
+            renderCreators('Иллюстрации', illustrators)
+          }
+        </div>}
       <div className={cx('share', {blogShare: isBlog, newsShare: !isBlog})}>
         <div className={cx('links')}>
           {/*Заменить на компоненты ссылок*/}
