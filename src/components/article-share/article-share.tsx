@@ -7,6 +7,7 @@ import styles from './article-share.module.css';
 const cx = cn.bind(styles);
 
 interface IArticleShare {
+  isBlog: boolean;
   authors?: string[];
   photographers?: string[];
   illustrators?: string[];
@@ -14,26 +15,27 @@ interface IArticleShare {
 
 const renderCreators = (label: string, creators: string[]) => {
   return(
-    <>
+    <div>
       <p className={cx('label')}>{label}</p>
       {
         creators.map(creator => {
           return <p key={creator} className={cx('creator')}>{creator}</p>;
         })
       }
-    </>
+    </div>
   );
 };
 
 const ArticleShare: React.FC<IArticleShare> = (props) => {
   const {
+    isBlog,
     authors,
     photographers,
     illustrators,
   } = props;
 
   return (
-    <div className={cx('container')}>
+    <div className={cx('container', {newsContainer: !isBlog})}>
       <div className={cx('creators')}>
         { authors &&
          renderCreators('Текст', authors)
@@ -47,14 +49,14 @@ const ArticleShare: React.FC<IArticleShare> = (props) => {
         renderCreators('Иллюстрации', illustrators)
         }
       </div>
-      <div className={cx('share')}>
+      <div className={cx('share', {blogShare: isBlog, newsShare: !isBlog})}>
         <div className={cx('links')}>
           {/*Заменить на компоненты ссылок*/}
-          <p>FB</p>
-          <p>VK</p>
-          <p>Twtr</p>
+          <p className={cx('link')}>FB</p>
+          <p className={cx('link')}>VK</p>
+          <p className={cx('link')}>Twtr</p>
         </div>
-        <h4>Поделиться записью в соцсетях</h4>
+        <h4 className={cx('shareTitle')}>Поделиться<br/>{isBlog ? 'записью' : 'новостью'} в соцсетях</h4>
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ const Template: ComponentStory<typeof ArticleShare> = (args) => <ArticleShare {.
 
 export const BlogShare = Template.bind({});
 BlogShare.args = {
+  isBlog: true,
   authors: ['Лара Бессмертная'],
   photographers: ['Юрий Коротецкий', 'Наталия Времячкина'],
   illustrators: ['Лара Бессмертная'],

@@ -1,4 +1,75 @@
 .container {
-  max-width: 1380px;
+  display: flex;
+  width: 95.83%;
+  flex-direction: row;
   margin: 0 auto;
+  background-color: var(--white);
+}
+
+.newsContainer {
+  background-color: var(--light-green);
+}
+
+.creators {
+  width: 50%;
+  box-sizing: border-box;
+  padding-top: 72px;
+  padding-bottom: 59px;
+  padding-left: calc(50% - 450px);
+}
+
+.label {
+  @mixin text;
+  @mixin textSmall;
+
+  max-width: 420px;
+  padding-bottom: 2px;
+}
+
+.creator {
+  @mixin text;
+  @mixin textLarge;
+
+  max-width: 390px;
+  padding-left: 30px;
+}
+
+.creator:last-child {
+  padding-bottom: 32px;
+}
+
+.share {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 91px;
+}
+
+.blogShare {
+  width: 50%;
+}
+
+.newsShare {
+  width: 100%;
+}
+
+.shareTitle {
+  @mixin headline;
+  @mixin headline4;
+
+  letter-spacing: -.01em;
+}
+
+.links {
+  position: relative;
+  top: 9px;
+  left: 231px;
+  display: flex;
+  gap: 8px;
+}
+
+/* удалить стиль после добавления компонента ссылок */
+.link {
+  border: 1px solid #242424;
+  margin: 0;
 }
