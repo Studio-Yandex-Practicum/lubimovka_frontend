@@ -1,0 +1,30 @@
+.section {
+  box-sizing: border-box;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline4;
+
+  margin-left: 25%;
+
+  @media (max-width: 728px) {
+    @mixin headline6;
+
+    margin: 0 24px;
+  }
+}
+
+.plays {
+  .title {
+    max-width: 450px;
+    margin-bottom: 48px;
+  }
+}
+
+.persons {
+  .title {
+    max-width: 450px;
+    margin-bottom: 58px;
+  }
+}

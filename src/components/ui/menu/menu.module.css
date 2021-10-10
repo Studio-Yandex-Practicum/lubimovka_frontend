@@ -44,7 +44,7 @@
     margin-top: 15px;
   }
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     .menuListItem:not(:first-child) {
       margin-top: 13px;
     }

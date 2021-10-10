@@ -8,7 +8,7 @@
 .containerVolunteer {
   width: 180px;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     width: 213px;
   }
 }
@@ -22,7 +22,7 @@
   height: 228px;
   object-fit: cover;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     height: 265px;
   }
 }
@@ -50,7 +50,7 @@
   cursor: pointer;
   transition: width 400ms cubic-bezier(.6, 0, .5, 1), height 400ms cubic-bezier(.6, 0, .5, 1), top 400ms cubic-bezier(.6, 0, .5, 1), left 400ms cubic-bezier(.6, 0, .5, 1);
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     top: 208px;
     left: 16px;
   }
@@ -66,7 +66,7 @@
   width: 55px;
   height: 55px;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     top: 203px;
     left: 11px;
   }
@@ -87,7 +87,7 @@
 .nameVolunteer {
   @mixin headline7;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     @mixin headline6;
   }
 }

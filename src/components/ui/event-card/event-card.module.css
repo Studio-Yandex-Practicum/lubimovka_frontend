@@ -16,7 +16,7 @@
     overflow-x: hidden;
   }
 
-  @media (max-width: $tablet-landscape) {
+  @media (max-width: 992px) {
     gap: 16px 16px;
   }
 

@@ -125,7 +125,7 @@
   @mixin lowOpacityOnHover;
   @mixin removeHighlighters;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     @mixin textMedium;
   }
 }
