@@ -1,42 +1,39 @@
-import { Children, cloneElement, ReactNode, isValidElement } from 'react';
+import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
-import { MenuItem } from './menu-item';
+import { MenuProvider } from './menu.context';
+import { MenuItem } from './item';
 
-import styles from './menu.module.css';
-const cx = classNames.bind(styles);
+import mainNavigationStyles from './type/main-navigation.module.css';
+import socialLinksStyles from './type/social-links.module.css';
 
-export type TSocialItem = {
-  title: string;
-  href: string;
+export const styles = {
+  'main-navigation': mainNavigationStyles,
+  'social-links': socialLinksStyles,
 };
 
-export type TMainNavigationItem = {
-  title: string;
-  href: string;
-  active?: boolean;
+export type MenuType = keyof typeof styles;
+
+interface IMenuProps {
+  type: MenuType,
+  children: ReactNode,
 }
 
-export interface IMenuProps {
-  className?: string;
-  view: 'mainNavigation' | 'pageNavigation' | 'sectionNavigation' | 'footerNavigation' | 'tabs' | 'socialLinks';
-  children: ReactNode;
-}
+export const Menu = (props: IMenuProps): JSX.Element => {
+  const {
+    type,
+    children,
+  } = props;
 
-const Menu = (props: IMenuProps): JSX.Element => {
-  const { className, view, children } = props;
+  const cx = classNames.bind(styles[type]);
 
   return (
-    <ul className={cx('menu', [className], [view])}>
-      {Children.map(children, (child) => (
-        <li className={cx('menuListItem')}>
-          {isValidElement(child)
-            ? cloneElement(child, { view })
-            : child}
-        </li>))}
-    </ul>);
+    <ul className={cx('menu')}>
+      <MenuProvider value={{ type }}>
+        {children}
+      </MenuProvider>
+    </ul>
+  );
 };
 
 Menu.Item = MenuItem;
-
-export { Menu };

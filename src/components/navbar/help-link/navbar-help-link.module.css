@@ -1,0 +1,31 @@
+.link {
+  @mixin text;
+
+  display: flex;
+  align-items: center;
+  color: var(--coal);
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.icon {
+  width: calc(var(--vw-multiplier-tablet-portrait) * 25);
+  height: calc(var(--vw-multiplier-tablet-portrait) * 25);
+  fill: var(--coal);
+
+  @media (min-width: 1440px) {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.text {
+  font-size: calc(var(--vw-multiplier-tablet-portrait) * 14);
+  line-height: calc(var(--vw-multiplier-tablet-portrait) * 17);
+
+  @media (min-width: 1440px) {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
