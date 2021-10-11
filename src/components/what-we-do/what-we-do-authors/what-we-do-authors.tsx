@@ -3,25 +3,24 @@ import cn from 'classnames';
 
 import styles from './what-we-do-authors.module.css';
 
-// interface IWhatWeDoAuthorsProps {
+interface IWhatWeDoAuthorsProps {
+  data: {
+    id: number
+    title: string
+    authors: string[]
+  }
+}
 
-// }
+export const WhatWeDoAuthors: FC<IWhatWeDoAuthorsProps> = ({ data }): JSX.Element => {
+  const { title, authors } = data;
 
-const authorsList = [
-  'Михаил Угаров', 'Алексей Слаповский', 'Ольга Михайлова', 'Елена Гремина',
-  'Михаил Угаров', 'Алексей Слаповский', 'Ольга Михайлова', 'Елена Гремина',
-  'Михаил Угаров', 'Алексей Слаповский', 'Ольга Михайлова', 'Елена Гремина',
-  'Михаил Угаров', 'Алексей Слаповский', 'Ольга Михайлова', 'Елена Гремина',
-];
-
-export const WhatWeDoAuthors: FC = (): JSX.Element => {
   return (
     <section className={ cn(styles.authors) }>
       <h3 className={ cn(styles.title) } >
-        В качестве начинающих авторов в своё время здесь представляли свои пьесы
+        { title }
       </h3>
       <ul className={ cn(styles.list) }>
-        { authorsList.map((author, i) => {
+        { authors.map((author, i) => {
           return (
             <li className={ cn(styles.item) } key={ i }>
               { author }
