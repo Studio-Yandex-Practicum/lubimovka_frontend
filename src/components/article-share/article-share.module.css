@@ -32,6 +32,10 @@
     padding-bottom: 35px;
     padding-left: 56px;
   }
+
+  @media (max-width: 400px) {
+    padding-left: 24px;
+  }
 }
 
 .label {
@@ -93,6 +97,10 @@
 
     width: 292px;
   }
+
+  @media (max-width: 400px) {
+    width: 95%;
+  }
 }
 
 .links {
@@ -104,6 +112,11 @@
 
   @media (max-width: $tablet-portrait) {
     left: 164px;
+  }
+
+  @media (max-width: 400px) {
+    top: 0;
+    left: 134px;
   }
 }
 
