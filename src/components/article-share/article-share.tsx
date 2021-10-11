@@ -35,7 +35,7 @@ const ArticleShare: React.FC<IArticleShare> = (props) => {
   } = props;
 
   return (
-    <div className={cx('container', {newsContainer: !isBlog})}>
+    <section className={cx('container', {newsContainer: !isBlog})}>
       { (authors || photographers || illustrators) &&
         <div className={cx('creators')}>
           {authors &&
@@ -59,7 +59,7 @@ const ArticleShare: React.FC<IArticleShare> = (props) => {
         </div>
         <h4 className={cx('shareTitle')}>Поделиться<br/>{isBlog ? 'записью' : 'новостью'} в соцсетях</h4>
       </div>
-    </div>
+    </section>
   );
 };
 
