@@ -8,23 +8,37 @@
   @mixin headline5;
 
   max-width: 485px;
-  margin-bottom: 62px;
+  margin-bottom: 36px;
 }
 
 .desc {
   @mixin headline;
   @mixin headline6;
 
-  position: relative;
+  display: flex;
   max-width: 610px;
+  align-items: baseline;
   margin-left: auto;
 }
 
 .asterisk {
-  @mixin headline;
-  @mixin headline1;
+  display: block;
+  margin: 0;
+  margin-bottom: 14px;
+}
 
-  position: absolute;
-  top: -32px;
-  left: -32px;
+@media screen and (max-width: 601px) {
+  .contacts {
+    padding: 56px 24px 50px;
+  }
+
+  .title {
+    @mixin headline6;
+
+    margin-bottom: 28px;
+  }
+
+  .desc {
+    @mixin headline7;
+  }
 }

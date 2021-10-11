@@ -1,24 +1,32 @@
 import { FC } from 'react';
 import cn from 'classnames';
 
+import { Icon } from '../../ui/icon';
+
 import styles from './what-we-do-contacts.module.css';
 
-// interface IWhatWeDoContactsProps {
+interface IWhatWeDoContactsProps {
+  data: {
+    id: number
+    title: string
+    desc: string
+  }
+}
 
-// }
+export const WhatWeDoContacts: FC<IWhatWeDoContactsProps> = ({ data }): JSX.Element => {
+  const { title, desc } = data;
 
-export const WhatWeDoContacts: FC = (): JSX.Element => {
   return (
     <section className={ cn(styles.contacts) }>
       <h3 className={ cn(styles.title) }>
-        Конкурса для режиссеров читок на фестивале нет
+        { title }
       </h3>
       <p className={ cn(styles.desc) }>
         <span className={ cn(styles.asterisk) }>
-          *
+          { <Icon glyph='asterisk' fill='black'
+            className={ styles.asterisk } /> }
         </span>
-        Команда Любимовки самостоятельно привлекает режиссеров для работы. Если вам хочется стать режиссером одной из читок, 
-        напишите нам про себя.
+        { desc }
       </p>
     </section>
   );
