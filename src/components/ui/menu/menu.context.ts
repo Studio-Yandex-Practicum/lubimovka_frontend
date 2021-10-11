@@ -6,10 +6,16 @@ type MenuContext = {
   type: MenuType;
 }
 
-const MenuContext = createContext<MenuContext>({
-  type: 'main-navigation',
-});
+const MenuContext = createContext<MenuContext | undefined>(undefined);
 
 export const MenuProvider = MenuContext.Provider;
 
-export const useMenu = (): MenuContext => useContext(MenuContext);
+export const useMenu = (): MenuContext => {
+  const context = useContext(MenuContext);
+
+  if (context === undefined) {
+    throw new Error('The useMenu hook must be used within a MenuProvider');
+  }
+
+  return context;
+};
