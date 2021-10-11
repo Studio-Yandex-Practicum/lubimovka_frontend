@@ -4,11 +4,13 @@ import { NextPage } from 'next';
 import { WhatWeDoHeader } from '../../components/what-we-do/what-we-do-header';
 import { WhatWeDoDesc } from '../../components/what-we-do/what-we-do-desc';
 import { WhatWeDoAuthors } from '../../components/what-we-do/what-we-do-authors';
+import { WhatWeDoSelection } from '../../components/what-we-do/what-we-do-selection';
 
 // Данные
 import headerData from './assets/what-we-do-header-data.json';
 import descData from './assets/what-we-do-desc-data.json';
 import AuthorsData from './assets/what-we-do-authors-data.json';
+import SelectionData from './assets/what-we-do-selection-data.json';
 
 const WhatWeDo: NextPage = () => (
   <main>
@@ -25,6 +27,11 @@ const WhatWeDo: NextPage = () => (
     {
       AuthorsData.map((data) => (
         <WhatWeDoAuthors key={ data.id } data={ data } />
+      )) 
+    }
+    {
+      SelectionData.map((data) => (
+        <WhatWeDoSelection key={ data.id } data={ data } />
       )) 
     }
   </main>

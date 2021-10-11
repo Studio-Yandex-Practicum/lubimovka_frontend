@@ -3,38 +3,38 @@ import cn from 'classnames';
 
 import styles from './what-we-do-selection.module.css';
 
-// interface IWhatWeDoSelectionProps {
+interface poster {
+  id: number
+  ampersand: string
+  title: string
+  desc: string
+}
 
-// }
+interface Item {
+  id: number
+  title: string
+  desc: string[]
+}
 
-const selectionData = [
-  {
-    title: 'На первом этапе каждую пьесу, читают как минимум два отборщика',
-    desc: [ 'Каждый отборщик ставит пьесе оценку: «да», «нет» или «затрудняюсь с оценкой».',
-      `Если пьеса получает две оценки «да», то она попадает в лонг-лист.
-      В ином случае она отправляется следующим ридерам, пока в наборе оценок пьесы не появится два «да» или два «нет».`
-    ],
-  },
-  {
-    title: 'Лонг-лист пьес читают все отборщики',
-    desc: [ 'Каждый отборщик ставит каждой пьесе из лонг-листа оценку: «да», «нет» или «затрудняюсь с оценкой».',
-      'По совокупности этих оценок формируется шорт-лист фестиваля.'
-    ],
-  },
-  {
-    title: 'Параллельно с отбором кураторы программы Fringe читают все пьесы',
-    desc: [ 'Коллегиально формируют специальную программу, для представления которой отводится отдельный день на фестивале.' ],
-  },
-];
+interface IWhatWeDoSelectionProps {
+  data: {
+    id: number
+    title: string
+    items: Array<Item>
+    poster: poster
+  }
+}
 
-export const WhatWeDoSelection: FC = (): JSX.Element => {
+export const WhatWeDoSelection: FC<IWhatWeDoSelectionProps> = ({ data }): JSX.Element => {
+  const { title, items, poster } = data;
+
   return (
     <section className={ cn(styles.selection) }>
       <h2 className={ cn(styles.mainTitle) } >
-        Как происходит отбор
+        { title }
       </h2>
       <ul className={ cn(styles.list) }>
-        { selectionData.map((data, i) => {
+        { items.map((data, i) => {
           return (
             <li className={ cn(styles.item) } key={ i }>
               <p className={ cn(styles.number) }>
@@ -43,12 +43,15 @@ export const WhatWeDoSelection: FC = (): JSX.Element => {
               <h3 className={ cn(styles.title) }>
                 { data.title }
               </h3>
-              <p className={ cn(styles.desc) }>
-                { data.desc[0] }
-              </p>
-              <p className={ cn(styles.desc) }>
-                { data.desc[1] && data.desc[1] }
-              </p>
+              {
+                data.desc.map((text, i) => {
+                  return (
+                    <p className={ cn(styles.desc) } key={ i }>
+                      { text }
+                    </p>
+                  );
+                })
+              }
             </li>
           );
         })}
@@ -56,14 +59,12 @@ export const WhatWeDoSelection: FC = (): JSX.Element => {
       <div className={ cn(styles.poster) }>
         <h3 className={ cn(styles.posterTitle) }>
           <span className={ cn(styles.ampersand) }>
-            &
+            { poster.ampersand }
           </span>
-          Помимо открытого конкурса, на который свою пьесу может прислать любой желающий
+          { poster.title }
         </h3>
         <p className={ cn(styles.posterDesc) }>
-          Организаторы фестиваля каждый год собирают пул новых произведений от состоявшихся драматургов и передают его куратору 
-          внеконкурсной программы. Руководствуясь собственным вкусом, профессиональным опытом и представлениями о тенденциях в 
-          современном театре и драматургии, куратор выбирает 6 пьес из этого пула, которые также представляются в рамках фестиваля.
+          { poster.desc }
         </p>
       </div>
     </section>
