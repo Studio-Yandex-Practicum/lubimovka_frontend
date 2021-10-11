@@ -41,7 +41,7 @@
     "babel-loader": "8.2.2",
     "classnames": "2.3.1",
     "eslint": "7.32.0",
-    "eslint-plugin-react": "7.25.1",
+    "eslint-plugin-react": "7.26.1",
     "lint-staged": "11.1.2",
     "postcss-mixins": "8.1.0",
     "postcss-nested": "5.0.6",
