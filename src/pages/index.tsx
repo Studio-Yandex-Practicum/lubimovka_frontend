@@ -9,6 +9,7 @@ import { MainBanners } from 'components/main-banners';
 import { MainPlatforms } from 'components/main-platforms';
 import { MainArchive } from 'components/main-archive';
 import { MainShortList } from 'components/main-shortList';
+import { MainPartners } from 'components/main-partners';
 
 import styles from './index.module.css';
 
@@ -23,6 +24,7 @@ interface IMainPageProps {
   archive: boolean;
   platforms: boolean;
   shortList: boolean;
+  partners: boolean;
 }
 
 export const getStaticProps = () => {
@@ -36,6 +38,7 @@ export const getStaticProps = () => {
       platforms: true,
       archive: true,
       shortList: true,
+      partners: true,
     },
   };
 };
@@ -50,6 +53,7 @@ const Home: NextPage<IMainPageProps> = (props: IMainPageProps) => {
     platforms,
     archive,
     shortList,
+    partners,
   } = props;
   return (
     <>
@@ -64,6 +68,7 @@ const Home: NextPage<IMainPageProps> = (props: IMainPageProps) => {
         {platforms && <MainPlatforms />}
         {shortList && <MainShortList />}
         {archive && <MainArchive />}
+        {partners && <MainPartners />}
       </main>
     </>
   );
