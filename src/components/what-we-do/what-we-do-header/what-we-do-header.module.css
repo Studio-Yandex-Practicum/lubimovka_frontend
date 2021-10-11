@@ -39,6 +39,7 @@
   position: relative;
   z-index: 100;
   max-width: 720px;
+  margin-bottom: -220px;
 }
 
 .img {

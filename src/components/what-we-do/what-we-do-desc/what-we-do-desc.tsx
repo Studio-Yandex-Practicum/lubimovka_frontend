@@ -3,56 +3,64 @@ import cn from 'classnames';
 
 import styles from './what-we-do-desc.module.css';
 
-// interface IWeDoAboutProps {
+interface item {
+  id: number
+  mainTitle?: string
+  title: string
+  desc: string
+  image?: string
+}
 
-// }
+interface IWeDoAboutProps {
+  data: {
+    block1: item
+    block2: item
+    block3: item
+  }
+}
 
-// Компоненты
-import { DescContent } from './desc-content';
-
-export const WhatWeDoDesc: FC = (): JSX.Element => {
-  const title = [
-    'Каждый год мы проводим приём и отбор новых пьес начинающих и признанных русскоязычных авторов.',
-    'Пьесы, прошедшие отбор, мы представляем профессионалам театра и всем желающим в форме режиссёрских читок.',
-    'После каждой читки мы приглашаем авторов и аудиторию к обсуждению пьесы.',
-  ];
-
-  const desc = [
-    `Мы отдаём предпочтение пьесам, которые передают уникальное и свежее авторское видение, затрагивают актуальные темы,
-    написаны современным языком и оригинальны по форме, а также произведениям с живыми персонажами, увлекательным сюжетом и
-    запоминающимися образами.`,
-    'Вход на все мероприятия фестиваля Любимовка всегда был и всегда будет свободным.',
-    `Мы не спорим о вкусах. Мы судим произведения по законам, предлагаемым произведениями. Мы исходим из того, что за каждой пьесой
-    стоит личный авторский замысел. Мы уважаем авторский выбор художественных целей и творческих методов. Мы ценим готовность автора
-    обсуждать свою работу и доверяем ему в его дальнейшей работе.`,
-  ];
-
-  const mainImg = 'https://static.zarahome.net/8/photos4/2021/I/4/1/p/5357/046/250/5357046250_1_1_3.jpg?t=1620133108320';
-  const someImg = 'https://hudognik.net/cache/25154_gal2.jpg';
-
+export const WhatWeDoDesc: FC<IWeDoAboutProps> = ({ data }): JSX.Element => {
   return (
-    <section className={ cn(styles.desc) }>
-      <div className={ cn(styles.contentReception) }>
-        <div className={ cn(styles.containerReception) }>
+    <section className={ cn(styles.descItem) }>
+
+      <div className={ cn(styles.content, styles.contentReception) }>
+        <div className={ cn(styles.container) }>
           <h2 className={ cn(styles.mainTitle) }>
-            Что мы делаем
+            { data.block1.mainTitle }
           </h2>
 
-          <DescContent title={ title[0] } desc={ desc[0] } />
+          <h3 className={ cn(styles.title, styles.titleWidth) } >
+            { data.block1.title }
+          </h3>
+          <p className={ cn(styles.desc) }>
+            { data.block1.desc }
+          </p>
+
         </div>
-        <img src={ mainImg } className={ cn(styles.imgReception) } />
+        <img src={ data.block1.image } className={ cn(styles.imgReception) } />
       </div>
 
-      <div className={ cn(styles.contentSelected) }>
-        <div className={ cn(styles.containerSelected) }>
-          <DescContent title={ title[1] } desc={ desc[1] } />
+      <div className={ cn(styles.content, styles.contentSelected) }>
+        <img src={ data.block2.image } className={ cn(styles.imgSelected) } />
+        <div className={ cn(styles.container, styles.containerSelected) }>
+          <h3 className={ cn(styles.title) } >
+            { data.block2.title }
+          </h3>
+          <p className={ cn(styles.desc) }>
+            { data.block2.desc }
+          </p>
         </div>
-        <img src={ someImg } className={ cn(styles.imgSelected) } />
       </div>
 
-      <div className={ cn(styles.containerInvite) }>
-        <DescContent title={ title[2] } desc={ desc[2] } />
+      <div className={ cn(styles.container, styles.containerInvite) }>
+        <h3 className={ cn(styles.title) } >
+          { data.block3.title }
+        </h3>
+        <p className={ cn(styles.desc) }>
+          { data.block3.desc }
+        </p>
       </div>
+
     </section>
   );
 };
