@@ -52,6 +52,7 @@
 
   max-width: 390px;
   padding-left: 30px;
+  word-break: break-word;
 }
 
 .creator:last-child {
