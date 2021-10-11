@@ -1,0 +1,61 @@
+.section * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.section {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  max-width: 1440px;
+  flex-wrap: wrap;
+  padding: 0 30px;
+  row-gap: 120px;
+}
+
+.becomeTrustee {
+  width: 50%;
+  align-self: flex-end;
+  padding-bottom: 40px;
+  padding-left: 85px;
+}
+
+.accent {
+  @mixin text;
+  @mixin textLarge;
+
+  max-width: 468px;
+  padding-left: 27px;
+}
+
+.mailLink {
+  display: inline-block;
+  border-bottom: 1px solid;
+  color: inherit;
+  line-height: .9;
+  text-decoration: none;
+}
+
+.mainText {
+  width: 50%;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline2;
+
+  margin-bottom: 42px;
+}
+
+.narrative {
+  @mixin headline;
+  @mixin headline7;
+
+  max-width: 453px;
+  padding-left: 60px;
+}
