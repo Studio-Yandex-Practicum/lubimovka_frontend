@@ -10,8 +10,8 @@ interface LibraryPaginationProps {
 }
 
 const LibraryPagination: FC<LibraryPaginationProps> = ({letters}) => {
-  const [authors, setAuthors] = useState(['']);
-  const [letter, setLetter] = useState('');
+  const [authors, setAuthors] = useState<Array<string>>(['']);
+  const [letter, setLetter] = useState<string>('');
 
   //После появления API внутри useEffect при обновлении letter будет производиться
   //fetch запрос и стэйт authors будет обновляться данными с сервера.

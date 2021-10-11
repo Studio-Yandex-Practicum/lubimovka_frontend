@@ -11,7 +11,7 @@
   column-gap: 12px;
   grid-auto-flow: column;
   list-style: none;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
 
   &::-webkit-scrollbar {
