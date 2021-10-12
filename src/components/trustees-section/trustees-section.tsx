@@ -22,7 +22,7 @@ const TrusteesSection: FC<TrusteesSectionProps> = ({ text, children }) => {
         <div className={style.becomeTrustee}>
           <Icon glyph={'asterisk'} />
           <p className={style.accent}>{accent}
-            <a className={style.mailLink} href="mailto:charity@lubimovka.ru" target="_blank" rel="noreferrer">{link}</a>
+            <a className={style.mailLink} href={`mailto:${link}`} target="_blank" rel="noreferrer">{link}</a>
           </p>
         </div>
         <div className={style.mainText}>
