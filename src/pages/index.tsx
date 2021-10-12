@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import cn from 'classnames/bind';
 
+import { AppLayout } from '../components/app-layout';
 import { MainTitle } from 'components/main-title';
 import { MainEvents } from 'components/main-events';
 import { MainAside } from 'components/main-aside';
@@ -56,7 +57,7 @@ const Home: NextPage<IMainPageProps> = (props: IMainPageProps) => {
     partners,
   } = props;
   return (
-    <>
+    <AppLayout>
       <Head>
         <title>{metaTitle}</title>
       </Head>
@@ -70,7 +71,7 @@ const Home: NextPage<IMainPageProps> = (props: IMainPageProps) => {
         {archive && <MainArchive />}
         {partners && <Partners />}
       </main>
-    </>
+    </AppLayout>
   );
 };
 

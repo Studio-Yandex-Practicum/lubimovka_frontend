@@ -11,7 +11,7 @@ import data from './assets/mock-data.json';
 const cx = cn.bind(styles);
 
 interface IPartnersProps {
-  align: 'left' | 'center';
+  align?: 'left' | 'center';
 }
 
 export const Partners: FC<IPartnersProps> = ({ align = 'left' }) => {

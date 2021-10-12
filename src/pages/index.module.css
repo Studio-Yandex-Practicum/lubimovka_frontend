@@ -3,8 +3,8 @@
   display: grid;
   overflow: hidden;
   width: 100%;
-  min-width: var(--page-min-width);
-  max-width: var(--page-max-width);
+  min-width: var(--page-content-min-width);
+  max-width: var(--page-content-max-width);
   box-sizing: border-box;
   margin: 0 auto;
   grid-template-areas:
