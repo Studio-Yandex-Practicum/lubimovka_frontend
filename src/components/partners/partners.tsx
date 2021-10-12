@@ -22,10 +22,12 @@ export const Partners: FC = () => {
         >
           <ul className={cx('list')}>
             {partners.content.map((partner) => (
-              <li key={partner.id}>
+              <li className={cx('listElement')} key={partner.id}>
                 <Link href={partner.link}>
                   <a className={cx('link')}>
-                    <Image src={partner.image} width="122px" height="43px" />
+                    <div className={cx('imageContainer')}>
+                      <Image src={partner.image} layout="fill" objectFit="contain" />
+                    </div>
                     {partner.text && <p className={cx('text')}>{partner.text}</p>}
                   </a>
                 </Link>
