@@ -20,13 +20,13 @@ export const Partners: FC = () => {
           key={partners.id}
           component={partners.id === 1 ? 'h2' : 'h3'}
         >
-          <ul>
+          <ul className={cx('list')}>
             {partners.content.map((partner) => (
               <li key={partner.id}>
                 <Link href={partner.link}>
-                  <a>
-                    <Image src={partner.image} width="100px" height="100px" />
-                    {partner.text && <p>{partner.text}</p>}
+                  <a className={cx('link')}>
+                    <Image src={partner.image} width="122px" height="43px" />
+                    {partner.text && <p className={cx('text')}>{partner.text}</p>}
                   </a>
                 </Link>
               </li>
