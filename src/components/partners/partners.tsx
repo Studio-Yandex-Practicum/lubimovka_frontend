@@ -5,12 +5,12 @@ import cn from 'classnames/bind';
 
 import { Section } from 'components/section';
 
-import styles from './main-partners.module.css';
+import styles from './partners.module.css';
 import data from './assets/mock-data.json';
 
 const cx = cn.bind(styles);
 
-export const MainPartners: FC = () => {
+export const Partners: FC = () => {
   return (
     <div className={cx('container')}>
       {data.map((partners) => (
