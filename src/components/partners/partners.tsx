@@ -4,17 +4,32 @@ import Image from 'next/image';
 import cn from 'classnames/bind';
 
 import { Section } from 'components/section';
+import { Url } from 'shared/types/common';
 
 import styles from './partners.module.css';
-import data from './assets/mock-data.json';
+import mockData from './assets/mock-data.json';
 
 const cx = cn.bind(styles);
 
 interface IPartnersProps {
   align?: 'left' | 'center';
+  data?: [
+    {
+      id: number;
+      title: string;
+      content: [
+        {
+          id: number;
+          image: Url;
+          link: Url;
+          text: string;
+        },
+      ];
+    },
+  ];
 }
 
-export const Partners: FC<IPartnersProps> = ({ align = 'left' }) => {
+export const Partners: FC<IPartnersProps> = ({ align = 'left', data = mockData }) => {
   return (
     <div className={cx('container')}>
       {data.map((partners) => (

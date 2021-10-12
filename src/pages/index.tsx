@@ -10,7 +10,7 @@ import { MainBanners } from 'components/main-banners';
 import { MainPlatforms } from 'components/main-platforms';
 import { MainArchive } from 'components/main-archive';
 import { MainShortList } from 'components/main-shortList';
-import { Partners } from 'components/partners';
+import { MainPartners } from 'components/main-partners';
 
 import styles from './index.module.css';
 
@@ -69,7 +69,7 @@ const Home: NextPage<IMainPageProps> = (props: IMainPageProps) => {
         {platforms && <MainPlatforms />}
         {shortList && <MainShortList />}
         {archive && <MainArchive />}
-        {partners && <Partners />}
+        {partners && <MainPartners />}
       </main>
     </AppLayout>
   );
