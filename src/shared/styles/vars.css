@@ -6,4 +6,6 @@
   Пример использования: calc([размер из макета] * [множитель])
   */
   --vw-size-multiplier: calc(100vw / var(--figma-layout-width-desktop));
+  --page-max-width: 1440px;
+  --page-min-width: 414px;
 }

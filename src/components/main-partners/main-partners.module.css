@@ -1,11 +1,16 @@
-.section {
-  display: flex;
+.container {
+  display: grid;
   width: 100%;
-  height: 240px;
-  align-items: center;
-  justify-content: center;
+  box-sizing: border-box;
+  padding: 107px 0 179px calc(60 * var(--vw-size-multiplier));
   background-color: orange;
   grid-area: partners;
+  grid-template-columns: max-content;
+  grid-template-rows: repeat(2, max-content);
+
+  @media screen and (max-width: $tablet-portrait) {
+    padding-left: 24px;
+  }
 }
 
 .title {

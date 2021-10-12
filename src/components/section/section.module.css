@@ -28,3 +28,12 @@
     margin-bottom: 58px;
   }
 }
+
+.partners {
+  .title {
+    max-width: 334px;
+    margin: 0;
+
+    @mixin headline6;
+  }
+}
