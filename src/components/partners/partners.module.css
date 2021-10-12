@@ -19,6 +19,10 @@
   }
 }
 
+.center {
+  justify-items: center;
+}
+
 .list {
   display: grid;
   width: 100%;

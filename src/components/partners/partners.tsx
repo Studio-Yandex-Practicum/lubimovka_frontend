@@ -10,7 +10,11 @@ import data from './assets/mock-data.json';
 
 const cx = cn.bind(styles);
 
-export const Partners: FC = () => {
+interface IPartnersProps {
+  align: 'left' | 'center';
+}
+
+export const Partners: FC<IPartnersProps> = ({ align = 'left' }) => {
   return (
     <div className={cx('container')}>
       {data.map((partners) => (
@@ -20,7 +24,7 @@ export const Partners: FC = () => {
           key={partners.id}
           component={partners.id === 1 ? 'h2' : 'h3'}
         >
-          <ul className={cx('list')}>
+          <ul className={cx('list', align)}>
             {partners.content.map((partner) => (
               <li className={cx('listElement')} key={partner.id}>
                 <Link href={partner.link}>
