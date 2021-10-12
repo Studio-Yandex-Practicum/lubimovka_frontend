@@ -20,10 +20,6 @@
   }
 }
 
-.center {
-  justify-items: center;
-}
-
 .list {
   display: grid;
   width: 100%;
@@ -59,6 +55,10 @@
     justify-content: center;
     padding: 25px 15px;
   }
+}
+
+.center {
+  justify-content: center;
 }
 
 .text {
