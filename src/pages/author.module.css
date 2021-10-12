@@ -1,0 +1,75 @@
+.page {
+  width: 100%;
+  background-color: var(--white);
+}
+
+.author {
+  max-width: 1440px;
+  border: 1px solid var(--red);
+  margin: 0 auto;
+}
+
+.personalInfo {
+  border: 1px solid var(--red);
+  background-color: var(--beige);
+}
+
+.plays {
+  padding: 134px 60px;
+  border: 1px solid var(--red);
+  background-color: var(--beige);
+}
+
+.anotherPlays {
+  padding: 85px 120px;
+  border: 1px solid var(--red);
+}
+
+.information {
+  padding: 85px 120px;
+  border: 1px solid var(--red);
+}
+
+.request {
+  border: 1px solid var(--red);
+  background-color: var(--beige);
+}
+
+/* Конец блоков секций */
+
+.fullName {
+  max-width: 1440px;
+  border: 1px solid var(--red);
+}
+
+.button {
+  border: 1px solid var(--red);
+}
+
+.photo {
+  border: 1px solid var(--red);
+}
+
+.info {
+  border: 1px solid var(--red);
+}
+
+.name {
+  border: 1px solid var(--red);
+}
+
+.city {
+  border: 1px solid var(--red);
+}
+
+.quote {
+  border: 1px solid var(--red);
+}
+
+.overviewBlock {
+  border: 1px solid var(--red);
+}
+
+.overviewContacts {
+  border: 1px solid var(--red);
+}
