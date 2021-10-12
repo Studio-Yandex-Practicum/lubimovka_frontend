@@ -5,42 +5,50 @@
     "content": [
       {
         "id": 1,
-        "image": "http://84.252.143.242/partners/1.svg",
+        "image": "/images/partners/partners/1.svg",
+        "link": "#",
         "text": "Генеральный партнёр"
       },
       {
         "id": 2,
-        "image": "http://84.252.143.242/partners/2.svg",
+        "image": "/images/partners/partners/2.svg",
+        "link": "#",
         "text": ""
       },
       {
         "id": 3,
-        "image": "http://84.252.143.242/partners/3.svg",
+        "image": "/images/partners/partners/3.svg",
+        "link": "#",
         "text": "Онлайн-трансляции"
       },
       {
         "id": 4,
-        "image": "http://84.252.143.242/partners/4.svg",
+        "image": "/images/partners/partners/4.svg",
+        "link": "#",
         "text": ""
       },
       {
         "id": 5,
-        "image": "http://84.252.143.242/partners/5.svg",
+        "image": "/images/partners/partners/5.svg",
+        "link": "#",
         "text": ""
       },
       {
         "id": 6,
-        "image": "http://84.252.143.242/partners/6.svg",
+        "image": "/images/partners/partners/6.svg",
+        "link": "#",
         "text": ""
       },
       {
         "id": 7,
-        "image": "http://84.252.143.242/partners/7.svg",
+        "image": "/images/partners/partners/7.svg",
+        "link": "#",
         "text": ""
       },
       {
         "id": 8,
-        "image": "http://84.252.143.242/partners/8.svg",
+        "image": "/images/partners/partners/8.svg",
+        "link": "#",
         "text": ""
       }
     ]
@@ -51,27 +59,39 @@
     "content": [
       {
         "id": 1,
-        "image": "http://84.252.143.242/info-partners/1.svg"
+        "image": "/images/partners/info-partners/1.svg",
+        "link": "#",
+        "text": ""
       },
       {
         "id": 2,
-        "image": "http://84.252.143.242/info-partners/2.svg"
+        "image": "/images/partners/info-partners/2.svg",
+        "link": "#",
+        "text": ""
       },
       {
         "id": 3,
-        "image": "http://84.252.143.242/info-partners/3.svg"
+        "image": "/images/partners/info-partners/3.svg",
+        "link": "#",
+        "text": ""
       },
       {
         "id": 4,
-        "image": "http://84.252.143.242/info-partners/4.svg"
+        "image": "/images/partners/info-partners/4.svg",
+        "link": "#",
+        "text": ""
       },
       {
         "id": 5,
-        "image": "http://84.252.143.242/info-partners/5.svg"
+        "image": "/images/partners/info-partners/5.svg",
+        "link": "#",
+        "text": ""
       },
       {
         "id": 6,
-        "image": "http://84.252.143.242/info-partners/6.svg"
+        "image": "/images/partners/info-partners/6.svg",
+        "link": "#",
+        "text": ""
       }
     ]
   }
