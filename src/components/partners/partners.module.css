@@ -53,8 +53,10 @@
     display: flex;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
     align-items: center;
     justify-content: center;
+    padding: 25px 15px;
   }
 }
 
@@ -67,14 +69,15 @@
 
 .link {
   display: flex;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 25px 15px;
   text-decoration: none;
+  transition: opacity .4s linear;
+
+  &:hover {
+    opacity: .7;
+  }
 }
 
 .imageContainer {
