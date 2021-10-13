@@ -34,7 +34,7 @@ export const Partners: FC<IPartnersProps> = ({ align = 'left', data = mockData }
     <div className={cx('container')}>
       {data.map((partners) => (
         <Section
-          type="partners"
+          type='partners'
           title={partners.title}
           key={partners.id}
           component={partners.id === 1 ? 'h2' : 'h3'}
@@ -45,7 +45,7 @@ export const Partners: FC<IPartnersProps> = ({ align = 'left', data = mockData }
                 <Link href={partner.link}>
                   <a className={cx('link')}>
                     <div className={cx('imageContainer')}>
-                      <Image src={partner.image} layout="fill" objectFit="contain" />
+                      <Image src={partner.image} layout='fill' objectFit='contain' />
                     </div>
                     {partner.text && <p className={cx('text')}>{partner.text}</p>}
                   </a>
