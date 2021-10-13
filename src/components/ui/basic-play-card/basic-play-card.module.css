@@ -25,6 +25,7 @@
   visibility: hidden;
 
   @media (max-width: 576px) {
+    opacity: 1;
     visibility: visible;
   }
 }
