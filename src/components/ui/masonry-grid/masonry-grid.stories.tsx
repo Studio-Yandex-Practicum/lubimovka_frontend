@@ -3,22 +3,44 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import mockData from './assets/mock-cardData.json';
 import MasonryGrid from './masonry-grid';
+import { BlogCard } from '../blog-card';
 
 export default {
   component: MasonryGrid,
-  title: 'UI/MasonryGrid',
-
+  title: 'UI/Masonry Grid',
 } as ComponentMeta<typeof MasonryGrid>;
 
-const Template: ComponentStory<typeof MasonryGrid> = (args) => <MasonryGrid {...args} />;
+const TemplateBig: ComponentStory<typeof MasonryGrid> = (args) => (
+  <MasonryGrid {...args}>
+    {mockData.map(card => {
+      return <BlogCard
+        key={card.id}
+        image={card.image}
+        author={card.author}
+        heading={card.title}
+        description={card.subtitle}
+        link={card.link}
+        firstCardSizeMode='big'
+      />;
+    })}
+  </MasonryGrid>
+);
 
-export const big = Template.bind({});
-big.args = {
-  cardsData: mockData,
-  firstCardSizeMode: 'big',
-};
-export const regular = Template.bind({});
-regular.args = {
-  cardsData: mockData,
-  firstCardSizeMode: 'regular',
-};
+const TemplateRegular: ComponentStory<typeof MasonryGrid> = (args) => (
+  <MasonryGrid {...args}>
+    {mockData.map(card => {
+      return <BlogCard
+        key={card.id}
+        image={card.image}
+        author={card.author}
+        heading={card.title}
+        description={card.subtitle}
+        link={card.link}
+        firstCardSizeMode='regular'
+      />;
+    })}
+  </MasonryGrid>
+);
+
+export const Masonry_Grid_blog_big = TemplateBig.bind({});
+export const Masonry_Grid_blog_regular = TemplateRegular.bind({});
