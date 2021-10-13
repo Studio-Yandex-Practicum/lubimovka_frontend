@@ -2,12 +2,12 @@ import React from 'react';
 
 import cn from 'classnames/bind';
 
-import styles from './persons-card.module.css';
-import {Icon} from '../icon';
+import styles from './person-card.module.css';
+import { Icon } from '../icon';
 
 const cx = cn.bind(styles);
 
-interface IPersonCardProps {
+export interface IPersonCardProps {
   participant: boolean,
   name: string,
   link: string,
@@ -15,7 +15,7 @@ interface IPersonCardProps {
   response?: string,
 }
 
-const PersonCard: React.FC<IPersonCardProps> = (props) => {
+export const PersonCard: React.FC<IPersonCardProps> = (props) => {
   const {
     name,
     link,
