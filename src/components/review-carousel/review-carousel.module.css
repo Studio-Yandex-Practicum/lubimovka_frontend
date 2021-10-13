@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  max-width: 718px;
+  margin: 0 auto 24px;
+
+  @media (min-width: $tablet-portrait) {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline7;
+
+  @media (min-width: $tablet-portrait) {
+    @mixin headline4;
+  }
+}
+
+.slide {
+  display: flex;
+  place-content: stretch;
+}
+
+.single {
+  .slide {
+    opacity: .4;
+
+    @media (min-width: $tablet-portrait) {
+      display: block;
+    }
+  }
+
+  .active {
+    opacity: 1;
+  }
+}

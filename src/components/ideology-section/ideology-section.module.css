@@ -1,0 +1,115 @@
+.container {
+  position: relative;
+  display: flex;
+  max-width: 1440px;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 127px 70px 165px;
+  margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    padding: 336px 24px 100px;
+  }
+
+  @media (max-width: 576px) {
+    align-items: flex-start;
+  }
+}
+
+.picture {
+  position: absolute;
+  top: 268px;
+  left: 0;
+  overflow: hidden;
+  width: 391px;
+  height: 200px;
+  object-fit: cover;
+
+  @media (min-width: 992px) {
+    width: 420px;
+    height: 218px;
+  }
+
+  @media (min-width: 1400px) {
+    width: 660px;
+    height: 330px;
+  }
+
+  @media (max-width: 1200px) {
+    top: 99px;
+  }
+}
+
+.section {
+  background-color: var(--beige);
+
+  &:nth-child(2n) {
+    background-color: var(--white);
+
+    & .container {
+      padding: 93px 70px 267px;
+
+      @media (max-width: 1200px) {
+        padding: 228px 24px 150px;
+      }
+    }
+
+    & .list {
+      align-self: flex-start;
+    }
+
+    & .picture {
+      top: 277px;
+      right: 0;
+      left: unset;
+
+      @media (max-width: 1200px) {
+        top: 0;
+      }
+    }
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline2;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+  }
+}
+
+.titleBox {
+  width: 448px;
+  margin: 0 0 51px 12px;
+
+  @media (max-width: $tablet-portrait) {
+    width: 323px;
+    margin: 0 0 24px;
+  }
+}
+
+.paragraph {
+  @mixin text;
+  @mixin textLarge;
+}
+
+.paragraphText {
+  margin-top: 36px;
+  text-indent: 23px;
+
+  &:first-of-type {
+    margin-top: 0;
+    text-indent: 0;
+  }
+}
+
+.numberBox {
+  box-sizing: border-box;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0 0 16px 36px;
+  }
+}
