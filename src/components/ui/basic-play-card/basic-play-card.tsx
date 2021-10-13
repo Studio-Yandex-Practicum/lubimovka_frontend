@@ -23,13 +23,11 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
   const {
     play,
     author,
-    ...restBasicPlayCardProps
   } = props;
 
   return (
     <article
       className={cn(styles.card)}
-      {...restBasicPlayCardProps}
     >
       <div className={cn(styles.container)}>
         <h6 className={cn(styles.title)}>{play.title}</h6>
