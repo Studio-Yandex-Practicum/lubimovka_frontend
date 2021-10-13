@@ -10,6 +10,10 @@
   background-color: #b7c09d;
 }
 
+.menu {
+  margin: 40px 0 70px 70px;
+}
+
 .title {
   @mixin headline;
   @mixin headline2;
@@ -19,20 +23,24 @@
   margin-left: 62px;
 }
 
-.desc {
-  @mixin headline;
-  @mixin textLarge;
-
+.containerText {
   display: flex;
   max-width: 520px;
   flex-direction: column;
   align-self: end;
-  margin: 0 110px 225px 85px;
-  line-height: 24px;
+  margin: 0 110px 215px 85px;
 }
 
-.text {
-  margin-bottom: 0;
+.desc {
+  @mixin headline;
+  @mixin textLarge;
+
+  margin-bottom: 20px;
+  line-height: 24px;
+
+  &:last-of-type {
+    margin: 0;
+  }
 }
 
 .container {
@@ -53,13 +61,17 @@
     margin-bottom: -114px;
   }
 
+  .menu {
+    margin: 26px 0 32px 24px;
+  }
+
   .title {
     @mixin headline4;
 
     margin: 0 24px 30px 24px;
   }
 
-  .desc {
+  .containerText {
     margin: 0 24px 188px 85px;
   }
 }

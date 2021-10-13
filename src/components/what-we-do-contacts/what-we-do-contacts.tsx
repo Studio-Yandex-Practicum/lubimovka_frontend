@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import cn from 'classnames';
 
-import { Icon } from '../../ui/icon';
+import { Icon } from '../ui/icon';
 
 import styles from './what-we-do-contacts.module.css';
 
