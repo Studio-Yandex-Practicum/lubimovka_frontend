@@ -3,7 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Section } from './section';
 import { BasicPlayCardList } from 'components/ui/basic-play-card';
 
-import { Default as CardListDefault } from 'components/ui/basic-play-card/list/basic-play-card-list.stories';
+import { Default as DefaultBasicPlayCardList } from 'components/ui/basic-play-card/list/basic-play-card-list.stories';
+import { Default as DefaultPersonCardList } from 'components/ui/person-card/list/person-card-list.stories';
 
 export default {
   title: 'Components/Section',
@@ -24,12 +25,22 @@ const Template: ComponentStory<typeof Section> = ({ ...args }) => {
   );
 };
 
-export const Default = Template.bind({});
-Default.parameters = {
+export const BasicPlayCard = Template.bind({});
+BasicPlayCard.parameters = {
   layout: 'fullscreen'
 };
-Default.args = {
-  children: <CardListDefault {...CardListDefault.args} />,
+BasicPlayCard.args = {
+  children: <DefaultBasicPlayCardList {...DefaultBasicPlayCardList.args} />,
   type: 'plays',
+  title: 'Заголовок секции с контентом'
+};
+
+export const PersonCard = Template.bind({});
+PersonCard.parameters = {
+  layout: 'fullscreen'
+};
+PersonCard.args = {
+  children: <DefaultPersonCardList {...DefaultPersonCardList.args} />,
+  type: 'persons',
   title: 'Заголовок секции с контентом'
 };
