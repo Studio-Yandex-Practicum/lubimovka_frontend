@@ -39,8 +39,6 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ children }) => {
       const allItems = gridRef.current.children;
 
       for (let i = 0; i < allItems.length; i++) {
-        // здесь нужно запускать ресайз только после того, как все img в карточках будут загружены браузером.
-        // Иначе бывают ошибки иногда. Не знаю пока, как это сделать без сторонней библиотеки https://imagesloaded.desandro.com/
         resizeGridItem(allItems[i]);
 
         // после вычисления позиции всех карточек, плавно отображаем сетку,
