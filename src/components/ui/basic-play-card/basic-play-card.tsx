@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '../button';
 
 import styles from './basic-play-card.module.css';
+const cx  = cn.bind(styles);
 
 interface IBasicPlayCardProps {
   play: {
@@ -27,13 +28,13 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
 
   return (
     <article
-      className={cn(styles.card)}
+      className={cx('card')}
     >
-      <div className={cn(styles.container)}>
-        <h6 className={cn(styles.title)}>{play.title}</h6>
+      <div className={cx('container')}>
+        <h6 className={cx('title')}>{play.title}</h6>
         <div>
           <Button
-            className={styles.buttonCustom}
+            className={'buttonCustom'}
             width='100%'
             size='l'
             view='primary'
@@ -41,11 +42,11 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             icon='arrow-45'
             label='Смотреть читку'
             border='top'
-            isLink={true}
+            isLink
             href={play.linkView}
           />
           <Button
-            className={styles.buttonCustom}
+            className={'buttonCustom'}
             width='100%'
             size='l'
             view='primary'
@@ -53,17 +54,17 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             icon='arrow-down'
             label='Скачать пьесу'
             border='top'
-            isLink={true}
+            isLink
             href={play.linkDownload}
           />
         </div>
       </div>
-      <div className={cn(styles.info)}>
+      <div className={cx('info')}>
         <Link href={`/authors/${author.id}`}>
-          <h6 className={cn(styles.authorName)}>{author.name}</h6>
+          <h6 className={cx('authorName')}>{author.name}</h6>
         </Link>
-        <p className={cn(styles.city)}>{play.city}</p>
-        <p className={cn(styles.year)}>{play.year}</p>
+        <p className={cx('city')}>{play.city}</p>
+        <p className={cx('year')}>{play.year}</p>
       </div>
     </article>
   );
