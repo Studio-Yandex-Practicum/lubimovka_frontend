@@ -1,0 +1,52 @@
+.grid {
+  @mixin hideScrollbar;
+
+  --card-width: 210px;
+  --column-gap: 30px;
+  --row-gap: 36px;
+  --columns-count: 4;
+  --padding: 60px;
+
+  display: grid;
+  max-width: calc((var(--card-width) * var(--columns-count)) + (var(--column-gap) * (var(--columns-count) - 1)) + (var(--padding) * 2));
+  box-sizing: border-box;
+  justify-content: center;
+  padding: 0 var(--padding);
+  margin: 0 auto;
+  column-gap: var(--column-gap);
+  grid-template-columns: repeat(auto-fit, 210px);
+  row-gap: var(--row-gap);
+  scroll-behavior: smooth;
+
+  @media (max-width: $tablet-portrait) {
+    --card-width: 213px;
+    --row-gap: 0;
+    --padding: 24px;
+
+    overflow: auto;
+    justify-content: start;
+    grid-auto-columns: var(--card-width);
+    grid-auto-flow: column;
+    scroll-padding-left: var(--padding);
+    scroll-snap-type: x mandatory;
+
+    & > * {
+      scroll-snap-align: start;
+
+      &:last-child {
+        padding-right: var(--padding);
+        margin-right: calc(var(--padding) * -1);
+      }
+    }
+  }
+}
+
+.gapLarge {
+  --column-gap: 60px;
+  --row-gap: 72px;
+
+  @media (max-width: $tablet-portrait) {
+    --column-gap: 30px;
+    --row-gap: 0;
+  }
+}
