@@ -1,15 +1,13 @@
 import React from 'react';
 
 import styles from './masonry-grid.module.css';
-import { BlogCard } from '../blog-card';
 
 interface MasonryGridProps {
-  cardsData: { id: number; image: string; author: string; title: string; subtitle: string; link: string; }[],
-  firstCardSizeMode?: 'big' | 'regular',
+  children: any
   // cardsData: ReadonlyArray<{ id: number; image: string; author: string; title: string; subtitle: string }[]>,
 }
 
-const MasonryGrid: React.FC<MasonryGridProps> = ({ cardsData, firstCardSizeMode }) => {
+const MasonryGrid: React.FC<MasonryGridProps> = ({ children }) => {
 
   // реф для доступа к грид-сетке
   const gridRef = React.useRef<HTMLUListElement>(null);
@@ -19,20 +17,21 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ cardsData, firstCardSizeMode 
     const grid = gridRef.current;
 
     // получаем все вычесленные стили грид-сетки
-    const gridStyles = window.getComputedStyle(grid);
+    if (grid !== null) {
+      const gridStyles = window.getComputedStyle(grid);
+      // забираем высоту строки и гэпа из грид-сетки
+      const rowHeight = parseInt(gridStyles.getPropertyValue('grid-auto-rows'));
+      const rowGap = parseInt(gridStyles.getPropertyValue('grid-row-gap'));
 
-    // забираем высоту строки и гэпа из грид-сетки
-    const rowHeight = parseInt(gridStyles.getPropertyValue('grid-auto-rows'));
-    const rowGap = parseInt(gridStyles.getPropertyValue('grid-row-gap'));
+      // вычисляем нужную высоту контентной части карточки
+      // const rowSpan = Math.ceil((item.querySelector('.card').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
+      const rowSpan = Math.ceil((item.firstChild.offsetHeight + rowGap) / (rowHeight + rowGap));
 
-    // вычисляем нужную высоту контентной части карточки
-    // const rowSpan = Math.ceil((item.querySelector('.card').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
-    const rowSpan = Math.ceil((item.firstChild.offsetHeight + rowGap) / (rowHeight + rowGap));
-
-    //растягиваем карточку на нужное кол-во грид-строк
-    // устанавливаем в стили карточки конечную грид-строку, до которой должна растянуться карточка
-    // item.style.gridRowEnd = 'span ' + rowSpan;
-    item.style.setProperty('grid-row-end', 'span ' + rowSpan);
+      //растягиваем карточку на нужное кол-во грид-строк
+      // устанавливаем в стили карточки конечную грид-строку, до которой должна растянуться карточка
+      // item.style.gridRowEnd = 'span ' + rowSpan;
+      item.style.setProperty('grid-row-end', 'span ' + rowSpan);
+    }
   }
 
   // ресайзим все карточки в гриде
@@ -71,18 +70,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ cardsData, firstCardSizeMode 
   return (
     <section className={styles.masonryGridSection}>
       <ul className={styles.masonryGrid} ref={gridRef}>
-        {cardsData.map((card) => (
-          <BlogCard
-            key={card.id}
-            image={card.image}
-            author={card.author}
-            heading={card.title}
-            description={card.subtitle}
-            link={card.link}
-            firstCardSizeMode={firstCardSizeMode}
-          />
-        )
-        )}
+        {children}
       </ul>
     </section>
   );
