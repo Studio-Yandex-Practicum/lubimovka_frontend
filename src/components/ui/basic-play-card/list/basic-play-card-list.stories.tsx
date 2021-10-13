@@ -27,4 +27,7 @@ const ListTemplate: Story = ({ items }) => (
 );
 
 export const Default = ListTemplate.bind({});
+Default.parameters = {
+  layout: 'fullscreen'
+};
 Default.args = { items: Array.from(Array(7)).map(() => CardDefault.args)};
