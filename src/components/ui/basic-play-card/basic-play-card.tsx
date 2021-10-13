@@ -27,7 +27,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
   } = props;
 
   return (
-    <li
+    <article
       className={cn(styles.card)}
       {...restBasicPlayCardProps}
     >
@@ -67,6 +67,6 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         <p className={cn(styles.city)}>{play.city}</p>
         <p className={cn(styles.year)}>{play.year}</p>
       </div>
-    </li>
+    </article>
   );
 };
