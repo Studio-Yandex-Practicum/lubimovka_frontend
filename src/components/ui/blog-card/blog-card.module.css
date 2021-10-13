@@ -58,7 +58,7 @@
   font-weight: 300;
   line-height: 1.25;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     padding-left: 30px;
   }
 }
