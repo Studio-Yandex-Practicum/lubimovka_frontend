@@ -1,0 +1,32 @@
+.basicPlayCardList {
+  @mixin hideScrollbar;
+
+  display: grid;
+  box-sizing: border-box;
+  justify-content: center;
+  gap: 36px 30px;
+  grid-template-columns: repeat(auto-fit, 240px);
+  scroll-behavior: smooth;
+
+  @media (max-width: $tablet-portrait) {
+    --padding: 24px;
+
+    overflow: auto;
+    justify-content: start;
+    padding-right: var(--padding);
+    padding-left: var(--padding);
+    grid-auto-columns: 244px;
+    grid-auto-flow: column;
+    scroll-padding-left: var(--padding);
+    scroll-snap-type: x mandatory;
+
+    & > * {
+      scroll-snap-align: start;
+
+      &:last-child {
+        padding-right: var(--padding);
+        margin-right: calc(var(--padding) * -1);
+      }
+    }
+  }
+}
