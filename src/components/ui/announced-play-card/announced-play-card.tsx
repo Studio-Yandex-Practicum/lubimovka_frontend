@@ -10,6 +10,7 @@ interface IAnnouncedPlayCardProps {
   title: string;
   playwrightArray: string [];
   directorArray: string [];
+  eventDescription?:string;
   buttonLinks: string [];
   coverResourceUrl?: string;
 }
@@ -21,9 +22,9 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     title,
     playwrightArray,
     directorArray,
+    eventDescription,
     buttonLinks,
     coverResourceUrl,
-    ...restAnnouncedPlayCardProps
   } = props;
 
   const creditsArrayToString = (array: string []) => {
@@ -59,7 +60,6 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   return (
     <li
       className={cn(styles.cardEvents)}
-      {...restAnnouncedPlayCardProps}
     >
       {coverResourceUrl &&
         <div className={cn(styles.coverEvents)}>
@@ -71,10 +71,17 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           <p className={cn(styles.date)}>{date}</p>
           <p className={cn(styles.timeEvents)}>{time}</p>
         </div>
-        <h5 className={cn(styles.title)}>{title}</h5>
+        <h5 className={cn(styles.title, !coverResourceUrl && styles.titleNoCover)}>{title}</h5>
+        { directorArray.length > 0 && playwrightArray.length > 0 &&
         <div className={cn(styles.credits)}>
           {creditsRendered}
         </div>
+        }
+        { eventDescription &&
+        <div className={cn(styles.eventDescription)}>
+          {eventDescription}
+        </div>
+        }
         <p className={cn(styles.description)}>читка проекта Любимовка.Ещё</p>
         {buttonLinks.length === 2 &&
           <div className={cn(styles.buttonEventsContainer, coverResourceUrl && styles.buttonEventsContainerCoverExists )}>

@@ -63,11 +63,18 @@
   @mixin headline;
   @mixin headline5;
 
+  display: block;
+  width: 419px;
   margin-top: 4px;
 
   @media (max-width: 576px) {
+    width: 382px;
     margin-top: 16px;
   }
+}
+
+.titleNoCover {
+  margin-top: 16px;
 }
 
 .credits {
@@ -88,6 +95,18 @@
   display: inline;
   padding: 0;
   margin: 0;
+}
+
+.eventDescription {
+  @mixin text;
+  @mixin textSmall;
+
+  width: 359px;
+  margin: 16px 0 0 30px;
+
+  @media (max-width: 576px) {
+    margin-left: 0;
+  }
 }
 
 .description {
