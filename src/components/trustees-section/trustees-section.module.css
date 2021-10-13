@@ -18,6 +18,11 @@
   padding: 0 30px;
   margin: 0 auto;
   row-gap: 120px;
+
+  @media (max-width: 767px) {
+    padding: 0 25px;
+    row-gap: 32px;
+  }
 }
 
 .becomeTrustee {
@@ -25,6 +30,14 @@
   align-self: flex-end;
   padding-bottom: 40px;
   padding-left: 85px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    order: 3;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 68px;
+  }
 }
 
 .accent {
@@ -33,6 +46,11 @@
 
   max-width: 468px;
   padding-left: 27px;
+
+  @media (max-width: 767px) {
+    max-width: none;
+    padding-left: 27px;
+  }
 }
 
 .mailLink {
@@ -45,6 +63,10 @@
 
 .mainText {
   width: 50%;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 }
 
 .title {
@@ -56,6 +78,10 @@
   @media (max-width: 819px) {
     @mixin headline3;
   }
+
+  @media (max-width: 600px) {
+    @mixin headline4;
+  }
 }
 
 .narrative {
@@ -64,4 +90,8 @@
 
   max-width: 453px;
   padding-left: 60px;
+
+  @media (max-width: 767px) {
+    max-width: none;
+  }
 }

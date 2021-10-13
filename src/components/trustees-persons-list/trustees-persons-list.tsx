@@ -39,7 +39,11 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
         slidesPerView: 2,
         mode: 'free-snap',
       },
-      '(max-width: 414px)': {
+      '(max-width: 520px)': {
+        slidesPerView: 1.7,
+        mode: 'free-snap',
+      },
+      '(max-width: 450px)': {
         slidesPerView: 1.5,
         mode: 'free-snap',
       },
