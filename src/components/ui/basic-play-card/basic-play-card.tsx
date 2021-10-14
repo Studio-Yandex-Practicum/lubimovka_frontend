@@ -3,6 +3,8 @@ import cn from 'classnames/bind';
 import Link from 'next/link';
 import { Button } from '../button';
 
+import { Url } from 'shared/types';
+
 import styles from './basic-play-card.module.css';
 const cx  = cn.bind(styles);
 
@@ -11,19 +13,21 @@ interface IBasicPlayCardProps {
     title: string;
     city: string;
     year: string;
-    linkView: string;
-    linkDownload: string;
+    linkView: Url;
+    linkDownload: Url;
   };
   author: {
     id: number,
     name: string;
   };
+  buttonVisibility: boolean;
 }
 
 export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
   const {
     play,
     author,
+    buttonVisibility,
   } = props;
 
   return (
@@ -34,7 +38,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         <h6 className={cx('title')}>{play.title}</h6>
         <div>
           <Button
-            className={cx('buttonCustom')}
+            className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
             width='100%'
             size='l'
             view='primary'
@@ -46,7 +50,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             href={play.linkView}
           />
           <Button
-            className={cx('buttonCustom')}
+            className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
             width='100%'
             size='l'
             view='primary'
