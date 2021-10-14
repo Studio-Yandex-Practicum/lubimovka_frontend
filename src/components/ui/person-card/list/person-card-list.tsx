@@ -5,16 +5,16 @@ import styles from './person-card-list.module.css';
 const cx = classNames.bind(styles);
 
 interface IPersonCardListProps extends React.HTMLAttributes<HTMLDivElement> {
-  gapLarge?: boolean;
+  expanded?: boolean;
   children: ReactNode;
 }
 
 export const PersonCardList = (props: IPersonCardListProps): JSX.Element => {
-  const { gapLarge, children } = props;
+  const { expanded, children } = props;
 
   return (
     <div className={cx('personCardList')}>
-      <div className={cx('grid', { gapLarge })}>
+      <div className={cx('grid', { expanded })}>
         {children}
       </div>
     </div>

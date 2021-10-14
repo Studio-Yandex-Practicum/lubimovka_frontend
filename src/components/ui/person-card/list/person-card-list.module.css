@@ -41,7 +41,7 @@
   }
 }
 
-.gapLarge {
+.expanded {
   --column-gap: 60px;
   --row-gap: 72px;
 
