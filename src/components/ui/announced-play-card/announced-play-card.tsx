@@ -58,7 +58,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   );
 
   return (
-    <li
+    <article
       className={cn(styles.cardEvents)}
     >
       {coverResourceUrl &&
@@ -110,7 +110,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
               icon='arrow-right'
               label='Билеты'
               border='bottomLeft'
-              isLink={true}
+              isLink
               href={buttonLinks[1]}
             />
           </div>
@@ -128,12 +128,12 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
               icon='arrow-right'
               label='Регистрация'
               border='bottomLeft'
-              isLink={true}
+              isLink
               href={buttonLinks[0]}
             />
           </div>
         }
       </div>
-    </li>
+    </article>
   );
 };
