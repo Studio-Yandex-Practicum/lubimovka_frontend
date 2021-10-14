@@ -64,7 +64,7 @@
   margin-top: 14px;
 }
 
-@media screen and (max-width: 601px) {
+@media screen and (max-width: $tablet-portrait) {
   .descItem {
     padding: 276px 24px 72px 0;
   }
@@ -76,6 +76,7 @@
 
   .contentSelected {
     margin-bottom: 0;
+    grid-row-start: 1;
   }
 
   .content {
@@ -105,10 +106,6 @@
     max-width: 274px;
     margin-top: 0;
     margin-left: auto;
-  }
-
-  .imgSelected {
-    order: -1;
   }
 
   .containerSelected {

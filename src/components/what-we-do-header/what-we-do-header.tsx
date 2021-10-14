@@ -40,7 +40,7 @@ export const WhatWeDoHeader: FC<IWhatWeDoHeaderProps> = ({ data }): JSX.Element 
     <section className={ cn(styles.header) }>
       <div className={ cn(styles.content) }>
         <div className={ cn(styles.menu) }>
-          <Menu type={ 'main-navigation' }>
+          <Menu type={ 'general-submenu' }>
             {demoItems.map(item => (
               <Menu.Item
                 key={item.text}
