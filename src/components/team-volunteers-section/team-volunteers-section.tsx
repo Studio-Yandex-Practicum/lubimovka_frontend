@@ -5,6 +5,7 @@ import PersonCard from '../ui/persons-card/persons-card';
 import style from './team-volunteers-section.module.css';
 import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
+import { useKeenSlider } from 'keen-slider/react';
 
 interface PersonCardData {
   id: number,
@@ -49,19 +50,37 @@ const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = ({ data }) => {
   return (
     <section className={style.section}>
       <h2 className={style.title}>{title}</h2>
-      <SliderYears years={years} className={cn(style.yearsContainer)} currentYear={2020} onClick={test}/>
+      <div >
+        <SliderYears
+          className={cn(style.yearsContainer)}
+          years={years}
+          currentYear={2020}
+          onClick={test}
+        />
+      </div>
       <div className={style.cardContainer}>
-        {selectedCards.map(card => <PersonCard key={card.id} participant={false} name={card.name} link={card.link} response={card.response}/>)}
+        {selectedCards.map(card => {
+          return (<PersonCard
+            key={card.id}
+            participant={false}
+            name={card.name}
+            link={card.link}
+            response={card.response}
+          />
+          );
+        })}
       </div>
       <div className={style.infoBlock}>
         <Icon className={style.asterisk} glyph={'asterisk'}/>
-        <p className={style.info}>Если вы хотите быть волонтером, напишите нам на job@lubimovka.ru и расскажите о себе.</p>
+        <p className={style.info}>
+          Если вы хотите быть волонтером, напишите нам на
+          job@lubimovka.ru и расскажите о себе.
+        </p>
       </div>
     </section>
   );
 };
 
-// создать и добавить компонент слайдера годов, изменить входящие данные для отрисовки
 // в теге <p> необходимо добавить компонент InfoLink для адреса почты
 
 export default TeamVolunteersSection;

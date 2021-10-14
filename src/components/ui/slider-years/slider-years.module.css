@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 50%;
 }
 
 .year {
+  margin-right: 40px;
   cursor: pointer;
 
   @mixin headline;
@@ -18,3 +18,35 @@
   border-left: 1px solid var(--coal);
   border-radius: 20px;
 }
+
+/* .keenSlider {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+
+  &__slide {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  &[data-keen-slider-v] {
+    flex-wrap: wrap;
+  }
+
+  &[data-keen-slider-v] &__slide {
+    width: 100%;
+  }
+
+  &[data-keen-slider-moves] * {
+    pointer-events: none;
+  }
+}
+*/

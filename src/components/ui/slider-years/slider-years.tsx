@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import styles from './slider-years.module.css';
 import cn from 'classnames';
+import { useKeenSlider } from 'keen-slider/react';
 
 interface ISliderYearsProps {
   className: string;
@@ -10,22 +11,21 @@ interface ISliderYearsProps {
 }
 
 export const SliderYears: FC<ISliderYearsProps> = ( { className, years, currentYear, onClick }) => {
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    slidesPerView: 2,
+    mode: 'free-snap',
+    spacing: 15,
+    centered: true,
+    loop: false,
+  });
 
   return(
-    <div className={cn(styles.container, className)}>
+    <div ref={sliderRef} className={cn(styles.container, className)}>
       {years.map((year) => {
-        const isActive = () => {
-          if (year === currentYear) {
-            return true;
-          }
-          return false;
-        };
-
-        console.log(isActive());
         return (
           <h6 key={year}
-            className={cn(styles.year, {[styles.active]: isActive()})}
             onClick={() => onClick(year)}
+            className={cn(styles.year, {[styles.active]: currentYear === year})}
           >
             {year}
           </h6>
