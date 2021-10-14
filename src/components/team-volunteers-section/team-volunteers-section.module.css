@@ -12,6 +12,10 @@
   @mixin headline2;
 }
 
+.yearsContainer {
+  padding-top: 42px;
+}
+
 .cardContainer {
   display: grid;
   max-width: 1440px;
@@ -24,7 +28,7 @@
 
 .infoBlock {
   position: relative;
-  padding-bottom: 149px;
+  padding-bottom: 259px;
   margin: 69px 0 0 213px;
 }
 

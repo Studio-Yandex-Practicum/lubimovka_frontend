@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 50%;
+}
+
+.year {
+  cursor: pointer;
+
+  @mixin headline;
+  @mixin headline6;
+}
+
+.active {
+  padding: 4.5px 14px;
+  border-right: 1px solid var(--coal);
+  border-left: 1px solid var(--coal);
+  border-radius: 20px;
+}

@@ -1,12 +1,12 @@
 import { NextPage } from 'next';
 
-import TeamSection from '../../components/team-section';
+import TeamVolunteersSection from '../../components/team-volunteers-section';
 
 import TeamData from './assets/mock-data.json';
 
 const Team: NextPage = () => (
   <>
-    {TeamData.map(data => <TeamSection key={data.id} data={data}/>)}
+    {TeamData.map(data => <TeamVolunteersSection key={data.id} data={data}/>)}
   </>
 );
 
