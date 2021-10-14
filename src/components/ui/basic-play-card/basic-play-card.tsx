@@ -5,7 +5,7 @@ import { Button } from '../button';
 
 import styles from './basic-play-card.module.css';
 
-interface IBasicPlayCardProps {
+export interface IBasicPlayCardProps {
   play: {
     title: string;
     city: string;

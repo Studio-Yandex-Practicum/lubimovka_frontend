@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import { Button } from 'components/ui/button/button';
 import classNames from 'classnames/bind';
-import styles from './event-card.module.css';
+
 import { Url } from 'shared/types';
 
-interface IEventCardProps {
+import styles from './event-card.module.css';
+
+export interface IEventCardProps {
   image?: Url,
   time: string,
   location: string,
@@ -14,6 +16,7 @@ interface IEventCardProps {
   director?: string,
   registrationUrl?: Url,
 }
+
 const cx = classNames.bind(styles);
 
 export const EventCard: FC<IEventCardProps> = (props) => {
@@ -62,29 +65,39 @@ export const EventCard: FC<IEventCardProps> = (props) => {
       </p>
       {(playwright || director) && (
         <dl className={cx('credits')}>
-          <dt className={cx('creditsTitle')}>
-            Драматург
-          </dt>
-          <dd className={cx('creditsValue')}>
-            {playwright}
-          </dd>
-          <dt className={cx('creditsTitle')}>
-            Режиссёр
-          </dt>
-          <dd className={cx('creditsValue')}>
-            {director}
-          </dd>
+          {playwright && (
+            <>
+              <dt className={cx('creditsTitle')}>
+                Драматург
+              </dt>
+              <dd className={cx('creditsValue')}>
+                {playwright}
+              </dd>
+            </>
+          )}
+          {director && (
+            <>
+              <dt className={cx('creditsTitle')}>
+                Режиссёр
+              </dt>
+              <dd className={cx('creditsValue')}>
+                {director}
+              </dd>
+            </>
+          )}
         </dl>
       )}
       {registrationUrl && (
         <div className={cx('actions')}>
-          <Button size="s"
+          <Button
+            view="primary"
+            size="s"
             iconPlace="left"
             icon="arrow-right"
             label="Регистрация"
             border="bottomLeft"
-            view="primary"
-            href={registrationUrl}></Button>
+            href={registrationUrl}
+          />
         </div>
       )}
     </article>
