@@ -83,7 +83,7 @@
   margin-left: auto;
 }
 
-@media screen and (max-width: 599px) {
+@media all and (max-width: 599px) {
   .selection {
     padding: 40px 0 0;
   }
