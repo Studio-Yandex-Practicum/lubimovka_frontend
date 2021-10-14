@@ -34,7 +34,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         <h6 className={cx('title')}>{play.title}</h6>
         <div>
           <Button
-            className={'buttonCustom'}
+            className={cx('buttonCustom')}
             width='100%'
             size='l'
             view='primary'
@@ -46,7 +46,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             href={play.linkView}
           />
           <Button
-            className={'buttonCustom'}
+            className={cx('buttonCustom')}
             width='100%'
             size='l'
             view='primary'
