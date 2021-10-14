@@ -14,6 +14,9 @@ import styles from './index.module.css';
 
 const cx = cn.bind(styles);
 
+// data json
+import mainPlatformsData from './assets/main-platforms-data.json';
+
 interface IMainPageProps {
   title: string;
   metaTitle: string;
@@ -61,7 +64,9 @@ const Home: NextPage<IMainPageProps> = (props: IMainPageProps) => {
         {events && <MainEvents />}
         {aside && <MainAside />}
         {banners && <MainBanners />}
-        {platforms && <MainPlatforms />}
+
+        <MainPlatforms data={ mainPlatformsData[0] } />
+
         {shortList && <MainShortList />}
         {archive && <MainArchive />}
       </main>

@@ -11,7 +11,7 @@
     "title ."
     "events ."
     "banners ."
-    "platforms ."
+    "platforms platforms"
     "shortList ."
     "archive archive";
   grid-template-columns: minmax(500px, 1108px) 1fr;
