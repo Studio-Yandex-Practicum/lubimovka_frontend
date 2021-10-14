@@ -1,5 +1,6 @@
 :root {
   --page-content-max-width: 1440px;
+  --page-content-min-width: 414px;
 
   /* Используется для установки размера, зависящего от ширины вьюпорта, например, calc(var(--vw-multiplier-tablet-portrait) * <размер элемента в дизайне без px> */
   --vw-multiplier-tablet-portrait: calc(100vw / 1440);
