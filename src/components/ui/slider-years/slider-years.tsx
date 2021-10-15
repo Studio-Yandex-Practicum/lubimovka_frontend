@@ -13,9 +13,9 @@ interface ISliderYearsProps {
 
 export const SliderYears: FC<ISliderYearsProps> = ( { className, years, currentYear, onClick }) => {
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
-    slidesPerView: 2,
+    slidesPerView: 13,
     mode: 'free-snap',
-    spacing: 15,
+    spacing: 40,
     centered: true,
     loop: false,
   });
