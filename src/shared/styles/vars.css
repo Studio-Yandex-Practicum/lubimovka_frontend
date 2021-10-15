@@ -1,9 +1,6 @@
 :root {
-  --figma-layout-width-desktop: 1440;
+  --page-content-max-width: 1440px;
 
-  /*
-  Множитель для конвертации px в vw.
-  Пример использования: calc([размер из макета] * [множитель])
-  */
-  --vw-size-multiplier: calc(100vw / var(--figma-layout-width-desktop));
+  /* Используется для установки размера, зависящего от ширины вьюпорта, например, calc(var(--vw-multiplier-tablet-portrait) * <размер элемента в дизайне без px> */
+  --vw-multiplier-tablet-portrait: calc(100vw / 1440);
 }
