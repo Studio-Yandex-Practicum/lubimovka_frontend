@@ -32,5 +32,45 @@
 ],
 "urlImage": "https://iscr.ru/images/2021/10/09/history-image-1.png",
     "dataSubtitle": "5–12 сентября",
-    "dataText": "В Москве на площадке «8/3». Читки fringe-программы фестиваля впервые прошли в Центре Вознесенского."
+    "dataText": "В Москве на площадке «8/3». Читки fringe-программы фестиваля впервые прошли в Центре Вознесенского.",
+    "content1": [
+      {
+      "subtitle": "Шорт-лист",
+      "href": "#",
+      "iconPlace": "right",
+      "icon": "arrow-right"
+      },
+      {
+        "subtitle": "Fringe-программа ",
+        "href": "#",
+        "iconPlace": "right",
+        "icon": "arrow-right"
+      },
+      {
+        "subtitle": "Особо отмеченные",
+        "href": "#",
+        "iconPlace": "right",
+        "icon": "arrow-right"
+      },
+      {
+        "subtitle": "Внеконкурсная программа",
+        "href": "#",
+        "iconPlace": "right",
+        "icon": "arrow-right"
+      }
+    ],
+    "content2": [
+      {
+        "subtitle": "Записи в блоге",
+        "href": "#",
+        "iconPlace": "right",
+        "icon": "arrow-right"
+      },
+      {
+        "subtitle": "Видео с фестиваля",
+        "href": "#",
+        "iconPlace": "right",
+        "icon": "arrow-right"
+      }
+    ]
 }

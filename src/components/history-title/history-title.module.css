@@ -36,6 +36,7 @@
 
 .gridcontent {
   display: grid;
+  margin-bottom: 38px;
   column-gap: 4.51vw;
   grid-template-columns: repeat(auto-fit, minmax(142px, 1fr));
   row-gap: 66px;
@@ -54,9 +55,30 @@
   margin-top: 20px;
 }
 
-.button {
+.button.link {
   @mixin textVerySuperLarge;
   @mixin textNeueMachina;
 
   padding: 0;
+}
+
+.links {
+  display: grid;
+  justify-content: center;
+  margin-right: 6.39vw;
+  margin-bottom: 141px;
+  grid-template-columns: repeat(auto-fit, minmax(298px, 1fr));
+}
+
+.subsection {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitle {
+  @mixin textVerySuperLarge;
+  @mixin textNeueMachina;
+
+  padding-top: 58px;
+  margin-bottom: 35px;
 }

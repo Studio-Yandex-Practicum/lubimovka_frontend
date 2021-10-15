@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import { Menu } from 'components/ui/menu';
-import { MenuItem } from 'components/ui/menu/menu-item';
+import { MenuItem } from 'components/ui/menu/item';
 import style from './history-header.module.css';
 
 interface TextItemData {
@@ -11,7 +11,6 @@ interface TextItemData {
 }
 interface IHistoryHeaderProps {
   data: {
-
     content: Array<TextItemData>
   }
 }
@@ -20,15 +19,13 @@ const HistoryHeader: FC<IHistoryHeaderProps> = ({ data }) => {
   const { content } = data;
   return (
     <section className={style.section}>
-
       <div className={style.list}>
-
-        <Menu view="sectionNavigation">
+        <Menu type="main-navigation">
           {content.map((el) => (
-            <MenuItem className={cn(style.element)} key={el.id} type={'navLink'} active={el.active}>{el.year.toString()}</MenuItem>
+            <MenuItem  key={el.id} href={'#'} current={el.active}>
+              <p className={cn(style.element)}>{el.year.toString()}</p></MenuItem>
           ))}
         </Menu>
-
       </div>
     </section>
   );

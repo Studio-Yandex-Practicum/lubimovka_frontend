@@ -64,3 +64,8 @@
   font-size: 14px;
   line-height: 20px;
 }
+
+@define-mixin textVerySuperGreat {
+  font-size: 72px;
+  line-height: 70px;
+}
