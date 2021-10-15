@@ -59,17 +59,17 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
 
   return (
     <article
-      className={cn(styles.cardEvents)}
+      className={cn(styles.card)}
     >
       {coverResourceUrl &&
-        <div className={cn(styles.coverEvents)}>
-          <img className={cn(styles.coverEvents)} src={coverResourceUrl}></img>
+        <div >
+          <img className={cn(styles.cover)} src={coverResourceUrl}></img>
         </div>
       }
-      <div className={cn(styles.infoEvents)}>
+      <div className={cn(styles.info)}>
         <div className={cn(styles.dateInfo)}>
           <p className={cn(styles.date)}>{date}</p>
-          <p className={cn(styles.timeEvents)}>{time}</p>
+          <p className={cn(styles.time)}>{time}</p>
         </div>
         <h5 className={cn(styles.title, !coverResourceUrl && styles.titleNoCover)}>{title}</h5>
         { directorArray.length > 0 && playwrightArray.length > 0 &&
@@ -84,11 +84,11 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         }
         <p className={cn(styles.description)}>читка проекта Любимовка.Ещё</p>
         {buttonLinks.length === 2 &&
-          <div className={cn(styles.buttonEventsContainer, coverResourceUrl && styles.buttonEventsContainerCoverExists )}>
+          <div className={cn(styles.buttonContainer, coverResourceUrl && styles.buttonContainerCoverExists )}>
             <Button
               view='primary'
               width='154px'
-              className={styles.buttonEvents}
+              className={styles.button}
               align='start'
               gap='9px'
               size='s'
@@ -102,7 +102,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             <Button
               view='primary'
               width='154px'
-              className={styles.buttonEvents}
+              className={styles.button}
               align='start'
               gap='9px'
               size='s'
@@ -116,11 +116,11 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           </div>
         }
         {buttonLinks.length === 1 &&
-          <div className={cn(styles.buttonEventsContainer, coverResourceUrl ? styles.buttonEventsContainerCoverExists : styles.buttonEventsNoCover)}>
+          <div className={cn(styles.buttonContainer, coverResourceUrl ? styles.buttonContainerCoverExists : styles.buttonNoCover)}>
             <Button
               view='primary'
               width='154px'
-              className={styles.buttonEvents}
+              className={styles.button}
               align='start'
               gap='9px'
               size='s'

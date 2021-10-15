@@ -1,4 +1,4 @@
-.cardEvents {
+.card {
   display: flex;
   max-width: 420px;
   flex-direction: row;
@@ -11,13 +11,13 @@
   }
 }
 
-.cardEvents:last-child {
+.card:last-child {
   @media (max-width: 576px) {
     border-bottom: var(--coal) solid 1px;
   }
 }
 
-.coverEvents {
+.cover {
   width: 120px;
   height: 161px;
   padding-right: 31px;
@@ -29,7 +29,7 @@
   }
 }
 
-.infoEvents {
+.info {
   display: flex;
   width: 269px;
   flex-direction: column;
@@ -54,7 +54,7 @@
   }
 }
 
-.timeEvents {
+.time {
   padding: 0;
   margin: 0;
 }
@@ -122,7 +122,7 @@
   }
 }
 
-.buttonEvents {
+.button {
   margin-bottom: 16px;
 
   @media (max-width: 576px) {
@@ -131,11 +131,11 @@
   }
 }
 
-.buttonEvents:last-child {
+.button:last-child {
   margin-bottom: 0;
 }
 
-.buttonEventsContainer {
+.buttonContainer {
   margin-top: 16px;
 
   @media (max-width: 576px) {
@@ -145,14 +145,14 @@
   }
 }
 
-.buttonEventsContainerCoverExists {
+.buttonContainerCoverExists {
   @media (max-width: 576px) {
     margin-top: 48px;
     margin-left: -123px;
   }
 }
 
-.buttonEventsContainerNoCover {
+.buttonContainerNoCover {
   @media (max-width: 576px) {
     margin-left: 0;
   }
