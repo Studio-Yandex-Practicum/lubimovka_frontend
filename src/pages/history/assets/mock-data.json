@@ -2,7 +2,8 @@
     "content": [
       {
         "id": 1,
-        "year": 2020
+        "year": 2020,
+        "active": true
       },
       {
         "id": 2,

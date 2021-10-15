@@ -27,7 +27,7 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
   const { content,urlImage, dataSubtitle, dataText } = data;
   return (
     <section className={style.section}>
-      <div className={style.image} style={{background: urlImage}}></div>
+      <img src={urlImage} alt="Изображение" className={style.image} />
       <div className={style.content}>
         <div>
           <h2 className={cn(style.dataSubtitle)}>{dataSubtitle}</h2>
