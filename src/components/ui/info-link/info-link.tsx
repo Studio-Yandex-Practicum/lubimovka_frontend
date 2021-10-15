@@ -41,7 +41,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
     styles[section]
   );
 
-  const children = (
+  const linkChildren = (
     <React.Fragment>
       {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
       {<span className={cn(styles.label, styles[iconPlace])}>{label}</span>}
@@ -55,7 +55,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
       <a className={classes}
         {...restButtonProps}
       >
-        {children}
+        {linkChildren}
       </a>
     </Link>
     ||
@@ -64,7 +64,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
       {...restButtonProps}
       rel="noopener noreferrer" target="_blank"
     >
-      {children}
+      {linkChildren}
     </a>
   );
 };
