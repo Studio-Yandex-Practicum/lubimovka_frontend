@@ -12,6 +12,7 @@ const Template: ComponentStory<typeof ProjectCard> = (args) => <ProjectCard {...
 export const LubimovkaMore = Template.bind({});
 LubimovkaMore.args = {  
   data: {
+    link: '/projects/more',
     imgUrl: 'http://rtcam.ru/images/lubimovka/projects/praktika.jpg',
     imgAlt: 'Люди в зрительном зале',
     title: 'Любимовка.Ещё',
