@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import styles from './main-events.module.css';
 
-import { AnnouncedPlayCard } from '../ui/announced-play-card';
+import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
 
 interface Item {
   id: number

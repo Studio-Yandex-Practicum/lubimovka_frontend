@@ -19,11 +19,11 @@
     left: 50%;
     width: 1px;
     height: calc(100% - 10px);
-    background-color: #242424;
+    background-color: var(--coal);
     content: '';
   }
 
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: $tablet-portrait) {
     grid-template-columns: 100%;
     row-gap: 32px;
 
