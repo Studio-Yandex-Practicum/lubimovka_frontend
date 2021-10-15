@@ -1,0 +1,82 @@
+.card {
+  display: flex;
+  max-width: 240px;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  @media (max-width: $mobile-landscape) {
+    max-width: 244px;
+  }
+}
+
+.container {
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--light-green);
+}
+
+.buttonCustom {
+  opacity: 0;
+  transition: visibility .5s ease-in-out, opacity .5s ease-in-out;
+  visibility: hidden;
+
+  @media (max-width: $mobile-landscape) {
+    visibility: visible;
+  }
+}
+
+.container:hover .buttonCustom {
+  opacity: 1;
+  visibility: visible;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline7;
+
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 24px 31px auto 24px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 16px 0 auto;
+}
+
+.authorName {
+  @mixin headline;
+  @mixin headline7;
+
+  display: inline;
+  max-width: 190px;
+}
+
+.authorName:hover {
+  background-color: var(--coal);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.city {
+  @mixin text;
+  @mixin textSmall;
+
+  margin: 0;
+  margin-top: 4px;
+}
+
+.year {
+  @mixin text;
+  @mixin textSmall;
+
+  margin: 0;
+}
