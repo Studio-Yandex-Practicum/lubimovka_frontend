@@ -67,7 +67,7 @@ LinkNumber.args = {
 export const LinkInfoInFooter = Template.bind({});
 LinkInfoInFooter.args = {
   label: 'Контакты',
-  section: 'infoFooter',
+  hoverStyle: 'bottomLine',
   size: 'xs',
 };
 
@@ -76,6 +76,6 @@ LinkInFooter.args = {
   isOutsideLink: true,
   href: 'https://ru.shishki.co/',
   label: 'shishki.collective',
-  section: 'footer',
+  hoverStyle: 'bottomLineAndInvert',
   size: 'xs'
 };

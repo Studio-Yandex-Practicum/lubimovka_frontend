@@ -13,7 +13,7 @@ interface ILinkProps {
   label: string;
   icon?: IIconProps['glyph'],
   iconPlace?: 'iconNone' | 'left' | 'right';
-  section?: 'noFooter' | 'infoFooter' | 'footer';
+  hoverStyle?: 'invert' | 'bottomLine' | 'bottomLineAndInvert';
   size?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'number';
   textDecoration?: 'textDecorationNone' | 'underline';
   border?: 'borderNone' | 'borderBottomLeft' | 'borderTop';
@@ -26,7 +26,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
     label,
     icon,
     iconPlace = 'iconNone',
-    section = 'noFooter',
+    hoverStyle = 'invert',
     size = 's',
     textDecoration = 'textDecorationNone',
     border = 'borderNone',
@@ -38,7 +38,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
     styles[size],
     styles[textDecoration],
     styles[border],
-    styles[section]
+    styles[hoverStyle]
   );
 
   const linkChildren = (

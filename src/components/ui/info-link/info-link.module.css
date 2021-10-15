@@ -15,7 +15,7 @@
   @mixin text;
 }
 
-.noFooter {
+.invert {
   transition: filter .5s ease-in;
 
   &:hover {
@@ -23,7 +23,7 @@
   }
 }
 
-.link.infoFooter {
+.link.bottomLine {
   position: relative;
   line-height: 1;
   text-decoration: none;
@@ -45,7 +45,7 @@
   }
 }
 
-.link.footer {
+.link.bottomLineAndInvert {
   position: relative;
   line-height: 1;
   text-decoration: none;
@@ -137,7 +137,7 @@
   }
 }
 
-.xs.infoFooter {
+.xs.bottomLine {
   @media (max-width: $mobile-landscape) {
     @mixin textMedium;
 
