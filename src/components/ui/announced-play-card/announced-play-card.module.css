@@ -4,7 +4,7 @@
   flex-direction: row;
   list-style-type: none;
 
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     width: 100%;
     padding: 32px 0;
     border-top: var(--coal) solid 1px;
@@ -12,7 +12,7 @@
 }
 
 .card:last-child {
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     border-bottom: var(--coal) solid 1px;
   }
 }
@@ -23,7 +23,7 @@
   padding-right: 31px;
   object-fit: cover;
 
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     width: 92px;
     height: 123px;
   }
@@ -49,7 +49,7 @@
   margin: 0;
   margin-right: 44px;
 
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     margin-right: 46px;
   }
 }
@@ -67,7 +67,7 @@
   width: 419px;
   margin-top: 4px;
 
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     width: 382px;
     margin-top: 16px;
   }
@@ -86,7 +86,7 @@
   flex-direction: column;
   margin: 16px 0 0 30px;
 
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     margin-left: 0;
   }
 }
@@ -104,7 +104,7 @@
   width: 359px;
   margin: 16px 0 0 30px;
 
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     margin-left: 0;
   }
 }
@@ -117,7 +117,7 @@
   padding-top: 20px;
   margin: 0;
 
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     padding-top: 8px;
   }
 }
@@ -125,7 +125,7 @@
 .button {
   margin-bottom: 16px;
 
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     margin-right: 26px;
     margin-bottom: 0;
   }
@@ -138,7 +138,7 @@
 .buttonContainer {
   margin-top: 16px;
 
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     display: flex;
     width: 380px;
     flex-direction: row;
@@ -146,14 +146,14 @@
 }
 
 .buttonContainerCoverExists {
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     margin-top: 48px;
     margin-left: -123px;
   }
 }
 
 .buttonContainerNoCover {
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     margin-left: 0;
   }
 }
