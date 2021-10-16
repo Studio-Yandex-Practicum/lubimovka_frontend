@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 import { Button } from '../button';
 
 import styles from './announced-play-card.module.css';
+
+const cx = cn.bind(styles);
 
 interface IAnnouncedPlayCardProps {
   date: string;
@@ -36,21 +38,21 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     <React.Fragment>
       {
         playwrightArray.length > 1 ?
-          (<p className={cn(styles.creditsEntry)}>
+          (<p className={cx('creditsEntry')}>
         Драматурги: {creditsArrayToString (playwrightArray)}
           </p>)
           :
-          (<p className={cn(styles.creditsEntry)}>
+          (<p className={cx('creditsEntry')}>
         Драматург: {playwrightArray}
           </p>)
       }
       {
         directorArray.length > 1 ?
-          (<p className={cn(styles.creditsEntry)}>
+          (<p className={cx('creditsEntry')}>
         Режиссёры: {creditsArrayToString (directorArray)}
           </p>)
           :
-          (<p className={cn(styles.creditsEntry)}>
+          (<p className={cx('creditsEntry')}>
           Режиссёр: {directorArray}
           </p>)
       }
@@ -59,36 +61,36 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
 
   return (
     <article
-      className={cn(styles.card)}
+      className={cx('card')}
     >
       {coverResourceUrl &&
         <div >
-          <img className={cn(styles.cover)} src={coverResourceUrl}></img>
+          <img className={cx('cover')} src={coverResourceUrl}></img>
         </div>
       }
-      <div className={cn(styles.info)}>
-        <div className={cn(styles.dateInfo)}>
-          <p className={cn(styles.date)}>{date}</p>
-          <p className={cn(styles.time)}>{time}</p>
+      <div className={cx('info')}>
+        <div className={cx('dateInfo')}>
+          <p className={cx('date')}>{date}</p>
+          <p className={cx('time')}>{time}</p>
         </div>
-        <h5 className={cn(styles.title, !coverResourceUrl && styles.titleNoCover)}>{title}</h5>
+        <h5 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h5>
         { directorArray.length > 0 && playwrightArray.length > 0 &&
-        <div className={cn(styles.credits)}>
+        <div className={cx('credits')}>
           {creditsRendered}
         </div>
         }
         { eventDescription &&
-        <div className={cn(styles.eventDescription)}>
+        <div className={cx('eventDescription')}>
           {eventDescription}
         </div>
         }
-        <p className={cn(styles.description)}>читка проекта Любимовка.Ещё</p>
+        <p className={cx('description')}>читка проекта Любимовка.Ещё</p>
         {buttonLinks.length === 2 &&
-          <div className={cn(styles.buttonContainer, coverResourceUrl && styles.buttonContainerCoverExists )}>
+          <div className={cx('buttonContainer', coverResourceUrl && 'buttonContainerCoverExists' )}>
             <Button
               view='primary'
               width='154px'
-              className={styles.button}
+              className={cx('button')}
               align='start'
               gap='9px'
               size='s'
@@ -102,7 +104,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             <Button
               view='primary'
               width='154px'
-              className={styles.button}
+              className={cx('button')}
               align='start'
               gap='9px'
               size='s'
@@ -116,11 +118,11 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           </div>
         }
         {buttonLinks.length === 1 &&
-          <div className={cn(styles.buttonContainer, coverResourceUrl ? styles.buttonContainerCoverExists : styles.buttonNoCover)}>
+          <div className={cx('buttonContainer', coverResourceUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
             <Button
               view='primary'
               width='154px'
-              className={styles.button}
+              className={cx('button')}
               align='start'
               gap='9px'
               size='s'
