@@ -54,19 +54,18 @@
   max-width: 720px;
 }
 
-/* Декор */
-.containerDecor {
+.containerSpace {
   width: 100%;
 }
 
-.containerDecorUp {
+.containerSpaceUp {
   width: 100%;
   min-width: 24px;
   height: 47%;
   background-color: var(--light-green);
 }
 
-.containerDecorDown {
+.containerSpaceDown {
   width: 100%;
   min-width: 24px;
   height: 53%;

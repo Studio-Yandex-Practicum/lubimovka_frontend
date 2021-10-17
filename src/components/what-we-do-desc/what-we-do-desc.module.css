@@ -76,7 +76,6 @@
 
   .contentSelected {
     margin-bottom: 0;
-    grid-row-start: 1;
   }
 
   .content {
@@ -106,6 +105,10 @@
     max-width: 274px;
     margin-top: 0;
     margin-left: auto;
+  }
+
+  .imgSelected {
+    grid-row-start: 2;
   }
 
   .containerSelected {
