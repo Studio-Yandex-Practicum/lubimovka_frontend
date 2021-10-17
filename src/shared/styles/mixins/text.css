@@ -69,3 +69,9 @@
   font-size: 72px;
   line-height: 70px;
 }
+
+@define-mixin textHistory {
+  font-size: 36px;
+  letter-spacing: -.01em;
+  line-height: 38px;
+}

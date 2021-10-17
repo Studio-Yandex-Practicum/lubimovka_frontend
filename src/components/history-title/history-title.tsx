@@ -24,7 +24,6 @@ interface IHistoryTitle {
     content2: Array<TextItemData>
   }
 }
-const cx = cn.bind(style);
 const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
   const { content,urlImage, dataSubtitle, dataText, content1, content2 } = data;
   return (
@@ -43,11 +42,11 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
                 iconPlace={el.iconPlace}
                 icon={el.icon}
                 href={el.href}
-                align={'start'}
-                width={'93px'}
+                align={'space-between'}
+                width={'106px'}
                 size={'l'}
                 gap={'0'}
-                className={cx('button', 'link')}>
+                className={cn(style.button, style.link, style.title)}>
               </Button>
               <p className={cn(style.element)}>{el.text}</p>
             </div>

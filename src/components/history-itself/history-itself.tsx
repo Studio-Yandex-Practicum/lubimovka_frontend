@@ -25,6 +25,13 @@ const HistoryItself: FC<IHistoryItself>= ({ data }) => {
           <p className={style.text}>{content[0].text}</p>
         </div>
       </div>
+      <p className={style.text1}>{content[1].text}</p>
+      <p className={style.text2}>{content[2].text}</p>
+      <div className={style.flex1}>
+        <img src={images[1].image} alt="изображение" className={style.image}/>
+        <img src={images[2].image} alt="изображение" className={style.image}/>
+      </div>
+      <p className={style.text3}>{content[3].text}</p>
     </section>
   );
 };

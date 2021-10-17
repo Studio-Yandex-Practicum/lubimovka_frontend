@@ -55,11 +55,15 @@
   margin-top: 20px;
 }
 
-.button.link {
+.button.link.title {
   @mixin textVerySuperLarge;
   @mixin textNeueMachina;
 
   padding: 0;
+
+  &:hover {
+    color: var(--white);
+  }
 }
 
 .links {

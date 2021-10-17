@@ -7,6 +7,7 @@
 
 .flex {
   display: flex;
+  margin-bottom: 102px;
 }
 
 .title_flex {
@@ -33,4 +34,45 @@
 
   padding-left: 4.3vw;
   margin-top: 37px;
+}
+
+.text1 {
+  @mixin textNeueMachina;
+  @mixin textHistory;
+
+  max-width: 60.35vw;
+  margin-bottom: 57px;
+  margin-left: 12.5vw;
+}
+
+.text2 {
+  @mixin textLarge;
+  @mixin text;
+
+  max-width: 49.93vw;
+  margin-right: auto;
+  margin-bottom: 102px;
+  margin-left: auto;
+}
+
+.flex1 {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 89px;
+}
+
+.image {
+  width: 43.75vw;
+  height: 342px;
+  object-fit: cover;
+}
+
+.text3 {
+  @mixin textLarge;
+  @mixin text;
+
+  max-width: 49.93vw;
+  padding-bottom: 250px;
+  margin-right: auto;
+  margin-left: auto;
 }
