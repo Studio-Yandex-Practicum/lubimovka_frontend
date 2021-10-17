@@ -1,3 +1,29 @@
 .container {
+  width: 269px;
   background-color: var(--beige);
+}
+
+.title {
+  @mixin headline;
+  @mixin headline7;
+
+  margin-bottom: 16px;
+}
+
+.years {
+  margin-bottom: 38px;
+}
+
+.programmesList {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  row-gap: 13px;
+}
+
+.programme {
+  &:hover {
+    cursor: pointer;
+  }
 }
