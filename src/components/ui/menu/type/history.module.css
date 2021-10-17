@@ -34,8 +34,8 @@
     visibility: hidden;
 
     @media (min-width: 1440px) {
-      width: 10px;
-      height: 24px;
+      width: 16px;
+      height: 41px;
     }
   }
 

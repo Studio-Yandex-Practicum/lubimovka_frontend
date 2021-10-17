@@ -20,10 +20,10 @@ const HistoryHeader: FC<IHistoryHeaderProps> = ({ data }) => {
   return (
     <section className={style.section}>
       <div className={style.list}>
-        <Menu type="main-navigation">
+        <Menu type="history">
           {content.map((el) => (
             <MenuItem  key={el.id} href={'#'} current={el.active}>
-              <p className={cn(style.element)}>{el.year.toString()}</p></MenuItem>
+              {el.year}</MenuItem>
           ))}
         </Menu>
       </div>
