@@ -65,6 +65,11 @@ export const WhatWeDoHeader: FC<IWhatWeDoHeaderProps> = ({ data }): JSX.Element 
       </div>
       <div className={ cn(styles.container) }>
         <img src={ image } className={ cn(styles.img) } />
+        {/* Декор */}
+        <div className={ cn(styles.containerDecor) }>
+          <div className={ cn(styles.containerDecorUp) }></div>
+          <div className={ cn(styles.containerDecorDown) }></div>
+        </div>
       </div>
     </section>
   );

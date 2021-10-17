@@ -27,7 +27,7 @@
   margin-bottom: 14px;
 }
 
-@media all and (max-width: 601px) {
+@media all and (max-width: $tablet-portrait) {
   .contacts {
     padding: 56px 24px 50px;
   }

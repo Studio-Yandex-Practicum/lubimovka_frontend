@@ -6,7 +6,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: -200px;
   background-color: #b7c09d;
 }
 
@@ -28,7 +27,7 @@
   max-width: 520px;
   flex-direction: column;
   align-self: end;
-  margin: 0 110px 215px 85px;
+  margin: 0 110px 15px 85px;
 }
 
 .desc {
@@ -45,18 +44,36 @@
 
 .container {
   position: relative;
-  z-index: 100;
-  max-width: 720px;
-  margin-bottom: -220px;
+  display: flex;
 }
 
 .img {
   @mixin img;
 
-  margin-left: -24px;
+  width: calc(100% - 24px);
+  max-width: 720px;
 }
 
-@media all and (max-width: 601px) {
+/* Декор */
+.containerDecor {
+  width: 100%;
+}
+
+.containerDecorUp {
+  width: 100%;
+  min-width: 24px;
+  height: 47%;
+  background-color: var(--light-green);
+}
+
+.containerDecorDown {
+  width: 100%;
+  min-width: 24px;
+  height: 53%;
+  background-color: var(--beige);
+}
+
+@media (max-width: $tablet-portrait) {
   .content {
     margin-bottom: -114px;
   }
