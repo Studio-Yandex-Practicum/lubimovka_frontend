@@ -30,10 +30,8 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
     <section className={style.section}>
       <img src={urlImage} alt="Изображение" className={style.image} />
       <div className={style.content}>
-        <div>
-          <h2 className={cn(style.dataSubtitle)}>{dataSubtitle}</h2>
-          <p className={cn(style.datatext)}>{dataText}</p>
-        </div>
+        <h2 className={cn(style.dataSubtitle)}>{dataSubtitle}</h2>
+        <p className={cn(style.datatext)}>{dataText}</p>
         <div className={cn(style.gridcontent)}>
           {content.map((el, index) => (
             <div key={index} className={cn(style.card)}>
@@ -63,7 +61,8 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
                 href={el.href}
                 align={'start'}
                 size={'l'}
-                gap={'0'}>
+                gap={'8px'}
+                className={cn(style.button, style.link, style.subtitle)}>
               </Button>
             ))}
           </div>
@@ -77,7 +76,8 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
                 href={el.href}
                 align={'start'}
                 size={'l'}
-                gap={'0'}>
+                gap={'8px'}
+                className={cn(style.button, style.link, style.subtitle)}>
               </Button>
             ))}
           </div>

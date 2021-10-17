@@ -14,12 +14,11 @@
 
 .link {
   @mixin textNeueMachina;
+  @mixin textSuperLarge;
 
   display: flex;
   align-items: flex-start;
   color: var(--coal);
-  font-size: calc(var(--vw-multiplier-tablet-portrait) * 28);
-  line-height: calc(var(--vw-multiplier-tablet-portrait) * 32);
   text-decoration: none;
   white-space: nowrap;
 

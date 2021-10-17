@@ -20,3 +20,16 @@
 
   margin-right: 40px;
 }
+
+@media (max-width: $tablet-portrait) {
+  .section {
+    height: 88px;
+    border-bottom: none;
+  }
+
+  .list {
+    padding-top: 26.5px;
+    padding-bottom: 21.5px;
+    margin-left: 40px;
+  }
+}
