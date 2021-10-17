@@ -17,7 +17,7 @@
 .programmesList {
   display: grid;
   padding: 0;
-  margin: 0;
+  margin: 0 0 75px;
   list-style: none;
   row-gap: 13px;
 }
