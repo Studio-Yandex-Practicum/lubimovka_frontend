@@ -1,6 +1,7 @@
 const path = require('path');
 
 const breakpoints = require('./src/shared/breakpoints');
+const scale = require('./src/shared/helpers/scale')();
 
 module.exports = {
   plugins: [
@@ -17,5 +18,13 @@ module.exports = {
       }
     ],
     'postcss-nested',
+    [
+      'postcss-functions',
+      {
+        functions: {
+          scale,
+        },
+      }
+    ]
   ],
-}
+};
