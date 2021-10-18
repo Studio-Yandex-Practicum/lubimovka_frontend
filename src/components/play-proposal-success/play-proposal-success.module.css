@@ -3,7 +3,10 @@
   max-width: 1095px; /* Для плавного перехода, исправить */
   box-sizing: border-box;
   padding-top: 123px;
-  margin: -1rem; /* Убрать у body 1rem */
+
+  /* margin: -1rem; */
+
+  /* Убрать у body 1rem */
   gap: 51px;
 
   @media (max-width: $tablet-portrait) {
