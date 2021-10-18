@@ -15,14 +15,14 @@ interface IArticleShare {
 
 const renderCreators = (label: string, creators: string[]) => {
   return(
-    <div>
-      <p className={cx('label')}>{label}</p>
+    <dl>
+      <dt className={cx('label')}>{label}</dt>
       {
         creators.map(creator => {
-          return <p key={creator} className={cx('creator')}>{creator}</p>;
+          return <dd key={creator} className={cx('creator')}>{creator}</dd>;
         })
       }
-    </div>
+    </dl>
   );
 };
 
