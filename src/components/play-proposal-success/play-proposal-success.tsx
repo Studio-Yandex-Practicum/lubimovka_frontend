@@ -14,7 +14,7 @@ export const PlayProposalSuccess: FC<IPlayProposalSuccessProps> = (props)=> {
     <article className={cx('page')}>
       <h1 className={cx('title')}>{title}</h1>
       <div className={cx('image-conatiner')}>
-        <img src='/assets/PlayProposalSuccessImage.png' className={cx('image')}/>
+        <img src='/image/play-proposal-success/PlayProposalSuccessImage.png' className={cx('image')}/>
       </div>
     </article>
   );
