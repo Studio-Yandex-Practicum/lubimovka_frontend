@@ -1,17 +1,71 @@
 .section {
-  display: flex;
   width: 100%;
-  height: 240px;
-  align-items: center;
-  justify-content: center;
+  box-sizing: border-box;
+  padding: 65px 60px 105px 60px;
   background-color: white;
   grid-area: platforms;
 }
 
-.title {
-  width: clamp(298px, 100%, 640px);
-  text-align: center;
-
+.titleMain {
   @mixin text;
   @mixin headline1;
+
+  margin-bottom: 74px;
+}
+
+.list {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  column-gap: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+  row-gap: 40px;
+}
+
+.item {
+  display: flex;
+  max-width: 300px;
+  min-height: 260px;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 15px 30px 38px 30px;
+  border-bottom: 1px solid var(--coal);
+  border-left: 1px solid var(--coal);
+}
+
+.mapIcon {
+  margin-bottom: 14px;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline7;
+
+  margin-bottom: 15px;
+}
+
+.desc {
+  @mixin text;
+  @mixin textSmall;
+
+  margin-bottom: 12px;
+  margin-left: 30px;
+}
+
+.containerLink {
+  display: flex;
+  margin-top: auto;
+}
+
+.link {
+  display: flex;
+  margin-top: auto;
+  text-decoration: none;
+}
+
+.text {
+  @mixin text;
+  @mixin textSmall;
+
+  margin-right: 8px;
 }
