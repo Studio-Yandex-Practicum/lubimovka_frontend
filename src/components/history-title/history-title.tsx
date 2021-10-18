@@ -1,18 +1,12 @@
 import { FC } from 'react';
 import cn from 'classnames';
-import {Button} from '../ui/button/button';
+import {Button} from 'components/ui/button/button';
 
 import style from './history-title.module.css';
 interface TextItemData {
   subtitle: string
   text?: string
   href?: string
-  iconPlace?: 'right'
-  icon?:'arrow-right'
-  align?:'start'
-  width?: '81px'
-  size?: 'l'
-  gap?: '0'
 }
 interface IHistoryTitle {
   data: {
@@ -20,12 +14,16 @@ interface IHistoryTitle {
     urlImage: string,
     dataSubtitle: string,
     dataText: string,
-    content1: Array<TextItemData>,
-    content2: Array<TextItemData>
+    plays: Array<TextItemData>,
+    additionally: Array<TextItemData>
   }
 }
 const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
-  const { content,urlImage, dataSubtitle, dataText, content1, content2 } = data;
+  const { content,urlImage, dataSubtitle, dataText, plays, additionally } = data;
+  const iconPlace = 'right';
+  const icon = 'arrow-right';
+  const alignSpace = 'space-between';
+  const alignStart = 'start';
   return (
     <section className={style.section}>
       <img src={urlImage} alt="Изображение" className={style.image} />
@@ -35,17 +33,26 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
         <div className={cn(style.gridcontent)}>
           {content.map((el, index) => (
             <div key={index} className={cn(style.card)}>
-              <Button
-                label={el.subtitle}
-                iconPlace={el.iconPlace}
-                icon={el.icon}
-                href={el.href}
-                align={'space-between'}
-                width={'106px'}
-                size={'l'}
-                gap={'0'}
-                className={cn(style.button, style.link, style.title)}>
-              </Button>
+              {el.href ?
+                <Button
+                  label={el.subtitle}
+                  iconPlace={iconPlace}
+                  icon={icon}
+                  href={el.href}
+                  align={alignSpace}
+                  width={'106px'}
+                  size={'l'}
+                  gap={'0'}
+                  className={cn(style.button, style.link, style.title)}>
+                </Button> :
+                <Button
+                  label={el.subtitle}
+                  align={alignStart}
+                  width={'106px'}
+                  size={'l'}
+                  gap={'0'}
+                  className={cn(style.button, style.link, style.title)}>
+                </Button>}
               <p className={cn(style.element)}>{el.text}</p>
             </div>
           ))}
@@ -53,13 +60,13 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
         <div className={style.links}>
           <div className={style.subsection}>
             <h2 className={style.subtitle}>Пьесы</h2>
-            {content1.map((el, index) => (
+            {plays.map((el, index) => (
               <Button key={index}
                 label={el.subtitle}
-                iconPlace={el.iconPlace}
-                icon={el.icon}
+                iconPlace={iconPlace}
+                icon={icon}
                 href={el.href}
-                align={'start'}
+                align={alignStart}
                 size={'l'}
                 gap={'8px'}
                 className={cn(style.button, style.link, style.subtitle)}>
@@ -68,13 +75,13 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
           </div>
           <div className={style.subsection}>
             <h2 className={style.subtitle}>Дополнительно</h2>
-            {content2.map((el, index) => (
+            {additionally.map((el, index) => (
               <Button key={index}
                 label={el.subtitle}
-                iconPlace={el.iconPlace}
-                icon={el.icon}
+                iconPlace={iconPlace}
+                icon={icon}
                 href={el.href}
-                align={'start'}
+                align={alignStart}
                 size={'l'}
                 gap={'8px'}
                 className={cn(style.button, style.link, style.subtitle)}>

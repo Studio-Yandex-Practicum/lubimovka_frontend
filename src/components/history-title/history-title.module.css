@@ -7,7 +7,7 @@
   width: 45.83vw;
   height: 612px;
   margin-right: 4.17vw;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .content {
