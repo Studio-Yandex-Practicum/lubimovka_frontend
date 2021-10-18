@@ -5,6 +5,19 @@ const scale = require('./src/shared/helpers/scale')();
 
 module.exports = {
   plugins: [
+    'postcss-flexbugs-fixes',
+    [
+      'postcss-preset-env',
+      {
+        'autoprefixer': {
+          'flexbox': 'no-2009',
+        },
+        'stage': 3,
+        'features': {
+          'custom-properties': false
+        }
+      }
+    ],
     [
       'postcss-mixins',
       {
