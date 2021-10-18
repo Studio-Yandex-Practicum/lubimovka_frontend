@@ -14,6 +14,9 @@ interface IArticleShare {
 }
 
 const renderCreators = (label: string, creators: string[]) => {
+  if (creators.length == 0) {
+    return null;
+  }
   return(
     <dl>
       <dt className={cx('label')}>{label}</dt>
@@ -29,26 +32,18 @@ const renderCreators = (label: string, creators: string[]) => {
 const ArticleShare: React.FC<IArticleShare> = (props) => {
   const {
     isBlog,
-    authors,
-    photographers,
-    illustrators,
+    authors = [],
+    photographers = [],
+    illustrators = [],
   } = props;
 
   return (
     <section className={cx('container', {newsContainer: !isBlog})}>
-      { (authors || photographers || illustrators) &&
+      { (authors.length + photographers.length + illustrators.length > 0) &&
         <div className={cx('creators')}>
-          {authors &&
-            renderCreators('Текст', authors)
-          }
-
-          {photographers &&
-            renderCreators('Фото', photographers)
-          }
-
-          {illustrators &&
-            renderCreators('Иллюстрации', illustrators)
-          }
+          {renderCreators('Текст', authors)}
+          {renderCreators('Фото', photographers)}
+          {renderCreators('Иллюстрации', illustrators)}
         </div>}
       <div className={cx('share', {blogShare: isBlog, newsShare: !isBlog})}>
         <div className={cx('links')}>
