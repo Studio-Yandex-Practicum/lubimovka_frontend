@@ -6,6 +6,7 @@ import {FestivalEvents} from '../../components/afishe-festival-events';
 import {RegularEvents} from '../../components/afishe-regular-events';
 
 import styles from './afishe.module.css';
+import {AppLayout} from '../../components/app-layout';
 
 const cx = cn.bind(styles);
 
@@ -18,7 +19,7 @@ interface IAfisheProps {
 export const getStaticProps: () => { props: IAfisheProps } = () => {
   return {
     props: {
-      title: 'Title',
+      title: 'Компонент Afishe-Title',
       festivalEvents: true,
       regularEvents: false,
     },
@@ -32,11 +33,13 @@ const Afishe: NextPage<IAfisheProps> = (props: IAfisheProps) => {
     regularEvents
   } = props;
   return (
-    <main className={cx('main')}>
-      {title && <AfisheTitle title={title}/>}
-      {festivalEvents && <FestivalEvents/>}
-      {regularEvents && <RegularEvents/>}
-    </main>
+    <AppLayout>
+      <main className={cx('main')}>
+        {title && <AfisheTitle title={title}/>}
+        {festivalEvents && <FestivalEvents/>}
+        {regularEvents && <RegularEvents/>}
+      </main>
+    </AppLayout>
   );
 };
 

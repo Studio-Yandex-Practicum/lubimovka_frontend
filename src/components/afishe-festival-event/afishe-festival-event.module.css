@@ -1,1 +1,35 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
 
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-right: 118px;
+}
+
+.date {
+  @mixin text;
+  @mixin textLarge;
+
+  margin-bottom: 11px;
+}
+
+.span {
+  @mixin headline;
+  @mixin headline1;
+}
+
+.registration {
+  padding: 5px 25px;
+  background-color: var(--coal);
+
+  @mixin text;
+  @mixin textMedium;
+
+  color: var(--white);
+}
