@@ -9,4 +9,3 @@ export default {
 const Template: ComponentStory<typeof PlayProposalSuccess> = () => <PlayProposalSuccess/>;
 
 export const Default = Template.bind({});
-
