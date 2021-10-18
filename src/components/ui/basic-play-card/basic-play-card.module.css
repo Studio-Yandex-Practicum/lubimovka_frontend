@@ -18,6 +18,7 @@
 }
 
 .buttonCustom {
+  height: 56px;
   opacity: 0;
   transition: visibility .5s ease-in-out, opacity .5s ease-in-out;
   visibility: hidden;
