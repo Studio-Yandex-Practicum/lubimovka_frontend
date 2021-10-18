@@ -42,12 +42,9 @@
 .title {
   @mixin headline;
   @mixin headline7;
+  @mixin truncated-text 6;
 
-  display: -webkit-box;
-  overflow: hidden;
   margin: 24px 31px auto 24px;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 6;
 
   @media (max-width: $tablet-portrait) {
     margin: 16px 46px auto 16px;
