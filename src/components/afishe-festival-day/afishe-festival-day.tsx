@@ -1,9 +1,9 @@
 import {FC} from 'react';
 
-import styles from './afishe-festival-event.module.css';
+import styles from './afishe-festival-day.module.css';
 import {EventCard} from '../event-card';
 
-export const FestivalEvent: FC = () => {
+export const FestivalDay: FC = () => {
   return (
     <section className={styles.section}>
       <div className={styles.wrapper}>

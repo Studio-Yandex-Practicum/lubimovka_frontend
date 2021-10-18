@@ -2,7 +2,7 @@ import {NextPage} from 'next';
 import cn from 'classnames/bind';
 
 import {AfisheTitle} from '../../components/afishe-title';
-import {FestivalEvents} from '../../components/afishe-festival-events';
+import {FestivalEvents} from '../../components/afishe-festival-days';
 import {RegularEvents} from '../../components/afishe-regular-events';
 
 import styles from './afishe.module.css';
