@@ -58,7 +58,7 @@ export const AppLayout: FC = (props) => {
       <Page.Overlay isOpen={false && isMobile}>
         <OverlayNav>
           <OverlayNav.Logotype>
-            <Logotype href='/' />
+            <Logotype href='/' title="Фестиваль Любимовка" />
           </OverlayNav.Logotype>
           <OverlayNav.Menu>
             <Menu type="overlay-navigation">
