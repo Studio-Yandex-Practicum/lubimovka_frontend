@@ -1,32 +1,32 @@
 .selection {
-  padding: 54px 60px 45px;
-  background-color: #ecebe8;
+  padding: scale(54px 60px 45px);
+  background-color: var(--beige);
 }
 
 .mainTitle {
   @mixin headline;
   @mixin headline3;
 
-  max-width: 540px;
-  margin: 0 180px 56px auto;
+  max-width: scale(540px);
+  margin: scale(0 180px 56px) auto;
 }
 
 .list {
   display: grid;
   justify-content: center;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 68px;
-  column-gap: 90px;
-  grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
+  padding: scale(0);
+  margin: scale(0);
+  margin-bottom: scale(68px);
+  column-gap: scale(90px);
+  grid-template-columns: repeat(auto-fit, minmax(21.875rem, max-content));
   list-style: none;
-  row-gap: 64px;
+  row-gap: scale(64px);
 }
 
 .item {
   display: grid;
   align-content: start;
-  row-gap: 24px;
+  row-gap: scale(24px);
 }
 
 .number {
@@ -38,7 +38,7 @@
   @mixin headline;
   @mixin headline6;
 
-  min-height: 96px;
+  min-height: scale(96px);
 }
 
 .desc {
@@ -48,13 +48,13 @@
 
 .poster {
   display: grid;
-  max-width: 1320px;
+  max-width: scale(1320px);
   justify-content: space-evenly;
-  padding: 0 24px 64px;
-  margin: 0 auto;
-  background-color: #b7c09d;
-  column-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(305px, max-content));
+  padding: scale(0 24px 64px);
+  margin: scale(0) auto;
+  background-color: var(--light-green);
+  column-gap: scale(20px);
+  grid-template-columns: repeat(auto-fit, minmax(scale(305px), max-content));
 }
 
 .posterTitle {
@@ -62,48 +62,48 @@
   @mixin headline6;
 
   display: flex;
-  max-width: 468px;
+  max-width: scale(468px);
   flex-direction: column;
-  margin-top: 64px;
+  margin-top: scale(64px);
 }
 
 .ampersand {
   @mixin headline;
   @mixin headline1;
 
-  margin-bottom: 16px;
+  margin-bottom: scale(16px);
 }
 
 .posterDesc {
   @mixin text;
   @mixin textSmall;
 
-  max-width: 485px;
-  margin-top: 220px;
+  max-width: scale(485px);
+  margin-top: scale(220px);
   margin-left: auto;
 }
 
 @media (max-width: $tablet-portrait) {
   .selection {
-    padding: 40px 0 0;
+    padding: scale(40px 0 0);
   }
 
   .mainTitle {
     @mixin headline4;
 
-    padding: 0 24px;
-    margin: 0;
-    margin-bottom: 24px;
+    padding: scale(0 24px);
+    margin: scale(0);
+    margin-bottom: scale(24px);
   }
 
   .list {
-    padding: 0 24px;
-    margin-bottom: 72px;
+    padding: scale(0 24px);
+    margin-bottom: scale(72px);
     grid-template-columns: none;
   }
 
   .item {
-    row-gap: 0;
+    row-gap: scale(0);
   }
 
   .number {
@@ -111,28 +111,28 @@
   }
 
   .title {
-    min-height: 0;
-    margin-bottom: 24px;
+    min-height: scale(0);
+    margin-bottom: scale(24px);
   }
 
   .desc {
-    max-width: 280px;
+    max-width: scale(280px);
     align-self: right;
-    margin-right: 24px;
-    margin-bottom: 24px;
+    margin-right: scale(24px);
+    margin-bottom: scale(24px);
     margin-left: auto;
 
     &:last-of-type {
-      margin-bottom: 0;
+      margin-bottom: scale(0);
     }
   }
 
   .poster {
-    padding-bottom: 72px;
+    padding-bottom: scale(72px);
   }
 
   .posterDesc {
-    max-width: 305px;
-    margin-top: 24px;
+    max-width: scale(305px);
+    margin-top: scale(24px);
   }
 }
