@@ -9,7 +9,8 @@ export const socialLinkItems= [
   },
   {
     text: 'ytube',
-    href: '#'
+    href: '#',
+    primary: true,
   },
   {
     text: 'tlgrm',
