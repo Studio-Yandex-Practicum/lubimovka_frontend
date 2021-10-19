@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
 import classNames from 'classnames/bind';
+import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
+
 
 import { Logotype } from 'components/logotype';
 import { Icon } from 'components/ui/icon';
@@ -18,6 +21,7 @@ interface ISocialLink extends ILink {
 }
 
 interface IOverlayNavProps {
+  isOpen: boolean;
   navLinks: ILink[];
   actionLinks: ILink[];
   socialLinks: ISocialLink[];
@@ -25,12 +29,18 @@ interface IOverlayNavProps {
 
 export const OverlayNav = (props: IOverlayNavProps): JSX.Element => {
   const {
+    isOpen,
     navLinks,
     actionLinks,
     socialLinks,
   } = props;
+
+  useEffect(() => {
+    isOpen ? disableBodyScroll() : enableBodyScroll();
+  }, [isOpen]);
+
   return (
-    <div id='navigation' className={cx('overlayNav')}>
+    <div className={cx('overlayNav', { visible: isOpen })}>
       <section className={cx('container')}>
         <Logotype className={cx('logotype')} href='/' />
         <Menu className={cx('menu')} type="overlay-navigation">

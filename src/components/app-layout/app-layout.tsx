@@ -51,6 +51,7 @@ export const AppLayout: FC = (props) => {
       </Page.Header>
       {children}
       <OverlayNav
+        isOpen={false}
         navLinks={overlayNavigationItems}
         actionLinks={overlayActionItems}
         socialLinks={socialLinkItems}
