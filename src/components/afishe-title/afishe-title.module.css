@@ -1,0 +1,13 @@
+.section {
+  display: flex;
+  height: 470px;
+  align-items: center;
+  justify-content: right;
+}
+
+.title {
+  width: clamp(298px, 100%, 542px);
+
+  @mixin headline;
+  @mixin headline1;
+}

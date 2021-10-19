@@ -3,32 +3,39 @@ import {FC} from 'react';
 import styles from './afishe-festival-day.module.css';
 import {EventCard} from '../event-card';
 
-export const FestivalDay: FC = () => {
+export interface IFestivalDayProps {
+  day: {
+    id: number,
+    date: number,
+    month: string,
+    plays: [
+      {
+        id: number,
+        time: string,
+        location: string,
+        title: string,
+        image?: string,
+        description: string,
+        director?: string,
+        playwright?: string,
+        registrationUrl?: string
+      }
+    ]
+  }
+}
+
+export const FestivalDay: FC<IFestivalDayProps> = (props) => {
+  const {day} = props;
   return (
     <section className={styles.section}>
       <div className={styles.wrapper}>
-        <p className={styles.date}><span className={styles.span}>15</span>&nbsp;декабря</p>
+        <p className={styles.date}><span className={styles.span}>{day.date}</span>&nbsp;{day.month}</p>
         <p className={styles.registration}>открыта регистрация</p>
       </div>
-      <EventCard time='13:00' location='Площадка «8/3»' title='Камино норте'
-        image='https://source.unsplash.com/random'
-        description='(Не)деликатная пьеса о психоневрологическом интернате' director='Катя Ганюшина'
-        playwright='Ольга Казакова'
-        registrationUrl='#'/>
-      <EventCard time='14:00' location='Площадка «8/3»' title='Что я узнал о творчестве благодаря драматургам'
-        description='Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.'
-        playwright='Антон Чехов'
-        registrationUrl='#'/>
-      <EventCard time='17:00' location='Площадка «8/3»' title='Ответ на пощёчину'
-        description='(Не)деликатная пьеса о психоневрологическом интернате'
-        director='Катя Ганюшина'
-        playwright='Ольга Казакова'
-        registrationUrl='#'/>
-      <EventCard time='19:00' location='Площадка «8/3»' title='МАМА'
-        description='(Не)деликатная пьеса о психоневрологическом интернате'
-        director='Катя Ганюшина'
-        playwright='Ольга Казакова'
-        registrationUrl='#'/>
+      {day.plays.map(play => (
+        <EventCard key={play.id} time={play.time} location={play.location} title={play.title} image={play.image}
+          description={play.description} director={play.director} playwright={play.playwright}
+          registrationUrl={play.registrationUrl}/>))}
     </section>
   );
 };
