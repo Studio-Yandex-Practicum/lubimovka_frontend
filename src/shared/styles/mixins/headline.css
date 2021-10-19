@@ -33,8 +33,8 @@
 }
 
 @define-mixin headline6 {
-  font-size: 28px;
-  line-height: 32px;
+  font-size: scale(28px);
+  line-height: scale(32px);
 }
 
 @define-mixin headline7 {
