@@ -66,7 +66,7 @@
 
 @media (max-width: $tablet-portrait) {
   .descItem {
-    padding: 276px 24px 72px 0;
+    padding: 56px 24px 72px 0;
   }
 
   .contentReception {
@@ -113,6 +113,7 @@
 
   .containerSelected {
     margin-left: 24px;
+    grid-row-start: 1;
   }
 
   .containerInvite {
