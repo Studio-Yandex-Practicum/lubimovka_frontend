@@ -52,3 +52,14 @@ PlayCardEventsViewOneButtonNoCover.args = {
   directorArray: ['Катя Ганюшина'],
   buttonLinks: ['https://lubimovka.timepad.ru/event/1746579/'],
 };
+
+export const PlayCardEventsViewNoCredits = Template.bind({});
+PlayCardEventsViewNoCredits.args = {
+  date:'15 декабря',
+  time: '11:00',
+  title: 'Что я узнал о творчестве благодаря драматургам',
+  playwrightArray: [],
+  directorArray: [],
+  eventDescription: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
+  buttonLinks: ['https://lubimovka.timepad.ru/event/1746579/'],
+};
