@@ -1,4 +1,7 @@
+.partnersContainer {
+  background-color: #ecebe8;
+}
+
 .partners {
   padding: scale(70px 210px 138px 210px);
-  background-color: #ecebe8;
 }

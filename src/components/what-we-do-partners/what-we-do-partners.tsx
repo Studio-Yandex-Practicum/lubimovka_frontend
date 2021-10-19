@@ -7,8 +7,8 @@ import { Partners } from 'components/partners';
 
 export const WhatWeDoPartners: FC = (): JSX.Element => {
   return (
-    // <section className={ cn(styles.partners) }>
-    <Partners className={styles.partners} />
-    // </section>
+    <section className={ cn(styles.partnersContainer) }>
+      <Partners className={styles.partners} />
+    </section>
   );
 };
