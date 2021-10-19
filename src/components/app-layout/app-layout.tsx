@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import { Page } from 'components/page';
 import { Menu } from 'components/ui/menu';
@@ -11,9 +12,12 @@ import { overlayNavigationItems } from 'shared/constants/overlay-navigation-item
 import { overlayActionItems } from 'shared/constants/overlay-action-items';
 import { socialLinkItems } from 'shared/constants/social-link-items';
 import { OverlayNav } from 'components/overlay-nav';
+import * as breakpoints from 'shared/breakpoints.js';
 
 export const AppLayout: FC = (props) => {
   const { children } = props;
+
+  const isMobile = useMediaQuery({ query: `(max-width: ${breakpoints['tablet-portrait']})` });
 
   return (
     <Page>
@@ -51,7 +55,7 @@ export const AppLayout: FC = (props) => {
         </Navbar>
       </Page.Header>
       {children}
-      <Page.Overlay isOpen={false}>
+      <Page.Overlay isOpen={false && isMobile}>
         <OverlayNav>
           <OverlayNav.Logotype>
             <Logotype href='/' />
