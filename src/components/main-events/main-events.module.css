@@ -1,27 +1,19 @@
-.section {
+.events {
+  width: 100%;
+  padding: 110px 0 114px;
+  grid-area: events;
+}
+
+.content {
   position: relative;
-  z-index: -1;
   display: grid;
   width: 100%;
-  min-height: 1074px;
   align-content: center;
-  align-items: center;
   justify-content: center;
-  grid-area: events;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, max-content);
   justify-items: center;
   row-gap: 48px;
-
-  &::before {
-    position: absolute;
-    top: 4px;
-    left: 50%;
-    width: 1px;
-    height: calc(100% - 10px);
-    background-color: var(--coal);
-    content: '';
-  }
 
   @media screen and (max-width: $tablet-portrait) {
     grid-template-columns: 100%;
@@ -30,5 +22,15 @@
     &::before {
       display: none;
     }
+  }
+
+  &::before {
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    width: 1px;
+    height: calc(100%);
+    background-color: var(--coal);
+    content: '';
   }
 }

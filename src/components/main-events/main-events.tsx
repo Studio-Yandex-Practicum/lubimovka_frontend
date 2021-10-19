@@ -20,21 +20,23 @@ interface IMainEventsProps {
 
 export const MainEvents: FC<IMainEventsProps> = ({ data }) => {
   return (
-    <section className={styles.section}>
-      {
-        data.map(item => {
-          return <AnnouncedPlayCard 
-            key={ item.id } 
-            date={ item.date }
-            time={ item.time }
-            title={ item.title }
-            playwrightArray={ item.playwrightArray }
-            directorArray={ item.directorArray }
-            buttonLinks={ item.buttonLinks }
-            coverResourceUrl={ item.coverResourceUrl && item.coverResourceUrl }
-          />;
-        })
-      }
+    <section className={styles.events}>
+      <div className={styles.content}>
+        {
+          data.map(item => {
+            return <AnnouncedPlayCard 
+              key={ item.id } 
+              date={ item.date }
+              time={ item.time }
+              title={ item.title }
+              playwrightArray={ item.playwrightArray }
+              directorArray={ item.directorArray }
+              buttonLinks={ item.buttonLinks }
+              coverResourceUrl={ item.coverResourceUrl && item.coverResourceUrl }
+            />;
+          })
+        }
+      </div>
     </section>
   );
 };
