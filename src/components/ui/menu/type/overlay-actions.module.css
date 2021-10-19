@@ -1,0 +1,34 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  border-top: 1px solid var(--coal);
+  list-style: none;
+}
+
+.item {
+  display: block;
+}
+
+.link {
+  @mixin text;
+  @mixin textSmall;
+
+  position: relative;
+  display: flex;
+  padding: 15px;
+  border: 1px solid var(--coal);
+  border-top: unset;
+  border-right: unset;
+  color: var(--coal);
+  cursor: pointer;
+  place-content: center space-between;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: var(--coal);
+    color: var(--beige);
+  }
+}

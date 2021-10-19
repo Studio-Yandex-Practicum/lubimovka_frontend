@@ -6,7 +6,10 @@ import { Navbar } from 'components/navbar';
 import { Logotype } from 'components/logotype';
 
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
+import { overlayNavigationItems } from 'shared/constants/overlay-navigation-items';
+import { overlayActionItems } from 'shared/constants/overlay-action-items';
 import { socialLinkItems } from 'shared/constants/social-link-items';
+import { OverlayNav } from 'components/overlay-nav';
 
 export const AppLayout: FC = (props) => {
   const { children } = props;
@@ -47,6 +50,11 @@ export const AppLayout: FC = (props) => {
         </Navbar>
       </Page.Header>
       {children}
+      <OverlayNav
+        navLinks={overlayNavigationItems}
+        actionLinks={overlayActionItems}
+        socialLinks={socialLinkItems}
+      />
     </Page>
   );
 };
