@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import { Page } from 'components/page';
 import { Menu } from 'components/ui/menu';
+import { Icon } from 'components/ui/icon';
 import { Navbar } from 'components/navbar';
 import { Logotype } from 'components/logotype';
 
@@ -50,12 +51,42 @@ export const AppLayout: FC = (props) => {
         </Navbar>
       </Page.Header>
       {children}
-      <OverlayNav
-        isOpen={false}
-        navLinks={overlayNavigationItems}
-        actionLinks={overlayActionItems}
-        socialLinks={socialLinkItems}
-      />
+      <Page.Overlay isOpen={false}>
+        <OverlayNav>
+          <OverlayNav.Logotype>
+            <Logotype href='/' />
+          </OverlayNav.Logotype>
+          <OverlayNav.Menu>
+            <Menu type="overlay-navigation">
+              {overlayNavigationItems.map((item, idx) => (
+                <Menu.Item key={idx} href={item.href}>
+                  {item.text}
+                </Menu.Item>
+              ))}
+            </Menu>
+          </OverlayNav.Menu>
+          <OverlayNav.Actions>
+            <Menu type='overlay-actions'>
+              {overlayActionItems.map((item, idx) => (
+                <Menu.Item key={idx} href={item.href}>
+                  {item.text}
+                  <Icon glyph='arrow-right' />
+                </Menu.Item>
+              ))}
+            </Menu>
+          </OverlayNav.Actions>
+          <OverlayNav.Socials>
+            <Menu type='overlay-social-links'>
+              {socialLinkItems.map((item, idx) => (
+                <Menu.Item key={idx} href={item.href} primary={item.primary}>
+                  {item.text}
+                  <Icon glyph='arrow-right' />
+                </Menu.Item>
+              ))}
+            </Menu>
+          </OverlayNav.Socials>
+        </OverlayNav>
+      </Page.Overlay>
     </Page>
   );
 };
