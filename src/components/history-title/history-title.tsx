@@ -6,12 +6,12 @@ import style from './history-title.module.css';
 interface TextItemData {
   subtitle: string
   text?: string
-  href?: string
+  url?: string
 }
 interface IHistoryTitle {
   data: {
     content: Array<TextItemData>,
-    urlImage: string,
+    imageUrl: string,
     dataSubtitle: string,
     dataText: string,
     plays: Array<TextItemData>,
@@ -24,23 +24,23 @@ const alignSpace = 'space-between';
 const alignStart = 'start';
 
 const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
-  const { content,urlImage, dataSubtitle, dataText, plays, additionally } = data;
+  const { content, imageUrl, dataSubtitle, dataText, plays, additionally } = data;
 
   return (
     <section className={style.section}>
-      <img src={urlImage} alt="Изображение" className={style.image} />
+      <img src={imageUrl} alt="Изображение" className={style.image} />
       <div className={style.content}>
         <h2 className={cn(style.dataSubtitle)}>{dataSubtitle}</h2>
         <p className={cn(style.datatext)}>{dataText}</p>
         <div className={cn(style.gridcontent)}>
           {content.map((el, index) => (
             <div key={index} className={cn(style.card)}>
-              {el.href ?
+              {el.url ?
                 <Button
                   label={el.subtitle}
                   iconPlace={iconPlace}
                   icon={icon}
-                  href={el.href}
+                  href={el.url}
                   align={alignSpace}
                   width='106px'
                   size='l'
@@ -67,7 +67,7 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
                 label={el.subtitle}
                 iconPlace={iconPlace}
                 icon={icon}
-                href={el.href}
+                href={el.url}
                 align={alignStart}
                 size='l'
                 gap='8px'
@@ -82,7 +82,7 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
                 label={el.subtitle}
                 iconPlace={iconPlace}
                 icon={icon}
-                href={el.href}
+                href={el.url}
                 align={alignStart}
                 size='l'
                 gap='8px'
