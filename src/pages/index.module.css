@@ -4,7 +4,6 @@
   overflow: hidden;
   width: 100%;
   min-width: var(--page-content-min-width);
-  max-width: var(--page-content-max-width);
   box-sizing: border-box;
   margin: 0 auto;
   grid-template-areas:
@@ -15,10 +14,10 @@
     "shortList ."
     "archive archive"
     "partners .";
-  grid-template-columns: minmax(500px, 1108px) 1fr;
+  grid-template-columns: minmax(scale(500px), scale(1108px)) 1fr;
   grid-template-rows: repeat(6, max-content);
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: scale(1200px)) {
     grid-template-areas:
       "title"
       "events"
