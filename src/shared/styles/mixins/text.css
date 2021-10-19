@@ -6,26 +6,6 @@
   font-weight: 300;
 }
 
-@define-mixin textNeueMachina {
-  margin: 0;
-  color: var(--coal);
-  font-family: "PP Neue Machina", Arial, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-}
-
-@define-mixin textSuperLarge {
-  font-size: 28px;
-  letter-spacing: -.01em;
-  line-height: 32px;
-}
-
-@define-mixin textVerySuperLarge {
-  font-size: 40px;
-  letter-spacing: -.01em;
-  line-height: 40px;
-}
-
 @define-mixin textLarge {
   font-size: 20px;
   letter-spacing: -.01em;
@@ -63,12 +43,6 @@
 @define-mixin textPartners {
   font-size: 14px;
   line-height: 20px;
-}
-
-@define-mixin textHistory {
-  font-size: 36px;
-  letter-spacing: -.01em;
-  line-height: 38px;
 }
 
 @define-mixin textHistorySmall {

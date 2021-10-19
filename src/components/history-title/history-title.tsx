@@ -18,12 +18,14 @@ interface IHistoryTitle {
     additionally: Array<TextItemData>
   }
 }
+const iconPlace = 'right';
+const icon = 'arrow-right';
+const alignSpace = 'space-between';
+const alignStart = 'start';
+
 const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
   const { content,urlImage, dataSubtitle, dataText, plays, additionally } = data;
-  const iconPlace = 'right';
-  const icon = 'arrow-right';
-  const alignSpace = 'space-between';
-  const alignStart = 'start';
+
   return (
     <section className={style.section}>
       <img src={urlImage} alt="Изображение" className={style.image} />
@@ -40,17 +42,17 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
                   icon={icon}
                   href={el.href}
                   align={alignSpace}
-                  width={'106px'}
-                  size={'l'}
-                  gap={'0'}
+                  width='106px'
+                  size='l'
+                  gap='0'
                   className={cn(style.button, style.link, style.title)}>
                 </Button> :
                 <Button
                   label={el.subtitle}
                   align={alignStart}
-                  width={'106px'}
-                  size={'l'}
-                  gap={'0'}
+                  width='106px'
+                  size='l'
+                  gap='0'
                   className={cn(style.button, style.link, style.title)}>
                 </Button>}
               <p className={cn(style.element)}>{el.text}</p>
@@ -67,8 +69,8 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
                 icon={icon}
                 href={el.href}
                 align={alignStart}
-                size={'l'}
-                gap={'8px'}
+                size='l'
+                gap='8px'
                 className={cn(style.button, style.link, style.subtitle)}>
               </Button>
             ))}
@@ -82,8 +84,8 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
                 icon={icon}
                 href={el.href}
                 align={alignStart}
-                size={'l'}
-                gap={'8px'}
+                size='l'
+                gap='8px'
                 className={cn(style.button, style.link, style.subtitle)}>
               </Button>
             ))}

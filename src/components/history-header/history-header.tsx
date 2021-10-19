@@ -10,7 +10,7 @@ interface TextItemData {
 }
 interface IHistoryHeaderProps {
   data: {
-    content: Array<TextItemData>
+    content: TextItemData[]
   }
 }
 
@@ -22,7 +22,8 @@ const HistoryHeader: FC<IHistoryHeaderProps> = ({ data }) => {
         <Menu type="history">
           {content.map((el) => (
             <MenuItem  key={el.id} href={'#'} current={el.active}>
-              {el.year}</MenuItem>
+              {el.year}
+            </MenuItem>
           ))}
         </Menu>
       </div>

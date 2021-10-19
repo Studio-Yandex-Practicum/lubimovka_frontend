@@ -25,7 +25,7 @@
 }
 
 .title {
-  @mixin textNeueMachina;
+  @mixin headline;
 
   font-size: calc(var(--vw-multiplier-tablet-portrait) * 72);
   line-height: calc(var(--vw-multiplier-tablet-portrait) * 70);
@@ -40,8 +40,8 @@
 }
 
 .text1 {
-  @mixin textNeueMachina;
-  @mixin textHistory;
+  @mixin headline;
+  @mixin headline5;
 
   max-width: 60.35vw;
   margin-bottom: 57px;
@@ -86,7 +86,7 @@
   }
 
   .title {
-    @mixin textVerySuperLarge;
+    @mixin headline4;
   }
 
   .flex {
@@ -114,7 +114,7 @@
   }
 
   .text1 {
-    @mixin textSuperLarge;
+    @mixin headline6;
 
     max-width: 88.16vw;
     margin-right: auto;

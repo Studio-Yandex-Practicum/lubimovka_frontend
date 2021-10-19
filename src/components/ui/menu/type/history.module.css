@@ -13,11 +13,11 @@
 }
 
 .link {
-  @mixin textNeueMachina;
-  @mixin textSuperLarge;
+  @mixin headline;
+  @mixin headline6;
 
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   color: var(--coal);
   text-decoration: none;
   white-space: nowrap;

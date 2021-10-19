@@ -17,8 +17,8 @@
 }
 
 .dataSubtitle {
-  @mixin textVerySuperLarge;
-  @mixin textNeueMachina;
+  @mixin headline4;
+  @mixin headline;
 
   padding-top: 57px;
   margin-bottom: 17px;
@@ -56,8 +56,8 @@
 }
 
 .button.link.title {
-  @mixin textVerySuperLarge;
-  @mixin textNeueMachina;
+  @mixin headline4;
+  @mixin headline;
 
   padding: 0;
 
@@ -92,8 +92,8 @@
 }
 
 .subtitle {
-  @mixin textVerySuperLarge;
-  @mixin textNeueMachina;
+  @mixin headline4;
+  @mixin headline;
 
   padding-top: 58px;
   margin-bottom: 35px;
@@ -155,7 +155,7 @@
   }
 
   .subtitle {
-    @mixin textSuperLarge;
+    @mixin headline6;
 
     padding-top: 0;
     margin-bottom: 8px;
