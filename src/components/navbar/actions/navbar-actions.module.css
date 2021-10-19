@@ -3,12 +3,8 @@
 
   @media (min-width: $tablet-portrait) {
     display: flex;
-    height: calc(var(--vw-multiplier-tablet-portrait) * 61);
+    height: scale(61px);
     flex-grow: 1;
     place-content: stretch;
-  }
-
-  @media (min-width: 1440px) {
-    height: 61px;
   }
 }

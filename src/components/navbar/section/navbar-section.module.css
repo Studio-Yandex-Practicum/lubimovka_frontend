@@ -2,11 +2,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0 calc(var(--vw-multiplier-tablet-portrait) * 24);
-
-  @media (min-width: 1440px) {
-    padding: 0 24px;
-  }
+  padding: scale(0 24px);
 
   &:not(:last-child)::after {
     position: absolute;
@@ -26,10 +22,6 @@
   padding-right: 24px;
 
   @media (min-width: $tablet-portrait) {
-    padding-right: calc(var(--vw-multiplier-tablet-portrait) * 24);
-  }
-
-  @media (min-width: 1440px) {
-    padding-right: 24px;
+    padding-right: scale(24px);
   }
 }
