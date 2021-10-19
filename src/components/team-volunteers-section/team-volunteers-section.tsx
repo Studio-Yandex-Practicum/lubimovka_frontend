@@ -5,7 +5,7 @@ import PersonCard from '../ui/persons-card/persons-card';
 import style from './team-volunteers-section.module.css';
 import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
-import { useKeenSlider } from 'keen-slider/react';
+import { CurrentYearContext } from './contexts/current-user-contexts';
 
 interface PersonCardData {
   id: number,
@@ -51,12 +51,13 @@ const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = ({ data }) => {
     <section className={style.section}>
       <h2 className={style.title}>{title}</h2>
       <div >
-        <SliderYears
-          className={cn(style.yearsContainer)}
-          years={years}
-          currentYear={2020}
-          onClick={test}
-        />
+        <CurrentYearContext.Provider value={currentYear}>
+          <SliderYears
+            className={cn(style.yearsContainer)}
+            years={years}
+            onClick={test}
+          />
+        </CurrentYearContext.Provider>
       </div>
       <div className={style.cardContainer}>
         {selectedCards.map(card => {

@@ -1,17 +1,20 @@
-import { FC } from 'react';
+import { FC, useContext, useState } from 'react';
 import styles from './slider-years.module.css';
 import classNames from 'classnames';
 import { useKeenSlider } from 'keen-slider/react';
+import { CurrentYearContext } from 'components/team-volunteers-section/contexts/current-user-contexts';
 const cx = classNames.bind(styles);
 
 interface ISliderYearsProps {
   className: string;
   years: number[];
-  currentYear: number;
-  onClick: (index: number) => void;
+  //currentYear: number;
+  onClick: (year: number) => void;
 }
 
-export const SliderYears: FC<ISliderYearsProps> = ( { className, years, currentYear, onClick }) => {
+export const SliderYears: FC<ISliderYearsProps> = ( { className, years, onClick }) => {
+  const currentYear = useContext(CurrentYearContext);
+
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     slidesPerView: 13,
     mode: 'free-snap',
