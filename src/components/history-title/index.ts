@@ -1,1 +1,1 @@
-export {default} from './history-title';
+export * from './history-title';

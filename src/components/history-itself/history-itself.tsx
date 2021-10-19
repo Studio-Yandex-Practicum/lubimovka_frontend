@@ -19,7 +19,7 @@ interface IHistoryItself {
     historyImages: ImageItemData
   }
 }
-const HistoryItself: FC<IHistoryItself>= ({ data }) => {
+export const HistoryItself: FC<IHistoryItself>= ({ data }) => {
   const { historyContent, historyImages } = data;
   return (
     <section className={style.section}>
@@ -40,4 +40,4 @@ const HistoryItself: FC<IHistoryItself>= ({ data }) => {
     </section>
   );
 };
-export default HistoryItself;
+

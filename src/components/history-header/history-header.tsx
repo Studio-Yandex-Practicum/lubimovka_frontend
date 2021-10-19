@@ -14,7 +14,7 @@ interface IHistoryHeaderProps {
   }
 }
 
-const HistoryHeader: FC<IHistoryHeaderProps> = ({ data }) => {
+export const HistoryHeader: FC<IHistoryHeaderProps> = ({ data }) => {
   const { headerContent } = data;
   return (
     <section className={style.section}>
@@ -30,4 +30,4 @@ const HistoryHeader: FC<IHistoryHeaderProps> = ({ data }) => {
     </section>
   );
 };
-export default HistoryHeader;
+

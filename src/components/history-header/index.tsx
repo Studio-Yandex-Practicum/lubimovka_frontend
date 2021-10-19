@@ -1,1 +1,1 @@
-export {default} from './history-header';
+export * from './history-header';

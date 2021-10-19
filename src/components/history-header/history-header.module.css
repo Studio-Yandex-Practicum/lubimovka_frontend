@@ -8,9 +8,8 @@
 .list {
   display: flex;
   overflow: hidden;
+  height: 100%;
   align-items: center;
-  padding-top: 31px;
-  padding-bottom: 25px;
   margin-left: 50%;
 }
 
@@ -21,8 +20,6 @@
   }
 
   .list {
-    padding-top: 26.5px;
-    padding-bottom: 21.5px;
     margin-left: 40px;
   }
 }

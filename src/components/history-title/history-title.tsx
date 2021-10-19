@@ -10,12 +10,12 @@ interface TextItemData {
 }
 interface IHistoryTitle {
   data: {
-    content: Array<TextItemData>,
+    content: TextItemData[],
     imageUrl: string,
     dataSubtitle: string,
     dataText: string,
-    plays: Array<TextItemData>,
-    additionally: Array<TextItemData>
+    plays: TextItemData[],
+    additionally: TextItemData[]
   }
 }
 const iconPlace = 'right';
@@ -23,7 +23,7 @@ const icon = 'arrow-right';
 const alignSpace = 'space-between';
 const alignStart = 'start';
 
-const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
+export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
   const { content, imageUrl, dataSubtitle, dataText, plays, additionally } = data;
 
   return (
@@ -95,4 +95,4 @@ const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
     </section>
   );
 };
-export default HistoryTitle;
+
