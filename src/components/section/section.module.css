@@ -31,13 +31,13 @@
 
 .partners {
   .title {
-    max-width: 334px;
-    margin: 0 0 15px 0;
+    max-width: scale(334px);
+    margin: scale(0 0 15px 0);
 
     @mixin headline6;
 
     @media screen and (max-width: $tablet-portrait) {
-      margin-bottom: 24px;
+      margin-bottom: scale(24px);
     }
   }
 }
