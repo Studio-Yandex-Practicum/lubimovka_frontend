@@ -2,12 +2,23 @@
   display: flex;
   flex-direction: column;
   padding-left: 0;
-  border-top: 1px solid var(--coal);
   list-style: none;
 }
 
 .item {
   display: block;
+  border: 1px solid var(--coal);
+  border-right: 0;
+  color: var(--coal);
+
+  &:not(:first-child) {
+    border-top: 0;
+  }
+
+  &:hover {
+    background-color: var(--coal);
+    color: var(--beige);
+  }
 }
 
 .link {
@@ -17,18 +28,13 @@
   position: relative;
   display: flex;
   padding: 15px;
-  border: 1px solid var(--coal);
   border-top: unset;
   border-right: unset;
-  color: var(--coal);
+  color: inherit;
   cursor: pointer;
+  line-height: 1.6;
   place-content: center space-between;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
-
-  &:hover {
-    background-color: var(--coal);
-    color: var(--beige);
-  }
 }
