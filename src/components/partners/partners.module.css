@@ -2,7 +2,7 @@
   display: grid;
   width: 100%;
   box-sizing: border-box;
-  padding: calc(107 * var(--vw-multiplier-tablet-portrait)) 0 calc(179 * var(--vw-multiplier-tablet-portrait)) calc(60 * var(--vw-multiplier-tablet-portrait));
+  padding: scale(107px 0 179px 60px);
   background-color: transparent;
   grid-area: partners;
   grid-template-columns: 100%;
@@ -26,17 +26,13 @@
   align-items: center;
   padding: 0;
   margin: 0;
-  column-gap: calc(30 * var(--vw-multiplier-tablet-portrait));
+  column-gap: scale(30px);
   grid-auto-rows: minmax(118px, 137px);
   grid-template-columns: repeat(auto-fill, minmax(182px, 210px));
   grid-template-rows: repeat(2, minmax(118px, 137px));
   justify-items: center;
   list-style-type: none;
   row-gap: 15px;
-
-  @media screen and (min-width: 1440px) {
-    column-gap: 30px;
-  }
 
   @media screen and (max-width: $tablet-portrait) {
     column-gap: 0;
@@ -83,9 +79,9 @@
 
 .imageContainer {
   position: relative;
-  width: calc(182 * var(--vw-multiplier-tablet-portrait));
+  width: scale(182px);
   max-width: 182px;
-  height: calc(51 * var(--vw-multiplier-tablet-portrait));
+  height: scale(51px);
   max-height: 51px;
 
   @media screen and (max-width: $tablet-portrait) {
