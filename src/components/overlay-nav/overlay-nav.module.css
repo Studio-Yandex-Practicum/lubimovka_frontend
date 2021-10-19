@@ -1,39 +1,4 @@
 .overlayNav {
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  overflow: auto;
-  width: 100%;
-  height: 100%;
-  background-color: var(--beige);
-  opacity: 0;
-  transition: opacity .1s ease;
-}
-
-.visible {
-  z-index: 1;
-  opacity: 1;
-}
-
-.container {
   display: flex;
   flex-direction: column;
-}
-
-.logotype {
-  align-self: start;
-  margin: 48px 0 0 58px;
-}
-
-.menu {
-  margin: 32px 0 0 40px;
-}
-
-.actions {
-  margin: 58px 0 0 54px;
-}
-
-.social-links {
-  margin: 70px 0 0;
 }
