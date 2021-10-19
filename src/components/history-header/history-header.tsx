@@ -10,17 +10,17 @@ interface TextItemData {
 }
 interface IHistoryHeaderProps {
   data: {
-    content: TextItemData[]
+    headerContent: TextItemData[]
   }
 }
 
 const HistoryHeader: FC<IHistoryHeaderProps> = ({ data }) => {
-  const { content } = data;
+  const { headerContent } = data;
   return (
     <section className={style.section}>
       <div className={style.list}>
         <Menu type="history">
-          {content.map((el) => (
+          {headerContent.map((el) => (
             <MenuItem  key={el.id} href={'#'} current={el.active}>
               {el.year}
             </MenuItem>
