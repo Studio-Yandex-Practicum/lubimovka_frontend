@@ -1,28 +1,9 @@
-.container {
-  align-items: center;
-
-  @mixin headline;
-  @mixin headline6;
-}
-
 .slide {
-  display: flex;
-  height: 300px;
-  max-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  background: grey;
-  color: #fff;
-  font-size: 50px;
-  font-weight: 500;
-
-  @mixin headline;
-  @mixin headline6;
-}
-
-.year {
   margin: 0;
   cursor: pointer;
+
+  @mixin headline;
+  @mixin headline6;
 }
 
 .active {

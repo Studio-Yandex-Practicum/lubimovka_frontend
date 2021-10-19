@@ -1,5 +1,5 @@
 .section {
-  width: 1440px;
+  max-width: 1440px;
   background-color: var(--light-green);
   color: var(--coal);
 }
@@ -14,9 +14,6 @@
 
 .yearsContainer {
   padding-top: 42px;
-
-  @mixin headline;
-  @mixin headline6 !important;
 }
 
 .cardContainer {

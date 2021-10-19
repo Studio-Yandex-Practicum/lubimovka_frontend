@@ -2,10 +2,9 @@ import React, { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 
 import PersonCard from '../ui/persons-card/persons-card';
-import style from './team-volunteers-section.module.css';
+import styles from './team-volunteers-section.module.css';
 import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
-import { CurrentYearContext } from './contexts/current-user-contexts';
 
 interface PersonCardData {
   id: number,
@@ -43,23 +42,22 @@ const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = ({ data }) => {
     filterCards();
   }, [currentYear]);
 
-  const test = (year: number) => {
+  const changeYearHandler = (year: number) => {
     setCurrentYear(year);
   };
 
   return (
-    <section className={style.section}>
-      <h2 className={style.title}>{title}</h2>
+    <section className={styles.section}>
+      <h2 className={styles.title}>{title}</h2>
       <div >
-        <CurrentYearContext.Provider value={currentYear}>
-          <SliderYears
-            className={cn(style.yearsContainer)}
-            years={years}
-            onClick={test}
-          />
-        </CurrentYearContext.Provider>
+        <SliderYears
+          className={cn(styles.yearsContainer)}
+          years={years}
+          onClick={changeYearHandler}
+          currentYear={currentYear}
+        />
       </div>
-      <div className={style.cardContainer}>
+      <div className={styles.cardContainer}>
         {selectedCards.map(card => {
           return (<PersonCard
             key={card.id}
@@ -71,9 +69,9 @@ const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = ({ data }) => {
           );
         })}
       </div>
-      <div className={style.infoBlock}>
-        <Icon className={style.asterisk} glyph={'asterisk'}/>
-        <p className={style.info}>
+      <div className={styles.infoBlock}>
+        <Icon className={styles.asterisk} glyph={'asterisk'}/>
+        <p className={styles.info}>
           Если вы хотите быть волонтером, напишите нам на
           job@lubimovka.ru и расскажите о себе.
         </p>
