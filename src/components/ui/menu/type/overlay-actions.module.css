@@ -28,7 +28,7 @@
 
   position: relative;
   display: flex;
-  padding: 15px;
+  padding: scale(15px);
   border-top: unset;
   border-right: unset;
   color: inherit;

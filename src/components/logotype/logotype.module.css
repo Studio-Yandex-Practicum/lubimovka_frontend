@@ -5,11 +5,6 @@
 }
 
 .image {
-  width: 43px;
-  height: 34px;
-
-  @media (min-width: $tablet-portrait) {
-    width: scale(43px);
-    height: scale(35px);
-  }
+  width: scale(43px);
+  height: scale(35px);
 }
