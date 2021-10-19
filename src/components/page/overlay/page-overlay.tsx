@@ -15,7 +15,7 @@ export const PageOverlay = (props: IPageOverlayProps): JSX.Element => {
   const { isOpen, children } = props;
 
   useEffect(() => {
-    isOpen ? disableBodyScroll() : enableBodyScroll();
+    isOpen ? disableBodyScroll({ savePosition: true }) : enableBodyScroll();
   }, [isOpen]);
 
   return (
