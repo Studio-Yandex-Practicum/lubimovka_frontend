@@ -1,9 +1,8 @@
 import { FC } from 'react';
 import cn from 'classnames';
-
 import styles from './what-we-do-header.module.css';
 
-import { Menu } from '../ui/menu';
+import { Menu } from 'components/ui/menu';
 
 interface IWhatWeDoHeaderProps {
   data: {
