@@ -1,4 +1,8 @@
 export const mainNavigationItems = [
+  { text: 'Главная',
+    href: '/',
+    mobileOnly: true,
+  },
   { text: 'Афиша',
     href: '/afishe',
   },
@@ -29,5 +33,10 @@ export const mainNavigationItems = [
   {
     text: 'Контакты',
     href: '/contacts',
+  },
+  {
+    text: 'Для прессы',
+    href: '/for-press',
+    mobileOnly: true,
   },
 ];

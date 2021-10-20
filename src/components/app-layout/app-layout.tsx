@@ -7,8 +7,7 @@ import { Navbar } from 'components/navbar';
 import { Logotype } from 'components/logotype';
 
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
-import { overlayNavigationItems } from 'shared/constants/overlay-navigation-items';
-import { overlayActionItems } from 'shared/constants/overlay-action-items';
+import { formLink, donationLink } from 'shared/constants/action-link-items';
 import { socialLinkItems } from 'shared/constants/social-link-items';
 import { OverlayNav } from 'components/overlay-nav';
 import * as breakpoints from 'shared/breakpoints.js';
@@ -32,11 +31,13 @@ export const AppLayout: FC = (props) => {
           <Navbar.Actions>
             <Navbar.Section primary>
               <Menu type="main-navigation">
-                {mainNavigationItems.map((item) => (
-                  <Menu.Item key={item.text} href={item.href}>
-                    {item.text}
-                  </Menu.Item>
-                ))}
+                {mainNavigationItems
+                  .filter(item => !item.mobileOnly)
+                  .map((item) => (
+                    <Menu.Item key={item.text} href={item.href}>
+                      {item.text}
+                    </Menu.Item>
+                  ))}
               </Menu>
             </Navbar.Section>
             <Navbar.Section>
@@ -49,7 +50,7 @@ export const AppLayout: FC = (props) => {
               </Menu>
             </Navbar.Section>
             <Navbar.Section>
-              <Navbar.HelpLink href="#"/>
+              <Navbar.HelpLink label={donationLink.text} href={donationLink.href}/>
             </Navbar.Section>
           </Navbar.Actions>
         </Navbar>
@@ -62,7 +63,7 @@ export const AppLayout: FC = (props) => {
           </OverlayNav.Logotype>
           <OverlayNav.Menu>
             <Menu type="overlay-navigation">
-              {overlayNavigationItems.map((item, idx) => (
+              {mainNavigationItems.map((item, idx) => (
                 <Menu.Item key={idx} href={item.href}>
                   {item.text}
                 </Menu.Item>
@@ -71,7 +72,7 @@ export const AppLayout: FC = (props) => {
           </OverlayNav.Menu>
           <OverlayNav.Actions>
             <Menu type='overlay-actions'>
-              {overlayActionItems.map((item, idx) => (
+              {[formLink, donationLink].map((item, idx) => (
                 <Menu.Item key={idx} href={item.href}>
                   {item.text}
                   <Icon glyph='arrow-right' />
