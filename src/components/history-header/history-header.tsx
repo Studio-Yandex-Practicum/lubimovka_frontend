@@ -19,9 +19,9 @@ export const HistoryHeader: FC<IHistoryHeaderProps> = ({ data }) => {
   return (
     <section className={style.section}>
       <div className={style.list}>
-        <Menu type="history">
+        <Menu type='history'>
           {headerContent.map((el) => (
-            <MenuItem  key={el.id} href={'#'} current={el.active}>
+            <MenuItem  key={el.id} href='#' current={el.active}>
               {el.year}
             </MenuItem>
           ))}
