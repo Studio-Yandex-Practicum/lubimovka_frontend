@@ -83,7 +83,10 @@ export const AppLayout: FC = (props) => {
           <OverlayNav.Socials>
             <Menu type='overlay-social-links'>
               {socialLinkItems.map((item, idx) => (
-                <Menu.Item key={idx} href={item.href} primary={item.primary}>
+                <Menu.Item
+                  key={idx}
+                  href={item.href}
+                  mods={{ primary: item.primary ?? false }}>
                   {item.text}
                   <Icon glyph='arrow-right' />
                 </Menu.Item>

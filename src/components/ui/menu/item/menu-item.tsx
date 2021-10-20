@@ -7,14 +7,14 @@ import { useMenu } from '../menu.context';
 
 interface IMenuItemProps extends Pick<LinkProps, 'href'> {
   current?: boolean,
-  primary?: boolean,
+  mods?: Record<string, boolean>,
 }
 
 export const MenuItem: FC<IMenuItemProps> = (props) => {
   const {
     href,
     current = false,
-    primary = false,
+    mods = {},
     children,
   } = props;
   const { type } = useMenu();
@@ -25,7 +25,7 @@ export const MenuItem: FC<IMenuItemProps> = (props) => {
       'item',
       {
         current,
-        primary
+        ...mods
       },
     )}>
       <Link href={href}>
