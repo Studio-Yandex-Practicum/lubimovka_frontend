@@ -29,8 +29,6 @@
   position: relative;
   display: flex;
   padding: scale(15px);
-  border-top: unset;
-  border-right: unset;
   color: inherit;
   cursor: pointer;
   line-height: 1.6;
