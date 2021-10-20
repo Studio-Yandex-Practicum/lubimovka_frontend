@@ -7,16 +7,25 @@
 .content {
   position: relative;
   display: grid;
-  width: 100%;
-  align-content: center;
   justify-content: center;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, max-content);
-  justify-items: center;
-  row-gap: 48px;
+  padding: 0;
+  margin: 0;
+  column-gap: 120px;
+  grid-row-gap: 48px;
+  grid-template-columns: repeat(2, minmax(364px, max-content));
+  list-style: none;
+  row-gap: 74px;
+
+  @media screen and (max-width: 960px) {
+    display: flex;
+    grid-template-columns: none;
+
+    &::before {
+      display: none;
+    }
+  }
 
   @media screen and (max-width: $tablet-portrait) {
-    grid-template-columns: 100%;
     row-gap: 32px;
 
     &::before {
@@ -26,7 +35,7 @@
 
   &::before {
     position: absolute;
-    top: 4px;
+    top: 0;
     left: 50%;
     width: 1px;
     height: calc(100%);
