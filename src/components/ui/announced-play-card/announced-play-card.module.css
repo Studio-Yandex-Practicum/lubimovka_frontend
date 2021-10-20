@@ -151,3 +151,7 @@
     margin-left: 0;
   }
 }
+
+.bg {
+  background-color: red;
+}
