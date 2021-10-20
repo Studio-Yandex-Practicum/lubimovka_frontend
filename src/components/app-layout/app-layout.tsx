@@ -12,9 +12,12 @@ import { overlayActionItems } from 'shared/constants/overlay-action-items';
 import { socialLinkItems } from 'shared/constants/social-link-items';
 import { OverlayNav } from 'components/overlay-nav';
 import * as breakpoints from 'shared/breakpoints.js';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
 export const AppLayout: FC = (props) => {
   const { children } = props;
+
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
   return (
     <Page>
@@ -52,7 +55,7 @@ export const AppLayout: FC = (props) => {
         </Navbar>
       </Page.Header>
       {children}
-      <Page.Overlay isOpen={false && isMobile}>
+      {isMobile && <Page.Overlay isOpen={false}>
         <OverlayNav>
           <OverlayNav.Logotype>
             <Logotype href='/' title="Фестиваль Любимовка" />
@@ -87,7 +90,7 @@ export const AppLayout: FC = (props) => {
             </Menu>
           </OverlayNav.Socials>
         </OverlayNav>
-      </Page.Overlay>
+      </Page.Overlay>}
     </Page>
   );
 };
