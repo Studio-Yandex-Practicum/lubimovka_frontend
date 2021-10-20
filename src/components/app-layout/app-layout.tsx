@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { useMediaQuery } from 'react-responsive';
 
 import { Page } from 'components/page';
 import { Menu } from 'components/ui/menu';
@@ -16,8 +15,6 @@ import * as breakpoints from 'shared/breakpoints.js';
 
 export const AppLayout: FC = (props) => {
   const { children } = props;
-
-  const isMobile = useMediaQuery({ query: `(max-width: ${breakpoints['tablet-portrait']})` });
 
   return (
     <Page>
