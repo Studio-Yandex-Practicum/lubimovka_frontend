@@ -8,10 +8,12 @@
   height: 100%;
   background-color: var(--beige);
   opacity: 0;
-  transition: opacity .1s ease;
+  transition: visibility 100ms, opacity 100ms ease;
+  visibility: hidden;
 }
 
 .visible {
   z-index: 1;
   opacity: 1;
+  visibility: visible;
 }
