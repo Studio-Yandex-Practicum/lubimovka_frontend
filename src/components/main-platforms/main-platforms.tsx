@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 import cn from 'classnames';
 
-import { Icon } from '../ui/icon';
+import { Icon } from 'components/ui/icon';
 
 import styles from './main-platforms.module.css';
 
-interface card {
+interface ICard {
   id: number
   title: string
   desc: string
@@ -17,7 +17,7 @@ interface IMainPlatformsProps {
   data: {
     id: number
     title: string
-    content: Array<card>
+    content: ICard[]
   }
 }
 
@@ -44,7 +44,7 @@ export const MainPlatforms: FC<IMainPlatformsProps> = ({ data }) => {
                   <p className={ cn(styles.text) }>
                     { card.link[0] }
                   </p>
-                  <span>{ <Icon glyph={ 'arrow-right' } /> }</span>
+                  <span>{ <Icon glyph={ 'arrow-right' } fill={ 'black' } /> }</span>
                 </a>
               </Link>
             </li>
