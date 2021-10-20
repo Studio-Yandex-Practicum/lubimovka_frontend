@@ -11,6 +11,7 @@ interface IItem {
   title: string;
   playwrightArray: string [];
   directorArray: string [];
+  eventDescription?:string;
   buttonLinks: string [];
   coverResourceUrl?: string;
 }
@@ -31,6 +32,7 @@ export const MainEvents: FC<IMainEventsProps> = ({ data }) => {
                 title={ item.title }
                 playwrightArray={ item.playwrightArray }
                 directorArray={ item.directorArray }
+                eventDescription={ item.eventDescription && item.eventDescription }
                 buttonLinks={ item.buttonLinks }
                 coverResourceUrl={ item.coverResourceUrl && item.coverResourceUrl }
               />

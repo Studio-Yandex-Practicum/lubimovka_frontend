@@ -17,7 +17,7 @@
   row-gap: 74px;
 
   @media screen and (max-width: 960px) {
-    grid-template-columns: none;
+    grid-template-columns: repeat(1, minmax(364px, max-content));
 
     &::before {
       display: none;
