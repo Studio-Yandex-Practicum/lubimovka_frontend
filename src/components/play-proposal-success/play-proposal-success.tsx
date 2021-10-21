@@ -11,10 +11,10 @@ const cx = classNames.bind(styles);
 export const PlayProposalSuccess: FC<IPlayProposalSuccessProps> = (props)=> {
   const {title} = props;
   return (
-    <article className={cx('page')}>
+    <article className={cx('container')}>
       <h1 className={cx('title')}>{title}</h1>
       <div className={cx('image-conatiner')}>
-        <img src='/image/play-proposal-success/PlayProposalSuccessImage.png' className={cx('image')}/>
+        <img src='/image/play-proposal-success/PlayProposalSuccessImage.png' alt='Успешная отправка' className={cx('image')}/>
       </div>
     </article>
   );
