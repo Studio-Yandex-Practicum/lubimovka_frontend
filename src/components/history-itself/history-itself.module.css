@@ -67,7 +67,7 @@
 .image {
   width: 43.75vw;
   height: 342px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .text3 {
