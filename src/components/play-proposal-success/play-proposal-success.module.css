@@ -1,9 +1,7 @@
 .container {
   display: grid;
-  max-width: var(--page-content-max-width);
   box-sizing: border-box;
   padding-top: 123px;
-  margin: 0 auto; /* Выровнял как header */
   gap: 51px;
 
   @media (max-width: $tablet-portrait) {
@@ -17,7 +15,7 @@
   @mixin headline4;
 
   position: relative;
-  max-width: 606px;
+  max-width: scale(606px);
   margin-right: 35%;
   justify-self: end;
 
@@ -52,11 +50,10 @@
 }
 
 .image {
-  width: 100%;
-  max-width: 930px;
+  width: scale(930px);
   height: 100%;
 
   @media (max-width: $tablet-portrait) {
-    max-width: 390px;
+    width: scale(390px);
   }
 }
