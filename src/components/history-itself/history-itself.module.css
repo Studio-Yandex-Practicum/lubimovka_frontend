@@ -17,11 +17,11 @@
   margin-right: calc(var(--vw-multiplier-tablet-portrait) * 180);
 }
 
-.image_title {
+.imageTitle {
   width: calc(var(--vw-multiplier-tablet-portrait) * 360);
   margin-right: calc(var(--vw-multiplier-tablet-portrait) * 180);
   margin-left: calc(var(--vw-multiplier-tablet-portrait) * 180);
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .title {
@@ -95,7 +95,7 @@
     margin-bottom: 56px;
   }
 
-  .image_title {
+  .imageTitle {
     width: 88.41vw;
     margin-top: 56px;
     margin-right: 0;

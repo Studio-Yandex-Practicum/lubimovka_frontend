@@ -24,7 +24,7 @@ export const HistoryItself: FC<IHistoryItself>= ({ data }) => {
   return (
     <section className={style.section}>
       <div className={style.contentTop}>
-        <img src={historyImages.imageUrl1} alt='изображение' className={style.image_title}/>
+        <img src={historyImages.imageUrl1} alt='изображение' className={style.imageTitle}/>
         <div className={style.contentTopTitle}>
           <h1 className={style.title}>История фестиваля</h1>
           <p className={style.text}>{historyContent.text1}</p>
