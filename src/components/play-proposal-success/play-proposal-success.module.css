@@ -1,4 +1,4 @@
-.page {
+.container {
   display: grid;
   max-width: var(--page-content-max-width);
   box-sizing: border-box;
