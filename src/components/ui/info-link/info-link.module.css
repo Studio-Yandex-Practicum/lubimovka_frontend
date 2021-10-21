@@ -67,7 +67,7 @@
     width: 100%;
   }
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     &::after {
       width: 100%;
     }
@@ -132,13 +132,13 @@
 .xs {
   @mixin textCaption;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     text-decoration: 1px underline;
   }
 }
 
 .xs.bottomLine {
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     @mixin textMedium;
 
     text-decoration: none;
