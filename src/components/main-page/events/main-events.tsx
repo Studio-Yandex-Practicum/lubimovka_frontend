@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import styles from './main-events.module.css';
-
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
+
+import styles from './main-events.module.css';
 
 interface IItem {
   id: number
@@ -24,8 +24,8 @@ export const MainEvents: FC<IMainEventsProps> = ({ data }) => {
     <section className={styles.events}>
       <ul className={styles.content}>
         {
-          data.map(item => {
-            return <li key={ item.id } className={styles.list}>
+          data.map(item => (
+            <li key={ item.id } className={styles.list}>
               <AnnouncedPlayCard
                 date={ item.date }
                 time={ item.time }
@@ -36,9 +36,8 @@ export const MainEvents: FC<IMainEventsProps> = ({ data }) => {
                 buttonLinks={ item.buttonLinks }
                 coverResourceUrl={ item.coverResourceUrl && item.coverResourceUrl }
               />
-            </li>;
-          })
-        }
+            </li>
+          ))}
       </ul>
     </section>
   );

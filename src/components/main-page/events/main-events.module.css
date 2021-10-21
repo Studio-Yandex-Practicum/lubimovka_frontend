@@ -16,20 +16,16 @@
   list-style: none;
   row-gap: 74px;
 
-  @media screen and (max-width: 960px) {
-    grid-template-columns: repeat(1, minmax(364px, max-content));
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(1, minmax(320px, max-content));
 
     &::before {
       display: none;
     }
   }
 
-  @media screen and (max-width: $tablet-portrait) {
-    row-gap: 32px;
-
-    &::before {
-      display: none;
-    }
+  @media (max-width: $tablet-portrait) {
+    row-gap: 0;
   }
 
   &::before {
