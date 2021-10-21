@@ -6,7 +6,7 @@ import styles from './afishe-festival-days.module.css';
 
 export interface IFestivalDaysProps {
   data: [
-    day: {
+    {
       id: number,
       date: number,
       month: string,

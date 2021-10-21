@@ -10,6 +10,12 @@
   align-items: flex-end;
   justify-content: space-between;
   margin-right: 118px;
+
+  @media screen and (max-width: $tablet-portrait) {
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0;
+  }
 }
 
 .date {
@@ -17,6 +23,10 @@
   @mixin textLarge;
 
   margin-bottom: 11px;
+
+  @media screen and (max-width: $tablet-portrait) {
+    margin-bottom: 24px;
+  }
 }
 
 .span {
@@ -24,7 +34,7 @@
   @mixin headline1;
 }
 
-.registration {
+.opened {
   padding: 5px 25px;
   background-color: var(--coal);
 
@@ -32,4 +42,16 @@
   @mixin textMedium;
 
   color: var(--white);
+}
+
+.closed {
+  max-width: 202px;
+  padding-bottom: 27px;
+
+  @mixin text;
+  @mixin textSmall;
+
+  @media screen and (max-width: $tablet-portrait) {
+    text-align: center;
+  }
 }
