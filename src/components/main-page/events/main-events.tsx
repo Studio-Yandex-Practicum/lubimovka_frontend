@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import {MainEvent as Event} from '../main-event/main-event';
+import {MainEvent as Event} from './event/main-event';
 
 import styles from './main-events.module.css';
 

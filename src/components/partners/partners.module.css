@@ -2,19 +2,13 @@
   display: grid;
   width: 100%;
   box-sizing: border-box;
-  padding: scale(107px 0 179px 60px);
   background-color: transparent;
   grid-area: partners;
   grid-template-columns: 100%;
   grid-template-rows: repeat(2, max-content);
   row-gap: scale(69px);
 
-  @media screen and (min-width: 1440px) {
-    padding: scale(107px 0 179px 60px);
-  }
-
   @media screen and (max-width: $tablet-portrait) {
-    padding: scale(56px 0 100px 24px);
     justify-items: center;
     row-gap: scale(72px);
   }
@@ -36,9 +30,9 @@
 
   @media screen and (max-width: $tablet-portrait) {
     column-gap: 0;
-    grid-auto-rows: 118px;
+    grid-auto-rows: scale(118px);
     grid-template-columns: repeat(2, scale(182px));
-    grid-template-rows: repeat(3, scals(118px));
+    grid-template-rows: repeat(3, scale(118px));
     row-gap: 0;
   }
 
@@ -80,12 +74,10 @@
 .imageContainer {
   position: relative;
   width: scale(182px);
-  max-width: scale(182px);
   height: scale(51px);
-  max-height: scale(51px);
 
   @media screen and (max-width: $tablet-portrait) {
-    width: scale(158px);
-    height: scale(45px);
+    width: 158px;
+    height: 45px;
   }
 }

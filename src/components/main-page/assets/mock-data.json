@@ -1,0 +1,11 @@
+{
+  "metaTitle": "Главная страница",
+  "title": "Компонент Title",
+  "events": true,
+  "aside": true,
+  "banners": true,
+  "platforms": true,
+  "archive": true,
+  "shortList": true,
+  "partners": true
+}
