@@ -29,27 +29,25 @@ export const MainPlatforms: FC<IMainPlatformsProps> = ({ data }) => {
       <h2 className={ cn(styles.titleMain) }>{ title }</h2>
 
       <ul className={ cn(styles.list) }>
-        { content.map(card => {
-          return (
-            <li className={ cn(styles.item) } key={ card.id }>
-              { <Icon glyph={ 'map' } className={ styles.mapIcon } /> }
-              <h3 className={ cn(styles.title) }>
-                { card.title }
-              </h3>
-              <p className={ cn(styles.desc) }>
-                { card.desc }
-              </p>
-              <Link href={ card.link[1] }>
-                <a className={ cn(styles.link) }>
-                  <p className={ cn(styles.text) }>
-                    { card.link[0] }
-                  </p>
-                  <span>{ <Icon glyph={ 'arrow-right' } fill={ 'black' } /> }</span>
-                </a>
-              </Link>
-            </li>
-          );
-        })}
+        { content.map(card => (
+          <li className={ cn(styles.item) } key={ card.id }>
+            { <Icon glyph='map' className={ styles.mapIcon } /> }
+            <h3 className={ cn(styles.title) }>
+              { card.title }
+            </h3>
+            <p className={ cn(styles.desc) }>
+              { card.desc }
+            </p>
+            <Link href={ card.link[1] }>
+              <a className={ cn(styles.link) }>
+                <p className={ cn(styles.text) }>
+                  { card.link[0] }
+                </p>
+                <span>{ <Icon glyph={ 'arrow-right' } fill={ 'black' } /> }</span>
+              </a>
+            </Link>
+          </li>
+        ))}
       </ul>
     </section>
   );
