@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import cn from 'classnames';
-import styles from './what-we-do-header.module.css';
 
 import { Menu } from 'components/ui/menu';
+
+import styles from './what-we-do-header.module.css';
 
 interface IWhatWeDoHeaderProps {
   data: {
@@ -65,8 +66,8 @@ export const WhatWeDoHeader: FC<IWhatWeDoHeaderProps> = ({ data }): JSX.Element 
       <div className={ cn(styles.container) }>
         <img src={ image } className={ cn(styles.img) } />
         <div className={ cn(styles.containerSpace) }>
-          <div className={ cn(styles.containerSpaceUp) }></div>
-          <div className={ cn(styles.containerSpaceDown) }></div>
+          <div className={ cn(styles.containerSpaceUp) } />
+          <div className={ cn(styles.containerSpaceDown) } />
         </div>
       </div>
     </section>

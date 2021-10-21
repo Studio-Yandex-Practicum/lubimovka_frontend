@@ -59,7 +59,7 @@
     }
   }
 
-  @media screen and (max-width: $tablet-portrait) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline;
     @mixin headline6;
   }

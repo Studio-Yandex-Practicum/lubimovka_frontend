@@ -35,25 +35,23 @@ export const WhatWeDoSelection: FC<IWhatWeDoSelectionProps> = ({ data }): JSX.El
       </h2>
       <ul className={ cn(styles.list) }>
         { items.map((data, i) => {
-          return (
-            <li className={ cn(styles.item) } key={ i }>
-              <p className={ cn(styles.number) }>
-                { i + 1 }
-              </p>
-              <h3 className={ cn(styles.title) }>
-                { data.title }
-              </h3>
-              {
-                data.desc.map((text, i) => {
-                  return (
-                    <p className={ cn(styles.desc) } key={ i }>
-                      { text }
-                    </p>
-                  );
-                })
-              }
-            </li>
-          );
+          <li className={ cn(styles.item) } key={ i }>
+            <p className={ cn(styles.number) }>
+              { i + 1 }
+            </p>
+            <h3 className={ cn(styles.title) }>
+              { data.title }
+            </h3>
+            {
+              data.desc.map((text, i) => {
+                return (
+                  <p className={ cn(styles.desc) } key={ i }>
+                    { text }
+                  </p>
+                );
+              })
+            }
+          </li>;
         })}
       </ul>
       <div className={ cn(styles.poster) }>

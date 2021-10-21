@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import cn from 'classnames';
 
-import styles from './what-we-do-partners.module.css';
-
 import { Partners } from 'components/partners';
+
+import styles from './what-we-do-partners.module.css';
 
 export const WhatWeDoPartners: FC = (): JSX.Element => {
   return (
