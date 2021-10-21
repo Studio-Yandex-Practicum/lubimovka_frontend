@@ -11,11 +11,12 @@ import { MainArchive } from './archive';
 import { MainPartners } from './partners';
 import styles from './main-page.module.css';
 import Head from 'next/head';
+import { IMainTitle } from './title';
 
 const cx = cn.bind(styles);
 
 interface IMainPageProps {
-  title: string;
+  title: IMainTitle;
   metaTitle: string;
   events: boolean;
   aside: boolean;
@@ -44,7 +45,15 @@ export const MainPage: FC<IMainPageProps> = (props) => {
         <title>{metaTitle}</title>
       </Head>
       <main className={cx('main')}>
-        {title && <MainTitle title={title} />}
+        {title && (
+          <MainTitle
+            title={title.title}
+            view={title.view}
+            buttonLink={title.buttonLink}
+            buttonText={title.buttonText}
+            text={title.text}
+          />
+        )}
         {events && <MainEvents />}
         {aside && <MainAside />}
         {banners && <MainBanners />}
@@ -56,4 +65,3 @@ export const MainPage: FC<IMainPageProps> = (props) => {
     </>
   );
 };
-

@@ -41,3 +41,15 @@
     }
   }
 }
+
+.mainPagePrimary {
+  .title {
+    @mixin headline2;
+  }
+}
+
+.mainPageSecondary {
+  .title {
+    @mixin headline1;
+  }
+}
