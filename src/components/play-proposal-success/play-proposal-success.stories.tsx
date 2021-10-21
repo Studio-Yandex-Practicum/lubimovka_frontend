@@ -7,9 +7,7 @@ export default {
   component: PlayProposalSuccess,
 } as ComponentMeta<typeof PlayProposalSuccess>;
 
-const Template: ComponentStory<typeof PlayProposalSuccess> = (args) => <PlayProposalSuccess {...args} />;
+const Template: ComponentStory<typeof PlayProposalSuccess> = () => <PlayProposalSuccess/>;
 
 export const Default = Template.bind({});
-Default.args = {
-  title:'Спасибо, мы получили вашу пьесу, скоро начнется отбор. Следите за новостями в наших соцсетях!',
-};
+
