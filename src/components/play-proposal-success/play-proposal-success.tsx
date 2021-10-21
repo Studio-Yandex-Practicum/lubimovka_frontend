@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 
 export const PlayProposalSuccess: FC<IPlayProposalSuccessProps> = () => {
   return (
-    <article className={cx('container')}>
+    <section className={cx('container')}>
       <h1 className={cx('title')}>
         Спасибо, мы получили вашу пьесу, скоро начнется отбор. Следите за
         новостями в наших соцсетях!
@@ -19,6 +19,6 @@ export const PlayProposalSuccess: FC<IPlayProposalSuccessProps> = () => {
         alt="Успешная отправка"
         className={cx('image')}
       />
-    </article>
+    </section>
   );
 };
