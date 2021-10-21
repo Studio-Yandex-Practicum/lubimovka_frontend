@@ -20,13 +20,11 @@ export const WhatWeDoAuthors: FC<IWhatWeDoAuthorsProps> = ({ data }): JSX.Elemen
         { title }
       </h2>
       <ul className={ cn(styles.list) }>
-        { authors.map((author, i) => {
-          return (
-            <li className={ cn(styles.item) } key={ i }>
-              { author }
-            </li>
-          );
-        })}
+        {authors.map((author, i) => (
+          <li className={ cn(styles.item) } key={ i }>
+            { author }
+          </li>
+        ))}
       </ul>
     </section>
   );
