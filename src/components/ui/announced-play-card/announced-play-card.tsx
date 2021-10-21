@@ -15,6 +15,7 @@ interface IAnnouncedPlayCardProps {
   eventDescription?:string;
   buttonLinks: string [];
   coverResourceUrl?: string;
+  className?: string;
 }
 
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
@@ -27,6 +28,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     eventDescription,
     buttonLinks,
     coverResourceUrl,
+    className,
   } = props;
 
   const creditsArrayToString = (array: string []) => {
@@ -61,7 +63,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
 
   return (
     <article
-      className={cx('card')}
+      className={cx('card', [className])}
     >
       {coverResourceUrl &&
         <div >
