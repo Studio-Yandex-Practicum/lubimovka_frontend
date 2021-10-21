@@ -51,16 +51,12 @@
   }
 }
 
-.image-conatiner {
+.image {
   width: 100%;
   max-width: 930px;
+  height: 100%;
 
   @media (max-width: $tablet-portrait) {
     max-width: 390px;
   }
-}
-
-.image {
-  width: 100%;
-  height: 100%;
 }
