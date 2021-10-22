@@ -2,13 +2,18 @@
   display: flex;
   width: scale(882px);
   flex-direction: column;
-  padding: 0;
   margin: 0;
   grid-area: title;
+
+  &&.secondary {
+    padding: scale(0 81px 66px 477px);
+  }
 }
 
 .title {
   @mixin headline;
+
+  white-space: pre-wrap;
 
   &&.primary {
     margin: scale(0 0 10px 0);
@@ -21,4 +26,18 @@
 
     margin: scale(0 0 15px 0);
   }
+}
+
+.buttonContainer {
+  &&.primary {
+    width: scale(180px);
+  }
+
+  &&.secondary {
+    width: scale(360px);
+  }
+}
+
+.button {
+  border: 1px solid var(--trueBlack);
 }

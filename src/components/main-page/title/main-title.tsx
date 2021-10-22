@@ -17,19 +17,22 @@ const cx = cn.bind(styles);
 export const MainTitle: FC<IMainTitle> = (params) => {
   const { title, view, text, buttonText, buttonLink } = params;
   return (
-    <section className={cx('section')}>
-      <h1 className={cx('title', view)}>{title}</h1>
+    <section className={cx('section', view)}>
+      <h1 className={cx('title', view)}>{`${title}`}</h1>
+      <div className={cx('buttonContainer', view)}>
+        <Button
+          label={buttonText}
+          isLink
+          href={buttonLink}
+          size={(view === 'primary' && 's') || 'l'}
+          border="full"
+          icon="arrow-right"
+          iconPlace="right"
+          width="100%"
+          className={cx('button')}
+        />
+      </div>
 
-      <Button
-        label={buttonText}
-        isLink
-        href={buttonLink}
-        width={(view === 'primary' && '180px') || '360px'}
-        size={(view === 'primary' && 's') || 'l'}
-        border="full"
-        icon="arrow-right"
-        iconPlace="right"
-      />
       {view === 'primary' && <p>{text}</p>}
     </section>
   );

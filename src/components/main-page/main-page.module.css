@@ -5,6 +5,7 @@
   width: 100%;
   min-width: var(--page-content-min-width);
   box-sizing: border-box;
+  padding-top: scale(61px);
   margin: 0 auto;
   grid-template-areas:
     "title ."
