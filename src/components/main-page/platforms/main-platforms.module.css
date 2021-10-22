@@ -24,7 +24,7 @@
 
 .item {
   display: flex;
-  max-width: scale(18.75rem);
+  max-width: 18.75rem;
   min-height: 16.25rem;
   box-sizing: border-box;
   flex-direction: column;
