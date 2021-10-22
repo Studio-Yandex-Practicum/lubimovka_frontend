@@ -1,0 +1,27 @@
+.trusteesList * {
+  box-sizing: border-box;
+}
+
+.trusteesList img {
+  max-width: 100%;
+}
+
+.container {
+  display: grid;
+  max-width: 1440px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 54px 14.5vw 0;
+  margin: 0 auto;
+  gap: 48px 30px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  list-style: none;
+}
+
+.slidesContainer {
+  padding: 23px 0 0 6.5vw;
+}
+
+.card {
+  max-width: 180px;
+}

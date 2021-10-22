@@ -1,15 +1,20 @@
 .section {
   max-width: 1440px;
+  margin: 0 auto;
   background-color: var(--light-green);
   color: var(--coal);
 }
 
 .title {
-  padding: 125px 176px 0 720px;
+  padding: 125px 176px 0 50vw;
   margin: 0;
 
   @mixin headline;
   @mixin headline2;
+
+  @media (max-width: 769px) {
+    padding: 125px 176px 0 6vw;
+  }
 }
 
 .yearsContainer {
@@ -30,6 +35,11 @@
   position: relative;
   padding-bottom: 259px;
   margin: 69px 0 0 213px;
+
+  @media (max-width: 769px) {
+    padding-bottom: 250px;
+    margin: 69px 22px 0 6.5vw;
+  }
 }
 
 .asterisk {
