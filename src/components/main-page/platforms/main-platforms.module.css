@@ -1,7 +1,7 @@
 .section {
   width: 100%;
   box-sizing: border-box;
-  padding: 65px 60px 105px 60px;
+  padding: scale(65px 60px 105px 60px);
   background-color: white;
   grid-area: platforms;
 }
@@ -10,46 +10,46 @@
   @mixin text;
   @mixin headline1;
 
-  margin-bottom: 74px;
+  margin-bottom: scale(74px);
 }
 
 .list {
   display: grid;
-  padding: 0;
-  margin: 0;
-  column-gap: 60px;
+  padding: scale(0);
+  margin: scale(0);
+  column-gap: scale(60px);
   grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
-  row-gap: 40px;
+  row-gap: scale(40px);
 }
 
 .item {
   display: flex;
-  max-width: 300px;
-  min-height: 260px;
+  max-width: scale(300px);
+  min-height: scale(260px);
   box-sizing: border-box;
   flex-direction: column;
-  padding: 15px 30px 38px 30px;
-  border-bottom: 1px solid var(--coal);
-  border-left: 1px solid var(--coal);
+  padding: scale(15px 30px 38px 30px);
+  border-bottom: scale(1px) solid var(--coal);
+  border-left: scale(1px) solid var(--coal);
 }
 
 .mapIcon {
-  margin-bottom: 14px;
+  margin-bottom: scale(14px);
 }
 
 .title {
   @mixin headline;
   @mixin headline7;
 
-  margin-bottom: 15px;
+  margin-bottom: scale(15px);
 }
 
 .desc {
   @mixin text;
   @mixin textSmall;
 
-  margin-bottom: 12px;
-  margin-left: 30px;
+  margin-bottom: scale(12px);
+  margin-left: scale(30px);
 }
 
 .containerLink {
@@ -67,5 +67,5 @@
   @mixin text;
   @mixin textSmall;
 
-  margin-right: 8px;
+  margin-right: scale(8px);
 }
