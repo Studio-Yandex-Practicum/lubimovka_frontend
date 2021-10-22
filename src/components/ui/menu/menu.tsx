@@ -6,10 +6,12 @@ import { MenuItem } from './item';
 
 import mainNavigationStyles from './type/main-navigation.module.css';
 import socialLinksStyles from './type/social-links.module.css';
+import historyStyles from './type/history.module.css';
 
 export const styles = {
   'main-navigation': mainNavigationStyles,
   'social-links': socialLinksStyles,
+  'history': historyStyles,
 };
 
 export type MenuType = keyof typeof styles;
