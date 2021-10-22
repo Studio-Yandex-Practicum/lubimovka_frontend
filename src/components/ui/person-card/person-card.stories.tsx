@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import PersonCard from './persons-card';
+import PersonCard from './person-card';
 
 export default {
-  title: 'UI/Persons card',
+  title: 'UI/PersonCard',
   component: PersonCard,
 
 } as ComponentMeta<typeof PersonCard>;

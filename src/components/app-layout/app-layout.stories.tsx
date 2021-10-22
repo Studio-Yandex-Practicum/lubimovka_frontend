@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { AppLayout } from './app-layout';
-import { Page } from 'components/page';
 
 export default {
   title: 'Components/AppLayout',
@@ -10,9 +9,7 @@ export default {
 
 const Template: ComponentStory<typeof AppLayout> = (args) => (
   <AppLayout>
-    <Page.Container>
-      {args.children}
-    </Page.Container>
+    {args.children}
   </AppLayout>
 );
 
@@ -22,9 +19,9 @@ Default.args = {
     <big
       style={{
         display: 'block',
-        marginTop: 32,
+        marginTop: '4vmax',
         textAlign: 'center',
-        fontSize: 48,
+        fontSize: '3vmax',
       }}
     >
       🐈

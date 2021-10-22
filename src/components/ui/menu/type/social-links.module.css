@@ -8,11 +8,7 @@
   display: block;
 
   &:not(:last-child) {
-    margin-right: calc(var(--vw-multiplier-tablet-portrait) * 16);
-
-    @media (min-width: 1440px) {
-      margin-right: 16px;
-    }
+    margin-right: scale(16px);
   }
 }
 
@@ -21,13 +17,8 @@
 
   display: block;
   color: var(--coal);
-  font-size: calc(var(--vw-multiplier-tablet-portrait) * 16);
-  line-height: calc(var(--vw-multiplier-tablet-portrait) * 18);
+  font-size: scale(16px);
+  line-height: scale(18px);
   text-decoration: none;
   white-space: nowrap;
-
-  @media (min-width: 1440px) {
-    font-size: 16px;
-    line-height: 18px;
-  }
 }

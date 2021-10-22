@@ -3,8 +3,7 @@
   display: grid;
   overflow: hidden;
   width: 100%;
-  min-width: 414px;
-  max-width: 1440px;
+  min-width: var(--page-content-min-width);
   box-sizing: border-box;
   margin: 0 auto;
   grid-template-areas:
@@ -13,8 +12,9 @@
     "banners ."
     "platforms ."
     "shortList ."
-    "archive archive";
-  grid-template-columns: minmax(500px, 1108px) 1fr;
+    "archive archive"
+    "partners .";
+  grid-template-columns: minmax(scale(500px), scale(1108px)) 1fr;
   grid-template-rows: repeat(6, max-content);
 
   @media screen and (max-width: 1200px) {
@@ -25,7 +25,8 @@
       "banners"
       "platforms"
       "shortList"
-      "archive";
+      "archive"
+      "partners";
     grid-template-columns: 100%;
     grid-template-rows: repeat(7, max-content);
   }

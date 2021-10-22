@@ -10,22 +10,12 @@
 }
 
 .icon {
-  width: calc(var(--vw-multiplier-tablet-portrait) * 25);
-  height: calc(var(--vw-multiplier-tablet-portrait) * 25);
+  width: scale(25px);
+  height: scale(25px);
   fill: var(--coal);
-
-  @media (min-width: 1440px) {
-    width: 25px;
-    height: 25px;
-  }
 }
 
 .text {
-  font-size: calc(var(--vw-multiplier-tablet-portrait) * 14);
-  line-height: calc(var(--vw-multiplier-tablet-portrait) * 17);
-
-  @media (min-width: 1440px) {
-    font-size: 14px;
-    line-height: 17px;
-  }
+  font-size: scale(14px);
+  line-height: scale(17px);
 }
