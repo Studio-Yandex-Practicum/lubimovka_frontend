@@ -12,7 +12,13 @@ const cx = classNames.bind(styles);
 export const BurgerButton = (props: IBurgerButtonProps): JSX.Element => {
   const { isOpen } = props;
 
+  const ariaLabel = isOpen ? 'Закрыть меню' : 'Открыть меню';
+
   return (
-    <button className={cx('button', { open: isOpen })} type='button' />
+    <button
+      className={cx('button', { open: isOpen })}
+      type='button'
+      aria-label={ariaLabel}
+    />
   );
 };
