@@ -1,0 +1,48 @@
+.button {
+  position: relative;
+  display: none;
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  background-color: var(--coal);
+
+  &::before {
+    position: absolute;
+    top: 34px;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: var(--beige);
+    box-shadow: 0 -6px 0 0 var(--beige), 0 6px 0 0 var(--beige);
+    content: "";
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+  }
+}
+
+.open {
+  &::before,
+  &::after {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    width: 24px;
+    height: 2px;
+    background-color: var(--beige);
+    box-shadow: none;
+    content: "";
+  }
+
+  &::before {
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translateX(-50%) rotate(-45deg);
+  }
+}
