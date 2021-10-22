@@ -55,6 +55,10 @@
   margin-top: 20px;
 }
 
+.buttonDisplay {
+  display: inline-block;
+}
+
 .button.link.title {
   @mixin headline4;
   @mixin headline;

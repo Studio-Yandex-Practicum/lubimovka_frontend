@@ -63,31 +63,37 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
           <div className={style.subsection}>
             <h2 className={style.subtitle}>Пьесы</h2>
             {plays.map((el, index) => (
-              <Button key={index}
-                label={el.subtitle}
-                iconPlace={iconPlace}
-                icon={icon}
-                href={el.url}
-                align={alignStart}
-                size='l'
-                gap='8px'
-                className={cn(style.button, style.link, style.subtitle)}>
-              </Button>
+              <div key={index} className={style.buttonDisplay}>
+                <Button
+                  label={el.subtitle}
+                  iconPlace={iconPlace}
+                  icon={icon}
+                  href={el.url}
+                  align={alignStart}
+                  size='l'
+                  gap='8px'
+                  className={cn(style.button, style.link, style.subtitle)}>
+                </Button>
+              </div>
+
             ))}
           </div>
           <div className={style.subsection}>
             <h2 className={style.subtitle}>Дополнительно</h2>
             {additionally.map((el, index) => (
-              <Button key={index}
-                label={el.subtitle}
-                iconPlace={iconPlace}
-                icon={icon}
-                href={el.url}
-                align={alignStart}
-                size='l'
-                gap='8px'
-                className={cn(style.button, style.link, style.subtitle)}>
-              </Button>
+              <div key={index} className={style.buttonDisplay}>
+                <Button
+                  label={el.subtitle}
+                  iconPlace={iconPlace}
+                  icon={icon}
+                  href={el.url}
+                  align={alignStart}
+                  size='l'
+                  gap='8px'
+                  className={cn(style.button, style.link, style.subtitle)}>
+                </Button>
+              </div>
+
             ))}
           </div>
         </div>
