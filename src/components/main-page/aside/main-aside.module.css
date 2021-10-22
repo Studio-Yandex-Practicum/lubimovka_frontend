@@ -1,0 +1,32 @@
+.aside {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 468px;
+  height: 770px;
+  background-color: yellow;
+  transform: translate(50%, 0);
+
+  @media screen and (max-width: 1200px) {
+    position: initial;
+    display: flex;
+    width: 100%;
+    height: 240px;
+    align-items: center;
+    justify-content: center;
+    grid-area: aside;
+    transform: translate(0, 0);
+  }
+}
+
+.active {
+  transform: translate(0, 0);
+}
+
+.title {
+  width: clamp(298px, 100%, 640px);
+  text-align: center;
+
+  @mixin text;
+  @mixin headline1;
+}

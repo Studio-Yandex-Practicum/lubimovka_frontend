@@ -1,0 +1,11 @@
+:root {
+  --page-content-max-width: 1440px;
+  --page-content-min-width: 414px;
+
+  /* Коэффициент для масштабирования размеров с помощью хелпера scale() */
+  --scale: calc(100vw / 414);
+
+  @media (min-width: $tablet-portrait) {
+    --scale: calc(100vw / 1440);
+  }
+}

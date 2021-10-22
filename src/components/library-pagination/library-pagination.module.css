@@ -1,0 +1,142 @@
+.container {
+  background-color: var(--beige);
+}
+
+.letters {
+  display: grid;
+  box-sizing: border-box;
+  padding: 0 15px;
+  border-bottom: 1px solid var(--coal);
+  margin: 0;
+  column-gap: 12px;
+  grid-auto-flow: column;
+  list-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    border-top: 1px solid var(--coal);
+    background-color: var(--white);
+    column-gap: 23px;
+  }
+}
+
+.letter {
+  @mixin headline;
+  @mixin headline7;
+
+  position: relative;
+  width: 36px;
+  height: 46px;
+}
+
+.letterActive {
+  background: var(--coal);
+  color: var(--white);
+}
+
+.label {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.inputRadio {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 24px;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+
+.authors {
+  display: flex;
+  max-width: 812px;
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 36px;
+  margin: 0 auto;
+
+  @media (max-width: $tablet-portrait) {
+    flex-direction: column-reverse;
+  }
+}
+
+.authorsList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 53px 0 0;
+  list-style: none;
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: 19px;
+    margin: 16px 0 0;
+  }
+}
+
+.author {
+  margin-bottom: 12px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.link {
+  @mixin text;
+  @mixin textLarge;
+
+  padding: 1px 8px 3px;
+  color: var(--coal);
+  text-decoration: none;
+
+  &:active {
+    background-color: var(--coal);
+    color: var(--white);
+  }
+}
+
+.chosenLetter {
+  position: relative;
+  margin: 309px 20px 0 0;
+
+  @media (max-width: $tablet-portrait) {
+    margin: 56px 0 0;
+  }
+}
+
+.bigLetter {
+  @mixin headline;
+
+  font-size: 100px;
+  line-height: 100px;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline3;
+  }
+}
+
+.authorsQuantity {
+  @mixin text;
+  @mixin textLarge;
+
+  position: absolute;
+  top: -8px;
+  right: -7px;
+}

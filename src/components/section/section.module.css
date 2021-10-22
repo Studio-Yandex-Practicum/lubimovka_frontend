@@ -1,0 +1,43 @@
+.section {
+  box-sizing: border-box;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline4;
+
+  margin-left: 25%;
+
+  @media (max-width: 728px) {
+    @mixin headline6;
+
+    margin: 0 24px;
+  }
+}
+
+.plays {
+  .title {
+    max-width: 450px;
+    margin-bottom: 48px;
+  }
+}
+
+.persons {
+  .title {
+    max-width: 450px;
+    margin-bottom: 58px;
+  }
+}
+
+.partners {
+  .title {
+    max-width: scale(334px);
+    margin: scale(0 0 15px 0);
+
+    @mixin headline6;
+
+    @media screen and (max-width: $tablet-portrait) {
+      margin-bottom: scale(24px);
+    }
+  }
+}

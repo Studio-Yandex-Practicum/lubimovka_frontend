@@ -9,11 +9,11 @@
   padding: 127px 70px 165px;
   margin: 0 auto;
 
-  @media (max-width: $laptop) {
+  @media (max-width: 1200px) {
     padding: 336px 24px 100px;
   }
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: 576px) {
     align-items: flex-start;
   }
 }
@@ -27,17 +27,17 @@
   height: 200px;
   object-fit: cover;
 
-  @media (min-width: $tablet-landscape) {
+  @media (min-width: 992px) {
     width: 420px;
     height: 218px;
   }
 
-  @media (min-width: $desktop) {
+  @media (min-width: 1400px) {
     width: 660px;
     height: 330px;
   }
 
-  @media (max-width: $laptop) {
+  @media (max-width: 1200px) {
     top: 99px;
   }
 }
@@ -51,7 +51,7 @@
     & .container {
       padding: 93px 70px 267px;
 
-      @media (max-width: $laptop) {
+      @media (max-width: 1200px) {
         padding: 228px 24px 150px;
       }
     }
@@ -65,7 +65,7 @@
       right: 0;
       left: unset;
 
-      @media (max-width: $laptop) {
+      @media (max-width: 1200px) {
         top: 0;
       }
     }

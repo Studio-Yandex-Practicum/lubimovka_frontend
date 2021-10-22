@@ -1,0 +1,111 @@
+/* добавить глобальные переменные */
+
+.container {
+  position: relative;
+  line-height: 0;
+}
+
+.containerVolunteer {
+  width: 180px;
+
+  @media (max-width: 576px) {
+    width: 213px;
+  }
+}
+
+.containerParticipant {
+  width: 213px;
+}
+
+.imgVolunteer {
+  width: 100%;
+  height: 228px;
+  object-fit: cover;
+
+  @media (max-width: 576px) {
+    height: 265px;
+  }
+}
+
+.imgParticipant {
+  width: 100%;
+  height: 265px;
+  object-fit: cover;
+}
+
+.comment {
+  position: absolute;
+  top: 170px;
+  left: 14px;
+  display: flex;
+  width: 45px;
+  height: 45px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background-color: var(--beige);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: width 400ms cubic-bezier(.6, 0, .5, 1), height 400ms cubic-bezier(.6, 0, .5, 1), top 400ms cubic-bezier(.6, 0, .5, 1), left 400ms cubic-bezier(.6, 0, .5, 1);
+
+  @media (max-width: 576px) {
+    top: 208px;
+    left: 16px;
+  }
+}
+
+.comment:focus-visible {
+  outline: none;
+}
+
+.comment:hover {
+  top: 165px;
+  left: 9px;
+  width: 55px;
+  height: 55px;
+
+  @media (max-width: 576px) {
+    top: 203px;
+    left: 11px;
+  }
+}
+
+.name {
+  @mixin headline;
+
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 16px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.nameVolunteer {
+  @mixin headline7;
+
+  @media (max-width: 576px) {
+    @mixin headline6;
+  }
+}
+
+.nameParticipant {
+  @mixin headline6;
+}
+
+.about {
+  @mixin text;
+  @mixin textSmall;
+
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 8px;
+  margin-left: 35px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
