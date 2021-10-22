@@ -2,15 +2,13 @@
   "metaTitle": "Главная страница",
   "title": {
     "title": "Фестиваль 2021 закончен!",
-    "button": {
-      "text": "Посмотреть шорт-лист",
-      "link": "№"
-    },
+    "buttonText": "Посмотреть шорт-лист",
+    "buttonLink" : "#",
     "text": "",
-    "festivalStarted": false
+    "view": "secondary"
   },
   "events": true,
-  "aside": true,
+  "aside": false,
   "banners": true,
   "platforms": true,
   "archive": true,

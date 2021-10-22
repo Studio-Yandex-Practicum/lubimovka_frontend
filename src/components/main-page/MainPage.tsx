@@ -15,7 +15,7 @@ import { IMainTitle } from './title';
 
 const cx = cn.bind(styles);
 
-interface IMainPageProps {
+export interface IMainPageProps {
   title: IMainTitle;
   metaTitle: string;
   events: boolean;
