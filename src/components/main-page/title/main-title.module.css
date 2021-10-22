@@ -13,14 +13,20 @@
     @media (max-width: 992px) {
       padding: 0;
     }
+
+    @media (max-width: $tablet-portrait) {
+      max-width: 310px;
+      padding: 0 0 0 24px;
+      margin-bottom: 33px;
+    }
   }
 
   &&.secondary {
     padding: scale(0 81px 66px 477px);
-  }
 
-  @media (max-width: $tablet-portrait) {
-    padding: 0 0 33px 24px;
+    @media (max-width: $tablet-portrait) {
+      padding: 0 85px 142px 24px;
+    }
   }
 }
 
@@ -34,6 +40,12 @@
     margin-right: 15px;
 
     @mixin headline2;
+
+    @media (max-width: $tablet-portrait) {
+      /* Текстовые стили для того, чтобы сделать размер заголовка не резиновым */
+      font-size: 40px;
+      line-height: 40px;
+    }
   }
 
   &&.secondary {
@@ -47,6 +59,10 @@
 
     @media (max-width: $tablet-portrait) {
       margin-bottom: 13px;
+
+      /* Текстовые стили для того, чтобы сделать размер заголовка не резиновым */
+      font-size: 40px;
+      line-height: 40px;
     }
   }
 }
@@ -58,7 +74,15 @@
     width: scale(180px);
     padding-bottom: scale(6px);
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1290px) {
+      width: scale(200px);
+    }
+
+    @media (max-width: 992px) {
+      width: scale(220px);
+    }
+
+    @media (max-width: $tablet-portrait) {
       width: 180px;
     }
   }
@@ -66,11 +90,29 @@
   &&.secondary {
     width: scale(360px);
     min-width: 244px;
+
+    @media (max-width: $tablet-portrait) {
+      width: 244px;
+    }
   }
 }
 
-.button.primary {
+.button {
   border-color: var(--trueBlack);
+
+  &.secondary.button {
+    /* Текстовые стили для того, чтобы сделать размер текста кнопки не резиновыми */
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &.primary.button {
+    @media (max-width: $tablet-portrait) {
+      /* Текстовые стили для того, чтобы сделать размер текста кнопки не резиновыми */
+      font-size: 16px;
+      line-height: 14px;
+    }
+  }
 }
 
 .wrapper.primary {
@@ -78,6 +120,10 @@
   flex-direction: row;
   align-items: flex-end;
   margin-bottom: scale(10px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: 0;
+  }
 }
 
 .text {

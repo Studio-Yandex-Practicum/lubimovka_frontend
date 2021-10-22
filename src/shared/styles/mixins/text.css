@@ -32,21 +32,12 @@
 }
 
 @define-mixin textSmallButton {
+  font-size: scale(16px);
   line-height: scale(14px);
-
-  @media (max-width: 1440px) {
-    line-height: 14px;
-  }
 }
 
 @define-mixin textLargeButton {
-  font-size: scale(16px);
-  line-height: scale(22px);
-
-  @media (max-width: 1440px) {
-    font-size: 16px;
-    line-height: 22px;
-  }
+  @mixin textSmall;
 }
 
 @define-mixin textPartners {
