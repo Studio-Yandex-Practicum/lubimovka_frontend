@@ -20,7 +20,7 @@ interface IWhatWeDoSelectionProps {
   data: {
     id: number
     title: string
-    items: Array<Item>
+    items: Item[]
     poster: poster
   }
 }
