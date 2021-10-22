@@ -6,8 +6,6 @@
   max-width: 100%;
 }
 
-/* на флексах */
-
 .trusteesList {
   display: flex;
   width: 100%;
@@ -55,36 +53,3 @@
     margin-right: 0;
   }
 }
-
-/* --------------------- */
-
-
-/* на гридах */
-
-/*
-.trusteesList {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  max-width: 100%;
-  list-style: none;
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
-}
-
-.trusteesListItem:nth-of-type(8n+4),
-.trusteesListItem:nth-of-type(8n+5) {
-  grid-column: span 3;
-  display: flex;
-  justify-content: center;
-}
-
-.trusteesListItem:nth-of-type(8n+1),
-.trusteesListItem:nth-of-type(8n+2),
-.trusteesListItem:nth-of-type(8n+6),
-.trusteesListItem:nth-of-type(8n+7) {
-  margin-right: 20px;
-}
- */
-
-/* ------------------------- */

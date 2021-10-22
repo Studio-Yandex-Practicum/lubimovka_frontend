@@ -21,7 +21,7 @@ interface TrusteesPersonsProps {
 
 const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
 
-  const [screenWidth, setScreenWidth] = useState(Number || '');
+  const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     spacing: 30,
@@ -57,7 +57,7 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
   return (
     <>
       {
-        screenWidth < 768 &&
+        screenWidth && screenWidth < 768 &&
         <div ref={sliderRef} className="keen-slider">
           {trustees.map((trustee) => (
             <div key={trustee.id} className="keen-slider__slide">
@@ -74,7 +74,7 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
       }
 
       {
-        screenWidth > 767 &&
+        screenWidth && screenWidth > 767 &&
         <ul className={style.trusteesList}>
           {trustees.map((trustee) => (
             <li key={trustee.id} className={style.trusteesListItem}>
