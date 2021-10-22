@@ -2,6 +2,7 @@ import classes from './NotFoundError.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '../../images/logo.svg';
+import SmallLogo from '../../images/small-logo.svg';
 import Lines from '../../images/404lines.svg';
 
 export default function NotFoundError() {
@@ -21,9 +22,8 @@ export default function NotFoundError() {
         </ul>
       </div>
       <div className={classes.lines}>
-        <div className={classes.lineContainer}>
-          <Lines className={classes.line}/>
-        </div>
+        <Lines className={classes.line}/>
+        <Lines className={classes.line}/>
       </div>
     </section>
   );

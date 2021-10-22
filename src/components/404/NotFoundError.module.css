@@ -1,8 +1,12 @@
 .error {
-  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1440px;
   height: 100vh;
   box-sizing: border-box;
   padding-top: 1px;
+  margin: 0 auto;
   background: #ecebe8;
   color: #242424;
   font-family: 'Formular', Helvetica, Arial, sans-serif;
@@ -20,6 +24,7 @@
 
 .contentContainer {
   display: flex;
+  width: 100vw;
   max-width: 720px;
   flex-direction: column;
   margin: 83px 152px 0 auto;
@@ -92,8 +97,37 @@
 }
 
 .lines {
-  position: relative;
   width: 100%;
+  height: 100vh;
+}
+
+.line {
+  position: absolute;
+  width: calc(100% + 400px);
+  min-width: 920px;
+  max-width: 1806px;
+}
+
+.line:first-of-type {
+  top: 526px;
+  left: -146px;
+  transform: rotate(17.89deg);
+
+  @media (max-width: 1400px) {
+    top: 726px;
+    left: -146px;
+  }
+}
+
+.line:nth-of-type(2n) {
+  top: 546px;
+  left: -160px;
+  transform: rotate(4.24deg);
+
+  @media (max-width: 1400px) {
+    top: 706px;
+    left: -160px;
+  }
 }
 
 .link {
@@ -109,12 +143,5 @@
 
 .lineContainer {
   position: absolute;
-  top: 100px;
-  width: 100%;
-}
-
-.line {
-  position: absolute;
-  top: 100px;
   width: 100%;
 }
