@@ -8,7 +8,7 @@
   padding-top: scale(61px);
   margin: 0 auto;
   grid-template-areas:
-    "title ."
+    "title title"
     "events ."
     "banners ."
     "platforms ."
@@ -30,5 +30,13 @@
       "partners";
     grid-template-columns: 100%;
     grid-template-rows: repeat(7, max-content);
+  }
+
+  @media (max-width: 992px) {
+    justify-items: center;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    padding-top: 32px;
   }
 }
