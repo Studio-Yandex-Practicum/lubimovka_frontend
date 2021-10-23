@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Head from 'next/head';
 import cn from 'classnames/bind';
 
 import { MainTitle } from './title';
@@ -9,9 +10,8 @@ import { MainPlatforms } from './platforms';
 import { MainShortList } from './shortList';
 import { MainArchive } from './archive';
 import { MainPartners } from './partners';
-import styles from './main-page.module.css';
-import Head from 'next/head';
 import { IMainTitle } from './title';
+import styles from './main-page.module.css';
 
 const cx = cn.bind(styles);
 
