@@ -5,34 +5,46 @@ import { Button } from 'components/ui/button';
 
 import styles from './main-archive.module.css';
 
-export const MainArchive: FC = () => {
+interface IMainArchiveProps {
+  data: {
+    id: number
+    title: string[]
+    buttonLink: string
+    desc: string
+    videoKey: string
+  }
+}
+
+export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
+  const { title, buttonLink, desc, videoKey } = data;
+
   return ( 
     <section className={ cn(styles.archive) }>
       <div className={ cn(styles.content) }>
         <h2 className={ cn(styles.title) }>
-          Видео-архив
+          { title[0] }
           <span className={ cn(styles.link) }>
             <Button 
-              label={ 'YOUTUBE' } 
+              label='YOUTUBE'
               isLink={ true } 
-              href={ '#' } 
-              icon={ 'arrow-right' } 
-              width={ '106px' } 
-              iconPlace={ 'left' }
-              border={ 'bottomLeft' }
+              href={ buttonLink }
+              icon='arrow-right'
+              width='106px'
+              iconPlace='left'
+              border='bottomLeft'
             />
           </span>
-          всех читок и событий
+          { title[1] }
         </h2>
         <p className={ cn(styles.desc) }>
-          На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации.
+          { desc }
         </p>
       </div>
       <div className={ cn(styles.video) }>
         <iframe 
           width="100%" 
           height="100%"
-          src="https://www.youtube.com/embed/iAJTBxq2WZs" 
+          src={`https://www.youtube.com/embed/${ videoKey }`}
           frameBorder="0" 
           allowFullScreen 
         />

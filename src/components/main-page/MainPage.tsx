@@ -16,6 +16,7 @@ const cx = cn.bind(styles);
 
 // data json
 import mainEventsData from './assets/main-events.json';
+import mainArchiveData from './assets/main-archive-data.json';
 
 interface IMainPageProps {
   title: string;
@@ -53,7 +54,9 @@ export const MainPage: FC<IMainPageProps> = (props) => {
         {banners && <MainBanners />}
         {platforms && <MainPlatforms />}
         {shortList && <MainShortList />}
-        {archive && <MainArchive />}
+        {archive && mainArchiveData.map((el) => (
+          <MainArchive key={el.id} data={el} />
+        ))}
         {partners && <MainPartners />}
       </main>
     </>
