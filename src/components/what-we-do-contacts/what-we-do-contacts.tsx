@@ -9,18 +9,12 @@ interface IWhatWeDoContactsProps {
   data: {
     id: number
     title: string
-    description1: string
-    description2: string
-    director: {
-      id: number
-      text: string
-      contacts: string
-    }
+    desc: string
   }
 }
 
 export const WhatWeDoContacts: FC<IWhatWeDoContactsProps> = ({ data }): JSX.Element => {
-  const { title, description1, description2, director } = data;
+  const { title, desc } = data;
 
   return (
     <section className={ cn(styles.contacts) }>
@@ -32,9 +26,7 @@ export const WhatWeDoContacts: FC<IWhatWeDoContactsProps> = ({ data }): JSX.Elem
           { <Icon glyph='asterisk' fill='black'
             className={ styles.asterisk } /> }
         </span>
-        { description1 + ' ' }
-        <a href='#'>{ director.text }</a>
-        { ' ' + description2 }
+        { desc }
       </p>
     </section>
   );
