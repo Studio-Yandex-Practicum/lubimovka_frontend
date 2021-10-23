@@ -16,6 +16,7 @@ const cx = cn.bind(styles);
 
 // data json
 import mainEventsData from './assets/main-events.json';
+import mainPlatformsData from './assets/main-platforms-data.json';
 
 interface IMainPageProps {
   title: string;
@@ -51,7 +52,7 @@ export const MainPage: FC<IMainPageProps> = (props) => {
         {events && <MainEvents data={ mainEventsData } />}
         {aside && <MainAside />}
         {banners && <MainBanners />}
-        {platforms && <MainPlatforms />}
+        {platforms && <MainPlatforms data={ mainPlatformsData[0] } />}
         {shortList && <MainShortList />}
         {archive && <MainArchive />}
         {partners && <MainPartners />}
