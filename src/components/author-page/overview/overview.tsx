@@ -1,9 +1,9 @@
 import { FC } from 'react';
+import { Button } from 'components/ui/button';
+import { Tag } from 'components/ui/tag';
+
 import cn from 'classnames';
 import styles from '../author.module.css';
-
-import { Button } from '../../ui/button';
-import { Tag } from '../../ui/tag';
 
 export const AuthorOverview: FC = () => {
   return (
@@ -11,7 +11,7 @@ export const AuthorOverview: FC = () => {
     <section className={cn(styles.overview)}>
       <div className={cn(styles.personalInfo)}>
         <div className={cn(styles.button)}>
-          <Button size={'s'} iconPlace={'right'} icon={'arrow-left'} label={'Библиотека'} border={'bottomRight'} isLink={true}/>
+          <Button size='s' iconPlace='right' icon='arrow-left' label='Библиотека' border='bottomRight' isLink={true}/>
         </div>
         <div className={cn(styles.photo)}>Author Image</div>
         <div className={cn(styles.info)}>
@@ -36,26 +36,26 @@ export const AuthorOverview: FC = () => {
           <div className={cn(styles.overviewTagsBlock)}>
             <h2 className={cn(styles.overviewTagsHeading)}>Достижения</h2>
             <div className={cn(styles.tag)}>
-              <Tag label={'шорт-лист'} selected={false}/>
+              <Tag label='шорт-лист' selected={false}/>
             </div>
             <div className={cn(styles.tag)}>
-              <Tag label={'внеконкурсная программа'} selected={false}/>
+              <Tag label='внеконкурсная программа' selected={false}/>
             </div>
             <div className={cn(styles.tag)}>
-              <Tag label={'fringe-программа'} selected={false}/>
+              <Tag label='fringe-программа' selected={false}/>
             </div>
           </div>
 
           <div>
             <h2 className={cn(styles.overviewTagsHeading)}>Социальные сети</h2>
             {/* TODO: Переделать по-нормальному */}
-            <Button size={'s'} iconPlace={'left'} icon={'arrow-right'} label={'fb'} border={'bottomLeft'}/>
-            <Button size={'s'} iconPlace={'left'} icon={'arrow-right'} label={'vk'} border={'bottomLeft'}/>
+            <Button size='s' iconPlace='left' icon='arrow-right' label='fb' border='bottomLeft'/>
+            <Button size='s' iconPlace='left' icon='arrow-right' label='vk' border='bottomLeft'/>
           </div>
 
           <div>
             <p className={cn(styles.email)}>E-mail для связи</p>
-            <a className={cn(styles.email)} href={'#'}>e-mail@e.mail</a>
+            <a className={cn(styles.email)} href='#'>e-mail@e.mail</a>
           </div>
         </div>
       </div>
