@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  width: max-content;
+  flex-direction: row;
+  color: inherit;
+
+  & a:nth-child(2) {
+    margin: 0 8px;
+  }
+}

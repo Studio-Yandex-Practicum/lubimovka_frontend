@@ -79,12 +79,3 @@ LinkInFooter.args = {
   hoverStyle: 'bottomLineAndInvert',
   size: 'xs'
 };
-
-export const ShareLink = Template.bind({});
-ShareLink.args = {
-  shareLink: true,
-  icon: 'arrow-right',
-  iconPlace: 'left',
-  size: 's',
-  border: 'borderBottomLeft'
-};

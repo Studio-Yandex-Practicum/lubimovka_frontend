@@ -133,7 +133,9 @@
 
 .xs {
   @mixin textCaption;
+}
 
+.xs.bottomLineAndInvert {
   @media (max-width: 576px) {
     text-decoration: 1px underline;
   }
@@ -170,15 +172,4 @@
 .number {
   @mixin headline;
   @mixin headline4;
-}
-
-.container {
-  display: flex;
-  width: max-content;
-  flex-direction: row;
-  color: inherit;
-
-  & a:nth-child(2) {
-    margin: 0 8px;
-  }
 }
