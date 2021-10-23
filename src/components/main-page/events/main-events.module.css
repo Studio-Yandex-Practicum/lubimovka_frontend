@@ -1,6 +1,6 @@
 .events {
   width: 100%;
-  padding: 110px 0 114px;
+  padding: scale(0 0 114px);
   grid-area: events;
 }
 
