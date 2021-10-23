@@ -18,8 +18,8 @@ interface PersonCardData {
 
 interface TeamVolunteersSectionProps {
   data: {
-    id: number
-    title: string
+    id: number,
+    title: string,
     content: Array<PersonCardData>
   }
 }

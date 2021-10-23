@@ -47,7 +47,7 @@
 .trusteesListItem:nth-of-type(8n+2),
 .trusteesListItem:nth-of-type(8n+6),
 .trusteesListItem:nth-of-type(8n+7) {
-  margin-right: 27px;
+  margin-right: 30px;
 
   @media (max-width: 1239px) {
     margin-right: 0;

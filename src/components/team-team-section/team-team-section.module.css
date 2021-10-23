@@ -1,0 +1,36 @@
+.section * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.section {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: var(--white);
+  color: var(--coal);
+}
+
+.container {
+  display: flex;
+  max-width: 1440px;
+  flex-direction: column;
+  padding: 0 30px 273px;
+  margin: 0 auto;
+
+  @media (max-width: 769px) {
+    padding: 0 27px 166px;
+  }
+}
+
+.title {
+  padding: 90px 176px 80px 50%;
+  margin: 0;
+
+  @mixin headline;
+  @mixin headline2;
+
+  @media (max-width: 769px) {
+    padding: 56px 176px 32px 6%;
+  }
+}

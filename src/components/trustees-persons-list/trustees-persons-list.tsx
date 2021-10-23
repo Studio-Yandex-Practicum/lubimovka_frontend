@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 
-import PersonCard from '../ui/persons-card/persons-card';
+import { PersonCard } from '../ui/person-card';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 
@@ -11,8 +11,7 @@ interface TrusteePersonData {
   id: number,
   name: string,
   link: string,
-  about: string,
-  participant: boolean
+  about: string
 }
 
 interface TrusteesPersonsProps {
@@ -57,12 +56,12 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
   return (
     <>
       {
-        screenWidth && screenWidth < 768 &&
+        screenWidth < 768 &&
         <div ref={sliderRef} className="keen-slider">
           {trustees.map((trustee) => (
             <div key={trustee.id} className="keen-slider__slide">
               <PersonCard
-                participant={trustee.participant}
+                participant={true}
                 link={trustee.link}
                 about={trustee.about}
                 name={trustee.name}
@@ -74,12 +73,12 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
       }
 
       {
-        screenWidth && screenWidth > 767 &&
+        screenWidth > 767 &&
         <ul className={style.trusteesList}>
           {trustees.map((trustee) => (
             <li key={trustee.id} className={style.trusteesListItem}>
               <PersonCard
-                participant={trustee.participant}
+                participant={true}
                 link={trustee.link}
                 about={trustee.about}
                 name={trustee.name}
