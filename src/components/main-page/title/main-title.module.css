@@ -8,7 +8,7 @@
   &&.primary {
     max-width: scale(640px);
     padding-left: scale(17px);
-    margin: 0 auto scale(109px) auto;
+    margin: auto;
 
     @media (max-width: 992px) {
       padding: 0;
