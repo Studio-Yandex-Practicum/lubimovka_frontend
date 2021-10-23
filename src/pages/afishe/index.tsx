@@ -13,16 +13,16 @@ const cx = cn.bind(styles);
 
 interface IAfisheProps {
   title: string,
-  festivalDays: boolean,
-  regularEvents: boolean,
+  festival: boolean,
+  regular: boolean,
 }
 
 export const getStaticProps: () => { props: IAfisheProps } = () => {
   return {
     props: {
       title: 'Компонент Afishe-Title',
-      festivalDays: true,
-      regularEvents: false,
+      festival: true,
+      regular: false,
     },
   };
 };
@@ -30,15 +30,15 @@ export const getStaticProps: () => { props: IAfisheProps } = () => {
 const Afishe: NextPage<IAfisheProps> = (props: IAfisheProps) => {
   const {
     title,
-    festivalDays,
-    regularEvents,
+    festival,
+    regular,
   } = props;
   return (
     <AppLayout>
       <main className={cx('main')}>
         {title && <AfisheTitle title={title}/>}
-        {festivalDays && <FestivalDays data={data}/>}
-        {regularEvents && <RegularEvents/>}
+        {festival && <FestivalDays data={data}/>}
+        {regular && <RegularEvents/>}
       </main>
     </AppLayout>
   );

@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from 'react';
+import {FC, useMemo} from 'react';
 import classNames from 'classnames/bind';
 
 import {EventCard} from '../event-card';
@@ -6,61 +6,56 @@ import {EventCard} from '../event-card';
 import styles from './afishe-festival-day.module.css';
 
 export interface IFestivalDayProps {
-  day: {
+  id: number,
+  date: number,
+  month: string,
+  plays: {
     id: number,
-    date: number,
-    month: string,
-    plays: [
-      {
-        id: number,
-        time: string,
-        location: string,
-        title: string,
-        image?: string,
-        description: string,
-        director?: string,
-        playwright?: string,
-        registrationUrl?: string
-      }
-    ]
-  }
+    time: string,
+    location: string,
+    title: string,
+    image?: string,
+    description: string,
+    director?: string,
+    playwright?: string,
+    registrationUrl?: string
+  }[]
 }
 
 const cx = classNames.bind(styles);
 
+const isRegOpened = (day: number): boolean => {
+  const date = new Date();
+  return day === date.getDate() || day - date.getDate() === 1 && date.getHours() >= 12;
+};
+
+const getInfo = (day: {
+  date: number,
+  month: string,
+}) => isRegOpened(day.date) ? 'открыта регистрация' : `Регистрация откроется ${day.date} ${day.month} в 12:00`;
+
 export const FestivalDay: FC<IFestivalDayProps> = (props) => {
-  const {day} = props;
+  const {date, month, plays} = props;
 
-  const [registerInfo, setRegisterInfo] = useState(`Регистрация откроется ${day.date} ${day.month} в 12:00`);
+  const info = useMemo(() => getInfo(props), [date, month]);
 
-  const checkTime = (day: number) => {
-    const date = new Date();
-    return day === date.getDate() || day - date.getDate() === 1 && date.getHours() >= 12;
-  };
+  const isOpened = useMemo(() => isRegOpened(date), [date]);
 
-  const isRegistrationOpened = checkTime(day.date);
-
-  useEffect(() => {
-    if (isRegistrationOpened) {
-      setRegisterInfo('открыта регистрация');
-    }
-  }, []);
-
-  const registration = cx({
-    opened: isRegistrationOpened,
-    closed: !isRegistrationOpened
-  });
+  const registration = useMemo(() => cx({
+    opened: isOpened,
+    closed: !isOpened
+  }), []);
 
   return (
     <section className={styles.section}>
       <div className={styles.wrapper}>
-        <p className={styles.date}><span className={styles.span}>{day.date}</span>&nbsp;{day.month}</p>
-        <p className={registration}>{registerInfo}</p>
+        <p className={styles.date}><span className={styles.span}>{date}</span>&nbsp;{month}</p>
+        <p className={registration}>{info}</p>
       </div>
-      {day.plays.map(play => (
+      {plays.map(play => (
         <EventCard key={play.id} time={play.time} location={play.location} title={play.title} image={play.image}
           description={play.description} director={play.director} playwright={play.playwright}
-          registrationUrl={`${isRegistrationOpened ? play.registrationUrl : ''}`}/>))}
+          registrationUrl={`${isOpened ? play.registrationUrl : ''}`}/>))}
     </section>
   );
 };
