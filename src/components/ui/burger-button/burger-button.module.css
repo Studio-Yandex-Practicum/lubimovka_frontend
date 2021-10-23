@@ -1,6 +1,5 @@
 .button {
   position: relative;
-  display: none;
   width: scale(72px);
   height: scale(72px);
   padding: 0;
@@ -18,10 +17,6 @@
     box-shadow: scale(0 6px 0 0) var(--beige), scale(0 12px 0 0) var(--beige);
     content: "";
     transform: translateX(-50%);
-  }
-
-  @media (max-width: $tablet-portrait) {
-    display: block;
   }
 }
 
