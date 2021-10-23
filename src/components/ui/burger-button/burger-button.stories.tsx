@@ -31,6 +31,7 @@ const customViewports = {
 
 export default {
   title: 'UI/BurgerButton',
+  argTypes: { onClick: { action: 'clicked' } },
   component: BurgerButton,
   parameters: {
     viewport: {

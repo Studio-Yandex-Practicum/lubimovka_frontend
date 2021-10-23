@@ -10,13 +10,14 @@ interface IBurgerButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const cx = classNames.bind(styles);
 
 export const BurgerButton = (props: IBurgerButtonProps): JSX.Element => {
-  const { isOpen } = props;
+  const { isOpen, onClick } = props;
 
   return (
     <button
       className={cx('button', { open: isOpen })}
       type='button'
       aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
+      onClick={onClick}
     />
   );
 };
