@@ -2,13 +2,14 @@ import { FC } from 'react';
 import cn from 'classnames/bind';
 import Link from 'next/link';
 import { Button } from '../button';
+// import { InfoLink } from '../info-link';
 
 import { Url } from 'shared/types';
 
 import styles from './basic-play-card.module.css';
 const cx  = cn.bind(styles);
 
-export interface IBasicPlayCardProps {
+interface IBasicPlayCardProps {
   play: {
     title: string;
     city: string;
@@ -67,6 +68,12 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         <Link href={`/authors/${author.id}`}>
           <h6 className={cx('authorName')}>{author.name}</h6>
         </Link>
+        {/* <InfoLink
+           isOutsideLink={false}
+           href={`/authors/${author.id}`}
+           label={author.name}
+           size='l'
+       /> */}
         <p className={cx('city')}>{play.city}</p>
         <p className={cx('year')}>{play.year}</p>
       </div>
