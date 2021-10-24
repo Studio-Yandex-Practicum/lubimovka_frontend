@@ -23,7 +23,7 @@ export const Photos: FC<IPhotosProps> = (props) => {
     <div className={cx('photos', className)}>
       {images.map((photo, id) => (
         <div key={id}
-          className={cx('photos__item')}>
+          className={cx('item')}>
           <img src={photo.image}
             className={cx('photo')}
             alt={photo.description} />
