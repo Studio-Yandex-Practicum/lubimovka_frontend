@@ -1,28 +1,33 @@
 import {FC, HTMLAttributes} from 'react';
-import cn from 'classnames/bind';
+import classNames from 'classnames/bind';
 import { Url } from 'shared/types/common';
 
-
 import styles from './photos.module.css';
-import mockData from './assets/mock-data.json';
 
-const cx = cn.bind(styles);
+const cx = classNames.bind(styles);
 
-interface IPhotosProps extends HTMLAttributes<HTMLElement> {
-  data?: [
-    {
-      id: number;
-      image: Url;
-      description: string;
-    },
-  ];
+export type TImageItem = {
+  image: Url;
+  description: string;
 }
 
-export const Photos: FC<IPhotosProps> = ({ data = mockData }) => {
+interface IPhotosProps extends HTMLAttributes<HTMLElement> {
+  className?: string;
+  images: TImageItem[];
+}
+
+export const Photos: FC<IPhotosProps> = (props) => {
+  const { className, images } = props;
+
   return (
-    <div className={cx('photos')}>
-      {data.map((photo) => (
-        <img src={photo.image} key={photo.id} className={cx('photos-item')} alt={photo.description} />
+    <div className={cx('photos', className)}>
+      {images.map((photo, id) => (
+        <div key={id}
+          className={cx('photos__item')}>
+          <img src={photo.image}
+            className={cx('photo')}
+            alt={photo.description} />
+        </div>
       ))}
     </div>
   );
