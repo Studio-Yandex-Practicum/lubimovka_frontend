@@ -8,7 +8,7 @@ export default {
   component: BasicPlayCard,
   decorators: [
     (Story) => (
-      <div style={{ width: '240px', height: '412px'}}>
+      <div style={{ width: '240px'}}>
         <Story/>
       </div>
     ),
