@@ -5,6 +5,7 @@ const cx = cn.bind(styles);
 
 import styles from './article-title.module.css';
 import {Button} from '../ui/button';
+import {InfoLink} from '../ui/info-link';
 
 interface IArticleTitle {
   isBlog: boolean,
@@ -12,6 +13,7 @@ interface IArticleTitle {
   description: string,
   date: string,
   author?: string,
+  authorLink?: string,
   imgLink: string,
 }
 
@@ -22,7 +24,8 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
     description,
     date,
     author,
-    imgLink
+    imgLink,
+    authorLink
   } = props;
 
   return (
@@ -46,8 +49,15 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
       <h6 className={cx('description')}>{description}</h6>
 
       <p className={cx('date', {dateNews: !isBlog})}>{date}</p>
-      {/*заменить на компонент ссылки, когда будет готов*/}
-      {isBlog && <p className={cx('author')}>{author}</p>}
+      {isBlog &&
+        <InfoLink
+          isOutsideLink={true}
+          label={author || ''}
+          icon={'arrow-45'}
+          iconPlace={'right'}
+          size={'m'}
+          href={authorLink}
+        />}
 
 
     </section>
