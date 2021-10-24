@@ -3,7 +3,7 @@ import cn from 'classnames/bind';
 
 import {AfisheTitle} from '../../components/afishe-title';
 import {FestivalDays} from '../../components/afishe-festival-days';
-import {RegularEvents} from '../../components/afishe-regular-events';
+import {RegularDays} from '../../components/afishe-regular-days';
 import {AppLayout} from '../../components/app-layout';
 import data from './mock-data/mock-data.json';
 
@@ -38,7 +38,7 @@ const Afishe: NextPage<IAfisheProps> = (props: IAfisheProps) => {
       <main className={cx('main')}>
         {title && <AfisheTitle title={title}/>}
         {festival && <FestivalDays data={data}/>}
-        {regular && <RegularEvents/>}
+        {regular && <RegularDays/>}
       </main>
     </AppLayout>
   );

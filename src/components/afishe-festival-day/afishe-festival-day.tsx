@@ -1,7 +1,7 @@
 import {FC, useMemo} from 'react';
 import classNames from 'classnames/bind';
 
-import {EventCard} from '../event-card';
+import {EventCard} from 'components/event-card';
 
 import styles from './afishe-festival-day.module.css';
 
@@ -14,8 +14,8 @@ export interface IFestivalDayProps {
     time: string,
     location: string,
     title: string,
-    image?: string,
     description: string,
+    image?: string,
     director?: string,
     playwright?: string,
     registrationUrl?: string
