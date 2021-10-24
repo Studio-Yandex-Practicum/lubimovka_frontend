@@ -7,9 +7,9 @@
 }
 
 @define-mixin textLarge {
-  font-size: 20px;
+  font-size: scale(20px);
   letter-spacing: -.01em;
-  line-height: 28px;
+  line-height: scale(28px);
 }
 
 @define-mixin textMedium {
@@ -18,8 +18,8 @@
 }
 
 @define-mixin textSmall {
-  font-size: 16px;
-  line-height: 22px;
+  font-size: scale(16px);
+  line-height: scale(22px);
 }
 
 @define-mixin textCaption {
@@ -32,8 +32,8 @@
 }
 
 @define-mixin textSmallButton {
-  font-size: 16px;
-  line-height: 14px;
+  font-size: scale(16px);
+  line-height: scale(14px);
 }
 
 @define-mixin textLargeButton {
