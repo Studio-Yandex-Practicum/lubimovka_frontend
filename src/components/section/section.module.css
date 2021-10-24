@@ -28,3 +28,16 @@
     margin-bottom: 58px;
   }
 }
+
+.partners {
+  .title {
+    max-width: scale(334px);
+    margin: scale(0 0 15px 0);
+
+    @mixin headline6;
+
+    @media screen and (max-width: $tablet-portrait) {
+      margin-bottom: scale(24px);
+    }
+  }
+}

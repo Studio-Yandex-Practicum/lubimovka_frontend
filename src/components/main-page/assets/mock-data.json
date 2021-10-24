@@ -1,0 +1,17 @@
+{
+  "metaTitle": "Главная страница",
+  "title": {
+    "title": "Афиша на сегодня, 5 мая",
+    "buttonText": "Полная афиша",
+    "buttonLink" : "#",
+    "text": "На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации.",
+    "view": "primary"
+  },
+  "events": true,
+  "aside": false,
+  "banners": true,
+  "platforms": true,
+  "archive": true,
+  "shortList": true,
+  "partners": true
+}
