@@ -29,3 +29,7 @@ NewsTitle.args = {
   author: 'Лара Бессмертная',
   imgLink: 'https://littletravel.ru/wp-content/uploads/2020/01/1530726597_pg-9238.jpg'
 };
+
+NewsTitle.parameters = {
+  layout: 'fullscreen'
+};

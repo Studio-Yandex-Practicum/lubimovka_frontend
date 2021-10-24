@@ -1,10 +1,9 @@
 .container {
   display: grid;
-  max-width: 1440px;
   box-sizing: border-box;
-  padding: 32px 0 0 30px;
+  padding: scale(32px 0 0 30px);
   margin: 0 auto;
-  grid-column-gap: 30px;
+  grid-column-gap: scale(30px);
   grid-template-areas:
     'button a a a'
     'b title title c'
@@ -12,9 +11,8 @@
     'b date author img';
   grid-template-columns: min-content 1fr 1fr 2.555fr;
 
-  @media (max-width: 900px) {
-    max-width: 414px;
-    padding: 32px 0 0 24px;
+  @media (max-width: $tablet-portrait) {
+    padding: scale(32px 0 0 24px);
     grid-template-areas:
       'button'
       'img'
@@ -29,8 +27,8 @@
 .backButton {
   grid-area: button;
 
-  @media (max-width: 900px) {
-    left: 60px;
+  @media (max-width: $tablet-portrait) {
+    left: scale(60px);
   }
 }
 
@@ -38,15 +36,15 @@
   @mixin headline;
   @mixin headline3;
 
-  max-width: 570px;
-  margin-top: 18px;
+  max-width: scale(570px);
+  margin-top: scale(18px);
   grid-area: title;
   word-break: break-word;
 
-  @media (max-width: 900px) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    max-width: 366px;
+    max-width: scale(366px);
   }
 }
 
@@ -54,17 +52,17 @@
   @mixin headline;
   @mixin headline6;
 
-  max-width: 480px;
-  margin-top: 22px;
-  margin-left: 60px;
+  max-width: scale(480px);
+  margin-top: scale(22px);
+  margin-left: scale(60px);
   grid-area: description;
   word-break: break-word;
 
-  @media (max-width: 900px) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline7;
 
-    max-width: 305px;
-    margin-top: 22px;
+    max-width: scale(305px);
+    margin-top: scale(22px);
   }
 }
 
@@ -76,41 +74,38 @@
   grid-area: date;
   justify-self: center;
 
-  @media (max-width: 900px) {
-    padding-top: 24px;
-    padding-left: 60px;
+  @media (max-width: $tablet-portrait) {
+    padding-top: scale(24px);
+    padding-left: scale(60px);
     justify-self: start;
   }
 }
 
 .dateNews {
-  padding-left: 60px;
+  padding-left: scale(60px);
 }
 
 .author {
-  @mixin text;
-  @mixin textSmall;
-
   align-self: center;
   grid-area: author;
   justify-self: center;
 
-  @media (max-width: 900px) {
-    padding: 24px 0 75px 60px;
+  @media (max-width: $tablet-portrait) {
+    padding: scale(24px 0 75px 60px);
     justify-self: start;
   }
 }
 
 .img {
   width: 100%;
-  max-height: 421px;
-  padding-top: 30px;
+  max-height: scale(421px);
+  padding-top: scale(30px);
   grid-area: img;
   object-fit: cover;
 
-  @media (max-width: 900px) {
-    max-height: 218px;
-    padding-top: 40px;
-    padding-left: 30px;
+  @media (max-width: $tablet-portrait) {
+    max-height: scale(218px);
+    padding-top: scale(40px);
+    padding-left: scale(30px);
   }
 }

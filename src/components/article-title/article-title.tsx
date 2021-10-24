@@ -50,14 +50,16 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
 
       <p className={cx('date', {dateNews: !isBlog})}>{date}</p>
       {isBlog &&
-        <InfoLink
-          isOutsideLink={true}
-          label={author || ''}
-          icon={'arrow-45'}
-          iconPlace={'right'}
-          size={'m'}
-          href={authorLink}
-        />}
+        <nav className={cx('author')}>
+          <InfoLink
+            isOutsideLink={true}
+            label={author || ''}
+            icon={'arrow-45'}
+            iconPlace={'right'}
+            size={'m'}
+            href={authorLink}
+          />
+        </nav>}
 
 
     </section>
