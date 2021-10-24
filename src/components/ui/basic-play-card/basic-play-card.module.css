@@ -5,16 +5,9 @@
 
 .container {
   display: flex;
-  max-width: 240px;
-  height: 300px;
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--light-green);
-
-  @media (max-width: $tablet-portrait) {
-    max-width: 244px;
-    height: 341px;
-  }
 }
 
 .buttonCustom {

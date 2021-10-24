@@ -6,6 +6,13 @@ import { BasicPlayCard } from './basic-play-card';
 export default {
   title: 'UI/BasicPlayCard',
   component: BasicPlayCard,
+  decorators: [
+    (Story) => (
+      <div style={{ width: '240px', height: '412px'}}>
+        <Story/>
+      </div>
+    ),
+  ],
 
 } as ComponentMeta<typeof BasicPlayCard>;
 
