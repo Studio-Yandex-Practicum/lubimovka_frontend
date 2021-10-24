@@ -8,13 +8,13 @@
 }
 
 @define-mixin headline1 {
-  font-size: 72px;
-  line-height: 70px;
+  font-size: scale(72px);
+  line-height: scale(70px);
 }
 
 @define-mixin headline2 {
-  font-size: 64px;
-  line-height: 60px;
+  font-size: scale(64px);
+  line-height: scale(60px);
 }
 
 @define-mixin headline3 {
