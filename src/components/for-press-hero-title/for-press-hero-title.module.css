@@ -1,0 +1,36 @@
+.title {
+  @mixin headline;
+  @mixin headline1;
+
+  max-width: 450px;
+  margin-bottom: 32px;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    max-width: 367px;
+    margin-bottom: 24px;
+  }
+}
+
+.description {
+  @mixin headline;
+  @mixin headline6;
+
+  max-width: 387px;
+  margin-bottom: 30px;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline7;
+
+    max-width: 305px;
+    margin-bottom: 24px;
+    margin-left: 62px;
+  }
+}
+
+.button {
+  @media (max-width: $tablet-portrait) {
+    margin-left: 62px;
+  }
+}
