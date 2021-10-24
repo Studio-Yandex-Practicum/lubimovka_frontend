@@ -8,7 +8,7 @@
   align-items: center;
   padding: 0;
   margin: 0;
-  background-color: inherit;
+  background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
   letter-spacing: -.01em;
 

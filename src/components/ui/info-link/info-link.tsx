@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
-import cn from 'classnames';
 import Link from 'next/link';
 
 import { Icon, IIconProps } from '../icon';
-
 import styles from './info-link.module.css';
 
-interface ILinkProps {
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
+
+export interface ILinkProps {
   isOutsideLink?: boolean;
   href?: string;
   label: string;
@@ -16,6 +18,7 @@ interface ILinkProps {
   size?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'number';
   textDecoration?: 'textDecorationNone' | 'underline';
   border?: 'borderNone' | 'borderBottomLeft' | 'borderTop';
+  className?: string;
 }
 
 export const InfoLink: FC<ILinkProps> = (props) => {
@@ -29,21 +32,23 @@ export const InfoLink: FC<ILinkProps> = (props) => {
     size = 's',
     textDecoration = 'textDecorationNone',
     border = 'borderNone',
+    className,
     ...restLinkProps
   } = props;
 
-  const classes = cn(
-    styles.link,
-    styles[size],
-    styles[textDecoration],
-    styles[border],
-    styles[hoverStyle]
+  const classes = cx(
+    'link',
+    [size],
+    [textDecoration],
+    [border],
+    [hoverStyle],
+    className
   );
 
   const linkChildren = (
     <React.Fragment>
       {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
-      {<span className={cn(styles.label, styles[iconPlace])}>{label}</span>}
+      {<span className={cx('label', [iconPlace])}>{label}</span>}
       {iconPlace === 'right' && icon && <Icon glyph={icon}/>}
     </React.Fragment>
   );
