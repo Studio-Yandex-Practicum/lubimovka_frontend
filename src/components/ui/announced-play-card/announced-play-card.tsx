@@ -62,82 +62,82 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   );
 
   return (
-    <article
-      className={cx('card', [className])}
-    >
-      {coverResourceUrl &&
-        <div >
-          <img className={cx('cover')} src={coverResourceUrl}></img>
-        </div>
-      }
-      <div className={cx('info')}>
-        <div className={cx('dateInfo')}>
-          <p className={cx('date')}>{date}</p>
-          <p className={cx('time')}>{time}</p>
-        </div>
-        <h5 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h5>
-        { directorArray.length > 0 && playwrightArray.length > 0 &&
-        <div className={cx('credits')}>
-          {creditsRendered}
-        </div>
-        }
-        { eventDescription &&
-        <div className={cx('eventDescription')}>
-          {eventDescription}
-        </div>
-        }
-        <p className={cx('description')}>читка проекта Любимовка.Ещё</p>
-        {buttonLinks.length === 2 &&
-          <div className={cx('buttonContainer', coverResourceUrl && 'buttonContainerCoverExists' )}>
-            <Button
-              view='primary'
-              width='154px'
-              className={cx('button')}
-              align='start'
-              gap='9px'
-              size='s'
-              iconPlace='left'
-              icon='arrow-right'
-              label='О спектакле'
-              border='bottomLeft'
-              isLink={true}
-              href={buttonLinks[0]}
-            />
-            <Button
-              view='primary'
-              width='154px'
-              className={cx('button')}
-              align='start'
-              gap='9px'
-              size='s'
-              iconPlace='left'
-              icon='arrow-right'
-              label='Билеты'
-              border='bottomLeft'
-              isLink
-              href={buttonLinks[1]}
-            />
+    <li className={cx('card', [className])}>
+      <article className={cx('container')}>
+        {coverResourceUrl &&
+          <div >
+            <img className={cx('cover')} src={coverResourceUrl}></img>
           </div>
         }
-        {buttonLinks.length === 1 &&
-          <div className={cx('buttonContainer', coverResourceUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
-            <Button
-              view='primary'
-              width='154px'
-              className={cx('button')}
-              align='start'
-              gap='9px'
-              size='s'
-              iconPlace='left'
-              icon='arrow-right'
-              label='Регистрация'
-              border='bottomLeft'
-              isLink
-              href={buttonLinks[0]}
-            />
+        <div className={cx('info')}>
+          <div className={cx('dateInfo')}>
+            <p className={cx('date')}>{date}</p>
+            <p className={cx('time')}>{time}</p>
           </div>
-        }
-      </div>
-    </article>
+          <h5 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h5>
+          { directorArray.length > 0 && playwrightArray.length > 0 &&
+          <div className={cx('credits')}>
+            {creditsRendered}
+          </div>
+          }
+          { eventDescription &&
+          <div className={cx('eventDescription')}>
+            {eventDescription}
+          </div>
+          }
+          <p className={cx('description')}>читка проекта Любимовка.Ещё</p>
+          {buttonLinks.length === 2 &&
+            <div className={cx('buttonContainer', coverResourceUrl && 'buttonContainerCoverExists' )}>
+              <Button
+                view='primary'
+                width='154px'
+                className={cx('button')}
+                align='start'
+                gap='9px'
+                size='s'
+                iconPlace='left'
+                icon='arrow-right'
+                label='О спектакле'
+                border='bottomLeft'
+                isLink={true}
+                href={buttonLinks[0]}
+              />
+              <Button
+                view='primary'
+                width='154px'
+                className={cx('button')}
+                align='start'
+                gap='9px'
+                size='s'
+                iconPlace='left'
+                icon='arrow-right'
+                label='Билеты'
+                border='bottomLeft'
+                isLink
+                href={buttonLinks[1]}
+              />
+            </div>
+          }
+          {buttonLinks.length === 1 &&
+            <div className={cx('buttonContainer', coverResourceUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
+              <Button
+                view='primary'
+                width='154px'
+                className={cx('button')}
+                align='start'
+                gap='9px'
+                size='s'
+                iconPlace='left'
+                icon='arrow-right'
+                label='Регистрация'
+                border='bottomLeft'
+                isLink
+                href={buttonLinks[0]}
+              />
+            </div>
+          }
+        </div>
+      </article>
+    </li>
   );
 };
