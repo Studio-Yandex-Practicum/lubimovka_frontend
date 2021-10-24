@@ -1,0 +1,24 @@
+.photos {
+  display: grid;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  gap: 1px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media screen and (max-width: $tablet-portrait) {
+    gap: 4px 6px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.photos-item {
+  display: flex;
+  width: scale(359.23px);
+  height: scale(251px);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  object-fit: cover;
+}
