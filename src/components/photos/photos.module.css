@@ -1,4 +1,5 @@
 .photos {
+  position: relative;
   display: grid;
   width: 100%;
   box-sizing: border-box;
@@ -7,18 +8,26 @@
   grid-template-columns: repeat(4, 1fr);
 
   @media screen and (max-width: $tablet-portrait) {
-    gap: 4px 6px;
+    gap: scale(2px 3px);
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.photos-item {
-  display: flex;
-  width: scale(359.23px);
-  height: scale(251px);
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  object-fit: cover;
+.photos__item {
+  position: relative;
+
+  &::before {
+    display: block;
+    width: 100%;
+    padding-top: calc((251 / 359) * 100%);
+    content: "";
+  }
+}
+
+.photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
