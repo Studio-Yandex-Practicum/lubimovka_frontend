@@ -8,7 +8,7 @@ import { Url } from 'shared/types';
 import styles from './basic-play-card.module.css';
 const cx  = cn.bind(styles);
 
-interface IBasicPlayCardProps {
+export interface IBasicPlayCardProps {
   play: {
     title: string;
     city: string;
