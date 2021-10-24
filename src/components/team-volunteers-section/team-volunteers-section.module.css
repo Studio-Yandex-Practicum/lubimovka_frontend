@@ -1,19 +1,33 @@
+.section * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .section {
-  max-width: 1440px;
-  margin: 0 auto;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
   background-color: var(--light-green);
   color: var(--coal);
 }
 
+.container {
+  display: flex;
+  max-width: 1440px;
+  flex-direction: column;
+  padding: 0;
+  margin: 0 auto;
+}
+
 .title {
-  padding: 125px 176px 0 50vw;
+  padding: 125px 176px 0 50%;
   margin: 0;
 
   @mixin headline;
   @mixin headline2;
 
   @media (max-width: 769px) {
-    padding: 125px 176px 0 6vw;
+    padding: 125px 176px 0 4%;
   }
 }
 

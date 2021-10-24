@@ -20,7 +20,6 @@ interface TeamSectionProps {
 
 const TeamSection: FC<TeamSectionProps> = ({ data }) => {
   const { title, content } = data;
-  console.log(content);
 
   return (
     <section className={styles.section}>

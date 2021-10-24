@@ -33,11 +33,11 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
         mode: 'free-snap',
       },
       '(max-width: 750px)': {
-        slidesPerView: 2.5,
+        slidesPerView: 3,
         mode: 'free-snap',
       },
       '(max-width: 650px)': {
-        slidesPerView: 2,
+        slidesPerView: 2.2,
         mode: 'free-snap',
       },
       '(max-width: 520px)': {
@@ -45,7 +45,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
         mode: 'free-snap',
       },
       '(max-width: 450px)': {
-        slidesPerView: 1.6,
+        slidesPerView: 1.5,
         mode: 'free-snap',
       },
     },
@@ -61,7 +61,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
         screenWidth < 768 &&
         <div ref={sliderRef} className={cx('keen-slider', [styles.slidesContainer])}>
           {cards.map((card) => (
-            <div key={card.id} className={cx('keen-slider__slide')}>
+            <div key={card.id} className={cx('keen-slider__slide', [styles.card])}>
               <PersonCard
                 participant={false}
                 link={card.link}

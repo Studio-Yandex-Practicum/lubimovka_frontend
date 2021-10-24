@@ -50,21 +50,23 @@ const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = ({ data }) => {
 
   return (
     <section className={styles.section}>
-      <h2 className={styles.title}>{title}</h2>
-      <div >
-        <SliderYears
-          className={cn(styles.yearsContainer)}
-          years={years}
-          onClick={changeYearHandler}
-          currentYear={currentYear}
-        />
-      </div>
-      <VolunteersList cards={selectedCards}/>
-      <div className={styles.infoBlock}>
-        <Icon className={styles.asterisk} glyph={'asterisk'}/>
-        <p className={styles.info}>
-          Если вы хотите быть волонтером, напишите нам на more@lubimovka.ru и расскажите о себе.
-        </p>
+      <div className={styles.container}>
+        <h2 className={styles.title}>{title}</h2>
+        <div >
+          <SliderYears
+            className={cn(styles.yearsContainer)}
+            years={years}
+            onClick={changeYearHandler}
+            currentYear={currentYear}
+          />
+        </div>
+        <VolunteersList cards={selectedCards}/>
+        <div className={styles.infoBlock}>
+          <Icon className={styles.asterisk} glyph={'asterisk'}/>
+          <p className={styles.info}>
+            Если вы хотите быть волонтером, напишите нам на more@lubimovka.ru и расскажите о себе.
+          </p>
+        </div>
       </div>
     </section>
   );
