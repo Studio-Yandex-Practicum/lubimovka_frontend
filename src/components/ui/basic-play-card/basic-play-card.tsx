@@ -64,19 +64,34 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
           />
         </div>
       </div>
-      <div className={cx('info')}>
-        <Link href={`/authors/${author.id}`}>
-          <h6 className={cx('authorName')}>{author.name}</h6>
-        </Link>
+      <dl className={cx('info')}>
+        <dt className={cx('hiddenText')}>
+          Автор:
+        </dt>
+        <dd className={cx('author')}>
+          <Link href={`/authors/${author.id}`}>
+            <h6 className={cx('authorName')}>{author.name}</h6>
+          </Link>
+        </dd>
         {/* <InfoLink
            isOutsideLink={false}
            href={`/authors/${author.id}`}
            label={author.name}
            size='l'
        /> */}
-        <p className={cx('city')}>{play.city}</p>
-        <p className={cx('year')}>{play.year}</p>
-      </div>
+        <dt className={cx('hiddenText')}>
+          Город:
+        </dt>
+        <dd className={cx('city')}>
+          {play.city}
+        </dd>
+        <dt className={cx('hiddenText')}>
+          Год:
+        </dt>
+        <dd className={cx('year')}>
+          {play.year}
+        </dd>
+      </dl>
     </article>
   );
 };

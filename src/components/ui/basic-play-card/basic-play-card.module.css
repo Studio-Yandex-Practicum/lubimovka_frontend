@@ -60,12 +60,15 @@
   }
 }
 
+.author {
+  display: inline;
+  max-width: 190px;
+  margin: 0;
+}
+
 .authorName {
   @mixin headline;
   @mixin headline7;
-
-  display: inline;
-  max-width: 190px;
 }
 
 .authorName:hover {
@@ -91,4 +94,8 @@
   @mixin textSmall;
 
   margin: 0;
+}
+
+.hiddenText {
+  @mixin visually-hidden;
 }
