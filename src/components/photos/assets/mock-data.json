@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "image": "/images/photo-list/1.jpg",
+    "description": "фото с фестиваля"
+  },
+  {
+    "id": 2,
+    "image": "/images/photo-list/2.png",
+    "description": "фото с фестиваля"
+  },
+  {
+    "id": 3,
+    "image": "/images/photo-list/3.jpg",
+    "description": "фото с фестиваля"
+  },
+  {
+    "id": 4,
+    "image": "/images/photo-list/4.png",
+    "description": "фото с фестиваля"
+  },
+  {
+    "id": 5,
+    "image": "/images/photo-list/5.png",
+    "description": "фото с фестиваля"
+  },
+  {
+    "id": 6,
+    "image": "/images/photo-list/6.png",
+    "description": "фото с фестиваля"
+  },
+  {
+    "id": 7,
+    "image": "/images/photo-list/7.png",
+    "description": "фото с фестиваля"
+  },
+  {
+    "id": 8,
+    "image": "/images/photo-list/8.png",
+    "description": "фото с фестиваля"
+  }
+]
