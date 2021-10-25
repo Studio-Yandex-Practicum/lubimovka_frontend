@@ -1,0 +1,31 @@
+.request {
+  display: grid;
+  padding: 64px 77px;
+  background-color: var(--beige);
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(1, 2fr);
+  justify-items: end;
+}
+
+.footnoteInfo {
+  max-width: 400px;
+
+  @media (max-width: 414px) {
+    max-width: 335px;
+  }
+}
+
+.asterisk {
+  margin: 0 -22px 0;
+}
+
+.footnote {
+  @mixin text;
+  @mixin textLarge;
+
+  font-feature-settings: 'ss01' on;
+}
+
+.footnoteAnchor {
+  color: var(--black);
+}

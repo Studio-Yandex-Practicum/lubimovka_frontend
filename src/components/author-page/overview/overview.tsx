@@ -3,7 +3,7 @@ import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
 
 import cn from 'classnames';
-import styles from '../author.module.css';
+import styles from './overview.module.css';
 
 export const AuthorOverview: FC = () => {
   return (

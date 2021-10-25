@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Button } from 'components/ui/button';
 
 import cn from 'classnames';
-import styles from '../author.module.css';
+import styles from './another-plays.module.css';
 
 export const AnotherPlays: FC = () => {
   return (
