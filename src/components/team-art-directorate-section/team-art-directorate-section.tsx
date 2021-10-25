@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import TrusteesPersons from 'components/trustees-persons-list';
-import styles from './team-team-section.module.css';
+import ArtDirectorateList from 'components/team-art-directorate-list';
+import styles from './team-art-directorate-section.module.css';
 
 interface PersonCardData {
   id: number,
@@ -10,7 +10,7 @@ interface PersonCardData {
   about: string
 }
 
-interface TeamSectionProps {
+interface ArtDirectorateSectionProps {
   data: {
     id: number
     title: string
@@ -18,17 +18,17 @@ interface TeamSectionProps {
   }
 }
 
-const TeamSection: FC<TeamSectionProps> = ({ data }) => {
+const ArtDirectorateSection: FC<ArtDirectorateSectionProps> = ({ data }) => {
   const { title, content } = data;
 
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.title}>{title}</h2>
-        <TrusteesPersons trustees={content} />
+        <ArtDirectorateList cards={content}/>
       </div>
     </section>
   );
 };
 
-export default TeamSection;
+export default ArtDirectorateSection;
