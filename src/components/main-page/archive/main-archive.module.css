@@ -20,9 +20,11 @@
 }
 
 .link {
+  /* transform: translateY(scale(-36px)); */
+  position: relative;
+  bottom: scale(36px);
   display: inline-block;
   margin: scale(0 20px 0 6px);
-  transform: translateY(-2.25rem);
 }
 
 .desc {
@@ -38,6 +40,17 @@
   max-width: 33.75rem;
   height: 16.125rem;
   margin: scale(0) auto;
+}
+
+@media (min-width: $desktop) {
+  .video {
+    max-width: scale(540px);
+    height: scale(258px);
+  }
+
+  .content {
+    max-width: scale(866px);
+  }
 }
 
 @media (max-width: $tablet-portrait) {
