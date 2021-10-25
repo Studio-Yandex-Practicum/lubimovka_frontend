@@ -28,16 +28,12 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
     spacing: 30,
     slidesPerView: 3,
     breakpoints: {
-      '(max-width: 767px)': {
-        slidesPerView: 3,
-        mode: 'free-snap',
-      },
-      '(max-width: 750px)': {
+      '(max-width: 727px)': {
         slidesPerView: 3,
         mode: 'free-snap',
       },
       '(max-width: 650px)': {
-        slidesPerView: 2.2,
+        slidesPerView: 2.3,
         mode: 'free-snap',
       },
       '(max-width: 520px)': {
@@ -58,7 +54,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
   return (
     <>
       {
-        screenWidth < 768 &&
+        screenWidth < 728 &&
         <div ref={sliderRef} className={cx('keen-slider', [styles.slidesContainer])}>
           {cards.map((card) => (
             <div key={card.id} className={cx('keen-slider__slide', [styles.card])}>
@@ -75,7 +71,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
       }
 
       {
-        screenWidth > 767 &&
+        screenWidth > 727 &&
         <ul className={cn(styles.container)}>
           {cards.map((card) => (
             <li key={card.id} className={cn(styles.card)}>

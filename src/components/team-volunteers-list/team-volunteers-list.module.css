@@ -11,7 +11,7 @@
   max-width: 1440px;
   box-sizing: border-box;
   padding: 54px 14% 0;
-  margin: 0 auto;
+  margin: 0;
   gap: 48px 30px;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   list-style: none;
