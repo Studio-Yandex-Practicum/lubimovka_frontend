@@ -2,6 +2,11 @@
   display: flex;
   box-sizing: border-box;
   flex-wrap: nowrap;
+  padding-left: 50%;
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: 0;
+  }
 }
 
 .slide {

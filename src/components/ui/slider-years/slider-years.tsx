@@ -15,23 +15,23 @@ interface ISliderYearsProps {
 export const SliderYears: FC<ISliderYearsProps> = ( { className, years, currentYear, onClick }) => {
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     mode: 'free-snap',
-    spacing: 5,
-    slidesPerView: 13,
-    centered: true,
+    spacing: 10,
+    slidesPerView: 6.5,
+
     breakpoints: {
       '(max-width: 1200px)': {
-        slidesPerView: 7,
+        slidesPerView: 6,
       },
       '(max-width: 728px)': {
-        slidesPerView: 2.5,
+        slidesPerView: 5,
         centered: false
       },
       '(max-width: 650px)': {
-        slidesPerView: 2,
+        slidesPerView: 4,
         centered: false
       },
       '(max-width: 520px)': {
-        slidesPerView: 3,
+        slidesPerView: 3.5,
         centered: false
       },
       '(max-width: 450px)': {
