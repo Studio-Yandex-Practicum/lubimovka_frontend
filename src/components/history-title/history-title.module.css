@@ -119,14 +119,14 @@
   .dataSubtitle {
     padding-top: 0;
     margin-bottom: 24px;
-    margin-left: calc(var(--vw-multiplier-tablet-portrait) * 24);
+    margin-left: calc(var(--scale) * 24);
   }
 
   .datatext {
     max-width: 100%;
-    margin-right: calc(var(--vw-multiplier-tablet-portrait) * 24);
+    margin-right: calc(var(--scale) * 24);
     margin-bottom: 53px;
-    margin-left: calc(var(--vw-multiplier-tablet-portrait) * 24);
+    margin-left: calc(var(--scale) * 24);
   }
 
   .content {
@@ -135,14 +135,14 @@
 
   .gridcontent {
     margin-bottom: 85px;
-    margin-left: calc(var(--vw-multiplier-tablet-portrait) * 24);
+    margin-left: calc(var(--scale) * 24);
     column-gap: 41px;
     grid-template-columns: repeat(2, 1fr);
     row-gap: 40px;
   }
 
   .element {
-    max-width: 153px;
+    max-width: calc(var(--scale) * 153);
     margin-top: 8px;
   }
 
@@ -151,7 +151,7 @@
     flex-direction: column;
     margin-right: 0;
     margin-bottom: 44px;
-    margin-left: calc(var(--vw-multiplier-tablet-portrait) * 23);
+    margin-left: calc(var(--scale) * 23);
   }
 
   .subsection {
