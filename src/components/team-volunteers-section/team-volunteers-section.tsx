@@ -52,14 +52,12 @@ const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = ({ data }) => {
     <section className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.title}>{title}</h2>
-        <div >
-          <SliderYears
-            className={cn(styles.yearsContainer)}
-            years={years}
-            onClick={changeYearHandler}
-            currentYear={currentYear}
-          />
-        </div>
+        <SliderYears
+          className={cn(styles.yearsContainer)}
+          years={years}
+          onClick={changeYearHandler}
+          currentYear={currentYear}
+        />
         <VolunteersList cards={selectedCards}/>
         <div className={styles.infoBlock}>
           <Icon className={styles.asterisk} glyph={'asterisk'}/>

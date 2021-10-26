@@ -27,12 +27,17 @@
   @mixin headline2;
 
   @media (max-width: 769px) {
-    padding: 125px 176px 0 4%;
+    padding: 125px 176px 0 6%;
   }
 }
 
 .yearsContainer {
-  padding-top: 42px;
+  padding-top: 46.5px;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 36.5px 23px 0;
+    margin: 0 auto;
+  }
 }
 
 .cardContainer {

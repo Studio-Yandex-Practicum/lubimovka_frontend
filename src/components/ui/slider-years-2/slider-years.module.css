@@ -1,0 +1,49 @@
+.slide {
+  @mixin headline;
+  @mixin headline6;
+
+  margin: 0;
+  margin: 0 scale(20px);
+  cursor: pointer;
+  scroll-snap-align: end;
+
+  @media (max-width: $tablet-portrait) {
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.slide.active {
+  padding: 0 scale(14px);
+  border-right: 1px solid var(--coal);
+  border-left: 1px solid var(--coal);
+  margin: 0 scale(6px);
+  border-radius: scale(20px);
+}
+
+.grid {
+  @mixin hideScrollbar;
+
+  --card-width: max-content;
+
+  display: grid;
+  box-sizing: border-box;
+  justify-content: start;
+  padding: scale(46.5px) 0 0 scale(50%);
+  column-gap: 0;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fit, var(--card-width));
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(36.5px) scale(23px) 0;
+    margin: 0 auto;
+  }
+}
