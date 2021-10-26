@@ -7,12 +7,16 @@
   width: scale(180px);
 
   @media (max-width: $tablet-portrait) {
-    width: scale(210px);
+    width: scale(213px);
   }
 }
 
 .containerParticipant {
   width: scale(210px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(213px);
+  }
 }
 
 .imgVolunteer {
