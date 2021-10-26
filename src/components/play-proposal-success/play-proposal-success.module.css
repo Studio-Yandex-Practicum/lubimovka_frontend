@@ -5,7 +5,6 @@
   gap: scale(51px);
 
   @media (max-width: $tablet-portrait) {
-    /* padding: 34px 0 100px 24px; */
     padding-top: scale(34px);
     padding-bottom: scale(100px);
     padding-left: scale(24px);
