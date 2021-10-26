@@ -1,12 +1,15 @@
 .container {
   display: grid;
   box-sizing: border-box;
-  padding-top: 123px;
-  gap: 51px;
+  padding-top: scale(123px);
+  gap: scale(51px);
 
   @media (max-width: $tablet-portrait) {
-    padding: 34px 0 100px 24px;
-    gap: 33px;
+    /* padding: 34px 0 100px 24px; */
+    padding-top: scale(34px);
+    padding-bottom: scale(100px);
+    padding-left: scale(24px);
+    gap: scale(33px);
   }
 }
 
@@ -15,17 +18,17 @@
   @mixin headline4;
 
   position: relative;
-  max-width: scale(606px);
+  width: scale(606px);
   margin-right: 35%;
   justify-self: end;
 
   &::after {
     position: absolute;
-    top: -100px;
-    right: -140px;
+    bottom: scale(100px);
+    left: scale(600px);
     display: block;
-    width: 152px;
-    height: 152px;
+    width: scale(152px);
+    height: scale(152px);
     box-sizing: border-box;
     border: 1px solid var(--coal);
     border-top: 0;
