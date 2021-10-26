@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 
 export type TImageItem = {
   image: Url;
-  description: string;
+  description?: string;
 }
 
 interface IPhotosProps extends HTMLAttributes<HTMLElement> {
@@ -21,12 +21,12 @@ export const Photos: FC<IPhotosProps> = (props) => {
 
   return (
     <div className={cx('photos', className)}>
-      {images.map((photo, id) => (
-        <div key={id}
+      {images.map((photo, index) => (
+        <div key={index}
           className={cx('item')}>
           <img src={photo.image}
             className={cx('photo')}
-            alt={photo.description} />
+            alt={photo.description || ''} />
         </div>
       ))}
     </div>
