@@ -7,8 +7,7 @@ import styles from './afishe-festival-day.module.css';
 
 export interface IFestivalDayProps {
   id: number,
-  date: number,
-  month: string,
+  date: string,
   plays: {
     id: number,
     time: string,
@@ -24,22 +23,29 @@ export interface IFestivalDayProps {
 
 const cx = classNames.bind(styles);
 
-const isRegOpened = (day: number): boolean => {
+const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+
+const dateIndex = (date: string, index: number) => Number(date.split('-')[index]);
+
+const getMonth = (date: string) => months[dateIndex(date, 1) - 1];
+const getDay = (date: string) => dateIndex(date, 2);
+
+const getStatus = (day: string): boolean => {
   const date = new Date();
-  return day === date.getDate() || day - date.getDate() === 1 && date.getHours() >= 12;
+  return dateIndex(day, 2) === date.getDate() || dateIndex(day, 2) - date.getDate() === 1 && date.getHours() >= 12;
 };
 
-const getInfo = (day: {
-  date: number,
-  month: string,
-}) => isRegOpened(day.date) ? 'открыта регистрация' : `Регистрация откроется ${day.date} ${day.month} в 12:00`;
+const getInfo = (date: string) => getStatus(date) ? 'открыта регистрация' : `Регистрация откроется ${getDay(date) - 1} ${getMonth(date)} в 12:00`;
 
 export const FestivalDay: FC<IFestivalDayProps> = (props) => {
-  const {date, month, plays} = props;
+  const {date, plays} = props;
 
-  const info = useMemo(() => getInfo(props), [date, month]);
+  const month = useMemo(() => getMonth(date), [date]);
+  const day = useMemo(() => getDay(date), [date]);
 
-  const isOpened = useMemo(() => isRegOpened(date), [date]);
+  const info = useMemo(() => getInfo(date), [date]);
+
+  const isOpened = useMemo(() => getStatus(date), [date]);
 
   const registration = useMemo(() => cx({
     opened: isOpened,
@@ -49,7 +55,7 @@ export const FestivalDay: FC<IFestivalDayProps> = (props) => {
   return (
     <section className={styles.section}>
       <div className={styles.wrapper}>
-        <p className={styles.date}><span className={styles.span}>{date}</span>&nbsp;{month}</p>
+        <p className={styles.date}><span className={styles.span}>{day}</span>&nbsp;{month}</p>
         <p className={registration}>{info}</p>
       </div>
       {plays.map(play => (
