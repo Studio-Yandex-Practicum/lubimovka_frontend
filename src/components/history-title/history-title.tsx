@@ -36,25 +36,29 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
           {content.map((el, index) => (
             <div key={index} className={cn(style.card)}>
               {el.url ?
-                <Button
-                  label={el.subtitle}
-                  iconPlace={iconPlace}
-                  icon={icon}
-                  href={el.url}
-                  align={alignSpace}
-                  width='106px'
-                  size='l'
-                  gap='0'
-                  className={cn(style.button, style.link, style.title)}>
-                </Button> :
-                <Button
-                  label={el.subtitle}
-                  align={alignStart}
-                  width='106px'
-                  size='l'
-                  gap='0'
-                  className={cn(style.button, style.link, style.title)}>
-                </Button>}
+                <div className={style.buttonDisplay}>
+                  <Button
+                    label={el.subtitle}
+                    iconPlace={iconPlace}
+                    icon={icon}
+                    href={el.url}
+                    align={alignStart}
+                    size='l'
+                    gap='8px'
+                    className={cn(style.button, style.link, style.title)}>
+                  </Button>
+                </div>
+                :
+                <div className={style.buttonDisplay}>
+                  <Button
+                    label={el.subtitle}
+                    align={alignStart}
+                    size='l'
+                    gap='8px'
+                    className={cn(style.button, style.link, style.title)}>
+                  </Button>
+                </div>
+              }
               <p className={cn(style.element)}>{el.text}</p>
             </div>
           ))}
