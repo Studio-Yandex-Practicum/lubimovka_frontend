@@ -1,9 +1,6 @@
 .photos {
-  position: relative;
   display: grid;
-  width: 100%;
   box-sizing: border-box;
-  background-color: transparent;
   gap: 1px;
   grid-template-columns: repeat(4, 1fr);
 
@@ -19,8 +16,7 @@
 
   &::before {
     display: block;
-    width: 100%;
-    padding-top: calc((251 / 359) * 100%);
+    padding-top: 70%;
     content: "";
   }
 }
@@ -30,7 +26,7 @@
   top: 50%;
   left: 50%;
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
   transform: translateY(-50%) translateX(-50%);
 }
