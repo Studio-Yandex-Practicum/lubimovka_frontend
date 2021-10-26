@@ -11,12 +11,6 @@
   }
 }
 
-.card:last-child {
-  @media (max-width: $tablet-portrait) {
-    border-bottom: var(--coal) solid 1px;
-  }
-}
-
 .cover {
   width: 120px;
   height: 161px;
