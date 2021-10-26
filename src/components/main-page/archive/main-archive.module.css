@@ -1,4 +1,5 @@
 .archive {
+  width: 100%;
   padding-top: scale(68px);
   padding-bottom: scale(108px);
   background-color: var(--light-green);
@@ -78,7 +79,7 @@
     bottom: scale(32px);
     display: inline-block;
     margin: scale(0);
-    margin-left: scale(10px);
+    margin-left: scale(2px);
   }
 
   .desc {
