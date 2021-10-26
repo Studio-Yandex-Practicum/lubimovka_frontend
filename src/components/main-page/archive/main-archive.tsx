@@ -22,7 +22,7 @@ export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
     <section className={ cn(styles.archive) }>
       <div className={ cn(styles.content) }>
         <h2 className={ cn(styles.title) }>
-          { title[0] }
+          <p className={ cn(styles.text) }>{ title[0] }</p>
           <span className={ cn(styles.link) }>
             <Button 
               label='YOUTUBE'
