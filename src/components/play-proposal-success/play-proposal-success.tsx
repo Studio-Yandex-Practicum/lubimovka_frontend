@@ -2,12 +2,9 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 import styles from './play-proposal-success.module.css';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface IPlayProposalSuccessProps {}
-
 const cx = classNames.bind(styles);
 
-export const PlayProposalSuccess: FC<IPlayProposalSuccessProps> = () => {
+export const PlayProposalSuccess: FC = () => {
   return (
     <section className={cx('container')}>
       <h1 className={cx('title')}>

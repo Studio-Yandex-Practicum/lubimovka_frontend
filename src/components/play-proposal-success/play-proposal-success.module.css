@@ -17,7 +17,7 @@
   @mixin headline4;
 
   position: relative;
-  width: scale(606px);
+  max-width: 21ch;
   margin-right: 35%;
   justify-self: end;
 
