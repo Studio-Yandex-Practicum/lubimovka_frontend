@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import { Page } from 'components/page';
 import { Menu } from 'components/ui/menu';
@@ -15,6 +15,7 @@ import { OverlayNav } from 'components/overlay-nav';
 import * as breakpoints from 'shared/breakpoints.js';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { WithAppSettingsProps, withAppSettings } from 'components/app';
+import { BurgerButton } from 'components/ui/burger-button';
 
 interface IAppLayoutProps extends WithAppSettingsProps{
   hiddenPartners?: boolean,
@@ -28,7 +29,11 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
     hiddenPartners,
   } = props;
 
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+
+  const toggleOverlay = () => setIsOverlayOpen(!isOverlayOpen);
 
   return (
     <Page>
@@ -68,46 +73,50 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
         </Navbar>
       </Page.Header>
       {children}
-      {isMobile && <Page.Overlay isOpen={false}>
-        <OverlayNav>
-          <OverlayNav.Logotype>
-            <Logotype href='/' title="Фестиваль Любимовка" />
-          </OverlayNav.Logotype>
-          <OverlayNav.Menu>
-            <Menu type="overlay-navigation">
-              {mainNavigationItems.map((item, index) => (
-                <Menu.Item key={index} href={item.href}>
-                  {item.text}
-                </Menu.Item>
-              ))}
-            </Menu>
-          </OverlayNav.Menu>
-          <OverlayNav.Actions>
-            <Menu type='overlay-actions'>
-              {[formLink, donationLink].map((item, index) => (
-                <Menu.Item key={index} href={item.href}>
-                  {item.text}
-                  <Icon glyph='arrow-right' />
-                </Menu.Item>
-              ))}
-            </Menu>
-          </OverlayNav.Actions>
-          <OverlayNav.Socials>
-            <Menu type='overlay-social-links'>
-              {socialLinkItems.map((item, index) => (
-                <Menu.Item
-                  key={index}
-                  href={item.href}
-                  mods={{ primary: Boolean(item.primary) }}
-                >
-                  {item.text}
-                  <Icon glyph='arrow-right' />
-                </Menu.Item>
-              ))}
-            </Menu>
-          </OverlayNav.Socials>
-        </OverlayNav>
-      </Page.Overlay>}
+      {isMobile && <>
+        <Page.Overlay isOpen={isOverlayOpen}>
+          <OverlayNav>
+            <OverlayNav.Logotype>
+              <Logotype href='/' title="Фестиваль Любимовка" />
+            </OverlayNav.Logotype>
+            <OverlayNav.Menu>
+              <Menu type="overlay-navigation">
+                {mainNavigationItems.map((item, idx) => (
+                  <Menu.Item key={idx} href={item.href}>
+                    {item.text}
+                  </Menu.Item>
+                ))}
+              </Menu>
+            </OverlayNav.Menu>
+            <OverlayNav.Actions>
+              <Menu type='overlay-actions'>
+                {[formLink, donationLink].map((item, idx) => (
+                  <Menu.Item key={idx} href={item.href}>
+                    {item.text}
+                    <Icon glyph='arrow-right' />
+                  </Menu.Item>
+                ))}
+              </Menu>
+            </OverlayNav.Actions>
+            <OverlayNav.Socials>
+              <Menu type='overlay-social-links'>
+                {socialLinkItems.map((item, idx) => (
+                  <Menu.Item
+                    key={idx}
+                    href={item.href}
+                    mods={{ primary: item.primary ?? false }}>
+                    {item.text}
+                    <Icon glyph='arrow-right' />
+                  </Menu.Item>
+                ))}
+              </Menu>
+            </OverlayNav.Socials>
+          </OverlayNav>
+        </Page.Overlay>
+        <Page.BurgerButton>
+          <BurgerButton isOpen={isOverlayOpen} onClick={toggleOverlay} />
+        </Page.BurgerButton>
+      </>}
       <Footer>
         {!hiddenPartners && (
           <Footer.Partners>
