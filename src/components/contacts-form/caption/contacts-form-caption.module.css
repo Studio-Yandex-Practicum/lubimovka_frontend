@@ -2,7 +2,7 @@
   @mixin text;
   @mixin textCaption;
 
-  max-width: scale(320px);
+  max-width: scale(340px);
   margin-top: scale(16px);
 }
 
