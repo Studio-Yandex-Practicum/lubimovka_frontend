@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import { PageHeader } from './header';
-import { PageContainer } from './container';
+import { PageOverlay } from './overlay';
 
 interface IPageProps {
   children: ReactNode,
@@ -18,4 +18,4 @@ export const Page = (props: IPageProps): JSX.Element => {
 };
 
 Page.Header = PageHeader;
-Page.Container = PageContainer;
+Page.Overlay = PageOverlay;
