@@ -1,6 +1,6 @@
 import {FC} from 'react';
 
-import {RegularDay} from '../afishe-regular-day';
+import {RegularDay} from '../regular-day';
 
 import styles from './afishe-regular-days.module.css';
 

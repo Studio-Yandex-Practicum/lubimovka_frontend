@@ -9,7 +9,7 @@
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  margin-right: 118px;
+  padding-right: 118px;
 
   @media (max-width: $tablet-portrait) {
     flex-direction: column;

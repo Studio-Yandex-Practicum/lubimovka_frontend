@@ -1,11 +1,11 @@
 import {NextPage} from 'next';
 import cn from 'classnames/bind';
 
-import {AfisheTitle} from 'components/afishe/afishe-title';
-import {FestivalDays} from 'components/afishe/afishe-festival-days';
-import {RegularDays} from 'components/afishe/afishe-regular-days';
+import {AfisheTitle} from 'components/afishe/title';
+import {FestivalDays} from 'components/afishe/festival-days';
+import {RegularDays} from 'components/afishe/regular-days';
 import {AppLayout} from 'components/app-layout';
-import data from './mock-data/mock-data.json';
+import data from './assets/mock-data.json';
 
 import styles from 'components/afishe/afishe.module.css';
 
