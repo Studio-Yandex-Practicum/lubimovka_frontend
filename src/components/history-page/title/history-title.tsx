@@ -20,7 +20,6 @@ interface IHistoryTitle {
 }
 const iconPlace = 'right';
 const icon = 'arrow-right';
-const alignSpace = 'space-between';
 const alignStart = 'start';
 
 export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
