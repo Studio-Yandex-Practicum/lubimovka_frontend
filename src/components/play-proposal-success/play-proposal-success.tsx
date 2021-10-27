@@ -15,7 +15,7 @@ export const PlayProposalSuccess: FC<IPlayProposalSuccessProps> = () => {
         новостями в наших соцсетях!
       </h1>
       <img
-        src="/image/play-proposal-success/PlayProposalSuccessImage.png"
+        src="/images/play-proposal-success/PlayProposalSuccessImage.jpg"
         alt="Успешная отправка"
         className={cx('image')}
       />
