@@ -133,7 +133,7 @@
   grid-area: actions;
 }
 
-.card:not(:first-child) {
+.card:not(:first-of-type) {
   border-top: 1px solid var(--coal);
 
   @media (min-width: $tablet-portrait) {
