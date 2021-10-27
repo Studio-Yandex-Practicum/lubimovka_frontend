@@ -60,8 +60,10 @@
 }
 
 .current {
-  &::before,
-  &::after {
-    visibility: visible;
+  .link {
+    &::before,
+    &::after {
+      visibility: visible;
+    }
   }
 }
