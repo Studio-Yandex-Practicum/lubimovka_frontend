@@ -1,6 +1,6 @@
 import {FC} from 'react';
 
-import {FestivalDay, IFestivalDayProps} from 'components/afishe/festival-day';
+import {FestivalDay, IFestivalDayProps} from 'components/afishe-page/festival-day';
 
 import styles from './afishe-festival-days.module.css';
 
