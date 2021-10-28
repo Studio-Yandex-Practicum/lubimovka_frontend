@@ -14,28 +14,28 @@
   display: flex;
   flex-direction: column;
   padding-top: 20px;
-  margin-right: calc(var(--vw-multiplier-tablet-portrait) * 180);
+  margin-right: calc(var(--scale) * 180);
 }
 
 .imageTitle {
-  width: calc(var(--vw-multiplier-tablet-portrait) * 360);
-  margin-right: calc(var(--vw-multiplier-tablet-portrait) * 180);
-  margin-left: calc(var(--vw-multiplier-tablet-portrait) * 180);
+  width: calc(var(--scale) * 360);
+  margin-right: calc(var(--scale) * 180);
+  margin-left: calc(var(--scale) * 180);
   object-fit: contain;
 }
 
 .title {
   @mixin headline;
 
-  font-size: calc(var(--vw-multiplier-tablet-portrait) * 72);
-  line-height: calc(var(--vw-multiplier-tablet-portrait) * 70);
+  font-size: calc(var(--scale) * 72);
+  line-height: calc(var(--scale) * 70);
 }
 
 .text {
   @mixin textLarge;
   @mixin text;
 
-  padding-left: calc(var(--vw-multiplier-tablet-portrait) * 62);
+  padding-left: calc(var(--scale) * 62);
   margin-top: 37px;
 }
 
@@ -104,12 +104,12 @@
 
   .contentTopTitle {
     padding: 0;
-    margin-right: calc(var(--vw-multiplier-tablet-portrait) * 24);
-    margin-left: calc(var(--vw-multiplier-tablet-portrait) * 24);
+    margin-right: calc(var(--scale) * 24);
+    margin-left: calc(var(--scale) * 24);
   }
 
   .text {
-    padding-left: calc(var(--vw-multiplier-tablet-portrait) * 31);
+    padding-left: calc(var(--scale) * 31);
     margin-top: 24px;
   }
 
