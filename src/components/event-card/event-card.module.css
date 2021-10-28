@@ -1,20 +1,20 @@
 .card {
   display: grid;
-  padding-bottom: 48px;
-  gap: 16px 0;
+  padding-bottom: scale(48px);
+  gap: scale(16px) 0;
   grid-template:
     "time-location image"
     "title         title"
     "description   description"
     "credits       credits"
-    "actions       actions" 1fr / 1fr minmax(0, 127px);
+    "actions       actions" 1fr / 1fr minmax(0, scale(127px));
 
   @media (min-width: $tablet-portrait) {
     padding: 0;
-    gap: 16px 32px;
+    gap: scale(16px) scale(32px);
     grid-template:
       "image time-location title       .       ."
-      "image time-location description credits actions" 1fr / minmax(0, 147px) minmax(0, 12.5%) minmax(0, 27.5%) minmax(0, 30%) minmax(0, 17.5%);
+      "image time-location description credits actions" 1fr / minmax(0, scale(147px)) minmax(0, 12.5%) minmax(0, 27.5%) minmax(0, 30%) minmax(0, 17.5%);
   }
 }
 
@@ -22,7 +22,7 @@
   grid-area: image;
 
   @media (min-width: $tablet-portrait) {
-    margin-right: -4px;
+    margin-right: scale(-4px);
   }
 }
 
@@ -46,12 +46,12 @@
   @mixin headline6;
 
   @media (min-width: $tablet-portrait) {
-    margin-top: 15px;
+    margin-top: scale(15px);
   }
 }
 
 .timeLocation {
-  padding-right: 8px;
+  padding-right: scale(8px);
   margin: 0;
   grid-area: time-location;
 
@@ -68,12 +68,12 @@
   @mixin headline;
   @mixin headline7;
 
-  margin-top: 19px;
+  margin-top: scale(19px);
 
   @media (min-width: $tablet-portrait) {
     @mixin headline6;
 
-    margin-top: 15px;
+    margin-top: scale(15px);
   }
 }
 
@@ -82,7 +82,7 @@
   @mixin textSmall;
 
   @media (min-width: $tablet-portrait) {
-    margin: 16px 0 0;
+    margin: scale(16px) 0 0;
   }
 }
 
@@ -90,12 +90,12 @@
   @mixin text;
   @mixin textSmall;
 
-  margin: 0 0 8px 64px;
+  margin: 0 0 scale(8px) scale(64px);
   grid-area: description;
   word-wrap: break-word;
 
   @media (min-width: $tablet-portrait) {
-    margin: 0 0 44px;
+    margin: 0 0 scale(44px);
   }
 }
 
