@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  width: scale(553px);
+  flex-direction: column;
+  margin: scale(92px auto 169px 665px);
+
+  @media screen and (max-width: $tablet-portrait) {
+    width: scale(365px);
+    margin: scale(50px auto 100px 25px);
+  }
+}
+
+.asterisk {
+  display: flex;
+  width: scale(25px);
+  height: scale(25px);
+  background: no-repeat center/100% url(../../shared/icons/asterisk.svg);
+}
+
+.header {
+  @mixin headline;
+  @mixin headline5;
+
+  margin: scale(0 0 0 27px);
+
+  @media screen and (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    margin: scale(0 0 0 30px);
+  }
+}
+
+.text {
+  @mixin headline;
+  @mixin headline7;
+
+  margin: scale(33px 0 0 85px);
+
+  @media screen and (max-width: $tablet-portrait) {
+    margin: scale(16px 0 0 32px);
+  }
+}
+
+.link {
+  color: unset;
+
+  &:hover {
+    background-color: var(--coal);
+    color: var(--beige);
+  }
+}
