@@ -13,7 +13,7 @@
 
   @media (max-width: $tablet-portrait) {
     max-width: scale(364px);
-    padding: scale(32px) scale(14px) scale(32px) scale(24px);
+    padding: scale(32px 14px 32px 24px);
   }
 }
 
@@ -89,7 +89,7 @@
   display: flex;
   width: 240px;
   flex-direction: column;
-  margin: scale(16px) 0 0 scale(30px);
+  margin: scale(16px 0 0 30px);
 
   @media (max-width: $tablet-portrait) {
     width: scale(243px);
@@ -108,7 +108,7 @@
   @mixin textSmall;
 
   width: scale(359px);
-  margin: scale(16px) 0 0 scale(30px);
+  margin: scale(16px 0 0 30px);
 
   @media (max-width: $tablet-portrait) {
     margin-left: 0;
@@ -129,6 +129,7 @@
 }
 
 .button {
+  width: scale(154px);
   margin-bottom: scale(16px);
 
   @media (max-width: $tablet-portrait) {
