@@ -1,0 +1,45 @@
+.container {
+  display: grid;
+  padding: scale(32px 0 0 30px);
+  background-color: var(--beige);
+  gap: scale(0 120px);
+  grid-template-columns: 1fr 50%;
+  grid-template-rows: repeat(3, min-content);
+}
+
+.button {
+  grid-area: 1 / 1 / 2 / 3;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline1;
+
+  max-width: scale(450px);
+  margin: scale(0 0 63px);
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.desc {
+  @mixin headline;
+  @mixin headline6;
+
+  max-width: scale(420px);
+  margin-left: auto;
+  font-weight: 300;
+  grid-area: -1 / 1 / -2 / 2;
+}
+
+.desc-addon {
+  display: none;
+
+  @media (max-width: $tablet-portrait) {
+    display: inline;
+  }
+}
+
+.image {
+  @mixin img;
+
+  grid-area: -1 / -1 / -2 / -2;
+}
