@@ -1,0 +1,28 @@
+.dl-class {
+  display: flex;
+  width: scale(450px);
+  flex-direction: column;
+  margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(367px);
+  }
+}
+
+.dt-class {
+  @mixin text;
+  @mixin textSmall;
+
+  margin-top: scale(24px);
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.dd-class {
+  @mixin text;
+  @mixin textLarge;
+
+  margin-left: scale(28px);
+}
