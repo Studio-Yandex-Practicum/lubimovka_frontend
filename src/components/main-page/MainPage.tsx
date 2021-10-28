@@ -14,6 +14,7 @@ import { IMainTitle } from './title';
 // data json
 import mainEventsData from './assets/main-events.json';
 import mainPlatformsData from './assets/main-platforms-data.json';
+import mainShortListData from './assets/main-short-list-data.json';
 import styles from './main-page.module.css';
 
 const cx = cn.bind(styles);
@@ -61,7 +62,7 @@ export const MainPage: FC<IMainPageProps> = (props) => {
         {aside && <MainAside />}
         {banners && <MainBanners />}
         {platforms && <MainPlatforms data={ mainPlatformsData[0] } />}
-        {shortList && <MainShortList />}
+        {shortList && <MainShortList data={ mainShortListData }/>}
         {archive && <MainArchive />}
         {partners && <MainPartners />}
       </main>
