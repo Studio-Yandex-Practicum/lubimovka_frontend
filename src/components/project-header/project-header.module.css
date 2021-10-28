@@ -1,14 +1,9 @@
 .container {
   display: grid;
-  padding: scale(32px 0 0 30px);
   background-color: var(--beige);
   gap: scale(0 120px);
   grid-template-columns: 1fr 50%;
-  grid-template-rows: repeat(3, min-content);
-}
-
-.button {
-  grid-area: 1 / 1 / 2 / 3;
+  grid-template-rows: repeat(2, min-content);
 }
 
 .title {
@@ -17,7 +12,7 @@
 
   max-width: scale(450px);
   margin: scale(0 0 63px);
-  grid-area: 2 / 2 / 3 / 3;
+  grid-area: 1 / 2 / 2 / 3;
 }
 
 .desc {
