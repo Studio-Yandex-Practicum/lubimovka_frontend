@@ -42,8 +42,8 @@ export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
       </div>
       <div className={ cn(styles.video) }>
         <iframe 
-          width="100%" 
-          height="100%"
+          width='100%' 
+          height='100%'
           src={`https://www.youtube.com/embed/${ videoKey }`}
           frameBorder="0" 
           allowFullScreen 
