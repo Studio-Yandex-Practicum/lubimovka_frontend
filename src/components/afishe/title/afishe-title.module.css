@@ -1,12 +1,12 @@
 .section {
   display: flex;
-  height: 470px;
+  height: calc(var(--scale) * 470);
   align-items: center;
   justify-content: right;
 }
 
 .title {
-  width: clamp(298px, 100%, 542px);
+  width: clamp(calc(var(--scale) * 298), 100%, calc(var(--scale) * 542));
 
   @mixin headline;
   @mixin headline1;

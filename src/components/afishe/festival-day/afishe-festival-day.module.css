@@ -1,7 +1,7 @@
 .section {
   display: flex;
   flex-direction: column;
-  padding-bottom: 100px;
+  padding-bottom: calc(var(--scale) * 100);
 }
 
 .wrapper {
@@ -9,11 +9,12 @@
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  padding-right: 118px;
+  padding-right: calc(var(--scale) * 118);
 
   @media (max-width: $tablet-portrait) {
     flex-direction: column;
     align-items: center;
+    padding-right: 0;
     margin-right: 0;
   }
 }
@@ -22,10 +23,10 @@
   @mixin text;
   @mixin textLarge;
 
-  margin-bottom: 11px;
+  margin-bottom: calc(var(--scale) * 11);
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: 24px;
+    margin-bottom: calc(var(--scale) * 24);
   }
 }
 
@@ -35,7 +36,7 @@
 }
 
 .opened {
-  padding: 5px 25px;
+  padding: calc(var(--scale) * 5) calc(var(--scale) * 25);
   background-color: var(--coal);
 
   @mixin text;
@@ -45,8 +46,8 @@
 }
 
 .closed {
-  max-width: 202px;
-  padding-bottom: 27px;
+  max-width: calc(var(--scale) * 202);
+  padding-bottom: calc(var(--scale) * 27);
 
   @mixin text;
   @mixin textSmall;

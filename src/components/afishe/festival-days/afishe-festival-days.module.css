@@ -1,5 +1,5 @@
 .section {
   display: flex;
   flex-direction: column;
-  padding: 0 32px;
+  padding: 0 calc(var(--scale) * 32);
 }
