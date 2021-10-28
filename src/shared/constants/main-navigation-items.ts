@@ -4,7 +4,7 @@ export const mainNavigationItems = [
     mobileOnly: true,
   },
   { text: 'Афиша',
-    href: '/afishe-page',
+    href: '/afishe',
   },
   {
     text: 'Библиотека',
