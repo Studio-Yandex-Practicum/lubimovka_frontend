@@ -19,7 +19,7 @@ export const ProjectHeader = ({ data }: IProjectHeaderProps): JSX.Element => {
   const { title, desc, descAddon, image, imageDesc } = data;
 
   return (
-    <div className={cx('container')}>
+    <section className={cx('container')}>
       <h1 className={cx('title')}>{title}</h1>
       <p className={cx('desc')}>{desc}<span className={cx('desc-addon')}> {descAddon}</span></p>
       <img
@@ -27,6 +27,6 @@ export const ProjectHeader = ({ data }: IProjectHeaderProps): JSX.Element => {
         alt={imageDesc}
         className={cx('image')}
       />
-    </div>
+    </section>
   );
 };
