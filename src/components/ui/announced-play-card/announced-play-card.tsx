@@ -65,8 +65,8 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     <li className={cx('card', [className])}>
       <article className={cx('container')}>
         {coverResourceUrl &&
-          <div >
-            <img className={cx('cover')} src={coverResourceUrl}></img>
+          <div>
+            <img className={cx('cover')} src={coverResourceUrl} alt={title}/>
           </div>
         }
         <div className={cx('info')}>
