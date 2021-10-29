@@ -15,9 +15,9 @@ export const ContactsFormCaption = (props: IContactsFormCaptionProps): JSX.Eleme
 
   return (
     <p className={cx('caption')}>
-      {'Нажимая на кнопку «Отправить» вы даёте согласие на '}
+      {'Нажимая на кнопку «Отправить» вы даёте согласие '}
       <Link href={privacy}>
-        <a className={cx('link')}>обработку персональных данных </a>
+        <a className={cx('link')}>на обработку персональных данных </a>
       </Link>
     </p>
   );
