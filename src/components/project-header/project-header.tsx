@@ -6,8 +6,7 @@ import styles from './project-header.module.css';
 interface IProjectHeaderProps {
   data: {
     title: string,
-    desc: string,
-    descAddon?: string,
+    intro: string,
     image: Url,
     imageDesc?: string,
   };
@@ -16,12 +15,12 @@ interface IProjectHeaderProps {
 const cx = classNames.bind(styles);
 
 export const ProjectHeader = ({ data }: IProjectHeaderProps): JSX.Element => {
-  const { title, desc, descAddon, image, imageDesc } = data;
+  const { title, intro, image, imageDesc } = data;
 
   return (
     <section className={cx('container')}>
       <h1 className={cx('title')}>{title}</h1>
-      <p className={cx('desc')}>{desc}<span className={cx('desc-addon')}> {descAddon}</span></p>
+      <p className={cx('intro')}>{intro}</p>
       <img
         src={image}
         alt={imageDesc}

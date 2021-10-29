@@ -26,7 +26,7 @@
   }
 }
 
-.desc {
+.intro {
   @mixin headline;
   @mixin headline6;
 
@@ -41,14 +41,6 @@
     max-width: scale(304px);
     margin: scale(0 24px 36px auto);
     grid-area: 2 / 1 / 3 / 2;
-  }
-}
-
-.desc-addon {
-  display: none;
-
-  @media (max-width: $tablet-portrait) {
-    display: inline;
   }
 }
 
