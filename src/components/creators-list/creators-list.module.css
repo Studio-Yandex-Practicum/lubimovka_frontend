@@ -1,15 +1,10 @@
-.dl-class {
+.creatorList {
   display: flex;
-  width: scale(450px);
   flex-direction: column;
   margin: 0;
-
-  @media (max-width: $tablet-portrait) {
-    width: scale(367px);
-  }
 }
 
-.dt-class {
+.title {
   @mixin text;
   @mixin textSmall;
 
@@ -20,9 +15,17 @@
   }
 }
 
-.dd-class {
+.description {
   @mixin text;
   @mixin textLarge;
 
   margin-left: scale(28px);
+
+  &:last-of-type {
+    width: scale(420px);
+
+    @media (max-width: $tablet-portrait) {
+      width: scale(337px);
+    }
+  }
 }

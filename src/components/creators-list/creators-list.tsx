@@ -18,17 +18,17 @@ export const CreatorsList: FC<ICreatorsListProps> = (props) => {
   const actorsString = actors.join(', ');
 
   return (
-    <dl className={cx('dl-class')}>
-      <dt className={cx('dt-class')}>Драматург</dt>
-      <dd className={cx('dd-class')}>{playwrighter}</dd>
-      <dt className={cx('dt-class')}>Перевод</dt>
-      <dd className={cx('dd-class')}>{translator }</dd>
-      <dt className={cx('dt-class')}>Адаптация текста</dt>
-      <dd className={cx('dd-class')}>{textAdaptation}</dd>
-      <dt className={cx('dt-class')}>Режиссёр</dt>
-      <dd className={cx('dd-class')}>{director}</dd>
-      <dt className={cx('dt-class')}>Актёры</dt>
-      <dd className={cx('dd-class')}>{actorsString}</dd>
+    <dl className={cx('creatorList')}>
+      <dt className={cx('title')}>Драматург</dt>
+      <dd className={cx('description')}>{playwrighter}</dd>
+      <dt className={cx('title')}>Перевод</dt>
+      <dd className={cx('description')}>{translator }</dd>
+      <dt className={cx('title')}>Адаптация текста</dt>
+      <dd className={cx('description')}>{textAdaptation}</dd>
+      <dt className={cx('title')}>Режиссёр</dt>
+      <dd className={cx('description')}>{director}</dd>
+      <dt className={cx('title')}>Актёры</dt>
+      <dd className={cx('description')}>{actorsString}</dd>
     </dl>
   );
 };
