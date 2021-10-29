@@ -43,7 +43,7 @@
   width: 100%;
   max-width: calc(var(--scale) * 751);
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
   border-top: 1px solid var(--coal);
   text-decoration: none;
