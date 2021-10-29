@@ -15,7 +15,7 @@
     "shortList ."
     "archive archive"
     "partners .";
-  grid-template-columns: minmax(scale(500px), scale(1108px)) 1fr;
+  grid-template-columns: minmax(scale(500px), scale(1110px)) 1fr;
   grid-template-rows: repeat(6, max-content);
 
   @media screen and (max-width: 1200px) {
