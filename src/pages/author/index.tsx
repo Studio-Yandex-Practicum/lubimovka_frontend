@@ -6,6 +6,9 @@ import { AnotherPlays } from 'components/author-page/another-plays';
 import { AuthorInformation } from 'components/author-page/information';
 import { AuthorRequest } from 'components/author-page/request';
 
+// JSON-data
+import playsShortListData from './assets/plays-short-list-data.json';
+
 import cn from 'classnames';
 import styles from 'components/author-page/author.module.css';
 
@@ -13,13 +16,13 @@ interface IAuthorPageProps {
   title: string;
 }
 
-const Index: NextPage<IAuthorPageProps> = (props: IAuthorPageProps) => {
+const Author: NextPage<IAuthorPageProps> = (props: IAuthorPageProps) => {
   return (
     <>
       <AppLayout />
       <div className={ cn(styles.author) }>
         <AuthorOverview />
-        <AuthorPlays />
+        <AuthorPlays data={ playsShortListData }/>
         <AnotherPlays />
         <AuthorInformation />
         <AuthorRequest />
@@ -28,4 +31,4 @@ const Index: NextPage<IAuthorPageProps> = (props: IAuthorPageProps) => {
   );
 };
 
-export default Index;
+export default Author;

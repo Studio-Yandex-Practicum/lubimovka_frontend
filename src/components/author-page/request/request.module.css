@@ -1,6 +1,6 @@
 .request {
   display: grid;
-  padding: 64px 77px;
+  padding: calc(var(--scale) * 64) calc(var(--scale) * 77);
   background-color: var(--beige);
   grid-auto-flow: dense;
   grid-template-columns: repeat(1, 2fr);
@@ -8,15 +8,16 @@
 }
 
 .footnoteInfo {
-  max-width: 400px;
+  max-width: calc(var(--scale) * 400);
 
   @media (max-width: 414px) {
-    max-width: 335px;
+    max-width: calc(var(--scale) * 335);
   }
 }
 
 .asterisk {
-  margin: 0 -22px 0;
+  max-width: calc(var(--scale) * 25);
+  margin: 0 calc(var(--scale) * -22) 0;
 }
 
 .footnote {

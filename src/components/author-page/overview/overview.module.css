@@ -4,55 +4,74 @@
 
 .personalInfo {
   display: grid;
+  grid-template-areas:
+    'button photo fullName'
+    'button photo city'
+    'button photo quote';
   grid-template-columns: 2fr 6fr 9fr;
   grid-template-rows: auto;
 
   @media (max-width: 959px) {
     background-color: var(--light-green);
+    grid-template-areas:
+      'button'
+      'photo'
+      'fullName'
+      'city'
+      'quote';
+    grid-template-columns: 10fr;
+  }
+}
+
+.personalInfoNoPhoto {
+  display: grid;
+  grid-template-areas:
+    'button photo fullName'
+    'button photo city'
+    'button quote empty';
+  grid-template-columns: 2fr 6fr 9fr;
+  grid-template-rows: auto;
+
+  @media (max-width: 959px) {
+    background-color: var(--light-green);
+    grid-template-areas:
+      'button'
+      'fullName'
+      'city'
+      'quote';
     grid-template-columns: 10fr;
   }
 }
 
 .button {
-  margin: 30px;
+  margin: calc(var(--scale) * 30);
+  grid-area: button;
 
   @media (max-width: 959px) {
-    margin: 30px 100px 30px;
     justify-self: start;
   }
 
   @media (max-width: 600px) {
-    margin: 41px 0 30px 24px;
+    margin: calc(var(--scale) * 41) 0 calc(var(--scale) * 30) calc(var(--scale) * 24);
   }
 }
 
 .photo {
-  width: 275px;
-  height: 355px;
+  width: calc(var(--scale) * 275);
+  height: calc(var(--scale) * 355);
   border: 1px solid var(--red);
+  grid-area: photo;
   justify-self: center;
 
   @media (max-width: 959px) {
-    margin: 0 0 0 100px;
+    margin: 0 0 0 calc(var(--scale) * 30);
     justify-self: start;
   }
 
   @media (max-width: 600px) {
-    width: 183px;
-    height: 236px;
-    margin: 0 0 0 24px;
-  }
-}
-
-.info {
-  padding: 0 80px 0 0;
-
-  @media (max-width: 959px) {
-    margin: 0 0 0 75px;
-  }
-
-  @media (max-width: 600px) {
-    margin: 0;
+    width: calc(var(--scale) * 183);
+    height: calc(var(--scale) * 236);
+    margin: 0 0 0 calc(var(--scale) * 24);
   }
 }
 
@@ -61,17 +80,14 @@
   @mixin headline3;
 
   width: 100%;
-  max-width: 440px;
-  margin: 55px 0 10px 20px;
-  grid-column-end: five;
-  grid-column-start: 3;
-  grid-row-end: 1;
-  grid-row-start: row1-start;
+  max-width: calc(var(--scale) * 300);
+  margin: calc(var(--scale) * 55) 0 calc(var(--scale) * 10) calc(var(--scale) * 30);
+  grid-area: fullName;
 
   @media (max-width: 600px) {
     @mixin headline4;
 
-    margin: 16px 0 0 20px;
+    margin: calc(var(--scale) * 16) 0 0 calc(var(--scale) * 20);
   }
 }
 
@@ -79,15 +95,12 @@
   @mixin text;
   @mixin textMedium;
 
-  padding: 0 20px 0;
-  margin: 0 0 56px;
-  grid-column-end: six;
-  grid-column-start: 3;
-  grid-row-end: 2;
-  grid-row-start: row2-start;
+  padding: 0 calc(var(--scale) * 30) 0;
+  margin: 0 0 calc(var(--scale) * 56);
+  grid-area: city;
 
   @media (max-width: 414px) {
-    margin: 14px 0 0;
+    margin: calc(var(--scale) * 14) 0 0;
   }
 }
 
@@ -97,10 +110,8 @@
 
   display: flex;
   flex-direction: inherit;
-  grid-column-end: seven;
-  grid-column-start: 3;
-  grid-row-end: 3;
-  grid-row-start: row3-start;
+  padding: 0 calc(var(--scale) * 20) 0 0;
+  grid-area: quote;
   quotes: "\00ab" "\00bb";
 
   &::after {
@@ -108,14 +119,14 @@
   }
 
   @media (max-width: 959px) {
-    margin: 0 0 72px 60px;
-    justify-self: center;
+    margin: 0 0 calc(var(--scale) * 72) calc(var(--scale) * 60);
+    justify-self: start;
   }
 
-  @media (max-width: 727px) {
+  @media (max-width: 728px) {
     @mixin headline7;
 
-    margin: 28px 0 72px 60px;
+    margin: calc(var(--scale) * 28) calc(var(--scale) * 20) calc(var(--scale) * 72) calc(var(--scale) * 60);
   }
 }
 
@@ -124,72 +135,73 @@
   @mixin headline6;
 
   width: 100%;
-  max-width: 600px;
-  margin: 0 10px;
+  max-width: calc(var(--scale) * 600);
+  margin: 0 calc(var(--scale) * 10);
 
-  @media (max-width: 768px) {
+  @media (max-width: 728px) {
     @mixin headline7;
   }
 }
 
 .overviewInfo {
   display: grid;
-  padding: 77px 0;
+  padding: calc(var(--scale) * 77) 0;
   gap: 1rem;
   grid-template-columns: 2fr 5fr 7fr;
   grid-template-rows: auto;
   justify-items: start;
 
-  @media (max-width: 768px) {
+  @media (max-width: 728px) {
     gap: 5rem;
     grid-template-columns: 10fr;
   }
 
   @media (max-width: 414px) {
-    padding: 56px 0 120px;
+    padding: calc(var(--scale) * 56) 0 calc(var(--scale) * 120);
   }
 }
 
 .overviewBlock {
+  padding: 0 calc(var(--scale) * 25);
   grid-column: 2/3;
 
-  @media (max-width: 768px) {
+  @media (max-width: 728px) {
     grid-column: auto;
     grid-row: 2/2;
     justify-self: center;
   }
 
   @media (max-width: 414px) {
-    padding: 0 25px;
+    padding: 0 calc(var(--scale) * 25);
   }
 }
 
 .overviewButton {
-  width: 480px;
+  width: calc(var(--scale) * 480);
 }
 
 .overviewParagraph {
   @mixin text;
   @mixin textLarge;
 
-  max-width: 479px;
+  max-width: calc(var(--scale) * 479);
 }
 
 .overviewContacts {
-  max-width: 610px;
+  max-width: calc(var(--scale) * 610);
 }
 
 .overviewSet {
   justify-self: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 728px) {
     grid-column: auto;
     grid-row: 1/2;
     justify-self: center;
   }
 
   @media (max-width: 414px) {
-    margin: 0 0 0 25px;
+    margin: 0 0 0 calc(var(--scale) * 25);
     justify-self: start;
   }
 }
@@ -198,7 +210,7 @@
   @mixin headline;
   @mixin headline7;
 
-  margin: 0 0 15px;
+  margin: 0 0 calc(var(--scale) * 15);
 }
 
 .email {
@@ -210,6 +222,6 @@
   height: 35px;
 
   &:nth-child(1n) {
-    margin: 0 0 6px;
+    margin: 0 0 calc(var(--scale) * 6);
   }
 }

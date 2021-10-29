@@ -1,15 +1,15 @@
 .anotherPlays {
   display: grid;
-  padding: 85px 120px;
+  padding: calc(var(--scale) * 85) calc(var(--scale) * 120);
   grid-template-columns: 1fr 3fr 6fr;
   grid-template-rows: auto;
 
   @media (max-width: 959px) {
-    padding: 85px 40px 85px 0;
+    padding: calc(var(--scale) * 85) calc(var(--scale) * 40) calc(var(--scale) * 85) 0;
   }
 
-  @media (max-width: 768px) {
-    padding: 56px 25px;
+  @media (max-width: 728px) {
+    padding: calc(var(--scale) * 56) calc(var(--scale) * 25);
     grid-template-columns: 10fr;
   }
 }
@@ -18,10 +18,10 @@
   @mixin headline;
   @mixin headline4;
 
-  max-width: 490px;
+  max-width: calc(var(--scale) * 490);
   grid-column: 2/3;
 
-  @media (max-width: 768px) {
+  @media (max-width: 728px) {
     @mixin headline6;
 
     grid-column: 1/1;
@@ -33,17 +33,17 @@
   margin: 70px 0 0;
   list-style-type: none;
 
-  @media (max-width: 768px) {
-    margin: 24px 0 0;
+  @media (max-width: 728px) {
+    margin: calc(var(--scale) * 24) 0 0;
   }
 }
 
 .block {
   display: flex;
   width: 100%;
-  max-width: 751px;
+  max-width: calc(var(--scale) * 751);
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
   border-top: 1px solid var(--coal);
 }
@@ -52,14 +52,14 @@
   @mixin headline;
   @mixin headline6;
 
-  max-width: 500px;
+  max-width: calc(var(--scale) * 500);
   margin: 16px 0 25px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 728px) {
     @mixin headline7;
   }
 }
 
 .downloadButton {
-  margin: 15px 0 0;
+  margin: calc(var(--scale) * 15) 0 0;
 }
