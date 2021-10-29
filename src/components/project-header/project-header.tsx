@@ -23,7 +23,7 @@ export const ProjectHeader = ({ data }: IProjectHeaderProps): JSX.Element => {
       <p className={cx('intro')}>{intro}</p>
       <img
         src={image}
-        alt={imageDesc}
+        alt={imageDesc || 'Изображение шапки проекта'}
         className={cx('image')}
       />
     </section>
