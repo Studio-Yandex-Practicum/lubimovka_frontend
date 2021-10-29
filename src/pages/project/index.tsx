@@ -3,19 +3,25 @@ import Head from 'next/head';
 
 import { AppLayout } from 'components/app-layout';
 import { ProjectHeader } from 'components/project-header';
-import { ProjectAbout } from 'components/project-about';
+import { ProjectDescription } from 'components/project-description';
 
-import headerData from './assets/mock-project-header-data.json';
-import aboutData from './assets/mock-project-about-data.json';
+import projectData from './assets/mock-project-data.json';
 
 const Project: NextPage = () => (
   <AppLayout>
     <Head>
-      <title>{'project'}</title>
+      <title>{projectData.title}</title>
     </Head>
     <main>
-      <ProjectHeader data={ headerData } />
-      <ProjectAbout data={ aboutData } />
+      <ProjectHeader
+        title={projectData.title}
+        intro={projectData.intro}
+        image={projectData.image}
+        imageDesc={projectData.imageDesc}
+      />
+      <ProjectDescription>
+        {projectData.description}
+      </ProjectDescription>
     </main>
   </AppLayout>
 );
