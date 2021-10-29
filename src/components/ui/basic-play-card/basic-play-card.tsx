@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
-import Link from 'next/link';
 import { Button } from '../button';
-// import { InfoLink } from '../info-link';
+import { InfoLink } from '../info-link';
 
 import { Url } from 'shared/types';
 
@@ -68,17 +67,13 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         <dt className={cx('hiddenText')}>
           Автор:
         </dt>
-        <dd className={cx('author')}>
-          <Link href={`/authors/${author.id}`}>
-            <h6 className={cx('authorName')}>{author.name}</h6>
-          </Link>
-        </dd>
-        {/* <InfoLink
-           isOutsideLink={false}
-           href={`/authors/${author.id}`}
-           label={author.name}
-           size='l'
-       /> */}
+        <InfoLink
+          isOutsideLink={false}
+          href={`/authors/${author.id}`}
+          label={author.name}
+          size='l'
+          className={cx('author')}
+        />
         <dt className={cx('hiddenText')}>
           Город:
         </dt>
