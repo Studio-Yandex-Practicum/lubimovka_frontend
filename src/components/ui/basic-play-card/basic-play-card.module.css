@@ -13,6 +13,10 @@
   @media (max-width: $tablet-portrait) {
     min-height: 341px;
   }
+
+  @media (min-width: 1440px) {
+    min-height: scale(300px);
+  }
 }
 
 .buttonCustom {
@@ -24,6 +28,10 @@
   @media (max-width: $tablet-portrait) {
     opacity: 1;
     visibility: visible;
+  }
+
+  @media (min-width: 1440px) {
+    height: scale(56px);
   }
 }
 
@@ -47,6 +55,10 @@
   @media (max-width: $tablet-portrait) {
     margin: 16px 46px auto 16px;
   }
+
+  @media (min-width: 1440px) {
+    margin: scale(16px 46px auto 16px);
+  }
 }
 
 .info {
@@ -58,12 +70,20 @@
   @media (max-width: $tablet-portrait) {
     margin-top: 24px;
   }
+
+  @media (min-width: 1440px) {
+    margin: scale(16px 0 auto);
+  }
 }
 
 .author {
   display: inline;
   max-width: 190px;
   margin: 0;
+
+  @media (min-width: 1440px) {
+    max-width: scale(190px);
+  }
 }
 
 .authorName {
@@ -86,6 +106,10 @@
 
   @media (max-width: $tablet-portrait) {
     margin-top: 8px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-top: scale(4px);
   }
 }
 
