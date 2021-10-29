@@ -38,6 +38,7 @@ const Template: ComponentStory<typeof ContactsForm> = () => {
       </ContactsForm.Fieldset>
       <ContactsForm.Button>
         <Button
+          type='submit'
           iconPlace='right'
           icon='arrow-right'
           size='l'
