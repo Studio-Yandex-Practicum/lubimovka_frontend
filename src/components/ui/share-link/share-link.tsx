@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import { InfoLink } from '../info-link';
 
 import styles from './share-link.module.css';
@@ -20,8 +19,6 @@ interface IShareLinkProps {
 export const ShareLink: FC<IShareLinkProps> = (props) => {
   const { className } = props;
 
-  const router = useRouter();
-
   const [url, setUrl] = useState('');
   const [title, setTitle] = useState('');
 
@@ -31,7 +28,7 @@ export const ShareLink: FC<IShareLinkProps> = (props) => {
 
     setUrl(baseUrl);
     setTitle(title);
-  }, [router.pathname]);
+  }, []);
 
   const facebook = `https://www.facebook.com/sharer.php?src=sp&u=${encodeURI(url)}%2F&title=${encodeURI(title)}&utm_source=share2`;
   const vk = `https://vk.com/share.php?url=${encodeURI(url)}%2F&title=${encodeURI(title)}&utm_source=share2`;
