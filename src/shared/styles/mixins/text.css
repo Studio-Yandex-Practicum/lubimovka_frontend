@@ -7,9 +7,9 @@
 }
 
 @define-mixin textLarge {
-  font-size: scale(20px);
+  font-size: 20px;
   letter-spacing: -.01em;
-  line-height: scale(28px);
+  line-height: 28px;
 }
 
 @define-mixin textMedium {
