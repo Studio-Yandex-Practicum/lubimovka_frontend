@@ -2,9 +2,10 @@
   display: flex;
   width: max-content;
   flex-direction: row;
-  background-color: rgba(0, 0, 0, 0);
+  margin: 0 -4px;
+  background-color: transparent;
+}
 
-  & a:nth-child(2) {
-    margin: 0 8px;
-  }
+.links {
+  margin: 0 4px;
 }
