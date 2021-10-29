@@ -1,8 +1,15 @@
 .menu {
   display: flex;
+  overflow: auto;
   align-items: center;
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 }
 
 .item {
