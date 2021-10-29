@@ -8,7 +8,10 @@ interface item {
   mainTitle?: string
   title: string
   desc: string
-  image?: string
+  image: {
+    url?: string
+    alt?: string
+  }
 }
 
 interface IWeDoAboutProps {
@@ -34,11 +37,19 @@ export const WhatWeDoDesc: FC<IWeDoAboutProps> = ({ data }): JSX.Element => {
             { data.blockOne.desc }
           </p>
         </div>
-        <img src={ data.blockTwo.image } className={ cn(styles.imgReception) } />
+        <img 
+          src={ data.blockTwo.image.url }
+          className={ cn(styles.imgReception) }
+          alt={ data.blockTwo.image.alt }
+        />
       </div>
 
       <div className={ cn(styles.content, styles.contentSelected) }>
-        <img src={ data.blockTwo.image } className={ cn(styles.imgSelected) } />
+        <img 
+          src={ data.blockTwo.image.url } 
+          className={ cn(styles.imgSelected) }
+          alt={ data.blockTwo.image.alt }
+        />
         <div className={ cn(styles.container, styles.containerSelected) }>
           <h3 className={ cn(styles.title) } >
             { data.blockTwo.title }

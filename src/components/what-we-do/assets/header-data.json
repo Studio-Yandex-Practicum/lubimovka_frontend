@@ -6,6 +6,27 @@
       "это независимый некоммерческий коллективный проект российских драматургов.", 
       "В первые годы своего существования фестиваль проходил в подмосковной усадьбе Константина Сергеевича Станиславского, которое и дало название фестивалю."
     ],
-    "image": "https://sun9-15.userapi.com/impg/BrbXevIzjABChomHzzXuKYJ0ZTWrcuhy_lQnwA/dshSQq8AJVQ.jpg?size=720x414&quality=95&sign=2ceeb729a98f8fd68fb5b4e975b6234c&type=album"
+    "image": {
+      "url": "https://sun9-15.userapi.com/impg/BrbXevIzjABChomHzzXuKYJ0ZTWrcuhy_lQnwA/dshSQq8AJVQ.jpg?size=720x414&quality=95&sign=2ceeb729a98f8fd68fb5b4e975b6234c&type=album",
+      "alt": "Читка"
+    },
+    "submenu": [
+      {
+        "text": "Что мы делаем",
+        "href": "#"
+      },
+      {
+        "text": "Организаторы",
+        "href": "#"
+      },
+      {
+        "text": "Попечители",
+        "href": "#"
+      },
+      {
+        "text": "Идеология",
+        "href": "#"
+      }
+    ]
   }
 ]
