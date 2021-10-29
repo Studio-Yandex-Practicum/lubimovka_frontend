@@ -23,16 +23,16 @@ export interface IFestivalDayProps {
 
 const cx = classNames.bind(styles);
 
-const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+const getDate = (date: string) => new Date(date);
+const getEventDate = (date: string) => getDate(date).toLocaleDateString('ru-RU', {month: 'long', day: 'numeric'}).split(' ');
+const getMonth = (date: string) => getEventDate(date)[1];
+const getDay = (date: string) => Number(getEventDate(date)[0]);
 
-const dateIndex = (date: string, index: number) => Number(date.split('-')[index]);
-
-const getMonth = (date: string) => months[dateIndex(date, 1) - 1];
-const getDay = (date: string) => dateIndex(date, 2);
-
-const getStatus = (day: string): boolean => {
-  const date = new Date();
-  return dateIndex(day, 2) === date.getDate() || dateIndex(day, 2) - date.getDate() === 1 && date.getHours() >= 12;
+const getStatus = (event: string): boolean => {
+  const today = new Date();
+  return getDate(event).getMonth() === today.getMonth() &&
+    getDay(event) === today.getDate() || getDay(event) - today.getDate() === 1 &&
+    today.getHours() >= 12;
 };
 
 const getInfo = (date: string) => getStatus(date) ? 'открыта регистрация' : `Регистрация откроется ${getDay(date) - 1} ${getMonth(date)} в 12:00`;
@@ -59,7 +59,7 @@ export const FestivalDay: FC<IFestivalDayProps> = (props) => {
         <p className={registration}>{info}</p>
       </div>
       {plays.map(play => (
-        <EventCard key={play.id} time={play.time} location={play.location} title={play.title} image={play.image}
+        <EventCard className={styles.event} key={play.id} time={play.time} location={play.location} title={play.title} image={play.image}
           description={play.description} director={play.director} playwright={play.playwright}
           registrationUrl={`${isOpened ? play.registrationUrl : ''}`}/>)
       )}
