@@ -7,7 +7,8 @@
   scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
-    width: scale(0);
+    width: 0;
+    height: 0;
   }
 }
 
