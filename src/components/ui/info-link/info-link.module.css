@@ -8,7 +8,7 @@
   align-items: center;
   padding: 0;
   margin: 0;
-  background-color: var(--white);
+  background-color: transparent;
   cursor: pointer;
   letter-spacing: -.01em;
 
@@ -16,10 +16,11 @@
 }
 
 .invert {
-  transition: filter .5s ease-in;
+  transition: background-color .5s ease-in, color .5s ease-in;
 
   &:hover {
-    filter: invert(100%);
+    background-color: var(--coal);
+    color: var(--beige);
   }
 }
 
@@ -49,7 +50,7 @@
   position: relative;
   line-height: 1;
   text-decoration: none;
-  transition: filter .5s ease-in;
+  transition: background-color .5s ease-in, color .5s ease-in;
 
   &::after {
     position: absolute;
@@ -73,7 +74,8 @@
     }
 
     &:hover {
-      filter: invert(100%);
+      background-color: var(--coal);
+      color: var(--beige);
     }
 
     &:hover::after {
@@ -111,7 +113,7 @@
 
 .borderBottomLeft {
   height: 24px;
-  padding-right: 10px;
+  padding-right: 9px;
   border-bottom: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
 }
@@ -131,7 +133,9 @@
 
 .xs {
   @mixin textCaption;
+}
 
+.xs.bottomLineAndInvert {
   @media (max-width: 576px) {
     text-decoration: 1px underline;
   }
