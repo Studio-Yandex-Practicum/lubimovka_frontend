@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { OpenToCooperation } from './open-to-cooperation';
+import { OpenToCooperation } from './project-page-cooperation';
 
 export default {
   title: 'Components/OpenToCooperation',

@@ -1,1 +1,1 @@
-export * from './open-to-cooperation';
+export * from './project-page-cooperation';
