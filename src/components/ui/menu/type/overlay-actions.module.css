@@ -1,0 +1,39 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item {
+  display: block;
+  border: 1px solid var(--coal);
+  border-right: 0;
+  color: var(--coal);
+
+  &:not(:first-child) {
+    border-top: 0;
+  }
+
+  &:hover {
+    background-color: var(--coal);
+    color: var(--beige);
+  }
+}
+
+.link {
+  @mixin text;
+  @mixin textSmall;
+
+  position: relative;
+  display: flex;
+  padding: scale(15px);
+  color: inherit;
+  cursor: pointer;
+  line-height: 1.6;
+  place-content: center space-between;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}

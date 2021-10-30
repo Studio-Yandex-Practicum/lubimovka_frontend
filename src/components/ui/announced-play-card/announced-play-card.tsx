@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 import { Button } from '../button';
 
 import styles from './announced-play-card.module.css';
+
+const cx = cn.bind(styles);
 
 interface IAnnouncedPlayCardProps {
   date: string;
@@ -10,8 +12,10 @@ interface IAnnouncedPlayCardProps {
   title: string;
   playwrightArray: string [];
   directorArray: string [];
+  eventDescription?:string;
   buttonLinks: string [];
   coverResourceUrl?: string;
+  className?: string;
 }
 
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
@@ -21,9 +25,10 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     title,
     playwrightArray,
     directorArray,
+    eventDescription,
     buttonLinks,
     coverResourceUrl,
-    ...restAnnouncedPlayCardProps
+    className,
   } = props;
 
   const creditsArrayToString = (array: string []) => {
@@ -35,21 +40,21 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     <React.Fragment>
       {
         playwrightArray.length > 1 ?
-          (<p className={cn(styles.creditsEntry)}>
+          (<p className={cx('creditsEntry')}>
         Драматурги: {creditsArrayToString (playwrightArray)}
           </p>)
           :
-          (<p className={cn(styles.creditsEntry)}>
+          (<p className={cx('creditsEntry')}>
         Драматург: {playwrightArray}
           </p>)
       }
       {
         directorArray.length > 1 ?
-          (<p className={cn(styles.creditsEntry)}>
+          (<p className={cx('creditsEntry')}>
         Режиссёры: {creditsArrayToString (directorArray)}
           </p>)
           :
-          (<p className={cn(styles.creditsEntry)}>
+          (<p className={cx('creditsEntry')}>
           Режиссёр: {directorArray}
           </p>)
       }
@@ -57,31 +62,37 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   );
 
   return (
-    <li
-      className={cn(styles.cardEvents)}
-      {...restAnnouncedPlayCardProps}
+    <article
+      className={cx('card', [className])}
     >
       {coverResourceUrl &&
-        <div className={cn(styles.coverEvents)}>
-          <img className={cn(styles.coverEvents)} src={coverResourceUrl}></img>
+        <div >
+          <img className={cx('cover')} src={coverResourceUrl}></img>
         </div>
       }
-      <div className={cn(styles.infoEvents)}>
-        <div className={cn(styles.dateInfo)}>
-          <p className={cn(styles.date)}>{date}</p>
-          <p className={cn(styles.timeEvents)}>{time}</p>
+      <div className={cx('info')}>
+        <div className={cx('dateInfo')}>
+          <p className={cx('date')}>{date}</p>
+          <p className={cx('time')}>{time}</p>
         </div>
-        <h5 className={cn(styles.title)}>{title}</h5>
-        <div className={cn(styles.credits)}>
+        <h5 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h5>
+        { directorArray.length > 0 && playwrightArray.length > 0 &&
+        <div className={cx('credits')}>
           {creditsRendered}
         </div>
-        <p className={cn(styles.description)}>читка проекта Любимовка.Ещё</p>
+        }
+        { eventDescription &&
+        <div className={cx('eventDescription')}>
+          {eventDescription}
+        </div>
+        }
+        <p className={cx('description')}>читка проекта Любимовка.Ещё</p>
         {buttonLinks.length === 2 &&
-          <div className={cn(styles.buttonEventsContainer, coverResourceUrl && styles.buttonEventsContainerCoverExists )}>
+          <div className={cx('buttonContainer', coverResourceUrl && 'buttonContainerCoverExists' )}>
             <Button
               view='primary'
               width='154px'
-              className={styles.buttonEvents}
+              className={cx('button')}
               align='start'
               gap='9px'
               size='s'
@@ -95,7 +106,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             <Button
               view='primary'
               width='154px'
-              className={styles.buttonEvents}
+              className={cx('button')}
               align='start'
               gap='9px'
               size='s'
@@ -103,17 +114,17 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
               icon='arrow-right'
               label='Билеты'
               border='bottomLeft'
-              isLink={true}
+              isLink
               href={buttonLinks[1]}
             />
           </div>
         }
         {buttonLinks.length === 1 &&
-          <div className={cn(styles.buttonEventsContainer, coverResourceUrl ? styles.buttonEventsContainerCoverExists : styles.buttonEventsNoCover)}>
+          <div className={cx('buttonContainer', coverResourceUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
             <Button
               view='primary'
               width='154px'
-              className={styles.buttonEvents}
+              className={cx('button')}
               align='start'
               gap='9px'
               size='s'
@@ -121,12 +132,12 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
               icon='arrow-right'
               label='Регистрация'
               border='bottomLeft'
-              isLink={true}
+              isLink
               href={buttonLinks[0]}
             />
           </div>
         }
       </div>
-    </li>
+    </article>
   );
 };

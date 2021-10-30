@@ -1,0 +1,32 @@
+.request {
+  display: grid;
+  padding: calc(var(--scale) * 64) calc(var(--scale) * 77);
+  background-color: var(--beige);
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(1, 2fr);
+  justify-items: end;
+}
+
+.footnoteInfo {
+  max-width: calc(var(--scale) * 400);
+
+  @media (max-width: 414px) {
+    max-width: calc(var(--scale) * 335);
+  }
+}
+
+.asterisk {
+  max-width: calc(var(--scale) * 25);
+  margin: 0 calc(var(--scale) * -22) 0;
+}
+
+.footnote {
+  @mixin text;
+  @mixin textLarge;
+
+  font-feature-settings: 'ss01' on;
+}
+
+.footnoteAnchor {
+  color: var(--black);
+}

@@ -1,0 +1,47 @@
+.section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  grid-area: shortList;
+}
+
+.title {
+  @mixin text;
+  @mixin headline;
+
+  max-width: 47.36vw;
+  padding-top: 140px;
+  margin-bottom: 49px;
+  margin-left: calc(var(--scale) * 63);
+}
+
+.plays {
+  display: grid;
+  margin-bottom: 102px;
+  margin-left: calc(var(--scale) * 60);
+  gap: calc(var(--scale) * 30);
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(calc(var(--scale) * 240), 1fr)
+    );
+}
+
+@media (max-width: $tablet-portrait) {
+  .title {
+    @mixin headline;
+    @mixin headline4;
+
+    max-width: 100%;
+    padding-top: 128px;
+    margin-bottom: 40px;
+    margin-left: calc(var(--scale) * 54);
+  }
+
+  .plays {
+    margin-bottom: 100px;
+    margin-left: calc(var(--scale) * 55);
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+}

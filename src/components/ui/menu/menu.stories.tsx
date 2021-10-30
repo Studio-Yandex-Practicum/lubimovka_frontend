@@ -64,3 +64,9 @@ export const SocialLinks = Template.bind({});
 SocialLinks.args = {
   type: 'social-links',
 };
+
+export const History = Template.bind({});
+History.args = {
+  type: 'history',
+};
+

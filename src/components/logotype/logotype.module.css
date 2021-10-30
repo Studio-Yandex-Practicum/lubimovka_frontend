@@ -5,16 +5,6 @@
 }
 
 .image {
-  width: 43px;
-  height: 34px;
-
-  @media (min-width: $tablet-portrait) {
-    width: calc(var(--vw-multiplier-tablet-portrait) * 43);
-    height: calc(var(--vw-multiplier-tablet-portrait) * 35);
-  }
-
-  @media (min-width: 1440px) {
-    width: 43px;
-    height: 35px;
-  }
+  width: scale(43px);
+  height: scale(35px);
 }
