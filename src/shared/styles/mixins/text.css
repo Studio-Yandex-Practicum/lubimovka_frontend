@@ -1,7 +1,7 @@
 @define-mixin text {
   margin: 0;
   color: var(--coal);
-  font-family: 'Formular', Arial, sans-serif;
+  font-family: "Formular", Arial, sans-serif;
   font-style: normal;
   font-weight: 300;
 }
@@ -18,8 +18,8 @@
 }
 
 @define-mixin textSmall {
-  font-size: 16px;
-  line-height: 22px;
+  font-size: scale(16px);
+  line-height: scale(22px);
 }
 
 @define-mixin textCaption {
@@ -32,8 +32,8 @@
 }
 
 @define-mixin textSmallButton {
-  font-size: 16px;
-  line-height: 14px;
+  font-size: scale(16px);
+  line-height: scale(14px);
 }
 
 @define-mixin textLargeButton {
@@ -43,4 +43,9 @@
 @define-mixin textPartners {
   font-size: scale(14px);
   line-height: scale(20px);
+}
+
+@define-mixin textHistorySmall {
+  font-size: scale(16px);
+  line-height: scale(24px);
 }

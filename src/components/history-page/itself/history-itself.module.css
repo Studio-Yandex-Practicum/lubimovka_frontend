@@ -1,0 +1,146 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 99px;
+  background-color: var (--white);
+}
+
+.contentTop {
+  display: flex;
+  margin-bottom: 102px;
+}
+
+.contentTopTitle {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  margin-right: calc(var(--scale) * 180);
+}
+
+.imageTitle {
+  width: calc(var(--scale) * 360);
+  margin-right: calc(var(--scale) * 180);
+  margin-left: calc(var(--scale) * 180);
+  object-fit: contain;
+}
+
+.title {
+  @mixin headline;
+
+  font-size: calc(var(--scale) * 72);
+  line-height: calc(var(--scale) * 70);
+}
+
+.text {
+  @mixin textLarge;
+  @mixin text;
+
+  padding-left: calc(var(--scale) * 62);
+  margin-top: 37px;
+}
+
+.text1 {
+  @mixin headline;
+  @mixin headline5;
+
+  max-width: 60.35vw;
+  margin-bottom: 57px;
+  margin-left: 12.5vw;
+}
+
+.text2 {
+  @mixin textLarge;
+  @mixin text;
+
+  max-width: 49.93vw;
+  margin-right: auto;
+  margin-bottom: 102px;
+  margin-left: auto;
+}
+
+.contentBottom {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 89px;
+}
+
+.image {
+  width: 43.75vw;
+  height: 342px;
+  object-fit: contain;
+}
+
+.text3 {
+  @mixin textLarge;
+  @mixin text;
+
+  max-width: 49.93vw;
+  padding-bottom: 250px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: $tablet-portrait) {
+  .section {
+    margin-top: 56px;
+  }
+
+  .title {
+    @mixin headline4;
+  }
+
+  .contentTop {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+
+  .imageTitle {
+    width: 88.41vw;
+    margin-top: 56px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .contentTopTitle {
+    padding: 0;
+    margin-right: calc(var(--scale) * 24);
+    margin-left: calc(var(--scale) * 24);
+  }
+
+  .text {
+    padding-left: calc(var(--scale) * 31);
+    margin-top: 24px;
+  }
+
+  .text1 {
+    @mixin headline6;
+
+    max-width: 88.16vw;
+    margin-right: auto;
+    margin-bottom: 42px;
+    margin-left: auto;
+  }
+
+  .text2 {
+    max-width: 88.16vw;
+    margin-bottom: 56px;
+  }
+
+  .contentBottom {
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 36px;
+  }
+
+  .image {
+    width: 88.4vw;
+    height: 199px;
+    margin-bottom: 20px;
+  }
+
+  .text3 {
+    max-width: 87.68vw;
+    padding-bottom: 100px;
+  }
+}

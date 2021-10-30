@@ -9,11 +9,11 @@ export default {
 
 const Template: ComponentStory<typeof InfoLink> = (args) => <InfoLink {...args} />;
 
-export const LinkInHeading = Template.bind({});
-LinkInHeading.args = {
+export const SocialMediaLink = Template.bind({});
+SocialMediaLink.args = {
   isOutsideLink: true,
   href: 'https://www.facebook.com/festival.lubimovka',
-  label: 'Fb',
+  label: 'fb',
   icon: 'arrow-right',
   iconPlace: 'left',
   size: 's',
