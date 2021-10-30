@@ -5,7 +5,7 @@
   margin: 0 auto;
   background-color: var(--white);
 
-  @media (max-width: 900px) {
+  @media (max-width: $tablet-portrait) {
     width: 100%;
     flex-direction: column;
   }
@@ -69,7 +69,7 @@
   width: 50%;
   padding-bottom: 91px;
 
-  @media (max-width: 900px) {
+  @media (max-width: $tablet-portrait) {
     width: 100%;
     padding-left: 24px;
   }
@@ -81,7 +81,7 @@
   padding-bottom: 85px;
   padding-left: 180px;
 
-  @media (max-width: 900px) {
+  @media (max-width: $tablet-portrait) {
     padding-left: 24px;
   }
 }
@@ -99,30 +99,27 @@
     width: 292px;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 404px) {
     width: 95%;
   }
 }
 
 .links {
   position: relative;
-  top: 9px;
-  left: 231px;
+  top: scale(9px);
+  left: scale(231px);
   display: flex;
+  padding: 0;
+  margin: 0;
   gap: 8px;
+  list-style-type: none;
 
   @media (max-width: $tablet-portrait) {
-    left: 164px;
+    left: scale(164px);
   }
 
-  @media (max-width: 400px) {
-    top: 0;
-    left: 134px;
+  @media (max-width: 404px) {
+    top: -10px;
+    left: 0;
   }
-}
-
-/* удалить стиль после добавления компонента ссылок */
-.link {
-  border: 1px solid #242424;
-  margin: 0;
 }

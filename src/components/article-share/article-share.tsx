@@ -3,6 +3,7 @@ import React from 'react';
 import cn from 'classnames/bind';
 
 import styles from './article-share.module.css';
+import {InfoLink} from '../ui/info-link';
 
 const cx = cn.bind(styles);
 
@@ -46,13 +47,46 @@ const ArticleShare: React.FC<IArticleShare> = (props) => {
           {renderCreators('Иллюстрации', illustrators)}
         </div>}
       <div className={cx('share', {blogShare: isBlog, newsShare: !isBlog})}>
-        <div className={cx('links')}>
-          {/*Заменить на компоненты ссылок*/}
-          <p className={cx('link')}>FB</p>
-          <p className={cx('link')}>VK</p>
-          <p className={cx('link')}>Twtr</p>
-        </div>
-        <h4 className={cx('shareTitle')}>Поделиться<br/>{isBlog ? 'записью' : 'новостью'} в соцсетях</h4>
+        <ul className={cx('links')}>
+          <li>
+            <InfoLink
+              isOutsideLink={true}
+              label={'Fb'}
+              href={'/'} //добавить ссылку
+              icon={'arrow-right'}
+              iconPlace={'left'}
+              size={'s'}
+              border={'borderBottomLeft'}
+              hoverStyle={'invert'}
+            />
+          </li>
+          <li>
+            <InfoLink
+              isOutsideLink={true}
+              label={'Vk'}
+              href={'/'} //добавить ссылку
+              icon={'arrow-right'}
+              iconPlace={'left'}
+              size={'s'}
+              border={'borderBottomLeft'}
+              hoverStyle={'invert'}
+            />
+          </li>
+          <li>
+            <InfoLink
+              isOutsideLink={true}
+              label={'Twtr'}
+              href={'/'} //добавить ссылку
+              icon={'arrow-right'}
+              iconPlace={'left'}
+              size={'s'}
+              border={'borderBottomLeft'}
+              hoverStyle={'invert'}
+            />
+          </li>
+        </ul>
+        <h4 className={cx('shareTitle')}>
+          Поделиться <br/>{isBlog ? 'записью' : 'новостью'} в соцсетях</h4>
       </div>
     </section>
   );
