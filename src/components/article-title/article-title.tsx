@@ -6,6 +6,7 @@ const cx = cn.bind(styles);
 import styles from './article-title.module.css';
 import {Button} from '../ui/button';
 import {InfoLink} from '../ui/info-link';
+import {Url} from '../../shared/types';
 
 interface IArticleTitle {
   isBlog: boolean,
@@ -13,8 +14,8 @@ interface IArticleTitle {
   description: string,
   date: string,
   author?: string,
-  authorLink?: string,
-  imgLink: string,
+  authorLink?: Url,
+  imgLink: Url,
 }
 
 const ArticleTitle: React.FC<IArticleTitle> = (props) => {
@@ -40,7 +41,7 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
         view={'primary'}
         align={'space-between'}
         width={isBlog ? '90px' : '125px'}
-        // href={''} добавить ссылку для перехода на страницу
+        href={'/'} // поставить ссылку на раздел блога или новости
       />
 
       <img className={cx('img')} src={imgLink} alt={title}/>
@@ -50,7 +51,6 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
 
       <p className={cx('date', {dateNews: !isBlog})}>{date}</p>
       {isBlog &&
-        <nav className={cx('author')}>
           <InfoLink
             isOutsideLink={true}
             label={author || ''}
@@ -58,10 +58,9 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
             iconPlace={'right'}
             size={'m'}
             href={authorLink}
+            className={cx('author')}
           />
-        </nav>}
-
-
+      }
     </section>
   );
 };
