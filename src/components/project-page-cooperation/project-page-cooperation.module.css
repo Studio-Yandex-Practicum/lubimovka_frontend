@@ -1,20 +1,12 @@
-.container {
+.project-page-cooperation {
   display: flex;
-  width: scale(553px);
   flex-direction: column;
-  margin: scale(92px auto 169px 665px);
-
-  @media screen and (max-width: $tablet-portrait) {
-    width: scale(365px);
-    margin: scale(50px auto 100px 25px);
-  }
 }
 
 .asterisk {
   display: flex;
   width: scale(25px);
   height: scale(25px);
-  background: no-repeat center/100% url(../../shared/icons/asterisk.svg);
 }
 
 .header {
@@ -23,7 +15,7 @@
 
   margin: scale(0 0 0 27px);
 
-  @media screen and (max-width: $tablet-portrait) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
     margin: scale(0 0 0 30px);
@@ -36,21 +28,21 @@
 
   margin: scale(33px 0 0 85px);
 
-  @media screen and (max-width: $tablet-portrait) {
+  @media (max-width: $tablet-portrait) {
     margin: scale(16px 0 0 32px);
   }
 
   &:last-of-type {
     margin: scale(24px 0 0 85px);
 
-    @media screen and (max-width: $tablet-portrait) {
+    @media (max-width: $tablet-portrait) {
       margin: scale(24px 0 0 32px);
     }
   }
 }
 
 .link {
-  color: unset;
+  color: inherit;
 
   &:hover {
     background-color: var(--coal);
