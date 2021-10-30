@@ -13,6 +13,7 @@ h6 {
 
   max-width: 940px;
   padding-top: 72px;
+  margin: 0 auto;
 }
 
 h4 {
@@ -21,12 +22,20 @@ h4 {
 
   max-width: 716px;
   padding-top: 72px;
+  padding-right: 224px;
+  margin: 0 auto;
 }
 
 p {
   @mixin articlesText;
 
   max-width: 840px;
+  padding-top: 72px;
+  padding-right: 100px;
+  margin: 0 auto;
+}
+
+h4 + p {
   padding-top: 36px;
 }
 
@@ -37,7 +46,7 @@ blockquote {
   position: relative;
   width: 45.83%;
   padding: 56px 18.75% 72px 31.25%;
-  margin: 0 auto;
+  margin: 110px auto 0;
   background-color: var(--light-green);
   word-break: break-word;
 
