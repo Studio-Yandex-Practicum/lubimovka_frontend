@@ -1,15 +1,28 @@
 import classes from './NotFoundError.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import Logo from '../../images/logo.svg';
 import SmallLogo from '../../images/small-logo.svg';
 import Lines from '../../images/404lines.svg';
 
+
 export default function NotFoundError() {
+  const [screenWidth, setScreenWidth] = useState<number | null>(null);
+
+  useEffect(() => {
+    const setWindowWidth = () => {
+      const newWidth = window.innerWidth;
+      setScreenWidth(newWidth);
+    };
+    window.addEventListener('resize', setWindowWidth);
+    return () => window.removeEventListener('resize', setWindowWidth);
+  }, []);
+
   return (
     <section className={classes.error}>
       <div className={classes.logoContainer}>
-        <Logo className={classes.logo} src={'/images/logo.svg'} layout={'fill'}/>
+        {screenWidth < 1024 ? <SmallLogo className={classes.logo} src={'/images/small-logo.svg'} layout={'fill'}/> : <Logo className={classes.logo} src={'/images/logo.svg'} layout={'fill'}/>}
       </div>
       <div className={classes.contentContainer}>
         <h1 className={classes.title}>Ощибка 404</h1>
