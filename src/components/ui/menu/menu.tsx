@@ -9,9 +9,10 @@ import overlayNavigationStyles from './type/overlay-navigation.module.css';
 import overlayActionsStyles from './type/overlay-actions.module.css';
 import overlaySocialLinksStyles from './type/overlay-social-links.module.css';
 import socialLinksStyles from './type/social-links.module.css';
+import footerNavigationStyles from './type/footer-navigation.module.css';
 import historyStyles from './type/history.module.css';
-// Это общее подменю для 4 страниц. Что делаем, Организаторы, Попечители, Идеология.
 import generalSubmenuStyles from './type/general-submenu.module.css';
+import footerProjectListStyles from './type/footer-project-list.module.css';
 
 export const styles = {
   'main-navigation': mainNavigationStyles,
@@ -21,6 +22,8 @@ export const styles = {
   'social-links': socialLinksStyles,
   'history': historyStyles,
   'general-submenu': generalSubmenuStyles,
+  'footer-navigation': footerNavigationStyles,
+  'footer-project-list': footerProjectListStyles,
 };
 
 export type MenuType = keyof typeof styles;
