@@ -142,11 +142,6 @@
   position: relative;
   top: 9px;
   left: 231px;
-  display: flex;
-  padding: 0;
-  margin: 0;
-  gap: 8px;
-  list-style-type: none;
 
   @media (max-width: $tablet-portrait) {
     left: 164px;

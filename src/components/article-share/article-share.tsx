@@ -4,6 +4,7 @@ import cn from 'classnames/bind';
 
 import styles from './article-share.module.css';
 import {InfoLink} from '../ui/info-link';
+import {ShareLink} from '../ui/share-link';
 
 const cx = cn.bind(styles);
 
@@ -47,44 +48,7 @@ const ArticleShare: React.FC<IArticleShare> = (props) => {
           {renderCreators('Иллюстрации', illustrators)}
         </div>}
       <div className={cx('share', {blogShare: isBlog, newsShare: !isBlog})}>
-        <ul className={cx('links')}>
-          <li>
-            <InfoLink
-              isOutsideLink={true}
-              label={'Fb'}
-              href={'/'} //добавить ссылку
-              icon={'arrow-right'}
-              iconPlace={'left'}
-              size={'s'}
-              border={'borderBottomLeft'}
-              hoverStyle={'invert'}
-            />
-          </li>
-          <li>
-            <InfoLink
-              isOutsideLink={true}
-              label={'Vk'}
-              href={'/'} //добавить ссылку
-              icon={'arrow-right'}
-              iconPlace={'left'}
-              size={'s'}
-              border={'borderBottomLeft'}
-              hoverStyle={'invert'}
-            />
-          </li>
-          <li>
-            <InfoLink
-              isOutsideLink={true}
-              label={'Twtr'}
-              href={'/'} //добавить ссылку
-              icon={'arrow-right'}
-              iconPlace={'left'}
-              size={'s'}
-              border={'borderBottomLeft'}
-              hoverStyle={'invert'}
-            />
-          </li>
-        </ul>
+        <ShareLink className={cx('links')}/>
         <h4 className={cx('shareTitle')}>
           Поделиться <br/>{isBlog ? 'записью' : 'новостью'} в соцсетях</h4>
       </div>
