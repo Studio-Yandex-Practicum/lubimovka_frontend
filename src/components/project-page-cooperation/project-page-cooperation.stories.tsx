@@ -1,14 +1,25 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import classNames from 'classnames/bind';
+import styles from './project-page-cooperation.stories.module.css';
 
-import { OpenToCooperation } from './project-page-cooperation';
+import { ProjectPageCooperation } from './project-page-cooperation';
+
+const cx = classNames.bind(styles);
 
 export default {
-  title: 'Components/OpenToCooperation',
-  component: OpenToCooperation,
-} as ComponentMeta<typeof OpenToCooperation>;
+  title: 'Components/ProjectPageCooperation',
+  component: ProjectPageCooperation,
+  decorators: [
+    (Story) => (
+      <div className={cx('stories-container')}>
+        <Story/>
+      </div>
+    ),
+  ],
+} as ComponentMeta<typeof ProjectPageCooperation>;
 
-const Template: ComponentStory<typeof OpenToCooperation> = (args) => {
-  return <OpenToCooperation {...args} />;
+const Template: ComponentStory<typeof ProjectPageCooperation> = (args) => {
+  return <ProjectPageCooperation {...args} />;
 };
 
 export const Default = Template.bind({});
