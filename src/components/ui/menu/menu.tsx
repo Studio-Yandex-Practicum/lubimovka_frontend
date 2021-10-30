@@ -1,42 +1,52 @@
-import { Children, cloneElement, ReactNode, isValidElement } from 'react';
+import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
-import { MenuItem } from './menu-item';
+import { MenuProvider } from './menu.context';
+import { MenuItem } from './item';
 
-import styles from './menu.module.css';
-const cx = classNames.bind(styles);
+import mainNavigationStyles from './type/main-navigation.module.css';
+import overlayNavigationStyles from './type/overlay-navigation.module.css';
+import overlayActionsStyles from './type/overlay-actions.module.css';
+import overlaySocialLinksStyles from './type/overlay-social-links.module.css';
+import socialLinksStyles from './type/social-links.module.css';
+import historyStyles from './type/history.module.css';
+// Это общее подменю для 4 страниц. Что делаем, Организаторы, Попечители, Идеология.
+import generalSubmenuStyles from './type/general-submenu.module.css';
 
-export type TSocialItem = {
-  title: string;
-  href: string;
+export const styles = {
+  'main-navigation': mainNavigationStyles,
+  'overlay-navigation': overlayNavigationStyles,
+  'overlay-actions': overlayActionsStyles,
+  'overlay-social-links': overlaySocialLinksStyles,
+  'social-links': socialLinksStyles,
+  'history': historyStyles,
+  'general-submenu': generalSubmenuStyles,
 };
 
-export type TMainNavigationItem = {
-  title: string;
-  href: string;
-  active?: boolean;
+export type MenuType = keyof typeof styles;
+
+interface IMenuProps {
+  type: MenuType,
+  className?: string,
+  children: ReactNode,
 }
 
-export interface IMenuProps {
-  className?: string;
-  view: 'mainNavigation' | 'pageNavigation' | 'sectionNavigation' | 'footerNavigation' | 'tabs' | 'socialLinks';
-  children: ReactNode;
-}
+export const Menu = (props: IMenuProps): JSX.Element => {
+  const {
+    type,
+    className,
+    children,
+  } = props;
 
-const Menu = (props: IMenuProps): JSX.Element => {
-  const { className, view, children } = props;
+  const cx = classNames.bind(styles[type]);
 
   return (
-    <ul className={cx('menu', [className], [view])}>
-      {Children.map(children, (child) => (
-        <li className={cx('menuListItem')}>
-          {isValidElement(child)
-            ? cloneElement(child, { view })
-            : child}
-        </li>))}
-    </ul>);
+    <ul className={cx('menu', className)}>
+      <MenuProvider value={{ type }}>
+        {children}
+      </MenuProvider>
+    </ul>
+  );
 };
 
 Menu.Item = MenuItem;
-
-export { Menu };

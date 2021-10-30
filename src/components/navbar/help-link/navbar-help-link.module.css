@@ -1,0 +1,21 @@
+.link {
+  @mixin text;
+
+  display: flex;
+  align-items: center;
+  color: var(--coal);
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.icon {
+  width: scale(25px);
+  height: scale(25px);
+  fill: var(--coal);
+}
+
+.text {
+  font-size: scale(14px);
+  line-height: scale(17px);
+}

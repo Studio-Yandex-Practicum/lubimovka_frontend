@@ -1,0 +1,140 @@
+.section {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  margin: 0;
+  grid-area: title;
+
+  &&.primary {
+    max-width: scale(640px);
+    padding-left: scale(17px);
+    margin: auto;
+
+    @media (max-width: 992px) {
+      padding: 0;
+    }
+
+    @media (max-width: $tablet-portrait) {
+      max-width: 310px;
+      padding: 0 0 0 24px;
+      margin-bottom: 33px;
+    }
+  }
+
+  &&.secondary {
+    padding: scale(0 81px 66px 477px);
+
+    @media (max-width: $tablet-portrait) {
+      padding: 0 85px 142px 24px;
+    }
+  }
+}
+
+.title {
+  white-space: pre-wrap;
+
+  @mixin headline;
+
+  &&.primary {
+    display: inline;
+    margin-right: 15px;
+
+    @mixin headline2;
+
+    @media (max-width: $tablet-portrait) {
+      /* Текстовые стили для того, чтобы сделать размер заголовка не резиновым */
+      font-size: 40px;
+      line-height: 40px;
+    }
+  }
+
+  &&.secondary {
+    @mixin headline1;
+
+    margin: scale(0 0 15px 0);
+
+    @media (max-width: 1440px) {
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: $tablet-portrait) {
+      margin-bottom: 13px;
+
+      /* Текстовые стили для того, чтобы сделать размер заголовка не резиновым */
+      font-size: 40px;
+      line-height: 40px;
+    }
+  }
+}
+
+.buttonContainer {
+  display: inline-block;
+
+  &&.primary {
+    width: scale(180px);
+    padding-bottom: scale(6px);
+
+    @media (max-width: 1290px) {
+      width: scale(200px);
+    }
+
+    @media (max-width: 992px) {
+      width: scale(220px);
+    }
+
+    @media (max-width: $tablet-portrait) {
+      width: 180px;
+    }
+  }
+
+  &&.secondary {
+    width: scale(360px);
+    min-width: 244px;
+
+    @media (max-width: $tablet-portrait) {
+      width: 244px;
+    }
+  }
+}
+
+.button {
+  border-color: var(--trueBlack);
+
+  &.secondary.button {
+    /* Текстовые стили для того, чтобы сделать размер текста кнопки не резиновыми */
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &.primary.button {
+    @media (max-width: $tablet-portrait) {
+      /* Текстовые стили для того, чтобы сделать размер текста кнопки не резиновыми */
+      font-size: 16px;
+      line-height: 14px;
+    }
+  }
+}
+
+.wrapper.primary {
+  display: inline;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: scale(10px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: 0;
+  }
+}
+
+.text {
+  width: scale(432px);
+  align-self: flex-end;
+  padding-right: scale(43px);
+
+  @mixin text;
+  @mixin textLarge;
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}

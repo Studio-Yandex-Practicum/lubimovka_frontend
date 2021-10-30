@@ -5,7 +5,7 @@ import { Button } from '../button';
 
 import styles from './basic-play-card.module.css';
 
-interface IBasicPlayCardProps {
+export interface IBasicPlayCardProps {
   play: {
     title: string;
     city: string;
@@ -61,9 +61,9 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         </div>
       </div>
       <div className={cn(styles.info)}>
-          <Link href={`/authors/${author.id}`}>
-            <h6 className={cn(styles.authorName)}>{author.name}</h6>
-          </Link>
+        <Link href={`/authors/${author.id}`}>
+          <h6 className={cn(styles.authorName)}>{author.name}</h6>
+        </Link>
         <p className={cn(styles.city)}>{play.city}</p>
         <p className={cn(styles.year)}>{play.year}</p>
       </div>

@@ -1,0 +1,100 @@
+.archive {
+  width: 100%;
+  padding-top: scale(68px);
+  padding-bottom: scale(108px);
+  background-color: var(--light-green);
+  grid-area: archive;
+}
+
+.content {
+  width: 100%;
+  max-width: scale(866px);
+  margin-bottom: scale(14px);
+}
+
+.title {
+  @mixin headline;
+  @mixin headline2;
+
+  margin-bottom: scale(18px);
+  margin-left: scale(150px);
+}
+
+.text {
+  display: inline-block;
+  overflow: hidden;
+  max-width: scale(480px);
+  margin: scale(0);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link {
+  position: relative;
+  bottom: scale(42px);
+  display: inline-block;
+  margin: scale(0 20px 0 6px);
+}
+
+.desc {
+  @mixin text;
+  @mixin textLarge;
+
+  max-width: scale(432px);
+  margin-left: scale(210px);
+}
+
+.video {
+  width: 100%;
+  max-width: 33.75rem;
+  height: 16.125rem;
+  margin: scale(0) auto;
+}
+
+@media (min-width: $desktop) {
+  .video {
+    max-width: scale(540px);
+    height: scale(258px);
+  }
+}
+
+@media (max-width: $tablet-portrait) {
+  .archive {
+    padding-top: scale(75px);
+    padding-bottom: scale(100px);
+  }
+
+  .title {
+    @mixin headline4;
+
+    margin-left: scale(24px);
+  }
+
+  .text {
+    max-width: scale(260px);
+    text-overflow: clip;
+  }
+
+  .link {
+    bottom: scale(32px);
+    display: inline-block;
+    margin: scale(0);
+    margin-left: scale(2px);
+  }
+
+  .desc {
+    margin: scale(0 24px 34px 85px);
+  }
+
+  .video {
+    margin-right: scale(0);
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 415px) {
+  .video {
+    max-width: scale(540px);
+    height: scale(258px);
+  }
+}

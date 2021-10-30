@@ -1,0 +1,227 @@
+.overview {
+  background-color: var(--beige);
+}
+
+.personalInfo {
+  display: grid;
+  grid-template-areas:
+    'button photo fullName'
+    'button photo city'
+    'button photo quote';
+  grid-template-columns: 2fr 6fr 9fr;
+  grid-template-rows: auto;
+
+  @media (max-width: 959px) {
+    background-color: var(--light-green);
+    grid-template-areas:
+      'button'
+      'photo'
+      'fullName'
+      'city'
+      'quote';
+    grid-template-columns: 10fr;
+  }
+}
+
+.personalInfoNoPhoto {
+  display: grid;
+  grid-template-areas:
+    'button photo fullName'
+    'button photo city'
+    'button quote empty';
+  grid-template-columns: 2fr 6fr 9fr;
+  grid-template-rows: auto;
+
+  @media (max-width: 959px) {
+    background-color: var(--light-green);
+    grid-template-areas:
+      'button'
+      'fullName'
+      'city'
+      'quote';
+    grid-template-columns: 10fr;
+  }
+}
+
+.button {
+  margin: calc(var(--scale) * 30);
+  grid-area: button;
+
+  @media (max-width: 959px) {
+    justify-self: start;
+  }
+
+  @media (max-width: 600px) {
+    margin: calc(var(--scale) * 41) 0 calc(var(--scale) * 30) calc(var(--scale) * 24);
+  }
+}
+
+.photo {
+  width: calc(var(--scale) * 275);
+  height: calc(var(--scale) * 355);
+  border: 1px solid var(--red);
+  grid-area: photo;
+  justify-self: center;
+
+  @media (max-width: 959px) {
+    margin: 0 0 0 calc(var(--scale) * 30);
+    justify-self: start;
+  }
+
+  @media (max-width: 600px) {
+    width: calc(var(--scale) * 183);
+    height: calc(var(--scale) * 236);
+    margin: 0 0 0 calc(var(--scale) * 24);
+  }
+}
+
+.fullName {
+  @mixin headline;
+  @mixin headline3;
+
+  width: 100%;
+  max-width: calc(var(--scale) * 300);
+  margin: calc(var(--scale) * 55) 0 calc(var(--scale) * 10) calc(var(--scale) * 30);
+  grid-area: fullName;
+
+  @media (max-width: 600px) {
+    @mixin headline4;
+
+    margin: calc(var(--scale) * 16) 0 0 calc(var(--scale) * 20);
+  }
+}
+
+.city {
+  @mixin text;
+  @mixin textMedium;
+
+  padding: 0 calc(var(--scale) * 30) 0;
+  margin: 0 0 calc(var(--scale) * 56);
+  grid-area: city;
+
+  @media (max-width: 414px) {
+    margin: calc(var(--scale) * 14) 0 0;
+  }
+}
+
+.quote {
+  @mixin headline;
+  @mixin headline6;
+
+  display: flex;
+  flex-direction: inherit;
+  padding: 0 calc(var(--scale) * 20) 0 0;
+  grid-area: quote;
+  quotes: "\00ab" "\00bb";
+
+  &::after {
+    align-self: end;
+  }
+
+  @media (max-width: 959px) {
+    margin: 0 0 calc(var(--scale) * 72) calc(var(--scale) * 60);
+    justify-self: start;
+  }
+
+  @media (max-width: 728px) {
+    @mixin headline7;
+
+    margin: calc(var(--scale) * 28) calc(var(--scale) * 20) calc(var(--scale) * 72) calc(var(--scale) * 60);
+  }
+}
+
+.quoteParagraph {
+  @mixin headline;
+  @mixin headline6;
+
+  width: 100%;
+  max-width: calc(var(--scale) * 600);
+  margin: 0 calc(var(--scale) * 10);
+
+  @media (max-width: 728px) {
+    @mixin headline7;
+  }
+}
+
+.overviewInfo {
+  display: grid;
+  padding: calc(var(--scale) * 77) 0;
+  gap: 1rem;
+  grid-template-columns: 2fr 5fr 7fr;
+  grid-template-rows: auto;
+  justify-items: start;
+
+  @media (max-width: 728px) {
+    gap: 5rem;
+    grid-template-columns: 10fr;
+  }
+
+  @media (max-width: 414px) {
+    padding: calc(var(--scale) * 56) 0 calc(var(--scale) * 120);
+  }
+}
+
+.overviewBlock {
+  padding: 0 calc(var(--scale) * 25);
+  grid-column: 2/3;
+
+  @media (max-width: 728px) {
+    grid-column: auto;
+    grid-row: 2/2;
+    justify-self: center;
+  }
+
+  @media (max-width: 414px) {
+    padding: 0 calc(var(--scale) * 25);
+  }
+}
+
+.overviewButton {
+  width: calc(var(--scale) * 480);
+}
+
+.overviewParagraph {
+  @mixin text;
+  @mixin textLarge;
+
+  max-width: calc(var(--scale) * 479);
+}
+
+.overviewContacts {
+  max-width: calc(var(--scale) * 610);
+}
+
+.overviewSet {
+  justify-self: center;
+
+  @media (max-width: 728px) {
+    grid-column: auto;
+    grid-row: 1/2;
+    justify-self: center;
+  }
+
+  @media (max-width: 414px) {
+    margin: 0 0 0 calc(var(--scale) * 25);
+    justify-self: start;
+  }
+}
+
+.overviewTagsHeading {
+  @mixin headline;
+  @mixin headline7;
+
+  margin: 0 0 calc(var(--scale) * 15);
+}
+
+.email {
+  @mixin headline;
+  @mixin headline7;
+}
+
+.tag {
+  height: 35px;
+
+  &:nth-child(1n) {
+    margin: 0 0 calc(var(--scale) * 6);
+  }
+}

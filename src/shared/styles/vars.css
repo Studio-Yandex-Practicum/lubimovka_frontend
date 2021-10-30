@@ -1,9 +1,11 @@
 :root {
-  --figma-layout-width-desktop: 1440;
+  --page-content-max-width: 1440px;
+  --page-content-min-width: 414px;
 
-  /*
-  Множитель для конвертации px в vw.
-  Пример использования: calc([размер из макета] * [множитель])
-  */
-  --vw-size-multiplier: calc(100vw / var(--figma-layout-width-desktop));
+  /* Коэффициент для масштабирования размеров с помощью хелпера scale() */
+  --scale: calc(100vw / 414);
+
+  @media (min-width: $tablet-portrait) {
+    --scale: calc(100vw / 1440);
+  }
 }
