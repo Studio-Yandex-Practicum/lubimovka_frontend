@@ -4,16 +4,18 @@ import classNames from 'classnames/bind';
 import styles from './article-maintext.module.css';
 const cx = classNames.bind(styles);
 
-export interface IBlockquoteExampleProps extends React.HTMLAttributes<HTMLDivElement>{
+export interface IArticleMainTextProps extends React.HTMLAttributes<HTMLDivElement>{
   children: ReactNode;
 }
 
-export const BlockquoteExample: React.FC<IBlockquoteExampleProps> = (props) => {
+export const ArticleMainText: React.FC<IArticleMainTextProps> = (props) => {
   const { children } = props;
 
   return (
-    <div className={cx('container')}>
-      {children}
-    </div>
+    <section className={cx('section')}>
+      <article className={cx('container')}>
+        {children}
+      </article>
+    </section>
   );
 };

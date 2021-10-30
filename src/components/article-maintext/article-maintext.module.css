@@ -1,3 +1,35 @@
+.section {
+  width: 100%;
+  background-color: var(--white);
+}
+
+.container {
+  margin: 0 auto;
+}
+
+h6 {
+  @mixin headline;
+  @mixin headline6;
+
+  max-width: 940px;
+  padding-top: 72px;
+}
+
+h4 {
+  @mixin headline;
+  @mixin headline4;
+
+  max-width: 716px;
+  padding-top: 72px;
+}
+
+p {
+  @mixin articlesText;
+
+  max-width: 840px;
+  padding-top: 36px;
+}
+
 blockquote {
   @mixin headline;
   @mixin headline6;
