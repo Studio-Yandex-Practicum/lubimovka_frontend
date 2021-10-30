@@ -41,7 +41,7 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
         view={'primary'}
         align={'space-between'}
         width={isBlog ? '90px' : '125px'}
-        href={'/'} // поставить ссылку на раздел блога или новости
+        href={isBlog ? '/blog' : '/news'}
       />
 
       <img className={cx('img')} src={imgLink} alt={title}/>
