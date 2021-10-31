@@ -1,11 +1,18 @@
 .aside {
   position: absolute;
+  z-index: 2;
   top: 0;
   right: 0;
-  width: 468px;
-  height: 770px;
+  width: scale(468px);
+  height: scale(770px);
   background-color: yellow;
-  transform: translate(50%, 0);
+  transform: translate(40%, 0);
+  transition: transform .3s linear;
+
+  &:hover {
+    cursor: pointer;
+    transform: translate(0, 0);
+  }
 
   @media screen and (max-width: 1200px) {
     position: initial;
@@ -17,10 +24,6 @@
     grid-area: aside;
     transform: translate(0, 0);
   }
-}
-
-.active {
-  transform: translate(0, 0);
 }
 
 .title {

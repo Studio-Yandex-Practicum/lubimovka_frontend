@@ -8,7 +8,7 @@
     "view": "primary"
   },
   "events": true,
-  "aside": false,
+  "aside": true,
   "banners": true,
   "platforms": true,
   "archive": true,
