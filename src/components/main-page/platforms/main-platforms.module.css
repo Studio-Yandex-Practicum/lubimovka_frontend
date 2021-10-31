@@ -24,12 +24,9 @@
 }
 
 .item {
-  /* display: flex; */
   max-width: scale(300px);
   min-height: scale(260px);
   box-sizing: border-box;
-
-  /* flex-direction: column; */
   padding: scale(15px 30px 38px 30px);
   border-bottom: scale(1px) solid var(--coal);
   border-left: scale(1px) solid var(--coal);
