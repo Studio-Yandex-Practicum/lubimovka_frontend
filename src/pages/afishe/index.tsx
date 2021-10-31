@@ -13,6 +13,9 @@ const cx = cn.bind(styles);
 
 interface IAfisheProps {
   title: string,
+  entrance: string,
+  registration: string,
+  discussion: string,
   festival: boolean,
   regular: boolean,
 }
@@ -20,7 +23,10 @@ interface IAfisheProps {
 export const getStaticProps: () => { props: IAfisheProps } = () => {
   return {
     props: {
-      title: 'Компонент Afishe-Title',
+      title: 'Афиша фестиваля',
+      entrance: 'На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации. ',
+      registration: 'Регистрация на каждое мероприятие открывается в 12:00 предыдущего дня.',
+      discussion: 'После каждой читки будет проходить обсуждение с участием аудитории, автора и театральных профессионалов.',
       festival: true,
       regular: false,
     },
@@ -30,13 +36,16 @@ export const getStaticProps: () => { props: IAfisheProps } = () => {
 const Afishe: NextPage<IAfisheProps> = (props: IAfisheProps) => {
   const {
     title,
+    entrance,
+    registration,
+    discussion,
     festival,
     regular,
   } = props;
   return (
     <AppLayout>
       <main className={cx('main')}>
-        {title && <AfisheTitle title={title}/>}
+        {title && <AfisheTitle title={title} entrance={entrance} registration={registration} discussion={discussion}/>}
         {festival && <FestivalDays data={data}/>}
         {regular && <RegularDays/>}
       </main>
