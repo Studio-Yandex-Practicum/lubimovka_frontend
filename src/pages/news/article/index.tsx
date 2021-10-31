@@ -13,7 +13,7 @@ const Article: NextPage<IArticleProps> = (props: IArticleProps) => {
   } = props;
   return (
     <AppLayout>
-      <ArticlePage metaTitle={metaTitle} isBlog={true}/>
+      <ArticlePage metaTitle={metaTitle} isBlog={false}/>
     </AppLayout>
   );
 };

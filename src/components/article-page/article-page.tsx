@@ -13,10 +13,12 @@ import {padding} from 'polished';
 
 interface IArticlePageProps {
   metaTitle: string;
+  isBlog: boolean;
 }
 export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => {
   const {
     metaTitle,
+    isBlog,
   } = props;
   return (
     <>
@@ -24,7 +26,7 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
         <title>{metaTitle}</title>
       </Head>
       <ArticleTitle
-        isBlog={true}
+        isBlog={isBlog}
         title={DataTitle.title}
         description={DataTitle.description}
         date={DataTitle.date}
