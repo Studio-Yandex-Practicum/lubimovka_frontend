@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import style from './footer-partner-list-item.module.css';
 import { Url } from 'shared/types';
@@ -27,9 +26,9 @@ export const FooterPartnerListItem: FC<IFooterPartnerListItemProps> = (props) =>
       <ConditionalWrapper
         condition={!!url}
         wrapper={(children) => (
-          <Link href={url!}>
+          <a href={url!}>
             {children}
-          </Link>
+          </a>
         )}
       >
         <>
@@ -42,7 +41,7 @@ export const FooterPartnerListItem: FC<IFooterPartnerListItemProps> = (props) =>
               objectFit="contain"
             />
           </div>
-          <span className={cx('hiddenText')}>
+          <span className={cx('text')}>
             {name}
           </span>
         </>
