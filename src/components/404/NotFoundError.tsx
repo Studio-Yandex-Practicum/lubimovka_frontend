@@ -12,7 +12,7 @@ export default function NotFoundError() {
 
   useEffect(() => {
     const setWindowWidth = () => {
-      const newWidth = window.innerWidth;
+      const newWidth = document.documentElement.clientWidth;
       setScreenWidth(newWidth);
     };
     window.addEventListener('resize', setWindowWidth);
@@ -21,9 +21,7 @@ export default function NotFoundError() {
 
   return (
     <section className={classes.error}>
-      <div className={classes.logoContainer}>
-        {screenWidth < 1024 ? <SmallLogo className={classes.logo} src={'/images/small-logo.svg'} layout={'fill'}/> : <Logo className={classes.logo} src={'/images/logo.svg'} layout={'fill'}/>}
-      </div>
+      <Link href={'/'}><a>{screenWidth < 1024 ? <SmallLogo className={classes.logo} src={'/images/small-logo.svg'} layout={'fill'}/> : <Logo className={classes.logo} src={'/images/logo.svg'} layout={'fill'}/>}</a></Link>
       <div className={classes.contentContainer}>
         <h1 className={classes.title}>Ощибка 404</h1>
         <h2 className={classes.subtitle}>Кажется, такой страницы не существует</h2>

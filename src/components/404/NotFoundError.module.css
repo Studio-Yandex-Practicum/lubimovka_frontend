@@ -11,15 +11,20 @@
   color: #242424;
   font-family: 'Formular', Helvetica, Arial, sans-serif;
 
-  @media (max-width: 728px) {
+  @media (max-width: 768px) {
     padding: 32px 24px;
   }
 }
 
-.logoContainer {
+.logo {
   position: absolute;
   top: 28px;
   left: 32px;
+
+  @media (max-width: 700px) {
+    position: static;
+    margin: 0;
+  }
 }
 
 .contentContainer {
@@ -29,12 +34,8 @@
   flex-direction: column;
   margin: 83px 152px 0 auto;
 
-  @media (max-width: 728px) {
-    margin: 0;
-  }
-
-  @media (max-width: 992px) {
-    margin: 83px auto 0;
+  @media (max-width: 768px) {
+    margin: 69px auto 0;
   }
 }
 
@@ -46,7 +47,7 @@
   letter-spacing: -.01em;
   line-height: 28px;
 
-  @media (max-width: 728px) {
+  @media (max-width: 768px) {
     margin-bottom: 11px;
   }
 }
@@ -60,7 +61,7 @@
   letter-spacing: -.01em;
   line-height: 56px;
 
-  @media (max-width: 728px) {
+  @media (max-width: 768px) {
     margin-bottom: 16px;
     font-size: 36px;
     line-height: 38px;
@@ -85,13 +86,13 @@
   list-style-type: none;
   white-space: nowrap;
 
-  @media (max-width: 728px) {
+  @media (max-width: 768px) {
     flex-direction: column;
   }
 }
 
 .listItem {
-  @media (max-width: 728px) {
+  @media (max-width: 768px) {
     margin-bottom: 34px;
   }
 }
