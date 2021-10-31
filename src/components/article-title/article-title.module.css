@@ -87,12 +87,11 @@
 
 .author {
   align-self: center;
-  margin: 0;
   grid-area: author;
   justify-self: center;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(24px 0 75px 60px);
+    margin: scale(24px 0 75px 60px) !important;
     justify-self: start;
   }
 }
