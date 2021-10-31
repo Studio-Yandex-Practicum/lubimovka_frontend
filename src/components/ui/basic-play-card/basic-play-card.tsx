@@ -1,41 +1,44 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
-import Link from 'next/link';
 import { Button } from '../button';
+import { InfoLink } from '../info-link';
+
+import { Url } from 'shared/types';
 
 import styles from './basic-play-card.module.css';
+const cx  = cn.bind(styles);
 
-export interface IBasicPlayCardProps {
+interface IBasicPlayCardProps {
   play: {
     title: string;
     city: string;
     year: string;
-    linkView: string;
-    linkDownload: string;
+    linkView: Url;
+    linkDownload: Url;
   };
   author: {
     id: number,
     name: string;
   };
+  buttonVisibility: boolean;
 }
 
 export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
   const {
     play,
     author,
-    ...restBasicPlayCardProps
+    buttonVisibility,
   } = props;
 
   return (
-    <li
-      className={cn(styles.card)}
-      {...restBasicPlayCardProps}
+    <article
+      className={cx('card')}
     >
-      <div className={cn(styles.container)}>
-        <h6 className={cn(styles.title)}>{play.title}</h6>
+      <div className={cx('container')}>
+        <h6 className={cx('title')}>{play.title}</h6>
         <div>
           <Button
-            className={styles.buttonCustom}
+            className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
             width='100%'
             size='l'
             view='primary'
@@ -43,11 +46,11 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             icon='arrow-45'
             label='Смотреть читку'
             border='top'
-            isLink={true}
+            isLink
             href={play.linkView}
           />
           <Button
-            className={styles.buttonCustom}
+            className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
             width='100%'
             size='l'
             view='primary'
@@ -55,18 +58,35 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             icon='arrow-down'
             label='Скачать пьесу'
             border='top'
-            isLink={true}
+            isLink
             href={play.linkDownload}
           />
         </div>
       </div>
-      <div className={cn(styles.info)}>
-        <Link href={`/authors/${author.id}`}>
-          <h6 className={cn(styles.authorName)}>{author.name}</h6>
-        </Link>
-        <p className={cn(styles.city)}>{play.city}</p>
-        <p className={cn(styles.year)}>{play.year}</p>
-      </div>
-    </li>
+      <dl className={cx('info')}>
+        <dt className={cx('hiddenText')}>
+          Автор:
+        </dt>
+        <InfoLink
+          isOutsideLink={false}
+          href={`/authors/${author.id}`}
+          label={author.name}
+          size='l'
+          className={cx('author')}
+        />
+        <dt className={cx('hiddenText')}>
+          Город:
+        </dt>
+        <dd className={cx('city')}>
+          {play.city}
+        </dd>
+        <dt className={cx('hiddenText')}>
+          Год:
+        </dt>
+        <dd className={cx('year')}>
+          {play.year}
+        </dd>
+      </dl>
+    </article>
   );
 };
