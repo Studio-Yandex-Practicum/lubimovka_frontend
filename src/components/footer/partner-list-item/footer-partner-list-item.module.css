@@ -29,15 +29,6 @@
   margin: auto;
 }
 
-.text {
-  @mixin textCaption
-
-    text-align: center;
-
-  display: none;
-
-  @media (max-width: $tablet-portrait) {
-    display: inline-block;
-    margin: scale(20px 0 0);
-  }
+.hiddenText {
+  @mixin visually-hidden;
 }
