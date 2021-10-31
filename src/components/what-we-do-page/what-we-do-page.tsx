@@ -1,5 +1,3 @@
-import Head from 'next/head';
-
 // Компоненты
 import { WhatWeDoHeader } from 'components/what-we-do/header';
 import { WhatWeDoDesc } from 'components/what-we-do/desc';
@@ -16,9 +14,6 @@ import SelectionContacts from 'components/what-we-do/assets/contacts-data.json';
 
 export const WhatWeDo = ():JSX.Element => (
   <>
-    <Head>
-      <title>{'what-we-do'}</title>
-    </Head>
     <main>
       {headerData.map((data) => (
         <WhatWeDoHeader key={ data.id } data={ data } />

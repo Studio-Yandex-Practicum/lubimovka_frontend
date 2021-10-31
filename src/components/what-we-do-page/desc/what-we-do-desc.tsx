@@ -3,22 +3,22 @@ import cn from 'classnames';
 
 import styles from './what-we-do-desc.module.css';
 
-interface item {
+interface IItem {
   id: number
   mainTitle?: string
   title: string
   desc: string
-  image: {
-    url?: string
-    alt?: string
+  image?: {
+    url: string
+    alt: string
   }
 }
 
 interface IWeDoAboutProps {
   data: {
-    blockOne: item
-    blockTwo: item
-    blockThree: item
+    blockOne: IItem
+    blockTwo: IItem
+    blockThree: IItem
   }
 }
 
