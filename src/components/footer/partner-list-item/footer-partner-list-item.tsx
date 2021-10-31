@@ -26,7 +26,7 @@ export const FooterPartnerListItem: FC<IFooterPartnerListItemProps> = (props) =>
       <ConditionalWrapper
         condition={!!url}
         wrapper={(children) => (
-          <a href={url!}>
+          <a href={url!} target="_blank" rel="noreferrer">
             {children}
           </a>
         )}

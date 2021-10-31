@@ -33,7 +33,7 @@ export const Footer = (props: IFooterProps): JSX.Element => {
       <div className={cx('footnote')}>
         <div className={cx('copyright')}>
           <p className={cx('signature')}>&copy; Любимовка, {new Date().getFullYear()}</p>
-          <a href="#" className={cx('link')}>Политика конфиденциальности</a>
+          <a href="#" className={cx('link')} target="_blank" rel="noreferrer">Политика конфиденциальности</a>
         </div>
         <dl className={cx('credits')}>
           <div className={cx('shishki')}>
@@ -41,7 +41,7 @@ export const Footer = (props: IFooterProps): JSX.Element => {
               дизайн сайта
             </dt>
             <dd>
-              <a className={cx('link')} href="#">shishki.collective</a>
+              <a className={cx('link')} href="#" target="_blank" rel="noreferrer">shishki.collective</a>
             </dd>
           </div>
           <div>
@@ -49,7 +49,7 @@ export const Footer = (props: IFooterProps): JSX.Element => {
               вёрстка и разработка
             </dt>
             <dd>
-              студенты <a className={cx('link')} href="#">Яндекс.Практикума</a>
+              студенты <a className={cx('link')} href="#" target="_blank">Яндекс.Практикума</a>
             </dd>
           </div>
         </dl>
