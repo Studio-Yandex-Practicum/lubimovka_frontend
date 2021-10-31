@@ -2,13 +2,14 @@ import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
+import { BlogCard } from '../../ui/blog-card';
 import styles from './main-aside.module.css';
 import data from '../assets/mock-data.json';
 
 const cx = cn.bind(styles);
 
 export const MainAside: FC = () => {
-  const { title, buttonText, buttonLink } = data.aside;
+  const { title, buttonText, buttonLink, blogData } = data.aside;
   return (
     <aside className={cx('aside')}>
       <div className={cx('heading')}>
@@ -28,6 +29,21 @@ export const MainAside: FC = () => {
           />
         </div>
       </div>
+
+      <ul className={cx('list')}>
+        {blogData &&
+          blogData.map((blogCard, i) => (
+            <li key={i}>
+              <BlogCard
+                image={blogCard.image}
+                author={blogCard.author}
+                heading={blogCard.heading}
+                description={blogCard.description}
+                link={blogCard.link}
+              />
+            </li>
+          ))}
+      </ul>
     </aside>
   );
 };

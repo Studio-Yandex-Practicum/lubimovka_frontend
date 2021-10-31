@@ -1,7 +1,6 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import cn from 'classnames/bind';
-
 import { MainTitle } from 'components/main-page/title';
 import { MainEvents } from 'components/main-page/events';
 import { MainAside } from 'components/main-page/aside';

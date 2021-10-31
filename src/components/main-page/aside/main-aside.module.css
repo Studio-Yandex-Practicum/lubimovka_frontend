@@ -6,10 +6,27 @@
   width: scale(468px);
   height: scale(770px);
   box-sizing: border-box;
-  padding: scale(122px 56px);
+  padding: scale(122px 56px 56px 56px);
   background-color: var(--light-green);
+  overflow-y: scroll;
   transform: translate(60%, 0);
   transition: transform .3s ease-in;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 70%;
+  }
+
+  &::-webkit-scrollbar-track {
+    margin: scale(50px 0);
+    background: transparent;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--black-15);
+    border-radius: 6px;
+  }
 
   &:hover {
     cursor: pointer;
@@ -37,6 +54,18 @@
 
 .buttonContainer {
   width: scale(154px);
+  padding-left: scale(45px);
+}
+
+.list {
+  display: grid;
+  padding: scale(36px 0);
+  margin: 0;
+  grid-auto-rows: max-content;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(3, max-content);
+  list-style-type: none;
+  row-gap: scale(36px);
 }
 
 .title {
