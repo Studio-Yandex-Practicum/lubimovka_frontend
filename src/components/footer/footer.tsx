@@ -32,9 +32,9 @@ export const Footer = (props: IFooterProps): JSX.Element => {
       {children}
       <div className={cx('footnote')}>
         <div className={cx('copyright')}>
-          <p className={cx('signature')}>&copy; Любимовка, {new Date().getFullYear()}</p>
-          <a href="#" className={cx('link')} target="_blank" rel="noreferrer">Политика конфиденциальности</a>
+          &copy; Любимовка, {new Date().getFullYear()}
         </div>
+        <a href="#" className={cx('link')} target="_blank" rel="noreferrer">Политика конфиденциальности</a>
         <dl className={cx('credits')}>
           <div className={cx('shishki')}>
             <dt className={cx('term')}>

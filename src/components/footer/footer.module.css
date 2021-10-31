@@ -37,7 +37,6 @@
 
 .footnote {
   display: flex;
-  justify-content: space-between;
   margin-top: scale(49px);
   grid-area: footnote;
 
@@ -52,15 +51,6 @@
 }
 
 .copyright {
-  display: flex;
-
-  @media (max-width: $tablet-portrait) {
-    flex-direction: column;
-  }
-}
-
-.signature {
-  display: inline;
   margin: scale(0 32px 0 0);
 
   @media (max-width: $tablet-portrait) {
@@ -80,7 +70,7 @@
 .credits {
   display: flex;
   width: scale(424px);
-  margin: 0;
+  margin: 0 0 0 auto;
 
   @media (max-width: $tablet-portrait) {
     width: scale(254px);
