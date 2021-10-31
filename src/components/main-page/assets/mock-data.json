@@ -8,7 +8,11 @@
     "view": "primary"
   },
   "events": true,
-  "aside": true,
+  "aside": {
+    "title": "Дневник фестиваля",
+    "buttonText": "Все записи",
+    "buttonLink": "/blog"
+  },
   "banners": true,
   "platforms": true,
   "archive": true,

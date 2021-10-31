@@ -5,9 +5,11 @@
   right: 0;
   width: scale(468px);
   height: scale(770px);
-  background-color: yellow;
-  transform: translate(40%, 0);
-  transition: transform .3s linear;
+  box-sizing: border-box;
+  padding: scale(122px 56px);
+  background-color: var(--light-green);
+  transform: translate(60%, 0);
+  transition: transform .3s ease-in;
 
   &:hover {
     cursor: pointer;
@@ -26,10 +28,20 @@
   }
 }
 
-.title {
-  width: clamp(298px, 100%, 640px);
-  text-align: center;
+.heading {
+  display: flex;
+  height: scale(145px);
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  @mixin text;
-  @mixin headline1;
+.buttonContainer {
+  width: scale(154px);
+}
+
+.title {
+  width: scale(204px);
+
+  @mixin headline;
+  @mixin headline4;
 }

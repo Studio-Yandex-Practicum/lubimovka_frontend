@@ -1,16 +1,33 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import cn from 'classnames/bind';
+
+import { Button } from 'components/ui/button';
 import styles from './main-aside.module.css';
+import data from '../assets/mock-data.json';
 
 const cx = cn.bind(styles);
 
 export const MainAside: FC = () => {
-  const [active, setActive] = useState(false);
-  const handleAside = () => {
-    setActive(!active);
-  };
+  const { title, buttonText, buttonLink } = data.aside;
   return (
-    <aside className={cx('aside', {active})} onClick={handleAside}> <h2 className={cx('title')}>Компонент MainAside</h2> </aside>
+    <aside className={cx('aside')}>
+      <div className={cx('heading')}>
+        <h2 className={cx('title')}>{title}</h2>
+        <div className={cx('buttonContainer')}>
+          <Button
+            label={buttonText}
+            isLink
+            href={buttonLink}
+            width="100%"
+            border="bottomLeft"
+            iconPlace="left"
+            icon="arrow-right"
+            align="start"
+            gap="9px"
+            size="s"
+          />
+        </div>
+      </div>
+    </aside>
   );
 };
-
