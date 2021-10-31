@@ -1,16 +1,16 @@
 // Компоненты
-import { WhatWeDoHeader } from 'components/what-we-do/header';
-import { WhatWeDoDesc } from 'components/what-we-do/desc';
-import { WhatWeDoAuthors } from 'components/what-we-do/authors';
-import { WhatWeDoSelection } from 'components/what-we-do/selection';
-import { WhatWeDoContacts } from 'components/what-we-do/contacts';
-import { WhatWeDoPartners } from 'components/what-we-do/partners';
+import { WhatWeDoHeader } from 'components/what-we-do-page/header';
+import { WhatWeDoDesc } from 'components/what-we-do-page/desc';
+import { WhatWeDoAuthors } from 'components/what-we-do-page/authors';
+import { WhatWeDoSelection } from 'components/what-we-do-page/selection';
+import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
+import { WhatWeDoPartners } from 'components/what-we-do-page/partners';
 // data json
-import headerData from 'components/what-we-do/assets/header-data.json';
-import descData from 'components/what-we-do/assets/desc-data.json';
-import AuthorsData from 'components/what-we-do/assets/authors-data.json';
-import SelectionData from 'components/what-we-do/assets/selection-data.json';
-import SelectionContacts from 'components/what-we-do/assets/contacts-data.json';
+import headerData from 'components/what-we-do-page/assets/header-data.json';
+import descData from 'components/what-we-do-page/assets/desc-data.json';
+import AuthorsData from 'components/what-we-do-page/assets/authors-data.json';
+import SelectionData from 'components/what-we-do-page/assets/selection-data.json';
+import SelectionContacts from 'components/what-we-do-page/assets/contacts-data.json';
 
 export const WhatWeDo = ():JSX.Element => (
   <>

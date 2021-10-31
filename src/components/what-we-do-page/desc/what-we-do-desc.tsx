@@ -38,17 +38,17 @@ export const WhatWeDoDesc: FC<IWeDoAboutProps> = ({ data }): JSX.Element => {
           </p>
         </div>
         <img 
-          src={ data.blockTwo.image.url }
+          src={ data.blockTwo.image && data.blockTwo.image.url }
           className={ cn(styles.imgReception) }
-          alt={ data.blockTwo.image.alt }
+          alt={ data.blockTwo.image && data.blockTwo.image.alt }
         />
       </div>
 
       <div className={ cn(styles.content, styles.contentSelected) }>
         <img 
-          src={ data.blockTwo.image.url } 
+          src={ data.blockTwo.image && data.blockTwo.image.url }
           className={ cn(styles.imgSelected) }
-          alt={ data.blockTwo.image.alt }
+          alt={ data.blockTwo.image && data.blockTwo.image.alt }
         />
         <div className={ cn(styles.container, styles.containerSelected) }>
           <h3 className={ cn(styles.title) } >
