@@ -12,6 +12,7 @@ export interface INewsCardProps {
   title: string;
   description: string;
   date: string;
+  isMainPage: boolean;
 }
 
 export const NewsCard: React.FC<INewsCardProps> = (props) => {
@@ -20,16 +21,17 @@ export const NewsCard: React.FC<INewsCardProps> = (props) => {
     title,
     description,
     date,
+    isMainPage
   } = props;
 
   return (
     <Link href={`/news/${encodeURIComponent(newsId)}`}>
-      <a className={cx('wrapper')}>
+      <a className={cx('wrapper', {mainPageWrapper: isMainPage})}>
         <div className={cx('container')}>
-          <h5 className={cx('title')}>{title}</h5>
-          <p className={cx('description')}>{description}</p>
+          <h5 className={cx('title', {mainPageTitle: isMainPage})}>{title}</h5>
+          <p className={cx('description', {mainPageDescription: isMainPage})}>{description}</p>
         </div>
-        <p className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', {month: 'long', day:'numeric', year:'numeric'}).replace(' г.', '')}</p>
+        <p className={cx('date', {mainPageDate: isMainPage})}>{new Date(date).toLocaleDateString('ru-Ru', {month: 'long', day:'numeric', year:'numeric'}).replace(' г.', '')}</p>
       </a>
     </Link>
   );

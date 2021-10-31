@@ -16,8 +16,23 @@ News.args = {
   title: 'Дизайн Любимовки-2021',
   description: 'Присылайте ваши варианты текстовых описаний.',
   date: '2015-02-24T21:23',
+  isMainPage: false
 };
 
 News.parameters = {
+  layout: 'fullscreen',
+};
+
+export const NewsMainPage = Template.bind({});
+
+NewsMainPage.args = {
+  newsId: 1,
+  title: 'Дизайн Любимовки-2021',
+  description: 'Присылайте ваши варианты текстовых описаний.',
+  date: '2015-02-24T21:23',
+  isMainPage: true
+};
+
+NewsMainPage.parameters = {
   layout: 'fullscreen',
 };

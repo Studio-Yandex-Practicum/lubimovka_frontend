@@ -17,6 +17,14 @@
   }
 }
 
+.mainPageWrapper {
+  flex-direction: column;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 16px 0 72px;
+  }
+}
+
 .title {
   @mixin headline;
   @mixin headline5;
@@ -27,6 +35,16 @@
     @mixin headline6;
 
     max-width: scale(316px);
+  }
+}
+
+.mainPageTitle {
+  max-width: 681px;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline5;
+
+    max-width: 336px;
   }
 }
 
@@ -42,6 +60,14 @@
   }
 }
 
+.mainPageDescription {
+  max-width: 491px;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: 304px;
+  }
+}
+
 .date {
   @mixin text;
   @mixin textSmall;
@@ -49,4 +75,9 @@
   @media (max-width: $tablet-portrait) {
     padding-bottom: scale(16px);
   }
+}
+
+.mainPageDate {
+  padding-top: 16px;
+  padding-bottom: 0;
 }
