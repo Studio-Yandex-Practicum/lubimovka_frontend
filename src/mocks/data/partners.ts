@@ -1,16 +1,31 @@
-import partnerLogo from '../assets/partners/fond-prohorova.png';
+import fondProhorovaLogo from '../assets/partners/fond-prohorova.png';
+import mosbrewLogo from '../assets/partners/mosbrew.png';
+import sbtgLogo from '../assets/partners/sbtg.png';
+import aPogovoritLogo from '../assets/partners/a-pogovorit.png';
 
 export default [
   {
-    name: 'Фонд Михаила Прохорова',
+    name: 'Генеральный партнёр',
     url: '',
-    logo: partnerLogo.src,
+    logo: fondProhorovaLogo.src,
     type: 'general'
   },
   {
-    name: 'Фонд Михаила Прохорова',
+    name: '',
     url: '',
-    logo: partnerLogo.src,
+    logo: mosbrewLogo.src,
+    type: 'general'
+  },
+  {
+    name: 'Онлайн-трансляции',
+    url: '',
+    logo: sbtgLogo.src,
+    type: 'general'
+  },
+  {
+    name: '',
+    url: '',
+    logo: aPogovoritLogo.src,
     type: 'general'
   },
 ];
