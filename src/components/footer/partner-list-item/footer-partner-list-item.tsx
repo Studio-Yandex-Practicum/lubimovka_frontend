@@ -41,7 +41,7 @@ export const FooterPartnerListItem: FC<IFooterPartnerListItemProps> = (props) =>
               objectFit="contain"
             />
           </div>
-          <span className={cx('text')}>
+          <span className={cx('hiddenText')}>
             {name}
           </span>
         </>
