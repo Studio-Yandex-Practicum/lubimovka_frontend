@@ -3,11 +3,11 @@
   background-color: var(--white);
 }
 
-.container {
+.article_container {
   margin: 0 auto;
 }
 
-h6 {
+.article_container > h6 {
   @mixin headline;
   @mixin headline6;
 
@@ -16,7 +16,7 @@ h6 {
   margin: 0 auto;
 }
 
-h4 {
+.article_container > h4 {
   @mixin headline;
   @mixin headline4;
 
@@ -26,7 +26,7 @@ h4 {
   margin: 0 auto;
 }
 
-p {
+.article_container > p {
   @mixin articlesText;
 
   max-width: 840px;
@@ -35,11 +35,11 @@ p {
   margin: 0 auto;
 }
 
-h4 + p {
+.article_container > h4 + p {
   padding-top: 36px;
 }
 
-blockquote {
+.article_container > blockquote {
   @mixin headline;
   @mixin headline6;
 
@@ -59,7 +59,7 @@ blockquote {
   }
 }
 
-blockquote::before {
+.article_container > blockquote::before {
   position: absolute;
   width: 0;
   height: calc(100% - 56px - 72px);

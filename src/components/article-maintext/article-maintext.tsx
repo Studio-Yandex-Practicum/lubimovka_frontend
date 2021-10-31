@@ -13,7 +13,7 @@ export const ArticleMainText: React.FC<IArticleMainTextProps> = (props) => {
 
   return (
     <section className={cx('section')}>
-      <article className={cx('container')}>
+      <article className={cx('article_container')}>
         {children}
       </article>
     </section>
