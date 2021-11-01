@@ -8,7 +8,6 @@ const cx = cn.bind(styles);
 
 export interface IAnnouncedPlayCardProps {
   date: string;
-  time: string;
   title: string;
   playwrightArray: string [];
   directorArray: string [];
@@ -21,7 +20,6 @@ export interface IAnnouncedPlayCardProps {
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const {
     date,
-    time,
     title,
     playwrightArray,
     directorArray,
@@ -71,8 +69,8 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         }
         <div className={cx('info')}>
           <div className={cx('dateInfo')}>
-            <p className={cx('date')}>{date}</p>
-            <p className={cx('time')}>{time}</p>
+            <p className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', {month: 'long', day:'numeric'})}</p>
+            <p className={cx('time')}>{new Date(date).toLocaleTimeString('ru-Ru', {hour:'numeric', minute:'numeric'})}</p>
           </div>
           <h5 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h5>
           { directorArray.length > 0 && playwrightArray.length > 0 &&

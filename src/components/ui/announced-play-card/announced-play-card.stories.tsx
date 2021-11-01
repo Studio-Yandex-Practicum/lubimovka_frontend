@@ -13,8 +13,7 @@ const Template: ComponentStory<typeof AnnouncedPlayCard> = (args) => <AnnouncedP
 
 export const PlayCardEventsViewTwoButtons = Template.bind({});
 PlayCardEventsViewTwoButtons.args = {
-  date:'15 декабря',
-  time: '11:00',
+  date:'2021-12-15T19:00',
   title: 'МАМА',
   playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
   directorArray: ['Катя Ганюшина'],
@@ -24,8 +23,7 @@ PlayCardEventsViewTwoButtons.args = {
 
 export const PlayCardEventsViewOneButton = Template.bind({});
 PlayCardEventsViewOneButton.args = {
-  date:'15 декабря',
-  time: '11:00',
+  date:'2021-12-15T12:00',
   title: 'МАМА',
   playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
   directorArray: ['Катя Ганюшина'],
@@ -35,8 +33,7 @@ PlayCardEventsViewOneButton.args = {
 
 export const PlayCardEventsViewTwoButtonsNoCover = Template.bind({});
 PlayCardEventsViewTwoButtonsNoCover.args = {
-  date:'15 декабря',
-  time: '11:00',
+  date:'2021-12-15T12:00',
   title: 'МАМА',
   playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
   directorArray: ['Катя Ганюшина'],
@@ -45,8 +42,7 @@ PlayCardEventsViewTwoButtonsNoCover.args = {
 
 export const PlayCardEventsViewOneButtonNoCover = Template.bind({});
 PlayCardEventsViewOneButtonNoCover.args = {
-  date:'15 декабря',
-  time: '11:00',
+  date:'2021-12-15T12:00',
   title: 'МАМА',
   playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
   directorArray: ['Катя Ганюшина'],
@@ -55,8 +51,7 @@ PlayCardEventsViewOneButtonNoCover.args = {
 
 export const PlayCardEventsViewNoCredits = Template.bind({});
 PlayCardEventsViewNoCredits.args = {
-  date:'15 декабря',
-  time: '11:00',
+  date:'2021-12-15T12:00',
   title: 'Что я узнал о творчестве благодаря драматургам',
   playwrightArray: [],
   directorArray: [],
