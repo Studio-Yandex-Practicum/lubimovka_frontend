@@ -6,6 +6,7 @@ import {FestivalDays} from 'components/afishe-page/festival-days';
 import {RegularDays} from 'components/afishe-page/regular-days';
 import {AppLayout} from 'components/app-layout';
 import data from './assets/mock-data.json';
+import festivalData from './assets/afishe-fesival-data.json';
 
 import styles from 'components/afishe-page/afishe.module.css';
 
@@ -20,33 +21,17 @@ interface IAfisheProps {
   regular: boolean,
 }
 
-export const getStaticProps: () => { props: IAfisheProps } = () => {
-  return {
-    props: {
-      title: 'Афиша фестиваля',
-      entrance: 'На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации. ',
-      registration: 'Регистрация на каждое мероприятие открывается в 12:00 предыдущего дня.',
-      discussion: 'После каждой читки будет проходить обсуждение с участием аудитории, автора и театральных профессионалов.',
-      festival: true,
-      regular: false,
-    },
-  };
-};
-
-const Afishe: NextPage<IAfisheProps> = (props: IAfisheProps) => {
+const Afishe: NextPage<IAfisheProps> = () => {
   const {
     title,
-    entrance,
-    registration,
-    discussion,
     festival,
     regular,
-  } = props;
+  } = data;
   return (
     <AppLayout>
       <main className={cx('main')}>
-        {title && <AfisheTitle title={title} entrance={entrance} registration={registration} discussion={discussion}/>}
-        {festival && <FestivalDays data={data}/>}
+        {title && <AfisheTitle title={title.title} entrance={title.entrance} registration={title.registration} discussion={title.discussion}/>}
+        {festival && <FestivalDays data={festivalData}/>}
         {regular && <RegularDays/>}
       </main>
     </AppLayout>

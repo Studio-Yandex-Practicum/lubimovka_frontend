@@ -1,7 +1,8 @@
 import {FC} from 'react';
 
-import styles from './afishe-title.module.css';
 import {Icon} from 'components/ui/icon';
+
+import styles from './afishe-title.module.css';
 
 interface IAfisheTitle {
   title: string,
@@ -14,13 +15,13 @@ export const AfisheTitle: FC<IAfisheTitle> = ({title, discussion, entrance, regi
   return (
     <section className={styles.section}>
       <h1 className={styles.title}>{title}</h1>
-      <div className={styles.discussionInfo}>
+      {discussion && (<div className={styles.discussionInfo}>
         <Icon glyph='asterisk'/>
         <p className={styles.discussion}>{discussion}</p>
-      </div>
+      </div>)}
       <div className={styles.entranceInfo}>
         <p className={styles.info}>{entrance}</p>
-        <p className={styles.info}>{registration}</p>
+        {registration && (<p className={styles.info}>{registration}</p>)}
       </div>
     </section>
   );
