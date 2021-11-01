@@ -13,6 +13,7 @@ export interface INewsCardProps {
   description: string;
   date: string;
   isMainPage: boolean;
+  className?: string;
 }
 
 export const NewsCard: React.FC<INewsCardProps> = (props) => {
@@ -21,12 +22,13 @@ export const NewsCard: React.FC<INewsCardProps> = (props) => {
     title,
     description,
     date,
-    isMainPage
+    isMainPage,
+    className
   } = props;
 
   return (
     <Link href={`/news/${encodeURIComponent(newsId)}`}>
-      <a className={cx('wrapper', {mainPageWrapper: isMainPage})}>
+      <a className={cx('wrapper', {mainPageWrapper: isMainPage}, [className])}>
         <div className={cx('container')}>
           <h5 className={cx('title', {mainPageTitle: isMainPage})}>{title}</h5>
           <p className={cx('description', {mainPageDescription: isMainPage})}>{description}</p>
