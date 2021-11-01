@@ -1,0 +1,17 @@
+.item {
+  display: block;
+
+  &:not(:last-child) {
+    margin-right: scale(28px);
+  }
+}
+
+.logoCanvas {
+  position: relative;
+  width: scale(100px);
+  height: scale(40px);
+}
+
+.hiddenText {
+  @mixin visually-hidden;
+}

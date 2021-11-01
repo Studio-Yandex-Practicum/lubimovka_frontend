@@ -1,0 +1,9 @@
+.partners {
+  display: flex;
+  grid-area: partners;
+}
+
+.title {
+  max-width: 10ch;
+  margin-right: 56px;
+}

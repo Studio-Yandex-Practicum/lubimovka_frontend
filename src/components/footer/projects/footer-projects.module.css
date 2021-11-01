@@ -1,0 +1,10 @@
+@value partners from '../partners/footer-partners.module.css';
+
+.projects {
+  margin-top: 50px;
+  grid-area: projects;
+}
+
+.partners ~ .projects {
+  margin-top: scale(62px);
+}
