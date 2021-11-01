@@ -6,7 +6,7 @@ import styles from './announced-play-card.module.css';
 
 const cx = cn.bind(styles);
 
-interface IAnnouncedPlayCardProps {
+export interface IAnnouncedPlayCardProps {
   date: string;
   time: string;
   title: string;
