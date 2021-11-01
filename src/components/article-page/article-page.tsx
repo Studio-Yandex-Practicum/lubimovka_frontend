@@ -6,10 +6,14 @@ import {Section} from '../section';
 import DataTitle from './assets/mock-data-title.json';
 import DataPlays from './assets/mock-data-plays.json';
 import DataPersons from './assets/mock-data-persons.json';
+import ArticleText from './article-maintext/assets/mock-data-articleText';
+import DataShare from './assets/mock-data-share.json';
 
 import {BasicPlayCard, BasicPlayCardList, IBasicPlayCardProps} from '../ui/basic-play-card';
 import {IPersonCardProps, PersonCard, PersonCardList} from '../ui/person-card';
 import {padding} from 'polished';
+import {ArticleMainText} from './article-maintext';
+import ArticleShare from './article-share/article-share';
 
 interface IArticlePageProps {
   metaTitle: string;
@@ -34,6 +38,9 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
         author={DataTitle.author}
         authorLink={DataTitle.authorLink}
       />
+      <ArticleMainText>
+        {ArticleText()}
+      </ArticleMainText>
       <Section type={'plays'} title={'Заголовок блока с пьессами'} style={padding(120, 0, 54)}>
         <BasicPlayCardList>
           {(DataPlays as IBasicPlayCardProps[]).map((item, idx) => (
@@ -48,6 +55,12 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
           ))}
         </PersonCardList>
       </Section>
+      <ArticleShare
+        isBlog={isBlog}
+        authors={DataShare.authors}
+        illustrators={DataShare.illustrators}
+        photographers={DataShare.photographers}
+      />
 
     </>
   );
