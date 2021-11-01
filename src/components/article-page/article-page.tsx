@@ -57,9 +57,9 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
       </Section>
       <ArticleShare
         isBlog={isBlog}
-        authors={DataShare.authors}
-        illustrators={DataShare.illustrators}
-        photographers={DataShare.photographers}
+        authors={isBlog ? DataShare.authors : []}
+        illustrators={isBlog ? DataShare.illustrators : []}
+        photographers={isBlog ? DataShare.photographers : []}
       />
 
     </>
