@@ -14,6 +14,7 @@ import { createList } from './utils';
 interface IDroplistProps {
   type: 'years' | 'months';
   cb: (selectList: string[]) => void,
+  selectListFromProps?: string[],
   data?: string[] | number[],
   maxWidth?: number,
   widthSelectedItem?: number,
@@ -22,10 +23,11 @@ interface IDroplistProps {
 export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
   const {
     type, 
-    cb, 
+    cb,
+    selectListFromProps,
     data, 
     maxWidth, 
-    widthSelectedItem,
+    widthSelectedItem
   } = props;
 
   // Выбранный список пользователем.
@@ -48,6 +50,12 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
       getList(list);
     }
   }, [ data ]);
+
+  useEffect(() => {
+    if (selectListFromProps) {
+      setSelectList(selectListFromProps);
+    }
+  }, [selectListFromProps]);
 
   const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -103,6 +111,7 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
                   month={ month }
                   key={ i }
                   cb={ cbItems }
+                  selectList={ selectList }
                 />
               );
             })
