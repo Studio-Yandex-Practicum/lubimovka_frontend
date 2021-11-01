@@ -15,10 +15,45 @@
 .link {
   @mixin text;
 
+  position: relative;
   display: block;
+  display: flex;
+  align-items: flex-start;
   color: var(--coal);
   font-size: scale(16px);
-  line-height: scale(18px);
+  line-height: scale(22px);
   text-decoration: none;
   white-space: nowrap;
+
+  &::before,
+  &::after {
+    display: none;
+    width: .6em;
+    height: 1.6em;
+    box-sizing: border-box;
+    border: scale(1px) solid currentColor;
+    content: '';
+  }
+
+  &::before {
+    left: calc((-1) * scale(10px));
+    border-right: 0;
+    border-bottom-left-radius: 200% 100%;
+    border-top-left-radius: 200% 100%;
+  }
+
+  &::after {
+    right: calc((-1) * scale(10px));
+    border-left: 0;
+    border-bottom-right-radius: 200% 100%;
+    border-top-right-radius: 200% 100%;
+  }
+
+  &:hover {
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+    }
+  }
 }
