@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 
-import { PersonCard } from 'components/ui/person-card';
+import PersonCard from '../ui/persons-card/persons-card';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 

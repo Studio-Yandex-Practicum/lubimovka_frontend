@@ -1,6 +1,0 @@
-@define-mixin truncated-text $linesNumber {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: $linesNumber;
-}

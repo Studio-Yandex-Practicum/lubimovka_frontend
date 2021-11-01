@@ -1,12 +1,12 @@
 import { NextPage } from 'next';
 import data from 'components/main-page/assets/mock-data.json';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import { MainPage } from 'components/main-page';
 
 const Home: NextPage = () => {
   return (
-    <AppLayout hiddenPartners>
+    <AppLayout>
       <MainPage
         title={data.title}
         metaTitle={data.metaTitle}

@@ -5,28 +5,16 @@ import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
 import { Navbar } from 'components/navbar';
 import { Logotype } from 'components/logotype';
-import { Footer } from 'components/footer';
 
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
-import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
 import { formLink, donationLink } from 'shared/constants/action-link-items';
 import { socialLinkItems } from 'shared/constants/social-link-items';
 import { OverlayNav } from 'components/overlay-nav';
 import * as breakpoints from 'shared/breakpoints.js';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
-import { WithAppSettingsProps, withAppSettings } from 'components/app';
 
-interface IAppLayoutProps extends WithAppSettingsProps{
-  hiddenPartners?: boolean,
-}
-
-const AppLayout: FC<IAppLayoutProps> = (props) => {
-  const {
-    children,
-    projects,
-    generalPartners,
-    hiddenPartners,
-  } = props;
+export const AppLayout: FC = (props) => {
+  const { children } = props;
 
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
@@ -75,8 +63,8 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
           </OverlayNav.Logotype>
           <OverlayNav.Menu>
             <Menu type="overlay-navigation">
-              {mainNavigationItems.map((item, index) => (
-                <Menu.Item key={index} href={item.href}>
+              {mainNavigationItems.map((item, idx) => (
+                <Menu.Item key={idx} href={item.href}>
                   {item.text}
                 </Menu.Item>
               ))}
@@ -84,8 +72,8 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
           </OverlayNav.Menu>
           <OverlayNav.Actions>
             <Menu type='overlay-actions'>
-              {[formLink, donationLink].map((item, index) => (
-                <Menu.Item key={index} href={item.href}>
+              {[formLink, donationLink].map((item, idx) => (
+                <Menu.Item key={idx} href={item.href}>
                   {item.text}
                   <Icon glyph='arrow-right' />
                 </Menu.Item>
@@ -94,12 +82,11 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
           </OverlayNav.Actions>
           <OverlayNav.Socials>
             <Menu type='overlay-social-links'>
-              {socialLinkItems.map((item, index) => (
+              {socialLinkItems.map((item, idx) => (
                 <Menu.Item
-                  key={index}
+                  key={idx}
                   href={item.href}
-                  mods={{ primary: Boolean(item.primary) }}
-                >
+                  mods={{ primary: item.primary ?? false }}>
                   {item.text}
                   <Icon glyph='arrow-right' />
                 </Menu.Item>
@@ -108,58 +95,6 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
           </OverlayNav.Socials>
         </OverlayNav>
       </Page.Overlay>}
-      <Footer>
-        {!hiddenPartners && (
-          <Footer.Partners>
-            <Footer.PartnerList>
-              {generalPartners.map((partner) => (
-                <Footer.PartnerListItem
-                  key={partner.name}
-                  logo={partner.logo}
-                  name={partner.name}
-                />
-              ))}
-            </Footer.PartnerList>
-          </Footer.Partners>
-        )}
-        <Footer.Address>
-          <span>
-            Площадка «8/3»
-          </span>
-          Москва,{'\n'}
-          ул. Казакова, 8, стр. 3{'\n'}
-          Метро «Курская»{'\n'}
-        </Footer.Address>
-        <Footer.Navigation>
-          <Menu type="footer-navigation">
-            {footerNavigationItems.map((item, index) => (
-              <Menu.Item
-                key={index}
-                href={item.href}
-              >
-                {item.text}
-              </Menu.Item>
-            ))}
-          </Menu>
-        </Footer.Navigation>
-        <Footer.Projects>
-          <Menu type="footer-project-list">
-            <Menu.Item href="/projects">
-              Все проекты
-            </Menu.Item>
-            {projects.map((item, index) => (
-              <Menu.Item
-                key={index}
-                href={`/projects/${item.slug}`}
-              >
-                {item.title}
-              </Menu.Item>
-            ))}
-          </Menu>
-        </Footer.Projects>
-      </Footer>
     </Page>
   );
 };
-
-export default withAppSettings<IAppLayoutProps>(AppLayout);
