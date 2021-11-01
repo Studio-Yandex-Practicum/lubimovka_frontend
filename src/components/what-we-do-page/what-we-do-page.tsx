@@ -14,23 +14,21 @@ import SelectionContacts from 'components/what-we-do-page/assets/contacts-data.j
 
 export const WhatWeDo = ():JSX.Element => (
   <>
-    <main>
-      {headerData.map((data) => (
-        <WhatWeDoHeader key={ data.id } data={ data } />
-      ))}
-      {descData.map((data, i) => (
-        <WhatWeDoDesc key={ i } data={ data } />
-      ))}
-      {AuthorsData.map((data) => (
-        <WhatWeDoAuthors key={ data.id } data={ data } />
-      ))}
-      {SelectionData.map((data) => (
-        <WhatWeDoSelection key={ data.id } data={ data } />
-      ))}
-      {SelectionContacts.map((data) => (
-        <WhatWeDoContacts key={ data.id } data={ data } />
-      ))}
-      <WhatWeDoPartners />
-    </main>
+    {headerData.map((data) => (
+      <WhatWeDoHeader key={ data.id } data={ data } />
+    ))}
+    {descData.map((data, i) => (
+      <WhatWeDoDesc key={ i } data={ data } />
+    ))}
+    {AuthorsData.map((data) => (
+      <WhatWeDoAuthors key={ data.id } data={ data } />
+    ))}
+    {SelectionData.map((data) => (
+      <WhatWeDoSelection key={ data.id } data={ data } />
+    ))}
+    {SelectionContacts.map((data) => (
+      <WhatWeDoContacts key={ data.id } data={ data } />
+    ))}
+    <WhatWeDoPartners />
   </>
 );

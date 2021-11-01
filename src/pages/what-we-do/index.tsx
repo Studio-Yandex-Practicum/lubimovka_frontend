@@ -9,7 +9,9 @@ const Page: NextPage = () => (
     <Head>
       <title>{'what-we-do'}</title>
     </Head>
-    <WhatWeDo />
+    <main>
+      <WhatWeDo />
+    </main>
   </AppLayout>
 );
 
