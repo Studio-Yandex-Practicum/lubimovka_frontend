@@ -9,7 +9,7 @@ interface ITextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const TextInput = (props: ITextInputProps): JSX.Element => {
+const TextInput = (props: ITextInputProps): JSX.Element => {
   const {
     ariaLabel,
     errorMessage = '',
@@ -29,3 +29,5 @@ export const TextInput = (props: ITextInputProps): JSX.Element => {
     </>
   );
 };
+
+export default TextInput;
