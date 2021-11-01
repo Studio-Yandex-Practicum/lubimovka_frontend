@@ -4,60 +4,44 @@
 }
 
 .containerVolunteer {
-  width: 180px;
+  width: scale(180px);
 
   @media (max-width: $tablet-portrait) {
-    width: 213px;
-  }
-
-  @media (min-width: $desktop) {
-    width: scale(180px);
+    width: scale(213px);
   }
 }
 
 .containerParticipant {
-  width: 210px;
+  width: scale(210px);
 
   @media (max-width: $tablet-portrait) {
-    width: 213px;
-  }
-
-  @media (min-width: $desktop) {
-    width: scale(210px);
+    width: scale(213px);
   }
 }
 
 .imgVolunteer {
   width: 100%;
-  height: 228px;
+  height: scale(228px);
   object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
-    height: 265px;
-  }
-
-  @media (min-width: $desktop) {
-    height: scale(228px);
+    height: scale(265px);
   }
 }
 
 .imgParticipant {
   width: 100%;
-  height: 265px;
+  height: scale(265px);
   object-fit: cover;
-
-  @media (min-width: $desktop) {
-    height: scale(265px);
-  }
 }
 
 .comment {
   position: absolute;
-  top: 170px;
-  left: 14px;
+  top: scale(170px);
+  left: scale(14px);
   display: flex;
-  width: 45px;
-  height: 45px;
+  width: scale(45px);
+  height: scale(45px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -69,15 +53,8 @@
   transition: width 400ms cubic-bezier(.6, 0, .5, 1), height 400ms cubic-bezier(.6, 0, .5, 1), top 400ms cubic-bezier(.6, 0, .5, 1), left 400ms cubic-bezier(.6, 0, .5, 1);
 
   @media (max-width: $tablet-portrait) {
-    top: 208px;
-    left: 16px;
-  }
-
-  @media (min-width: $desktop) {
-    top: scale(170px);
-    left: scale(14px);
-    width: scale(45px);
-    height: scale(45px);
+    top: scale(208px);
+    left: scale(16px);
   }
 }
 
@@ -86,21 +63,14 @@
 }
 
 .comment:hover {
-  top: 165px;
-  left: 9px;
-  width: 55px;
-  height: 55px;
+  top: scale(165px);
+  left: scale(9px);
+  width: scale(55px);
+  height: scale(55px);
 
   @media (max-width: $tablet-portrait) {
-    top: 203px;
-    left: 11px;
-  }
-
-  @media (min-width: $desktop) {
-    top: scale(165px);
-    left: scale(9px);
-    width: scale(55px);
-    height: scale(55px);
+    top: scale(203px);
+    left: scale(11px);
   }
 }
 
@@ -109,15 +79,11 @@
 
   display: -webkit-box;
   overflow: hidden;
-  margin-top: 16px;
+  margin-top: scale(16px);
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow-wrap: break-word;
   word-break: break-word;
-
-  @media (min-width: $desktop) {
-    margin-top: scale(16px);
-  }
 }
 
 .nameVolunteer {
@@ -138,15 +104,10 @@
 
   display: -webkit-box;
   overflow: hidden;
-  margin-top: 8px;
-  margin-left: 33px;
+  margin-top: scale(8px);
+  margin-left: scale(33px);
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
   overflow-wrap: break-word;
   word-break: break-word;
-
-  @media (min-width: $desktop) {
-    margin-top: scale(8px);
-    margin-left: scale(33px);
-  }
 }
