@@ -20,7 +20,7 @@
   flex-direction: column;
 
   @media (max-width: $tablet-portrait) {
-    padding: 16px 0 72px;
+    padding: scale(16px 0 72px);
   }
 }
 
@@ -43,7 +43,7 @@
   @media (max-width: $tablet-portrait) {
     @mixin headline5;
 
-    max-width: 336px;
+    max-width: scale(336px);
   }
 }
 
@@ -60,10 +60,10 @@
 }
 
 .mainPageDescription {
-  max-width: 491px;
+  max-width: scale(491px);
 
   @media (max-width: $tablet-portrait) {
-    max-width: 304px;
+    max-width: scale(304px);
   }
 }
 
@@ -77,6 +77,6 @@
 }
 
 .mainPageDate {
-  padding-top: 16px;
+  padding-top: scale(16px);
   padding-bottom: 0;
 }
