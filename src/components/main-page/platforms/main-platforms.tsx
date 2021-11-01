@@ -43,7 +43,9 @@ export const MainPlatforms: FC<IMainPlatformsProps> = ({ data }) => {
                 <p className={ cn(styles.text) }>
                   { card.link[0] }
                 </p>
-                <span>{ <Icon glyph={ 'arrow-right' } fill={ 'black' } /> }</span>
+                <span className={ cn(styles.icon) }>
+                  { <Icon glyph={ 'arrow-right' } fill={ 'black' } /> }
+                </span>
               </a>
             </Link>
           </li>
