@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useState, useCallback } from 'react';
 import cn from 'classnames';
 
-import styles from './droplist.module.css';
-
 // Компоненты
 import { DroplistItems } from './droplist-items';
 import { ListSelected } from './list-selected';
 import { ContainerButton } from './container-button';
+
+import styles from './droplist.module.css';
 
 // utile
 import { createList } from './utils';
@@ -104,23 +104,17 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
         <div className={ cn(styles.list, {
           [styles.active]: activeDropdown,
         })}>
-          {
-            list.map((month: string | number, i): JSX.Element => {
-              return (
-                <DroplistItems
-                  month={ month }
-                  key={ i }
-                  cb={ cbItems }
-                  selectList={ selectList }
-                />
-              );
-            })
-          }
+          { list.map((month: string | number, i): JSX.Element => (
+            <DroplistItems
+              month={ month }
+              key={ i }
+              cb={ cbItems }
+              selectList={ selectList }
+            />
+          ))}
         </div>
-        { 
-          activeDropdown && selectList.length > 0
-          && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth } />
-        }
+        { activeDropdown && selectList.length > 0
+          && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth } /> }
       </form>
     </div>
   );
