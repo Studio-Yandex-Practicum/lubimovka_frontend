@@ -3,7 +3,6 @@ import React from 'react';
 import cn from 'classnames/bind';
 
 import styles from './article-share.module.css';
-import {InfoLink} from '../ui/info-link';
 import {ShareLink} from '../ui/share-link';
 
 const cx = cn.bind(styles);
