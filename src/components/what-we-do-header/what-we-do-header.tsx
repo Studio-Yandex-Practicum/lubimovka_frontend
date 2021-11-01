@@ -5,33 +5,43 @@ import { Menu } from 'components/ui/menu';
 
 import styles from './what-we-do-header.module.css';
 
-interface ISubmenu {
-  text: string
-  href: string
-}
-
 interface IWhatWeDoHeaderProps {
   data: {
     id: number
     title: string
     desc: string[]
-    image: {
-      url: string
-      alt: string
-    },
-    submenu: ISubmenu[]
+    image: string
   }
 }
 
 export const WhatWeDoHeader: FC<IWhatWeDoHeaderProps> = ({ data }): JSX.Element => {
-  const { title, desc, image, submenu } = data;
+  const { title, desc, image } = data;
+
+  const demoItems = [
+    {
+      text: 'Что мы делаем',
+      href: '#',
+    },
+    {
+      text: 'Организаторы',
+      href: '#',
+    },
+    {
+      text: 'Попечители',
+      href: '#',
+    },
+    {
+      text: 'Идеология',
+      href: '#',
+    }
+  ];
   
   return (
     <section className={ cn(styles.header) }>
       <div className={ cn(styles.content) }>
         <div className={ cn(styles.menu) }>
           <Menu type={ 'general-submenu' }>
-            {submenu.map(item => (
+            {demoItems.map(item => (
               <Menu.Item
                 key={item.text}
                 href={item.href}
@@ -54,11 +64,7 @@ export const WhatWeDoHeader: FC<IWhatWeDoHeaderProps> = ({ data }): JSX.Element 
         </div>
       </div>
       <div className={ cn(styles.container) }>
-        <img 
-          src={ image.url } 
-          className={ cn(styles.img) }
-          alt={ image.alt }
-        />
+        <img src={ image } className={ cn(styles.img) } />
         <div className={ cn(styles.containerSpace) }>
           <div className={ cn(styles.containerSpaceUp) } />
           <div className={ cn(styles.containerSpaceDown) } />
