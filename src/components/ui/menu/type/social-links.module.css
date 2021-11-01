@@ -6,17 +6,11 @@
 
 .item {
   display: block;
-
-  &:not(:last-child) {
-    margin-right: scale(16px);
-  }
 }
 
 .link {
   @mixin text;
 
-  position: relative;
-  display: block;
   display: flex;
   align-items: flex-start;
   color: var(--coal);
@@ -27,23 +21,22 @@
 
   &::before,
   &::after {
-    display: none;
+    display: block;
     width: .6em;
     height: 1.6em;
     box-sizing: border-box;
     border: scale(1px) solid currentColor;
     content: '';
+    visibility: hidden;
   }
 
   &::before {
-    left: calc((-1) * scale(10px));
     border-right: 0;
     border-bottom-left-radius: 200% 100%;
     border-top-left-radius: 200% 100%;
   }
 
   &::after {
-    right: calc((-1) * scale(10px));
     border-left: 0;
     border-bottom-right-radius: 200% 100%;
     border-top-right-radius: 200% 100%;
@@ -52,8 +45,7 @@
   &:hover {
     &::before,
     &::after {
-      position: absolute;
-      display: block;
+      visibility: visible;
     }
   }
 }
