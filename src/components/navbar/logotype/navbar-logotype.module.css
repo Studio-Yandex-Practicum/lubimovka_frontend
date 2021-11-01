@@ -4,10 +4,6 @@
   place-content: center;
 
   @media (min-width: $tablet-portrait) {
-    margin-right: calc(var(--vw-multiplier-tablet-portrait) * 33);
-  }
-
-  @media (min-width: 1440px) {
-    margin-right: 33px;
+    margin-right: scale(33px);
   }
 }
