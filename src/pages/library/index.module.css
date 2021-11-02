@@ -1,0 +1,12 @@
+.section {
+  display: flex;
+  width: 1050px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline1;
+}

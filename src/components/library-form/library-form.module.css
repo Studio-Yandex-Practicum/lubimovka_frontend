@@ -30,33 +30,3 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s;
 }
-
-.submitButton {
-  @mixin text;
-  @mixin textSmallButton;
-
-  position: relative;
-  width: 120px;
-  height: 32px;
-  box-sizing: border-box;
-  padding: 8px 12px 9px 28px;
-  border: none;
-  border-bottom: 1px solid var(--coal);
-  border-left: 1px solid var(--coal);
-  background: none;
-  outline: none;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:disabled:hover {
-    cursor: default;
-  }
-}
-
-.submitIcon {
-  position: absolute;
-  top: 2px;
-  left: 0;
-}

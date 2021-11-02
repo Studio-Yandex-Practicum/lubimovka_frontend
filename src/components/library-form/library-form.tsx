@@ -1,6 +1,6 @@
 import React, { FC, useState, ChangeEvent, FormEvent } from 'react';
 
-import Arrow from './images/arrow.svg';
+import { Button } from 'components/ui/button';
 
 import style from './library-form.module.css';
 
@@ -32,14 +32,9 @@ const LibraryForm: FC = () => {
           onChange={handleChange}
           placeholder='Введите автора или название пьесы'
         />
-        <button
-          type='submit'
-          className={style.submitButton}
-          disabled={!searchInput && true}
-        >
-          <Arrow className={style.submitIcon} />
-          ИСКАТЬ
-        </button>
+        <Button label='ИСКАТЬ' size={'s'} icon={'arrow-right'}
+          iconPlace={'left'} border={'bottomLeft'} width={'120px'} isLink={true}
+          href='/library/search-result' align={'start'} gap={'3px'} />
       </form>
     </div>
   );
