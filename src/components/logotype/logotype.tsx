@@ -7,6 +7,7 @@ import styles from './logotype.module.css';
 
 interface ILogotypeProps extends Pick<LinkProps, 'href'> {
   title?: string,
+  className?: string,
   onClick?: React.MouseEventHandler,
 }
 
@@ -16,12 +17,13 @@ export const Logotype: FC<ILogotypeProps> = (props) => {
   const {
     href,
     title,
+    className,
     onClick,
   } = props;
 
   return (
     <Link href={href}>
-      <a onClick={onClick} className={cx('link')} title={title}>
+      <a onClick={onClick} className={cx('link', className)} title={title}>
         <Logo className={cx('image')}/>
       </a>
     </Link>

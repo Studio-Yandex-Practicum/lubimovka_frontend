@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Head from 'next/head';
 import cn from 'classnames/bind';
 
 import { MainTitle } from './title';
@@ -9,16 +10,19 @@ import { MainPlatforms } from './platforms';
 import { MainShortList } from './shortList';
 import { MainArchive } from './archive';
 import { MainPartners } from './partners';
-import styles from './main-page.module.css';
-import Head from 'next/head';
-
-const cx = cn.bind(styles);
+import { IMainTitle } from './title';
 
 // data json
 import mainEventsData from './assets/main-events.json';
+import mainPlatformsData from './assets/main-platforms-data.json';
+import mainShortListData from './assets/main-short-list-data.json';
+import mainArchiveData from './assets/main-archive-data.json';
+import styles from './main-page.module.css';
 
-interface IMainPageProps {
-  title: string;
+const cx = cn.bind(styles);
+
+export interface IMainPageProps {
+  title: IMainTitle;
   metaTitle: string;
   events: boolean;
   aside: boolean;
@@ -47,16 +51,25 @@ export const MainPage: FC<IMainPageProps> = (props) => {
         <title>{metaTitle}</title>
       </Head>
       <main className={cx('main')}>
-        {title && <MainTitle title={title} />}
+        {title && (
+          <MainTitle
+            title={title.title}
+            view={title.view}
+            buttonLink={title.buttonLink}
+            buttonText={title.buttonText}
+            text={title.text}
+          />
+        )}
         {events && <MainEvents data={ mainEventsData } />}
         {aside && <MainAside />}
         {banners && <MainBanners />}
-        {platforms && <MainPlatforms />}
-        {shortList && <MainShortList />}
-        {archive && <MainArchive />}
+        {platforms && <MainPlatforms data={ mainPlatformsData[0] } />}
+        {shortList && <MainShortList data={ mainShortListData }/>}
+        {archive && mainArchiveData.map((el) => (
+          <MainArchive key={el.id} data={el} />
+        ))}
         {partners && <MainPartners />}
       </main>
     </>
   );
 };
-

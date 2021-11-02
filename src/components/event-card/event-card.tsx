@@ -15,6 +15,7 @@ export interface IEventCardProps {
   playwright?: string,
   director?: string,
   registrationUrl?: Url,
+  className?: string,
 }
 
 const cx = classNames.bind(styles);
@@ -29,10 +30,11 @@ export const EventCard: FC<IEventCardProps> = (props) => {
     playwright,
     director,
     registrationUrl,
+    className
   } = props;
 
   return (
-    <article className={cx('card')}>
+    <article className={cx('card', className)}>
       <h3 className={cx('title')}>
         {title}
       </h3>

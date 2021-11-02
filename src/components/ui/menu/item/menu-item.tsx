@@ -7,12 +7,14 @@ import { useMenu } from '../menu.context';
 
 interface IMenuItemProps extends Pick<LinkProps, 'href'> {
   current?: boolean,
+  mods?: Record<string, boolean>,
 }
 
 export const MenuItem: FC<IMenuItemProps> = (props) => {
   const {
     href,
     current = false,
+    mods = {},
     children,
   } = props;
   const { type } = useMenu();
@@ -21,7 +23,10 @@ export const MenuItem: FC<IMenuItemProps> = (props) => {
   return (
     <li className={cx(
       'item',
-      { current }
+      {
+        current,
+        ...mods
+      },
     )}>
       <Link href={href}>
         <a className={cx('link')}>

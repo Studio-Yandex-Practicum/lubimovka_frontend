@@ -1,14 +1,22 @@
 .menu {
   display: flex;
+  overflow: auto;
+  align-items: center;
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 }
 
 .item {
   display: block;
 
   &:not(:last-child) {
-    margin-right: calc(var(--vw-multiplier-tablet-portrait) * 40);
+    margin-right: calc(var(--scale) * 40);
   }
 }
 
@@ -33,8 +41,8 @@
     visibility: hidden;
 
     @media (min-width: 1440px) {
-      width: 16px;
-      height: 41px;
+      width: 1.11vw;
+      height: 2.85vw;
     }
   }
 
@@ -51,6 +59,15 @@
   }
 
   &:hover {
+    &::before,
+    &::after {
+      visibility: visible;
+    }
+  }
+}
+
+.current {
+  .link {
     &::before,
     &::after {
       visibility: visible;
