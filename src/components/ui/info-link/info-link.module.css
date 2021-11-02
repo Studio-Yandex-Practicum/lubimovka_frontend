@@ -1,10 +1,8 @@
 .link {
-  display: flex;
   width: intrinsic;
   width: -moz-max-content;
   width: -webkit-max-content;
   box-sizing: border-box;
-  flex-direction: row;
   align-items: center;
   padding: 0;
   margin: 0;
@@ -13,6 +11,11 @@
   letter-spacing: -.01em;
 
   @mixin text;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
 }
 
 .invert {
@@ -165,8 +168,7 @@
 }
 
 .xl {
-  font-size: 20px;
-  line-height: 28px;
+  @mixin textLarge;
 }
 
 .number {

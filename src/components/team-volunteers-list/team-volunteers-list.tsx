@@ -9,11 +9,19 @@ import PersonCard from '../ui/person-card/person-card';
 const cx = classNames.bind(styles);
 
 interface PersonCardData {
-  id: number,
-  name: string,
-  link: string,
-  response: string,
-  year: number
+  id: number;
+  person: {
+    id: number;
+    first_name: string;
+    second_name: string;
+    middle_name: string;
+    city: string;
+    email: string;
+    image: string;
+  };
+  year: number;
+  title: string;
+  review: string;
 }
 
 interface VolunteersCardsProps {
@@ -54,15 +62,15 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
   return (
     <>
       {
-        screenWidth < 728 &&
+        Number(screenWidth) < 729 &&
         <div ref={sliderRef} className={cx('keen-slider', [styles.slidesContainer])}>
           {cards.map((card) => (
             <div key={card.id} className={cx('keen-slider__slide', [styles.card])}>
               <PersonCard
                 participant={false}
-                link={card.link}
-                response={card.response}
-                name={card.name}
+                link={card.person.image}
+                response={card.review}
+                name={`${card.person.first_name} ${card.person.second_name}`}
               >
               </PersonCard>
             </div>
@@ -71,15 +79,15 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
       }
 
       {
-        screenWidth > 727 &&
+        Number(screenWidth) > 728 &&
         <ul className={cn(styles.container)}>
           {cards.map((card) => (
             <li key={card.id} className={cn(styles.card)}>
               <PersonCard
                 participant={false}
-                link={card.link}
-                response={card.response}
-                name={card.name}
+                link={card.person.image}
+                response={card.review}
+                name={`${card.person.first_name} ${card.person.second_name}`}
               >
               </PersonCard>
             </li>

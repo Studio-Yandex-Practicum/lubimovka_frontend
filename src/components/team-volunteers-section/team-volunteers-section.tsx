@@ -1,41 +1,49 @@
 import React, { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 
-import PersonCard from '../ui/person-card/person-card';
 import styles from './team-volunteers-section.module.css';
 import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
 import VolunteersList from 'components/team-volunteers-list';
 import { InfoLink } from 'components/ui/info-link';
+import classNames from 'classnames/bind';
+import { FeedbackPopup } from 'components/ui/feedback-popup';
+
+const cx = classNames.bind(styles);
 
 interface PersonCardData {
-  id: number,
-  name: string,
-  link: string,
-  response: string,
-  year: number
+  id: number;
+  person: {
+    id: number;
+    first_name: string;
+    second_name: string;
+    middle_name: string;
+    city: string;
+    email: string;
+    image: string;
+  };
+  year: number;
+  title: string;
+  review: string;
 }
 
 interface TeamVolunteersSectionProps {
-  data: {
-    id: number,
-    title: string,
-    content: Array<PersonCardData>
-  }
+  className?: string;
+  cards: Array<PersonCardData>;
 }
 
-const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = ({ data }) => {
-  const { title, content } = data;
+const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = (props) => {
+  const { className, cards } = props;
 
   const [currentYear, setCurrentYear] = useState(2020);
   const [selectedCards, setSelectedCards] = useState<Array<PersonCardData>>([]);
 
-  const years = Array.from(new Set(content.map(card => {
+  const years = Array.from(new Set(cards.map(card => {
     return card.year;
   }))).sort().reverse();
 
   const filterCards = () => {
-    const filtredCards = content.filter(card => card.year === currentYear);
+    const filtredCards = cards.filter(card => card.year === currentYear);
 
     setSelectedCards(filtredCards);
   };
@@ -51,7 +59,7 @@ const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = ({ data }) => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>{title}</h2>
+        <h2 className={styles.title}>Волонтёры</h2>
         <SliderYears
           className={cn(styles.yearsContainer)}
           years={years}
@@ -61,29 +69,22 @@ const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = ({ data }) => {
         <VolunteersList cards={selectedCards}/>
         <div className={styles.infoBlock}>
           <Icon className={styles.asterisk} glyph={'asterisk'}/>
-          <p className={styles.info}>
-            Если вы хотите быть волонтером, напишите нам на more@lubimovka.ru и расскажите о себе.
+          <p className={cx('info')}>
+            Если вы хотите быть волонтером, напишите нам на
+            <InfoLink
+              href={'mailto://job@lubimovka.ru'}
+              isOutsideLink={true}
+              label={'job@lubimovka.ru'}
+              size={'xl'}
+              textDecoration={'underline'}
+              className={cx('indent')}/>
+              и расскажите о себе.
           </p>
         </div>
+        <FeedbackPopup cards={selectedCards}/>
       </div>
     </section>
   );
 };
 
-// в теге <p> необходимо добавить компонент InfoLink для адреса почты
-
 export default TeamVolunteersSection;
-
-//<div className={styles.cardContainer}>
-//  {selectedCards.map(card => {
-//    return (
-//      <PersonCard
-//        key={card.id}
-//        participant={false}
-//        name={card.name}
-//        link={card.link}
-//        response={card.response}
-//      />
-//    );
-//  })}
-//</div>

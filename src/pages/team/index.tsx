@@ -5,14 +5,14 @@ import TeamVolunteersSection from 'components/team-volunteers-section';
 import TeamSection from 'components/team-team-section';
 
 import ArtDirectorateData from './assets/mock-data-art.json';
-import VolunteersData from './assets/mock-data.json';
+import VolunteersData from './assets/mock-data-volunteers.json';
 import TeamData from './assets/mock-data-team.json';
 
 const Team: NextPage = () => (
   <>
     <ArtDirectorateSection data={ArtDirectorateData} />
     <TeamSection data={TeamData}/>
-    <TeamVolunteersSection data={VolunteersData}/>
+    <TeamVolunteersSection cards={VolunteersData}/>
   </>
 );
 
