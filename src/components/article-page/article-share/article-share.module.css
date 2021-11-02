@@ -18,29 +18,23 @@
 .creators {
   width: 50%;
   box-sizing: border-box;
-  padding-top: 72px;
-  padding-bottom: 59px;
-  padding-left: calc(50% - 450px);
+  padding-top: scale(72px);
+  padding-bottom: scale(59px);
+  padding-left: calc(50% - scale(450px));
 
   @media (max-width: 1093px) {
-    padding-left: 56px;
+    padding-left: scale(56px);
   }
 
   @media (max-width: $tablet-portrait) {
     width: 100%;
-    padding-top: 56px;
-    padding-bottom: 35px;
-    padding-left: 56px;
+    padding-top: scale(56px);
+    padding-bottom: scale(35px);
+    padding-left: scale(56px);
   }
 
   @media (max-width: 400px) {
-    padding-left: 24px;
-  }
-
-  @media (min-width: $desktop) {
-    padding-top: scale(72px);
-    padding-bottom: scale(59px);
-    padding-left: calc(50% - scale(450px));
+    padding-left: scale(24px);
   }
 }
 
@@ -48,35 +42,21 @@
   @mixin text;
   @mixin textSmall;
 
-  max-width: 420px;
-  padding-bottom: 2px;
-
-  @media (min-width: $desktop) {
-    max-width: scale(420px);
-    padding-bottom: scale(2px);
-  }
+  max-width: scale(420px);
+  padding-bottom: scale(2px);
 }
 
 .creator {
   @mixin text;
   @mixin textLarge;
 
-  max-width: 390px;
-  padding-left: 30px;
+  max-width: scale(390px);
+  padding-left: scale(30px);
   word-break: break-word;
-
-  @media (min-width: $desktop) {
-    max-width: scale(390px);
-    padding-left: scale(30px);
-  }
 }
 
 .creator:last-child {
-  padding-bottom: 32px;
-
-  @media (min-width: $desktop) {
-    padding-bottom: scale(32px);
-  }
+  padding-bottom: scale(32px);
 }
 
 .share {
@@ -87,32 +67,22 @@
 
 .blogShare {
   width: 50%;
-  padding-bottom: 91px;
+  padding-bottom: scale(91px);
 
   @media (max-width: $tablet-portrait) {
     width: 100%;
-    padding-left: 24px;
-  }
-
-  @media (min-width: $desktop) {
     padding-left: scale(24px);
   }
 }
 
 .newsShare {
   width: 100%;
-  padding-top: 51px;
-  padding-bottom: 85px;
-  padding-left: 180px;
+  padding-top: scale(51px);
+  padding-bottom: scale(85px);
+  padding-left: scale(180px);
 
   @media (max-width: $tablet-portrait) {
     padding-left: 24px;
-  }
-
-  @media (min-width: $desktop) {
-    padding-top: scale(51px);
-    padding-bottom: scale(85px);
-    padding-left: scale(180px);
   }
 }
 
@@ -120,40 +90,26 @@
   @mixin headline;
   @mixin headline4;
 
-  width: 420px;
+  width: scale(420px);
   letter-spacing: -.01em;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    width: 292px;
+    width: scale(292px);
   }
 
   @media (max-width: 404px) {
     width: 95%;
   }
-
-  @media (min-width: $desktop) {
-    width: scale(420px);
-  }
 }
 
 .links {
   position: relative;
-  top: 9px;
-  left: 231px;
+  top: scale(9px);
+  left: scale(231px);
 
   @media (max-width: $tablet-portrait) {
-    left: 164px;
-  }
-
-  @media (max-width: 404px) {
-    top: -10px;
-    left: 0;
-  }
-
-  @media (min-width: $desktop) {
-    top: scale(9px);
-    left: scale(231px);
+    left: scale(164px);
   }
 }
