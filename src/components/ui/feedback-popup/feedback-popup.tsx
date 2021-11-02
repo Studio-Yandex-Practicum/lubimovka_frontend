@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 
 import { SliderButton } from '../slider-button';
 import { SliderDots } from '../slider-dots';
+import { Icon } from '../icon';
 import { Url } from 'shared/types';
 
 
@@ -64,6 +65,11 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 className={cx('arrow', 'arrowLeft')}
                 onClick={slider.prev}
               />
+              {Number(screenWidth) < 729 &&
+              <Icon
+                className={cx('cross')}
+                glyph={'cross'}
+              />}
               <img
                 className={cx('image')}
                 src={card.person.image}

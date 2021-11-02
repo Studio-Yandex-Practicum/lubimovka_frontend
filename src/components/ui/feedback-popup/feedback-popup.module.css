@@ -87,3 +87,9 @@
     margin-top: scale(16px);
   }
 }
+
+.cross {
+  position: absolute;
+  top: scale(32px);
+  right: scale(32px);
+}

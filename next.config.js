@@ -17,3 +17,14 @@ export function webpack(config) {
   });
   return config;
 }
+
+export function rewrites() {
+  return {
+    fallback: [
+      {
+        source: '/api/:path*',
+        destination: 'https://real-backend-url/:path*',
+      },
+    ],
+  };
+}
