@@ -29,39 +29,41 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
       <Head>
         <title>{metaTitle}</title>
       </Head>
-      <ArticleTitle
-        isBlog={isBlog}
-        title={DataTitle.title}
-        description={DataTitle.description}
-        date={DataTitle.date}
-        imgLink={DataTitle.imgLink}
-        author={DataTitle.author}
-        authorLink={DataTitle.authorLink}
-      />
-      <ArticleMainText>
-        {ArticleText()}
-      </ArticleMainText>
-      <Section type={'plays'} title={'Заголовок блока с пьессами'} style={padding(120, 0, 54)}>
-        <BasicPlayCardList>
-          {(DataPlays as IBasicPlayCardProps[]).map((item, idx) => (
-            <BasicPlayCard key={idx} {...item}/>
-          ))}
-        </BasicPlayCardList>
-      </Section>
-      <Section type={'persons'} title={'Заголовок блока с персонами'} style={padding(120, 0, 54)}>
-        <PersonCardList>
-          {(DataPersons as IPersonCardProps[]).map((item, idx) => (
-            <PersonCard key={idx} {...item}/>
-          ))}
-        </PersonCardList>
-      </Section>
-      <ArticleShare
-        isBlog={isBlog}
-        authors={isBlog ? DataShare.authors : []}
-        illustrators={isBlog ? DataShare.illustrators : []}
-        photographers={isBlog ? DataShare.photographers : []}
-      />
-
+      <main>
+        <ArticleTitle
+          isBlog={isBlog}
+          title={DataTitle.title}
+          description={DataTitle.description}
+          date={DataTitle.date}
+          imgLink={DataTitle.imgLink}
+          author={DataTitle.author}
+          authorLink={DataTitle.authorLink}
+        />
+        <ArticleMainText>
+          {ArticleText()}
+        </ArticleMainText>
+        <Section type={'plays'} title={'Заголовок блока с пьессами'} style={padding(120, 0, 54)}>
+          <BasicPlayCardList>
+            {(DataPlays as IBasicPlayCardProps[]).map((item, idx) => (
+              <BasicPlayCard key={idx} {...item}/>
+            ))}
+          </BasicPlayCardList>
+        </Section>
+        <Section type={'persons'} title={'Заголовок блока с персонами'} style={padding(120, 0, 54)}>
+          <PersonCardList>
+            {(DataPersons as IPersonCardProps[]).map((item, idx) => (
+              <PersonCard key={idx} {...item}/>
+            ))}
+          </PersonCardList>
+        </Section>
+        <ArticleShare
+          isBlog={isBlog}
+          authors={isBlog ? DataShare.authors : []}
+          illustrators={isBlog ? DataShare.illustrators : []}
+          photographers={isBlog ? DataShare.photographers : []}
+        />
+      </main>
+      {/*<ArticleOther/>*/}
     </>
   );
 };

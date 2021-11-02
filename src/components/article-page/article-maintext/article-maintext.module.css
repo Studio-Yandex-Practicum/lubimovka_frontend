@@ -11,8 +11,8 @@
   @mixin headline;
   @mixin headline6;
 
-  max-width: 940px;
-  padding-top: 72px;
+  max-width: scale(940px);
+  padding-top: scale(72px);
   margin: 0 auto;
 }
 
@@ -20,23 +20,23 @@
   @mixin headline;
   @mixin headline4;
 
-  max-width: 716px;
-  padding-top: 72px;
-  padding-right: 224px;
+  max-width: scale(716px);
+  padding-top: scale(72px);
+  padding-right: scale(224px);
   margin: 0 auto;
 }
 
 .article_container > p {
   @mixin articlesText;
 
-  max-width: 840px;
-  padding-top: 72px;
-  padding-right: 100px;
+  max-width: scale(840px);
+  padding-top: scale(72px);
+  padding-right: scale(100px);
   margin: 0 auto;
 }
 
 .article_container > h4 + p {
-  padding-top: 36px;
+  padding-top: scale(36px);
 }
 
 .article_container > blockquote {
@@ -45,8 +45,8 @@
 
   position: relative;
   width: 45.83%;
-  padding: 56px 18.75% 72px 31.25%;
-  margin: 110px auto 0;
+  padding: scale(56px 18.75% 72px 31.25%);
+  margin: scale(110px auto 0);
   background-color: var(--light-green);
   word-break: break-word;
 
@@ -54,7 +54,7 @@
     @mixin headline7;
 
     width: 66.4%;
-    padding: 56px 13% 72px 20.5%;
+    padding: scale(56px 13% 72px 20.5%);
     margin: 0;
   }
 }
@@ -62,13 +62,13 @@
 .article_container > blockquote::before {
   position: absolute;
   width: 0;
-  height: calc(100% - 56px - 72px);
+  height: calc(100% - scale(56px) - scale(72px));
   border-left: 1px solid black;
   margin-left: -30px;
   content: '';
 
   @media (max-width: $tablet-portrait) {
-    top: 66px;
+    top: scale(66px);
     left: 0;
     width: 20.5%;
     border-top: 1px solid black;
