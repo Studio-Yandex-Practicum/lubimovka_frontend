@@ -69,8 +69,8 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         }
         <div className={cx('info')}>
           <div className={cx('dateInfo')}>
-            <p className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', {month: 'long', day:'numeric'})}</p>
-            <p className={cx('time')}>{new Date(date).toLocaleTimeString('ru-Ru', {hour:'numeric', minute:'numeric'})}</p>
+            <p className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', {timeZone: 'Europe/Moscow', month: 'long', day:'numeric'})}</p>
+            <p className={cx('time')}>{new Date(date).toLocaleTimeString('ru-Ru', {timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric'})}</p>
           </div>
           <h5 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h5>
           { directorArray.length > 0 && playwrightArray.length > 0 &&
