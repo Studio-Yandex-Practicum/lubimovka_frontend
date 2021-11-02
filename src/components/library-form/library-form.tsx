@@ -16,27 +16,25 @@ const LibraryForm: FC = () => {
   };
 
   return (
-    <div className={style.container}>
-      <form
-        noValidate
-        name='searchForm'
-        className={style.searchForm}
-        onSubmit={handleSubmit}
-      >
-        <input
-          name='search'
-          type='text'
-          spellCheck={false}
-          className={style.searchInput}
-          value={searchInput}
-          onChange={handleChange}
-          placeholder='Введите автора или название пьесы'
-        />
-        <Button label='ИСКАТЬ' size={'s'} icon={'arrow-right'}
-          iconPlace={'left'} border={'bottomLeft'} width={'120px'} isLink={true}
-          href='/library/search-result' align={'start'} gap={'3px'} />
-      </form>
-    </div>
+    <form
+      noValidate
+      name='searchForm'
+      className={style.searchForm}
+      onSubmit={handleSubmit}
+    >
+      <input
+        name='search'
+        type='text'
+        spellCheck={false}
+        className={style.searchInput}
+        value={searchInput}
+        onChange={handleChange}
+        placeholder='Введите автора или название пьесы'
+      />
+      <Button label='ИСКАТЬ' size={'s'} icon={'arrow-right'}
+        iconPlace={'left'} border={'none'} width={'120px'} isLink={true}
+        href='/library/search-result' align={'start'} gap={'3px'} />
+    </form>
   );
 };
 

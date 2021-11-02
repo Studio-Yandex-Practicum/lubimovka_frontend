@@ -9,4 +9,6 @@
 .title {
   @mixin headline;
   @mixin headline1;
+
+  margin-bottom: 16px;
 }

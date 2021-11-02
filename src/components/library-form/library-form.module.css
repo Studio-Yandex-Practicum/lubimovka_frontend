@@ -1,9 +1,8 @@
-.container {
-  background-color: var(--beige);
-}
-
 .searchForm {
   display: flex;
+  width: 100%;
+  height: 32px;
+  border-bottom: 1px solid var(--coal);
 }
 
 .searchInput {
@@ -15,18 +14,18 @@
   box-sizing: border-box;
   padding: 1px 3px 8px;
   border: none;
-  border-bottom: 1px solid #242424;
+  border-right: 1px solid var(--coal);
   background: none;
   outline: none;
 
   &::placeholder {
     opacity: .4;
   }
-}
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  transition: background-color 5000s;
+  &:-webkit-autofill,
+  :-webkit-autofill:hover,
+  :-webkit-autofill:focus,
+  :-webkit-autofill:active {
+    transition: background-color 5000s;
+  }
 }
