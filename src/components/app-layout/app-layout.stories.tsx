@@ -1,16 +1,31 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { AppLayout } from './app-layout';
+import AppLayout from './app-layout';
+import { AppSettingsProvider } from 'components/app';
+import {PartnerType} from '../../shared/types';
 
 export default {
   title: 'Components/AppLayout',
   component: AppLayout,
 } as ComponentMeta<typeof AppLayout>;
 
+const fakeAppSettings = {
+  projects: [],
+  generalPartners: [
+    {
+      name: '',
+      logo: require('mocks/assets/partners/partnerLogo.png'),
+      type: 'general' as PartnerType,
+    }
+  ],
+};
+
 const Template: ComponentStory<typeof AppLayout> = (args) => (
-  <AppLayout>
-    {args.children}
-  </AppLayout>
+  <AppSettingsProvider value={fakeAppSettings}>
+    <AppLayout>
+      {args.children}
+    </AppLayout>
+  </AppSettingsProvider>
 );
 
 export const Default = Template.bind({});

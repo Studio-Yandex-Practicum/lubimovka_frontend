@@ -1,0 +1,167 @@
+.section {
+  display: flex;
+  background: var(--beige);
+}
+
+.image {
+  width: 45.83vw;
+  height: 612px;
+  margin-right: 4.17vw;
+  object-fit: contain;
+}
+
+.content {
+  display: flex;
+  width: 50vw;
+  flex-direction: column;
+}
+
+.dataSubtitle {
+  @mixin headline4;
+  @mixin headline;
+
+  padding-top: 57px;
+  margin-bottom: 17px;
+  text-align: left;
+}
+
+.datatext {
+  @mixin textLarge;
+  @mixin text;
+
+  max-width: 28.96vw;
+  margin-bottom: 80px;
+  text-align: left;
+}
+
+.gridcontent {
+  display: grid;
+  margin-bottom: 38px;
+  column-gap: 4.51vw;
+  grid-template-columns: repeat(auto-fit, minmax(9.86vw, 1fr));
+  row-gap: 66px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.element {
+  @mixin textSmall;
+  @mixin text;
+
+  max-width: 9.86vw;
+  margin-top: 20px;
+}
+
+.buttonDisplay {
+  display: inline-block;
+}
+
+.button.link.title {
+  @mixin headline4;
+  @mixin headline;
+
+  padding: 0;
+
+  &:hover {
+    color: var(--white);
+  }
+}
+
+.button.link.subtitle {
+  @mixin textHistorySmall;
+  @mixin text;
+
+  padding: 0;
+  margin-bottom: 10px;
+
+  &:hover {
+    color: var(--white);
+  }
+}
+
+.links {
+  display: grid;
+  justify-content: center;
+  margin-right: 6.39vw;
+  margin-bottom: 141px;
+  grid-template-columns: repeat(auto-fit, minmax(20.69vw, 1fr));
+}
+
+.subsection {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitle {
+  @mixin headline4;
+  @mixin headline;
+
+  padding-top: 58px;
+  margin-bottom: 35px;
+}
+
+@media (max-width: $tablet-portrait) {
+  .section {
+    flex-direction: column;
+  }
+
+  .image {
+    width: 100%;
+    height: 385px;
+    margin-right: 0;
+    margin-bottom: 36px;
+    object-fit: contain;
+  }
+
+  .dataSubtitle {
+    padding-top: 0;
+    margin-bottom: 24px;
+    margin-left: calc(var(--scale) * 24);
+  }
+
+  .datatext {
+    max-width: 100%;
+    margin-right: calc(var(--scale) * 24);
+    margin-bottom: 53px;
+    margin-left: calc(var(--scale) * 24);
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .gridcontent {
+    margin-bottom: 85px;
+    margin-left: calc(var(--scale) * 24);
+    column-gap: 41px;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 40px;
+  }
+
+  .element {
+    max-width: calc(var(--scale) * 153);
+    margin-top: 8px;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+    margin-bottom: 44px;
+    margin-left: calc(var(--scale) * 23);
+  }
+
+  .subsection {
+    margin-bottom: 48px;
+  }
+
+  .subtitle {
+    @mixin headline6;
+
+    padding-top: 0;
+    margin-bottom: 8px;
+  }
+}

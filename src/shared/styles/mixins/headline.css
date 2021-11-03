@@ -1,7 +1,7 @@
 @define-mixin headline {
   margin: 0;
   color: var(--coal);
-  font-family: 'PP Neue Machina', Arial, sans-serif;
+  font-family: "PP Neue Machina", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: -.01em;
@@ -18,8 +18,8 @@
 }
 
 @define-mixin headline3 {
-  font-size: 56px;
-  line-height: 56px;
+  font-size: scale(56px);
+  line-height: scale(56px);
 }
 
 @define-mixin headline4 {
@@ -28,8 +28,8 @@
 }
 
 @define-mixin headline5 {
-  font-size: 36px;
-  line-height: 38px;
+  font-size: scale(36px);
+  line-height: scale(38px);
 }
 
 @define-mixin headline6 {
@@ -38,6 +38,6 @@
 }
 
 @define-mixin headline7 {
-  font-size: 20px;
-  line-height: 24px;
+  font-size: scale(20px);
+  line-height: scale(24px);
 }

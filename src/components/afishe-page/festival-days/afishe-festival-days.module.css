@@ -1,0 +1,9 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 0 calc(var(--scale) * 32);
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0;
+  }
+}
