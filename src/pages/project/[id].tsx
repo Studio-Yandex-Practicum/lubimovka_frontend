@@ -12,6 +12,8 @@ import { PersonCardList } from 'components/ui/person-card';
 import { PersonCard } from 'components/ui/person-card';
 
 import projectData from './assets/mock-project-data.json';
+import { VideoGallery } from 'components/video-gallery';
+import { VideoGalleryItem } from 'components/video-gallery/video-gallery-item';
 
 const Project: NextPage = () => {
   const cardsNum3 = [1, 2, 3];
@@ -34,22 +36,22 @@ const Project: NextPage = () => {
         </ProjectDescription>
         <Section
           type="plays"
-          title="Заголовок блока с фотографиями"
+          title="Заголовок блока с видео"
           titleTag="h2"
         >
-          <div>
-            <h2>Заголовок блока с видео</h2>
-            <iframe
-              width="716"
-              height="403"
-              src="https://www.youtube.com/embed/NkvP2jR8xlw"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-            <p>{projectData.videoDescription}</p>
-          </div>
+          <VideoGallery>
+            <VideoGalleryItem>
+              <iframe
+                width="716"
+                height="403"
+                src="https://www.youtube.com/embed/NkvP2jR8xlw"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </VideoGalleryItem>
+          </VideoGallery>
         </Section>
         <Section
           type="plays"
@@ -127,43 +129,15 @@ const Project: NextPage = () => {
             </div>
           ))}
         </Section>
-        <Section
-          type="plays"
-          title="Заголовок блока с одним спектаклем"
-          titleTag="h2"
-        >
-          {cardsNum2.map((i, index) => (
-            <div key={index}>
-              <BasicPlayCard
-                play={projectData.basicPlayCard.play}
-                author={projectData.basicPlayCard.author}
-                buttonVisibility={projectData.basicPlayCard.buttonVisibility}
-              ></BasicPlayCard>
-            </div>
-          ))}
-        </Section>
-        <Section
-          type="plays"
-          title="Заголовок блока с одним спектаклем"
-          titleTag="h2"
-        >
-          <BasicPlayCard
-            play={projectData.basicPlayCard.play}
-            author={projectData.basicPlayCard.author}
-            buttonVisibility={projectData.basicPlayCard.buttonVisibility}
-          ></BasicPlayCard>
-        </Section>
         <Section type="plays" title="Заголовок блока с персонами" titleTag="h2">
           <PersonCardList>
             {cardsNum3.map((i, index) => (
-              <div key={index}>
-                <PersonCard
-                  name={projectData.personCard.name}
-                  link={projectData.personCard.link}
-                  about={projectData.personCard.about}
-                  participant={projectData.personCard.participant}
-                ></PersonCard>
-              </div>
+              <PersonCard key={index}
+                name={projectData.personCard.name}
+                link={projectData.personCard.link}
+                about={projectData.personCard.about}
+                participant={projectData.personCard.participant}
+              ></PersonCard>
             ))}
           </PersonCardList>
         </Section>
