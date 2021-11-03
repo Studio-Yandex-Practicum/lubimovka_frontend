@@ -4,14 +4,14 @@ import Head from 'next/head';
 import AppLayout from 'components/app-layout';
 import { ProjectHeader } from 'components/project-header';
 import { ProjectDescription } from 'components/project-description';
-
-import projectData from './assets/mock-project-data.json';
 import { Photos } from 'components/photos';
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
 import { Section } from 'components/section';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { PersonCardList } from 'components/ui/person-card';
 import { PersonCard } from 'components/ui/person-card';
+
+import projectData from './assets/mock-project-data.json';
 
 const Project: NextPage = () => {
   const cardsNum3 = [1, 2, 3];
