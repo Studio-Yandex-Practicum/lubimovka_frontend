@@ -1,8 +1,9 @@
 .form {
-  margin: scale(60px 0 0 120px);
-  grid-area: form;
+  max-width: scale(360px);
+  margin-top: scale(60px);
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(32px 0 0);
+    max-width: unset;
+    margin-top: scale(24px);
   }
 }

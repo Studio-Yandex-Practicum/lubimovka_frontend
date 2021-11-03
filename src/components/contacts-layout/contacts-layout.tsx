@@ -1,8 +1,10 @@
 import classNames from 'classnames/bind';
 
-import ContactsForm from './form/contacts-layout-form';
-import ContactsImage from './image/contacts-layout-image';
-import ContactsAuthors from './authors/contacts-layout-authors';
+import ContactsLayoutColumn from './column';
+import ContactsLayoutTitle from './title';
+import ContactsLayoutForm from './form';
+import ContactsLayoutImage from './image';
+import ContactsLayoutAuthors from './authors';
 
 import styles from './contacts-layout.module.css';
 const cx = classNames.bind(styles);
@@ -21,8 +23,10 @@ const ContactsLayout = (props: IContactsLayoutProps): JSX.Element => {
   );
 };
 
-ContactsLayout.Form = ContactsForm;
-ContactsLayout.Image = ContactsImage;
-ContactsLayout.Authors = ContactsAuthors;
+ContactsLayout.Column = ContactsLayoutColumn;
+ContactsLayout.Title = ContactsLayoutTitle;
+ContactsLayout.Form = ContactsLayoutForm;
+ContactsLayout.Image = ContactsLayoutImage;
+ContactsLayout.Authors = ContactsLayoutAuthors;
 
 export default ContactsLayout;
