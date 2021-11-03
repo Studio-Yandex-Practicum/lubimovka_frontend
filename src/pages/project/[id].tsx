@@ -18,9 +18,11 @@ import { VideoGalleryItem } from 'components/video-gallery/video-gallery-item';
 import { AnnouncedPlayCardList } from 'components/ui/announced-play-card/announced-play-card-list';
 import { BasicPlayCardList } from 'components/ui/basic-play-card/list';
 import { ProjectCooperation } from 'components/project-cooperation';
+import { Button } from 'components/ui/button';
+
 
 const Project: NextPage = () => {
-  const cardsNum5 = [1, 2, 3, 4, 5];
+  const cardsNum5 = [1, 2, 3, 4, 5, 6, 9];
   const cardsNum3 = [1, 2, 3];
   const cardsNum2 = [1, 2];
 
@@ -30,6 +32,15 @@ const Project: NextPage = () => {
         <title>{projectData.titledata.title}</title>
       </Head>
       <ProjectPage>
+        <Button
+          size="s"
+          iconPlace="right"
+          icon="arrow-left"
+          label="Проекты"
+          border="bottomRight"
+          width='120px'
+
+        ></Button>
         <ProjectHeader
           title={projectData.titledata.title}
           intro={projectData.titledata.intro}
@@ -116,13 +127,12 @@ const Project: NextPage = () => {
         <ProjecPageSection type="plays" title="Заголовок блока с пьесами">
           <BasicPlayCardList>
             {cardsNum5.map((i, index) => (
-              <div key={index}>
-                <BasicPlayCard
-                  play={projectData.basicPlayCard.play}
-                  author={projectData.basicPlayCard.author}
-                  buttonVisibility={projectData.basicPlayCard.buttonVisibility}
-                ></BasicPlayCard>
-              </div>
+              <BasicPlayCard
+                key={index}
+                play={projectData.basicPlayCard.play}
+                author={projectData.basicPlayCard.author}
+                buttonVisibility={projectData.basicPlayCard.buttonVisibility}
+              ></BasicPlayCard>
             ))}
           </BasicPlayCardList>
         </ProjecPageSection>
