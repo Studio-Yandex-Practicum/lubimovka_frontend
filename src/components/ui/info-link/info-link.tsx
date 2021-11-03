@@ -38,6 +38,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
 
   const classes = cx(
     'link',
+    icon && 'flex',
     [size],
     [textDecoration],
     [border],
