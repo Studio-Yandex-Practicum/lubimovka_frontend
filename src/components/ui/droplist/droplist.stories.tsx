@@ -25,6 +25,7 @@ MonthsDroplist.args = {
     'Ноябрь', 'Декабрь',
   ],
   maxWidth: 240,
+  selectListFromProps: ['January', 'February']
 };
 
 // Формирую массив dataType самостоятельно, из БД

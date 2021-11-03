@@ -51,12 +51,6 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
     }
   }, [ data ]);
 
-  useEffect(() => {
-    if (selectListFromProps) {
-      setSelectList(selectListFromProps);
-    }
-  }, [selectListFromProps]);
-
   const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     cb(selectList);
@@ -104,16 +98,18 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
         <div className={ cn(styles.list, {
           [styles.active]: activeDropdown,
         })}>
-          { list.map((month: string | number, i): JSX.Element => (
+          { list.map((item: string | number, i): JSX.Element => (
             <DroplistItems
-              month={ month }
+              item={ item }
               key={ i }
               cb={ cbItems }
-              selectList={ selectList }
+              activeItem={ selectListFromProps ?
+                selectListFromProps.find(itemSelect => itemSelect === item)
+                : undefined }
             />
           ))}
         </div>
-        { activeDropdown && selectList.length > 0
+        { selectList.length > 0
           && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth } /> }
       </form>
     </div>
