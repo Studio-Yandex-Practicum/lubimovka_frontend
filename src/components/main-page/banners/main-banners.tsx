@@ -1,11 +1,10 @@
-import { FC } from 'react';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button';
 
 import styles from './main-banners.module.css';
 
-export const MainBanners: FC = () => {
+export const MainBanners = () => {
   return (
     <section className={ cn(styles.banners) }>
       <ul className={ cn(styles.list) }>
