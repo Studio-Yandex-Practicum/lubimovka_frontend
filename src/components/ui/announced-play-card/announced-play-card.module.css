@@ -131,8 +131,6 @@
 .button {
   width: scale(154px);
   margin-bottom: scale(16px);
-  font-size: scale(16px);
-  line-height: scale(14px);
 
   @media (max-width: $tablet-portrait) {
     margin-right: scale(26px);
