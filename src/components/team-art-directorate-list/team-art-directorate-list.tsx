@@ -31,7 +31,6 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
     spacing: 30,
     slidesPerView: 3,
     breakpoints: {
-
       '(max-width: 728px)': {
         slidesPerView: 2.5,
         mode: 'free-snap',

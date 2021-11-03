@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import styles from './team-volunteers-list.module.css';
 import classNames from 'classnames';
-import cn from 'classnames';
 
 import PersonCard from '../ui/person-card/person-card';
 
@@ -29,19 +28,18 @@ interface VolunteersCardsProps {
 }
 
 const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
-
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     spacing: 30,
     slidesPerView: 3,
     breakpoints: {
-      '(max-width: 727px)': {
-        slidesPerView: 3,
+      '(max-width: 728px)': {
+        slidesPerView: 2.5,
         mode: 'free-snap',
       },
       '(max-width: 650px)': {
-        slidesPerView: 2.3,
+        slidesPerView: 2,
         mode: 'free-snap',
       },
       '(max-width: 520px)': {
@@ -59,13 +57,17 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
     setScreenWidth(document.documentElement.clientWidth);
   }, []);
 
+  useEffect(() => {
+    slider?.refresh();
+  }, [screenWidth]);
+
   return (
     <>
       {
         Number(screenWidth) < 729 &&
         <div ref={sliderRef} className={cx('keen-slider', [styles.slidesContainer])}>
           {cards.map((card) => (
-            <div key={card.id} className={cx('keen-slider__slide', [styles.card])}>
+            <div key={card.id} className="keen-slider__slide">
               <PersonCard
                 participant={false}
                 link={card.person.image}
@@ -80,9 +82,9 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
 
       {
         Number(screenWidth) > 728 &&
-        <ul className={cn(styles.container)}>
+        <ul className={styles.container}>
           {cards.map((card) => (
-            <li key={card.id} className={cn(styles.card)}>
+            <li key={card.id} className={styles.card}>
               <PersonCard
                 participant={false}
                 link={card.person.image}
