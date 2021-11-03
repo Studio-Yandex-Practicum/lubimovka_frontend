@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { AppLayout } from 'components/app-layout';
+import AppLayout from 'components/app-layout';
 import { AuthorOverview } from 'components/author-page/overview';
 import { AuthorPlays } from 'components/author-page/plays';
 import { AnotherPlays } from 'components/author-page/another-plays';
