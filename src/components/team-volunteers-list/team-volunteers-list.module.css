@@ -8,13 +8,13 @@
 
 .container {
   display: grid;
-  max-width: 1440px;
+  max-width: 100%;
   box-sizing: border-box;
   justify-content: space-between;
   padding: scale(50px) scale(210px) 0;
   margin: 0;
   gap: scale(48px) scale(30px);
-  grid-template-columns: repeat(auto-fit, scale(180px));
+  grid-template-columns: repeat(5, scale(180px));
   list-style: none;
 }
 

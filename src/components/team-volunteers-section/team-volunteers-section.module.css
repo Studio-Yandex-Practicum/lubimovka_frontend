@@ -13,7 +13,7 @@
 
 .container {
   display: flex;
-  max-width: 1440px;
+  max-width: 100%;
   flex-direction: column;
   padding: 0;
   margin: 0 auto;
@@ -44,16 +44,6 @@
     padding: scale(36.5px) scale(23px) 0;
     margin: 0 auto;
   }
-}
-
-.cardContainer {
-  display: grid;
-  max-width: 1440px;
-  box-sizing: border-box;
-  padding: scale(54px) scale(210px) 0;
-  margin: 0 auto;
-  gap: 48px 30px;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 180px));
 }
 
 .infoBlock {

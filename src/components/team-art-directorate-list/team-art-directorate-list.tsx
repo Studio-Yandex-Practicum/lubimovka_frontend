@@ -3,9 +3,12 @@ import { useKeenSlider } from 'keen-slider/react';
 import styles from './team-art-directorate-list.module.css';
 
 import PersonCard from '../ui/person-card/person-card';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 interface PersonCardData {
-  id: number,
+  id: number;
   person: {
     id: number;
     first_name: string;
@@ -15,8 +18,8 @@ interface PersonCardData {
     email: string;
     image: string;
   };
-  team: string,
-  position: string
+  team: string;
+  position: string;
 }
 
 interface ArtDirectorateCardsProps {
@@ -25,6 +28,9 @@ interface ArtDirectorateCardsProps {
 
 
 const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
+  const selectedCards = cards.filter(card => card.team === 'art');
+  console.log(selectedCards.length);
+
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
@@ -64,6 +70,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
         Number(screenWidth) < 729 &&
         <div ref={sliderRef} className="keen-slider">
           {cards.map((card) => (
+            card.team === 'art' &&
             <div key={card.id} className="keen-slider__slide">
               <PersonCard
                 participant={true}
@@ -79,9 +86,11 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
 
       {
         Number(screenWidth) > 728 &&
-        <ul className={styles.trusteesList}>
+        //необходимо прописать условие в другом формате, потому что в таком виде не работает
+        <ul className={cx('flex', {[styles.grid]: selectedCards.length !== (6 || 5)})}>
           {cards.map((card) => (
-            <li key={card.id} className={styles.trusteesListItem}>
+            card.team === 'art' &&
+            <li key={card.id} className={cx({[styles.fiveElements]: selectedCards.length === 5}, {[styles.sixElements]: selectedCards.length === 6})}>
               <PersonCard
                 participant={true}
                 link={card.person.image}

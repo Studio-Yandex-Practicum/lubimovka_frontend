@@ -19,7 +19,7 @@
   margin: 0 auto;
 
   @media (max-width: $tablet-portrait) {
-    padding: 0 0 scale(166px) scale(27px);
+    padding: 0 0 scale(116px) scale(27px);
   }
 }
 
@@ -27,7 +27,7 @@
   @mixin headline;
   @mixin headline2;
 
-  padding: scale(90px) 0 scale(80px) 50%;
+  padding: scale(90px) scale(90px) scale(80px) 50%;
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
