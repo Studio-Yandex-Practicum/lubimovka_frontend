@@ -1,0 +1,78 @@
+.section {
+  box-sizing: border-box;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline4;
+
+  width: scale(568px);
+  margin-left: scale(362px);
+
+  @media (max-width: 728px) {
+    @mixin headline6;
+  }
+}
+
+.video {
+  .title {
+    width: scale(589px);
+    margin-top: scale(98px);
+    margin-bottom: scale(45px);
+
+    @media (max-width: 728px) {
+      width: scale(369px);
+      margin: scale(100px 24px 33px 24px);
+    }
+  }
+}
+
+.photo {
+  .title {
+    margin-top: scale(145px);
+    margin-bottom: scale(42px);
+
+    @media (max-width: 728px) {
+      width: scale(369px);
+      margin: scale(100px 24px 33px 24px);
+    }
+  }
+}
+
+.performances {
+  .title {
+    margin-top: scale(122px);
+    margin-bottom: scale(75px);
+
+    @media (max-width: 728px) {
+      width: scale(369px);
+      margin: scale(100px 24px 33px 24px);
+    }
+  }
+}
+
+.plays {
+  .title {
+    width: scale(358px);
+    margin-top: scale(93px);
+    margin-bottom: scale(48px);
+
+    @media (max-width: 728px) {
+      width: scale(369px);
+      margin: scale(100px 24px 33px 24px);
+    }
+  }
+}
+
+.person {
+  .title {
+    width: scale(358px);
+    margin-top: scale(123px);
+    margin-bottom: scale(58px);
+
+    @media (max-width: 728px) {
+      width: scale(369px);
+      margin: scale(100px 24px 33px 24px);
+    }
+  }
+}

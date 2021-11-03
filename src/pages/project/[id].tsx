@@ -2,11 +2,12 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 
 import AppLayout from 'components/app-layout';
+import { ProjectPage } from 'components/project-page';
+import { ProjecPageSection } from 'components/project-page/projec-page-section';
 import { ProjectHeader } from 'components/project-header';
 import { ProjectDescription } from 'components/project-description';
 import { Photos } from 'components/photos';
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
-import { Section } from 'components/section';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { PersonCardList } from 'components/ui/person-card';
 import { PersonCard } from 'components/ui/person-card';
@@ -14,7 +15,7 @@ import { PersonCard } from 'components/ui/person-card';
 import projectData from './assets/mock-project-data.json';
 import { VideoGallery } from 'components/video-gallery';
 import { VideoGalleryItem } from 'components/video-gallery/video-gallery-item';
-import {AnnouncedPlayCardList} from 'components/ui/announced-play-card/announced-play-card-list';
+import { AnnouncedPlayCardList } from 'components/ui/announced-play-card/announced-play-card-list';
 import { BasicPlayCardList } from 'components/ui/basic-play-card/list';
 import { ProjectCooperation } from 'components/project-cooperation';
 
@@ -28,7 +29,7 @@ const Project: NextPage = () => {
       <Head>
         <title>{projectData.titledata.title}</title>
       </Head>
-      <main>
+      <ProjectPage>
         <ProjectHeader
           title={projectData.titledata.title}
           intro={projectData.titledata.intro}
@@ -38,16 +39,11 @@ const Project: NextPage = () => {
         <ProjectDescription>
           {projectData.titledata.description}
         </ProjectDescription>
-        <Section
-          type="plays"
-          title="Заголовок блока с видео"
-          titleTag="h2"
-        >
+        <ProjecPageSection type="video" title="Заголовок блока с видео">
           <VideoGallery>
             <VideoGalleryItem>
               <iframe
                 width="716"
-
                 height="403"
                 src="https://www.youtube.com/embed/NkvP2jR8xlw"
                 title="YouTube video player"
@@ -57,18 +53,13 @@ const Project: NextPage = () => {
               ></iframe>
             </VideoGalleryItem>
           </VideoGallery>
-        </Section>
-        <Section
-          type="plays"
-          title="Заголовок блока с фотографиями"
-          titleTag="h2"
-        >
+        </ProjecPageSection>
+        <ProjecPageSection type="photo" title="Заголовок блока с фотографиями">
           <Photos images={projectData.images}></Photos>
-        </Section>
-        <Section
-          type="plays"
+        </ProjecPageSection>
+        <ProjecPageSection
+          type="performances"
           title="Заголовок блока c тремя и более спектаклями"
-          titleTag="h2"
         >
           <AnnouncedPlayCardList>
             {cardsNum3.map((i, index) => (
@@ -85,11 +76,10 @@ const Project: NextPage = () => {
               </div>
             ))}
           </AnnouncedPlayCardList>
-        </Section>
-        <Section
-          type="plays"
+        </ProjecPageSection>
+        <ProjecPageSection
+          type="performances"
           title="Заголовок блока с двумя спектаклями"
-          titleTag="h2"
         >
           <AnnouncedPlayCardList>
             {cardsNum2.map((i, index) => (
@@ -106,11 +96,10 @@ const Project: NextPage = () => {
               </div>
             ))}
           </AnnouncedPlayCardList>
-        </Section>
-        <Section
-          type="plays"
+        </ProjecPageSection>
+        <ProjecPageSection
+          type="performances"
           title="Заголовок блока с одним спектаклем"
-          titleTag="h2"
         >
           <AnnouncedPlayCardList>
             <AnnouncedPlayCard
@@ -123,12 +112,8 @@ const Project: NextPage = () => {
               coverResourceUrl={projectData.cards.coverResourceUrl}
             ></AnnouncedPlayCard>
           </AnnouncedPlayCardList>
-        </Section>
-        <Section
-          type="plays"
-          title="Заголовок блока с одним спектаклем"
-          titleTag="h2"
-        >
+        </ProjecPageSection>
+        <ProjecPageSection type="plays" title="Заголовок блока с пьесами">
           <BasicPlayCardList>
             {cardsNum5.map((i, index) => (
               <div key={index}>
@@ -140,12 +125,12 @@ const Project: NextPage = () => {
               </div>
             ))}
           </BasicPlayCardList>
-
-        </Section>
-        <Section type="plays" title="Заголовок блока с персонами" titleTag="h2">
+        </ProjecPageSection>
+        <ProjecPageSection type="person" title="Заголовок блока с персонами">
           <PersonCardList>
             {cardsNum3.map((i, index) => (
-              <PersonCard key={index}
+              <PersonCard
+                key={index}
                 name={projectData.personCard.name}
                 link={projectData.personCard.link}
                 about={projectData.personCard.about}
@@ -153,11 +138,11 @@ const Project: NextPage = () => {
               ></PersonCard>
             ))}
           </PersonCardList>
-        </Section>
+        </ProjecPageSection>
         <div>
           <ProjectCooperation email={projectData.email}></ProjectCooperation>
         </div>
-      </main>
+      </ProjectPage>
     </AppLayout>
   );
 };
