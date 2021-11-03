@@ -16,6 +16,7 @@ import { VideoGallery } from 'components/video-gallery';
 import { VideoGalleryItem } from 'components/video-gallery/video-gallery-item';
 import {AnnouncedPlayCardList} from 'components/ui/announced-play-card/announced-play-card-list';
 import { BasicPlayCardList } from 'components/ui/basic-play-card/list';
+import { ProjectCooperation } from 'components/project-cooperation';
 
 const Project: NextPage = () => {
   const cardsNum5 = [1, 2, 3, 4, 5];
@@ -153,6 +154,9 @@ const Project: NextPage = () => {
             ))}
           </PersonCardList>
         </Section>
+        <div>
+          <ProjectCooperation email={projectData.email}></ProjectCooperation>
+        </div>
       </main>
     </AppLayout>
   );
