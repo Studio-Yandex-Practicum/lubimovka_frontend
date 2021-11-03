@@ -13,7 +13,7 @@ const fakeAppSettings = {
   generalPartners: [
     {
       name: '',
-      logo: require('mocks/assets/partners/fond-prohorova.png'),
+      logo: require('mocks/assets/partners/partnerLogo.png'),
       type: 'general',
     }
   ],
