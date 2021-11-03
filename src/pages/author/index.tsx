@@ -9,6 +9,7 @@ import { AuthorRequest } from 'components/author-page/request';
 // JSON-data
 import playsShortListData from './assets/plays-short-list-data.json';
 import anotherPlaysData from './assets/another-plays-data.json';
+import informationData from './assets/information-author-data.json';
 
 import cn from 'classnames';
 import styles from 'components/author-page/author.module.css';
@@ -24,7 +25,7 @@ const Author: NextPage<IAuthorPageProps> = (props: IAuthorPageProps) => {
         <AuthorOverview />
         <AuthorPlays data={ playsShortListData } />
         <AnotherPlays data={ anotherPlaysData } />
-        <AuthorInformation />
+        <AuthorInformation data={ informationData }/>
         <AuthorRequest />
       </div>
     </AppLayout>
