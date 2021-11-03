@@ -21,7 +21,7 @@ const ContactsForm = (props: IContactsFormProps): JSX.Element => {
       <h1 id='contact' className={cx('title')}>
         Если вам есть, чем поделиться или хотите задать вопрос
       </h1>
-      <Form className={cx('form')} aria-labeledby='contact'>
+      <Form className={cx('form')} aria-labelledby='contact'>
         <Form.Field>
           <TextInput
             ariaLabel="Ваше имя"

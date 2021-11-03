@@ -4,7 +4,7 @@ import FormActions from './actions';
 import FormAction from './action';
 import FormActionCaption from './action-caption';
 
-interface IFormProps extends React.FormHTMLAttributes<HTMLFormElement>, Pick<React.AriaAttributes, 'aria-labelledby'> {
+interface IFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode;
 }
 
