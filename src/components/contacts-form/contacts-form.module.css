@@ -1,0 +1,12 @@
+.title {
+  @mixin headline;
+  @mixin headline4;
+}
+
+.form {
+  margin-top: scale(60px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: scale(24px);
+  }
+}

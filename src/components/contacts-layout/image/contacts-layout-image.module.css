@@ -1,0 +1,11 @@
+.image {
+  position: relative;
+  width: 50vw;
+  height: scale(280px);
+  grid-area: image;
+
+  @media (max-width: $tablet-portrait) {
+    width: calc(100% + scale(24px));
+    height: scale(152px);
+  }
+}

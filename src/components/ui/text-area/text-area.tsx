@@ -9,7 +9,7 @@ interface ITextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElemen
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-export const TextArea = (props: ITextAreaProps): JSX.Element => {
+const TextArea = (props: ITextAreaProps): JSX.Element => {
   const {
     ariaLabel,
     errorMessage = '',
@@ -29,3 +29,5 @@ export const TextArea = (props: ITextAreaProps): JSX.Element => {
     </>
   );
 };
+
+export default TextArea;
