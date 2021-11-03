@@ -14,10 +14,11 @@ import { PersonCard } from 'components/ui/person-card';
 import projectData from './assets/mock-project-data.json';
 import { VideoGallery } from 'components/video-gallery';
 import { VideoGalleryItem } from 'components/video-gallery/video-gallery-item';
+import {AnnouncedPlayCardList} from 'components/ui/announced-play-card/announced-play-card-list';
 
 const Project: NextPage = () => {
   const cardsNum3 = [1, 2, 3];
-  const cardsNum2 = [1, 2, 3];
+  const cardsNum2 = [1, 2];
 
   return (
     <AppLayout>
@@ -43,6 +44,7 @@ const Project: NextPage = () => {
             <VideoGalleryItem>
               <iframe
                 width="716"
+
                 height="403"
                 src="https://www.youtube.com/embed/NkvP2jR8xlw"
                 title="YouTube video player"
@@ -60,59 +62,64 @@ const Project: NextPage = () => {
         >
           <Photos images={projectData.images}></Photos>
         </Section>
-
         <Section
           type="plays"
           title="Заголовок блока c тремя и более спектаклями"
           titleTag="h2"
         >
-          {cardsNum3.map((i, index) => (
-            <div key={index}>
-              <AnnouncedPlayCard
-                date={projectData.cards.date}
-                time={projectData.cards.time}
-                title={projectData.cards.title}
-                playwrightArray={projectData.cards.playwrightArray}
-                directorArray={projectData.cards.directorArray}
-                buttonLinks={projectData.cards.buttonLinks}
-                coverResourceUrl={projectData.cards.coverResourceUrl}
-              ></AnnouncedPlayCard>
-            </div>
-          ))}
+          <AnnouncedPlayCardList>
+            {cardsNum3.map((i, index) => (
+              <div key={index}>
+                <AnnouncedPlayCard
+                  date={projectData.cards.date}
+                  time={projectData.cards.time}
+                  title={projectData.cards.title}
+                  playwrightArray={projectData.cards.playwrightArray}
+                  directorArray={projectData.cards.directorArray}
+                  buttonLinks={projectData.cards.buttonLinks}
+                  coverResourceUrl={projectData.cards.coverResourceUrl}
+                ></AnnouncedPlayCard>
+              </div>
+            ))}
+          </AnnouncedPlayCardList>
         </Section>
         <Section
           type="plays"
           title="Заголовок блока с двумя спектаклями"
           titleTag="h2"
         >
-          {cardsNum2.map((i, index) => (
-            <div key={index}>
-              <AnnouncedPlayCard
-                date={projectData.cards.date}
-                time={projectData.cards.time}
-                title={projectData.cards.title}
-                playwrightArray={projectData.cards.playwrightArray}
-                directorArray={projectData.cards.directorArray}
-                buttonLinks={projectData.cards.buttonLinks}
-                coverResourceUrl={projectData.cards.coverResourceUrl}
-              ></AnnouncedPlayCard>
-            </div>
-          ))}
+          <AnnouncedPlayCardList>
+            {cardsNum2.map((i, index) => (
+              <div key={index}>
+                <AnnouncedPlayCard
+                  date={projectData.cards.date}
+                  time={projectData.cards.time}
+                  title={projectData.cards.title}
+                  playwrightArray={projectData.cards.playwrightArray}
+                  directorArray={projectData.cards.directorArray}
+                  buttonLinks={projectData.cards.buttonLinks}
+                  coverResourceUrl={projectData.cards.coverResourceUrl}
+                ></AnnouncedPlayCard>
+              </div>
+            ))}
+          </AnnouncedPlayCardList>
         </Section>
         <Section
           type="plays"
           title="Заголовок блока с одним спектаклем"
           titleTag="h2"
         >
-          <AnnouncedPlayCard
-            date={projectData.cards.date}
-            time={projectData.cards.time}
-            title={projectData.cards.title}
-            playwrightArray={projectData.cards.playwrightArray}
-            directorArray={projectData.cards.directorArray}
-            buttonLinks={projectData.cards.buttonLinks}
-            coverResourceUrl={projectData.cards.coverResourceUrl}
-          ></AnnouncedPlayCard>
+          <AnnouncedPlayCardList>
+            <AnnouncedPlayCard
+              date={projectData.cards.date}
+              time={projectData.cards.time}
+              title={projectData.cards.title}
+              playwrightArray={projectData.cards.playwrightArray}
+              directorArray={projectData.cards.directorArray}
+              buttonLinks={projectData.cards.buttonLinks}
+              coverResourceUrl={projectData.cards.coverResourceUrl}
+            ></AnnouncedPlayCard>
+          </AnnouncedPlayCardList>
         </Section>
         <Section
           type="plays"
