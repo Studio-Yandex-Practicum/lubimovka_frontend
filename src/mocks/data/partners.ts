@@ -1,4 +1,4 @@
-import partnerLogo from '../assets/partners/fond-prohorova.png';
+import partnerLogo from '../assets/partners/partnerLogo.png';
 
 export default [
   {
