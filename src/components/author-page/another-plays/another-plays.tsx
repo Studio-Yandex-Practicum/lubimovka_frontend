@@ -5,7 +5,7 @@ import cn from 'classnames';
 import styles from './another-plays.module.css';
 
 interface dataList {
-  id: number;
+  id: string;
   paragraph: string;
 }
 
