@@ -1,0 +1,33 @@
+.headline {
+  display: grid;
+  padding-left: scale(60px);
+  grid-template:
+    "title       image"
+    "description image"
+    "dateTime    image"
+    "action      image"
+    ".           text" 1fr / 1fr scale(720px);
+}
+
+.title {
+  @mixin headline;
+  @mixin headline1;
+
+  width: scale(540px);
+  margin: scale(62px) auto 0;
+}
+
+.image {
+  position: relative;
+  height: scale(614px);
+  grid-area: image;
+}
+
+.text {
+  @mixin headline;
+  @mixin headline6;
+
+  padding-right: scale(130px);
+  margin: scale(48px) 0 0;
+  grid-area: text;
+}
