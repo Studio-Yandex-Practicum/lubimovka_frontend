@@ -1,0 +1,27 @@
+.actionCaption {
+  @mixin text;
+  @mixin textCaption;
+
+  margin-top: scale(24px);
+
+  a {
+    color: inherit;
+  }
+
+  p {
+    white-space: pre-line;
+
+    &:not(:first-child) {
+      margin: scale(17px 0 0);
+    }
+  }
+}
+
+.shift {
+  margin-left: scale(30px);
+}
+
+.below {
+  max-width: scale(340px);
+  margin-top: scale(16px);
+}

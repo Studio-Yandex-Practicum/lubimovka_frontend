@@ -20,7 +20,7 @@ export interface IBasicPlayCardProps {
     id: number,
     name: string;
   };
-  buttonVisibility: boolean;
+  buttonVisibility?: boolean;
 }
 
 export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
