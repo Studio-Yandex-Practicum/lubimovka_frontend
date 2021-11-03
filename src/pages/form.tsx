@@ -1,7 +1,8 @@
-import { NextPage } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { fetcher } from 'shared/fetcher';
 import AppLayout from 'components/app-layout';
 import PlayProposalLayout from 'components/play-proposal-layout';
 import PlayProposalTitle from 'components/play-proposal-title';
@@ -12,7 +13,17 @@ import { Button } from 'components/ui/button';
 
 import playScript from '/public/images/form/play-script.jpg';
 
-const PlayProposal: NextPage = () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const data = await fetcher('/form');
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+const PlayProposal: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <AppLayout>
       <PlayProposalLayout>
@@ -110,7 +121,7 @@ const PlayProposal: NextPage = () => {
                   </Form.Action>
                   <Form.ActionCaption view="below">
                     {'Нажимая на кнопку «Отправить» вы даёте согласие '}
-                    <Link href={'#'}>
+                    <Link href={data.url_privacy}>
                       <a>на обработку персональных данных </a>
                     </Link>
                   </Form.ActionCaption>
