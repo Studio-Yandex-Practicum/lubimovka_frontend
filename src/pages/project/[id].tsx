@@ -15,8 +15,10 @@ import projectData from './assets/mock-project-data.json';
 import { VideoGallery } from 'components/video-gallery';
 import { VideoGalleryItem } from 'components/video-gallery/video-gallery-item';
 import {AnnouncedPlayCardList} from 'components/ui/announced-play-card/announced-play-card-list';
+import { BasicPlayCardList } from 'components/ui/basic-play-card/list';
 
 const Project: NextPage = () => {
+  const cardsNum5 = [1, 2, 3, 4, 5];
   const cardsNum3 = [1, 2, 3];
   const cardsNum2 = [1, 2];
 
@@ -126,15 +128,18 @@ const Project: NextPage = () => {
           title="Заголовок блока с одним спектаклем"
           titleTag="h2"
         >
-          {cardsNum3.map((i, index) => (
-            <div key={index}>
-              <BasicPlayCard
-                play={projectData.basicPlayCard.play}
-                author={projectData.basicPlayCard.author}
-                buttonVisibility={projectData.basicPlayCard.buttonVisibility}
-              ></BasicPlayCard>
-            </div>
-          ))}
+          <BasicPlayCardList>
+            {cardsNum5.map((i, index) => (
+              <div key={index}>
+                <BasicPlayCard
+                  play={projectData.basicPlayCard.play}
+                  author={projectData.basicPlayCard.author}
+                  buttonVisibility={projectData.basicPlayCard.buttonVisibility}
+                ></BasicPlayCard>
+              </div>
+            ))}
+          </BasicPlayCardList>
+
         </Section>
         <Section type="plays" title="Заголовок блока с персонами" titleTag="h2">
           <PersonCardList>
