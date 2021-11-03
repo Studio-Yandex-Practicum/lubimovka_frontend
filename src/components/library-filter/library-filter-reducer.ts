@@ -1,13 +1,5 @@
-enum ActionType {
-  AddYear = 'add year',
-  AddProgramme = 'add programme',
-  RemoveYear = 'remove year',
-  RemoveProgramme = 'remove programme',
-  Reset = 'reset'
-}
-
 interface Action {
-  type: ActionType;
+  type: string;
   payload: string;
 }
 
@@ -19,31 +11,31 @@ interface State {
 function reducer(state: State, action: Action): State {
   const { type, payload } = action;
   switch(type) {
-  case ActionType.AddYear:
+  case 'add year':
     return {
       ...state,
       years: [...state.years, payload]
     };
-  case ActionType.AddProgramme:
+  case 'add programme':
     return {
       ...state,
       programmes: [...state.programmes, payload]
     };
-  case ActionType.RemoveYear:
+  case 'remove year':
     return {
       ...state,
       years: state.years.filter(
         (el, index, arr) => index !== arr.indexOf(payload)
       )
     };
-  case ActionType.RemoveProgramme:
+  case 'remove programme':
     return {
       ...state,
       programmes: state.programmes.filter(
         (el, index, arr) => index !== arr.indexOf(payload)
       )
     };
-  case ActionType.Reset:
+  case 'reset':
     return {
       ...state,
       years: [],

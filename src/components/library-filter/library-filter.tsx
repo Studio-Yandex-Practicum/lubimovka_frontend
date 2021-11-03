@@ -1,8 +1,10 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useReducer } from 'react';
 
 import { Droplist } from 'components/ui/droplist';
 import { Tag } from 'components/ui/tag';
 import { Button } from 'components/ui/button';
+
+import reducer from './library-filter-reducer';
 
 import style from './library-filter.module.css';
 
@@ -13,28 +15,26 @@ const mockProgrammes = ['шорт-лист', 'внеконкурсная про�
 
 const LibraryFilter: FC = () => {
   const [years, setYears] = useState<string[]>([]);
-  const [programmes, setProgrammes] = useState<string[]>([]);
+
+  const filterInitialState = { years: [], programmes: [] };
+
+  const [filterState, filterDispatcher] = useReducer(
+    reducer,
+    filterInitialState,
+    undefined
+  );
 
   const handleClick = (el: string): void => {
-    if (!programmes.find((i) => i === el)) {
-      setProgrammes([...programmes, el]);
+    if (!filterState.programmes.find((i) => i === el)) {
+      filterDispatcher({ type: 'add programme', payload: el });
     } else {
-      setProgrammes(programmes.filter((i) => i !== el));
+      filterDispatcher({ type: 'remove programme', payload: el });
     }
   };
 
-  const reset = (): void => {
-    setYears([]);
-    setProgrammes([]);
-  };
-
   useEffect(() => {
-    console.log(programmes);
-  }, [programmes]);
-
-  useEffect(() => {
-    console.log(years);
-  }, [years]);
+    console.log(filterState);
+  }, [filterState]);
 
   return (
     <div className={style.container}>
@@ -49,13 +49,13 @@ const LibraryFilter: FC = () => {
         <ul className={style.programmesList}>
           {mockProgrammes.map((el, id) => (
             <li onClick={() => handleClick(el)} className={style.programme} key={id}>
-              <Tag label={el} selected={programmes.includes(el)}/></li>
+              <Tag label={el} selected={filterState.programmes.includes(el)}/></li>
           ))}
         </ul>
       </div>
-      {(years.length > 0 || programmes.length > 0) &&
-      <Button label='Очистить' onClick={reset} size={'s'} icon={'cross'}
-        iconPlace={'left'} border={'bottomLeft'} width={'128px'} align={'start'}
+      {(years.length > 0 || filterState.programmes.length > 0) &&
+      <Button label='Очистить' size={'s'} icon={'cross'}
+        iconPlace={'left'} border={'bottomLeft'} width={'143px'} align={'start'}
         gap={'3px'} />
       }
     </div>
