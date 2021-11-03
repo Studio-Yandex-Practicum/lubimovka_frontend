@@ -1,77 +1,77 @@
 .banners {
-  padding: 0 32px;
+  padding: scale(0 32px);
   grid-area: banners;
 }
 
 .list {
-  padding: 0;
-  margin: 0;
+  padding: scale(0);
+  margin: scale(0);
   list-style: none;
 }
 
 .item {
   width: 100%;
-  max-width: 1100px;
-  border-top: 1px solid var(--coal);
+  max-width: scale(1100px);
+  border-top: scale(1px) solid var(--coal);
 }
 
 .title {
   @mixin headline;
   @mixin headline6;
 
-  max-width: 570px;
-  padding: 20px 56px;
+  max-width: scale(570px);
+  padding: scale(20px 56px);
 }
 
 .container {
   display: grid;
   justify-content: space-between;
-  column-gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(468px, max-content));
-  row-gap: 16px;
+  column-gap: scale(16px);
+  grid-template-columns: repeat(auto-fit, minmax(scale(468px), max-content));
+  row-gap: scale(16px);
 }
 
 .content {
-  padding-left: 56px;
+  padding-left: scale(56px);
 }
 
 .desc {
   @mixin text;
   @mixin textLarge;
 
-  max-width: 384px;
-  margin: 0 0 24px 62px;
+  max-width: scale(384px);
+  margin: scale(0 0 24px 62px);
 }
 
 .img {
   @mixin img;
 
   display: flex;
-  max-width: 486px;
+  max-width: scale(486px);
 }
 
 @media (max-width: $tablet-portrait) {
   .banners {
-    padding: 0 24px;
+    padding: scale(0 24px);
   }
 
   .title {
-    padding: 16px 0;
+    padding: scale(16px 0);
   }
 
   .content {
-    padding: 0;
+    padding: scale(0);
   }
 
   .desc {
-    max-width: 318px;
-    margin: 0;
-    margin-bottom: 28px;
+    max-width: scale(318px);
+    margin: scale(0);
+    margin-bottom: scale(28px);
 
     @mixin textMedium;
   }
 
   .container {
-    grid-template-columns: repeat(auto-fit, minmax(366px, max-content));
+    grid-template-columns: repeat(auto-fit, minmax(scale(366px), max-content));
   }
 }
