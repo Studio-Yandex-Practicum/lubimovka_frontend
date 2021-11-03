@@ -4,7 +4,6 @@ import { InfoLink } from '../info-link';
 import styles from './share-link.module.css';
 import classNames from 'classnames/bind';
 
-
 const cx = classNames.bind(styles);
 
 const icon = 'arrow-right';
