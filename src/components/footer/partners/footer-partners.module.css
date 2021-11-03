@@ -4,6 +4,12 @@
 }
 
 .title {
+  display: flex;
   max-width: 10ch;
-  margin-right: 56px;
+  align-items: flex-end;
+  margin-right: scale(56px);
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
 }

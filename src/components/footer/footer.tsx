@@ -31,16 +31,17 @@ export const Footer = (props: IFooterProps): JSX.Element => {
       <Logo className={cx('logo')}/>
       {children}
       <div className={cx('footnote')}>
-        <div>
+        <div className={cx('copyright')}>
           &copy; Любимовка, {new Date().getFullYear()}
         </div>
+        <a href="#" className={cx('link')} target="_blank" rel="noreferrer">Политика конфиденциальности</a>
         <dl className={cx('credits')}>
           <div className={cx('shishki')}>
             <dt className={cx('term')}>
               дизайн сайта
             </dt>
             <dd>
-              shishki.collective
+              <a className={cx('link')} href="#" target="_blank" rel="noreferrer">shishki.collective</a>
             </dd>
           </div>
           <div>
@@ -48,7 +49,7 @@ export const Footer = (props: IFooterProps): JSX.Element => {
               вёрстка и разработка
             </dt>
             <dd>
-              студенты Яндекс.Практикума
+              студенты <a className={cx('link')} href="#" target="_blank">Яндекс.Практикума</a>
             </dd>
           </div>
         </dl>

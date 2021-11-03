@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import AppLayout from './app-layout';
 import { AppSettingsProvider } from 'components/app';
+import {PartnerType} from '../../shared/types';
 
 export default {
   title: 'Components/AppLayout',
@@ -13,8 +14,8 @@ const fakeAppSettings = {
   generalPartners: [
     {
       name: '',
-      logo: require('mocks/assets/partners/fond-prohorova.png'),
-      type: 'general',
+      logo: require('mocks/assets/partners/partnerLogo.png'),
+      type: 'general' as PartnerType,
     }
   ],
 };
