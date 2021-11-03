@@ -6,6 +6,6 @@
   margin: 0 auto;
 
   @media (min-width: $tablet-portrait) {
-    padding: scale(0 0 0 20px);
+    padding: scalesize(0 0 0 20px);
   }
 }

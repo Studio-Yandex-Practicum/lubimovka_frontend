@@ -1,17 +1,17 @@
 @value partners from '../partners/footer-partners.module.css';
 
 .navigation {
-  margin-top: scale(50px);
-  margin-right: scale(56px);
+  margin-top: scalesize(50px);
+  margin-right: scalesize(56px);
   grid-area: navigation;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(0 55px);
-    margin-top: scale(56px);
+    padding: scalesize(0 55px);
+    margin-top: scalesize(56px);
     margin-right: 0;
   }
 }
 
 .partners ~ .navigation {
-  margin-top: scale(62px);
+  margin-top: scalesize(62px);
 }

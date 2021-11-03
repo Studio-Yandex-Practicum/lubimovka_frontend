@@ -17,7 +17,7 @@
   @mixin textSmall;
 
   display: flex;
-  padding: scale(15px);
+  padding: scalesize(15px);
   background-color: var(--beige);
   color: var(--coal);
   place-content: center space-between;

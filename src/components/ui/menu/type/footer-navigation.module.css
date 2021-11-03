@@ -2,10 +2,10 @@
   padding: 0;
   margin: 0;
   column-count: 2;
-  column-gap: scale(56px);
+  column-gap: scalesize(56px);
 
   @media (max-width: $tablet-portrait) {
-    column-gap: scale(16px);
+    column-gap: scalesize(16px);
   }
 }
 
@@ -13,10 +13,10 @@
   display: block;
 
   &:not(:first-child) {
-    margin-top: scale(15px);
+    margin-top: scalesize(15px);
 
     @media (max-width: $tablet-portrait) {
-      margin-top: scale(13px);
+      margin-top: scalesize(13px);
     }
   }
 }

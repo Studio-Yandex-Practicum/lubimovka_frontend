@@ -3,9 +3,9 @@
 }
 
 .partners {
-  padding: scale(70px 210px 138px 210px);
+  padding: scalesize(70px 210px 138px 210px);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(80px 24px 100px 24px);
+    padding: scalesize(80px 24px 100px 24px);
   }
 }

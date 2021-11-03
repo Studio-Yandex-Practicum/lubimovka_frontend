@@ -5,7 +5,7 @@
   width: 100%;
   min-width: var(--page-content-min-width);
   box-sizing: border-box;
-  padding-top: scale(61px);
+  padding-top: scalesize(61px);
   margin: 0 auto;
   grid-template-areas:
     "title title"
@@ -15,7 +15,7 @@
     "shortList ."
     "archive archive"
     "partners .";
-  grid-template-columns: minmax(scale(500px), scale(1110px)) 1fr;
+  grid-template-columns: minmax(scalesize(500px), scalesize(1110px)) 1fr;
   grid-template-rows: repeat(6, max-content);
 
   @media screen and (max-width: 1200px) {

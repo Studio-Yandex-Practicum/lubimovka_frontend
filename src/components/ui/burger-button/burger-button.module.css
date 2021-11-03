@@ -1,7 +1,7 @@
 .button {
   position: relative;
-  width: scale(72px);
-  height: scale(72px);
+  width: scalesize(72px);
+  height: scalesize(72px);
   padding: 0;
   border: 0;
   margin: 0;
@@ -9,12 +9,12 @@
 
   &::before {
     position: absolute;
-    top: scale(28px);
+    top: scalesize(28px);
     left: 50%;
-    width: scale(20px);
-    height: scale(2px);
+    width: scalesize(20px);
+    height: scalesize(2px);
     background-color: var(--beige);
-    box-shadow: scale(0 6px 0 0) var(--beige), scale(0 12px 0 0) var(--beige);
+    box-shadow: scalesize(0 6px 0 0) var(--beige), scalesize(0 12px 0 0) var(--beige);
     content: "";
     transform: translateX(-50%);
   }
@@ -24,10 +24,10 @@
   &::before,
   &::after {
     position: absolute;
-    top: scale(35px);
+    top: scalesize(35px);
     left: 50%;
-    width: scale(24px);
-    height: scale(2px);
+    width: scalesize(24px);
+    height: scalesize(2px);
     background-color: var(--beige);
     box-shadow: none;
     content: "";

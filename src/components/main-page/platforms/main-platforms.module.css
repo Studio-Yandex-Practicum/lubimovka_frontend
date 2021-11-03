@@ -1,7 +1,7 @@
 .section {
   width: 100%;
   box-sizing: border-box;
-  padding: scale(65px 60px 105px 60px);
+  padding: scalesize(65px 60px 105px 60px);
   background-color: white;
   grid-area: platforms;
 }
@@ -10,45 +10,45 @@
   @mixin text;
   @mixin headline1;
 
-  margin-bottom: scale(74px);
+  margin-bottom: scalesize(74px);
 }
 
 .list {
   display: grid;
-  padding: scale(0);
-  margin: scale(0);
-  column-gap: scale(60px);
-  grid-template-columns: repeat(auto-fit, minmax(scale(300px), max-content));
+  padding: scalesize(0);
+  margin: scalesize(0);
+  column-gap: scalesize(60px);
+  grid-template-columns: repeat(auto-fit, minmax(scalesize(300px), max-content));
   list-style: none;
-  row-gap: scale(40px);
+  row-gap: scalesize(40px);
 }
 
 .item {
-  max-width: scale(300px);
-  min-height: scale(260px);
+  max-width: scalesize(300px);
+  min-height: scalesize(260px);
   box-sizing: border-box;
-  padding: scale(15px 30px 38px 30px);
-  border-bottom: scale(1px) solid var(--coal);
-  border-left: scale(1px) solid var(--coal);
+  padding: scalesize(15px 30px 38px 30px);
+  border-bottom: scalesize(1px) solid var(--coal);
+  border-left: scalesize(1px) solid var(--coal);
 }
 
 .mapIcon {
-  margin-bottom: scale(14px);
+  margin-bottom: scalesize(14px);
 }
 
 .title {
   @mixin headline;
   @mixin headline7;
 
-  margin-bottom: scale(15px);
+  margin-bottom: scalesize(15px);
 }
 
 .desc {
   @mixin text;
   @mixin textSmall;
 
-  margin-bottom: scale(12px);
-  margin-left: scale(30px);
+  margin-bottom: scalesize(12px);
+  margin-left: scalesize(30px);
 }
 
 .containerLink {
@@ -68,7 +68,7 @@
   @mixin text;
   @mixin textSmall;
 
-  margin-right: scale(8px);
+  margin-right: scalesize(8px);
 }
 
 .icon {
@@ -77,30 +77,30 @@
 
 @media {
   .section {
-    padding: scale(56px 55px 100px 55px);
+    padding: scalesize(56px 55px 100px 55px);
   }
 
   .titleMain {
     @mixin headline4;
 
-    margin-bottom: scale(40px);
+    margin-bottom: scalesize(40px);
   }
 
   .item {
     min-height: auto;
-    padding: scale(16px 25px 32px 25px);
+    padding: scalesize(16px 25px 32px 25px);
   }
 
   .title {
-    margin-bottom: scale(8px);
+    margin-bottom: scalesize(8px);
   }
 
   .desc {
-    margin-bottom: scale(32px);
-    margin-left: scale(16px);
+    margin-bottom: scalesize(32px);
+    margin-left: scalesize(16px);
   }
 
   .link {
-    margin-left: scale(16px);
+    margin-left: scalesize(16px);
   }
 }

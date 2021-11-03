@@ -4,6 +4,6 @@
   place-content: center;
 
   @media (min-width: $tablet-portrait) {
-    margin-right: scale(33px);
+    margin-right: scalesize(33px);
   }
 }

@@ -1,5 +1,5 @@
 .contacts {
-  padding: scale(72px 170px 164px 150px);
+  padding: scalesize(72px 170px 164px 150px);
   color: var(--white);
 }
 
@@ -7,8 +7,8 @@
   @mixin headline;
   @mixin headline5;
 
-  max-width: scale(485px);
-  margin-bottom: scale(36px);
+  max-width: scalesize(485px);
+  margin-bottom: scalesize(36px);
 }
 
 .desc {
@@ -16,26 +16,26 @@
   @mixin headline6;
 
   display: flex;
-  max-width: scale(610px);
+  max-width: scalesize(610px);
   align-items: baseline;
   margin-left: auto;
 }
 
 .asterisk {
   display: block;
-  margin: scale(0);
-  margin-bottom: scale(14px);
+  margin: scalesize(0);
+  margin-bottom: scalesize(14px);
 }
 
 @media all and (max-width: $tablet-portrait) {
   .contacts {
-    padding: scale(56px 24px 50px);
+    padding: scalesize(56px 24px 50px);
   }
 
   .title {
     @mixin headline6;
 
-    margin-bottom: scale(28px);
+    margin-bottom: scalesize(28px);
   }
 
   .desc {

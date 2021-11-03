@@ -4,10 +4,10 @@
   margin: 0;
 
   &:not(:first-of-type) {
-    margin-top: scale(72px);
+    margin-top: scalesize(72px);
 
     @media (max-width: $tablet-portrait) {
-      margin-top: scale(90px);
+      margin-top: scalesize(90px);
     }
   }
 }
@@ -24,8 +24,8 @@
 }
 
 .container {
-  margin-top: scale(15px);
-  margin-left: scale(61px);
+  margin-top: scalesize(15px);
+  margin-left: scalesize(61px);
 
   @media (max-width: $tablet-portrait) {
     margin-left: 0;

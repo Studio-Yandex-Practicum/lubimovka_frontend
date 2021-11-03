@@ -2,7 +2,7 @@
   --page-content-max-width: 1440px;
   --page-content-min-width: 414px;
 
-  /* Коэффициент для масштабирования размеров с помощью хелпера scale() */
+  /* Коэффициент для масштабирования размеров с помощью хелпера scaleSize() */
   --scale: calc(100vw / 414);
 
   @media (min-width: $tablet-portrait) {

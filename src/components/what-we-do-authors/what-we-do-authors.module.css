@@ -2,28 +2,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: scale(86px 24px 0);
+  padding: scalesize(86px 24px 0);
 }
 
 .title {
   @mixin headline;
   @mixin headline5;
 
-  max-width: scale(600px);
-  margin: scale(0 120px 82px) auto;
+  max-width: scalesize(600px);
+  margin: scalesize(0 120px 82px) auto;
 }
 
 .list {
   display: grid;
   width: 100%;
   justify-content: center;
-  padding: scale(0);
-  margin: scale(0);
-  margin-bottom: scale(150px);
-  column-gap: scale(62px);
+  padding: scalesize(0);
+  margin: scalesize(0);
+  margin-bottom: scalesize(150px);
+  column-gap: scalesize(62px);
   grid-template-columns: repeat(auto-fill, minmax(15rem, max-content));
   list-style: none;
-  row-gap: scale(6px);
+  row-gap: scalesize(6px);
 }
 
 .item {
@@ -35,17 +35,17 @@
 
 @media (max-width: $tablet-portrait) {
   .authors {
-    padding-top: scale(56px);
+    padding-top: scalesize(56px);
   }
 
   .title {
     @mixin headline6;
 
-    margin: scale(0);
-    margin-bottom: scale(40px);
+    margin: scalesize(0);
+    margin-bottom: scalesize(40px);
   }
 
   .list {
-    margin-bottom: scale(72px);
+    margin-bottom: scalesize(72px);
   }
 }

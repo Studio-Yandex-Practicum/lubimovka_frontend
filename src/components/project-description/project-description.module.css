@@ -1,9 +1,9 @@
 .container {
-  padding: scale(79px 511px 120px 360px);
+  padding: scalesize(79px 511px 120px 360px);
   background-color: var(--light-green);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(55px 0 72px);
+    padding: scalesize(55px 0 72px);
   }
 }
 
@@ -11,10 +11,10 @@
   @mixin headline;
   @mixin headline4;
 
-  margin: scale(0 0 17px);
+  margin: scalesize(0 0 17px);
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(0 24px 17px);
+    margin: scalesize(0 24px 17px);
   }
 }
 
@@ -22,11 +22,11 @@
   @mixin text;
   @mixin textLarge;
 
-  max-width: scale(509px);
+  max-width: scalesize(509px);
   margin: 0 0 0 auto;
 
   @media (max-width: $tablet-portrait) {
-    max-width: scale(304px);
-    margin: scale(0 24px 0 auto);
+    max-width: scalesize(304px);
+    margin: scalesize(0 24px 0 auto);
   }
 }

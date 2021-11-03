@@ -1,9 +1,9 @@
 .container {
   display: grid;
   box-sizing: border-box;
-  padding: scale(32px 0 0 30px);
+  padding: scalesize(32px 0 0 30px);
   margin: 0 auto;
-  grid-column-gap: scale(30px);
+  grid-column-gap: scalesize(30px);
   grid-template-areas:
     'button a a a'
     'b title title c'
@@ -12,7 +12,7 @@
   grid-template-columns: min-content 1fr 1fr 2.555fr;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(32px 0 0 24px);
+    padding: scalesize(32px 0 0 24px);
     grid-template-areas:
       'button'
       'img'
@@ -28,7 +28,7 @@
   grid-area: button;
 
   @media (max-width: $tablet-portrait) {
-    left: scale(60px);
+    left: scalesize(60px);
   }
 }
 
@@ -36,15 +36,15 @@
   @mixin headline;
   @mixin headline3;
 
-  max-width: scale(570px);
-  margin-top: scale(18px);
+  max-width: scalesize(570px);
+  margin-top: scalesize(18px);
   grid-area: title;
   word-break: break-word;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    max-width: scale(366px);
+    max-width: scalesize(366px);
   }
 }
 
@@ -52,17 +52,17 @@
   @mixin headline;
   @mixin headline6;
 
-  max-width: scale(480px);
-  margin-top: scale(22px);
-  margin-left: scale(60px);
+  max-width: scalesize(480px);
+  margin-top: scalesize(22px);
+  margin-left: scalesize(60px);
   grid-area: description;
   word-break: break-word;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline7;
 
-    max-width: scale(305px);
-    margin-top: scale(22px);
+    max-width: scalesize(305px);
+    margin-top: scalesize(22px);
   }
 }
 
@@ -75,14 +75,14 @@
   justify-self: center;
 
   @media (max-width: $tablet-portrait) {
-    padding-top: scale(24px);
-    padding-left: scale(60px);
+    padding-top: scalesize(24px);
+    padding-left: scalesize(60px);
     justify-self: start;
   }
 }
 
 .dateNews {
-  padding-left: scale(60px);
+  padding-left: scalesize(60px);
 }
 
 .author {
@@ -91,21 +91,21 @@
   justify-self: center;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(24px 0 75px 60px) !important;
+    margin: scalesize(24px 0 75px 60px) !important;
     justify-self: start;
   }
 }
 
 .img {
   width: 100%;
-  max-height: scale(421px);
-  padding-top: scale(30px);
+  max-height: scalesize(421px);
+  padding-top: scalesize(30px);
   grid-area: img;
   object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
-    max-height: scale(218px);
-    padding-top: scale(40px);
-    padding-left: scale(30px);
+    max-height: scalesize(218px);
+    padding-top: scalesize(40px);
+    padding-left: scalesize(30px);
   }
 }

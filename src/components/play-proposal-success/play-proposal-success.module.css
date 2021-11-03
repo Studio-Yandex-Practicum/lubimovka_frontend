@@ -1,14 +1,14 @@
 .container {
   display: grid;
   box-sizing: border-box;
-  padding-top: scale(123px);
-  gap: scale(51px);
+  padding-top: scalesize(123px);
+  gap: scalesize(51px);
 
   @media (max-width: $tablet-portrait) {
-    padding-top: scale(34px);
-    padding-bottom: scale(100px);
-    padding-left: scale(24px);
-    gap: scale(33px);
+    padding-top: scalesize(34px);
+    padding-bottom: scalesize(100px);
+    padding-left: scalesize(24px);
+    gap: scalesize(33px);
   }
 }
 
@@ -23,11 +23,11 @@
 
   &::after {
     position: absolute;
-    bottom: scale(100px);
-    left: scale(600px);
+    bottom: scalesize(100px);
+    left: scalesize(600px);
     display: block;
-    width: scale(152px);
-    height: scale(152px);
+    width: scalesize(152px);
+    height: scalesize(152px);
     box-sizing: border-box;
     border: 1px solid var(--coal);
     border-top: 0;
@@ -52,10 +52,10 @@
 }
 
 .image {
-  width: scale(930px);
+  width: scalesize(930px);
   height: 100%;
 
   @media (max-width: $tablet-portrait) {
-    width: scale(390px);
+    width: scalesize(390px);
   }
 }

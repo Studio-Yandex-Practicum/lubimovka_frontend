@@ -3,7 +3,7 @@
 
   @media (min-width: $tablet-portrait) {
     display: flex;
-    height: scale(61px);
+    height: scalesize(61px);
     flex-grow: 1;
     place-content: stretch;
   }

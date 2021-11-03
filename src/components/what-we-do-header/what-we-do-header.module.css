@@ -10,35 +10,35 @@
 }
 
 .menu {
-  margin: scale(40px 0 70px 70px);
+  margin: scalesize(40px 0 70px 70px);
 }
 
 .title {
   @mixin headline;
   @mixin headline2;
 
-  max-width: scale(924px);
-  margin-bottom: scale(53px);
-  margin-left: scale(62px);
+  max-width: scalesize(924px);
+  margin-bottom: scalesize(53px);
+  margin-left: scalesize(62px);
 }
 
 .containerText {
   display: flex;
-  max-width: scale(520px);
+  max-width: scalesize(520px);
   flex-direction: column;
   align-self: end;
-  margin: scale(0 110px 15px 85px);
+  margin: scalesize(0 110px 15px 85px);
 }
 
 .desc {
   @mixin headline;
   @mixin textLarge;
 
-  margin-bottom: scale(20px);
-  line-height: scale(1.5rem);
+  margin-bottom: scalesize(20px);
+  line-height: scalesize(1.5rem);
 
   &:last-of-type {
-    margin: scale(0);
+    margin: scalesize(0);
   }
 }
 
@@ -50,8 +50,8 @@
 .img {
   @mixin img;
 
-  width: calc(100% - scale(24px));
-  max-width: scale(720px);
+  width: calc(100% - scalesize(24px));
+  max-width: scalesize(720px);
 }
 
 .containerSpace {
@@ -60,30 +60,30 @@
 
 .containerSpaceUp {
   width: 100%;
-  min-width: scale(24px);
+  min-width: scalesize(24px);
   height: 47%;
   background-color: var(--light-green);
 }
 
 .containerSpaceDown {
   width: 100%;
-  min-width: scale(24px);
+  min-width: scalesize(24px);
   height: 53%;
   background-color: var(--beige);
 }
 
 @media (max-width: $tablet-portrait) {
   .menu {
-    margin: scale(26px 0 32px 24px);
+    margin: scalesize(26px 0 32px 24px);
   }
 
   .title {
     @mixin headline4;
 
-    margin: scale(0 24px 30px 24px);
+    margin: scalesize(0 24px 30px 24px);
   }
 
   .containerText {
-    margin: scale(0 24px 72px 85px);
+    margin: scalesize(0 24px 72px 85px);
   }
 }

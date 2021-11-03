@@ -8,7 +8,7 @@
   display: block;
 
   &:not(:last-child) {
-    margin-right: scale(24px);
+    margin-right: scalesize(24px);
   }
 }
 
@@ -17,8 +17,8 @@
 
   display: flex;
   align-items: flex-start;
-  font-size: scale(16px);
-  line-height: scale(22px);
+  font-size: scalesize(16px);
+  line-height: scalesize(22px);
   text-decoration: none;
   white-space: nowrap;
 
@@ -28,7 +28,7 @@
     width: .6em;
     height: 1.6em;
     box-sizing: border-box;
-    border: scale(1px) solid currentColor;
+    border: scalesize(1px) solid currentColor;
     content: '';
     visibility: hidden;
   }

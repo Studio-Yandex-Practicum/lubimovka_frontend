@@ -6,11 +6,11 @@
   grid-area: partners;
   grid-template-columns: 100%;
   grid-template-rows: repeat(2, max-content);
-  row-gap: scale(69px);
+  row-gap: scalesize(69px);
 
   @media screen and (max-width: $tablet-portrait) {
     justify-items: center;
-    row-gap: scale(72px);
+    row-gap: scalesize(72px);
   }
 }
 
@@ -20,19 +20,19 @@
   align-items: center;
   padding: 0;
   margin: 0;
-  column-gap: scale(30px);
-  grid-auto-rows: minmax(scale(118px), scale(137px));
-  grid-template-columns: repeat(auto-fill, minmax(scale(182px), scale(210px)));
-  grid-template-rows: repeat(2, minmax(scale(118px), scale(137px)));
+  column-gap: scalesize(30px);
+  grid-auto-rows: minmax(scalesize(118px), scalesize(137px));
+  grid-template-columns: repeat(auto-fill, minmax(scalesize(182px), scalesize(210px)));
+  grid-template-rows: repeat(2, minmax(scalesize(118px), scalesize(137px)));
   justify-items: center;
   list-style-type: none;
-  row-gap: scale(15px);
+  row-gap: scalesize(15px);
 
   @media screen and (max-width: $tablet-portrait) {
     column-gap: 0;
-    grid-auto-rows: scale(118px);
-    grid-template-columns: repeat(2, scale(182px));
-    grid-template-rows: repeat(3, scale(118px));
+    grid-auto-rows: scalesize(118px);
+    grid-template-columns: repeat(2, scalesize(182px));
+    grid-template-rows: repeat(3, scalesize(118px));
     row-gap: 0;
   }
 
@@ -43,7 +43,7 @@
     box-sizing: border-box;
     align-items: center;
     justify-content: center;
-    padding: scale(25px 15px);
+    padding: scalesize(25px 15px);
   }
 }
 
@@ -52,7 +52,7 @@
 }
 
 .text {
-  padding: scale(15px 0 0 0);
+  padding: scalesize(15px 0 0 0);
 
   @mixin text;
   @mixin textPartners;
@@ -73,8 +73,8 @@
 
 .imageContainer {
   position: relative;
-  width: scale(182px);
-  height: scale(51px);
+  width: scalesize(182px);
+  height: scalesize(51px);
 
   @media screen and (max-width: $tablet-portrait) {
     width: 158px;

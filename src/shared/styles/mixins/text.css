@@ -13,18 +13,18 @@
 }
 
 @define-mixin textMedium {
-  font-size: scale(18px);
-  line-height: scale(23px);
+  font-size: scalesize(18px);
+  line-height: scalesize(23px);
 }
 
 @define-mixin textSmall {
-  font-size: scale(16px);
-  line-height: scale(22px);
+  font-size: scalesize(16px);
+  line-height: scalesize(22px);
 }
 
 @define-mixin textCaption {
-  font-size: scale(14px);
-  line-height: scale(17px);
+  font-size: scalesize(14px);
+  line-height: scalesize(17px);
 }
 
 @define-mixin textButton {
@@ -32,8 +32,8 @@
 }
 
 @define-mixin textSmallButton {
-  font-size: scale(16px);
-  line-height: scale(14px);
+  font-size: scalesize(16px);
+  line-height: scalesize(14px);
 }
 
 @define-mixin textLargeButton {
@@ -41,11 +41,11 @@
 }
 
 @define-mixin textPartners {
-  font-size: scale(14px);
-  line-height: scale(20px);
+  font-size: scalesize(14px);
+  line-height: scalesize(20px);
 }
 
 @define-mixin textHistorySmall {
-  font-size: scale(16px);
-  line-height: scale(24px);
+  font-size: scalesize(16px);
+  line-height: scalesize(24px);
 }

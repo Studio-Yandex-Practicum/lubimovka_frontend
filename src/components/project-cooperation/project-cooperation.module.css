@@ -5,20 +5,20 @@
 
 .asterisk {
   display: flex;
-  width: scale(25px);
-  height: scale(25px);
+  width: scalesize(25px);
+  height: scalesize(25px);
 }
 
 .header {
   @mixin headline;
   @mixin headline5;
 
-  margin: scale(0 0 0 27px);
+  margin: scalesize(0 0 0 27px);
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    margin: scale(0 0 0 30px);
+    margin: scalesize(0 0 0 30px);
   }
 }
 
@@ -26,17 +26,17 @@
   @mixin headline;
   @mixin headline7;
 
-  margin: scale(33px 0 0 85px);
+  margin: scalesize(33px 0 0 85px);
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(16px 0 0 32px);
+    margin: scalesize(16px 0 0 32px);
   }
 
   &:last-of-type {
-    margin: scale(24px 0 0 85px);
+    margin: scalesize(24px 0 0 85px);
 
     @media (max-width: $tablet-portrait) {
-      margin: scale(24px 0 0 32px);
+      margin: scalesize(24px 0 0 32px);
     }
   }
 }

@@ -1,5 +1,5 @@
 .selection {
-  padding: scale(54px 60px 45px);
+  padding: scalesize(54px 60px 45px);
   background-color: var(--beige);
 }
 
@@ -7,26 +7,26 @@
   @mixin headline;
   @mixin headline3;
 
-  max-width: scale(540px);
-  margin: scale(0 180px 56px) auto;
+  max-width: scalesize(540px);
+  margin: scalesize(0 180px 56px) auto;
 }
 
 .list {
   display: grid;
   justify-content: center;
-  padding: scale(0);
-  margin: scale(0);
-  margin-bottom: scale(68px);
-  column-gap: scale(90px);
+  padding: scalesize(0);
+  margin: scalesize(0);
+  margin-bottom: scalesize(68px);
+  column-gap: scalesize(90px);
   grid-template-columns: repeat(auto-fit, minmax(21.875rem, max-content));
   list-style: none;
-  row-gap: scale(64px);
+  row-gap: scalesize(64px);
 }
 
 .item {
   display: grid;
   align-content: start;
-  row-gap: scale(24px);
+  row-gap: scalesize(24px);
 }
 
 .number {
@@ -38,7 +38,7 @@
   @mixin headline;
   @mixin headline6;
 
-  min-height: scale(96px);
+  min-height: scalesize(96px);
 }
 
 .desc {
@@ -48,13 +48,13 @@
 
 .poster {
   display: grid;
-  max-width: scale(1320px);
+  max-width: scalesize(1320px);
   justify-content: space-evenly;
-  padding: scale(0 24px 64px);
-  margin: scale(0) auto;
+  padding: scalesize(0 24px 64px);
+  margin: scalesize(0) auto;
   background-color: var(--light-green);
-  column-gap: scale(20px);
-  grid-template-columns: repeat(auto-fit, minmax(scale(305px), max-content));
+  column-gap: scalesize(20px);
+  grid-template-columns: repeat(auto-fit, minmax(scalesize(305px), max-content));
 }
 
 .posterTitle {
@@ -62,48 +62,48 @@
   @mixin headline6;
 
   display: flex;
-  max-width: scale(468px);
+  max-width: scalesize(468px);
   flex-direction: column;
-  margin-top: scale(64px);
+  margin-top: scalesize(64px);
 }
 
 .ampersand {
   @mixin headline;
   @mixin headline1;
 
-  margin-bottom: scale(16px);
+  margin-bottom: scalesize(16px);
 }
 
 .posterDesc {
   @mixin text;
   @mixin textSmall;
 
-  max-width: scale(485px);
-  margin-top: scale(220px);
+  max-width: scalesize(485px);
+  margin-top: scalesize(220px);
   margin-left: auto;
 }
 
 @media (max-width: $tablet-portrait) {
   .selection {
-    padding: scale(40px 0 0);
+    padding: scalesize(40px 0 0);
   }
 
   .mainTitle {
     @mixin headline4;
 
-    padding: scale(0 24px);
-    margin: scale(0);
-    margin-bottom: scale(24px);
+    padding: scalesize(0 24px);
+    margin: scalesize(0);
+    margin-bottom: scalesize(24px);
   }
 
   .list {
-    padding: scale(0 24px);
-    margin-bottom: scale(72px);
+    padding: scalesize(0 24px);
+    margin-bottom: scalesize(72px);
     grid-template-columns: none;
   }
 
   .item {
-    row-gap: scale(0);
+    row-gap: scalesize(0);
   }
 
   .number {
@@ -111,28 +111,28 @@
   }
 
   .title {
-    min-height: scale(0);
-    margin-bottom: scale(24px);
+    min-height: scalesize(0);
+    margin-bottom: scalesize(24px);
   }
 
   .desc {
-    max-width: scale(280px);
+    max-width: scalesize(280px);
     align-self: right;
-    margin-right: scale(24px);
-    margin-bottom: scale(24px);
+    margin-right: scalesize(24px);
+    margin-bottom: scalesize(24px);
     margin-left: auto;
 
     &:last-of-type {
-      margin-bottom: scale(0);
+      margin-bottom: scalesize(0);
     }
   }
 
   .poster {
-    padding-bottom: scale(72px);
+    padding-bottom: scalesize(72px);
   }
 
   .posterDesc {
-    max-width: scale(305px);
-    margin-top: scale(24px);
+    max-width: scalesize(305px);
+    margin-top: scalesize(24px);
   }
 }

@@ -6,8 +6,8 @@
   grid-area: title;
 
   &&.primary {
-    max-width: scale(640px);
-    padding-left: scale(17px);
+    max-width: scalesize(640px);
+    padding-left: scalesize(17px);
     margin: auto;
 
     @media (max-width: 992px) {
@@ -22,7 +22,7 @@
   }
 
   &&.secondary {
-    padding: scale(0 81px 66px 477px);
+    padding: scalesize(0 81px 66px 477px);
 
     @media (max-width: $tablet-portrait) {
       padding: 0 85px 142px 24px;
@@ -51,7 +51,7 @@
   &&.secondary {
     @mixin headline1;
 
-    margin: scale(0 0 15px 0);
+    margin: scalesize(0 0 15px 0);
 
     @media (max-width: 1440px) {
       margin-bottom: 15px;
@@ -71,15 +71,15 @@
   display: inline-block;
 
   &&.primary {
-    width: scale(180px);
-    padding-bottom: scale(6px);
+    width: scalesize(180px);
+    padding-bottom: scalesize(6px);
 
     @media (max-width: 1290px) {
-      width: scale(200px);
+      width: scalesize(200px);
     }
 
     @media (max-width: 992px) {
-      width: scale(220px);
+      width: scalesize(220px);
     }
 
     @media (max-width: $tablet-portrait) {
@@ -88,7 +88,7 @@
   }
 
   &&.secondary {
-    width: scale(360px);
+    width: scalesize(360px);
     min-width: 244px;
 
     @media (max-width: $tablet-portrait) {
@@ -119,7 +119,7 @@
   display: inline;
   flex-direction: row;
   align-items: flex-end;
-  margin-bottom: scale(10px);
+  margin-bottom: scalesize(10px);
 
   @media (max-width: $tablet-portrait) {
     margin: 0;
@@ -127,9 +127,9 @@
 }
 
 .text {
-  width: scale(432px);
+  width: scalesize(432px);
   align-self: flex-end;
-  padding-right: scale(43px);
+  padding-right: scalesize(43px);
 
   @mixin text;
   @mixin textLarge;

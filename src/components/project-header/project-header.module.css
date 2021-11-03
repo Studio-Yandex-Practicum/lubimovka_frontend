@@ -1,7 +1,7 @@
 .container {
   display: grid;
   background-color: var(--beige);
-  gap: scale(0 120px);
+  gap: scalesize(0 120px);
   grid-template-areas:
     ". title"
     "intro image";
@@ -14,7 +14,7 @@
       "intro"
       "image";
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, min-content) scale(450px);
+    grid-template-rows: repeat(2, min-content) scalesize(450px);
   }
 }
 
@@ -22,13 +22,13 @@
   @mixin headline;
   @mixin headline1;
 
-  margin: scale(0 30px 63px 0);
+  margin: scalesize(0 30px 63px 0);
   grid-area: title;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    margin: scale(0 24px 22px);
+    margin: scalesize(0 24px 22px);
   }
 }
 
@@ -36,7 +36,7 @@
   @mixin headline;
   @mixin headline6;
 
-  max-width: scale(420px);
+  max-width: scalesize(420px);
   margin: 0 0 0 auto;
   font-weight: 300;
   grid-area: intro;
@@ -44,8 +44,8 @@
   @media (max-width: $tablet-portrait) {
     @mixin headline7;
 
-    max-width: scale(304px);
-    margin: scale(0 24px 36px auto);
+    max-width: scalesize(304px);
+    margin: scalesize(0 24px 36px auto);
   }
 }
 

@@ -1,8 +1,13 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires,no-undef
 const path = require('path');
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires,no-undef
 const breakpoints = require('./src/shared/breakpoints');
-const scale = require('./src/shared/helpers/scale')();
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires,no-undef
+const scaleSize = require('./src/shared/helpers/scaleSize')();
+
+// eslint-disable-next-line no-undef
 module.exports = {
   plugins: [
     'postcss-flexbugs-fixes',
@@ -21,6 +26,7 @@ module.exports = {
     [
       'postcss-mixins',
       {
+        // eslint-disable-next-line no-undef
         mixinsDir: path.join(__dirname, 'src/shared/styles/mixins'),
       }
     ],
@@ -35,7 +41,7 @@ module.exports = {
       'postcss-functions',
       {
         functions: {
-          scale,
+          scaleSize,
         },
       }
     ]

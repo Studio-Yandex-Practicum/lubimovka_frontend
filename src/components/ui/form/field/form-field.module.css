@@ -1,5 +1,5 @@
 .field {
   &:not(:first-child) {
-    margin-top: scale(15px);
+    margin-top: scalesize(15px);
   }
 }

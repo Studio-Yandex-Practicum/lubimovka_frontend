@@ -5,6 +5,6 @@
 }
 
 .image {
-  width: scale(43px);
-  height: scale(35px);
+  width: scalesize(43px);
+  height: scalesize(35px);
 }

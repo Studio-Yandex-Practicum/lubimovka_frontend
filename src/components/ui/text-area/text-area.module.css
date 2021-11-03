@@ -5,7 +5,7 @@
   display: block;
   width: 100%;
   height: auto;
-  padding: scale(8px 0);
+  padding: scalesize(8px 0);
   border: 0;
   border-bottom: 1px solid var(--coal);
   background-color: transparent;
@@ -26,6 +26,6 @@
   @mixin textCaption;
 
   display: inline-block;
-  margin-top: scale(3px);
+  margin-top: scalesize(3px);
   color: var(--red);
 }

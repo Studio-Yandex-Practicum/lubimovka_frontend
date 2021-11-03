@@ -10,12 +10,12 @@
 }
 
 .icon {
-  width: scale(25px);
-  height: scale(25px);
+  width: scalesize(25px);
+  height: scalesize(25px);
   fill: var(--coal);
 }
 
 .text {
-  font-size: scale(14px);
-  line-height: scale(17px);
+  font-size: scalesize(14px);
+  line-height: scalesize(17px);
 }

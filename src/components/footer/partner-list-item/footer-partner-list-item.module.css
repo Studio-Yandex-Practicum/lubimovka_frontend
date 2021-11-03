@@ -7,11 +7,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: scale(0 15px);
+    padding: scalesize(0 15px);
   }
 
   &:not(:last-child) {
-    margin-right: scale(28px);
+    margin-right: scalesize(28px);
 
     @media (max-width: $tablet-portrait) {
       margin-right: 0;
@@ -21,8 +21,8 @@
 
 .logoCanvas {
   position: relative;
-  width: scale(100px);
-  height: scale(40px);
+  width: scalesize(100px);
+  height: scalesize(40px);
 }
 
 .logo {

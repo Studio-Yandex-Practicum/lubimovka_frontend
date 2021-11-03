@@ -15,7 +15,7 @@
   }
 
   @media (min-width: $desktop) {
-    min-height: scale(300px);
+    min-height: scalesize(300px);
   }
 }
 
@@ -31,7 +31,7 @@
   }
 
   @media (min-width: $desktop) {
-    height: scale(56px);
+    height: scalesize(56px);
   }
 }
 
@@ -57,7 +57,7 @@
   }
 
   @media (min-width: $desktop) {
-    margin: scale(16px 46px auto 16px);
+    margin: scalesize(16px 46px auto 16px);
   }
 }
 
@@ -72,7 +72,7 @@
   }
 
   @media (min-width: $desktop) {
-    margin: scale(16px 0 auto);
+    margin: scalesize(16px 0 auto);
   }
 }
 
@@ -82,7 +82,7 @@
   margin: 0;
 
   @media (min-width: $desktop) {
-    max-width: scale(190px);
+    max-width: scalesize(190px);
   }
 }
 
@@ -109,7 +109,7 @@
   }
 
   @media (min-width: $desktop) {
-    margin-top: scale(4px);
+    margin-top: scalesize(4px);
   }
 }
 

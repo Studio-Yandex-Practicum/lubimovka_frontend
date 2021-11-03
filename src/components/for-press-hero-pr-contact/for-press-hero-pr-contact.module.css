@@ -9,7 +9,7 @@
   }
 
   @media (min-width: $desktop) {
-    max-width: scale(387px);
+    max-width: scalesize(387px);
   }
 }
 
@@ -24,9 +24,9 @@
   }
 
   @media (min-width: $desktop) {
-    width: scale(150px);
-    height: scale(182px);
-    margin: scale(25px auto 32px 31px);
+    width: scalesize(150px);
+    height: scalesize(182px);
+    margin: scalesize(25px auto 32px 31px);
   }
 }
 
@@ -44,8 +44,8 @@
   }
 
   @media (min-width: $desktop) {
-    max-width: scale(479px);
-    margin-bottom: scale(8px);
+    max-width: scalesize(479px);
+    margin-bottom: scalesize(8px);
   }
 }
 
@@ -56,7 +56,7 @@
   max-width: 269px;
 
   @media (min-width: $desktop) {
-    max-width: scale(269px);
+    max-width: scalesize(269px);
   }
 }
 

@@ -3,11 +3,11 @@
   @mixin textCaption;
 
   display: grid;
-  padding: scale(42px 32px 56px);
+  padding: scalesize(42px 32px 56px);
   grid-template:
     "logo partners partners   partners"
     "logo address  navigation projects"
-    "logo footnote footnote   footnote" 1fr / min-content 1fr scale(360px) scale(244px);
+    "logo footnote footnote   footnote" 1fr / min-content 1fr scalesize(360px) scalesize(244px);
 
   @media (max-width: $tablet-portrait) {
     @mixin textMedium;
@@ -24,37 +24,37 @@
 }
 
 .logo {
-  width: scale(93px);
-  height: scale(80px);
-  margin-right: scale(82px);
+  width: scalesize(93px);
+  height: scalesize(80px);
+  margin-right: scalesize(82px);
   grid-area: logo;
 
   @media (max-width: $tablet-portrait) {
     margin-right: 0;
-    margin-left: scale(58px);
+    margin-left: scalesize(58px);
   }
 }
 
 .footnote {
   display: flex;
-  margin-top: scale(49px);
+  margin-top: scalesize(49px);
   grid-area: footnote;
 
   @media (max-width: $tablet-portrait) {
     @mixin textCaption;
 
     flex-direction: column;
-    padding: scale(32px 28px 74px);
+    padding: scalesize(32px 28px 74px);
     border-top: 1px solid black;
-    margin-top: scale(70px);
+    margin-top: scalesize(70px);
   }
 }
 
 .copyright {
-  margin: scale(0 32px 0 0);
+  margin: scalesize(0 32px 0 0);
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(0 0 10px 0);
+    margin: scalesize(0 0 10px 0);
   }
 }
 
@@ -69,13 +69,13 @@
 
 .credits {
   display: flex;
-  width: scale(424px);
+  width: scalesize(424px);
   margin: 0 0 0 auto;
 
   @media (max-width: $tablet-portrait) {
-    width: scale(254px);
+    width: scalesize(254px);
     flex-direction: column;
-    margin: scale(59px 0 0 0);
+    margin: scalesize(59px 0 0 0);
   }
 
   dt {
@@ -92,21 +92,21 @@
 
 .shishki {
   display: grid;
-  margin-right: scale(38px);
+  margin-right: scalesize(38px);
   grid-template:
     "logo text"
     "logo text" 1fr / min-content 1fr;
 
   @media (max-width: $tablet-portrait) {
     margin-right: 0;
-    margin-bottom: scale(16px);
+    margin-bottom: scalesize(16px);
   }
 
   &::before {
     display: block;
-    width: scale(27px);
-    height: scale(25px);
-    margin-right: scale(4px);
+    width: scalesize(27px);
+    height: scalesize(25px);
+    margin-right: scalesize(4px);
     background-image: url('./footer.assets/shishki.svg');
     background-repeat: no-repeat;
     background-size: contain;
@@ -114,8 +114,8 @@
     grid-area: logo;
 
     @media (max-width: $tablet-portrait) {
-      margin-top: scale(6px);
-      margin-right: scale(9px);
+      margin-top: scalesize(6px);
+      margin-right: scalesize(9px);
     }
   }
 }
