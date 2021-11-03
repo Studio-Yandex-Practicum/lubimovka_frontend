@@ -18,10 +18,6 @@
   list-style: none;
 }
 
-.card {
-  max-width: 180px;
-}
-
 .slidesContainer {
   padding-top: scale(23px);
 }

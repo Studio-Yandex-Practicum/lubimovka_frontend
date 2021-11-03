@@ -84,7 +84,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
         Number(screenWidth) > 728 &&
         <ul className={styles.container}>
           {cards.map((card) => (
-            <li key={card.id} className={styles.card}>
+            <li key={card.id}>
               <PersonCard
                 participant={false}
                 link={card.person.image}
