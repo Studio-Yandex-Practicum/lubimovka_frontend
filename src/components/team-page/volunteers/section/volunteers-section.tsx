@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 
-import styles from './team-volunteers-section.module.css';
+import styles from './volunteers-section.module.css';
 import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
 import VolunteersList from 'components/team-volunteers-list';
@@ -27,13 +27,12 @@ interface PersonCardData {
   review: string;
 }
 
-interface TeamVolunteersSectionProps {
-  className?: string;
+interface VolunteersSectionProps {
   cards: Array<PersonCardData>;
 }
 
-const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = (props) => {
-  const { className, cards } = props;
+const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
+  const { cards } = props;
 
   const [currentYear, setCurrentYear] = useState(2020);
   const [selectedCards, setSelectedCards] = useState<Array<PersonCardData>>([]);
@@ -86,4 +85,4 @@ const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = (props) => {
   );
 };
 
-export default TeamVolunteersSection;
+export default VolunteersSection;

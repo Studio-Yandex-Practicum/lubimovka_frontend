@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import ArtDirectorateList from 'components/team-art-directorate-list';
-import styles from './team-art-directorate-section.module.css';
+import styles from './art-directorate-section.module.css';
 
 interface PersonCardData {
   id: number,
@@ -28,7 +28,7 @@ const ArtDirectorateSection: FC<ArtDirectorateSectionProps> = (props) => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Арт-дирекция фестиваля</h2>
+        <h2 className={styles.title}></h2>
         <ArtDirectorateList cards={cards}/>
       </div>
     </section>

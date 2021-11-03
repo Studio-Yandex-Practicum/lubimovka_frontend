@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 
-import { PersonCard } from '../ui/person-card';
+import PersonCard from '../ui/person-card/person-card';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 
@@ -11,7 +11,8 @@ interface TrusteePersonData {
   id: number,
   name: string,
   link: string,
-  about: string
+  about: string,
+  participant: boolean
 }
 
 interface TrusteesPersonsProps {
@@ -22,15 +23,12 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
 
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     spacing: 30,
     slidesPerView: 3,
     breakpoints: {
-      '(max-width: 767px)': {
-        slidesPerView: 3,
-        mode: 'free-snap',
-      },
-      '(max-width: 750px)': {
+
+      '(max-width: 728px)': {
         slidesPerView: 2.5,
         mode: 'free-snap',
       },
@@ -53,15 +51,19 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
     setScreenWidth(document.documentElement.clientWidth);
   }, []);
 
+  useEffect(() => {
+    slider?.refresh();
+  }, [screenWidth]);
+
   return (
     <>
       {
-        screenWidth < 768 &&
+        Number(screenWidth) < 729 &&
         <div ref={sliderRef} className="keen-slider">
           {trustees.map((trustee) => (
             <div key={trustee.id} className="keen-slider__slide">
               <PersonCard
-                participant={true}
+                participant={trustee.participant}
                 link={trustee.link}
                 about={trustee.about}
                 name={trustee.name}
@@ -73,12 +75,12 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
       }
 
       {
-        screenWidth > 767 &&
+        Number(screenWidth) > 728 &&
         <ul className={style.trusteesList}>
           {trustees.map((trustee) => (
             <li key={trustee.id} className={style.trusteesListItem}>
               <PersonCard
-                participant={true}
+                participant={trustee.participant}
                 link={trustee.link}
                 about={trustee.about}
                 name={trustee.name}

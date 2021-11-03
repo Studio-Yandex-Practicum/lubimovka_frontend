@@ -1,0 +1,28 @@
+.container * {
+  box-sizing: border-box;
+}
+
+.container img {
+  max-width: 100%;
+}
+
+.container {
+  display: grid;
+  max-width: 1440px;
+  box-sizing: border-box;
+  padding: 54px 14% 0;
+  margin: 0;
+  gap: 48px 30px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  list-style: none;
+}
+
+.card {
+  max-width: 180px;
+}
+
+.slidesContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 23px 27px 0;
+}

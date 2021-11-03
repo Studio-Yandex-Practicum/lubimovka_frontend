@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import TrusteesPersons from 'components/trustees-persons-list';
-import styles from './team-team-section.module.css';
+import styles from './festival-team-section.module.css';
 
 interface PersonCardData {
   id: number,
@@ -11,11 +11,11 @@ interface PersonCardData {
   participant: boolean
 }
 
-interface TeamSectionProps {
+interface FestivalTeamSectionProps {
   cards: Array<PersonCardData>
 }
 
-const TeamSection: FC<TeamSectionProps> = (props) => {
+const FestivalTeamSection: FC<FestivalTeamSectionProps> = (props) => {
   const { cards } = props;
 
   return (
@@ -28,4 +28,4 @@ const TeamSection: FC<TeamSectionProps> = (props) => {
   );
 };
 
-export default TeamSection;
+export default FestivalTeamSection;

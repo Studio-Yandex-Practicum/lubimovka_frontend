@@ -1,0 +1,84 @@
+.section * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.section {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: var(--light-green);
+  color: var(--coal);
+}
+
+.container {
+  display: flex;
+  max-width: 1440px;
+  flex-direction: column;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.title {
+  padding: 125px 176px 0 50%;
+  margin: 0;
+
+  @mixin headline;
+  @mixin headline2;
+
+  @media (max-width: 769px) {
+    padding: 125px 176px 0 6%;
+  }
+}
+
+.yearsContainer {
+  padding-top: 46.5px;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 36.5px 23px 0;
+    margin: 0 auto;
+  }
+}
+
+.cardContainer {
+  display: grid;
+  max-width: 1440px;
+  box-sizing: border-box;
+  padding: 54px 210px 0;
+  margin: 0 auto;
+  gap: 48px 30px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 180px));
+}
+
+.infoBlock {
+  position: relative;
+  padding-bottom: 259px;
+  margin: 69px 0 0 213px;
+
+  @media (max-width: 769px) {
+    padding-bottom: 250px;
+    margin: 69px 22px 0 6.5vw;
+  }
+}
+
+.asterisk {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+
+.info {
+  @mixin text;
+  @mixin textLarge;
+
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  max-width: 426px;
+  margin: 0;
+}
+
+.indent {
+  margin: 0 5px;
+}

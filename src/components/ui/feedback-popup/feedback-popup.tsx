@@ -41,6 +41,7 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
+    spacing: 15,
     slideChanged(s) {
       setCurrentSlide(s.details().relativeSlide);
     },

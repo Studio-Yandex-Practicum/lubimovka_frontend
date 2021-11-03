@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
-import styles from './team-art-directorate-list.module.css';
+import styles from './art-directorate-list.module.css';
 
-import PersonCard from '../ui/person-card/person-card';
+import PersonCard from '../../../ui/person-card/person-card';
 
 interface PersonCardData {
   id: number,
@@ -31,7 +31,6 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
     spacing: 30,
     slidesPerView: 3,
     breakpoints: {
-
       '(max-width: 728px)': {
         slidesPerView: 2.5,
         mode: 'free-snap',
@@ -65,6 +64,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
         Number(screenWidth) < 729 &&
         <div ref={sliderRef} className="keen-slider">
           {cards.map((card) => (
+            card.team === 'art' &&
             <div key={card.id} className="keen-slider__slide">
               <PersonCard
                 participant={true}
@@ -82,6 +82,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
         Number(screenWidth) > 728 &&
         <ul className={styles.trusteesList}>
           {cards.map((card) => (
+            card.team === 'art' &&
             <li key={card.id} className={styles.trusteesListItem}>
               <PersonCard
                 participant={true}
