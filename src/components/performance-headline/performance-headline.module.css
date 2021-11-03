@@ -3,10 +3,11 @@
   padding-left: scale(60px);
   grid-template:
     "title       image"
-    "description image"
+    "description image" 1fr
     "dateTime    image"
-    "action      image"
-    ".           text" 1fr / 1fr scale(720px);
+    "actions     image"
+    ".           text" / 1fr scale(720px);
+  grid-column-gap: scale(90px);
 }
 
 .title {
@@ -15,6 +16,14 @@
 
   width: scale(540px);
   margin: scale(62px) auto 0;
+}
+
+.description {
+  @mixin headline;
+  @mixin headline7;
+
+  padding-left: scale(60px);
+  margin-top: scale(36px);
 }
 
 .image {
@@ -30,4 +39,12 @@
   padding-right: scale(130px);
   margin: scale(48px) 0 0;
   grid-area: text;
+}
+
+.actions {
+  grid-area: actions;
+}
+
+.action {
+  min-width: scale(240px);
 }

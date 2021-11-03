@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 
 import { Url } from 'shared/types';
+import { Button } from 'components/ui/button';
 
 import styles from './performance-headline.module.css';
 
@@ -28,6 +29,20 @@ export const PerformanceHeadline: FC<IPerformanceHeadlineProps> = (props) => {
       <h1 className={cx('title')}>
         {title}
       </h1>
+      <p className={cx('description')}>
+        {description}
+      </p>
+      <div className={cx('actions')}>
+        <Button
+          className={cx('action')}
+          view="primary"
+          label="Билеты"
+          border="full"
+          size="l"
+          icon="arrow-right"
+          iconPlace="right"
+        />
+      </div>
       <div className={cx('image')}>
         <Image
           src={image}
