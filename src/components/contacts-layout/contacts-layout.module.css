@@ -9,7 +9,7 @@
 
   @media (max-width: $tablet-portrait) {
     padding-right: scale(24px);
-    padding-bottom: scale(100px);
+    padding-bottom: scale(150px);
     padding-left: scale(24px);
     grid-template-areas:
       'image'
