@@ -8,50 +8,36 @@
 
 .container {
   display: flex;
-  max-width: 420px;
+  max-width: scale(420px);
   flex-direction: row;
 
   @media (max-width: $tablet-portrait) {
-    max-width: 364px;
-    padding: 32px 14px 32px 24px;
-  }
-
-  @media (min-width: $desktop) {
-    max-width: scale(420px);
+    max-width: scale(364px);
+    padding: scale(32px 14px 32px 24px);
   }
 }
 
 .cover {
-  width: 120px;
-  height: 161px;
-  padding-right: 31px;
+  width: scale(120px);
+  height: scale(161px);
+  padding-right: scale(31px);
   object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
-    width: 92px;
-    height: 123px;
-    padding-right: 29px;
-  }
-
-  @media (min-width: $desktop) {
-    width: scale(120px);
-    height: scale(161px);
-    padding-right: scale(31px);
+    width: scale(92px);
+    height: scale(123px);
+    padding-right: scale(29px);
   }
 }
 
 .info {
   display: flex;
-  width: 269px;
+  width: scale(269px);
   flex-direction: column;
   justify-content: space-evenly;
 
   @media (max-width: $tablet-portrait) {
-    width: 243px;
-  }
-
-  @media (min-width: $desktop) {
-    width: scale(269px);
+    width: scale(243px);
   }
 }
 
@@ -66,14 +52,10 @@
 .date {
   padding: 0;
   margin: 0;
-  margin-right: 44px;
+  margin-right: scale(44px);
 
   @media (max-width: $tablet-portrait) {
-    margin-right: 46px;
-  }
-
-  @media (min-width: $desktop) {
-    margin-right: scale(44px);
+    margin-right: scale(46px);
   }
 }
 
@@ -87,26 +69,17 @@
   @mixin headline5;
 
   display: block;
-  width: 419px;
-  margin-top: 4px;
+  width: scale(419px);
+  margin-top: scale(4px);
 
   @media (max-width: $tablet-portrait) {
-    width: 243px;
-    margin-top: 16px;
-  }
-
-  @media (min-width: $desktop) {
-    width: scale(419px);
-    margin-top: scale(4px);
+    width: scale(243px);
+    margin-top: scale(16px);
   }
 }
 
 .titleNoCover {
-  margin-top: 16px;
-
-  @media (min-width: $desktop) {
-    margin-top: scale(16px);
-  }
+  margin-top: scale(16px);
 }
 
 .credits {
@@ -114,18 +87,13 @@
   @mixin textSmall;
 
   display: flex;
-  width: 240px;
+  width: scale(240px);
   flex-direction: column;
-  margin: 16px 0 0 30px;
+  margin: scale(16px 0 0 30px);
 
   @media (max-width: $tablet-portrait) {
-    width: 243px;
+    width: scale(243px);
     margin-left: 0;
-  }
-
-  @media (min-width: $desktop) {
-    width: scale(240px);
-    margin: scale(16px 0 0 30px);
   }
 }
 
@@ -139,16 +107,11 @@
   @mixin text;
   @mixin textSmall;
 
-  width: 359px;
-  margin: 16px 0 0 30px;
+  width: scale(359px);
+  margin: scale(16px 0 0 30px);
 
   @media (max-width: $tablet-portrait) {
     margin-left: 0;
-  }
-
-  @media (min-width: $desktop) {
-    width: scale(359px);
-    margin: scale(16px 0 0 30px);
   }
 }
 
@@ -156,36 +119,24 @@
   @mixin text;
   @mixin textCaption;
 
-  width: 150px;
-  padding-top: 20px;
+  width: scale(150px);
+  padding-top: scale(20px);
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
-    padding-top: 8px;
-  }
-
-  @media (min-width: $desktop) {
-    width: scale(150px);
-    padding-top: scale(20px);
+    padding-top: scale(8px);
   }
 }
 
 .button {
-  width: 154px;
-  margin-bottom: 16px;
-  font-size: 16px;
-  line-height: 14px;
+  width: scale(154px);
+  margin-bottom: scale(16px);
+  font-size: scale(16px);
+  line-height: scale(14px);
 
   @media (max-width: $tablet-portrait) {
-    margin-right: 26px;
+    margin-right: scale(26px);
     margin-bottom: 0;
-  }
-
-  @media (min-width: $desktop) {
-    width: scale(154px);
-    margin-bottom: scale(16px);
-    font-size: scale(16px);
-    line-height: scale(14px);
   }
 }
 
@@ -194,23 +145,19 @@
 }
 
 .buttonContainer {
-  margin-top: 16px;
+  margin-top: scale(16px);
 
   @media (max-width: $tablet-portrait) {
     display: flex;
-    width: 380px;
+    width: scale(380px);
     flex-direction: row;
-  }
-
-  @media (min-width: $desktop) {
-    margin-top: scale(16px);
   }
 }
 
 .buttonContainerCoverExists {
   @media (max-width: $tablet-portrait) {
-    margin-top: 48px;
-    margin-left: -123px;
+    margin-top: scale(48px);
+    margin-left: scale(-123px);
   }
 }
 
