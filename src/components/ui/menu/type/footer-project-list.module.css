@@ -8,6 +8,10 @@
 
   &:not(:first-child) {
     margin-top: scale(15px);
+
+    @media (max-width: $tablet-portrait) {
+      margin-top: scale(13px);
+    }
   }
 }
 
