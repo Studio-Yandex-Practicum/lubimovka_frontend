@@ -136,7 +136,7 @@
   }
 }
 
-.button {
+.through-block .button { /* Пришлось повысить специфичность, иначе применялись другие стили */
   width: scale(298px);
   height: scale(56px);
   align-self: center;
