@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 
-import styles from './team-volunteers-section.module.css';
+import styles from './volunteers-section.module.css';
 import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
 import VolunteersList from 'components/team-volunteers-list';
