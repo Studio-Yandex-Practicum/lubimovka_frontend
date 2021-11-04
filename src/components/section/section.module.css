@@ -17,15 +17,15 @@
 
 .plays {
   .title {
-    max-width: 450px;
-    margin-bottom: 48px;
+    max-width: scale(450px);
+    margin-bottom: scale(48px);
   }
 }
 
 .persons {
   .title {
-    max-width: 450px;
-    margin-bottom: 58px;
+    max-width: scale(450px);
+    margin-bottom: scale(58px);
   }
 }
 
