@@ -17,8 +17,8 @@
   display: grid;
   width: 100%;
   justify-content: center;
-  padding: scale(0);
-  margin: scale(0);
+  padding: 0;
+  margin: 0;
   margin-bottom: scale(150px);
   column-gap: scale(62px);
   grid-template-columns: repeat(auto-fill, minmax(15rem, max-content));
@@ -41,7 +41,7 @@
   .title {
     @mixin headline6;
 
-    margin: scale(0);
+    margin: 0;
     margin-bottom: scale(40px);
   }
 

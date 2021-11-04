@@ -23,7 +23,7 @@
 
 .asterisk {
   display: block;
-  margin: scale(0);
+  margin: 0;
   margin-bottom: scale(14px);
 }
 
