@@ -29,23 +29,25 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
 
   return (
     <li
-      className={cx('card')}
+      className={cx('listItem')}
     >
       <Link href={link}>
-        <div className={cx('imgContainer')}>
-          <img className={cx('image')} src={imgUrl} alt={imgAlt} />
-        </div>
-        <div>
-          <h6 className={cx('title')}>
-            {title}
-            <Icon className={cx('titleArrow')} glyph="arrow-right" fill='#000' focusable="false" />
-          </h6>
-          <p
-            className={cx('text')}
-          >
-            {text}
-          </p>
-        </div>
+        <a className={cx('card')}>
+          <div className={cx('imgContainer')}>
+            <img className={cx('image')} src={imgUrl} alt={imgAlt} />
+          </div>
+          <div>
+            <h6 className={cx('title')}>
+              {title}
+              <Icon className={cx('titleArrow')} glyph="arrow-right" fill='#000' focusable="false" />
+            </h6>
+            <p
+              className={cx('text')}
+            >
+              {text}
+            </p>
+          </div>
+        </a>
       </Link>
     </li>
   );

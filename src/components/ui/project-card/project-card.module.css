@@ -1,7 +1,12 @@
+.listItem {
+  list-style: none;
+}
+
 .card {
   display: flex;
   width: 366px;
   flex-flow: column nowrap;
+  text-decoration: none;
 
   @media (min-width: $tablet-portrait) {
     width: 748px;
