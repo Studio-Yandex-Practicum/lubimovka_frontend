@@ -46,20 +46,71 @@
     ],
     "coverResourceUrl": "https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg"
   },
-  "basicPlayCard": {
-    "play": {
-      "title": "Конкретные разговоры пожилых супругов ни о чём",
-      "city": "Санкт-Петербург",
-      "year": "2020",
-      "linkView": "https://lubimovka.ru/",
-      "linkDownload": "https://lubimovka.ru/"
+  "cardsArr": [
+    {
+      "date": "15 декабря",
+      "time": "11:00",
+      "title": "МАМА",
+      "playwrightArray": ["Ольга Казакова", "Антон Чехов"],
+      "directorArray": ["Катя Ганюшина"],
+      "buttonLinks": [
+        "https://lubimovka.timepad.ru/event/1746579/",
+        "https://lubimovka.timepad.ru/event/1746502/"
+      ],
+      "coverResourceUrl": "https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg"
     },
-    "author": {
-      "id": 1,
-      "name": "Екатерина Августеняк"
+    {
+      "date": "15 декабря",
+      "time": "11:00",
+      "title": "МАМА",
+      "playwrightArray": ["Ольга Казакова", "Антон Чехов"],
+      "directorArray": ["Катя Ганюшина"],
+      "buttonLinks": [
+        "https://lubimovka.timepad.ru/event/1746579/",
+        "https://lubimovka.timepad.ru/event/1746502/"
+      ],
+      "coverResourceUrl": "https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg"
     },
-    "buttonVisibility": false
-  },
+    {
+      "date": "15 декабря",
+      "time": "11:00",
+      "title": "МАМА",
+      "playwrightArray": ["Ольга Казакова", "Антон Чехов"],
+      "directorArray": ["Катя Ганюшина"],
+      "buttonLinks": [
+        "https://lubimovka.timepad.ru/event/1746579/",
+        "https://lubimovka.timepad.ru/event/1746502/"
+      ],
+      "coverResourceUrl": "https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg"
+    },
+    {
+    "date": "15 декабря",
+    "time": "11:00",
+    "title": "МАМА",
+    "playwrightArray": ["Ольга Казакова", "Антон Чехов"],
+    "directorArray": ["Катя Ганюшина"],
+    "buttonLinks": [
+      "https://lubimovka.timepad.ru/event/1746579/",
+      "https://lubimovka.timepad.ru/event/1746502/"
+    ],
+    "coverResourceUrl": "https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg"
+  }
+  ],
+  "basicPlayCard":
+    {
+      "play": {
+        "title": "Конкретные разговоры пожилых супругов ни о чём",
+        "city": "Санкт-Петербург",
+        "year": "2020",
+        "linkView": "https://lubimovka.ru/",
+        "linkDownload": "https://lubimovka.ru/"
+      },
+      "author": {
+        "id": 1,
+        "name": "Екатерина Августеняк"
+      },
+      "buttonVisibility": false
+    },
   "personCard": {
     "name": "Тереза Шимчак",
     "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",

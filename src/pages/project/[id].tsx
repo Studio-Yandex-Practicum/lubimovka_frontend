@@ -22,9 +22,8 @@ import { Button } from 'components/ui/button';
 
 
 const Project: NextPage = () => {
-  const cardsNum5 = [1, 2, 3, 4, 5, 6, 9];
   const cardsNum3 = [1, 2, 3];
-  const cardsNum2 = [1, 2];
+  const cardsNum2 = [1, 2,3,4];
 
   return (
     <AppLayout>
@@ -32,7 +31,7 @@ const Project: NextPage = () => {
         <title>{projectData.titledata.title}</title>
       </Head>
       <ProjectPage>
-        <Button
+        {/* <Button
           size="s"
           iconPlace="right"
           icon="arrow-left"
@@ -40,7 +39,7 @@ const Project: NextPage = () => {
           border="bottomRight"
           width='120px'
 
-        ></Button>
+        ></Button> */}
         <ProjectHeader
           title={projectData.titledata.title}
           intro={projectData.titledata.intro}
@@ -65,7 +64,7 @@ const Project: NextPage = () => {
           title="Заголовок блока c тремя и более спектаклями"
         >
           <AnnouncedPlayCardList>
-            {cardsNum3.map((i, index) => (
+            {cardsNum3.map((card, index) => (
               <div key={index}>
                 <AnnouncedPlayCard
                   date={projectData.cards.date}
@@ -118,7 +117,7 @@ const Project: NextPage = () => {
         </ProjecPageSection>
         <ProjecPageSection type="plays" title="Заголовок блока с пьесами">
           <BasicPlayCardList>
-            {cardsNum5.map((i, index) => (
+            {cardsNum2.map((i, index) => (
               <BasicPlayCard
                 key={index}
                 play={projectData.basicPlayCard.play}
