@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import styles from './team-volunteers-list.module.css';
 import classNames from 'classnames';
