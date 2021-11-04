@@ -53,15 +53,7 @@ const Project: NextPage = () => {
         <ProjecPageSection type="video" title="Заголовок блока с видео">
           <VideoGallery>
             <VideoGalleryItem>
-              <iframe
-                width="716"
-                height="403"
-                src="https://www.youtube.com/embed/NkvP2jR8xlw"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+
             </VideoGalleryItem>
           </VideoGallery>
         </ProjecPageSection>
