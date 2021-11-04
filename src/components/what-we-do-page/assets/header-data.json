@@ -13,19 +13,19 @@
     "submenu": [
       {
         "text": "Что мы делаем",
-        "href": "#"
+        "href": "/what-we-do"
       },
       {
         "text": "Организаторы",
-        "href": "#"
+        "href": "/team"
       },
       {
         "text": "Попечители",
-        "href": "#"
+        "href": "/trustees"
       },
       {
         "text": "Идеология",
-        "href": "#"
+        "href": "/ideology"
       }
     ]
   }

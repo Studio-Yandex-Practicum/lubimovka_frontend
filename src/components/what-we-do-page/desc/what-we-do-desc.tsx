@@ -38,9 +38,9 @@ export const WhatWeDoDesc: FC<IWeDoAboutProps> = ({ data }): JSX.Element => {
           </p>
         </div>
         <img 
-          src={ data.blockTwo.image && data.blockTwo.image.url }
+          src={ data.blockOne.image && data.blockOne.image.url }
           className={ cn(styles.imgReception) }
-          alt={ data.blockTwo.image && data.blockTwo.image.alt }
+          alt={ data.blockOne.image && data.blockOne.image.alt }
         />
       </div>
 
