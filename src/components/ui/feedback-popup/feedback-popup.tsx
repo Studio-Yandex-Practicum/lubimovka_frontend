@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames/bind';
 
@@ -28,12 +28,13 @@ export type PersonCardData = {
 }
 
 interface IFeedbackPopupProps {
-  className?: string;
+  onClose: React.MouseEventHandler<HTMLButtonElement>,
+  isOpen?: boolean;
   cards: Array<PersonCardData>;
 }
 
 export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
-  const { className, cards } = props;
+  const { isOpen, cards, onClose } = props;
 
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
@@ -52,7 +53,7 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
   }, []);
 
   return (
-    <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
+    <div ref={sliderRef} className={cx('keen-slider', 'slider', {[styles.isOpen]: isOpen})}>
       {cards.map((card, idx) => (
         <div
           key={idx}
@@ -67,10 +68,12 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 onClick={slider.prev}
               />
               {Number(screenWidth) < 729 &&
-              <Icon
-                className={cx('cross')}
-                glyph={'cross'}
-              />}
+              <button className={cx('buttonClose')} onClick={onClose}>
+                <Icon
+                  className={cx('cross')}
+                  glyph={'cross'}
+                />
+              </button>}
               <img
                 className={cx('image')}
                 src={card.person.image}

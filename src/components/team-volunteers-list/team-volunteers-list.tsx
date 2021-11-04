@@ -4,6 +4,7 @@ import styles from './team-volunteers-list.module.css';
 import classNames from 'classnames';
 
 import PersonCard from '../ui/person-card/person-card';
+import { FeedbackPopup } from 'components/ui/feedback-popup';
 
 const cx = classNames.bind(styles);
 
@@ -53,6 +54,22 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
     },
   });
 
+  const [isFeedbackPopupOpen, setIsFeedbackPopupOpen] = useState(false);
+
+  function handleFeedbackPopupClick() {
+    setIsFeedbackPopupOpen(true);
+  }
+
+  function closeFeedbackPopup() {
+    setIsFeedbackPopupOpen(false);
+  }
+
+  const handleEscClose = (evt: KeyboardEvent) => {
+    if (evt.key === 'Escape') {
+      closeFeedbackPopup();
+    }
+  };
+
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
   }, []);
@@ -60,6 +77,13 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
   useEffect(() => {
     slider?.refresh();
   }, [screenWidth]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleEscClose);
+    return() =>{
+      document.removeEventListener('keydown', handleEscClose);
+    };
+  }, []);
 
   return (
     <>
@@ -73,6 +97,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
                 link={card.person.image}
                 response={card.review}
                 name={`${card.person.first_name} ${card.person.second_name}`}
+                handleClick={() => handleFeedbackPopupClick()}
               >
               </PersonCard>
             </div>
@@ -90,12 +115,15 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
                 link={card.person.image}
                 response={card.review}
                 name={`${card.person.first_name} ${card.person.second_name}`}
+                handleClick={() => handleFeedbackPopupClick()}
               >
               </PersonCard>
             </li>
           ))}
         </ul>
       }
+
+      <FeedbackPopup cards={cards} isOpen={isFeedbackPopupOpen} onClose={closeFeedbackPopup}/>
     </>
   );
 };

@@ -39,10 +39,10 @@
 
 .yearsContainer {
   padding-top: scale(46.5px);
+  margin: 0;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(36.5px) scale(23px) 0;
-    margin: 0 auto;
+    padding: scale(36.5px) 0 0 scale(23px);
   }
 }
 

@@ -35,7 +35,7 @@ interface TeamVolunteersSectionProps {
 const TeamVolunteersSection: FC<TeamVolunteersSectionProps> = (props) => {
   const { className, cards } = props;
 
-  const [currentYear, setCurrentYear] = useState(2020);
+  const [currentYear, setCurrentYear] = useState(2021);
   const [selectedCards, setSelectedCards] = useState<Array<PersonCardData>>([]);
 
   const years = Array.from(new Set(cards.map(card => {
