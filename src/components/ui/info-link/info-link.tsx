@@ -34,6 +34,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
     textDecoration = 'textDecorationNone',
     border = 'borderNone',
     className,
+    iconClassName,
     ...restLinkProps
   } = props;
 
@@ -49,9 +50,9 @@ export const InfoLink: FC<ILinkProps> = (props) => {
 
   const linkChildren = (
     <React.Fragment>
-      {iconPlace === 'left' && icon && <Icon className={styles.iconClassName} glyph={icon}/>}
+      {iconPlace === 'left' && icon && <Icon className={cx(iconClassName)} glyph={icon}/>}
       {<span className={cx('label', [iconPlace])}>{label}</span>}
-      {iconPlace === 'right' && icon && <Icon className={styles.iconClassName} glyph={icon}/>}
+      {iconPlace === 'right' && icon && <Icon className={cx(iconClassName)} glyph={icon}/>}
     </React.Fragment>
   );
 
