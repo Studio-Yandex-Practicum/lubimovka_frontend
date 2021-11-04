@@ -27,10 +27,36 @@ Default.args = {
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
   },
-  author: {
+  authors: [{
     id: 1,
     name: 'Екатерина Августеняк',
+  }],
+  buttonVisibility: false,
+};
+
+export const PlayCardWithMultipleAuthors = Template.bind({});
+PlayCardWithMultipleAuthors.args = {
+  play: {
+    title: 'Конкретные разговоры пожилых супругов ни о чём',
+    city: 'Санкт-Петербург',
+    year: '2020',
+    linkView: 'https://lubimovka.ru/',
+    linkDownload: 'https://lubimovka.ru/',
   },
+  authors: [
+    {
+      id: 1,
+      name: 'Екатерина Августеняк',
+    },
+    {
+      id: 2,
+      name: 'Антон Чехов',
+    },
+    {
+      id: 3,
+      name: 'Василий Косотрясов',
+    },
+  ],
   buttonVisibility: false,
 };
 
@@ -43,9 +69,9 @@ PlayCardWithVisibleButtons.args = {
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
   },
-  author: {
+  authors: [{
     id: 1,
     name: 'Екатерина Августеняк',
-  },
+  }],
   buttonVisibility: true,
 };
