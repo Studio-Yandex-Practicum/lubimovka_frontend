@@ -6,20 +6,19 @@
   max-width: 100%;
 }
 
-.flex {
-  display: flex;
-  max-width: 1440px;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.grid {
+  display: grid;
   padding: 0;
   margin: 0;
   gap: scale(48px) scale(60px);
+  grid-template-columns: repeat(4, scale(210px));
   list-style: none;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, scale(210px));
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .fiveElements:nth-child(5n+3) {

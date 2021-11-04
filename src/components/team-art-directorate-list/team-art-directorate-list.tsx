@@ -28,9 +28,6 @@ interface ArtDirectorateCardsProps {
 
 
 const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
-  const selectedCards = cards.filter(card => card.team === 'art');
-  console.log(selectedCards.length);
-
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
@@ -55,6 +52,8 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
       },
     },
   });
+
+  const selectedCards = cards.filter(card => card.team === 'art');
 
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
@@ -86,8 +85,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
 
       {
         Number(screenWidth) > 728 &&
-        //необходимо прописать условие в другом формате, потому что в таком виде не работает
-        <ul className={cx('flex', {[styles.grid]: selectedCards.length !== (6 || 5)})}>
+        <ul className={cx('grid', {[styles.flex]: selectedCards.length === 5}, {[styles.flex]: selectedCards.length === 6})}>
           {cards.map((card) => (
             card.team === 'art' &&
             <li key={card.id} className={cx({[styles.fiveElements]: selectedCards.length === 5}, {[styles.sixElements]: selectedCards.length === 6})}>

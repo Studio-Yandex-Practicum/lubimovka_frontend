@@ -15,7 +15,7 @@
   display: flex;
   max-width: 100%;
   flex-direction: column;
-  padding: 0 scale(240px) scale(130px) scale(180px);
+  padding: 0 scale(225px) scale(130px) scale(180px);
   margin: 0 auto;
 
   @media (max-width: $tablet-portrait) {
@@ -27,7 +27,7 @@
   @mixin headline;
   @mixin headline2;
 
-  padding: scale(90px) 0 scale(80px) 50%;
+  padding: scale(90px) 0 scale(80px) 53%;
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
