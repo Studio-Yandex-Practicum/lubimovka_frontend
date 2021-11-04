@@ -4,7 +4,7 @@ import cn from 'classnames';
 import styles from './volunteers-section.module.css';
 import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
-import VolunteersList from 'components/team-volunteers-list';
+import VolunteersList from 'components/team-page/volunteers/list';
 import { InfoLink } from 'components/ui/info-link';
 import classNames from 'classnames/bind';
 
