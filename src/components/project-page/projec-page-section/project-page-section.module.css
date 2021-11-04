@@ -76,3 +76,18 @@
     }
   }
 }
+
+.cooperation {
+  display: flex;
+  width: scale(520px);
+  flex-direction: column;
+  align-self: self-end;
+  margin-top: scale(74px);
+  margin-right: scale(222px);
+  margin-bottom: scale(169px);
+
+  @media (max-width: 728px) {
+    width: scale(340px);
+    margin: scale(50px 25px 100px 25px);
+  }
+}
