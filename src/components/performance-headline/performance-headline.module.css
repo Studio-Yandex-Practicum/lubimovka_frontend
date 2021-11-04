@@ -1,13 +1,13 @@
 .headline {
   display: grid;
   padding-left: scale(60px);
+  grid-column-gap: scale(90px);
   grid-template:
     "title       image"
     "description image" 1fr
     "dateTime    image"
     "actions     image"
     ".           text" / 1fr scale(720px);
-  grid-column-gap: scale(90px);
 }
 
 .title {

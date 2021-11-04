@@ -1,0 +1,38 @@
+.section * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.section {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: var(--beige);
+  color: var(--coal);
+}
+
+.container {
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+  padding: 0 scale(225px) scale(130px) scale(180px);
+  margin: 0 auto;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0 0 scale(116px) scale(27px);
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline2;
+
+  padding: scale(90px) 0 scale(80px) 53%;
+  margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    padding: scale(56px) 0 scale(32px);
+  }
+}
