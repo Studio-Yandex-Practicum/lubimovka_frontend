@@ -5,8 +5,8 @@ import styles from './project-page-section.module.css';
 const cx = classNames.bind(styles);
 
 interface IProjecPageSectionProps extends HTMLAttributes<HTMLElement> {
-  type: 'video' | 'photo' | 'performances' | 'plays' | 'person';
-  title: string;
+  type?: 'video' | 'photo' | 'performances' | 'plays' | 'person' | 'cooperation';
+  title?: string;
   children: ReactNode;
 }
 
@@ -20,7 +20,7 @@ export const ProjecPageSection = (props: IProjecPageSectionProps): JSX.Element =
 
   return (
     <section className={cx('section', type)} {...restProps}>
-      <h2 className={cx('title')}>{title}</h2>
+      {title && <h2 className={cx('title')}>{title}</h2>}
       {children}
     </section>
   );

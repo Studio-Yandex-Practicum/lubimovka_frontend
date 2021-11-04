@@ -18,12 +18,12 @@ import { VideoGalleryItem } from 'components/video-gallery/video-gallery-item';
 import { AnnouncedPlayCardList } from 'components/ui/announced-play-card/announced-play-card-list';
 import { BasicPlayCardList } from 'components/ui/basic-play-card/list';
 import { ProjectCooperation } from 'components/project-cooperation';
-import { Button } from 'components/ui/button';
+/* import { Button } from 'components/ui/button'; */
 
 
 const Project: NextPage = () => {
   const cardsNum3 = [1, 2, 3];
-  const cardsNum2 = [1, 2,3,4];
+  const cardsNum2 = [1, 2];
 
   return (
     <AppLayout>
@@ -140,9 +140,9 @@ const Project: NextPage = () => {
             ))}
           </PersonCardList>
         </ProjecPageSection>
-        <div>
+        <ProjecPageSection type='cooperation'>
           <ProjectCooperation email={projectData.email}></ProjectCooperation>
-        </div>
+        </ProjecPageSection>
       </ProjectPage>
     </AppLayout>
   );
