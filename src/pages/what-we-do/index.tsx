@@ -17,7 +17,7 @@ import AuthorsData from 'components/what-we-do-page/assets/authors-data.json';
 import SelectionData from 'components/what-we-do-page/assets/selection-data.json';
 import SelectionContacts from 'components/what-we-do-page/assets/contacts-data.json';
 
-const Page: NextPage = () => (
+const Page: NextPage = ():JSX.Element => (
   <AppLayout>
     <Head>
       <title>{'what-we-do'}</title>
