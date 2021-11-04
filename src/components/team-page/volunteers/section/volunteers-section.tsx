@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import cn from 'classnames';
 
 import styles from './volunteers-section.module.css';
@@ -33,26 +33,19 @@ interface VolunteersSectionProps {
 const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
   const { cards } = props;
 
-  const [currentYear, setCurrentYear] = useState(2021);
-  const [selectedCards, setSelectedCards] = useState<Array<PersonCardData>>([]);
+  const years = useMemo(() => {
+    return Array.from(new Set(cards.map(card => card.year))).sort().reverse();
+  }, [cards]);
 
-  const years = Array.from(new Set(cards.map(card => {
-    return card.year;
-  }))).sort().reverse();
+  const [currentYear, setCurrentYear] = useState(years[0]);
 
-  const filterCards = () => {
-    const filtredCards = cards.filter(card => card.year === currentYear);
-
-    setSelectedCards(filtredCards);
-  };
-
-  useEffect(() => {
-    filterCards();
+  const selectedCards = useMemo(()=> {
+    return cards.filter(card => card.year === currentYear);
   }, [currentYear]);
 
-  const changeYearHandler = (year: number) => {
+  const changeYearHandler = useCallback((year:number)=> {
     setCurrentYear(year);
-  };
+  }, []);
 
   return (
     <section className={styles.section}>
