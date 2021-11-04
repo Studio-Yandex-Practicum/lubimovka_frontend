@@ -117,5 +117,9 @@
     "about": "Драматург, сценарист, преподаватель",
     "participant": true
   },
-  "email": "more@lubimmovka.ru"
+  "email": "more@lubimmovka.ru",
+  "projectDescription": {
+    "title":"Заголовок блока с кнопкой/ссылкой",
+    "description": "Видео прошедших мероприятий можно посмотреть в плейлисте на канале Любимовки в YouTube"
+  }
 }

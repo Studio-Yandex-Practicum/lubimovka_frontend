@@ -140,6 +140,8 @@ const Project: NextPage = () => {
             ))}
           </PersonCardList>
         </ProjecPageSection>
+        <ProjecPageSection type='through-block' title='Заголовок блока с кнопкой/ссылкой' description='Видео прошедших мероприятий можно посмотреть в плейлисте на канале Любимовки в YouTube'>
+        </ProjecPageSection>
         <ProjecPageSection type='cooperation'>
           <ProjectCooperation email={projectData.email}></ProjectCooperation>
         </ProjecPageSection>

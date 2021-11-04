@@ -91,3 +91,36 @@
     margin: scale(50px 25px 100px 25px);
   }
 }
+
+.through-block {
+  padding: scale(100px 270px 141px 360px);
+  margin-top: scale(112px);
+  background-color: var(--light-green);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(55px 25px 72px);
+    margin-top: scale(100px);
+  }
+
+  .title {
+    margin: 0;
+
+    @media (max-width: $tablet-portrait) {
+      max-width: scale(303px);
+    }
+  }
+}
+
+.desc {
+  @mixin text;
+  @mixin textLarge;
+
+  max-width: scale(509px);
+  margin-top: scale(20px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(304px);
+    margin-top: scale(16px);
+    margin-left: scale(60px);
+  }
+}
