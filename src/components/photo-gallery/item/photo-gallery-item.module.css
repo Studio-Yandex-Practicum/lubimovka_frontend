@@ -1,0 +1,10 @@
+.item {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    display: block;
+    padding-top: 70%;
+    content: "";
+  }
+}

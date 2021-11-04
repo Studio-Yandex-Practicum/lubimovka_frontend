@@ -1,0 +1,21 @@
+.layout {
+  display: grid;
+  box-sizing: border-box;
+  padding-bottom: scale(180px);
+  grid-template-areas:
+    'form image'
+    'form authors';
+  grid-template-columns: 1fr 50vw;
+
+  @media (max-width: $tablet-portrait) {
+    padding-right: scale(24px);
+    padding-bottom: scale(150px);
+    padding-left: scale(24px);
+    grid-template-areas:
+      'image'
+      'form'
+      'form'
+      'authors';
+    grid-template-columns: 100%;
+  }
+}

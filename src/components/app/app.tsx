@@ -14,11 +14,11 @@ interface IAppInitialProps {
 }
 
 export const App = ({ Component, pageProps }: AppProps<IAppInitialProps>): JSX.Element => {
-  const { contextValue } = pageProps;
+  const { contextValue, ...restPageProps } = pageProps;
 
   return (
     <AppSettingsProvider value={contextValue}>
-      <Component/>
+      <Component {...restPageProps}/>
     </AppSettingsProvider>
   );
 };
