@@ -21,7 +21,6 @@ import { ProjectCooperation } from 'components/project-cooperation';
 /* import { PhotoGalleryItem } from 'components/photo-gallery/item'; */
 
 const Project: NextPage = () => {
-
   return (
     <AppLayout>
       <Head>
@@ -57,7 +56,7 @@ const Project: NextPage = () => {
           title="Заголовок блока с двумя спектаклями"
         >
           <AnnouncedPlayCardList>
-            {projectData.cardsArr.slice(0,2).map((card, index) => (
+            {projectData.cardsArr.slice(0, 2).map((card, index) => (
               <AnnouncedPlayCard
                 key={index}
                 date={card.date}
@@ -100,7 +99,8 @@ const Project: NextPage = () => {
           type="through-block"
           title={projectData.projectDescription.title}
           description={projectData.projectDescription.description}
-        >{}</ProjecPageSection>
+          button={true}
+        />
         <ProjecPageSection type="cooperation">
           <ProjectCooperation email={projectData.email}></ProjectCooperation>
         </ProjecPageSection>
