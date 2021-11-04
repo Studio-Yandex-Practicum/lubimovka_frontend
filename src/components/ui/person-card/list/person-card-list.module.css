@@ -1,11 +1,11 @@
 .grid {
   @mixin hideScrollbar;
 
-  --card-width: 210px;
-  --column-gap: 30px;
-  --row-gap: 36px;
+  --card-width: scale(210px);
+  --column-gap: scale(30px);
+  --row-gap: scale(36px);
   --columns-count: 4;
-  --padding: 60px;
+  --padding: scale(60px);
 
   display: grid;
   max-width: calc((var(--card-width) * var(--columns-count)) + (var(--column-gap) * (var(--columns-count) - 1)) + (var(--padding) * 2));
@@ -14,14 +14,14 @@
   padding: 0 var(--padding);
   margin: 0 auto;
   column-gap: var(--column-gap);
-  grid-template-columns: repeat(auto-fit, 210px);
+  grid-template-columns: repeat(auto-fit, scale(210px));
   row-gap: var(--row-gap);
   scroll-behavior: smooth;
 
   @media (max-width: $tablet-portrait) {
-    --card-width: 213px;
+    --card-width: scale(213px);
     --row-gap: 0;
-    --padding: 24px;
+    --padding: scale(24px);
 
     overflow: auto;
     justify-content: start;
@@ -42,11 +42,11 @@
 }
 
 .expanded {
-  --column-gap: 60px;
-  --row-gap: 72px;
+  --column-gap: scale(60px);
+  --row-gap: scale(72px);
 
   @media (max-width: $tablet-portrait) {
-    --column-gap: 30px;
+    --column-gap: scale(30px);
     --row-gap: 0;
   }
 }

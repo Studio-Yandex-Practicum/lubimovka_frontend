@@ -8,7 +8,36 @@
     "view": "primary"
   },
   "events": true,
-  "aside": false,
+  "aside": {
+    "title": "Дневник фестиваля",
+    "buttonText": "Все записи",
+    "buttonLink": "/blog",
+    "view": "blog",
+    "blogData": [
+      {
+        "image": "/images/blog/blog-image.jpg",
+        "author": "Лара Бессмертная",
+        "heading": "«Человек является источником жеста, смысла, правды»",
+        "description": "МК «Документальность в современном театре и современном искусстве»",
+        "link": "https://lubimovka.ru/blog/888-int-emeleva"
+      },
+      {
+        "image": "/images/blog/blog-image.jpg",
+        "author": "Лара Бессмертная",
+        "heading": "«Человек является источником жеста, смысла, правды»",
+        "description": "МК «Документальность в современном театре и современном искусстве»",
+        "link": "https://lubimovka.ru/blog/888-int-emeleva"
+      },
+      {
+        "image": "/images/blog/blog-image.jpg",
+        "author": "Лара Бессмертная",
+        "heading": "«Человек является источником жеста, смысла, правды»",
+        "description": "МК «Документальность в современном театре и современном искусстве»",
+        "link": "https://lubimovka.ru/blog/888-int-emeleva"
+      }
+    ]
+
+  },
   "banners": true,
   "platforms": true,
   "archive": true,
