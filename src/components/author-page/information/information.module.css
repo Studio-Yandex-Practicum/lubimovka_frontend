@@ -38,25 +38,10 @@
   }
 }
 
-.anchor {
-  display: flex;
-  width: 100%;
-  max-width: calc(var(--scale) * 751);
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  border-top: 1px solid var(--coal);
-  text-decoration: none;
-}
-
 .anchorHeading {
   @mixin text;
   @mixin textLarge;
 
-  margin: calc(var(--scale) * 4) calc(var(--scale) * 6) calc(var(--scale) * 24);
+  margin: calc(var(--scale) * 4) calc(var(--scale) * 6) calc(var(--scale) * 15);
   font-feature-settings: 'ss01' on;
-}
-
-.anchorButton {
-  margin: calc(var(--scale) * 10) 0 0;
 }
