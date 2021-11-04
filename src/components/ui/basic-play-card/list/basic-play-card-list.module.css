@@ -1,20 +1,20 @@
 .basicPlayCardList {
   @mixin hideScrollbar;
 
-  --padding: 24px;
+  --padding: scale(24px);
 
   display: grid;
   box-sizing: border-box;
   justify-content: center;
   padding: 0 var(--padding);
-  gap: 36px 30px;
-  grid-template-columns: repeat(auto-fit, 240px);
+  gap: scale(36px 30px);
+  grid-template-columns: repeat(auto-fit, scale(240px));
   scroll-behavior: smooth;
 
   @media (max-width: $tablet-portrait) {
     overflow: auto;
     justify-content: start;
-    grid-auto-columns: 244px;
+    grid-auto-columns: scale(244px);
     grid-auto-flow: column;
     row-gap: 0;
     scroll-padding-left: var(--padding);
