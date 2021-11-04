@@ -13,7 +13,7 @@
 
 .container {
   display: flex;
-  max-width: 1440px;
+  max-width: 100%;
   flex-direction: column;
   padding: 0 scale(30px) scale(273px);
   margin: 0 auto;
