@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import classNames from 'classnames/bind';
-import styles from './play-proposal-success.module.css';
+import styles from './play-proposal-success-layout.module.css';
 
 const cx = classNames.bind(styles);
 
-export const PlayProposalSuccess: FC = () => {
+export const PlayProposalSuccessLayout: FC = () => {
   return (
     <section className={cx('container')}>
       <h1 className={cx('title')}>
@@ -12,7 +12,7 @@ export const PlayProposalSuccess: FC = () => {
         новостями в наших соцсетях!
       </h1>
       <img
-        src="/images/play-proposal-success/PlayProposalSuccessImage.jpg"
+        src="/images/form-success/PlayProposalSuccessImage.jpg"
         alt="Успешная отправка"
         className={cx('image')}
       />
