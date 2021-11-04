@@ -70,3 +70,7 @@ History.args = {
   type: 'history',
 };
 
+export const Submenu = Template.bind({});
+Submenu.args = {
+  type: 'general-submenu',
+};
