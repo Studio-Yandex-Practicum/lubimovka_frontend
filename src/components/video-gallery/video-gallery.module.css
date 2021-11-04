@@ -4,3 +4,7 @@
   padding: 0;
   margin: 0;
 }
+
+.video_items {
+  padding: scale(0 32px);
+}
