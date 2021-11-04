@@ -13,24 +13,26 @@
 
 .container {
   display: flex;
-  max-width: 1440px;
+  max-width: 100%;
   flex-direction: column;
-  padding: 0 240px 273px 180px;
+  padding: 0 scale(225px) scale(130px) scale(180px);
   margin: 0 auto;
 
-  @media (max-width: 769px) {
-    padding: 0 27px 166px;
+  @media (max-width: $tablet-portrait) {
+    padding: 0 0 scale(116px) scale(27px);
   }
 }
 
 .title {
-  padding: 90px 176px 80px 50%;
-  margin: 0;
-
   @mixin headline;
   @mixin headline2;
 
-  @media (max-width: 769px) {
-    padding: 56px 176px 32px 6%;
+  padding: scale(90px) 0 scale(80px) 53%;
+  margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    padding: scale(56px) 0 scale(32px);
   }
 }

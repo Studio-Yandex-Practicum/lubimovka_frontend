@@ -28,7 +28,7 @@ const ArtDirectorateSection: FC<ArtDirectorateSectionProps> = (props) => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}></h2>
+        <h2 className={styles.title}>Арт-дирекция фестиваля</h2>
         <ArtDirectorateList cards={cards}/>
       </div>
     </section>

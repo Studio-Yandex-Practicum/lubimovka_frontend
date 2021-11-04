@@ -13,51 +13,47 @@
 
 .container {
   display: flex;
-  max-width: 1440px;
+  max-width: 100%;
   flex-direction: column;
   padding: 0;
   margin: 0 auto;
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: scale(27px);
+  }
 }
 
 .title {
-  padding: 125px 176px 0 50%;
-  margin: 0;
-
   @mixin headline;
   @mixin headline2;
 
-  @media (max-width: 769px) {
-    padding: 125px 176px 0 6%;
+  padding: scale(125px) 0 0 50%;
+  margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    padding: scale(56px) 0 0;
   }
 }
 
 .yearsContainer {
-  padding-top: 46.5px;
+  padding-top: scale(46.5px);
+  margin: 0;
 
   @media (max-width: $tablet-portrait) {
-    padding: 36.5px 23px 0;
-    margin: 0 auto;
+    padding: scale(36.5px) 0 0 scale(23px);
   }
-}
-
-.cardContainer {
-  display: grid;
-  max-width: 1440px;
-  box-sizing: border-box;
-  padding: 54px 210px 0;
-  margin: 0 auto;
-  gap: 48px 30px;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 180px));
 }
 
 .infoBlock {
   position: relative;
-  padding-bottom: 259px;
-  margin: 69px 0 0 213px;
+  padding-bottom: scale(259px);
+  margin: scale(69px) 0 0 scale(213px);
 
-  @media (max-width: 769px) {
-    padding-bottom: 250px;
-    margin: 69px 22px 0 6.5vw;
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: scale(250px);
+    margin: scale(69px) scale(22px) 0 0;
   }
 }
 
@@ -73,12 +69,12 @@
   @mixin textLarge;
 
   position: absolute;
-  top: 25px;
-  left: 25px;
-  max-width: 426px;
+  top: scale(25px);
+  left: scale(25px);
+  max-width: scale(426px);
   margin: 0;
 }
 
 .indent {
-  margin: 0 5px;
+  margin: 0 scale(5px);
 }

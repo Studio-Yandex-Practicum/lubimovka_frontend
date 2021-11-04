@@ -3,9 +3,12 @@ import { useKeenSlider } from 'keen-slider/react';
 import styles from './art-directorate-list.module.css';
 
 import PersonCard from '../../../ui/person-card/person-card';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 interface PersonCardData {
-  id: number,
+  id: number;
   person: {
     id: number;
     first_name: string;
@@ -15,8 +18,8 @@ interface PersonCardData {
     email: string;
     image: string;
   };
-  team: string,
-  position: string
+  team: string;
+  position: string;
 }
 
 interface ArtDirectorateCardsProps {
@@ -50,6 +53,8 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
     },
   });
 
+  const selectedCards = cards.filter(card => card.team === 'art');
+
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
   }, []);
@@ -80,10 +85,10 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
 
       {
         Number(screenWidth) > 728 &&
-        <ul className={styles.trusteesList}>
+        <ul className={cx('grid', {[styles.flex]: selectedCards.length === 5}, {[styles.flex]: selectedCards.length === 6})}>
           {cards.map((card) => (
             card.team === 'art' &&
-            <li key={card.id} className={styles.trusteesListItem}>
+            <li key={card.id} className={cx({[styles.fiveElements]: selectedCards.length === 5}, {[styles.sixElements]: selectedCards.length === 6})}>
               <PersonCard
                 participant={true}
                 link={card.person.image}

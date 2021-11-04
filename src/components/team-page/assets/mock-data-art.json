@@ -1,69 +1,156 @@
-{
-  "id": 1,
-  "title": "Арт-дирекция фестиваля",
-  "content": [
-    {
+[
+  {
+    "id": 7,
+    "person": {
+      "id": 7,
+      "first_name": "Тереза",
+      "second_name": "Шимчак",
+      "middle_name": "Олеговна",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg"
+    },
+    "team": "art",
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 8,
+    "person": {
+      "id": 8,
+      "first_name": "Чеслав",
+      "second_name": "Качмарек",
+      "middle_name": "Качмарек",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg"
+    },
+    "team": "art",
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 9,
+    "person": {
+      "id": 9,
+      "first_name": "Сабина",
+      "second_name": "Соха",
+      "middle_name": "Соха",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg"
+    },
+    "team": "art",
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 10,
+    "person": {
+      "id": 10,
+      "first_name": "Тереза",
+      "second_name": "Шимчак",
+      "middle_name": "Олеговна",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg"
+    },
+    "team": "art",
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 11,
+    "person": {
+      "id": 11,
+      "first_name": "Чеслав",
+      "second_name": "Качмарек",
+      "middle_name": "Качмарек",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg"
+    },
+    "team": "art",
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 12,
+    "person": {
+      "id": 12,
+      "first_name": "Сабина",
+      "second_name": "Соха",
+      "middle_name": "Соха",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg"
+    },
+    "team": "art",
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 13,
+    "person": {
+      "id": 13,
+      "first_name": "Сабина",
+      "second_name": "Соха",
+      "middle_name": "Соха",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg"
+    },
+    "team": "fest",
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 14,
+    "person": {
+      "id": 14,
+      "first_name": "Тереза",
+      "second_name": "Шимчак",
+      "middle_name": "Олеговна",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg"
+    },
+    "team": "fest",
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 15,
+    "person": {
       "id": 15,
-      "name": "Тереза Шимчак",
-      "link": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg",
-      "about": "Драматург, сценарист, преподаватель",
-      "team": "Арт-дирекция фестиваля"
+      "first_name": "Чеслав",
+      "second_name": "Качмарек",
+      "middle_name": "Качмарек",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg"
     },
-    {
+    "team": "fest",
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 16,
+    "person": {
       "id": 16,
-      "name": "Тереза Шимчак",
-      "link": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg",
-      "about": "Драматург, сценарист, преподаватель",
-      "team": "Арт-дирекция фестиваля"
+      "first_name": "Сабина",
+      "second_name": "Соха",
+      "middle_name": "Соха",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg"
     },
-    {
+    "team": "fest",
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 17,
+    "person": {
       "id": 17,
-      "name": "Тереза Шимчак",
-      "link": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg",
-      "about": "Драматург, сценарист, преподаватель",
-      "team": "Арт-дирекция фестиваля"
+      "first_name": "Сабина",
+      "second_name": "Соха",
+      "middle_name": "Соха",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg"
     },
-    {
-      "id": 18,
-      "name": "Тереза Шимчак",
-      "link": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg",
-      "about": "Драматург, сценарист, преподаватель",
-      "team": "Арт-дирекция фестиваля"
-    },
-    {
-      "id": 19,
-      "name": "Чеслав Качмарек Качмарек",
-      "link": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg",
-      "about": "Драматург, сценарист, преподаватель",
-      "team": "Арт-дирекция фестиваля"
-    },
-    {
-      "id": 20,
-      "name": "Тереза Шимчак",
-      "link": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg",
-      "about": "Драматург, сценарист, преподаватель",
-      "team": "Арт-дирекция фестиваля"
-    },
-    {
-      "id": 21,
-      "name": "Тереза Шимчак",
-      "link": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg",
-      "about": "Драматург, сценарист, преподаватель",
-      "team": "Арт-дирекция фестиваля"
-    },
-    {
-      "id": 22,
-      "name": "Чеслав Качмарек Качмарек",
-      "link": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg",
-      "about": "Драматург, сценарист, преподаватель",
-      "team": "Арт-дирекция фестиваля"
-    },
-    {
-      "id": 23,
-      "name": "Тереза Шимчак",
-      "link": "https://i.pinimg.com/736x/5b/43/87/5b4387ed7f09f2ac8b3d357473e6be03--role-models.jpg",
-      "about": "Драматург, сценарист, преподаватель",
-      "team": "Арт-дирекция фестиваля"
-    }
-  ]
-}
+    "team": "fest",
+    "position": "Драматург, сценарист, преподаватель"
+  }
+]

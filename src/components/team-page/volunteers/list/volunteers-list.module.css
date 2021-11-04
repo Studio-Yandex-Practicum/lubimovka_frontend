@@ -8,21 +8,16 @@
 
 .container {
   display: grid;
-  max-width: 1440px;
+  max-width: 100%;
   box-sizing: border-box;
-  padding: 54px 14% 0;
+  justify-content: space-between;
+  padding: scale(50px) scale(210px) 0;
   margin: 0;
-  gap: 48px 30px;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: scale(48px) scale(30px);
+  grid-template-columns: repeat(5, scale(180px));
   list-style: none;
 }
 
-.card {
-  max-width: 180px;
-}
-
 .slidesContainer {
-  display: flex;
-  flex-wrap: nowrap;
-  padding: 23px 27px 0;
+  padding-top: scale(23px);
 }

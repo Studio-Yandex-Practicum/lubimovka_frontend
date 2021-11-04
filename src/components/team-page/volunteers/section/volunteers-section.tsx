@@ -1,13 +1,12 @@
 import React, { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 
-import styles from './volunteers-section.module.css';
+import styles from './team-volunteers-section.module.css';
 import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
 import VolunteersList from 'components/team-volunteers-list';
 import { InfoLink } from 'components/ui/info-link';
 import classNames from 'classnames/bind';
-import { FeedbackPopup } from 'components/ui/feedback-popup';
 
 const cx = classNames.bind(styles);
 
@@ -34,7 +33,7 @@ interface VolunteersSectionProps {
 const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
   const { cards } = props;
 
-  const [currentYear, setCurrentYear] = useState(2020);
+  const [currentYear, setCurrentYear] = useState(2021);
   const [selectedCards, setSelectedCards] = useState<Array<PersonCardData>>([]);
 
   const years = Array.from(new Set(cards.map(card => {
