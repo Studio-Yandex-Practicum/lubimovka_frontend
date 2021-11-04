@@ -1,6 +1,7 @@
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import { fetcher } from 'shared/fetcher';
+import React from 'react';
 
 import AppLayout from 'components/app-layout';
 import { ProjectPage } from 'components/project-page';
@@ -22,27 +23,26 @@ import { Url } from 'shared/types';
 
 type ProjectResponse = {
   titledata: {
-    title: string,
-    intro: string,
-    image: Url,
-    imageDesc: string,
-    description: string
-  },
+    title: string;
+    intro: string;
+    image: Url;
+    imageDesc: string;
+    description: string;
+  };
   images: {
-    image: Url,
-  }[],
-  videoDescription: string,
+    image: Url;
+  }[];
   cardsArr: {
     date: string;
     time: string;
     title: string;
-    playwrightArray: string [];
-    directorArray: string [];
-    eventDescription?:string;
-    buttonLinks: string [];
+    playwrightArray: string[];
+    directorArray: string[];
+    eventDescription?: string;
+    buttonLinks: string[];
     coverResourceUrl?: string;
     className?: string;
-  }[],
+  }[];
   basicPlayCard: {
     play: {
       title: string;
@@ -52,28 +52,46 @@ type ProjectResponse = {
       linkDownload: Url;
     };
     author: {
-      id: number,
+      id: number;
       name: string;
     };
     buttonVisibility?: boolean;
-  }[],
+  }[];
   personCard: {
-    participant: boolean,
-    name: string,
-    link: string,
-    about?: string,
-    response?: string,
-    handleClick?: React.MouseEventHandler<HTMLButtonElement>,
-  }[],
-  email: string,
+    participant: boolean;
+    name: string;
+    link: string;
+    about?: string;
+    response?: string;
+    handleClick?: React.MouseEventHandler<HTMLButtonElement>;
+  }[];
+  email: string;
   projectDescription: {
-    title: string,
-    description: string
-  }
-}
+    title: string;
+    description: string;
+  };
+  video: {
+    image: Url;
+    videoDescription: string;
+  }[];
+};
 
-const Project = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element | null => {
+const Project = ({
+  data,
+}: InferGetServerSidePropsType<
+  typeof getServerSideProps
+>): JSX.Element | null => {
   if (!data) return null;
+
+  const [videoArray, setVideoArray] = React.useState<
+    Array<{
+      image: Url;
+      videoDescription: string;
+    }>
+  >([]);
+  React.useEffect(() => {
+    setVideoArray(data.video);
+  }, []);
 
   return (
     <AppLayout>
@@ -87,12 +105,19 @@ const Project = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps
           image={data.titledata.image}
           imageDesc={data.titledata.imageDesc}
         />
-        <ProjectDescription>
-          {data.titledata.description}
-        </ProjectDescription>
+        <ProjectDescription>{data.titledata.description}</ProjectDescription>
         <ProjecPageSection type="video" title="Заголовок блока с видео">
-          <VideoGallery>
-            <VideoGalleryItem>{}</VideoGalleryItem>
+          <VideoGallery videoArr={videoArray.length > 1 ? true : false}>
+            {videoArray.map((item, index) => (
+              <VideoGalleryItem
+                key={index}
+                url={item.image}
+                description={item.videoDescription}
+                videoArr={videoArray.length > 1 ? true : false}
+              >
+                {}
+              </VideoGalleryItem>
+            ))}
           </VideoGallery>
         </ProjecPageSection>
         <ProjecPageSection type="photo" title="Заголовок блока с фотографиями">
@@ -163,8 +188,10 @@ const Project = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps
   );
 };
 
-export const getServerSideProps = async ({ params }: GetServerSidePropsContext) => {
-  if (!params) return { props: {}};
+export const getServerSideProps = async ({
+  params,
+}: GetServerSidePropsContext) => {
+  if (!params) return { props: {} };
 
   const { id } = params;
   const data = await fetcher<ProjectResponse>(`/project/${id}`);

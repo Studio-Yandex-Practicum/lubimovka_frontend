@@ -1,3 +1,38 @@
 .video-gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   list-style: none;
+}
+
+.video_items {
+  margin-right: scale(59px);
+
+  &&:last-of-type {
+    margin: 0;
+  }
+}
+
+.video {
+  width: scale(716px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(420px);
+  }
+}
+
+.video_items .video {
+  width: scale(420px);
+}
+
+.description {
+  @mixin text;
+  @mixin textLarge;
+
+  width: scale(716px);
+  margin-top: scale(55px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(366px);
+  }
 }
