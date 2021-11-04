@@ -19,6 +19,7 @@ export interface ILinkProps {
   textDecoration?: 'textDecorationNone' | 'underline';
   border?: 'borderNone' | 'borderBottomLeft' | 'borderTop';
   className?: string;
+  iconClassName?: string;
 }
 
 export const InfoLink: FC<ILinkProps> = (props) => {
@@ -48,9 +49,9 @@ export const InfoLink: FC<ILinkProps> = (props) => {
 
   const linkChildren = (
     <React.Fragment>
-      {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
+      {iconPlace === 'left' && icon && <Icon className={styles.iconClassName} glyph={icon}/>}
       {<span className={cx('label', [iconPlace])}>{label}</span>}
-      {iconPlace === 'right' && icon && <Icon glyph={icon}/>}
+      {iconPlace === 'right' && icon && <Icon className={styles.iconClassName} glyph={icon}/>}
     </React.Fragment>
   );
 
