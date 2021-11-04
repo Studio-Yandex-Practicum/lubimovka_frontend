@@ -1,0 +1,4 @@
+.aside {
+  padding-left: scale(184px);
+  grid-area: aside;
+}
