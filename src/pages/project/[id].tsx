@@ -6,7 +6,7 @@ import { ProjectPage } from 'components/project-page';
 import { ProjecPageSection } from 'components/project-page/projec-page-section';
 import { ProjectHeader } from 'components/project-header';
 import { ProjectDescription } from 'components/project-description';
-import { Photos } from 'components/photos';
+/* import { PhotoGallery } from 'components/photo-gallery'; */
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { PersonCardList } from 'components/ui/person-card';
@@ -18,12 +18,9 @@ import { VideoGalleryItem } from 'components/video-gallery/video-gallery-item';
 import { AnnouncedPlayCardList } from 'components/ui/announced-play-card/announced-play-card-list';
 import { BasicPlayCardList } from 'components/ui/basic-play-card/list';
 import { ProjectCooperation } from 'components/project-cooperation';
-/* import { Button } from 'components/ui/button'; */
-
+/* import { PhotoGalleryItem } from 'components/photo-gallery/item'; */
 
 const Project: NextPage = () => {
-  const cardsNum3 = [1, 2, 3];
-  const cardsNum2 = [1, 2];
 
   return (
     <AppLayout>
@@ -31,15 +28,6 @@ const Project: NextPage = () => {
         <title>{projectData.titledata.title}</title>
       </Head>
       <ProjectPage>
-        {/* <Button
-          size="s"
-          iconPlace="right"
-          icon="arrow-left"
-          label="Проекты"
-          border="bottomRight"
-          width='120px'
-
-        ></Button> */}
         <ProjectHeader
           title={projectData.titledata.title}
           intro={projectData.titledata.intro}
@@ -51,98 +39,69 @@ const Project: NextPage = () => {
         </ProjectDescription>
         <ProjecPageSection type="video" title="Заголовок блока с видео">
           <VideoGallery>
-            <VideoGalleryItem>
-
-            </VideoGalleryItem>
+            <VideoGalleryItem>{}</VideoGalleryItem>
           </VideoGallery>
         </ProjecPageSection>
         <ProjecPageSection type="photo" title="Заголовок блока с фотографиями">
-          <Photos images={projectData.images}></Photos>
-        </ProjecPageSection>
-        <ProjecPageSection
-          type="performances"
-          title="Заголовок блока c тремя и более спектаклями"
-        >
-          <AnnouncedPlayCardList>
-            {cardsNum3.map((card, index) => (
-              <div key={index}>
-                <AnnouncedPlayCard
-                  date={projectData.cards.date}
-                  time={projectData.cards.time}
-                  title={projectData.cards.title}
-                  playwrightArray={projectData.cards.playwrightArray}
-                  directorArray={projectData.cards.directorArray}
-                  buttonLinks={projectData.cards.buttonLinks}
-                  coverResourceUrl={projectData.cards.coverResourceUrl}
-                ></AnnouncedPlayCard>
-              </div>
+          {/* <PhotoGallery>
+            {projectData.images.map((photo, idx) => (
+              <PhotoGalleryItem
+                image={''}
+                key={idx}
+              ></PhotoGalleryItem>
             ))}
-          </AnnouncedPlayCardList>
+          </PhotoGallery> */}
         </ProjecPageSection>
         <ProjecPageSection
           type="performances"
           title="Заголовок блока с двумя спектаклями"
         >
           <AnnouncedPlayCardList>
-            {cardsNum2.map((i, index) => (
-              <div key={index}>
-                <AnnouncedPlayCard
-                  date={projectData.cards.date}
-                  time={projectData.cards.time}
-                  title={projectData.cards.title}
-                  playwrightArray={projectData.cards.playwrightArray}
-                  directorArray={projectData.cards.directorArray}
-                  buttonLinks={projectData.cards.buttonLinks}
-                  coverResourceUrl={projectData.cards.coverResourceUrl}
-                ></AnnouncedPlayCard>
-              </div>
+            {projectData.cardsArr.slice(0,2).map((card, index) => (
+              <AnnouncedPlayCard
+                key={index}
+                date={card.date}
+                time={card.time}
+                title={card.title}
+                playwrightArray={card.playwrightArray}
+                directorArray={card.directorArray}
+                buttonLinks={card.buttonLinks}
+                coverResourceUrl={card.coverResourceUrl}
+              ></AnnouncedPlayCard>
             ))}
-          </AnnouncedPlayCardList>
-        </ProjecPageSection>
-        <ProjecPageSection
-          type="performances"
-          title="Заголовок блока с одним спектаклем"
-        >
-          <AnnouncedPlayCardList>
-            <AnnouncedPlayCard
-              date={projectData.cards.date}
-              time={projectData.cards.time}
-              title={projectData.cards.title}
-              playwrightArray={projectData.cards.playwrightArray}
-              directorArray={projectData.cards.directorArray}
-              buttonLinks={projectData.cards.buttonLinks}
-              coverResourceUrl={projectData.cards.coverResourceUrl}
-            ></AnnouncedPlayCard>
           </AnnouncedPlayCardList>
         </ProjecPageSection>
         <ProjecPageSection type="plays" title="Заголовок блока с пьесами">
           <BasicPlayCardList>
-            {cardsNum2.map((i, index) => (
+            {projectData.basicPlayCard.map((i, index) => (
               <BasicPlayCard
                 key={index}
-                play={projectData.basicPlayCard.play}
-                author={projectData.basicPlayCard.author}
-                buttonVisibility={projectData.basicPlayCard.buttonVisibility}
+                play={i.play}
+                author={i.author}
+                buttonVisibility={i.buttonVisibility}
               ></BasicPlayCard>
             ))}
           </BasicPlayCardList>
         </ProjecPageSection>
         <ProjecPageSection type="person" title="Заголовок блока с персонами">
           <PersonCardList>
-            {cardsNum3.map((i, index) => (
+            {projectData.personCard.map((i, index) => (
               <PersonCard
                 key={index}
-                name={projectData.personCard.name}
-                link={projectData.personCard.link}
-                about={projectData.personCard.about}
-                participant={projectData.personCard.participant}
+                name={i.name}
+                link={i.link}
+                about={i.about}
+                participant={i.participant}
               ></PersonCard>
             ))}
           </PersonCardList>
         </ProjecPageSection>
-        <ProjecPageSection type='through-block' title='Заголовок блока с кнопкой/ссылкой' description='Видео прошедших мероприятий можно посмотреть в плейлисте на канале Любимовки в YouTube'>
-        </ProjecPageSection>
-        <ProjecPageSection type='cooperation'>
+        <ProjecPageSection
+          type="through-block"
+          title={projectData.projectDescription.title}
+          description={projectData.projectDescription.description}
+        >{}</ProjecPageSection>
+        <ProjecPageSection type="cooperation">
           <ProjectCooperation email={projectData.email}></ProjectCooperation>
         </ProjecPageSection>
       </ProjectPage>
