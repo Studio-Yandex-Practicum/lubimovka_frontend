@@ -18,8 +18,8 @@ export default {
 
 const Template: ComponentStory<typeof BasicPlayCard> = (args) => <BasicPlayCard {...args} />;
 
-export const DefaultPlayCard = Template.bind({});
-DefaultPlayCard.args = {
+export const Default = Template.bind({});
+Default.args = {
   play: {
     title: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
