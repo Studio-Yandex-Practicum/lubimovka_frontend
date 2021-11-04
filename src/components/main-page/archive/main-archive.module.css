@@ -1,7 +1,6 @@
 .archive {
   width: 100%;
-  padding-top: scale(68px);
-  padding-bottom: scale(108px);
+  padding: scale(68px 0 108px 0);
   background-color: var(--light-green);
   grid-area: archive;
 }
@@ -16,15 +15,14 @@
   @mixin headline;
   @mixin headline2;
 
-  margin-bottom: scale(18px);
-  margin-left: scale(150px);
+  margin: scale(0 0 18px 150px);
 }
 
 .text {
   display: inline-block;
   overflow: hidden;
   max-width: scale(480px);
-  margin: scale(0);
+  margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -48,7 +46,7 @@
   width: 100%;
   max-width: 33.75rem;
   height: 16.125rem;
-  margin: scale(0) auto;
+  margin: 0 auto;
 }
 
 @media (min-width: $desktop) {
@@ -78,7 +76,7 @@
   .link {
     bottom: scale(32px);
     display: inline-block;
-    margin: scale(0);
+    margin: 0;
     margin-left: scale(2px);
   }
 
@@ -87,7 +85,7 @@
   }
 
   .video {
-    margin-right: scale(0);
+    margin-right: 0;
     margin-left: auto;
   }
 }

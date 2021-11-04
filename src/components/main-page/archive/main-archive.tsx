@@ -29,9 +29,9 @@ export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
               isLink={ true } 
               href={ buttonLink }
               icon='arrow-right'
-              width='106px'
               iconPlace='left'
               border='bottomLeft'
+              size='s'
             />
           </span>
           { title[1] }

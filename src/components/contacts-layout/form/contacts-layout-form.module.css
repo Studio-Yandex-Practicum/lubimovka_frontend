@@ -1,0 +1,9 @@
+.form {
+  max-width: scale(360px);
+  margin-top: scale(60px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: unset;
+    margin-top: scale(24px);
+  }
+}

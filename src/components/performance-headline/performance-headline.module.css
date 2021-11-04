@@ -1,0 +1,50 @@
+.headline {
+  display: grid;
+  padding-left: scale(60px);
+  grid-column-gap: scale(90px);
+  grid-template:
+    "title       image"
+    "description image" 1fr
+    "dateTime    image"
+    "actions     image"
+    ".           text" / 1fr scale(720px);
+}
+
+.title {
+  @mixin headline;
+  @mixin headline1;
+
+  width: scale(540px);
+  margin: scale(62px) auto 0;
+}
+
+.description {
+  @mixin headline;
+  @mixin headline7;
+
+  padding-left: scale(60px);
+  margin-top: scale(36px);
+}
+
+.image {
+  position: relative;
+  height: scale(614px);
+  grid-area: image;
+}
+
+.text {
+  @mixin headline;
+  @mixin headline6;
+
+  padding-right: scale(130px);
+  margin: scale(48px) 0 0;
+  grid-area: text;
+}
+
+.actions {
+  grid-area: actions;
+}
+
+.action {
+  min-width: scale(240px);
+}

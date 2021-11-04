@@ -1,0 +1,9 @@
+.column {
+  padding-bottom: scale(154px);
+  margin-top: scale(60px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: scale(150px);
+    margin-top: scale(32px);
+  }
+}
