@@ -33,6 +33,6 @@
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    padding: scale(56px) 0 scale(32px);
+    padding: scale(56px) scale(90px) scale(32px) 0;
   }
 }
