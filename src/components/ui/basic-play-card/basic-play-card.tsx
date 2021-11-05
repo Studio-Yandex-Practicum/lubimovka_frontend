@@ -16,24 +16,24 @@ export interface IBasicPlayCardProps {
     linkView: Url;
     linkDownload: Url;
   };
-  authors: {
-    id: number,
+  author: Array <{
+    id: number;
     name: string;
-  } [];
+  }>;
   buttonVisibility?: boolean;
 }
 
 export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
   const {
     play,
-    authors,
+    author,
     buttonVisibility,
   } = props;
 
   const authorsHiddenLabel = (
     <React.Fragment>
       {
-        authors.length > 1 ?
+        author.length > 1 ?
           (<dt className={cx('hiddenText')}>
           Авторы:
           </dt>)
@@ -80,15 +80,16 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       </div>
       <dl className={cx('info')}>
         {authorsHiddenLabel}
-        {authors.map((author) => (
-          <InfoLink
-            key={author.id}
-            isOutsideLink={false}
-            href={`/authors/${author.id}`}
-            label={author.name}
-            size='l'
-            className={cx('author', authors.length > 1 && 'authorMultiple')}
-          />
+        {author.map((i) => (
+          <dd className={cx('author', author.length > 1 && 'authorMultiple')} key={i.id}>
+            <InfoLink
+              isOutsideLink={false}
+              href={`/authors/${i.id}`}
+              label={i.name}
+              size='l'
+              className={cx('author', author.length > 1 && 'authorMultiple')}
+            />
+          </dd>
         )
         )}
         <dt className={cx('hiddenText')}>

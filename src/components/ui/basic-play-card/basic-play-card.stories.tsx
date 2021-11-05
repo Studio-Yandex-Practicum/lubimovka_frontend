@@ -6,14 +6,6 @@ import { BasicPlayCard } from './basic-play-card';
 export default {
   title: 'UI/BasicPlayCard',
   component: BasicPlayCard,
-  decorators: [
-    (Story) => (
-      <div style={{ width: '240px'}}>
-        <Story/>
-      </div>
-    ),
-  ],
-
 } as ComponentMeta<typeof BasicPlayCard>;
 
 const Template: ComponentStory<typeof BasicPlayCard> = (args) => <BasicPlayCard {...args} />;
@@ -27,7 +19,7 @@ Default.args = {
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
   },
-  authors: [{
+  author: [{
     id: 1,
     name: 'Екатерина Августеняк',
   }],
@@ -43,7 +35,7 @@ PlayCardWithMultipleAuthors.args = {
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
   },
-  authors: [
+  author: [
     {
       id: 1,
       name: 'Екатерина Августеняк',
@@ -69,7 +61,7 @@ PlayCardWithVisibleButtons.args = {
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
   },
-  authors: [{
+  author: [{
     id: 1,
     name: 'Екатерина Августеняк',
   }],
