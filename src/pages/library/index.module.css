@@ -54,15 +54,15 @@
   z-index: 1;
   width: 100%;
   margin: 54px auto 0;
-}
 
-.pieces::before {
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 172px;
-  background-color: var(--beige);
-  content: '';
+  &::before {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 172px;
+    background-color: var(--beige);
+    content: '';
+  }
 }

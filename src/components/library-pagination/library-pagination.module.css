@@ -3,11 +3,14 @@
 }
 
 .letters {
+  position: sticky;
+  position: -webkit-sticky;
   display: grid;
   box-sizing: border-box;
   padding: 0 15px;
   border-bottom: 1px solid var(--coal);
   margin: 0;
+  background-color: var(--beige);
   column-gap: 12px;
   grid-auto-flow: column;
   list-style: none;

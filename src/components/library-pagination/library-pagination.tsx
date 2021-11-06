@@ -6,10 +6,11 @@ import style from './library-pagination.module.css';
 const mockAuthors = ['Августеняк Екатерина', 'Александрин Егор', 'Борисов Борис', 'Фёдоров Фёдор'];
 
 interface LibraryPaginationProps {
-  letters: string[]
+  letters: string[];
+  top: string;
 }
 
-const LibraryPagination: FC<LibraryPaginationProps> = ({letters}) => {
+const LibraryPagination: FC<LibraryPaginationProps> = ({letters, top}) => {
   const [authors, setAuthors] = useState<Array<string>>(['']);
   const [letter, setLetter] = useState<string>('');
 
@@ -26,7 +27,7 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({letters}) => {
 
   return (
     <div className={style.container}>
-      <ul className={style.letters}>
+      <ul style={{top: top}} className={style.letters}>
         {letters.map((el, index) => (
           <li key={index} className={cn(style.letter,{ [style.letterActive]: letter === el})}>
             <label htmlFor={el} className={style.label}>{el}</label>
