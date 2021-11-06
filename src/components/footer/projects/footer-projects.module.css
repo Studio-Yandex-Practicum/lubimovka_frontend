@@ -1,0 +1,16 @@
+@value partners from '../partners/footer-partners.module.css';
+
+.projects {
+  margin-top: scale(50px);
+  grid-area: projects;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(0 55px);
+    margin-top: scale(46px);
+    margin-bottom: scale(36px);
+  }
+}
+
+.partners ~ .projects {
+  margin-top: scale(62px);
+}

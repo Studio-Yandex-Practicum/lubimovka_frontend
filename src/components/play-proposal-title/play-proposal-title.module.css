@@ -1,0 +1,8 @@
+.title {
+  @mixin headline;
+  @mixin headline2;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+  }
+}

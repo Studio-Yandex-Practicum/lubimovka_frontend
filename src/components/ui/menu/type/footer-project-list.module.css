@@ -1,0 +1,22 @@
+.menu {
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: block;
+
+  &:not(:first-child) {
+    margin-top: scale(15px);
+
+    @media (max-width: $tablet-portrait) {
+      margin-top: scale(13px);
+    }
+  }
+}
+
+.link {
+  @mixin text;
+
+  text-decoration: none;
+}

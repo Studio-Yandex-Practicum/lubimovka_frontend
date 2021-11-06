@@ -1,0 +1,8 @@
+.column {
+  margin: scale(60px 0 0 120px);
+  grid-area: form;
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(32px 0 0);
+  }
+}

@@ -1,0 +1,8 @@
+.authors {
+  margin: scale(64px 0 0 120px);
+  grid-area: authors;
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(64px 0 0);
+  }
+}

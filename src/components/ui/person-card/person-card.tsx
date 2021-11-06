@@ -13,6 +13,7 @@ export interface IPersonCardProps {
   link: string,
   about?: string,
   response?: string,
+  handleClick?: React.MouseEventHandler<HTMLButtonElement>,
 }
 
 export const PersonCard: React.FC<IPersonCardProps> = (props) => {
@@ -22,13 +23,14 @@ export const PersonCard: React.FC<IPersonCardProps> = (props) => {
     about,
     participant,
     response,
+    handleClick,
   } = props;
 
   return (
     <div className={cx('container', {containerParticipant: participant, containerVolunteer: !participant})}>
       <img className={cx({imgParticipant:participant, imgVolunteer: !participant})} src={link} alt={name}/>
       {!participant && response &&
-      <button className={styles.comment}>
+      <button className={styles.comment} onClick={handleClick}>
         <Icon glyph={'comment'}/>
       </button>}
 
