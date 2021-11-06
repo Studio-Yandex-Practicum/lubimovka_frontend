@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import LibraryForm from 'components/library-form/library-form';
 import LibraryFilter from 'components/library-filter/library-filter';
 import { BasicPlayCard, BasicPlayCardList, IBasicPlayCardProps } from 'components/ui/basic-play-card';
+import { Menu } from 'components/ui/menu';
 
 import styles from './index.module.css';
 
@@ -24,7 +25,21 @@ const items = Array.from(Array(7)).map(() => mockCard);
 
 const Library: NextPage = () => (
   <div className={styles.content}>
-    <div style={{marginTop: '52px'}}>
+    <div className={styles.sidebar}>
+      <div className={styles.menu}>
+        <Menu type='history'>
+          <Menu.Item
+            href='/library/plays'
+          >
+        Пьесы
+          </Menu.Item>
+          <Menu.Item
+            href='/library/authors'
+          >
+        Авторы
+          </Menu.Item>
+        </Menu>
+      </div>
       <LibraryFilter />
     </div>
     <section className={styles.section}>
