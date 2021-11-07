@@ -32,7 +32,7 @@ const Library: NextPage = () => {
           <div className={styles.menu}>
             <Menu type='history'>
               <Menu.Item
-                href='/library/plays'
+                href='/library'
               >
         Пьесы
               </Menu.Item>
