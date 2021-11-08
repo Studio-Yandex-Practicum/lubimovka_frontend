@@ -9,10 +9,10 @@
   @mixin text;
   @mixin textMedium;
 
-  width: 450px;
+  width: scale(450px);
   height: 32px;
   box-sizing: border-box;
-  padding: 1px 3px 8px;
+  padding: 1px scale(3px) 8px;
   border: none;
   border-right: 1px solid var(--coal);
   background: none;
@@ -27,5 +27,9 @@
   :-webkit-autofill:focus,
   :-webkit-autofill:active {
     transition: background-color 5000s;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    @mixin textSmall;
   }
 }

@@ -11,26 +11,38 @@ const mockLetters = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'К',
 
 const AuthorsPage: NextPage = () => {
   return (
-    <main className={styles.content}>
-      <div className={styles.menu}>
-        <Menu type='history'>
-          <Menu.Item
-            href='/library'
-          >
+    <main className={styles.wrap}>
+      <div className={styles.topWrap}>
+        <div className={styles.top} />
+      </div>
+      <div className={styles.middleWrap}>
+        <div className={styles.middle} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.menuWrap}>
+          <div className={styles.menu}>
+            <Menu type='history'>
+              <Menu.Item
+                href='/library'
+              >
         Пьесы
-          </Menu.Item>
-          <Menu.Item
-            href='/library/authors'
-          >
+              </Menu.Item>
+              <Menu.Item
+                href='/library/authors'
+              >
         Авторы
-          </Menu.Item>
-        </Menu>
+              </Menu.Item>
+            </Menu>
+          </div>
+        </div>
+        <h1 className={styles.title}>Библиотека</h1>
+        <div className={styles.search}>
+          <LibraryForm />
+        </div>
+        <div className={styles.pagination}>
+          <LibraryPagination letters={mockLetters} top='100px' />
+        </div>
       </div>
-      <h1 className={styles.title}>Библиотека</h1>
-      <div className={styles.search}>
-        <LibraryForm />
-      </div>
-      <LibraryPagination letters={mockLetters} top='90px' />
     </main>
   );
 };

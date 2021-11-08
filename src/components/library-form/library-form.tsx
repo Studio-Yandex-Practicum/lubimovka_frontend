@@ -29,7 +29,7 @@ const LibraryForm: FC = () => {
         className={style.searchInput}
         value={searchInput}
         onChange={handleChange}
-        placeholder='Введите автора или название пьесы'
+        placeholder='Автор или название пьесы'
       />
       <Button label='ИСКАТЬ' size={'s'} icon={'arrow-right'}
         iconPlace={'left'} border={'none'} width={'120px'} isLink={true}

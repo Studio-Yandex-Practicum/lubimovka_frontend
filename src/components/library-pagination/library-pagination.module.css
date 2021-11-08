@@ -1,12 +1,12 @@
 .container {
   position: relative;
-  background-color: var(--beige);
+  max-width: 100%;
 }
 
 .letters {
   position: sticky;
   position: -webkit-sticky;
-  z-index: 2;
+  z-index: 1;
   display: grid;
   box-sizing: border-box;
   padding: 0 15px;
