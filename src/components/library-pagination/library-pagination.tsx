@@ -3,7 +3,10 @@ import cn from 'classnames';
 
 import style from './library-pagination.module.css';
 
-const mockAuthors = ['Августеняк Екатерина', 'Александрин Егор', 'Борисов Борис', 'Фёдоров Фёдор'];
+const mockAuthors = ['Августеняк Екатерина', 'Августеняк Екатерина', 'Августеняк Екатерина',
+  'Августеняк Екатерина', 'Августеняк Екатерина', 'Августеняк Екатерина', 'Августеняк Екатерина',
+  'Августеняк Екатерина', 'Августеняк Екатерина','Августеняк Екатерина',
+  'Александрин Егор', 'Борисов Борис', 'Фёдоров Фёдор'];
 
 interface LibraryPaginationProps {
   letters: string[];
@@ -13,10 +16,6 @@ interface LibraryPaginationProps {
 const LibraryPagination: FC<LibraryPaginationProps> = ({letters, top}) => {
   const [authors, setAuthors] = useState<Array<string>>(['']);
   const [letter, setLetter] = useState<string>('');
-
-  //После появления API внутри useEffect при обновлении letter будет производиться
-  //fetch запрос и стэйт authors будет обновляться данными с сервера.
-  //Будет что-то вроде GET `https://graph.microsoft.com/v1.0/users?$filter=startswith(givenName, ${letter})`
 
   useEffect(() => {
     if (letter) {
