@@ -2,20 +2,20 @@
   @mixin headline;
   @mixin headline6;
 
-  max-width: 387px;
-  margin-bottom: 30px;
+  max-width: scale(387px);
+  margin-bottom: scale(30px);
 
   @media (max-width: $tablet-portrait) {
     @mixin headline7;
 
-    max-width: 305px;
-    margin-bottom: 24px;
-    margin-left: 62px;
+    max-width: scale(305px);
+    margin-bottom: scale(24px);
+    margin-left: scale(62px);
   }
 }
 
 .button {
   @media (max-width: $tablet-portrait) {
-    margin-left: 62px;
+    margin-left: scale(62px);
   }
 }

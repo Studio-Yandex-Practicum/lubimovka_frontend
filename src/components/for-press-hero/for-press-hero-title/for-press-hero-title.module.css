@@ -2,11 +2,11 @@
   @mixin headline;
   @mixin headline1;
 
-  max-width: 450px;
+  max-width: scale(450px);
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    max-width: 367px;
+    max-width: scale(367px);
   }
 }
