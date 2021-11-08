@@ -13,3 +13,7 @@ const Template: ComponentStory<typeof ForPressHero> = (args) => {
 };
 
 export const Default = Template.bind({});
+
+Default.parameters = {
+  layout: 'fullscreen'
+};
