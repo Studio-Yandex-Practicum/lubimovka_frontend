@@ -1,15 +1,12 @@
 .hero {
   display: grid;
-  width: 100%;
-  padding-top: scale(58px);
-  padding-bottom: scale(117px);
-  padding-left: scale(120px);
+  padding: scale(58px 270px 117px 120px);
   background-color: var(--beige);
   column-gap: scale(213px);
   grid-template-areas:
     ".       title"
     "contact description";
-  grid-template-columns: repeat (2, minmax(0 100%));
+  grid-template-columns: repeat (2, 1fr);
   row-gap: scale(32px);
 
   @media (max-width: $tablet-portrait) {
