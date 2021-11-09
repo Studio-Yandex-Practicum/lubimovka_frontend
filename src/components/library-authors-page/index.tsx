@@ -15,9 +15,6 @@ const AuthorsPage: NextPage = () => {
       <div className={styles.topWrap}>
         <div className={styles.top} />
       </div>
-      <div className={styles.middleWrap}>
-        <div className={styles.middle} />
-      </div>
       <div className={styles.content}>
         <div className={styles.menuWrap}>
           <div className={styles.menu}>

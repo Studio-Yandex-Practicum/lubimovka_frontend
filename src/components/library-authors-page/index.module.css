@@ -23,27 +23,6 @@
   }
 }
 
-.middleWrap {
-  position: absolute;
-  z-index: 0;
-  top: 48px;
-  left: 0;
-  width: 100%;
-  height: 80%;
-}
-
-.middle {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 0;
-  background-color: var(--white);
-
-  @media (max-width: $tablet-portrait) {
-    height: 109px;
-  }
-}
-
 .content {
   position: relative;
   z-index: 0;
@@ -66,12 +45,13 @@
   z-index: 1;
   top: 0;
   left: scale(35px);
-  height: calc(100% - 210px - 34px);
+  height: calc(100% - 270px);
 
   @media (max-width: $tablet-portrait) {
-    top: 80px;
-    left: scale(24px);
-    height: calc(100% - 247px);
+    top: 81px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 200px);
   }
 }
 
@@ -86,10 +66,10 @@
   background-color: var(--beige);
 
   @media (max-width: $tablet-portrait) {
-    top: 23px;
-    height: 57px;
+    height: 100px;
     padding-top: 16px;
-    background-color: transparent;
+    padding-left: scale(24px);
+    background-color: var(--white);
   }
 }
 
@@ -135,8 +115,9 @@
   @media (max-width: $tablet-portrait) {
     position: static;
     width: 100%;
-    padding: 0 24px 77px;
-    background-color: transparent;
+    padding: 0 24px;
+    margin-bottom: 77px;
+    background-color: var(--white);
 
     &::before {
       height: 0;
@@ -145,6 +126,11 @@
 }
 
 .pagination {
-  z-index: 2;
   width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 40px;
+
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: 0;
+  }
 }
