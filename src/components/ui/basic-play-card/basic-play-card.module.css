@@ -1,32 +1,35 @@
 .card {
   display: flex;
-  max-width: 240px;
   flex-direction: column;
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-
-  @media (max-width: $mobile-landscape) {
-    max-width: 244px;
-  }
 }
 
 .container {
   display: flex;
-  height: 300px;
+  min-height: scale(300px);
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--light-green);
+
+  @media (max-width: $tablet-portrait) {
+    min-height: scale(341px);
+  }
 }
 
 .buttonCustom {
+  height: scale(56px);
   opacity: 0;
   transition: visibility .5s ease-in-out, opacity .5s ease-in-out;
   visibility: hidden;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
+    opacity: 1;
     visibility: visible;
   }
+}
+
+.buttonVisible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .container:hover .buttonCustom {
@@ -37,27 +40,35 @@
 .title {
   @mixin headline;
   @mixin headline7;
+  @mixin truncated-text 6;
 
-  display: -webkit-box;
-  overflow: hidden;
-  margin: 24px 31px auto 24px;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 6;
+  margin: scale(24px 31px auto 24px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(16px 46px auto 16px);
+  }
 }
 
 .info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 16px 0 auto;
+  margin: scale(16px 0 auto);
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: scale(24px);
+  }
+}
+
+.author {
+  display: inline;
+  max-width: scale(190px);
+  margin: 0;
 }
 
 .authorName {
   @mixin headline;
   @mixin headline7;
-
-  display: inline;
-  max-width: 190px;
 }
 
 .authorName:hover {
@@ -71,7 +82,11 @@
   @mixin textSmall;
 
   margin: 0;
-  margin-top: 4px;
+  margin-top: scale(4px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: scale(8px);
+  }
 }
 
 .year {
@@ -79,4 +94,8 @@
   @mixin textSmall;
 
   margin: 0;
+}
+
+.hiddenText {
+  @mixin visually-hidden;
 }

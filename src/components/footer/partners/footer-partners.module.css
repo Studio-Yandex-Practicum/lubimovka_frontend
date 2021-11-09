@@ -1,0 +1,15 @@
+.partners {
+  display: flex;
+  grid-area: partners;
+}
+
+.title {
+  display: flex;
+  max-width: 10ch;
+  align-items: flex-end;
+  margin-right: scale(56px);
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}

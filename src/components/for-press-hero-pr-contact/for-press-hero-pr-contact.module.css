@@ -1,0 +1,65 @@
+.intro {
+  @mixin headline;
+  @mixin headline6;
+
+  max-width: 387px;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: 366px;
+  }
+
+  @media (min-width: $desktop) {
+    max-width: scale(387px);
+  }
+}
+
+.photo {
+  width: 150px;
+  height: 182px;
+  margin: 25px auto 32px 31px;
+  object-fit: cover;
+
+  @media (max-width: $tablet-portrait) {
+    margin: 24px auto 24px 63px;
+  }
+
+  @media (min-width: $desktop) {
+    width: scale(150px);
+    height: scale(182px);
+    margin: scale(25px auto 32px 31px);
+  }
+}
+
+.info {
+  margin: 0;
+}
+
+.email {
+  max-width: 479px;
+  margin: 0;
+  margin-bottom: 8px;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: 367px;
+  }
+
+  @media (min-width: $desktop) {
+    max-width: scale(479px);
+    margin-bottom: scale(8px);
+  }
+}
+
+.description {
+  @mixin text;
+  @mixin textSmall;
+
+  max-width: 269px;
+
+  @media (min-width: $desktop) {
+    max-width: scale(269px);
+  }
+}
+
+.hiddenText {
+  @mixin visually-hidden;
+}

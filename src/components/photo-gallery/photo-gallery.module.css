@@ -1,0 +1,13 @@
+.gallery {
+  display: grid;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  gap: 1px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media screen and (max-width: $tablet-portrait) {
+    gap: scale(2px 3px);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

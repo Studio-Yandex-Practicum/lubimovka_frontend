@@ -1,35 +1,29 @@
-.cardEvents {
+.card {
   display: flex;
   max-width: 420px;
   flex-direction: row;
   list-style-type: none;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     width: 100%;
     padding: 32px 0;
     border-top: var(--coal) solid 1px;
   }
 }
 
-.cardEvents:last-child {
-  @media (max-width: $mobile-landscape) {
-    border-bottom: var(--coal) solid 1px;
-  }
-}
-
-.coverEvents {
+.cover {
   width: 120px;
   height: 161px;
   padding-right: 31px;
   object-fit: cover;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     width: 92px;
     height: 123px;
   }
 }
 
-.infoEvents {
+.info {
   display: flex;
   width: 269px;
   flex-direction: column;
@@ -49,12 +43,12 @@
   margin: 0;
   margin-right: 44px;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     margin-right: 46px;
   }
 }
 
-.timeEvents {
+.time {
   padding: 0;
   margin: 0;
 }
@@ -63,11 +57,18 @@
   @mixin headline;
   @mixin headline5;
 
+  display: block;
+  width: 419px;
   margin-top: 4px;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
+    width: 382px;
     margin-top: 16px;
   }
+}
+
+.titleNoCover {
+  margin-top: 16px;
 }
 
 .credits {
@@ -79,7 +80,7 @@
   flex-direction: column;
   margin: 16px 0 0 30px;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     margin-left: 0;
   }
 }
@@ -90,6 +91,18 @@
   margin: 0;
 }
 
+.eventDescription {
+  @mixin text;
+  @mixin textSmall;
+
+  width: 359px;
+  margin: 16px 0 0 30px;
+
+  @media (max-width: $tablet-portrait) {
+    margin-left: 0;
+  }
+}
+
 .description {
   @mixin text;
   @mixin textCaption;
@@ -98,43 +111,43 @@
   padding-top: 20px;
   margin: 0;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     padding-top: 8px;
   }
 }
 
-.buttonEvents {
+.button {
   margin-bottom: 16px;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     margin-right: 26px;
     margin-bottom: 0;
   }
 }
 
-.buttonEvents:last-child {
+.button:last-child {
   margin-bottom: 0;
 }
 
-.buttonEventsContainer {
+.buttonContainer {
   margin-top: 16px;
 
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     display: flex;
     width: 380px;
     flex-direction: row;
   }
 }
 
-.buttonEventsContainerCoverExists {
-  @media (max-width: $mobile-landscape) {
+.buttonContainerCoverExists {
+  @media (max-width: $tablet-portrait) {
     margin-top: 48px;
     margin-left: -123px;
   }
 }
 
-.buttonEventsContainerNoCover {
-  @media (max-width: $mobile-landscape) {
+.buttonContainerNoCover {
+  @media (max-width: $tablet-portrait) {
     margin-left: 0;
   }
 }

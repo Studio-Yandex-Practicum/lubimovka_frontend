@@ -1,0 +1,7 @@
+.title {
+  max-width: scale(480px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: unset;
+  }
+}

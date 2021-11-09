@@ -6,6 +6,7 @@ import {Icon, IIconProps} from '../icon';
 import styles from './button.module.css';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  type?: 'submit' | 'reset' | 'button';
   view?: 'primary' | 'secondary',
   iconPlace?: 'left' | 'right',
   icon?: IIconProps['glyph'],
@@ -24,6 +25,7 @@ const cx = cn.bind(styles);
 
 export const Button: FC<IButtonProps> = (props) => {
   const {
+    type = 'button',
     view = 'primary',
     href = '/',
     size,
@@ -54,7 +56,7 @@ export const Button: FC<IButtonProps> = (props) => {
     !isLink &&
       <button
         className={classes}
-        type='button'
+        type={type}
         disabled={disabled}
         style={style}
         {...restButtonProps}>

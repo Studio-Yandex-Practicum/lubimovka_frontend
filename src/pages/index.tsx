@@ -1,72 +1,56 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import cn from 'classnames/bind';
-
-import { MainTitle } from 'components/main-title';
-import { MainEvents } from 'components/main-events';
-import { MainAside } from 'components/main-aside';
-import { MainBanners } from 'components/main-banners';
-import { MainPlatforms } from 'components/main-platforms';
-import { MainArchive } from 'components/main-archive';
-import { MainShortList } from 'components/main-shortList';
+import { MainTitle } from 'components/main-page/title';
+import { MainEvents } from 'components/main-page/events';
+import { MainAside } from 'components/main-page/aside';
+import { MainBanners } from 'components/main-page/banners';
+import { MainPlatforms } from 'components/main-page/platforms';
+import { MainShortList } from 'components/main-page/shortList';
+import { MainArchive } from 'components/main-page/archive';
+import { MainPartners } from 'components/main-page/partners';
+import AppLayout from 'components/app-layout';
+import data from 'components/main-page/assets/mock-data.json';
+import mainEventsData from 'components/main-page/assets/main-events.json';
+import mainPlatformsData from 'components/main-page/assets/main-platforms-data.json';
+import mainShortListData from 'components/main-page/assets/main-short-list-data.json';
+import mainArchiveData from 'components/main-page/assets/main-archive-data.json';
 
 import styles from './index.module.css';
-
 const cx = cn.bind(styles);
 
-interface IMainPageProps {
-  title: string;
-  metaTitle: string;
-  events: boolean;
-  aside: boolean;
-  banners: boolean;
-  archive: boolean;
-  platforms: boolean;
-  shortList: boolean;
-}
 
-export const getStaticProps = () => {
-  return {
-    props: {
-      metaTitle: 'Главная страница',
-      title: 'Компонент Title',
-      events: true,
-      aside: true,
-      banners: true,
-      platforms: true,
-      archive: true,
-      shortList: true,
-    },
-  };
-};
-
-const Home: NextPage<IMainPageProps> = (props: IMainPageProps) => {
-  const {
-    title,
-    metaTitle,
-    events,
-    aside,
-    banners,
-    platforms,
-    archive,
-    shortList,
-  } = props;
+const MainPage: NextPage = () => {
+  const { title, events, aside, banners, platforms, partners, archive, shortList, metaTitle } = data;
   return (
-    <>
-      <Head>
-        <title>{metaTitle}</title>
-      </Head>
-      <main className={cx('main')}>
-        {title && <MainTitle title={title} />}
-        {events && <MainEvents />}
-        {aside && <MainAside />}
-        {banners && <MainBanners />}
-        {platforms && <MainPlatforms />}
-        {shortList && <MainShortList />}
-        {archive && <MainArchive />}
-      </main>
-    </>
+    <AppLayout hiddenPartners>
+      <>
+        <Head>
+          <title>{ metaTitle }</title>
+        </Head>
+        <main className={cx('main')}>
+          {title && (
+            <MainTitle
+              title={title.title}
+              view={title.view}
+              buttonLink={title.buttonLink}
+              buttonText={title.buttonText}
+              text={title.text}
+            />
+          )}
+          {events && <MainEvents data={ mainEventsData } />}
+          {aside && <MainAside />}
+          {banners && <MainBanners />}
+          {platforms && <MainPlatforms data={ mainPlatformsData[0] } />}
+          {shortList && <MainShortList data={ mainShortListData }/>}
+          {archive && mainArchiveData.map((el) => (
+            <MainArchive key={el.id} data={el} />
+          ))}
+          {partners && <MainPartners />}
+        </main>
+      </>
+    </AppLayout>
   );
 };
 
-export default Home;
+export default MainPage;

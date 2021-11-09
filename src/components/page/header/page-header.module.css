@@ -1,0 +1,5 @@
+.header {
+  @media (min-width: $tablet-portrait) {
+    border-bottom: 1px solid var(--coal);
+  }
+}

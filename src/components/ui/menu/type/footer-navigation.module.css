@@ -1,0 +1,28 @@
+.menu {
+  padding: 0;
+  margin: 0;
+  column-count: 2;
+  column-gap: scale(56px);
+
+  @media (max-width: $tablet-portrait) {
+    column-gap: scale(16px);
+  }
+}
+
+.item {
+  display: block;
+
+  &:not(:first-child) {
+    margin-top: scale(15px);
+
+    @media (max-width: $tablet-portrait) {
+      margin-top: scale(13px);
+    }
+  }
+}
+
+.link {
+  @mixin text;
+
+  text-decoration: none;
+}

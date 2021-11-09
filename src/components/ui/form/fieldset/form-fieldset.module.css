@@ -1,0 +1,33 @@
+.fieldset {
+  padding: 0;
+  border: 0;
+  margin: 0;
+
+  &:not(:first-of-type) {
+    margin-top: scale(72px);
+
+    @media (max-width: $tablet-portrait) {
+      margin-top: scale(90px);
+    }
+  }
+}
+
+.legend {
+  @mixin headline;
+  @mixin headline4;
+
+  padding: 0;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+  }
+}
+
+.container {
+  margin-top: scale(15px);
+  margin-left: scale(61px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-left: 0;
+  }
+}
