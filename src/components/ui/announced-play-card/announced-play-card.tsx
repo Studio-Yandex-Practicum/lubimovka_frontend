@@ -88,6 +88,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             <div className={cx('buttonContainer', coverResourceUrl && 'buttonContainerCoverExists' )}>
               <Button
                 view='primary'
+                width='scale(154px)'
                 className={cx('button')}
                 align='start'
                 gap='9px'
@@ -101,6 +102,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
               />
               <Button
                 view='primary'
+                width='scale(154px)'
                 className={cx('button')}
                 align='start'
                 gap='9px'
@@ -118,6 +120,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             <div className={cx('buttonContainer', coverResourceUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
               <Button
                 view='primary'
+                width='scale(154px)'
                 className={cx('button')}
                 align='start'
                 gap='9px'
