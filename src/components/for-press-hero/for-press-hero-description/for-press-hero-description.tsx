@@ -23,7 +23,7 @@ export const ForPressHeroDescription: FC<IForPressHeroDescriptionProps> = ({ dat
       <Button
         className={cx('button')}
         align='start'
-        width='173px'
+        width='scale(173px)'
         size='s'
         view='primary'
         iconPlace='left'
