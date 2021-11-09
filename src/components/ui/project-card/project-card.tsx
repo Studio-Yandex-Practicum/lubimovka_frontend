@@ -9,32 +9,28 @@ import styles from './project.module.css';
 const cx = classNames.bind(styles);
 
 interface IProjectCardProps {
-  data: {
-    link: string;
-    imgUrl: string;
-    imgAlt: string;
-    title: string;
-    text: string;
-  }
+  id: number,
+  title: string;
+  description: string;
+  image: string;
 }
 
 export const ProjectCard: FC<IProjectCardProps> = (props) => {
   const {
-    link,
-    imgUrl,
-    imgAlt,
+    id,
     title,
-    text,
-  } = props.data;
+    description,
+    image,
+  } = props;
 
   return (
     <li
       className={cx('listItem')}
     >
-      <Link href={link}>
+      <Link href={`/project/${id}`}>
         <a className={cx('card')}>
           <div className={cx('imgContainer')}>
-            <img className={cx('image')} src={imgUrl} alt={imgAlt} />
+            <img className={cx('image')} src={image} alt={title} />
           </div>
           <div>
             <h6 className={cx('title')}>
@@ -42,9 +38,9 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
               <Icon className={cx('titleArrow')} glyph="arrow-right" fill='#000' focusable="false" />
             </h6>
             <p
-              className={cx('text')}
+              className={cx('description')}
             >
-              {text}
+              {description}
             </p>
           </div>
         </a>
