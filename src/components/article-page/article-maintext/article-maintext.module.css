@@ -41,6 +41,7 @@
     @mixin headline6;
 
     max-width: scale(366px);
+    padding-top: scale(56px);
     padding-right: 0;
   }
 }
@@ -61,7 +62,11 @@
 }
 
 .article_container > h4 + p {
-  padding-top: scale(24px);
+  padding-top: scale(36px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-top: scale(24px);
+  }
 }
 
 .article_container > blockquote {
