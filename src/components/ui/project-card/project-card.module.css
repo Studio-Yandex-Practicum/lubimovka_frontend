@@ -26,8 +26,8 @@
   }
 }
 
-/* Every even card has its image aligned to the right side
- * until screen less than $tablet-portrait */
+/* У каждой чётной карточки изображение расположено справа, пока
+ * размер экрана меньше чем $tablet-portrait */
 .card:nth-child(even) > .imageContainer {
   align-self: flex-end;
 }
