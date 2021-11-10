@@ -1,11 +1,8 @@
 .link {
-  display: flex;
   width: intrinsic;
   width: -moz-max-content;
   width: -webkit-max-content;
   box-sizing: border-box;
-  flex-direction: row;
-  align-items: center;
   padding: 0;
   margin: 0;
   background-color: transparent;
@@ -13,6 +10,12 @@
   letter-spacing: -.01em;
 
   @mixin text;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .invert {
@@ -24,7 +27,7 @@
   }
 }
 
-.link.bottomLine {
+.bottomLine {
   position: relative;
   line-height: 1;
   text-decoration: none;
@@ -35,7 +38,7 @@
     left: 0;
     display: block;
     width: 0;
-    height: 1px;
+    height: scale(1px);
     background-color: var(--coal);
     content: "";
     transition: width .5s ease-in;
@@ -46,7 +49,7 @@
   }
 }
 
-.link.bottomLineAndInvert {
+.bottomLineAndInvert {
   position: relative;
   line-height: 1;
   text-decoration: none;
@@ -58,7 +61,7 @@
     left: 0;
     display: block;
     width: 0;
-    height: 1px;
+    height: scale(1px);
     background-color: var(--coal);
     content: "";
     transition: width .5s ease-in;
@@ -68,7 +71,7 @@
     width: 100%;
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: $tablet-portrait) {
     &::after {
       width: 100%;
     }
@@ -99,7 +102,7 @@
     left: 0;
     display: block;
     width: 100%;
-    height: 1px;
+    height: scale(1px);
     background-color: var(--coal);
     content: "";
     transition: width .5s ease-in;
@@ -112,51 +115,33 @@
 }
 
 .borderBottomLeft {
-  height: 24px;
-  padding-right: 9px;
-  border-bottom: 1px solid var(--coal);
-  border-left: 1px solid var(--coal);
+  height: scale(24px);
+  padding-right: scale(9px);
+  border-bottom: scale(1px) solid var(--coal);
+  border-left: scale(1px) solid var(--coal);
 }
 
 .borderTop {
   width: inherit;
   justify-content: space-between;
-  padding-top: 4px;
-  padding-right: 7px;
-  padding-left: 7px;
-  border-top: 1px solid var(--coal);
+  padding: scale(4px) scale(7px);
+  border-top: scale(1px) solid var(--coal);
 }
 
 .label.right {
-  padding-right: 8px;
+  padding-right: scale(8px);
 }
 
 .xs {
   @mixin textCaption;
 }
 
-.xs.bottomLineAndInvert {
-  @media (max-width: 576px) {
-    text-decoration: 1px underline;
-  }
-}
-
-.xs.bottomLine {
-  @media (max-width: 576px) {
-    @mixin textMedium;
-
-    text-decoration: none;
-  }
-}
-
 .s {
-  font-size: 16px;
-  line-height: 14px;
+  @mixin textSmallButton;
 }
 
 .m {
-  font-size: 16px;
-  line-height: 24px;
+  @mixin textHistorySmall;
 }
 
 .l {
@@ -165,8 +150,7 @@
 }
 
 .xl {
-  font-size: 20px;
-  line-height: 28px;
+  @mixin textLarge;
 }
 
 .number {

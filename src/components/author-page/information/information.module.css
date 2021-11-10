@@ -5,10 +5,10 @@
   grid-template-rows: auto;
 
   @media (max-width: 959px) {
-    padding: calc(var(--scale) * 85) calc(var(--scale) * 40) calc(var(--scale) * 85) 0;
+    padding: calc(var(--scale) * 85) calc(var(--scale) * 100) calc(var(--scale) * 85) 0;
   }
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     padding: calc(var(--scale) * 56) calc(var(--scale) * 25);
     grid-template-columns: 10fr;
   }
@@ -18,12 +18,12 @@
   @mixin headline;
   @mixin headline4;
 
-  max-width: calc(var(--scale) * 490);
   grid-column: 2/3;
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
+    padding: 0 calc(var(--scale) * 15);
     grid-column: 1/1;
   }
 }
@@ -31,32 +31,20 @@
 .blocksInfo {
   padding: 0;
   margin: calc(var(--scale) * 124) 0 0;
-  list-style-type: none;
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     margin: calc(var(--scale) * 24) 0 0;
   }
-}
-
-.anchor {
-  display: flex;
-  width: 100%;
-  max-width: calc(var(--scale) * 751);
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  border-top: 1px solid var(--coal);
-  text-decoration: none;
 }
 
 .anchorHeading {
   @mixin text;
   @mixin textLarge;
 
-  margin: calc(var(--scale) * 4) calc(var(--scale) * 6) calc(var(--scale) * 24);
+  margin: calc(var(--scale) * 4) calc(var(--scale) * 6) calc(var(--scale) * 9);
   font-feature-settings: 'ss01' on;
 }
 
-.anchorButton {
-  margin: calc(var(--scale) * 10) 0 0;
+.anchor {
+  min-width: 25px;
 }

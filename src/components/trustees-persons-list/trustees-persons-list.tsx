@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 
-import { PersonCard } from 'components/ui/person-card';
+import PersonCard from '../ui/person-card/person-card';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 
@@ -23,15 +23,12 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
 
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     spacing: 30,
     slidesPerView: 3,
     breakpoints: {
-      '(max-width: 767px)': {
-        slidesPerView: 3,
-        mode: 'free-snap',
-      },
-      '(max-width: 750px)': {
+
+      '(max-width: 728px)': {
         slidesPerView: 2.5,
         mode: 'free-snap',
       },
@@ -54,10 +51,14 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
     setScreenWidth(document.documentElement.clientWidth);
   }, []);
 
+  useEffect(() => {
+    slider?.refresh();
+  }, [screenWidth]);
+
   return (
     <>
       {
-        screenWidth && screenWidth < 768 &&
+        Number(screenWidth) < 729 &&
         <div ref={sliderRef} className="keen-slider">
           {trustees.map((trustee) => (
             <div key={trustee.id} className="keen-slider__slide">
@@ -74,7 +75,7 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
       }
 
       {
-        screenWidth && screenWidth > 767 &&
+        Number(screenWidth) > 728 &&
         <ul className={style.trusteesList}>
           {trustees.map((trustee) => (
             <li key={trustee.id} className={style.trusteesListItem}>

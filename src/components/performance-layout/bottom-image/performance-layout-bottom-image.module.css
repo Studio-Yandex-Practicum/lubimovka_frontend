@@ -1,0 +1,6 @@
+.image {
+  position: relative;
+  height: scale(404px);
+  margin: scale (0 60px 40px 0);
+  grid-area: bottom-image;
+}
