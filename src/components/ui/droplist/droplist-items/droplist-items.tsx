@@ -1,31 +1,22 @@
-import React, { useState, useCallback, FC, useEffect } from 'react';
+import React, { useCallback, FC } from 'react';
 import cn from 'classnames';
 
 import styles from './droplist-items.module.css';
 
 interface IDroplistItemsProps {
   item: string | number,
-  activeItem: string | undefined,
   cb: (value: string, activeCheckbox: boolean) => void,
+  selectList: string[]
+  activeCheckbox: boolean
 }
 
-export const DroplistItems: FC<IDroplistItemsProps> = ({ item, cb, activeItem }): JSX.Element => {
-  const [ activeCheckbox, setActiveCheckbox ] = useState(false);
+export const DroplistItems: FC<IDroplistItemsProps> = ({ item, cb, activeCheckbox }): JSX.Element => {
 
   const hendlerCheckbox = useCallback((event: React.MouseEvent<HTMLInputElement>) => {
     // Январь, 2021
     const value: string = event.currentTarget.value;
-
-    setActiveCheckbox(state => !state);
     cb(value, !activeCheckbox);
   }, [ activeCheckbox ]);
-
-  useEffect(() => {
-    if (activeItem) {
-      setActiveCheckbox(true);
-      cb(activeItem, !activeCheckbox);
-    }
-  }, []);
 
   return (
     <label className={ cn(styles.item, {

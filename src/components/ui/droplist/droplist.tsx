@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useCallback } from 'react';
+import React, { FC, useEffect, useState, useCallback, useImperativeHandle, forwardRef } from 'react';
 import cn from 'classnames';
 
 // Компоненты
@@ -14,20 +14,18 @@ import { createList } from './utils';
 interface IDroplistProps {
   type: 'years' | 'months';
   cb: (selectList: string[]) => void,
-  selectListFromProps?: string[],
   data?: string[] | number[],
   maxWidth?: number,
   widthSelectedItem?: number,
 }
 
-export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
+const DroplistUI: React.ForwardRefRenderFunction<Element> = (props: IDroplistProps, ref: () => void): JSX.Element => {
   const {
     type, 
     cb,
-    selectListFromProps,
     data, 
     maxWidth, 
-    widthSelectedItem
+    widthSelectedItem,
   } = props;
 
   // Выбранный список пользователем.
@@ -50,6 +48,28 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
       getList(list);
     }
   }, [ data ]);
+
+  const deleteAll = () => {
+    console.log('deleteAll');
+    setSelectList([]);
+  };
+
+  const deleteItem = (value: string) => {
+    setSelectList(state => {
+      const previousState = state.slice(0);
+      const newState = previousState.filter((item: string | number) => item !== value.toLowerCase());
+      return newState;
+    });
+  };
+
+  useImperativeHandle(ref, () => ({
+    deleteAll: () => {
+      deleteAll();
+    },
+    deleteItem: (item: string) => {
+      deleteItem(item);
+    }
+  }), [ deleteAll, deleteItem ]);
 
   const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -103,9 +123,8 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
               item={ item }
               key={ i }
               cb={ cbItems }
-              activeItem={ selectListFromProps ?
-                selectListFromProps.find(itemSelect => itemSelect === item)
-                : undefined }
+              selectList={ selectList }
+              activeCheckbox={selectList.some(itemSelect => itemSelect === item)}
             />
           ))}
         </div>
@@ -115,3 +134,5 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
     </div>
   );
 };
+
+export const Droplist = forwardRef(DroplistUI);
