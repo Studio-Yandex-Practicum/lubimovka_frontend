@@ -1,6 +1,11 @@
 .section {
   width: 100%;
+  padding-bottom: scale(128px);
   background-color: var(--white);
+
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: scale(72px);
+  }
 }
 
 .article_container {
