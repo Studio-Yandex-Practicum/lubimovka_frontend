@@ -24,8 +24,8 @@ import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 interface IAppLayoutProps extends WithAppSettingsProps{
   hiddenPartners?: boolean,
   showBackButton?: boolean,
-  backButtonLabel: string,
-  backButtonHref: string,
+  backButtonLabel?: string,
+  backButtonHref?: string,
 }
 
 const AppLayout: FC<IAppLayoutProps> = (props) => {
