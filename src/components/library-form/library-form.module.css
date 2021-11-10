@@ -3,6 +3,10 @@
   width: 100%;
   height: 32px;
   border-bottom: 1px solid var(--coal);
+
+  @media (max-width: $tablet-portrait) {
+    height: scale(32px);
+  }
 }
 
 .searchInput {
@@ -31,5 +35,8 @@
 
   @media (max-width: $tablet-portrait) {
     @mixin textSmall;
+
+    width: scale(256px);
+    height: scale(32px);
   }
 }
