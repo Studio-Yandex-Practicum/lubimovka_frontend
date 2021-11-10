@@ -68,7 +68,7 @@ const DroplistUI: React.ForwardRefRenderFunction<Element> = (props: IDroplistPro
     },
     deleteItem: (item: string) => {
       deleteItem(item);
-    }
+    },
   }), [ deleteAll, deleteItem ]);
 
   const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {

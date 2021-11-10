@@ -33,10 +33,15 @@ const MainPage: NextPage = () => {
           <title>{ metaTitle }</title>
         </Head>
         <main className={cx('main')}>
-          <button onClick={() => droplistRef.current?.deleteAll()}>deleteAll</button>
+
+          {/* Кнопка Очистить */}
+          <button onClick={() => droplistRef.current?.deleteAll()}>Очистить</button>
+          {/* Кнопка Х для элементов */}
           <button onClick={() => droplistRef.current?.deleteItem('март')}>deleteItem</button>
+          {/* Дроплист */}
           <Droplist type='months' cb={(years: string[]) => {
-            console.log('');}} ref={droplistRef} />
+            console.log(years);}} ref={droplistRef} />
+
           {title && (
             <MainTitle
               title={title.title}
