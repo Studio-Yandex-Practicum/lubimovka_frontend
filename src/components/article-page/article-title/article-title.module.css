@@ -9,7 +9,7 @@
     'b title title c'
     'b description description img'
     'b date author img';
-  grid-template-columns: min-content 1fr 1fr 2.555fr;
+  grid-template-columns: scale(90px) 1fr 1fr 2.555fr;
 
   @media (max-width: $tablet-portrait) {
     padding: scale(32px 0 0 24px);
@@ -25,7 +25,17 @@
   }
 }
 
-.backButton {
+.backButtonBlog {
+  width: scale(90px) !important;
+  grid-area: button;
+
+  @media (max-width: $tablet-portrait) {
+    left: scale(60px);
+  }
+}
+
+.backButtonNews {
+  width: scale(125px) !important;
   grid-area: button;
 
   @media (max-width: $tablet-portrait) {
