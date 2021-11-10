@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useState, useCallback } from 'react';
 import cn from 'classnames';
 
-import styles from './droplist.module.css';
-
 // Компоненты
 import { DroplistItems } from './droplist-items';
 import { ListSelected } from './list-selected';
 import { ContainerButton } from './container-button';
+
+import styles from './droplist.module.css';
 
 // utile
 import { createList } from './utils';
@@ -14,6 +14,7 @@ import { createList } from './utils';
 interface IDroplistProps {
   type: 'years' | 'months';
   cb: (selectList: string[]) => void,
+  selectListFromProps?: string[],
   data?: string[] | number[],
   maxWidth?: number,
   widthSelectedItem?: number,
@@ -22,10 +23,11 @@ interface IDroplistProps {
 export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
   const {
     type, 
-    cb, 
+    cb,
+    selectListFromProps,
     data, 
     maxWidth, 
-    widthSelectedItem,
+    widthSelectedItem
   } = props;
 
   // Выбранный список пользователем.
@@ -96,22 +98,19 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
         <div className={ cn(styles.list, {
           [styles.active]: activeDropdown,
         })}>
-          {
-            list.map((month: string | number, i): JSX.Element => {
-              return (
-                <DroplistItems
-                  month={ month }
-                  key={ i }
-                  cb={ cbItems }
-                />
-              );
-            })
-          }
+          { list.map((item: string | number, i): JSX.Element => (
+            <DroplistItems
+              item={ item }
+              key={ i }
+              cb={ cbItems }
+              activeItem={ selectListFromProps ?
+                selectListFromProps.find(itemSelect => itemSelect === item)
+                : undefined }
+            />
+          ))}
         </div>
-        { 
-          activeDropdown && selectList.length > 0
-          && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth } />
-        }
+        { selectList.length > 0
+          && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth } /> }
       </form>
     </div>
   );

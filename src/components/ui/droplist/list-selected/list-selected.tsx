@@ -19,15 +19,11 @@ export const ListSelected: FC<IListSelectedProps> = ({ selectList, setMaxWidth }
         className={ cn(styles.list) } 
         style={{ gridTemplateColumns: `repeat(auto-fit, max(${setMaxWidth()}))` }}
       >
-        {
-          selectList.map((item, i) => {
-            return (
-              <li className={ cn(styles.item) } key={ i } >
-                { item }
-              </li>
-            );
-          })
-        }
+        { selectList.map((item, i) => (
+          <li className={ cn(styles.item) } key={ i } >
+            { item }
+          </li>
+        ))}
       </ul>
       <button className={ cn(styles.button) } >
         <Icon 
