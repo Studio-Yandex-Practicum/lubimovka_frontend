@@ -1,5 +1,8 @@
 .imagesblock {
   max-width: scale(940px);
-  padding-top: scale(100px);
-  margin: 0 auto;
+  margin: scale(100px) auto 0;
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(56px) auto 0;
+  }
 }
