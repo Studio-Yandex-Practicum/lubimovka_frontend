@@ -23,9 +23,7 @@ import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 
 interface IAppLayoutProps extends WithAppSettingsProps{
   hiddenPartners?: boolean,
-  showBackButton?: boolean,
-  backButtonLabel?: string,
-  backButtonHref?: string,
+  backButton?: { path: string, text: string }
 }
 
 const AppLayout: FC<IAppLayoutProps> = (props) => {
@@ -34,9 +32,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
     projects,
     generalPartners,
     hiddenPartners,
-    showBackButton,
-    backButtonLabel,
-    backButtonHref
+    backButton
   } = props;
 
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
@@ -88,7 +84,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
           </Navbar.Actions>
         </Navbar>
       </Page.Header>
-      {showBackButton && <BackButton label={backButtonLabel} href={backButtonHref} />}
+      {backButton && <BackButton label={backButton.text} href={backButton.path} />}
       {children}
       {isMobile && (
         <>
