@@ -3,6 +3,7 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import { Icon } from '../icon/icon';
+import { Url } from '../../../shared/types/common';
 
 import styles from './project.module.css';
 
@@ -12,7 +13,7 @@ interface IProjectCardProps {
   id: number,
   title: string;
   description: string;
-  image: string;
+  image: Url;
 }
 
 export const ProjectCard: FC<IProjectCardProps> = (props) => {
