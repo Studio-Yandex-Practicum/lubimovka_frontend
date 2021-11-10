@@ -49,7 +49,7 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
       <h3 className={cx('title')}>{title}</h3>
       <h6 className={cx('description')}>{description}</h6>
 
-      <p className={cx('date', {dateNews: !isBlog})}>{date}</p>
+      <p className={cx('date', {dateNews: !isBlog})}>{new Date(date).toLocaleDateString('ru-Ru', {month: 'long', day:'numeric', year:'numeric'}).replace(' г.', '')}</p>
       {isBlog &&
           <InfoLink
             isOutsideLink={true}
