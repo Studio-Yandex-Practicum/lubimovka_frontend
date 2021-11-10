@@ -30,7 +30,7 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
   } = props;
 
   return (
-    <section className={cx('container')}>
+    <section className={cx('container', {containerTypeNews: !isBlog})}>
       <Button className={cx({backButtonBlog: isBlog, backButtonNews: !isBlog})}
         label={isBlog ? 'Блог' : 'Новости'}
         size={'s'}

@@ -25,6 +25,12 @@
   }
 }
 
+.containerTypeNews {
+  @media (max-width: $tablet-portrait) {
+    padding: scale(32px 0 75px 24px);
+  }
+}
+
 .backButtonBlog {
   width: scale(90px) !important;
   grid-area: button;
