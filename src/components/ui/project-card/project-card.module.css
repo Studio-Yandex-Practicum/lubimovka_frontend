@@ -1,12 +1,11 @@
-.listItem {
-  list-style: none;
+.link {
+  text-decoration: none;
 }
 
 .card {
   display: flex;
   width: 366px;
   flex-flow: column nowrap;
-  text-decoration: none;
 
   @media (min-width: $tablet-portrait) {
     width: 748px;
@@ -14,7 +13,7 @@
   }
 }
 
-.imgContainer {
+.imageContainer {
   display: flex;
   overflow: hidden;
   width: 214px;
@@ -29,7 +28,7 @@
 
 /* Every even card has its image aligned to the right side
  * until screen less than $tablet-portrait */
-.card:nth-child(even) > .imgContainer {
+.card:nth-child(even) > .imageContainer {
   align-self: flex-end;
 }
 

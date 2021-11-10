@@ -28,7 +28,7 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
     <Link href={`/project/${id}`}>
       <a className={cx('link')}>
         <article className={cx('card')}>
-          <div className={cx('imgContainer')}>
+          <div className={cx('imageContainer')}>
             <img className={cx('image')} src={image} alt={title} />
           </div>
           <div>
