@@ -7,7 +7,6 @@ import ArticleTitle from './article-title/article-title';
 import { Section } from '../section';
 import {BasicPlayCard, BasicPlayCardList, IBasicPlayCardProps} from '../ui/basic-play-card';
 import {IPersonCardProps, PersonCard, PersonCardList} from '../ui/person-card';
-import {padding} from 'polished';
 import {ArticleMainText} from './article-maintext';
 import ArticleShare from './article-share/article-share';
 import {ImageSlider, TImageItem} from '../ui/image-slider';
@@ -62,14 +61,15 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
             }
           })}
         </ArticleMainText>
-        <Section type={'plays'} title={'Заголовок блока с пьессами'} style={padding(120, 0, 54)}>
+        {/*style={padding(120, 0, 54)}*/}
+        <Section type={'plays'} title={'Заголовок блока с пьессами'} className={cx('sectionPlaysList')}>
           <BasicPlayCardList>
             {(DataPlays as IBasicPlayCardProps[]).map((item, idx) => (
               <BasicPlayCard key={idx} {...item}/>
             ))}
           </BasicPlayCardList>
         </Section>
-        <Section type={'persons'} title={'Заголовок блока с персонами'} style={padding(120, 0, 54)}>
+        <Section type={'persons'} title={'Заголовок блока с персонами'} className={cx('sectionPersonsList')}>
           <PersonCardList>
             {(DataPersons as IPersonCardProps[]).map((item, idx) => (
               <PersonCard key={idx} {...item}/>

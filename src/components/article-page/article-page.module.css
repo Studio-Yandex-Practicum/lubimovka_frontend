@@ -6,3 +6,19 @@
     margin: scale(56px) auto 0;
   }
 }
+
+.sectionPlaysList {
+  padding: scale(120px 0 54px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(56px 0 16px);
+  }
+}
+
+.sectionPersonsList {
+  padding: scale(120px 0 147px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(56px 0 68px);
+  }
+}
