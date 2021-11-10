@@ -13,10 +13,8 @@ export const PersonCardList = (props: IPersonCardListProps): JSX.Element => {
   const { expanded, children } = props;
 
   return (
-    <div className={cx('personCardList')}>
-      <div className={cx('grid', { expanded })}>
-        {children}
-      </div>
+    <div className={cx('personCardList', { expanded })}>
+      {children}
     </div>
   );
 };
