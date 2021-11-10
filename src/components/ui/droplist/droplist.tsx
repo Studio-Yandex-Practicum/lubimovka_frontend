@@ -11,21 +11,30 @@ import styles from './droplist.module.css';
 // utile
 import { createList } from './utils';
 
+export interface IDroplistPublic {
+  deleteAll: () => void,
+  deleteItem: (value: string) => void
+}
+
 interface IDroplistProps {
   type: 'years' | 'months';
   cb: (selectList: string[]) => void,
-  data?: string[] | number[],
+  data?: string[] | number[], // Это свойство можно убрать, оно сильно усложняет, через хук отдать функцию,
+  // которой можно установить список. Можно даже отдать getList(кстати почему не setList?), тогда можно управлять списком 
+  // внутри и снаружи. Мне кажется это упростит задачу.
   maxWidth?: number,
   widthSelectedItem?: number,
+  ref: React.ForwardedRef<IDroplistPublic>
 }
 
-const DroplistUI: React.ForwardRefRenderFunction<Element> = (props: IDroplistProps, ref: () => void): JSX.Element => {
+// eslint-disable-next-line react/display-name
+export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, ref) => {
   const {
     type, 
     cb,
     data, 
     maxWidth, 
-    widthSelectedItem,
+    widthSelectedItem
   } = props;
 
   // Выбранный список пользователем.
@@ -49,27 +58,24 @@ const DroplistUI: React.ForwardRefRenderFunction<Element> = (props: IDroplistPro
     }
   }, [ data ]);
 
-  const deleteAll = () => {
-    console.log('deleteAll');
-    setSelectList([]);
-  };
 
-  const deleteItem = (value: string) => {
-    setSelectList(state => {
-      const previousState = state.slice(0);
-      const newState = previousState.filter((item: string | number) => item !== value.toLowerCase());
-      return newState;
-    });
-  };
+  // const deleteAll = () => {
+  //   console.log('deleteAll');
+  //   setSelectList([]);
+  // };
+
+  // const deleteItem = (value: string) => {
+  //   setSelectList(state => {
+  //     const previousState = state.slice(0);
+  //     const newState = previousState.filter((item: string | number) => item !== value.toLowerCase());
+  //     return newState;
+  //   });
+  // };
 
   useImperativeHandle(ref, () => ({
-    deleteAll: () => {
-      deleteAll();
-    },
-    deleteItem: (item: string) => {
-      deleteItem(item);
-    },
-  }), [ deleteAll, deleteItem ]);
+    deleteAll: () => { setSelectList([]); },
+    deleteItem: (value: string) => { setSelectList(state => [...state.filter((item) => item !== value.toLowerCase())]); }
+  }), [ selectList ]);
 
   const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -133,6 +139,4 @@ const DroplistUI: React.ForwardRefRenderFunction<Element> = (props: IDroplistPro
       </form>
     </div>
   );
-};
-
-export const Droplist = forwardRef(DroplistUI);
+});

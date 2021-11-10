@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { RefObject, useRef } from 'react';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import cn from 'classnames/bind';
@@ -17,13 +17,13 @@ import mainPlatformsData from 'components/main-page/assets/main-platforms-data.j
 import mainShortListData from 'components/main-page/assets/main-short-list-data.json';
 import mainArchiveData from 'components/main-page/assets/main-archive-data.json';
 
-import { Droplist } from 'components/ui/droplist';
+import { Droplist, IDroplistPublic } from 'components/ui/droplist';
 
 import styles from './index.module.css';
 const cx = cn.bind(styles);
 
 const MainPage: NextPage = () => {
-  const droplistRef = useRef(null);
+  const droplistRef = useRef() as RefObject<IDroplistPublic>;
   
   const { title, events, aside, banners, platforms, partners, archive, shortList, metaTitle } = data;
   return (
@@ -39,8 +39,10 @@ const MainPage: NextPage = () => {
           {/* Кнопка Х для элементов */}
           <button onClick={() => droplistRef.current?.deleteItem('март')}>deleteItem</button>
           {/* Дроплист */}
-          <Droplist type='months' cb={(years: string[]) => {
-            console.log(years);}} ref={droplistRef} />
+          <Droplist type='months' 
+            cb={(years: string[]) => {console.log(years);}}
+            ref={droplistRef}
+          />
 
           {title && (
             <MainTitle
