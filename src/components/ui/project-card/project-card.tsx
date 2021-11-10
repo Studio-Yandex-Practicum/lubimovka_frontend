@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { FC } from 'react';
 import classNames from 'classnames/bind';
 
-import { Icon } from '../icon/icon';
-import { Url } from '../../../shared/types/common';
+import { Icon } from 'components/ui/icon';
+import { Url } from 'shared/types';
 
-import styles from './project.module.css';
+import styles from './project-card.module.css';
 
 const cx = classNames.bind(styles);
 
