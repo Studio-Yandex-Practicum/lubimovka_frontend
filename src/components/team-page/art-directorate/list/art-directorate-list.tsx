@@ -85,10 +85,16 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
 
       {
         Number(screenWidth) > 728 &&
-        <ul className={cx('grid', {[styles.flex]: selectedCards.length === 6}, {[styles.flex]: selectedCards.length === 5})}>
+        <ul
+          className={cx({[styles.grid]: selectedCards.length < 5 || selectedCards.length > 6},
+            {[styles.flex]: selectedCards.length === 6},
+            {[styles.flex]: selectedCards.length === 5})}>
           {cards.map((card) => (
             card.team === 'art' &&
-            <li key={card.id} className={cx({[styles.fiveElements]: selectedCards.length === 5}, {[styles.sixElements]: selectedCards.length === 6})}>
+            <li key={card.id}
+              className={cx({[styles.fiveElements]: selectedCards.length === 5},
+                {[styles.sixElements]: selectedCards.length === 6})
+              }>
               <PersonCard
                 participant={true}
                 link={card.person.image}
