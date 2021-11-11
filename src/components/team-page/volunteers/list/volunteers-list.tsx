@@ -73,6 +73,13 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
     }
   };
 
+  const handleOverlayClose = (evt: MouseEvent)  => {
+    const target = evt.target as HTMLDivElement;
+    if (target.classList.contains('keen-slider__slide')) {
+      closeFeedbackPopup();
+    }
+  };
+
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
   }, []);
@@ -83,8 +90,10 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
 
   useEffect(() => {
     document.addEventListener('keydown', handleEscClose);
+    document.addEventListener('mousedown', handleOverlayClose);
     return() =>{
       document.removeEventListener('keydown', handleEscClose);
+      document.removeEventListener('mousedown', handleOverlayClose);
     };
   }, []);
 
