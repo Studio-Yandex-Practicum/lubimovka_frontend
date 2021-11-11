@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames/bind';
 
@@ -31,15 +31,16 @@ interface IFeedbackPopupProps {
   onClose: React.MouseEventHandler<HTMLButtonElement>,
   isOpen?: boolean;
   cards: Array<PersonCardData>;
-  currentYear: number
+  currentYear: number;
+  openedSlide: number
 }
 
 export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
-  const { isOpen, cards, currentYear, onClose } = props;
+  const { isOpen, cards, currentYear, openedSlide, onClose } = props;
 
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(openedSlide);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
@@ -48,6 +49,10 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
       setCurrentSlide(s.details().relativeSlide);
     },
   });
+
+  useEffect(() => {
+    slider?.moveToSlide(openedSlide);
+  }, [isOpen]);
 
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
@@ -59,9 +64,9 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
 
   return (
     <div ref={sliderRef} className={cx('keen-slider', 'slider', {[styles.isOpen]: isOpen})}>
-      {cards.map((card, idx) => (
+      {cards.map((card) => (
         <div
-          key={idx}
+          key={card.id}
           className={cx('keen-slider__slide', 'slide')}
         >
           <div className={cx('container')}>
