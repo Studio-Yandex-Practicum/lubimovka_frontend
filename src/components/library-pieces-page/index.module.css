@@ -1,7 +1,7 @@
 .content {
   position: relative;
   display: flex;
-  max-width: 1440px;
+  max-width: 100%;
   align-items: flex-start;
   justify-content: space-between;
   margin: 0 auto;
@@ -14,25 +14,31 @@
   top: 0;
   left: auto;
   box-sizing: border-box;
-  padding-top: 21px;
+  padding: scale(21px) 0;
 }
 
 .menu {
   box-sizing: border-box;
-  padding-bottom: 17px;
+  padding-bottom: scale(17px);
+  padding-left: scale(30px);
   border-bottom: 1px solid var(--coal);
-  margin: 0 0 30px;
+  margin: 0 0 scale(30px);
+}
+
+.filter {
+  box-sizing: border-box;
+  padding-left: scale(30px);
 }
 
 .section {
   position: relative;
   z-index: 0;
   display: flex;
-  width: 1050px;
+  width: scale(1050px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 58px 0 163px auto;
+  margin: scale(58px) scale(29px) scale(163px) auto;
   justify-self: flex-end;
 }
 
@@ -41,24 +47,24 @@
   @mixin headline1;
 
   z-index: 4;
-  margin-bottom: 16px;
+  margin-bottom: scale(16px);
 }
 
 .search {
   position: sticky;
   position: -webkit-sticky;
   z-index: 3;
-  top: 56px;
+  top: scale(53px);
   width: 100%;
   background-color: var(--beige);
 
   &::before {
     position: absolute;
     z-index: 3;
-    top: -70px;
+    top: calc(scale(57px) * -1);
     left: 0;
     width: 100%;
-    height: 70px;
+    height: scale(57px);
     background-color: var(--beige);
     content: '';
   }
@@ -66,6 +72,6 @@
 
 .pieces {
   z-index: 1;
-  width: 100%;
-  margin: 54px auto 0;
+  width: calc(100% + scale(48px));
+  margin: scale(54px) auto 0 calc(scale(24px) * -1);
 }

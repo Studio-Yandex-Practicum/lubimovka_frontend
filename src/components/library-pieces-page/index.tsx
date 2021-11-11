@@ -41,7 +41,9 @@ const LibraryPage: FC = () => {
             </Menu.Item>
           </Menu>
         </div>
-        <LibraryFilter />
+        <div className={styles.filter}>
+          <LibraryFilter />
+        </div>
       </div>
       <section className={styles.section}>
         <h1 className={styles.title}>Библиотека</h1>

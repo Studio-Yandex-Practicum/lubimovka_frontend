@@ -58,8 +58,8 @@ const LibraryFilter: FC = () => {
       </div>
       {(filterState.years.length > 0 || filterState.programmes.length > 0) &&
       <Button onClick={handleResetClick} label='Очистить' size={'s'} icon={'cross'}
-        iconPlace={'left'} border={'bottomLeft'} width={'143px'} align={'start'}
-        gap={'3px'} />
+        iconPlace={'left'} border={'bottomLeft'} width={'scale(143px)'} align={'start'}
+        gap={'scale(3px)'} />
       }
     </div>
   );
