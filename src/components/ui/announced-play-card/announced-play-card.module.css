@@ -67,13 +67,14 @@
 .title {
   @mixin headline;
   @mixin headline5;
+  @mixin truncated-text;
 
   display: block;
-  width: scale(419px);
+  max-width: scale(419px);
   margin-top: scale(4px);
 
   @media (max-width: $tablet-portrait) {
-    width: scale(243px);
+    max-width: scale(243px);
     margin-top: scale(16px);
   }
 }
@@ -87,12 +88,12 @@
   @mixin textSmall;
 
   display: flex;
-  width: scale(240px);
+  max-width: scale(240px);
   flex-direction: column;
   margin: scale(16px 0 0 30px);
 
   @media (max-width: $tablet-portrait) {
-    width: scale(243px);
+    max-width: scale(243px);
     margin-left: 0;
   }
 }
@@ -155,7 +156,7 @@
 .buttonContainerCoverExists {
   @media (max-width: $tablet-portrait) {
     margin-top: scale(48px);
-    margin-left: scale(-123px);
+    margin-left: calc(var(--scale) * -123);
   }
 }
 

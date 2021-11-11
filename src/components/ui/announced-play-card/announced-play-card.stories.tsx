@@ -24,7 +24,7 @@ PlayCardEventsViewTwoButtons.args = {
 export const PlayCardEventsViewOneButton = Template.bind({});
 PlayCardEventsViewOneButton.args = {
   date:'2021-12-15T12:00',
-  title: 'МАМА',
+  title: 'МАМАМАМАМАМАМАМАМАМАМАМАМАМАМАМАМАМА',
   playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
   directorArray: ['Катя Ганюшина'],
   buttonLinks: ['https://lubimovka.timepad.ru/event/1746579/'],
