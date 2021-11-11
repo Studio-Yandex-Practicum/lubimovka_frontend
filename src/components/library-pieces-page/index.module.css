@@ -7,7 +7,7 @@
 
   @media (max-width: $tablet-portrait) {
     position: fixed;
-    z-index: 10;
+    z-index: 1;
     top: scale(32px);
     right: scale(24px);
     display: flex;

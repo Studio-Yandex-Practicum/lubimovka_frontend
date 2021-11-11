@@ -1,10 +1,12 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
+import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 
 import LibraryForm from 'components/library-form/library-form';
 import LibraryFilter from 'components/library-filter/library-filter';
 import { BasicPlayCard, BasicPlayCardList, IBasicPlayCardProps } from 'components/ui/basic-play-card';
 import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
+import LibraryFiltersModal from './library-filters-modal';
 
 import styles from './index.module.css';
 
@@ -25,10 +27,22 @@ const mockCard = {
 const items = Array.from(Array(7)).map(() => mockCard);
 
 const LibraryPage: FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  function handleFiltersClick():void {
+    setIsModalOpen((prev) => !prev);
+  }
+
+  useEffect(() => {
+    isModalOpen ? disableBodyScroll({ savePosition: true }) : enableBodyScroll();
+
+    return () => enableBodyScroll();
+  }, [isModalOpen]);
+
   return (
     <main className={styles.wrap}>
-      <div className={styles.filtersButton}>
-        <Icon glyph='filter' />
+      <div onClick={handleFiltersClick} className={styles.filtersButton}>
+        <Icon glyph={isModalOpen ? 'cross' : 'filter'} />
       </div>
       <div className={styles.topWrap}>
         <div className={styles.top} />
@@ -71,6 +85,7 @@ const LibraryPage: FC = () => {
             <BasicPlayCard key={idx} {...item}/>
           ))}
         </section>
+        {isModalOpen && <LibraryFiltersModal />}
       </div>
     </main>
   );
