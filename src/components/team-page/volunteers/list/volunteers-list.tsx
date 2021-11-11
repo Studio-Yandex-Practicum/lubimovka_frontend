@@ -74,7 +74,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
   };
 
   const handleOverlayClose = (evt: MouseEvent)  => {
-    const target = evt.target as HTMLDivElement;
+    const target = evt.target as HTMLElement;
     if (target.classList.contains('keen-slider__slide')) {
       closeFeedbackPopup();
     }
