@@ -12,13 +12,13 @@
 }
 
 .list {
-  display: grid;
+  display: flex;
   width: inherit;
   box-sizing: border-box;
+  flex-wrap: wrap;
   padding: 0 7px 3px 7px;
   margin: 0;
   column-gap: 4px;
-  grid-template-columns: repeat(auto-fit, max(112px));
   list-style: none;
   row-gap: 1px;
 }
@@ -28,7 +28,6 @@
   @mixin text;
 
   display: inline-block;
-  min-height: 35px;
   box-sizing: border-box;
   padding: 4px 8px 8px;
   background: var(--coal);

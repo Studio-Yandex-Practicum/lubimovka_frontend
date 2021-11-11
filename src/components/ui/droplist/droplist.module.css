@@ -1,5 +1,8 @@
 .dropdown {
   width: 100%;
+}
+
+.dropdownWidth {
   max-width: 300px;
 }
 

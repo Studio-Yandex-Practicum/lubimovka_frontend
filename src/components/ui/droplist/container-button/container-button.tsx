@@ -6,22 +6,21 @@ import { Icon } from '../../icon';
 import styles from './container-button.module.css';
 
 interface IContainerButtonProps {
-  cb: () => void,
-  activeDropdown: boolean,
+  cb: () => void
+  activeDropdown: boolean
+  value: string | number
 }
 
-export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown }) => {
+export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown, value }) => {
   const clickActiveDropdown = useCallback((): void => cb(), [ cb ]);
 
   return (
-    <div
-      className={ cn(styles.container, {
-        [styles.dark]: activeDropdown,
-      })}
-      onClick={ clickActiveDropdown }
-    >
+    <div className={ cn(styles.container, {
+      [styles.dark]: activeDropdown,
+    })}
+    onClick={ clickActiveDropdown }>
       <p className={ cn(styles.text) }>
-        Все
+        { value }
       </p>
       { <Icon glyph='arrow-down' 
         fill={activeDropdown ? 'white' : 'black'} 
