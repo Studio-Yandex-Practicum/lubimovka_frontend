@@ -23,8 +23,8 @@ export type PersonCardData = {
     image: Url;
   };
   year: number;
-  title: string;
-  review: string;
+  review_title: string;
+  review_text: string;
 }
 
 interface IFeedbackPopupProps {
@@ -96,8 +96,8 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 currentSlide={currentSlide}
                 onClick={(idx) => slider.moveToSlideRelative(idx)}
               />}
-              <p className={cx('title')}>{card.title}</p>
-              <p className={cx('text')}>{card.review}</p>
+              <p className={cx('title')}>{card.review_title}</p>
+              <p className={cx('text')}>{card.review_text}</p>
               {Number(screenWidth) > 728 &&
               <SliderDots
                 className={cx('dots')}

@@ -22,8 +22,8 @@ interface PersonCardData {
     image: string;
   };
   year: number;
-  title: string;
-  review: string;
+  review_title: string;
+  review_text: string;
 }
 
 interface VolunteersSectionProps {

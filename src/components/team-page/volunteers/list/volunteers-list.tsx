@@ -20,8 +20,8 @@ interface PersonCardData {
     image: string;
   };
   year: number;
-  title: string;
-  review: string;
+  review_title: string;
+  review_text: string;
 }
 
 interface VolunteersCardsProps {
@@ -107,7 +107,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
               <PersonCard
                 participant={false}
                 link={card.person.image}
-                response={card.review}
+                response={card.review_text}
                 name={`${card.person.first_name} ${card.person.second_name}`}
                 handleClick={() => handleFeedbackPopupClick(idx)}
               >
@@ -125,7 +125,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
               <PersonCard
                 participant={false}
                 link={card.person.image}
-                response={card.review}
+                response={card.review_text}
                 name={`${card.person.first_name} ${card.person.second_name}`}
                 handleClick={() => handleFeedbackPopupClick(idx)}
               >
