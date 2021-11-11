@@ -18,7 +18,7 @@ export const Section = (props: ISectionProps): JSX.Element => {
     title,
     titleTag: TitleTag = 'h2',
     children,
-    className: className = '',
+    className = '',
     ...restProps
   } = props;
 
