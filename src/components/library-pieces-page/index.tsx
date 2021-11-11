@@ -25,39 +25,49 @@ const items = Array.from(Array(7)).map(() => mockCard);
 
 const LibraryPage: FC = () => {
   return (
-    <main className={styles.content}>
-      <div className={styles.sidebar}>
-        <div className={styles.menu}>
-          <Menu type='history'>
-            <Menu.Item
-              href='/library'
-            >
-        Пьесы
-            </Menu.Item>
-            <Menu.Item
-              href='/library/authors'
-            >
-        Авторы
-            </Menu.Item>
-          </Menu>
-        </div>
-        <div className={styles.filter}>
-          <LibraryFilter />
-        </div>
+    <main className={styles.wrap}>
+      <div className={styles.topWrap}>
+        <div className={styles.top} />
       </div>
-      <section className={styles.section}>
-        <h1 className={styles.title}>Библиотека</h1>
-        <div className={styles.search}>
-          <LibraryForm />
+      <div className={styles.content}>
+        <div className={styles.sidebar}>
+          <div className={styles.menu}>
+            <Menu type='history'>
+              <Menu.Item
+                href='/library'
+              >
+        Пьесы
+              </Menu.Item>
+              <Menu.Item
+                href='/library/authors'
+              >
+        Авторы
+              </Menu.Item>
+            </Menu>
+          </div>
+          <div className={styles.filter}>
+            <LibraryFilter />
+          </div>
         </div>
-        <div className={styles.pieces}>
-          <BasicPlayCardList>
-            {(items as IBasicPlayCardProps[]).map((item, idx) => (
-              <BasicPlayCard key={idx} {...item}/>
-            ))}
-          </BasicPlayCardList>
-        </div>
-      </section>
+        <section className={styles.section}>
+          <h1 className={styles.title}>Библиотека</h1>
+          <div className={styles.search}>
+            <LibraryForm />
+          </div>
+          <div className={styles.pieces}>
+            <BasicPlayCardList>
+              {(items as IBasicPlayCardProps[]).map((item, idx) => (
+                <BasicPlayCard key={idx} {...item}/>
+              ))}
+            </BasicPlayCardList>
+          </div>
+        </section>
+        <section className={styles.piecesMobile}>
+          {(items as IBasicPlayCardProps[]).map((item, idx) => (
+            <BasicPlayCard key={idx} {...item}/>
+          ))}
+        </section>
+      </div>
     </main>
   );
 };
