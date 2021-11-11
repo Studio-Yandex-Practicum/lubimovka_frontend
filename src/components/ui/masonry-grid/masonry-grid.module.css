@@ -1,0 +1,34 @@
+.masonryGridSection {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.masonryGrid {
+  display: grid;
+  width: 100%;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  grid-auto-flow: dense;
+
+  /* строки шириной 1px, чтобы сетка была самая точная
+  возможно, это избыточно, и стоит сделать потолще */
+  grid-auto-rows: 1px;
+  grid-gap: 47px 60px;
+  grid-template-columns: repeat(auto-fill, 270px);
+  list-style: none;
+
+  /* opacity и transition для плавного отображения сетки после того,
+  как все карточки замут нужные им грид-строки */
+  opacity: 0;
+  transition: opacity .4s;
+
+  @media (max-width: 930px) {
+    grid-template-columns: repeat(auto-fill, 304px);
+  }
+
+  @media (max-width: 699px) {
+    grid-gap: 50px 60px;
+    grid-template-columns: repeat(auto-fill, 80%);
+  }
+}
