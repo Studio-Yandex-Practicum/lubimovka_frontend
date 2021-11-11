@@ -57,7 +57,7 @@ const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
           onClick={changeYearHandler}
           currentYear={currentYear}
         />
-        <VolunteersList cards={selectedCards}/>
+        <VolunteersList cards={selectedCards} currentYear={currentYear}/>
         <div className={styles.infoBlock}>
           <Icon className={styles.asterisk} glyph={'asterisk'}/>
           <p className={cx('info')}>

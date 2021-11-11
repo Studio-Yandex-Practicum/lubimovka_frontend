@@ -31,10 +31,11 @@ interface IFeedbackPopupProps {
   onClose: React.MouseEventHandler<HTMLButtonElement>,
   isOpen?: boolean;
   cards: Array<PersonCardData>;
+  currentYear: number
 }
 
 export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
-  const { isOpen, cards, onClose } = props;
+  const { isOpen, cards, currentYear, onClose } = props;
 
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
@@ -51,6 +52,10 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
   }, []);
+
+  useEffect(() => {
+    slider?.refresh();
+  }, [screenWidth, currentYear]);
 
   return (
     <div ref={sliderRef} className={cx('keen-slider', 'slider', {[styles.isOpen]: isOpen})}>

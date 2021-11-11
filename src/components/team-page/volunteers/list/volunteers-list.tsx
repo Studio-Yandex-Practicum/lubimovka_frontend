@@ -25,10 +25,11 @@ interface PersonCardData {
 }
 
 interface VolunteersCardsProps {
-  cards: Array<PersonCardData>
+  cards: Array<PersonCardData>,
+  currentYear: number
 }
 
-const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
+const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
@@ -76,7 +77,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
 
   useEffect(() => {
     slider?.refresh();
-  }, [screenWidth]);
+  }, [screenWidth, currentYear]);
 
   useEffect(() => {
     document.addEventListener('keydown', handleEscClose);
@@ -123,7 +124,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
         </ul>
       }
 
-      <FeedbackPopup cards={cards} isOpen={isFeedbackPopupOpen} onClose={closeFeedbackPopup}/>
+      <FeedbackPopup currentYear={currentYear} cards={cards} isOpen={isFeedbackPopupOpen} onClose={closeFeedbackPopup}/>
     </>
   );
 };
