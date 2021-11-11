@@ -4,6 +4,7 @@ import LibraryForm from 'components/library-form/library-form';
 import LibraryFilter from 'components/library-filter/library-filter';
 import { BasicPlayCard, BasicPlayCardList, IBasicPlayCardProps } from 'components/ui/basic-play-card';
 import { Menu } from 'components/ui/menu';
+import { Icon } from 'components/ui/icon';
 
 import styles from './index.module.css';
 
@@ -26,6 +27,9 @@ const items = Array.from(Array(7)).map(() => mockCard);
 const LibraryPage: FC = () => {
   return (
     <main className={styles.wrap}>
+      <div className={styles.filtersButton}>
+        <Icon glyph='filter' />
+      </div>
       <div className={styles.topWrap}>
         <div className={styles.top} />
       </div>

@@ -2,6 +2,23 @@
   position: relative;
 }
 
+.filtersButton {
+  display: none;
+
+  @media (max-width: $tablet-portrait) {
+    position: fixed;
+    z-index: 10;
+    top: scale(32px);
+    right: scale(24px);
+    display: flex;
+    width: scale(45px);
+    height: scale(45px);
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-green);
+  }
+}
+
 .topWrap {
   position: absolute;
   z-index: -1;
