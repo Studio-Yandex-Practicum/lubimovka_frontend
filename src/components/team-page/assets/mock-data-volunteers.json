@@ -4,7 +4,7 @@
     "person": {
       "id": 6,
       "first_name": "Сабина",
-      "second_name": "Соха",
+      "last_name": "Соха",
       "middle_name": "Соха",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -19,7 +19,7 @@
     "person": {
       "id": 7,
       "first_name": "Тереза",
-      "second_name": "Шимчак",
+      "last_name": "Шимчак",
       "middle_name": "Олеговна",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -34,7 +34,7 @@
     "person": {
       "id": 8,
       "first_name": "Чеслав",
-      "second_name": "Качмарек",
+      "last_name": "Качмарек",
       "middle_name": "Качмарек",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -49,7 +49,7 @@
     "person": {
       "id": 9,
       "first_name": "Сабина",
-      "second_name": "Соха",
+      "last_name": "Соха",
       "middle_name": "Соха",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -64,7 +64,7 @@
     "person": {
       "id": 10,
       "first_name": "Тереза",
-      "second_name": "Шимчак",
+      "last_name": "Шимчак",
       "middle_name": "Олеговна",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -79,7 +79,7 @@
     "person": {
       "id": 11,
       "first_name": "Чеслав",
-      "second_name": "Качмарек",
+      "last_name": "Качмарек",
       "middle_name": "Качмарек",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -94,7 +94,7 @@
     "person": {
       "id": 12,
       "first_name": "Сабина",
-      "second_name": "Соха",
+      "last_name": "Соха",
       "middle_name": "Соха",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -109,7 +109,7 @@
     "person": {
       "id": 13,
       "first_name": "Сабина",
-      "second_name": "Соха",
+      "last_name": "Соха",
       "middle_name": "Соха",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -124,7 +124,7 @@
     "person": {
       "id": 14,
       "first_name": "Тереза",
-      "second_name": "Шимчак",
+      "last_name": "Шимчак",
       "middle_name": "Олеговна",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -139,7 +139,7 @@
     "person": {
       "id": 15,
       "first_name": "Чеслав",
-      "second_name": "Качмарек",
+      "last_name": "Качмарек",
       "middle_name": "Качмарек",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -154,7 +154,7 @@
     "person": {
       "id": 16,
       "first_name": "Сабина",
-      "second_name": "Соха",
+      "last_name": "Соха",
       "middle_name": "Соха",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -169,7 +169,7 @@
     "person": {
       "id": 17,
       "first_name": "Чеслав",
-      "second_name": "Качмарек",
+      "last_name": "Качмарек",
       "middle_name": "Качмарек",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -184,7 +184,7 @@
     "person": {
       "id": 18,
       "first_name": "Сабина",
-      "second_name": "Соха",
+      "last_name": "Соха",
       "middle_name": "Соха",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -199,7 +199,7 @@
     "person": {
       "id": 19,
       "first_name": "Сабина",
-      "second_name": "Соха",
+      "last_name": "Соха",
       "middle_name": "Соха",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -214,7 +214,7 @@
     "person": {
       "id": 20,
       "first_name": "Сабина",
-      "second_name": "Соха",
+      "last_name": "Соха",
       "middle_name": "Соха",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -229,7 +229,7 @@
     "person": {
       "id": 21,
       "first_name": "Сабина",
-      "second_name": "Соха",
+      "last_name": "Соха",
       "middle_name": "Соха",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -244,7 +244,7 @@
     "person": {
       "id": 22,
       "first_name": "Сабина",
-      "second_name": "Соха",
+      "last_name": "Соха",
       "middle_name": "Соха",
       "city": "Москва",
       "email": "123@yandex.ru",
@@ -259,7 +259,7 @@
     "person": {
       "id": 23,
       "first_name": "Сабина",
-      "second_name": "Соха",
+      "last_name": "Соха",
       "middle_name": "Соха",
       "city": "Москва",
       "email": "123@yandex.ru",

@@ -16,7 +16,7 @@ export type PersonCardData = {
   person: {
     id: number;
     first_name: string;
-    second_name: string;
+    last_name: string;
     middle_name: string;
     city: string;
     email: string;
@@ -88,7 +88,7 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 className={cx('image')}
                 src={card.person.image}
               />
-              <h2 className={cx('name')}>{`${card.person.first_name} ${card.person.second_name}`}</h2>
+              <h2 className={cx('name')}>{`${card.person.first_name} ${card.person.last_name}`}</h2>
               {Number(screenWidth) < 729 &&
               <SliderDots
                 className={cx('dots')}

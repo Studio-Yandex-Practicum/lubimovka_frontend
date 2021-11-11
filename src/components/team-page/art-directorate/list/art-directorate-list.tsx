@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import styles from './art-directorate-list.module.css';
 
@@ -12,7 +12,7 @@ interface PersonCardData {
   person: {
     id: number;
     first_name: string;
-    second_name: string;
+    last_name: string;
     middle_name: string;
     city: string;
     email: string;
@@ -53,7 +53,9 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
     },
   });
 
-  const selectedCards = cards.filter(card => card.team === 'art');
+  const selectedCards = useMemo(()=> {
+    return cards.filter(card => card.team === 'art');
+  }, []);
 
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
@@ -75,7 +77,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
                 participant={true}
                 link={card.person.image}
                 about={card.position}
-                name={`${card.person.first_name} ${card.person.second_name}`}
+                name={`${card.person.first_name} ${card.person.last_name}`}
               >
               </PersonCard>
             </div>
@@ -99,7 +101,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
                 participant={true}
                 link={card.person.image}
                 about={card.position}
-                name={`${card.person.first_name} ${card.person.second_name}`}
+                name={`${card.person.first_name} ${card.person.last_name}`}
               >
               </PersonCard>
             </li>

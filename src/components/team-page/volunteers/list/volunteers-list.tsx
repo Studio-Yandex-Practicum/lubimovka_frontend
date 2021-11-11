@@ -13,7 +13,7 @@ interface PersonCardData {
   person: {
     id: number;
     first_name: string;
-    second_name: string;
+    last_name: string;
     middle_name: string;
     city: string;
     email: string;
@@ -108,7 +108,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
                 participant={false}
                 link={card.person.image}
                 response={card.review_text}
-                name={`${card.person.first_name} ${card.person.second_name}`}
+                name={`${card.person.first_name} ${card.person.last_name}`}
                 handleClick={() => handleFeedbackPopupClick(idx)}
               >
               </PersonCard>
@@ -126,7 +126,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
                 participant={false}
                 link={card.person.image}
                 response={card.review_text}
-                name={`${card.person.first_name} ${card.person.second_name}`}
+                name={`${card.person.first_name} ${card.person.last_name}`}
                 handleClick={() => handleFeedbackPopupClick(idx)}
               >
               </PersonCard>

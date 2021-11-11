@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
-import ArtDirectorateData from './assets/mock-data-art.json';
-import FestivalTeamData from './assets/mock-trustees-data.json';
+import ArtFestTeamsData from './assets/mock-data-art.json';
 import VolunteersData from './assets/mock-data-volunteers.json';
 import SubmenuData from './assets/submenu-data.json';
 
@@ -15,8 +14,8 @@ const TeamPage: FC = () => {
   return (
     <>
       <Submenu submenu={SubmenuData}/>
-      <ArtDirectorateSection cards={ArtDirectorateData} />
-      <FestivalTeamSection cards={FestivalTeamData} />
+      <ArtDirectorateSection cards={ArtFestTeamsData} />
+      <FestivalTeamSection cards={ArtFestTeamsData} />
       <VolunteersSection cards={VolunteersData} />
     </>
   );
