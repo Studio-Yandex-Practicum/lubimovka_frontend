@@ -1,5 +1,4 @@
-import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import { Menu } from 'components/ui/menu';
 import LibraryForm from 'components/library-form';
@@ -12,7 +11,7 @@ import styles from './index.module.css';
 const mockLetters = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'К', 'Л', 'М', 'Н',
   'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я'];
 
-const AuthorsPage: NextPage = () => {
+const AuthorsPage: FC = () => {
   const { width } = useWindowDimensions();
   const [ratio, setRatio] = useState<number>(1);
 
