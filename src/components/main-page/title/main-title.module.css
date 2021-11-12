@@ -98,7 +98,7 @@
 }
 
 .button {
-  border-color: var(--trueBlack);
+  border-color: var(--true-black);
 
   &.secondary.button {
     /* Текстовые стили для того, чтобы сделать размер текста кнопки не резиновыми */
