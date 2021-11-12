@@ -1,20 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 interface IPortalProps {
   children: React.ReactNode;
 }
 
-export const Portal = ({ children }: IPortalProps): JSX.Element => {
-  const [container] = useState(() => document.createElement('div'));
+export const Portal = ({ children }: IPortalProps): JSX.Element | null => {
+  const [mounted, setMounted] = useState(false);
+
+  const ref = useRef<HTMLDivElement>();
 
   useEffect(() => {
-    document.body.appendChild(container);
+    // Из-за SSR, document доступен только после монтирования,
+    // в связи с этим необходимо использовать useRef и useEffect.
+    ref.current = document.createElement('div');
+    setMounted(true);
+  }, []);
 
+  useEffect(() => {
+    ref.current && document.body.appendChild(ref.current);
     return () => {
-      document.body.removeChild(container);
+      ref.current && document.body.removeChild(ref.current);
     };
   }, []);
 
-  return createPortal(children, container);
+  return (mounted && ref.current) ? createPortal(children, ref.current) : null;
 };
