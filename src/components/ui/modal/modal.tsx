@@ -24,9 +24,9 @@ export const Modal = (props: IModalProps): JSX.Element | null=> {
     onClose,
   } = props;
 
-  if (!isOpen) return null;
+  useDisableBodyScroll(isOpen);
 
-  useDisableBodyScroll(true);
+  if (!isOpen) return null;
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Escape') {
