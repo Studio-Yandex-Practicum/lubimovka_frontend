@@ -23,7 +23,12 @@
   opacity: 0;
   transition: opacity .4s;
 
+  @media (max-width: 1300px) {
+    padding: 0 24px;
+  }
+
   @media (max-width: 930px) {
+    padding: 0;
     grid-template-columns: repeat(auto-fill, 304px);
   }
 
