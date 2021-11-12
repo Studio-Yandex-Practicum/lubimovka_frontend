@@ -61,7 +61,6 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
             }
           })}
         </ArticleMainText>
-        {/*style={padding(120, 0, 54)}*/}
         <Section type={'plays'} title={'Заголовок блока с пьессами'} className={cx('sectionPlaysList')}>
           <BasicPlayCardList>
             {(DataPlays as IBasicPlayCardProps[]).map((item, idx) => (
