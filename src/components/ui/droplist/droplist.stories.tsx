@@ -25,6 +25,7 @@ MonthsDroplist.args = {
     'September', 'Октябрь',
     'Ноябрь', 'Декабрь',
   ],
+  defaultValue: 'Месяц'
 };
 
 // Формирую массив dataType самостоятельно, из БД

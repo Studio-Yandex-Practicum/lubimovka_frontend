@@ -18,10 +18,11 @@ export interface IDroplistPublic {
 }
 
 interface IDroplistProps {
+  cb: (selectList: string[] | string) => void
   type?: 'checkbox' | 'radio'
-  defaultListType?: 'years' | 'months';
-  cb: (selectList: string[] | string) => void,
-  data?: string[] | number[],
+  data?: string[] | number[]
+  defaultListType?: 'years' | 'months'
+  defaultValue?: string
   ref?: React.ForwardedRef<IDroplistPublic>
   className?: 'string'
 }
@@ -30,10 +31,11 @@ interface IDroplistProps {
 export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, ref) => {
   const {
     type = 'checkbox',
-    defaultListType,
-    cb,
     data,
-    className
+    cb,
+    defaultListType,
+    className,
+    defaultValue
   } = props;
 
   // Выбранный список пользователем.
@@ -57,10 +59,16 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
 
   useEffect(() => {
     // Если тип 'radio' в выводимый список добавиться первый элемент переданного списка
-    if (type === 'radio') {
+    if (type === 'radio' && !defaultValue && list.length) {
       setSelectList([String(list[0]).toLowerCase()]);
     }
   }, [type, list]);
+
+  useEffect(() => {
+    if (defaultValue) {
+      setSelectList([defaultValue]);
+    }
+  }, []);
 
   const deleteItemInSelectList = (value: string) => {
     return setSelectList(state => [...state.filter((item) => item !== value.toLowerCase())]);
