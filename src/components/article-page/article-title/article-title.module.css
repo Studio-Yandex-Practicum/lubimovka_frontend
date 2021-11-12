@@ -120,6 +120,7 @@
   object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
+    width: scale(357px);
     max-height: scale(218px);
     padding-top: scale(40px);
     padding-left: scale(30px);
