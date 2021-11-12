@@ -8,7 +8,7 @@ const fakeData: PersonCardData[] = [
     person: {
       id: 1,
       first_name: 'Тереза',
-      second_name: 'Шимчак',
+      last_name: 'Шимчак',
       middle_name: 'Олеговна',
       city: 'Москва',
       email: '123@yandex.ru',
@@ -23,7 +23,7 @@ const fakeData: PersonCardData[] = [
     person: {
       id: 2,
       first_name: 'Чеслав',
-      second_name: 'Качмарек',
+      last_name: 'Качмарек',
       middle_name: 'Качмарек',
       city: 'Москва',
       email: '123@yandex.ru',
@@ -38,7 +38,7 @@ const fakeData: PersonCardData[] = [
     person: {
       id: 3,
       first_name: 'Сабина',
-      second_name: 'Соха',
+      last_name: 'Соха',
       middle_name: 'Соха',
       city: 'Москва',
       email: '123@yandex.ru',
