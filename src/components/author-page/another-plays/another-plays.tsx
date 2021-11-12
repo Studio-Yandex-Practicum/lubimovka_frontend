@@ -25,7 +25,13 @@ export const AnotherPlays: FC<IAnotherPlays> = ({ data }) => {
           <li className={ cn(styles.block) } key={item.id}>
             <p className={ cn(styles.paragraph) }>{item.paragraph}</p>
             <div className={ cn(styles.downloadButton) }>
-              <Button size='s' iconPlace='right' icon='arrow-down' label='Скачать' border='none'/>
+              <Button
+                size='l'
+                iconPlace='right'
+                icon='arrow-down'
+                label='Скачать'
+                border='none'
+              />
             </div>
           </li>
         )}
