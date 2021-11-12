@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
 
-import { Icon } from '../../icon';
+import { Icon } from 'components/ui/icon';
 
 import styles from './list-selected.module.css';
 
@@ -25,7 +25,7 @@ export const ListSelected: FC<IListSelectedProps> = ({ selectList }): JSX.Elemen
         <Icon 
           glyph='arrow-right' 
           fill='black' 
-          className={ styles.iconArrowRight } 
+          className={ styles.iconArrowRight }
         />
       </button>
     </div>

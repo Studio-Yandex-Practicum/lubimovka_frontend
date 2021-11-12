@@ -1,7 +1,7 @@
 import React, { FC, useCallback } from 'react';
 import cn from 'classnames';
 
-import { Icon } from '../../icon';
+import { Icon } from 'components/ui/icon';
 
 import styles from './container-button.module.css';
 
@@ -22,9 +22,10 @@ export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown,
       <p className={ cn(styles.text) }>
         { value }
       </p>
-      { <Icon glyph='arrow-down' 
+      { <Icon glyph='arrow-down'
         fill={activeDropdown ? 'white' : 'black'} 
-        className={ styles.iconArrowDown } /> }
+        className={ cn(styles.iconArrowDown, {[styles.rotateUp]: activeDropdown }) }
+      /> }
     </div>
   );
 };

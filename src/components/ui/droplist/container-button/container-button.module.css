@@ -1,17 +1,24 @@
 .iconArrowDown {
-  width: 25px;
-  height: 25px;
-  margin-right: 9px;
+  width: scale(25px);
+  height: scale(25px);
+  margin-right: scale(9px);
+  transform: rotate(0deg);
+  transition: .3s transform;
+}
+
+.rotateUp {
+  transform: rotate(-180deg);
 }
 
 .container {
+  position: relative;
+  z-index: 99;
   display: flex;
-  width: 100%;
-  min-height: 44px;
+  min-height: scale(44px);
   box-sizing: border-box;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid var(--coal);
+  border: scale(1px) solid var(--coal);
   border-top: none;
   background-color: transparent;
   color: var(--coal);
@@ -37,7 +44,7 @@
   @mixin textLarge;
   @mixin text;
 
-  margin-left: 15px;
+  margin-left: scale(15px);
   color: inherit;
   text-transform: capitalize;
 }
