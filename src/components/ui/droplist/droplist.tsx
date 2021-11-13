@@ -18,7 +18,7 @@ export interface IDroplistPublic {
 }
 
 interface IDroplistProps {
-  cb: (selectList: string[] | string) => void
+  cb: (selectList: string[]) => void
   type?: 'checkbox' | 'radio'
   data?: string[] | number[]
   defaultListType?: 'years' | 'months'
@@ -94,7 +94,7 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
     if (type === 'radio') {
       setSelectList([value]);
       // При клике отрабатывает колбэк
-      cb(value);
+      cb([value]);
       return;
     }
     if (activeCheckbox) {
@@ -113,7 +113,7 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
   return (
     <div className={ cn(styles.droplist, droplistClass) }>
       <ContainerButton
-        cb={ cbContainer } 
+        cb={ cbContainer }
         activeDropdown={ activeDropdown }
         value={ type === 'radio' ? selectList[0] : 'Все' }
       />
