@@ -11,6 +11,7 @@ import { PerformanceCrew } from 'components/performance-crew';
 import { PerformanceRawText } from 'components/performance-raw-text';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
+import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
 import { ReviewCarousel } from 'components/review-carousel';
 import { CritiqueCard } from 'components/critique-card';
@@ -83,20 +84,27 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
           </PerformanceRawText>
         </PerformanceLayout.Text>
         <PerformanceLayout.Play>
-          <BasicPlayCard
-            play={{
-              title: data.play.name,
-              city: data.play.city,
-              year: String(data.play.year),
-              linkView: data.play.url_reading,
-              linkDownload: data.play.url_download,
-            }}
-            author={{
-              id: 0,
-              name: data.play.authors[0].name,
-            }}
-            buttonVisibility
-          />
+          <Section
+            type='play'
+            title='Почитать пьесу'
+            titleTag='h6'
+          >
+            <BasicPlayCard
+              type= 'performance'
+              play={{
+                title: data.play.name,
+                city: data.play.city,
+                year: String(data.play.year),
+                linkView: data.play.url_reading,
+                linkDownload: data.play.url_download,
+              }}
+              author={{
+                id: 0,
+                name: data.play.authors[0].name,
+              }}
+              buttonVisibility
+            />
+          </Section>
         </PerformanceLayout.Play>
         <PerformanceLayout.Aside>
           <PerformanceDetails duration={data.duration} ageLimit={data.age_limit} />
