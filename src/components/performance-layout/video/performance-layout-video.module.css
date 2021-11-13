@@ -1,3 +1,9 @@
 .video {
+  margin-bottom: scale(62px);
   grid-area: video;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(24px);
+    margin-bottom: 0;
+  }
 }
