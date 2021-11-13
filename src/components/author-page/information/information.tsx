@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { InfoLink } from 'components/ui/info-link';
 
 import cn from 'classnames';
@@ -22,15 +22,16 @@ export const AuthorInformation: FC<IAuthorInformation> = ({ data }) => {
       <h2 className={ cn(styles.heading) }>{data.title}</h2>
       <div className={ cn(styles.blocksInfo) }>
         {data.list.map((item) =>
-          <InfoLink
-            key={item.id}
-            label={item.paragraph}
-            icon='arrow-right'
-            iconPlace='right'
-            size='xl'
-            border='borderTop'
-            className={ cn(styles.anchorHeading) }
-          />
+          <div className={ cn(styles.anchorHeading) } key={item.id}>
+            <InfoLink
+              label={item.paragraph}
+              icon='arrow-right'
+              iconPlace='right'
+              size='xl'
+              border='borderTop'
+              iconClassName={ cn(styles.anchor) }
+            />
+          </div>
         )}
       </div>
     </section>

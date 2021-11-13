@@ -1,33 +1,29 @@
-import React, { useState, useCallback, FC } from 'react';
+import React, { useCallback, FC } from 'react';
 import cn from 'classnames';
 
 import styles from './droplist-items.module.css';
 
 interface IDroplistItemsProps {
-  month: string | number,
+  item: string | number,
   cb: (value: string, activeCheckbox: boolean) => void,
+  activeCheckbox: boolean
 }
 
-export const DroplistItems: FC<IDroplistItemsProps> = ({ month, cb }): JSX.Element => {
-  const [ activeCheckbox, setActiveCheckbox ] = useState(false);
+export const DroplistItems: FC<IDroplistItemsProps> = ({ item, cb, activeCheckbox }): JSX.Element => {
 
   const hendlerCheckbox = useCallback((event: React.MouseEvent<HTMLInputElement>) => {
     // Январь, 2021
     const value: string = event.currentTarget.value;
-
-    setActiveCheckbox(state => !state);
     cb(value, !activeCheckbox);
   }, [ activeCheckbox ]);
 
   return (
-    <label className={ cn(styles.item, {
-      [styles.active]: activeCheckbox,
-    })}>
+    <label className={ cn(styles.item) }>
       { activeCheckbox && <span className={ cn(styles.circle) } /> }
-      { month }
+      { item }
       <input
         type="checkbox"
-        value={ month }
+        value={ item }
         className={ cn(styles.checkbox) }
         onClick={ hendlerCheckbox }
       />
