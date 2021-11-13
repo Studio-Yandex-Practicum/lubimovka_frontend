@@ -9,4 +9,17 @@
     "critique      critique"
     "review        review"
     "bottom-image  bottom-image" 1fr / 1fr scale(720px);
+
+  @media (max-width: $tablet-portrait) {
+    grid-template:
+      "headline"
+      "aside"
+      "video"
+      "text"
+      "play"
+      "gallery"
+      "critique"
+      "review"
+      "bottom-image" 1fr;
+  }
 }
