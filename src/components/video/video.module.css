@@ -1,0 +1,10 @@
+.performance {
+  width: scale(691px);
+  height: scale(389px);
+  border: none;
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(366px);
+    height: scale(206px);
+  }
+}

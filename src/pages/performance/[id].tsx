@@ -9,6 +9,7 @@ import { PerformanceHeadline } from 'components/performance-headline';
 import { PerformanceCrew } from 'components/performance-crew';
 import { PerformanceRawText } from 'components/performance-raw-text';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { Video } from 'components/video';
 import { PhotoGallery } from 'components/photo-gallery';
 import { ReviewCarousel } from 'components/review-carousel';
 import { CritiqueCard } from 'components/critique-card';
@@ -68,7 +69,10 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
         </PerformanceLayout.Headline>
         {data.video && (
           <PerformanceLayout.Video>
-            {data.video}
+            <Video
+              type='performance'
+              link={data.video}
+            />
           </PerformanceLayout.Video>
         )}
         <PerformanceLayout.Text>
