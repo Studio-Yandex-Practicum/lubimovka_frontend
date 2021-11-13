@@ -154,7 +154,7 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
             src={data.bottom_image}
             alt=""
             layout="fill"
-            objectFit="contain"
+            objectFit="cover"
           />
         </PerformanceLayout.BottomImage>
       </PerformanceLayout>
