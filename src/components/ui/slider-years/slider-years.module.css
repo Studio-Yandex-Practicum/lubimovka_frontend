@@ -20,7 +20,8 @@
   cursor: pointer;
 }
 
-.slide.active {
+.slide.active,
+.slide:hover {
   &::before,
   &::after {
     display: block;

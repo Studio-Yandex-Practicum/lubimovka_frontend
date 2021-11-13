@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames/bind';
 
@@ -16,29 +16,31 @@ export type PersonCardData = {
   person: {
     id: number;
     first_name: string;
-    second_name: string;
+    last_name: string;
     middle_name: string;
     city: string;
     email: string;
     image: Url;
   };
   year: number;
-  title: string;
-  review: string;
+  review_title: string;
+  review_text: string;
 }
 
 interface IFeedbackPopupProps {
   onClose: React.MouseEventHandler<HTMLButtonElement>,
   isOpen?: boolean;
   cards: Array<PersonCardData>;
+  currentYear: number;
+  openedSlide: number
 }
 
 export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
-  const { isOpen, cards, onClose } = props;
+  const { isOpen, cards, currentYear, openedSlide, onClose } = props;
 
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(openedSlide);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
@@ -49,14 +51,22 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
   });
 
   useEffect(() => {
+    slider?.moveToSlide(openedSlide);
+  }, [isOpen]);
+
+  useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
   }, []);
 
+  useEffect(() => {
+    slider?.refresh();
+  }, [screenWidth, currentYear]);
+
   return (
     <div ref={sliderRef} className={cx('keen-slider', 'slider', {[styles.isOpen]: isOpen})}>
-      {cards.map((card, idx) => (
+      {cards.map((card) => (
         <div
-          key={idx}
+          key={card.id}
           className={cx('keen-slider__slide', 'slide')}
         >
           <div className={cx('container')}>
@@ -78,7 +88,7 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 className={cx('image')}
                 src={card.person.image}
               />
-              <h2 className={cx('name')}>{`${card.person.first_name} ${card.person.second_name}`}</h2>
+              <h2 className={cx('name')}>{`${card.person.first_name} ${card.person.last_name}`}</h2>
               {Number(screenWidth) < 729 &&
               <SliderDots
                 className={cx('dots')}
@@ -86,8 +96,8 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 currentSlide={currentSlide}
                 onClick={(idx) => slider.moveToSlideRelative(idx)}
               />}
-              <p className={cx('title')}>{card.title}</p>
-              <p className={cx('text')}>{card.review}</p>
+              <p className={cx('title')}>{card.review_title}</p>
+              <p className={cx('text')}>{card.review_text}</p>
               {Number(screenWidth) > 728 &&
               <SliderDots
                 className={cx('dots')}
