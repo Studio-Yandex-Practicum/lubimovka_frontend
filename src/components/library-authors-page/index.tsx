@@ -10,9 +10,10 @@ import styles from './index.module.css';
 
 interface IAuthorsPageProps {
   letters: string[];
+  authors: string[];
 }
 
-const AuthorsPage: FC<IAuthorsPageProps> = ({ letters }) => {
+const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
   const { width } = useWindowDimensions();
   const [ratio, setRatio] = useState<number>(1);
 
@@ -47,8 +48,9 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters }) => {
           <LibraryForm />
         </div>
         <div className={styles.pagination}>
-          <LibraryPagination letters={letters} top={width === 728 ? '60px' : width > 0 && width < 728 ?
-            `${ratio}px` : '86px'} />
+          <LibraryPagination letters={letters} authors={authors}
+            top={width === 728 ? '60px' : width > 0 && width < 728 ?
+              `${ratio}px` : '86px'} />
         </div>
       </div>
     </main>
