@@ -10,23 +10,11 @@ import LibraryFiltersModal from './library-filters-modal';
 
 import styles from './index.module.css';
 
-const mockCard = {
-  play: {
-    title: 'Конкретные разговоры пожилых супругов ни о чём',
-    city: 'Санкт-Петербург',
-    year: '2020',
-    linkView: 'https://lubimovka.ru/',
-    linkDownload: 'https://lubimovka.ru/',
-  },
-  author: {
-    id: 1,
-    name: 'Екатерина Августеняк',
-  }
-};
+interface ILibraryPageProps {
+  items: IBasicPlayCardProps[];
+}
 
-const items = Array.from(Array(7)).map(() => mockCard);
-
-const LibraryPage: FC = () => {
+const LibraryPage: FC<ILibraryPageProps> = ({ items }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   function handleFiltersClick():void {
