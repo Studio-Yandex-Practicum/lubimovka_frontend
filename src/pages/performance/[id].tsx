@@ -6,6 +6,7 @@ import { fetcher } from 'shared/fetcher';
 import AppLayout from 'components/app-layout';
 import { PerformanceLayout } from 'components/performance-layout';
 import { PerformanceHeadline } from 'components/performance-headline';
+import { PerformanceDetails } from 'components/performance-details';
 import { PerformanceCrew } from 'components/performance-crew';
 import { PerformanceRawText } from 'components/performance-raw-text';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
@@ -36,6 +37,7 @@ type PerformanceResponse = {
   video: string,
   description: string,
   text: HtmlMarkup,
+  duration: string,
   date: string,
   ticketsUrl: Url,
   age_limit: number,
@@ -97,6 +99,7 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
           />
         </PerformanceLayout.Play>
         <PerformanceLayout.Aside>
+          <PerformanceDetails duration={data.duration} ageLimit={data.age_limit} />
           <PerformanceCrew crew={data.persons}/>
         </PerformanceLayout.Aside>
         <PerformanceLayout.Gallery>
