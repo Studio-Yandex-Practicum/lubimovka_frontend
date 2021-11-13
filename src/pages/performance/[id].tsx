@@ -35,6 +35,8 @@ type PerformanceResponse = {
   video: string,
   description: string,
   text: HtmlMarkup,
+  date: string,
+  ticketsUrl: Url,
   age_limit: number,
   critique: {
     text: string,
@@ -58,6 +60,8 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
           <PerformanceHeadline
             title={data.name}
             description={data.short_description}
+            date={data.date}
+            ticketsUrl={data.ticketsUrl}
             text={data.description}
             image={data.main_image}
           />
