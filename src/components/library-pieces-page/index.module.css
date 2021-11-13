@@ -146,7 +146,6 @@
 
 .search {
   position: sticky;
-  position: -webkit-sticky;
   z-index: 3;
   top: scale(53px);
   width: 100%;

@@ -5,7 +5,6 @@
 
 .letters {
   position: sticky;
-  position: -webkit-sticky;
   z-index: 1;
   display: grid;
   box-sizing: border-box;

@@ -1,10 +1,8 @@
-interface Action {
-  type: string;
-  payload: {
-    programme: string;
-    years: string[]
-  };
-}
+type Action =
+  { type: 'add years'; years: string[] } |
+  { type: 'add programme'; programme: string } |
+  { type: 'remove programme'; programme: string } |
+  { type: 'reset' }
 
 interface State {
   years: string[];
@@ -12,23 +10,22 @@ interface State {
 }
 
 function reducer(state: State, action: Action): State {
-  const { type, payload } = action;
-  switch(type) {
+  switch(action.type) {
   case 'add years':
     return {
       ...state,
-      years: payload.years
+      years: action.years
     };
   case 'add programme':
     return {
       ...state,
-      programmes: [...state.programmes, payload.programme]
+      programmes: [...state.programmes, action.programme]
     };
   case 'remove programme':
     return {
       ...state,
-      programmes: state.programmes.filter(
-        (el, index, arr) => index !== arr.indexOf(payload.programme)
+      programmes:state.programmes.filter(
+        (el, index, arr) => index !== arr.indexOf(action.programme)
       )
     };
   case 'reset':

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useReducer } from 'react';
+import React, { FC, useCallback, useReducer } from 'react';
 
 import { Droplist } from 'components/ui/droplist';
 import { Tag } from 'components/ui/tag';
@@ -22,28 +22,25 @@ const LibraryFilter: FC = () => {
     undefined
   );
 
-  const handleTagClick = (el: string): void => {
-    if (!filterState.programmes.find((i) => i === el)) {
-      filterDispatcher({ type: 'add programme', payload: { programme: el, years: []} });
-    } else {
-      filterDispatcher({ type: 'remove programme', payload: { programme: el, years: []} });
-    }
-  };
+  const handleTagClick = useCallback(
+    (el: string): void => {
+      if (!filterState.programmes.find((i) => i === el)) {
+        filterDispatcher({ type: 'add programme', programme: el });
+      } else {
+        filterDispatcher({ type: 'remove programme', programme: el});
+      }
+    }, [filterState]);
 
-  const handleResetClick = (): void => {
-    filterDispatcher({ type: 'reset', payload: { programme: '', years: [] } });
-  };
-
-  useEffect(() => {
-    console.log(filterState);
-  }, [filterState]);
+  const handleResetClick = useCallback((): void => {
+    filterDispatcher({ type: 'reset' });
+  }, []);
 
   return (
     <div className={style.container}>
       <div className={style.years}>
         <h2 className={style.title}>Годы фестиваля</h2>
         <Droplist type='years' cb={selectList => {
-          filterDispatcher({ type: 'add years', payload: { programme: '', years: selectList } });
+          filterDispatcher({ type: 'add years', years: selectList });
         }} data={mockYears}
         />
       </div>
@@ -57,9 +54,9 @@ const LibraryFilter: FC = () => {
         </ul>
       </div>
       {(filterState.years.length > 0 || filterState.programmes.length > 0) &&
-      <Button onClick={handleResetClick} label='Очистить' size={'s'} icon={'cross'}
-        iconPlace={'left'} border={'bottomLeft'} width={'scale(143px)'} align={'start'}
-        gap={'scale(3px)'} />
+      <Button onClick={handleResetClick} label='Очистить' size='s' icon='cross'
+        iconPlace='left' border='bottomLeft' width='scale(143px)' align='start'
+        gap='scale(3px)' />
       }
     </div>
   );
