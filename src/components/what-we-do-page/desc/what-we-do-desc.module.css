@@ -8,12 +8,11 @@
   display: grid;
   column-gap: scale(90px);
   grid-template-columns: repeat(auto-fit, minmax(scale(440px), max-content));
-  row-gap: 24px;
+  row-gap: scale(24px);
 }
 
 .contentReception {
-  margin-bottom: scale(190px);
-  margin-left: scale(120px);
+  margin: scale(0 0 190px 120px);
 }
 
 .container {
@@ -70,12 +69,12 @@
   }
 
   .contentReception {
-    margin-bottom: scale(0);
+    margin-bottom: 0;
     margin-left: scale(24px);
   }
 
   .contentSelected {
-    margin-bottom: scale(0);
+    margin-bottom: 0;
   }
 
   .content {
@@ -103,7 +102,7 @@
 
   .imgReception {
     max-width: scale(274px);
-    margin-top: scale(0);
+    margin-top: 0;
     margin-left: auto;
   }
 

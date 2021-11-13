@@ -6,7 +6,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #b7c09d;
+  background-color: var(--light-green);
 }
 
 .menu {
@@ -18,8 +18,7 @@
   @mixin headline2;
 
   max-width: scale(924px);
-  margin-bottom: scale(53px);
-  margin-left: scale(62px);
+  margin: scale(0 0 53px 62px);
 }
 
 .containerText {
@@ -38,7 +37,7 @@
   line-height: scale(1.5rem);
 
   &:last-of-type {
-    margin: scale(0);
+    margin: 0;
   }
 }
 

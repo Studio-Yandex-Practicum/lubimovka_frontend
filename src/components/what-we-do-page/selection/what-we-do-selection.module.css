@@ -14,8 +14,8 @@
 .list {
   display: grid;
   justify-content: center;
-  padding: scale(0);
-  margin: scale(0);
+  padding: 0;
+  margin: 0;
   margin-bottom: scale(68px);
   column-gap: scale(90px);
   grid-template-columns: repeat(auto-fit, minmax(21.875rem, max-content));
@@ -51,7 +51,7 @@
   max-width: scale(1320px);
   justify-content: space-evenly;
   padding: scale(0 24px 64px);
-  margin: scale(0) auto;
+  margin: 0 auto;
   background-color: var(--light-green);
   column-gap: scale(20px);
   grid-template-columns: repeat(auto-fit, minmax(scale(305px), max-content));
@@ -79,8 +79,7 @@
   @mixin textSmall;
 
   max-width: scale(485px);
-  margin-top: scale(220px);
-  margin-left: auto;
+  margin: scale(220px 0 0) auto;
 }
 
 @media (max-width: $tablet-portrait) {
@@ -92,7 +91,7 @@
     @mixin headline4;
 
     padding: scale(0 24px);
-    margin: scale(0);
+    margin: 0;
     margin-bottom: scale(24px);
   }
 
@@ -103,7 +102,7 @@
   }
 
   .item {
-    row-gap: scale(0);
+    row-gap: 0;
   }
 
   .number {
@@ -111,19 +110,17 @@
   }
 
   .title {
-    min-height: scale(0);
+    min-height: 0;
     margin-bottom: scale(24px);
   }
 
   .desc {
     max-width: scale(280px);
     align-self: right;
-    margin-right: scale(24px);
-    margin-bottom: scale(24px);
-    margin-left: auto;
+    margin: scale(0 24px 24px) auto;
 
     &:last-of-type {
-      margin-bottom: scale(0);
+      margin-bottom: 0;
     }
   }
 

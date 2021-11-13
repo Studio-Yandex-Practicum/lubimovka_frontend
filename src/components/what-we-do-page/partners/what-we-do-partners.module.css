@@ -1,5 +1,5 @@
 .partnersContainer {
-  background-color: #ecebe8;
+  background-color: var(--beige);
 }
 
 .partners {
