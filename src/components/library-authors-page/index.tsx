@@ -8,10 +8,11 @@ import useWindowDimensions from './useWindowDimensions';
 
 import styles from './index.module.css';
 
-const mockLetters = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'К', 'Л', 'М', 'Н',
-  'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я'];
+interface IAuthorsPageProps {
+  letters: string[];
+}
 
-const AuthorsPage: FC = () => {
+const AuthorsPage: FC<IAuthorsPageProps> = ({ letters }) => {
   const { width } = useWindowDimensions();
   const [ratio, setRatio] = useState<number>(1);
 
@@ -46,7 +47,7 @@ const AuthorsPage: FC = () => {
           <LibraryForm />
         </div>
         <div className={styles.pagination}>
-          <LibraryPagination letters={mockLetters} top={width === 728 ? '60px' : width > 0 && width < 728 ?
+          <LibraryPagination letters={letters} top={width === 728 ? '60px' : width > 0 && width < 728 ?
             `${ratio}px` : '86px'} />
         </div>
       </div>
