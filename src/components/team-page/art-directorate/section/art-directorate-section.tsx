@@ -8,7 +8,7 @@ interface PersonCardData {
   person: {
     id: number;
     first_name: string;
-    second_name: string;
+    last_name: string;
     middle_name: string;
     city: string;
     email: string;
