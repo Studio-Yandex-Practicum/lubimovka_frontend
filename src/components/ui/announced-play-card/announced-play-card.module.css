@@ -130,8 +130,10 @@
 }
 
 .button {
+  display: grid;
   width: scale(154px);
   margin-bottom: scale(16px);
+  grid-template-columns: scale(21px) max-content;
 
   @media (max-width: $tablet-portrait) {
     margin-right: scale(26px);
