@@ -1,53 +1,84 @@
-import React, { FC, useEffect, useState, useCallback } from 'react';
+import React, { FC, useEffect, useState, useCallback, useImperativeHandle, forwardRef } from 'react';
 import cn from 'classnames';
-
-import styles from './droplist.module.css';
 
 // Компоненты
 import { DroplistItems } from './droplist-items';
 import { ListSelected } from './list-selected';
 import { ContainerButton } from './container-button';
 
+import styles from './droplist.module.css';
+
 // utile
 import { createList } from './utils';
 
-interface IDroplistProps {
-  type: 'years' | 'months';
-  cb: (selectList: string[]) => void,
-  data?: string[] | number[],
-  maxWidth?: number,
-  widthSelectedItem?: number,
+export interface IDroplistPublic {
+  deleteAll: () => void,
+  deleteItem: (value: string) => void,
+  addSelectItems: (valueList: string[]) => void,
 }
 
-export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
+interface IDroplistProps {
+  cb: (selectList: string[] | string) => void
+  type?: 'checkbox' | 'radio'
+  data?: string[] | number[]
+  defaultListType?: 'years' | 'months'
+  defaultValue?: string
+  ref?: React.ForwardedRef<IDroplistPublic>
+  className?: 'string'
+}
+
+// eslint-disable-next-line react/display-name
+export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, ref) => {
   const {
-    type, 
-    cb, 
-    data, 
-    maxWidth, 
-    widthSelectedItem,
+    type = 'checkbox',
+    data,
+    cb,
+    defaultListType,
+    className,
+    defaultValue
   } = props;
 
   // Выбранный список пользователем.
   const [ selectList, setSelectList ] = useState<string[]>([]);
 
   // Список для вывода
-  const [ list, getList ] = useState<string[] | number[]>([]);
+  const [ list, setList ] = useState<string[] | number[]>([]);
   // Выбран ли Dropdown
   const [ activeDropdown, setActiveDropdown ] = useState(false);
 
   useEffect(() => {
-    // Если передают свой объект
+    // Передача своего объекта
     if (Array.isArray(data)) {
-      getList(data);
+      setList(data);
       return;
     }
-    // utils функция createList формирует массивы зависящий от передаваемого типа списка.
-    const list = createList(type);
-    if (list) {
-      getList(list);
-    }
+    // utils функция createList формирует массивы зависящие от передаваемого типа списка.
+    const list = createList(defaultListType);
+    setList(list);
   }, [ data ]);
+
+  useEffect(() => {
+    // Если тип 'radio' в выводимый список добавиться первый элемент переданного списка
+    if (type === 'radio' && !defaultValue && list.length) {
+      setSelectList([String(list[0]).toLowerCase()]);
+    }
+  }, [type, list]);
+
+  useEffect(() => {
+    if (defaultValue) {
+      setSelectList([defaultValue]);
+    }
+  }, []);
+
+  const deleteItemInSelectList = (value: string) => {
+    return setSelectList(state => [...state.filter((item) => item !== value.toLowerCase())]);
+  };
+
+  useImperativeHandle(ref, () => ({
+    deleteAll: () => { setSelectList([]); },
+    deleteItem: (value: string) => { deleteItemInSelectList(value); },
+    addSelectItems: (valueList: string[]) => { setSelectList(valueList); },
+  }), [ selectList ]);
 
   const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -60,6 +91,12 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
   }, [ activeDropdown ]);
 
   const cbItems = useCallback((value: string, activeCheckbox: boolean) => {
+    if (type === 'radio') {
+      setSelectList([value]);
+      // При клике отрабатывает колбэк
+      cb(value);
+      return;
+    }
     if (activeCheckbox) {
       setSelectList(state => {
         const newState = state.slice(0);
@@ -68,51 +105,38 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
       });
       return;
     }
-    setSelectList(state => {
-      const previousState = state.slice(0);
-      const newState = previousState.filter((item: string | number) => item !== value.toLowerCase());
-      return newState;
-    });
+    deleteItemInSelectList(value);
   }, [ selectList ]);
 
-  const setMaxWidth = useCallback(() => {
-    if (widthSelectedItem) {
-      return widthSelectedItem + 'px';
-    }
-    switch (type) {
-    case 'months': return '110px';
-    case 'years': return '59px';
-    }
-  }, [ widthSelectedItem, type ]);
+  const droplistClass = className ? className : styles.droplistWidth;
 
   return (
-    <div className={ cn(styles.dropdown) } style={{ maxWidth: maxWidth && maxWidth + 'px' }}>
-      <ContainerButton cb={ cbContainer } activeDropdown={ activeDropdown } />
+    <div className={ cn(styles.droplist, droplistClass) }>
+      <ContainerButton
+        cb={ cbContainer } 
+        activeDropdown={ activeDropdown }
+        value={ type === 'radio' ? selectList[0] : 'Все' }
+      />
       <form
-        name='dropdown'
+        name='droplist'
         className={ cn(styles.form) }
         onSubmit={ handlerSubmit }
       >
         <div className={ cn(styles.list, {
           [styles.active]: activeDropdown,
         })}>
-          {
-            list.map((month: string | number, i): JSX.Element => {
-              return (
-                <DroplistItems
-                  month={ month }
-                  key={ i }
-                  cb={ cbItems }
-                />
-              );
-            })
-          }
+          { list.map((item: string | number, i): JSX.Element => (
+            <DroplistItems
+              item={ item }
+              key={ i }
+              cb={ cbItems }
+              activeCheckbox={selectList.some(itemSelect => itemSelect.toLocaleLowerCase() === String(item).toLocaleLowerCase())}
+            />
+          ))}
         </div>
-        { 
-          activeDropdown && selectList.length > 0
-          && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth } />
-        }
+        { selectList.length > 0 && type !== 'radio'
+          && <ListSelected selectList={ selectList } /> }
       </form>
     </div>
   );
-};
+});
