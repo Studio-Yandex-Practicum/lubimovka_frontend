@@ -39,7 +39,7 @@ const LibraryFilter: FC = () => {
     <div className={style.container}>
       <div className={style.years}>
         <h2 className={style.title}>Годы фестиваля</h2>
-        <Droplist type='years' cb={selectList => {
+        <Droplist type='checkbox' cb={selectList => {
           filterDispatcher({ type: 'add years', years: selectList });
         }} data={mockYears}
         />
