@@ -6,23 +6,29 @@
 }
 
 .video_items {
-  margin-right: scale(59px);
-
   &&:last-of-type {
     margin: 0;
   }
 }
 
-.video {
-  width: scale(716px);
+.one-video {
+  width: 100%;
+  height: scale(403px);
 
   @media (max-width: $tablet-portrait) {
-    width: scale(420px);
+    width: 100%;
+    height: scale(206px);
   }
 }
 
-.video_items .video {
+.video {
   width: scale(420px);
+  height: scale(236px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(299px);
+    height: scale(168px);
+  }
 }
 
 .description {
