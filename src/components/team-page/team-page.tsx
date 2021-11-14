@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useRouter } from 'next/dist/client/router';
 
 import { Menu } from 'components/ui/menu';
 import ArtDirectorateSection from './art-directorate/section/art-directorate-section';
@@ -33,6 +34,8 @@ const demoItems = [
 ];
 
 const TeamPage: FC = () => {
+  const router = useRouter();
+
   return (
     <>
       <Menu type={ 'general-submenu' } className={cn(styles.submenu)}>
@@ -40,6 +43,7 @@ const TeamPage: FC = () => {
           <Menu.Item
             key={item.text}
             href={item.href}
+            mods={{[styles.active]: router.pathname === item.href}}
           >
             {item.text}
           </Menu.Item>
