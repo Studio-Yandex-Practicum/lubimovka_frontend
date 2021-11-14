@@ -9,6 +9,7 @@ import { PerformanceHeadline } from 'components/performance-headline';
 import { PerformanceDetails } from 'components/performance-details';
 import { PerformanceCrew } from 'components/performance-crew';
 import { PerformanceRawText } from 'components/performance-raw-text';
+import { Share } from 'components/share';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
@@ -157,6 +158,12 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
             objectFit="cover"
           />
         </PerformanceLayout.BottomImage>
+        <PerformanceLayout.Share>
+          <Share
+            type='performance'
+            size='l'
+          />
+        </PerformanceLayout.Share>
       </PerformanceLayout>
     </AppLayout>
   );
