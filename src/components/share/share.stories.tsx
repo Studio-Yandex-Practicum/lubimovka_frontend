@@ -44,18 +44,21 @@ const Template: ComponentStory<typeof Share> = (args) => <Share {...args} />;
 
 export const BlogShare = Template.bind({});
 BlogShare.args = {
-  type: 'blog',
+  firstLine: 'Поделиться',
+  secondLine: 'записью',
   size: 's',
 };
 
 export const NewsShare = Template.bind({});
 NewsShare.args = {
-  type: 'news',
+  firstLine: 'Поделиться',
+  secondLine: 'новостью',
   size: 's',
 };
 
 export const PerformanceShare = Template.bind({});
 PerformanceShare.args = {
-  type: 'performance',
+  firstLine: 'Рассказать',
+  secondLine: 'о спектакле',
   size: 's',
 };
