@@ -56,10 +56,11 @@
   }
 }
 
-.photo {
+.photoBox {
+  position: relative;
+  overflow: hidden;
   width: calc(var(--scale) * 275);
   height: calc(var(--scale) * 355);
-  border: 1px solid var(--red);
   grid-area: photo;
   justify-self: center;
 
@@ -73,6 +74,16 @@
     height: calc(var(--scale) * 236);
     margin: 0 0 0 calc(var(--scale) * 24);
   }
+}
+
+.photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--scale) * 275);
+  height: calc(var(--scale) * 355);
+  object-fit: cover;
+  transform: translate(-50%, -50%);
 }
 
 .fullName {
@@ -141,6 +152,24 @@
   @media (max-width: 728px) {
     @mixin headline7;
   }
+}
+
+.expandButton {
+  @mixin text;
+  @mixin textButton;
+  @mixin textSmallButton;
+
+  padding: 20px;
+  border: 0;
+  border-top: 1px solid var(--black);
+  cursor: pointer;
+  outline: 0;
+}
+
+.rollUpButton {
+  @mixin text;
+  @mixin textButton;
+  @mixin textSmallButton;
 }
 
 .overviewInfo {

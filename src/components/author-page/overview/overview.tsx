@@ -1,55 +1,105 @@
 import { FC } from 'react';
 import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
+import { InfoLink } from 'components/ui/info-link';
 
 import cn from 'classnames';
 import styles from './overview.module.css';
 
-const withPhoto = true; // В пропсах должно быть
+interface IAuthorOverview {
+  data: {
+    photo: string,
+    name: string,
+    city: string,
+    quote: string,
+    description: string,
+  }
+}
 
-export const AuthorOverview: FC = () => {
+export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
+
+  const withPhoto = true;
+
+  const isExpand = true;
+
   return (
     <section className={ cn(styles.overview) }>
       <div className={ cn(withPhoto ? styles.personalInfo : styles.personalInfoNoPhoto) }>
         <div className={ cn(styles.button) }>
           <Button size='s' iconPlace='right' icon='arrow-left' label='Библиотека' border='bottomRight' isLink={ true }/>
         </div>
-        { withPhoto && <div className={ cn(styles.photo) }>Author Image</div> }
-        <h1 className={cn(styles.fullName)}>Екатерина Августеняк</h1>
-        <p className={ cn(styles.city) }>Санкт-Петербург</p>
+        { withPhoto &&
+        <div className={ cn(styles.photoBox) }>
+          <img className={ cn(styles.photo) } src={data.photo} alt={`Фотография автора ${data.name}`} />
+        </div>
+        }
+        <h1 className={ cn(styles.fullName) }>{data.name}</h1>
+        <p className={ cn(styles.city) }>{data.city}</p>
         <q className={ cn(styles.quote) }>
-          <p className={ cn(styles.quoteParagraph) }> У меня не было задачи написать какой-то комический текст,
-            мне было интересно сделать именно пьесу-каталог. </p>
+          <p className={ cn(styles.quoteParagraph) }>{data.quote}</p>
         </q>
       </div>
       <div className={ cn(styles.overviewInfo) }>
         <div className={ cn(styles.overviewBlock) }>
-          <p className={ cn(styles.overviewParagraph) }>Художница, драматург, режиссёр. Занимается исследованием
-            перформативных возможностей языка и художественным анализом когнитивных особенностей участников
-            современных коммуникаций. Создает тексты для театра, применяет драматургические практики в разных
-            медиумах.</p>
+          <p className={ cn(styles.overviewParagraph) }>{data.description}</p>
+          { isExpand ?
+            <Button width='480px' size='s' iconPlace='right' icon='arrow-down' label='Полный текст' border='topLeft'/> :
+            <Button width='480px' size='s' iconPlace='right' icon='arrow-up' label='Свернуть' border='topLeft'/>}
+          {/*<button className={ cn(styles.expandButton) }>Полный текст</button>*/}
+          {/*<button className={ cn(styles.rollUpButton) }>Свернуть</button>*/}
         </div>
         <div className={ cn(styles.overviewSet) }>
           <div className={ cn(styles.overviewTagsBlock) }>
             <h2 className={ cn(styles.overviewTagsHeading) }>Достижения</h2>
             <div className={ cn(styles.tag) }>
-              <Tag label='шорт-лист' selected={false}/>
+              <Tag
+                label='шорт-лист'
+                selected={ false }
+              />
             </div>
             <div className={ cn(styles.tag) }>
-              <Tag label='внеконкурсная программа' selected={ false }/>
+              <Tag
+                label='внеконкурсная программа'
+                selected={ false }
+              />
             </div>
             <div className={ cn(styles.tag) }>
-              <Tag label='fringe-программа' selected={ false }/>
+              <Tag
+                label='fringe-программа'
+                selected={ false }
+              />
             </div>
           </div>
           <div>
             <h2 className={ cn(styles.overviewTagsHeading) }>Социальные сети</h2>
-            <Button size='s' iconPlace='left' icon='arrow-right' label='fb' border='bottomLeft'/>
-            <Button size='s' iconPlace='left' icon='arrow-right' label='vk' border='bottomLeft'/>
+            <InfoLink
+              isOutsideLink={true}
+              href='https://www.facebook.com/festival.lubimovka'
+              label='fb'
+              icon='arrow-right'
+              iconPlace='left'
+              size='s'
+              border='borderBottomLeft'
+            />
+            <InfoLink
+              isOutsideLink={true}
+              href='https://www.facebook.com/festival.lubimovka'
+              label='vk'
+              icon='arrow-right'
+              iconPlace='left'
+              size='s'
+              border='borderBottomLeft'
+            />
           </div>
           <div>
             <p className={ cn(styles.email) }>E-mail для связи</p>
-            <a className={ cn(styles.email) } href='#'>e-mail@e.mail</a>
+            <InfoLink
+              isOutsideLink={true}
+              href='mailto://more@lubimovka.ru'
+              label='avgustyniak@gmail.com'
+              size='l'
+              textDecoration='underline'
+            />
           </div>
         </div>
       </div>
