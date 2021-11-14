@@ -24,7 +24,7 @@ interface IDroplistProps {
   defaultListType?: 'years' | 'months'
   defaultValue?: string
   ref?: React.ForwardedRef<IDroplistPublic>
-  className?: 'string'
+  className?: string
 }
 
 // eslint-disable-next-line react/display-name
