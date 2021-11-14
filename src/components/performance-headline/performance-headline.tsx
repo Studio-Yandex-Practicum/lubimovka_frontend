@@ -36,7 +36,9 @@ export const PerformanceHeadline: FC<IPerformanceHeadlineProps> = (props) => {
       <p className={cx('description')}>
         {description}
       </p>
-      <div className={cx('dateTime')}>{date}</div>
+      <div className={cx('dateTime')}>
+        {new Date(date).toLocaleString('ru-Ru', {month: 'long', day:'numeric', hour: '2-digit', minute: '2-digit'}).replace(',', '')}
+      </div>
       <div className={cx('actions')}>
         <Button
           className={cx('action')}
