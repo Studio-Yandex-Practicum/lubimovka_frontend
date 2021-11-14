@@ -160,7 +160,8 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
         </PerformanceLayout.BottomImage>
         <PerformanceLayout.Share>
           <Share
-            type='performance'
+            firstLine='Рассказать'
+            secondLine='о спектакле'
             size='l'
           />
         </PerformanceLayout.Share>
