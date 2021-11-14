@@ -26,7 +26,6 @@ interface ArtDirectorateCardsProps {
   cards: Array<PersonCardData>
 }
 
-
 const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
