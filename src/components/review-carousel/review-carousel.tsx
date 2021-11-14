@@ -69,7 +69,6 @@ export const ReviewCarousel: FC<IReviewCarousel> = (props) => {
                 disabled={currentSlideIndex === carousel.details().size - 1}
               />
             </div>
-
           </>
         )}
       </div>
