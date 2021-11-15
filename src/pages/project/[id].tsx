@@ -71,7 +71,7 @@ type ProjectResponse = {
     description: string;
   };
   video: {
-    image: Url;
+    url: Url;
     videoDescription: string;
   }[];
 };
@@ -83,16 +83,7 @@ const Project = ({
 >): JSX.Element | null => {
   if (!data) return null;
 
-  const [videoArray, setVideoArray] = React.useState<
-    Array<{
-      image: Url;
-      videoDescription: string;
-    }>
-  >([]);
-  React.useEffect(() => {
-    setVideoArray(data.video);
-  }, []);
-
+  const videoArray = data.video.length > 1 ? true : false;
   return (
     <AppLayout>
       <Head>
@@ -107,13 +98,13 @@ const Project = ({
         />
         <ProjectDescription>{data.titledata.description}</ProjectDescription>
         <ProjecPageSection type="video" title="Заголовок блока с видео">
-          <VideoGallery videoArr={videoArray.length > 1 ? true : false}>
-            {videoArray.map((item, index) => (
+          <VideoGallery videoArr={videoArray}>
+            {data.video.map((item, index) => (
               <VideoGalleryItem
                 key={index}
-                url={item.image}
+                url={item.url}
                 description={item.videoDescription}
-                videoArr={videoArray.length > 1 ? true : false}
+                videoArr={videoArray}
               >
                 {}
               </VideoGalleryItem>
