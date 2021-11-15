@@ -146,3 +146,7 @@
   width: min-content;
   text-decoration: none;
 }
+
+.back {
+  margin: scale(33px 0 0 31px);
+}
