@@ -57,9 +57,12 @@
 .arrows {
   display: flex;
   margin-left: scale(21px);
-  gap: scale(21px);
 
   @media (max-width: $tablet-portrait) {
     margin-left: auto;
   }
+}
+
+.arrowRight {
+  margin-left: scale(21px);
 }
