@@ -1,0 +1,10 @@
+.backButton {
+  margin: scale(33px 0 0 31px);
+
+  @media (max-width: $tablet-portrait) {
+    position: absolute;
+    top: scale(30px);
+    left: scale(85px);
+    margin: 0;
+  }
+}

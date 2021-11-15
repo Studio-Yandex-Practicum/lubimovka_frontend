@@ -84,16 +84,17 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
           </Navbar.Actions>
         </Navbar>
       </Page.Header>
-      {backButton && <Button
-        type='button'
-        iconPlace='right'
-        icon='arrow-left'
-        size="s"
-        border='bottomRight'
-        className='back'
-        isLink
-        label={backButton.text}
-        href={backButton.path} />}
+      {backButton && <Page.BackButton>
+        <Button
+          type='button'
+          iconPlace='right'
+          icon='arrow-left'
+          size="s"
+          border='bottomRight'
+          isLink
+          label={backButton.text}
+          href={backButton.path} />
+      </Page.BackButton>}
       {children}
       {isMobile && (
         <>
