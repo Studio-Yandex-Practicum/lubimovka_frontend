@@ -3,6 +3,9 @@ node_modules
 storybook-static
 
 .next
+
+.env
+.env.local
 .env.*.local
 
 .stylelintcache
