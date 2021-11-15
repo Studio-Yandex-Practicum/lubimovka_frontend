@@ -6,18 +6,18 @@ const cx = classNames.bind(styles);
 
 export interface IModalBackdropProps {
   className?: string;
-  onClose?: () => void;
+  onClick?: () => void;
 }
 
 export const ModalBackdrop: FC<IModalBackdropProps> = (props) => {
-  const { className, onClose } = props;
+  const { className, onClick } = props;
 
   return (
     <div
       className={cx('backdrop', [className])}
       role='button'
       tabIndex={-1}
-      onClick={onClose}
+      onClick={onClick}
     />
   );
 };
