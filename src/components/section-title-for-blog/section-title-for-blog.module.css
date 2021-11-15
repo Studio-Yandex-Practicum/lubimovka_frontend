@@ -1,0 +1,101 @@
+.section {
+  display: grid;
+  box-sizing: border-box;
+  padding: scale(24px 287px 61px 93px);
+  margin-bottom: scale(17px);
+  grid-template-areas:
+    "asterisk title"
+    "text drop";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  @media (max-width: 728px) {
+    display: flex;
+    flex-direction: column;
+    padding: scale(0 24px);
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline1;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: scale(0 0 18px 98px);
+  margin: 0;
+  grid-area: title;
+
+  @media (max-width: 728px) {
+    @mixin headline4;
+
+    padding: scale(0 40px 0 0);
+    margin-bottom: scale(23px);
+  }
+}
+
+.asterisk {
+  padding-bottom: 0;
+  margin: auto 0 0;
+  grid-area: asterisk;
+  line-height: 0;
+}
+
+.icon {
+  grid-area: icon;
+}
+
+.drop {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: scale(8px 0 0 96px);
+  column-gap: scale(30px);
+  grid-area: drop;
+
+  @media (max-width: 728px) {
+    justify-content: space-between;
+    padding: 0;
+  }
+}
+
+.text {
+  padding: scale(0 0 0 27px);
+  margin: 0;
+  grid-area: text;
+
+  @media (max-width: 728px) {
+    padding: scale(0 0 0 32px);
+  }
+}
+
+.paragraph {
+  @mixin text;
+  @mixin textLarge;
+
+  padding: 0;
+  margin: 0;
+  margin-bottom: scale(29px);
+
+  @media (max-width: 728px) {
+    @mixin textSmall;
+
+    margin-bottom: scale(17px);
+  }
+}
+
+.paragraph-connect {
+  @mixin headline;
+
+
+  padding: 0;
+  padding-right: scale(50px);
+  margin: 0;
+
+  @media (max-width: 728px) {
+    @mixin headline7;
+
+    margin-bottom: scale(70px);
+  }
+}
