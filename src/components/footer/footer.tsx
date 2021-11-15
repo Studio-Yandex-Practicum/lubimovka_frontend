@@ -7,6 +7,7 @@ import { FooterProjects } from './projects';
 import { FooterPartners } from './partners';
 import { FooterPartnerList } from './partner-list';
 import { FooterPartnerListItem } from './partner-list-item';
+import { InfoLink } from 'components/ui/info-link';
 
 import Logo from 'shared/images/logo-full.svg';
 
@@ -33,14 +34,30 @@ export const Footer = (props: IFooterProps): JSX.Element => {
         <div className={cx('copyright')}>
           &copy; Любимовка, {new Date().getFullYear()}
         </div>
-        <a href="#" className={cx('link')} target="_blank" rel="noreferrer">Политика конфиденциальности</a>
+        <InfoLink
+          isOutsideLink={true}
+          href='#'
+          label='Политика конфиденциальности'
+          hoverStyle='bottomLine'
+          size='xs'
+          textDecoration='textDecorationNone'
+          className={cx('footnoteLink')}
+        />
         <dl className={cx('credits')}>
           <div className={cx('shishki')}>
             <dt className={cx('term')}>
               дизайн сайта
             </dt>
             <dd>
-              <a className={cx('link')} href="#" target="_blank" rel="noreferrer">shishki.collective</a>
+              <InfoLink
+                isOutsideLink={true}
+                href='#'
+                label='shishki.collective'
+                hoverStyle='bottomLine'
+                size='xs'
+                textDecoration='textDecorationNone'
+                className={cx('footnoteLink')}
+              />
             </dd>
           </div>
           <div>
@@ -48,7 +65,16 @@ export const Footer = (props: IFooterProps): JSX.Element => {
               вёрстка и разработка
             </dt>
             <dd>
-              студенты <a className={cx('link')} href="#" target="_blank">Яндекс.Практикума</a>
+              студенты&nbsp;
+              <InfoLink
+                isOutsideLink={true}
+                href='#'
+                label='Яндекс.Практикума'
+                hoverStyle='bottomLine'
+                size='xs'
+                textDecoration='textDecorationNone'
+                className={cx('footnoteLink')}
+              />
             </dd>
           </div>
         </dl>

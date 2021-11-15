@@ -37,6 +37,7 @@
 
 .footnote {
   display: flex;
+  align-items: flex-start;
   margin-top: scale(49px);
   grid-area: footnote;
 
@@ -58,10 +59,7 @@
   }
 }
 
-.link {
-  color: inherit;
-  text-decoration: none;
-
+.footnoteLink {
   @media (max-width: $tablet-portrait) {
     text-decoration: underline;
   }
