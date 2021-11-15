@@ -1,5 +1,5 @@
 .headline {
-  margin-bottom: scale(68px);
+  margin: scale(30px 0 0 68px);
   grid-area: headline;
 
   @media (max-width: $tablet-portrait) {
