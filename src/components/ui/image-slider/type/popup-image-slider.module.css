@@ -1,0 +1,76 @@
+.container {
+  position: relative;
+  box-sizing: border-box;
+  padding: scale(0 100px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: scale(16px);
+  right: scale(16px);
+  width: scale(42px);
+  height: scale(42px);
+}
+
+.slide {
+  position: relative;
+
+  &::before {
+    display: block;
+    width: 100%;
+    padding-top: calc((5 / 7) * 100%);
+    content: "";
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  width: scale(48px);
+  height: scale(48px);
+  padding: scale(9px);
+  background-color: var(--beige);
+  border-radius: 50%;
+  transform: translateY(-50%);
+
+  @media (max-width: $tablet-portrait) {
+    z-index: 10;
+    top: auto;
+    right: scale(16px);
+    width: scale(42px);
+    height: scale(42px);
+    padding: 0;
+    background-color: unset;
+    border-radius: 0;
+    transform: translateY(0);
+  }
+}
+
+.arrowLeft {
+  left: 0;
+
+  @media (max-width: $tablet-portrait) {
+    bottom: scale(66px);
+    left: auto;
+  }
+}
+
+.arrowRight {
+  right: 0;
+
+  @media (max-width: $tablet-portrait) {
+    right: scale(16px);
+    bottom: scale(16px);
+  }
+}

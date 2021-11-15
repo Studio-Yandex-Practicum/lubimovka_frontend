@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof SliderButton> = (args) => <SliderButton {.
 export const Default = Template.bind({});
 Default.args = {
   disabled: false,
-  direction: 'right',
+  icon: 'arrow-right',
 };

@@ -1,46 +1,49 @@
 import { ButtonHTMLAttributes, FC } from 'react';
-import cn from 'classnames';
 import classNames from 'classnames/bind';
 
 import { Icon } from '../icon';
 
 import styles from './slider-button.module.css';
 
-interface ISliderButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string,
-  direction: 'left' | 'right';
+interface ISliderButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
+  className?: string;
+  icon: 'arrow-left' | 'arrow-right' | 'cross';
+  type?: 'navigation' | 'addon';
+  view?: 'article' | 'popup';
 }
 
 const cx = classNames.bind(styles);
 
 export const SliderButton: FC<ISliderButtonProps> = (props) => {
-  const { className, direction, ...restProps } = props;
-  const arrowIcon = ({
-    left: 'arrow-left',
-    right: 'arrow-right',
-  } as const)[direction];
+  const {
+    className,
+    icon,
+    type = 'navigation',
+    view = 'article',
+    ...restProps
+  } = props;
 
   const firstCircleStyles = cx(
     'circle',
     {
-      left: direction === 'left',
+      left: icon === 'arrow-left',
     }
   );
 
   const secondCircleStyles = cx(
     'circle',
     {
-      secondCircle: direction === 'right',
-      secondCircleLeft: direction === 'left',
-      left: direction === 'left',
+      secondCircle: icon === 'arrow-right',
+      secondCircleLeft: icon === 'arrow-left',
+      left: icon === 'arrow-left',
     }
   );
 
   return(
-    <button className={cn(styles.sliderButton, className)} type='button' {...restProps}>
-      <div className={firstCircleStyles}/>
+    <button className={cx('sliderButton', [className], type, view)} type='button' {...restProps}>
+      <div className={firstCircleStyles} />
       <div className={secondCircleStyles}/>
-      <Icon glyph={arrowIcon} className={cn(styles.arrow)}/>
+      <Icon glyph={icon} className={cx('icon')}/>
     </button>
   );
 };
