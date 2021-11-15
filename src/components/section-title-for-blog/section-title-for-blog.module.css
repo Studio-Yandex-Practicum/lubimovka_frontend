@@ -16,6 +16,10 @@
   }
 }
 
+.droplist {
+  z-index: 1;
+}
+
 .title {
   @mixin headline;
   @mixin headline1;
@@ -87,7 +91,6 @@
 
 .paragraph-connect {
   @mixin headline;
-
 
   padding: 0;
   padding-right: scale(50px);

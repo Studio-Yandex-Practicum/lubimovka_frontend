@@ -10,23 +10,23 @@ interface IBlogProps {
   metaTitle: string;
 }
 const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
-  const {
-    metaTitle,
-  } = props;
+  const { metaTitle } = props;
   return (
     <AppLayout>
-      <SectionTitleForBlog title="Блог Любимовки" />
+      <SectionTitleForBlog email='critics@lubimovka.ru' />
       <MasonryGrid>
-        {data.map(card => {
-          return <BlogCard
-            key={card.id}
-            image={card.image}
-            author={card.author}
-            heading={card.title}
-            description={card.subtitle}
-            link={card.link}
-            firstCardSizeMode='big'
-          />;
+        {data.map((card) => {
+          return (
+            <BlogCard
+              key={card.id}
+              image={card.image}
+              author={card.author}
+              heading={card.title}
+              description={card.subtitle}
+              link={card.link}
+              firstCardSizeMode='big'
+            />
+          );
         })}
       </MasonryGrid>
     </AppLayout>
