@@ -4,12 +4,12 @@
 
   display: flex;
   margin-bottom: scale(18px);
-  gap: scale(33px);
   line-height: scale(36px);
 }
 
 .ageLimit {
   position: relative;
+  margin-left: scale(33px);
 }
 
 .ageLimit::before {
