@@ -59,9 +59,7 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
   if (!data) return null;
 
   return (
-    <AppLayout
-      backButton={
-        {path: '/projects',text: 'проекты'}} >
+    <AppLayout backButton={{path: '/projects',text: 'проекты'}}>
       <PerformanceLayout>
         <PerformanceLayout.Headline>
           <PerformanceHeadline
