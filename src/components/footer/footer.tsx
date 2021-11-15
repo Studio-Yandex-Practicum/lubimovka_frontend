@@ -35,7 +35,7 @@ export const Footer = (props: IFooterProps): JSX.Element => {
           &copy; Любимовка, {new Date().getFullYear()}
         </div>
         <InfoLink
-          isOutsideLink={true}
+          isOutsideLink
           href='#'
           label='Политика конфиденциальности'
           hoverStyle='bottomLine'
@@ -50,7 +50,7 @@ export const Footer = (props: IFooterProps): JSX.Element => {
             </dt>
             <dd>
               <InfoLink
-                isOutsideLink={true}
+                isOutsideLink
                 href='#'
                 label='shishki.collective'
                 hoverStyle='bottomLine'
@@ -67,7 +67,7 @@ export const Footer = (props: IFooterProps): JSX.Element => {
             <dd>
               студенты&nbsp;
               <InfoLink
-                isOutsideLink={true}
+                isOutsideLink
                 href='#'
                 label='Яндекс.Практикума'
                 hoverStyle='bottomLine'
