@@ -2,7 +2,7 @@
   display: flex;
   box-sizing: border-box;
   justify-content: center;
-  padding: scale(0 32px);
+  padding: scale(0 31px);
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
@@ -14,17 +14,16 @@
   @mixin hideScrollbar;
 
   display: grid;
-  overflow: auto;
-  box-sizing: border-box;
   justify-content: center;
   gap: scale(59px);
-  grid-auto-columns: max-content;
-  grid-auto-flow: column;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+  grid-template-columns: repeat(auto-fill, minmax(scale(299px), scale(420px)));
 
   @media (max-width: $tablet-portrait) {
+    overflow: auto;
     justify-content: start;
     gap: scale(30px);
+    grid-auto-flow: column;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
   }
 }

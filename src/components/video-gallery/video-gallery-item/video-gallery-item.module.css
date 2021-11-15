@@ -5,12 +5,6 @@
   list-style: none;
 }
 
-.video_items {
-  &&:last-of-type {
-    margin: 0;
-  }
-}
-
 .one-video {
   width: 100%;
   height: scale(403px);
