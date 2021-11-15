@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import styles from './art-directorate-list.module.css';
 
@@ -56,6 +56,12 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
     return cards.filter(card => card.team === 'art');
   }, []);
 
+  const checkForMultiplicity = useCallback((n: number) => {
+    if (selectedCards.length % n === 0) {
+      return true;
+    } return false;
+  }, []);
+
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
   }, []);
@@ -87,14 +93,14 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
       {
         Number(screenWidth) > 728 &&
         <ul
-          className={cx({[styles.grid]: selectedCards.length < 5 || selectedCards.length > 6},
-            {[styles.flex]: selectedCards.length === 6},
-            {[styles.flex]: selectedCards.length === 5})}>
+          className={cx({[styles.grid]: selectedCards.length < 5 && !checkForMultiplicity(3)},
+            {[styles.flex]: checkForMultiplicity(3)},
+            {[styles.flex]: selectedCards.length > 4 && !checkForMultiplicity(3)})}>
           {cards.map((card) => (
             card.team === 'art' &&
             <li key={card.id}
-              className={cx({[styles.fiveElements]: selectedCards.length === 5},
-                {[styles.sixElements]: selectedCards.length === 6})
+              className={cx({[styles.fiveElements]: selectedCards.length > 4 && !checkForMultiplicity(3)},
+                {[styles.sixElements]: checkForMultiplicity(3)})
               }>
               <PersonCard
                 participant={true}
