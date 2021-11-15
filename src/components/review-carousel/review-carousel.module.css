@@ -36,6 +36,10 @@
 .single {
   .slide {
     opacity: .4;
+
+    @media (min-width: $tablet-portrait) {
+      display: block;
+    }
   }
 
   .active {
