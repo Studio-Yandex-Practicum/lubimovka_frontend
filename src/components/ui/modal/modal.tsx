@@ -43,7 +43,7 @@ export const Modal = (props: IModalProps): JSX.Element | null=> {
           tabIndex={-1}
           onKeyDown={handleKeyDown}
         >
-          {Backdrop && <Backdrop onClose={onClose} />}
+          {Backdrop && <Backdrop onClick={onClose} />}
           {children}
         </div>
       </FocusLock>
