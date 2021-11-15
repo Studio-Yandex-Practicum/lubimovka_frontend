@@ -74,7 +74,6 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
         {data.video && (
           <PerformanceLayout.Video>
             <Video
-              type='performance'
               link={data.video}
             />
           </PerformanceLayout.Video>
