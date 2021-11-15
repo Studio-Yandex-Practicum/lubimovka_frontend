@@ -36,7 +36,7 @@ export const CritiqueCard: FC<ICritiqueCardProps> = (props) => {
       {href && (
         <div className={cx('action')}>
           <InfoLink
-            isOutsideLink={true}
+            isOutsideLink
             href='#'
             label='Читать полностью'
             icon='arrow-45'
