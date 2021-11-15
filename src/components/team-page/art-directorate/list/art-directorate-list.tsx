@@ -4,6 +4,7 @@ import styles from './art-directorate-list.module.css';
 
 import PersonCard from '../../../ui/person-card/person-card';
 import classNames from 'classnames/bind';
+import useWindowDimensions from 'components/library-authors-page/useWindowDimensions';
 
 const cx = classNames.bind(styles);
 
@@ -27,7 +28,8 @@ interface ArtDirectorateCardsProps {
 }
 
 const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
-  const [screenWidth, setScreenWidth] = useState<number | null>(null);
+  const { width } = useWindowDimensions();
+  //const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     spacing: 30,
@@ -62,18 +64,18 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
     } return false;
   }, []);
 
-  useEffect(() => {
-    setScreenWidth(document.documentElement.clientWidth);
-  }, []);
+  //useEffect(() => {
+  //  setScreenWidth(document.documentElement.clientWidth);
+  //}, []);
 
   useEffect(() => {
     slider?.refresh();
-  }, [screenWidth]);
+  }, [width]);
 
   return (
     <>
       {
-        Number(screenWidth) < 729 &&
+        width < 729 &&
         <div ref={sliderRef} className="keen-slider">
           {cards.map((card) => (
             card.team === 'art' &&
@@ -91,7 +93,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
       }
 
       {
-        Number(screenWidth) > 728 &&
+        width > 728 &&
         <ul
           className={cx({[styles.grid]: selectedCards.length < 5 && !checkForMultiplicity(3)},
             {[styles.flex]: checkForMultiplicity(3)},
