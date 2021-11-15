@@ -1,11 +1,10 @@
 .container {
   display: grid;
   box-sizing: border-box;
-  padding: scale(32px 0 0 30px);
+  padding: scale(18px 0 0 120px);
   margin: 0 auto;
   grid-column-gap: scale(30px);
   grid-template-areas:
-    'button a a a'
     'b title title c'
     'b description description img'
     'b date author img';
@@ -15,7 +14,6 @@
     padding: scale(32px 0 0 24px);
     grid-column-gap: 0;
     grid-template-areas:
-      'button'
       'img'
       'date'
       'title'
