@@ -1,5 +1,6 @@
 // @ts-nocheck
 
+import { useState } from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Image from 'next/image';
 
@@ -14,6 +15,7 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
+import { Lightbox } from 'components/lightbox';
 // import { ReviewCarousel } from 'components/review-carousel';
 // import { CritiqueCard } from 'components/critique-card';
 // import { ReviewCard } from 'components/review-card';
@@ -33,6 +35,15 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
     text,
     age_limit,
   } = props;
+
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(0);
+
+  const toggleLightboxVisibility = () => setIsLightboxOpen(!isLightboxOpen);
+  const handlePhotoGalleryItemClick = (id: number) => () => {
+    setSelectedImage(id);
+    setIsLightboxOpen(true);
+  };
 
   // TODO: добавить недостающие данные в ответ бекенда
   const formattedDate = new Date('2021-05-13T01:00:00.000Z').toLocaleDateString('ru-Ru', {
@@ -100,13 +111,20 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         </PerformanceLayout.Aside>
         <PerformanceLayout.Gallery>
           <PhotoGallery>
-            {images_in_block.map(({ image }) => (
+            {images_in_block.map(({ image }, index) => (
               <PhotoGallery.Item
                 key={image}
                 image={image}
+                onClick={handlePhotoGalleryItemClick(index)}
               />
             ))}
           </PhotoGallery>
+          <Lightbox
+            images={images_in_block}
+            isOpen={isLightboxOpen}
+            initialSlide={selectedImage}
+            onClose={toggleLightboxVisibility}
+          />
         </PerformanceLayout.Gallery>
         {/* TODO: добавить в ответ бекенда недостающие данные */}
         {/* <PerformanceLayout.Critique>

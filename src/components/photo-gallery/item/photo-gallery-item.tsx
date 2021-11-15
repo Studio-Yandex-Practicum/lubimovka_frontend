@@ -8,7 +8,8 @@ import styles from './photo-gallery-item.module.css';
 
 interface IPhotoGalleryItemProps {
   image: Url,
-  description?: string,
+  description?: string;
+  onClick?: () => void;
 }
 
 const cx = classNames.bind(styles);
@@ -16,16 +17,18 @@ const cx = classNames.bind(styles);
 export const PhotoGalleryItem: FC<IPhotoGalleryItemProps> = (props) => {
   const {
     image,
-    description = ''
+    description = '',
+    onClick,
   } = props;
 
   return (
-    <li className={cx('item')}>
+    <li className={cx('item', { clickable: onClick })}>
       <Image
         src={image}
         alt={description}
         layout="fill"
         objectFit="cover"
+        onClick={onClick}
       />
     </li>
   );
