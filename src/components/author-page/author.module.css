@@ -1,5 +1,14 @@
 .author {
   width: 100%;
   margin: 0 auto;
+  margin-top: -3rem;
   background-color: var(--white);
+
+  @media (max-width: 959px) {
+    margin-top: scale(20px);
+  }
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: 0;
+  }
 }
