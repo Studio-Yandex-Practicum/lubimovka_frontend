@@ -5,16 +5,21 @@ export const useMediaQuery = (query: string): boolean => {
 
   useEffect(() => {
     const mediaQueryList = window.matchMedia(query);
-
     if (mediaQueryList.matches !== matches) {
       setMatches(mediaQueryList.matches);
     }
-
     const onChange = (mediaQueryList: MediaQueryListEvent) => setMatches(mediaQueryList.matches);
 
-    mediaQueryList.addEventListener('change', onChange);
+    typeof mediaQueryList.addEventListener === 'function'
+      ? mediaQueryList.addEventListener('change', onChange)
+      // Deprecated метод для поддержки Safari <14.
+      : mediaQueryList.addListener(onChange);
 
-    return () => mediaQueryList.removeEventListener('change', onChange);
+    return () => {
+      typeof mediaQueryList.addEventListener === 'function'
+        ? mediaQueryList.removeEventListener('change', onChange)
+        : mediaQueryList.removeListener(onChange);
+    };
   }, [query]);
 
   return matches;

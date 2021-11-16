@@ -19,3 +19,10 @@ SelectExample.args = {
   label: 'внеконкурсная программа',
   selected: true
 };
+export const IconExample = Template.bind({});
+IconExample.args = {
+  label: 'внеконкурсная программа',
+  selected: true,
+  isIcon: true,
+  cb: console.log
+};
