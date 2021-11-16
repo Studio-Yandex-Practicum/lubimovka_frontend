@@ -76,6 +76,8 @@ export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
           </div>
         </div>
         <div className={ cn(styles.overviewSet) }>
+
+
           <div className={ cn(styles.overviewTagsBlock) }>
             <h2 className={ cn(styles.overviewTagsHeading) }>Достижения</h2>
             <div className={ cn(styles.tag) }>
