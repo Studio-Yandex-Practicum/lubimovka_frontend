@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import {Icon} from '../icon';
 import cn from 'classnames';
 import styles from './tag.module.css';
@@ -13,12 +13,12 @@ export const Tag: FC<ITagProps> = (props) => {
   const {
     label, selected, cb, isIcon
   } = props;
-  const handleClick = (e:React.MouseEvent) => {
+  const handleClick = React.useCallback((e:React.MouseEvent) => {
     e.preventDefault();
     if(cb) {
       cb(label);
     }
-  };
+  },[]);
   return (
     isIcon ?
       <div className={selected ? cn(styles.tagIcon, styles.active) : cn(styles.tagIcon)}>
