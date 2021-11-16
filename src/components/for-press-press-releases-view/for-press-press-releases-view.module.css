@@ -5,7 +5,7 @@
 
 .title {
   @mixin headline;
-  @mixin headline1;
+  @mixin headline3;
 
   max-width: scale(450px);
   padding-top: scale(212px);
@@ -26,14 +26,13 @@
   max-width: scale(1019px);
   column-gap: scale(30px);
   grid-template-areas:
-    "label        .   "
+    "label       .  "
     "droplist  button"
     "  .        text";
-  row-gap: scale(17px);
 
   @media (max-width: $tablet-portrait) {
-    max-width: 100%;
-    justify-content: start;
+    width: 100%;
+    max-width: none;
     margin-top: scale(32px);
     column-gap: 0;
     grid-template-areas:
@@ -53,9 +52,8 @@
   grid-area: label;
 
   @media (max-width: $tablet-portrait) {
-    max-width: scale(217px);
     padding-bottom: 0;
-    padding-left: scale(24px);
+    margin-left: scale(24px);
   }
 }
 
@@ -66,11 +64,15 @@
   width: scale(149px);
   height: scale(44px);
   grid-area: droplist;
+
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: scale(28px);
+  }
 }
 
 .button {
   display: grid;
-  width: scale(420px);
+  min-width: scale(420px);
   height: scale(44px);
   padding-left: scale(15px);
   grid-area: button;
@@ -81,7 +83,9 @@
 
   @media (max-width: $tablet-portrait) {
     width: scale(367px);
-    padding-left: scale(14px);
+    min-width: unset;
+    margin-bottom: scale(59px);
+    margin-left: scale(14px);
   }
 }
 
@@ -96,8 +100,9 @@
 
   @media (max-width: $tablet-portrait) {
     position: relative;
-    width: 100%;
-    object-fit: contain;
+    z-index: 1;
+    width: scale(414px);
+    height: scale(154.68px);
   }
 }
 
@@ -105,20 +110,25 @@
   max-width: scale(840px);
   margin-top: scale(62px);
   grid-area: text;
+
+  @media (max-width: $tablet-portrait) {
+    margin-right: scale(24px);
+    margin-left: scale(24px);
+  }
 }
 
 .pressReleaseText > h6 {
   @mixin headline;
   @mixin headline6;
 
-  margin-bottom: scale(42px);
+  margin-bottom: scale(24px);
 }
 
 .pressReleaseText > p {
   @mixin text;
   @mixin textLarge;
 
-  margin-bottom: scale(20px);
+  margin-bottom: scale(16px);
   text-indent: scale(20px);
 }
 
@@ -130,8 +140,12 @@
   @mixin headline;
   @mixin headline4;
 
-  margin-top: scale(72px);
-  margin-bottom: scale(32px);
+  margin-top: scale(64px);
+  margin-bottom: scale(24px);
+
+  @media screen (max-width: $tablet-portrait) {
+    margin-top: scale(100px);
+  }
 }
 
 .pressReleaseText > ul {

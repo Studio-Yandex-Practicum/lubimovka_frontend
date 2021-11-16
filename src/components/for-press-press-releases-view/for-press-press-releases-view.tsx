@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, { FC, useState } from 'react';
 import cn from 'classnames/bind';
 
 import styles from './for-press-press-releases-view.module.css';
@@ -6,6 +6,9 @@ import styles from './for-press-press-releases-view.module.css';
 import { Url } from 'shared/types';
 import { Droplist } from 'components/ui/droplist';
 import { Button } from 'components/ui/button';
+
+import { useMediaQuery } from 'shared/hooks/use-media-query';
+import breakpoints from 'shared/breakpoints.js';
 
 const cx = cn.bind(styles);
 
@@ -30,6 +33,8 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({
   const [pressReleaseYear, setPressReleaseYear] = useState<string[] | number>(pressReleaseDefaultYear);
   const pressReleaseSelected = data.pressReleases.find(i => i.year == pressReleaseYear);
 
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+
   return (
     <section className={cx('main')}>
       <h3 className={cx('title')}>
@@ -47,19 +52,38 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({
           }}
           className={cx('droplist')}
         />
-        <Button
-          view='primary'
-          className={cx('button')}
-          align='center'
-          gap='11px'
-          size='s'
-          border='bottomLeft'
-          iconPlace='right'
-          icon='arrow-down'
-          label={`Скачать пресс-релиз ${pressReleaseYear} года в .pdf`}
-          isLink
-          href={pressReleaseSelected.downloadLink}
-        />
+        {
+          isMobile
+            ?
+            <Button
+              view='primary'
+              className={cx('button')}
+              align='center'
+              gap='11px'
+              size='s'
+              border='bottomLeft'
+              iconPlace='right'
+              icon='arrow-down'
+              label={'Скачать пресс-релиз года в .pdf'}
+              isLink
+              href={pressReleaseSelected.downloadLink}
+            />
+            :
+            <Button
+              view='primary'
+              className={cx('button')}
+              align='center'
+              gap='11px'
+              size='s'
+              border='bottomLeft'
+              iconPlace='right'
+              icon='arrow-down'
+              label={`Скачать пресс-релиз ${pressReleaseYear} года в .pdf`}
+              isLink
+              href={pressReleaseSelected.downloadLink}
+            />
+
+        }
         <img className={cx('cover')} src={data.cover}/>
         <article className={cx('pressReleaseText')}>
           {pressReleaseSelected.contents.map((item, idx) => {

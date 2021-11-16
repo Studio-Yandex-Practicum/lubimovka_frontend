@@ -9,12 +9,13 @@ export interface IForPressHeroTitleProps {
   data: {
     title: string,
    },
+   customClass?: string;
 }
 
-export const ForPressHeroTitle: FC<IForPressHeroTitleProps> = ({ data }) => {
+export const ForPressHeroTitle: FC<IForPressHeroTitleProps> = ({ data, customClass }) => {
 
   return (
-    <h1 className={cx('title')}>
+    <h1 className={cx('title', [customClass])}>
       {data.title}
     </h1>
   );
