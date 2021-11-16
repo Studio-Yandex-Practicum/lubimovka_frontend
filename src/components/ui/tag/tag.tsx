@@ -9,21 +9,16 @@ interface ITagProps {
   isIcon?: boolean;
   cb?: (value: string) => void;
 }
-interface SyntheticEvent {
-  currentTarget: EventTarget;
-  preventDefault(): void;
-  target: EventTarget;
-}
 export const Tag: FC<ITagProps> = (props) => {
   const {
     label, selected, cb, isIcon
   } = props;
-  function handleClick(e:SyntheticEvent) {
+  const handleClick = (e:React.MouseEvent) => {
     e.preventDefault();
     if(cb) {
       cb(label);
     }
-  }
+  };
   return (
     isIcon ?
       <div className={selected ? cn(styles.tagIcon, styles.active) : cn(styles.tagIcon)}>
