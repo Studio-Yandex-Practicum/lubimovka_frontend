@@ -58,6 +58,10 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
   }, [ data ]);
 
   useEffect(() => {
+    if (defaultValue && type === 'radio') {
+      setSelectList([defaultValue]);
+      return;
+    }
     // Если тип 'radio' в выводимый список добавиться первый элемент переданного списка
     if (type === 'radio' && !defaultValue && list.length) {
       setSelectList([String(list[0]).toLowerCase()]);
@@ -65,10 +69,9 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
   }, [type, list]);
 
   useEffect(() => {
-    if (defaultValue) {
-      setSelectList([defaultValue]);
-    }
-  }, []);
+    // При изменении selectList отправляются данные
+    cb(selectList);
+  }, [selectList]);
 
   const deleteItemInSelectList = (value: string) => {
     return setSelectList(state => [...state.filter((item) => item !== value.toLowerCase())]);
@@ -80,12 +83,6 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
     addSelectItems: (valueList: string[]) => { setSelectList(valueList); },
   }), [ selectList ]);
 
-  const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    cb(selectList);
-    setActiveDropdown(false);
-  }, [ selectList, cb, activeDropdown ]);
-
   const cbContainer = useCallback(() => {
     setActiveDropdown(state => !state);
   }, [ activeDropdown ]);
@@ -93,8 +90,6 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
   const cbItems = useCallback((value: string, activeCheckbox: boolean) => {
     if (type === 'radio') {
       setSelectList([value]);
-      // При клике отрабатывает колбэк
-      cb([value]);
       return;
     }
     if (activeCheckbox) {
@@ -106,7 +101,11 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
       return;
     }
     deleteItemInSelectList(value);
-  }, [ selectList ]);
+  }, [ selectList, type ]);
+
+  const getValue = (value: string) => {
+    deleteItemInSelectList(value);
+  };
 
   const droplistClass = className ? className : styles.droplistWidth;
 
@@ -120,13 +119,13 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
       <form
         name='droplist'
         className={ cn(styles.form) }
-        onSubmit={ handlerSubmit }
       >
         <div className={ cn(styles.list, {
           [styles.active]: activeDropdown,
         })}>
           { list.map((item: string | number, i): JSX.Element => (
             <DroplistItems
+              type={ type }
               item={ item }
               key={ i }
               cb={ cbItems }
@@ -135,7 +134,7 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
           ))}
         </div>
         { selectList.length > 0 && type !== 'radio'
-          && <ListSelected selectList={ selectList } /> }
+          && <ListSelected selectList={ selectList } cb={getValue} /> }
       </form>
     </div>
   );
