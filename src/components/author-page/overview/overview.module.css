@@ -231,11 +231,18 @@
 }
 
 .overviewSet {
-  padding: 0 calc(var(--scale) * 40);
+  display: block;
+  width: 100%;
+  max-width: 400px;
   margin: 0;
   justify-self: center;
 
+  @media (max-width: 1130px) {
+    max-width: 300px;
+  }
+
   @media (max-width: 728px) {
+    max-width: 600px;
     grid-column: auto;
     grid-row: 1/2;
     justify-self: center;
@@ -273,12 +280,6 @@
   margin: calc(var(--scale) * 6) 0;
 }
 
-.overviewTagsBlock {
-  display: grid;
-  max-width: calc(var(--scale) * 500);
-  justify-content: start;
-}
-
 .overviewTagsHeading {
   @mixin headline;
   @mixin headline7;
@@ -286,12 +287,11 @@
   margin: 0 0 calc(var(--scale) * 15);
 }
 
-.tag {
-  margin: calc(var(--scale) * 8) calc(var(--scale) * 8) 0;
-  gap: calc(var(--scale) * 8);
-  grid-template-columns: repeat(5, 1fr);
+.tagWrapper {
+  width: 100%;
+}
 
-  &:nth-child(1n) {
-    margin: 0 0 calc(var(--scale) * 6);
-  }
+.tag {
+  display: inline-block;
+  margin: 0 calc(var(--scale) * 8) calc(var(--scale) * 8) 0;
 }

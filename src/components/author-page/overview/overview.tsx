@@ -28,13 +28,13 @@ interface IAuthorOverview {
 
 export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
 
+  const withPhoto = data.photo;
+
   const [isExpand, setExpand] = useState(true);
 
   const buttonClickHandlerOpen = () => setExpand(true);
 
   const buttonClickHandlerClose = () => setExpand(false);
-
-  const withPhoto = true;
 
   return (
     <section className={ cn(styles.overview) }>
@@ -42,6 +42,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
         <div className={ cn(styles.button) }>
           <Button size='s' iconPlace='right' icon='arrow-left' label='Библиотека' border='bottomRight' isLink={ true } />
         </div>
+
         { withPhoto &&
         <div className={ cn(styles.photoBox) }>
           <img className={ cn(styles.photo) } src={data.photo} alt={`Фотография автора ${data.name}`} />
@@ -53,6 +54,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
           <p className={ cn(styles.quoteParagraph) }>{data.quote}</p>
         </q>
       </div>
+
       <div className={ cn(styles.overviewInfo) }>
         <div className={ cn(styles.overviewBlock) }>
           <p className={ cn(styles.overviewParagraph, isExpand ? styles.expandButton : styles.rollUpButton) }>{data.description}</p>
@@ -75,15 +77,20 @@ export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
             )}
           </div>
         </div>
+
         <div className={ cn(styles.overviewSet) }>
-
-
           <div className={ cn(styles.overviewTagsBlock) }>
             <h2 className={ cn(styles.overviewTagsHeading) }>Достижения</h2>
-            <div className={ cn(styles.tag) }>
-              <Tag label='шорт-лист' selected={false}/>
-              <Tag label='fringe-программа' selected={false}/>
-              <Tag label='внеконкурсная программа' selected={false}/>
+            <div className={ cn(styles.tagWrapper) }>
+              <div className={ cn(styles.tag) }>
+                <Tag label='шорт-лист' selected={ false }/>
+              </div>
+              <div className={ cn(styles.tag) }>
+                <Tag label='внеконкурсная программа' selected={ false }/>
+              </div>
+              <div className={ cn(styles.tag) }>
+                <Tag label='fringe-программа' selected={ false }/>
+              </div>
             </div>
           </div>
 
@@ -91,7 +98,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
             <h2 className={ cn(styles.overviewSocialLinkHeading) }>Социальные сети</h2>
             <div className={ cn(styles.overviewSocialLinkBlock) }>
               <InfoLink
-                isOutsideLink={true}
+                isOutsideLink={ true }
                 href='https://www.facebook.com/festival.lubimovka'
                 label='fb'
                 icon='arrow-right'
@@ -100,7 +107,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
                 border='borderBottomLeft'
               />
               <InfoLink
-                isOutsideLink={true}
+                isOutsideLink={ true }
                 href='https://www.facebook.com/festival.lubimovka'
                 label='vk'
                 icon='arrow-right'
@@ -110,10 +117,11 @@ export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
               />
             </div>
           </div>
+
           <div className={ cn(styles.overviewSocialWrapper) }>
             <p className={ cn(styles.email) }>E-mail для связи</p>
             <InfoLink
-              isOutsideLink={true}
+              isOutsideLink={ true }
               href='mailto://more@lubimovka.ru'
               label='avgustyniak@gmail.com'
               size='l'
