@@ -1,7 +1,7 @@
 .author {
   width: 100%;
   margin: 0 auto;
-  margin-top: -3rem;
+  margin-top: calc(-1 * scale(58px));
   background-color: var(--white);
 
   @media (max-width: 959px) {
