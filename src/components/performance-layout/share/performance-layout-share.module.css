@@ -1,0 +1,10 @@
+.share {
+  padding: scale(0 60px 0 362px);
+  margin: scale(23px 0 139px);
+  grid-area: share;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(0 24px 0 26px);
+    margin: scale(25px 0 100px);
+  }
+}
