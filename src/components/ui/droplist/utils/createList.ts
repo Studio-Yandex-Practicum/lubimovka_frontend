@@ -20,10 +20,11 @@ const createYearList = (data: Date): number[] => {
   return yearList;
 };
 
-export const createList = (type: string): string[] | number[] | void => {
+export const createList = (type: string | undefined): string[] | number[] => {
   const data: Date = new Date();
   switch (type) {
   case 'months': return createMonthList(data);
   case 'years': return createYearList(data);
+  default: return createMonthList(data);
   }
 };

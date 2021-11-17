@@ -15,12 +15,13 @@ export interface IForPressHeroPrContact {
     description: string,
     photo: Url,
    },
+   customClass?: string;
 }
 
-export const ForPressHeroPrContact: FC<IForPressHeroPrContact> = ({ data }) => {
+export const ForPressHeroPrContact: FC<IForPressHeroPrContact> = ({ data, customClass }) => {
 
   return (
-    <section>
+    <div className={cx([customClass])}>
       <h6 className={cx('intro')}>
         По вопросам PR и аккредитации пишите {data.nameDative}
       </h6>
@@ -45,6 +46,6 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContact> = ({ data }) => {
           {data.description}
         </dd>
       </dl>
-    </section>
+    </div>
   );
 };

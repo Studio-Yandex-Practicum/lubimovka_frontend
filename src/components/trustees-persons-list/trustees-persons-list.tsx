@@ -9,10 +9,17 @@ import style from './trustees-persons-list.module.css';
 
 interface TrusteePersonData {
   id: number,
-  name: string,
-  link: string,
-  about: string,
-  participant: boolean
+  person: {
+    id: number,
+    first_name: string,
+    last_name: string,
+    middle_name: string,
+    city: string,
+    email: string,
+    image: string,
+  };
+  team?: string,
+  position: string
 }
 
 interface TrusteesPersonsProps {
@@ -63,10 +70,10 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
           {trustees.map((trustee) => (
             <div key={trustee.id} className="keen-slider__slide">
               <PersonCard
-                participant={trustee.participant}
-                link={trustee.link}
-                about={trustee.about}
-                name={trustee.name}
+                participant={true}
+                link={trustee.person.image}
+                about={trustee.position}
+                name={`${trustee.person.first_name} ${trustee.person.last_name}`}
               >
               </PersonCard>
             </div>
@@ -80,10 +87,10 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
           {trustees.map((trustee) => (
             <li key={trustee.id} className={style.trusteesListItem}>
               <PersonCard
-                participant={trustee.participant}
-                link={trustee.link}
-                about={trustee.about}
-                name={trustee.name}
+                participant={true}
+                link={trustee.person.image}
+                about={trustee.position}
+                name={`${trustee.person.first_name} ${trustee.person.last_name}`}
               >
               </PersonCard>
             </li>

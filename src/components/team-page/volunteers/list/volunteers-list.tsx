@@ -13,22 +13,23 @@ interface PersonCardData {
   person: {
     id: number;
     first_name: string;
-    second_name: string;
+    last_name: string;
     middle_name: string;
     city: string;
     email: string;
     image: string;
   };
   year: number;
-  title: string;
-  review: string;
+  review_title: string;
+  review_text: string;
 }
 
 interface VolunteersCardsProps {
-  cards: Array<PersonCardData>
+  cards: Array<PersonCardData>,
+  currentYear: number
 }
 
-const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
+const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
@@ -55,9 +56,11 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
   });
 
   const [isFeedbackPopupOpen, setIsFeedbackPopupOpen] = useState(false);
+  const [slide, setSlide] = useState(0);
 
-  function handleFeedbackPopupClick() {
+  function handleFeedbackPopupClick(idx: number) {
     setIsFeedbackPopupOpen(true);
+    setSlide(idx);
   }
 
   function closeFeedbackPopup() {
@@ -70,18 +73,27 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
     }
   };
 
+  const handleOverlayClose = (evt: MouseEvent)  => {
+    const target = evt.target as HTMLElement;
+    if (target.classList.contains('keen-slider__slide')) {
+      closeFeedbackPopup();
+    }
+  };
+
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
   }, []);
 
   useEffect(() => {
     slider?.refresh();
-  }, [screenWidth]);
+  }, [screenWidth, currentYear]);
 
   useEffect(() => {
     document.addEventListener('keydown', handleEscClose);
+    document.addEventListener('mousedown', handleOverlayClose);
     return() =>{
       document.removeEventListener('keydown', handleEscClose);
+      document.removeEventListener('mousedown', handleOverlayClose);
     };
   }, []);
 
@@ -90,14 +102,14 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
       {
         Number(screenWidth) < 729 &&
         <div ref={sliderRef} className={cx('keen-slider', [styles.slidesContainer])}>
-          {cards.map((card) => (
+          {cards.map((card, idx) => (
             <div key={card.id} className="keen-slider__slide">
               <PersonCard
                 participant={false}
                 link={card.person.image}
-                response={card.review}
-                name={`${card.person.first_name} ${card.person.second_name}`}
-                handleClick={() => handleFeedbackPopupClick()}
+                response={card.review_text}
+                name={`${card.person.first_name} ${card.person.last_name}`}
+                handleClick={() => handleFeedbackPopupClick(idx)}
               >
               </PersonCard>
             </div>
@@ -108,14 +120,14 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
       {
         Number(screenWidth) > 728 &&
         <ul className={styles.container}>
-          {cards.map((card) => (
+          {cards.map((card, idx) => (
             <li key={card.id}>
               <PersonCard
                 participant={false}
                 link={card.person.image}
-                response={card.review}
-                name={`${card.person.first_name} ${card.person.second_name}`}
-                handleClick={() => handleFeedbackPopupClick()}
+                response={card.review_text}
+                name={`${card.person.first_name} ${card.person.last_name}`}
+                handleClick={() => handleFeedbackPopupClick(idx)}
               >
               </PersonCard>
             </li>
@@ -123,7 +135,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards }) => {
         </ul>
       }
 
-      <FeedbackPopup cards={cards} isOpen={isFeedbackPopupOpen} onClose={closeFeedbackPopup}/>
+      <FeedbackPopup currentYear={currentYear} cards={cards} openedSlide={slide} isOpen={isFeedbackPopupOpen} onClose={closeFeedbackPopup}/>
     </>
   );
 };
