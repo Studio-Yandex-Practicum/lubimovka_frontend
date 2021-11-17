@@ -28,7 +28,7 @@ interface IDroplistProps {
 }
 
 // eslint-disable-next-line react/display-name
-export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, ref) => {
+export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, ref): JSX.Element => {
   const {
     type = 'checkbox',
     data,
