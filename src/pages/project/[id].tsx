@@ -4,7 +4,7 @@ import AppLayout from 'components/app-layout';
 import { ProjectLayout } from 'components/project-layout';
 import { ProjectHeader } from 'components/project-header';
 import { ProjectDescription } from 'components/project-description';
-import { ProjectCooperation } from 'components/project-cooperation';
+import { ProjectInvitation } from 'components/project-invitation';
 import { fetcher } from 'shared/fetcher';
 import { Project as ProjectModel } from 'api-typings';
 
@@ -30,7 +30,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
         {contents && contents.map(block => {
           // TODO: реализовать рендеринг блоков контента
         })}
-        <ProjectCooperation email=""/>
+        <ProjectInvitation email=""/>
       </ProjectLayout>
     </AppLayout>
   );
