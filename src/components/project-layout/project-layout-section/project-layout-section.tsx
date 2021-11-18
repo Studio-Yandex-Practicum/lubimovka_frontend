@@ -1,11 +1,11 @@
 import { ReactNode, HTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 
-import styles from './project-page-section.module.css';
+import styles from './project-layout-section.module.css';
 import { Button } from 'components/ui/button';
 const cx = classNames.bind(styles);
 
-interface IProjecPageSectionProps extends HTMLAttributes<HTMLElement> {
+interface IProjectLayoutSectionProps extends HTMLAttributes<HTMLElement> {
   type?:
     | 'video'
     | 'photo'
@@ -20,8 +20,8 @@ interface IProjecPageSectionProps extends HTMLAttributes<HTMLElement> {
   button?: boolean;
 }
 
-export const ProjecPageSection = (
-  props: IProjecPageSectionProps
+export const ProjectLayoutSection = (
+  props: IProjectLayoutSectionProps
 ): JSX.Element => {
   const { type, title, children, description, button, ...restProps } = props;
 
