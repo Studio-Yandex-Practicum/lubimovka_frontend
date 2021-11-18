@@ -1,19 +1,19 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
-import styles from './project-page.module.css';
+import styles from './project-layout.module.css';
 
-interface IProjectPageProps {
+interface IProjectLayoutProps {
   children: ReactNode;
 }
 
 const cx = classNames.bind(styles);
 
-export const ProjectPage = (props: IProjectPageProps): JSX.Element => {
+export const ProjectLayout = (props: IProjectLayoutProps): JSX.Element => {
   const { children } = props;
 
   return (
-    <main className={cx('page')}>
+    <main className={cx('layout')}>
       {children}
     </main>
   );

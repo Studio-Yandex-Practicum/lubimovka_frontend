@@ -1,7 +1,7 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 import AppLayout from 'components/app-layout';
-import { ProjectPage } from 'components/project-page';
+import { ProjectLayout } from 'components/project-layout';
 import { ProjectHeader } from 'components/project-header';
 import { ProjectDescription } from 'components/project-description';
 import { fetcher } from 'shared/fetcher';
@@ -17,7 +17,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
 
   return (
     <AppLayout>
-      <ProjectPage>
+      <ProjectLayout>
         <ProjectHeader
           title={title}
           intro=""
@@ -29,7 +29,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
         {contents && contents.map(block => {
           // TODO: реализовать рендеринг блоков контента
         })}
-      </ProjectPage>
+      </ProjectLayout>
     </AppLayout>
   );
 };
