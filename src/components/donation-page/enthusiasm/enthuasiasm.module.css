@@ -1,16 +1,10 @@
 .componentContainer {
   display: flex;
   flex-flow: row nowrap;
-  border: 1px solid red;
 
   @media (max-width: $tablet-portrait) {
     flex-flow: column nowrap;
   }
-}
-
-.data {
-  flex: 27 27 54%;
-  border: 1px solid blue;
 }
 
 .header {
@@ -23,6 +17,9 @@
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
+
+    width: scale(367px);
+    margin: scale(35px 0 0 23px);
   }
 }
 
@@ -35,6 +32,9 @@
   margin: scale(54px 0 0 180px);
 
   @media (max-width: $tablet-portrait) {
+    @mixin headline7;
+
+    width: scale(304px);
     margin: scale(24px 0 0 85px);
   }
 }
@@ -49,6 +49,7 @@
   margin: scale(117px 0 0 180px);
 
   @media (max-width: $tablet-portrait) {
+    width: scale(338px);
     margin: scale(58px 0 0 51px);
   }
 }
@@ -72,11 +73,17 @@
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
-  border: 1px solid green;
 }
 
 .advStub {
   width: 91%;
   height: 91%;
+  margin: scale(25px 0 0 0);
   background-color: white;
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(366px);
+    height: scale(524px);
+    margin: scale(58px 0 0 0);
+  }
 }

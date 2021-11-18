@@ -5,7 +5,7 @@ import mockData from '../../../pages/donation/assets/mock-donation-data.json';
 import { Enthusiasm } from './enthusiasm';
 
 export default {
-  title: 'Components/Enthusiasm',
+  title: 'Components/Donation-Enthusiasm',
   component: Enthusiasm,
 } as ComponentMeta<typeof Enthusiasm>;
 

@@ -7,7 +7,7 @@ const cx = cn.bind(styles);
 
 interface IEnthusiasmProps {
   header: string;
-  text: string;
+  text: Array<string>;
   footnote: string;
 }
 
@@ -20,9 +20,10 @@ export const Enthusiasm: FC<IEnthusiasmProps> = (props) => {
         <h1 className={cx('header')}>
           {header}
         </h1>
-        <article className={cx('text')}>
-          {text}
-        </article>
+        <div className={cx('text')}>
+          <p>{text[0]}</p>
+          <p>{text[1]}</p>
+        </div>
         <p className={cx('footnote')}>
           <Icon className={cx('asterisk')} glyph="asterisk" fill='--var(coal)' />
           {footnote}
