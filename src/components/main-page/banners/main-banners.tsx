@@ -1,11 +1,25 @@
-import React, { useEffect, useRef, useState, FC } from 'react';
+import React, { useEffect, useRef, FC } from 'react';
 import cn from 'classnames';
 
-import { Button } from 'components/ui/button';
+import { MainBannerItem } from './baner-item/banner-item';
 
 import styles from './main-banners.module.css';
 
-export const MainBanners: FC = ():JSX.Element => {
+interface IMainBannersProps {
+  id: number
+  title: string
+  desc: string
+  buttonText: string
+  buttonUrl: string
+  imgAlt: string
+  imgUrl: string
+}
+
+interface IMainBannersProps {
+  data: IMainBannersProps[]
+}
+
+export const MainBanners: FC<IMainBannersProps> = ({ data }):JSX.Element => {
   const bannersRef = useRef<HTMLDivElement>(null);
   const itemRef = useRef<HTMLLIElement>(null);
   
@@ -38,104 +52,39 @@ export const MainBanners: FC = ():JSX.Element => {
   //   };
   // }
 
-  const scrollHandler = () => {
-    if (bannersRef.current && itemRef.current) {
-      const eventBanner = bannersRef.current.getBoundingClientRect();
-      const eventLi = itemRef.current.getBoundingClientRect();
-      if (eventBanner.y < 0) {
-        console.log(eventLi.height);
-        console.log(eventBanner.y);
-        console.log(eventLi.height + eventBanner.y);
-        itemRef.current.style.maxHeight = eventLi.height + eventBanner.y + 'px';
-      } else {
-        itemRef.current.style.maxHeight = eventLi.height - eventBanner.y + 'px';
-      }
-    }
-  };
+  // const scrollHandler = () => {
+  //   if (bannersRef.current && itemRef.current) {
+  //     const eventBanner = bannersRef.current.getBoundingClientRect();
+  //     const eventLi = itemRef.current.getBoundingClientRect();
+  //     if (eventBanner.y < 0) {
+  //       console.log(eventLi.height);
+  //       console.log(eventBanner.y);
+  //       console.log(eventLi.height + eventBanner.y);
+  //       itemRef.current.style.maxHeight = eventLi.height + eventBanner.y + 'px';
+  //     } else {
+  //       itemRef.current.style.maxHeight = eventLi.height - eventBanner.y + 'px';
+  //     }
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener('scroll', scrollHandler);
+  // useEffect(() => {
+  //   window.addEventListener('scroll', scrollHandler);
 
-    // return () => {
-    //   window.removeEventListener('scroll', () => scrollHandler());
-    // };
-  }, []);
+  //   // return () => {
+  //   //   window.removeEventListener('scroll', () => scrollHandler());
+  //   // };
+  // }, []);
 
   return (
-    <section className={ cn(styles.banners) } ref={bannersRef}>
+    <section className={ cn(styles.banners) }>
       <ul className={ cn(styles.list) }>
-        <li className={ cn(styles.item) } ref={itemRef}>
-          <h2 className={ cn(styles.title) }>
-            Премьера спектакля Ивана Вырыпаева «Солнечная линия»
-          </h2>
-          <div className={ cn(styles.container) }>
-            <div className={ cn(styles.content) }>
-              <p className={ cn(styles.desc) }>
-                Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.
-              </p>
-              <Button 
-                label='читать' 
-                iconPlace='left' 
-                icon='arrow-right' 
-                gap='4px'
-                border='bottomLeft'
-              />
-            </div>
-            <img 
-              src='https://sun9-15.userapi.com/impg/BrbXevIzjABChomHzzXuKYJ0ZTWrcuhy_lQnwA/dshSQq8AJVQ.jpg?size=720x414&quality=95&sign=2ceeb729a98f8fd68fb5b4e975b6234c&type=album'
-              alt='Волонтеры'
-              className={ cn(styles.img) }
-            />
-          </div>
-        </li>
-        <li className={ cn(styles.item) }>
-          <h2 className={ cn(styles.title) }>
-            Любимовка в театре «Современник»
-          </h2>
-          <div className={ cn(styles.container) }>
-            <div className={ cn(styles.content) }>
-              <p className={ cn(styles.desc) }>
-                Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.
-              </p>
-              <Button 
-                label='читать' 
-                iconPlace='left' 
-                icon='arrow-right' 
-                gap='4px'
-                border='bottomLeft'
-              />
-            </div>
-            <img 
-              src='https://sun9-15.userapi.com/impg/BrbXevIzjABChomHzzXuKYJ0ZTWrcuhy_lQnwA/dshSQq8AJVQ.jpg?size=720x414&quality=95&sign=2ceeb729a98f8fd68fb5b4e975b6234c&type=album'
-              alt='Волонтеры'
-              className={ cn(styles.img) }
-            />
-          </div>
-        </li>
-        <li className={ cn(styles.item) }>
-          <h2 className={ cn(styles.title) }>
-            Волонтёры Любимовки 2020 о своих впечатлениях
-          </h2>
-          <div className={ cn(styles.container) }>
-            <div className={ cn(styles.content) }>
-              <p className={ cn(styles.desc) }>
-                Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.
-              </p>
-              <Button 
-                label='читать' 
-                iconPlace='left' 
-                icon='arrow-right' 
-                gap='4px'
-                border='bottomLeft'
-              />
-            </div>
-            <img 
-              src='https://sun9-15.userapi.com/impg/BrbXevIzjABChomHzzXuKYJ0ZTWrcuhy_lQnwA/dshSQq8AJVQ.jpg?size=720x414&quality=95&sign=2ceeb729a98f8fd68fb5b4e975b6234c&type=album'
-              alt='Волонтеры'
-              className={ cn(styles.img) }
-            />
-          </div>
-        </li>
+        { data.map((item: IMainBannersProps) => {
+          return (
+            <li className={ cn(styles.item) } key={item.id} ref={itemRef}>
+              <MainBannerItem item={ item } />
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
