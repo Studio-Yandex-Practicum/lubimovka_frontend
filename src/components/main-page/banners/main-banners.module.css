@@ -8,3 +8,7 @@
   margin: 0;
   list-style: none;
 }
+
+.bannerHide {
+  max-height: scale(54px);
+}

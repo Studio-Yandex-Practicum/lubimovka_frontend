@@ -13,10 +13,13 @@ interface IMainBannerItemProps {
     buttonUrl: string
     imgAlt: string
     imgUrl: string
-  }
+  },
+  cb: (bannerRef: HTMLDivElement) => void
 }
 
-export const MainBannerItem: FC<IMainBannerItemProps> = ({ item }):JSX.Element => {
+export const MainBannerItem: FC<IMainBannerItemProps> = ({ item, cb }):JSX.Element => {
+  const bannerRef = useRef<HTMLDivElement>(null);
+
   const {
     title,
     desc,
@@ -26,8 +29,14 @@ export const MainBannerItem: FC<IMainBannerItemProps> = ({ item }):JSX.Element =
     imgUrl,
   } = item;
 
+  useEffect(() => {
+    if (bannerRef.current) {
+      cb(bannerRef.current);
+    }
+  }, []);
+
   return (
-    <div className={ cn(styles.banner) }>
+    <div className={ cn(styles.banner) } ref={ bannerRef }>
       <h2 className={ cn(styles.title) }>
         { title }
       </h2>

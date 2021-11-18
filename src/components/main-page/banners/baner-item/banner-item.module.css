@@ -2,8 +2,10 @@
   overflow: hidden;
   width: 100%;
   max-width: scale(1100px);
+  max-height: scale(600px);
   border-top: scale(1px) solid var(--coal);
   margin-bottom: scale(50px);
+  transition: all .3s ease-out;
 }
 
 .title {

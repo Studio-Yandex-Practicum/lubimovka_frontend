@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, FC } from 'react';
+import React, { FC } from 'react';
 import cn from 'classnames';
 
-import { MainBannerItem } from './baner-item/banner-item';
+import { MainBannerItem } from './baner-item';
 
 import styles from './main-banners.module.css';
 
@@ -20,8 +20,6 @@ interface IMainBannersProps {
 }
 
 export const MainBanners: FC<IMainBannersProps> = ({ data }):JSX.Element => {
-  const bannersRef = useRef<HTMLDivElement>(null);
-  const itemRef = useRef<HTMLLIElement>(null);
   
   // const [isWaiting, setIsWaiting] = useState(false);
 
@@ -52,36 +50,24 @@ export const MainBanners: FC<IMainBannersProps> = ({ data }):JSX.Element => {
   //   };
   // }
 
-  // const scrollHandler = () => {
-  //   if (bannersRef.current && itemRef.current) {
-  //     const eventBanner = bannersRef.current.getBoundingClientRect();
-  //     const eventLi = itemRef.current.getBoundingClientRect();
-  //     if (eventBanner.y < 0) {
-  //       console.log(eventLi.height);
-  //       console.log(eventBanner.y);
-  //       console.log(eventLi.height + eventBanner.y);
-  //       itemRef.current.style.maxHeight = eventLi.height + eventBanner.y + 'px';
-  //     } else {
-  //       itemRef.current.style.maxHeight = eventLi.height - eventBanner.y + 'px';
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', scrollHandler);
-
-  //   // return () => {
-  //   //   window.removeEventListener('scroll', () => scrollHandler());
-  //   // };
-  // }, []);
+  const cb = (bannerRef: HTMLDivElement) => {
+    function scrollHandler() {
+      if (bannerRef.getBoundingClientRect().top < 0) {
+        bannerRef.classList.add(cn(styles.bannerHide));
+        return;
+      }
+      bannerRef.classList.remove(cn(styles.bannerHide));
+    }
+    window.addEventListener('scroll', scrollHandler);
+  };
 
   return (
     <section className={ cn(styles.banners) }>
       <ul className={ cn(styles.list) }>
         { data.map((item: IMainBannersProps) => {
           return (
-            <li className={ cn(styles.item) } key={item.id} ref={itemRef}>
-              <MainBannerItem item={ item } />
+            <li className={ cn(styles.item) } key={item.id}>
+              <MainBannerItem item={ item } cb={ cb } />
             </li>
           );
         })}
