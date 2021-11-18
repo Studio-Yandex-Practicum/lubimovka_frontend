@@ -5,7 +5,9 @@ import { ProjectLayout } from 'components/project-layout';
 import { ProjectHeader } from 'components/project-header';
 import { ProjectDescription } from 'components/project-description';
 import { ProjectInvitation } from 'components/project-invitation';
+import { PhotoGallery } from 'components/photo-gallery';
 import { fetcher } from 'shared/fetcher';
+import { Section } from 'components/section';
 import { Project as ProjectModel } from 'api-typings';
 
 const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
@@ -27,9 +29,22 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
         <ProjectDescription>
           {description}
         </ProjectDescription>
-        {contents && contents.map(block => {
-          // TODO: реализовать рендеринг блоков контента
-        })}
+        {contents && contents.map(({ content_type, content_item }) => (
+          <>
+            {content_type === 'imagesblock' && (
+              <Section title={content_item.title}>
+                <PhotoGallery>
+                  {content_item.items.map(({ title, image }) => (
+                    <PhotoGallery.Item
+                      key={title}
+                      image={image}
+                    />
+                  ))}
+                </PhotoGallery>
+              </Section>
+            )}
+          </>
+        ))}
         <ProjectInvitation email=""/>
       </ProjectLayout>
     </AppLayout>
