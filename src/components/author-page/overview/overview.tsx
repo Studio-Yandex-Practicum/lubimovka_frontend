@@ -32,10 +32,6 @@ export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
 
   const [isExpand, setExpand] = useState(true);
 
-  const buttonClickHandlerOpen = () => setExpand(true);
-
-  const buttonClickHandlerClose = () => setExpand(false);
-
   return (
     <section className={ cn(styles.overview) }>
       <div className={ cn(withPhoto ? styles.personalInfo : styles.personalInfoNoPhoto) }>
@@ -58,10 +54,15 @@ export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
       <div className={ cn(styles.overviewInfo) }>
         <div className={ cn(styles.overviewBlock) }>
           <p className={ cn(styles.overviewParagraph, isExpand ? styles.expandButton : styles.rollUpButton) }>{data.description}</p>
-          { isExpand ?
-            <Button onClick={buttonClickHandlerClose} width='100%' size='s' iconPlace='right' icon='arrow-down' label='Полный текст' border='topLeft' /> :
-            <Button onClick={buttonClickHandlerOpen} width='100%' size='s' iconPlace='right' icon='arrow-up' label='Свернуть' border='topLeft' />
-          }
+          <Button
+            width='100%'
+            size='s'
+            iconPlace='right'
+            icon={ isExpand ? 'arrow-down' : 'arrow-up' }
+            label={ isExpand ? 'Полный текст' : 'Свернуть' }
+            border='topLeft'
+            onClick={() => setExpand(!isExpand)}
+          />
           <div className={ cn(styles.overviewBlockAuthorInfo) }>
             {data.dataList.list.map((item) =>
               <div className={ cn(styles.overviewLinkHeading) } key={item.id}>

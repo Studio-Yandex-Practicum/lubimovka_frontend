@@ -233,12 +233,12 @@
 .overviewSet {
   display: block;
   width: 100%;
-  max-width: 400px;
+  max-width: calc(var(--scale) * 500);
   margin: 0;
   justify-self: center;
 
   @media (max-width: 1130px) {
-    max-width: 300px;
+    max-width: calc(var(--scale) * 400);
   }
 
   @media (max-width: 728px) {

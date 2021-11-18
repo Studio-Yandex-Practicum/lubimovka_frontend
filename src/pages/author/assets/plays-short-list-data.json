@@ -2,59 +2,59 @@
   "title": "Шорт-лист 2020 года",
   "plays": [
     {
-      "name": "Солнечная линия",
+      "title": "Солнечная линия",
       "city": "Санкт-Петербург",
-      "year": 2020,
-      "url_reading": "https://lubimovka.ru/",
-      "url_download": "https://lubimovka.ru/",
-      "authors": [{
+      "year": "2020",
+      "linkView": "https://lubimovka.ru/",
+      "linkDownload": "https://lubimovka.ru/",
+      "author": {
         "id": 1,
         "name": "Екатерина Августеняк"
-      }]
+      }
     },
     {
-      "name": "МАМА",
+      "title": "МАМА",
       "city": "Санкт-Петербург",
-      "year": 2020,
-      "url_reading": "https://lubimovka.ru/",
-      "url_download": "https://lubimovka.ru/",
-      "authors": [{
+      "year": "2020",
+      "linkView": "https://lubimovka.ru/",
+      "linkDownload": "https://lubimovka.ru/",
+      "author": {
         "id": 2,
         "name": "Екатерина Августеняк"
-      }]
+      }
     },
     {
-      "name": "Конкретные разговоры пожилых супругов ни о чём",
+      "title": "Конкретные разговоры пожилых супругов ни о чём",
       "city": "Санкт-Петербург",
-      "year": 2020,
-      "url_reading": "https://lubimovka.ru/",
-      "url_download": "https://lubimovka.ru/",
-      "authors": [{
+      "year": "2020",
+      "linkView": "https://lubimovka.ru/",
+      "linkDownload": "https://lubimovka.ru/",
+      "author": {
         "id": 3,
         "name": "Екатерина Августеняк"
-      }]
+      }
     },
     {
-      "name": "Опус ДНК",
+      "title": "Опус ДНК",
       "city": "Санкт-Петербург",
-      "year": 2020,
-      "url_reading": "https://lubimovka.ru/",
-      "url_download": "https://lubimovka.ru/",
-      "authors": [{
+      "year": "2020",
+      "linkView": "https://lubimovka.ru/",
+      "linkDownload": "https://lubimovka.ru/",
+      "author": {
         "id": 4,
         "name": "Екатерина Августеняк"
-      }]
+      }
     },
     {
-      "name": "МАМА",
+      "title": "МАМА",
       "city": "Санкт-Петербург",
-      "year": 2020,
-      "url_reading": "https://lubimovka.ru/",
-      "url_download": "https://lubimovka.ru/",
-      "authors": [{
+      "year": "2020",
+      "linkView": "https://lubimovka.ru/",
+      "linkDownload": "https://lubimovka.ru/",
+      "author": {
         "id": 5,
         "name": "Екатерина Августеняк"
-      }]
+      }
     }
   ]
 }
