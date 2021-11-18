@@ -14,14 +14,12 @@
 
 .container {
   display: flex;
-  width: scale(240px);
   min-height: scale(300px);
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--light-green);
 
   @media (max-width: $tablet-portrait) {
-    width: scale(244px);
     min-height: scale(341px);
   }
 }
@@ -74,14 +72,7 @@
 .author {
   display: inline;
   max-width: scale(190px);
-  padding: 2px 4px;
-  margin: -2px -4px;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
-.authorMultiple {
-  max-width: scale(238px);
+  margin: 0;
 }
 
 .authorName {
