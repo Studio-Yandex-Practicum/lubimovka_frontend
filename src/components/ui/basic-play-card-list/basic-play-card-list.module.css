@@ -1,4 +1,4 @@
-.basicPlayCardList {
+.list {
   @mixin hideScrollbar;
 
   --padding: scale(24px);

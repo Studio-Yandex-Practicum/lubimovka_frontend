@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import { ComponentMeta, Story } from '@storybook/react';
 
-import { BasicPlayCardList, BasicPlayCard, IBasicPlayCardProps } from '..';
+import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
+import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 
-import CardDefault from '../basic-play-card.stories';
+import CardDefault from '../basic-play-card/basic-play-card.stories';
 
 export default {
   title: 'ui/BasicPlayCardList',

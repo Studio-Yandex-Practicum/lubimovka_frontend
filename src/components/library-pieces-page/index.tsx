@@ -3,7 +3,8 @@ import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 
 import LibraryForm from 'components/library-form/library-form';
 import LibraryFilter from 'components/library-filter/library-filter';
-import { BasicPlayCard, BasicPlayCardList, IBasicPlayCardProps } from 'components/ui/basic-play-card';
+import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
+import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
 import LibraryFiltersModal from './library-filters-modal';
