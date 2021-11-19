@@ -1,21 +1,22 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Head from 'next/head';
 import cn from 'classnames/bind';
-import styles from './article-page.module.css';
 
+import { Section } from 'components/section';
+import { BasicPlayCard, IBasicPlayCardProps} from 'components/ui/basic-play-card';
+import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
+import {IPersonCardProps, PersonCard, PersonCardList} from 'components/ui/person-card';
+import {ImageSlider, TImageItem} from 'components/ui/image-slider';
+import ArticleText from './assets/mock-data-article-main-text.json';
 import ArticleTitle from './article-title/article-title';
-import { Section } from '../section';
-import {BasicPlayCard, BasicPlayCardList, IBasicPlayCardProps} from '../ui/basic-play-card';
-import {IPersonCardProps, PersonCard, PersonCardList} from '../ui/person-card';
-import {ArticleMainText} from './article-maintext';
 import ArticleShare from './article-share/article-share';
-import {ImageSlider, TImageItem} from '../ui/image-slider';
+import {ArticleMainText} from './article-maintext';
+import DataShare from './assets/mock-data-share.json';
 
+import styles from './article-page.module.css';
 import DataTitle from './assets/mock-data-title.json';
 import DataPlays from './assets/mock-data-plays.json';
 import DataPersons from './assets/mock-data-persons.json';
-import ArticleText from './assets/mock-data-article-main-text.json';
-import DataShare from './assets/mock-data-share.json';
 
 const cx = cn.bind(styles);
 

@@ -6,7 +6,7 @@ import { ProjectHeader } from 'components/project-header';
 import { ProjectDescription } from 'components/project-description';
 import { ProjectInvitation } from 'components/project-invitation';
 import { PhotoGallery } from 'components/photo-gallery';
-import { BasicPlayCardList } from 'components/ui/basic-play-card';
+import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
 import { AnnouncedPlayCardList } from 'components/ui/announced-play-card/announced-play-card-list';
