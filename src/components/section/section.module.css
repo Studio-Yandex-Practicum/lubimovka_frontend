@@ -6,12 +6,13 @@
   @mixin headline;
   @mixin headline4;
 
-  margin-left: 25%;
+  max-width: scale(716px);
+  margin: 0 auto scale(48px);
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    margin: scale(0 24px);
+    max-width: scale(366px);
   }
 }
 
