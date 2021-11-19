@@ -17,6 +17,7 @@
   list-style: none;
   overflow-x: auto;
   overflow-y: hidden;
+  scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
     display: none;
