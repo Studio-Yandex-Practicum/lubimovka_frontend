@@ -2,12 +2,12 @@
   display: flex;
   box-sizing: border-box;
   border-left: scale(1px) solid var(--coal);
-  transform: translateY(8px);
-  transition: transform .1s ease-out;
+  transform: translateY(scale(8px));
+  transition: transform .2s ease-out;
 }
 
 .lower {
-  transform: translateY(280px);
+  transform: translateY(scale(320px));
 }
 
 .list {

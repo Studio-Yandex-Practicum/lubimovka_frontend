@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useCallback, useImperativeHandle, forwardRef } from 'react';
+import React, { FC, useEffect, useState, useCallback, useImperativeHandle, forwardRef, useRef } from 'react';
 import cn from 'classnames';
 
 // Компоненты
@@ -46,6 +46,8 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
   // Выбран ли Dropdown
   const [ activeDropdown, setActiveDropdown ] = useState(false);
 
+  const droplistRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     // Передача своего объекта
     if (Array.isArray(data)) {
@@ -76,6 +78,21 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
   const deleteItemInSelectList = (value: string) => {
     return setSelectList(state => [...state.filter((item) => item !== value.toLowerCase())]);
   };
+
+  const handleClose = (e: MouseEvent) => {
+    const droplist = droplistRef.current;
+    if (droplist) {
+      !droplist.contains(e.target) && setActiveDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    if (activeDropdown) {
+      document.addEventListener('mouseup', handleClose);
+      return;
+    }
+    document.removeEventListener('mouseup', handleClose);
+  }, [activeDropdown]);
 
   useImperativeHandle(ref, () => ({
     deleteAll: () => { setSelectList([]); },
@@ -111,7 +128,7 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
   const droplistClass = className ? className : styles.droplistWidth;
 
   return (
-    <div className={ cn(styles.droplist, droplistClass) }>
+    <div className={ cn(styles.droplist, droplistClass) } ref={droplistRef}>
       <ContainerButton
         cb={ cbContainer }
         activeDropdown={ activeDropdown }
