@@ -9,9 +9,9 @@ import { PhotoGallery } from 'components/photo-gallery';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
-import { AnnouncedPlayCardList } from 'components/ui/announced-play-card/announced-play-card-list';
-import { fetcher } from 'shared/fetcher';
+import { AnnouncedPlayCardList } from 'components/ui/announced-play-card-list';
 import { Section } from 'components/section';
+import { fetcher } from 'shared/fetcher';
 import { Project as ProjectModel } from 'api-typings';
 
 const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
