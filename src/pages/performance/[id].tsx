@@ -8,7 +8,7 @@ import { PerformanceLayout } from 'components/performance-layout';
 import { PerformanceHeadline } from 'components/performance-headline';
 import { PerformanceDetails } from 'components/performance-details';
 import { PerformanceCrew } from 'components/performance-crew';
-import { PerformanceRawText } from 'components/performance-raw-text';
+import { RawText } from 'components/raw-text';
 import { Share } from 'components/share';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
@@ -77,9 +77,9 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
           </PerformanceLayout.Video>
         )}
         <PerformanceLayout.Text>
-          <PerformanceRawText>
+          <RawText>
             {data.text}
-          </PerformanceRawText>
+          </RawText>
         </PerformanceLayout.Text>
         <PerformanceLayout.Play>
           <Section
