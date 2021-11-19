@@ -9,7 +9,7 @@ import { Footer } from 'components/footer';
 
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
 import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
-import { formLink, donationLink } from 'shared/constants/action-link-items';
+import { formLink, donationLink } from 'shared/constants/main-navigation-actions';
 import { socialLinkItems } from 'shared/constants/social-link-items';
 import { OverlayNav } from 'components/overlay-nav';
 import * as breakpoints from 'shared/breakpoints.js';
