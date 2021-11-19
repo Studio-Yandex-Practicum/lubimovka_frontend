@@ -5,15 +5,14 @@ import styles from './announced-play-card-list.module.css';
 const cx = classNames.bind(styles);
 
 interface IAnnouncedPlayCardListProps extends React.HTMLAttributes<HTMLDivElement> {
-  expanded?: boolean;
   children: ReactNode;
 }
 
 export const AnnouncedPlayCardList = (props: IAnnouncedPlayCardListProps): JSX.Element => {
-  const { expanded, children } = props;
+  const { children } = props;
 
   return (
-    <div className={cx('play-card-list', { expanded })}>
+    <div className={cx('list')}>
       {children}
     </div>
   );
