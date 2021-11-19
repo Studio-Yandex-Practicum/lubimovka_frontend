@@ -1,7 +1,7 @@
 .section {
   display: grid;
   box-sizing: border-box;
-  padding: scale(24px 287px 61px 93px);
+  padding: scale(27px 287px 61px 93px);
   margin-bottom: scale(17px);
   grid-template-areas:
     "asterisk title"
@@ -9,15 +9,11 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     display: flex;
     flex-direction: column;
-    padding: scale(0 24px);
+    padding: scale(0 20px 23px 24px);
   }
-}
-
-.droplist {
-  z-index: 1;
 }
 
 .title {
@@ -31,11 +27,11 @@
   margin: 0;
   grid-area: title;
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    padding: scale(0 40px 0 0);
-    margin-bottom: scale(23px);
+    padding: scale(0 50px 0 0);
+    margin-bottom: scale(22px);
   }
 }
 
@@ -58,9 +54,26 @@
   column-gap: scale(30px);
   grid-area: drop;
 
-  @media (max-width: 728px) {
-    justify-content: space-between;
+  @media (max-width: $tablet-portrait) {
     padding: 0;
+  }
+}
+
+.droplistTypelistMonths {
+  z-index: 1;
+  max-width: scale(240px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(183px);
+  }
+}
+
+.droplistTypelistYears {
+  z-index: 1;
+  max-width: scale(150px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(152px);
   }
 }
 
@@ -69,7 +82,7 @@
   margin: 0;
   grid-area: text;
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     padding: scale(0 0 0 32px);
   }
 }
@@ -80,25 +93,38 @@
 
   padding: 0;
   margin: 0;
-  margin-bottom: scale(29px);
+  margin-bottom: scale(31px);
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     @mixin textSmall;
 
-    margin-bottom: scale(17px);
+    margin-bottom: scale(16px);
+    letter-spacing: 0;
   }
 }
 
-.paragraph-connect {
-  @mixin headline;
+.paragraphConnect {
+  @mixin text;
+  @mixin textBlogSmall;
 
-  padding: 0;
-  padding-right: scale(50px);
+  padding: scale(1px 50px 0 0);
   margin: 0;
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
+    @mixin headline;
     @mixin headline7;
 
     margin-bottom: scale(70px);
+  }
+}
+
+.link {
+  letter-spacing: .1px;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline;
+    @mixin headline7;
+
+    letter-spacing: scale(-.2px);
   }
 }

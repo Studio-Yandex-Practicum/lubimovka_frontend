@@ -49,3 +49,10 @@
   font-size: scale(16px);
   line-height: scale(24px);
 }
+
+@define-mixin textBlogSmall {
+  font-size: scale(16px);
+  line-height: scale(18px);
+
+  /* letter-spacing: 0.75px */
+}

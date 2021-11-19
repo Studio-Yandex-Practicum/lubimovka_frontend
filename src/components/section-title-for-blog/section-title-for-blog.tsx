@@ -19,6 +19,8 @@ export const SectionTitleForBlog = (
   const [month, setMonth] = React.useState('Январь');
   const [year, setYear] = React.useState('2021');
 
+  // const [articles, setArticles] = React.useState('2021');
+
   useEffect(() => {
     console.log(year, month);
   }, [year, month]);
@@ -35,27 +37,33 @@ export const SectionTitleForBlog = (
           вузов ведут журнал фестиваля Любимовка под руководством Натальи
           Дубашинской и Полины Пхор.
         </p>
-        <p className={cx('paragraph-connect')}>
-          Если вы хотите стать автором, пишите на&nbsp;
-          <InfoLink className={cx('link')} label={email} />
+        <p className={cx('paragraphConnect')}>
+          Если вы хотите стать автором, пишите на&nbsp;&nbsp;
+          <InfoLink
+            className={cx('link')}
+            label={email}
+            textDecoration='underline'
+          />
         </p>
       </div>
       <div className={cx('drop')}>
         <Droplist
-          className={cx('droplist')}
           defaultListType='months'
           type='radio'
+          defaultValue='Месяц'
           cb={([string]) => {
             setMonth(string);
           }}
+          className={cx('droplistTypelistMonths')}
         />
         <Droplist
-          className={cx('droplist')}
           defaultListType='years'
           type='radio'
+          defaultValue='Год'
           cb={([string]) => {
             setYear(string);
           }}
+          className={cx('droplistTypelistYears')}
         />
       </div>
     </section>
