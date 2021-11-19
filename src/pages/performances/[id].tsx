@@ -1,8 +1,6 @@
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Image from 'next/image';
 
-import { Crewman, HtmlMarkup, Url } from 'shared/types';
-import { fetcher } from 'shared/fetcher';
 import AppLayout from 'components/app-layout';
 import { PerformanceLayout } from 'components/performance-layout';
 import { PerformanceHeadline } from 'components/performance-headline';
@@ -14,71 +12,56 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
-import { ReviewCarousel } from 'components/review-carousel';
-import { CritiqueCard } from 'components/critique-card';
-import { ReviewCard } from 'components/review-card';
+// import { ReviewCarousel } from 'components/review-carousel';
+// import { CritiqueCard } from 'components/critique-card';
+// import { ReviewCard } from 'components/review-card';
+import { fetcher } from 'shared/fetcher';
+import { Performance as PerformanceModel } from 'api-typings';
 
-type PerformanceResponse = {
-  play: {
-    name: string,
-    authors: {
-      name: string,
-    }[],
-    city: string,
-    year: number,
-    url_download: string,
-    url_reading: string,
-  },
-  persons: Crewman[],
-  images_in_block: {
-    image: Url,
-  }[],
-  name: string,
-  main_image: Url,
-  bottom_image: Url,
-  video: string,
-  description: string,
-  text: HtmlMarkup,
-  duration: string,
-  date: string,
-  ticketsUrl: Url,
-  age_limit: number,
-  critique: {
-    text: string,
-    logo?: string,
-    href: Url,
-  }[],
-  review: {
-    text: string,
-    author: string,
-  }[],
-  short_description: string,
-}
+const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
+  const {
+    play,
+    persons,
+    images_in_block,
+    name,
+    main_image,
+    bottom_image,
+    video,
+    description,
+    text,
+    age_limit,
+  } = props;
 
-const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element | null=> {
-  if (!data) return null;
+  // TODO: добавить недостающие данные в ответ бекенда
+  const formattedDate = new Date('2021-05-13T01:00:00.000Z').toLocaleDateString('ru-Ru', {
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 
   return (
     <AppLayout>
       <PerformanceLayout>
         <PerformanceLayout.Headline>
           <PerformanceHeadline
-            title={data.name}
-            description={data.short_description}
-            date={data.date}
-            ticketsUrl={data.ticketsUrl}
-            text={data.description}
-            image={data.main_image}
+            title={name}
+            // TODO: добавить в ответ бекенда недостающие данные
+            description=""
+            date={formattedDate}
+            ticketsUrl=""
+            text={description}
+            image={main_image}
           />
         </PerformanceLayout.Headline>
-        {data.video && (
+        {video && (
           <PerformanceLayout.Video>
-            <Video src={data.video}/>
+            <Video src={video}/>
           </PerformanceLayout.Video>
         )}
         <PerformanceLayout.Text>
           <RawText>
-            {data.text}
+            {text}
           </RawText>
         </PerformanceLayout.Text>
         <PerformanceLayout.Play>
@@ -90,40 +73,46 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
             <BasicPlayCard
               type= 'performance'
               play={{
-                title: data.play.name,
-                city: data.play.city,
-                year: String(data.play.year),
-                linkView: data.play.url_reading,
-                linkDownload: data.play.url_download,
+                title: play.name,
+                city: play.city,
+                year: play.year.toString(),
+                linkView: play.url_reading,
+                linkDownload: play.url_download,
               }}
               author={{
+                // TODO: передавать в пропсы верные данные
                 id: 0,
-                name: data.play.authors[0].name,
+                name: play.authors[0].name,
               }}
               buttonVisibility
             />
           </Section>
         </PerformanceLayout.Play>
         <PerformanceLayout.Aside>
-          <PerformanceDetails duration={data.duration} ageLimit={data.age_limit} />
-          <PerformanceCrew crew={data.persons}/>
+          <PerformanceDetails
+            // TODO: добавить в ответ бекенда недостающие данные
+            duration="1 ч. 15 мин."
+            ageLimit={age_limit}
+          />
+          <PerformanceCrew crew={persons}/>
         </PerformanceLayout.Aside>
         <PerformanceLayout.Gallery>
           <PhotoGallery>
-            {data.images_in_block.map(({ image }, index) => (
+            {images_in_block.map(({ image }) => (
               <PhotoGallery.Item
-                key={index}
+                key={image}
                 image={image}
               />
             ))}
           </PhotoGallery>
         </PerformanceLayout.Gallery>
-        <PerformanceLayout.Critique>
+        {/* TODO: добавить в ответ бекенда недостающие данные */}
+        {/* <PerformanceLayout.Critique>
           <ReviewCarousel
             title="Рецензии"
             mode="single"
           >
-            {data.critique.map(({ text, logo, href }, index) => (
+            {critique.map(({ text, logo, href }, index) => (
               <CritiqueCard
                 key={index}
                 text={text}
@@ -146,10 +135,10 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
               />
             ))}
           </ReviewCarousel>
-        </PerformanceLayout.Review>
+        </PerformanceLayout.Review> */}
         <PerformanceLayout.BottomImage>
           <Image
-            src={data.bottom_image}
+            src={bottom_image}
             alt=""
             layout="fill"
             objectFit="cover"
@@ -167,15 +156,34 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
   );
 };
 
-export const getServerSideProps = async ({ params }: GetServerSidePropsContext) => {
-  if (!params) return { props: {}};
+const fetchPerformance = async (performanceId: string) => {
+  let data;
 
-  const { id } = params;
-  const data = await fetcher<PerformanceResponse>(`/library/performances/${id}`);
+  try {
+    data = await fetcher<PerformanceModel>(`/library/performances/${performanceId}`);
+  } catch (error) {
+    // TODO: обработать ошибку, добавим после реализации страницы ошибки
+
+    return;
+  }
+
+  return data;
+};
+
+export const getServerSideProps: GetServerSideProps<PerformanceModel, Record<'id', string>> = async ({ params }) => {
+  const { id: performanceId } = params!;
+
+  const performance = await fetchPerformance(performanceId);
+
+  if (!performance) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
-      data,
+      ...performance,
     },
   };
 };
