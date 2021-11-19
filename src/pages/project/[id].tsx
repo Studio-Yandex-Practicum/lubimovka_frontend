@@ -12,6 +12,7 @@ import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
 import { AnnouncedPlayCardList } from 'components/ui/announced-play-card-list';
 import { Video } from 'components/video';
 import { VideoList } from 'components/video-list';
+import { RawText } from 'components/raw-text';
 import { Section } from 'components/section';
 import { fetcher } from 'shared/fetcher';
 import { Project as ProjectModel } from 'api-typings';
@@ -101,6 +102,11 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                   ))}
                 </VideoList>
               </Section>
+            )}
+            {content_type === 'text' && (
+              <RawText>
+                {content_item.text}
+              </RawText>
             )}
           </>
         ))}
