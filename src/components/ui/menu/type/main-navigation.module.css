@@ -1,15 +1,17 @@
 .menu {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
   padding: 0;
   margin: 0;
 }
 
 .item {
-  display: block;
+  display: flex;
 
-  &:not(:last-child) {
+  /* &:not(:last-child) {
     margin-right: scale(24px);
-  }
+  } */
 }
 
 .link {
