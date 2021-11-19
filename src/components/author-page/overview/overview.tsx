@@ -28,18 +28,20 @@ interface IAuthorOverview {
 
 export const AuthorOverview: FC<IAuthorOverview> = ({data}) => {
 
-  const withPhoto = data.photo;
+  const {
+    photo
+  } = data;
 
   const [isExpand, setExpand] = useState(true);
 
   return (
     <section className={ cn(styles.overview) }>
-      <div className={ cn(withPhoto ? styles.personalInfo : styles.personalInfoNoPhoto) }>
+      <div className={ cn(photo ? styles.personalInfo : styles.personalInfoNoPhoto) }>
         <div className={ cn(styles.button) }>
           <Button size='s' iconPlace='right' icon='arrow-left' label='Библиотека' border='bottomRight' isLink={ true } />
         </div>
 
-        { withPhoto &&
+        { photo &&
         <div className={ cn(styles.photoBox) }>
           <img className={ cn(styles.photo) } src={data.photo} alt={`Фотография автора ${data.name}`} />
         </div>

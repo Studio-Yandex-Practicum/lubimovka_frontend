@@ -242,7 +242,7 @@
   }
 
   @media (max-width: 728px) {
-    max-width: 600px;
+    max-width: calc(var(--scale) * 300);
     grid-column: auto;
     grid-row: 1/2;
     justify-self: center;
