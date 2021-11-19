@@ -6,14 +6,18 @@ const cx = cn.bind(styles);
 
 interface IReportProps {
   text: string;
+  email: string;
 }
 
 export const Report: FC<IReportProps> = (props) => {
-  const { text } = props;
+  const { text, email } = props;
 
   return (
-    <div className={cx('stub')}>
-      {text}
+    <div className={cx('reportContainer')}>
+      <p className={cx('reportText')}>
+        {text}
+        <span className={cx('reportEmail')}>{email}</span>
+      </p>
     </div>
   );
 };

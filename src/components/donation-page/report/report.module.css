@@ -1,4 +1,21 @@
-.stub {
-  padding: 0;
-  margin: 0;
+.reportContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  justify-content: center;
+  padding: scale(213px) 0 0 0;
+}
+
+.reportText {
+  width: scale(873px);
+
+  @mixin headline;
+  @mixin headline5;
+}
+
+.reportEmail {
+  @mixin headline;
+  @mixin headline5;
+
+  text-decoration: underline;
 }
