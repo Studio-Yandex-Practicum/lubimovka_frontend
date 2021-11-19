@@ -6,16 +6,16 @@ import { Icon } from 'components/ui/icon';
 import { Navbar } from 'components/navbar';
 import { Logotype } from 'components/logotype';
 import { Footer } from 'components/footer';
-
+import { OverlayNav } from 'components/overlay-nav';
+import { BurgerButton } from 'components/ui/burger-button';
+import { FooterPartnerList } from 'components/footer-partner-list';
+import { WithAppSettingsProps, withAppSettings } from 'components/app';
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
 import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
 import { formLink, donationLink } from 'shared/constants/main-navigation-actions';
 import { socialLinkItems } from 'shared/constants/social-link-items';
-import { OverlayNav } from 'components/overlay-nav';
 import * as breakpoints from 'shared/breakpoints.js';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
-import { WithAppSettingsProps, withAppSettings } from 'components/app';
-import { BurgerButton } from 'components/ui/burger-button';
 
 interface IAppLayoutProps extends WithAppSettingsProps{
   hiddenPartners?: boolean,
@@ -73,62 +73,64 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
         </Navbar>
       </Page.Header>
       {children}
-      {isMobile && <>
-        <Page.Overlay isOpen={isOverlayOpen}>
-          <OverlayNav>
-            <OverlayNav.Logotype>
-              <Logotype href='/' title="Фестиваль Любимовка" />
-            </OverlayNav.Logotype>
-            <OverlayNav.Menu>
-              <Menu type="overlay-navigation">
-                {mainNavigationItems.map((item, idx) => (
-                  <Menu.Item key={idx} href={item.href}>
-                    {item.text}
-                  </Menu.Item>
-                ))}
-              </Menu>
-            </OverlayNav.Menu>
-            <OverlayNav.Actions>
-              <Menu type='overlay-actions'>
-                {[formLink, donationLink].map((item, idx) => (
-                  <Menu.Item key={idx} href={item.href}>
-                    {item.text}
-                    <Icon glyph='arrow-right' />
-                  </Menu.Item>
-                ))}
-              </Menu>
-            </OverlayNav.Actions>
-            <OverlayNav.Socials>
-              <Menu type='overlay-social-links'>
-                {socialLinkItems.map((item, idx) => (
-                  <Menu.Item
-                    key={idx}
-                    href={item.href}
-                    mods={{ primary: item.primary ?? false }}>
-                    {item.text}
-                    <Icon glyph='arrow-right' />
-                  </Menu.Item>
-                ))}
-              </Menu>
-            </OverlayNav.Socials>
-          </OverlayNav>
-        </Page.Overlay>
-        <Page.BurgerButton>
-          <BurgerButton isOpen={isOverlayOpen} onClick={toggleOverlay} />
-        </Page.BurgerButton>
-      </>}
+      {isMobile && (
+        <>
+          <Page.Overlay isOpen={isOverlayOpen}>
+            <OverlayNav>
+              <OverlayNav.Logotype>
+                <Logotype href='/' title="Фестиваль Любимовка" />
+              </OverlayNav.Logotype>
+              <OverlayNav.Menu>
+                <Menu type="overlay-navigation">
+                  {mainNavigationItems.map((item, idx) => (
+                    <Menu.Item key={idx} href={item.href}>
+                      {item.text}
+                    </Menu.Item>
+                  ))}
+                </Menu>
+              </OverlayNav.Menu>
+              <OverlayNav.Actions>
+                <Menu type='overlay-actions'>
+                  {[formLink, donationLink].map((item, idx) => (
+                    <Menu.Item key={idx} href={item.href}>
+                      {item.text}
+                      <Icon glyph='arrow-right' />
+                    </Menu.Item>
+                  ))}
+                </Menu>
+              </OverlayNav.Actions>
+              <OverlayNav.Socials>
+                <Menu type='overlay-social-links'>
+                  {socialLinkItems.map((item, idx) => (
+                    <Menu.Item
+                      key={idx}
+                      href={item.href}
+                      mods={{ primary: !!item.primary }}>
+                      {item.text}
+                      <Icon glyph='arrow-right' />
+                    </Menu.Item>
+                  ))}
+                </Menu>
+              </OverlayNav.Socials>
+            </OverlayNav>
+          </Page.Overlay>
+          <Page.BurgerButton>
+            <BurgerButton isOpen={isOverlayOpen} onClick={toggleOverlay} />
+          </Page.BurgerButton>
+        </>
+      )}
       <Footer>
         {!hiddenPartners && (
           <Footer.Partners>
-            <Footer.PartnerList>
+            <FooterPartnerList>
               {generalPartners.map((partner) => (
-                <Footer.PartnerListItem
+                <FooterPartnerList.Item
                   key={partner.name}
                   logo={partner.logo}
                   name={partner.name}
                 />
               ))}
-            </Footer.PartnerList>
+            </FooterPartnerList>
           </Footer.Partners>
         )}
         <Footer.Address>
