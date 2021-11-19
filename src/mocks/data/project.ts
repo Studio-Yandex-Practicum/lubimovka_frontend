@@ -51,15 +51,15 @@ const project: Project = {
         items: [
           {
             title: 'Заголовок видео',
-            url: 'http://video.link/something',
+            url: 'https://www.youtube.com/embed/8CYY8EM5xYE',
           },
           {
             title: 'Заголовок видео 2',
-            url: 'http://video.link/something',
+            url: 'https://www.youtube.com/embed/8CYY8EM5xYE',
           },
           {
             title: 'Заголовок видео 3',
-            url: 'http://video.link/something',
+            url: 'https://www.youtube.com/embed/8CYY8EM5xYE',
           }
         ]
       }
