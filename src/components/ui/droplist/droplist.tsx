@@ -81,7 +81,7 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
 
   const handleClose = (e: MouseEvent) => {
     const droplist = droplistRef.current;
-    if (droplist) {
+    if(e?.target instanceof Node && droplist) {
       !droplist.contains(e.target) && setActiveDropdown(false);
     }
   };
