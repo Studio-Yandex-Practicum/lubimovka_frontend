@@ -90,6 +90,7 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
   const cbItems = useCallback((value: string, activeCheckbox: boolean) => {
     if (type === 'radio') {
       setSelectList([value]);
+      setTimeout(() => setActiveDropdown(false), 200);
       return;
     }
     if (activeCheckbox) {
@@ -134,7 +135,7 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
           ))}
         </div>
         { selectList.length > 0 && type !== 'radio'
-          && <ListSelected selectList={ selectList } cb={getValue} /> }
+          && <ListSelected selectList={ selectList } cb={getValue} activeDropdown={ activeDropdown } /> }
       </form>
     </div>
   );

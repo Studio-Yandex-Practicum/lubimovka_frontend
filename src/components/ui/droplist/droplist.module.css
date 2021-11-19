@@ -1,20 +1,22 @@
 .droplist {
   position: relative;
-  width: 100%;
+  display: block;
 }
 
 .droplistWidth {
+  width: 100%;
   max-width: scale(300px);
 }
 
 .form {
-  position: absolute;
   width: inherit;
   max-width: inherit;
 }
 
 .list {
+  position: absolute;
   overflow: auto;
+  width: inherit;
   max-height: 0;
   border: scale(1px) solid var(--coal);
   border-top: none;

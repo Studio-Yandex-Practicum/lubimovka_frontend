@@ -2,7 +2,12 @@
   display: flex;
   box-sizing: border-box;
   border-left: scale(1px) solid var(--coal);
-  margin-top: scale(8px);
+  transform: translateY(8px);
+  transition: transform .1s ease-out;
+}
+
+.lower {
+  transform: translateY(280px);
 }
 
 .list {

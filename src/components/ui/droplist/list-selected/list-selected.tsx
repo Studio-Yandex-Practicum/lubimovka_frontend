@@ -8,11 +8,12 @@ import styles from './list-selected.module.css';
 interface IListSelectedProps {
   selectList: string[]
   cb: (value: string) => void
+  activeDropdown: boolean
 }
 
-export const ListSelected: FC<IListSelectedProps> = ({ selectList, cb }): JSX.Element => {
+export const ListSelected: FC<IListSelectedProps> = ({ selectList, cb, activeDropdown }): JSX.Element => {
   return (
-    <div className={ cn(styles.container) }>
+    <div className={ cn(styles.container, { [styles.lower]: activeDropdown }) }>
       <ul className={ cn(styles.list) }>
         { selectList.map((item, i) => (
           <Tag label={item} key={i} selected={true} isIcon={true} cb={cb} />
