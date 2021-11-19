@@ -53,6 +53,12 @@ npm run storybook
 ```
 Storybook запустится по адресу: [http://localhost:3001](http://localhost:3001)
 
+### Обновление тайпингов API
+
+```bash
+npm run update-typings
+```
+
 ### Переменные окружения
 
 - `MOCKS` – boolean, включает моки.

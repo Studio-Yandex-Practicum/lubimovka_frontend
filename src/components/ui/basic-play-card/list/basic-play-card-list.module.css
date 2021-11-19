@@ -12,6 +12,7 @@
   scroll-behavior: smooth;
 
   @media (max-width: $tablet-portrait) {
+    position: relative;
     overflow: auto;
     justify-content: start;
     grid-auto-columns: scale(244px);
