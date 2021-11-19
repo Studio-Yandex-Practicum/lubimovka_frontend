@@ -10,19 +10,31 @@
 
 .header {
   width: scale(660px);
+  align-self: flex-end;
+  padding: 0;
 
   @mixin headline;
   @mixin headline4;
 }
 
-.pictureContainer {
-  width: scale(780px);
-}
-
 .picture {
-  width: 100%;
+  width: scale(780px);
+  height: scale(300px);
+  object-fit: cover;
 }
 
 .kickies {
   display: grid;
+  padding: 0;
+  margin: 73px 0 0 0;
+  gap: scale(119px) 0;
+  grid-template-columns: repeat(5, 1fr);
+  list-style: none;
+}
+
+.kicky {
+  @mixin headline;
+  @mixin headline7;
+
+  width: scale(237px);
 }

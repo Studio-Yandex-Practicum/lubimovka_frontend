@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Image from 'next/image';
 import { Url } from '../../../shared/types/common';
 import cn from 'classnames/bind';
 import styles from './opportunity.module.css';
