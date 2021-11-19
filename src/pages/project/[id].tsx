@@ -10,6 +10,8 @@ import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
 import { AnnouncedPlayCardList } from 'components/ui/announced-play-card-list';
+import { Video } from 'components/video';
+import { VideoList } from 'components/video-list';
 import { Section } from 'components/section';
 import { fetcher } from 'shared/fetcher';
 import { Project as ProjectModel } from 'api-typings';
@@ -87,6 +89,17 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                     />
                   ))}
                 </AnnouncedPlayCardList>
+              </Section>
+            )}
+            {content_type === 'videosblock' && (
+              <Section title={content_item.title}>
+                <VideoList>
+                  {content_item.items.map(({ title, url }) => (
+                    <VideoList.Item key={title}>
+                      <Video src={url}/>
+                    </VideoList.Item>
+                  ))}
+                </VideoList>
               </Section>
             )}
           </>
