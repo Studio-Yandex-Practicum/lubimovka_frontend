@@ -8,6 +8,8 @@ import { ProjectInvitation } from 'components/project-invitation';
 import { PhotoGallery } from 'components/photo-gallery';
 import { BasicPlayCardList } from 'components/ui/basic-play-card';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
+import { AnnouncedPlayCardList } from 'components/ui/announced-play-card/announced-play-card-list';
 import { fetcher } from 'shared/fetcher';
 import { Section } from 'components/section';
 import { Project as ProjectModel } from 'api-typings';
@@ -66,6 +68,25 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                     />
                   ))}
                 </BasicPlayCardList>
+              </Section>
+            )}
+            {content_type === 'performancesblock' && (
+              <Section title={content_item.title}>
+                <AnnouncedPlayCardList>
+                  {content_item.items.map(({ id, name }) => (
+                    <AnnouncedPlayCard
+                      key={id}
+                      //TODO: исправить ответ бекенда, сейчас возвращаются данные для страницы спектакля
+                      date="12 декабря"
+                      time="11:00"
+                      title={name}
+                      playwrightArray={[]}
+                      directorArray={[]}
+                      buttonLinks={[]}
+                      coverResourceUrl=""
+                    />
+                  ))}
+                </AnnouncedPlayCardList>
               </Section>
             )}
           </>
