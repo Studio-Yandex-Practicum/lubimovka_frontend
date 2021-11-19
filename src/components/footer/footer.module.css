@@ -12,7 +12,7 @@
   @media (max-width: $tablet-portrait) {
     @mixin textMedium;
 
-    padding: 0;
+    padding: scale(56px 0 11px);
     grid-template:
       "logo"
       "address"
@@ -37,6 +37,7 @@
 
 .footnote {
   display: flex;
+  align-items: flex-start;
   margin-top: scale(49px);
   grid-area: footnote;
 
@@ -44,7 +45,7 @@
     @mixin textCaption;
 
     flex-direction: column;
-    padding: scale(32px 28px 74px);
+    padding: scale(32px 28px 63px);
     border-top: 1px solid black;
     margin-top: scale(70px);
   }
@@ -58,10 +59,7 @@
   }
 }
 
-.link {
-  color: inherit;
-  text-decoration: none;
-
+.footnoteLink {
   @media (max-width: $tablet-portrait) {
     text-decoration: underline;
   }

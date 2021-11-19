@@ -1,6 +1,10 @@
 .play {
-  max-width: scale(240px);
   margin-top: scale(80px);
   margin-bottom: scale(144px);
   grid-area: play;
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: scale(100px);
+    margin-bottom: scale(100px);
+  }
 }

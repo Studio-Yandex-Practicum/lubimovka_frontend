@@ -10,6 +10,7 @@ import { PerformanceLayoutGallery } from './gallery';
 import { PerformanceLayoutCritique } from './critique';
 import { PerformanceLayoutReview } from './review';
 import { PerformanceLayoutBottomImage } from './bottom-image';
+import { PerformanceLayoutShare } from './share';
 
 import styles from './performance-layout.module.css';
 
@@ -38,3 +39,4 @@ PerformanceLayout.Gallery = PerformanceLayoutGallery;
 PerformanceLayout.Critique = PerformanceLayoutCritique;
 PerformanceLayout.Review = PerformanceLayoutReview;
 PerformanceLayout.BottomImage = PerformanceLayoutBottomImage;
+PerformanceLayout.Share = PerformanceLayoutShare;
