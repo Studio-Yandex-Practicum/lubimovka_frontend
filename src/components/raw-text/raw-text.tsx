@@ -1,14 +1,14 @@
 import classNames from 'classnames/bind';
 
-import styles from './performance-raw-text.module.css';
+import styles from './raw-text.module.css';
 
-interface IPerformanceRawTextProps {
+interface IRawTextProps {
   children: string,
 }
 
 const cx = classNames.bind(styles);
 
-export const PerformanceRawText = (props: IPerformanceRawTextProps): JSX.Element => {
+export const RawText = (props: IRawTextProps): JSX.Element => {
   const { children } = props;
 
   return (
