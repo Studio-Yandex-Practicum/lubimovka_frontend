@@ -6,9 +6,13 @@ import { fetcher } from 'shared/fetcher';
 import AppLayout from 'components/app-layout';
 import { PerformanceLayout } from 'components/performance-layout';
 import { PerformanceHeadline } from 'components/performance-headline';
+import { PerformanceDetails } from 'components/performance-details';
 import { PerformanceCrew } from 'components/performance-crew';
 import { PerformanceRawText } from 'components/performance-raw-text';
+import { Share } from 'components/share';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { Video } from 'components/video';
+import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
 import { ReviewCarousel } from 'components/review-carousel';
 import { CritiqueCard } from 'components/critique-card';
@@ -35,6 +39,9 @@ type PerformanceResponse = {
   video: string,
   description: string,
   text: HtmlMarkup,
+  duration: string,
+  date: string,
+  ticketsUrl: Url,
   age_limit: number,
   critique: {
     text: string,
@@ -58,13 +65,17 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
           <PerformanceHeadline
             title={data.name}
             description={data.short_description}
+            date={data.date}
+            ticketsUrl={data.ticketsUrl}
             text={data.description}
             image={data.main_image}
           />
         </PerformanceLayout.Headline>
         {data.video && (
           <PerformanceLayout.Video>
-            {data.video}
+            <Video
+              link={data.video}
+            />
           </PerformanceLayout.Video>
         )}
         <PerformanceLayout.Text>
@@ -73,22 +84,30 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
           </PerformanceRawText>
         </PerformanceLayout.Text>
         <PerformanceLayout.Play>
-          <BasicPlayCard
-            play={{
-              title: data.play.name,
-              city: data.play.city,
-              year: String(data.play.year),
-              linkView: data.play.url_reading,
-              linkDownload: data.play.url_download,
-            }}
-            author={{
-              id: 0,
-              name: data.play.authors[0].name,
-            }}
-            buttonVisibility
-          />
+          <Section
+            type='play'
+            title='Почитать пьесу'
+            titleTag='h6'
+          >
+            <BasicPlayCard
+              type= 'performance'
+              play={{
+                title: data.play.name,
+                city: data.play.city,
+                year: String(data.play.year),
+                linkView: data.play.url_reading,
+                linkDownload: data.play.url_download,
+              }}
+              author={{
+                id: 0,
+                name: data.play.authors[0].name,
+              }}
+              buttonVisibility
+            />
+          </Section>
         </PerformanceLayout.Play>
         <PerformanceLayout.Aside>
+          <PerformanceDetails duration={data.duration} ageLimit={data.age_limit} />
           <PerformanceCrew crew={data.persons}/>
         </PerformanceLayout.Aside>
         <PerformanceLayout.Gallery>
@@ -135,9 +154,16 @@ const Performance = ({ data }: InferGetServerSidePropsType<typeof getServerSideP
             src={data.bottom_image}
             alt=""
             layout="fill"
-            objectFit="contain"
+            objectFit="cover"
           />
         </PerformanceLayout.BottomImage>
+        <PerformanceLayout.Share>
+          <Share
+            firstLine='Рассказать'
+            secondLine='о спектакле'
+            size='l'
+          />
+        </PerformanceLayout.Share>
       </PerformanceLayout>
     </AppLayout>
   );

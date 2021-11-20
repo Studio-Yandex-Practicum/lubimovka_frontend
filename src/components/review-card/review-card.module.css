@@ -2,11 +2,11 @@
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
-  padding: 72px 28px 100px;
+  padding: scale(32px 30px 24px);
   background-color: var(--white);
 
-  @media (min-width: $tablet-portrait) {
-    padding: 32px 30px 24px;
+  @media (max-width: $tablet-portrait) {
+    padding: scale(72px 28px 100px);
   }
 }
 
@@ -19,7 +19,7 @@
 
 .info {
   padding: 0;
-  margin: 56px 0 0;
+  margin: scale(56px 0 0);
 }
 
 .author {

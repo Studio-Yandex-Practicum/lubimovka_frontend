@@ -1,0 +1,44 @@
+.contacts {
+  padding: scale(72px 170px 164px 150px);
+  color: var(--white);
+}
+
+.title {
+  @mixin headline;
+  @mixin headline5;
+
+  max-width: scale(485px);
+  margin-bottom: scale(36px);
+}
+
+.desc {
+  @mixin headline;
+  @mixin headline6;
+
+  display: flex;
+  max-width: scale(610px);
+  align-items: baseline;
+  margin-left: auto;
+}
+
+.asterisk {
+  display: block;
+  margin: 0;
+  margin-bottom: scale(14px);
+}
+
+@media all and (max-width: $tablet-portrait) {
+  .contacts {
+    padding: scale(56px 24px 50px);
+  }
+
+  .title {
+    @mixin headline6;
+
+    margin-bottom: scale(28px);
+  }
+
+  .desc {
+    @mixin headline7;
+  }
+}

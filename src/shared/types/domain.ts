@@ -7,7 +7,7 @@ export type Project = {
   image: Url,
 }
 
-export type PartnerType = 'general' | 'informational'
+export type PartnerType = 'general' | 'festival' | 'info'
 
 export type Partner = {
   name: string,

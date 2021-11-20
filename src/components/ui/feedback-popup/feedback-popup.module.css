@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, .4);
   opacity: 0;
   transition: visibility .5s, opacity .5s linear;
   visibility: hidden;
@@ -106,4 +106,8 @@
 
 .cross {
   align-self: center;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

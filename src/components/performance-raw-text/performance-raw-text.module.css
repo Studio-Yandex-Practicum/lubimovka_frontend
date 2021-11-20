@@ -4,10 +4,10 @@
 
   p {
     margin: 0;
+    text-indent: scale(60px);
 
     &:not(:first-child) {
-      margin-top: 16px;
-      text-indent: 80px;
+      margin-top: scale(16px);
     }
   }
 }

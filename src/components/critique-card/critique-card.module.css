@@ -1,26 +1,26 @@
 .card {
   box-sizing: border-box;
-  padding: 78px 26px 72px;
+  padding: scale(55px 88px 72px);
   background-color: var(--white);
 
-  @media (min-width: $tablet-portrait) {
-    padding: 55px 88px 72px;
+  @media (max-width: $tablet-portrait) {
+    padding: scale(78px 26px 72px);
   }
 }
 
 .logo {
   display: block;
   max-width: 100%;
-  max-height: 40px;
-  margin-bottom: 36px;
+  max-height: scale(40px);
+  margin-bottom: scale(48px);
 
-  @media (min-width: $tablet-portrait) {
-    margin-bottom: 48px;
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(36px);
   }
 }
 
 .action {
-  margin-top: 32px;
+  margin-top: scale(32px);
 }
 
 .text {
