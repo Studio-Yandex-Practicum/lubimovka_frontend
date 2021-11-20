@@ -3,6 +3,7 @@
 
   --padding: scale(24px);
 
+  position: relative;
   display: grid;
   box-sizing: border-box;
   justify-content: center;

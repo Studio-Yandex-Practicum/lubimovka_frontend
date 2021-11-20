@@ -9,6 +9,7 @@ interface ISectionProps extends HTMLAttributes<HTMLElement> {
   title: string;
   titleTag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   children: ReactNode;
+  className?: string;
 }
 
 export const Section = (props: ISectionProps): JSX.Element => {
@@ -17,11 +18,12 @@ export const Section = (props: ISectionProps): JSX.Element => {
     title,
     titleTag: TitleTag = 'h2',
     children,
+    className = '',
     ...restProps
   } = props;
 
   return (
-    <section className={cx('section', type)} {...restProps}>
+    <section className={cx('section', type, [className])} {...restProps}>
       <TitleTag className={cx('title')}>{title}</TitleTag>
       {children}
     </section>

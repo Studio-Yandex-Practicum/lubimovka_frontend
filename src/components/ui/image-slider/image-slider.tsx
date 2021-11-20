@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 
 export type TImageItem = {
   image: Url;
-  caption: string;
+  title: string;
 }
 
 interface IImageSliderProps {
@@ -57,7 +57,7 @@ export const ImageSlider: FC<IImageSliderProps> = (props) => {
             <img
               className={cx('image')}
               src={image.image}
-              alt={image.caption}
+              alt={image.title}
               draggable={false}
             />
           </div>
