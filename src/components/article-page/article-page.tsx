@@ -10,6 +10,7 @@ import {IPersonCardProps, PersonCard, PersonCardList} from '../ui/person-card';
 import {ArticleMainText} from './article-maintext';
 import ArticleShare from './article-share/article-share';
 import {ImageSlider, TImageItem} from '../ui/image-slider';
+import ArticleOther from './article-other/article-other';
 
 import DataTitle from './assets/mock-data-title.json';
 import DataPlays from './assets/mock-data-plays.json';
@@ -82,7 +83,7 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
           photographers={isBlog ? DataShare.photographers : []}
         />
       </main>
-      {/*<ArticleOther/>*/}
+      <ArticleOther isBlog={isBlog}/>
     </>
   );
 };

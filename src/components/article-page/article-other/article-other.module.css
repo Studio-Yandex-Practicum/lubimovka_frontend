@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  width: 87.84%;
+  padding: scale(111px 0 214px 0);
+  margin: 0 auto;
+
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+  }
+}
+
+.sectionTitle {
+  @mixin headline;
+  @mixin headline2;
+
+  margin-bottom: scale(50px);
+}
