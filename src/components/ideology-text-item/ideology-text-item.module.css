@@ -1,17 +1,18 @@
 .article {
   display: flex;
-  width: 587px;
+  width: scale(587px);
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-bottom: 72px;
+  margin-bottom: scale(109px);
 
   &:last-child {
     margin-bottom: 0;
   }
 
   @media (max-width: $tablet-portrait) {
-    width: 366px;
+    width: scale(366px);
+    margin-bottom: scale(72px);
   }
 }
 
@@ -34,19 +35,19 @@
 .textBox {
   width: 100%;
   box-sizing: border-box;
-  padding: 16px 17px 0 61px;
+  padding: scale(16px) scale(17px) 0 scale(61px);
 
   @media (max-width: $tablet-portrait) {
-    padding: 16px 0 0;
+    padding: scale(16px) 0 0;
   }
 }
 
 .numberBox {
   width: 100%;
   box-sizing: border-box;
-  padding: 0 0 16px 61px;
+  padding: 0 0 scale(16px) scale(61px);
 
   @media (max-width: $tablet-portrait) {
-    padding: 0 0 16px 33px;
+    padding: 0 0 scale(16px) scale(33px);
   }
 }
