@@ -3,6 +3,7 @@
 
   --padding: scale(24px);
 
+  position: relative;
   display: grid;
   box-sizing: border-box;
   justify-content: center;
@@ -12,6 +13,7 @@
   scroll-behavior: smooth;
 
   @media (max-width: $tablet-portrait) {
+    position: relative;
     overflow: auto;
     justify-content: start;
     grid-auto-columns: scale(244px);

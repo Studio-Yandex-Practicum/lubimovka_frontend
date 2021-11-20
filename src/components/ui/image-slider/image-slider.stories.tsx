@@ -5,15 +5,15 @@ import { ImageSlider, TImageItem } from './image-slider';
 const fakeData: TImageItem[] = [
   {
     image: 'https://source.unsplash.com/random',
-    caption: 'Фото намбер уан'
+    title: 'Фото намбер уан'
   },
   {
     image: 'https://source.unsplash.com/random',
-    caption: 'Фото намбер ту'
+    title: 'Фото намбер ту'
   },
   {
     image: 'https://source.unsplash.com/random',
-    caption: 'Фото намбер фри'
+    title: 'Фото намбер фри'
   }
 ];
 
