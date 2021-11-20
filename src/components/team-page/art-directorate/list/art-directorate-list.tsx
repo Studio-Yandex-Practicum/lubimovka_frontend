@@ -4,7 +4,6 @@ import styles from './art-directorate-list.module.css';
 
 import PersonCard from '../../../ui/person-card/person-card';
 import classNames from 'classnames/bind';
-import useWindowDimensions from 'components/library-authors-page/useWindowDimensions';
 
 const cx = classNames.bind(styles);
 
@@ -28,8 +27,7 @@ interface ArtDirectorateCardsProps {
 }
 
 const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
-  const { width } = useWindowDimensions();
-  //const [screenWidth, setScreenWidth] = useState<number | null>(null);
+  const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     spacing: 30,
@@ -54,28 +52,26 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
     },
   });
 
-  const selectedCards = useMemo(()=> {
+  const selectedCards = useMemo(() => {
     return cards.filter(card => card.team === 'art');
   }, []);
 
   const checkForMultiplicity = useCallback((n: number) => {
-    if (selectedCards.length % n === 0) {
-      return true;
-    } return false;
+    return selectedCards.length % n === 0;
   }, []);
 
-  //useEffect(() => {
-  //  setScreenWidth(document.documentElement.clientWidth);
-  //}, []);
+  useEffect(() => {
+    setScreenWidth(document.documentElement.clientWidth);
+  }, []);
 
   useEffect(() => {
     slider?.refresh();
-  }, [width]);
+  }, [screenWidth]);
 
   return (
     <>
       {
-        width < 729 &&
+        Number(screenWidth) < 729 &&
         <div ref={sliderRef} className="keen-slider">
           {cards.map((card) => (
             card.team === 'art' &&
@@ -93,7 +89,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
       }
 
       {
-        width > 728 &&
+        Number(screenWidth) > 728 &&
         <ul
           className={cx({[styles.grid]: selectedCards.length < 5 && !checkForMultiplicity(3)},
             {[styles.flex]: checkForMultiplicity(3)},
