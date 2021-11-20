@@ -26,9 +26,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 const ACCEPTABLE_FILE_TYPES = '.doc, .docx, .txt, .odt, .pdf, .rtf';
+const VALID_EMAIL_REGEXP = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 const Participation: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [file, setFile] = useState<Nullable<File>>();
+  const [email, setEmail] = useState('');
+  const [emailWasChanged, setEmailWasChanged] = useState(false);
 
   const getFileError = () => {
     // TODO: добавить проверки в соответствии с описанием поля в дизайне
@@ -39,8 +42,25 @@ const Participation: NextPage = ({ data }: InferGetServerSidePropsType<typeof ge
     return;
   };
 
+  const getEmailError = () => {
+    if (!email.length) {
+      return 'Поле E-mail обязательно для заполнения';
+    }
+
+    if (!VALID_EMAIL_REGEXP.test(email)) {
+      return 'Неверный формат адреса электронной почты';
+    }
+
+    return;
+  };
+
   const handleFileChange = (file: Nullable<File>) => {
     setFile(file);
+  };
+
+  const handleEmailChange = (value: string) => {
+    setEmailWasChanged(true);
+    setEmail(value);
   };
 
   return (
@@ -93,6 +113,8 @@ const Participation: NextPage = ({ data }: InferGetServerSidePropsType<typeof ge
                   <TextInput
                     ariaLabel="E-mail"
                     placeholder="E-mail"
+                    onChange={handleEmailChange}
+                    errorText={emailWasChanged ? getEmailError() : undefined}
                   />
                 </Form.Field>
               </Form.Fieldset>
