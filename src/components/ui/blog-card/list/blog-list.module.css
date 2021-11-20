@@ -1,0 +1,38 @@
+.blogList {
+  @mixin hideScrollbar;
+
+  --card-width: scale(270px);
+  --column-gap: scale(60px);
+  --columns-count: 4;
+
+  position: relative;
+  display: grid;
+  max-width: calc((var(--card-width) * var(--columns-count)) + (var(--column-gap) * (var(--columns-count) - 1)));
+  box-sizing: border-box;
+  justify-content: center;
+  column-gap: var(--column-gap);
+  grid-template-columns: repeat(auto-fit, scale(270px));
+  scroll-behavior: smooth;
+
+  @media (max-width: $tablet-portrait) {
+    --card-width: scale(304px);
+    --padding: scale(24px);
+
+    overflow: auto;
+    justify-content: start;
+    padding-left: var(--padding);
+    grid-auto-columns: var(--card-width);
+    grid-auto-flow: column;
+    scroll-padding-left: var(--padding);
+    scroll-snap-type: x mandatory;
+
+    & > * {
+      scroll-snap-align: start;
+
+      &:last-child {
+        padding-right: var(--padding);
+        margin-right: calc(var(--padding) * -1);
+      }
+    }
+  }
+}

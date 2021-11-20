@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import cn from 'classnames';
 
-interface BlogCardProps {
+export interface BlogCardProps {
   image: string;
   author: string;
   heading: string;
