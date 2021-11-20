@@ -7,6 +7,7 @@
 
   @media (max-width: $tablet-portrait) {
     width: 100%;
+    padding: scale(56px 0 100px 0);
   }
 }
 
@@ -15,4 +16,11 @@
   @mixin headline2;
 
   margin-bottom: scale(50px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline5;
+
+    margin-bottom: scale(41px);
+    margin-left: scale(24px);
+  }
 }

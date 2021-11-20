@@ -17,6 +17,7 @@
   @media (max-width: $tablet-portrait) {
     --card-width: scale(304px);
     --padding: scale(24px);
+    --column-gap: scale(30px);
 
     overflow: auto;
     justify-content: start;
