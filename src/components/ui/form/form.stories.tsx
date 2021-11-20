@@ -5,12 +5,12 @@ import Form from './form';
 import TextInput from 'components/ui/text-input';
 import TextArea from 'components/ui/text-area';
 import { Button } from 'components/ui/button';
-import { InputFile } from '../input-file';
+import { FileInput } from 'components/ui/file-input';
 
 export default {
   title: 'UI/Form',
   component: Form,
-  subcomponents: { TextInput, TextArea, Button, InputFile },
+  subcomponents: { TextInput, TextArea, Button, FileInput },
   decorators: [
     (Story) => (
       <div style={{ margin: '0 auto', maxWidth: '420px' }}>
@@ -128,7 +128,7 @@ ProposalForm.args = {
         </Form.Field>
         <Form.Actions>
           <Form.Action>
-            <InputFile />
+            <FileInput />
           </Form.Action>
           <Form.ActionCaption view="shift">
             <p> Только файлы формата .doc, .docx, .txt, .odt, .pdf. </p>
