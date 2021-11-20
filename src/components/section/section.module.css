@@ -8,10 +8,10 @@
 
   margin-left: 25%;
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    margin: 0 24px;
+    margin: scale(0 24px);
   }
 }
 
@@ -36,8 +36,22 @@
 
     @mixin headline6;
 
-    @media screen and (max-width: $tablet-portrait) {
+    @media (max-width: $tablet-portrait) {
       margin-bottom: scale(24px);
+    }
+  }
+}
+
+.play {
+  .title {
+    @mixin visually-hidden;
+
+    @media (max-width: $tablet-portrait) {
+      position: static;
+      width: scale(366px);
+      height: scale(32px);
+      margin: scale(0 auto 32px);
+      clip: auto;
     }
   }
 }

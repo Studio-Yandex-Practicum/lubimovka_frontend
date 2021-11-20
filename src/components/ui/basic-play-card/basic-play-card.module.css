@@ -3,6 +3,15 @@
   flex-direction: column;
 }
 
+.performance {
+  max-width: scale(240px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(244px);
+    margin: 0 auto;
+  }
+}
+
 .container {
   display: flex;
   min-height: scale(300px);
@@ -12,6 +21,10 @@
 
   @media (max-width: $tablet-portrait) {
     min-height: scale(341px);
+  }
+
+  @media (min-width: $desktop) {
+    min-height: scale(300px);
   }
 }
 

@@ -2,8 +2,7 @@ import { AppProps as NextAppProps } from 'next/app';
 
 import { fetcher } from 'shared/fetcher';
 import { AppSettingsProvider, AppSettingsContext } from './app.context';
-
-import type { Project, Partner } from 'shared/types';
+import { PaginatedProjectListList, Partner } from 'api-typings';
 
 type AppProps<P = unknown> = Omit<NextAppProps, 'pageProps'> & {
   pageProps: P,
@@ -23,9 +22,48 @@ export const App = ({ Component, pageProps }: AppProps<IAppInitialProps>): JSX.E
   );
 };
 
+const fetchGeneralPartners = async () => {
+  let data;
+
+  try {
+    data = await fetcher<Partner[]>('/info/partners/?type=general');
+
+  } catch (error) {
+    // TODO: обработать ошибку, добавим после реализации страницы ошибки
+
+    return;
+  }
+
+  return data.map(({ name, type, url, image }) => ({
+    name,
+    type,
+    url,
+    logo: image,
+  }));
+};
+
+const fetchProjects = async () => {
+  let data;
+
+  try {
+    data = await fetcher<PaginatedProjectListList>('/projects/');
+  } catch (error) {
+    // TODO: обработать ошибку, добавим после реализации страницы ошибки
+
+    return;
+  }
+
+  return data.results?.map(({ id, title, description, image }) => ({
+    slug: id.toString(),
+    title,
+    description,
+    image,
+  }));
+};
+
 App.getInitialProps = async (): Promise<{ pageProps: IAppInitialProps }> => {
-  const projects = await fetcher<Project[]>('/projects');
-  const generalPartners = await fetcher<Partner[]>('/partners?type=general');
+  const projects = await fetchProjects() || [];
+  const generalPartners = await fetchGeneralPartners() || [];
 
   return {
     pageProps: {

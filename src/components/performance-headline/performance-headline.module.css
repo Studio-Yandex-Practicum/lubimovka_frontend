@@ -1,21 +1,40 @@
 .headline {
   display: grid;
-  padding-left: scale(60px);
-  grid-column-gap: scale(90px);
+  padding-left: scale(120px);
+  grid-column-gap: scale(120px);
   grid-template:
     "title       image"
     "description image" 1fr
     "dateTime    image"
     "actions     image"
+    ".           image" scale(57px)
     ".           text" / 1fr scale(720px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: 0;
+    grid-template-areas:
+      "title"
+      "description"
+      "dateTime"
+      "actions"
+      "image"
+      "image"
+      "text";
+    grid-template-columns: 1fr;
+  }
 }
 
 .title {
   @mixin headline;
   @mixin headline1;
 
-  width: scale(540px);
-  margin: scale(62px) auto 0;
+  margin: scale(62px) 0 0;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    margin: scale(0 24px);
+  }
 }
 
 .description {
@@ -24,12 +43,22 @@
 
   padding-left: scale(60px);
   margin-top: scale(36px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: scale(86px);
+    margin-top: scale(16px);
+    margin-right: scale(24px);
+  }
 }
 
 .image {
   position: relative;
   height: scale(614px);
   grid-area: image;
+
+  @media (max-width: $tablet-portrait) {
+    height: scale(450px);
+  }
 }
 
 .text {
@@ -37,12 +66,38 @@
   @mixin headline6;
 
   padding-right: scale(130px);
-  margin: scale(48px) 0 0;
+  margin: scale(48px 0 0);
   grid-area: text;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline7;
+
+    padding: scale(0 24px);
+    margin: scale(56px 0 0);
+  }
+}
+
+.dateTime {
+  @mixin headline;
+  @mixin headline6;
+
+  margin: scale(0 0 16px);
+  grid-area: dateTime;
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: scale(89px);
+    margin: scale(31px 0 0);
+  }
 }
 
 .actions {
   grid-area: actions;
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: scale(85px);
+    margin-top: scale(16px);
+    margin-bottom: scale(38px);
+  }
 }
 
 .action {
