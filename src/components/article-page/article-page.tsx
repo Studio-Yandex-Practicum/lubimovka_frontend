@@ -17,6 +17,7 @@ import DataPlays from './assets/mock-data-plays.json';
 import DataPersons from './assets/mock-data-persons.json';
 import ArticleText from './assets/mock-data-article-main-text.json';
 import DataShare from './assets/mock-data-share.json';
+import BlogListData from '../ui/blog-card/list/mock-data-blog-list.json';
 
 const cx = cn.bind(styles);
 
@@ -83,7 +84,7 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
           photographers={isBlog ? DataShare.photographers : []}
         />
       </main>
-      <ArticleOther isBlog={isBlog}/>
+      <ArticleOther isBlog={isBlog} blogArticles={BlogListData}/>
     </>
   );
 };

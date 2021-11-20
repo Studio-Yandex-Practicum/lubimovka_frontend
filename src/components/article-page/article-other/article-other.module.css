@@ -1,6 +1,7 @@
 .container {
   display: flex;
-  width: 87.5%;
+  width: scale(1260px);
+  flex-direction: column;
   padding: scale(111px 0 214px 0);
   margin: 0 auto;
 
