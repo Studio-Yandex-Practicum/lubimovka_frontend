@@ -1,31 +1,41 @@
+import { ChangeEvent, InputHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
-
 import styles from './text-input.module.css';
 const cx = classNames.bind(styles);
 
-interface ITextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface ITextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   ariaLabel: string;
-  errorMessage?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  errorText?: string;
+  onChange?: (value: string) => void;
 }
 
 const TextInput = (props: ITextInputProps): JSX.Element => {
   const {
     ariaLabel,
-    errorMessage = '',
+    errorText,
     onChange,
     ...restProps
   } = props;
 
+  const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
+    if (!onChange) return;
+
+    onChange(value);
+  };
+
   return (
     <>
       <input
-        className={cx('textInput', { error: errorMessage })}
+        className={cx('input', { invalid: !!errorText })}
         aria-label={ariaLabel}
-        onChange={onChange}
+        onChange={handleChange}
         {...restProps}
       />
-      {errorMessage && <span className={cx('errorMessage')}>{errorMessage}</span>}
+      {errorText && (
+        <p className={cx('error')}>
+          {errorText}
+        </p>
+      )}
     </>
   );
 };
