@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,8 +9,9 @@ import PlayProposalLayout from 'components/play-proposal-layout';
 import PlayProposalTitle from 'components/play-proposal-title';
 import Form from 'components/ui/form';
 import TextInput from 'components/ui/text-input';
-import { InputFile } from 'components/ui/input-file';
+import { FileInput } from 'components/ui/file-input';
 import { Button } from 'components/ui/button';
+import { Nullable } from 'shared/types';
 
 import playScript from '/public/images/form/play-script.jpg';
 
@@ -23,7 +25,24 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-const PlayProposal: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const ACCEPTABLE_FILE_TYPES = '.doc, .docx, .txt, .odt, .pdf, .rtf';
+
+const Participation: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const [file, setFile] = useState<Nullable<File>>();
+
+  const getFileError = () => {
+    // TODO: добавить проверки в соответствии с описанием поля в дизайне
+    if (file && /[а-яА-ЯЁё]/.test(file?.name)) {
+      return 'Файл содержит кириллицу, пожалуйста, переименуйте его.';
+    }
+
+    return;
+  };
+
+  const handleFileChange = (file: Nullable<File>) => {
+    setFile(file);
+  };
+
   return (
     <AppLayout>
       <PlayProposalLayout>
@@ -92,11 +111,16 @@ const PlayProposal: NextPage = ({ data }: InferGetServerSidePropsType<typeof get
                 </Form.Field>
                 <Form.Actions>
                   <Form.Action>
-                    <InputFile />
+                    <FileInput
+                      accept={ACCEPTABLE_FILE_TYPES}
+                      fileName={file?.name}
+                      errorText={getFileError()}
+                      onChange={handleFileChange}
+                    />
                   </Form.Action>
                   <Form.ActionCaption view="shift">
                     <p>
-                      Только файлы формата .doc, .docx, .txt, .odt, .pdf.
+                      {`Только файлы формата ${ACCEPTABLE_FILE_TYPES}.`}
                     </p>
 
                     <p>
@@ -135,4 +159,4 @@ const PlayProposal: NextPage = ({ data }: InferGetServerSidePropsType<typeof get
   );
 };
 
-export default PlayProposal;
+export default Participation;
