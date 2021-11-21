@@ -25,7 +25,7 @@ export const footerNavigationItems = [
   },
   {
     text: 'Организаторы',
-    href: '#',
+    href: '/team',
   },
   {
     text: 'История',

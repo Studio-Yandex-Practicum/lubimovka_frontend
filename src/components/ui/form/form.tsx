@@ -1,8 +1,7 @@
-import FormFieldset from './fieldset';
-import FormField from './field';
-import FormActions from './actions';
-import FormAction from './action';
-import FormActionCaption from './action-caption';
+import { FormFieldset } from './fieldset';
+import { FormField } from './field';
+import { FormActions } from './actions';
+import { FormDisclaimer } from './disclaimer';
 
 interface IFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode;
@@ -21,7 +20,6 @@ const Form = (props: IFormProps): JSX.Element => {
 Form.Fieldset = FormFieldset;
 Form.Field = FormField;
 Form.Actions = FormActions;
-Form.Action = FormAction;
-Form.ActionCaption = FormActionCaption;
+Form.Disclaimer = FormDisclaimer;
 
 export default Form;

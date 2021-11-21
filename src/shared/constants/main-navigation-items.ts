@@ -1,9 +1,11 @@
 export const mainNavigationItems = [
-  { text: 'Главная',
+  {
+    text: 'Главная',
     href: '/',
     mobileOnly: true,
   },
-  { text: 'Афиша',
+  {
+    text: 'Афиша',
     href: '/afishe',
   },
   {

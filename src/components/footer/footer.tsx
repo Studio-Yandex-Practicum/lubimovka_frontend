@@ -5,8 +5,6 @@ import { FooterAddress } from './address';
 import { FooterNavigation } from './navigation';
 import { FooterProjects } from './projects';
 import { FooterPartners } from './partners';
-import { FooterPartnerList } from './partner-list';
-import { FooterPartnerListItem } from './partner-list-item';
 import { InfoLink } from 'components/ui/info-link';
 
 import Logo from 'shared/images/logo-full.svg';
@@ -87,5 +85,3 @@ Footer.Address = FooterAddress;
 Footer.Navigation = FooterNavigation;
 Footer.Projects = FooterProjects;
 Footer.Partners = FooterPartners;
-Footer.PartnerList = FooterPartnerList;
-Footer.PartnerListItem = FooterPartnerListItem;
