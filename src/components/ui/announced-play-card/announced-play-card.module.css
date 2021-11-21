@@ -141,6 +141,11 @@
   }
 }
 
+.button > svg {
+  width: scale(25px);
+  height: scale(25px);
+}
+
 .button:last-child {
   margin-bottom: 0;
 }
