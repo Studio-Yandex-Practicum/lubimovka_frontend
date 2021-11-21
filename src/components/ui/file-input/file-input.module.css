@@ -46,3 +46,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.note {
+  @mixin text;
+  @mixin textCaption;
+
+  margin-top: scale(24px);
+}
