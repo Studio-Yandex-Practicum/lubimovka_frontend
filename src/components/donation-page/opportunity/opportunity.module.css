@@ -8,6 +8,10 @@
   flex-flow: row nowrap;
 }
 
+.componentContainer:nth-child(even) > .intro {
+  flex-flow: row-reverse nowrap;
+}
+
 .header {
   width: scale(660px);
   align-self: flex-end;
