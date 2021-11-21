@@ -35,3 +35,8 @@
     width: scale(256px);
   }
 }
+
+.button {
+  width: scale(120px);
+  column-gap: scale(3px) !important;
+}
