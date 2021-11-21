@@ -114,6 +114,10 @@
   }
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .borderBottomLeft {
   height: scale(24px);
   padding-right: scale(9px);

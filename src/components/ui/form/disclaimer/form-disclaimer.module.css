@@ -1,0 +1,10 @@
+.disclaimer {
+  @mixin text;
+  @mixin textCaption;
+
+  margin-top: scale(16px);
+
+  a {
+    color: inherit;
+  }
+}

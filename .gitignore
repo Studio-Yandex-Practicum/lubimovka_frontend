@@ -4,6 +4,10 @@ storybook-static
 
 .next
 
+.env
+.env.local
+.env.*.local
+
 .stylelintcache
 .eslintcache
 

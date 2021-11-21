@@ -11,7 +11,8 @@
     "lint:js": "eslint src/** --cache --ext .jsx,.js,.tsx,.ts",
     "lint:css": "stylelint **/*.css --cache --allow-empty-input --fix",
     "storybook": "start-storybook -s public -p 3001",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "update-typings": "rm -rf ./src/api-typings && npx openapi-typescript-codegen --input https://lubimovka.kiryanov.ru/api/v1/schema --output ./src/api-typings --useUnionTypes --exportCore false --exportServices false"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,8 @@
     "keen-slider": "5.5.1",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-focus-lock": "2.6.0"
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
@@ -37,6 +39,7 @@
     "@storybook/react": "6.3.8",
     "@svgr/webpack": "5.5.0",
     "@types/react": "17.0.20",
+    "@types/react-dom": "17.0.11",
     "@typescript-eslint/eslint-plugin": "4.31.0",
     "@typescript-eslint/parser": "4.31.0",
     "babel-loader": "8.2.2",
