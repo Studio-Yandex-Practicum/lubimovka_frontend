@@ -13,25 +13,31 @@ import breakpoints from 'shared/breakpoints.js';
 const cx = cn.bind(styles);
 
 export interface IForPressPressReleasesViewProps {
-data: {
+  data: {
     cover: Url,
-    pressReleases: [{
-      year: number,
-      downloadLink: Url,
-      contents: [{
-        content_type: string;
-        content_item: Record<string, unknown>;
-      }],
-    }]
-   },
+    pressReleases: PressRelease[],
+  },
 }
+
+type PressRelease = {
+  year: number,
+  downloadLink: Url,
+  contents: Content[]
+}
+
+type Content = {
+  content_type: ContentType;
+  content_item: Record<ContentType, string | string[]>;
+}
+
+type ContentType = 'text' | 'title' | 'preamble' | 'list';
 
 export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({ data }) => {
 
   const pressReleaseYears = data.pressReleases.map((i)=> {return i.year;}).sort((a, b) => b - a);
   const pressReleaseDefaultYear = pressReleaseYears[0];
-  const [pressReleaseYear, setPressReleaseYear] = useState<string[] | number>(pressReleaseDefaultYear);
-  const pressReleaseSelected = data.pressReleases.find(i => i.year == pressReleaseYear);
+  const [pressReleaseYearSelected, setPressReleaseYearSelected] = useState<string[] | number>(pressReleaseDefaultYear);
+  const pressReleaseSelected = data.pressReleases.find(i => i.year === pressReleaseYearSelected);
 
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
@@ -40,7 +46,7 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({
       <h3 className={cx('title')}>
         Пресс-релизы
       </h3>
-      <div className={cx('wrapper')}>
+      <nav className={cx('navigation')}>
         <p className={cx('droplistLabel')}>
           Выберите год фестиваля
         </p>
@@ -48,64 +54,55 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({
           type='radio'
           data={pressReleaseYears}
           cb={(i: string[]) => {
-            setPressReleaseYear(Number(i[0]));
+            setPressReleaseYearSelected(Number(i[0]));
           }}
           className={cx('droplist')}
         />
-        {
-          isMobile
-            ?
-            <Button
-              view='primary'
-              className={cx('button')}
-              align='center'
-              gap='11px'
-              size='s'
-              border='bottomLeft'
-              iconPlace='right'
-              icon='arrow-down'
-              label={'Скачать пресс-релиз года в .pdf'}
-              isLink
-              href={pressReleaseSelected.downloadLink}
-            />
-            :
-            <Button
-              view='primary'
-              className={cx('button')}
-              align='center'
-              gap='11px'
-              size='s'
-              border='bottomLeft'
-              iconPlace='right'
-              icon='arrow-down'
-              label={`Скачать пресс-релиз ${pressReleaseYear} года в .pdf`}
-              isLink
-              href={pressReleaseSelected.downloadLink}
-            />
-
-        }
-        <img className={cx('cover')} src={data.cover}/>
-        <article className={cx('pressReleaseText')}>
-          {pressReleaseSelected.contents.map((item, idx) => {
+        <Button
+          view='primary'
+          className={cx('button')}
+          align='center'
+          gap='11px'
+          size='s'
+          border='bottomLeft'
+          iconPlace='right'
+          icon='arrow-down'
+          label={
+            pressReleaseSelected === undefined ?
+              'Пресс-релиз не найден'
+              : pressReleaseSelected !== undefined && isMobile
+                ? 'Скачать пресс-релиз в .pdf'
+                : `Скачать пресс-релиз ${pressReleaseYearSelected} года в .pdf`}
+          isLink={pressReleaseSelected !== undefined ? true : false}
+          disabled={pressReleaseSelected !== undefined ? false : true}
+          href={pressReleaseSelected !== undefined ? pressReleaseSelected.downloadLink : ''}
+        />
+      </nav>
+      <img className={cx('cover')} src={data.cover}/>
+      <article className={cx('pressReleaseText')}>
+        {pressReleaseSelected === undefined ?
+          <p>Пресс-релиз этого года не найден</p>
+          : pressReleaseSelected.contents.map((item, idx) => {
             switch (item.content_type) {
             case 'preamble':
               return(<h6 key={idx}>{item.content_item.preamble}</h6>);
             case 'title':
-              return(<h4 key={idx}>{item.content_item.title}</h4>);
+              return(isMobile ? <h6 key={idx}>{item.content_item.title}</h6> : <h4 key={idx}>{item.content_item.title}</h4>);
             case 'list':
-              return(
+              return (
                 <ul key={idx}>
-                  {Object.values(item.content_item).map((listItem: string, idx) => {
-                    return(<li key={idx}>{listItem}</li>);
-                  })
+                  {
+                    Array.isArray(item.content_item.list) &&
+                    item.content_item.list.map((listItem, idx) => {
+                      return(<li key={idx}>{listItem}</li>);
+                    })
                   }
                 </ul>);
             case 'text':
               return(<p key={idx}>{item.content_item.text}</p>);
             }
           })}
-        </article>
-      </div>
+      </article>
     </section>
   );
 };

@@ -1,6 +1,11 @@
 .main {
   width: 100%;
   background-color: var(--white);
+
+  @media (max-width: $tablet-portrait) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .title {
@@ -21,25 +26,23 @@
   }
 }
 
-.wrapper {
+.navigation {
   display: grid;
   max-width: scale(1019px);
   column-gap: scale(30px);
   grid-template-areas:
     "label       .  "
-    "droplist  button"
-    "  .        text";
+    "droplist  button";
+  grid-template-columns: scale(166px) scale(420px);
 
   @media (max-width: $tablet-portrait) {
     width: 100%;
     max-width: none;
     margin-top: scale(32px);
-    column-gap: 0;
+    column-gap: scale(51px);
     grid-template-areas:
       "label  droplist"
-      "button button"
-      "image image"
-      "text   text";
+      "button button";
   }
 }
 
@@ -47,7 +50,8 @@
   @mixin headline;
   @mixin headline7;
 
-  max-width: scale(166px);
+  width: scale(166px);
+  box-sizing: border-box;
   padding-bottom: scale(17px);
   grid-area: label;
 
@@ -61,12 +65,14 @@
   @mixin text;
   @mixin textLarge;
 
-  width: scale(149px);
+  z-index: 2;
+  max-width: scale(149px);
   height: scale(44px);
   grid-area: droplist;
 
   @media (max-width: $tablet-portrait) {
     padding-bottom: scale(28px);
+    margin-right: scale(24px);
   }
 }
 
@@ -74,7 +80,7 @@
   display: grid;
   min-width: scale(420px);
   height: scale(44px);
-  padding-left: scale(15px);
+  margin-left: scale(15px);
   grid-area: button;
   text-transform: none;
 
@@ -89,13 +95,17 @@
   }
 }
 
+.button > svg {
+  width: scale(25px);
+  height: scale(25px);
+}
+
 .cover {
   position: absolute;
   top: 0;
   right: 0;
   width: scale(720px);
   height: scale(269px);
-  grid-area: image;
   object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
@@ -130,6 +140,20 @@
 
   margin-bottom: scale(16px);
   text-indent: scale(20px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(24px);
+  }
+}
+
+.pressReleaseText > p ~ h6 {
+  @media (max-width: $tablet-portrait) {
+    @mixin headline;
+    @mixin headline6;
+
+    margin-top: scale(100px);
+    margin-bottom: scale(24px);
+  }
 }
 
 .pressReleasetext > p:last-of-type {
@@ -142,10 +166,6 @@
 
   margin-top: scale(64px);
   margin-bottom: scale(24px);
-
-  @media screen (max-width: $tablet-portrait) {
-    margin-top: scale(100px);
-  }
 }
 
 .pressReleaseText > ul {
