@@ -10,10 +10,10 @@ const LibraryFiltersModal: FC = () => {
     <section className={styles.wrap}>
       <LibraryFilter />
       <div className={styles.buttons}>
-        <Button width='scale(183px)' size='l' iconPlace='right' icon='cross'
-          label='Очистить' border='full' />
-        <Button width='scale(183px)' size='l' iconPlace='right' icon='arrow-right'
-          label='Посмотреть' border='full' />
+        <Button size='l' iconPlace='right' icon='cross'
+          label='Очистить' border='full' className={styles.button} />
+        <Button size='l' iconPlace='right' icon='arrow-right'
+          label='Посмотреть' border='full' className={styles.button} />
       </div>
     </section>
   );
