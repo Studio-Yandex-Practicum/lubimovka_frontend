@@ -26,7 +26,7 @@ const LibraryForm: FC = () => {
         onChange={handleChange}
         placeholder='Автор или название пьесы'
       />
-      <Button label='ИСКАТЬ' size='s' icon='arrow-right'
+      <Button label='Искать' size='s' icon='arrow-right'
         iconPlace='left' border='none' width='scale(120px)' isLink={true}
         href='/library/search-result' align='start' gap='scale(3px)' />
     </form>
