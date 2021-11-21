@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import { PageHeader } from './header';
-import { PageOverlay } from './overlay';
+import { PageOverlayMenu } from './overlay-menu';
 import { PageBurgerButton } from './burger-button';
 
 interface IPageProps {
@@ -19,5 +19,5 @@ export const Page = (props: IPageProps): JSX.Element => {
 };
 
 Page.Header = PageHeader;
-Page.Overlay = PageOverlay;
+Page.OverlayMenu = PageOverlayMenu;
 Page.BurgerButton = PageBurgerButton;

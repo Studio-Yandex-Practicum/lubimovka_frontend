@@ -1,0 +1,41 @@
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type { AuthorForPlay } from './models/AuthorForPlay';
+export type { AuthorList } from './models/AuthorList';
+export type { AuthorRetrieve } from './models/AuthorRetrieve';
+export type { BaseContent } from './models/BaseContent';
+export type { BlogItem } from './models/BlogItem';
+export type { BlogItemList } from './models/BlogItemList';
+export type { Event } from './models/Event';
+export type { EventTypeEnum } from './models/EventTypeEnum';
+export type { Festival } from './models/Festival';
+export type { FestivalTeams } from './models/FestivalTeams';
+export type { Image } from './models/Image';
+export type { NameEnum } from './models/NameEnum';
+export type { NewsItem } from './models/NewsItem';
+export type { NewsItemList } from './models/NewsItemList';
+export type { OtherLink } from './models/OtherLink';
+export type { OtherPlayLinks } from './models/OtherPlayLinks';
+export type { PaginatedAuthorListList } from './models/PaginatedAuthorListList';
+export type { PaginatedBlogItemListList } from './models/PaginatedBlogItemListList';
+export type { PaginatedEventList } from './models/PaginatedEventList';
+export type { PaginatedNewsItemListList } from './models/PaginatedNewsItemListList';
+export type { PaginatedPlayList } from './models/PaginatedPlayList';
+export type { PaginatedProjectListList } from './models/PaginatedProjectListList';
+export type { Participation } from './models/Participation';
+export type { Partner } from './models/Partner';
+export type { PartnerTypeEnum } from './models/PartnerTypeEnum';
+export type { Performance } from './models/Performance';
+export type { PerformancePerson } from './models/PerformancePerson';
+export type { Persons } from './models/Persons';
+export type { Play } from './models/Play';
+export type { Project } from './models/Project';
+export type { ProjectList } from './models/ProjectList';
+export type { Question } from './models/Question';
+export type { RoleEnum } from './models/RoleEnum';
+export type { SocialNetwork } from './models/SocialNetwork';
+export type { Sponsor } from './models/Sponsor';
+export type { StaticPages } from './models/StaticPages';
+export type { TeamEnum } from './models/TeamEnum';
+export type { Volunteers } from './models/Volunteers';

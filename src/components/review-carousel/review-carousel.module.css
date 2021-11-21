@@ -1,19 +1,30 @@
 .header {
   display: flex;
-  max-width: 718px;
-  margin: 0 auto 24px;
+  max-width: scale(718px);
+  align-items: center;
+  margin: scale(0 auto 35px);
 
-  @media (min-width: $tablet-portrait) {
-    margin-bottom: 40px;
+  @media (max-width: $tablet-portrait) {
+    position: relative;
+    align-items: flex-start;
+    margin: scale(0 27px 25px 24px);
+  }
+}
+
+.slider {
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(414px);
   }
 }
 
 .title {
   @mixin headline;
-  @mixin headline7;
+  @mixin headline4;
 
-  @media (min-width: $tablet-portrait) {
-    @mixin headline4;
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    max-width: scale(214px);
   }
 }
 
@@ -34,4 +45,28 @@
   .active {
     opacity: 1;
   }
+}
+
+.dots {
+  margin-left: auto;
+
+  @media (max-width: $tablet-portrait) {
+    position: absolute;
+    z-index: 1;
+    bottom: calc(-1 * scale(64px));
+    left: calc(-1 * scale(2px));
+  }
+}
+
+.arrows {
+  display: flex;
+  margin-left: scale(21px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-left: auto;
+  }
+}
+
+.arrowRight {
+  margin-left: scale(21px);
 }

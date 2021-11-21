@@ -30,14 +30,15 @@ module.exports = {
 
     return config;
   },
-  rewrites() {
-    return {
-      fallback: [
-        {
-          source: '/api/:path*',
-          destination: 'https://real-backend-url/:path*',
-        },
-      ],
-    };
-  }
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://lubimovka.kiryanov.ru/api/v1/:path*/',
+      },
+    ];
+  },
+  images: {
+    domains: ['lubimovka.kiryanov.ru'],
+  },
 };

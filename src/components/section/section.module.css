@@ -6,12 +6,13 @@
   @mixin headline;
   @mixin headline4;
 
-  margin-left: 25%;
+  max-width: scale(716px);
+  margin: 0 auto scale(48px);
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    margin: 0 24px;
+    max-width: scale(366px);
   }
 }
 
@@ -19,6 +20,10 @@
   .title {
     max-width: scale(450px);
     margin-bottom: scale(48px);
+
+    @media (max-width: $tablet-portrait) {
+      max-width: scale(366px);
+    }
   }
 }
 
@@ -26,18 +31,35 @@
   .title {
     max-width: scale(450px);
     margin-bottom: scale(58px);
+
+    @media (max-width: $tablet-portrait) {
+      max-width: scale(366px);
+    }
   }
 }
 
 .partners {
   .title {
+    @mixin headline6;
+
     max-width: scale(334px);
     margin: scale(0 0 15px 0);
 
-    @mixin headline6;
-
-    @media screen and (max-width: $tablet-portrait) {
+    @media (max-width: $tablet-portrait) {
       margin-bottom: scale(24px);
+    }
+  }
+}
+
+.play {
+  .title {
+    @mixin visually-hidden;
+
+    @media (max-width: $tablet-portrait) {
+      @mixin undo-visually-hidden;
+
+      max-width: scale(366px);
+      margin: scale(0 auto 32px);
     }
   }
 }
