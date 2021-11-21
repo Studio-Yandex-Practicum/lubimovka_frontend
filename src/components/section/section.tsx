@@ -2,7 +2,6 @@ import { ReactNode, HTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './section.module.css';
-const cx = classNames.bind(styles);
 
 interface ISectionProps extends HTMLAttributes<HTMLElement> {
   type?: 'plays' | 'persons' | 'partners' | 'play';
@@ -12,19 +11,27 @@ interface ISectionProps extends HTMLAttributes<HTMLElement> {
   className?: string;
 }
 
+const cx = classNames.bind(styles);
+
 export const Section = (props: ISectionProps): JSX.Element => {
   const {
     type,
     title,
     titleTag: TitleTag = 'h2',
     children,
-    className = '',
+    className,
     ...restProps
   } = props;
 
   return (
-    <section className={cx('section', type, [className])} {...restProps}>
-      <TitleTag className={cx('title')}>{title}</TitleTag>
+    <section className={cx(
+      'section',
+      type,
+      className
+    )} {...restProps}>
+      <TitleTag className={cx('title')}>
+        {title}
+      </TitleTag>
       {children}
     </section>
   );

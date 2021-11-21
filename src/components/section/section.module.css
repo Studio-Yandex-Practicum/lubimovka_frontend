@@ -20,6 +20,10 @@
   .title {
     max-width: scale(450px);
     margin-bottom: scale(48px);
+
+    @media (max-width: $tablet-portrait) {
+      max-width: scale(366px);
+    }
   }
 }
 
@@ -27,15 +31,19 @@
   .title {
     max-width: scale(450px);
     margin-bottom: scale(58px);
+
+    @media (max-width: $tablet-portrait) {
+      max-width: scale(366px);
+    }
   }
 }
 
 .partners {
   .title {
+    @mixin headline6;
+
     max-width: scale(334px);
     margin: scale(0 0 15px 0);
-
-    @mixin headline6;
 
     @media (max-width: $tablet-portrait) {
       margin-bottom: scale(24px);
@@ -48,11 +56,10 @@
     @mixin visually-hidden;
 
     @media (max-width: $tablet-portrait) {
-      position: static;
-      width: scale(366px);
-      height: scale(32px);
+      @mixin undo-visually-hidden;
+
+      max-width: scale(366px);
       margin: scale(0 auto 32px);
-      clip: auto;
     }
   }
 }
