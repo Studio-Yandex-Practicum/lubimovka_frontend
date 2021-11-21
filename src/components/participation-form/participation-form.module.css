@@ -1,0 +1,11 @@
+.note {
+  @mixin text;
+  @mixin textCaption;
+
+  margin-top: scale(16px);
+}
+
+.action {
+  width: 100%;
+  justify-content: space-between;
+}

@@ -21,6 +21,7 @@ export const FileInput: FC<IFileInputProps> = (props) => {
     fileName,
     errorText,
     onChange,
+    accept,
     ...restInputProps
   } = props;
   const nativeInputRef = useRef<HTMLInputElement>(null);
@@ -48,6 +49,7 @@ export const FileInput: FC<IFileInputProps> = (props) => {
         ref={nativeInputRef}
         type="file"
         onChange={handleChange}
+        accept={accept}
         {...restInputProps}
       />
       {fileName && (
@@ -81,6 +83,13 @@ export const FileInput: FC<IFileInputProps> = (props) => {
         border="bottomLeft"
         onClick={handleClick}
       />
+      {accept && (
+        <p className={cx('note')}>
+          Только файлы формата
+          {' '}
+          {accept}
+        </p>
+      )}
     </>
   );
 };

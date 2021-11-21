@@ -1,1 +1,1 @@
-export { default } from './form-fieldset';
+export * from './form-fieldset';

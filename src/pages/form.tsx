@@ -1,42 +1,74 @@
 import { useState } from 'react';
-import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
+import { NextPage } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 
-import { fetcher } from 'shared/fetcher';
 import AppLayout from 'components/app-layout';
 import PlayProposalLayout from 'components/play-proposal-layout';
 import PlayProposalTitle from 'components/play-proposal-title';
-import Form from 'components/ui/form';
-import TextInput from 'components/ui/text-input';
-import { FileInput } from 'components/ui/file-input';
-import { Button } from 'components/ui/button';
+import { ParticipationForm } from 'components/participation-form';
+import {
+  validIntegerRegexp,
+  validYearRegexp,
+  validEmailRegexp,
+  validPhoneNumberRegexp,
+} from 'shared/regexps';
 import { Nullable } from 'shared/types';
 
-import playScript from '/public/images/form/play-script.jpg';
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const data = await fetcher('/form');
-
-  return {
-    props: {
-      data,
-    },
-  };
-};
-
-const ACCEPTABLE_FILE_TYPES = '.doc, .docx, .txt, .odt, .pdf, .rtf';
-const VALID_EMAIL_REGEXP = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-
-const Participation: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const [file, setFile] = useState<Nullable<File>>();
+const Participation: NextPage = () => {
+  const [firstName, setFirstName] = useState('');
+  const [firstNameWasChanged, setFirstNameWasChanged] = useState(false);
+  const [lastName, setLastName] = useState('');
+  const [lastNameWasChanged, setLastNameWasChanged] = useState(false);
+  const [birthYear, setBirthYear] = useState('');
+  const [birthYearWasChanged, setBirthYearWasChanged] = useState(false);
+  const [city, setCity] = useState('');
+  const [cityWasChanged, setCityWasChanged] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumberWasChanged, setPhoneNumberWasChanged] = useState(false);
   const [email, setEmail] = useState('');
   const [emailWasChanged, setEmailWasChanged] = useState(false);
+  const [playTitle, setPlayTitle] = useState('');
+  const [playTitleWasChanged, setPlayTitleWasChanged] = useState(false);
+  const [playYear, setPlayYear] = useState('');
+  const [playYearWasChanged, setPlayYearWasChanged] = useState(false);
+  const [playFile, setPlayFile] = useState<Nullable<File>>();
 
-  const getFileError = () => {
-    // TODO: добавить проверки в соответствии с описанием поля в дизайне
-    if (file && /[а-яА-ЯЁё]/.test(file?.name)) {
-      return 'Файл содержит кириллицу, пожалуйста, переименуйте его.';
+  const getFirstNameError = () => {
+    if (firstName.length < 2) {
+      return 'Имя должно содержать минимум 2 символа';
+    }
+
+    return;
+  };
+
+  const getLastNameError = () => {
+    if (lastName.length < 2) {
+      return 'Фамилия должна содержать минимум 2 символа';
+    }
+
+    return;
+  };
+
+  const getBirthYearError = () => {
+    if (!validYearRegexp.test(birthYear)) {
+      return 'Неверный год рождения';
+    }
+
+    return;
+  };
+
+  const getCityError = () => {
+    if (city.length < 2) {
+      return 'Город должен содержать минимум 2 символа';
+    }
+
+    return;
+  };
+
+  const getPhoneNumberError = () => {
+    //TODO: улучшить валидацию номера телефона, сейчас регулярное выражение позваляет ввести лишние символы, возможно, добавить компонент для ввода телефона
+    if (!validPhoneNumberRegexp.test(phoneNumber)) {
+      return 'Некорректный номер телефона';
     }
 
     return;
@@ -47,15 +79,63 @@ const Participation: NextPage = ({ data }: InferGetServerSidePropsType<typeof ge
       return 'Поле E-mail обязательно для заполнения';
     }
 
-    if (!VALID_EMAIL_REGEXP.test(email)) {
+    if (!validEmailRegexp.test(email)) {
       return 'Неверный формат адреса электронной почты';
     }
 
     return;
   };
 
-  const handleFileChange = (file: Nullable<File>) => {
-    setFile(file);
+  const getPlayTitleError = () => {
+    if (!playTitle.length) {
+      return 'Название обязательно для заполнения';
+    }
+
+    return;
+  };
+
+  const getPlayYearError = () => {
+    if (!validYearRegexp.test(playYear)) {
+      return 'Неверный год';
+    }
+
+    return;
+  };
+
+  const getPlayFileError = () => {
+    // TODO: добавить проверки в соответствии с описанием поля в дизайне
+    if (playFile && /[а-яА-ЯЁё]/.test(playFile?.name)) {
+      return 'Файл содержит кириллицу, пожалуйста, переименуйте его.';
+    }
+
+    return;
+  };
+
+  const handleFirstNameChange = (value: string) => {
+    setFirstNameWasChanged(true);
+    setFirstName(value);
+  };
+
+  const handleLastNameChange = (value: string) => {
+    setLastNameWasChanged(true);
+    setLastName(value);
+  };
+
+  const handleBirthYearChange = (value: string) => {
+    if (!validIntegerRegexp.test(value)) return;
+
+    setBirthYearWasChanged(true);
+    setBirthYear(value);
+  };
+
+  const handleCityChange = (value: string) => {
+    setCityWasChanged(true);
+    setCity(value);
+  };
+
+  const handlePhoneNumberChange = (value: string) => {
+    setPhoneNumberWasChanged(true);
+    setPhoneNumber(value);
   };
 
   const handleEmailChange = (value: string) => {
@@ -63,117 +143,65 @@ const Participation: NextPage = ({ data }: InferGetServerSidePropsType<typeof ge
     setEmail(value);
   };
 
+  const handlePlayTitleChange = (value: string) => {
+    setPlayTitleWasChanged(true);
+    setPlayTitle(value);
+  };
+
+  const handlePlayYearChange = (value: string) => {
+    if (!validIntegerRegexp.test(value)) return;
+
+    setPlayYearWasChanged(true);
+    setPlayYear(value);
+  };
+
+  const handlePlayFileChange = (file: Nullable<File>) => {
+    setPlayFile(file);
+  };
+
   return (
     <AppLayout>
       <PlayProposalLayout>
         <PlayProposalLayout.Image>
           <Image
-            src={playScript}
+            src="/images/form/play-script.jpg"
             alt="Напечатанная читка в руках человека"
             layout="fill"
             objectFit="cover"
           />
         </PlayProposalLayout.Image>
         <PlayProposalLayout.Column>
-          <PlayProposalTitle />
+          <PlayProposalTitle/>
           <PlayProposalLayout.Form>
-            <Form>
-              <Form.Fieldset legend="О вас">
-                <Form.Field>
-                  <TextInput
-                    ariaLabel="Имя"
-                    placeholder="Имя"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <TextInput
-                    ariaLabel="Фамилия"
-                    placeholder="Фамилия"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <TextInput
-                    ariaLabel="Год рождения"
-                    placeholder="Год рождения"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <TextInput
-                    ariaLabel="Город проживания"
-                    placeholder="Город проживания"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <TextInput
-                    ariaLabel="Номер телефона"
-                    placeholder="Номер телефона"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <TextInput
-                    ariaLabel="E-mail"
-                    placeholder="E-mail"
-                    onChange={handleEmailChange}
-                    errorText={emailWasChanged ? getEmailError() : undefined}
-                  />
-                </Form.Field>
-              </Form.Fieldset>
-              <Form.Fieldset legend="О пьесе">
-                <Form.Field>
-                  <TextInput
-                    ariaLabel="Название"
-                    placeholder="Название"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <TextInput
-                    ariaLabel="Год написания"
-                    placeholder="Год написания"
-                  />
-                </Form.Field>
-                <Form.Actions>
-                  <Form.Action>
-                    <FileInput
-                      accept={ACCEPTABLE_FILE_TYPES}
-                      fileName={file?.name}
-                      errorText={getFileError()}
-                      onChange={handleFileChange}
-                    />
-                  </Form.Action>
-                  <Form.ActionCaption view="shift">
-                    <p>
-                      {`Только файлы формата ${ACCEPTABLE_FILE_TYPES}.`}
-                    </p>
-
-                    <p>
-                      Название файла должно содержать сначала фамилию автора, а затем
-                      название пьесы, например Chehov-Chaika.doc{'\n'}
-                      Название файла с пьесой не должно содержать кириллические символы
-                      и пробелы. В названии файла должны быть только латинские символы и
-                      знаки - и _.
-                    </p>
-                  </Form.ActionCaption>
-                  <Form.Action>
-                    <Button
-                      type="submit"
-                      iconPlace="right"
-                      icon="arrow-right"
-                      size="l"
-                      border="full"
-                      label="Отправить"
-                      align="space-between"
-                      width="100%"
-                    />
-                  </Form.Action>
-                  <Form.ActionCaption view="below">
-                    {'Нажимая на кнопку «Отправить» вы даёте согласие '}
-                    <Link href={data.url_privacy}>
-                      <a>на обработку персональных данных </a>
-                    </Link>
-                  </Form.ActionCaption>
-                </Form.Actions>
-              </Form.Fieldset>
-            </Form>
+            <ParticipationForm
+              firstName={firstName}
+              onFirstNameChange={handleFirstNameChange}
+              firstNameError={firstNameWasChanged ? getFirstNameError() : undefined}
+              lastName={lastName}
+              onLastNameChange={handleLastNameChange}
+              lastNameError={lastNameWasChanged ? getLastNameError() : undefined}
+              birthYear={birthYear}
+              onBirthYearChange={handleBirthYearChange}
+              birthYearError={birthYearWasChanged ? getBirthYearError() : undefined}
+              city={city}
+              cityError={cityWasChanged ? getCityError() : undefined}
+              onCityChange={handleCityChange}
+              phoneNumber={phoneNumber}
+              onPhoneNumberChange={handlePhoneNumberChange}
+              phoneNumberError={phoneNumberWasChanged ? getPhoneNumberError() : undefined}
+              email={email}
+              onEmailChange={handleEmailChange}
+              emailError={emailWasChanged ? getEmailError() : undefined}
+              playTitle={playTitle}
+              playTitleError={playTitleWasChanged ? getPlayTitleError() : undefined}
+              onPlayTitleChange={handlePlayTitleChange}
+              playYear={playYear}
+              playYearError={playYearWasChanged ? getPlayYearError() : undefined}
+              onPlayYearChange={handlePlayYearChange}
+              playFileName={playFile?.name}
+              playFileError={getPlayFileError()}
+              onPlayFileChange={handlePlayFileChange}
+            />
           </PlayProposalLayout.Form>
         </PlayProposalLayout.Column>
       </PlayProposalLayout>

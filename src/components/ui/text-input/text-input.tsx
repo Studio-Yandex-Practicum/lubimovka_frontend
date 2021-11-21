@@ -4,14 +4,12 @@ import styles from './text-input.module.css';
 const cx = classNames.bind(styles);
 
 interface ITextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
-  ariaLabel: string;
   errorText?: string;
   onChange?: (value: string) => void;
 }
 
 const TextInput = (props: ITextInputProps): JSX.Element => {
   const {
-    ariaLabel,
     errorText,
     onChange,
     ...restProps
@@ -26,8 +24,8 @@ const TextInput = (props: ITextInputProps): JSX.Element => {
   return (
     <>
       <input
+        type="text"
         className={cx('input', { invalid: !!errorText })}
-        aria-label={ariaLabel}
         onChange={handleChange}
         {...restProps}
       />
