@@ -26,43 +26,39 @@ const Contacts: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServ
             <Form aria-labelledby='contact'>
               <Form.Field>
                 <TextInput
-                  ariaLabel="Ваше имя"
                   placeholder="Ваше имя"
                 />
               </Form.Field>
               <Form.Field>
                 <TextInput
-                  ariaLabel="E-mail для ответа"
                   placeholder="E-mail для ответа"
                 />
               </Form.Field>
               <Form.Field>
                 <TextArea
-                  ariaLabel="Текст сообщения"
+                  ariaLabel=""
                   placeholder="Текст сообщения"
                   rows={4}
                 />
               </Form.Field>
               <Form.Actions>
-                <Form.Action>
-                  <Button
-                    type="submit"
-                    iconPlace="right"
-                    icon="arrow-right"
-                    size="l"
-                    border="full"
-                    label="Отправить"
-                    align="space-between"
-                    width="100%"
-                  />
-                </Form.Action>
-                <Form.ActionCaption view="below">
-                  {'Нажимая на кнопку «Отправить» вы даёте согласие '}
-                  <Link href={data.url_privacy}>
-                    <a>на обработку персональных данных </a>
-                  </Link>
-                </Form.ActionCaption>
+                <Button
+                  type="submit"
+                  iconPlace="right"
+                  icon="arrow-right"
+                  size="l"
+                  border="full"
+                  label="Отправить"
+                  align="space-between"
+                  width="100%"
+                />
               </Form.Actions>
+              <Form.Disclaimer>
+                {'Нажимая на кнопку «Отправить» вы даёте согласие '}
+                <Link href={data.url_privacy}>
+                  <a>на обработку персональных данных </a>
+                </Link>
+              </Form.Disclaimer>
             </Form>
           </ContactsLayout.Form>
         </ContactsLayout.Column>

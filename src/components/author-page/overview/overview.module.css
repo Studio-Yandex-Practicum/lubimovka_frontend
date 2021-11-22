@@ -51,15 +51,18 @@
     justify-self: start;
   }
 
-  @media (max-width: 600px) {
-    margin: calc(var(--scale) * 41) 0 calc(var(--scale) * 30) calc(var(--scale) * 24);
+  @media (max-width: 724px) {
+    position: absolute;
+    top: 5px;
+    left: 80px;
   }
 }
 
-.photo {
+.photoBox {
+  position: relative;
+  overflow: hidden;
   width: calc(var(--scale) * 275);
   height: calc(var(--scale) * 355);
-  border: 1px solid var(--red);
   grid-area: photo;
   justify-self: center;
 
@@ -73,6 +76,16 @@
     height: calc(var(--scale) * 236);
     margin: 0 0 0 calc(var(--scale) * 24);
   }
+}
+
+.photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--scale) * 275);
+  height: calc(var(--scale) * 355);
+  object-fit: cover;
+  transform: translate(-50%, -50%);
 }
 
 .fullName {
@@ -185,6 +198,32 @@
   @mixin textLarge;
 
   max-width: calc(var(--scale) * 479);
+  margin: 0 0 calc(var(--scale) * 30);
+}
+
+.expandButton {
+  overflow: hidden;
+  height: calc(var(--scale) * 200);
+}
+
+.rollUpButton {
+  overflow: visible;
+}
+
+.overviewBlockAuthorInfo {
+  max-width: calc(var(--scale) * 479);
+  margin: calc(var(--scale) * 80) 0 0;
+}
+
+.overviewLinkHeading {
+  @mixin text;
+  @mixin textLarge;
+
+  font-feature-settings: 'ss01' on;
+}
+
+.link {
+  min-width: calc(var(--scale) * 25);
 }
 
 .overviewContacts {
@@ -192,9 +231,18 @@
 }
 
 .overviewSet {
+  display: block;
+  width: 100%;
+  max-width: calc(var(--scale) * 500);
+  margin: 0;
   justify-self: center;
 
+  @media (max-width: 1130px) {
+    max-width: calc(var(--scale) * 400);
+  }
+
   @media (max-width: 728px) {
+    max-width: calc(var(--scale) * 300);
     grid-column: auto;
     grid-row: 1/2;
     justify-self: center;
@@ -206,6 +254,32 @@
   }
 }
 
+.overviewSocialWrapper {
+  display: grid;
+  justify-content: start;
+  margin: calc(var(--scale) * 53) 0 0;
+}
+
+.overviewSocialLinkBlock {
+  display: grid;
+  gap: calc(var(--scale) * 8);
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.overviewSocialLinkHeading {
+  @mixin headline;
+  @mixin headline7;
+
+  margin: 0 0 calc(var(--scale) * 20);
+}
+
+.email {
+  @mixin headline;
+  @mixin headline7;
+
+  margin: calc(var(--scale) * 6) 0;
+}
+
 .overviewTagsHeading {
   @mixin headline;
   @mixin headline7;
@@ -213,15 +287,11 @@
   margin: 0 0 calc(var(--scale) * 15);
 }
 
-.email {
-  @mixin headline;
-  @mixin headline7;
+.tagWrapper {
+  width: 100%;
 }
 
 .tag {
-  height: 35px;
-
-  &:nth-child(1n) {
-    margin: 0 0 calc(var(--scale) * 6);
-  }
+  display: inline-block;
+  margin: 0 calc(var(--scale) * 8) calc(var(--scale) * 8) 0;
 }

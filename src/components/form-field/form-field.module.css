@@ -1,0 +1,3 @@
+.hidden {
+  @mixin visually-hidden;
+}

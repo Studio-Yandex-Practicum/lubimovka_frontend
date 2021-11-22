@@ -5,17 +5,4 @@
   gap: calc(var(--scale) * 30);
   grid-row: auto;
   grid-template-columns: repeat(5, 2fr);
-
-  @media (max-width: 1199px) {
-    grid-template-columns: repeat(4, 2fr);
-  }
-
-  @media (max-width: 999px) {
-    grid-template-columns: repeat(3, 2fr);
-  }
-
-  @media (max-width: 728px) {
-    grid-template-columns: repeat(1, 2fr);
-    justify-items: center;
-  }
 }

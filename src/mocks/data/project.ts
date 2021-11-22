@@ -1,63 +1,278 @@
-import galleryImage from '../assets/performance/gallery-item.jpg';
+import { Project } from 'api-typings';
 
-export default {
-  titledata: {
-    title: 'Любимовка. Ещё',
-    intro:
-      'Межсезонные читки и обсуждение пьес из списка отмеченных отборщиками Любимовки. Можно слушать, обсуждать и даже участвовать.',
-    image:
-      'https://s3.us-west-2.amazonaws.com/images.unsplash.com/application-1635094786573-fc7fa33497ccimage',
-    imageDesc: 'Множество людей принимают участие в межсезонной читке',
-    description:
-      'За первый сезон проекта организаторы провели 17 мероприятий вместе с режиссёрами и актёрами московских театров: Театра.doc, Театрального Центра им. Вс. Мейерхольда, Гоголь-центра, Электротеатра «Станиславский», Ленкома.',
-  },
-
-  images: Array.from({ length: 8 }, () => ({
-    image: galleryImage,
-  })),
-  cardsArr: Array.from({ length: 5 }, () => ({
-    date: '15 декабря',
-    time: '11:00',
-    title: 'МАМА',
-    playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
-    directorArray: ['Катя Ганюшина'],
-    buttonLinks: [
-      'https://lubimovka.timepad.ru/event/1746579/',
-      'https://lubimovka.timepad.ru/event/1746502/',
-    ],
-    coverResourceUrl:
-      'https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg',
-  })),
-  basicPlayCard: Array.from({ length: 5 }, () => ({
-    play: {
-      title: 'Конкретные разговоры пожилых супругов ни о чём',
-      city: 'Санкт-Петербург',
-      year: '2020',
-      linkView: 'https://lubimovka.ru/',
-      linkDownload: 'https://lubimovka.ru/',
+const project: Project = {
+  id: 2,
+  title: 'Любимовка. Ещё',
+  image: 'https://source.unsplash.com/random',
+  description: 'За первый сезон проекта организаторы провели 17 мероприятий вместе с режиссёрами и актёрами московских театров: Театра.doc, Театрального Центра им. Вс. Мейерхольда, Гоголь-центра, Электротеатра «Станиславский», Ленкома.',
+  contents: [
+    {
+      content_type: 'image',
+      content_item: {
+        title: 'Гифочка',
+        image: 'https://lubimovka.kiryanov.ru/media/content_images/giphy.gif'
+      }
     },
-    author: {
-      id: 1,
-      name: 'Екатерина Августеняк',
+    {
+      content_type: 'imagesblock',
+      content_item: {
+        title: 'Блок изображений 1',
+        items: [
+          {
+            title: 'Изображение 1',
+            image: 'https://lubimovka.kiryanov.ru/media/content_images/IMG_3314.jpeg'
+          },
+          {
+            title: 'Гифочка',
+            image: 'https://lubimovka.kiryanov.ru/media/content_images/giphy.gif'
+          },
+        ]
+      }
     },
-    buttonVisibility: false,
-  })),
-  personCard: Array.from({ length: 5 }, () => ({
-    name: 'Тереза Шимчак',
-    link:
-      'https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
-    about: 'Драматург, сценарист, преподаватель',
-    participant: true,
-  })),
-  email: 'more@lubimmovka.ru',
-  projectDescription: {
-    title: 'Заголовок блока с кнопкой/ссылкой',
-    description:
-      'Видео прошедших мероприятий можно посмотреть в плейлисте на канале Любимовки в YouTube',
-  },
-  video: Array.from({ length: 3 }, () => ({
-    url: 'https://www.youtube.com/embed/NkvP2jR8xlw',
-    videoDescription:
-    'Из этого следует два вывода: с одной стороны, искусство не должно быть равно реальности, потому что иначе оно не будет искусством, с другой стороны – оно должно быть все-таки подобно реальности, иначе мы ничего не поймем, не подключимся и не распознаем замыслы автора. Мне нравится такое определение, что один из видов эстетики – это, грубо говоря, \'понимание\' чего-то. Если нам нечего понимать, то мы не получим ни удовольствия, ни какого-то чувства, ничего. А для того, чтобы что-то понять, нам должно быть представлено что-то, что не равно само себе. То есть нам показывают или говорят что-то, а мы понимаем, что там есть что-то еще. Вот мы смотрим на античную статую и понимаем, что это – статуя, но похожа на человека. Если она будет абсолютно такая же как человек, как восковая фигура, то мы поймем, что это уже не искусство. Искусство для того, чтобы люди догадались, домыслили, дочувствовали что-то.',
-  })),
+    {
+      content_type: 'link',
+      content_item: {
+        title: 'Заголовок ссылки.',
+        description: 'Какое-то описание ссылки',
+        url: 'https://ya.ru',
+      }
+    },
+    {
+      content_type: 'video',
+      content_item: {
+        title: 'Заголовок видео',
+        url: 'http://video.link/something',
+      }
+    },
+    {
+      content_type: 'videosblock',
+      content_item: {
+        title: 'Блок видео',
+        items: [
+          {
+            title: 'Заголовок видео',
+            url: 'https://www.youtube.com/embed/8CYY8EM5xYE',
+          },
+          {
+            title: 'Заголовок видео 2',
+            url: 'https://www.youtube.com/embed/8CYY8EM5xYE',
+          },
+          {
+            title: 'Заголовок видео 3',
+            url: 'https://www.youtube.com/embed/8CYY8EM5xYE',
+          }
+        ]
+      }
+    },
+    {
+      content_type: 'playsblock',
+      content_item: {
+        title: 'Блок пьес',
+        items: [
+          {
+            id: 1,
+            created: '2021-11-06T21:48:12',
+            modified: '2021-11-06T21:48:12',
+            name: 'Порог',
+            city: 'Ачхой Мартан',
+            year: 2009,
+            url_download: 'https://www.williams.info/',
+            url_reading: 'http://morris-butler.com/',
+            is_draft: true,
+            program: 1,
+            festival: 17
+          },
+          {
+            id: 6,
+            created: '2021-11-06T21:48:29',
+            modified: '2021-11-06T21:48:29',
+            name: 'Пересечь',
+            city: 'Мезень',
+            year: 1992,
+            url_download: 'http://robinson-juarez.net/',
+            url_reading: 'http://fletcher.org/',
+            is_draft: true,
+            program: 2,
+            festival: 10
+          },
+          {
+            id: 25,
+            created: '2021-11-06T21:48:29',
+            modified: '2021-11-06T21:48:29',
+            name: 'Головной',
+            city: 'Южноуральск',
+            year: 2007,
+            url_download: 'https://www.walker.com/',
+            url_reading: 'http://www.spears.net/',
+            is_draft: true,
+            program: 1,
+            festival: 16
+          },
+          {
+            id: 4,
+            created: '2021-11-06T21:48:29',
+            modified: '2021-11-06T21:48:29',
+            name: 'Мелькнуть',
+            city: 'Арсеньев',
+            year: 1993,
+            url_download: 'http://williams-reynolds.org/',
+            url_reading: 'http://www.munoz.com/',
+            is_draft: true,
+            program: 4,
+            festival: 2
+          },
+          {
+            id: 9,
+            created: '2021-11-06T21:48:29',
+            modified: '2021-11-06T21:48:29',
+            name: 'Бак',
+            city: 'Белореченск',
+            year: 1997,
+            url_download: 'http://lindsey.net/',
+            url_reading: 'https://www.whitehead-gray.com/',
+            is_draft: true,
+            program: 1,
+            festival: 8
+          },
+          {
+            id: 57,
+            created: '2021-11-06T21:50:15',
+            modified: '2021-11-06T21:50:15',
+            name: 'Легко',
+            city: 'Урюпинск',
+            year: 2000,
+            url_download: 'http://www.gomez.biz/',
+            url_reading: 'https://wright.info/',
+            is_draft: true,
+            program: 1,
+            festival: 9
+          }
+        ]
+      }
+    },
+    {
+      content_type: 'personsblock',
+      content_item: {
+        title: 'Блок с персонами 1',
+        items: [
+          {
+            id: 38,
+            created: '2021-10-29T21:30:38',
+            modified: '2021-10-29T21:30:39',
+            first_name: 'Екатерина',
+            last_name: 'Зиновьев',
+            middle_name: 'Гурьевич',
+            city: 'Гудермес',
+            email: 'ekaterinazinovev@lubimovka.ru',
+            image: 'https://lubimovka.kiryanov.ru/media/images/person_avatars/%D0%95%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B0_%D0%97%D0%B8%D0%BD%D0%BE%D0%B2%D1%8C%D0%B5%D0%B2.jpg'
+          },
+          {
+            id: 100,
+            created: '2021-10-29T21:31:16',
+            modified: '2021-10-29T21:31:16',
+            first_name: 'Фрол',
+            last_name: 'Боброва',
+            middle_name: 'Гаврилович',
+            city: 'Гудермес',
+            email: 'frolbobrova@lubimovka.ru',
+            image: 'https://lubimovka.kiryanov.ru/media/images/person_avatars/%D0%A4%D1%80%D0%BE%D0%BB_%D0%91%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D0%B0.jpg'
+          },
+          {
+            id: 71,
+            created: '2021-10-29T21:30:58',
+            modified: '2021-10-29T21:30:59',
+            first_name: 'Виктория',
+            last_name: 'Артемьев',
+            middle_name: 'Рудольфовна',
+            city: '',
+            email: null,
+            image: 'https://lubimovka.kiryanov.ru/media/images/person_avatars/%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D1%8F_%D0%90%D1%80%D1%82%D0%B5%D0%BC%D1%8C%D0%B5%D0%B2.jpg'
+          },
+          {
+            id: 93,
+            created: '2021-10-29T21:31:10',
+            modified: '2021-10-29T21:31:11',
+            first_name: 'Софон',
+            last_name: 'Антонов',
+            middle_name: 'Феоктистович',
+            city: '',
+            email: null,
+            image: 'https://lubimovka.kiryanov.ru/media/images/person_avatars/%D0%A1%D0%BE%D1%84%D0%BE%D0%BD_%D0%90%D0%BD%D1%82%D0%BE%D0%BD%D0%BE%D0%B2.jpg'
+          },
+          {
+            id: 66,
+            created: '2021-10-29T21:30:55',
+            modified: '2021-10-29T21:30:56',
+            first_name: 'Петр',
+            last_name: 'Гаврилова',
+            middle_name: 'Захаровна',
+            city: 'Старая Русса',
+            email: 'petrgavrilova@lubimovka.ru',
+            image: 'https://lubimovka.kiryanov.ru/media/images/person_avatars/%D0%9F%D0%B5%D1%82%D1%80_%D0%93%D0%B0%D0%B2%D1%80%D0%B8%D0%BB%D0%BE%D0%B2%D0%B0.jpg'
+          },
+          {
+            id: 26,
+            created: '2021-10-29T21:30:25',
+            modified: '2021-10-29T21:30:25',
+            first_name: 'Бронислав',
+            last_name: 'Голубева',
+            middle_name: 'Васильевич',
+            city: '',
+            email: null,
+            image: null,
+          }
+        ]
+      }
+    },
+    {
+      content_type: 'performancesblock',
+      content_item: {
+        title: 'Блок из спектаклей',
+        items: [
+          {
+            id: 3,
+            created: '2021-11-06T22:05:25',
+            modified: '2021-11-06T22:05:25',
+            name: 'Спектакль',
+            main_image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_0MikxV2.gif',
+            bottom_image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_ZoL6O6L.gif',
+            video: '',
+            description: 'Краткое описание',
+            text: 'Полное описание',
+            age_limit: 18,
+            play: 2,
+            event: 1,
+            images_in_block: [],
+            persons: []
+          },
+          {
+            id: 6,
+            created: '2021-11-06T22:10:29',
+            modified: '2021-11-06T22:10:29',
+            name: 'Спектакль 2',
+            main_image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif',
+            bottom_image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_HYdUKNE.gif',
+            video: 'http://ya.ru',
+            description: 'Краткое описание спект 2',
+            text: 'Полное описание спект 2',
+            age_limit: 16,
+            play: 1,
+            event: 2,
+            images_in_block: [],
+            persons: []
+          }
+        ]
+      }
+    },
+    {
+      content_type: 'text',
+      content_item: {
+        text: 'Текст это тоже простой блок текста без заголовка.'
+      }
+    }
+  ],
+  created: '',
+  modified: '',
 };
+
+export default project;
