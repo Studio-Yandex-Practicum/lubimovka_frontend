@@ -11,6 +11,6 @@ const Template: ComponentStory<typeof FileInput> = (args) => <FileInput {...args
 
 export const Default = Template.bind({});
 Default.args = {
-  localFileName: 'Чехов_Чайка.pdf',
+  fileName: 'Чехов_Чайка.pdf',
   errorText: 'Файл содержит кириллицу, пожалуйста, переименуйте его.',
 };
