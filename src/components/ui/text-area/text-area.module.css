@@ -5,15 +5,20 @@
   display: block;
   width: 100%;
   height: auto;
-  padding: scale(8px 0);
+  padding: scale(8px);
   border: 0;
   border-bottom: 1px solid var(--coal);
   background-color: transparent;
   border-radius: 0;
+  outline: none;
 
   &::placeholder {
     color: var(--coal);
     opacity: .7;
+  }
+
+  &:focus {
+    border-right: 1px solid var(--coal);
   }
 }
 
@@ -28,4 +33,8 @@
 
 .invalid {
   border-color: var(--red);
+
+  &:focus {
+    border-right: 1px solid var(--red);
+  }
 }
