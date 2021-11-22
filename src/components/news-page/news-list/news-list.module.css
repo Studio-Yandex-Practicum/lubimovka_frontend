@@ -1,0 +1,12 @@
+.newsList {
+  display: flex;
+  max-width: scale(900px);
+  flex-direction: column;
+  justify-content: center;
+  padding: scale(0 300px 234px 240px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(280px);
+    padding: scale(0 0 0 50px);
+  }
+}

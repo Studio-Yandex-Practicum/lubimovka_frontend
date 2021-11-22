@@ -27,7 +27,7 @@ export const NewsCard: React.FC<INewsCardProps> = (props) => {
   } = props;
 
   return (
-    <Link href={`/news/${encodeURIComponent(newsId)}`}>
+    <Link href={`/news/article/${encodeURIComponent(newsId)}`}>
       <a className={cx('wrapper', {mainPageWrapper: isMainPage}, [className])}>
         <div className={cx('container')}>
           <h5 className={cx('title', {mainPageTitle: isMainPage})}>{title}</h5>
