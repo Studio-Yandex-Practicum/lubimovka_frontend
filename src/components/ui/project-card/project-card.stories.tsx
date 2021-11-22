@@ -7,7 +7,7 @@ export default {
   component: ProjectCard,
 } as ComponentMeta<typeof ProjectCard>;
 
-const Template: ComponentStory<typeof ProjectCard> = (args) => <ProjectCard {...args} />;
+const Template: ComponentStory<typeof ProjectCard> = (args) => <ProjectCard {...args}/>;
 
 export const LubimovkaMore = Template.bind({});
 LubimovkaMore.args = {  

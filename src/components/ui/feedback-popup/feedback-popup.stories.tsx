@@ -55,14 +55,14 @@ export default {
   component: FeedbackPopup,
   decorators: [
     (Story) => (
-      <div style={{margin: '0 auto', maxWidth: '840px'}}>
+      <div style={{ margin: '0 auto', maxWidth: '840px' }}>
         <Story/>
       </div>
     ),
   ],
 } as ComponentMeta<typeof FeedbackPopup>;
 
-const Template: ComponentStory<typeof FeedbackPopup> = (args) => <FeedbackPopup {...args} />;
+const Template: ComponentStory<typeof FeedbackPopup> = (args) => <FeedbackPopup {...args}/>;
 
 export const Default = Template.bind({});
 Default.args = {

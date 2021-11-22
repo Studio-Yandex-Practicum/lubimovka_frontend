@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import {Icon} from '../icon';
+import { Icon } from '../icon';
 import cn from 'classnames';
 import styles from './tag.module.css';
 

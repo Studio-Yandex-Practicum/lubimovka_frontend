@@ -7,14 +7,14 @@ export default {
   component: TextArea,
   decorators: [
     (Story) => (
-      <div style={{margin: '0 auto', maxWidth: '360px'}}>
+      <div style={{ margin: '0 auto', maxWidth: '360px' }}>
         <Story/>
       </div>
     ),
   ],
 } as ComponentMeta<typeof TextArea>;
 
-const Template: ComponentStory<typeof TextArea> = (args) => <TextArea {...args} />;
+const Template: ComponentStory<typeof TextArea> = (args) => <TextArea {...args}/>;
 
 export const Default = Template.bind({});
 Default.args = {

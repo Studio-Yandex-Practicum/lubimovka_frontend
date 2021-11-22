@@ -1,4 +1,4 @@
-.textInput {
+.input {
   @mixin text;
   @mixin textSmall;
 
@@ -17,14 +17,14 @@
 }
 
 .error {
-  border-color: var(--red);
-}
-
-.errorMessage {
   @mixin text;
   @mixin textCaption;
 
   display: inline-block;
   margin-top: scale(3px);
   color: var(--red);
+}
+
+.invalid {
+  border-color: var(--red);
 }

@@ -45,7 +45,7 @@ export const ReviewCarousel: FC<IReviewCarousel> = (props) => {
     <div className={cx(mode)}>
       <div className={cx('header')}>
         <h2 className={cx('title')}>
-          { title }
+          {title}
         </h2>
         {carousel && (
           <>

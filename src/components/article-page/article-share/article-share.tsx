@@ -3,7 +3,7 @@ import React from 'react';
 import cn from 'classnames/bind';
 
 import styles from './article-share.module.css';
-import {ShareLink} from '../../ui/share-link';
+import { ShareLink } from '../../ui/share-link';
 
 const cx = cn.bind(styles);
 
@@ -39,14 +39,14 @@ const ArticleShare: React.FC<IArticleShare> = (props) => {
   } = props;
 
   return (
-    <section className={cx('container', {newsContainer: !isBlog})}>
-      { (authors.length + photographers.length + illustrators.length > 0) &&
+    <section className={cx('container', { newsContainer: !isBlog })}>
+      {(authors.length + photographers.length + illustrators.length > 0) &&
         <div className={cx('creators')}>
           {renderCreators('Текст', authors)}
           {renderCreators('Фото', photographers)}
           {renderCreators('Иллюстрации', illustrators)}
         </div>}
-      <div className={cx('share', {blogShare: isBlog, newsShare: !isBlog})}>
+      <div className={cx('share', { blogShare: isBlog, newsShare: !isBlog })}>
         <ShareLink className={cx('links')}/>
         <h4 className={cx('shareTitle')}>
           Поделиться <br/>{isBlog ? 'записью' : 'новостью'} в соцсетях</h4>

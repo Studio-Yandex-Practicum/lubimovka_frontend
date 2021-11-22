@@ -14,5 +14,12 @@
 
 .buttons {
   display: flex;
+  max-width: 100%;
   margin-top: scale(80px);
+}
+
+.button {
+  @media (max-width: $tablet-portrait) {
+    width: scale(183px);
+  }
 }

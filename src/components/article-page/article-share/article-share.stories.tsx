@@ -8,7 +8,7 @@ export default {
 
 } as ComponentMeta<typeof ArticleShare>;
 
-const Template: ComponentStory<typeof ArticleShare> = (args) => <ArticleShare {...args} />;
+const Template: ComponentStory<typeof ArticleShare> = (args) => <ArticleShare {...args}/>;
 
 export const BlogShare = Template.bind({});
 BlogShare.args = {
