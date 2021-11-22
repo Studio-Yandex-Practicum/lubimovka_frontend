@@ -1,14 +1,13 @@
 {
   "extends": [
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "next/core-web-vitals"
   ],
-  "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint"
   ],
   "rules": {
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "no-console": ["error"],
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
