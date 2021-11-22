@@ -1,5 +1,6 @@
-.componentContainer {
+.opportunityWrapper {
   padding: 0;
+  border: 1px solid red;
   margin: 0;
 }
 
@@ -8,7 +9,7 @@
   flex-flow: row nowrap;
 }
 
-.componentContainer:nth-child(even) > .intro {
+.opportunityWrapper:nth-child(even) > .intro {
   flex-flow: row-reverse nowrap;
 }
 

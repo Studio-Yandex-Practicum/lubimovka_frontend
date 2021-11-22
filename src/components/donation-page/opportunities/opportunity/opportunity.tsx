@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import Image from 'next/image';
-import { Url } from '../../../shared/types/common';
+import { Url } from '../../../../shared/types/common';
 import cn from 'classnames/bind';
 import styles from './opportunity.module.css';
 
@@ -16,7 +15,7 @@ export const Opportunity: FC<IOpportunityProps> = (props) => {
   const { title, picture, kickies } = props;
 
   return (
-    <section className={cx('componentContainer')}>
+    <div className={cx('opportunityWrapper')}>
       <div className={cx('intro')}>
         <h2 className={cx('header')}>
           {title}
@@ -32,6 +31,6 @@ export const Opportunity: FC<IOpportunityProps> = (props) => {
           );
         })}
       </ul>
-    </section>
+    </div>
   );
 };

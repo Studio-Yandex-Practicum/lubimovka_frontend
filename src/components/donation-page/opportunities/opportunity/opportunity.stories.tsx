@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import mockData from '../../../pages/donation/assets/mock-donation-data.json';
+import mockData from '../../../../pages/donation/assets/mock-donation-data.json';
 
 import { Opportunity } from './opportunity';
 
