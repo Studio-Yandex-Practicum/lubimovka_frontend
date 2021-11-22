@@ -14,11 +14,7 @@ import informationData from './assets/information-author-data.json';
 import cn from 'classnames';
 import styles from 'components/author-page/author.module.css';
 
-interface IAuthorPageProps {
-  title: string;
-}
-
-const Author: NextPage<IAuthorPageProps> = (props: IAuthorPageProps) => {
+const Author: NextPage = () => {
   return (
     <AppLayout>
       <div className={ cn(styles.author) }>

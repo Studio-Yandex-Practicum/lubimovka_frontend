@@ -15,6 +15,7 @@ MonthsDroplist.args = {
   type: 'radio',
   defaultListType: 'months',
   cb: string => {
+    // eslint-disable-next-line no-console
     console.log(string);
   },
   data: [
@@ -33,6 +34,7 @@ export const YearsDroplist = Template.bind({});
 YearsDroplist.args = {
   defaultListType: 'years',
   cb: string => {
+    // eslint-disable-next-line no-console
     console.log(string);
   },
   data: [
@@ -48,6 +50,7 @@ export const DefaultMonthsDroplist = Template.bind({});
 DefaultMonthsDroplist.args = {
   defaultListType: 'months',
   cb: string => {
+    // eslint-disable-next-line no-console
     console.log(string);
   },
 };
@@ -57,6 +60,7 @@ export const DefaultYearsDroplist = Template.bind({});
 DefaultYearsDroplist.args = {
   defaultListType: 'years',
   cb: string => {
+    // eslint-disable-next-line no-console
     console.log(string);
   },
 };
