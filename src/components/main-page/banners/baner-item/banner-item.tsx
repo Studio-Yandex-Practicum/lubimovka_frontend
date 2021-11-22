@@ -19,6 +19,7 @@ interface IMainBannerItemProps {
 
 export const MainBannerItem: FC<IMainBannerItemProps> = ({ item, cb }):JSX.Element => {
   const bannerRef = useRef<HTMLDivElement>(null);
+  const bannerContainer = useRef<HTMLDivElement>(null);
 
   const {
     title,
@@ -30,8 +31,8 @@ export const MainBannerItem: FC<IMainBannerItemProps> = ({ item, cb }):JSX.Eleme
   } = item;
 
   useEffect(() => {
-    if (bannerRef.current) {
-      cb(bannerRef.current);
+    if (bannerRef.current && bannerContainer) {
+      cb(bannerRef.current, bannerContainer.current);
     }
   }, []);
 
@@ -40,7 +41,7 @@ export const MainBannerItem: FC<IMainBannerItemProps> = ({ item, cb }):JSX.Eleme
       <h2 className={ cn(styles.title) }>
         { title }
       </h2>
-      <div className={ cn(styles.container) }>
+      <div className={ cn(styles.container) } ref={ bannerContainer }>
         <div className={ cn(styles.content) }>
           <p className={ cn(styles.desc) }>
             { desc }

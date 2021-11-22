@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import cn from 'classnames';
 
 import { MainBannerItem } from './baner-item';
@@ -20,45 +20,24 @@ interface IMainBannersProps {
 }
 
 export const MainBanners: FC<IMainBannersProps> = ({ data }):JSX.Element => {
-  
-  // const [isWaiting, setIsWaiting] = useState(false);
+  function debounce(cb: () => void, delay: number) {
+    let timer: NodeJS.Timeout;
+    return function() {
+      clearTimeout(timer);
+      timer = setTimeout(cb, delay || 0);
+    };
+  }
 
-  // function throttle (cb: () => void, delay: number) {
-  //   let isWaiting = false;
-  //   function wraper() {
-  //     // Ждем, ничего не возвращаем
-  //     if (isWaiting) {
-  //       console.log(1);
-  //       return;
-  //     }
-  //     // Иначе вызываем cb, и ждем
-  //     cb();
-  //     isWaiting = true;
-  //     setTimeout(() => {
-  //       isWaiting = false;
-  //     }, delay);
-  //   }
-
-  //   return wraper;
-  // }
-
-  // function debounce(cb: () => void, delay: number) {
-  //   let timer: NodeJS.Timeout;
-  //   return function(...args) {
-  //     clearTimeout(timer);
-  //     timer = setTimeout(cb.bind(this, ...args), delay || 0);
-  //   };
-  // }
-
-  const cb = (bannerRef: HTMLDivElement) => {
+  const cb = (bannerRef: HTMLDivElement, bannerContainer: HTMLDivElement) => {
     function scrollHandler() {
       if (bannerRef.getBoundingClientRect().top < 0) {
-        bannerRef.classList.add(cn(styles.bannerHide));
+        bannerContainer.classList.add(cn(styles.hideContainer));
         return;
       }
-      bannerRef.classList.remove(cn(styles.bannerHide));
+      bannerContainer.classList.remove(cn(styles.hideContainer));
     }
-    window.addEventListener('scroll', scrollHandler);
+    const handlerDebounced = debounce(scrollHandler, 10);
+    window.addEventListener('scroll', handlerDebounced);
   };
 
   return (
@@ -75,4 +54,3 @@ export const MainBanners: FC<IMainBannersProps> = ({ data }):JSX.Element => {
     </section>
   );
 };
-

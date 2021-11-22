@@ -1,5 +1,5 @@
 .banners {
-  padding: 0 scale(32px);
+  padding: 0 scale(32px) scale(50px);
   grid-area: banners;
 }
 
@@ -9,6 +9,7 @@
   list-style: none;
 }
 
-.bannerHide {
-  max-height: scale(54px);
+.hideContainer {
+  overflow: hidden;
+  max-height: 0;
 }

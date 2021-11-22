@@ -1,11 +1,13 @@
 .banner {
+  display: flex;
   overflow: hidden;
   width: 100%;
   max-width: scale(1100px);
-  max-height: scale(600px);
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* min-height: scale(343px); */
   border-top: scale(1px) solid var(--coal);
-  margin-bottom: scale(50px);
-  transition: all .3s ease-out;
 }
 
 .title {
@@ -18,10 +20,12 @@
 
 .container {
   display: grid;
+  max-height: scale(300px);
   justify-content: space-between;
   column-gap: scale(16px);
-  grid-template-columns: repeat(auto-fit, minmax(scale(468px), max-content));
+  grid-template-columns: repeat(auto-fit, minmax(scale(486px), max-content));
   row-gap: scale(16px);
+  transition: all .4s ease-out;
 }
 
 .content {
@@ -41,6 +45,7 @@
 
   display: flex;
   max-width: scale(486px);
+  height: scale(228px);
 }
 
 @media (max-width: $tablet-portrait) {
@@ -53,18 +58,19 @@
   }
 
   .content {
-    padding: scale(0);
+    padding: 0;
   }
 
   .desc {
     max-width: scale(318px);
-    margin: scale(0);
+    margin: 0;
     margin-bottom: scale(28px);
 
     @mixin textMedium;
   }
 
   .container {
+    max-height: scale(452px);
     grid-template-columns: repeat(auto-fit, minmax(scale(366px), max-content));
   }
 }
