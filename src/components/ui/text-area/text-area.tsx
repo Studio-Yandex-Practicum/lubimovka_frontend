@@ -1,31 +1,39 @@
+import { InputHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
-
 import styles from './text-area.module.css';
 const cx = classNames.bind(styles);
 
-interface ITextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  ariaLabel: string;
-  errorMessage?: string;
-  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+interface ITextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
+  errorText?: string;
+  onChange?: (value: string) => void;
+  rows?: number;
 }
 
 const TextArea = (props: ITextAreaProps): JSX.Element => {
   const {
-    ariaLabel,
-    errorMessage = '',
+    errorText,
     onChange,
     ...restProps
   } = props;
 
+  const handleChange = ({ target: { value } }: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (!onChange) return;
+
+    onChange(value);
+  };
+
   return (
     <>
       <textarea
-        className={cx('textArea', { error: errorMessage })}
-        aria-label={ariaLabel}
-        onChange={onChange}
+        className={cx('input', { invalid: !!errorText })}
+        onChange={handleChange}
         {...restProps}
       />
-      {errorMessage && <span className={cx('errorMessage')}>{errorMessage}</span>}
+      {errorText && (
+        <p className={cx('error')}>
+          {errorText}
+        </p>
+      )}
     </>
   );
 };
