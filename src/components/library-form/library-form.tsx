@@ -28,7 +28,7 @@ const LibraryForm: FC = () => {
       />
       <Button label='Искать' size='s' icon='arrow-right'
         iconPlace='left' border='none' isLink={true}
-        href='/library/search-result' align='start' className={style.button} />
+        href='/library/search-result' align='start' className={style.button}/>
     </form>
   );
 };

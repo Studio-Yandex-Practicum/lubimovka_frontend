@@ -13,7 +13,7 @@ const Ideology: NextPage = () => (
     </Head>
     <>
       {textData.map((el) => (
-        <TextSection key={el.id} data={el} />
+        <TextSection key={el.id} data={el}/>
       ))}
     </>
   </AppLayout>

@@ -7,7 +7,7 @@ export default {
   component: Droplist,
 } as ComponentMeta<typeof Droplist>;
 
-const Template: ComponentStory<typeof Droplist> = (args) => <Droplist {...args} />;
+const Template: ComponentStory<typeof Droplist> = (args) => <Droplist {...args}/>;
 
 // Формирую массив dataType самостоятельно, из БД
 export const MonthsDroplist = Template.bind({});

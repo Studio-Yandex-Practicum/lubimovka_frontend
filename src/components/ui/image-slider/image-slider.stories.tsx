@@ -22,14 +22,14 @@ export default {
   component: ImageSlider,
   decorators: [
     (Story) => (
-      <div style={{margin: '0 auto', maxWidth: '840px'}}>
+      <div style={{ margin: '0 auto', maxWidth: '840px' }}>
         <Story/>
       </div>
     ),
   ],
 } as ComponentMeta<typeof ImageSlider>;
 
-const Template: ComponentStory<typeof ImageSlider> = (args) => <ImageSlider {...args} />;
+const Template: ComponentStory<typeof ImageSlider> = (args) => <ImageSlider {...args}/>;
 
 export const Default = Template.bind({});
 Default.args = {

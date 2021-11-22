@@ -14,14 +14,14 @@ export default {
   decorators: [
     (Story) => (
       <div style={{ margin: '0 auto', maxWidth: '420px' }}>
-        <Story />
+        <Story/>
       </div>
     ),
   ],
 } as ComponentMeta<typeof Form>;
 
 const Template: ComponentStory<typeof Form> = (args) => {
-  return <Form {...args} />;
+  return <Form {...args}/>;
 };
 
 export const ContactForm = Template.bind({});

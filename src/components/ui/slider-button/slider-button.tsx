@@ -1,8 +1,8 @@
-import {ButtonHTMLAttributes, FC} from 'react';
+import { ButtonHTMLAttributes, FC } from 'react';
 import cn from 'classnames';
 import classNames from 'classnames/bind';
 
-import {Icon} from '../icon';
+import { Icon } from '../icon';
 
 import styles from './slider-button.module.css';
 
@@ -14,7 +14,7 @@ interface ISliderButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const cx = classNames.bind(styles);
 
 export const SliderButton: FC<ISliderButtonProps> = (props) => {
-  const {className, direction, ...restProps } = props;
+  const { className, direction, ...restProps } = props;
   const arrowIcon = ({
     left: 'arrow-left',
     right: 'arrow-right',
@@ -38,7 +38,7 @@ export const SliderButton: FC<ISliderButtonProps> = (props) => {
 
   return(
     <button className={cn(styles.sliderButton, className)} type='button' {...restProps}>
-      <div className={firstCircleStyles} />
+      <div className={firstCircleStyles}/>
       <div className={secondCircleStyles}/>
       <Icon glyph={arrowIcon} className={cn(styles.arrow)}/>
     </button>

@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import { FC } from 'react';
 import cn from 'classnames/bind';
 import { ForPressHeroTitle } from 'components/for-press-hero/for-press-hero-title';
 import dataHeroTitle from 'components/for-press-hero/for-press-hero-title/assets/mock-data.json';
