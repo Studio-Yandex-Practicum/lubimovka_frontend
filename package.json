@@ -12,7 +12,8 @@
     "lint:css": "stylelint **/*.css --cache --allow-empty-input --fix",
     "storybook": "start-storybook -s public -p 3001",
     "build-storybook": "build-storybook -s public",
-    "update-typings": "rm -rf ./src/api-typings && npx openapi-typescript-codegen --input https://lubimovka.kiryanov.ru/api/v1/schema --output ./src/api-typings --useUnionTypes --exportCore false --exportServices false"
+    "update-typings": "rm -rf ./src/api-typings && npx openapi-typescript-codegen --input https://lubimovka.kiryanov.ru/api/v1/schema --output ./src/api-typings --useUnionTypes --exportCore false --exportServices false",
+    "update-git-hooks": "npx simple-git-hooks"
   },
   "repository": {
     "type": "git",
