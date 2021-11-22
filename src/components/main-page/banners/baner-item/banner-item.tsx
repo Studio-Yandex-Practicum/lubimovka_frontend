@@ -14,7 +14,7 @@ interface IMainBannerItemProps {
     imgAlt: string
     imgUrl: string
   },
-  cb: (bannerRef: HTMLDivElement) => void
+  cb: (bannerRef: HTMLDivElement, bannerContainer: HTMLDivElement) => void
 }
 
 export const MainBannerItem: FC<IMainBannerItemProps> = ({ item, cb }):JSX.Element => {
@@ -31,7 +31,7 @@ export const MainBannerItem: FC<IMainBannerItemProps> = ({ item, cb }):JSX.Eleme
   } = item;
 
   useEffect(() => {
-    if (bannerRef.current && bannerContainer) {
+    if (bannerRef.current && bannerContainer.current) {
       cb(bannerRef.current, bannerContainer.current);
     }
   }, []);
@@ -54,6 +54,7 @@ export const MainBannerItem: FC<IMainBannerItemProps> = ({ item, cb }):JSX.Eleme
             border='bottomLeft'
             isLink={ true }
             href={ buttonUrl }
+            className={cn(styles.button)}
           />
         </div>
         <img 

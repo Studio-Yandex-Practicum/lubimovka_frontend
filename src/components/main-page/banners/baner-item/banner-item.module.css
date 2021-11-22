@@ -5,8 +5,6 @@
   max-width: scale(1100px);
   flex-direction: column;
   justify-content: space-between;
-
-  /* min-height: scale(343px); */
   border-top: scale(1px) solid var(--coal);
 }
 
@@ -19,12 +17,9 @@
 }
 
 .container {
-  display: grid;
+  display: flex;
   max-height: scale(300px);
   justify-content: space-between;
-  column-gap: scale(16px);
-  grid-template-columns: repeat(auto-fit, minmax(scale(486px), max-content));
-  row-gap: scale(16px);
   transition: all .4s ease-out;
 }
 
@@ -37,7 +32,11 @@
   @mixin textLarge;
 
   max-width: scale(384px);
-  margin: scale(0 0 24px 62px);
+  margin: 0 scale(62px 24px 62px);
+}
+
+.button {
+  margin-bottom: scale(20px);
 }
 
 .img {
@@ -50,11 +49,11 @@
 
 @media (max-width: $tablet-portrait) {
   .banners {
-    padding: scale(0 24px);
+    padding: 0 scale(24px);
   }
 
   .title {
-    padding: scale(16px 0);
+    padding: scale(16px) 0;
   }
 
   .content {
@@ -70,7 +69,12 @@
   }
 
   .container {
+    display: grid;
     max-height: scale(452px);
     grid-template-columns: repeat(auto-fit, minmax(scale(366px), max-content));
+  }
+
+  .button {
+    margin: 0 scale(20px 16px) auto;
   }
 }

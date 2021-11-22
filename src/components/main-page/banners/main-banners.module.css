@@ -1,5 +1,5 @@
 .banners {
-  padding: 0 scale(32px) scale(50px);
+  padding: 0 scale(32px 50px);
   grid-area: banners;
 }
 
@@ -12,4 +12,10 @@
 .hideContainer {
   overflow: hidden;
   max-height: 0;
+}
+
+@media (max-width: $tablet-portrait) {
+  .banners {
+    padding-top: scale(56px);
+  }
 }
