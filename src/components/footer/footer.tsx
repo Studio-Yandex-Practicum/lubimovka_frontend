@@ -27,7 +27,7 @@ export const Footer = (props: IFooterProps): JSX.Element => {
   return (
     <footer className={cx('footer', className)}>
       <Logo className={cx('logo')}/>
-      {children}
+
       <div className={cx('footnote')}>
         <div className={cx('copyright')}>
           &copy; Любимовка, {new Date().getFullYear()}

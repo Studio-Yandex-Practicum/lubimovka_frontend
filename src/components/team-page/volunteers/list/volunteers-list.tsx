@@ -61,24 +61,25 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
   function handleFeedbackPopupClick(idx: number) {
     setIsFeedbackPopupOpen(true);
     setSlide(idx);
+    console.log(idx);
   }
 
   function closeFeedbackPopup() {
     setIsFeedbackPopupOpen(false);
   }
 
-  const handleEscClose = (evt: KeyboardEvent) => {
-    if (evt.key === 'Escape') {
-      closeFeedbackPopup();
-    }
-  };
+  //const handleEscClose = (evt: KeyboardEvent) => {
+  //  if (evt.key === 'Escape') {
+  //    closeFeedbackPopup();
+  //  }
+  //};
 
-  const handleOverlayClose = (evt: MouseEvent)  => {
-    const target = evt.target as HTMLElement;
-    if (target.classList.contains('keen-slider__slide')) {
-      closeFeedbackPopup();
-    }
-  };
+  //const handleOverlayClose = (evt: MouseEvent)  => {
+  //  const target = evt.target as HTMLElement;
+  //  if (target.classList.contains('keen-slider__slide')) {
+  //    closeFeedbackPopup();
+  //  }
+  //};
 
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
@@ -88,14 +89,14 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
     slider?.refresh();
   }, [screenWidth, currentYear]);
 
-  useEffect(() => {
-    document.addEventListener('keydown', handleEscClose);
-    document.addEventListener('mousedown', handleOverlayClose);
-    return() =>{
-      document.removeEventListener('keydown', handleEscClose);
-      document.removeEventListener('mousedown', handleOverlayClose);
-    };
-  }, []);
+  //useEffect(() => {
+  //  document.addEventListener('keydown', handleEscClose);
+  //  document.addEventListener('mousedown', handleOverlayClose);
+  //  return() =>{
+  //    document.removeEventListener('keydown', handleEscClose);
+  //    document.removeEventListener('mousedown', handleOverlayClose);
+  //  };
+  //}, []);
 
   return (
     <>

@@ -9,6 +9,7 @@ import { Url } from 'shared/types';
 
 
 import styles from './feedback-popup.module.css';
+import { Modal } from '../modal';
 const cx = classNames.bind(styles);
 
 export type PersonCardData = {
@@ -28,8 +29,8 @@ export type PersonCardData = {
 }
 
 interface IFeedbackPopupProps {
-  onClose: React.MouseEventHandler<HTMLButtonElement>,
-  isOpen?: boolean;
+  onClose: () => void,
+  isOpen: boolean;
   cards: Array<PersonCardData>;
   currentYear: number;
   openedSlide: number
@@ -62,60 +63,67 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
     slider?.refresh();
   }, [screenWidth, currentYear]);
 
+  // в общем проблем 2:
+  // 1. при оборачивании в Modal удается установить только фиксированную ширину для контейнеров + замножаются слайды
+  // 2. прошлая реализация тоже стала работать не корректно
+  //
+  //пс. вообще уже не понимаю, что делать
+
   return (
-    <div ref={sliderRef} className={cx('keen-slider', 'slider', {[styles.isOpen]: isOpen})}>
-      {cards.map((card) => (
-        <div
-          key={card.id}
-          className={cx('keen-slider__slide', 'slide')}
-        >
-          <div className={cx('container')}>
-            {slider &&
-            <>
-              <SliderButton
-                direction='left'
-                className={cx('arrow', 'arrowLeft')}
-                onClick={slider.prev}
-              />
-              {Number(screenWidth) < 729 &&
-              <button className={cx('buttonClose')} onClick={onClose}>
-                <Icon
-                  className={cx('cross')}
-                  glyph={'cross'}
+    <Modal Backdrop={Modal.Backdrop} isOpen={isOpen} onClose={onClose}>
+      <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
+        {cards.map((card) => (
+          <div
+            key={card.id}
+            className={cx('keen-slider__slide', 'slide')}
+          >
+            <div className={cx('slideContainer')}>
+              {slider &&
+              <>
+                <SliderButton
+                  direction='left'
+                  className={cx('arrow', 'arrowLeft')}
+                  onClick={slider.prev}
                 />
-              </button>}
-              <img
-                className={cx('image')}
-                src={card.person.image}
-              />
-              <h2 className={cx('name')}>{`${card.person.first_name} ${card.person.last_name}`}</h2>
-              {Number(screenWidth) < 729 &&
-              <SliderDots
-                className={cx('dots')}
-                count={slider.details().size}
-                currentSlide={currentSlide}
-                onClick={(idx) => slider.moveToSlideRelative(idx)}
-              />}
-              <p className={cx('title')}>{card.review_title}</p>
-              <p className={cx('text')}>{card.review_text}</p>
-              {Number(screenWidth) > 728 &&
-              <SliderDots
-                className={cx('dots')}
-                count={slider.details().size}
-                currentSlide={currentSlide}
-                onClick={(idx) => slider.moveToSlideRelative(idx)}
-              />}
-              <SliderButton
-                direction='right'
-                className={cx('arrow', 'arrowRight')}
-                onClick={slider.next}
-              />
-            </>
-            }
+                {Number(screenWidth) < 729 &&
+                <button className={cx('buttonClose')} onClick={onClose}>
+                  <Icon
+                    className={cx('cross')}
+                    glyph={'cross'}
+                  />
+                </button>}
+                <img
+                  className={cx('image')}
+                  src={card.person.image}
+                />
+                <h2 className={cx('name')}>{`${card.person.first_name} ${card.person.last_name}`}</h2>
+                {Number(screenWidth) < 729 &&
+                <SliderDots
+                  className={cx('dots')}
+                  count={slider.details().size}
+                  currentSlide={currentSlide}
+                  onClick={(idx) => slider.moveToSlideRelative(idx)}
+                />}
+                <p className={cx('title')}>{card.review_title}</p>
+                <p className={cx('text')}>{card.review_text}</p>
+                {Number(screenWidth) > 728 &&
+                <SliderDots
+                  className={cx('dots')}
+                  count={slider.details().size}
+                  currentSlide={currentSlide}
+                  onClick={(idx) => slider.moveToSlideRelative(idx)}
+                />}
+                <SliderButton
+                  direction='right'
+                  className={cx('arrow', 'arrowRight')}
+                  onClick={slider.next}
+                />
+              </>
+              }
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </Modal>
   );
 };
-

@@ -13,7 +13,7 @@ interface IModalProps {
   children: ReactNode,
   isOpen: boolean,
   onClose: () => void,
-  Backdrop?: FC<IModalBackdropProps>
+  Backdrop?: FC<IModalBackdropProps>,
 }
 
 export const Modal = (props: IModalProps): JSX.Element | null=> {
