@@ -26,9 +26,20 @@ const mockCard = {
   }
 };
 
+type Letter = string;
+
+interface IAccElem {
+  title: Letter
+  data: string[]
+}
+
+interface IFilteredAuthors {
+  [key: Letter]: IAccElem
+}
+
 const filteredAuthors = Object.values(
-  mockAuthors.reduce((acc, author) => {
-    const firstLetter: string = author[0].toLocaleUpperCase();
+  mockAuthors.reduce((acc:IFilteredAuthors, author) => {
+    const firstLetter: Letter = author[0].toLocaleUpperCase();
     if (!acc[firstLetter]) {
       acc[firstLetter] = { title: firstLetter, data: [author] };
     } else {

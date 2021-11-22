@@ -1,7 +1,7 @@
 .page {
-  padding-top: 65px;
+  padding-top: scale(65px);
   padding-right: scale(120px);
-  padding-bottom: 165px;
+  padding-bottom: scale(165px);
   padding-left: scale(120px);
 
   @media (max-width: $tablet-portrait) {
@@ -42,8 +42,8 @@
   @mixin headline3;
 
   max-width: scale(740px);
-  padding-top: 30px;
-  padding-bottom: 25px;
+  padding-top: scale(30px);
+  padding-bottom: scale(25px);
 
   @media (max-width: $tablet-portrait) {
     order: 2;
@@ -58,7 +58,7 @@
 .result {
   display: flex;
   flex-wrap: nowrap;
-  margin-top: 66px;
+  margin-top: scale(66px);
   margin-left: calc(scale(24px) * -1);
   column-gap: scale(70px);
 
