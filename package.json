@@ -8,7 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint:js": "eslint src/** --cache --ext .jsx,.js,.tsx,.ts",
+    "lint:js": "next lint",
     "lint:css": "stylelint **/*.css --cache --allow-empty-input --fix",
     "storybook": "start-storybook -s public -p 3001",
     "build-storybook": "build-storybook -s public",
@@ -45,6 +45,7 @@
     "babel-loader": "8.2.2",
     "classnames": "2.3.1",
     "eslint": "7.32.0",
+    "eslint-config-next": "12.0.4",
     "eslint-plugin-react": "7.26.1",
     "fetch-mock": "9.11.0",
     "lint-staged": "11.1.2",
@@ -64,9 +65,5 @@
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "*.css": "stylelint **/*.css --cache --allow-empty-input --fix",
-    "**/*.(ts|js)?(x)": "eslint --cache"
   }
 }
