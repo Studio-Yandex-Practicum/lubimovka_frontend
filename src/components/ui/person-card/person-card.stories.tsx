@@ -9,6 +9,7 @@ export default {
 } as ComponentMeta<typeof PersonCard>;
 
 const exampleHandler = () => {
+  // eslint-disable-next-line no-console
   console.log('Click!');
 };
 

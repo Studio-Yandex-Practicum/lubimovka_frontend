@@ -24,5 +24,6 @@ IconExample.args = {
   label: 'внеконкурсная программа',
   selected: true,
   isIcon: true,
+  // eslint-disable-next-line no-console
   cb: console.log
 };
