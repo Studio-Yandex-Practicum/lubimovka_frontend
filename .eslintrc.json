@@ -11,6 +11,14 @@
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "react/jsx-tag-spacing": ["error", {
+      "closingSlash": "never",
+      "beforeSelfClosing": "never",
+      "afterOpening": "never",
+      "beforeClosing": "never"
+    }],
+    "object-curly-spacing": ["error", "always"],
+    "react/jsx-curly-spacing": ["error", { "when": "never", "attributes": { "allowMultiline": false }, "children": true }]
   }
 }
