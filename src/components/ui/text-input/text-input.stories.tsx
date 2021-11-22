@@ -18,13 +18,11 @@ const Template: ComponentStory<typeof TextInput> = (args) => <TextInput {...args
 
 export const Default = Template.bind({});
 Default.args = {
-  ariaLabel: 'Ваше имя',
   placeholder: 'Ваше имя',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  ariaLabel: 'Ваше имя',
   placeholder: 'Ваше имя',
-  errorMessage: 'Что-то пошло не так...'
+  errorText: 'Что-то пошло не так...'
 };
