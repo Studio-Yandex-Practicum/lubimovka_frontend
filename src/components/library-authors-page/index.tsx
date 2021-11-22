@@ -50,7 +50,7 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
         <div className={styles.pagination}>
           <LibraryPagination letters={letters} authors={authors}
             top={width === 728 ? '60px' : width > 0 && width < 728 ?
-              `${ratio}px` : '86px'} />
+              `${ratio}px` : '92px'} className={width > 727 ? styles.paginateBar : undefined} />
         </div>
       </div>
     </main>
