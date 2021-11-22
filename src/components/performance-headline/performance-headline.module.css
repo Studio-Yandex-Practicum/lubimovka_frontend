@@ -5,7 +5,7 @@
   grid-template:
     "title       image"
     "description image" 1fr
-    "dateTime    image"
+    "date    image"
     "actions     image"
     ".           image" scale(57px)
     ".           text" / 1fr scale(720px);
@@ -15,7 +15,7 @@
     grid-template-areas:
       "title"
       "description"
-      "dateTime"
+      "date"
       "actions"
       "image"
       "image"
@@ -77,12 +77,12 @@
   }
 }
 
-.dateTime {
+.date {
   @mixin headline;
   @mixin headline6;
 
   margin: scale(0 0 16px);
-  grid-area: dateTime;
+  grid-area: date;
 
   @media (max-width: $tablet-portrait) {
     padding-left: scale(89px);

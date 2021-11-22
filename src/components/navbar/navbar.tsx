@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 
 import { NavbarSection } from './section';
 import { NavbarLogotype } from './logotype';
-import { NavbarHelpLink } from './help-link';
 import { NavbarActions } from './actions';
 
 import styles from './navbar.module.css';
@@ -26,5 +25,4 @@ export const Navbar = (props: INavbarProps): JSX.Element => {
 
 Navbar.Section = NavbarSection;
 Navbar.Logotype = NavbarLogotype;
-Navbar.HelpLink = NavbarHelpLink;
 Navbar.Actions = NavbarActions;

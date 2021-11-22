@@ -31,7 +31,7 @@ export const PersonCard: React.FC<IPersonCardProps> = (props) => {
       <img className={cx({imgParticipant:participant, imgVolunteer: !participant})} src={link} alt={name}/>
       {!participant && response &&
       <button className={styles.comment} onClick={handleClick}>
-        <Icon glyph={'comment'}/>
+        <Icon glyph={'comment'} width='100%' height='100%'/>
       </button>}
 
       <h6 className={cx('name', {nameParticipant: participant, nameVolunteer: !participant})} title={name}>{name}</h6>
