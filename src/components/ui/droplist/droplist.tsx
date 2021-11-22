@@ -125,7 +125,8 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
         <div className={ cn(styles.list, {
           [styles.active]: activeDropdown,
         })}>
-          { list.map((item: string | number, i): JSX.Element => (
+          {/* https://github.com/microsoft/TypeScript/issues/36390 */}
+          {(list as any[]).map((item: string | number, i): JSX.Element => (
             <DroplistItems
               item={ item }
               key={ i }
