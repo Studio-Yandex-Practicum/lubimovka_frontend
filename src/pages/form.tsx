@@ -32,6 +32,7 @@ const Participation: NextPage = () => {
   const [playYear, setPlayYear] = useState('');
   const [playYearWasChanged, setPlayYearWasChanged] = useState(false);
   const [playFile, setPlayFile] = useState<Nullable<File>>();
+  const [playFileWasChanged, setPlayFileWasChanged] = useState(false);
 
   const getFirstNameError = () => {
     if (firstName.length < 2) {
@@ -103,6 +104,10 @@ const Participation: NextPage = () => {
   };
 
   const getPlayFileError = () => {
+    if (!playFile) {
+      return 'Файл обязателен';
+    }
+
     // TODO: добавить проверки в соответствии с описанием поля в дизайне
     if (playFile && /[а-яА-ЯЁё]/.test(playFile?.name)) {
       return 'Файл содержит кириллицу, пожалуйста, переименуйте его.';
@@ -156,8 +161,21 @@ const Participation: NextPage = () => {
   };
 
   const handlePlayFileChange = (file: Nullable<File>) => {
+    setPlayFileWasChanged(true);
     setPlayFile(file);
   };
+
+  const canSubmit = (
+    !getFirstNameError()
+    && !getLastNameError()
+    && !getBirthYearError()
+    && !getCityError()
+    && !getPhoneNumberError()
+    && !getEmailError()
+    && !getPlayTitleError()
+    && !getPlayYearError()
+    && !getPlayFileError()
+  );
 
   return (
     <AppLayout>
@@ -199,8 +217,9 @@ const Participation: NextPage = () => {
               playYearError={playYearWasChanged ? getPlayYearError() : undefined}
               onPlayYearChange={handlePlayYearChange}
               playFileName={playFile?.name}
-              playFileError={getPlayFileError()}
+              playFileError={playFileWasChanged ? getPlayFileError() : undefined}
               onPlayFileChange={handlePlayFileChange}
+              canSubmit={canSubmit}
             />
           </PlayProposalLayout.Form>
         </PlayProposalLayout.Column>

@@ -39,6 +39,7 @@ interface IParticipationFormProps {
   playFileName?: string,
   playFileError?: string,
   onPlayFileChange: (file: Nullable<File>) => void,
+  canSubmit: boolean,
 }
 
 const ACCEPTABLE_FILE_TYPES = '.doc, .docx, .txt, .odt, .pdf';
@@ -74,6 +75,7 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
     playFileName,
     playFileError,
     onPlayFileChange,
+    canSubmit,
   } = props;
 
   return (
@@ -139,7 +141,6 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
             <TextInput
               type="tel"
               value={phoneNumber}
-              pattern="[0-9]{3}"
               placeholder="Номер телефона"
               errorText={phoneNumberError}
               onChange={onPhoneNumberChange}
@@ -214,6 +215,7 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
           size="l"
           border="full"
           label="Отправить"
+          disabled={!canSubmit}
         />
       </Form.Actions>
       <Form.Disclaimer>

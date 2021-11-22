@@ -67,6 +67,8 @@ const Contacts: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServ
     setQuestion(value);
   };
 
+  const canSubmit = !getEmailError() && !getEmailError() && !getQuestionError();
+
   return (
     <AppLayout>
       <ContactsLayout>
@@ -111,6 +113,7 @@ const Contacts: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServ
                   label="Отправить"
                   align="space-between"
                   width="100%"
+                  disabled={!canSubmit}
                 />
               </Form.Actions>
               <Form.Disclaimer>
