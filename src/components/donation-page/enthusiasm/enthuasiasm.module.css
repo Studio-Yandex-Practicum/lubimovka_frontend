@@ -12,7 +12,7 @@
   @mixin headline3;
 
   width: scale(629px);
-  padding: 0;
+  margin: scale(59px 0 0 120px);
   white-space: pre-wrap;
 
   @media (max-width: $tablet-portrait) {
@@ -72,7 +72,7 @@
   display: flex;
   flex: 23 23 46%;
   flex-flow: row nowrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
