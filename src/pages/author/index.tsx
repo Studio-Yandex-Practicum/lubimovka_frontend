@@ -17,12 +17,12 @@ import styles from 'components/author-page/author.module.css';
 const Author: NextPage = () => {
   return (
     <AppLayout>
-      <div className={ cn(styles.author) }>
-        <AuthorOverview data={overviewData} />
-        <AuthorPlays data={ playsShortListData } />
-        <AnotherPlays data={ anotherPlaysData } />
-        <AuthorInformation data={ informationData }/>
-        <AuthorRequest />
+      <div className={cn(styles.author)}>
+        <AuthorOverview data={overviewData}/>
+        <AuthorPlays data={playsShortListData}/>
+        <AnotherPlays data={anotherPlaysData}/>
+        <AuthorInformation data={informationData}/>
+        <AuthorRequest/>
       </div>
     </AppLayout>
   );

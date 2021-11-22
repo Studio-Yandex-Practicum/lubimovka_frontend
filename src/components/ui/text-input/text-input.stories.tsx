@@ -7,14 +7,14 @@ export default {
   component: TextInput,
   decorators: [
     (Story) => (
-      <div style={{margin: '0 auto', maxWidth: '360px'}}>
+      <div style={{ margin: '0 auto', maxWidth: '360px' }}>
         <Story/>
       </div>
     ),
   ],
 } as ComponentMeta<typeof TextInput>;
 
-const Template: ComponentStory<typeof TextInput> = (args) => <TextInput {...args} />;
+const Template: ComponentStory<typeof TextInput> = (args) => <TextInput {...args}/>;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -4,7 +4,7 @@ import AppLayout from 'components/app-layout';
 
 const PlayProposalSuccess: NextPage = () => (
   <AppLayout>
-    <PlayProposalSuccessLayout />
+    <PlayProposalSuccessLayout/>
   </AppLayout>
 );
 

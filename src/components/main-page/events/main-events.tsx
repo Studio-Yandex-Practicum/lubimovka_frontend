@@ -25,16 +25,16 @@ export const MainEvents: FC<IMainEventsProps> = ({ data }) => {
       <ul className={styles.content}>
         {
           data.map(item => (
-            <li key={ item.id } className={styles.list}>
+            <li key={item.id} className={styles.list}>
               <AnnouncedPlayCard
-                date={ item.date }
-                time={ item.time }
-                title={ item.title }
-                playwrightArray={ item.playwrightArray }
-                directorArray={ item.directorArray }
-                eventDescription={ item.eventDescription && item.eventDescription }
-                buttonLinks={ item.buttonLinks }
-                coverResourceUrl={ item.coverResourceUrl && item.coverResourceUrl }
+                date={item.date}
+                time={item.time}
+                title={item.title}
+                playwrightArray={item.playwrightArray}
+                directorArray={item.directorArray}
+                eventDescription={item.eventDescription && item.eventDescription}
+                buttonLinks={item.buttonLinks}
+                coverResourceUrl={item.coverResourceUrl && item.coverResourceUrl}
               />
             </li>
           ))}

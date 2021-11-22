@@ -8,7 +8,7 @@ export default {
 
 } as ComponentMeta<typeof ArticleTitle>;
 
-const Template: ComponentStory<typeof ArticleTitle> = (args) => <ArticleTitle {...args} />;
+const Template: ComponentStory<typeof ArticleTitle> = (args) => <ArticleTitle {...args}/>;
 
 export const BlogTitle = Template.bind({});
 BlogTitle.args = {

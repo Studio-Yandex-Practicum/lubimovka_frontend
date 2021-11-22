@@ -13,7 +13,7 @@ const exampleHandler = () => {
   console.log('Click!');
 };
 
-const Template: ComponentStory<typeof PersonCard> = (args) => <PersonCard {...args} />;
+const Template: ComponentStory<typeof PersonCard> = (args) => <PersonCard {...args}/>;
 
 export const Volunteer = Template.bind({});
 Volunteer.args = {

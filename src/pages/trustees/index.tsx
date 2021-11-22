@@ -12,7 +12,7 @@ const Trustees: NextPage = () => (
   <AppLayout>
     <main>
       <TrusteesSection text={textData}>
-        <TrusteesPersons trustees={trusteesData} />
+        <TrusteesPersons trustees={trusteesData}/>
       </TrusteesSection>
     </main>
   </AppLayout>

@@ -31,10 +31,10 @@ const LibraryPage: FC<ILibraryPageProps> = ({ items }) => {
   return (
     <main className={styles.wrap}>
       <div onClick={handleFiltersClick} className={styles.filtersButton}>
-        <Icon glyph={isModalOpen ? 'cross' : 'filter'} />
+        <Icon glyph={isModalOpen ? 'cross' : 'filter'}/>
       </div>
       <div className={styles.topWrap}>
-        <div className={styles.top} />
+        <div className={styles.top}/>
       </div>
       <div className={styles.content}>
         <div className={styles.sidebar}>
@@ -53,13 +53,13 @@ const LibraryPage: FC<ILibraryPageProps> = ({ items }) => {
             </Menu>
           </div>
           <div className={styles.filter}>
-            <LibraryFilter />
+            <LibraryFilter/>
           </div>
         </div>
         <section className={styles.section}>
           <h1 className={styles.title}>Библиотека</h1>
           <div className={styles.search}>
-            <LibraryForm />
+            <LibraryForm/>
           </div>
           <div className={styles.pieces}>
             <BasicPlayCardList>
@@ -74,7 +74,7 @@ const LibraryPage: FC<ILibraryPageProps> = ({ items }) => {
             <BasicPlayCard key={idx} {...item}/>
           ))}
         </section>
-        {isModalOpen && <LibraryFiltersModal />}
+        {isModalOpen && <LibraryFiltersModal/>}
       </div>
     </main>
   );

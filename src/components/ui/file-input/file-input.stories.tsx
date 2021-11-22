@@ -7,7 +7,7 @@ export default {
   component: FileInput,
 } as ComponentMeta<typeof FileInput>;
 
-const Template: ComponentStory<typeof FileInput> = (args) => <FileInput {...args} />;
+const Template: ComponentStory<typeof FileInput> = (args) => <FileInput {...args}/>;
 
 export const Default = Template.bind({});
 Default.args = {

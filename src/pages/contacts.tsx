@@ -20,7 +20,7 @@ const Contacts: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServ
       <ContactsLayout>
         <ContactsLayout.Column>
           <ContactsLayout.Title>
-            <ContactsTitle id='contact' />
+            <ContactsTitle id='contact'/>
           </ContactsLayout.Title>
           <ContactsLayout.Form>
             <Form aria-labelledby='contact'>
