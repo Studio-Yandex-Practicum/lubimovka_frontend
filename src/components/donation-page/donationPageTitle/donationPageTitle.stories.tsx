@@ -13,3 +13,7 @@ const Template: ComponentStory<typeof DonationPageTitle> = (args) => <DonationPa
 
 export const General = Template.bind({});
 General.args = mockData.donationPageTitle;
+
+General.parameters = {
+  layout: 'fullscreen'
+};
