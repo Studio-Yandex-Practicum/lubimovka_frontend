@@ -1,24 +1,25 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 
 import cn from 'classnames/bind';
 
 import styles from './article-other.module.css';
-import {BlogList} from '../../ui/blog-card/list';
-import {BlogCard, BlogCardProps} from '../../ui/blog-card';
+import { BlogList } from '../../ui/blog-card/list';
+import { BlogCard } from '../../ui/blog-card';
+import { BlogItem } from '../types/article-types';
 
 const cx = cn.bind(styles);
 
 interface IArticleOtherProps {
   isBlog: boolean;
-  blogArticles?: ReactNode;
-  newsArticles?: ReactNode;
+  blogArticles?: BlogItem[];
+  // newsArticles?: NewsItem[];
 }
 
 const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
   const {
     isBlog,
     blogArticles = [],
-    newsArticles = [],
+    // newsArticles = [],
   } = props;
 
   return (
@@ -26,8 +27,15 @@ const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
       <h2 className={cx('sectionTitle')}>Другие {isBlog ? 'записи' : 'новости'}</h2>
       {isBlog ?
         <BlogList>
-          {(blogArticles as BlogCardProps[]).map((item, idx) => (
-            <BlogCard key={idx} {...item}/>
+          {blogArticles.map(item => (
+            <BlogCard
+              key={item.id}
+              image={item.image}
+              author={item.author_url_title}
+              heading={item.title}
+              description={item.description}
+              link='этого пропса не будет, ссылка будет генериться из id'
+            />
           ))}
         </BlogList>:
         <p>тут будет список новостей</p>

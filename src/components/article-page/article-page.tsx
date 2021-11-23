@@ -128,7 +128,7 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
           photographers={photographers}
         />
       </main>
-      <ArticleOther isBlog={isBlog}/>
+      <ArticleOther isBlog={isBlog} blogArticles={data.blogs}/>
     </>
   );
 };
