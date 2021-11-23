@@ -73,8 +73,9 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
             {slider &&
             <>
               <SliderButton
-                icon='arrow-left'
                 className={cx('arrow', 'arrowLeft')}
+                ariaLabel='Предыдущий отзыв'
+                direction='left'
                 onClick={slider.prev}
               />
               {Number(screenWidth) < 729 &&
@@ -106,8 +107,9 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 onClick={(idx) => slider.moveToSlideRelative(idx)}
               />}
               <SliderButton
-                icon='arrow-right'
                 className={cx('arrow', 'arrowRight')}
+                ariaLabel='Следующий отзыв'
+                direction='right'
                 onClick={slider.next}
               />
             </>

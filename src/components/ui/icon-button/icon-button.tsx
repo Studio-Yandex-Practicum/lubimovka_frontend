@@ -5,7 +5,7 @@ import styles from './icon-button.module.css';
 
 interface IIconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  type: 'button' | 'submit';
+  type: 'button' | 'submit' | 'reset';
   view: 'ghost' | 'light';
   ariaLabel: string;
   icon: React.ReactNode;
