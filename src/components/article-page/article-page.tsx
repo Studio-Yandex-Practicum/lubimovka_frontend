@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import cn from 'classnames/bind';
 
 import { Section } from 'components/section';
 import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
-import { IPersonCardProps, PersonCard, PersonCardList } from 'components/ui/person-card';
-import { ImageSlider, TImageItem } from 'components/ui/image-slider';
+import {IPersonCardProps, PersonCard, PersonCardList} from 'components/ui/person-card';
+import {ImageSlider} from 'components/ui/image-slider';
 import ArticleText from './assets/mock-data-article-main-text.json';
 import ArticleTitle from './article-title/article-title';
 import ArticleShare from './article-share/article-share';
@@ -58,7 +59,16 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
             case 'text':
               return(<p key={idx}>{item.content_item.text}</p>);
             case 'imagesblock':
-              return(<ImageSlider images={item.content_item.items as TImageItem[]} className={cx('imagesblock')}/>);
+              return(<ImageSlider className={cx('imagesblock')}>
+                {item.content_item.items!.map((image, index) => (
+                  <Image
+                    key={index}
+                    src={image.image}
+                    alt={image.title}
+                    layout="fill"
+                    objectFit='cover'
+                  />
+                ))}</ImageSlider>);
             }
           })}
         </ArticleMainText>

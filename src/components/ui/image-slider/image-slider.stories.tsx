@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Image from 'next/image';
 
-import { ImageSlider, TImageItem } from './image-slider';
+import { ImageSlider } from './image-slider';
 
-const fakeData: TImageItem[] = [
+const fakeData = [
   {
     image: 'https://source.unsplash.com/random',
     description: 'Фото намбер уан'
@@ -33,7 +34,15 @@ const Template: ComponentStory<typeof ImageSlider> = (args) => <ImageSlider {...
 
 export const Default = Template.bind({});
 Default.args = {
-  images: fakeData
+  children: fakeData.map((image, index) => (
+    <Image
+      key={index}
+      src={image.image}
+      alt={image.description}
+      layout="fill"
+      objectFit='cover'
+    />
+  ))
 };
 Default.parameters = {
   layout: 'fullscreen'

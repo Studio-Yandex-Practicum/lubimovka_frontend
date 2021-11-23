@@ -1,33 +1,26 @@
-import { useState } from 'react';
-import Image from 'next/image';
+import { useState, Children } from 'react';
 import classNames from 'classnames/bind';
 import { useKeenSlider } from 'keen-slider/react';
 
 import { SliderButton } from 'components/ui/slider-button';
 import { SliderDots } from 'components/ui/slider-dots';
-import { Url } from 'shared/types';
 
 import styles from './image-slider.module.css';
 const cx = classNames.bind(styles);
 
-export type TImageItem = {
-  image: Url;
-  description?: string;
-}
-
 interface IImageSliderProps {
   className?: string;
-  images: TImageItem[];
   showDots?: boolean;
   initialSlide?: number;
+  children: React.ReactNode;
 }
 
 export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
   const {
     className,
-    images,
     showDots = true,
     initialSlide = 0,
+    children
   } = props;
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -65,14 +58,9 @@ export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
           </>
         )}
         <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
-          {images.map((image, idx) => (
-            <div key={idx} className={cx('keen-slider__slide', 'slide')}>
-              <Image
-                className={cx('image')}
-                src={image.image}
-                alt={image.description ?? ''}
-                layout="fill"
-              />
+          {Children.map(children, (slide) => (
+            <div className={cx('keen-slider__slide', 'slide')}>
+              {slide}
             </div>
           ))}
         </div>
