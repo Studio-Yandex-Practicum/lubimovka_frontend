@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
+import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { fetcher } from 'shared/fetcher';
 import AppLayout from 'components/app-layout';
 import ContactsLayout from 'components/contacts-layout';
 import ContactsTitle from 'components/contacts-title';
@@ -16,7 +15,7 @@ import { validEmailRegexp } from 'shared/regexps';
 
 import playScript from '/public/images/contacts/play-script.jpg';
 
-const Contacts: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Contacts: NextPage = () => {
   const [name, setName] = useState('');
   const [nameWasChanged, setNameWasChanged] = useState(false);
   const [email, setEmail] = useState('');
@@ -150,7 +149,7 @@ const Contacts: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServ
               </Form.Actions>
               <Form.Disclaimer>
                 {'Нажимая на кнопку «Отправить» вы даёте согласие '}
-                <Link href={data.url_privacy}>
+                <Link href="/">
                   <a>на обработку персональных данных </a>
                 </Link>
               </Form.Disclaimer>
@@ -166,21 +165,11 @@ const Contacts: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServ
           />
         </ContactsLayout.Image>
         <ContactsLayout.Authors>
-          <ContactsAuthors email={data.email}/>
+          <ContactsAuthors email="hello@lubimovka.ru"/>
         </ContactsLayout.Authors>
       </ContactsLayout>
     </AppLayout>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const data = await fetcher('/contacts');
-
-  return {
-    props: {
-      data,
-    },
-  };
 };
 
 export default Contacts;
