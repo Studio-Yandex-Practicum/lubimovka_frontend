@@ -22,7 +22,7 @@ const Template: Story = () => {
         images={Array.from({ length: 8 }, () => ({
           image: 'https://source.unsplash.com/random',
         }))}
-        initialSlide={0}
+        initialSlideIndex={0}
       />
     </>
   );

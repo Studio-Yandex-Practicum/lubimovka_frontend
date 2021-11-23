@@ -8,14 +8,6 @@
   }
 }
 
-.closeButton {
-  position: absolute;
-  top: scale(16px);
-  right: scale(16px);
-  width: scale(42px);
-  height: scale(42px);
-}
-
 .slide {
   position: relative;
 
@@ -32,6 +24,14 @@
   height: auto;
   max-height: 100%;
   object-fit: cover;
+}
+
+.closeButton {
+  position: absolute;
+  top: scale(16px);
+  right: scale(16px);
+  width: scale(42px);
+  height: scale(42px);
 }
 
 .arrow {
