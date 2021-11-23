@@ -1,16 +1,16 @@
 import { ButtonHTMLAttributes, FC } from 'react';
 import classNames from 'classnames/bind';
 
-import { Icon } from '../icon';
+import { IconButton } from 'components/ui/icon-button';
+import { Icon } from 'components/ui/icon';
 
 import styles from './slider-button.module.css';
 
-interface ISliderButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
+interface ISliderButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  icon: 'arrow-left' | 'arrow-right' | 'cross';
-  type?: 'navigation' | 'addon';
-  view?: 'article' | 'popup';
+  ariaLabel: string;
   direction?: 'right' | 'left';
+  view?: 'ghost' | 'light';
 }
 
 const cx = classNames.bind(styles);
@@ -18,27 +18,25 @@ const cx = classNames.bind(styles);
 export const SliderButton: FC<ISliderButtonProps> = (props) => {
   const {
     className,
-    icon,
-    type = 'navigation',
-    view = 'article',
+    ariaLabel,
     direction = 'right',
+    view = 'ghost',
     ...restProps
   } = props;
 
   return(
-    <button
+    <IconButton
       className={cx(
+        className,
         'button',
-        [className],
-        type,
-        view,
         direction
       )}
+      ariaLabel={ariaLabel}
       type='button'
+      view={view}
+      icon={<Icon glyph={direction === 'right' ? 'arrow-right' : 'arrow-left'} />}
       {...restProps}
-    >
-      <Icon className={cx('icon')} glyph={icon} />
-    </button>
+    />
   );
 };
 

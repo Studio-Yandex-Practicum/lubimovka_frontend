@@ -3,6 +3,8 @@ import classNames from 'classnames/bind';
 import { useKeenSlider } from 'keen-slider/react';
 
 import { SliderButton } from 'components/ui/slider-button';
+import { IconButton } from 'components/ui/icon-button';
+import { Icon } from 'components/ui/icon';
 import { Url } from 'shared/types';
 
 import styles from './lightbox-image-slider.module.css';
@@ -38,19 +40,19 @@ export const LightboxImageSlider = (props: ILightboxImageSliderProps): JSX.Eleme
         <>
           <div className={cx('arrow', 'arrowLeft')}>
             <SliderButton
-              icon="arrow-left"
-              type='navigation'
-              view='popup'
+              className={cx('arrowButton')}
+              ariaLabel='Предыдущий слайд'
               direction='left'
+              view='light'
               onClick={slider.prev}
             />
           </div>
           <div className={cx('arrow', 'arrowRight')}>
             <SliderButton
-              icon="arrow-right"
-              type='navigation'
-              view='popup'
+              className={cx('arrowButton')}
+              ariaLabel='Следующий слайд'
               direction='right'
+              view='light'
               onClick={slider.next}
             />
           </div>
@@ -68,11 +70,13 @@ export const LightboxImageSlider = (props: ILightboxImageSliderProps): JSX.Eleme
           </div>
         ))}
         {slider && (
-          <div className={cx('closeButton')}>
-            <SliderButton
-              icon='cross'
-              type='addon'
-              view='popup'
+          <div className={cx('close')}>
+            <IconButton
+              className={cx('closeButton')}
+              ariaLabel='Закрыть лайтбокс'
+              type='button'
+              view='light'
+              icon={<Icon glyph='cross' />}
               onClick={onClose}
             />
           </div>

@@ -69,7 +69,7 @@
     }
   }
 
-  &.outlineRight {
+  &.right {
     &::before,
     &::after {
       border-right-color: transparent;
@@ -86,7 +86,7 @@
     }
   }
 
-  &.outlineLeft {
+  &.left {
     &::before,
     &::after {
       border-right-color: transparent;

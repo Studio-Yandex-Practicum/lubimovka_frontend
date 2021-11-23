@@ -3,8 +3,8 @@ import Image from 'next/image';
 import classNames from 'classnames/bind';
 import { useKeenSlider } from 'keen-slider/react';
 
-import { SliderButton } from '../slider-button';
-import { SliderDots } from '../slider-dots';
+import { SliderButton } from 'components/ui/slider-button';
+import { SliderDots } from 'components/ui/slider-dots';
 import { Url } from 'shared/types';
 
 import styles from './image-slider.module.css';
@@ -48,25 +48,23 @@ export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
           <>
             <div className={cx('arrow', 'arrowLeft')}>
               <SliderButton
-                icon="arrow-left"
-                type='navigation'
-                view='article'
+                className={cx('arrowButton')}
+                ariaLabel='Предыдущий слайд'
                 direction='left'
                 onClick={slider.prev}
               />
             </div>
             <div className={cx('arrow', 'arrowRight')}>
               <SliderButton
-                icon="arrow-right"
-                type='navigation'
-                view='article'
+                className={cx('arrowButton')}
+                ariaLabel='Следующий слайд'
                 direction='right'
                 onClick={slider.next}
               />
             </div>
           </>
         )}
-        <div ref={sliderRef} className={cx('keen-slider')}>
+        <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
           {images.map((image, idx) => (
             <div key={idx} className={cx('keen-slider__slide', 'slide')}>
               <Image
