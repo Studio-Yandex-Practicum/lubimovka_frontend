@@ -1,1 +1,1 @@
-export {default} from './library-pagination';
+export { default } from './library-pagination';

@@ -71,6 +71,7 @@
 
   @media (max-width: $tablet-portrait) {
     width: 100%;
+    box-sizing: border-box;
     padding-left: scale(24px);
   }
 }
@@ -82,6 +83,7 @@
   padding-left: scale(180px);
 
   @media (max-width: $tablet-portrait) {
+    box-sizing: border-box;
     padding-left: 24px;
   }
 }

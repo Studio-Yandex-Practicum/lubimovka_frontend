@@ -18,14 +18,14 @@ export const DroplistItems: FC<IDroplistItemsProps> = ({ item, cb, activeCheckbo
   }, [ activeCheckbox ]);
 
   return (
-    <label className={ cn(styles.item) }>
-      { activeCheckbox && <span className={ cn(styles.circle) } /> }
-      { item }
+    <label className={cn(styles.item)}>
+      {activeCheckbox && <span className={cn(styles.circle)}/>}
+      {item}
       <input
         type="checkbox"
-        value={ item }
-        className={ cn(styles.checkbox) }
-        onClick={ hendlerCheckbox }
+        value={item}
+        className={cn(styles.checkbox)}
+        onClick={hendlerCheckbox}
       />
     </label>
   );

@@ -17,6 +17,7 @@
   list-style: none;
   overflow-x: auto;
   overflow-y: hidden;
+  scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
     display: none;
@@ -85,17 +86,17 @@
   align-items: flex-start;
   justify-content: flex-start;
   padding: 0;
-  margin: 53px 0 0;
+  margin: scale(53px) 0 0;
   list-style: none;
 
   @media (max-width: $tablet-portrait) {
     padding-left: scale(19px);
-    margin: 16px 0 0;
+    margin: scale(16px) 0 0;
   }
 }
 
 .author {
-  margin-bottom: 12px;
+  margin-bottom: scale(12px);
 
   &:last-child {
     margin-bottom: 0;
@@ -106,7 +107,7 @@
   @mixin text;
   @mixin textLarge;
 
-  padding: 1px scale(8px) 3px;
+  padding: scale(1px) scale(8px) scale(3px);
   color: var(--coal);
   text-decoration: none;
 
@@ -118,10 +119,10 @@
 
 .chosenLetter {
   position: relative;
-  margin: 309px scale(20px) 0 0;
+  margin: scale(309px) scale(20px) 0 0;
 
   @media (max-width: $tablet-portrait) {
-    margin: 56px 0 0;
+    margin: scale(56px) 0 0;
   }
 }
 

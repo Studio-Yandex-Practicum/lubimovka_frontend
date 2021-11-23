@@ -44,11 +44,12 @@
     border-bottom-right-radius: 200% 100%;
     border-top-right-radius: 200% 100%;
   }
+}
 
-  &:hover {
-    &::before,
-    &::after {
-      visibility: visible;
-    }
+.current .link,
+.link:hover {
+  &::before,
+  &::after {
+    visibility: visible;
   }
 }

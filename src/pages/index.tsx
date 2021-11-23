@@ -27,7 +27,7 @@ const MainPage: NextPage = () => {
     <AppLayout hiddenPartners>
       <>
         <Head>
-          <title>{ metaTitle }</title>
+          <title>{metaTitle}</title>
         </Head>
         <main className={cx('main')}>
           {title && (
@@ -45,9 +45,9 @@ const MainPage: NextPage = () => {
           {platforms && <MainPlatforms data={ mainPlatformsData[0] } />}
           {shortList && <MainShortList data={ mainShortListData }/>}
           {archive && mainArchiveData.map((el) => (
-            <MainArchive key={el.id} data={el} />
+            <MainArchive key={el.id} data={el}/>
           ))}
-          {partners && <MainPartners />}
+          {partners && <MainPartners/>}
         </main>
       </>
     </AppLayout>

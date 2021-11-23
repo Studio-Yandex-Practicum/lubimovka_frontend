@@ -29,12 +29,12 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
       <a className={cx('link')}>
         <article className={cx('card')}>
           <div className={cx('imageContainer')}>
-            <img className={cx('image')} src={image} alt={title} />
+            <img className={cx('image')} src={image} alt={title}/>
           </div>
           <div>
             <h2 className={cx('title')}>
               {title}
-              <Icon className={cx('titleArrow')} glyph="arrow-right" fill='#000' focusable="false" />
+              <Icon className={cx('titleArrow')} glyph="arrow-right" fill='#000' focusable="false"/>
             </h2>
             <p
               className={cx('description')}

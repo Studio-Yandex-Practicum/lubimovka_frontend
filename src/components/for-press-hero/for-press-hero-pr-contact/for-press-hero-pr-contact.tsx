@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import styles from './for-press-hero-pr-contact.module.css';
@@ -25,7 +25,7 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContact> = ({ data, custom
       <h6 className={cx('intro')}>
         По вопросам PR и аккредитации пишите {data.nameDative}
       </h6>
-      <img className={cx('photo')} src={data.photo} alt={data.name} />
+      <img className={cx('photo')} src={data.photo} alt={data.name}/>
       <dl className={cx('info')}>
         <dt className={cx('hiddenText')}>
           Email:

@@ -147,7 +147,7 @@
 .search {
   position: sticky;
   z-index: 3;
-  top: scale(53px);
+  top: scale(48px);
   width: 100%;
   box-sizing: border-box;
   background-color: var(--beige);
@@ -155,10 +155,10 @@
   &::before {
     position: absolute;
     z-index: 3;
-    top: calc(scale(57px) * -1);
+    top: calc(scale(48px) * -1);
     left: 0;
     width: 100%;
-    height: scale(57px);
+    height: scale(48px);
     background-color: var(--beige);
     content: '';
   }
