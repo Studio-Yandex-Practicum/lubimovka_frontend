@@ -8,7 +8,7 @@ interface SearchResultAuthorsProps {
   }
 }
 
-const SearchResultAuthors: FC<SearchResultAuthorsProps> = ({authors}) => {
+const SearchResultAuthors: FC<SearchResultAuthorsProps> = ({ authors }) => {
   return (
     <li className={style.authors}>
       <span className={style.alphabeetLetter}>{authors.title}</span>

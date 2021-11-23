@@ -1,1 +1,1 @@
-export {default} from './search-result-authors';
+export { default } from './search-result-authors';
