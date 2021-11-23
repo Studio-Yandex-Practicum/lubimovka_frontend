@@ -16,8 +16,8 @@ export interface IDroplistPublic {
 
 interface IDroplistProps {
   cb: (selectList: string[]) => void
+  data: string[] | number[]
   type?: 'checkbox' | 'radio'
-  data?: string[] | number[]
   defaultValue?: string
   ref?: React.ForwardedRef<IDroplistPublic>
   className?: string
