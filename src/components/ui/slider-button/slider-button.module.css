@@ -18,26 +18,7 @@
   }
 }
 
-.circle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  border: 1px solid var(--coal);
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  background-color: transparent;
-  border-radius: 50%;
-  transform: rotate(135deg);
-}
-
-.left {
-  transform: rotate(-45deg);
-}
-
-.sliderButton {
+.button {
   position: relative;
   display: flex;
   width: 100%;
@@ -49,50 +30,81 @@
   border-radius: 50%;
   cursor: pointer;
 
-  &:focus {
-    outline-color: currentColor;
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    border: 1px solid var(--coal);
+    background-color: transparent;
+    border-radius: 50%;
+    content: '';
   }
 
   &:disabled {
     cursor: default;
+
+    &::before,
+    &::after {
+      border-color: var(--black-15);
+    }
+
+    .icon {
+      fill: var(--black-15);
+    }
   }
 
-  &:disabled .icon {
-    fill: var(--black-15);
-  }
-
-  &:disabled .circle {
-    border-color: var(--black-15);
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-  }
-
-  &:hover:enabled {
+  &:hover:enabled,
+  &:active:enabled {
     animation: backgroundColor .05s .15s;
     animation-fill-mode: forwards;
-  }
 
-  &:hover:enabled .secondCircle {
-    transform: rotate(315deg);
-    transition: transform .2s;
-  }
+    &::after {
+      transform: rotate(315deg);
+      transition: transform .2s;
+    }
 
-  &:hover:enabled .secondCircleLeft {
-    transform: rotate(-225deg);
-    transition: transform .2s;
-  }
-
-  &:hover:enabled .icon {
-    animation: fill .05s .2s;
-    animation-fill-mode: forwards;
+    .icon {
+      animation: fill .05s .2s;
+      animation-fill-mode: forwards;
+    }
   }
 
   &:active:enabled {
     transform: scale(1.1);
+
+    .icon {
+      transform: scale(.9);
+    }
+  }
+}
+
+.right {
+  &::before,
+  &::after {
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    transform: rotate(135deg);
+  }
+}
+
+.left {
+  &::before,
+  &::after {
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    transform: rotate(-45deg);
   }
 
-  &:active:enabled .icon {
-    transform: scale(.9);
+  &:hover:enabled,
+  &:active:enabled {
+    &::after {
+      transform: rotate(-225deg);
+      transition: transform .2s;
+    }
   }
 }
 

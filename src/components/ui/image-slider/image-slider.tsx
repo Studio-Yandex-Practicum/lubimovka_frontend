@@ -51,6 +51,7 @@ export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
                 icon="arrow-left"
                 type='navigation'
                 view='article'
+                direction='left'
                 onClick={slider.prev}
               />
             </div>
@@ -59,6 +60,7 @@ export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
                 icon="arrow-right"
                 type='navigation'
                 view='article'
+                direction='right'
                 onClick={slider.next}
               />
             </div>
