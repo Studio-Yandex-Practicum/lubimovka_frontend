@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 
 import AppLayout from 'components/app-layout';
-import { Enthusiasm } from 'components/donation-page/enthusiasm';
+import { DonationPageTitle } from 'components/donation-page/donationPageTitle';
 import { Opportunities } from 'components/donation-page/opportunities';
 import { Report } from 'components/donation-page/report';
 
@@ -14,10 +14,10 @@ const Donation: NextPage = () => (
       <title>{mockData.title}</title>
     </Head>
     <main>
-      <Enthusiasm
-        header={mockData.enthusiasm.header}
-        text={mockData.enthusiasm.text}
-        footnote={mockData.enthusiasm.footnote}
+      <DonationPageTitle
+        header={mockData.donationPageTitle.header}
+        text={mockData.donationPageTitle.text}
+        footnote={mockData.donationPageTitle.footnote}
       />
       <Opportunities
         data={mockData.opportunities}
