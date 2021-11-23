@@ -115,6 +115,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
               <PhotoGallery.Item
                 key={image}
                 image={image}
+                zoomIn
                 onClick={handlePhotoGalleryItemClick(index)}
               />
             ))}
