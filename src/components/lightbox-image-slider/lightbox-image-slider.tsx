@@ -41,6 +41,7 @@ export const LightboxImageSlider = (props: ILightboxImageSliderProps): JSX.Eleme
               icon="arrow-left"
               type='navigation'
               view='popup'
+              direction='left'
               onClick={slider.prev}
             />
           </div>
@@ -49,6 +50,7 @@ export const LightboxImageSlider = (props: ILightboxImageSliderProps): JSX.Eleme
               icon="arrow-right"
               type='navigation'
               view='popup'
+              direction='right'
               onClick={slider.next}
             />
           </div>

@@ -10,6 +10,7 @@ interface ISliderButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   icon: 'arrow-left' | 'arrow-right' | 'cross';
   type?: 'navigation' | 'addon';
   view?: 'article' | 'popup';
+  direction?: 'right' | 'left';
 }
 
 const cx = classNames.bind(styles);
@@ -20,30 +21,23 @@ export const SliderButton: FC<ISliderButtonProps> = (props) => {
     icon,
     type = 'navigation',
     view = 'article',
+    direction = 'right',
     ...restProps
   } = props;
 
-  const firstCircleStyles = cx(
-    'circle',
-    {
-      left: icon === 'arrow-left',
-    }
-  );
-
-  const secondCircleStyles = cx(
-    'circle',
-    {
-      secondCircle: icon === 'arrow-right',
-      secondCircleLeft: icon === 'arrow-left',
-      left: icon === 'arrow-left',
-    }
-  );
-
   return(
-    <button className={cx('sliderButton', [className], type, view)} type='button' {...restProps}>
-      <div className={firstCircleStyles} />
-      <div className={secondCircleStyles}/>
-      <Icon glyph={icon} className={cx('icon')}/>
+    <button
+      className={cx(
+        'button',
+        [className],
+        type,
+        view,
+        direction
+      )}
+      type='button'
+      {...restProps}
+    >
+      <Icon className={cx('icon')} glyph={icon} />
     </button>
   );
 };
