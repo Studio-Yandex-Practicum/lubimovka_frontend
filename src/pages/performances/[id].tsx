@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Image from 'next/image';
 

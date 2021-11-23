@@ -1,7 +1,7 @@
-import {FC, useMemo} from 'react';
+import { FC, useMemo } from 'react';
 import classNames from 'classnames/bind';
 
-import {EventCard} from 'components/event-card';
+import { EventCard } from 'components/event-card';
 
 import styles from './afishe-festival-day.module.css';
 
@@ -24,7 +24,7 @@ export interface IFestivalDayProps {
 const cx = classNames.bind(styles);
 
 const getDate = (date: string) => new Date(date);
-const getEventDate = (date: string) => getDate(date).toLocaleDateString('ru-RU', {month: 'long', day: 'numeric'}).split(' ');
+const getEventDate = (date: string) => getDate(date).toLocaleDateString('ru-RU', { month: 'long', day: 'numeric' }).split(' ');
 const getMonth = (date: string) => getEventDate(date)[1];
 const getDay = (date: string) => Number(getEventDate(date)[0]);
 
@@ -38,7 +38,7 @@ const getStatus = (event: string): boolean => {
 const getInfo = (date: string) => getStatus(date) ? 'открыта регистрация' : `Регистрация откроется ${getDay(date) - 1} ${getMonth(date)} в 12:00`;
 
 export const FestivalDay: FC<IFestivalDayProps> = (props) => {
-  const {date, plays} = props;
+  const { date, plays } = props;
 
   const month = useMemo(() => getMonth(date), [date]);
   const day = useMemo(() => getDay(date), [date]);

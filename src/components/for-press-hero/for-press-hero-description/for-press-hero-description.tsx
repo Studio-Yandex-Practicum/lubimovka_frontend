@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import { FC } from 'react';
 import { Button } from '../../ui/button';
 import cn from 'classnames/bind';
 

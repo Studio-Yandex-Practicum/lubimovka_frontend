@@ -3,14 +3,14 @@ import Head from 'next/head';
 import cn from 'classnames/bind';
 
 import { Section } from 'components/section';
-import { BasicPlayCard, IBasicPlayCardProps} from 'components/ui/basic-play-card';
+import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
-import {IPersonCardProps, PersonCard, PersonCardList} from 'components/ui/person-card';
-import {ImageSlider, TImageItem} from 'components/ui/image-slider';
+import { IPersonCardProps, PersonCard, PersonCardList } from 'components/ui/person-card';
+import { ImageSlider, TImageItem } from 'components/ui/image-slider';
 import ArticleText from './assets/mock-data-article-main-text.json';
 import ArticleTitle from './article-title/article-title';
 import ArticleShare from './article-share/article-share';
-import {ArticleMainText} from './article-maintext';
+import { ArticleMainText } from './article-maintext';
 import DataShare from './assets/mock-data-share.json';
 
 import styles from './article-page.module.css';

@@ -83,7 +83,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
           <Page.OverlayMenu isOpen={isOverlayMenuOpen}>
             <OverlayNav>
               <OverlayNav.Logotype>
-                <Logotype href='/' title="Фестиваль Любимовка" />
+                <Logotype href='/' title="Фестиваль Любимовка"/>
               </OverlayNav.Logotype>
               <OverlayNav.Menu>
                 <Menu type="overlay-navigation">
@@ -98,11 +98,11 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
                 <Menu type='overlay-actions'>
                   <Menu.Item href={participationFormPath}>
                     Подать пьесу
-                    <Icon glyph='arrow-right' />
+                    <Icon glyph='arrow-right'/>
                   </Menu.Item>
                   <Menu.Item href={donationPath}>
                     Поддержать
-                    <Icon glyph='arrow-right' />
+                    <Icon glyph='arrow-right'/>
                   </Menu.Item>
                 </Menu>
               </OverlayNav.Actions>
@@ -114,7 +114,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
                       href={item.href}
                       mods={{ primary: !!item.primary }}>
                       {item.text}
-                      <Icon glyph='arrow-right' />
+                      <Icon glyph='arrow-right'/>
                     </Menu.Item>
                   ))}
                 </Menu>
@@ -122,7 +122,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
             </OverlayNav>
           </Page.OverlayMenu>
           <Page.BurgerButton>
-            <BurgerButton isOpen={isOverlayMenuOpen} onClick={toggleOverlayMenu} />
+            <BurgerButton isOpen={isOverlayMenuOpen} onClick={toggleOverlayMenu}/>
           </Page.BurgerButton>
         </>
       )}

@@ -1,6 +1,6 @@
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {SliderButton} from './slider-button';
+import { SliderButton } from './slider-button';
 
 export default {
   title: 'UI/SliderButton',
@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof SliderButton>;
 
 
-const Template: ComponentStory<typeof SliderButton> = (args) => <SliderButton {...args} />;
+const Template: ComponentStory<typeof SliderButton> = (args) => <SliderButton {...args}/>;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -1,4 +1,4 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ArticleMainText } from './article-maintext';
 
@@ -9,7 +9,7 @@ export default {
   component: ArticleMainText,
   decorators: [
     (Story) => (
-      <div style={{margin: '0 auto'}}>
+      <div style={{ margin: '0 auto' }}>
         <Story/>
       </div>
     ),
