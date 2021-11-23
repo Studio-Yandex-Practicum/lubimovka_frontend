@@ -57,15 +57,10 @@
 
 .asterisk {
   position: absolute;
-  top: calc(-25 / 1440 * 100vw);
-  left: calc(-25 / 1440 * 100vw);
+  top: calc(-25 * var(--scale));
+  left: calc(-25 * var(--scale));
   width: scale(25px);
   height: scale(25px);
-
-  @media (max-width: $tablet-portrait) {
-    top: calc(-25 / 414 * 100vw);
-    left: calc(-25 / 414 * 100vw);
-  }
 }
 
 .advertisement {
