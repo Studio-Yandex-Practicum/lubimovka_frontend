@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import { Page } from 'components/page';
 import { Menu } from 'components/ui/menu';
@@ -33,8 +34,8 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
   } = props;
 
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
-
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+  const router = useRouter();
 
   const toggleOverlayMenu = () => setIsOverlayMenuOpen(!isOverlayMenuOpen);
 
@@ -56,7 +57,11 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
                 {mainNavigationItems
                   .filter(item => !item.mobileOnly)
                   .map((item) => (
-                    <Menu.Item key={item.href} href={item.href}>
+                    <Menu.Item
+                      key={item.href}
+                      href={item.href}
+                      current={router.asPath === item.href}
+                    >
                       {item.text}
                     </Menu.Item>
                   ))}
