@@ -8,9 +8,6 @@ import { ContainerButton } from './container-button';
 
 import styles from './droplist.module.css';
 
-// utile
-import { createList } from './utils';
-
 export interface IDroplistPublic {
   deleteAll: () => void,
   deleteItem: (value: string) => void,
@@ -21,7 +18,6 @@ interface IDroplistProps {
   cb: (selectList: string[]) => void
   type?: 'checkbox' | 'radio'
   data?: string[] | number[]
-  defaultListType?: 'years' | 'months'
   defaultValue?: string
   ref?: React.ForwardedRef<IDroplistPublic>
   className?: string
@@ -33,30 +29,21 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
     type = 'checkbox',
     data,
     cb,
-    defaultListType,
     className,
     defaultValue
   } = props;
 
-  // Выбранный список пользователем.
   const [ selectList, setSelectList ] = useState<string[]>([]);
-
-  // Список для вывода
   const [ list, setList ] = useState<string[] | number[]>([]);
-  // Выбран ли Dropdown
   const [ activeDropdown, setActiveDropdown ] = useState(false);
 
   const droplistRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Передача своего объекта
     if (Array.isArray(data)) {
       setList(data);
       return;
     }
-    // utils функция createList формирует массивы зависящие от передаваемого типа списка.
-    const list = createList(defaultListType);
-    setList(list);
   }, [ data ]);
 
   useEffect(() => {
@@ -64,14 +51,9 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
       setSelectList([defaultValue]);
       return;
     }
-    // Если тип 'radio' в выводимый список добавиться первый элемент переданного списка
-    if (type === 'radio' && !defaultValue && list.length) {
-      setSelectList([String(list[0]).toLowerCase()]);
-    }
-  }, [type, list]);
+  }, [type, defaultValue]);
 
   useEffect(() => {
-    // При изменении selectList отправляются данные
     cb(selectList);
   }, [selectList]);
 
@@ -132,7 +114,7 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
       <ContainerButton
         cb={ cbContainer }
         activeDropdown={ activeDropdown }
-        value={ type === 'radio' ? selectList[0] : 'Все' }
+        value={ defaultValue || 'Все' }
       />
       <form
         name='droplist'
