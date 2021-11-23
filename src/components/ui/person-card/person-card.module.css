@@ -45,12 +45,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: scale(10px);
   border: 0;
   background-color: var(--beige);
   border-radius: 50%;
   cursor: pointer;
-  transition: width 400ms cubic-bezier(.6, 0, .5, 1), height 400ms cubic-bezier(.6, 0, .5, 1), top 400ms cubic-bezier(.6, 0, .5, 1), left 400ms cubic-bezier(.6, 0, .5, 1);
+  transition: padding 400ms cubic-bezier(.6, 0, .5, 1), width 400ms cubic-bezier(.6, 0, .5, 1), height 400ms cubic-bezier(.6, 0, .5, 1), top 400ms cubic-bezier(.6, 0, .5, 1), left 400ms cubic-bezier(.6, 0, .5, 1);
 
   @media (max-width: $tablet-portrait) {
     top: scale(208px);
@@ -67,6 +67,7 @@
   left: scale(9px);
   width: scale(55px);
   height: scale(55px);
+  padding: scale(15px);
 
   @media (max-width: $tablet-portrait) {
     top: scale(203px);

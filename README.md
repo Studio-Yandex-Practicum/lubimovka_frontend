@@ -34,6 +34,12 @@ npm run dev
 npm run build
 ```
 
+### Переменные окружения
+
+- `MOCKS` – boolean, включает моки.
+
+[Как добавить переменную окружения локально?](https://nextjs.org/docs/basic-features/environment-variables)
+
 ### Базовые команды
 
 #### Проверка кода:
@@ -46,6 +52,10 @@ npm run lint:js
 npm run lint:css
 ```
 
+```bash
+npm run type-check
+```
+
 #### Storybook:
 
 ```bash
@@ -53,14 +63,14 @@ npm run storybook
 ```
 Storybook запустится по адресу: [http://localhost:3001](http://localhost:3001)
 
-### Обновление тайпингов API
+#### Обновление тайпингов API
 
 ```bash
 npm run update-typings
 ```
 
-### Переменные окружения
+#### Обновление хуков Git
 
-- `MOCKS` – boolean, включает моки.
-
-[Как добавить переменную окружения локально?](https://nextjs.org/docs/basic-features/environment-variables)
+```bash
+npm run update-git-hooks
+```

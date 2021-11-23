@@ -17,7 +17,7 @@ const Authors: NextPage = () => (
     <Head>
       <title>Авторы</title>
     </Head>
-    <AuthorsPage letters={mockLetters} authors={mockAuthors} />
+    <AuthorsPage letters={mockLetters} authors={mockAuthors}/>
   </AppLayout>
 );
 

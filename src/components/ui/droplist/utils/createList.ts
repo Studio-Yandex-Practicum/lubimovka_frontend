@@ -4,7 +4,7 @@ const createMonthList = (data: Date): string[] => {
 
   for(let month = 0; month < 12; ++month) {
     data.setMonth(month);
-    monthsList.push(data.toLocaleString(undefined, {month: 'long'}));
+    monthsList.push(data.toLocaleString(undefined, { month: 'long' }));
   }
   return monthsList;
 };

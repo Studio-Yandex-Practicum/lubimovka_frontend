@@ -1,1 +1,1 @@
-export {default} from './trustees-persons-list';
+export { default } from './trustees-persons-list';

@@ -11,21 +11,21 @@ interface IListSelectedProps {
 
 export const ListSelected: FC<IListSelectedProps> = ({ selectList }): JSX.Element => {
   return (
-    <div className={ cn(styles.container, {
+    <div className={cn(styles.container, {
       [styles.bottom]: selectList.length > 1,
     })}>
-      <ul className={ cn(styles.list) }>
-        { selectList.map((item, i) => (
-          <li className={ cn(styles.item) } key={ i } >
-            { item }
+      <ul className={cn(styles.list)}>
+        {selectList.map((item, i) => (
+          <li className={cn(styles.item)} key={i}>
+            {item}
           </li>
         ))}
       </ul>
-      <button className={ cn(styles.button) } >
+      <button className={cn(styles.button)}>
         <Icon 
           glyph='arrow-right' 
           fill='black' 
-          className={ styles.iconArrowRight }
+          className={styles.iconArrowRight}
         />
       </button>
     </div>

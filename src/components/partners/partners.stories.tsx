@@ -8,7 +8,7 @@ const OriginalNextImage = NextImage.default;
 
 Object.defineProperty(NextImage, 'default', {
   configurable: true,
-  value: (props: ImageProps) => <OriginalNextImage {...props} unoptimized />,
+  value: (props: ImageProps) => <OriginalNextImage {...props} unoptimized/>,
 });
 
 export default {
@@ -17,14 +17,14 @@ export default {
   decorators: [
     (Story) => (
       <div style={{ margin: '0 auto', maxWidth: '1440px' }}>
-        <Story />
+        <Story/>
       </div>
     ),
   ],
 } as ComponentMeta<typeof Partners>;
 
 const Template: ComponentStory<typeof Partners> = (args) => {
-  return <Partners {...args} />;
+  return <Partners {...args}/>;
 };
 
 export const Default = Template.bind({});

@@ -6,16 +6,19 @@ import { Icon } from 'components/ui/icon';
 import { Navbar } from 'components/navbar';
 import { Logotype } from 'components/logotype';
 import { Footer } from 'components/footer';
-
+import { OverlayNav } from 'components/overlay-nav';
+import { BurgerButton } from 'components/ui/burger-button';
+import { FooterPartnerList } from 'components/footer-partner-list';
+import { DonationLink } from 'components/donation-link';
+import { WithAppSettingsProps, withAppSettings } from 'components/app';
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
 import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
-import { formLink, donationLink } from 'shared/constants/action-link-items';
 import { socialLinkItems } from 'shared/constants/social-link-items';
-import { OverlayNav } from 'components/overlay-nav';
+import { donationPath } from 'shared/constants/donation-path';
+import { participationFormPath } from 'shared/constants/participation-form-path';
 import * as breakpoints from 'shared/breakpoints.js';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
-import { WithAppSettingsProps, withAppSettings } from 'components/app';
-import { BurgerButton } from 'components/ui/burger-button';
+import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 
 interface IAppLayoutProps extends WithAppSettingsProps{
   hiddenPartners?: boolean,
@@ -29,11 +32,13 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
     hiddenPartners,
   } = props;
 
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
 
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
-  const toggleOverlay = () => setIsOverlayOpen(!isOverlayOpen);
+  const toggleOverlayMenu = () => setIsOverlayMenuOpen(!isOverlayMenuOpen);
+
+  useDisableBodyScroll(isOverlayMenuOpen);
 
   return (
     <Page>
@@ -41,7 +46,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
         <Navbar>
           <Navbar.Logotype>
             <Logotype
-              href="#"
+              href="/"
               title="Фестиваль Любимовка"
             />
           </Navbar.Logotype>
@@ -51,7 +56,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
                 {mainNavigationItems
                   .filter(item => !item.mobileOnly)
                   .map((item) => (
-                    <Menu.Item key={item.text} href={item.href}>
+                    <Menu.Item key={item.href} href={item.href}>
                       {item.text}
                     </Menu.Item>
                   ))}
@@ -60,75 +65,79 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
             <Navbar.Section>
               <Menu type="social-links">
                 {socialLinkItems.map((item) => (
-                  <Menu.Item key={item.text} href={item.href}>
+                  <Menu.Item key={item.href} href={item.href}>
                     {item.text}
                   </Menu.Item>
                 ))}
               </Menu>
             </Navbar.Section>
             <Navbar.Section>
-              <Navbar.HelpLink label={donationLink.text} href={donationLink.href}/>
+              <DonationLink href={donationPath}/>
             </Navbar.Section>
           </Navbar.Actions>
         </Navbar>
       </Page.Header>
       {children}
-      {isMobile && <>
-        <Page.Overlay isOpen={isOverlayOpen}>
-          <OverlayNav>
-            <OverlayNav.Logotype>
-              <Logotype href='/' title="Фестиваль Любимовка" />
-            </OverlayNav.Logotype>
-            <OverlayNav.Menu>
-              <Menu type="overlay-navigation">
-                {mainNavigationItems.map((item, idx) => (
-                  <Menu.Item key={idx} href={item.href}>
-                    {item.text}
+      {isMobile && (
+        <>
+          <Page.OverlayMenu isOpen={isOverlayMenuOpen}>
+            <OverlayNav>
+              <OverlayNav.Logotype>
+                <Logotype href='/' title="Фестиваль Любимовка"/>
+              </OverlayNav.Logotype>
+              <OverlayNav.Menu>
+                <Menu type="overlay-navigation">
+                  {mainNavigationItems.map((item) => (
+                    <Menu.Item key={item.href} href={item.href}>
+                      {item.text}
+                    </Menu.Item>
+                  ))}
+                </Menu>
+              </OverlayNav.Menu>
+              <OverlayNav.Actions>
+                <Menu type='overlay-actions'>
+                  <Menu.Item href={participationFormPath}>
+                    Подать пьесу
+                    <Icon glyph='arrow-right'/>
                   </Menu.Item>
-                ))}
-              </Menu>
-            </OverlayNav.Menu>
-            <OverlayNav.Actions>
-              <Menu type='overlay-actions'>
-                {[formLink, donationLink].map((item, idx) => (
-                  <Menu.Item key={idx} href={item.href}>
-                    {item.text}
-                    <Icon glyph='arrow-right' />
+                  <Menu.Item href={donationPath}>
+                    Поддержать
+                    <Icon glyph='arrow-right'/>
                   </Menu.Item>
-                ))}
-              </Menu>
-            </OverlayNav.Actions>
-            <OverlayNav.Socials>
-              <Menu type='overlay-social-links'>
-                {socialLinkItems.map((item, idx) => (
-                  <Menu.Item
-                    key={idx}
-                    href={item.href}
-                    mods={{ primary: item.primary ?? false }}>
-                    {item.text}
-                    <Icon glyph='arrow-right' />
-                  </Menu.Item>
-                ))}
-              </Menu>
-            </OverlayNav.Socials>
-          </OverlayNav>
-        </Page.Overlay>
-        <Page.BurgerButton>
-          <BurgerButton isOpen={isOverlayOpen} onClick={toggleOverlay} />
-        </Page.BurgerButton>
-      </>}
+                </Menu>
+              </OverlayNav.Actions>
+              <OverlayNav.Socials>
+                <Menu type='overlay-social-links'>
+                  {socialLinkItems.map((item) => (
+                    <Menu.Item
+                      key={item.href}
+                      href={item.href}
+                      mods={{ primary: !!item.primary }}>
+                      {item.text}
+                      <Icon glyph='arrow-right'/>
+                    </Menu.Item>
+                  ))}
+                </Menu>
+              </OverlayNav.Socials>
+            </OverlayNav>
+          </Page.OverlayMenu>
+          <Page.BurgerButton>
+            <BurgerButton isOpen={isOverlayMenuOpen} onClick={toggleOverlayMenu}/>
+          </Page.BurgerButton>
+        </>
+      )}
       <Footer>
         {!hiddenPartners && (
           <Footer.Partners>
-            <Footer.PartnerList>
+            <FooterPartnerList>
               {generalPartners.map((partner) => (
-                <Footer.PartnerListItem
+                <FooterPartnerList.Item
                   key={partner.name}
                   logo={partner.logo}
                   name={partner.name}
                 />
               ))}
-            </Footer.PartnerList>
+            </FooterPartnerList>
           </Footer.Partners>
         )}
         <Footer.Address>

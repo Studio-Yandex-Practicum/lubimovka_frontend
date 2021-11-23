@@ -63,7 +63,7 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
   }, [screenWidth, currentYear]);
 
   return (
-    <div ref={sliderRef} className={cx('keen-slider', 'slider', {[styles.isOpen]: isOpen})}>
+    <div ref={sliderRef} className={cx('keen-slider', 'slider', { [styles.isOpen]: isOpen })}>
       {cards.map((card) => (
         <div
           key={card.id}

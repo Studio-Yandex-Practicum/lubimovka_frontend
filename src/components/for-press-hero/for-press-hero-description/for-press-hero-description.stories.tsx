@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof ForPressHeroDescription>;
 
 const Template: ComponentStory<typeof ForPressHeroDescription> = (args) => {
-  return <ForPressHeroDescription {...args} />;
+  return <ForPressHeroDescription {...args}/>;
 };
 
 export const Default = Template.bind({});
