@@ -1,30 +1,26 @@
-import Image from 'next/image';
+import { Children } from 'react';
 import classNames from 'classnames/bind';
 import { useKeenSlider } from 'keen-slider/react';
 
 import { SliderButton } from 'components/ui/slider-button';
 import { IconButton } from 'components/ui/icon-button';
 import { Icon } from 'components/ui/icon';
-import { Url } from 'shared/types';
 
 import styles from './lightbox-image-slider.module.css';
 const cx = classNames.bind(styles);
 
-export type TImageItem = {
-  image: Url;
-  description?: string;
-}
-
 interface ILightboxImageSliderProps {
-  images: TImageItem[];
+  className?: string;
   initialSlideIndex?: number;
+  children: React.ReactNode;
   onClose?: () => void;
 }
 
 export const LightboxImageSlider = (props: ILightboxImageSliderProps): JSX.Element => {
   const {
-    images,
-    initialSlideIndex,
+    className = '',
+    initialSlideIndex = 0,
+    children,
     onClose
   } = props;
 
@@ -35,7 +31,7 @@ export const LightboxImageSlider = (props: ILightboxImageSliderProps): JSX.Eleme
   });
 
   return (
-    <div className={cx('container')}>
+    <div className={cx(className, 'container')}>
       {slider && (
         <>
           <div className={cx('arrow', 'arrowLeft')}>
@@ -59,14 +55,9 @@ export const LightboxImageSlider = (props: ILightboxImageSliderProps): JSX.Eleme
         </>
       )}
       <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
-        {images.map((image, idx) => (
-          <div key={idx} className={cx('keen-slider__slide', 'slide')}>
-            <Image
-              className={cx('image')}
-              src={image.image}
-              alt={image.description ?? ''}
-              layout="fill"
-            />
+        {Children.map(children, (slide) => (
+          <div className={cx('keen-slider__slide', 'slide')}>
+            {slide}
           </div>
         ))}
         {slider && (
