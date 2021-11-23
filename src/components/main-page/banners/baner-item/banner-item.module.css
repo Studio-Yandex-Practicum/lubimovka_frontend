@@ -78,3 +78,8 @@
     margin: 0 scale(20px 16px) auto;
   }
 }
+
+.hideContainer {
+  overflow: hidden;
+  max-height: 0;
+}
