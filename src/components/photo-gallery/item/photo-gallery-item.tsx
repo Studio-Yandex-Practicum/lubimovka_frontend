@@ -9,6 +9,7 @@ import styles from './photo-gallery-item.module.css';
 interface IPhotoGalleryItemProps {
   image: Url,
   description?: string;
+  zoomIn?: boolean;
   onClick?: () => void;
 }
 
@@ -19,17 +20,18 @@ export const PhotoGalleryItem: FC<IPhotoGalleryItemProps> = (props) => {
     image,
     description = '',
     onClick,
+    zoomIn = false,
   } = props;
 
   return (
-    <li className={cx('item', { clickable: onClick })}>
+    <li className={cx('item')}>
       <Image
         src={image}
         alt={description}
         layout="fill"
         objectFit="cover"
-        onClick={onClick}
       />
+      {zoomIn && <button type='button' aria-label='Увеличить изображение' className={cx('button')} onClick={onClick} />}
     </li>
   );
 };
