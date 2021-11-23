@@ -19,7 +19,7 @@
 
 .opportunityWrapper:nth-child(even) > .intro {
   flex-flow: row-reverse nowrap;
-  justify-content: flex-start;
+  justify-content: flex-end;
 
   @media (max-width: $tablet-portrait) {
     flex-flow: column-reverse nowrap;
