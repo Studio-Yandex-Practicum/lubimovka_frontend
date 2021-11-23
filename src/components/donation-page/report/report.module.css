@@ -27,13 +27,7 @@
   @mixin headline;
   @mixin headline5;
 
-  text-decoration: underline;
-
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
   }
-}
-
-.reportEmail:hover {
-  cursor: pointer;
 }
