@@ -24,6 +24,8 @@ const Contacts: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServ
   const [question, setQuestion] = useState('');
   const [questionWasChanged, setQuestionWasChanged] = useState(false);
 
+  const [submitButtonInitialState, setSubmitButtonInitialState] = useState(true);
+
   const getNameError = () => {
     if (name.length < 2) {
       return 'Имя должно содержать минимум 2 символа';
@@ -67,7 +69,23 @@ const Contacts: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServ
     setQuestion(value);
   };
 
+  const resetForm = () => {
+    setSubmitButtonInitialState(true);
+    setNameWasChanged(false);
+    setName('');
+    setEmailWasChanged(false);
+    setEmail('');
+    setQuestionWasChanged(false);
+    setQuestion('');
+  };
+
   const canSubmit = !getEmailError() && !getEmailError() && !getQuestionError();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitButtonInitialState(false);
+    setTimeout(() => resetForm(), 10000);
+  };
 
   return (
     <AppLayout>
@@ -77,7 +95,7 @@ const Contacts: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServ
             <ContactsTitle id='contact'/>
           </ContactsLayout.Title>
           <ContactsLayout.Form>
-            <Form aria-labelledby='contact'>
+            <Form aria-labelledby='contact' onSubmit={handleSubmit}>
               <Form.Field>
                 <TextInput
                   value={name}
@@ -104,17 +122,31 @@ const Contacts: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServ
                 />
               </Form.Field>
               <Form.Actions>
-                <Button
-                  type="submit"
-                  iconPlace="right"
-                  icon="arrow-right"
-                  size="l"
-                  border="full"
-                  label="Отправить"
-                  align="space-between"
-                  width="100%"
-                  disabled={!canSubmit}
-                />
+                {submitButtonInitialState ? (
+                  <Button
+                    type="submit"
+                    iconPlace="right"
+                    icon="arrow-right"
+                    size="l"
+                    border="full"
+                    label="Отправить"
+                    align="space-between"
+                    width="100%"
+                    disabled={!canSubmit}
+                  />
+                ) : (
+                  <Button
+                    type="submit"
+                    iconPlace="right"
+                    icon="ok"
+                    size="l"
+                    border="full"
+                    label="Отправлено"
+                    align="space-between"
+                    width="100%"
+                    disabled
+                  />
+                )}
               </Form.Actions>
               <Form.Disclaimer>
                 {'Нажимая на кнопку «Отправить» вы даёте согласие '}
