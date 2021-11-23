@@ -1,22 +1,22 @@
 import classNames from 'classnames/bind';
 
 import { Modal } from 'components/ui/modal';
-import { LightboxImageSlider, TImageItem } from 'components/lightbox-image-slider';
+import { LightboxImageSlider } from 'components/lightbox-image-slider';
 
 import styles from './lightbox.module.css';
 const cx = classNames.bind(styles);
 
 interface ILightboxProps {
-  images: TImageItem[];
   isOpen: boolean;
   initialSlideIndex: number;
+  children: React.ReactNode;
   onClose: () => void;
 }
 export const Lightbox = (props: ILightboxProps): JSX.Element => {
   const {
-    images,
     isOpen,
     initialSlideIndex,
+    children,
     onClose
   } = props;
 
@@ -26,13 +26,13 @@ export const Lightbox = (props: ILightboxProps): JSX.Element => {
       onClose={onClose}
       Backdrop={Modal.Backdrop}
     >
-      <div className={cx('container')}>
-        <LightboxImageSlider
-          images={images}
-          initialSlideIndex={initialSlideIndex}
-          onClose={onClose}
-        />
-      </div>
+      <LightboxImageSlider
+        className={cx('slider')}
+        initialSlideIndex={initialSlideIndex}
+        onClose={onClose}
+      >
+        {children}
+      </LightboxImageSlider>
     </Modal>
   );
 };

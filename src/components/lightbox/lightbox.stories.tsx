@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { Story, ComponentMeta } from '@storybook/react';
+import Image from 'next/image';
 
 import { Lightbox } from './lightbox';
+
+const fakeImages = Array.from({ length: 8 }, () => ({
+  image: 'https://source.unsplash.com/random',
+}));
 
 export default {
   title: 'Components/Lightbox',
@@ -19,11 +24,18 @@ const Template: Story = () => {
       <Lightbox
         isOpen={isOpen}
         onClose={toggleVisibility}
-        images={Array.from({ length: 8 }, () => ({
-          image: 'https://source.unsplash.com/random',
-        }))}
         initialSlideIndex={0}
-      />
+      >
+        {fakeImages.map((image, index) => (
+          <Image
+            key={index}
+            src={image.image}
+            alt={`Изображениe ${index}`}
+            layout="fill"
+            objectFit='cover'
+          />
+        ))}
+      </Lightbox>
     </>
   );
 };
