@@ -20,7 +20,7 @@ export const Opportunities: FC<IOpportunityProps> = (props) => {
     <section className={cx('opportunities')}>
       {data.map((e,i) => {
         return (
-          <Opportunity title={e.title} picture={e.picture} kickies={e.kickies} key={i} />
+          <Opportunity title={e.title} picture={e.picture} kickies={e.kickies} key={i}/>
         );
       })}
     </section>

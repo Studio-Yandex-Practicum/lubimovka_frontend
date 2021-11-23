@@ -21,7 +21,7 @@ export const Opportunity: FC<IOpportunityProps> = (props) => {
           {title}
         </h2>
         <div className={cx('pictureContainer')}>
-          <img src={picture} className={cx('picture')} />
+          <img src={picture} className={cx('picture')}/>
         </div>
       </div>
       <ul className={cx('kickies')}>

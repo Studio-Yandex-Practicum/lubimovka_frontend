@@ -9,7 +9,7 @@ export default {
   component: Report,
 } as ComponentMeta<typeof Report>;
 
-const Template: ComponentStory<typeof Report> = (args) => <Report {...args} />;
+const Template: ComponentStory<typeof Report> = (args) => <Report {...args}/>;
 
 export const General = Template.bind({});
 General.args = mockData.report;
