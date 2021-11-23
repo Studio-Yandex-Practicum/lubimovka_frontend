@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import AppLayout from 'components/app-layout';
 import { Button } from 'components/ui/button';
 import LibraryForm from 'components/library-form/library-form';
-import { BasicPlayCard, BasicPlayCardList } from 'components/ui/basic-play-card';
+import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
+
 import SearchResultAuthors from 'components/search-result-authors/search-result-authors';
 import style from './index.module.css';
 
