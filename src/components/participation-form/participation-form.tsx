@@ -40,6 +40,8 @@ interface IParticipationFormProps {
   playFileError?: string,
   onPlayFileChange: (file: Nullable<File>) => void,
   canSubmit: boolean,
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void,
+  formSuccessfullySent: boolean,
 }
 
 const ACCEPTABLE_FILE_TYPES = '.doc, .docx, .txt, .odt, .pdf';
@@ -76,10 +78,12 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
     playFileError,
     onPlayFileChange,
     canSubmit,
+    onSubmit,
+    formSuccessfullySent,
   } = props;
 
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       <Form.Fieldset legend="О вас">
         <Form.Field>
           <FormField
@@ -211,10 +215,10 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
           className={cx('action')}
           type="submit"
           iconPlace="right"
-          icon="arrow-right"
+          icon={formSuccessfullySent ? 'ok' : 'arrow-right'}
           size="l"
           border="full"
-          label="Отправить"
+          label={formSuccessfullySent ? 'Отправлено' : 'Отправить'}
           disabled={!canSubmit}
         />
       </Form.Actions>

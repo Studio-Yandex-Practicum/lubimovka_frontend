@@ -33,6 +33,7 @@ const Participation: NextPage = () => {
   const [playYearWasChanged, setPlayYearWasChanged] = useState(false);
   const [playFile, setPlayFile] = useState<Nullable<File>>();
   const [playFileWasChanged, setPlayFileWasChanged] = useState(false);
+  const [formSuccessfullySent, setFormSuccessfullySent] = useState(false);
 
   const getFirstNameError = () => {
     if (firstName.length < 2) {
@@ -165,6 +166,28 @@ const Participation: NextPage = () => {
     setPlayFile(file);
   };
 
+  const resetForm = () => {
+    setFormSuccessfullySent(false);
+    setFirstNameWasChanged(false);
+    setFirstName('');
+    setLastNameWasChanged(false);
+    setLastName('');
+    setBirthYearWasChanged(false);
+    setBirthYear('');
+    setCityWasChanged(false);
+    setCity('');
+    setPhoneNumberWasChanged(false);
+    setPhoneNumber('');
+    setEmailWasChanged(false);
+    setEmail('');
+    setPlayTitleWasChanged(false);
+    setPlayTitle('');
+    setPlayYearWasChanged(false);
+    setPlayYear('');
+    setPlayFileWasChanged(false);
+    setPlayFile(undefined);
+  };
+
   const canSubmit = (
     !getFirstNameError()
     && !getLastNameError()
@@ -176,6 +199,12 @@ const Participation: NextPage = () => {
     && !getPlayYearError()
     && !getPlayFileError()
   );
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormSuccessfullySent(true);
+    setTimeout(() => resetForm(), 10000);
+  };
 
   return (
     <AppLayout>
@@ -220,6 +249,8 @@ const Participation: NextPage = () => {
               playFileError={playFileWasChanged ? getPlayFileError() : undefined}
               onPlayFileChange={handlePlayFileChange}
               canSubmit={canSubmit}
+              onSubmit={handleSubmit}
+              formSuccessfullySent={formSuccessfullySent}
             />
           </PlayProposalLayout.Form>
         </PlayProposalLayout.Column>
