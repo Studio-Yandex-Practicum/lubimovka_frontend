@@ -22,8 +22,7 @@ const Contacts: NextPage = () => {
   const [emailWasChanged, setEmailWasChanged] = useState(false);
   const [question, setQuestion] = useState('');
   const [questionWasChanged, setQuestionWasChanged] = useState(false);
-
-  const [submitButtonInitialState, setSubmitButtonInitialState] = useState(true);
+  const [formSuccessfullySent, setFormSuccessfullySent] = useState(false);
 
   const getNameError = () => {
     if (name.length < 2) {
@@ -69,7 +68,7 @@ const Contacts: NextPage = () => {
   };
 
   const resetForm = () => {
-    setSubmitButtonInitialState(true);
+    setFormSuccessfullySent(false);
     setNameWasChanged(false);
     setName('');
     setEmailWasChanged(false);
@@ -82,7 +81,7 @@ const Contacts: NextPage = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitButtonInitialState(false);
+    setFormSuccessfullySent(true);
     setTimeout(() => resetForm(), 10000);
   };
 
@@ -121,31 +120,17 @@ const Contacts: NextPage = () => {
                 />
               </Form.Field>
               <Form.Actions>
-                {submitButtonInitialState ? (
-                  <Button
-                    type="submit"
-                    iconPlace="right"
-                    icon="arrow-right"
-                    size="l"
-                    border="full"
-                    label="Отправить"
-                    align="space-between"
-                    width="100%"
-                    disabled={!canSubmit}
-                  />
-                ) : (
-                  <Button
-                    type="submit"
-                    iconPlace="right"
-                    icon="ok"
-                    size="l"
-                    border="full"
-                    label="Отправлено"
-                    align="space-between"
-                    width="100%"
-                    disabled
-                  />
-                )}
+                <Button
+                  type="submit"
+                  iconPlace="right"
+                  icon={formSuccessfullySent ? 'ok' : 'arrow-right'}
+                  size="l"
+                  border="full"
+                  label={formSuccessfullySent ? 'Отправлено' : 'Отправить'}
+                  align="space-between"
+                  width="100%"
+                  disabled={!canSubmit}
+                />
               </Form.Actions>
               <Form.Disclaimer>
                 {'Нажимая на кнопку «Отправить» вы даёте согласие '}
