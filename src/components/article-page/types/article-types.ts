@@ -11,23 +11,36 @@ export type BlogData = {
   image: Url,
   author_url: Url,
   author_url_title: string,
-  contents: Content<ContentItem>[],
+  contents: Content[],
   persons: Creator[],
   blogs: BlogItem[],
   created: string,
   modified: string,
 }
 
-export type Content<K extends ContentItem> = {
-  content_type: ContentType;
-  content_item: K;
+export type Content = TextContent | ImageContent | PlaysContent | PersonsContent
+
+export type TextContentType = 'text' | 'title' | 'quote'
+
+export type TextContent = {
+  content_type: TextContentType,
+  content_item: Record<TextContentType, string>;
 }
 
-export type ContentType = 'text' | 'title' | 'imagesblock' | 'quote' | 'playsblock' | 'personsblock';
+export type ImageContent = {
+  content_type: 'imagesblock',
+  content_item: ComplexItem<Image>;
+}
 
-export type ContentItem = TextItem | ComplexItem<ObjectItems>
+export type PlaysContent = {
+  content_type: 'playsblock',
+  content_item: ComplexItem<Play>;
+}
 
-export type TextItem = Record<ContentType, string>;
+export type PersonsContent = {
+  content_type: 'personsblock',
+  content_item: ComplexItem<Person>;
+}
 
 export type ComplexItem<T extends ObjectItems> = {
   title: string,

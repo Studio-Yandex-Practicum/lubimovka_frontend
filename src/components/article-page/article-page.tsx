@@ -15,7 +15,7 @@ import ArticleOther from './article-other/article-other';
 
 import styles from './article-page.module.css';
 import DataPlays from './assets/mock-data-plays.json';
-import { BlogData, Content, ComplexItem, Play, Person, TextItem, Image } from './types/article-types';
+import { BlogData, PlaysContent, PersonsContent } from './types/article-types';
 
 const cx = cn.bind(styles);
 
@@ -33,9 +33,9 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
   } = props;
 
   const sectionPlays = data.contents
-    .find(item => item.content_type === 'playsblock') as Content<ComplexItem<Play>>;
+    .find(item => item.content_type === 'playsblock') as PlaysContent | undefined;
   const sectionPersons = data.contents
-    .find(item => item.content_type === 'personsblock') as Content<ComplexItem<Person>>;
+    .find(item => item.content_type === 'personsblock') as PersonsContent | undefined;
 
   const authors: string[] = [];
   const illustrators: string[] = [];
@@ -77,15 +77,15 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
           {data.contents.map((item, idx) => {
             switch (item.content_type) {
             case 'title':
-              return (<h4 key={idx}>{(item.content_item as TextItem).title}</h4>);
+              return (<h4 key={idx}>{item.content_item.title}</h4>);
             case 'quote':
-              return (<blockquote key={idx}>{(item.content_item as TextItem).quote}</blockquote>);
+              return (<blockquote key={idx}>{item.content_item.quote}</blockquote>);
             case 'text':
-              return (<p key={idx}>{(item.content_item as TextItem).text}</p>);
+              return (<p key={idx}>{item.content_item.text}</p>);
             case 'imagesblock':
               return (
                 <ImageSlider
-                  images={(item.content_item as ComplexItem<Image>).items}
+                  images={item.content_item.items}
                   className={cx('imagesblock')}
                   key={idx}
                 />
@@ -94,17 +94,19 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
           })}
         </ArticleMainText>
 
-        <Section type={'plays'} title={sectionPlays.content_item.title || ''} className={cx('sectionPlaysList')}>
-          {/*В ответе от бэка:
+        {sectionPlays &&
+          <Section type={'plays'} title={sectionPlays.content_item.title || ''} className={cx('sectionPlaysList')}>
+            {/*В ответе от бэка:
              для пьес не хватает авторов, непонятно что за свойства is_draft, program, festival;
              для персон не хватает должности.
           */}
-          <BasicPlayCardList>
-            {(DataPlays as IBasicPlayCardProps[]).map((item, idx) => (
-              <BasicPlayCard key={idx} {...item}/>
-            ))}
-          </BasicPlayCardList>
-        </Section>
+            <BasicPlayCardList>
+              {(DataPlays as IBasicPlayCardProps[]).map((item, idx) => (
+                <BasicPlayCard key={idx} {...item}/>
+              ))}
+            </BasicPlayCardList>
+          </Section>
+        }
 
         {sectionPersons &&
           <Section type={'persons'} title={sectionPersons.content_item.title || ''} className={cx('sectionPersonsList')}>
