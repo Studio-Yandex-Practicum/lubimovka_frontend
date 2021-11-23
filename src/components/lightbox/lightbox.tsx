@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
-import { ImageSlider, TImageItem } from 'components/ui/image-slider';
 import { Modal } from 'components/ui/modal';
+import { LightboxImageSlider, TImageItem } from 'components/lightbox-image-slider';
 
 import styles from './lightbox.module.css';
 const cx = classNames.bind(styles);
@@ -9,14 +9,14 @@ const cx = classNames.bind(styles);
 interface ILightboxProps {
   images: TImageItem[];
   isOpen: boolean;
-  initialSlide: number;
+  initialSlideIndex: number;
   onClose: () => void;
 }
 export const Lightbox = (props: ILightboxProps): JSX.Element => {
   const {
     images,
     isOpen,
-    initialSlide,
+    initialSlideIndex,
     onClose
   } = props;
 
@@ -27,11 +27,9 @@ export const Lightbox = (props: ILightboxProps): JSX.Element => {
       Backdrop={Modal.Backdrop}
     >
       <div className={cx('container')}>
-        <ImageSlider
+        <LightboxImageSlider
           images={images}
-          type='popup'
-          showDots={false}
-          initialSlide={initialSlide}
+          initialSlideIndex={initialSlideIndex}
           onClose={onClose}
         />
       </div>
