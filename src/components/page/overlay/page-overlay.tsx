@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
 import classNames from 'classnames/bind';
-import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 
 import styles from './page-overlay.module.css';
+import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 
 const cx = classNames.bind(styles);
 
@@ -14,11 +13,7 @@ interface IPageOverlayProps {
 export const PageOverlay = (props: IPageOverlayProps): JSX.Element => {
   const { isOpen, children } = props;
 
-  useEffect(() => {
-    isOpen ? disableBodyScroll({ savePosition: true }) : enableBodyScroll();
-
-    return () => enableBodyScroll();
-  }, [isOpen]);
+  useDisableBodyScroll(isOpen);
 
   return (
     <div className={cx('overlay', { visible: isOpen })}>

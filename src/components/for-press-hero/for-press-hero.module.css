@@ -1,0 +1,43 @@
+.hero {
+  display: grid;
+  padding: scale(58px 270px 117px 120px);
+  background-color: var(--beige);
+  column-gap: scale(213px);
+  grid-template-areas:
+    ".       title"
+    "contact description";
+  grid-template-columns: repeat (2, 1fr);
+  row-gap: scale(32px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-top: scale(35px);
+    padding-bottom: scale(100px);
+    padding-left: scale(23px);
+    gap: 0;
+    grid-template-areas:
+      "title"
+      "description"
+      "contact";
+    grid-template-columns: 1fr;
+  }
+}
+
+.heroTitle {
+  grid-area: title;
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(24px);
+  }
+}
+
+.heroDescription {
+  grid-area: description;
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(56px);
+  }
+}
+
+.heroPrContact {
+  grid-area: contact;
+}

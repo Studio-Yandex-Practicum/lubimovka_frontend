@@ -2,42 +2,32 @@
   position: relative;
   width: scale(72px);
   height: scale(72px);
-  padding: 0;
+  box-sizing: border-box;
+  padding-top: scale(24px);
   border: 0;
   margin: 0;
   background-color: var(--coal);
-
-  &::before {
-    position: absolute;
-    top: scale(28px);
-    left: 50%;
-    width: scale(20px);
-    height: scale(2px);
-    background-color: var(--beige);
-    box-shadow: scale(0 6px 0 0) var(--beige), scale(0 12px 0 0) var(--beige);
-    content: "";
-    transform: translateX(-50%);
-  }
 }
 
-.open {
-  &::before,
-  &::after {
-    position: absolute;
-    top: scale(35px);
-    left: 50%;
-    width: scale(24px);
-    height: scale(2px);
-    background-color: var(--beige);
-    box-shadow: none;
-    content: "";
-  }
+.line {
+  display: block;
+  width: scale(20px);
+  height: scale(2px);
+  margin: scale(4px auto);
+  background-color: var(--beige);
+  transition: all .3s ease-in-out;
+}
 
-  &::before {
-    transform: translateX(-50%) rotate(45deg);
-  }
+.button.open .line:nth-child(2) {
+  opacity: 0;
+}
 
-  &::after {
-    transform: translateX(-50%) rotate(-45deg);
-  }
+.button.open .line:nth-child(1) {
+  width: scale(24px);
+  transform: translateY(scale(6px)) rotate(45deg);
+}
+
+.button.open .line:nth-child(3) {
+  width: scale(24px);
+  transform: translateY(calc(-1 * scale(6px))) rotate(-45deg);
 }

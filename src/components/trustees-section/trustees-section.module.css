@@ -17,7 +17,6 @@
 
 .container {
   display: flex;
-
   flex-wrap: wrap;
   padding: 0 scale(30px);
   margin: 0 auto;
@@ -91,4 +90,3 @@
     max-width: none;
   }
 }
-
