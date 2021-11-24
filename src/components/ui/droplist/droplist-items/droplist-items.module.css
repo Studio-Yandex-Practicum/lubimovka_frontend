@@ -24,6 +24,12 @@
   }
 }
 
+.itemCheckbox {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+}
+
 .circle {
   position: absolute;
   top: 50%;
@@ -37,5 +43,12 @@
 }
 
 .checkbox {
-  display: none;
+  display: flex;
+  width: scale(25px);
+  height: scale(25px);
+  align-items: center;
+  justify-content: center;
+  border: scale(1px) solid var(--coal);
+  margin: 0 scale(16px);
+  background-color: transparent;
 }
