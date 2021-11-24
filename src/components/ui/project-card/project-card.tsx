@@ -25,7 +25,7 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
   } = props;
 
   return (
-    <Link href={`/project/${id}`}>
+    <Link href={`/projects/${id}`}>
       <a className={cx('link')}>
         <article className={cx('card')}>
           <div className={cx('imageContainer')}>

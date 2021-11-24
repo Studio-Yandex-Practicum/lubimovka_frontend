@@ -122,7 +122,7 @@ const fetchProject = async (projectId: string) => {
   let data;
 
   try {
-    data = await fetcher<ProjectModel>(`/project/${projectId}/`);
+    data = await fetcher<ProjectModel>(`/projects/${projectId}/`);
   } catch (error) {
     // TODO: обработать ошибку, добавим после реализации страницы ошибки
 
