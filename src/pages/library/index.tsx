@@ -25,7 +25,7 @@ const Library: NextPage = () => (
     <Head>
       <title>Библиотека</title>
     </Head>
-    <LibraryPage items={items} />
+    <LibraryPage items={items}/>
   </AppLayout>
 );
 

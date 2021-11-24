@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import cn from 'classnames/bind';
 import { Button } from '../button';
 import { InfoLink } from '../info-link';
@@ -11,16 +11,15 @@ const cx  = cn.bind(styles);
 export interface IBasicPlayCardProps {
   type?: 'performance';
   play: {
-    id?: number;
-    name: string;
+    title: string;
     city: string;
-    year: number;
-    url_reading: Url;
-    url_download: Url;
-    authors: Array <{
-      id: number;
-      name: string;
-    }>;
+    year: string;
+    linkView: Url;
+    linkDownload: Url;
+  };
+  author: {
+    id: number,
+    name: string;
   };
   buttonVisibility?: boolean;
 }
@@ -29,30 +28,16 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
   const {
     type,
     play,
+    author,
     buttonVisibility,
   } = props;
-
-  const authorsHiddenLabel = (
-    <React.Fragment>
-      {
-        play.authors.length > 1 ?
-          (<dt className={cx('hiddenText')}>
-          Авторы:
-          </dt>)
-          :
-          (<dt className={cx('hiddenText')}>
-          Автор:
-          </dt>)
-      }
-    </React.Fragment>
-  );
 
   return (
     <article
       className={cx('card', type)}
     >
       <div className={cx('container')}>
-        <h6 className={cx('title')}>{play.name}</h6>
+        <h6 className={cx('title')}>{play.title}</h6>
         <div>
           <Button
             className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
@@ -64,7 +49,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             label='Смотреть читку'
             border='top'
             isLink
-            href={play.url_reading}
+            href={play.linkView}
           />
           <Button
             className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
@@ -76,24 +61,21 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             label='Скачать пьесу'
             border='top'
             isLink
-            href={play.url_download}
+            href={play.linkDownload}
           />
         </div>
       </div>
       <dl className={cx('info')}>
-        {authorsHiddenLabel}
-        {play.authors.map((i) => (
-          <dd className={cx('author', play.authors.length > 1 && 'authorMultiple')} key={i.id}>
-            <InfoLink
-              isOutsideLink={false}
-              href={`/authors/${i.id}`}
-              label={i.name}
-              size='l'
-              className={cx('author', play.authors.length > 1 && 'authorMultiple')}
-            />
-          </dd>
-        )
-        )}
+        <dt className={cx('hiddenText')}>
+          Автор:
+        </dt>
+        <InfoLink
+          isOutsideLink={false}
+          href={`/authors/${author.id}`}
+          label={author.name}
+          size='l'
+          className={cx('author')}
+        />
         <dt className={cx('hiddenText')}>
           Город:
         </dt>

@@ -1,4 +1,4 @@
-.grid {
+.personCardList {
   @mixin hideScrollbar;
 
   --card-width: scale(210px);
@@ -7,6 +7,7 @@
   --columns-count: 4;
   --padding: scale(60px);
 
+  position: relative;
   display: grid;
   max-width: calc((var(--card-width) * var(--columns-count)) + (var(--column-gap) * (var(--columns-count) - 1)) + (var(--padding) * 2));
   box-sizing: border-box;

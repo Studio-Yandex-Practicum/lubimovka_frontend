@@ -111,31 +111,32 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
   const droplistClass = className ? className : styles.droplistWidth;
 
   return (
-    <div className={ cn(styles.droplist, droplistClass) }>
+    <div className={cn(styles.droplist, droplistClass)}>
       <ContainerButton
-        cb={ cbContainer }
-        activeDropdown={ activeDropdown }
-        value={ type === 'radio' ? selectList[0] : 'Все' }
+        cb={cbContainer}
+        activeDropdown={activeDropdown}
+        value={type === 'radio' ? selectList[0] : 'Все'}
       />
       <form
         name='droplist'
-        className={ cn(styles.form) }
-        onSubmit={ handlerSubmit }
+        className={cn(styles.form)}
+        onSubmit={handlerSubmit}
       >
-        <div className={ cn(styles.list, {
+        <div className={cn(styles.list, {
           [styles.active]: activeDropdown,
         })}>
-          { list.map((item: string | number, i): JSX.Element => (
+          {/* https://github.com/microsoft/TypeScript/issues/36390 */}
+          {(list as any[]).map((item: string | number, i): JSX.Element => (
             <DroplistItems
-              item={ item }
-              key={ i }
-              cb={ cbItems }
+              item={item}
+              key={i}
+              cb={cbItems}
               activeCheckbox={selectList.some(itemSelect => itemSelect.toLocaleLowerCase() === String(item).toLocaleLowerCase())}
             />
           ))}
         </div>
-        { selectList.length > 0 && type !== 'radio'
-          && <ListSelected selectList={ selectList } /> }
+        {selectList.length > 0 && type !== 'radio'
+          && <ListSelected selectList={selectList}/>}
       </form>
     </div>
   );

@@ -1,9 +1,0 @@
-.storiesСontainer {
-  width: scale(553px);
-  margin: scale(92px auto 169px 665px);
-
-  @media (max-width: $tablet-portrait) {
-    width: scale(365px);
-    margin: scale(50px auto 100px 25px);
-  }
-}

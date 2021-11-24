@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 
-import {Icon} from '../ui/icon';
+import { Icon } from '../ui/icon';
 
 import style from './trustees-section.module.css';
 import { Menu } from 'components/ui/menu';
@@ -43,9 +43,9 @@ const TrusteesSection: FC<TrusteesSectionProps> = ({ text, children }) => {
 
   return (
     <section className={style.section}>
-      { Number(screenWidth) > 729 &&
+      {Number(screenWidth) > 729 &&
         <div className={style.menu}>
-          <Menu type={ 'general-submenu' }>
+          <Menu type={'general-submenu'}>
             {demoItems.map(item => (
               <Menu.Item
                 key={item.text}
@@ -59,7 +59,7 @@ const TrusteesSection: FC<TrusteesSectionProps> = ({ text, children }) => {
       }
       <div className={style.container}>
         <div className={style.becomeTrustee}>
-          <Icon glyph={'asterisk'} />
+          <Icon glyph={'asterisk'}/>
           <p className={style.accent}>{accent}
             <a className={style.mailLink} href={`mailto:${link}`} target="_blank" rel="noreferrer">{link}</a>
           </p>
