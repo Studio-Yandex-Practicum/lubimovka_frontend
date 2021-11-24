@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, FC } from 'react';
+import React, { useEffect, useCallback, useRef, FC } from 'react';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button';
@@ -20,14 +20,14 @@ export const MainBannerItem: FC<IMainBannersProps> = (props):JSX.Element => {
   } = props;
 
   function debounce(cb: () => void, delay: number) {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setTimeout>;
     return function() {
       clearTimeout(timer);
       timer = setTimeout(cb, delay || 0);
     };
   }
 
-  function scrollHandler() {
+  const scrollHandler = useCallback(() => {
     if (bannerRef.current && bannerContainer.current && bannerRef.current.getBoundingClientRect().top < 0) {
       bannerContainer.current.classList.add(cn(styles.hideContainer));
       return;
@@ -35,7 +35,7 @@ export const MainBannerItem: FC<IMainBannersProps> = (props):JSX.Element => {
     if (bannerRef.current && bannerContainer.current) {
       bannerContainer.current.classList.remove(cn(styles.hideContainer));
     }
-  }
+  }, [bannerRef, bannerContainer]);
 
   useEffect(() => {
     const handlerDebounced = debounce(scrollHandler, 10);
@@ -45,33 +45,33 @@ export const MainBannerItem: FC<IMainBannersProps> = (props):JSX.Element => {
     return () => {
       window.removeEventListener('scroll', handlerDebounced);
     };
-  }, []);
+  }, [scrollHandler]);
 
   return (
-    <div className={ cn(styles.banner) } ref={ bannerRef }>
-      <h2 className={ cn(styles.title) }>
-        { title }
+    <div className={cn(styles.banner)} ref={bannerRef}>
+      <h2 className={cn(styles.title)}>
+        {title}
       </h2>
-      <div className={ cn(styles.container) } ref={ bannerContainer }>
-        <div className={ cn(styles.content) }>
-          <p className={ cn(styles.desc) }>
-            { desc }
+      <div className={cn(styles.container)} ref={bannerContainer}>
+        <div className={cn(styles.content)}>
+          <p className={cn(styles.desc)}>
+            {desc}
           </p>
           <Button 
-            label={ buttonText }
+            label={buttonText}
             iconPlace='left' 
             icon='arrow-right' 
             gap='4px'
             border='bottomLeft'
-            isLink={ true }
-            href={ buttonUrl }
+            isLink={true}
+            href={buttonUrl}
             className={cn(styles.button)}
           />
         </div>
         <img 
-          src={ imgUrl }
-          alt={ imgAlt }
-          className={ cn(styles.img) }
+          src={imgUrl}
+          alt={imgAlt}
+          className={cn(styles.img)}
         />
       </div>
     </div>

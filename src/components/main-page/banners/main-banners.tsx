@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
 
-import { MainBannerItem } from './baner-item';
+import { MainBannerItem } from './banner';
 
 import styles from './main-banners.module.css';
 
@@ -21,12 +21,12 @@ interface IProps {
 
 export const MainBanners: FC<IProps> = ({ data }):JSX.Element => {
   return (
-    <section className={ cn(styles.banners) }>
-      <ul className={ cn(styles.list) }>
-        { data.map((item: IMainBannersProps) => {
+    <section className={cn(styles.banners)}>
+      <ul className={cn(styles.list)}>
+        {data.map((item: IMainBannersProps) => {
           return (
-            <li className={ cn(styles.item) } key={item.id}>
-              <MainBannerItem {...item } />
+            <li className={cn(styles.item)} key={item.id}>
+              <MainBannerItem {...item}/>
             </li>
           );
         })}

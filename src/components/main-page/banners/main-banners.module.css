@@ -9,11 +9,6 @@
   list-style: none;
 }
 
-/* .hideContainer {
-  overflow: hidden;
-  max-height: 0;
-} */
-
 @media (max-width: $tablet-portrait) {
   .banners {
     padding-top: scale(56px);
