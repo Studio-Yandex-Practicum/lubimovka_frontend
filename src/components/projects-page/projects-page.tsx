@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
-import { Section } from 'components/section';
 import styles from './projects-page.module.css';
 
 interface IProjectsPageProps {

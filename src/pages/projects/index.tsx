@@ -10,11 +10,13 @@ const Projects = ({ data }: InferGetServerSidePropsType<typeof getServerSideProp
     <AppLayout>
       <ProjectsPage>
         {data && data.map((item: { id: number; title: string; description: string; image: string; }) => (
-            <ProjectCard id={item.id}
-              title={item.title}
-              description={item.description}
-              image={item.image} />
-          ))}
+          <ProjectCard
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            description={item.description}
+            image={item.image}/>
+        ))}
       </ProjectsPage>
     </AppLayout>
   );
