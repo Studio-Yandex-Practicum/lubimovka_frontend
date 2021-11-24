@@ -71,7 +71,7 @@
 }
 
 .article_container > p + p {
-  padding-top: scale(28px);
+  padding-top: scale(16px);
 }
 
 .article_container > blockquote {
