@@ -70,6 +70,10 @@
   }
 }
 
+.article_container > p + p {
+  padding-top: scale(28px);
+}
+
 .article_container > blockquote {
   @mixin headline;
   @mixin headline6;
