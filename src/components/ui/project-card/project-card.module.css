@@ -1,11 +1,11 @@
 .link {
   display: flex;
-  text-decoration: none;
   width: 50%;
+  text-decoration: none;
 
   @media (max-width: $tablet-portrait) {
-    margin: 0;
     width: 100%;
+    margin: 0;
   }
 }
 
@@ -17,10 +17,9 @@
   }
 }
 
-
 .card {
-  flex-flow: column nowrap;
   width: 100%;
+  flex-flow: column nowrap;
   margin-bottom: scale(100px);
 
   @media (min-width: $tablet-portrait) {
@@ -34,9 +33,9 @@
 
 .imageContainer {
   display: flex;
+  overflow: hidden;
   width: 50%;
   height: 100%;
-  overflow: hidden;
 
   @media (max-width: $tablet-portrait) {
     width: 100%;
@@ -56,7 +55,7 @@
   object-fit: cover;
   transition: transform .4s cubic-bezier(.6, 0, .5, 1);
 
-  @media (max-width: $tablet-portrait)  {
+  @media (max-width: $tablet-portrait) {
     width: scale(214px);
   }
 }
@@ -70,10 +69,10 @@
   @mixin headline4;
 
   display: flex;
-  align-items: center;
   width: 50%;
-  padding: scale(55px 80px 0 32px);
   box-sizing: border-box;
+  align-items: center;
+  padding: scale(55px 80px 0 32px);
   hyphens: auto;
 
   @media (max-width: $tablet-portrait) {
@@ -96,9 +95,9 @@
   display: none;
 
   @media (max-width: $tablet-portrait) {
+    display: flex;
     width: scale(25px);
     height: scale(25px);
-    display: flex;
     margin: scale(0 0 0 8px);
   }
 }
@@ -107,8 +106,8 @@
   @mixin headline;
   @mixin headline7;
 
-  box-sizing: border-box;
   width: 50%;
+  box-sizing: border-box;
   padding: scale(16px 18px 0 89px);
 
   @media (max-width: $tablet-portrait) {

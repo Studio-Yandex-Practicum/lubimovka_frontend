@@ -67,7 +67,7 @@ export const LightboxImageSlider = (props: ILightboxImageSliderProps): JSX.Eleme
               ariaLabel='Закрыть лайтбокс'
               type='button'
               view='light'
-              icon={<Icon glyph='cross' />}
+              icon={<Icon glyph='cross'/>}
               onClick={onClose}
             />
           </div>
