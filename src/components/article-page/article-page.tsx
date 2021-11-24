@@ -3,7 +3,7 @@ import Head from 'next/head';
 import cn from 'classnames/bind';
 
 import { Section } from 'components/section';
-import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
+import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { PersonCard, PersonCardList } from 'components/ui/person-card';
 import { ImageSlider } from 'components/ui/image-slider';
@@ -14,7 +14,6 @@ import ArticleOther from './article-other/article-other';
 
 
 import styles from './article-page.module.css';
-import DataPlays from './assets/mock-data-plays.json';
 import { BlogData, PlaysContent, PersonsContent } from './types/article-types';
 
 const cx = cn.bind(styles);
@@ -101,8 +100,24 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
              для персон не хватает должности.
           */}
             <BasicPlayCardList>
-              {(DataPlays as IBasicPlayCardProps[]).map((item, idx) => (
-                <BasicPlayCard key={idx} {...item}/>
+              {sectionPlays.content_item.items &&
+              sectionPlays.content_item.items.map((item) => (
+                <BasicPlayCard
+                  key={item.id}
+                  play={{
+                    title: item.name,
+                    city: item.city,
+                    // TODO: поменять тип year в basic-play-card
+                    year: '2020', //item.year,
+                    linkView: item.url_reading,
+                    linkDownload: item.url_download,
+                  }}
+                  author={{
+                    // TODO: добавить реальные данные в ответ бекенда
+                    id: 0,
+                    name: 'Константин Константинопольский',
+                  }}
+                />
               ))}
             </BasicPlayCardList>
           </Section>
@@ -118,7 +133,8 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
                 participant={true}
                 link={item.image}
                 name={`${item.first_name} ${item.last_name}`}
-                about="Не хватает должности"
+                // TODO: добавить реальные данные в ответ бекенда
+                about='Драматург, сценарист, преподаватель'
               />
             )}
             </PersonCardList>
