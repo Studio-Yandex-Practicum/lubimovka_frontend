@@ -15,13 +15,13 @@ fetchMock.config.fallbackToNetwork = true;
 const mockedFetch = fetchMock.sandbox();
 
 mockedFetch
+  .get({ matcher: new RegExp(addOriginToApiPath('/projects/\\d+')) }, project)
   .get(addOriginToApiPath('/projects/'), (<PaginatedProjectListList>{
     results: projects,
   }))
   .get({ matcher: addOriginToApiPath('/info/partners/'), query: { type: 'general' } }, partners.filter(({ type }) => type === 'general'))
   .get({ matcher: new RegExp(addOriginToApiPath('/library/performances/\\d+')) }, performance)
   .get(addOriginToApiPath('/contacts'), contacts)
-  .get(addOriginToApiPath('/form'), form)
-  .get({ matcher: new RegExp(addOriginToApiPath('/project/\\d+')) }, project);
+  .get(addOriginToApiPath('/form'), form);
 
 export default mockedFetch;
