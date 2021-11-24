@@ -31,7 +31,7 @@ export const PhotoGalleryItem: FC<IPhotoGalleryItemProps> = (props) => {
         layout="fill"
         objectFit="cover"
       />
-      {zoomIn && <button type='button' aria-label='Увеличить изображение' className={cx('button')} onClick={onClick} />}
+      {zoomIn && <button type='button' aria-label='Увеличить изображение' className={cx('button')} onClick={onClick}/>}
     </li>
   );
 };
