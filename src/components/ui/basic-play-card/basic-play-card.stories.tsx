@@ -6,14 +6,6 @@ import { BasicPlayCard } from './basic-play-card';
 export default {
   title: 'UI/BasicPlayCard',
   component: BasicPlayCard,
-  decorators: [
-    (Story) => (
-      <div style={{ width: '240px'}}>
-        <Story/>
-      </div>
-    ),
-  ],
-
 } as ComponentMeta<typeof BasicPlayCard>;
 
 const Template: ComponentStory<typeof BasicPlayCard> = (args) => <BasicPlayCard {...args} />;
@@ -21,15 +13,43 @@ const Template: ComponentStory<typeof BasicPlayCard> = (args) => <BasicPlayCard 
 export const Default = Template.bind({});
 Default.args = {
   play: {
-    title: 'Конкретные разговоры пожилых супругов ни о чём',
-    city: 'Санкт-Петербург',
-    year: '2020',
-    linkView: 'https://lubimovka.ru/',
-    linkDownload: 'https://lubimovka.ru/',
-  },
-  author: {
     id: 1,
-    name: 'Екатерина Августеняк',
+    name: 'Конкретные разговоры пожилых супругов ни о чём',
+    city: 'Санкт-Петербург',
+    year: 2020,
+    url_reading: 'https://lubimovka.ru/',
+    url_download: 'https://lubimovka.ru/',
+    authors: [{
+      id: 1,
+      name: 'Екатерина Августеняк',
+    }],
+  },
+  buttonVisibility: false,
+};
+
+export const PlayCardWithMultipleAuthors = Template.bind({});
+PlayCardWithMultipleAuthors.args = {
+  play: {
+    id: 2,
+    name: 'Конкретные разговоры пожилых супругов ни о чём',
+    city: 'Санкт-Петербург',
+    year: 2020,
+    url_reading: 'https://lubimovka.ru/',
+    url_download: 'https://lubimovka.ru/',
+    authors: [
+      {
+        id: 1,
+        name: 'Екатерина Августеняк',
+      },
+      {
+        id: 2,
+        name: 'Антон Чехов',
+      },
+      {
+        id: 3,
+        name: 'Василий Косотрясов',
+      },
+    ],
   },
   buttonVisibility: false,
 };
@@ -37,15 +57,16 @@ Default.args = {
 export const PlayCardWithVisibleButtons = Template.bind({});
 PlayCardWithVisibleButtons.args = {
   play: {
-    title: 'Конкретные разговоры пожилых супругов ни о чём',
+    id: 3,
+    name: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
-    year: '2020',
-    linkView: 'https://lubimovka.ru/',
-    linkDownload: 'https://lubimovka.ru/',
-  },
-  author: {
-    id: 1,
-    name: 'Екатерина Августеняк',
+    year: 2020,
+    url_reading: 'https://lubimovka.ru/',
+    url_download: 'https://lubimovka.ru/',
+    authors: [{
+      id: 1,
+      name: 'Екатерина Августеняк',
+    }],
   },
   buttonVisibility: true,
 };
