@@ -39,11 +39,11 @@ const MainPage: NextPage = () => {
               text={title.text}
             />
           )}
-          {events && <MainEvents data={ mainEventsData } />}
-          {aside && <MainAside />}
-          {banners && <MainBanners data={ mainBannersData } />}
-          {platforms && <MainPlatforms data={ mainPlatformsData[0] } />}
-          {shortList && <MainShortList data={ mainShortListData }/>}
+          {events && <MainEvents data={mainEventsData}/>}
+          {aside && <MainAside/>}
+          {banners && <MainBanners data={mainBannersData}/>}
+          {platforms && <MainPlatforms data={mainPlatformsData[0]}/>}
+          {shortList && <MainShortList data={mainShortListData}/>}
           {archive && mainArchiveData.map((el) => (
             <MainArchive key={el.id} data={el}/>
           ))}
