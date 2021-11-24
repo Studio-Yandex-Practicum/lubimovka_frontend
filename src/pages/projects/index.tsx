@@ -1,33 +1,67 @@
+import Error from 'next/error';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 import AppLayout from 'components/app-layout';
 import { ProjectsPage } from 'components/projects-page';
 import { ProjectCard } from 'components/ui/project-card';
 import { fetcher } from 'shared/fetcher';
+import { PaginatedProjectListList, ProjectList } from 'api-typings';
 
-const Projects = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+interface IProjectsProps {
+  errorCode?: number,
+  projects: ProjectList[],
+}
+
+const Projects = ({ errorCode, projects }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  if (errorCode) {
+    return (
+      <Error statusCode={errorCode}/>
+    );
+  }
+
   return (
     <AppLayout>
       <ProjectsPage>
-        {data && data.map((item: { id: number; title: string; description: string; image: string; }) => (
+        {projects.map(({ id, title, description, image }) => (
           <ProjectCard
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            description={item.description}
-            image={item.image}/>
+            key={id}
+            id={id}
+            title={title}
+            description={description}
+            image={image}/>
         ))}
       </ProjectsPage>
     </AppLayout>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const data = await fetcher('/projects/');
+const fetchProjects = async () => {
+  let data;
+
+  try {
+    data = await fetcher<PaginatedProjectListList>('/projects/');
+  } catch (error) {
+    return;
+  }
+
+  return data.results;
+};
+
+export const getServerSideProps: GetServerSideProps<IProjectsProps> = async () => {
+  const projects = await fetchProjects();
+
+  if (!projects) {
+    return {
+      props: {
+        errorCode: 500,
+        projects: [],
+      }
+    };
+  }
 
   return {
     props: {
-      data,
+      projects,
     },
   };
 };
