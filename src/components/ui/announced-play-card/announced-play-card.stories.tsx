@@ -9,7 +9,7 @@ export default {
 
 } as ComponentMeta<typeof AnnouncedPlayCard>;
 
-const Template: ComponentStory<typeof AnnouncedPlayCard> = (args) => <AnnouncedPlayCard {...args} />;
+const Template: ComponentStory<typeof AnnouncedPlayCard> = (args) => <AnnouncedPlayCard {...args}/>;
 
 export const PlayCardEventsViewTwoButtons = Template.bind({});
 PlayCardEventsViewTwoButtons.args = {

@@ -28,7 +28,7 @@ const TextSection: FC<TextSectionProps> = ({ data }) => {
   return (
     <section className={style.section}>
       <div className={style.container}>
-        <img src={image} alt="Изображение" className={style.picture} />
+        <img src={image} alt="Изображение" className={style.picture}/>
         <div className={style.list}>
           <p className={cn(style.paragraph, style.numberBox)}>{number}</p>
           <h2 className={cn(style.title, style.titleBox)}>{title}</h2>

@@ -1,6 +1,6 @@
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {SliderDots} from './slider-dots';
+import { SliderDots } from './slider-dots';
 
 export default {
   title: 'UI/SliderDots',

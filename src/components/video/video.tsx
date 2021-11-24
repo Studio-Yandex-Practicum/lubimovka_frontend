@@ -1,17 +1,23 @@
+import { HTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './video.module.css';
 import { Url } from 'shared/types';
 
-interface IVideoProps {
-  link: Url,
+interface IVideoProps extends HTMLAttributes<HTMLIFrameElement>{
+  src: Url,
 }
 const cx = classNames.bind(styles);
 
 export const Video = (props: IVideoProps): JSX.Element => {
-  const { link } = props;
+  const { src, className, ...restProps } = props;
 
   return (
-    <iframe className={cx('video')} src={link} allowFullScreen />
+    <iframe
+      className={cx('video', className)}
+      src={src}
+      allowFullScreen
+      {...restProps}
+    />
   );
 };

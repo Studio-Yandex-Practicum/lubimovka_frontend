@@ -6,15 +6,15 @@ import LibraryPage from 'components/library-pieces-page';
 
 const mockCard = {
   play: {
-    name: 'Конкретные разговоры пожилых супругов ни о чём',
+    title: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
-    year: 2020,
-    url_reading: 'https://lubimovka.ru/',
-    url_download: 'https://lubimovka.ru/',
-    authors: [{
-      id: 1,
-      name: 'Екатерина Августеняк',
-    }]
+    year: '2020',
+    linkView: 'https://lubimovka.ru/',
+    linkDownload: 'https://lubimovka.ru/',
+  },
+  author: {
+    id: 1,
+    name: 'Екатерина Августеняк',
   }
 };
 
@@ -25,7 +25,7 @@ const Library: NextPage = () => (
     <Head>
       <title>Библиотека</title>
     </Head>
-    <LibraryPage items={items} />
+    <LibraryPage items={items}/>
   </AppLayout>
 );
 

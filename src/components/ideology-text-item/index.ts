@@ -1,1 +1,1 @@
-export {default} from './ideology-text-item';
+export { default } from './ideology-text-item';
