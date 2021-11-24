@@ -18,13 +18,28 @@ export type BlogData = {
   modified: string,
 }
 
-export type Content = TextContent | ImageContent | PlaysContent | PersonsContent
+export type Content = TextContent | TitleContent | QuoteContent | ImageContent | PlaysContent | PersonsContent
 
-export type TextContentType = 'text' | 'title' | 'quote'
+// export type TextContentType = 'text' | 'title' | 'quote'
+
+// export type TextContent = {
+//   content_type: TextContentType,
+//   content_item: Record<TextContentType, string>;
+// }
 
 export type TextContent = {
-  content_type: TextContentType,
-  content_item: Record<TextContentType, string>;
+  content_type: 'text',
+  content_item: Record<'text', string>;
+}
+
+export type TitleContent = {
+  content_type: 'title',
+  content_item: Record<'title', string>;
+}
+
+export type QuoteContent = {
+  content_type: 'quote',
+  content_item: Record<'quote', string>;
 }
 
 export type ImageContent = {

@@ -9,6 +9,7 @@ import contacts from 'mocks/data/contacts';
 import form from 'mocks/data/form';
 import project from './data/project';
 import { PaginatedProjectListList } from 'api-typings';
+import blogArticle from './data/blogArticle';
 
 fetchMock.config.fallbackToNetwork = true;
 
@@ -22,6 +23,7 @@ mockedFetch
   .get({ matcher: addOriginToApiPath('/info/partners/'), query: { type: 'general' } }, partners.filter(({ type }) => type === 'general'))
   .get({ matcher: new RegExp(addOriginToApiPath('/library/performances/\\d+')) }, performance)
   .get(addOriginToApiPath('/contacts'), contacts)
-  .get(addOriginToApiPath('/form'), form);
+  .get(addOriginToApiPath('/form'), form)
+  .get({ matcher: new RegExp(addOriginToApiPath('/blog/\\d+')) }, blogArticle);
 
 export default mockedFetch;
