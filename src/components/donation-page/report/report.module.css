@@ -1,0 +1,33 @@
+.reportContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  justify-content: center;
+  padding: scale(213px 0 204px 0);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(150px 0 100px 0);
+  }
+}
+
+.reportText {
+  width: scale(873px);
+
+  @mixin headline;
+  @mixin headline5;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    width: scale(364px);
+  }
+}
+
+.reportEmail {
+  @mixin headline;
+  @mixin headline5;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+  }
+}

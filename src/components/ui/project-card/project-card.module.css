@@ -1,46 +1,63 @@
 .link {
+  display: flex;
   text-decoration: none;
+  width: 50%;
+
+  @media (max-width: $tablet-portrait) {
+    margin: 0;
+    width: 100%;
+  }
 }
 
+.link:nth-child(3n) {
+  margin-left: scale(353px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: 0;
+  }
+}
+
+
 .card {
-  display: flex;
-  width: 366px;
   flex-flow: column nowrap;
+  width: 100%;
+  margin-bottom: scale(100px);
 
   @media (min-width: $tablet-portrait) {
-    width: 748px;
-    flex-flow: row wrap;
+    display: flex;
+    width: 100%;
+    height: scale(500px);
+    flex-flow: column wrap;
+    margin: 0;
   }
 }
 
 .imageContainer {
   display: flex;
+  width: 50%;
+  height: 100%;
   overflow: hidden;
-  width: 214px;
-  justify-content: flex-start;
 
-  @media (min-width: $tablet-portrait) {
-    display: block;
-    width: 360px;
-    height: 500px;
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+    height: scale(297px);
   }
 }
 
-/* У каждой чётной карточки изображение расположено справа, пока
- * размер экрана меньше чем $tablet-portrait */
-.card:nth-child(even) > .imageContainer {
-  align-self: flex-end;
+.link:nth-child(2n) > .card > .imageContainer {
+  @media (max-width: $tablet-portrait) {
+    justify-content: end;
+  }
 }
 
 .image {
-  width: 214px;
-  height: 297px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform .4s cubic-bezier(.6, 0, .5, 1);
 
-  @media (min-width: $tablet-portrait) {
-    width: 360px;
-    height: 500px;
+  @media (max-width: $tablet-portrait)  {
+    width: scale(214px);
   }
 }
 
@@ -49,46 +66,53 @@
 }
 
 .title {
-  max-width: 267px;
-  padding: 0;
-  margin: 24px 0 16px;
-  color: var(--black);
-  font: normal normal 28px/32px 'PP Neue Machina', sans-serif;
-  letter-spacing: -.5px;
-  word-break: break-all;
+  @mixin headline;
+  @mixin headline4;
 
-  @media (min-width: $tablet-portrait) {
-    max-width: 356px;
-    margin: 46px 0 16px 32px;
-    font: normal normal 40px/40px 'PP Neue Machina', sans-serif;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  padding: scale(55px 80px 0 32px);
+  box-sizing: border-box;
+  hyphens: auto;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    width: 100%;
+    padding: scale(24px 0 17px 0);
   }
 }
 
-.card:nth-child(-n+2) > div > .title {
-  @media (min-width: $tablet-portrait) {
-    margin: 0 0 16px 32px;
+.link:nth-child(-n+2) > .card > .title {
+  padding-top: 0;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(24px 0 17px 0);
   }
 }
 
 .titleArrow {
-  margin: 0 0 0 8px;
-  vertical-align: text-top;
+  display: none;
 
-  @media (min-width: $tablet-portrait) {
-    display: none;
+  @media (max-width: $tablet-portrait) {
+    width: scale(25px);
+    height: scale(25px);
+    display: flex;
+    margin: scale(0 0 0 8px);
   }
 }
 
 .description {
-  max-width: 304px;
-  padding: 0;
-  margin: 0 0 0 86px;
-  color: var(--black);
-  font: normal normal 20px/24px 'PP Neue Machina', sans-serif;
-  letter-spacing: -.5px;
+  @mixin headline;
+  @mixin headline7;
 
-  @media (min-width: $tablet-portrait) {
-    max-width: 253px;
-    margin: 0 0 0 88px;
+  box-sizing: border-box;
+  width: 50%;
+  padding: scale(16px 18px 0 89px);
+
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+    padding: scale(0 0 0 62px);
   }
 }
