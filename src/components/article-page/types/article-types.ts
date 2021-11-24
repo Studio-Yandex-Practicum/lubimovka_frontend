@@ -18,29 +18,14 @@ export type BlogData = {
   modified: string,
 }
 
-export type Content = TextContent | TitleContent | QuoteContent | ImageContent | PlaysContent | PersonsContent
+export type NewsData = Omit<BlogData, 'author_url' | 'author_url_title' | 'persons' | 'blogs'> & { news: NewsItem[]}
 
-// export type TextContentType = 'text' | 'title' | 'quote'
+export type Content = TextContent<'text' | 'title' | 'quote'> | ImageContent | PlaysContent | PersonsContent
 
-// export type TextContent = {
-//   content_type: TextContentType,
-//   content_item: Record<TextContentType, string>;
-// }
-
-export type TextContent = {
-  content_type: 'text',
-  content_item: Record<'text', string>;
-}
-
-export type TitleContent = {
-  content_type: 'title',
-  content_item: Record<'title', string>;
-}
-
-export type QuoteContent = {
-  content_type: 'quote',
-  content_item: Record<'quote', string>;
-}
+export type TextContent<T extends string> = T extends T ? {
+  content_type: T,
+  content_item: Record<T, string>;
+} : never
 
 export type ImageContent = {
   content_type: 'imagesblock',
@@ -108,3 +93,12 @@ export type BlogItem = {
   author_url_title: string,
   image: Url,
 }
+
+export type NewsItem = {
+  id: number,
+  title: string,
+  description: string,
+  pub_date: string
+}
+
+

@@ -14,7 +14,7 @@ import ArticleOther from './article-other/article-other';
 
 
 import styles from './article-page.module.css';
-import { BlogData, PlaysContent, PersonsContent } from './types/article-types';
+import { BlogData, ComplexItem, Person, Play } from './types/article-types';
 
 const cx = cn.bind(styles);
 
@@ -31,10 +31,17 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
     data,
   } = props;
 
-  const sectionPlays = data.contents
-    .find(item => item.content_type === 'playsblock') as PlaysContent | undefined;
-  const sectionPersons = data.contents
-    .find(item => item.content_type === 'personsblock') as PersonsContent | undefined;
+  let sectionPlays: ComplexItem<Play> | undefined;
+  let sectionPersons: ComplexItem<Person> | undefined;
+
+  data.contents.forEach((el) => {
+    if(el.content_type === 'playsblock'){
+      sectionPlays = el.content_item;
+    }
+    if(el.content_type === 'personsblock'){
+      sectionPersons = el.content_item;
+    }
+  });
 
   const authors: string[] = [];
   const illustrators: string[] = [];
@@ -94,14 +101,14 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
         </ArticleMainText>
 
         {sectionPlays &&
-          <Section type={'plays'} title={sectionPlays.content_item.title || ''} className={cx('sectionPlaysList')}>
+          <Section type={'plays'} title={sectionPlays.title || ''} className={cx('sectionPlaysList')}>
             {/*В ответе от бэка:
              для пьес не хватает авторов, непонятно что за свойства is_draft, program, festival;
              для персон не хватает должности.
           */}
             <BasicPlayCardList>
-              {sectionPlays.content_item.items &&
-              sectionPlays.content_item.items.map((item) => (
+              {sectionPlays.items &&
+              sectionPlays.items.map((item) => (
                 <BasicPlayCard
                   key={item.id}
                   play={{
@@ -124,19 +131,18 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
         }
 
         {sectionPersons &&
-          <Section type={'persons'} title={sectionPersons.content_item.title || ''} className={cx('sectionPersonsList')}>
+          <Section type={'persons'} title={sectionPersons.title || ''} className={cx('sectionPersonsList')}>
             <PersonCardList>
-              {sectionPersons.content_item.items &&
-            sectionPersons.content_item.items.map(item =>
-              <PersonCard
-                key={item.id}
-                participant={true}
-                link={item.image}
-                name={`${item.first_name} ${item.last_name}`}
-                // TODO: добавить реальные данные в ответ бекенда
-                about='Драматург, сценарист, преподаватель'
-              />
-            )}
+              {sectionPersons.items && sectionPersons.items.map(item =>
+                <PersonCard
+                  key={item.id}
+                  participant={true}
+                  link={item.image}
+                  name={`${item.first_name} ${item.last_name}`}
+                  // TODO: добавить реальные данные в ответ бекенда
+                  about='Драматург, сценарист, преподаватель'
+                />
+              )}
             </PersonCardList>
           </Section>}
         <ArticleShare
