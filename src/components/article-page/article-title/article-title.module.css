@@ -9,7 +9,7 @@
     'b title title c'
     'b description description img'
     'b date author img';
-  grid-template-columns: scale(90px) 1fr 1fr 2.555fr;
+  grid-template-columns: scale(90px) 1fr 1fr min-content;
 
   @media (max-width: $tablet-portrait) {
     padding: scale(32px 0 0 24px);
@@ -114,14 +114,15 @@
 }
 
 .img {
-  max-height: scale(421px);
+  width: scale(690px);
+  height: scale(421px);
   padding-top: scale(30px);
   grid-area: img;
   object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
     width: scale(357px);
-    max-height: scale(218px);
+    height: scale(218px);
     padding-top: scale(40px);
     padding-left: scale(30px);
     justify-self: end;
