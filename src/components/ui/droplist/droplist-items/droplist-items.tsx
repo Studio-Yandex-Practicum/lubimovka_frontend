@@ -22,7 +22,7 @@ export const DroplistItems: FC<IDroplistItemsProps> = ({ item, cb, activeCheckbo
     <div className={cn(styles.item, {
       [styles.itemCheckbox]: type === 'checkbox' 
     })} onClick={handlerCheckbox}>
-      {activeCheckbox && type === 'radio' && <span className={ cn(styles.circle) } /> }
+      {activeCheckbox && type === 'radio' && <span className={cn(styles.circle)}/>}
       {type === 'checkbox' && 
         <div className={cn(styles.checkbox)}>
           {activeCheckbox && <Icon glyph='ok'/>}
