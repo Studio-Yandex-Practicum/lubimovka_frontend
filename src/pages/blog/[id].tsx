@@ -12,20 +12,7 @@ const BlogArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
       <ArticlePage
         metaTitle={props.title}
         isBlog={true}
-        data={{
-          id: props.id,
-          title: props.title,
-          description: props.description,
-          preamble: props.preamble,
-          image: props.image,
-          author_url: props.author_url,
-          author_url_title: props.author_url_title,
-          contents: props.contents,
-          persons: props.persons,
-          blogs: props.blogs,
-          created: props.created,
-          modified: props.modified,
-        }}
+        data={props}
       />
     </AppLayout>
   );
