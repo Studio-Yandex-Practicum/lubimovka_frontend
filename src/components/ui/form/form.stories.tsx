@@ -40,7 +40,6 @@ ContactForm.args = {
       </Form.Field>
       <Form.Field>
         <TextArea
-          ariaLabel="Текст сообщения"
           placeholder="Текст сообщения"
           rows={4}
         />
