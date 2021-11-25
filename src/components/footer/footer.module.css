@@ -12,7 +12,7 @@
   @media (max-width: $tablet-portrait) {
     @mixin textMedium;
 
-    padding: scale(56px 0 11px);
+    padding: scale(0 0 11px 0);
     grid-template:
       "logo"
       "address"
@@ -20,18 +20,6 @@
       "projects"
       "partners"
       "footnote";
-  }
-}
-
-.logo {
-  width: scale(93px);
-  height: scale(80px);
-  margin-right: scale(82px);
-  grid-area: logo;
-
-  @media (max-width: $tablet-portrait) {
-    margin-right: 0;
-    margin-left: scale(58px);
   }
 }
 
@@ -47,7 +35,7 @@
     flex-direction: column;
     padding: scale(32px 28px 63px);
     border-top: 1px solid black;
-    margin-top: scale(70px);
+    margin-top: 0;
   }
 }
 
