@@ -32,6 +32,8 @@ const Participation: NextPage = () => {
   const [playYear, setPlayYear] = useState('');
   const [playYearWasChanged, setPlayYearWasChanged] = useState(false);
   const [playFile, setPlayFile] = useState<Nullable<File>>();
+  const [playFileWasChanged, setPlayFileWasChanged] = useState(false);
+  const [formSuccessfullySent, setFormSuccessfullySent] = useState(false);
 
   const getFirstNameError = () => {
     if (firstName.length < 2) {
@@ -66,7 +68,6 @@ const Participation: NextPage = () => {
   };
 
   const getPhoneNumberError = () => {
-    //TODO: улучшить валидацию номера телефона, сейчас регулярное выражение позваляет ввести лишние символы, возможно, добавить компонент для ввода телефона
     if (!validPhoneNumberRegexp.test(phoneNumber)) {
       return 'Некорректный номер телефона';
     }
@@ -103,9 +104,16 @@ const Participation: NextPage = () => {
   };
 
   const getPlayFileError = () => {
-    // TODO: добавить проверки в соответствии с описанием поля в дизайне
+    if (!playFile) {
+      return 'Файл обязателен';
+    }
+
     if (playFile && /[а-яА-ЯЁё]/.test(playFile?.name)) {
       return 'Файл содержит кириллицу, пожалуйста, переименуйте его.';
+    }
+
+    if (playFile && /[^A-Za-z._-]/.test(playFile?.name)) {
+      return 'Пожалуйста, используйте только латинские символы и знаки - и _';
     }
 
     return;
@@ -156,7 +164,48 @@ const Participation: NextPage = () => {
   };
 
   const handlePlayFileChange = (file: Nullable<File>) => {
+    setPlayFileWasChanged(true);
     setPlayFile(file);
+  };
+
+  const resetForm = () => {
+    setFormSuccessfullySent(false);
+    setFirstNameWasChanged(false);
+    setFirstName('');
+    setLastNameWasChanged(false);
+    setLastName('');
+    setBirthYearWasChanged(false);
+    setBirthYear('');
+    setCityWasChanged(false);
+    setCity('');
+    setPhoneNumberWasChanged(false);
+    setPhoneNumber('');
+    setEmailWasChanged(false);
+    setEmail('');
+    setPlayTitleWasChanged(false);
+    setPlayTitle('');
+    setPlayYearWasChanged(false);
+    setPlayYear('');
+    setPlayFileWasChanged(false);
+    setPlayFile(undefined);
+  };
+
+  const canSubmit = (
+    !getFirstNameError()
+    && !getLastNameError()
+    && !getBirthYearError()
+    && !getCityError()
+    && !getPhoneNumberError()
+    && !getEmailError()
+    && !getPlayTitleError()
+    && !getPlayYearError()
+    && !getPlayFileError()
+  );
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormSuccessfullySent(true);
+    setTimeout(() => resetForm(), 10000);
   };
 
   return (
@@ -199,8 +248,11 @@ const Participation: NextPage = () => {
               playYearError={playYearWasChanged ? getPlayYearError() : undefined}
               onPlayYearChange={handlePlayYearChange}
               playFileName={playFile?.name}
-              playFileError={getPlayFileError()}
+              playFileError={playFileWasChanged ? getPlayFileError() : undefined}
               onPlayFileChange={handlePlayFileChange}
+              canSubmit={canSubmit}
+              onSubmit={handleSubmit}
+              formSuccessfullySent={formSuccessfullySent}
             />
           </PlayProposalLayout.Form>
         </PlayProposalLayout.Column>

@@ -67,6 +67,12 @@
   }
 }
 
+.arrow {
+  position: relative;
+  width: scale(48px);
+  height: scale(48px);
+}
+
 .arrowRight {
   margin-left: scale(21px);
 }

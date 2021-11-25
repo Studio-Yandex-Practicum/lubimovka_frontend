@@ -11,7 +11,7 @@ interface IContainerButtonProps {
   value: string | number
 }
 
-export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown, value }) => {
+export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown, value }): JSX.Element => {
   const clickActiveDropdown = useCallback((): void => cb(), [ cb ]);
 
   return (

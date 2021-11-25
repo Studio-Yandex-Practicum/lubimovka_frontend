@@ -1,19 +1,20 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Image from 'next/image';
 
-import { ImageSlider, TImageItem } from './image-slider';
+import { ImageSlider } from './image-slider';
 
-const fakeData: TImageItem[] = [
+const fakeData = [
   {
     image: 'https://source.unsplash.com/random',
-    title: 'Фото намбер уан'
+    description: 'Фото намбер уан'
   },
   {
     image: 'https://source.unsplash.com/random',
-    title: 'Фото намбер ту'
+    description: 'Фото намбер ту'
   },
   {
     image: 'https://source.unsplash.com/random',
-    title: 'Фото намбер фри'
+    description: 'Фото намбер фри'
   }
 ];
 
@@ -33,7 +34,15 @@ const Template: ComponentStory<typeof ImageSlider> = (args) => <ImageSlider {...
 
 export const Default = Template.bind({});
 Default.args = {
-  images: fakeData
+  children: fakeData.map((image, index) => (
+    <Image
+      key={index}
+      src={image.image}
+      alt={image.description}
+      layout="fill"
+      objectFit='cover'
+    />
+  ))
 };
 Default.parameters = {
   layout: 'fullscreen'
