@@ -71,18 +71,14 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             titleTag='h6'
           >
             <BasicPlayCard
-              type= 'performance'
+              type='performance'
               play={{
                 title: play.name,
                 city: play.city,
-                year: play.year.toString(),
+                year: play.year,
                 linkView: play.url_reading,
                 linkDownload: play.url_download,
-              }}
-              author={{
-                // TODO: передавать в пропсы верные данные
-                id: 0,
-                name: play.authors[0].name,
+                authors: play.authors
               }}
               buttonVisibility
             />

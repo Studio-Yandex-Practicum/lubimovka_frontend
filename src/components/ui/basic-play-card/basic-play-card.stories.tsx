@@ -10,15 +10,15 @@ export default {
 
 const Template: ComponentStory<typeof BasicPlayCard> = (args) => <BasicPlayCard {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const CardDefault = Template.bind({});
+CardDefault.args = {
   play: {
     id: 1,
-    name: 'Конкретные разговоры пожилых супругов ни о чём',
+    title: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
     year: 2020,
-    url_reading: 'https://lubimovka.ru/',
-    url_download: 'https://lubimovka.ru/',
+    linkView: 'https://lubimovka.ru/',
+    linkDownload: 'https://lubimovka.ru/',
     authors: [{
       id: 1,
       name: 'Екатерина Августеняк',
@@ -31,11 +31,11 @@ export const PlayCardWithMultipleAuthors = Template.bind({});
 PlayCardWithMultipleAuthors.args = {
   play: {
     id: 2,
-    name: 'Конкретные разговоры пожилых супругов ни о чём',
+    title: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
     year: 2020,
-    url_reading: 'https://lubimovka.ru/',
-    url_download: 'https://lubimovka.ru/',
+    linkView: 'https://lubimovka.ru/',
+    linkDownload: 'https://lubimovka.ru/',
     authors: [
       {
         id: 1,
@@ -58,11 +58,11 @@ export const PlayCardWithVisibleButtons = Template.bind({});
 PlayCardWithVisibleButtons.args = {
   play: {
     id: 3,
-    name: 'Конкретные разговоры пожилых супругов ни о чём',
+    title: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
     year: 2020,
-    url_reading: 'https://lubimovka.ru/',
-    url_download: 'https://lubimovka.ru/',
+    linkView: 'https://lubimovka.ru/',
+    linkDownload: 'https://lubimovka.ru/',
     authors: [{
       id: 1,
       name: 'Екатерина Августеняк',

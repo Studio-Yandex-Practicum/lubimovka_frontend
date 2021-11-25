@@ -62,12 +62,17 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                         year,
                         linkView: url_reading,
                         linkDownload: url_download,
+                        authors:[{
+                          // TODO: добавить реальные данные в ответ бекенда
+                          id: 0,
+                          name: 'Константин Константинопольский',
+                        }]
                       }}
-                      author={{
-                        // TODO: добавить реальные данные в ответ бекенда
-                        id: 0,
-                        name: 'Константин Константинопольский',
-                      }}
+                      // author={{
+                      //   // TODO: добавить реальные данные в ответ бекенда
+                      //   id: 0,
+                      //   name: 'Константин Константинопольский',
+                      // }}
                     />
                   ))}
                 </BasicPlayCardList>

@@ -9,19 +9,20 @@ import styles from './basic-play-card.module.css';
 const cx  = cn.bind(styles);
 
 export interface IBasicPlayCardProps {
+  type?: 'performance';
   play: {
     id?: number;
-    name: string;
+    title: string;
     city: string;
     year: number;
-    url_reading: Url;
-    url_download: Url;
-    authors: Authors[];
+    linkView: Url;
+    linkDownload: Url;
+    authors: Author [];
   };
   buttonVisibility?: boolean;
 }
 
-type Authors = {
+type Author = {
   id: number,
   name: string,
 }
@@ -52,7 +53,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       className={cx('card')}
     >
       <div className={cx('container')}>
-        <h6 className={cx('title')}>{play.name}</h6>
+        <h6 className={cx('title')}>{play.title}</h6>
         <div>
           <Button
             className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
@@ -64,7 +65,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             label='Смотреть читку'
             border='top'
             isLink
-            href={play.url_reading}
+            href={play.linkView}
           />
           <Button
             className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
@@ -76,7 +77,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             label='Скачать пьесу'
             border='top'
             isLink
-            href={play.url_download}
+            href={play.linkDownload}
           />
         </div>
       </div>
