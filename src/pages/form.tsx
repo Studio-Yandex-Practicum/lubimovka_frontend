@@ -108,9 +108,12 @@ const Participation: NextPage = () => {
       return 'Файл обязателен';
     }
 
-    // TODO: добавить проверки в соответствии с описанием поля в дизайне
     if (playFile && /[а-яА-ЯЁё]/.test(playFile?.name)) {
       return 'Файл содержит кириллицу, пожалуйста, переименуйте его.';
+    }
+
+    if (playFile && /[^A-Za-z._-]/.test(playFile?.name)) {
+      return 'Пожалуйста, используйте только латинские символы и знаки - и _';
     }
 
     return;
