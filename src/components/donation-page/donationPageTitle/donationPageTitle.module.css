@@ -69,17 +69,11 @@
   flex-flow: row nowrap;
   align-items: flex-start;
   justify-content: center;
+  padding: scale(49px 0 0 0);
 }
 
-.advStub {
-  width: 91%;
-  height: 91%;
-  margin: scale(25px 0 0 0);
-  background-color: white;
-
-  @media (max-width: $tablet-portrait) {
-    width: scale(366px);
-    height: scale(524px);
-    margin: scale(58px 0 0 0);
-  }
+.iframe {
+  width: 510px;
+  height: 492px;
+  background: transparent !important;
 }

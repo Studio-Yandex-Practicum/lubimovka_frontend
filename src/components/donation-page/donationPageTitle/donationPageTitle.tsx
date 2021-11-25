@@ -29,8 +29,12 @@ export const DonationPageTitle: FC<IDonationPageTitleProps> = (props) => {
         </p>
       </div>
       <div className={cx('advertisement')}>
-        <div className={cx('advStub')}>
-        </div>
+        <iframe
+          className={cx('iframe')}
+          src="https://goody.im/form/9bc4b4afb926640f7ef3fa8f/frame"
+          name="goody_container_form"
+          frameBorder="no"
+        />
       </div>
     </section>
   );
