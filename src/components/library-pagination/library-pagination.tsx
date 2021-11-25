@@ -1,12 +1,14 @@
 import React, { FC, useState, useEffect, useMemo } from 'react';
 import cn from 'classnames';
 
+import { IAuthorInfo } from 'components/library-authors-page';
+
 import style from './library-pagination.module.css';
 
 interface LibraryPaginationProps {
   letters: string[];
   top?: string;
-  authors: string[];
+  authors: Array<IAuthorInfo>;
   className?: string;
 }
 
@@ -14,7 +16,7 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, 
   const [letter, setLetter] = useState<string>('');
   const [letterElement, setLetterElement] = useState<HTMLInputElement | null>(null);
   const chosenAuthors = useMemo(() => letter ? authors.filter((el) =>
-    el.startsWith(letter)) : [], [letter]);
+    el.name.startsWith(letter)) : [], [letter, authors]);
 
   useEffect(() => {
     letterElement?.parentElement?.scrollIntoView({ 'block': 'nearest', 'behavior': 'smooth' });
@@ -33,8 +35,8 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, 
       </ul>
       <div className={style.authors}>
         <ul className={style.authorsList}>
-          {chosenAuthors.length > 0 && chosenAuthors.map((el, index) => (
-            <li key={index} className={style.author}><a href='#' className={style.link}>{el}</a></li>
+          {chosenAuthors.length > 0 && chosenAuthors.map((el) => (
+            <li key={el.id} className={style.author}><a href='#' className={style.link}>{el.name}</a></li>
           ))}
         </ul>
         <div className={style.chosenLetter}>
