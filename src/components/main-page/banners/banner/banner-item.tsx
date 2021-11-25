@@ -6,9 +6,17 @@ import { Button } from 'components/ui/button';
 import styles from './banner-item.module.css';
 import { IMainBannersProps } from '../main-banners';
 
+function debounce(cb: () => void, delay: number) {
+  let timer: ReturnType<typeof setTimeout>;
+  return function() {
+    clearTimeout(timer);
+    timer = setTimeout(cb, delay || 0);
+  };
+}
+
 export const MainBannerItem: FC<IMainBannersProps> = (props):JSX.Element => {
   const bannerRef = useRef<HTMLDivElement>(null);
-  const bannerContainer = useRef<HTMLDivElement>(null);
+  const bannerContainerRef = useRef<HTMLDivElement>(null);
 
   const {
     title,
@@ -19,27 +27,21 @@ export const MainBannerItem: FC<IMainBannersProps> = (props):JSX.Element => {
     imgUrl,
   } = props;
 
-  function debounce(cb: () => void, delay: number) {
-    let timer: ReturnType<typeof setTimeout>;
-    return function() {
-      clearTimeout(timer);
-      timer = setTimeout(cb, delay || 0);
-    };
-  }
-
   const scrollHandler = useCallback(() => {
-    if (bannerRef.current && bannerContainer.current && bannerRef.current.getBoundingClientRect().top < 0) {
-      bannerContainer.current.classList.add(cn(styles.hideContainer));
+    const banner = bannerRef.current;
+    const bannerContainer = bannerContainerRef.current;
+    if (banner && bannerContainer && banner.getBoundingClientRect().top < 0) {
+      bannerContainer.classList.add(cn(styles.hideContainer));
       return;
     }
-    if (bannerRef.current && bannerContainer.current) {
-      bannerContainer.current.classList.remove(cn(styles.hideContainer));
+    if (banner && bannerContainer) {
+      bannerContainer.classList.remove(cn(styles.hideContainer));
     }
-  }, [bannerRef, bannerContainer]);
+  }, [bannerRef, bannerContainerRef]);
 
   useEffect(() => {
     const handlerDebounced = debounce(scrollHandler, 10);
-    if (bannerRef.current && bannerContainer.current) {
+    if (bannerRef.current && bannerContainerRef.current) {
       window.addEventListener('scroll', handlerDebounced);
     }
     return () => {
@@ -52,7 +54,7 @@ export const MainBannerItem: FC<IMainBannersProps> = (props):JSX.Element => {
       <h2 className={cn(styles.title)}>
         {title}
       </h2>
-      <div className={cn(styles.container)} ref={bannerContainer}>
+      <div className={cn(styles.container)} ref={bannerContainerRef}>
         <div className={cn(styles.content)}>
           <p className={cn(styles.desc)}>
             {desc}
