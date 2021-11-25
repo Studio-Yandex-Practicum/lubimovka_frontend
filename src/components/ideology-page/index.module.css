@@ -6,7 +6,7 @@
   position: absolute;
   z-index: 10;
   top: scale(40px);
-  left: scale(60px);
+  left: scale(70px);
 
   @media (max-width: $tablet-portrait) {
     position: static;
