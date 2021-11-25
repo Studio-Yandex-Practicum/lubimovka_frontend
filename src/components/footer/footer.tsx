@@ -11,7 +11,7 @@ import Logo from 'shared/images/logo-full.svg';
 import styles from './footer.module.css';
 
 interface IFooterProps {
-  children: ReactNode,
+  children?: ReactNode,
   className?: string,
 }
 
@@ -25,7 +25,6 @@ export const Footer = (props: IFooterProps): JSX.Element => {
 
   return (
     <footer className={cx('footer', className)}>
-      <Logo className={cx('logo')}/>
       {children}
       <div className={cx('footnote')}>
         <div className={cx('copyright')}>

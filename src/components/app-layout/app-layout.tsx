@@ -133,6 +133,7 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
         </>
       )}
       <Footer>
+        {/* <Footer.Logo /> */}
         {!hiddenPartners && (
           <Footer.Partners>
             <FooterPartnerList>
