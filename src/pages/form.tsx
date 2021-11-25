@@ -68,7 +68,6 @@ const Participation: NextPage = () => {
   };
 
   const getPhoneNumberError = () => {
-    //TODO: улучшить валидацию номера телефона, сейчас регулярное выражение позваляет ввести лишние символы, возможно, добавить компонент для ввода телефона
     if (!validPhoneNumberRegexp.test(phoneNumber)) {
       return 'Некорректный номер телефона';
     }
