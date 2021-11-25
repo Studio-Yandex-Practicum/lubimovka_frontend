@@ -16,11 +16,11 @@ const blogArticle: BlogData = {
         items: [
           {
             title: 'Изображение 1',
-            image: 'http://s4.fotokto.ru/photo/full/375/3754768.jpg'
+            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
           },
           {
             title: 'Гифочка',
-            image: 'https://99px.ru/sstorage/56/2020/01/10101202106041520.jpg'
+            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
           }
         ]
       }
@@ -74,11 +74,11 @@ const blogArticle: BlogData = {
         items: [
           {
             title: 'Изображение 1',
-            image: 'http://s4.fotokto.ru/photo/full/375/3754768.jpg'
+            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
           },
           {
             title: 'Гифочка',
-            image: 'https://99px.ru/sstorage/56/2020/01/10101202106041520.jpg'
+            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
           }
         ]
       }

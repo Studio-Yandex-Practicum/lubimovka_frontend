@@ -15,6 +15,7 @@ import ArticleOther from './article-other/article-other';
 
 import styles from './article-page.module.css';
 import { BlogData, ComplexItem, Person, Play } from './types/article-types';
+import Image from 'next/image';
 
 const cx = cn.bind(styles);
 
@@ -90,11 +91,17 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
               return (<p key={idx}>{item.content_item.text}</p>);
             case 'imagesblock':
               return (
-                <ImageSlider
-                  images={item.content_item.items}
-                  className={cx('imagesblock')}
-                  key={idx}
-                />
+                <ImageSlider className={cx('imagesblock')} key={idx}>
+                  {item.content_item.items.map((image, index) => (
+                    <Image
+                      key={index}
+                      src={image.image}
+                      alt={image.title}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  ))}
+                </ImageSlider>
               );
             }
           })}
