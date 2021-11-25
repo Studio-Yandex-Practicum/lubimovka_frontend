@@ -5,6 +5,7 @@ import { Icon } from 'components/ui/icon';
 import { InfoLink } from 'components/ui/info-link';
 import { useEffect } from 'react';
 import React from 'react';
+import { MONTHS, YEARS } from 'shared/constants/months-and-years';
 
 const cx = classNames.bind(styles);
 
@@ -16,10 +17,10 @@ export const SectionTitleForBlog = (
 ): JSX.Element => {
   const { email } = props;
 
-  const [month, setMonth] = React.useState('Январь');
-  const [year, setYear] = React.useState('2021');
+  const [month, setMonth] = React.useState(MONTHS[new Date().getMonth()]);
+  const [year, setYear] = React.useState(new Date().getFullYear().toString());
 
-  // const [articles, setArticles] = React.useState('2021');
+  // const [articles, setArticles] = React.useState([]);
 
   useEffect(() => {
     console.log(year, month);
@@ -29,7 +30,7 @@ export const SectionTitleForBlog = (
     <section className={cx('section')}>
       <h1 className={cx('title')}>Блог Любимовки</h1>
       <div className={cx('asterisk')}>
-        <Icon glyph='asterisk' />
+        <Icon glyph='asterisk' width='100%' height='100%' fill='var(--coal)' />
       </div>
       <div className={cx('text')}>
         <p className={cx('paragraph')}>
@@ -48,20 +49,20 @@ export const SectionTitleForBlog = (
       </div>
       <div className={cx('drop')}>
         <Droplist
-          defaultListType='months'
+          data={MONTHS}
           type='radio'
-          defaultValue='Месяц'
+          defaultValue={MONTHS[new Date().getMonth()]}
           cb={([string]) => {
             setMonth(string);
           }}
           className={cx('droplistTypelistMonths')}
         />
         <Droplist
-          defaultListType='years'
+          data={YEARS}
           type='radio'
-          defaultValue='Год'
-          cb={([string]) => {
-            setYear(string);
+          defaultValue={new Date().getFullYear().toString()}
+          cb={([number]) => {
+            setYear(number);
           }}
           className={cx('droplistTypelistYears')}
         />

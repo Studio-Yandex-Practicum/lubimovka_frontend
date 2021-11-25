@@ -36,8 +36,11 @@
 }
 
 .asterisk {
+  width: scale(25px);
+  height: scale(25px);
   padding-bottom: 0;
   margin: auto 0 0;
+  fill: var(--coal);
   grid-area: asterisk;
   line-height: 0;
 }

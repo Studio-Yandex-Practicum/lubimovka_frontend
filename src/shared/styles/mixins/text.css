@@ -53,6 +53,9 @@
 @define-mixin textBlogSmall {
   font-size: scale(16px);
   line-height: scale(18px);
+}
 
-  /* letter-spacing: 0.75px */
+@define-mixin textBlogAuthor {
+  font-size: scale(16px);
+  line-height: scale(20px);
 }
