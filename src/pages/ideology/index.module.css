@@ -1,0 +1,15 @@
+.content {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  z-index: 10;
+  top: scale(40px);
+  left: scale(60px);
+
+  @media (max-width: $tablet-portrait) {
+    position: static;
+    margin: scale(2px 11px 32px);
+  }
+}
