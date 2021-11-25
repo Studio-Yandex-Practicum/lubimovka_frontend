@@ -22,15 +22,13 @@ export const SectionTitleForBlog = (
 
   // const [articles, setArticles] = React.useState([]);
 
-  useEffect(() => {
-    console.log(year, month);
-  }, [year, month]);
+  useEffect(() => {}, [year, month]);
 
   return (
     <section className={cx('section')}>
       <h1 className={cx('title')}>Блог Любимовки</h1>
       <div className={cx('asterisk')}>
-        <Icon glyph='asterisk' width='100%' height='100%' fill='var(--coal)' />
+        <Icon glyph='asterisk' width='100%' height='100%' fill='var(--coal)'/>
       </div>
       <div className={cx('text')}>
         <p className={cx('paragraph')}>
