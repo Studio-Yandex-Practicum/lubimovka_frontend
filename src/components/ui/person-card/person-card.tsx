@@ -11,7 +11,7 @@ const cx = cn.bind(styles);
 export interface IPersonCardProps {
   participant?: boolean,
   name: string,
-  link: string,
+  image: string,
   about?: string,
   response?: string,
   handleClick?: React.MouseEventHandler<HTMLButtonElement>,
@@ -20,7 +20,7 @@ export interface IPersonCardProps {
 export const PersonCard: React.FC<IPersonCardProps> = (props) => {
   const {
     name,
-    link,
+    image,
     about,
     participant,
     response,
@@ -31,7 +31,7 @@ export const PersonCard: React.FC<IPersonCardProps> = (props) => {
     <div className={cx('container', { containerParticipant: participant, containerVolunteer: !participant })}>
       <div className={cx({ imgParticipant:participant, imgVolunteer: !participant })}>
         <Image
-          src={link}
+          src={image}
           alt={name}
           layout="fill"
           objectFit="cover"
