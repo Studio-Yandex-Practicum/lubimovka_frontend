@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import AppLayout from 'components/app-layout';
@@ -33,6 +34,8 @@ const Participation: NextPage = () => {
   const [playYearWasChanged, setPlayYearWasChanged] = useState(false);
   const [playFile, setPlayFile] = useState<Nullable<File>>();
   const [playFileWasChanged, setPlayFileWasChanged] = useState(false);
+
+  const router = useRouter();
 
   const getFirstNameError = () => {
     if (firstName.length < 2) {
@@ -181,6 +184,7 @@ const Participation: NextPage = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    router.push('/form-success');
   };
 
   return (
