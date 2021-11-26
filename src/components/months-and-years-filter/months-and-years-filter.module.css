@@ -1,0 +1,24 @@
+.drop {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  column-gap: scale(30px);
+}
+
+.droplistTypelistMonths {
+  z-index: 1;
+  width: scale(240px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(183px);
+  }
+}
+
+.droplistTypelistYears {
+  z-index: 1;
+  width: scale(150px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(152px);
+  }
+}
