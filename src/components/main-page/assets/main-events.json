@@ -1,60 +1,71 @@
 [
   {
+    "type": "performance",
     "id": 1,
-    "date": "15 декабря",
-    "time": "11:00",
+    "date": "2021-12-12T17:00:00.000Z",
     "title": "Вот Иф",
     "playwrightArray": [ "Ольга Казакова" ],
     "directorArray": [ "Катя Ганюшина" ],
-    "buttonLinks": [ "/" ]
+    "buttonLink": "/",
+    "projectCopy": "читка проекта Любимовка.Ещё",
+    "paid": false
   },
   {
+    "type": "performance",
     "id": 2,
-    "date": "15 декабря",
-    "time": "11:00",
+    "date": "2021-12-15T08:00:00.000Z",
     "title": "Про линя",
     "playwrightArray": [ "Ольга Казакова" ],
     "directorArray": [ "Катя Ганюшина" ],
-    "buttonLinks": [ "/", "/" ],
-    "coverResourceUrl": "https://sun9-79.userapi.com/impg/EpIStR3NKsxUtwdAN7Za2a4H1Y-FV9mq148yzg/NogMqrZRZEQ.jpg?size=449x594&quality=95&sign=8d96101bc1bccd177c4a00ecc0bfd427&type=album"
+    "buttonLink": "/",
+    "projectCopy": "читка проекта Любимовка.Ещё",
+    "coverResourceUrl": "https://sun9-79.userapi.com/impg/EpIStR3NKsxUtwdAN7Za2a4H1Y-FV9mq148yzg/NogMqrZRZEQ.jpg?size=449x594&quality=95&sign=8d96101bc1bccd177c4a00ecc0bfd427&type=album",
+    "paid": true
   },
   {
+    "type": "performance",
     "id": 3,
-    "date": "15 декабря",
-    "time": "11:00",
+    "date": "2021-12-15T08:00:00.000Z",
     "title": "МАМА",
     "playwrightArray": [ "Ольга Казакова" ],
     "directorArray": [ "Катя Ганюшина" ],
-    "buttonLinks": [ "/", "/" ],
-    "coverResourceUrl": "https://sun9-79.userapi.com/impg/EpIStR3NKsxUtwdAN7Za2a4H1Y-FV9mq148yzg/NogMqrZRZEQ.jpg?size=449x594&quality=95&sign=8d96101bc1bccd177c4a00ecc0bfd427&type=album"
+    "buttonLink": "/",
+    "projectCopy": "читка проекта Любимовка.Ещё",
+    "coverResourceUrl": "https://sun9-79.userapi.com/impg/EpIStR3NKsxUtwdAN7Za2a4H1Y-FV9mq148yzg/NogMqrZRZEQ.jpg?size=449x594&quality=95&sign=8d96101bc1bccd177c4a00ecc0bfd427&type=album",
+    "paid": true
   },
   {
+    "type": "performance",
     "id": 4,
-    "date": "15 декабря",
-    "time": "11:00",
+    "date": "2021-12-15T08:00:00.000Z",
     "title": "Коммуналка на Петроградской",
     "playwrightArray": [ "Ольга Казакова" ],
     "directorArray": [ "Катя Ганюшина" ],
-    "buttonLinks": [ "/", "/" ]
+    "buttonLink": "/",
+    "projectCopy": "читка проекта Любимовка.Ещё",
+    "paid": true
   },
   {
+    "type": "masterclass",
     "id": 5,
-    "date": "15 декабря",
-    "time": "11:00",
+    "date": "2021-12-15T08:00:00.000Z",
     "title": "Что я узнал о творчестве благодаря драматургам",
     "playwrightArray": [],
     "directorArray": [],
     "eventDescription": "Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.",
-    "buttonLinks": [ "/" ]
+    "buttonLink": "/",
+    "projectCopy": "читка проекта Любимовка.Ещё"
   },
   {
+    "type": "performance",
     "id": 6,
-    "date": "15 декабря",
-    "time": "11:00",
+    "date": "2021-12-15T08:00:00.000Z",
     "title": "Про линя",
     "playwrightArray": [ "Ольга Казакова" ],
     "directorArray": [ "Катя Ганюшина" ],
-    "buttonLinks": [ "/", "/" ],
-    "coverResourceUrl": "https://sun9-79.userapi.com/impg/EpIStR3NKsxUtwdAN7Za2a4H1Y-FV9mq148yzg/NogMqrZRZEQ.jpg?size=449x594&quality=95&sign=8d96101bc1bccd177c4a00ecc0bfd427&type=album"
+    "buttonLink": "/",
+    "projectCopy": "читка проекта Любимовка.Ещё",
+    "coverResourceUrl": "https://sun9-79.userapi.com/impg/EpIStR3NKsxUtwdAN7Za2a4H1Y-FV9mq148yzg/NogMqrZRZEQ.jpg?size=449x594&quality=95&sign=8d96101bc1bccd177c4a00ecc0bfd427&type=album",
+    "paid": true
   }
 ]

@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 import AppLayout from 'components/app-layout';
@@ -84,14 +82,14 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                       //TODO: исправить ответ бекенда, сейчас возвращаются данные для страницы спектакля
                       type='performance'
                       id={id}
-                      date='2021-11-13T17:00:00.000Z'
+                      date="2021-12-12T17:00:00.000Z"
                       title={name}
                       playwrightArray={[]}
                       directorArray={[]}
                       buttonLink={}
                       coverResourceUrl=""
                       projectCopy="читка проекта Любимовка.Eщё"
-                      paid={false}
+                      paid
                     />
                   ))}
                 </AnnouncedPlayCardList>
@@ -125,7 +123,7 @@ const fetchProject = async (projectId: string) => {
   let data;
 
   try {
-    data = await fetcher<ProjectModel>(`/projects/${projectId}/`);
+    data = await fetcher<ProjectModel>(`/project/${projectId}/`);
   } catch (error) {
     // TODO: обработать ошибку, добавим после реализации страницы ошибки
 

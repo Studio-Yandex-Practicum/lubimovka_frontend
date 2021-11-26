@@ -5,15 +5,17 @@ import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
 import styles from './main-events.module.css';
 
 interface IItem {
-  id: number
+  id: number;
+  type: 'performance' | 'reading' | 'masterclass';
   date: string;
-  time: string;
   title: string;
   playwrightArray: string [];
   directorArray: string [];
   eventDescription?:string;
-  buttonLinks: string [];
+  buttonLink: string;
   coverResourceUrl?: string;
+  projectCopy: string;
+  paid: boolean;
 }
 interface IMainEventsProps {
   data: IItem[]
@@ -27,14 +29,17 @@ export const MainEvents: FC<IMainEventsProps> = ({ data }) => {
           data.map(item => (
             <li key={item.id} className={styles.list}>
               <AnnouncedPlayCard
+                type={item.type}
+                id={item.id}
                 date={item.date}
-                time={item.time}
                 title={item.title}
                 playwrightArray={item.playwrightArray}
                 directorArray={item.directorArray}
                 eventDescription={item.eventDescription && item.eventDescription}
-                buttonLinks={item.buttonLinks}
+                projectCopy={item.projectCopy}
+                buttonLink={item.buttonLink}
                 coverResourceUrl={item.coverResourceUrl && item.coverResourceUrl}
+                paid={item.paid}
               />
             </li>
           ))}

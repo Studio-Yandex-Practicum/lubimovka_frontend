@@ -9,6 +9,7 @@ const cx = cn.bind(styles);
 
 export interface IAnnouncedPlayCardProps {
   type?: 'performance' | 'reading' | 'masterclass';
+  // type: AnnouncedPlayCardType;
   id: number;
   date: string;
   title: string;
@@ -21,6 +22,12 @@ export interface IAnnouncedPlayCardProps {
   className?: string;
   paid?: boolean;
 }
+
+// enum AnnouncedPlayCardType {
+//   Performance = "Спектакль",
+//   Reading = "Читка",
+//   Masterclass = "Мастер-класс"
+// }
 
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const {
@@ -105,12 +112,15 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
               size='s'
               iconPlace='left'
               icon='arrow-right'
+              // label={type === AnnouncedPlayCardType.Performance ? 'О спектакле' : 'Регистрация'}
               label={type === 'performance' ? 'О спектакле' : 'Регистрация'}
               border='bottomLeft'
               isLink
+              // href={type === AnnouncedPlayCardType.Performance ? `/performances/${id}` : buttonLink}
               href={type === 'performance' ? `/performances/${id}` : buttonLink}
             />
             {paid && type === 'performance' &&
+            // {paid && type === AnnouncedPlayCardType.Performance &&
             <Button
               view='primary'
               className={cx('button')}
