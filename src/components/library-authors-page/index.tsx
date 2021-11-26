@@ -8,9 +8,14 @@ import useWindowDimensions from './useWindowDimensions';
 
 import styles from './index.module.css';
 
+export interface IAuthorInfo {
+  id: number;
+  name: string;
+}
+
 interface IAuthorsPageProps {
   letters: string[];
-  authors: string[];
+  authors: Array<IAuthorInfo>;
 }
 
 const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
