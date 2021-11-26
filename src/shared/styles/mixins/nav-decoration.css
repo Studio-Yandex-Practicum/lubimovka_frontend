@@ -1,0 +1,28 @@
+@define-mixin navDecoration {
+  &::before,
+  &::after {
+    display: block;
+    width: scale(10px);
+    height: scale(24px);
+    box-sizing: border-box;
+    border: 1px solid currentColor;
+    content: '';
+
+    @media (max-width: $tablet-portrait) {
+      width: scale(12px);
+      height: scale(38px);
+    }
+  }
+
+  &::before {
+    border-right: 0;
+    border-bottom-left-radius: 200% 100%;
+    border-top-left-radius: 200% 100%;
+  }
+
+  &::after {
+    border-left: 0;
+    border-bottom-right-radius: 200% 100%;
+    border-top-right-radius: 200% 100%;
+  }
+}
