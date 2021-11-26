@@ -9,11 +9,7 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
 
   return (
     <AppLayout>
-      <ArticlePage
-        metaTitle={props.title}
-        isBlog={false}
-        data={props}
-      />
+      <ArticlePage data={props}/>
     </AppLayout>
   );
 };

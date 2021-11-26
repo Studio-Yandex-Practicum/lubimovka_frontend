@@ -20,17 +20,11 @@ import Image from 'next/image';
 const cx = cn.bind(styles);
 
 interface IArticlePageProps {
-  metaTitle: string;
-  isBlog: boolean;
   data: BlogData | NewsData
 }
 
 export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => {
-  const {
-    metaTitle,
-    isBlog,
-    data,
-  } = props;
+  const { data } = props;
 
   let sectionPlays: ComplexItem<Play> | undefined;
   let sectionPersons: ComplexItem<Person> | undefined;
@@ -66,11 +60,11 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
   return (
     <>
       <Head>
-        <title>{metaTitle}</title>
+        <title>{data.title}</title>
       </Head>
       <main>
         <ArticleTitle
-          isBlog={isBlog}
+          isBlog={'blogs' in data}
           title={data.title}
           description={data.description}
           date={data.created}
@@ -153,14 +147,14 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
             </PersonCardList>
           </Section>}
         <ArticleShare
-          isBlog={isBlog}
+          isBlog={'blogs' in data}
           authors={authors}
           illustrators={illustrators}
           photographers={photographers}
         />
       </main>
       <ArticleOther
-        isBlog={isBlog}
+        isBlog={'blogs' in data}
         blogArticle={'blogs' in data ? data.blogs : undefined}
         newsArticle={'news' in data ? data.news : undefined}
       />
