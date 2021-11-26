@@ -4,13 +4,15 @@ import cn from 'classnames/bind';
 
 import styles from './person-card.module.css';
 import { Icon } from '../icon';
+import Image from 'next/image';
+import Logo from 'shared/images/logo.svg';
 
 const cx = cn.bind(styles);
 
 export interface IPersonCardProps {
-  participant: boolean,
+  participant?: boolean,
   name: string,
-  link: string,
+  image?: string,
   about?: string,
   response?: string,
   handleClick?: React.MouseEventHandler<HTMLButtonElement>,
@@ -19,7 +21,7 @@ export interface IPersonCardProps {
 export const PersonCard: React.FC<IPersonCardProps> = (props) => {
   const {
     name,
-    link,
+    image,
     about,
     participant,
     response,
@@ -27,14 +29,26 @@ export const PersonCard: React.FC<IPersonCardProps> = (props) => {
   } = props;
 
   return (
-    <div className={cx('container', {containerParticipant: participant, containerVolunteer: !participant})}>
-      <img className={cx({imgParticipant:participant, imgVolunteer: !participant})} src={link} alt={name}/>
+    <div className={cx('container', { containerParticipant: participant, containerVolunteer: !participant })}>
+      <div className={cx({ imgParticipant:participant, imgVolunteer: !participant, defaultImage:!image })}>
+        {image ?
+          <Image
+            src={image}
+            alt={name}
+            layout="fill"
+            objectFit="cover"
+          /> :
+          <Logo className={cx('logo')}/>
+        }
+
+      </div>
+
       {!participant && response &&
       <button className={styles.comment} onClick={handleClick}>
-        <Icon glyph={'comment'}/>
+        <Icon glyph={'comment'} width='100%' height='100%'/>
       </button>}
 
-      <h6 className={cx('name', {nameParticipant: participant, nameVolunteer: !participant})} title={name}>{name}</h6>
+      <h6 className={cx('name', { nameParticipant: participant, nameVolunteer: !participant })} title={name}>{name}</h6>
 
       {participant && about &&
       <p className={styles.about} title={about}>{about}</p>}

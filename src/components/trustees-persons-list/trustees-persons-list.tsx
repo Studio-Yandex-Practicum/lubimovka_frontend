@@ -71,7 +71,7 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
             <div key={trustee.id} className="keen-slider__slide">
               <PersonCard
                 participant={true}
-                link={trustee.person.image}
+                image={trustee.person.image}
                 about={trustee.position}
                 name={`${trustee.person.first_name} ${trustee.person.last_name}`}
               >
@@ -88,7 +88,7 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
             <li key={trustee.id} className={style.trusteesListItem}>
               <PersonCard
                 participant={true}
-                link={trustee.person.image}
+                image={trustee.person.image}
                 about={trustee.position}
                 name={`${trustee.person.first_name} ${trustee.person.last_name}`}
               >

@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 
 import { OverlayNavLogotype } from './logotype';
 import { OverlayNavMenu } from './menu';
-import { OverlayNavActions} from './actions';
+import { OverlayNavActions } from './actions';
 import { OverlayNavSocials } from './socials';
 
 import styles from './overlay-nav.module.css';

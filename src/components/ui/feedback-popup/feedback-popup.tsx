@@ -63,7 +63,7 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
   }, [screenWidth, currentYear]);
 
   return (
-    <div ref={sliderRef} className={cx('keen-slider', 'slider', {[styles.isOpen]: isOpen})}>
+    <div ref={sliderRef} className={cx('keen-slider', 'slider', { [styles.isOpen]: isOpen })}>
       {cards.map((card) => (
         <div
           key={card.id}
@@ -73,8 +73,9 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
             {slider &&
             <>
               <SliderButton
-                direction='left'
                 className={cx('arrow', 'arrowLeft')}
+                ariaLabel='Предыдущий отзыв'
+                direction='left'
                 onClick={slider.prev}
               />
               {Number(screenWidth) < 729 &&
@@ -106,8 +107,9 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 onClick={(idx) => slider.moveToSlideRelative(idx)}
               />}
               <SliderButton
-                direction='right'
                 className={cx('arrow', 'arrowRight')}
+                ariaLabel='Следующий отзыв'
+                direction='right'
                 onClick={slider.next}
               />
             </>

@@ -8,9 +8,14 @@ import useWindowDimensions from './useWindowDimensions';
 
 import styles from './index.module.css';
 
+export interface IAuthorInfo {
+  id: number;
+  name: string;
+}
+
 interface IAuthorsPageProps {
   letters: string[];
-  authors: string[];
+  authors: Array<IAuthorInfo>;
 }
 
 const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
@@ -24,7 +29,7 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
   return (
     <main className={styles.wrap}>
       <div className={styles.topWrap}>
-        <div className={styles.top} />
+        <div className={styles.top}/>
       </div>
       <div className={styles.content}>
         <div className={styles.menuWrap}>
@@ -45,12 +50,12 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
         </div>
         <h1 className={styles.title}>Библиотека</h1>
         <div className={styles.search}>
-          <LibraryForm />
+          <LibraryForm/>
         </div>
         <div className={styles.pagination}>
           <LibraryPagination letters={letters} authors={authors}
             top={width === 728 ? '60px' : width > 0 && width < 728 ?
-              `${ratio}px` : '86px'} />
+              `${ratio}px` : '92px'} className={width > 727 ? styles.paginateBar : undefined}/>
         </div>
       </div>
     </main>

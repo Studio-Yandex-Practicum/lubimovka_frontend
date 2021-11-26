@@ -21,7 +21,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
       <a className={cn(styles.cardLinkWrapper, styles[firstCardSizeMode])}>
         <li className={styles.card}>
           <div className={styles.imgContainer}>
-            <img className={styles.img} src={image} alt={`изображение статьи: ${heading}`} />
+            <img className={styles.img} src={image} alt={`изображение статьи: ${heading}`}/>
           </div>
           <div className={styles.content}>
             <p className={styles.author}>{author}</p>

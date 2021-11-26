@@ -1,0 +1,105 @@
+@define-mixin sliderButtonAnimationBase {
+  @keyframes backgroundColor {
+    from {
+      background-color: transparent;
+    }
+
+    to {
+      background-color: var(--coal);
+    }
+  }
+
+  @keyframes fill {
+    from {
+      fill: var(--coal);
+    }
+
+    to {
+      fill: var(--white);
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+
+    svg {
+      fill: var(--black-15);
+    }
+  }
+
+  &:hover:enabled,
+  &:active:enabled {
+    animation: backgroundColor .05s .15s;
+    animation-fill-mode: forwards;
+
+    svg {
+      animation: fill .05s .2s;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  &:active:enabled {
+    transform: scale(1.1);
+
+    svg {
+      transform: scale(.9);
+    }
+  }
+}
+
+@define-mixin sliderButtonAnimationOutline {
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    border: 1px solid var(--coal);
+    background-color: transparent;
+    border-radius: 50%;
+    content: '';
+  }
+
+  &:disabled {
+    &::before,
+    &::after {
+      border-color: var(--black-15);
+    }
+  }
+
+  &.right {
+    &::before,
+    &::after {
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      transform: rotate(135deg);
+    }
+
+    &:hover:enabled,
+    &:active:enabled {
+      &::after {
+        transform: rotate(315deg);
+        transition: transform .2s;
+      }
+    }
+  }
+
+  &.left {
+    &::before,
+    &::after {
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      transform: rotate(-45deg);
+    }
+
+    &:hover:enabled,
+    &:active:enabled {
+      &::after {
+        transform: rotate(-225deg);
+        transition: transform .2s;
+      }
+    }
+  }
+}

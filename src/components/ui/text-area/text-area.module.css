@@ -1,31 +1,40 @@
-.textArea {
+.input {
   @mixin text;
   @mixin textSmall;
 
   display: block;
   width: 100%;
   height: auto;
-  padding: scale(8px 0);
+  padding: scale(8px);
   border: 0;
   border-bottom: 1px solid var(--coal);
   background-color: transparent;
   border-radius: 0;
+  outline: none;
 
   &::placeholder {
     color: var(--coal);
     opacity: .7;
   }
+
+  &:focus {
+    border-right: 1px solid var(--coal);
+  }
 }
 
 .error {
-  border-color: var(--red);
-}
-
-.errorMessage {
   @mixin text;
   @mixin textCaption;
 
   display: inline-block;
   margin-top: scale(3px);
   color: var(--red);
+}
+
+.invalid {
+  border-color: var(--red);
+
+  &:focus {
+    border-right: 1px solid var(--red);
+  }
 }

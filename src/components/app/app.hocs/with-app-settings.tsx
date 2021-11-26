@@ -8,7 +8,7 @@ export type WithAppSettingsProps = AppSettingsContext;
 export const withAppSettings = <P extends WithAppSettingsProps>(Component: ComponentType<P>) => {
   const WrappedComponent: ComponentType<Omit<P, keyof WithAppSettingsProps>> = (props) => {
     const settings = useAppSettings();
-    const combineProps = { ...settings, ...props as P};
+    const combineProps = { ...settings, ...props as P };
 
     return <Component {...combineProps}/>;
   };

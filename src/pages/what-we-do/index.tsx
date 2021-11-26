@@ -24,21 +24,21 @@ const Page: NextPage = ():JSX.Element => (
     </Head>
     <main>
       {headerData.map((data) => (
-        <WhatWeDoHeader key={ data.id } data={ data } />
+        <WhatWeDoHeader key={data.id} data={data}/>
       ))}
       {descData.map((data, i) => (
-        <WhatWeDoDesc key={ i } data={ data } />
+        <WhatWeDoDesc key={i} data={data}/>
       ))}
       {AuthorsData.map((data) => (
-        <WhatWeDoAuthors key={ data.id } data={ data } />
+        <WhatWeDoAuthors key={data.id} data={data}/>
       ))}
       {SelectionData.map((data) => (
-        <WhatWeDoSelection key={ data.id } data={ data } />
+        <WhatWeDoSelection key={data.id} data={data}/>
       ))}
       {SelectionContacts.map((data) => (
-        <WhatWeDoContacts key={ data.id } data={ data } />
+        <WhatWeDoContacts key={data.id} data={data}/>
       ))}
-      <WhatWeDoPartners />
+      <WhatWeDoPartners/>
     </main>
   </AppLayout>
 );

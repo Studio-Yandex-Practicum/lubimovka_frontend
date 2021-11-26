@@ -1,1 +1,1 @@
-export {default} from './library-filter';
+export { default } from './library-filter';

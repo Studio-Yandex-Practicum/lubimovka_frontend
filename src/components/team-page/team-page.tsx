@@ -14,9 +14,9 @@ const TeamPage: FC = () => {
   return (
     <>
       <Submenu submenu={SubmenuData}/>
-      <ArtDirectorateSection cards={ArtFestTeamsData} />
-      <FestivalTeamSection cards={ArtFestTeamsData} />
-      <VolunteersSection cards={VolunteersData} />
+      <ArtDirectorateSection cards={ArtFestTeamsData}/>
+      <FestivalTeamSection cards={ArtFestTeamsData}/>
+      <VolunteersSection cards={VolunteersData}/>
     </>
   );
 };

@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import AppLayout from './app-layout';
 import { AppSettingsProvider } from 'components/app';
-import {PartnerType} from '../../shared/types';
+import { PartnerType } from '../../shared/types';
 
 export default {
   title: 'Components/AppLayout',
