@@ -9,7 +9,7 @@ import Image from 'next/image';
 const cx = cn.bind(styles);
 
 export interface IPersonCardProps {
-  participant: boolean,
+  participant?: boolean,
   name: string,
   link: string,
   about?: string,
