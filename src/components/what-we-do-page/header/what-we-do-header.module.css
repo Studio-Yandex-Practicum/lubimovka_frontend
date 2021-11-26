@@ -18,7 +18,7 @@
   @mixin headline2;
 
   max-width: scale(924px);
-  margin: scale(0 0 53px 62px);
+  margin: 0 0 scale(53px 62px);
 }
 
 .containerText {
@@ -26,7 +26,7 @@
   max-width: scale(520px);
   flex-direction: column;
   align-self: end;
-  margin: scale(0 110px 15px 85px);
+  margin: 0 scale(110px 15px 85px);
 }
 
 .desc {
@@ -34,7 +34,7 @@
   @mixin textLarge;
 
   margin-bottom: scale(20px);
-  line-height: scale(1.5rem);
+  line-height: scale(24px);
 
   &:last-of-type {
     margin: 0;
@@ -79,10 +79,10 @@
   .title {
     @mixin headline4;
 
-    margin: scale(0 24px 30px 24px);
+    margin: 0 scale(24px 30px 24px);
   }
 
   .containerText {
-    margin: scale(0 24px 72px 85px);
+    margin: 0 scale(24px 72px 85px);
   }
 }

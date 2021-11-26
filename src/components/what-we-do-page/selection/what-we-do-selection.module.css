@@ -8,7 +8,7 @@
   @mixin headline3;
 
   max-width: scale(540px);
-  margin: scale(0 180px 56px) auto;
+  margin: 0 scale(180px 56px) auto;
 }
 
 .list {
@@ -18,7 +18,7 @@
   margin: 0;
   margin-bottom: scale(68px);
   column-gap: scale(90px);
-  grid-template-columns: repeat(auto-fit, minmax(21.875rem, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(scale(350px), max-content));
   list-style: none;
   row-gap: scale(64px);
 }
@@ -50,7 +50,7 @@
   display: grid;
   max-width: scale(1320px);
   justify-content: space-evenly;
-  padding: scale(0 24px 64px);
+  padding: 0 scale(24px 64px);
   margin: 0 auto;
   background-color: var(--light-green);
   column-gap: scale(20px);
@@ -79,24 +79,24 @@
   @mixin textSmall;
 
   max-width: scale(485px);
-  margin: scale(220px 0 0) auto;
+  margin: scale(220px) 0 0 auto;
 }
 
 @media (max-width: $tablet-portrait) {
   .selection {
-    padding: scale(40px 0 0);
+    padding: scale(40px) 0 0;
   }
 
   .mainTitle {
     @mixin headline4;
 
-    padding: scale(0 24px);
+    padding: 0 scale(24px);
     margin: 0;
     margin-bottom: scale(24px);
   }
 
   .list {
-    padding: scale(0 24px);
+    padding: 0 scale(24px);
     margin-bottom: scale(72px);
     grid-template-columns: none;
   }
@@ -117,7 +117,7 @@
   .desc {
     max-width: scale(280px);
     align-self: right;
-    margin: scale(0 24px 24px) auto;
+    margin: 0 scale(24px 24px) auto;
 
     &:last-of-type {
       margin-bottom: 0;

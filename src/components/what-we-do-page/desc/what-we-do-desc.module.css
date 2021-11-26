@@ -1,18 +1,17 @@
 .descItem {
-  padding: scale(92px 24px 170px 0);
-  background-color: #ecebe8;
-  color: var(--beige);
+  padding: scale(92px 24px 170px) 0;
+  background-color: var(--beige);
 }
 
 .content {
   display: grid;
   column-gap: scale(90px);
-  grid-template-columns: repeat(auto-fit, minmax(scale(440px), max-content));
   row-gap: scale(24px);
 }
 
 .contentReception {
-  margin: scale(0 0 190px 120px);
+  margin: 0 0 scale(190px 120px);
+  grid-template-columns: repeat(auto-fit, minmax(scale(440px), max-content));
 }
 
 .container {
@@ -40,32 +39,20 @@
 
 .contentSelected {
   margin-bottom: scale(140px);
+  grid-template-columns: repeat(auto-fit, minmax(scale(600px), max-content));
 }
 
 .containerSelected {
   margin-top: scale(20px);
 }
 
-.imgSelected {
-  @mixin img;
-
-  max-width: scale(630px);
-}
-
 .containerInvite {
   margin-left: scale(210px);
 }
 
-.imgReception {
-  @mixin img;
-
-  max-width: scale(450px);
-  margin-top: scale(14px);
-}
-
 @media (max-width: $tablet-portrait) {
   .descItem {
-    padding: scale(56px 24px 72px 0);
+    padding: scale(56px 24px 72px) 0;
   }
 
   .contentReception {
@@ -100,10 +87,8 @@
     @mixin textMedium;
   }
 
-  .imgReception {
-    max-width: scale(274px);
-    margin-top: 0;
-    margin-left: auto;
+  .containerImg {
+    margin-left: scale(116px);
   }
 
   .imgSelected {
