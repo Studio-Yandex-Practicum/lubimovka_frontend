@@ -115,16 +115,17 @@
 }
 
 .img {
+  position: relative;
   width: scale(690px);
   height: scale(421px);
-  padding-top: scale(30px);
+  margin-top: scale(30px);
   grid-area: img;
 
   @media (max-width: $tablet-portrait) {
     width: scale(357px);
     height: scale(218px);
-    padding-top: scale(40px);
-    padding-left: scale(30px);
+    margin-top: scale(40px);
+    margin-left: scale(30px);
     justify-self: end;
   }
 }

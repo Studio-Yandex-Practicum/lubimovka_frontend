@@ -48,9 +48,7 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
         <Image
           src={imgLink}
           alt={title}
-          width={690}
-          height={421}
-          layout='responsive'
+          layout='fill'
           objectFit='cover'
         />
       </div>
