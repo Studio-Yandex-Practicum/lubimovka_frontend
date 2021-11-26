@@ -119,7 +119,6 @@
   height: scale(421px);
   padding-top: scale(30px);
   grid-area: img;
-  object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
     width: scale(357px);
