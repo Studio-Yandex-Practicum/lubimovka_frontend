@@ -12,11 +12,10 @@
 
 .link {
   @mixin text;
+  @mixin textSmall;
 
   display: flex;
   align-items: flex-start;
-  font-size: scale(16px);
-  line-height: scale(22px);
   text-decoration: none;
   white-space: nowrap;
 
