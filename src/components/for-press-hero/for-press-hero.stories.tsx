@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof ForPressHero>;
 
 const Template: ComponentStory<typeof ForPressHero> = (args) => {
-  return <ForPressHero {...args} />;
+  return <ForPressHero {...args}/>;
 };
 
 export const Default = Template.bind({});

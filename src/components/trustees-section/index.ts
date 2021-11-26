@@ -1,1 +1,1 @@
-export {default} from './trustees-section';
+export { default } from './trustees-section';

@@ -21,7 +21,6 @@
   width: scale(120px);
   height: scale(161px);
   padding-right: scale(31px);
-  object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
     width: scale(92px);

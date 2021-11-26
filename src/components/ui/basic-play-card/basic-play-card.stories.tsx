@@ -8,7 +8,7 @@ export default {
   component: BasicPlayCard,
   decorators: [
     (Story) => (
-      <div style={{ width: '240px'}}>
+      <div style={{ width: '240px' }}>
         <Story/>
       </div>
     ),
@@ -16,7 +16,7 @@ export default {
 
 } as ComponentMeta<typeof BasicPlayCard>;
 
-const Template: ComponentStory<typeof BasicPlayCard> = (args) => <BasicPlayCard {...args} />;
+const Template: ComponentStory<typeof BasicPlayCard> = (args) => <BasicPlayCard {...args}/>;
 
 export const Default = Template.bind({});
 Default.args = {

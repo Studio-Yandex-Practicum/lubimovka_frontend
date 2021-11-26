@@ -1,1 +1,1 @@
-export {default} from './ideology-section';
+export { default } from './ideology-section';

@@ -1,15 +1,11 @@
-import React, { FC, useEffect, useState, useCallback, useImperativeHandle, forwardRef } from 'react';
+import React, { FC, useEffect, useState, useCallback, useImperativeHandle, forwardRef, useRef } from 'react';
 import cn from 'classnames';
 
-// Компоненты
 import { DroplistItems } from './droplist-items';
 import { ListSelected } from './list-selected';
 import { ContainerButton } from './container-button';
 
 import styles from './droplist.module.css';
-
-// utile
-import { createList } from './utils';
 
 export interface IDroplistPublic {
   deleteAll: () => void,
@@ -19,82 +15,80 @@ export interface IDroplistPublic {
 
 interface IDroplistProps {
   cb: (selectList: string[]) => void
+  data: string[] | number[]
   type?: 'checkbox' | 'radio'
-  data?: string[] | number[]
-  defaultListType?: 'years' | 'months'
   defaultValue?: string
   ref?: React.ForwardedRef<IDroplistPublic>
   className?: string
 }
 
 // eslint-disable-next-line react/display-name
-export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, ref) => {
+export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, ref): JSX.Element => {
   const {
     type = 'checkbox',
     data,
     cb,
-    defaultListType,
     className,
     defaultValue
   } = props;
 
-  // Выбранный список пользователем.
   const [ selectList, setSelectList ] = useState<string[]>([]);
-
-  // Список для вывода
   const [ list, setList ] = useState<string[] | number[]>([]);
-  // Выбран ли Dropdown
   const [ activeDropdown, setActiveDropdown ] = useState(false);
 
+  const droplistRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Передача своего объекта
     if (Array.isArray(data)) {
       setList(data);
       return;
     }
-    // utils функция createList формирует массивы зависящие от передаваемого типа списка.
-    const list = createList(defaultListType);
-    setList(list);
   }, [ data ]);
 
   useEffect(() => {
-    // Если тип 'radio' в выводимый список добавиться первый элемент переданного списка
-    if (type === 'radio' && !defaultValue && list.length) {
-      setSelectList([String(list[0]).toLowerCase()]);
+    if (defaultValue && type === 'radio') {
+      setSelectList([defaultValue]);
+      return;
     }
-  }, [type, list]);
+  }, [type, defaultValue]);
 
   useEffect(() => {
-    if (defaultValue) {
-      setSelectList([defaultValue]);
-    }
-  }, []);
+    cb(selectList);
+  }, [cb, selectList]);
 
   const deleteItemInSelectList = (value: string) => {
     return setSelectList(state => [...state.filter((item) => item !== value.toLowerCase())]);
   };
 
+  const handleClose = (e: MouseEvent) => {
+    const droplist = droplistRef.current;
+    if(e?.target instanceof Node && droplist) {
+      !droplist.contains(e.target) && setActiveDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    if (activeDropdown) {
+      document.addEventListener('mouseup', handleClose);
+      return;
+    }
+    document.removeEventListener('mouseup', handleClose);
+  }, [activeDropdown]);
+
   useImperativeHandle(ref, () => ({
     deleteAll: () => { setSelectList([]); },
     deleteItem: (value: string) => { deleteItemInSelectList(value); },
     addSelectItems: (valueList: string[]) => { setSelectList(valueList); },
-  }), [ selectList ]);
-
-  const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    cb(selectList);
-    setActiveDropdown(false);
-  }, [ selectList, cb, activeDropdown ]);
+  }), []);
 
   const cbContainer = useCallback(() => {
     setActiveDropdown(state => !state);
-  }, [ activeDropdown ]);
+  }, []);
 
   const cbItems = useCallback((value: string, activeCheckbox: boolean) => {
     if (type === 'radio') {
       setSelectList([value]);
-      // При клике отрабатывает колбэк
-      cb([value]);
+      setTimeout(() => setActiveDropdown(false), 200);
       return;
     }
     if (activeCheckbox) {
@@ -106,36 +100,40 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
       return;
     }
     deleteItemInSelectList(value);
-  }, [ selectList ]);
+  }, [type]);
+
+  const getValue = (value: string) => {
+    deleteItemInSelectList(value);
+  };
 
   const droplistClass = className ? className : styles.droplistWidth;
 
   return (
-    <div className={ cn(styles.droplist, droplistClass) }>
+    <div className={cn(styles.droplist, droplistClass)} ref={droplistRef}>
       <ContainerButton
-        cb={ cbContainer }
-        activeDropdown={ activeDropdown }
-        value={ type === 'radio' ? selectList[0] : 'Все' }
+        cb={cbContainer}
+        activeDropdown={activeDropdown}
+        value={defaultValue || 'Все'}
       />
       <form
         name='droplist'
-        className={ cn(styles.form) }
-        onSubmit={ handlerSubmit }
+        className={cn(styles.form)}
       >
-        <div className={ cn(styles.list, {
+        <div className={cn(styles.list, {
           [styles.active]: activeDropdown,
         })}>
-          { list.map((item: string | number, i): JSX.Element => (
+          {(list as any[]).map((item: string | number, i): JSX.Element => (
             <DroplistItems
-              item={ item }
-              key={ i }
-              cb={ cbItems }
+              type={type}
+              item={item}
+              key={i}
+              cb={cbItems}
               activeCheckbox={selectList.some(itemSelect => itemSelect.toLocaleLowerCase() === String(item).toLocaleLowerCase())}
             />
           ))}
         </div>
-        { selectList.length > 0 && type !== 'radio'
-          && <ListSelected selectList={ selectList } /> }
+        {selectList.length > 0 && type !== 'radio'
+          && <ListSelected selectList={selectList} cb={getValue} activeDropdown={activeDropdown}/>}
       </form>
     </div>
   );

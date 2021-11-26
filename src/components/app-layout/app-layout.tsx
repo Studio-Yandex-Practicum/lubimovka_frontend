@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import { Page } from 'components/page';
 import { Menu } from 'components/ui/menu';
@@ -33,8 +34,8 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
   } = props;
 
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
-
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+  const router = useRouter();
 
   const toggleOverlayMenu = () => setIsOverlayMenuOpen(!isOverlayMenuOpen);
 
@@ -56,7 +57,11 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
                 {mainNavigationItems
                   .filter(item => !item.mobileOnly)
                   .map((item) => (
-                    <Menu.Item key={item.href} href={item.href}>
+                    <Menu.Item
+                      key={item.href}
+                      href={item.href}
+                      current={router.asPath === item.href}
+                    >
                       {item.text}
                     </Menu.Item>
                   ))}
@@ -83,7 +88,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
           <Page.OverlayMenu isOpen={isOverlayMenuOpen}>
             <OverlayNav>
               <OverlayNav.Logotype>
-                <Logotype href='/' title="Фестиваль Любимовка" />
+                <Logotype href='/' title="Фестиваль Любимовка"/>
               </OverlayNav.Logotype>
               <OverlayNav.Menu>
                 <Menu type="overlay-navigation">
@@ -98,11 +103,11 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
                 <Menu type='overlay-actions'>
                   <Menu.Item href={participationFormPath}>
                     Подать пьесу
-                    <Icon glyph='arrow-right' />
+                    <Icon glyph='arrow-right'/>
                   </Menu.Item>
                   <Menu.Item href={donationPath}>
                     Поддержать
-                    <Icon glyph='arrow-right' />
+                    <Icon glyph='arrow-right'/>
                   </Menu.Item>
                 </Menu>
               </OverlayNav.Actions>
@@ -114,7 +119,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
                       href={item.href}
                       mods={{ primary: !!item.primary }}>
                       {item.text}
-                      <Icon glyph='arrow-right' />
+                      <Icon glyph='arrow-right'/>
                     </Menu.Item>
                   ))}
                 </Menu>
@@ -122,7 +127,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
             </OverlayNav>
           </Page.OverlayMenu>
           <Page.BurgerButton>
-            <BurgerButton isOpen={isOverlayMenuOpen} onClick={toggleOverlayMenu} />
+            <BurgerButton isOpen={isOverlayMenuOpen} onClick={toggleOverlayMenu}/>
           </Page.BurgerButton>
         </>
       )}

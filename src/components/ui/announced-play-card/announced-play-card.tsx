@@ -7,26 +7,34 @@ import styles from './announced-play-card.module.css';
 const cx = cn.bind(styles);
 
 export interface IAnnouncedPlayCardProps {
+  type?: 'performance' | 'reading' | 'masterclass';
+  id: number;
   date: string;
   title: string;
   playwrightArray: string [];
   directorArray: string [];
   eventDescription?:string;
-  buttonLinks: string [];
+  buttonLink: string;
   coverResourceUrl?: string;
+  projectCopy: string;
   className?: string;
+  paid?: boolean;
 }
 
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const {
+    type,
+    id,
     date,
     title,
     playwrightArray,
     directorArray,
     eventDescription,
-    buttonLinks,
+    buttonLink,
     coverResourceUrl,
+    projectCopy,
     className,
+    paid,
   } = props;
 
   const creditsArrayToString = (array: string []) => {
@@ -69,68 +77,51 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         }
         <div className={cx('info')}>
           <div className={cx('dateInfo')}>
-            <p className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', {timeZone: 'Europe/Moscow', month: 'long', day:'numeric'})}</p>
-            <p className={cx('time')}>{new Date(date).toLocaleTimeString('ru-Ru', {timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric'})}</p>
+            <p className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' })}</p>
+            <p className={cx('time')}>{new Date(date).toLocaleTimeString('ru-Ru', { timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric' })}</p>
           </div>
           <h5 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h5>
-          { directorArray.length > 0 && playwrightArray.length > 0 &&
+          {directorArray.length > 0 && playwrightArray.length > 0 &&
           <div className={cx('credits')}>
             {creditsRendered}
           </div>
           }
-          { eventDescription &&
+          {eventDescription &&
           <div className={cx('eventDescription')}>
             {eventDescription}
           </div>
           }
-          <p className={cx('description')}>читка проекта Любимовка.Ещё</p>
-          {buttonLinks.length === 2 &&
-            <div className={cx('buttonContainer', coverResourceUrl && 'buttonContainerCoverExists' )}>
-              <Button
-                view='primary'
-                className={cx('button')}
-                align='start'
-                gap='9px'
-                size='s'
-                iconPlace='left'
-                icon='arrow-right'
-                label='О&nbsp;спектакле'
-                border='bottomLeft'
-                isLink={true}
-                href={buttonLinks[0]}
-              />
-              <Button
-                view='primary'
-                className={cx('button')}
-                align='start'
-                gap='9px'
-                size='s'
-                iconPlace='left'
-                icon='arrow-right'
-                label='Билеты'
-                border='bottomLeft'
-                isLink
-                href={buttonLinks[1]}
-              />
-            </div>
-          }
-          {buttonLinks.length === 1 &&
-            <div className={cx('buttonContainer', coverResourceUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
-              <Button
-                view='primary'
-                className={cx('button')}
-                align='start'
-                gap='9px'
-                size='s'
-                iconPlace='left'
-                icon='arrow-right'
-                label='Регистрация'
-                border='bottomLeft'
-                isLink
-                href={buttonLinks[0]}
-              />
-            </div>
-          }
+          <p className={cx('description')}>{projectCopy}</p>
+          <div className={cx('buttonContainer', coverResourceUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
+            <Button
+              view='primary'
+              className={cx('button')}
+              align='start'
+              gap='9px'
+              size='s'
+              iconPlace='left'
+              icon='arrow-right'
+              label={type === 'performance' ? 'О спектакле' : 'Регистрация'}
+              border='bottomLeft'
+              isLink
+              href={type === 'performance' ? `/performances/${id}` : buttonLink}
+            />
+            {paid && type === 'performance' &&
+            <Button
+              view='primary'
+              className={cx('button')}
+              align='start'
+              gap='9px'
+              size='s'
+              iconPlace='left'
+              icon='arrow-right'
+              label='Билеты'
+              border='bottomLeft'
+              isLink
+              href={buttonLink}
+            />
+            }
+          </div>
         </div>
       </article>
     </li>
