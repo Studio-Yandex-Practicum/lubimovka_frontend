@@ -75,7 +75,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
             <div key={card.id} className="keen-slider__slide">
               <PersonCard
                 participant={true}
-                link={card.person.image}
+                image={card.person.image}
                 about={card.position}
                 name={`${card.person.first_name} ${card.person.last_name}`}
               >
@@ -98,7 +98,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
                 { [styles.sixElements]: selectedCards.length === 6 })}>
               <PersonCard
                 participant={true}
-                link={card.person.image}
+                image={card.person.image}
                 about={card.position}
                 name={`${card.person.first_name} ${card.person.last_name}`}
               >
