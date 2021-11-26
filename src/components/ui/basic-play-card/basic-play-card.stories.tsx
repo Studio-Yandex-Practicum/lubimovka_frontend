@@ -8,7 +8,7 @@ export default {
   component: BasicPlayCard,
 } as ComponentMeta<typeof BasicPlayCard>;
 
-const Template: ComponentStory<typeof BasicPlayCard> = (args) => <BasicPlayCard {...args} />;
+const Template: ComponentStory<typeof BasicPlayCard> = (args) => <BasicPlayCard {...args}/>;
 
 export const CardDefault = Template.bind({});
 CardDefault.args = {

@@ -3,8 +3,6 @@ import cn from 'classnames/bind';
 import { Button } from '../button';
 import { InfoLink } from '../info-link';
 
-import { Url } from 'shared/types';
-
 import styles from './basic-play-card.module.css';
 const cx  = cn.bind(styles);
 
@@ -15,8 +13,8 @@ export interface IBasicPlayCardProps {
     title: string;
     city: string;
     year: number;
-    linkView: Url;
-    linkDownload: Url;
+    linkView: string;
+    linkDownload: string;
     authors: Author [];
   };
   buttonVisibility?: boolean;

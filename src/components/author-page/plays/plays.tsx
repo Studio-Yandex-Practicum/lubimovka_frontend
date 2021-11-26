@@ -27,10 +27,10 @@ interface IAuthorPlays {
 
 export const AuthorPlays: FC<IAuthorPlays> = ({ data }) => {
   return (
-    <section className={ cn(styles.plays) }>
-      { data.plays.map((item, idx) => (
-        <BasicPlayCard play={item} key={idx} />
-      )) }
+    <section className={cn(styles.plays)}>
+      {data.plays.map((item, idx) => (
+        <BasicPlayCard play={item} key={idx}/>
+      ))}
     </section>
   );
 };
