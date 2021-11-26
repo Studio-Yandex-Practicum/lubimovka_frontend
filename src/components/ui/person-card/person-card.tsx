@@ -4,6 +4,7 @@ import cn from 'classnames/bind';
 
 import styles from './person-card.module.css';
 import { Icon } from '../icon';
+import Image from 'next/image';
 
 const cx = cn.bind(styles);
 
@@ -28,7 +29,15 @@ export const PersonCard: React.FC<IPersonCardProps> = (props) => {
 
   return (
     <div className={cx('container', { containerParticipant: participant, containerVolunteer: !participant })}>
-      <img className={cx({ imgParticipant:participant, imgVolunteer: !participant })} src={link} alt={name}/>
+      <div className={cx({ imgParticipant:participant, imgVolunteer: !participant })}>
+        <Image
+          src={link}
+          alt={name}
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+
       {!participant && response &&
       <button className={styles.comment} onClick={handleClick}>
         <Icon glyph={'comment'} width='100%' height='100%'/>
