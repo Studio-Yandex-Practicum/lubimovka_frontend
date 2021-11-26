@@ -18,14 +18,16 @@
 }
 
 .cover {
+  /* position: relative; */
   width: scale(120px);
   height: scale(161px);
-  padding-right: scale(31px);
+  margin-right: scale(31px);
+  object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
     width: scale(92px);
     height: scale(123px);
-    padding-right: scale(29px);
+    margin-right: scale(29px);
   }
 }
 

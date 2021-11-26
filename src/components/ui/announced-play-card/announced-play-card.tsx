@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import cn from 'classnames/bind';
 import { Button } from '../button';
+// import Image from 'next/image';
 
 import styles from './announced-play-card.module.css';
 
@@ -71,6 +72,9 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     <li className={cx('card', [className])}>
       <article className={cx('container')}>
         {coverResourceUrl &&
+          // <div className={cx('cover')}>
+          //   <Image src={coverResourceUrl} alt={title} layout="fill" objectFit="cover"/>
+          // </div>
           <div>
             <img className={cx('cover')} src={coverResourceUrl} alt={title}/>
           </div>
