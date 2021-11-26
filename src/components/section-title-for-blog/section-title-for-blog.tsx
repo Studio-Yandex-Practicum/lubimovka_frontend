@@ -4,7 +4,7 @@ import { Icon } from 'components/ui/icon';
 import { InfoLink } from 'components/ui/info-link';
 import { useEffect } from 'react';
 import React from 'react';
-import Filter from '../months-and-years-filter/months-and-years-filter';
+import MonthsAndYearFilter from '../months-and-years-filter/months-and-years-filter';
 
 const cx = classNames.bind(styles);
 
@@ -46,7 +46,7 @@ export const SectionTitleForBlog = (
           />
         </p>
       </div>
-      <Filter
+      <MonthsAndYearFilter
         className={cx('drop')}
         filterCallBack={(month, year) => {
           setMonth(month);

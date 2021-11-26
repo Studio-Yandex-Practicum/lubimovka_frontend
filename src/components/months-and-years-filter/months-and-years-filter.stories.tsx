@@ -1,14 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Filter from './months-and-years-filter';
+import MonthsAndYearFilter from './months-and-years-filter';
 
 export default {
   title: 'components/Filter',
-  component: Filter,
+  component: MonthsAndYearFilter,
 
-} as ComponentMeta<typeof Filter>;
+} as ComponentMeta<typeof MonthsAndYearFilter>;
 
-const Template: ComponentStory<typeof Filter> = (args) => <Filter {...args}/>;
+const Template: ComponentStory<typeof MonthsAndYearFilter> = (args) => <MonthsAndYearFilter {...args}/>;
 
 export const MonthsAndYearsFilter = Template.bind({});
 // MonthsAndYearsFilter.args = {
