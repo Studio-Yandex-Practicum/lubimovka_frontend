@@ -16,8 +16,8 @@ interface ISubmenuForTeam {
 const Submenu: FC<ISubmenuForTeam> = ({ submenu }) => {
 
   return (
-    <div className={cn(styles.menu) }>
-      <Menu type={ 'general-submenu' }>
+    <div className={cn(styles.menu)}>
+      <Menu type={'general-submenu'}>
         {submenu.map(item => (
           <Menu.Item
             key={item.text}

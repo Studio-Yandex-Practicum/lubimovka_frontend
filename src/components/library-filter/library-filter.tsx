@@ -27,7 +27,7 @@ const LibraryFilter: FC = () => {
       if (!filterState.programmes.find((i) => i === el)) {
         filterDispatcher({ type: 'add programme', programme: el });
       } else {
-        filterDispatcher({ type: 'remove programme', programme: el});
+        filterDispatcher({ type: 'remove programme', programme: el });
       }
     }, [filterState]);
 
@@ -56,7 +56,7 @@ const LibraryFilter: FC = () => {
       {(filterState.years.length > 0 || filterState.programmes.length > 0) &&
       <Button onClick={handleResetClick} label='Очистить' size='s' icon='cross'
         iconPlace='left' border='bottomLeft' width='scale(143px)' align='start'
-        gap='scale(3px)' />
+        gap='scale(3px)'/>
       }
     </div>
   );

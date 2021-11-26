@@ -1,7 +1,7 @@
-import React, {FC, ButtonHTMLAttributes} from 'react';
+import React, { FC, ButtonHTMLAttributes } from 'react';
 import Link from 'next/link';
 import cn from 'classnames/bind';
-import {Icon, IIconProps} from '../icon';
+import { Icon, IIconProps } from '../icon';
 
 import styles from './button.module.css';
 
@@ -43,7 +43,7 @@ export const Button: FC<IButtonProps> = (props) => {
   } = props;
 
   const classes = cx('button', view, border, icon && 'addon', iconPlace, iconPlace, size, [className]);
-  const style = {width: width, justifyContent: align, columnGap: gap};
+  const style = { width: width, justifyContent: align, columnGap: gap };
   const buttonChildren = (
     <React.Fragment>
       {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
@@ -63,7 +63,7 @@ export const Button: FC<IButtonProps> = (props) => {
         {buttonChildren}
       </button>
       ||
-      <Link href={href} {...restButtonProps} >
+      <Link href={href} {...restButtonProps}>
         <a  style={style}
           className={cx(classes, 'link')}>
           {buttonChildren}

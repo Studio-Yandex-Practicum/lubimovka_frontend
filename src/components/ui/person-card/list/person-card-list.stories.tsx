@@ -11,7 +11,7 @@ export default {
   subcomponents: { PersonCard },
   decorators: [
     (Story) => (
-      <div style={{margin: '0 auto', maxWidth: '1440px'}}>
+      <div style={{ margin: '0 auto', maxWidth: '1440px' }}>
         <Story/>
       </div>
     ),

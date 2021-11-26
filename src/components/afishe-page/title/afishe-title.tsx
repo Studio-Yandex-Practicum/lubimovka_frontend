@@ -1,6 +1,6 @@
-import {FC} from 'react';
+import { FC } from 'react';
 
-import {Icon} from 'components/ui/icon';
+import { Icon } from 'components/ui/icon';
 
 import styles from './afishe-title.module.css';
 
@@ -11,7 +11,7 @@ interface IAfisheTitle {
   registration: string,
 }
 
-export const AfisheTitle: FC<IAfisheTitle> = ({title, discussion, entrance, registration}) => {
+export const AfisheTitle: FC<IAfisheTitle> = ({ title, discussion, entrance, registration }) => {
   return (
     <section className={styles.section}>
       <h1 className={styles.title}>{title}</h1>

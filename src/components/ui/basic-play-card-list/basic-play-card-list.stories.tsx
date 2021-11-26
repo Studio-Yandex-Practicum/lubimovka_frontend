@@ -12,7 +12,7 @@ export default {
   subcomponents: { BasicPlayCard },
   decorators: [
     (Story) => (
-      <div style={{margin: '0 auto', maxWidth: '1440px'}}>
+      <div style={{ margin: '0 auto', maxWidth: '1440px' }}>
         <Story/>
       </div>
     ),
@@ -31,4 +31,4 @@ export const Default = ListTemplate.bind({});
 Default.parameters = {
   layout: 'fullscreen'
 };
-Default.args = { items: Array.from(Array(7)).map(() => CardDefault.args)};
+Default.args = { items: Array.from(Array(7)).map(() => CardDefault.args) };

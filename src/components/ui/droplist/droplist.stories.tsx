@@ -7,14 +7,13 @@ export default {
   component: Droplist,
 } as ComponentMeta<typeof Droplist>;
 
-const Template: ComponentStory<typeof Droplist> = (args) => <Droplist {...args} />;
+const Template: ComponentStory<typeof Droplist> = (args) => <Droplist {...args}/>;
 
-// Формирую массив dataType самостоятельно, из БД
 export const MonthsDroplist = Template.bind({});
 MonthsDroplist.args = {
   type: 'radio',
-  defaultListType: 'months',
   cb: string => {
+    // eslint-disable-next-line no-console
     console.log(string);
   },
   data: [
@@ -28,11 +27,10 @@ MonthsDroplist.args = {
   defaultValue: 'Месяц'
 };
 
-// Формирую массив dataType самостоятельно, из БД
 export const YearsDroplist = Template.bind({});
 YearsDroplist.args = {
-  defaultListType: 'years',
   cb: string => {
+    // eslint-disable-next-line no-console
     console.log(string);
   },
   data: [
@@ -41,22 +39,5 @@ YearsDroplist.args = {
     2014, 2017,
     2020, 2021,
   ],
-};
-
-// Использую массив data по умолчанию
-export const DefaultMonthsDroplist = Template.bind({});
-DefaultMonthsDroplist.args = {
-  defaultListType: 'months',
-  cb: string => {
-    console.log(string);
-  },
-};
-
-// Использую массив data по умолчанию
-export const DefaultYearsDroplist = Template.bind({});
-DefaultYearsDroplist.args = {
-  defaultListType: 'years',
-  cb: string => {
-    console.log(string);
-  },
+  defaultValue: 'Месяц'
 };

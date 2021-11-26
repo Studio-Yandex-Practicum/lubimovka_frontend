@@ -1,4 +1,4 @@
-import {FC, HTMLAttributes} from 'react';
+import { FC, HTMLAttributes } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import cn from 'classnames/bind';
@@ -45,7 +45,7 @@ export const Partners: FC<IPartnersProps> = ({ align = 'left', data = mockData, 
                 <Link href={partner.link}>
                   <a className={cx('link')}>
                     <div className={cx('imageContainer')}>
-                      <Image src={partner.image} layout='fill' objectFit='contain' />
+                      <Image src={partner.image} layout='fill' objectFit='contain'/>
                     </div>
                     {partner.text && <p className={cx('text')}>{partner.text}</p>}
                   </a>

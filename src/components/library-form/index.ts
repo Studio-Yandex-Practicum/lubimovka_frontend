@@ -1,1 +1,1 @@
-export {default} from './library-form';
+export { default } from './library-form';

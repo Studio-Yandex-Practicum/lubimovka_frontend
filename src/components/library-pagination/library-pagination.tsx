@@ -5,25 +5,26 @@ import style from './library-pagination.module.css';
 
 interface LibraryPaginationProps {
   letters: string[];
-  top: string;
+  top?: string;
   authors: string[];
+  className?: string;
 }
 
-const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors }) => {
+const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, className }) => {
   const [letter, setLetter] = useState<string>('');
   const [letterElement, setLetterElement] = useState<HTMLInputElement | null>(null);
   const chosenAuthors = useMemo(() => letter ? authors.filter((el) =>
     el.startsWith(letter)) : [], [letter]);
 
   useEffect(() => {
-    letterElement?.parentElement?.scrollIntoView({'block': 'nearest', 'behavior': 'smooth'});
+    letterElement?.parentElement?.scrollIntoView({ 'block': 'nearest', 'behavior': 'smooth' });
   }, [letterElement]);
 
   return (
     <div className={style.container}>
-      <ul style={{top: top}} className={style.letters}>
+      <ul style={{ top: top }} className={cn(style.letters, [className])}>
         {letters.map((el, index) => (
-          <li key={index} className={cn(style.letter, {[style.letterActive]: letter === el})}>
+          <li key={index} className={cn(style.letter, { [style.letterActive]: letter === el })}>
             <label htmlFor={el} className={style.label}>{el}</label>
             <input onClick={(e) => {setLetter(el); setLetterElement(e.target as HTMLInputElement);}}
               type='radio' name='letter' id={el} value={el} className={style.inputRadio}/>

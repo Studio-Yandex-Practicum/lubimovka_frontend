@@ -17,16 +17,16 @@ export const WhatWeDoContacts: FC<IWhatWeDoContactsProps> = ({ data }): JSX.Elem
   const { title, desc } = data;
 
   return (
-    <section className={ cn(styles.contacts) }>
-      <h3 className={ cn(styles.title) }>
-        { title }
+    <section className={cn(styles.contacts)}>
+      <h3 className={cn(styles.title)}>
+        {title}
       </h3>
-      <p className={ cn(styles.desc) }>
-        <span className={ cn(styles.asterisk) }>
-          { <Icon glyph='asterisk' fill='black'
-            className={ styles.asterisk } /> }
+      <p className={cn(styles.desc)}>
+        <span className={cn(styles.asterisk)}>
+          {<Icon glyph='asterisk' fill='black'
+            className={styles.asterisk}/>}
         </span>
-        { desc }
+        {desc}
       </p>
     </section>
   );

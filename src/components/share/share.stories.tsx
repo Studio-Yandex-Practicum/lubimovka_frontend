@@ -40,7 +40,7 @@ export default {
 
 } as ComponentMeta<typeof Share>;
 
-const Template: ComponentStory<typeof Share> = (args) => <Share {...args} />;
+const Template: ComponentStory<typeof Share> = (args) => <Share {...args}/>;
 
 export const BlogShare = Template.bind({});
 BlogShare.args = {

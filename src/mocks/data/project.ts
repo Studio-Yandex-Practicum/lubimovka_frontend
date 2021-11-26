@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Project } from 'api-typings';
 
 const project: Project = {

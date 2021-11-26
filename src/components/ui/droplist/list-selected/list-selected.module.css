@@ -1,61 +1,22 @@
 .container {
   display: flex;
-  border: scale(1px) solid var(--coal);
-  border-top: none;
-  margin-top: scale(26px);
+  box-sizing: border-box;
+  border-left: scale(1px) solid var(--coal);
   background-color: var(--beige);
+  transform: translateY(scale(8px));
+  transition: transform .2s ease-out;
 }
 
-.bottom {
-  flex-direction: column;
-  justify-content: flex-start;
+.lower {
+  transform: translateY(scale(320px));
 }
 
 .list {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 scale(7px 3px 7px);
+  padding: 0 scale(8px 4px 8px);
   margin: 0;
-  column-gap: scale(4px);
+  column-gap: scale(8px);
   list-style: none;
-  row-gap: .063rem;
-}
-
-.item {
-  @mixin textMedium;
-  @mixin text;
-
-  padding: scale(4px 8px 8px);
-  background: var(--coal);
-  color: var(--white);
-  text-align: center;
-  text-transform: lowercase;
-
-  &::first-letter {
-    text-transform: uppercase;
-  }
-}
-
-.button {
-  display: flex;
-  width: 100%;
-  min-height: scale(35px);
-  align-items: center;
-  align-self: flex-end;
-  padding: 0;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  transition: transform .1s linear, opacity .2s ease;
-
-  &:hover {
-    opacity: .8;
-    transform: translateX(scale(4px));
-  }
-}
-
-.iconArrowRight {
-  width: scale(25px);
-  height: scale(25px);
-  margin: scale(2px 8px) 0 auto;
+  row-gap: scale(8px);
 }

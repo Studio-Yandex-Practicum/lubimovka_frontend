@@ -11,21 +11,21 @@ interface IContainerButtonProps {
   value: string | number
 }
 
-export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown, value }) => {
+export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown, value }): JSX.Element => {
   const clickActiveDropdown = useCallback((): void => cb(), [ cb ]);
 
   return (
-    <div className={ cn(styles.container, {
+    <div className={cn(styles.container, {
       [styles.dark]: activeDropdown,
     })}
-    onClick={ clickActiveDropdown }>
-      <p className={ cn(styles.text) }>
-        { value }
+    onClick={clickActiveDropdown}>
+      <p className={cn(styles.text)}>
+        {value}
       </p>
-      { <Icon glyph='arrow-down'
+      {<Icon glyph='arrow-down'
         fill={activeDropdown ? 'white' : 'black'} 
-        className={ cn(styles.iconArrowDown, {[styles.rotateUp]: activeDropdown }) }
-      /> }
+        className={cn(styles.iconArrowDown, { [styles.rotateUp]: activeDropdown })}
+      />}
     </div>
   );
 };

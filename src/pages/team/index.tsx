@@ -10,7 +10,7 @@ const Team: NextPage = () => (
       <title>{'Организаторы'}</title>
     </Head>
     <main>
-      <TeamPage />
+      <TeamPage/>
     </main>
   </AppLayout>
 );

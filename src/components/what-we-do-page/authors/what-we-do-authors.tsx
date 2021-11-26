@@ -15,14 +15,14 @@ export const WhatWeDoAuthors: FC<IWhatWeDoAuthorsProps> = ({ data }): JSX.Elemen
   const { title, authors } = data;
 
   return (
-    <section className={ cn(styles.authors) }>
-      <h2 className={ cn(styles.title) } >
-        { title }
+    <section className={cn(styles.authors)}>
+      <h2 className={cn(styles.title)}>
+        {title}
       </h2>
-      <ul className={ cn(styles.list) }>
+      <ul className={cn(styles.list)}>
         {authors.map((author, i) => (
-          <li className={ cn(styles.item) } key={ i }>
-            { author }
+          <li className={cn(styles.item)} key={i}>
+            {author}
           </li>
         ))}
       </ul>

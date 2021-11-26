@@ -66,7 +66,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
       className={cx('card', [className])}
     >
       {coverResourceUrl &&
-        <div >
+        <div>
           <img className={cx('cover')} src={coverResourceUrl}></img>
         </div>
       }
@@ -76,12 +76,12 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           <p className={cx('time')}>{time}</p>
         </div>
         <h5 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h5>
-        { directorArray.length > 0 && playwrightArray.length > 0 &&
+        {directorArray.length > 0 && playwrightArray.length > 0 &&
         <div className={cx('credits')}>
           {creditsRendered}
         </div>
         }
-        { eventDescription &&
+        {eventDescription &&
         <div className={cx('eventDescription')}>
           {eventDescription}
         </div>
