@@ -34,21 +34,25 @@ const Authors = ({ errorCode, authors }: InferGetServerSidePropsType<typeof getS
 };
 
 const fetchAuthors = async () => {
-  let data;
-
   try {
-    data = await fetcher<PaginatedAuthorListList>('/library/authors');
+    const { results } = await fetcher<PaginatedAuthorListList>('/library/authors');
+    if(!results) {
+      throw 'no results';
+    }
+    return results;
   } catch (error) {
-    return;
+    throw error;
   }
-
-  return data.results;
 };
 
 export const getServerSideProps: GetServerSideProps<IAuthorsProps> = async () => {
-  const authors = await fetchAuthors();
-
-  if (!authors) {
+  try {
+    return {
+      props: {
+        authors: await fetchAuthors(),
+      },
+    };
+  } catch (error) {
     return {
       props: {
         errorCode: 500,
@@ -56,12 +60,6 @@ export const getServerSideProps: GetServerSideProps<IAuthorsProps> = async () =>
       }
     };
   }
-
-  return {
-    props: {
-      authors,
-    },
-  };
 };
 
 export default Authors;
