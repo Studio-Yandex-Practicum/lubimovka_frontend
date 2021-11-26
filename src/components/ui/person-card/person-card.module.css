@@ -35,6 +35,17 @@
   height: scale(265px);
 }
 
+.defaultImage {
+  display: flex;
+  box-sizing: border-box;
+  padding: 35%;
+  background-color: var(--light-green);
+}
+
+.logo {
+  color: var(--beige);
+}
+
 .comment {
   position: absolute;
   top: scale(170px);

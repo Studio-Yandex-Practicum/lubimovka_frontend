@@ -5,13 +5,14 @@ import cn from 'classnames/bind';
 import styles from './person-card.module.css';
 import { Icon } from '../icon';
 import Image from 'next/image';
+import Logo from 'shared/images/logo.svg';
 
 const cx = cn.bind(styles);
 
 export interface IPersonCardProps {
   participant?: boolean,
   name: string,
-  image: string,
+  image?: string,
   about?: string,
   response?: string,
   handleClick?: React.MouseEventHandler<HTMLButtonElement>,
@@ -29,13 +30,17 @@ export const PersonCard: React.FC<IPersonCardProps> = (props) => {
 
   return (
     <div className={cx('container', { containerParticipant: participant, containerVolunteer: !participant })}>
-      <div className={cx({ imgParticipant:participant, imgVolunteer: !participant })}>
-        <Image
-          src={image}
-          alt={name}
-          layout="fill"
-          objectFit="cover"
-        />
+      <div className={cx({ imgParticipant:participant, imgVolunteer: !participant, defaultImage:!image })}>
+        {image ?
+          <Image
+            src={image}
+            alt={name}
+            layout="fill"
+            objectFit="cover"
+          /> :
+          <Logo className={cx('logo')}/>
+        }
+
       </div>
 
       {!participant && response &&
