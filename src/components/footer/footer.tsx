@@ -5,9 +5,9 @@ import { FooterAddress } from './address';
 import { FooterNavigation } from './navigation';
 import { FooterProjects } from './projects';
 import { FooterPartners } from './partners';
+import { FooterLogo } from './logo';
 import { InfoLink } from 'components/ui/info-link';
 
-import Logo from 'shared/images/logo-full.svg';
 import styles from './footer.module.css';
 
 interface IFooterProps {
@@ -83,3 +83,4 @@ Footer.Address = FooterAddress;
 Footer.Navigation = FooterNavigation;
 Footer.Projects = FooterProjects;
 Footer.Partners = FooterPartners;
+Footer.Logo = FooterLogo;

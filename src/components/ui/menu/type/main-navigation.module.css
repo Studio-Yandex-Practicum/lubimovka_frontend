@@ -8,10 +8,6 @@
 
 .item {
   display: flex;
-
-  /* &:not(:last-child) {
-    margin-right: scale(24px);
-  } */
 }
 
 .link {
