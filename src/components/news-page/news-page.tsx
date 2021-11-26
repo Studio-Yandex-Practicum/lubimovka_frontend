@@ -7,10 +7,12 @@ import { NewsTitle } from './news-title';
 import { NewsList } from './news-list';
 import { Droplist } from 'components/ui/droplist';
 
-import MookNewsData from './assets/mock-data-news.json';
+import MockNewsData from './assets/mock-data-news.json';
 
-import cn from 'classnames';
+import cn from 'classnames/bind';
 import style from './news-page.module.css';
+
+const cx = cn.bind(style);
 
 interface INewsPageProps {
   metaTitle: string;
@@ -34,23 +36,23 @@ export const NewsPage: FC<INewsPageProps> = (props: INewsPageProps) => {
         <title>{metaTitle}</title>
       </Head>
       <NewsTitle title='Новости'/>
-      <div className={cn(style.droplist)}>
+      <div className={cx('droplist__container')}>
         <Droplist
           defaultListType='months'
           type='radio'
           defaultValue='Месяц'
           cb={([string]) => {setMonth(string);}}
-          className={style.droplistMonths}
+          className={cx('droplist_months')}
         />
         <Droplist
           defaultListType='years'
           type='radio'
           defaultValue='Год'
           cb={([string]) => {setYear(string);}}
-          className={cn(style.droplistYears)}
+          className={cx('droplist_years')}
         />
       </div>
-      <NewsList newsCardData={MookNewsData}/>
+      <NewsList newsCardData={MockNewsData}/>
     </>
   );
 };

@@ -1,9 +1,10 @@
 import {FC} from 'react';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 
 import style from './news-list.module.css';
 import { NewsCard } from 'components/ui/news-card';
 
+const cx = cn.bind(style);
 
 interface NewsCardData {
   id: number;
@@ -16,24 +17,22 @@ interface NewsCardData {
 interface INewsList {
   newsCardData: Array<NewsCardData>;
   className?: string;
-  length?: number;
 }
 
-export const NewsList: FC<INewsList> = ({newsCardData}) => {
+export const NewsList: FC<INewsList> = ({newsCardData, className}) => {
   return(
     <>
-      <section className={cn(style.newsList)}>
+      <ul className={cx('news-list', className)}>
         {newsCardData.map((data) => (
-          <NewsCard
-            key={data.id}
+          <li key={data.id}><NewsCard
             newsId={data.id}
             title={data.title}
             description={data.description}
             date={data.pub_date}
             isMainPage={false}
-          />
+          /></li>
         ))}
-      </section>
+      </ul>
     </>
   );
 };

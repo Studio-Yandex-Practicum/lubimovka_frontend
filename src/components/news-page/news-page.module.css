@@ -1,14 +1,14 @@
-.droplist {
+.droplist__container {
   display: flex;
   flex-direction: row;
-  padding: scale(16px 300px 39px 720px);
+  padding: scale(0 300px 39px 720px);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(10px 0 18px 24px);
+    padding: scale(0 24px 18px 24px);
   }
 }
 
-.droplistMonths {
+.droplist_months {
   z-index: 1;
   max-width: scale(240px);
   margin-right: scale(30px);
@@ -16,11 +16,11 @@
   @media (max-width: $tablet-portrait) {
     z-index: 3;
     max-width: scale(183px);
-    margin-right: scale(15px);
+    margin-right: scale(31px);
   }
 }
 
-.droplistYears {
+.droplist_years {
   z-index: 1;
   max-width: scale(150px);
 
