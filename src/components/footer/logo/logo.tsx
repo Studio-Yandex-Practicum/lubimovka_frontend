@@ -9,6 +9,6 @@ const cx = classNames.bind(style);
 export const FooterLogo: FC = () => {
 
   return (
-    <Logo className={cx('logo')} />
+    <Logo className={cx('logo')}/>
   );
 };
