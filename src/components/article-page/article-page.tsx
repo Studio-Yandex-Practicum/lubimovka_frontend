@@ -14,7 +14,7 @@ import ArticleOther from './article-other/article-other';
 
 
 import styles from './article-page.module.css';
-import { BlogData, ComplexItem, Person, Play } from './types/article-types';
+import { BlogData, ComplexItem, NewsData, Person, Play } from './types/article-types';
 import Image from 'next/image';
 
 const cx = cn.bind(styles);
@@ -22,7 +22,7 @@ const cx = cn.bind(styles);
 interface IArticlePageProps {
   metaTitle: string;
   isBlog: boolean;
-  data: BlogData; // | NewsData
+  data: BlogData | NewsData
 }
 
 export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => {
@@ -48,7 +48,7 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
   const illustrators: string[] = [];
   const photographers: string[] = [];
 
-  if (isBlog) {
+  if ('persons' in data) {
     data.persons.forEach(el => {
       switch (el.role) {
       case 'TEXT':
@@ -75,8 +75,8 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
           description={data.description}
           date={data.created}
           imgLink={data.image}
-          author={data.author_url_title}
-          authorLink={data.author_url}
+          author={'author_url_title' in data ? data.author_url_title : undefined}
+          authorLink={'author_url' in data ? data.author_url : undefined}
         />
         <ArticleMainText>
           {data.preamble &&
@@ -159,7 +159,11 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
           photographers={photographers}
         />
       </main>
-      <ArticleOther isBlog={isBlog} blogArticles={data.blogs}/>
+      <ArticleOther
+        isBlog={isBlog}
+        blogArticle={'blogs' in data ? data.blogs : undefined}
+        newsArticle={'news' in data ? data.news : undefined}
+      />
     </>
   );
 };

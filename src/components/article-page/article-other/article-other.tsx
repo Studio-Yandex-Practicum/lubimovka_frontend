@@ -5,20 +5,20 @@ import cn from 'classnames/bind';
 import styles from './article-other.module.css';
 import { BlogList } from '../../ui/blog-card/list';
 import { BlogCard } from '../../ui/blog-card';
-import { BlogItem } from '../types/article-types';
+import { BlogItem, NewsItem } from '../types/article-types';
 
 const cx = cn.bind(styles);
 
 interface IArticleOtherProps {
   isBlog: boolean;
-  blogArticles?: BlogItem[];
-  // newsArticles?: NewsItem[];
+  blogArticle?: BlogItem[];
+  newsArticle?: NewsItem[];
 }
 
 const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
   const {
     isBlog,
-    blogArticles = [],
+    blogArticle = [],
     // newsArticles = [],
   } = props;
 
@@ -27,7 +27,7 @@ const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
       <h2 className={cx('sectionTitle')}>Другие {isBlog ? 'записи' : 'новости'}</h2>
       {isBlog ?
         <BlogList>
-          {blogArticles.map(item => (
+          {blogArticle.map(item => (
             <BlogCard
               key={item.id}
               image={item.image}

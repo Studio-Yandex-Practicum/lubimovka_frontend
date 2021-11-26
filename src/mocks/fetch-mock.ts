@@ -10,6 +10,7 @@ import form from 'mocks/data/form';
 import project from './data/project';
 import { PaginatedProjectListList } from 'api-typings';
 import blogArticle from './data/blogArticle';
+import newsArticle from './data/newsArticle';
 
 fetchMock.config.fallbackToNetwork = true;
 
@@ -24,6 +25,7 @@ mockedFetch
   .get({ matcher: new RegExp(addOriginToApiPath('/library/performances/\\d+')) }, performance)
   .get(addOriginToApiPath('/contacts'), contacts)
   .get(addOriginToApiPath('/form'), form)
-  .get({ matcher: new RegExp(addOriginToApiPath('/blog/\\d+')) }, blogArticle);
+  .get({ matcher: new RegExp(addOriginToApiPath('/blog/\\d+')) }, blogArticle)
+  .get({ matcher: new RegExp(addOriginToApiPath('/news/\\d+')) }, newsArticle);
 
 export default mockedFetch;
