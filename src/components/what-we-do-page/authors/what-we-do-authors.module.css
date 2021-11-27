@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: scale(86px 24px 0);
+  padding: scale(86px 24px 150px);
+  background-color: var(--white);
 }
 
 .title {
@@ -10,7 +11,7 @@
   @mixin headline5;
 
   max-width: scale(600px);
-  margin: scale(0 120px 82px) auto;
+  margin: 0 scale(120px 82px) auto;
 }
 
 .list {
@@ -19,9 +20,8 @@
   justify-content: center;
   padding: 0;
   margin: 0;
-  margin-bottom: scale(150px);
   column-gap: scale(62px);
-  grid-template-columns: repeat(auto-fill, minmax(15rem, max-content));
+  grid-template-columns: repeat(auto-fill, minmax(scale(240px), max-content));
   list-style: none;
   row-gap: scale(6px);
 }
@@ -30,12 +30,12 @@
   @mixin headline;
   @mixin textLarge;
 
-  line-height: 1.5rem;
+  line-height: scale(24px);
 }
 
 @media (max-width: $tablet-portrait) {
   .authors {
-    padding-top: scale(56px);
+    padding: scale(56px 24px 72px);
   }
 
   .title {
@@ -43,9 +43,5 @@
 
     margin: 0;
     margin-bottom: scale(40px);
-  }
-
-  .list {
-    margin-bottom: scale(72px);
   }
 }
