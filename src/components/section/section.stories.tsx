@@ -4,7 +4,7 @@ import { Section } from 'components/section';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 
 import { Default as DefaultBasicPlayCardList } from 'components/ui/basic-play-card-list/basic-play-card-list.stories';
-import { Default as DefaultPersonCardList } from 'components/ui/person-card/list/person-card-list.stories';
+import { Default as DefaultPersonCardList } from 'components/person-card-list/person-card-list.stories';
 
 export default {
   title: 'Components/Section',
