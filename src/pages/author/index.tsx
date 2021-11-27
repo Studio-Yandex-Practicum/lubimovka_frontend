@@ -16,7 +16,7 @@ import styles from 'components/author-page/author.module.css';
 
 const Author: NextPage = () => {
   return (
-    <AppLayout>
+    <AppLayout backButton={{ path: '/library', text: 'библиотека' }}>
       <div className={cn(styles.author)}>
         <AuthorOverview data={overviewData}/>
         <AuthorPlays data={playsShortListData}/>

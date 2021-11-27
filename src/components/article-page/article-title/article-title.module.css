@@ -5,10 +5,10 @@
   margin: 0 auto;
   grid-column-gap: scale(30px);
   grid-template-areas:
-    'b title title c'
-    'b description description img'
-    'b date author img';
-  grid-template-columns: scale(90px) 1fr 1fr 2.555fr;
+    'title title c'
+    'description description img'
+    'date author img';
+  grid-template-columns: 1fr 1fr 2.555fr;
 
   @media (max-width: $tablet-portrait) {
     padding: scale(32px 0 0 24px);

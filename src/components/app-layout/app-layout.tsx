@@ -20,6 +20,7 @@ import { participationFormPath } from 'shared/constants/participation-form-path'
 import * as breakpoints from 'shared/breakpoints.js';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
+import { Button } from '../ui/button';
 
 interface IAppLayoutProps extends WithAppSettingsProps{
   hiddenPartners?: boolean,
@@ -93,7 +94,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
           border='bottomRight'
           isLink
           label={backButton.text}
-          href={backButton.path} />
+          href={backButton.path}/>
       </Page.BackButton>}
       {children}
       {isMobile && (

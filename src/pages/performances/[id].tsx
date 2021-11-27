@@ -54,7 +54,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
   });
 
   return (
-    <AppLayout>
+    <AppLayout backButton={{ path: '/projects', text: 'проекты' }}>
       <PerformanceLayout>
         <PerformanceLayout.Headline>
           <PerformanceHeadline

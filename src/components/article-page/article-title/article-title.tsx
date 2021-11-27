@@ -31,17 +31,6 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
 
   return (
     <section className={cx('container', { containerTypeNews: !isBlog })}>
-      <Button className={cx({ backButtonBlog: isBlog, backButtonNews: !isBlog })}
-        label={isBlog ? 'Блог' : 'Новости'}
-        size={'s'}
-        iconPlace={'right'}
-        icon={'arrow-left'}
-        border={'bottomRight'}
-        isLink={true}
-        view={'primary'}
-        align={'space-between'}
-        href={isBlog ? '/blog' : '/news'}
-      />
 
       <img className={cx('img')} src={imgLink} alt={title}/>
 

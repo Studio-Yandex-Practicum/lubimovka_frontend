@@ -11,7 +11,7 @@ const Article: NextPage<IArticleProps> = (props: IArticleProps) => {
     metaTitle,
   } = props;
   return (
-    <AppLayout backButton={{path: '/blog', text: 'блог'}}>
+    <AppLayout backButton={{ path: '/blog', text: 'блог' }}>
       <ArticlePage metaTitle={metaTitle} isBlog={true}/>
     </AppLayout>
   );

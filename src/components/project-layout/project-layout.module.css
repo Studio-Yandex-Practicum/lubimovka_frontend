@@ -2,6 +2,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-top: scale(59px);
   background-color: var(--beige);
+
+  @media (max-width: $tablet-portrait) {
+    padding-top: scale(30px);
+  }
 }

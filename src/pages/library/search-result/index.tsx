@@ -1,7 +1,5 @@
 import { NextPage } from 'next';
-import { useState, useEffect } from 'react';
 import AppLayout from 'components/app-layout';
-import { Button } from 'components/ui/button';
 import LibraryForm from 'components/library-form/library-form';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
@@ -56,18 +54,9 @@ const mockPieces = Array.from(Array(3)).map(() => mockCard);
 
 const SearchResult: NextPage = () => {
 
-  const [screenWidth, setScreenWidth] = useState<number | null>(null);
-
-  useEffect(() => {
-    setScreenWidth(document.documentElement.clientWidth);
-  }, []);
-
   return (
-    <AppLayout>
+    <AppLayout backButton={{ path: '/library', text: 'библиотека' }}>
       <main className ={style.page}>
-        <div className={style.buttonWrapper}>
-          <Button isLink={true} label={Number(screenWidth) < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
-        </div>
         <div className={style.topWrapper}>
           <p className={style.info}>
             По запросу «август» мы нашли

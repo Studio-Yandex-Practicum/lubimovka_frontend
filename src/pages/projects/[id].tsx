@@ -28,7 +28,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
   } = props;
 
   return (
-    <AppLayout>
+    <AppLayout backButton={{ path: '/projects', text: 'проекты' }}>
       <ProjectLayout>
         <ProjectHeader
           title={title}
