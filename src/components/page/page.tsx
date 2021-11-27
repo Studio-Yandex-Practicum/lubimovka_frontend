@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { PageHeader } from './header';
 import { PageOverlayMenu } from './overlay-menu';
 import { PageBurgerButton } from './burger-button';
+import { PageBreadcrumbs } from './breadcrumbs';
 
 interface IPageProps {
   children: ReactNode,
@@ -21,3 +22,4 @@ export const Page = (props: IPageProps): JSX.Element => {
 Page.Header = PageHeader;
 Page.OverlayMenu = PageOverlayMenu;
 Page.BurgerButton = PageBurgerButton;
+Page.Breadcrumbs = PageBreadcrumbs;
