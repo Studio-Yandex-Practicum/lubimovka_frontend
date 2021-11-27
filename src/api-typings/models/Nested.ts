@@ -2,12 +2,12 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Persons } from './Persons';
-
-export type Volunteers = {
+export type Nested = {
     readonly id: number;
-    person: Persons;
+    readonly created: string;
+    readonly modified: string;
     year?: number;
     review_title?: string;
     review_text: string;
+    person: number;
 }

@@ -21,5 +21,5 @@ export type Performance = {
     description: string;
     text: string;
     age_limit: number;
-    event: number;
+    events: number;
 }

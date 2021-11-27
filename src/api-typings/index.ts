@@ -13,6 +13,7 @@ export type { Festival } from './models/Festival';
 export type { FestivalTeams } from './models/FestivalTeams';
 export type { Image } from './models/Image';
 export type { NameEnum } from './models/NameEnum';
+export type { Nested } from './models/Nested';
 export type { NewsItem } from './models/NewsItem';
 export type { NewsItemList } from './models/NewsItemList';
 export type { OtherLink } from './models/OtherLink';
