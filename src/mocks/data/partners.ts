@@ -1,6 +1,6 @@
 import { Partner } from 'api-typings';
 
-import partnerLogo from '../assets/partners/partnerLogo.png';
+import partnerLogo from '../assets/partners/fond-prohorova.png';
 
 const partners: Partner[] = [
   {
