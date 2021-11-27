@@ -46,13 +46,6 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
   }, [ data ]);
 
   useEffect(() => {
-    if (defaultValue && type === 'radio') {
-      setSelectList([defaultValue]);
-      return;
-    }
-  }, [type, defaultValue]);
-
-  useEffect(() => {
     cb(selectList);
   }, [cb, selectList]);
 
@@ -113,7 +106,7 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
       <ContainerButton
         cb={cbContainer}
         activeDropdown={activeDropdown}
-        value={defaultValue || 'Все'}
+        value={type === 'radio' && selectList[0] || defaultValue || 'Все'}
       />
       <form
         name='droplist'
