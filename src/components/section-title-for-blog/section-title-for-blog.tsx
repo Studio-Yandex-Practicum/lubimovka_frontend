@@ -1,11 +1,12 @@
 import classNames from 'classnames/bind';
-import styles from './section-title-for-blog.module.css';
+import React, { useEffect } from 'react';
+
 import { Droplist } from 'components/ui/droplist/droplist';
 import { Icon } from 'components/ui/icon';
 import { InfoLink } from 'components/ui/info-link';
-import { useEffect } from 'react';
-import React from 'react';
 import { MONTHS, YEARS } from 'shared/constants/months-and-years';
+
+import styles from './section-title-for-blog.module.css';
 
 const cx = classNames.bind(styles);
 

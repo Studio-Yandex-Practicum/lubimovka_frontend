@@ -5,6 +5,7 @@ import PlayProposalLayoutColumn from './column/play-proposal-layout-column';
 import PlayProposalForm from './form/play-proposal-layout-form';
 
 import styles from './play-proposal-layout.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IPlayProposalLayoutProps {
