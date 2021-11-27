@@ -193,8 +193,6 @@ const fetchPerformance = async (performanceId: string) => {
   try {
     data = await fetcher<PerformanceModel>(`/library/performances/${performanceId}`);
   } catch (error) {
-    // TODO: обработать ошибку, добавим после реализации страницы ошибки
-
     return;
   }
 
