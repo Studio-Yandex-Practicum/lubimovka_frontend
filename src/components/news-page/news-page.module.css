@@ -10,22 +10,22 @@
 
 .droplist_months {
   z-index: 1;
-  max-width: scale(240px);
+  width: scale(240px);
   margin-right: scale(30px);
 
   @media (max-width: $tablet-portrait) {
     z-index: 3;
-    max-width: scale(183px);
+    width: scale(183px);
     margin-right: scale(31px);
   }
 }
 
 .droplist_years {
   z-index: 1;
-  max-width: scale(150px);
+  width: scale(150px);
 
   @media (max-width: $tablet-portrait) {
     z-index: 3;
-    max-width: scale(152px);
+    width: scale(152px);
   }
 }
