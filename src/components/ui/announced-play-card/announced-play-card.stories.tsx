@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof AnnouncedPlayCard> = (args) => <AnnouncedP
 
 export const PerformancePaid = Template.bind({});
 PerformancePaid.args = {
-  type: 'performance',
+  isPerformance: true,
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'МАМА',
@@ -27,7 +27,7 @@ PerformancePaid.args = {
 
 export const PerformanceNoTickets = Template.bind({});
 PerformanceNoTickets.args = {
-  type: 'performance',
+  isPerformance: true,
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'МАМА',
@@ -41,7 +41,7 @@ PerformanceNoTickets.args = {
 
 export const PerformancePaidNoCover = Template.bind({});
 PerformancePaidNoCover.args = {
-  type: 'performance',
+  isPerformance: true,
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'МАМА',
@@ -54,7 +54,7 @@ PerformancePaidNoCover.args = {
 
 export const PerformanceNotPaidNoCover = Template.bind({});
 PerformanceNotPaidNoCover.args = {
-  type: 'performance',
+  isPerformance: true,
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'МАМА',
@@ -67,7 +67,7 @@ PerformanceNotPaidNoCover.args = {
 
 export const ReadingNoCredits = Template.bind({});
 ReadingNoCredits.args = {
-  type: 'reading',
+  isPerformance: true,
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'Что я узнал о творчестве благодаря драматургам',

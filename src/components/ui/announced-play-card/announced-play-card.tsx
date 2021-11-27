@@ -8,8 +8,7 @@ import styles from './announced-play-card.module.css';
 const cx = cn.bind(styles);
 
 export interface IAnnouncedPlayCardProps {
-  type?: 'performance' | 'reading' | 'masterclass';
-  // type: AnnouncedPlayCardType;
+  isPerformance: boolean;
   id: number;
   date: string;
   title: string;
@@ -23,15 +22,9 @@ export interface IAnnouncedPlayCardProps {
   paid?: boolean;
 }
 
-// enum AnnouncedPlayCardType {
-//   Performance = "Спектакль",
-//   Reading = "Читка",
-//   Masterclass = "Мастер-класс"
-// }
-
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const {
-    type,
+    isPerformance,
     id,
     date,
     title,
@@ -112,15 +105,12 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
               size='s'
               iconPlace='left'
               icon='arrow-right'
-              // label={type === AnnouncedPlayCardType.Performance ? 'О спектакле' : 'Регистрация'}
-              label={type === 'performance' ? 'О спектакле' : 'Регистрация'}
+              label={isPerformance ? 'О спектакле' : 'Регистрация'}
               border='bottomLeft'
               isLink
-              // href={type === AnnouncedPlayCardType.Performance ? `/performances/${id}` : buttonLink}
-              href={type === 'performance' ? `/performances/${id}` : buttonLink}
+              href={isPerformance ? `/performances/${id}` : buttonLink}
             />
-            {paid && type === 'performance' &&
-            // {paid && type === AnnouncedPlayCardType.Performance &&
+            {paid && isPerformance &&
             <Button
               view='primary'
               className={cx('button')}
