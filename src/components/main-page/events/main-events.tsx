@@ -6,16 +6,16 @@ import styles from './main-events.module.css';
 
 interface IItem {
   id: number;
-  type: 'performance' | 'reading' | 'masterclass';
+  type: string;
   date: string;
   title: string;
   playwrightArray: string [];
   directorArray: string [];
-  eventDescription?:string;
+  eventDescription?: string;
   buttonLink: string;
   coverResourceUrl?: string;
   projectCopy: string;
-  paid: boolean;
+  paid?: boolean;
 }
 interface IMainEventsProps {
   data: IItem[]
@@ -29,7 +29,8 @@ export const MainEvents: FC<IMainEventsProps> = ({ data }) => {
           data.map(item => (
             <li key={item.id} className={styles.list}>
               <AnnouncedPlayCard
-                type={item.type}
+                //необходимо передавать в isPerformance, значение, зависимое от item.type с бэка. Если item.type === 'Спектакль', то значение true
+                isPerformance={item.type === 'Спектакль'}
                 id={item.id}
                 date={item.date}
                 title={item.title}

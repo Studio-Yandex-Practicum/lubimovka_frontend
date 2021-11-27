@@ -82,7 +82,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                     <AnnouncedPlayCard
                       key={id}
                       //TODO: исправить ответ бекенда, сейчас возвращаются данные для страницы спектакля
-                      type='performance'
+                      isPerformance={true}
                       id={id}
                       date='2021-11-13T17:00:00.000Z'
                       title={name}

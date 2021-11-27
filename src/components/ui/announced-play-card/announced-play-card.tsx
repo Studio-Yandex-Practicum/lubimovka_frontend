@@ -8,7 +8,7 @@ import styles from './announced-play-card.module.css';
 const cx = cn.bind(styles);
 
 export interface IAnnouncedPlayCardProps {
-  isPerformance: boolean;
+  isPerformance?: boolean;
   id: number;
   date: string;
   title: string;
