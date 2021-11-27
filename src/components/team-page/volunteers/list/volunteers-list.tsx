@@ -1,10 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
-import styles from './volunteers-list.module.css';
 import classNames from 'classnames';
 
 import PersonCard from '../../../ui/person-card/person-card';
 import { FeedbackPopup } from 'components/ui/feedback-popup';
+
+import styles from './volunteers-list.module.css';
 
 const cx = classNames.bind(styles);
 

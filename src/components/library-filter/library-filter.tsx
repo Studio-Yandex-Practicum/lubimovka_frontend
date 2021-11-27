@@ -3,7 +3,6 @@ import React, { FC, useCallback, useReducer } from 'react';
 import { Droplist } from 'components/ui/droplist';
 import { Tag } from 'components/ui/tag';
 import { Button } from 'components/ui/button';
-
 import reducer from './library-filter-reducer';
 
 import style from './library-filter.module.css';

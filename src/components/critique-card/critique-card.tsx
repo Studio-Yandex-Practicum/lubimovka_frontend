@@ -2,9 +2,9 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import { Url } from 'shared/types';
-import styles from './critique-card.module.css';
-
 import { InfoLink } from '../ui/info-link';
+
+import styles from './critique-card.module.css';
 
 interface ICritiqueCardProps {
   logo?: Url,

@@ -2,7 +2,6 @@ import { FC } from 'react';
 
 import TextSection from 'components/ideology-section';
 import { AboutUsMenu } from 'components/what-we-do-page/about-us-menu';
-
 import { ITextSectionData } from 'components/ideology-section/ideology-section';
 
 import style from './index.module.css';

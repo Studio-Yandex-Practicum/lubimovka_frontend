@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import cn from 'classnames';
+
 import { Menu } from 'components/ui/menu';
 
 import styles from './submenu.module.css';

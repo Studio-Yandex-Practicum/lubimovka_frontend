@@ -1,7 +1,8 @@
 import { FC } from 'react';
+import cn from 'classnames';
+
 import { Icon } from 'components/ui/icon';
 
-import cn from 'classnames';
 import styles from './request.module.css';
 
 export const AuthorRequest: FC = () => {

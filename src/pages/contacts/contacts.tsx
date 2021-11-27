@@ -13,8 +13,6 @@ import TextArea from 'components/ui/text-area';
 import { Button } from 'components/ui/button';
 import { validEmailRegexp } from 'shared/regexps';
 
-import playScript from '/public/images/contacts/play-script.jpg';
-
 const Contacts: NextPage = () => {
   const [name, setName] = useState('');
   const [nameWasChanged, setNameWasChanged] = useState(false);
@@ -143,7 +141,7 @@ const Contacts: NextPage = () => {
         </ContactsLayout.Column>
         <ContactsLayout.Image>
           <Image
-            src={playScript}
+            src="/images/contacts/play-script.jpg"
             alt="Напечатанная читка в руках человека"
             layout="fill"
             objectFit="cover"

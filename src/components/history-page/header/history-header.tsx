@@ -1,6 +1,8 @@
 import { FC } from 'react';
+
 import { Menu } from 'components/ui/menu';
 import { MenuItem } from 'components/ui/menu/item';
+
 import style from './history-header.module.css';
 
 interface TextItemData {

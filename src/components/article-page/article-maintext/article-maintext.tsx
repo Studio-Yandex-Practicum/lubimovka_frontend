@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './article-maintext.module.css';
+
 const cx = classNames.bind(styles);
 
 export interface IArticleMainTextProps extends React.HTMLAttributes<HTMLDivElement>{
