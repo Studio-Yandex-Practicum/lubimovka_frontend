@@ -19,7 +19,6 @@ const MonthsAndYearFilter: React.FC<IFilter> = (props) => {
     filterCallBack,
   } = props;
 
-  // const currentMonth:number = new Date().getMonth();
   const currentYear:number = new Date().getFullYear();
 
   const [month, setMonth] = React.useState<number>();
@@ -56,7 +55,14 @@ const MonthsAndYearFilter: React.FC<IFilter> = (props) => {
         cb={([year]) => callBackForYear(year)}
         className={cx('droplistTypelistYears')}
       />
+      <span className={cx('error', 'errorMonth', { errorVisible:month === undefined && year })}>
+        Выберите месяц
+      </span>
+      <span className={cx('error', 'errorYear', { errorVisible:month !== undefined && !year })}>
+          Выберите год
+      </span>
     </div>
+
   );
 };
 

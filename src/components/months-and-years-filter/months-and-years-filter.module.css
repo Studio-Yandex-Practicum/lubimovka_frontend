@@ -1,8 +1,34 @@
 .drop {
   position: relative;
-  display: flex;
-  flex-direction: row;
-  column-gap: scale(30px);
+  display: grid;
+  grid-column-gap: scale(30px);
+  grid-template-areas:
+    'month year'
+    'err-month err-year';
+  grid-template-columns: repeat(2, min-content);
+  grid-template-rows: min-content;
+}
+
+.error {
+  @mixin text;
+  @mixin textCaption;
+
+  display: inline-block;
+  margin-top: scale(3px);
+  color: var(--red);
+  opacity: 0;
+}
+
+.errorMonth {
+  grid-area: err-month;
+}
+
+.errorYear {
+  grid-area: err-year;
+}
+
+.errorVisible {
+  opacity: 1;
 }
 
 .droplistTypelistMonths {
