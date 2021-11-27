@@ -1,6 +1,6 @@
 .news-list {
   display: flex;
-  max-width: scale(900px);
+  width: scale(900px);
   flex-direction: column;
   justify-content: center;
   padding: scale(0 300px 234px 240px);
@@ -8,7 +8,7 @@
   list-style: none;
 
   @media (max-width: $tablet-portrait) {
-    max-width: scale(366px);
+    width: scale(366px);
     padding: scale(0 0 0 44px);
   }
 }
