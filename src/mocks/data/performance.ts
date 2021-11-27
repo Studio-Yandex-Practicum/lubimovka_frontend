@@ -67,7 +67,7 @@ const performance: Performance = {
     <p>Пьеса была успешно представлена в России в формате читки в 2016 году рамках лаборатории LARK+Любимовка на сцене Центра им. Мейерхольда.</p>
   `,
   age_limit: 18,
-  event: 0,
+  events: 0,
 };
 
 export default performance;
