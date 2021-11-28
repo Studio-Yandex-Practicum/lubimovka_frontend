@@ -3,16 +3,17 @@ import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 
 import LibraryForm from 'components/library-form/library-form';
 import LibraryFilter from 'components/library-filter/library-filter';
-import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
+import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
 import LibraryFiltersModal from './library-filters-modal';
+import { Play } from 'api-typings';
 
 import styles from './index.module.css';
 
 interface ILibraryPageProps {
-  items: IBasicPlayCardProps[];
+  items: Play[];
 }
 
 const LibraryPage: FC<ILibraryPageProps> = ({ items }) => {
@@ -63,15 +64,33 @@ const LibraryPage: FC<ILibraryPageProps> = ({ items }) => {
           </div>
           <div className={styles.pieces}>
             <BasicPlayCardList>
-              {(items as IBasicPlayCardProps[]).map((item, idx) => (
-                <BasicPlayCard key={idx} {...item}/>
+              {items.map(({ id, name, city }) => (
+                <BasicPlayCard
+                  key={id}
+                  play={{
+                    title: name,
+                    city,
+                    year: '',
+                    linkView: '',
+                    linkDownload: ''
+                  }}
+                  author={{ id: 0, name: '' }}/>
               ))}
             </BasicPlayCardList>
           </div>
         </section>
         <section className={styles.piecesMobile}>
-          {(items as IBasicPlayCardProps[]).map((item, idx) => (
-            <BasicPlayCard key={idx} {...item}/>
+          {items.map(({ id, name, city }) => (
+            <BasicPlayCard
+              key={id}
+              play={{
+                title: name,
+                city,
+                year: '',
+                linkView: '',
+                linkDownload: ''
+              }}
+              author={{ id: 0, name: '' }}/>
           ))}
         </section>
         {isModalOpen && <LibraryFiltersModal/>}
