@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 import { Icon } from 'components/ui/icon';
 import { InfoLink } from 'components/ui/info-link';
-import MonthsAndYearsFilter from '../months-and-years-filter/months-and-years-filter';
+import { MonthsAndYearsFilter } from '../months-and-years-filter';
 
 import styles from './section-title-for-blog.module.css';
 

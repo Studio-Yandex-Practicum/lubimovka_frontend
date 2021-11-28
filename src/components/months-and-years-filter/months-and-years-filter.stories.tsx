@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import MonthsAndYearsFilter from './months-and-years-filter';
+import { MonthsAndYearsFilter } from './months-and-years-filter';
 
 export default {
   title: 'components/Filter',

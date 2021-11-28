@@ -14,7 +14,7 @@ interface IFilter {
   filterCallBack: (month?: number, year?: number) => void
 }
 
-const MonthsAndYearsFilter: React.FC<IFilter> = (props) => {
+export const MonthsAndYearsFilter: React.FC<IFilter> = (props) => {
   const {
     className,
     filterCallBack,
@@ -73,5 +73,3 @@ const MonthsAndYearsFilter: React.FC<IFilter> = (props) => {
 
   );
 };
-
-export default MonthsAndYearsFilter;
