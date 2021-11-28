@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,17 +13,50 @@ import TextArea from 'components/ui/text-area';
 import { Button } from 'components/ui/button';
 import { validEmailRegexp } from 'shared/constants/regexps';
 
+enum ActionTypes {
+  FieldChange,
+  Reset,
+}
+
+type Action =
+  { type: ActionTypes.FieldChange, payload: { name: string, value: string } }
+  | { type: ActionTypes.Reset }
+
+const initialFormState = {
+  name: { value: '', wasChanged: false },
+  email: { value: '', wasChanged: false },
+  question: { value: '', wasChanged: false },
+};
+
+const formReducer = (state: typeof initialFormState, action: Action) => {
+  switch (action.type) {
+  case ActionTypes.FieldChange:
+    return {
+      ...state,
+      [action.payload.name]: {
+        value: action.payload.value,
+        wasChanged: true,
+      },
+    };
+  case ActionTypes.Reset:
+    return initialFormState;
+  default:
+    return state;
+  }
+};
+
 const Contacts: NextPage = () => {
-  const [name, setName] = useState('');
-  const [nameWasChanged, setNameWasChanged] = useState(false);
-  const [email, setEmail] = useState('');
-  const [emailWasChanged, setEmailWasChanged] = useState(false);
-  const [question, setQuestion] = useState('');
-  const [questionWasChanged, setQuestionWasChanged] = useState(false);
+  const [formState, dispatch] = useReducer(formReducer, initialFormState);
   const [formSuccessfullySent, setFormSuccessfullySent] = useState(false);
 
+  const {
+    name,
+    email,
+    question
+  } = formState;
+
   const getNameError = () => {
-    if (name.length < 2) {
+    if (name.value.length < 2) {
       return 'Имя должно содержать минимум 2 символа';
     }
 
@@ -31,11 +64,11 @@ const Contacts: NextPage = () => {
   };
 
   const getEmailError = () => {
-    if (!email.length) {
+    if (!email.value.length) {
       return 'Поле E-mail обязательно для заполнения';
     }
 
-    if (!validEmailRegexp.test(email)) {
+    if (!validEmailRegexp.test(email.value)) {
       return 'Неверный формат адреса электронной почты';
     }
 
@@ -43,42 +76,34 @@ const Contacts: NextPage = () => {
   };
 
   const getQuestionError = () => {
-    if (!question.length) {
+    if (!question.value.length) {
       return 'Поле обязательно для заполнения';
     }
 
     return;
   };
 
-  const handleNameChange = (value: string) => {
-    setNameWasChanged(true);
-    setName(value);
-  };
-
-  const handleEmailChange = (value: string) => {
-    setEmailWasChanged(true);
-    setEmail(value);
-  };
-
-  const handleQuestionChange = (value: string) => {
-    setQuestionWasChanged(true);
-    setQuestion(value);
+  const handleFieldChange = (name: keyof typeof initialFormState) => (value: string) => {
+    dispatch({
+      type: ActionTypes.FieldChange,
+      payload: {
+        name,
+        value
+      },
+    });
   };
 
   const resetForm = () => {
+    dispatch({
+      type: ActionTypes.Reset,
+    });
     setFormSuccessfullySent(false);
-    setNameWasChanged(false);
-    setName('');
-    setEmailWasChanged(false);
-    setEmail('');
-    setQuestionWasChanged(false);
-    setQuestion('');
   };
 
   const canSubmit = !getEmailError() && !getEmailError() && !getQuestionError();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setFormSuccessfullySent(true);
     setTimeout(() => resetForm(), 10000);
   };
@@ -94,26 +119,26 @@ const Contacts: NextPage = () => {
             <Form aria-labelledby='contact' onSubmit={handleSubmit}>
               <Form.Field>
                 <TextInput
-                  value={name}
+                  value={name.value}
                   placeholder="Ваше имя"
-                  errorText={nameWasChanged ? getNameError() : undefined}
-                  onChange={handleNameChange}
+                  errorText={name.wasChanged ? getNameError() : undefined}
+                  onChange={handleFieldChange('name')}
                 />
               </Form.Field>
               <Form.Field>
                 <TextInput
-                  value={email}
+                  value={email.value}
                   placeholder="E-mail для ответа"
-                  errorText={emailWasChanged ? getEmailError() : undefined}
-                  onChange={handleEmailChange}
+                  errorText={email.wasChanged ? getEmailError() : undefined}
+                  onChange={handleFieldChange('email')}
                 />
               </Form.Field>
               <Form.Field>
                 <TextArea
-                  value={question}
+                  value={question.value}
                   placeholder="Текст сообщения"
-                  errorText={questionWasChanged ? getQuestionError() : undefined}
-                  onChange={handleQuestionChange}
+                  errorText={question.wasChanged ? getQuestionError() : undefined}
+                  onChange={handleFieldChange('question')}
                   rows={4}
                 />
               </Form.Field>
