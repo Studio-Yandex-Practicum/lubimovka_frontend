@@ -19,9 +19,5 @@
 .primary {
   flex-grow: 1;
   padding: 0;
-  padding-right: scale(29px);
-
-  @media (max-width: $tablet-portrait) {
-    padding-right: scale(24px);
-  }
+  padding-right: scale(34px);
 }
