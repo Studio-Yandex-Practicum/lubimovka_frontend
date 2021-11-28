@@ -1,7 +1,6 @@
 import fetchMock from 'fetch-mock';
 
 import { addOriginToApiPath } from 'shared/helpers/url';
-
 import authors from './data/authors';
 import projects from './data/projects';
 import partners from './data/partners';
