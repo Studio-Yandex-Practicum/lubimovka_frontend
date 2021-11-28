@@ -2,7 +2,7 @@ import React from 'react';
 
 import cn from 'classnames/bind';
 import styles from './months-and-years-filter.module.css';
-import { Droplist } from '../ui/droplist';
+import { Droplist, IDroplistPublic } from '../ui/droplist';
 import { convertMonthToNumber } from './utlis/convertMonthToNumber';
 import { createMonthList, createYearList } from './utlis/createList';
 
@@ -19,6 +19,9 @@ const MonthsAndYearFilter: React.FC<IFilter> = (props) => {
     filterCallBack,
   } = props;
 
+  const droplistRef = React.useRef(null) as React.RefObject<IDroplistPublic>;
+
+  const currentMonth:number = new Date().getMonth();
   const currentYear:number = new Date().getFullYear();
 
   const [month, setMonth] = React.useState<number>();
@@ -35,6 +38,10 @@ const MonthsAndYearFilter: React.FC<IFilter> = (props) => {
   function callBackForYear(selectYear: string) {
     if(selectYear !== 'Год' && selectYear !== undefined){
       setYear(Number(selectYear));
+      if(month &&  month > currentMonth && Number(selectYear) === currentYear){
+        droplistRef.current?.deleteAll();
+        setMonth(undefined);
+      }
       filterCallBack(month, year);
     }
   }
@@ -47,6 +54,7 @@ const MonthsAndYearFilter: React.FC<IFilter> = (props) => {
         defaultValue={'Месяц'}
         cb={([month]) => callBackForMonth(month)}
         className={cx('droplistTypelistMonths')}
+        ref={droplistRef}
       />
       <Droplist
         data={createYearList()}
