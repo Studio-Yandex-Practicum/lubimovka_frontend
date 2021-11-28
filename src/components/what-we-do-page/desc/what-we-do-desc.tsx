@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Image from 'next/image';
 import cn from 'classnames';
 
 import styles from './what-we-do-desc.module.css';
@@ -8,10 +9,8 @@ interface IItem {
   mainTitle?: string
   title: string
   desc: string
-  image?: {
-    url: string
-    alt: string
-  }
+  imageUrl?: string
+  imageAlt?: string
 }
 
 interface IWeDoAboutProps {
@@ -37,18 +36,24 @@ export const WhatWeDoDesc: FC<IWeDoAboutProps> = ({ data }): JSX.Element => {
             {data.blockOne.desc}
           </p>
         </div>
-        <img 
-          src={data.blockOne.image && data.blockOne.image.url}
-          className={cn(styles.imgReception)}
-          alt={data.blockOne.image && data.blockOne.image.alt}
-        />
+        <div className={cn(styles.containerImg)}>
+          <Image 
+            src="/images/what-we-do/desc-img-one.jpg"
+            alt="Прием и отбор новых пьес"
+            width="450px"
+            height="594px"
+            layout="responsive"
+          />
+        </div>
       </div>
-
+      
       <div className={cn(styles.content, styles.contentSelected)}>
-        <img 
-          src={data.blockTwo.image && data.blockTwo.image.url}
-          className={cn(styles.imgSelected)}
-          alt={data.blockTwo.image && data.blockTwo.image.alt}
+        <Image 
+          src="/images/what-we-do/desc-img-two.jpg"
+          alt="Прием и отбор новых пьес"
+          width="630px"
+          height="277px"
+          layout="responsive"
         />
         <div className={cn(styles.container, styles.containerSelected)}>
           <h3 className={cn(styles.title)}>

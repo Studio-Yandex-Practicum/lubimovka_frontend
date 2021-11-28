@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './person-card-list.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IPersonCardListProps extends React.HTMLAttributes<HTMLDivElement> {

@@ -7,6 +7,7 @@ import { IconButton } from 'components/ui/icon-button';
 import { Icon } from 'components/ui/icon';
 
 import styles from './lightbox-image-slider.module.css';
+
 const cx = classNames.bind(styles);
 
 interface ILightboxImageSliderProps {

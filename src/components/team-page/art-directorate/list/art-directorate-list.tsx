@@ -1,9 +1,10 @@
 import { FC, useEffect, useMemo, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
-import styles from './art-directorate-list.module.css';
+import classNames from 'classnames/bind';
 
 import PersonCard from '../../../ui/person-card/person-card';
-import classNames from 'classnames/bind';
+
+import styles from './art-directorate-list.module.css';
 
 const cx = classNames.bind(styles);
 
@@ -25,7 +26,6 @@ interface PersonCardData {
 interface ArtDirectorateCardsProps {
   cards: Array<PersonCardData>
 }
-
 
 const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
   const [screenWidth, setScreenWidth] = useState<number | null>(null);

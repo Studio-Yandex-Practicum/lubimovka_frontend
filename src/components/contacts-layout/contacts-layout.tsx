@@ -7,6 +7,7 @@ import ContactsLayoutImage from './image';
 import ContactsLayoutAuthors from './authors';
 
 import styles from './contacts-layout.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IContactsLayoutProps {

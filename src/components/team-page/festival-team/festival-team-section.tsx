@@ -1,6 +1,7 @@
 import React, { FC, useMemo } from 'react';
 
 import TrusteesPersons from 'components/trustees-persons-list';
+
 import styles from './festival-team-section.module.css';
 
 interface PersonCardData {

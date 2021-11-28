@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
 
-import styles from './for-press-hero-pr-contact.module.css';
 import { Url } from 'shared/types';
 import { InfoLink } from 'components/ui/info-link';
+
+import styles from './for-press-hero-pr-contact.module.css';
 
 const cx = cn.bind(styles);
 

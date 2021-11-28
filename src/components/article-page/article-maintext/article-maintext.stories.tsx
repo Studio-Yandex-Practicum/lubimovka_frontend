@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ArticleMainText } from './article-maintext';
-
 import ArticleText from './assets/mock-data-articleText';
 
 export default {

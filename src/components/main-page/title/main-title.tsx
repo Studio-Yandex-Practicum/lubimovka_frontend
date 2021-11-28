@@ -2,6 +2,7 @@ import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
+
 import styles from './main-title.module.css';
 
 export interface IMainTitle {

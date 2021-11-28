@@ -3,10 +3,9 @@
   background-color: var(--beige);
   gap: scale(0 120px);
   grid-template-areas:
-    ". title"
+    ".     title"
     "intro image";
-  grid-template-columns: 1fr 50%;
-  grid-template-rows: repeat(2, min-content);
+  grid-template-columns: repeat(2, 1fr);
 
   @media (max-width: $tablet-portrait) {
     grid-template-areas:
@@ -50,23 +49,11 @@
 }
 
 .image {
-  @mixin img;
-
+  position: relative;
+  height: scale(445px);
   grid-area: image;
 
   @media (max-width: $tablet-portrait) {
     height: 100%;
-  }
-}
-
-.button {
-  position: absolute;
-  top: scale(33px);
-  left: scale(30px);
-  width: scale(120px);
-  height: scale(32px);
-
-  @media (max-width: $tablet-portrait) {
-    display: none;
   }
 }

@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { Button } from 'components/ui/button/button';
 import classNames from 'classnames/bind';
 
+import { Button } from 'components/ui/button/button';
 import { Url } from 'shared/types';
 
 import styles from './event-card.module.css';

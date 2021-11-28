@@ -8,7 +8,6 @@ import { FooterPartners } from './partners';
 import { InfoLink } from 'components/ui/info-link';
 
 import Logo from 'shared/images/logo-full.svg';
-
 import styles from './footer.module.css';
 
 interface IFooterProps {
