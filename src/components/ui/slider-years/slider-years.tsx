@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import styles from './slider-years.module.css';
 import classNames from 'classnames';
 import { useKeenSlider } from 'keen-slider/react';
+
+import styles from './slider-years.module.css';
 
 const cx = classNames.bind(styles);
 
@@ -41,7 +42,7 @@ export const SliderYears: FC<ISliderYearsProps> = ( { className, years, currentY
         return (
           <h6 key={year}
             onClick={() => onClick(year)}
-            className={cx('keen-slider__slide', [styles.slide], {[styles.active]: currentYear === year})}
+            className={cx('keen-slider__slide', [styles.slide], { [styles.active]: currentYear === year })}
           >
             {year}
           </h6>

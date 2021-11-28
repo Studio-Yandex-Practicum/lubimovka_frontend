@@ -57,6 +57,8 @@
 .arrow {
   position: absolute;
   top: scale(60px);
+  width: scale(48px);
+  height: scale(48px);
 
   @media (max-width: 728px) {
     top: scale(90px);

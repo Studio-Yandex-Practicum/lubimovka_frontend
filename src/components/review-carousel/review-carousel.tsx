@@ -2,8 +2,9 @@ import { FC, Children, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames/bind';
 
-import { SliderButton } from '../ui/slider-button';
-import { SliderDots } from '../ui/slider-dots';
+import { SliderButton } from 'components/ui/slider-button';
+import { SliderDots } from 'components/ui/slider-dots';
+
 import styles from './review-carousel.module.css';
 
 interface IReviewCarousel {
@@ -45,7 +46,7 @@ export const ReviewCarousel: FC<IReviewCarousel> = (props) => {
     <div className={cx(mode)}>
       <div className={cx('header')}>
         <h2 className={cx('title')}>
-          { title }
+          {title}
         </h2>
         {carousel && (
           <>
@@ -57,12 +58,14 @@ export const ReviewCarousel: FC<IReviewCarousel> = (props) => {
             />
             <div className={cx('arrows')}>
               <SliderButton
+                ariaLabel='Предыдущий отзыв'
                 direction='left'
                 className={cx('arrow', 'arrowLeft')}
                 onClick={carousel.prev}
                 disabled={currentSlideIndex === 0}
               />
               <SliderButton
+                ariaLabel='Следующий отзыв'
                 direction='right'
                 className={cx('arrow', 'arrowRight')}
                 onClick={carousel.next}

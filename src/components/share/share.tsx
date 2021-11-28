@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import classNames from 'classnames/bind';
 
-import styles from './share.module.css';
 import { ShareLink } from '../ui/share-link';
+
+import styles from './share.module.css';
 
 interface IShareProps {
   firstLine: string;

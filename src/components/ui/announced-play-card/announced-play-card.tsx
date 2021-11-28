@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import cn from 'classnames/bind';
+
 import { Button } from '../button';
 
 import styles from './announced-play-card.module.css';
 
 const cx = cn.bind(styles);
 
-interface IAnnouncedPlayCardProps {
+export interface IAnnouncedPlayCardProps {
   date: string;
   time: string;
   title: string;
@@ -66,7 +67,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
       className={cx('card', [className])}
     >
       {coverResourceUrl &&
-        <div >
+        <div>
           <img className={cx('cover')} src={coverResourceUrl}></img>
         </div>
       }
@@ -76,12 +77,12 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           <p className={cx('time')}>{time}</p>
         </div>
         <h5 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h5>
-        { directorArray.length > 0 && playwrightArray.length > 0 &&
+        {directorArray.length > 0 && playwrightArray.length > 0 &&
         <div className={cx('credits')}>
           {creditsRendered}
         </div>
         }
-        { eventDescription &&
+        {eventDescription &&
         <div className={cx('eventDescription')}>
           {eventDescription}
         </div>

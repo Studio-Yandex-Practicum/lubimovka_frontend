@@ -2,15 +2,13 @@ import Head from 'next/head';
 import { NextPage } from 'next';
 
 import AppLayout from 'components/app-layout';
-
-// Компоненты
 import { WhatWeDoHeader } from 'components/what-we-do-page/header';
 import { WhatWeDoDesc } from 'components/what-we-do-page/desc';
 import { WhatWeDoAuthors } from 'components/what-we-do-page/authors';
 import { WhatWeDoSelection } from 'components/what-we-do-page/selection';
 import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
 import { WhatWeDoPartners } from 'components/what-we-do-page/partners';
-// data json
+
 import headerData from 'components/what-we-do-page/assets/header-data.json';
 import descData from 'components/what-we-do-page/assets/desc-data.json';
 import AuthorsData from 'components/what-we-do-page/assets/authors-data.json';
@@ -24,21 +22,21 @@ const Page: NextPage = ():JSX.Element => (
     </Head>
     <main>
       {headerData.map((data) => (
-        <WhatWeDoHeader key={ data.id } data={ data } />
+        <WhatWeDoHeader key={data.id} data={data}/>
       ))}
       {descData.map((data, i) => (
-        <WhatWeDoDesc key={ i } data={ data } />
+        <WhatWeDoDesc key={i} data={data}/>
       ))}
       {AuthorsData.map((data) => (
-        <WhatWeDoAuthors key={ data.id } data={ data } />
+        <WhatWeDoAuthors key={data.id} data={data}/>
       ))}
       {SelectionData.map((data) => (
-        <WhatWeDoSelection key={ data.id } data={ data } />
+        <WhatWeDoSelection key={data.id} data={data}/>
       ))}
       {SelectionContacts.map((data) => (
-        <WhatWeDoContacts key={ data.id } data={ data } />
+        <WhatWeDoContacts key={data.id} data={data}/>
       ))}
-      <WhatWeDoPartners />
+      <WhatWeDoPartners/>
     </main>
   </AppLayout>
 );

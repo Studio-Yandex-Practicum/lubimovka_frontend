@@ -1,0 +1,85 @@
+.componentContainer {
+  display: flex;
+  flex-flow: row nowrap;
+
+  @media (max-width: $tablet-portrait) {
+    flex-flow: column nowrap;
+  }
+}
+
+.header {
+  @mixin headline;
+  @mixin headline3;
+
+  width: scale(629px);
+  margin: scale(59px 0 0 120px);
+  white-space: pre-wrap;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    width: scale(367px);
+    margin: scale(35px 0 0 23px);
+  }
+}
+
+.text {
+  @mixin headline;
+  @mixin headline6;
+
+  width: scale(537px);
+  padding: 0;
+  margin: scale(54px 0 0 180px);
+  white-space: pre-wrap;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline7;
+
+    width: scale(304px);
+    margin: scale(24px 0 0 85px);
+  }
+}
+
+.footnote {
+  @mixin text;
+  @mixin textMedium;
+
+  position: relative;
+  width: scale(345px);
+  padding: 0;
+  margin: scale(117px 0 0 180px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(338px);
+    margin: scale(58px 0 0 51px);
+  }
+}
+
+.asterisk {
+  position: absolute;
+  top: calc(-25 * var(--scale));
+  left: calc(-25 * var(--scale));
+  width: scale(25px);
+  height: scale(25px);
+}
+
+.advertisement {
+  display: flex;
+  flex: 23 23 46%;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.advStub {
+  width: 91%;
+  height: 91%;
+  margin: scale(25px 0 0 0);
+  background-color: white;
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(366px);
+    height: scale(524px);
+    margin: scale(58px 0 0 0);
+  }
+}

@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import styles from './play-proposal-layout-column.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IPlayProposalLayoutColumnProps {

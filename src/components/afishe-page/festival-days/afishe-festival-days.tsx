@@ -1,6 +1,6 @@
-import {FC} from 'react';
+import { FC } from 'react';
 
-import {FestivalDay, IFestivalDayProps} from 'components/afishe-page/festival-day';
+import { FestivalDay, IFestivalDayProps } from 'components/afishe-page/festival-day';
 
 import styles from './afishe-festival-days.module.css';
 
@@ -9,7 +9,7 @@ interface IFestivalDaysProps {
 }
 
 export const FestivalDays: FC<IFestivalDaysProps> = (props) => {
-  const {data} = props;
+  const { data } = props;
   return (
     <section className={styles.section}>
       {data.map(day => (<FestivalDay key={day.id} {...day}/>))}

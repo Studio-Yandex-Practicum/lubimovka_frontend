@@ -8,7 +8,6 @@ import { FooterPartners } from './partners';
 import { InfoLink } from 'components/ui/info-link';
 
 import Logo from 'shared/images/logo-full.svg';
-
 import styles from './footer.module.css';
 
 interface IFooterProps {
@@ -27,7 +26,7 @@ export const Footer = (props: IFooterProps): JSX.Element => {
   return (
     <footer className={cx('footer', className)}>
       <Logo className={cx('logo')}/>
-
+      {children}
       <div className={cx('footnote')}>
         <div className={cx('copyright')}>
           &copy; Любимовка, {new Date().getFullYear()}

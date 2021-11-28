@@ -1,16 +1,21 @@
+// @ts-nocheck
+
 import { Project } from 'api-typings';
+
+import personImage from '../assets/person.jpg';
+import stubImage from '../assets/stub.jpg';
 
 const project: Project = {
   id: 2,
   title: 'Любимовка. Ещё',
-  image: 'https://source.unsplash.com/random',
+  image: stubImage,
   description: 'За первый сезон проекта организаторы провели 17 мероприятий вместе с режиссёрами и актёрами московских театров: Театра.doc, Театрального Центра им. Вс. Мейерхольда, Гоголь-центра, Электротеатра «Станиславский», Ленкома.',
   contents: [
     {
       content_type: 'image',
       content_item: {
         title: 'Гифочка',
-        image: 'https://lubimovka.kiryanov.ru/media/content_images/giphy.gif'
+        image: stubImage.src,
       }
     },
     {
@@ -20,11 +25,11 @@ const project: Project = {
         items: [
           {
             title: 'Изображение 1',
-            image: 'https://lubimovka.kiryanov.ru/media/content_images/IMG_3314.jpeg'
+            image: stubImage,
           },
           {
             title: 'Гифочка',
-            image: 'https://lubimovka.kiryanov.ru/media/content_images/giphy.gif'
+            image: stubImage,
           },
         ]
       }
@@ -38,11 +43,16 @@ const project: Project = {
       }
     },
     {
-      content_type: 'video',
+      content_type: 'videosblock',
       content_item: {
         title: 'Заголовок видео',
-        url: 'http://video.link/something',
-      }
+        items: [
+          {
+            title: 'Заголовок видео',
+            url: 'https://www.youtube.com/embed/8CYY8EM5xYE',
+          },
+        ],
+      },
     },
     {
       content_type: 'videosblock',
@@ -60,7 +70,7 @@ const project: Project = {
           {
             title: 'Заголовок видео 3',
             url: 'https://www.youtube.com/embed/8CYY8EM5xYE',
-          }
+          },
         ]
       }
     },
@@ -80,7 +90,7 @@ const project: Project = {
             url_reading: 'http://morris-butler.com/',
             is_draft: true,
             program: 1,
-            festival: 17
+            festival: 17,
           },
           {
             id: 6,
@@ -93,7 +103,7 @@ const project: Project = {
             url_reading: 'http://fletcher.org/',
             is_draft: true,
             program: 2,
-            festival: 10
+            festival: 10,
           },
           {
             id: 25,
@@ -106,7 +116,7 @@ const project: Project = {
             url_reading: 'http://www.spears.net/',
             is_draft: true,
             program: 1,
-            festival: 16
+            festival: 16,
           },
           {
             id: 4,
@@ -119,7 +129,7 @@ const project: Project = {
             url_reading: 'http://www.munoz.com/',
             is_draft: true,
             program: 4,
-            festival: 2
+            festival: 2,
           },
           {
             id: 9,
@@ -132,7 +142,7 @@ const project: Project = {
             url_reading: 'https://www.whitehead-gray.com/',
             is_draft: true,
             program: 1,
-            festival: 8
+            festival: 8,
           },
           {
             id: 57,
@@ -145,7 +155,7 @@ const project: Project = {
             url_reading: 'https://wright.info/',
             is_draft: true,
             program: 1,
-            festival: 9
+            festival: 9,
           }
         ]
       }
@@ -164,7 +174,7 @@ const project: Project = {
             middle_name: 'Гурьевич',
             city: 'Гудермес',
             email: 'ekaterinazinovev@lubimovka.ru',
-            image: 'https://lubimovka.kiryanov.ru/media/images/person_avatars/%D0%95%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B0_%D0%97%D0%B8%D0%BD%D0%BE%D0%B2%D1%8C%D0%B5%D0%B2.jpg'
+            image: personImage,
           },
           {
             id: 100,
@@ -175,7 +185,7 @@ const project: Project = {
             middle_name: 'Гаврилович',
             city: 'Гудермес',
             email: 'frolbobrova@lubimovka.ru',
-            image: 'https://lubimovka.kiryanov.ru/media/images/person_avatars/%D0%A4%D1%80%D0%BE%D0%BB_%D0%91%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D0%B0.jpg'
+            image: personImage,
           },
           {
             id: 71,
@@ -186,7 +196,7 @@ const project: Project = {
             middle_name: 'Рудольфовна',
             city: '',
             email: null,
-            image: 'https://lubimovka.kiryanov.ru/media/images/person_avatars/%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D1%8F_%D0%90%D1%80%D1%82%D0%B5%D0%BC%D1%8C%D0%B5%D0%B2.jpg'
+            image: personImage,
           },
           {
             id: 93,
@@ -197,7 +207,7 @@ const project: Project = {
             middle_name: 'Феоктистович',
             city: '',
             email: null,
-            image: 'https://lubimovka.kiryanov.ru/media/images/person_avatars/%D0%A1%D0%BE%D1%84%D0%BE%D0%BD_%D0%90%D0%BD%D1%82%D0%BE%D0%BD%D0%BE%D0%B2.jpg'
+            image: personImage,
           },
           {
             id: 66,
@@ -208,7 +218,7 @@ const project: Project = {
             middle_name: 'Захаровна',
             city: 'Старая Русса',
             email: 'petrgavrilova@lubimovka.ru',
-            image: 'https://lubimovka.kiryanov.ru/media/images/person_avatars/%D0%9F%D0%B5%D1%82%D1%80_%D0%93%D0%B0%D0%B2%D1%80%D0%B8%D0%BB%D0%BE%D0%B2%D0%B0.jpg'
+            image: personImage,
           },
           {
             id: 26,
@@ -219,7 +229,7 @@ const project: Project = {
             middle_name: 'Васильевич',
             city: '',
             email: null,
-            image: null,
+            image: personImage,
           }
         ]
       }
@@ -243,7 +253,7 @@ const project: Project = {
             play: 2,
             event: 1,
             images_in_block: [],
-            persons: []
+            persons: [],
           },
           {
             id: 6,
@@ -259,7 +269,7 @@ const project: Project = {
             play: 1,
             event: 2,
             images_in_block: [],
-            persons: []
+            persons: [],
           }
         ]
       }
@@ -267,7 +277,7 @@ const project: Project = {
     {
       content_type: 'text',
       content_item: {
-        text: 'Текст это тоже простой блок текста без заголовка.'
+        text: 'Текст это тоже простой блок текста без заголовка.',
       }
     }
   ],

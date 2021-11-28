@@ -1,9 +1,10 @@
-import {FC} from 'react';
-import { Button } from '../../ui/button';
+import { FC } from 'react';
 import cn from 'classnames/bind';
 
-import styles from './for-press-hero-description.module.css';
+import { Button } from '../../ui/button';
 import { Url } from 'shared/types/common';
+
+import styles from './for-press-hero-description.module.css';
 
 const cx = cn.bind(styles);
 

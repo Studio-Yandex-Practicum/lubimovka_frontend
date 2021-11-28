@@ -17,7 +17,7 @@ export const ProjectInvitation: FC<IProjectInvitationProps> = (props) => {
 
   return (
     <div className={cx('container')}>
-      <Icon glyph='asterisk' className={cx('asterisk')} />
+      <Icon glyph='asterisk' className={cx('asterisk')}/>
       <h3 className={cx('header')}>
         Проект открыт к сотрудничеству
       </h3>

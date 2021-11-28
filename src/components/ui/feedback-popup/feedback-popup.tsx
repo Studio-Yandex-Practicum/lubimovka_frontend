@@ -6,10 +6,10 @@ import { SliderButton } from '../slider-button';
 import { SliderDots } from '../slider-dots';
 import { Icon } from '../icon';
 import { Url } from 'shared/types';
-
+import { Modal } from '../modal';
 
 import styles from './feedback-popup.module.css';
-import { Modal } from '../modal';
+
 const cx = classNames.bind(styles);
 
 export type PersonCardData = {

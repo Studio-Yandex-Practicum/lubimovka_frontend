@@ -1,9 +1,10 @@
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
-import styles from './art-directorate-list.module.css';
-
-import PersonCard from '../../../ui/person-card/person-card';
 import classNames from 'classnames/bind';
+
+import { PersonCard } from '../../../ui/person-card/person-card';
+
+import styles from './art-directorate-list.module.css';
 
 const cx = classNames.bind(styles);
 
@@ -78,7 +79,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
             <div key={card.id} className="keen-slider__slide">
               <PersonCard
                 participant={true}
-                link={card.person.image}
+                image={card.person.image}
                 about={card.position}
                 name={`${card.person.first_name} ${card.person.last_name}`}
               >
@@ -91,18 +92,18 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
       {
         Number(screenWidth) > 728 &&
         <ul
-          className={cx({[styles.grid]: selectedCards.length < 5 && !checkForMultiplicity(3)},
-            {[styles.flex]: checkForMultiplicity(3)},
-            {[styles.flex]: selectedCards.length > 4 && !checkForMultiplicity(3)})}>
+          className={cx({ [styles.grid]: selectedCards.length < 5 && !checkForMultiplicity(3) },
+            { [styles.flex]: checkForMultiplicity(3) },
+            { [styles.flex]: selectedCards.length > 4 && !checkForMultiplicity(3) })}>
           {cards.map((card) => (
             card.team === 'art' &&
             <li key={card.id}
-              className={cx({[styles.fiveElements]: selectedCards.length > 4 && !checkForMultiplicity(3)},
-                {[styles.sixElements]: checkForMultiplicity(3)})
-              }>
+              className={cx({ [styles.fiveElements]: selectedCards.length > 4 && !checkForMultiplicity(3) },
+                { [styles.sixElements]: checkForMultiplicity(3) })}
+            >
               <PersonCard
                 participant={true}
-                link={card.person.image}
+                image={card.person.image}
                 about={card.position}
                 name={`${card.person.first_name} ${card.person.last_name}`}
               >

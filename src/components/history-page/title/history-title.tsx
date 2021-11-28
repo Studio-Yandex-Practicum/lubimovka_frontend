@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import cn from 'classnames';
+
 import { Button } from 'components/ui/button/button';
 
 import style from './history-title.module.css';
+
 interface TextItemData {
   subtitle: string
   text?: string
@@ -27,7 +29,7 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
 
   return (
     <section className={style.section}>
-      <img src={imageUrl} alt='Изображение' className={style.image} />
+      <img src={imageUrl} alt='Изображение' className={style.image}/>
       <div className={style.content}>
         <h2 className={cn(style.dataSubtitle)}>{dataSubtitle}</h2>
         <p className={cn(style.datatext)}>{dataText}</p>
