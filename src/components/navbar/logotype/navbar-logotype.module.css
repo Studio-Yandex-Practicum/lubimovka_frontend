@@ -1,10 +1,24 @@
+@value expanded from './../../page/header/page-header.module.css';
+
 .logotype {
   display: flex;
   align-self: center;
-  margin-right: scale(33px);
+  margin-right: scale(25px);
   place-content: center;
 
   @media (max-width: $tablet-portrait) {
     margin-right: 0;
+  }
+}
+
+.expanded {
+  & .logotype {
+    padding-top: scale(19px);
+    margin-right: scale(50px);
+
+    @media (max-width: $tablet-portrait) {
+      padding-top: 0;
+      margin-right: 0;
+    }
   }
 }
