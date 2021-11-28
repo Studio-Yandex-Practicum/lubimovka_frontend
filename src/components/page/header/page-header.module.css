@@ -4,6 +4,10 @@
   border-bottom: 1px solid var(--coal);
 
   @media (max-width: $tablet-portrait) {
-    border-bottom: none;
+    border: none;
   }
+}
+
+.expanded {
+  border: none;
 }
