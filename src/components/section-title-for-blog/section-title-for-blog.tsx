@@ -1,10 +1,11 @@
 import classNames from 'classnames/bind';
-import styles from './section-title-for-blog.module.css';
+import React, { useEffect } from 'react';
+
 import { Icon } from 'components/ui/icon';
 import { InfoLink } from 'components/ui/info-link';
-import { useEffect } from 'react';
-import React from 'react';
-import MonthsAndYearFilter from '../months-and-years-filter/months-and-years-filter';
+import MonthsAndYearsFilter from '../months-and-years-filter/months-and-years-filter';
+
+import styles from './section-title-for-blog.module.css';
 
 const cx = classNames.bind(styles);
 
@@ -46,7 +47,7 @@ export const SectionTitleForBlog = (
           />
         </p>
       </div>
-      <MonthsAndYearFilter
+      <MonthsAndYearsFilter
         className={cx('drop')}
         filterCallBack={(month, year) => {
           setMonth(month);

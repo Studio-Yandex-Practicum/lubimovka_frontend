@@ -1,10 +1,11 @@
 import React from 'react';
-
 import cn from 'classnames/bind';
-import styles from './months-and-years-filter.module.css';
+
 import { Droplist, IDroplistPublic } from '../ui/droplist';
-import { convertMonthToNumber } from './utlis/convertMonthToNumber';
-import { createMonthList, createYearList } from './utlis/createList';
+import { convertMonthToNumber } from './utils/convertMonthToNumber';
+import { createMonthList, createYearList } from './utils/createList';
+
+import styles from './months-and-years-filter.module.css';
 
 const cx = cn.bind(styles);
 
@@ -13,7 +14,7 @@ interface IFilter {
   filterCallBack: (month?: number, year?: number) => void
 }
 
-const MonthsAndYearFilter: React.FC<IFilter> = (props) => {
+const MonthsAndYearsFilter: React.FC<IFilter> = (props) => {
   const {
     className,
     filterCallBack,
@@ -26,7 +27,6 @@ const MonthsAndYearFilter: React.FC<IFilter> = (props) => {
 
   const [month, setMonth] = React.useState<number>();
   const [year, setYear] = React.useState<number>();
-
 
   function callBackForMonth(selectMonth: string) {
     if(selectMonth !== 'Месяц' && selectMonth !== undefined){
@@ -74,4 +74,4 @@ const MonthsAndYearFilter: React.FC<IFilter> = (props) => {
   );
 };
 
-export default MonthsAndYearFilter;
+export default MonthsAndYearsFilter;

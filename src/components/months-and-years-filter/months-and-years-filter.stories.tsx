@@ -1,22 +1,22 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import MonthsAndYearFilter from './months-and-years-filter';
+import MonthsAndYearsFilter from './months-and-years-filter';
 
 export default {
   title: 'components/Filter',
-  component: MonthsAndYearFilter,
+  component: MonthsAndYearsFilter,
 
-} as ComponentMeta<typeof MonthsAndYearFilter>;
+} as ComponentMeta<typeof MonthsAndYearsFilter>;
 
-const Template: ComponentStory<typeof MonthsAndYearFilter> = (args) => <MonthsAndYearFilter {...args}/>;
+const Template: ComponentStory<typeof MonthsAndYearsFilter> = (args) => <MonthsAndYearsFilter {...args}/>;
 
-export const MonthsAndYearsFilter = Template.bind({});
+export const ExampleFilter = Template.bind({});
 // MonthsAndYearsFilter.args = {
 //   filterCallBack: (month, year) => {
 //     console.log(`месяц: ${month}, год: ${year}`);
 //   },
 // };
 
-MonthsAndYearsFilter.parameters = {
+ExampleFilter.parameters = {
   layout: 'fullscreen'
 };
