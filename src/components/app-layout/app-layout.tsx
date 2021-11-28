@@ -125,8 +125,8 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
                   ))}
                 </Menu>
               </OverlayNav.Socials>
+              <Footer/>
             </OverlayNav>
-            <Footer/>
           </Page.OverlayMenu>
           <Page.BurgerButton>
             <BurgerButton isOpen={isOverlayMenuOpen} onClick={toggleOverlayMenu}/>
