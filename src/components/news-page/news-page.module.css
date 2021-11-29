@@ -1,31 +1,7 @@
-.droplist__container {
-  display: flex;
-  flex-direction: row;
+.droplistСontainer {
   padding: scale(0 300px 39px 720px);
 
   @media (max-width: $tablet-portrait) {
     padding: scale(0 24px 18px 24px);
-  }
-}
-
-.droplist_months {
-  z-index: 1;
-  width: scale(240px);
-  margin-right: scale(30px);
-
-  @media (max-width: $tablet-portrait) {
-    z-index: 3;
-    width: scale(183px);
-    margin-right: scale(31px);
-  }
-}
-
-.droplist_years {
-  z-index: 1;
-  width: scale(150px);
-
-  @media (max-width: $tablet-portrait) {
-    z-index: 3;
-    width: scale(152px);
   }
 }
