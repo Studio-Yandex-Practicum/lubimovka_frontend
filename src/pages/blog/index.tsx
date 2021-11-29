@@ -2,10 +2,11 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 
 import AppLayout from 'components/app-layout/index';
-// import MasonryGrid from 'components/ui/masonry-grid/masonry-grid';
+import MasonryGrid from 'components/ui/masonry-grid/masonry-grid';
 import { SectionTitleForBlog } from 'components/section-title-for-blog/section-title-for-blog';
-// import { BlogCard } from 'components/ui/blog-card';
-// import data from './assets/mock-cardData.json';
+import { BlogCard } from 'components/ui/blog-card';
+
+import data from './assets/mock-cardData.json';
 
 interface IBlogProps {
   metaTitle: string;
@@ -18,7 +19,7 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
         <title>{metaTitle}</title>
       </Head>
       <SectionTitleForBlog email='critics@lubimovka.ru'/>
-      {/* <MasonryGrid>
+      <MasonryGrid>
         {data.map((card) => {
           return (
             <BlogCard
@@ -32,7 +33,7 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
             />
           );
         })}
-      </MasonryGrid> */}
+      </MasonryGrid>
     </AppLayout>
   );
 };
