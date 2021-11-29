@@ -3,7 +3,6 @@ import { FC, useEffect, useState } from 'react';
 import { Menu } from 'components/ui/menu';
 import LibraryForm from 'components/library-form';
 import LibraryPagination from 'components/library-pagination';
-
 import useWindowDimensions from './useWindowDimensions';
 
 import styles from './index.module.css';

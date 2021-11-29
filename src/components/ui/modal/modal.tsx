@@ -7,6 +7,7 @@ import { ModalBackdrop, IModalBackdropProps } from './backdrop';
 import { Portal } from 'components/ui/portal';
 
 import styles from './modal.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IModalProps {

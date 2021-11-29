@@ -1,9 +1,10 @@
 import { FC, useState } from 'react';
+import cn from 'classnames';
+
 import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
 import { InfoLink } from 'components/ui/info-link';
 
-import cn from 'classnames';
 import styles from './overview.module.css';
 
 interface dataList {
@@ -24,7 +25,6 @@ interface IAuthorOverview {
     }
   }
 }
-
 
 export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
 

@@ -3,16 +3,16 @@
   @mixin textCaption;
 
   display: grid;
-  padding: scale(42px 32px 56px);
+  padding: scale(42px 32px 54px);
   grid-template:
     "logo partners partners   partners"
     "logo address  navigation projects"
-    "logo footnote footnote   footnote" 1fr / min-content 1fr scale(360px) scale(244px);
+    "logo footnote footnote   footnote" 1fr / min-content 1fr scale(356px) scale(272px);
 
   @media (max-width: $tablet-portrait) {
     @mixin textMedium;
 
-    padding: scale(56px 0 11px);
+    padding: scale(0 0 11px 0);
     grid-template:
       "logo"
       "address"
@@ -20,18 +20,6 @@
       "projects"
       "partners"
       "footnote";
-  }
-}
-
-.logo {
-  width: scale(93px);
-  height: scale(80px);
-  margin-right: scale(82px);
-  grid-area: logo;
-
-  @media (max-width: $tablet-portrait) {
-    margin-right: 0;
-    margin-left: scale(58px);
   }
 }
 
@@ -47,7 +35,7 @@
     flex-direction: column;
     padding: scale(32px 28px 63px);
     border-top: 1px solid black;
-    margin-top: scale(70px);
+    margin-top: 0;
   }
 }
 
@@ -67,8 +55,7 @@
 
 .credits {
   display: flex;
-  width: scale(424px);
-  margin: 0 0 0 auto;
+  margin: scale(0 0 0 374px);
 
   @media (max-width: $tablet-portrait) {
     width: scale(254px);
@@ -90,7 +77,7 @@
 
 .shishki {
   display: grid;
-  margin-right: scale(38px);
+  margin-right: scale(44px);
   grid-template:
     "logo text"
     "logo text" 1fr / min-content 1fr;

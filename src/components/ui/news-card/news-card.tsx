@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-
 import cn from 'classnames/bind';
 
 import styles from './news-card.module.css';

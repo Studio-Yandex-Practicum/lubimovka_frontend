@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
+import cn from 'classnames';
+
 import { InfoLink } from 'components/ui/info-link';
 
-import cn from 'classnames';
 import styles from './information.module.css';
 
 interface dataList {
