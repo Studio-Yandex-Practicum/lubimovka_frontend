@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import styles from './contacts-layout-form.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IContactsLayoutFormProps {

@@ -42,7 +42,7 @@ export default {
 
 } as ComponentMeta<typeof BurgerButton>;
 
-const Template: ComponentStory<typeof BurgerButton> = (args) => <BurgerButton {...args} />;
+const Template: ComponentStory<typeof BurgerButton> = (args) => <BurgerButton {...args}/>;
 
 export const Default = Template.bind({});
 Default.args = {

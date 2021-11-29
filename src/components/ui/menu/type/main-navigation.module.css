@@ -1,24 +1,21 @@
 .menu {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
   padding: 0;
   margin: 0;
 }
 
 .item {
-  display: block;
-
-  &:not(:last-child) {
-    margin-right: scale(24px);
-  }
+  display: flex;
 }
 
 .link {
   @mixin text;
+  @mixin textSmall;
 
   display: flex;
   align-items: flex-start;
-  font-size: scale(16px);
-  line-height: scale(22px);
   text-decoration: none;
   white-space: nowrap;
 
@@ -44,11 +41,12 @@
     border-bottom-right-radius: 200% 100%;
     border-top-right-radius: 200% 100%;
   }
+}
 
-  &:hover {
-    &::before,
-    &::after {
-      visibility: visible;
-    }
+.current .link,
+.link:hover {
+  &::before,
+  &::after {
+    visibility: visible;
   }
 }

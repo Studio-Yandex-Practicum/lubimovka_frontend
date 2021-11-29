@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import styles from './contacts-authors.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IContactsAuthorsProps {

@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 import ArtDirectorateList from 'components/team-page/art-directorate/list';
+
 import styles from './art-directorate-section.module.css';
 
 interface PersonCardData {

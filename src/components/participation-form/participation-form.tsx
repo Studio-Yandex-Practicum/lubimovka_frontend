@@ -39,6 +39,8 @@ interface IParticipationFormProps {
   playFileName?: string,
   playFileError?: string,
   onPlayFileChange: (file: Nullable<File>) => void,
+  canSubmit: boolean,
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void,
 }
 
 const ACCEPTABLE_FILE_TYPES = '.doc, .docx, .txt, .odt, .pdf';
@@ -74,10 +76,12 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
     playFileName,
     playFileError,
     onPlayFileChange,
+    canSubmit,
+    onSubmit,
   } = props;
 
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       <Form.Fieldset legend="О вас">
         <Form.Field>
           <FormField
@@ -139,7 +143,6 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
             <TextInput
               type="tel"
               value={phoneNumber}
-              pattern="[0-9]{3}"
               placeholder="Номер телефона"
               errorText={phoneNumberError}
               onChange={onPhoneNumberChange}
@@ -210,10 +213,11 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
           className={cx('action')}
           type="submit"
           iconPlace="right"
-          icon="arrow-right"
+          icon='arrow-right'
           size="l"
           border="full"
-          label="Отправить"
+          label='Отправить'
+          disabled={!canSubmit}
         />
       </Form.Actions>
       <Form.Disclaimer>

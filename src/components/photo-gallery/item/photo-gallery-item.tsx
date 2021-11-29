@@ -8,7 +8,9 @@ import styles from './photo-gallery-item.module.css';
 
 interface IPhotoGalleryItemProps {
   image: Url,
-  description?: string,
+  description?: string;
+  zoomIn?: boolean;
+  onClick?: () => void;
 }
 
 const cx = classNames.bind(styles);
@@ -16,7 +18,9 @@ const cx = classNames.bind(styles);
 export const PhotoGalleryItem: FC<IPhotoGalleryItemProps> = (props) => {
   const {
     image,
-    description = ''
+    description = '',
+    onClick,
+    zoomIn = false,
   } = props;
 
   return (
@@ -27,6 +31,7 @@ export const PhotoGalleryItem: FC<IPhotoGalleryItemProps> = (props) => {
         layout="fill"
         objectFit="cover"
       />
+      {zoomIn && <button type='button' aria-label='Увеличить изображение' className={cx('button')} onClick={onClick}/>}
     </li>
   );
 };

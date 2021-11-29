@@ -3,10 +3,11 @@ import cn from 'classnames/bind';
 
 const cx = cn.bind(styles);
 
+import { Button } from '../../ui/button';
+import { InfoLink } from '../../ui/info-link';
+import { Url } from '../../../shared/types';
+
 import styles from './article-title.module.css';
-import {Button} from '../../ui/button';
-import {InfoLink} from '../../ui/info-link';
-import {Url} from '../../../shared/types';
 
 interface IArticleTitle {
   isBlog: boolean,
@@ -30,8 +31,8 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
   } = props;
 
   return (
-    <section className={cx('container', {containerTypeNews: !isBlog})}>
-      <Button className={cx({backButtonBlog: isBlog, backButtonNews: !isBlog})}
+    <section className={cx('container', { containerTypeNews: !isBlog })}>
+      <Button className={cx({ backButtonBlog: isBlog, backButtonNews: !isBlog })}
         label={isBlog ? 'Блог' : 'Новости'}
         size={'s'}
         iconPlace={'right'}
@@ -48,7 +49,7 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
       <h3 className={cx('title')}>{title}</h3>
       <h6 className={cx('description')}>{description}</h6>
 
-      <p className={cx('date', {dateNews: !isBlog})}>{new Date(date).toLocaleDateString('ru-Ru', {month: 'long', day:'numeric', year:'numeric'}).replace(' г.', '')}</p>
+      <p className={cx('date', { dateNews: !isBlog })}>{new Date(date).toLocaleDateString('ru-Ru', { month: 'long', day:'numeric', year:'numeric' }).replace(' г.', '')}</p>
       {isBlog &&
           <InfoLink
             isOutsideLink={true}

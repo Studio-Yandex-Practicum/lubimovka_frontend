@@ -7,6 +7,7 @@ import { ModalBackdrop, IModalBackdropProps } from './backdrop';
 import { Portal } from 'components/ui/portal';
 
 import styles from './modal.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IModalProps {
@@ -43,7 +44,7 @@ export const Modal = (props: IModalProps): JSX.Element | null=> {
           tabIndex={-1}
           onKeyDown={handleKeyDown}
         >
-          {Backdrop && <Backdrop onClick={onClose} />}
+          {Backdrop && <Backdrop onClick={onClose}/>}
           {children}
         </div>
       </FocusLock>

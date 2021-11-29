@@ -7,7 +7,6 @@ import { Nullable } from 'shared/types';
 
 import styles from './file-input.module.css';
 
-
 interface IFileInputProps extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onChange'> {
   fileName?: string,
   errorText?: string,

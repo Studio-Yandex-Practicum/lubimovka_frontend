@@ -8,7 +8,7 @@ export default {
   title: 'UI/Blog Card',
 } as ComponentMeta<typeof BlogCard>;
 
-const Template: ComponentStory<typeof BlogCard> = (args) => <BlogCard {...args} />;
+const Template: ComponentStory<typeof BlogCard> = (args) => <BlogCard {...args}/>;
 
 export const only_first_BlogCard = Template.bind({});
 only_first_BlogCard.args = {
@@ -32,8 +32,8 @@ only_first_BlogCard.decorators = [
       gap: '47px 60px',
       position: 'relative'
     }}>
-      <Story />
-    </div >
+      <Story/>
+    </div>
   )
 ];
 
@@ -59,9 +59,9 @@ rectangular_vertical_aspectRatio_BlogCard.decorators = [
       gap: '47px 60px',
       position: 'relative'
     }}>
-      <Story />
-      <Story />
-    </div >
+      <Story/>
+      <Story/>
+    </div>
   )
 ];
 
@@ -87,9 +87,9 @@ rectangular_horizontal_aspectRatio_BlogCard.decorators = [
       gap: '47px 60px',
       position: 'relative'
     }}>
-      <Story />
-      <Story />
-    </div >
+      <Story/>
+      <Story/>
+    </div>
   )
 ];
 
@@ -115,9 +115,9 @@ square_aspectRatio_BlogCard.decorators = [
       gap: '47px 60px',
       position: 'relative'
     }}>
-      <Story />
-      <Story />
-    </div >
+      <Story/>
+      <Story/>
+    </div>
   )
 ];
 
@@ -143,14 +143,14 @@ grid_BlogCard.decorators = [
       gap: '47px 60px',
       position: 'relative'
     }}>
-      <Story />
-      <Story />
-      <Story />
-      <Story />
-      <Story />
-      <Story />
-      <Story />
-      <Story />
-    </div >
+      <Story/>
+      <Story/>
+      <Story/>
+      <Story/>
+      <Story/>
+      <Story/>
+      <Story/>
+      <Story/>
+    </div>
   )
 ];

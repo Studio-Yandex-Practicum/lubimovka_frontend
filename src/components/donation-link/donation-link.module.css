@@ -3,6 +3,7 @@
 
   display: flex;
   align-items: center;
+  padding-left: scale(5px);
   color: var(--coal);
   text-decoration: none;
   text-transform: uppercase;
@@ -42,6 +43,7 @@
 .icon {
   width: scale(25px);
   height: scale(25px);
+  margin-left: calc(-1 * scale(5px));
   fill: var(--coal);
 }
 

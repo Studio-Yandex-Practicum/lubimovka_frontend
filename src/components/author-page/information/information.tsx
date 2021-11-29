@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
+import cn from 'classnames';
+
 import { InfoLink } from 'components/ui/info-link';
 
-import cn from 'classnames';
 import styles from './information.module.css';
 
 interface dataList {
@@ -18,18 +19,18 @@ interface IAuthorInformation {
 
 export const AuthorInformation: FC<IAuthorInformation> = ({ data }) => {
   return (
-    <section className={ cn(styles.information) }>
-      <h2 className={ cn(styles.heading) }>{data.title}</h2>
-      <div className={ cn(styles.blocksInfo) }>
+    <section className={cn(styles.information)}>
+      <h2 className={cn(styles.heading)}>{data.title}</h2>
+      <div className={cn(styles.blocksInfo)}>
         {data.list.map((item) =>
-          <div className={ cn(styles.anchorHeading) } key={item.id}>
+          <div className={cn(styles.anchorHeading)} key={item.id}>
             <InfoLink
               label={item.paragraph}
               icon='arrow-right'
               iconPlace='right'
               size='xl'
               border='borderTop'
-              iconClassName={ cn(styles.anchor) }
+              iconClassName={cn(styles.anchor)}
             />
           </div>
         )}

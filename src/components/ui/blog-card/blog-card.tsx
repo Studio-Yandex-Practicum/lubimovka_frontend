@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import styles from './blog-card.module.css';
 import Link from 'next/link';
-
 import cn from 'classnames';
+
+import styles from './blog-card.module.css';
 
 interface BlogCardProps {
   image: string;
@@ -21,7 +21,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
       <a className={cn(styles.cardLinkWrapper, styles[firstCardSizeMode])}>
         <li className={styles.card}>
           <div className={styles.imgContainer}>
-            <img className={styles.img} src={image} alt={`изображение статьи: ${heading}`} />
+            <img className={styles.img} src={image} alt={`изображение статьи: ${heading}`}/>
           </div>
           <div className={styles.content}>
             <p className={styles.author}>{author}</p>
