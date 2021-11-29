@@ -3,10 +3,6 @@ import { ComponentMeta, Story } from '@storybook/react';
 
 import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
-<<<<<<< HEAD
-
-=======
->>>>>>> b2013f7ff07ba4e36a31a2142f6a74039cf46bc9
 import { CardDefault } from '../basic-play-card/basic-play-card.stories';
 
 export default {
