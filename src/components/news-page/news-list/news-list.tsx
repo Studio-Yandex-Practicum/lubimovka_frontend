@@ -1,8 +1,9 @@
-import {FC} from 'react';
+import { FC } from 'react';
 import cn from 'classnames/bind';
 
-import style from './news-list.module.css';
 import { NewsCard } from 'components/ui/news-card';
+
+import style from './news-list.module.css';
 
 const cx = cn.bind(style);
 
@@ -19,7 +20,7 @@ interface INewsList {
   className?: string;
 }
 
-export const NewsList: FC<INewsList> = ({newsCardData, className}) => {
+export const NewsList: FC<INewsList> = ({ newsCardData, className }) => {
   return(
     <>
       <ul className={cx('newsList', className)}>
