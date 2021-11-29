@@ -57,7 +57,7 @@ PerformanceNotPaidNoCover.args = {
   isPerformance: true,
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
-  title: 'МАМА',
+  title: 'Коммуналка на Петроградской',
   playwrightArray: ['Ольга Казакова', 'Антон Чехов'],
   directorArray: ['Катя Ганюшина'],
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',

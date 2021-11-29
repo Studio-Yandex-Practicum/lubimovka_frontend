@@ -68,11 +68,13 @@
 .title {
   @mixin headline;
   @mixin headline5;
-  @mixin truncated-text;
 
-  display: block;
+  /* display: block; */
   max-width: scale(419px);
   margin-top: scale(4px);
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 
   @media (max-width: $tablet-portrait) {
     max-width: scale(243px);
