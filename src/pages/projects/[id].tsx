@@ -178,7 +178,7 @@ export const getServerSideProps: GetServerSideProps<ProjectModel, Record<'id', s
 
   return {
     props: {
-      ...project
+      ...project,
     },
   };
 };
