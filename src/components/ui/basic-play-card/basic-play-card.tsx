@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 import cn from 'classnames/bind';
+
 import { Button } from '../button';
 import { InfoLink } from '../info-link';
 
 import styles from './basic-play-card.module.css';
+
 const cx  = cn.bind(styles);
 
 export interface IBasicPlayCardProps {
