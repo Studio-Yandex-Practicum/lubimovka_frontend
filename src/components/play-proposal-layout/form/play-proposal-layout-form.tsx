@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import styles from './play-proposal-layout-form.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IPlayProposalLayoutFormProps {

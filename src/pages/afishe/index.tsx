@@ -5,9 +5,9 @@ import { AfisheTitle } from 'components/afishe-page/title';
 import { FestivalDays } from 'components/afishe-page/festival-days';
 import { RegularDays } from 'components/afishe-page/regular-days';
 import AppLayout from 'components/app-layout';
+
 import data from './assets/mock-data.json';
 import festivalData from './assets/afishe-fesival-data.json';
-
 import styles from 'components/afishe-page/afishe.module.css';
 
 const cx = cn.bind(styles);

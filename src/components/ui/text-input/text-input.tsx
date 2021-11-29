@@ -1,6 +1,8 @@
 import { ChangeEvent, InputHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
+
 import styles from './text-input.module.css';
+
 const cx = classNames.bind(styles);
 
 interface ITextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {

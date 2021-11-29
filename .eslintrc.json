@@ -1,6 +1,8 @@
 {
   "extends": [
-    "next/core-web-vitals"
+    "next/core-web-vitals",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
   ],
   "plugins": [
     "@typescript-eslint"
@@ -19,6 +21,43 @@
       "beforeClosing": "never"
     }],
     "object-curly-spacing": ["error", "always"],
-    "react/jsx-curly-spacing": ["error", { "when": "never", "attributes": { "allowMultiline": false }, "children": true }]
+    "react/jsx-curly-spacing": ["error", {
+      "when": "never",
+      "attributes": {
+        "allowMultiline": false
+      },
+      "children": true
+    }],
+    "eol-last": ["error", "always"],
+    "no-multiple-empty-lines": ["error", {
+      "max": 1,
+      "maxEOF": 1
+    }],
+    "import/order": ["error", {
+      "groups": [
+        ["builtin", "external"],
+        "type",
+        ["internal", "parent", "sibling", "index"],
+        "object"
+      ],
+      "pathGroups": [
+        {
+          "pattern": "*.+(png|svg|jpg|jpeg|gif|svg|css|json)",
+          "patternOptions": {
+            "dot": true,
+            "nocomment": true,
+            "matchBase": true
+          },
+          "group": "object"
+        }
+      ],
+      "newlines-between": "always"
+    }],
+    "import/newline-after-import": ["error", {
+      "count": 1
+    }]
+  },
+  "settings": {
+    "import/internal-regex": "^(api-typings|components|mocks|pages|shared)/"
   }
 }

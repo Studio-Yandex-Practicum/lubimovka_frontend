@@ -5,24 +5,26 @@ import TextItem from '../ideology-text-item';
 
 import style from './ideology-section.module.css';
 
-interface TextItemData {
-  id: number
-  number: string
-  title: string
-  text: Array<string>
+interface ITextItemData {
+  id: number;
+  number: string;
+  title: string;
+  text: Array<string>;
 }
 
-interface TextSectionProps {
-  data: {
-    id: number
-    number: string
-    title: string
-    image: string
-    content: Array<TextItemData>
-  }
+export interface ITextSectionData {
+  id: number;
+  number: string;
+  title: string;
+  image: string;
+  content: Array<ITextItemData>;
 }
 
-const TextSection: FC<TextSectionProps> = ({ data }) => {
+interface ITextSectionProps {
+  data: ITextSectionData
+}
+
+const TextSection: FC<ITextSectionProps> = ({ data }) => {
   const { number, title, image, content } = data;
 
   return (

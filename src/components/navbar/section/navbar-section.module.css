@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: scale(0 10px);
+  padding: scale(0 9px);
 
   &:not(:last-child)::after {
     position: absolute;
@@ -19,9 +19,5 @@
 .primary {
   flex-grow: 1;
   padding: 0;
-  padding-right: 24px;
-
-  @media (min-width: $tablet-portrait) {
-    padding-right: scale(24px);
-  }
+  padding-right: scale(34px);
 }

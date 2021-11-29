@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
-import { Icon } from '../icon';
 import cn from 'classnames';
+
+import { Icon } from '../icon';
+
 import styles from './tag.module.css';
 
 interface ITagProps {

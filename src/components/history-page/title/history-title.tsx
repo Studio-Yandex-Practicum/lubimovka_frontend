@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import cn from 'classnames';
+
 import { Button } from 'components/ui/button/button';
 
 import style from './history-title.module.css';
+
 interface TextItemData {
   subtitle: string
   text?: string

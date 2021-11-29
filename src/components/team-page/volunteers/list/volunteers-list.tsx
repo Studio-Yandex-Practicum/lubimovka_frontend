@@ -1,10 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
-import styles from './volunteers-list.module.css';
 import classNames from 'classnames';
 
 import PersonCard from '../../../ui/person-card/person-card';
 import { FeedbackPopup } from 'components/ui/feedback-popup';
+
+import styles from './volunteers-list.module.css';
 
 const cx = classNames.bind(styles);
 
@@ -106,7 +107,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
             <div key={card.id} className="keen-slider__slide">
               <PersonCard
                 participant={false}
-                link={card.person.image}
+                image={card.person.image}
                 response={card.review_text}
                 name={`${card.person.first_name} ${card.person.last_name}`}
                 handleClick={() => handleFeedbackPopupClick(idx)}
@@ -124,7 +125,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
             <li key={card.id}>
               <PersonCard
                 participant={false}
-                link={card.person.image}
+                image={card.person.image}
                 response={card.review_text}
                 name={`${card.person.first_name} ${card.person.last_name}`}
                 handleClick={() => handleFeedbackPopupClick(idx)}

@@ -1,6 +1,8 @@
 import { InputHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
+
 import styles from './text-area.module.css';
+
 const cx = classNames.bind(styles);
 
 interface ITextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {

@@ -3,10 +3,11 @@ import cn from 'classnames/bind';
 
 const cx = cn.bind(styles);
 
-import styles from './article-title.module.css';
 import { Button } from '../../ui/button';
 import { InfoLink } from '../../ui/info-link';
 import { Url } from '../../../shared/types';
+
+import styles from './article-title.module.css';
 
 interface IArticleTitle {
   isBlog: boolean,
