@@ -25,10 +25,10 @@
 
 .item {
   display: flex;
-  flex-direction: column;
   max-width: scale(300px);
   min-height: scale(260px);
   box-sizing: border-box;
+  flex-direction: column;
   padding: scale(15px 30px 26px 30px);
   border-bottom: scale(1px) solid var(--coal);
   border-left: scale(1px) solid var(--coal);
@@ -50,6 +50,11 @@
   @mixin textSmall;
 
   margin-left: scale(30px);
+}
+
+.icon {
+  display: flex;
+  transition: all .3s;
 }
 
 .link {
@@ -75,11 +80,6 @@
   @mixin textSmall;
 
   margin-right: scale(8px);
-}
-
-.icon {
-  transition: all .3s;
-  display: flex;
 }
 
 @media (max-width: $tablet-portrait) {
