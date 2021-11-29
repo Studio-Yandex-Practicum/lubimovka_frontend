@@ -1,10 +1,11 @@
-import { FC } from 'react';
+import { FC, HTMLAttributes } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
 
 import { Icon } from 'components/ui/icon';
 
 import styles from './main-platforms.module.css';
+import mockData from '../assets/mock-data.json';
 
 interface ICard {
   id: number
@@ -12,21 +13,24 @@ interface ICard {
   desc: string
   link: string[]
 }
-interface IMainPlatformsProps {
-  data: {
-    id: number
-    title: string
-    content: ICard[]
-  }
+interface IMainPlatformsProps extends HTMLAttributes<HTMLElement> {
+  data?: [
+    {
+      id: number
+      title: string
+      content: ICard[]
+    }]
 }
 
-export const MainPlatforms: FC<IMainPlatformsProps> = ({ data }) => {
-  const { title, content } = data;
-
+export const MainPlatforms: FC<IMainPlatformsProps> = ({ data = mockData }) => {
   return (
     <section className={cn(styles.section)}>
-      <h2 className={cn(styles.titleMain)}>{title}</h2>
+      {
+        data.map(item => {
 
+        })
+      }
+      <h2 className={cn(styles.titleMain)}>{title}</h2>
       <ul className={cn(styles.list)}>
         {content.map(card => (
           <li className={cn(styles.item)} key={card.id}>
