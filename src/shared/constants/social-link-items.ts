@@ -1,23 +1,23 @@
 export const socialLinkItems= [
   {
     text: 'fb',
-    href: '#'
+    href: 'https://www.facebook.com/festival.lubimovka/'
   },
   {
     text: 'inst',
-    href: '#'
+    href: 'https://www.instagram.com/lubimovka/'
   },
   {
     text: 'ytube',
-    href: '#',
+    href: 'https://www.youtube.com/channel/UCDZ1HTzBVBxm_vw6tV7C3lg',
     primary: true,
   },
   {
     text: 'tlgrm',
-    href: '#'
+    href: 'https://t.me/lubimovka'
   },
   {
     text: 'vk',
-    href: '#'
+    href: 'https://vk.com/festival.lubimovka'
   },
 ];

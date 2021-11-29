@@ -1,7 +1,4 @@
 .footer {
-  @mixin text;
-  @mixin textCaption;
-
   display: grid;
   padding: scale(42px 32px 54px);
   grid-template:
@@ -23,84 +20,18 @@
   }
 }
 
+.logo {
+  width: scale(93px);
+  height: scale(80px);
+  margin-right: scale(82px);
+  grid-area: logo;
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(56px 0 0 58px);
+  }
+}
+
 .footnote {
-  display: flex;
-  align-items: flex-start;
   margin-top: scale(49px);
   grid-area: footnote;
-
-  @media (max-width: $tablet-portrait) {
-    @mixin textCaption;
-
-    flex-direction: column;
-    padding: scale(32px 28px 63px);
-    border-top: 1px solid black;
-    margin-top: 0;
-  }
-}
-
-.copyright {
-  margin: scale(0 32px 0 0);
-
-  @media (max-width: $tablet-portrait) {
-    margin: scale(0 0 10px 0);
-  }
-}
-
-.footnoteLink {
-  @media (max-width: $tablet-portrait) {
-    text-decoration: underline;
-  }
-}
-
-.credits {
-  display: flex;
-  margin: scale(0 0 0 374px);
-
-  @media (max-width: $tablet-portrait) {
-    width: scale(254px);
-    flex-direction: column;
-    margin: scale(59px 0 0 0);
-  }
-
-  dt {
-    &::after {
-      display: inline;
-      content: ' –';
-    }
-  }
-
-  dd {
-    margin: 0;
-  }
-}
-
-.shishki {
-  display: grid;
-  margin-right: scale(44px);
-  grid-template:
-    "logo text"
-    "logo text" 1fr / min-content 1fr;
-
-  @media (max-width: $tablet-portrait) {
-    margin-right: 0;
-    margin-bottom: scale(16px);
-  }
-
-  &::before {
-    display: block;
-    width: scale(27px);
-    height: scale(25px);
-    margin-right: scale(4px);
-    background-image: url('./footer.assets/shishki.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    content: '';
-    grid-area: logo;
-
-    @media (max-width: $tablet-portrait) {
-      margin-top: scale(6px);
-      margin-right: scale(9px);
-    }
-  }
 }

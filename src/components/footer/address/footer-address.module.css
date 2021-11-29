@@ -1,6 +1,9 @@
 @value partners from '../partners/footer-partners.module.css';
 
 .address {
+  @mixin text;
+  @mixin textCaption;
+
   margin-top: scale(46px);
   font-style: normal;
   grid-area: address;

@@ -10,6 +10,7 @@ import { Footer } from 'components/footer';
 import { OverlayNav } from 'components/overlay-nav';
 import { BurgerButton } from 'components/ui/burger-button';
 import { FooterPartnerList } from 'components/footer-partner-list';
+import { FooterCopyright } from 'components/footer-copyright';
 import { DonationLink } from 'components/donation-link';
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
 import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
@@ -31,9 +32,7 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
     children,
     hiddenPartners,
   } = props;
-
   const { projects, generalPartners } = useAppSettings();
-
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
@@ -125,7 +124,9 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
                   ))}
                 </Menu>
               </OverlayNav.Socials>
-              <Footer/>
+              <OverlayNav.Copyright>
+                <FooterCopyright/>
+              </OverlayNav.Copyright>
             </OverlayNav>
           </Page.OverlayMenu>
           <Page.BurgerButton>
@@ -134,7 +135,6 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
         </>
       )}
       <Footer>
-        <Footer.Logo/>
         {!hiddenPartners && (
           <Footer.Partners>
             <FooterPartnerList>
