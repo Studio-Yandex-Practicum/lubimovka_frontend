@@ -16,11 +16,11 @@ const blogArticle: BlogData = {
         items: [
           {
             title: 'Изображение 1',
-            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
+            image: '/images/article/title-image.png'
           },
           {
             title: 'Гифочка',
-            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
+            image: '/images/article/title-image.png'
           }
         ]
       }
@@ -74,11 +74,11 @@ const blogArticle: BlogData = {
         items: [
           {
             title: 'Изображение 1',
-            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
+            image: '/images/article/title-image.png'
           },
           {
             title: 'Гифочка',
-            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
+            image: '/images/article/title-image.png'
           }
         ]
       }
@@ -189,7 +189,7 @@ const blogArticle: BlogData = {
             middle_name: 'Викентьевич',
             city: 'Сковородино',
             email: 'mikhejvishnyakova@lubimovka.ru',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%9C%D0%B8%D1%85%D0%B5%D0%B9_%D0%92%D0%B8%D1%88%D0%BD%D1%8F%D0%BA%D0%BE%D0%B2%D0%B0.jpg'
+            image: '/images/person/person.jpg'
           },
           {
             id: 129,
@@ -200,7 +200,7 @@ const blogArticle: BlogData = {
             middle_name: 'Антоновна',
             city: '',
             email: 'null',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%92%D0%B5%D0%BD%D0%B8%D0%B0%D0%BC%D0%B8%D0%BD_%D0%91%D1%8B%D0%BA%D0%BE%D0%B2%D0%B0.jpg'
+            image: '/images/person/person.jpg'
           },
           {
             id: 112,
@@ -211,7 +211,7 @@ const blogArticle: BlogData = {
             middle_name: 'Наумовна',
             city: 'Старый Оскол',
             email: 'emmanuilgalkin@lubimovka.ru',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%AD%D0%BC%D0%BC%D0%B0%D0%BD%D1%83%D0%B8%D0%BB_%D0%93%D0%B0%D0%BB%D0%BA%D0%B8%D0%BD.jpg'
+            image: '/images/person/person.jpg'
           },
           {
             id: 83,
@@ -222,7 +222,7 @@ const blogArticle: BlogData = {
             middle_name: 'Викентьевич',
             city: 'Сковородино',
             email: 'mikhejvishnyakova@lubimovka.ru',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%9C%D0%B8%D1%85%D0%B5%D0%B9_%D0%92%D0%B8%D1%88%D0%BD%D1%8F%D0%BA%D0%BE%D0%B2%D0%B0.jpg'
+            image: '/images/person/person.jpg'
           },
           {
             id: 130,
@@ -233,7 +233,7 @@ const blogArticle: BlogData = {
             middle_name: 'Антоновна',
             city: '',
             email: 'null',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%92%D0%B5%D0%BD%D0%B8%D0%B0%D0%BC%D0%B8%D0%BD_%D0%91%D1%8B%D0%BA%D0%BE%D0%B2%D0%B0.jpg'
+            image: '/images/person/person.jpg'
           },
           {
             id: 113,
@@ -244,7 +244,7 @@ const blogArticle: BlogData = {
             middle_name: 'Наумовна',
             city: 'Старый Оскол',
             email: 'emmanuilgalkin@lubimovka.ru',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%AD%D0%BC%D0%BC%D0%B0%D0%BD%D1%83%D0%B8%D0%BB_%D0%93%D0%B0%D0%BB%D0%BA%D0%B8%D0%BD.jpg'
+            image: '/images/person/person.jpg'
           }
         ]
       }
@@ -278,28 +278,28 @@ const blogArticle: BlogData = {
       title: 'Заголовок записи блога',
       description: 'Описание записи блога',
       author_url_title: 'Евгений Казаков',
-      image: 'http://loveopium.ru/content/2014/07/old/00s.jpg'
+      image: '/images/person/person.jpg'
     },
     {
       id: 2,
       title: 'Заголовок записи блога',
       description: 'Описание записи блога',
       author_url_title: 'Евгений Казаков',
-      image: 'https://cdnn21.img.ria.ru/images/07e4/05/0d/1571382383_0:95:3072:1823_1920x0_80_0_0_c63e7c9d83d25d0d40b14bf77b358a48.jpg'
+      image: '/images/article/title-image.png'
     },
     {
       id: 3,
       title: 'Заголовок записи блога',
       description: 'Описание записи блога',
       author_url_title: 'Евгений Казаков',
-      image: 'https://img-fotki.yandex.ru/get/5208/ilducess.2b/0_4966c_e06db100_XL.jpg'
+      image: '/images/blog/blog-image.jpg'
     },
     {
       id: 4,
       title: 'Заголовок записи блога',
       description: 'Описание записи блога',
       author_url_title: 'Евгений Казаков',
-      image: 'https://www.m24.ru/b/d/nBkSUhL2hFEvnsu2Jr6BosSyyJ2gp8TrlnTclb7P73OHezeOWXiSxTZt4slI-BHBsdWR_G-JLsV0=Qxkn5i4HQbA-mc9nrUxZHA.jpg'
+      image: '/images/person/person.jpg'
     }
   ],
   created: '2021-11-21T22:10:21',

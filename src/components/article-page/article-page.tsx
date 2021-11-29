@@ -138,7 +138,7 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
                 <PersonCard
                   key={item.id}
                   participant={true}
-                  link={item.image}
+                  image={item.image}
                   name={`${item.first_name} ${item.last_name}`}
                   // TODO: добавить реальные данные в ответ бекенда
                   about='Драматург, сценарист, преподаватель'
