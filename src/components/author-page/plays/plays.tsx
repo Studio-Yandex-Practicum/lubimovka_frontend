@@ -2,7 +2,6 @@ import { FC } from 'react';
 import cn from 'classnames';
 
 import { BasicPlayCard } from 'components/ui/basic-play-card';
-import { Url } from 'shared/types';
 
 import styles from './plays.module.css';
 
@@ -11,8 +10,8 @@ interface PlaysData {
   title: string
   city: string
   year: number
-  linkView: Url
-  linkDownload: Url
+  linkView: string
+  linkDownload: string
   authors: AuthorData[]
 }
 interface AuthorData {
