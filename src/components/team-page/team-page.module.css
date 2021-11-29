@@ -1,15 +1,8 @@
-.submenu {
+.menu {
   padding: scale(41px) 0 0 scale(60px);
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
     padding: scale(6px) 0 0 scale(24px);
-  }
-}
-
-.active a {
-  &::before,
-  &::after {
-    visibility: visible;
   }
 }

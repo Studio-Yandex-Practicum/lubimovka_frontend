@@ -4,9 +4,9 @@ import classNames from 'classnames/bind';
 
 import { SliderButton } from '../slider-button';
 import { SliderDots } from '../slider-dots';
+import { IconButton } from 'components/ui/icon-button';
 import { Icon } from '../icon';
 import { Url } from 'shared/types';
-import { Modal } from '../modal';
 
 import styles from './feedback-popup.module.css';
 
@@ -63,69 +63,65 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
     slider?.refresh();
   }, [screenWidth, currentYear]);
 
-  // в общем проблем 2:
-  // 1. при оборачивании в Modal удается установить только фиксированную ширину для контейнеров + замножаются слайды
-  // 2. прошлая реализация тоже стала работать не корректно
-  //
-  //пс. вообще уже не понимаю, что делать
-
   return (
-    <Modal Backdrop={Modal.Backdrop} isOpen={isOpen} onClose={onClose}>
-      <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
-        {cards.map((card) => (
-          <div
-            key={card.id}
-            className={cx('keen-slider__slide', 'slide')}
-          >
-            <div className={cx('slideContainer')}>
-              {slider &&
-              <>
-                <SliderButton
-                  direction='left'
-                  className={cx('arrow', 'arrowLeft')}
-                  onClick={slider.prev}
-                  ariaLabel={'Предыдущий слайд'}
+    <div ref={sliderRef} className={cx('keen-slider', 'slider', { [styles.isOpen]: isOpen })}>
+      {cards.map((card) => (
+        <div
+          key={card.id}
+          className={cx('keen-slider__slide', 'slide')}
+        >
+          <div className={cx('container')}>
+            {slider &&
+            <>
+              <SliderButton
+                className={cx('arrow', 'arrowLeft')}
+                ariaLabel='Предыдущий отзыв'
+                direction='left'
+                onClick={slider.prev}
+              />
+              {Number(screenWidth) < 729 &&
+              <div className={cx('close')}>
+                <IconButton
+                  className={cx('closeButton')}
+                  ariaLabel='Закрыть лайтбокс'
+                  type='button'
+                  view='light'
+                  icon={<Icon glyph='cross'/>}
+                  onClick={onClose}
                 />
-                {Number(screenWidth) < 729 &&
-                <button className={cx('buttonClose')} onClick={onClose}>
-                  <Icon
-                    className={cx('cross')}
-                    glyph={'cross'}
-                  />
-                </button>}
-                <img
-                  className={cx('image')}
-                  src={card.person.image}
-                />
-                <h2 className={cx('name')}>{`${card.person.first_name} ${card.person.last_name}`}</h2>
-                {Number(screenWidth) < 729 &&
-                <SliderDots
-                  className={cx('dots')}
-                  count={slider.details().size}
-                  currentSlide={currentSlide}
-                  onClick={(idx) => slider.moveToSlideRelative(idx)}
-                />}
-                <p className={cx('title')}>{card.review_title}</p>
-                <p className={cx('text')}>{card.review_text}</p>
-                {Number(screenWidth) > 728 &&
-                <SliderDots
-                  className={cx('dots')}
-                  count={slider.details().size}
-                  currentSlide={currentSlide}
-                  onClick={(idx) => slider.moveToSlideRelative(idx)}
-                />}
-                <SliderButton
-                  direction='right'
-                  className={cx('arrow', 'arrowRight')}
-                  onClick={slider.next}
-                  ariaLabel={'Следующий слайд'}
-                />
-              </>
-              }
-            </div>
+              </div>}
+              <img
+                className={cx('image')}
+                src={card.person.image}
+              />
+              <h2 className={cx('name')}>{`${card.person.first_name} ${card.person.last_name}`}</h2>
+              {Number(screenWidth) < 729 &&
+              <SliderDots
+                className={cx('dots')}
+                count={slider.details().size}
+                currentSlide={currentSlide}
+                onClick={(idx) => slider.moveToSlideRelative(idx)}
+              />}
+              {card.review_title === '' ? '' : <p className={cx('title')}>{card.review_title}</p>}
+              <p className={cx('text')}>{card.review_text}</p>
+              {Number(screenWidth) > 728 &&
+              <SliderDots
+                className={cx('dots')}
+                count={slider.details().size}
+                currentSlide={currentSlide}
+                onClick={(idx) => slider.moveToSlideRelative(idx)}
+              />}
+              <SliderButton
+                className={cx('arrow', 'arrowRight')}
+                ariaLabel='Следующий отзыв'
+                direction='right'
+                onClick={slider.next}
+              />
+            </>
+            }
           </div>
-        ))}
-      </div>
-    </Modal>
+        </div>
+      ))}
+    </div>
   );
 };
