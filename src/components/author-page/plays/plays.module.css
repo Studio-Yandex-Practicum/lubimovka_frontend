@@ -1,8 +1,16 @@
-.plays {
+.playsContainer {
   display: grid;
-  padding: 134px 60px;
+  overflow: hidden;
+  max-width: 100%;
+  padding: calc(var(--scale) * 134) calc(var(--scale) * 60);
   background-color: var(--beige);
   gap: calc(var(--scale) * 30);
+  grid-auto-flow: column;
   grid-row: auto;
-  grid-template-columns: repeat(5, 2fr);
+  grid-template-columns: repeat(5, 1fr);
+
+  @media (max-width: 730px) {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
 }
