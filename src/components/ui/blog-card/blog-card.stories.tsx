@@ -16,7 +16,8 @@ only_first_BlogCard.args = {
   author: 'Лара Бессмертная',
   heading: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
-  link: 'https://lubimovka.ru/blog/888-int-emeleva',
+  id: 1,
+  // link: 'https://lubimovka.ru/blog/888-int-emeleva',
 };
 only_first_BlogCard.decorators = [
   (Story) => (
