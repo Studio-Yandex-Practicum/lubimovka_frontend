@@ -16,7 +16,6 @@ export default {
   ],
 } as ComponentMeta<typeof SliderButton>;
 
-
 const Template: ComponentStory<typeof SliderButton> = (args) => <SliderButton {...args}/>;
 
 export const Default = Template.bind({});

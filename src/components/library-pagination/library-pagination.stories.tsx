@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import LibraryPagination from './library-pagination';
-
 import authors from 'mocks/data/authors';
 
 export default {

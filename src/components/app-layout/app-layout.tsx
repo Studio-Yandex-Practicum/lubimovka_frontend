@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { Page } from 'components/page';
@@ -11,27 +11,28 @@ import { OverlayNav } from 'components/overlay-nav';
 import { BurgerButton } from 'components/ui/burger-button';
 import { FooterPartnerList } from 'components/footer-partner-list';
 import { DonationLink } from 'components/donation-link';
-import { WithAppSettingsProps, withAppSettings } from 'components/app';
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
 import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
 import { socialLinkItems } from 'shared/constants/social-link-items';
 import { donationPath } from 'shared/constants/donation-path';
 import { participationFormPath } from 'shared/constants/participation-form-path';
-import * as breakpoints from 'shared/breakpoints.js';
+import { useAppSettings } from 'components/app';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
+import * as breakpoints from 'shared/breakpoints.js';
 
-interface IAppLayoutProps extends WithAppSettingsProps{
+interface IAppLayoutProps {
+  children: ReactNode,
   hiddenPartners?: boolean,
 }
 
-const AppLayout: FC<IAppLayoutProps> = (props) => {
+const AppLayout = (props: IAppLayoutProps): JSX.Element => {
   const {
     children,
-    projects,
-    generalPartners,
     hiddenPartners,
   } = props;
+
+  const { projects, generalPartners } = useAppSettings();
 
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
@@ -124,6 +125,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
                   ))}
                 </Menu>
               </OverlayNav.Socials>
+              <Footer/>
             </OverlayNav>
           </Page.OverlayMenu>
           <Page.BurgerButton>
@@ -132,6 +134,7 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
         </>
       )}
       <Footer>
+        <Footer.Logo/>
         {!hiddenPartners && (
           <Footer.Partners>
             <FooterPartnerList>
@@ -185,4 +188,6 @@ const AppLayout: FC<IAppLayoutProps> = (props) => {
   );
 };
 
-export default withAppSettings<IAppLayoutProps>(AppLayout);
+AppLayout.Breadcrumbs = Page.Breadcrumbs;
+
+export default AppLayout;

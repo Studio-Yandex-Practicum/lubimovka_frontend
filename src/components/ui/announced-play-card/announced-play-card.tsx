@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import cn from 'classnames/bind';
+
 import { Button } from '../button';
 // import Image from 'next/image';
 
@@ -12,12 +13,12 @@ export interface IAnnouncedPlayCardProps {
   id: number;
   date: string;
   title: string;
-  playwrightArray: string [];
-  directorArray: string [];
+  playwrightArray?: string [];
+  directorArray?: string [];
   eventDescription?:string;
   buttonLink: string;
   coverResourceUrl?: string;
-  projectCopy: string;
+  projectCopy?: string;
   className?: string;
   paid?: boolean;
 }
@@ -46,7 +47,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const creditsRendered = (
     <React.Fragment>
       {
-        playwrightArray.length > 1 ?
+        playwrightArray && playwrightArray.length > 1 ?
           (<p className={cx('creditsEntry')}>
         Драматурги: {creditsArrayToString (playwrightArray)}
           </p>)
@@ -56,7 +57,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           </p>)
       }
       {
-        directorArray.length > 1 ?
+        directorArray && directorArray.length > 1 ?
           (<p className={cx('creditsEntry')}>
         Режиссёры: {creditsArrayToString (directorArray)}
           </p>)
@@ -85,7 +86,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             <p className={cx('time')}>{new Date(date).toLocaleTimeString('ru-Ru', { timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric' })}</p>
           </div>
           <h5 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h5>
-          {directorArray.length > 0 && playwrightArray.length > 0 &&
+          {directorArray && directorArray.length > 0 && playwrightArray && playwrightArray.length > 0 &&
           <div className={cx('credits')}>
             {creditsRendered}
           </div>

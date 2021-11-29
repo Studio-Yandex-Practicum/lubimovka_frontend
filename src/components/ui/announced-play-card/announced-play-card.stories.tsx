@@ -75,5 +75,6 @@ ReadingNoCredits.args = {
   directorArray: [],
   eventDescription: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
+  projectCopy: 'читка проекта Любимовка.Ещё',
   paid: false,
 };

@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import styles from './play-proposal-layout-image.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IPlayProposalLayoutImageProps {

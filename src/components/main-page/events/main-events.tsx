@@ -29,8 +29,8 @@ export const MainEvents: FC<IMainEventsProps> = ({ data }) => {
           data.map(item => (
             <li key={item.id} className={styles.list}>
               <AnnouncedPlayCard
-                //необходимо передавать в isPerformance, значение, зависимое от item.type с бэка. Если item.type === 'Спектакль', то значение true
-                isPerformance={item.type === 'Спектакль'}
+                //необходимо передавать в isPerformance, значение, зависимое от item.type с бэка. Если item.type === 'PERFORMANCE', то значение true
+                isPerformance={item.type === 'PERFORMANCE'}
                 id={item.id}
                 date={item.date}
                 title={item.title}

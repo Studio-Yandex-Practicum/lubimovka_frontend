@@ -6,6 +6,7 @@ import { SliderButton } from 'components/ui/slider-button';
 import { SliderDots } from 'components/ui/slider-dots';
 
 import styles from './image-slider.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IImageSliderProps {

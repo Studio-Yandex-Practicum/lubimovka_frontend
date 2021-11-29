@@ -1,12 +1,13 @@
 import React, { FC, useCallback, useMemo, useState } from 'react';
 import cn from 'classnames';
+import classNames from 'classnames/bind';
 
-import styles from './volunteers-section.module.css';
 import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
 import VolunteersList from 'components/team-page/volunteers/list';
 import { InfoLink } from 'components/ui/info-link';
-import classNames from 'classnames/bind';
+
+import styles from './volunteers-section.module.css';
 
 const cx = classNames.bind(styles);
 
