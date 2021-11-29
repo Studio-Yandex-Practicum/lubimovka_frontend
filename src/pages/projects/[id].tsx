@@ -82,11 +82,14 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                             name: 'Константин Константинопольский',
                           }]
                         }}
+<<<<<<< HEAD
                         // author={{
                         //   // TODO: добавить реальные данные в ответ бекенда
                         //   id: 0,
                         //   name: 'Константин Константинопольский',
                         // }}
+=======
+>>>>>>> b2013f7ff07ba4e36a31a2142f6a74039cf46bc9
                       />
                     ))}
                   </BasicPlayCardList>
