@@ -1,1 +1,1 @@
-export * from './article-share';
+export { default } from './article-share';

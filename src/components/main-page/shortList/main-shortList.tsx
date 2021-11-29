@@ -1,7 +1,9 @@
 import { FC } from 'react';
+
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 
 import styles from './main-shortList.module.css';
+
 interface PlaysData {
   title: string
   city: string
@@ -20,7 +22,6 @@ interface IMainShortList {
     title: string
   }
 }
-
 
 export const MainShortList: FC<IMainShortList>= ({ data }) => {
   return (

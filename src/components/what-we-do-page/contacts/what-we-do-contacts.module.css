@@ -27,7 +27,7 @@
   margin-bottom: scale(14px);
 }
 
-@media all and (max-width: $tablet-portrait) {
+@media (max-width: $tablet-portrait) {
   .contacts {
     padding: scale(56px 24px 50px);
   }

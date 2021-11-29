@@ -1,9 +1,8 @@
 import { FC, useState, useEffect } from 'react';
+import { useKeenSlider } from 'keen-slider/react';
 
 import PersonCard from '../ui/person-card/person-card';
-import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
-
 
 import style from './trustees-persons-list.module.css';
 
@@ -71,7 +70,7 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
             <div key={trustee.id} className="keen-slider__slide">
               <PersonCard
                 participant={true}
-                link={trustee.person.image}
+                image={trustee.person.image}
                 about={trustee.position}
                 name={`${trustee.person.first_name} ${trustee.person.last_name}`}
               >
@@ -88,7 +87,7 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
             <li key={trustee.id} className={style.trusteesListItem}>
               <PersonCard
                 participant={true}
-                link={trustee.person.image}
+                image={trustee.person.image}
                 about={trustee.position}
                 name={`${trustee.person.first_name} ${trustee.person.last_name}`}
               >

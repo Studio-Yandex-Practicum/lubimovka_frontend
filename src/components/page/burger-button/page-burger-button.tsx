@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import styles from './page-burger-button.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IPageBurgerButtonProps {

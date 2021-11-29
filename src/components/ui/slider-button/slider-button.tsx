@@ -39,5 +39,3 @@ export const SliderButton: FC<ISliderButtonProps> = (props) => {
     />
   );
 };
-
-

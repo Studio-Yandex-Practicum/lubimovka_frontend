@@ -1,11 +1,8 @@
 .list {
   display: flex;
   box-sizing: border-box;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: scale(0 31px);
+  padding: 0;
   margin: 0;
-
-  @media (max-width: $tablet-portrait) {
-    padding: 0;
-  }
 }

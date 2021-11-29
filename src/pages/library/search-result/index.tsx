@@ -1,12 +1,13 @@
 import { NextPage } from 'next';
 import { useState, useEffect } from 'react';
+
 import AppLayout from 'components/app-layout';
 import { Button } from 'components/ui/button';
 import LibraryForm from 'components/library-form/library-form';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
-
 import SearchResultAuthors from 'components/search-result-authors/search-result-authors';
+
 import style from './index.module.css';
 
 const mockAuthors = ['Августеняк Екатерина', 'Августеняк Екатерина', 'Августеняк Екатерина',
@@ -53,7 +54,6 @@ const filteredAuthors = Object.values(
 
 const mockPieces = Array.from(Array(3)).map(() => mockCard);
 
-
 const SearchResult: NextPage = () => {
 
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
@@ -93,7 +93,6 @@ const SearchResult: NextPage = () => {
           </div>
         </section>
       </main>
-
 
     </AppLayout>
   );

@@ -11,6 +11,7 @@ export const MONTHS = [
   'Октябрь',
   'Ноябрь',
   'Декабрь',
+<<<<<<< HEAD
 ];
 
 // Bad solution???
@@ -26,4 +27,6 @@ export const YEARS = [
   2013,
   2012,
   2011,
+=======
+>>>>>>> main
 ];

@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ForPressHeroTitle } from './for-press-hero-title';
+
 import mockData from './assets/mock-data.json';
 
 export default {

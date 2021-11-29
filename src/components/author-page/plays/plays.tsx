@@ -1,8 +1,9 @@
 import { FC } from 'react';
+import cn from 'classnames';
+
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Url } from 'shared/types';
 
-import cn from 'classnames';
 import styles from './plays.module.css';
 
 interface PlaysData {
