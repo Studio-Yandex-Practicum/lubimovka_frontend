@@ -1,13 +1,14 @@
 import React from 'react';
 import cn from 'classnames/bind';
+import Image from 'next/image';
 
-const cx = cn.bind(styles);
-
-import styles from './article-title.module.css';
 import { Button } from '../../ui/button';
 import { InfoLink } from '../../ui/info-link';
 import { Url } from '../../../shared/types';
-import Image from 'next/image';
+
+import styles from './article-title.module.css';
+
+const cx = cn.bind(styles);
 
 interface IArticleTitle {
   isBlog: boolean,

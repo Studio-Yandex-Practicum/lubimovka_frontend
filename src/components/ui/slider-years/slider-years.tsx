@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import styles from './slider-years.module.css';
 import classNames from 'classnames';
 import { useKeenSlider } from 'keen-slider/react';
+
+import styles from './slider-years.module.css';
 
 const cx = classNames.bind(styles);
 

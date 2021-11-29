@@ -1,10 +1,9 @@
 import { FC, useState, useEffect } from 'react';
 
 import { Icon } from '../ui/icon';
-
-import style from './trustees-section.module.css';
 import { Menu } from 'components/ui/menu';
 
+import style from './trustees-section.module.css';
 
 interface TrusteesSectionProps {
   text: {

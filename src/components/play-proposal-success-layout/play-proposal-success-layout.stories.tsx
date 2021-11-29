@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import { PlayProposalSuccessLayout } from './play-proposal-success-layout';
 
 export default {

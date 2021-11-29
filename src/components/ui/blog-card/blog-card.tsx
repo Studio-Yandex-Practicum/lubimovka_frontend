@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import styles from './blog-card.module.css';
 import Link from 'next/link';
-
 import cn from 'classnames';
+
+import styles from './blog-card.module.css';
 
 export interface BlogCardProps {
   image: string;

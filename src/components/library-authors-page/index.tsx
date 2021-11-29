@@ -3,14 +3,18 @@ import { FC, useEffect, useState } from 'react';
 import { Menu } from 'components/ui/menu';
 import LibraryForm from 'components/library-form';
 import LibraryPagination from 'components/library-pagination';
-
 import useWindowDimensions from './useWindowDimensions';
 
 import styles from './index.module.css';
 
+export interface IAuthorInfo {
+  id: number;
+  name: string;
+}
+
 interface IAuthorsPageProps {
   letters: string[];
-  authors: string[];
+  authors: Array<IAuthorInfo>;
 }
 
 const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {

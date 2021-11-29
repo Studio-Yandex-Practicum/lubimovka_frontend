@@ -20,9 +20,9 @@
 }
 
 .imgVolunteer {
+  position: relative;
   width: 100%;
   height: scale(228px);
-  object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
     height: scale(265px);
@@ -30,9 +30,20 @@
 }
 
 .imgParticipant {
+  position: relative;
   width: 100%;
   height: scale(265px);
-  object-fit: cover;
+}
+
+.defaultImage {
+  display: flex;
+  box-sizing: border-box;
+  padding: 35%;
+  background-color: var(--light-green);
+}
+
+.logo {
+  color: var(--beige);
 }
 
 .comment {

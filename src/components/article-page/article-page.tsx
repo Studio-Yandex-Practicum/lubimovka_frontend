@@ -1,21 +1,21 @@
 import { FC } from 'react';
 import Head from 'next/head';
 import cn from 'classnames/bind';
+import Image from 'next/image';
 
 import { Section } from 'components/section';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
-import { PersonCard, PersonCardList } from 'components/ui/person-card';
+import { PersonCard } from 'components/ui/person-card';
+import { PersonCardList } from 'components/person-card-list';
 import { ImageSlider } from 'components/ui/image-slider';
-import ArticleTitle from './article-title/article-title';
-import ArticleShare from './article-share/article-share';
+import ArticleTitle from './article-title';
+import ArticleShare from './article-share';
 import { ArticleMainText } from './article-maintext';
 import ArticleOther from './article-other/article-other';
-
+import { BlogData, ComplexItem, NewsData, Person, Play } from './types/article-types';
 
 import styles from './article-page.module.css';
-import { BlogData, ComplexItem, NewsData, Person, Play } from './types/article-types';
-import Image from 'next/image';
 
 const cx = cn.bind(styles);
 

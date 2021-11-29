@@ -3,13 +3,13 @@ import cn from 'classnames';
 
 import style from './ideology-text-item.module.css';
 
-interface TextItemProps {
+interface ITextItemProps {
   number: string
   title: string
   children: ReactNode
 }
 
-const TextItem: FC<TextItemProps> = (props) => {
+const TextItem: FC<ITextItemProps> = (props) => {
   const { number, title, children } = props;
 
   return (

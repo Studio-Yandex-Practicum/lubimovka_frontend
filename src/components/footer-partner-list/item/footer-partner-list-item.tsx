@@ -2,9 +2,10 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 
-import style from './footer-partner-list-item.module.css';
 import { Url } from 'shared/types';
 import { ConditionalWrapper } from 'components/conditional-wrapper';
+
+import style from './footer-partner-list-item.module.css';
 
 const cx = classNames.bind(style);
 
