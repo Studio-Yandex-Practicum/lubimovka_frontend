@@ -6,6 +6,9 @@ import { AnnouncedPlayCard } from './announced-play-card';
 export default {
   title: 'UI/AnnouncedPlayCard',
   component: AnnouncedPlayCard,
+  parameters: {
+    layout: 'fullscreen',
+  },
 
 } as ComponentMeta<typeof AnnouncedPlayCard>;
 

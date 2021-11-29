@@ -10,7 +10,7 @@ const cx = cn.bind(styles);
 
 export interface IAnnouncedPlayCardProps {
   isPerformance?: boolean;
-  id: number;
+  id?: number;
   date: string;
   title: string;
   playwrightArray?: string [];
@@ -85,7 +85,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             <p className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' })}</p>
             <p className={cx('time')}>{new Date(date).toLocaleTimeString('ru-Ru', { timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric' })}</p>
           </div>
-          <h5 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h5>
+          <h3 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h3>
           {directorArray && directorArray.length > 0 && playwrightArray && playwrightArray.length > 0 &&
           <div className={cx('credits')}>
             {creditsRendered}

@@ -1,4 +1,5 @@
 .card {
+  width: scale(420px);
   list-style-type: none;
 
   @media (max-width: $tablet-portrait) {
@@ -8,11 +9,9 @@
 
 .container {
   display: flex;
-  max-width: scale(420px);
-  flex-direction: row;
 
   @media (max-width: $tablet-portrait) {
-    max-width: scale(364px);
+    width: scale(414px);
     padding: scale(32px 14px 32px 24px);
   }
 }
@@ -69,7 +68,6 @@
   @mixin headline;
   @mixin headline5;
 
-  /* display: block; */
   max-width: scale(419px);
   margin-top: scale(4px);
   -webkit-hyphens: auto;
@@ -77,6 +75,8 @@
   hyphens: auto;
 
   @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
     max-width: scale(243px);
     margin-top: scale(16px);
   }
@@ -97,7 +97,7 @@
 
   @media (max-width: $tablet-portrait) {
     max-width: scale(243px);
-    margin-left: 0;
+    margin: scale(8px 0 0 0);
   }
 }
 
