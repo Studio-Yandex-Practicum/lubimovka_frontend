@@ -9,16 +9,17 @@ import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
 import LibraryFiltersModal from './library-filters-modal';
 import { Play } from 'api-typings';
+import { ILibraryFilterReducer } from 'components/library-filter/library-filter-reducer';
 
 import styles from './index.module.css';
 
-interface ILibraryPageProps {
+interface ILibraryPageProps extends ILibraryFilterReducer {
   items: Play[];
   years: number[];
   programmes: string[];
 }
 
-const LibraryPage: FC<ILibraryPageProps> = ({ items, years, programmes }) => {
+const LibraryPage: FC<ILibraryPageProps> = ({ items, years, programmes, filterState, filterDispatcher }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   function handleFiltersClick():void {
@@ -56,7 +57,8 @@ const LibraryPage: FC<ILibraryPageProps> = ({ items, years, programmes }) => {
             </Menu>
           </div>
           <div className={styles.filter}>
-            <LibraryFilter years={years} programmes={programmes}/>
+            <LibraryFilter years={years} programmes={programmes}
+              filterState={filterState} filterDispatcher={filterDispatcher}/>
           </div>
         </div>
         <section className={styles.section}>

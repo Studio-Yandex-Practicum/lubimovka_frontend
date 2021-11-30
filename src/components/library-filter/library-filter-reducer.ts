@@ -1,4 +1,6 @@
-type Action =
+import { Dispatch } from 'react';
+
+export type Action =
   { type: 'add years'; years: string[] } |
   { type: 'add programme'; programme: string } |
   { type: 'remove programme'; programme: string } |
@@ -7,6 +9,11 @@ type Action =
 interface State {
   years: string[];
   programmes: string[]
+}
+
+export interface ILibraryFilterReducer {
+  filterState: State;
+  filterDispatcher: Dispatch<Action>;
 }
 
 function reducer(state: State, action: Action): State {

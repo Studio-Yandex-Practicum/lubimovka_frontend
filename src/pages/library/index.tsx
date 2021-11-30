@@ -1,4 +1,5 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { useEffect, useState, useReducer } from 'react';
 import Error from 'next/error';
 import Head from 'next/head';
 
@@ -6,6 +7,7 @@ import AppLayout from 'components/app-layout';
 import LibraryPage from 'components/library-pieces-page';
 import { fetcher } from 'shared/fetcher';
 import { PaginatedPlayList, Play } from 'api-typings';
+import reducer from 'components/library-filter/library-filter-reducer';
 
 export interface IPiecesFiltersProps {
   years: Array<number[]>;
@@ -17,7 +19,21 @@ interface IPiecesProps extends IPiecesFiltersProps {
   pieces: Play[];
 }
 
-const Library = ({ errorCode, pieces, years, programs }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Library = ({ errorCode, pieces, years, programs }:
+  InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const [piecesState, setPiecesState] = useState<Play[]>(pieces);
+  const filterInitialState = { years: [], programmes: [] };
+
+  const [filterState, filterDispatcher] = useReducer(
+    reducer,
+    filterInitialState,
+    undefined
+  );
+
+  useEffect(() => {
+    fetchPieces().then(res => setPiecesState(res)).catch(() => setPiecesState(pieces));
+  }, [pieces, filterState]);
+
   if (errorCode) {
     return (
       <Error statusCode={errorCode}/>
@@ -29,7 +45,8 @@ const Library = ({ errorCode, pieces, years, programs }: InferGetServerSideProps
       <Head>
         <title>Библиотека</title>
       </Head>
-      <LibraryPage items={pieces} years={years.flat()} programmes={programs.flat()}/>
+      <LibraryPage items={piecesState} years={years.flat()} programmes={programs.flat()}
+        filterState={filterState} filterDispatcher={filterDispatcher}/>
     </AppLayout>
   );
 };
