@@ -36,13 +36,15 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes }) => {
     droplistRef.current?.deleteAll();
   }, []);
 
+  const handleYearsClick = useCallback((years: string[]): void => {
+    filterDispatcher({ type: 'add years', years: years });
+  }, []);
+
   return (
     <div className={style.container}>
       <div className={style.years}>
         <h2 className={style.title}>Годы фестиваля</h2>
-        <Droplist type='checkbox' cb={(years: string[]) => {
-          console.log(years);}} data={years} ref={droplistRef}
-        />
+        <Droplist type='checkbox' cb={handleYearsClick} data={years} ref={droplistRef}/>
       </div>
       <div className={style.programmes}>
         <h2 className={style.title}>Программа</h2>
