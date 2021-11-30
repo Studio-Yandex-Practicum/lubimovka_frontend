@@ -29,9 +29,13 @@ interface IAuthorPlays {
 export const AuthorPlays: FC<IAuthorPlays> = ({ data }) => {
   return (
     <section className={cn(styles.playsContainer)}>
-      {data.plays.map((item) => (
-        <BasicPlayCard play={item} author={item.author} key={item.author.id}/>
-      ))}
+      <ul className={cn(styles.list)}>
+        {data.plays.map((item) => (
+          <li key={item.author.id} className={cn(styles.item)}>
+            <BasicPlayCard play={item} author={item.author}/>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 };

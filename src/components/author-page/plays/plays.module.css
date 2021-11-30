@@ -1,16 +1,37 @@
 .playsContainer {
-  display: grid;
-  overflow: hidden;
-  max-width: 100%;
+  @mixin hideScrollbar;
+
+  position: relative;
+  display: flex;
   padding: calc(var(--scale) * 134) calc(var(--scale) * 60);
   background-color: var(--beige);
-  gap: calc(var(--scale) * 30);
-  grid-auto-flow: column;
-  grid-row: auto;
-  grid-template-columns: repeat(5, 1fr);
 
-  @media (max-width: 730px) {
-    overflow-x: scroll;
-    overflow-y: hidden;
+  @media (max-width: $tablet-portrait) {
+    overflow: scroll;
+    padding: scale(10px 0 80px 24px);
+  }
+}
+
+.list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  @media (max-width: $tablet-portrait) {
+    margin-right: scale(24px);
+  }
+}
+
+.item {
+  width: scale(240px);
+  margin-right: scale(30px);
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(244px);
   }
 }
