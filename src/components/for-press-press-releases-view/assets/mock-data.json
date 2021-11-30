@@ -1,7 +1,8 @@
 {
-  "cover": "/images/for-press/for-press-cover.jpg",
+  "defaultCover": "/images/for-press/for-press-cover.jpg",
   "pressReleases": [
     {
+      "cover": "/images/for-press/for-press-cover.jpg",
       "year": 2020,
       "downloadLink": "/for-press/press-releases/2020.pdf",
       "contents": [
@@ -69,13 +70,14 @@
       ]
     },
     {
-      "year": 2019,
-      "downloadLink": "/for-press/press-releases/2019.pdf",
+      "cover": "/images/for-press/for-press-cover-2017.jpg",
+      "year": 2017,
+      "downloadLink": "/for-press/press-releases/2017.pdf",
       "contents": [
         {
           "content_type": "preamble",
           "content_item": {
-            "preamble": "«Любимовка - 2019»: 39 пьес, трансляции, большая образовательная программа, философы в роли режиссеров и еще одна площадка."
+            "preamble": "«Любимовка - 2017»: 39 пьес, трансляции, большая образовательная программа, философы в роли режиссеров и еще одна площадка."
           }
         },
         {
@@ -117,7 +119,7 @@
         {
           "content_type": "title",
           "content_item": {
-            "title": "В программу «Любимовки-2019» вошли:"
+            "title": "В программу «Любимовки-2017» вошли:"
           }
         },
         {
@@ -136,6 +138,7 @@
       ]
     },
     {
+      "cover": "/images/for-press/for-press-cover-2018.jpg",
       "year": 2018,
       "downloadLink": "/for-press/press-releases/2018.pdf",
       "contents": [

@@ -1,20 +1,21 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import cn from 'classnames/bind';
 
-import styles from './for-press-press-releases-view.module.css';
+// import Image from 'next/image';
 
 import { Url } from 'shared/types';
 import { Droplist } from 'components/ui/droplist';
 import { Button } from 'components/ui/button';
-
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import breakpoints from 'shared/breakpoints.js';
+
+import styles from './for-press-press-releases-view.module.css';
 
 const cx = cn.bind(styles);
 
 export interface IForPressPressReleasesViewProps {
   data: {
-    cover: Url,
+    defaultCover: Url,
     pressReleases: PressRelease[],
   },
 }
@@ -39,8 +40,13 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({
   const pressReleaseDefaultYear = pressReleaseYears[0];
   const [pressReleaseYearSelected, setPressReleaseYearSelected] = useState<string[] | number>(pressReleaseDefaultYear);
   const pressReleaseSelected = data.pressReleases.find(i => i.year === pressReleaseYearSelected);
+  const defaultCover = data.defaultCover;
 
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+
+  useEffect(() => {
+    setPressReleaseYearSelected(pressReleaseYearSelected);
+  }, [ pressReleaseYearSelected ]);
 
   return (
     <section className={cx('main')}>
@@ -55,10 +61,10 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({
           type='radio'
           data={pressReleaseYears}
           cb={(i: string[]) => {
-            setPressReleaseYearSelected(Number(i[0]));
+            setPressReleaseYearSelected(Number(i));
           }}
           className={cx('droplist')}
-          defaultValue={pressReleaseYearSelected.toString()}
+          defaultValue={pressReleaseDefaultYear.toString()}
         />
         <Button
           view='primary'
@@ -69,18 +75,29 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({
           border='bottomLeft'
           iconPlace='right'
           icon='arrow-down'
-          label={
-            pressReleaseSelected === undefined ?
-              'Пресс-релиз не найден'
-              : pressReleaseSelected !== undefined && isMobile
-                ? 'Скачать пресс-релиз в .pdf'
-                : `Скачать пресс-релиз ${pressReleaseYearSelected} года в .pdf`}
+          label={pressReleaseSelected === undefined ?
+            'Пресс-релиз не найден'
+            : pressReleaseSelected !== undefined && isMobile
+              ? 'Скачать пресс-релиз в .pdf'
+              : `Скачать пресс-релиз ${pressReleaseYearSelected} года в .pdf`}
           isLink={pressReleaseSelected !== undefined}
           disabled={pressReleaseSelected === undefined}
           href={pressReleaseSelected !== undefined ? pressReleaseSelected.downloadLink : ''}
         />
       </nav>
-      <img className={cx('cover')} src={data.cover}/>
+      {/* <div className={cx('coverContainer')}> */}
+      {/* <Image
+          className={cx('cover')}
+          layout="fill"
+          objectFit="cover"
+          src={pressReleaseSelected ? pressReleaseSelected.cover : defaultCover }
+          alt={pressReleaseYearSelected ? `Обложка фестиваля ${pressReleaseYearSelected} года` : 'Обложка фестиваля не найдена'}/> */}
+      {/* </div> */}
+      <img
+        className={cx('cover')}
+        src={pressReleaseSelected ? pressReleaseSelected.cover : defaultCover}
+        alt={pressReleaseYearSelected ? `Обложка фестиваля ${pressReleaseYearSelected} года` : 'Обложка фестиваля не найдена'}
+      />
       <article className={cx('pressReleaseText')}>
         {pressReleaseSelected === undefined ?
           <p>Пресс-релиз этого года не найден</p>

@@ -1,4 +1,5 @@
 .main {
+  position: relative;
   width: 100%;
   background-color: var(--white);
 
@@ -36,13 +37,14 @@
   grid-template-columns: scale(166px) scale(420px);
 
   @media (max-width: $tablet-portrait) {
-    width: 100%;
+    width: 88.41%;
     max-width: none;
-    margin-top: scale(32px);
+    margin: 0 auto;
     column-gap: scale(51px);
     grid-template-areas:
       "label  droplist"
       "button button";
+    grid-template-columns: scale(166px) scale(149px);
   }
 }
 
@@ -57,7 +59,6 @@
 
   @media (max-width: $tablet-portrait) {
     padding-bottom: 0;
-    margin-left: scale(24px);
   }
 }
 
@@ -66,13 +67,12 @@
   @mixin textLarge;
 
   z-index: 2;
-  max-width: scale(149px);
+  width: scale(149px);
   height: scale(44px);
   grid-area: droplist;
 
   @media (max-width: $tablet-portrait) {
     padding-bottom: scale(28px);
-    margin-right: scale(24px);
   }
 }
 
@@ -91,7 +91,6 @@
     width: scale(367px);
     min-width: unset;
     margin-bottom: scale(59px);
-    margin-left: scale(14px);
   }
 }
 
@@ -99,6 +98,12 @@
   width: scale(25px);
   height: scale(25px);
 }
+
+/* .coverContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+} */
 
 .cover {
   position: absolute;
