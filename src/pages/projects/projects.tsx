@@ -2,10 +2,13 @@ import Error from 'next/error';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 import AppLayout from 'components/app-layout';
-import { ProjectsPage } from 'components/projects-page';
+import { ProjectsLayout } from 'components/projects-layout';
+import { ProjectCardList } from 'components/project-card-list';
 import { ProjectCard } from 'components/ui/project-card';
+import { PageTitle } from 'components/page-title';
 import { fetcher } from 'shared/fetcher';
 import { PaginatedProjectListList, ProjectList } from 'api-typings';
+import { isEven } from 'shared/helpers/is-even';
 
 interface IProjectsProps {
   errorCode?: number,
@@ -21,16 +24,28 @@ const Projects = ({ errorCode, projects }: InferGetServerSidePropsType<typeof ge
 
   return (
     <AppLayout>
-      <ProjectsPage>
-        {projects.map(({ id, title, description, image }) => (
-          <ProjectCard
-            key={id}
-            id={id}
-            title={title}
-            description={description}
-            image={image}/>
-        ))}
-      </ProjectsPage>
+      <ProjectsLayout>
+        <ProjectsLayout.Headline>
+          <PageTitle>
+            Проекты Любимовки
+          </PageTitle>
+        </ProjectsLayout.Headline>
+        <ProjectsLayout.List>
+          <ProjectCardList>
+            {projects.map(({ id, title, description, image }, index) => (
+              <ProjectCardList.Item key={id}>
+                <ProjectCard
+                  id={id}
+                  title={title}
+                  description={description}
+                  image={image}
+                  even={isEven(index)}
+                />
+              </ProjectCardList.Item>
+            ))}
+          </ProjectCardList>
+        </ProjectsLayout.List>
+      </ProjectsLayout>
     </AppLayout>
   );
 };
