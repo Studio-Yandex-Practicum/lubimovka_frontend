@@ -7,8 +7,8 @@ import { fetcher } from 'shared/fetcher';
 import { FestivalTeams, Volunteers } from 'api-typings';
 
 interface ITeamProps {
-  team: FestivalTeams,
-  volunteers: Volunteers | undefined
+  team: Array<FestivalTeams>,
+  volunteers: Array<Volunteers>
 }
 
 const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -29,7 +29,7 @@ const fetchTeam = async () => {
   let data;
 
   try {
-    data = await fetcher<FestivalTeams>('/info/about-festival/team/');
+    data = await fetcher<Array<FestivalTeams>>('/info/about-festival/team/');
   } catch (error) {
     return;
   }
@@ -41,7 +41,7 @@ const fetchVolunteers = async () => {
   let data;
 
   try {
-    data = await fetcher<Volunteers>('/info/about-festival/volunteers/');
+    data = await fetcher<Array<Volunteers>>('/info/about-festival/volunteers/');
   } catch (error) {
     return;
   }

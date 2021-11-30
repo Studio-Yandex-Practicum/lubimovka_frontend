@@ -6,29 +6,14 @@ import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
 import VolunteersList from 'components/team-page/volunteers/list';
 import { InfoLink } from 'components/ui/info-link';
+import { Volunteers } from 'api-typings';
 
 import styles from './volunteers-section.module.css';
 
 const cx = classNames.bind(styles);
 
-interface PersonCardData {
-  id: number;
-  person: {
-    id: number;
-    first_name: string;
-    last_name: string;
-    middle_name: string;
-    city: string;
-    email: string;
-    image: string;
-  };
-  year: number;
-  review_title: string;
-  review_text: string;
-}
-
 interface VolunteersSectionProps {
-  cards: Array<PersonCardData>;
+  cards: Array<Volunteers>
 }
 
 const VolunteersSection: FC<VolunteersSectionProps> = (props) => {

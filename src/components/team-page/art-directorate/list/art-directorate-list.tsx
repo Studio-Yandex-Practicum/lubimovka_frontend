@@ -3,28 +3,14 @@ import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames/bind';
 
 import { PersonCard } from '../../../ui/person-card/person-card';
+import { FestivalTeams } from 'api-typings';
 
 import styles from './art-directorate-list.module.css';
 
 const cx = classNames.bind(styles);
 
-interface PersonCardData {
-  id: number;
-  person: {
-    id: number;
-    first_name: string;
-    last_name: string;
-    middle_name: string;
-    city: string;
-    email: string;
-    image: string;
-  };
-  team: string;
-  position: string;
-}
-
 interface ArtDirectorateCardsProps {
-  cards: Array<PersonCardData>
+  cards: Array<FestivalTeams>
 }
 
 const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
