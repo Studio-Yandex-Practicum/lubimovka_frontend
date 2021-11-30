@@ -13,11 +13,11 @@ import styles from './volunteers-section.module.css';
 const cx = classNames.bind(styles);
 
 interface VolunteersSectionProps {
-  cards: Array<Volunteers>
+  cards: Array<Volunteers> | undefined
 }
 
 const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
-  const { cards } = props;
+  const { cards = [] } = props;
 
   const years = useMemo(() => {
     return Array.from(new Set(cards.map(card => card.year))).sort().reverse();

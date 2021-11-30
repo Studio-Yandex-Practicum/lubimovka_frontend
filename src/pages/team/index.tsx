@@ -8,7 +8,7 @@ import { FestivalTeams, Volunteers } from 'api-typings';
 
 interface ITeamProps {
   team: Array<FestivalTeams>,
-  volunteers: Array<Volunteers>
+  volunteers: Array<Volunteers> | undefined
 }
 
 const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
