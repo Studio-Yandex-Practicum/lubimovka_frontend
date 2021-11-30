@@ -1,19 +1,20 @@
-import React, { FC, useCallback, useReducer } from 'react';
+import React, { FC, useCallback, useReducer, RefObject, useRef } from 'react';
 
-// import { Droplist } from 'components/ui/droplist';
+import { Droplist, IDroplistPublic } from 'components/ui/droplist';
 import { Tag } from 'components/ui/tag';
 import { Button } from 'components/ui/button';
 import reducer from './library-filter-reducer';
 
 import style from './library-filter.module.css';
 
-// const mockYears = ['2020', '2010', '2000', '1994', '1990'];
+const mockYears = ['2020', '2010', '2000', '1994', '1990'];
 
 const mockProgrammes = ['шорт-лист', 'внеконкурсная программа', 'fringe-программа',
   'лонг-лист акции 7х7', 'Lark + Любимовка'];
 
 const LibraryFilter: FC = () => {
   const filterInitialState = { years: [], programmes: [] };
+  const droplistRef = useRef(null) as RefObject<IDroplistPublic>;
 
   const [filterState, filterDispatcher] = useReducer(
     reducer,
@@ -32,16 +33,16 @@ const LibraryFilter: FC = () => {
 
   const handleResetClick = useCallback((): void => {
     filterDispatcher({ type: 'reset' });
+    droplistRef.current?.deleteAll();
   }, []);
 
   return (
     <div className={style.container}>
       <div className={style.years}>
         <h2 className={style.title}>Годы фестиваля</h2>
-        {/* <Droplist type='checkbox' cb={selectList => {
-          filterDispatcher({ type: 'add years', years: selectList });
-        }} data={mockYears}
-        /> */}
+        <Droplist type='checkbox' cb={(years: string[]) => {
+          console.log(years);}} data={mockYears} ref={droplistRef}
+        />
       </div>
       <div className={style.programmes}>
         <h2 className={style.title}>Программа</h2>
