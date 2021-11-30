@@ -21,6 +21,7 @@ export interface IForPressPressReleasesViewProps {
 
 type PressRelease = {
   year: number,
+  cover: Url,
   downloadLink: Url,
   contents: Content[]
 }
@@ -57,6 +58,7 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({
             setPressReleaseYearSelected(Number(i[0]));
           }}
           className={cx('droplist')}
+          defaultValue={pressReleaseYearSelected.toString()}
         />
         <Button
           view='primary'
@@ -73,8 +75,8 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({
               : pressReleaseSelected !== undefined && isMobile
                 ? 'Скачать пресс-релиз в .pdf'
                 : `Скачать пресс-релиз ${pressReleaseYearSelected} года в .pdf`}
-          isLink={pressReleaseSelected !== undefined ? true : false}
-          disabled={pressReleaseSelected !== undefined ? false : true}
+          isLink={pressReleaseSelected !== undefined}
+          disabled={pressReleaseSelected === undefined}
           href={pressReleaseSelected !== undefined ? pressReleaseSelected.downloadLink : ''}
         />
       </nav>
