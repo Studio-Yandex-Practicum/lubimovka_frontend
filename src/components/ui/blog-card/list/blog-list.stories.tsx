@@ -2,7 +2,8 @@
 import { ComponentMeta, Story } from '@storybook/react';
 
 import { BlogCard, BlogCardProps } from '..';
-import {BlogList} from './blog-list';
+import { BlogList } from './blog-list';
+
 import BlogListData from './mock-data-blog-list.json';
 
 export default {
@@ -11,7 +12,7 @@ export default {
   subcomponents: { BlogCard },
   decorators: [
     (Story) => (
-      <div style={{margin: '0 auto', maxWidth: '1262px'}}>
+      <div style={{ margin: '0 auto', maxWidth: '1262px' }}>
         <Story/>
       </div>
     ),

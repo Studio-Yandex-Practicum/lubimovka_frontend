@@ -1,11 +1,11 @@
 import React from 'react';
-
 import cn from 'classnames/bind';
 
-import styles from './article-other.module.css';
 import { BlogList } from '../../ui/blog-card/list';
 import { BlogCard } from '../../ui/blog-card';
 import { BlogItem, NewsItem } from '../types/article-types';
+
+import styles from './article-other.module.css';
 
 const cx = cn.bind(styles);
 
@@ -15,7 +15,7 @@ interface IArticleOtherProps {
   newsArticle?: NewsItem[];
 }
 
-const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
+export const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
   const {
     isBlog,
     blogArticle = [],
@@ -44,5 +44,3 @@ const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
     </section>
   );
 };
-
-export default ArticleOther;

@@ -12,7 +12,7 @@ import { ImageSlider } from 'components/ui/image-slider';
 import ArticleTitle from './article-title';
 import ArticleShare from './article-share';
 import { ArticleMainText } from './article-maintext';
-import ArticleOther from './article-other/article-other';
+import { ArticleOther } from './article-other';
 import { BlogData, ComplexItem, NewsData, Person, Play } from './types/article-types';
 
 import styles from './article-page.module.css';

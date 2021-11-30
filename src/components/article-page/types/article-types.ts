@@ -101,4 +101,3 @@ export type NewsItem = {
   pub_date: string
 }
 
-
