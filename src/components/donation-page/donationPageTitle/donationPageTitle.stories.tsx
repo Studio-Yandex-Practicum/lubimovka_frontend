@@ -1,8 +1,9 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import mockData from '../../../pages/donation/assets/mock-donation-data.json';
 
 import { DonationPageTitle } from './donationPageTitle';
+
+import mockData from '../../../pages/donation/assets/mock-donation-data.json';
 
 export default {
   title: 'Components/Donation-DonationPageTitle',

@@ -6,6 +6,7 @@ import { OverlayNavActions } from './actions';
 import { OverlayNavSocials } from './socials';
 
 import styles from './overlay-nav.module.css';
+
 const cx = classNames.bind(styles);
 
 interface IOverlayNavProps {

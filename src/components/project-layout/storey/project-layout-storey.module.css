@@ -1,0 +1,60 @@
+.wrapper {
+  padding: scale(0 32px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(0 24px);
+  }
+}
+
+.description {
+  padding: scale(80px 0 120px);
+  background-color: var(--light-green);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(56px 0 72px);
+  }
+
+  .holder {
+    max-width: scale(716px);
+    margin: 0 auto;
+  }
+}
+
+.videos {
+  margin-top: scale(98px);
+}
+
+.photos {
+  margin-top: scale(144px);
+}
+
+.plays {
+  margin-top: scale(94px);
+}
+
+.performances {
+  margin-top: scale(124px);
+}
+
+.persons {
+  margin-top: scale(124px);
+}
+
+.text {
+  margin-top: scale(56px);
+
+  .holder {
+    max-width: scale(716px);
+    margin: 0 auto;
+  }
+}
+
+.invitation {
+  margin-top: scale(100px);
+
+  .holder {
+    max-width: scale(516px);
+    margin-right: scale(200px);
+    margin-left: auto;
+  }
+}

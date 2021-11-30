@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
+
 import { Icon } from 'components/ui/icon';
+
 import styles from './donationPageTitle.module.css';
 
 const cx = cn.bind(styles);

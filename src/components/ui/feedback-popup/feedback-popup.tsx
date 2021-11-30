@@ -7,8 +7,8 @@ import { SliderDots } from '../slider-dots';
 import { Icon } from '../icon';
 import { Url } from 'shared/types';
 
-
 import styles from './feedback-popup.module.css';
+
 const cx = classNames.bind(styles);
 
 export type PersonCardData = {
