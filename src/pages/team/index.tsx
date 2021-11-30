@@ -13,6 +13,7 @@ interface ITeamProps {
 
 const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { team, volunteers } = props;
+
   return (
     <AppLayout>
       <Head>
