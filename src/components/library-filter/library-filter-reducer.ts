@@ -6,7 +6,7 @@ export type Action =
   { type: 'remove programme'; programme: string } |
   { type: 'reset' }
 
-interface State {
+export interface State {
   years: string[];
   programmes: string[]
 }

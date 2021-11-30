@@ -19,7 +19,8 @@ interface ILibraryPageProps extends ILibraryFilterReducer {
   programmes: string[];
 }
 
-const LibraryPage: FC<ILibraryPageProps> = ({ items, years, programmes, filterState, filterDispatcher }) => {
+const LibraryPage: FC<ILibraryPageProps> = ({ items, years, programmes,
+  filterState, filterDispatcher }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   function handleFiltersClick():void {

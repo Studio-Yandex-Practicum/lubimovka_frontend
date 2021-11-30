@@ -8,6 +8,7 @@ import LibraryPage from 'components/library-pieces-page';
 import { fetcher } from 'shared/fetcher';
 import { PaginatedPlayList, Play } from 'api-typings';
 import reducer from 'components/library-filter/library-filter-reducer';
+import queryParser from './library-query-parser';
 
 export interface IPiecesFiltersProps {
   years: Array<number[]>;
@@ -31,7 +32,10 @@ const Library = ({ errorCode, pieces, years, programs }:
   );
 
   useEffect(() => {
-    fetchPieces().then(res => setPiecesState(res)).catch(() => setPiecesState(pieces));
+    const parsedQuery = queryParser(filterState);
+
+    fetchPieces(parsedQuery).then(res => setPiecesState(res)).catch(() =>
+      setPiecesState(pieces));
   }, [pieces, filterState]);
 
   if (errorCode) {
@@ -51,9 +55,11 @@ const Library = ({ errorCode, pieces, years, programs }:
   );
 };
 
-const fetchPieces = async () => {
+const fetchPieces = async (parsedQuery?: string) => {
+  const path = parsedQuery ? `/library/plays/${parsedQuery}` : '/library/plays';
+
   try {
-    const { results } = await fetcher<PaginatedPlayList>('/library/plays');
+    const { results } = await fetcher<PaginatedPlayList>(path);
     if(!results) {
       throw 'no results';
     }
