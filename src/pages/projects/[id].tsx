@@ -102,7 +102,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                       playwrightArray={['Ольга Казакова', 'Антон Чехов']}
                       directorArray={['Катя Ганюшина']}
                       buttonLink={'https://lubimovka.timepad.ru/event/1746579/'}
-                      coverResourceUrl="https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg"
+                      coverResourceUrl="/images/projects/performance_mama.jpg"
                       projectCopy="читка проекта Любимовка.Eщё"
                       paid={true}
                     />

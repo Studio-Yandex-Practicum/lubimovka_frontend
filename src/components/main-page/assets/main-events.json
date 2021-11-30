@@ -19,8 +19,7 @@
     "directorArray": [ "Катя Ганюшина" ],
     "buttonLink": "/",
     "projectCopy": "читка проекта Любимовка.Ещё",
-    "coverResourceUrl": "https://sun9-79.userapi.com/impg/EpIStR3NKsxUtwdAN7Za2a4H1Y-FV9mq148yzg/NogMqrZRZEQ.jpg?size=449x594&quality=95&sign=8d96101bc1bccd177c4a00ecc0bfd427&type=album",
-    "paid": true
+    "coverResourceUrl": "/images/main/performance_solnechnaya_liniya.jpg"
   },
   {
     "type": "PERFORMANCE",
@@ -31,7 +30,7 @@
     "directorArray": [ "Катя Ганюшина" ],
     "buttonLink": "/",
     "projectCopy": "читка проекта Любимовка.Ещё",
-    "coverResourceUrl": "https://sun9-79.userapi.com/impg/EpIStR3NKsxUtwdAN7Za2a4H1Y-FV9mq148yzg/NogMqrZRZEQ.jpg?size=449x594&quality=95&sign=8d96101bc1bccd177c4a00ecc0bfd427&type=album",
+    "coverResourceUrl": "/images/main/performance_mama.jpg",
     "paid": true
   },
   {
@@ -65,7 +64,7 @@
     "directorArray": [ "Катя Ганюшина" ],
     "buttonLink": "/",
     "projectCopy": "читка проекта Любимовка.Ещё",
-    "coverResourceUrl": "https://sun9-79.userapi.com/impg/EpIStR3NKsxUtwdAN7Za2a4H1Y-FV9mq148yzg/NogMqrZRZEQ.jpg?size=449x594&quality=95&sign=8d96101bc1bccd177c4a00ecc0bfd427&type=album",
+    "coverResourceUrl": "/images/main/performance_s_uchilitscha.jpg",
     "paid": true
   }
 ]

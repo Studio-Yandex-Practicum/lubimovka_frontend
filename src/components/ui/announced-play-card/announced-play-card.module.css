@@ -17,7 +17,7 @@
 }
 
 .cover {
-  /* position: relative; */
+  position: relative;
   width: scale(120px);
   height: scale(161px);
   margin-right: scale(31px);
@@ -70,9 +70,6 @@
 
   max-width: scale(419px);
   margin-top: scale(4px);
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
