@@ -3,11 +3,11 @@
 
   position: relative;
   display: flex;
+  overflow: scroll;
   padding: calc(var(--scale) * 134) calc(var(--scale) * 60);
   background-color: var(--beige);
 
   @media (max-width: $tablet-portrait) {
-    overflow: scroll;
     padding: calc(var(--scale) * 10) 0 calc(var(--scale) * 80) calc(var(--scale) * 24);
   }
 }
