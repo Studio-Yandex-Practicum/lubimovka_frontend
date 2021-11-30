@@ -13,7 +13,7 @@ import ArticleTitle from './article-title';
 import ArticleShare from './article-share';
 import { ArticleMainText } from './article-maintext';
 import { ArticleOther } from './article-other';
-import { BlogData, ComplexItem, NewsData, Person, Play } from './types/article-types';
+import { BlogData, ComplexItem, NewsData, Person, Play, Team } from './types/article-types';
 
 import styles from './article-page.module.css';
 
@@ -42,17 +42,24 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
   const illustrators: string[] = [];
   const photographers: string[] = [];
 
-  if ('persons' in data) {
-    data.persons.forEach(el => {
-      switch (el.role) {
-      case 'TEXT':
-        authors.push(el.full_name);
+  function pushCreators (teamItem:Team, creators: string[]) {
+    teamItem.persons.forEach(el => {
+      creators.push(el.full_name);
+    });
+  }
+
+  if ('team' in data) {
+    data.team.forEach(teamItem => {
+      switch (teamItem.slug) {
+      case 'illustrations':
+        pushCreators(teamItem, illustrators);
         break;
-      case 'ILLUSTRATION':
-        illustrators.push(el.full_name);
+      case 'text':
+        pushCreators(teamItem, authors);
         break;
-      case 'PHOTO':
-        photographers.push(el.full_name);
+      case 'photo':
+        pushCreators(teamItem, photographers);
+        break;
       }
     });
   }
@@ -64,19 +71,19 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
       </Head>
       <main>
         <ArticleTitle
-          isBlog={'blogs' in data}
+          isBlog={'other_blogs' in data}
           title={data.title}
           description={data.description}
-          date={data.created}
+          date={data.pub_date}
           imgLink={data.image}
           author={'author_url_title' in data ? data.author_url_title : undefined}
           authorLink={'author_url' in data ? data.author_url : undefined}
         />
         <ArticleMainText>
-          {data.preamble &&
-          <h6>{data.preamble}</h6>}
           {data.contents.map((item, idx) => {
             switch (item.content_type) {
+            case 'preamble':
+              return (<h6 key={idx}>{item.content_item.preamble}</h6>);
             case 'title':
               return (<h4 key={idx}>{item.content_item.title}</h4>);
             case 'quote':
@@ -115,15 +122,14 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
                   play={{
                     title: item.name,
                     city: item.city,
-                    // TODO: поменять тип year в basic-play-card
-                    year: '2020', //item.year,
+                    year: item.year,
                     linkView: item.url_reading,
                     linkDownload: item.url_download,
-                  }}
-                  author={{
+                    authors: [{
                     // TODO: добавить реальные данные в ответ бекенда
-                    id: 0,
-                    name: 'Константин Константинопольский',
+                      id: 0,
+                      name: 'Константин Константинопольский',
+                    }]
                   }}
                 />
               ))}
@@ -147,16 +153,16 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
             </PersonCardList>
           </Section>}
         <ArticleShare
-          isBlog={'blogs' in data}
+          isBlog={'other_blogs' in data}
           authors={authors}
           illustrators={illustrators}
           photographers={photographers}
         />
       </main>
       <ArticleOther
-        isBlog={'blogs' in data}
-        blogArticle={'blogs' in data ? data.blogs : undefined}
-        newsArticle={'news' in data ? data.news : undefined}
+        isBlog={'other_blogs' in data}
+        blogArticle={'other_blogs' in data ? data.other_blogs : undefined}
+        newsArticle={'other_news' in data ? data.other_news : undefined}
       />
     </>
   );

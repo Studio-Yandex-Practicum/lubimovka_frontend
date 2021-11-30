@@ -4,11 +4,17 @@ const blogArticle: BlogData = {
   id: 1,
   title: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
-  preamble: 'В образовательной программе «Драматург плюс стратегии и практики» прошел мастер-класс «Документальность в современном театре и современном искусстве». Его провели драматург, сценарист, преподаватель Евгений Казачков и драматург, художница, куратор, кандидат филологических наук Ильмира Болотян. Мы приводим расшифровку мастер-класса и обсуждения, развернувшегося после него.',
   image: '/images/article/title-image.png',
   author_url: 'http://author.link',
   author_url_title: 'Лара Бессмертная',
+  pub_date: '2021-11-28T23:30:34',
   contents: [
+    {
+      content_type: 'preamble',
+      content_item: {
+        preamble: 'В образовательной программе «Драматург плюс стратегии и практики» прошел мастер-класс «Документальность в современном театре и современном искусстве». Его провели драматург, сценарист, преподаватель Евгений Казачков и драматург, художница, куратор, кандидат филологических наук Ильмира Болотян. Мы приводим расшифровку мастер-класса и обсуждения, развернувшегося после него.'
+      }
+    },
     {
       content_type: 'imagesblock',
       content_item: {
@@ -250,60 +256,84 @@ const blogArticle: BlogData = {
       }
     }
   ],
-  persons: [
+  team: [
     {
-      id: 61,
-      full_name: 'Корнил Блохин',
-      role: 'ILLUSTRATION'
+      name: 'Иллюстрации',
+      slug: 'illustrations',
+      persons: [
+        {
+          id: 14,
+          full_name: 'Назар Алексеева'
+        },
+        {
+          id: 29,
+          full_name: 'Гремислав Алексеев'
+        }
+      ]
     },
     {
-      id: 98,
-      full_name: 'Влас Белова',
-      role: 'PHOTO'
+      name: 'Текст',
+      slug: 'text',
+      persons: [
+        {
+          id: 54,
+          full_name: 'Олег Абрамова'
+        },
+        {
+          id: 67,
+          full_name: 'Будимир Александров'
+        }
+      ]
     },
     {
-      id: 40,
-      full_name: 'Кирилл Агафонов',
-      role: 'PHOTO'
-    },
-    {
-      id: 1,
-      full_name: 'Натан Александров',
-      role: 'TEXT'
+      name: 'Фото',
+      slug: 'photo',
+      persons: [
+        {
+          id: 35,
+          full_name: 'Галактион Гусев'
+        }
+      ]
     }
   ],
-  blogs: [
+  other_blogs: [
     {
-      id: 1,
-      title: 'Заголовок записи блога',
-      description: 'Описание записи блога',
-      author_url_title: 'Евгений Казаков',
+      id: 3,
+      pub_date: '2021-11-29T00:07:51',
+      title: 'Заголовок 3',
+      description: 'Описание 3',
+      author_url: 'http://kotov.production',
+      author_url_title: 'Сергей Котов',
       image: '/images/person/person.jpg'
     },
     {
       id: 2,
-      title: 'Заголовок записи блога',
+      pub_date: '2021-11-29T00:02:19',
+      title: 'Запись блога 2',
       description: 'Описание записи блога',
-      author_url_title: 'Евгений Казаков',
+      author_url: 'http://ya.ru',
+      author_url_title: 'Сергей Иванов',
       image: '/images/article/title-image.png'
     },
     {
       id: 3,
-      title: 'Заголовок записи блога',
+      pub_date: '2021-11-29T00:02:19',
+      title: 'Запись блога 3',
       description: 'Описание записи блога',
-      author_url_title: 'Евгений Казаков',
+      author_url: 'http://ya.ru',
+      author_url_title: 'Сергей Иванов',
       image: '/images/blog/blog-image.jpg'
     },
     {
       id: 4,
-      title: 'Заголовок записи блога',
+      pub_date: '2021-11-29T00:02:19',
+      title: 'Запись блога 4',
       description: 'Описание записи блога',
-      author_url_title: 'Евгений Казаков',
+      author_url: 'http://ya.ru',
+      author_url_title: 'Сергей Иванов',
       image: '/images/person/person.jpg'
     }
-  ],
-  created: '2021-11-21T22:10:21',
-  modified: '2021-11-21T22:19:15'
+  ]
 };
 
 export default blogArticle;

@@ -7,20 +7,18 @@ export type BlogData = {
   id: number,
   title: string,
   description: string,
-  preamble?: string,
   image: Url,
   author_url: Url,
   author_url_title: string,
+  pub_date: string,
   contents: Content[],
-  persons: Creator[],
-  blogs: BlogItem[],
-  created: string,
-  modified: string,
+  team: Team[],
+  other_blogs: BlogItem[],
 }
 
-export type NewsData = Omit<BlogData, 'author_url' | 'author_url_title' | 'persons' | 'blogs'> & { news: NewsItem[]}
+export type NewsData = Omit<BlogData, 'author_url' | 'author_url_title' | 'team' | 'other_blogs'> & { other_news: NewsItem[]}
 
-export type Content = TextContent<'text' | 'title' | 'quote'> | ImageContent | PlaysContent | PersonsContent
+export type Content = TextContent<'text' | 'title' | 'quote' | 'preamble'> | ImageContent | PlaysContent | PersonsContent
 
 export type TextContent<T extends string> = T extends T ? {
   content_type: T,
@@ -47,7 +45,7 @@ export type ComplexItem<T extends ObjectItems> = {
   items: T[],
 }
 
-export type ObjectItems = Image | Play | Person | Creator | BlogItem;
+export type ObjectItems = Image | Play | Person | Team | BlogItem;
 
 export type Image = {
   title: string,
@@ -80,16 +78,23 @@ export type Person = {
   image: Url,
 }
 
-export type Creator = {
+export type Team = {
+  name: string,
+  slug: string,
+  persons: TeamPerson[]
+}
+
+export type TeamPerson = {
   id: number,
-  full_name: string,
-  role: string,
+  full_name: string
 }
 
 export type BlogItem = {
   id: number,
+  pub_date: string,
   title: string,
   description: string,
+  author_url: string,
   author_url_title: string,
   image: Url,
 }
