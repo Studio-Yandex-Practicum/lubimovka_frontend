@@ -66,8 +66,8 @@
 .advertisement {
   display: flex;
   flex: 23 23 46%;
-  flex-flow: row nowrap;
-  align-items: flex-start;
+  flex-flow: column nowrap;
+  align-items: center;
   justify-content: center;
   padding: scale(49px 0 0 0);
 }
@@ -76,4 +76,39 @@
   width: 510px;
   height: 492px;
   background: transparent !important;
+}
+
+.qrcodeContainer {
+  display: flex;
+  flex-flow: row nowrap;
+
+  @media (max-width: $tablet-portrait) {
+    flex-flow: column nowrap;
+  }
+}
+
+.qrcode {
+  position: relative;
+  width: 220px;
+  height: 220px;
+
+  @media (max-width: $tablet-portrait) {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+.qrcodeAdvise {
+  @mixin text;
+  @mixin textCaption;
+
+  width: scale(200px);
+  max-width: 250px;
+  padding: scale(0 0 0 10px);
+
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+    max-width: 250px;
+    padding: scale(10px 0 0 0);
+  }
 }
