@@ -7,12 +7,12 @@ import reducer from './library-filter-reducer';
 
 import style from './library-filter.module.css';
 
-const mockYears = ['2020', '2010', '2000', '1994', '1990'];
+interface LibraryFilterProps {
+  years: number[];
+  programmes: string[];
+}
 
-const mockProgrammes = ['шорт-лист', 'внеконкурсная программа', 'fringe-программа',
-  'лонг-лист акции 7х7', 'Lark + Любимовка'];
-
-const LibraryFilter: FC = () => {
+const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes }) => {
   const filterInitialState = { years: [], programmes: [] };
   const droplistRef = useRef(null) as RefObject<IDroplistPublic>;
 
@@ -41,13 +41,13 @@ const LibraryFilter: FC = () => {
       <div className={style.years}>
         <h2 className={style.title}>Годы фестиваля</h2>
         <Droplist type='checkbox' cb={(years: string[]) => {
-          console.log(years);}} data={mockYears} ref={droplistRef}
+          console.log(years);}} data={years} ref={droplistRef}
         />
       </div>
       <div className={style.programmes}>
         <h2 className={style.title}>Программа</h2>
         <ul className={style.programmesList}>
-          {mockProgrammes.map((el, id) => (
+          {programmes.map((el, id) => (
             <li onClick={() => handleTagClick(el)} className={style.programme} key={id}>
               <Tag label={el} selected={filterState.programmes.includes(el)}/></li>
           ))}

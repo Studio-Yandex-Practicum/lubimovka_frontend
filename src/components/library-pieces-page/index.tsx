@@ -14,9 +14,11 @@ import styles from './index.module.css';
 
 interface ILibraryPageProps {
   items: Play[];
+  years: number[];
+  programmes: string[];
 }
 
-const LibraryPage: FC<ILibraryPageProps> = ({ items }) => {
+const LibraryPage: FC<ILibraryPageProps> = ({ items, years, programmes }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   function handleFiltersClick():void {
@@ -54,7 +56,7 @@ const LibraryPage: FC<ILibraryPageProps> = ({ items }) => {
             </Menu>
           </div>
           <div className={styles.filter}>
-            <LibraryFilter/>
+            <LibraryFilter years={years} programmes={programmes}/>
           </div>
         </div>
         <section className={styles.section}>

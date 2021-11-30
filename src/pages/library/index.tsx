@@ -7,12 +7,17 @@ import LibraryPage from 'components/library-pieces-page';
 import { fetcher } from 'shared/fetcher';
 import { PaginatedPlayList, Play } from 'api-typings';
 
-interface IPiecesProps {
-  errorCode?: number,
-  pieces: Play[],
+export interface IPiecesFiltersProps {
+  years: Array<number[]>;
+  programs: Array<string[]>;
 }
 
-const Library = ({ errorCode, pieces }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+interface IPiecesProps extends IPiecesFiltersProps {
+  errorCode?: number;
+  pieces: Play[];
+}
+
+const Library = ({ errorCode, pieces, years, programs }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   if (errorCode) {
     return (
       <Error statusCode={errorCode}/>
@@ -24,7 +29,7 @@ const Library = ({ errorCode, pieces }: InferGetServerSidePropsType<typeof getSe
       <Head>
         <title>Библиотека</title>
       </Head>
-      <LibraryPage items={pieces}/>
+      <LibraryPage items={pieces} years={years.flat()} programmes={programs.flat()}/>
     </AppLayout>
   );
 };
@@ -41,11 +46,27 @@ const fetchPieces = async () => {
   }
 };
 
+const fetchPiecesFilters = async () => {
+  try {
+    const { years, programs } = await fetcher<IPiecesFiltersProps>('/library/playfilters');
+    if(!years || !programs) {
+      throw 'no results';
+    }
+    return { years, programs };
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const getServerSideProps: GetServerSideProps<IPiecesProps> = async () => {
   try {
+    const { years, programs } = await fetchPiecesFilters();
+
     return {
       props: {
         pieces: await fetchPieces(),
+        years: years,
+        programs: programs
       },
     };
   } catch (error) {
@@ -53,6 +74,8 @@ export const getServerSideProps: GetServerSideProps<IPiecesProps> = async () => 
       props: {
         errorCode: 500,
         pieces: [],
+        years: [],
+        programs: []
       }
     };
   }
