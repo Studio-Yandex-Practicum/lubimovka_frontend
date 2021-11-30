@@ -23,7 +23,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
     <>
       <Link href={link}>
         <a className={cn(styles.cardLinkWrapper, styles[firstCardSizeMode])}>
-          <li className={styles.card}>
+          <article className={styles.card}>
             <div className={styles.imgContainer}>
               {/* <img className={styles.img} src={image} alt={`изображение статьи: ${heading}`}/> */}
               <Image
@@ -39,7 +39,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
               <h6 className={styles.heading}>{heading}</h6>
               <p className={styles.description}>{description}</p>
             </div>
-          </li>
+          </article>
         </a>
       </Link>
 
