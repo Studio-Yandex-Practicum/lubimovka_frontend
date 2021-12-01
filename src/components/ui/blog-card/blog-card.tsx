@@ -22,13 +22,16 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   return (
     <Link href={link}>
       <a className={cn(styles.cardLinkWrapper, styles[firstCardSizeMode])}>
-        <li className={styles.card}>
+        <article className={styles.card}>
           <div className={styles.imgContainer}>
             <Image
               className={styles.img}
               src={image}
               alt={`изображение статьи: ${heading}`}
-              layout='fill'
+              width='100%'
+              height='100%'
+              layout='responsive'
+              objectFit='cover'
               priority
             />
           </div>
@@ -37,7 +40,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
             <h6 className={styles.heading}>{heading}</h6>
             <p className={styles.description}>{description}</p>
           </div>
-        </li>
+        </article>
       </a>
     </Link>
   );
