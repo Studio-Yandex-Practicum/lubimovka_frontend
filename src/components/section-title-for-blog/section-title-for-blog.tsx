@@ -4,6 +4,8 @@ import React, { useEffect } from 'react';
 import { Icon } from 'components/ui/icon';
 import { InfoLink } from 'components/ui/info-link';
 import { MonthsAndYearsFilter } from '../months-and-years-filter';
+import { PaginatedBlogItemListList } from 'api-typings';
+import { fetcher } from 'shared/fetcher';
 
 import styles from './section-title-for-blog.module.css';
 
@@ -11,26 +13,46 @@ const cx = classNames.bind(styles);
 
 interface ISectionTitleForBlogProps {
   email: string;
+  setBlogs: Function;
 }
+
+const fetchPerformance = async (month: number, year: number) => {
+  let data;
+  try {
+    data = await fetcher<PaginatedBlogItemListList>(`/blog?month=${month + 1}&year=${year}`);
+  } catch (error) {
+    return;
+  }
+  return data;
+};
+
 export const SectionTitleForBlog = (
   props: ISectionTitleForBlogProps
 ): JSX.Element => {
   const { email } = props;
+  const { setBlogs } = props;
 
   const [month, setMonth] = React.useState<number>();
   const [year, setYear] = React.useState<number>();
 
-  // const [articles, setArticles] = React.useState([]);
-
+  // TODO: будет ли какой-нибудь лоадер?
   useEffect(() => {
-    // console.log(`месяц: ${month}, год: ${year}`);
-  }, [year, month]);
+    if (month !== undefined && year !== undefined) {
+      fetchPerformance(month, year)
+        .then(data => {
+          setBlogs(data?.results);
+          // TODO: будем ли говорить, что ничего не найдено? или просто уберем все статьи со страницы?
+        })
+        // TODO: как-то обработать ошибку. Должен пользователь о ней знать? Если да - то как ее выводить?
+        .catch(err => alert(`err: ${err}`));
+    }
+  }, [year, month, setBlogs]);
 
   return (
     <section className={cx('section')}>
       <h1 className={cx('title')}>Блог Любимовки</h1>
       <div className={cx('asterisk')}>
-        <Icon glyph='asterisk' width='100%' height='100%' fill='var(--coal)'/>
+        <Icon glyph='asterisk' width='100%' height='100%' fill='var(--coal)' />
       </div>
       <div className={cx('text')}>
         <p className={cx('paragraph')}>
@@ -52,7 +74,7 @@ export const SectionTitleForBlog = (
         filterCallBack={(month, year) => {
           setMonth(month);
           setYear(year);
-        }}/>
+        }} />
     </section>
   );
 };

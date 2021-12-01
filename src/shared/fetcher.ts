@@ -3,6 +3,8 @@ import { addOriginToApiPath } from 'shared/helpers/url';
 export const fetcher = async <T = unknown>(path: string, options?: RequestInit): Promise<T>  => {
   let fetchImplementation = fetch;
 
+  console.log(options)
+
   if (process.env.MOCKS === 'true') {
     fetchImplementation = (await import('mocks/fetch-mock')).default;
   }
