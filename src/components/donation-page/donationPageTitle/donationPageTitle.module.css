@@ -103,7 +103,7 @@
   @mixin textCaption;
 
   width: scale(200px);
-  max-width: 250px;
+  max-width: 270px;
   padding: scale(0 0 0 10px);
 
   @media (max-width: $tablet-portrait) {
