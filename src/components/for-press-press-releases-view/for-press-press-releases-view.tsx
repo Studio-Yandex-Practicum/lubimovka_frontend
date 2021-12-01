@@ -1,7 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import cn from 'classnames/bind';
-
-// import Image from 'next/image';
+import Image from 'next/image';
 
 import { Url } from 'shared/types';
 import { Droplist } from 'components/ui/droplist';
@@ -14,10 +13,8 @@ import styles from './for-press-press-releases-view.module.css';
 const cx = cn.bind(styles);
 
 export interface IForPressPressReleasesViewProps {
-  data: {
-    defaultCover: Url,
-    pressReleases: PressRelease[],
-  },
+  defaultCover: string,
+  pressReleases: PressRelease[],
 }
 
 type PressRelease = {
@@ -27,26 +24,31 @@ type PressRelease = {
   contents: Content[]
 }
 
-type Content = {
-  content_type: ContentType;
-  content_item: Record<ContentType, string | string[]>;
+type Content = TextContent<'text' | 'title' | 'preamble'> | ListContent
+
+type ListContent = {
+  content_type: 'list',
+  content_item: Record<'list', string[]>;
 }
 
-type ContentType = 'text' | 'title' | 'preamble' | 'list';
+type TextContent<T extends string> = T extends T ? {
+  content_type: T,
+  content_item: Record<T, string>;
+} : never
 
-export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({ data }) => {
+export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = (props) => {
 
-  const pressReleaseYears = data.pressReleases.map((i)=> {return i.year;}).sort((a, b) => b - a);
+  const pressReleaseYears = props.pressReleases.map((i)=> {return i.year;}).sort((a, b) => b - a);
   const pressReleaseDefaultYear = pressReleaseYears[0];
   const [pressReleaseYearSelected, setPressReleaseYearSelected] = useState<string[] | number>(pressReleaseDefaultYear);
-  const pressReleaseSelected = data.pressReleases.find(i => i.year === pressReleaseYearSelected);
-  const defaultCover = data.defaultCover;
+  const pressReleaseSelected = props.pressReleases.find(i => i.year === pressReleaseYearSelected);
+  const defaultCover = props.defaultCover;
 
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
   useEffect(() => {
     setPressReleaseYearSelected(pressReleaseYearSelected);
-  }, [ pressReleaseYearSelected ]);
+  }, [ pressReleaseYearSelected, isMobile ]);
 
   return (
     <section className={cx('main')}>
@@ -85,19 +87,17 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = ({
           href={pressReleaseSelected !== undefined ? pressReleaseSelected.downloadLink : ''}
         />
       </nav>
-      {/* <div className={cx('coverContainer')}> */}
-      {/* <Image
-          className={cx('cover')}
-          layout="fill"
-          objectFit="cover"
-          src={pressReleaseSelected ? pressReleaseSelected.cover : defaultCover }
-          alt={pressReleaseYearSelected ? `Обложка фестиваля ${pressReleaseYearSelected} года` : 'Обложка фестиваля не найдена'}/> */}
-      {/* </div> */}
-      <img
-        className={cx('cover')}
-        src={pressReleaseSelected ? pressReleaseSelected.cover : defaultCover}
-        alt={pressReleaseYearSelected ? `Обложка фестиваля ${pressReleaseYearSelected} года` : 'Обложка фестиваля не найдена'}
-      />
+      <div className={cx('coverContainer')}>
+        <div className={cx('cover')}>
+          <Image
+            layout="fill"
+            objectFit="cover"
+            src={pressReleaseSelected ? pressReleaseSelected.cover : defaultCover}
+            alt={pressReleaseYearSelected ? `Обложка фестиваля ${pressReleaseYearSelected} года` :
+              'Обложка фестиваля не найдена'}
+          />
+        </div>
+      </div>
       <article className={cx('pressReleaseText')}>
         {pressReleaseSelected === undefined ?
           <p>Пресс-релиз этого года не найден</p>

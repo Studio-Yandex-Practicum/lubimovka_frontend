@@ -2,8 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ForPressPressReleasesView } from './for-press-press-releases-view';
-
-import mockData from './assets/mock-data.json';
+import { pressRelease } from './assets/pressRelease';
 
 export default {
   title: 'Components/ForPressPressReleasesView',
@@ -21,6 +20,4 @@ Default.parameters = {
   layout: 'fullscreen'
 };
 
-Default.args = {
-  data: mockData,
-};
+Default.args = pressRelease;

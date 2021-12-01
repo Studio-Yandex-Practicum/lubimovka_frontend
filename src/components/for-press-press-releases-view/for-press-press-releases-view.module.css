@@ -99,23 +99,23 @@
   height: scale(25px);
 }
 
-/* .coverContainer {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-} */
-
-.cover {
+.coverContainer {
   position: absolute;
   top: 0;
   right: 0;
-  width: scale(720px);
-  height: scale(269px);
-  object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
     position: relative;
     z-index: 1;
+  }
+}
+
+.cover {
+  position: relative;
+  width: scale(720px);
+  height: scale(269px);
+
+  @media (max-width: $tablet-portrait) {
     width: scale(414px);
     height: scale(154.68px);
   }
