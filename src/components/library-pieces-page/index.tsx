@@ -69,33 +69,33 @@ const LibraryPage: FC<ILibraryPageProps> = ({ items, years, programmes,
           </div>
           <div className={styles.pieces}>
             <BasicPlayCardList>
-              {items.map(({ id, name, city }) => (
+              {items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
                 <BasicPlayCard
                   key={id}
                   play={{
                     title: name,
                     city,
-                    year: '',
-                    linkView: '',
-                    linkDownload: ''
-                  }}
-                  author={{ id: 0, name: '' }}/>
+                    year,
+                    linkView: url_reading ? url_reading : '',
+                    linkDownload: url_download ? url_download : '',
+                    authors
+                  }}/>
               ))}
             </BasicPlayCardList>
           </div>
         </section>
         <section className={styles.piecesMobile}>
-          {items.map(({ id, name, city }) => (
+          {items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
             <BasicPlayCard
               key={id}
               play={{
                 title: name,
                 city,
-                year: '',
-                linkView: '',
-                linkDownload: ''
-              }}
-              author={{ id: 0, name: '' }}/>
+                year,
+                linkView: url_reading ? url_reading : '',
+                linkDownload: url_download ? url_download : '',
+                authors
+              }}/>
           ))}
         </section>
         {isModalOpen && <LibraryFiltersModal/>}
