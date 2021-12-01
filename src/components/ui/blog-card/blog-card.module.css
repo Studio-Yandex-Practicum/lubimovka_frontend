@@ -30,19 +30,9 @@
 
 .imgContainer {
   position: relative;
-
-  /* ширина равна высоте */
-
-  /* aspect-ratio: 1/1; */
-
-  /* вытянута по вертикали */
-
-  /* aspect-ratio: 1/2; */
   overflow: hidden;
   width: 100%;
-
-  /* вытянута по горизонтали */
-  aspect-ratio: 2/1;
+  aspect-ratio: 1/1;
 }
 
 .img {

@@ -20,30 +20,26 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
   const link = `/blog/${encodeURIComponent(id)}`;
 
   return (
-    <>
-      <Link href={link}>
-        <a className={cn(styles.cardLinkWrapper, styles[firstCardSizeMode])}>
-          <li className={styles.card}>
-            <div className={styles.imgContainer}>
-              {/* <img className={styles.img} src={image} alt={`изображение статьи: ${heading}`}/> */}
-              <Image
-                className={styles.img}
-                src={image}
-                alt={`изображение статьи: ${heading}`}
-                layout='fill'
-                priority
-              />
-            </div>
-            <div className={styles.content}>
-              <p className={styles.author}>{author}</p>
-              <h6 className={styles.heading}>{heading}</h6>
-              <p className={styles.description}>{description}</p>
-            </div>
-          </li>
-        </a>
-      </Link>
-
-    </>
+    <Link href={link}>
+      <a className={cn(styles.cardLinkWrapper, styles[firstCardSizeMode])}>
+        <li className={styles.card}>
+          <div className={styles.imgContainer}>
+            <Image
+              className={styles.img}
+              src={image}
+              alt={`изображение статьи: ${heading}`}
+              layout='fill'
+              priority
+            />
+          </div>
+          <div className={styles.content}>
+            <p className={styles.author}>{author}</p>
+            <h6 className={styles.heading}>{heading}</h6>
+            <p className={styles.description}>{description}</p>
+          </div>
+        </li>
+      </a>
+    </Link>
   );
 };
 
