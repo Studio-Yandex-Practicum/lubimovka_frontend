@@ -40,7 +40,7 @@ export const MainAside: FC = () => {
                 author={blogCard.author}
                 heading={blogCard.heading}
                 description={blogCard.description}
-                link={blogCard.link}
+                id={blogCard.id}
               />
             </li>
           ))}
