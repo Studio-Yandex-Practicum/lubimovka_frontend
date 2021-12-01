@@ -125,6 +125,7 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
                   ))}
                 </Menu>
               </OverlayNav.Socials>
+              <Footer/>
             </OverlayNav>
           </Page.OverlayMenu>
           <Page.BurgerButton>
@@ -133,6 +134,7 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
         </>
       )}
       <Footer>
+        <Footer.Logo/>
         {!hiddenPartners && (
           <Footer.Partners>
             <FooterPartnerList>

@@ -50,33 +50,11 @@
 }
 
 .drop {
-  position: relative;
-  display: flex;
-  flex-direction: row;
   padding: scale(8px 0 0 96px);
-  column-gap: scale(30px);
   grid-area: drop;
 
   @media (max-width: $tablet-portrait) {
     padding: 0;
-  }
-}
-
-.droplistTypelistMonths {
-  z-index: 1;
-  max-width: scale(240px);
-
-  @media (max-width: $tablet-portrait) {
-    max-width: scale(183px);
-  }
-}
-
-.droplistTypelistYears {
-  z-index: 1;
-  max-width: scale(150px);
-
-  @media (max-width: $tablet-portrait) {
-    max-width: scale(152px);
   }
 }
 

@@ -76,11 +76,11 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                           year,
                           linkView: url_reading,
                           linkDownload: url_download,
-                        }}
-                        author={{
-                          // TODO: добавить реальные данные в ответ бекенда
-                          id: 0,
-                          name: 'Константин Константинопольский',
+                          authors:[{
+                            // TODO: добавить реальные данные в ответ бекенда
+                            id: 0,
+                            name: 'Константин Константинопольский',
+                          }]
                         }}
                       />
                     ))}
