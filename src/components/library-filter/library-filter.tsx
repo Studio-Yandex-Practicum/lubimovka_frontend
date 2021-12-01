@@ -7,12 +7,13 @@ import { ILibraryFilterReducer } from 'components/library-filter/library-filter-
 
 import style from './library-filter.module.css';
 
-interface LibraryFilterProps extends ILibraryFilterReducer {
+export interface LibraryFilterProps extends ILibraryFilterReducer {
   years: number[];
   programmes: string[];
+  onCheckResults?: () => void;
 }
 
-const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterState, filterDispatcher }) => {
+const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterState, filterDispatcher, onCheckResults }) => {
   const droplistRef = useRef(null) as RefObject<IDroplistPublic>;
 
   const handleTagClick = useCallback(
@@ -48,11 +49,21 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterState,
           ))}
         </ul>
       </div>
-      {(filterState.years.length > 0 || filterState.programmes.length > 0) &&
-      <Button onClick={handleResetClick} label='Очистить' size='s' icon='cross'
-        iconPlace='left' border='bottomLeft' width='scale(143px)' align='start'
-        gap='scale(3px)'/>
-      }
+      {(filterState.years.length > 0 || filterState.programmes.length > 0) && (
+        <>
+          <div className={style.buttonWrap}>
+            <Button onClick={handleResetClick} label='Очистить' size='s' icon='cross'
+              iconPlace='left' border='bottomLeft' width='scale(143px)' align='start'
+              gap='scale(3px)'/>
+          </div>
+          <div className={style.mobileButtons}>
+            <Button onClick={handleResetClick} size='l' iconPlace='right' icon='cross'
+              label='Очистить' border='full' className={style.button}/>
+            <Button onClick={onCheckResults} size='l' iconPlace='right' icon='arrow-right'
+              label='Посмотреть' border='full' className={style.button}/>
+          </div>
+        </>
+      )}
     </div>
   );
 };

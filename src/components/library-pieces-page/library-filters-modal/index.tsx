@@ -1,20 +1,15 @@
 import { FC } from 'react';
 
-import LibraryFilter from 'components/library-filter/library-filter';
-import { Button } from 'components/ui/button';
+import LibraryFilter, { LibraryFilterProps } from 'components/library-filter/library-filter';
 
 import styles from './index.module.css';
 
-const LibraryFiltersModal: FC = () => {
+const LibraryFiltersModal: FC<LibraryFilterProps> = ({ years, programmes,
+  filterState, filterDispatcher, onCheckResults }) => {
   return (
     <section className={styles.wrap}>
-      <LibraryFilter/>
-      <div className={styles.buttons}>
-        <Button size='l' iconPlace='right' icon='cross'
-          label='Очистить' border='full' className={styles.button}/>
-        <Button size='l' iconPlace='right' icon='arrow-right'
-          label='Посмотреть' border='full' className={styles.button}/>
-      </div>
+      <LibraryFilter years={years} programmes={programmes}
+        filterState={filterState} filterDispatcher={filterDispatcher} onCheckResults={onCheckResults}/>
     </section>
   );
 };
