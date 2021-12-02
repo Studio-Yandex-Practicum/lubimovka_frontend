@@ -11,7 +11,7 @@ import Form from 'components/ui/form/form';
 import TextInput from 'components/ui/text-input/text-input';
 import TextArea from 'components/ui/text-area';
 import { Button } from 'components/ui/button';
-import { validEmailRegexp } from 'shared/regexps';
+import { validEmailRegexp } from 'shared/constants/regexps';
 
 const Contacts: NextPage = () => {
   const [name, setName] = useState('');
