@@ -11,22 +11,20 @@ import styles from './article-other.module.css';
 const cx = cn.bind(styles);
 
 interface IArticleOtherProps {
-  isBlog: boolean;
   blogArticle?: BlogItem[];
   newsArticle?: NewsItem[];
 }
 
 export const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
   const {
-    isBlog,
     blogArticle = [],
     newsArticle = [],
   } = props;
 
   return (
     <section className={cx('container', { newsListContainer: newsArticle.length > 0 })}>
-      <h2 className={cx('sectionTitle', { newsListTitle: newsArticle.length > 0 })}>Другие {isBlog ? 'записи' : 'новости'}</h2>
-      {isBlog ?
+      <h2 className={cx('sectionTitle', { newsListTitle: newsArticle.length > 0 })}>Другие {blogArticle.length > 0 ? 'записи' : 'новости'}</h2>
+      {blogArticle.length > 0 ?
         <BlogList>
           {blogArticle.map(item => (
             <BlogCard

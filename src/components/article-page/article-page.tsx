@@ -160,7 +160,6 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
         />
       </main>
       <ArticleOther
-        isBlog={'other_blogs' in data}
         blogArticle={'other_blogs' in data ? data.other_blogs : undefined}
         newsArticle={'other_news' in data ? data.other_news : undefined}
       />
