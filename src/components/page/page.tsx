@@ -4,6 +4,7 @@ import { PageHeader } from './header';
 import { PageOverlayMenu } from './overlay-menu';
 import { PageBurgerButton } from './burger-button';
 import { PageBreadcrumbs } from './breadcrumbs';
+import { PageFooter } from './footer';
 
 interface IPageProps {
   children: ReactNode,
@@ -23,3 +24,4 @@ Page.Header = PageHeader;
 Page.OverlayMenu = PageOverlayMenu;
 Page.BurgerButton = PageBurgerButton;
 Page.Breadcrumbs = PageBreadcrumbs;
+Page.Footer = PageFooter;

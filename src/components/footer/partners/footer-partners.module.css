@@ -2,6 +2,10 @@
   display: flex;
   align-items: flex-start;
   grid-area: partners;
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: scale(84px);
+  }
 }
 
 .title {

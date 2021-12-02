@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { Page } from 'components/page';
@@ -37,9 +37,15 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
 
-  const toggleOverlayMenu = () => setIsOverlayMenuOpen(!isOverlayMenuOpen);
+  const toggleOverlayMenu = useCallback(() => {
+    setIsOverlayMenuOpen(!isOverlayMenuOpen);
+  }, [isOverlayMenuOpen]);
 
-  useDisableBodyScroll(isOverlayMenuOpen);
+  useDisableBodyScroll(isMobile && isOverlayMenuOpen);
+
+  useEffect(() => {
+    if (!isMobile) setIsOverlayMenuOpen(false);
+  }, [isMobile]);
 
   return (
     <Page>
@@ -83,6 +89,58 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
         </Navbar>
       </Page.Header>
       {children}
+      <Page.Footer>
+        <Footer>
+          {!hiddenPartners && (
+            <Footer.Partners>
+              <FooterPartnerList>
+                {generalPartners.map((partner) => (
+                  <FooterPartnerList.Item
+                    key={partner.name}
+                    logo={partner.logo}
+                    name={partner.name}
+                  />
+                ))}
+              </FooterPartnerList>
+            </Footer.Partners>
+          )}
+          <Footer.Address>
+            <span>
+              Площадка «8/3»
+            </span>
+            Москва,{'\n'}
+            ул. Казакова, 8, стр. 3{'\n'}
+            Метро «Курская»{'\n'}
+          </Footer.Address>
+          <Footer.Navigation>
+            <Menu type="footer-navigation">
+              {footerNavigationItems.map((item, index) => (
+                <Menu.Item
+                  key={index}
+                  href={item.href}
+                >
+                  {item.text}
+                </Menu.Item>
+              ))}
+            </Menu>
+          </Footer.Navigation>
+          <Footer.Projects>
+            <Menu type="footer-project-list">
+              <Menu.Item href="/projects">
+                Все проекты
+              </Menu.Item>
+              {projects.map((item, index) => (
+                <Menu.Item
+                  key={index}
+                  href={`/projects/${item.slug}`}
+                >
+                  {item.title}
+                </Menu.Item>
+              ))}
+            </Menu>
+          </Footer.Projects>
+        </Footer>
+      </Page.Footer>
       {isMobile && (
         <>
           <Page.OverlayMenu isOpen={isOverlayMenuOpen}>
@@ -93,7 +151,11 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
               <OverlayNav.Menu>
                 <Menu type="overlay-navigation">
                   {mainNavigationItems.map((item) => (
-                    <Menu.Item key={item.href} href={item.href}>
+                    <Menu.Item
+                      key={item.href}
+                      href={item.href}
+                      current={router.asPath === item.href}
+                    >
                       {item.text}
                     </Menu.Item>
                   ))}
@@ -113,11 +175,12 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
               </OverlayNav.Actions>
               <OverlayNav.Socials>
                 <Menu type='overlay-social-links'>
-                  {socialLinkItems.map((item) => (
+                  {socialLinkItems.sort((a, b) => a.mobileOrder - b.mobileOrder).map((item) => (
                     <Menu.Item
                       key={item.href}
                       href={item.href}
-                      mods={{ primary: !!item.primary }}>
+                      mods={item.mods}
+                    >
                       {item.text}
                       <Icon glyph='arrow-right'/>
                     </Menu.Item>
@@ -130,60 +193,13 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
             </OverlayNav>
           </Page.OverlayMenu>
           <Page.BurgerButton>
-            <BurgerButton isOpen={isOverlayMenuOpen} onClick={toggleOverlayMenu}/>
+            <BurgerButton
+              isOpen={isOverlayMenuOpen}
+              onClick={toggleOverlayMenu}
+            />
           </Page.BurgerButton>
         </>
       )}
-      <Footer>
-        {!hiddenPartners && (
-          <Footer.Partners>
-            <FooterPartnerList>
-              {generalPartners.map((partner) => (
-                <FooterPartnerList.Item
-                  key={partner.name}
-                  logo={partner.logo}
-                  name={partner.name}
-                />
-              ))}
-            </FooterPartnerList>
-          </Footer.Partners>
-        )}
-        <Footer.Address>
-          <span>
-            Площадка «8/3»
-          </span>
-          Москва,{'\n'}
-          ул. Казакова, 8, стр. 3{'\n'}
-          Метро «Курская»{'\n'}
-        </Footer.Address>
-        <Footer.Navigation>
-          <Menu type="footer-navigation">
-            {footerNavigationItems.map((item, index) => (
-              <Menu.Item
-                key={index}
-                href={item.href}
-              >
-                {item.text}
-              </Menu.Item>
-            ))}
-          </Menu>
-        </Footer.Navigation>
-        <Footer.Projects>
-          <Menu type="footer-project-list">
-            <Menu.Item href="/projects">
-              Все проекты
-            </Menu.Item>
-            {projects.map((item, index) => (
-              <Menu.Item
-                key={index}
-                href={`/projects/${item.slug}`}
-              >
-                {item.title}
-              </Menu.Item>
-            ))}
-          </Menu>
-        </Footer.Projects>
-      </Footer>
     </Page>
   );
 };

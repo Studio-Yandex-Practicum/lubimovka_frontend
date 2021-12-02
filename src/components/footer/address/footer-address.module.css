@@ -12,8 +12,8 @@
   @media (max-width: $tablet-portrait) {
     @mixin textSmall;
 
-    padding: scale(0 55px);
-    margin-top: scale(33px);
+    padding: scale(0 56px);
+    margin-top: scale(32px);
   }
 
   span {
