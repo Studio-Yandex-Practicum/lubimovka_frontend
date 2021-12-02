@@ -22,7 +22,7 @@ export const MonthsAndYearsFilter: React.FC<IFilter> = (props) => {
 
   const droplistRef = React.useRef(null) as React.RefObject<IDroplistPublic>;
 
-  const currentMonth:number = new Date().getMonth();
+  const currentMonth:number = new Date().getMonth() + 1;
   const currentYear:number = new Date().getFullYear();
 
   const [month, setMonth] = React.useState<number>();
