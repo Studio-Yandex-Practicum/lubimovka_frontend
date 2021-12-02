@@ -12,7 +12,7 @@ import {
   validYearRegexp,
   validEmailRegexp,
   validPhoneNumberRegexp,
-} from 'shared/regexps';
+} from 'shared/constants/regexps';
 import { Nullable } from 'shared/types';
 
 const Participation: NextPage = () => {
