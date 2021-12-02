@@ -8,14 +8,14 @@ const mockCard = {
   play: {
     title: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
-    year: '2020',
+    year: 2020,
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
+    authors: [{
+      id: 1,
+      name: 'Екатерина Августеняк',
+    }]
   },
-  author: {
-    id: 1,
-    name: 'Екатерина Августеняк',
-  }
 };
 
 const items = Array.from(Array(7)).map(() => mockCard);
