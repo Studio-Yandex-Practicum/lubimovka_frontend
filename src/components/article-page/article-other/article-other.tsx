@@ -4,6 +4,7 @@ import cn from 'classnames/bind';
 import { BlogList } from '../../ui/blog-card/list';
 import { BlogCard } from '../../ui/blog-card';
 import { BlogItem, NewsItem } from '../types/article-types';
+import { NewsList } from '../../news-page/news-list';
 
 import styles from './article-other.module.css';
 
@@ -19,12 +20,12 @@ export const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
   const {
     isBlog,
     blogArticle = [],
-    // newsArticles = [],
+    newsArticle = [],
   } = props;
 
   return (
-    <section className={cx('container')}>
-      <h2 className={cx('sectionTitle')}>Другие {isBlog ? 'записи' : 'новости'}</h2>
+    <section className={cx('container', { newsListContainer: newsArticle.length > 0 })}>
+      <h2 className={cx('sectionTitle', { newsListTitle: newsArticle.length > 0 })}>Другие {isBlog ? 'записи' : 'новости'}</h2>
       {isBlog ?
         <BlogList>
           {blogArticle.map(item => (
@@ -34,11 +35,11 @@ export const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
               author={item.author_url_title}
               heading={item.title}
               description={item.description}
-              link='этого пропса не будет, ссылка будет генериться из id'
+              id={item.id}
             />
           ))}
         </BlogList>:
-        <p>тут будет список новостей</p>
+        <NewsList newsCardData={newsArticle} className={cx('newsList')}/>
       }
 
     </section>

@@ -20,11 +20,11 @@ const newsArticle: NewsData = {
         items: [
           {
             title: 'Изображение 1',
-            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
+            image: '/images/article/title-image.png'
           },
           {
             title: 'Гифочка',
-            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
+            image: '/images/article/title-image.png'
           }
         ]
       }
@@ -78,11 +78,11 @@ const newsArticle: NewsData = {
         items: [
           {
             title: 'Изображение 1',
-            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
+            image: '/images/article/title-image.png'
           },
           {
             title: 'Гифочка',
-            image: 'https://lubimovka.kiryanov.ru/media/performances/giphy_PfkDSiq.gif'
+            image: '/images/article/title-image.png'
           }
         ]
       }
@@ -193,7 +193,7 @@ const newsArticle: NewsData = {
             middle_name: 'Викентьевич',
             city: 'Сковородино',
             email: 'mikhejvishnyakova@lubimovka.ru',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%9C%D0%B8%D1%85%D0%B5%D0%B9_%D0%92%D0%B8%D1%88%D0%BD%D1%8F%D0%BA%D0%BE%D0%B2%D0%B0.jpg'
+            image: '/images/person/person.jpg'
           },
           {
             id: 129,
@@ -204,7 +204,7 @@ const newsArticle: NewsData = {
             middle_name: 'Антоновна',
             city: '',
             email: 'null',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%92%D0%B5%D0%BD%D0%B8%D0%B0%D0%BC%D0%B8%D0%BD_%D0%91%D1%8B%D0%BA%D0%BE%D0%B2%D0%B0.jpg'
+            image: '/images/person/person.jpg'
           },
           {
             id: 112,
@@ -215,7 +215,7 @@ const newsArticle: NewsData = {
             middle_name: 'Наумовна',
             city: 'Старый Оскол',
             email: 'emmanuilgalkin@lubimovka.ru',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%AD%D0%BC%D0%BC%D0%B0%D0%BD%D1%83%D0%B8%D0%BB_%D0%93%D0%B0%D0%BB%D0%BA%D0%B8%D0%BD.jpg'
+            image: '/images/person/person.jpg'
           },
           {
             id: 83,
@@ -226,7 +226,7 @@ const newsArticle: NewsData = {
             middle_name: 'Викентьевич',
             city: 'Сковородино',
             email: 'mikhejvishnyakova@lubimovka.ru',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%9C%D0%B8%D1%85%D0%B5%D0%B9_%D0%92%D0%B8%D1%88%D0%BD%D1%8F%D0%BA%D0%BE%D0%B2%D0%B0.jpg'
+            image: '/images/person/person.jpg'
           },
           {
             id: 130,
@@ -237,7 +237,7 @@ const newsArticle: NewsData = {
             middle_name: 'Антоновна',
             city: '',
             email: 'null',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%92%D0%B5%D0%BD%D0%B8%D0%B0%D0%BC%D0%B8%D0%BD_%D0%91%D1%8B%D0%BA%D0%BE%D0%B2%D0%B0.jpg'
+            image: '/images/person/person.jpg'
           },
           {
             id: 113,
@@ -248,7 +248,7 @@ const newsArticle: NewsData = {
             middle_name: 'Наумовна',
             city: 'Старый Оскол',
             email: 'emmanuilgalkin@lubimovka.ru',
-            image: 'https://test-lubimovka.kiryanov.ru/media/images/person_avatars/%D0%AD%D0%BC%D0%BC%D0%B0%D0%BD%D1%83%D0%B8%D0%BB_%D0%93%D0%B0%D0%BB%D0%BA%D0%B8%D0%BD.jpg'
+            image: '/images/person/person.jpg'
           }
         ]
       }
