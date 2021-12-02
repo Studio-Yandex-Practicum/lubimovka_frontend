@@ -1,7 +1,4 @@
-//временное хранилище типов для страницы, пока на 100% не будет известен api,
-// потом будут генерироваться автоматически или переедут в /shared/types
-
-import { Url } from '../../../shared/types';
+import { Url } from './common';
 
 export type BlogData = {
   id: number,

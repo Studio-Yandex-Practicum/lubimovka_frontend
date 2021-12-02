@@ -1,4 +1,4 @@
-import { NewsData } from '../../components/article-page/types/article-types';
+import { NewsData } from '../../shared/types';
 
 const newsArticle: NewsData = {
   id: 1,

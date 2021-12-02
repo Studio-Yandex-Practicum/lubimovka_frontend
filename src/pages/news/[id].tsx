@@ -3,7 +3,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { fetcher } from 'shared/fetcher';
 import AppLayout from '../../components/app-layout';
 import { ArticlePage } from '../../components/article-page';
-import { NewsData } from '../../components/article-page/types/article-types';
+import { NewsData } from '../../shared/types';
 
 const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 

@@ -13,7 +13,7 @@ import ArticleTitle from './article-title';
 import ArticleShare from './article-share';
 import { ArticleMainText } from './article-maintext';
 import { ArticleOther } from './article-other';
-import { BlogData, ComplexItem, NewsData, Person, Play, Team } from './types/article-types';
+import { BlogData, ComplexItem, NewsData, Person, Play, Team } from '../../shared/types';
 
 import styles from './article-page.module.css';
 

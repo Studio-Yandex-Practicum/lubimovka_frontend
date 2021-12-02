@@ -3,7 +3,7 @@ import cn from 'classnames/bind';
 
 import { BlogList } from '../../ui/blog-card/list';
 import { BlogCard } from '../../ui/blog-card';
-import { BlogItem, NewsItem } from '../types/article-types';
+import { BlogItem, NewsItem } from '../../../shared/types';
 import { NewsList } from '../../news-page/news-list';
 
 import styles from './article-other.module.css';

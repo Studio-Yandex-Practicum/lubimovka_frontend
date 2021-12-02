@@ -1,4 +1,4 @@
-import { BlogData } from '../../components/article-page/types/article-types';
+import { BlogData } from '../../shared/types';
 
 const blogArticle: BlogData = {
   id: 1,
