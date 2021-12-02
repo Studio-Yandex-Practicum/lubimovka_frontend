@@ -9,7 +9,7 @@
   @media (max-width: $tablet-portrait) {
     @mixin textMedium;
 
-    padding: scale(0 0 11px 0);
+    padding: 0;
     grid-template:
       "logo"
       "address"
@@ -34,4 +34,9 @@
 .footnote {
   margin-top: scale(49px);
   grid-area: footnote;
+
+  @media (max-width: $tablet-portrait) {
+    border-top: 1px solid black;
+    margin-top: scale(92px);
+  }
 }

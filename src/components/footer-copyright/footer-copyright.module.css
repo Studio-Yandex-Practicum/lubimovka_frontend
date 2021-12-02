@@ -10,8 +10,6 @@
 
     flex-direction: column;
     padding: scale(32px 28px 63px);
-    border-top: 1px solid black;
-    margin-top: 0;
   }
 }
 
