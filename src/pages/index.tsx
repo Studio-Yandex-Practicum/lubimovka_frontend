@@ -1,7 +1,9 @@
-import { NextPage } from 'next';
+import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import Head from 'next/head';
 import cn from 'classnames/bind';
 
+import { Main, Partner } from 'api-typings';
+import { fetcher } from 'shared/fetcher';
 import { MainTitle } from 'components/main-page/title';
 import { MainEvents } from 'components/main-page/events';
 import { MainAside } from 'components/main-page/aside';
@@ -21,8 +23,10 @@ import styles from './index.module.css';
 
 const cx = cn.bind(styles);
 
-const MainPage: NextPage = () => {
-  const { title, events, aside, banners, platforms, partners, archive, shortList, metaTitle } = data;
+const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log(data, partners);
+
+  const { title, events, aside, banners, platforms, /* partners, */ archive, shortList, metaTitle } = data;
   return (
     <AppLayout hiddenPartners>
       <>
@@ -52,6 +56,52 @@ const MainPage: NextPage = () => {
       </>
     </AppLayout>
   );
+};
+
+const fetchMain = async () => {
+  let data;
+
+  try {
+    data = await fetcher<Main>('/main');
+  } catch (error) {
+    // TODO: обработать ошибку, добавим после реализации страницы ошибки
+
+    return;
+  }
+
+  return data;
+};
+
+const fetchPartners = async () => {
+  let partners;
+
+  try {
+    partners = await fetcher<Partner>('/info/partners');
+  } catch (error) {
+    // TODO: обработать ошибку, добавим после реализации страницы ошибки
+
+    return;
+  }
+
+  return partners;
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await fetchMain();
+  const partners = await fetchPartners();
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      data,
+      partners,
+    },
+  };
 };
 
 export default MainPage;

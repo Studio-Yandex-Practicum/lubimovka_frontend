@@ -2,9 +2,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type ProjectList = {
+export type Place = {
     readonly id: number;
-    title: string;
+    name: string;
     description: string;
-    image: string;
+    city: string;
+    address: string;
+    map_link: string;
 }
