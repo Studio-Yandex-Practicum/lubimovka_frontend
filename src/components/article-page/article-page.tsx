@@ -121,11 +121,7 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
                     year: item.year,
                     linkView: item.url_reading,
                     linkDownload: item.url_download,
-                    authors: [{
-                    // TODO: добавить реальные данные в ответ бекенда
-                      id: 0,
-                      name: 'Константин Константинопольский',
-                    }]
+                    authors: item.authors,
                   }}
                 />
               ))}

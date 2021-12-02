@@ -101,83 +101,113 @@ const blogArticle: BlogData = {
         title: 'Заголовок блока с пьессами',
         items: [
           {
-            id: 4,
-            created: '2021-11-21T22:14:19',
-            modified: '2021-11-21T22:14:19',
-            name: 'Наступать',
-            city: 'Холмогоры',
-            year: 2005,
-            url_download: 'https://www.munoz.com/',
-            url_reading: 'http://www.arnold.org/',
-            is_draft: true,
-            program: 4,
-            festival: 2
+            id: 25,
+            name: 'Головной',
+            authors: [
+              {
+                name: 'Эрнест Беляков',
+                id: 16
+              },
+              {
+                name: 'Будимир Яковлева',
+                id: 10
+              }
+            ],
+            city: 'Южноуральск',
+            year: 2007,
+            url_download: 'https://www.walker.com/',
+            url_reading: 'http://www.spears.net/'
           },
           {
-            id: 11,
-            created: '2021-11-21T22:14:19',
-            modified: '2021-11-21T22:14:19',
-            name: 'Казнь',
-            city: 'Славгород',
-            year: 2020,
-            url_download: 'http://jones-wright.com/',
-            url_reading: 'http://www.ferguson.info/',
-            is_draft: true,
-            program: 1,
-            festival: 10
+            id: 26,
+            name: 'Головной',
+            authors: [
+              {
+                name: 'Эрнест Беляков',
+                id: 16
+              },
+              {
+                name: 'Будимир Яковлева',
+                id: 10
+              }
+            ],
+            city: 'Южноуральск',
+            year: 2007,
+            url_download: 'https://www.walker.com/',
+            url_reading: 'http://www.spears.net/'
           },
           {
-            id: 8,
-            created: '2021-11-21T22:14:19',
-            modified: '2021-11-21T22:14:19',
-            name: 'Ребятишки',
-            city: 'Усть-Кут',
-            year: 2021,
-            url_download: 'https://lewis-oneill.org/',
-            url_reading: 'http://sanders-morales.com/',
-            is_draft: true,
-            program: 8,
-            festival: 4
+            id: 27,
+            name: 'Головной',
+            authors: [
+              {
+                name: 'Эрнест Беляков',
+                id: 16
+              },
+              {
+                name: 'Будимир Яковлева',
+                id: 10
+              }
+            ],
+            city: 'Южноуральск',
+            year: 2007,
+            url_download: 'https://www.walker.com/',
+            url_reading: 'http://www.spears.net/'
           },
           {
-            id: 5,
-            created: '2021-11-21T22:14:19',
-            modified: '2021-11-21T22:14:19',
-            name: 'Наступать',
-            city: 'Холмогоры',
-            year: 2005,
-            url_download: 'https://www.munoz.com/',
-            url_reading: 'http://www.arnold.org/',
-            is_draft: true,
-            program: 4,
-            festival: 2
+            id: 28,
+            name: 'Головной',
+            authors: [
+              {
+                name: 'Эрнест Беляков',
+                id: 16
+              },
+              {
+                name: 'Будимир Яковлева',
+                id: 10
+              }
+            ],
+            city: 'Южноуральск',
+            year: 2007,
+            url_download: 'https://www.walker.com/',
+            url_reading: 'http://www.spears.net/'
           },
           {
-            id: 12,
-            created: '2021-11-21T22:14:19',
-            modified: '2021-11-21T22:14:19',
-            name: 'Казнь',
-            city: 'Славгород',
-            year: 2020,
-            url_download: 'http://jones-wright.com/',
-            url_reading: 'http://www.ferguson.info/',
-            is_draft: true,
-            program: 1,
-            festival: 10
+            id: 29,
+            name: 'Головной',
+            authors: [
+              {
+                name: 'Эрнест Беляков',
+                id: 16
+              },
+              {
+                name: 'Будимир Яковлева',
+                id: 10
+              }
+            ],
+            city: 'Южноуральск',
+            year: 2007,
+            url_download: 'https://www.walker.com/',
+            url_reading: 'http://www.spears.net/'
           },
           {
-            id: 9,
-            created: '2021-11-21T22:14:19',
-            modified: '2021-11-21T22:14:19',
-            name: 'Ребятишки',
-            city: 'Усть-Кут',
-            year: 2021,
-            url_download: 'https://lewis-oneill.org/',
-            url_reading: 'http://sanders-morales.com/',
-            is_draft: true,
-            program: 8,
-            festival: 4
-          }
+            id: 30,
+            name: 'Головной',
+            authors: [
+              {
+                name: 'Эрнест Беляков',
+                id: 16
+              },
+              {
+                name: 'Будимир Яковлева',
+                id: 10
+              }
+            ],
+            city: 'Южноуральск',
+            year: 2007,
+            url_download: 'https://www.walker.com/',
+            url_reading: 'http://www.spears.net/'
+          },
         ]
       }
     },

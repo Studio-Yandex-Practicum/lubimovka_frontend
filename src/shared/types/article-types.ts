@@ -51,16 +51,17 @@ export type Image = {
 
 export type Play = {
   id: number,
-  created: string,
-  modified: string,
   name: string,
+  authors: PlayAuthor[],
   city: string,
   year: number,
   url_download: Url,
   url_reading: Url,
-  is_draft: boolean,
-  program: number,
-  festival: number,
+}
+
+export type PlayAuthor = {
+  name: string,
+  id: number
 }
 
 export type Person = {
