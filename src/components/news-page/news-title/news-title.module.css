@@ -7,7 +7,7 @@
 
   @media (max-width: $tablet-portrait) {
     max-width: scale(298px);
-    padding: scale(24px 92px 32px 24px);
+    padding: scale(0 92px 32px 24px);
 
     @mixin headline4;
   }

@@ -9,6 +9,7 @@
 
   @media (max-width: $tablet-portrait) {
     width: scale(366px);
-    padding: scale(0 0 0 44px);
+    padding: scale(52px 0 0 0);
+    margin: 0 auto;
   }
 }

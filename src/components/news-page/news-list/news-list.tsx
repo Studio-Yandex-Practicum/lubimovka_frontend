@@ -22,18 +22,18 @@ interface INewsList {
 
 export const NewsList: FC<INewsList> = ({ newsCardData, className }) => {
   return(
-    <>
-      <ul className={cx('newsList', className)}>
-        {newsCardData.map((data) => (
-          <li key={data.id}><NewsCard
+    <ul className={cx('newsList', className)}>
+      {newsCardData.map((data) => (
+        <li key={data.id}>
+          <NewsCard
             newsId={data.id}
             title={data.title}
             description={data.description}
             date={data.pub_date}
             isMainPage={false}
-          /></li>
-        ))}
-      </ul>
-    </>
+          />
+        </li>
+      ))}
+    </ul>
   );
 };
