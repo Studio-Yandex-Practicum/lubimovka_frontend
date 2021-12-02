@@ -110,10 +110,6 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
 
         {sectionPlays &&
           <Section type={'plays'} title={sectionPlays.title || ''} className={cx('sectionPlaysList')}>
-            {/*В ответе от бэка:
-             для пьес не хватает авторов, непонятно что за свойства is_draft, program, festival;
-             для персон не хватает должности.
-          */}
             <BasicPlayCardList>
               {sectionPlays.items &&
               sectionPlays.items.map((item) => (
