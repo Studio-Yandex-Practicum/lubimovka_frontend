@@ -17,22 +17,30 @@
 
 .link {
   @mixin text;
+  @mixin textCaption;
 
   position: relative;
   text-decoration: none;
 
-  &::after {
+  &:hover::after {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
+    width: 100%;
     height: scale(1px);
+    animation: underline .5s;
     background-color: var(--coal);
     content: "";
-    transition: width .5s ease-in;
+    transform-origin: 0;
+  }
+}
+
+@keyframes underline {
+  0% {
+    transform: scaleX(0);
   }
 
-  &:hover::after {
-    width: 100%;
+  100% {
+    transform: scaleX(1);
   }
 }
