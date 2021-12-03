@@ -53,6 +53,7 @@
   padding-top: scale(72px);
   padding-right: scale(100px);
   margin: 0 auto;
+  white-space: pre-wrap;
 
   @media (max-width: $tablet-portrait) {
     max-width: scale(366px);
@@ -69,6 +70,10 @@
   }
 }
 
+.article_container > p + p {
+  padding-top: scale(16px);
+}
+
 .article_container > blockquote {
   @mixin headline;
   @mixin headline6;
@@ -78,6 +83,7 @@
   padding: scale(56px 18.75% 72px 31.25%);
   margin: scale(110px auto 0);
   background-color: var(--light-green);
+  white-space: pre-wrap;
   word-break: break-word;
 
   @media (max-width: $tablet-portrait) {
