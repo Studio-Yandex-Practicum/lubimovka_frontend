@@ -25,7 +25,7 @@ const Library = ({ errorCode, pieces, years, programs }:
   InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [piecesState, setPiecesState] = useState<Play[]>(pieces);
   const filterInitialState = { years: [], programmes: [] };
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [filterState, filterDispatcher] = useReducer(
     reducer,
@@ -66,7 +66,7 @@ const Library = ({ errorCode, pieces, years, programs }:
 };
 
 const fetchPieces = async (parsedQuery?: string) => {
-  const path = parsedQuery ? `/library/plays/${parsedQuery}` : '/library/plays';
+  const path = parsedQuery ? `/library/plays${parsedQuery}` : '/library/plays';
 
   try {
     const { results } = await fetcher<PaginatedPlayList>(path);

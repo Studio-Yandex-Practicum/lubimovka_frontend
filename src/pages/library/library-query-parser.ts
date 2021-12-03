@@ -14,7 +14,7 @@ function queryParser(querys: State): string {
 
   if (programmes.length > 0) {
     programmes.forEach((el) => {
-      programs = [...programs, `program=${encodeURIComponent(el)}`];
+      programs = [...programs, `program=${encodeURI(el)}`];
     });
   }
 
@@ -33,3 +33,4 @@ function queryParser(querys: State): string {
 }
 
 export default queryParser;
+
