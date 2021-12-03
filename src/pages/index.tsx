@@ -26,7 +26,7 @@ const cx = cn.bind(styles);
 const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof getStaticProps>) => {
   console.log(data, partners);
 
-  const { title, events, aside, banners, platforms, /* partners, */ archive, shortList, metaTitle } = data;
+  const { afisha, news, banners, platforms, archive, shortList, metaTitle } = data;
   return (
     <AppLayout hiddenPartners>
       <>
@@ -34,17 +34,17 @@ const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof g
           <title>{metaTitle}</title>
         </Head>
         <main className={cx('main')}>
-          {title && (
+          {afisha && (
             <MainTitle
-              title={title.title}
-              view={title.view}
-              buttonLink={title.buttonLink}
-              buttonText={title.buttonText}
-              text={title.text}
+              title={afisha.title}
+              // view={title.view}
+              // buttonLink={title.buttonLink}
+              // buttonText={title.buttonText}
+              // text={title.text}
             />
           )}
-          {events && <MainEvents data={mainEventsData}/>}
-          {aside && <MainAside/>}
+          {afisha.items && <MainEvents {...afisha}/>}
+          {news && <MainAside data={news}/>}
           {banners && <MainBanners/>}
           {platforms && <MainPlatforms data={mainPlatformsData[0]}/>}
           {shortList && <MainShortList data={mainShortListData}/>}
