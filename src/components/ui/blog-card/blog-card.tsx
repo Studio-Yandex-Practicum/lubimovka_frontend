@@ -5,7 +5,7 @@ import cn from 'classnames';
 
 import styles from './blog-card.module.css';
 
-interface BlogCardProps {
+export interface BlogCardProps {
   image: string;
   author: string;
   heading: string;
