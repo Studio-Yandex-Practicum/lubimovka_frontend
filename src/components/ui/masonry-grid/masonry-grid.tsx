@@ -31,7 +31,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ isLoaded, children }) => {
       // устанавливаем в стили карточки конечную грид-строку, до которой должна растянуться карточка
       item.style.setProperty('grid-row-end', 'span ' + rowSpan);
     }
-  }
+  };
 
   const resizeAllGridItems = useCallback(() => {
 
@@ -49,7 +49,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ isLoaded, children }) => {
         }
       }
     }
-  }, [])
+  }, []);
 
   React.useEffect(() => {
     if (isLoaded)
