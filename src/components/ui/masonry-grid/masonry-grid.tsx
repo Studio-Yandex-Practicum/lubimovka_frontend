@@ -51,9 +51,25 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ isLoaded, children }) => {
     }
   }, [])
 
+  React.useEffect(() => {
+    if (isLoaded)
+      resizeAllGridItems();
+    window.addEventListener('resize', resizeAllGridItems);
+    return () => {
+      window.removeEventListener('resize', resizeAllGridItems);
+    };
+  }, [resizeAllGridItems, isLoaded]);
+
   // вызываем ресайз карточек при рендере компонентов
   React.useEffect(() => {
-    resizeAllGridItems();
+    // ставим слушатель на загрузку дом-дерева и всех стилей, картинок и скриптов
+    window.addEventListener('load', resizeAllGridItems);
+    // на ресайз
+    window.addEventListener('resize', resizeAllGridItems);
+    return () => {
+      window.removeEventListener('load', resizeAllGridItems);
+      window.removeEventListener('resize', resizeAllGridItems);
+    };
   }, [resizeAllGridItems, isLoaded]);
 
   return (

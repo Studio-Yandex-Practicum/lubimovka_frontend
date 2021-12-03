@@ -44,3 +44,10 @@ const TemplateRegular: ComponentStory<typeof MasonryGrid> = (args) => (
 
 export const Masonry_Grid_blog_big = TemplateBig.bind({});
 export const Masonry_Grid_blog_regular = TemplateRegular.bind({});
+
+Masonry_Grid_blog_big.args = {
+  isLoaded: true,
+};
+Masonry_Grid_blog_regular.args = {
+  isLoaded: true,
+};
