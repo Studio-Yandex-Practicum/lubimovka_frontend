@@ -19,7 +19,7 @@
     @mixin headline4;
 
     width: scale(367px);
-    margin: scale(35px 0 0 23px);
+    margin: scale(11px 0 0 23px);
   }
 }
 
