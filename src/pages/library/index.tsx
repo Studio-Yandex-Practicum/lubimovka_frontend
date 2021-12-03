@@ -25,6 +25,7 @@ const Library = ({ errorCode, pieces, years, programs }:
   InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [piecesState, setPiecesState] = useState<Play[]>(pieces);
   const filterInitialState = { years: [], programmes: [] };
+  const [isLoading, setIsLoading] = useState(false);
 
   const [filterState, filterDispatcher] = useReducer(
     reducer,
@@ -33,10 +34,16 @@ const Library = ({ errorCode, pieces, years, programs }:
   );
 
   useEffect(() => {
+    setIsLoading(true);
     const parsedQuery = queryParser(filterState);
 
-    fetchPieces(parsedQuery).then(res => setPiecesState(res)).catch(() =>
-      setPiecesState(pieces));
+    fetchPieces(parsedQuery).then(res => {
+      setPiecesState(res);
+      setIsLoading(false);
+    }).catch(() => {
+      setPiecesState(pieces);
+      setIsLoading(false);
+    });
   }, [pieces, filterState]);
 
   if (errorCode) {
@@ -51,8 +58,8 @@ const Library = ({ errorCode, pieces, years, programs }:
         <Head>
           <title>Библиотека</title>
         </Head>
-        <LibraryPage items={piecesState} years={years.flat()} programmes={programs.flat()}
-          filterDispatcher={filterDispatcher}/>
+        <LibraryPage isLoading={isLoading} items={piecesState} years={years.flat()}
+          programmes={programs.flat()} filterDispatcher={filterDispatcher}/>
       </AppLayout>
     </CurrentFiltersContext.Provider>
   );
