@@ -55,8 +55,8 @@ export type Play = {
   authors: PlayAuthor[],
   city: string,
   year: number,
-  url_download: Url,
-  url_reading: Url,
+  url_download: string,
+  url_reading: string,
 }
 
 export type PlayAuthor = {
