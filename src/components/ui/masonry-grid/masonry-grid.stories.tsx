@@ -16,10 +16,10 @@ const TemplateBig: ComponentStory<typeof MasonryGrid> = (args) => (
       return <BlogCard
         key={card.id}
         image={card.image}
-        author={card.author}
+        author={card.author_url_title}
         heading={card.title}
         description={card.subtitle}
-        link={card.link}
+        id={card.id}
         firstCardSizeMode='big'
       />;
     })}
@@ -32,10 +32,10 @@ const TemplateRegular: ComponentStory<typeof MasonryGrid> = (args) => (
       return <BlogCard
         key={card.id}
         image={card.image}
-        author={card.author}
+        author={card.author_url_title}
         heading={card.title}
         description={card.subtitle}
-        link={card.link}
+        id={card.id}
         firstCardSizeMode='regular'
       />;
     })}

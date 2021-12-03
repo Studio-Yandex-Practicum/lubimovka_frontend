@@ -1,96 +1,96 @@
 [
   {
     "id": 1,
-    "image": "http://loveopium.ru/content/2014/07/old/00s.jpg",
-    "author": "Лара Бессмертная",
+    "image": "/images/blog/image-for-blog-1.jpg",
+    "author_url_title": "Лара Бессмертная",
     "title": "«Человек является источником жеста, смысла, правды»",
     "subtitle": "МК «Документальность в современном театре и современном искусстве»",
     "link": "https://yandex.ru/"
   },
   {
     "id": 2,
-    "image": "https://cdnn21.img.ria.ru/images/07e4/05/0d/1571382383_0:95:3072:1823_1920x0_80_0_0_c63e7c9d83d25d0d40b14bf77b358a48.jpg",
-    "author": "Лара Бессмертная",
+    "image": "/images/blog/image-for-blog-2.jpg",
+    "author_url_title": "Лара Бессмертная",
     "title": "«Человек является источником жеста, смысла, правды»",
     "subtitle": "МК «Документальность в современном театре и современном искусстве»",
     "link": "https://yandex.ru/"
   },
   {
     "id": 3,
-    "image": "https://img-fotki.yandex.ru/get/5208/ilducess.2b/0_4966c_e06db100_XL.jpg",
-    "author": "Лара Бессмертная",
+    "image": "/images/blog/image-for-blog-3.jpg",
+    "author_url_title": "Лара Бессмертная",
     "title": "«Человек является источником жеста, смысла, правды»",
     "subtitle": "МК «Документальность в современном театре и современном искусстве»",
     "link": "https://yandex.ru/"
   },
   {
     "id": 4,
-    "image": "https://www.m24.ru/b/d/nBkSUhL2hFEvnsu2Jr6BosSyyJ2gp8TrlnTclb7P73OHezeOWXiSxTZt4slI-BHBsdWR_G-JLsV0=Qxkn5i4HQbA-mc9nrUxZHA.jpg",
-    "author": "Лара Бессмертная",
+    "image": "/images/blog/image-for-blog-4.jpg",
+    "author_url_title": "Лара Бессмертная",
     "title": "«Человек является источником жеста, смысла, правды»",
     "subtitle": "МК «Документальность в современном театре и современном искусстве»",
     "link": "https://yandex.ru/"
   },
   {
     "id": 5,
-    "image": "http://www.hist.msu.ru/Strastnoy/Source/V/1900.jpg",
-    "author": "Лара Бессмертная",
+    "image": "/images/blog/image-for-blog-5.jpg",
+    "author_url_title": "Лара Бессмертная",
     "title": "«Человек является источником жеста, смысла, правды»",
     "subtitle": "МК «Документальность в современном театре и современном искусстве»",
     "link": "https://yandex.ru/"
   },
   {
     "id": 6,
-    "image": "https://lh3.googleusercontent.com/proxy/B8Te6AqvxmvqYOEq7YHZd_teYqhDUcQE2U6HjWv9JLfby8rHnDFGEvRQcQH-s11LgsDDXMsn6ImFKrDh2wB1wg",
-    "author": "Лара Бессмертная",
+    "image": "/images/blog/image-for-blog-6.jpg",
+    "author_url_title": "Лара Бессмертная",
     "title": "«Человек является источником жеста, смысла, правды»",
     "subtitle": "МК «Документальность в современном театре и современном искусстве»",
     "link": "https://yandex.ru/"
   },
   {
     "id": 7,
-    "image": "https://api.um.mos.ru/upload/iblock/6d3/0016%20%D0%905.jpg",
-    "author": "Diam volutpat",
+    "image": "/images/blog/image-for-blog-7.jpg",
+    "author_url_title": "Diam volutpat",
     "title": "«Tortor consequat id porta»",
     "subtitle": "Et magnis dis parturient montes nascetur ridiculus. Arcu felis bibendum ut tristique. Malesuada proin libero nunc consequat interdum varius sit.",
     "link": "https://yandex.ru/"
   },
   {
     "id": 8,
-    "image": "https://radiovera.ru/wp-content/uploads/2018/03/Tverskoy-bulvar-1.jpg",
-    "author": "Turpis nunc eget",
+    "image": "/images/blog/image-for-blog-8.jpg",
+    "author_url_title": "Turpis nunc eget",
     "title": "«Eget nullam non nisi est sit amet.»",
     "subtitle": "Sed nisi lacus sed viverra»",
     "link": "https://yandex.ru/"
   },
   {
     "id": 9,
-    "image": "https://pp.userapi.com/c841132/v841132469/110c4/upxs5ZNGEGQ.jpg",
-    "author": "Adipiscing commodo",
+    "image": "/images/blog/image-for-blog-9.jpg",
+    "author_url_title": "Adipiscing commodo",
     "title": "«Vel elit scelerisque mauris pellentesque»",
     "subtitle": "Eu volutpat odio facilisis mauris sit amet. In hendrerit gravida rutrum quisque non. Luctus accumsan tortor posuere ac ut consequat semper viverra.",
     "link": "https://yandex.ru/"
   },
   {
     "id": 10,
-    "image": "https://avatars.mds.yandex.net/get-zen_doc/4519444/pub_607ee769ba83cd2567879af6_60aa17ab288764247f7b79c8/scale_1200",
-    "author": "Facilisi etiam",
+    "image": "/images/blog/image-for-blog-10.jpg",
+    "author_url_title": "Facilisi etiam",
     "title": "«Est ultricies»",
     "subtitle": "In nulla posuere sollicitudin aliquam»",
     "link": "https://yandex.ru/"
   },
   {
     "id": 11,
-    "image": "https://needguide.ru/uploads/Tour_pic_2/23718.jpg",
-    "author": "Fermentum leo",
+    "image": "/images/blog/image-for-blog-11.jpg",
+    "author_url_title": "Fermentum leo",
     "title": "«Malesuada proin»",
     "subtitle": "Semper eget duis at tellus at»",
     "link": "https://yandex.ru/"
   },
   {
     "id": 12,
-    "image": "https://cozymoscow.me/wp-content/uploads/2019/03/12047000_921504927924304_4540093406941886445_n.jpg",
-    "author": "Facilisi etiam",
+    "image": "/images/blog/image-for-blog-1.jpg",
+    "author_url_title": "Facilisi etiam",
     "title": "«Malesuada proin libero nunc consequat interdum varius sit»",
     "subtitle": "Turpis nunc eget lorem dolor sed. Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.»",
     "link": "https://yandex.ru/"

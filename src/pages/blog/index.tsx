@@ -25,10 +25,10 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
             <BlogCard
               key={card.id}
               image={card.image}
-              author={card.author}
+              author={card.author_url_title}
               heading={card.title}
               description={card.subtitle}
-              link={card.link}
+              id={card.id}
               firstCardSizeMode='big'
             />
           );

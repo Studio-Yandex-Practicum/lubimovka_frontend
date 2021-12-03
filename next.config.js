@@ -8,7 +8,7 @@ module.exports = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      issuer: /\.(js|ts)x?$/,
+      issuer:/\.(js|ts)x?$/,
       use: [
         {
           loader: '@svgr/webpack',
@@ -39,20 +39,6 @@ module.exports = {
     ];
   },
   images: {
-    domains: [
-      'lubimovka.kiryanov.ru',
-      'loveopium.ru',
-      'cdnn21.img.ria.ru',
-      'img-fotki.yandex.ru',
-      'www.m24.ru',
-      'www.hist.msu.ru',
-      'lh3.googleusercontent.com',
-      'api.um.mos.ru',
-      'radiovera.ru',
-      'pp.userapi.com',
-      'avatars.mds.yandex.net',
-      'needguide.ru',
-      'cozymoscow.me',
-    ],
+    domains: ['lubimovka.kiryanov.ru'],
   },
 };
