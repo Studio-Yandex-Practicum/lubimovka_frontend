@@ -76,6 +76,10 @@
   width: 510px;
   height: 492px;
   background: transparent !important;
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
 }
 
 .qrcodeContainer {
@@ -98,7 +102,7 @@
   }
 }
 
-.qrcodeAdvise {
+.qrcodeAdviseDesktop {
   @mixin text;
   @mixin textCaption;
 
@@ -107,6 +111,19 @@
   padding: scale(0 0 0 10px);
 
   @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}
+
+.qrcodeAdviseMobile {
+  display: none;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+
+    @mixin text;
+    @mixin textCaption;
+
     width: 100%;
     max-width: 250px;
     padding: scale(10px 0 0 0);

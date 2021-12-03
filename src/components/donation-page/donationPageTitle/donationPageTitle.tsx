@@ -53,8 +53,11 @@ export const DonationPageTitle: FC<IDonationPageTitleProps> = (props) => {
               </div>
             </a>
           </Link>
-          <p className={cx('qrcodeAdvise')}>
+          <p className={cx('qrcodeAdviseDesktop')}>
             Поддержать фестиваль можно ещё проще! Откройте приложение своего банка, выберите функцию &quot;Оплата по QR-коду&quot; и отсканируйте этот код. Или просто нажмите на QR-код, приложение вашего банка откроется само.
+          </p>
+          <p className={cx('qrcodeAdviseMobile')}>
+            Поддержать фестиваль можно ещё проще! Просто нажмите на QR-код, и приложение вашего банка откроется само.
           </p>
         </div>
       </div>
