@@ -1,20 +1,23 @@
-import React, { FC, useCallback, RefObject, useRef } from 'react';
+import React, { FC, useCallback, RefObject, Dispatch, useContext } from 'react';
 
 import { Droplist, IDroplistPublic } from 'components/ui/droplist';
 import { Tag } from 'components/ui/tag';
 import { Button } from 'components/ui/button';
-import { ILibraryFilterReducer } from 'components/library-filter/library-filter-reducer';
+import { Action } from 'components/library-filter/library-filter-reducer';
+import CurrentFiltersContext from 'pages/library/library-filters-context';
 
 import style from './library-filter.module.css';
 
-export interface LibraryFilterProps extends ILibraryFilterReducer {
+export interface LibraryFilterProps {
   years: number[];
   programmes: string[];
+  filterDispatcher: Dispatch<Action>;
   onCheckResults?: () => void;
+  droplistRef: RefObject<IDroplistPublic>;
 }
 
-const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterState, filterDispatcher, onCheckResults }) => {
-  const droplistRef = useRef(null) as RefObject<IDroplistPublic>;
+const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispatcher, onCheckResults, droplistRef }) => {
+  const filterState = useContext(CurrentFiltersContext);
 
   const handleTagClick = useCallback(
     (el: string): void => {
@@ -28,7 +31,7 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterState,
   const handleResetClick = useCallback((): void => {
     filterDispatcher({ type: 'reset' });
     droplistRef.current?.deleteAll();
-  }, [filterDispatcher]);
+  }, [filterDispatcher, droplistRef]);
 
   const handleYearsClick = useCallback((years: string[]): void => {
     filterDispatcher({ type: 'add years', years: years });

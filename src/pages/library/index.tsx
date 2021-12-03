@@ -9,6 +9,7 @@ import { fetcher } from 'shared/fetcher';
 import { PaginatedPlayList, Play } from 'api-typings';
 import reducer from 'components/library-filter/library-filter-reducer';
 import queryParser from './library-query-parser';
+import CurrentFiltersContext from './library-filters-context';
 
 export interface IPiecesFiltersProps {
   years: Array<number[]>;
@@ -45,13 +46,15 @@ const Library = ({ errorCode, pieces, years, programs }:
   }
 
   return (
-    <AppLayout>
-      <Head>
-        <title>Библиотека</title>
-      </Head>
-      <LibraryPage items={piecesState} years={years.flat()} programmes={programs.flat()}
-        filterState={filterState} filterDispatcher={filterDispatcher}/>
-    </AppLayout>
+    <CurrentFiltersContext.Provider value={filterState}>
+      <AppLayout>
+        <Head>
+          <title>Библиотека</title>
+        </Head>
+        <LibraryPage items={piecesState} years={years.flat()} programmes={programs.flat()}
+          filterDispatcher={filterDispatcher}/>
+      </AppLayout>
+    </CurrentFiltersContext.Provider>
   );
 };
 

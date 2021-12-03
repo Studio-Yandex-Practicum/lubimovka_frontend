@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, Dispatch, useRef, RefObject } from 'react';
 import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 
 import LibraryForm from 'components/library-form/library-form';
@@ -7,21 +7,23 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
+import { IDroplistPublic } from 'components/ui/droplist';
 import LibraryFiltersModal from './library-filters-modal';
 import { Play } from 'api-typings';
-import { ILibraryFilterReducer } from 'components/library-filter/library-filter-reducer';
+import { Action } from 'components/library-filter/library-filter-reducer';
 
 import styles from './index.module.css';
 
-interface ILibraryPageProps extends ILibraryFilterReducer {
+interface ILibraryPageProps {
   items: Play[];
   years: number[];
   programmes: string[];
+  filterDispatcher: Dispatch<Action>;
 }
 
-const LibraryPage: FC<ILibraryPageProps> = ({ items, years, programmes,
-  filterState, filterDispatcher }) => {
+const LibraryPage: FC<ILibraryPageProps> = ({ items, years, programmes, filterDispatcher }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const droplistRef = useRef(null) as RefObject<IDroplistPublic>;
 
   function handleFiltersClick():void {
     setIsModalOpen((prev) => !prev);
@@ -59,7 +61,7 @@ const LibraryPage: FC<ILibraryPageProps> = ({ items, years, programmes,
           </div>
           <div className={styles.filter}>
             <LibraryFilter years={years} programmes={programmes}
-              filterState={filterState} filterDispatcher={filterDispatcher}/>
+              filterDispatcher={filterDispatcher} droplistRef={droplistRef}/>
           </div>
         </div>
         <section className={styles.section}>
@@ -98,8 +100,9 @@ const LibraryPage: FC<ILibraryPageProps> = ({ items, years, programmes,
               }}/>
           ))}
         </section>
-        {isModalOpen && <LibraryFiltersModal years={years} programmes={programmes}
-          filterState={filterState} filterDispatcher={filterDispatcher} onCheckResults={handleFiltersClick}/>}
+        {isModalOpen && (<LibraryFiltersModal><LibraryFilter years={years} programmes={programmes}
+          filterDispatcher={filterDispatcher} onCheckResults={handleFiltersClick}
+          droplistRef={droplistRef}/></LibraryFiltersModal>)}
       </div>
     </main>
   );

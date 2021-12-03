@@ -1,15 +1,15 @@
-import { FC } from 'react';
-
-import LibraryFilter, { LibraryFilterProps } from 'components/library-filter/library-filter';
+import { FC, ReactNode } from 'react';
 
 import styles from './index.module.css';
 
-const LibraryFiltersModal: FC<LibraryFilterProps> = ({ years, programmes,
-  filterState, filterDispatcher, onCheckResults }) => {
+interface ILibraryFiltersModalProps {
+  children: ReactNode;
+}
+
+const LibraryFiltersModal: FC<ILibraryFiltersModalProps> = ({ children }) => {
   return (
     <section className={styles.wrap}>
-      <LibraryFilter years={years} programmes={programmes}
-        filterState={filterState} filterDispatcher={filterDispatcher} onCheckResults={onCheckResults}/>
+      {children}
     </section>
   );
 };
