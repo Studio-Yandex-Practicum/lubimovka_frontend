@@ -1,12 +1,14 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback } from 'react';
+// React.useLayoutEffect = React.useEffect;
 
 import styles from './masonry-grid.module.css';
 
 interface MasonryGridProps {
   children: ReactNode
+  isLoaded: boolean;
 }
 
-const MasonryGrid: React.FC<MasonryGridProps> = ({ children }) => {
+const MasonryGrid: React.FC<MasonryGridProps> = ({ isLoaded, children }) => {
 
   // реф для доступа к грид-сетке
   const gridRef = React.useRef<HTMLUListElement>(null);
@@ -31,8 +33,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ children }) => {
     }
   }
 
-  // ресайзим все карточки в гриде
-  function resizeAllGridItems() {
+  const resizeAllGridItems = useCallback(() => {
 
     // получаем всех карточки грида через реф
     if (null !== gridRef.current) {
@@ -48,19 +49,12 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ children }) => {
         }
       }
     }
-  }
+  }, [])
 
   // вызываем ресайз карточек при рендере компонентов
-  React.useLayoutEffect(() => {
-    // ставим слушатель на загрузку дом-дерева и всех стилей, картинок и скриптов
-    window.addEventListener('load', resizeAllGridItems);
-    // на ресайз
-    window.addEventListener('resize', resizeAllGridItems);
-    return () => {
-      window.removeEventListener('load', resizeAllGridItems);
-      window.removeEventListener('resize', resizeAllGridItems);
-    };
-  }, []);
+  React.useEffect(() => {
+    resizeAllGridItems();
+  }, [resizeAllGridItems, isLoaded]);
 
   return (
     <section className={styles.masonryGridSection}>
