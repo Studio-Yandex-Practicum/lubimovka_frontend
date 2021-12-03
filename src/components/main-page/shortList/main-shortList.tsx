@@ -7,10 +7,10 @@ import styles from './main-shortList.module.css';
 interface PlaysData {
   title: string
   city: string
-  year: string
-  linkView: string,
+  year: number
+  linkView: string
   linkDownload: string
-  author: AuthorData
+  authors: AuthorData []
 }
 interface AuthorData {
   id: number
@@ -28,8 +28,8 @@ export const MainShortList: FC<IMainShortList>= ({ data }) => {
     <section className={styles.section}>
       <h2 className={styles.title}>{data.title}</h2>
       <div className={styles.plays}>
-        {data.plays.map((item) => (
-          <BasicPlayCard play={item} author={item.author} key={item.author.id}/>
+        {data.plays.map((item, idx) => (
+          <BasicPlayCard play={item} key={idx}/>
         ))}
       </div>
     </section>
