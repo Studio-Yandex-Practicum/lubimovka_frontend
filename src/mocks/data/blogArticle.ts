@@ -328,7 +328,7 @@ const blogArticle: BlogData = {
   ],
   other_blogs: [
     {
-      id: 3,
+      id: 1,
       pub_date: '2021-11-29T00:07:51',
       title: 'Заголовок 3',
       description: 'Описание 3',
