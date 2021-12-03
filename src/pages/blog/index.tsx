@@ -18,15 +18,14 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
 
   useEffect(() => {
     setIsLoaded(true);
-    console.log('loaded')
-  }, [])
+  }, []);
 
   return (
     <AppLayout>
       <Head>
         <title>{metaTitle}</title>
       </Head>
-      <SectionTitleForBlog email='critics@lubimovka.ru' />
+      <SectionTitleForBlog email='critics@lubimovka.ru'/>
       <MasonryGrid isLoaded={isLoaded}>
         {data.map((card) => {
           return (
