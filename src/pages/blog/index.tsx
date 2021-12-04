@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 
-import AppLayout from 'components/app-layout/index';
+import { AppLayout } from 'components/app-layout/index';
 // import MasonryGrid from 'components/ui/masonry-grid/masonry-grid';
 import { SectionTitleForBlog } from 'components/section-title-for-blog/section-title-for-blog';
 // import { BlogCard } from 'components/ui/blog-card';

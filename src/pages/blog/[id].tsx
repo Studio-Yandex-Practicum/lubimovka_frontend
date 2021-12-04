@@ -1,7 +1,7 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 import { fetcher } from 'shared/fetcher';
-import AppLayout from '../../components/app-layout';
+import { AppLayout } from '../../components/app-layout';
 import { ArticlePage } from '../../components/article-page';
 import { BlogData } from '../../shared/types';
 
