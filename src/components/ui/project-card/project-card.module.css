@@ -5,20 +5,6 @@
   @media (max-width: $tablet-portrait) {
     margin: 0;
   }
-
-  /* &:nth-child(2n) > .card > .imageContainer {
-    @media (max-width: $tablet-portrait) {
-      justify-content: end;
-    }
-  }
-
-  &:nth-child(-n+2) > .card > .title {
-    padding-top: 0;
-
-    @media (max-width: $tablet-portrait) {
-      padding: scale(24px 0 17px 0);
-    }
-  } */
 }
 
 .card {
