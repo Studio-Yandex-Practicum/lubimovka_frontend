@@ -13,12 +13,12 @@ export interface IAnnouncedPlayCardProps {
   id?: number;
   date: string;
   title: string;
-  playwrightArray?: string [];
-  directorArray?: string [];
-  eventDescription?:string;
+  dramatists?: string [];
+  directors?: string [];
+  description?:string;
   buttonLink: string;
-  coverResourceUrl?: string;
-  projectCopy?: string;
+  imageUrl?: string;
+  projectText?: string;
   className?: string;
   paid?: boolean;
 }
@@ -29,12 +29,12 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     id,
     date,
     title,
-    playwrightArray,
-    directorArray,
-    eventDescription,
+    dramatists,
+    directors,
+    description,
     buttonLink,
-    coverResourceUrl,
-    projectCopy,
+    imageUrl,
+    projectText,
     className,
     paid,
   } = props;
@@ -47,85 +47,83 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const creditsRendered = (
     <React.Fragment>
       {
-        playwrightArray && playwrightArray.length > 1 ?
+        dramatists && dramatists.length > 1 ?
           (<p className={cx('creditsEntry')}>
-        Драматурги: {creditsArrayToString (playwrightArray)}
+        Драматурги: {creditsArrayToString (dramatists)}
           </p>)
           :
           (<p className={cx('creditsEntry')}>
-        Драматург: {playwrightArray}
+        Драматург: {dramatists}
           </p>)
       }
       {
-        directorArray && directorArray.length > 1 ?
+        directors && directors.length > 1 ?
           (<p className={cx('creditsEntry')}>
-        Режиссёры: {creditsArrayToString (directorArray)}
+        Режиссёры: {creditsArrayToString (directors)}
           </p>)
           :
           (<p className={cx('creditsEntry')}>
-          Режиссёр: {directorArray}
+          Режиссёр: {directors}
           </p>)
       }
     </React.Fragment>
   );
 
   return (
-    <li className={cx('card', [className])}>
-      <article className={cx('container')}>
-        {coverResourceUrl &&
-          <div className={cx('cover')}>
-            <Image src={coverResourceUrl} alt={title} layout="fill" objectFit="cover"/>
-          </div>
-        }
-        <div className={cx('info')}>
-          <div className={cx('dateInfo')}>
-            <p className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' })}</p>
-            <p className={cx('time')}>{new Date(date).toLocaleTimeString('ru-Ru', { timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric' })}</p>
-          </div>
-          <h3 className={cx('title', !coverResourceUrl && 'titleNoCover')}>{title}</h3>
-          {directorArray && directorArray.length > 0 && playwrightArray && playwrightArray.length > 0 &&
-          <div className={cx('credits')}>
-            {creditsRendered}
-          </div>
-          }
-          {eventDescription &&
-          <div className={cx('eventDescription')}>
-            {eventDescription}
-          </div>
-          }
-          <p className={cx('description')}>{projectCopy}</p>
-          <div className={cx('buttonContainer', coverResourceUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
-            <Button
-              view='primary'
-              className={cx('button')}
-              align='start'
-              gap='9px'
-              size='s'
-              iconPlace='left'
-              icon='arrow-right'
-              label={isPerformance ? 'О спектакле' : 'Регистрация'}
-              border='bottomLeft'
-              isLink
-              href={isPerformance ? `/performances/${id}` : buttonLink}
-            />
-            {paid && isPerformance &&
-            <Button
-              view='primary'
-              className={cx('button')}
-              align='start'
-              gap='9px'
-              size='s'
-              iconPlace='left'
-              icon='arrow-right'
-              label='Билеты'
-              border='bottomLeft'
-              isLink
-              href={buttonLink}
-            />
-            }
-          </div>
+    <article className={cx('card', [className])}>
+      {imageUrl &&
+        <div className={cx('cover')}>
+          <Image src={imageUrl} alt={title} layout="fill" objectFit="cover"/>
         </div>
-      </article>
-    </li>
+      }
+      <div className={cx('info')}>
+        <div className={cx('dateInfo', !imageUrl && 'dateInfoNoCover')}>
+          <p className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' })}</p>
+          <p className={cx('date')}>{new Date(date).toLocaleTimeString('ru-Ru', { timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric' })}</p>
+        </div>
+        <h3 className={cx('title')}>{title}</h3>
+        {directors && directors.length > 0 && dramatists && dramatists.length > 0 &&
+        <div className={cx('credits')}>
+          {creditsRendered}
+        </div>
+        }
+        {description &&
+        <div className={cx('description')}>
+          {description}
+        </div>
+        }
+        <p className={cx('projectText', imageUrl && 'projectTextCoverExists')}>{projectText}</p>
+        <div className={cx('buttonContainer', imageUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
+          <Button
+            view='primary'
+            className={cx('button')}
+            align='start'
+            gap='9px'
+            size='s'
+            iconPlace='left'
+            icon='arrow-right'
+            label={isPerformance ? 'О спектакле' : 'Регистрация'}
+            border='bottomLeft'
+            isLink
+            href={isPerformance ? `/performances/${id}` : buttonLink}
+          />
+          {paid && isPerformance &&
+          <Button
+            view='primary'
+            className={cx('button')}
+            align='start'
+            gap='9px'
+            size='s'
+            iconPlace='left'
+            icon='arrow-right'
+            label='Билеты'
+            border='bottomLeft'
+            isLink
+            href={buttonLink}
+          />
+          }
+        </div>
+      </div>
+    </article>
   );
 };
