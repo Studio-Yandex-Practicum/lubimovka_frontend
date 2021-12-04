@@ -1,7 +1,12 @@
 import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { Page } from 'components/page';
+import Page, {
+  PageHeader,
+  PageFooter,
+  PageBurgerButton,
+  PageOverlayMenu,
+} from 'components/page';
 import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
 import { Navbar } from 'components/navbar';
@@ -27,7 +32,7 @@ interface IAppLayoutProps {
   hiddenPartners?: boolean,
 }
 
-const AppLayout = (props: IAppLayoutProps): JSX.Element => {
+export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
   const {
     children,
     hiddenPartners,
@@ -49,7 +54,7 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
 
   return (
     <Page>
-      <Page.Header>
+      <PageHeader>
         <Navbar>
           <Navbar.Logotype>
             <Logotype
@@ -87,9 +92,9 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
             </Navbar.Section>
           </Navbar.Actions>
         </Navbar>
-      </Page.Header>
+      </PageHeader>
       {children}
-      <Page.Footer>
+      <PageFooter>
         <Footer>
           {!hiddenPartners && (
             <Footer.Partners>
@@ -140,10 +145,10 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
             </Menu>
           </Footer.Projects>
         </Footer>
-      </Page.Footer>
+      </PageFooter>
       {isMobile && (
         <>
-          <Page.OverlayMenu isOpen={isOverlayMenuOpen}>
+          <PageOverlayMenu isOpen={isOverlayMenuOpen}>
             <OverlayNav>
               <OverlayNav.Logotype>
                 <Logotype href='/' title="Фестиваль Любимовка"/>
@@ -191,19 +196,15 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
                 <FooterCopyright/>
               </OverlayNav.Copyright>
             </OverlayNav>
-          </Page.OverlayMenu>
-          <Page.BurgerButton>
+          </PageOverlayMenu>
+          <PageBurgerButton>
             <BurgerButton
               isOpen={isOverlayMenuOpen}
               onClick={toggleOverlayMenu}
             />
-          </Page.BurgerButton>
+          </PageBurgerButton>
         </>
       )}
     </Page>
   );
 };
-
-AppLayout.Breadcrumbs = Page.Breadcrumbs;
-
-export default AppLayout;
