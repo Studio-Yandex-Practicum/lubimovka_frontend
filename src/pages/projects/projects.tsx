@@ -1,7 +1,7 @@
 import Error from 'next/error';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import { ProjectsLayout } from 'components/projects-layout';
 import { ProjectCardList } from 'components/project-card-list';
 import { ProjectCard } from 'components/ui/project-card';

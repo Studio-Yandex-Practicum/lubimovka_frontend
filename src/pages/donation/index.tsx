@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import { DonationPageTitle } from 'components/donation-page/donationPageTitle';
 import { Opportunities } from 'components/donation-page/opportunities';
 import { Report } from 'components/donation-page/report';

@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import ContactsLayout from 'components/contacts-layout';
 import ContactsTitle from 'components/contacts-title';
 import ContactsAuthors from 'components/contacts-authors';

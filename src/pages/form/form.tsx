@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import PlayProposalLayout from 'components/play-proposal-layout';
 import PlayProposalTitle from 'components/play-proposal-title';
 import { ParticipationForm } from 'components/participation-form';
