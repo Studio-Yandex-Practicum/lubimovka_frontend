@@ -2,45 +2,37 @@ import { FC } from 'react';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button';
+import { MainVideoArchive } from 'api-typings';
 
 import styles from './main-archive.module.css';
 
-interface IMainArchiveProps {
-  data: {
-    id: number
-    title: string[]
-    buttonLink: string
-    desc: string
-    videoKey: string
-  }
-}
-
-export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
-  const { title, buttonLink, desc, videoKey } = data;
-
+export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => {
+  
   return ( 
     <section className={cn(styles.archive)}>
       <div className={cn(styles.content)}>
         <h2 className={cn(styles.title)}>
-          <p className={cn(styles.text)}>{title[0]}</p>
+          <p className={cn(styles.text)}>
+            Видео-архив
+          </p>
           <span className={cn(styles.link)}>
             <Button 
               label='YOUTUBE'
               isLink={true} 
-              href={buttonLink}
+              href={url}
               icon='arrow-right'
               iconPlace='left'
               border='bottomLeft'
               size='s'
             />
           </span>
-          {title[1]}
+          всех читок и событий
         </h2>
         <p className={cn(styles.desc)}>
-          {desc}
+          На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации.
         </p>
       </div>
-      <div className={cn(styles.video)}>
+      {/* <div className={cn(styles.video)}>
         <iframe 
           width='100%' 
           height='100%'
@@ -48,7 +40,7 @@ export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
           frameBorder="0" 
           allowFullScreen 
         />
-      </div>
+      </div> */}
     </section>
   );
 };
