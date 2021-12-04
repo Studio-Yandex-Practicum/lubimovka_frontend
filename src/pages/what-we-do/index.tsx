@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import { WhatWeDoHeader } from 'components/what-we-do-page/header';
 import { WhatWeDoDesc } from 'components/what-we-do-page/desc';
 import { WhatWeDoAuthors } from 'components/what-we-do-page/authors';

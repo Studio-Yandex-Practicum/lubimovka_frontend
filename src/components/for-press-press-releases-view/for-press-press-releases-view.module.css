@@ -1,0 +1,205 @@
+.main {
+  position: relative;
+  width: 100%;
+  background-color: var(--white);
+
+  @media (max-width: $tablet-portrait) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline3;
+
+  max-width: scale(450px);
+  padding-top: scale(212px);
+  padding-bottom: scale(32px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    max-width: scale(367px);
+    padding-top: scale(45px);
+    padding-bottom: scale(24px);
+    padding-left: scale(24px);
+  }
+}
+
+.navigation {
+  display: grid;
+  max-width: scale(1019px);
+  column-gap: scale(30px);
+  grid-template-areas:
+    "label       .  "
+    "droplist  button";
+  grid-template-columns: scale(166px) scale(420px);
+
+  @media (max-width: $tablet-portrait) {
+    width: 88.41%;
+    max-width: none;
+    margin: 0 auto;
+    column-gap: scale(51px);
+    grid-template-areas:
+      "label  droplist"
+      "button button";
+    grid-template-columns: scale(166px) scale(149px);
+  }
+}
+
+.droplistLabel {
+  @mixin headline;
+  @mixin headline7;
+
+  width: scale(166px);
+  box-sizing: border-box;
+  padding-bottom: scale(17px);
+  grid-area: label;
+
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: 0;
+  }
+}
+
+.droplist {
+  @mixin text;
+  @mixin textLarge;
+
+  z-index: 2;
+  width: scale(149px);
+  height: scale(44px);
+  grid-area: droplist;
+
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: scale(28px);
+  }
+}
+
+.button {
+  display: grid;
+  min-width: scale(420px);
+  height: scale(44px);
+  margin-left: scale(15px);
+  grid-area: button;
+  text-transform: none;
+
+  @mixin text;
+  @mixin textLarge;
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(367px);
+    min-width: unset;
+    margin-bottom: scale(59px);
+  }
+}
+
+.button > svg {
+  width: scale(25px);
+  height: scale(25px);
+}
+
+.coverContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  @media (max-width: $tablet-portrait) {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.cover {
+  position: relative;
+  width: scale(720px);
+  height: scale(269px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(414px);
+    height: scale(154.68px);
+  }
+}
+
+.pressReleaseText {
+  max-width: scale(840px);
+  margin-top: scale(62px);
+  grid-area: text;
+
+  @media (max-width: $tablet-portrait) {
+    margin-right: scale(24px);
+    margin-left: scale(24px);
+  }
+}
+
+.pressReleaseText > h6 {
+  @mixin headline;
+  @mixin headline6;
+
+  margin-bottom: scale(24px);
+}
+
+.pressReleaseText > p {
+  @mixin text;
+  @mixin textLarge;
+
+  margin-bottom: scale(16px);
+  text-indent: scale(20px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(24px);
+  }
+}
+
+.pressReleaseText > p ~ h6 {
+  @media (max-width: $tablet-portrait) {
+    @mixin headline;
+    @mixin headline6;
+
+    margin-top: scale(100px);
+    margin-bottom: scale(24px);
+  }
+}
+
+.pressReleasetext > p:last-of-type {
+  margin-bottom: 0;
+}
+
+.pressReleaseText > h4 {
+  @mixin headline;
+  @mixin headline4;
+
+  margin-top: scale(64px);
+  margin-bottom: scale(24px);
+}
+
+.pressReleaseText > ul {
+  display: grid;
+  padding: 0;
+  padding-left: scale(60px);
+  margin: 0;
+  gap: scale(20px);
+  list-style-type: none;
+}
+
+.pressReleaseText > ul > li {
+  @mixin text;
+  @mixin textLarge;
+
+  display: grid;
+  align-items: baseline;
+  column-gap: 16px;
+  grid-template-columns: 10px 1fr;
+}
+
+.pressReleaseText > ul > li::before {
+  width: 10px;
+  height: 10px;
+  background-color: var(--coal);
+  border-radius: 50%;
+  content: "";
+}
+
+.pressReleaseText > ul > li:last-child {
+  margin-bottom: 0;
+}

@@ -14,32 +14,53 @@
 
 .list {
   display: flex;
+  overflow: hidden; /* TODO: удалить после исправления верстки карточки спектакля */
   flex-wrap: wrap;
   padding: 0;
   margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+  }
 }
 
 .item {
   display: block;
   width: calc((100% - 2 * scale(56px)) / 3);
 
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+  }
+
   &:first-child {
     margin-left: auto;
+
+    @media (max-width: $tablet-portrait) {
+      margin-left: unset;
+    }
   }
 
   &:last-child {
     margin-right: auto;
+
+    @media (max-width: $tablet-portrait) {
+      margin-right: unset;
+    }
   }
 
   &:nth-child(n+4) {
     margin-top: scale(56px);
+
+    @media (max-width: $tablet-portrait) {
+      margin-top: unset;
+    }
   }
 
   &:first-child:nth-last-child(2) {
     margin-right: scale(120px);
 
     &::after {
-      right: calc(-1 * scale(60px));
+      right: scale(-60px);
     }
   }
 
@@ -56,6 +77,10 @@
       width: 1px;
       background-color: var(--coal);
       content: '';
+
+      @media (max-width: $tablet-portrait) {
+        content: none;
+      }
     }
   }
 }

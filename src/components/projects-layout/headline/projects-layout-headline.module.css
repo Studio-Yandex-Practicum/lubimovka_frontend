@@ -1,0 +1,9 @@
+.headline {
+  max-width: scale(612px);
+  margin: scale(60px 0 0 50%);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: unset;
+    margin: scale(54px 0 0);
+  }
+}

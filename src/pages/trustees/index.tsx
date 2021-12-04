@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import TrusteesSection from 'components/trustees-section/trustees-section';
 import TrusteesPersons from 'components/trustees-persons-list/trustees-persons-list';
 
