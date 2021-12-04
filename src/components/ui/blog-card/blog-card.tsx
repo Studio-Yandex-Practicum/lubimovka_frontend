@@ -45,4 +45,3 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
     </Link>
   );
 };
-
