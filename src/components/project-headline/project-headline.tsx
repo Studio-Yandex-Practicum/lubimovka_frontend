@@ -28,6 +28,7 @@ export const ProjectHeadline = (props: IProjectHeadlineProps): JSX.Element => {
         <Image
           src={image}
           layout="fill"
+          objectFit="cover"
           alt=""
         />
       </div>
