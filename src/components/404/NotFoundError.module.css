@@ -1,4 +1,6 @@
 .error {
+  @mixin text;
+
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -9,9 +11,8 @@
   margin: 0 auto;
   background: #ecebe8;
   color: #242424;
-  font-family: 'Formular', Helvetica, Arial, sans-serif;
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablet-portrait) {
     padding: 32px 24px;
   }
 }
@@ -34,48 +35,42 @@
   flex-direction: column;
   margin: 83px 152px 0 auto;
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablet-portrait) {
     margin: 69px auto 0;
   }
 }
 
 .title {
-  margin: 0 auto 25px 0;
-  font-feature-settings: 'ss01' on;
-  font-size: 20px;
-  font-weight: 300;
-  letter-spacing: -.01em;
-  line-height: 28px;
+  @mixin text;
+  @mixin textLarge;
 
-  @media (max-width: 768px) {
+  margin: 0 auto 25px 0;
+
+  @media (max-width: $tablet-portrait) {
     margin-bottom: 11px;
   }
 }
 
 .subtitle {
+  @mixin headline;
+  @mixin headline3;
+
   max-width: 720px;
   margin: 0 0 24px 0;
-  font-family: 'PP Neue Machina', Helvetica, Arial, sans-serif;
-  font-size: 56px;
-  font-weight: 400;
-  letter-spacing: -.01em;
-  line-height: 56px;
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablet-portrait) {
     margin-bottom: 16px;
-    font-size: 36px;
-    line-height: 38px;
+
+    @mixin headline5;
   }
 }
 
 .text {
+  @mixin headline;
+  @mixin headline7;
+
   max-width: 415px;
   margin: 0 0 0 60px;
-  font-family: 'PP Neue Machina', Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  font-weight: normal;
-  letter-spacing: -.01em;
-  line-height: 24px;
 }
 
 .list {
@@ -92,7 +87,7 @@
 }
 
 .listItem {
-  @media (max-width: 768px) {
+  @media (max-width: $tablet-portrait) {
     margin-bottom: 34px;
   }
 }
