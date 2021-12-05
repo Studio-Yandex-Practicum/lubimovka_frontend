@@ -38,7 +38,7 @@ const fetchTeam = async () => {
   try {
     data = await fetcher<Array<FestivalTeams>>('/info/about-festival/team/');
   } catch (error) {
-    return;
+    throw error;
   }
 
   return data;
@@ -50,17 +50,22 @@ const fetchVolunteers = async () => {
   try {
     data = await fetcher<Array<Volunteers>>('/info/about-festival/volunteers/');
   } catch (error) {
-    return;
+    throw error;
   }
 
   return data;
 };
 
 export const getServerSideProps: GetServerSideProps<ITeamProps> = async () => {
-  const team = await fetchTeam();
-  const volunteers = await fetchVolunteers();
+  let result = await Promise.all([
+    fetchTeam(),
+    fetchVolunteers()
+  ]);
 
-  if (!team) {
+  const team = result[0];
+  const volunteers = result[1];
+
+  if (!result) {
     return {
       props: {
         errorCode: 500,

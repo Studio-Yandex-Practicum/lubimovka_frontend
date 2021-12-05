@@ -48,19 +48,18 @@
 
 .infoBlock {
   position: relative;
-  padding-bottom: scale(259px);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: scale(149px);
   margin: scale(69px 0 0 213px);
 
   @media (max-width: $tablet-portrait) {
-    padding-bottom: scale(250px);
+    padding-bottom: scale(150px);
     margin: scale(69px 22px 0 0);
   }
 }
 
 .asterisk {
-  position: absolute;
-  top: 0;
-  left: 0;
   margin: 0;
 }
 
@@ -68,36 +67,8 @@
   @mixin text;
   @mixin textLarge;
 
-  position: absolute;
-  top: scale(25px);
-  left: scale(25px);
+  margin-left: 25px;
   max-width: scale(426px);
-  margin: 0;
-
-  @media (max-width: 1200px) {
-    top: scale(30px);
-    left: scale(30px);
-  }
-
-  @media (max-width: 1050px) {
-    top: scale(35px);
-    left: scale(35px);
-  }
-
-  @media (max-width: 900px) {
-    top: scale(40px);
-    left: scale(40px);
-  }
-
-  @media (max-width: 728px) {
-    top: scale(20px);
-    left: scale(20px);
-  }
-
-  @media (max-width: 550px) {
-    top: scale(25px);
-    left: scale(25px);
-  }
 }
 
 .indent {
