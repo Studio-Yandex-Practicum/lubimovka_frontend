@@ -2,8 +2,8 @@ import { FC } from 'react';
 import Link, { LinkProps } from 'next/link';
 import classNames from 'classnames/bind';
 
-import Logo from 'shared/images/logo.svg';
-import LogoFull from 'shared/images/logo-full.svg';
+import CompactLogo from 'shared/images/compact-logo.svg';
+import FullLogo from 'shared/images/full-logo.svg';
 import styles from './logotype.module.css';
 
 interface ILogotypeProps extends Pick<LinkProps, 'href'> {
@@ -27,8 +27,8 @@ export const Logotype: FC<ILogotypeProps> = (props) => {
     <Link href={href}>
       <a onClick={onClick} className={cx('link')} title={title}>
         {logoFull
-          ? <LogoFull className={cx('image')}/>
-          : <Logo className={cx('image')}/>
+          ? <FullLogo className={cx('image')}/>
+          : <CompactLogo className={cx('image')}/>
         }
       </a>
     </Link>
