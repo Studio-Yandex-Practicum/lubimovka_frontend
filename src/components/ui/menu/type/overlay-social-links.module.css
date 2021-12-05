@@ -1,15 +1,26 @@
 .menu {
-  display: grid;
+  display: flex;
+  box-sizing: border-box;
+  flex-wrap: wrap;
   padding: 0;
   border-top: 1px solid var(--coal);
   margin: 0;
-  background-color: var(--coal);
-  gap: 1px;
   grid-template-columns: repeat(2, 1fr);
 }
 
 .item {
   display: block;
+  width: 50%;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--coal);
+
+  &:nth-child(even) {
+    border-right: 1px solid var(--coal);
+  }
+
+  &.highlighted {
+    width: 100%;
+  }
 }
 
 .link {
@@ -18,22 +29,14 @@
 
   display: flex;
   padding: scale(15px);
-  background-color: var(--beige);
   color: var(--coal);
   place-content: center space-between;
   text-decoration: none;
   text-transform: lowercase;
   white-space: nowrap;
 
-  &:hover {
+  &:active {
     background-color: var(--coal);
     color: var(--beige);
   }
-}
-
-.primary {
-  grid-column-end: 3;
-  grid-column-start: 1;
-  grid-row-end: 2;
-  grid-row-start: 1;
 }
