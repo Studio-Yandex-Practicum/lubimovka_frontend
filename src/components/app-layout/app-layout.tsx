@@ -65,7 +65,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
             <Logotype
               href="/"
               title="Фестиваль Любимовка"
-              logoFull={expandedHeader}
+              full={expandedHeader}
             />
           </Navbar.Logotype>
           <Navbar.Actions>

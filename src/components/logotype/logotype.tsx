@@ -9,7 +9,7 @@ import styles from './logotype.module.css';
 interface ILogotypeProps extends Pick<LinkProps, 'href'> {
   title?: string,
   className?: string,
-  logoFull?: boolean,
+  full?: boolean,
   onClick?: React.MouseEventHandler,
 }
 
@@ -19,14 +19,14 @@ export const Logotype: FC<ILogotypeProps> = (props) => {
   const {
     href,
     title,
-    logoFull,
+    full,
     onClick,
   } = props;
 
   return (
     <Link href={href}>
       <a onClick={onClick} className={cx('link')} title={title}>
-        {logoFull
+        {full
           ? <FullLogo className={cx('image')}/>
           : <CompactLogo className={cx('image')}/>
         }
