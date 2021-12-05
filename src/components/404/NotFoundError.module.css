@@ -3,40 +3,41 @@
 
   position: relative;
   overflow: hidden;
-  width: 100%;
-  max-width: 1440px;
-  height: 100vh;
-  box-sizing: border-box;
-  padding-top: 1px;
+  max-width: scale(1440px);
   margin: 0 auto;
   background: #ecebe8;
   color: #242424;
 
   @media (max-width: $tablet-portrait) {
-    padding: 32px 24px;
+    padding: scale(32px 24px);
   }
 }
 
 .logo {
   position: absolute;
-  top: 28px;
-  left: 32px;
+  top: scale(28px);
+  left: scale(32px);
+  width: scale(93px);
+  height: scale(80px);
+  padding: 0;
+  margin: 0;
 
-  @media (max-width: 700px) {
+  @media (max-width: $tablet-portrait) {
     position: static;
-    margin: 0;
+    width: scale(34px);
+    height: scale(43px);
   }
 }
 
 .contentContainer {
   display: flex;
   width: 100vw;
-  max-width: 720px;
+  max-width: scale(720px);
   flex-direction: column;
-  margin: 83px 152px 0 auto;
+  margin: scale(83px 152px 0 auto);
 
   @media (max-width: $tablet-portrait) {
-    margin: 69px auto 0;
+    margin: scale(69px auto 0);
   }
 }
 
@@ -44,10 +45,10 @@
   @mixin text;
   @mixin textLarge;
 
-  margin: 0 auto 25px 0;
+  margin: scale(0 auto 25px 0);
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: 11px;
+    margin-bottom: scale(11px);
   }
 }
 
@@ -55,11 +56,11 @@
   @mixin headline;
   @mixin headline3;
 
-  max-width: 720px;
-  margin: 0 0 24px 0;
+  max-width: scale(720px);
+  margin: scale(0 0 24px 0);
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: 16px;
+    margin-bottom: scale(16px);
 
     @mixin headline5;
   }
@@ -69,75 +70,78 @@
   @mixin headline;
   @mixin headline7;
 
-  max-width: 415px;
-  margin: 0 0 0 60px;
+  max-width: scale(415px);
+  margin: scale(0 0 0 60px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(306px);
+  }
 }
 
 .list {
   display: flex;
   flex-direction: row;
   padding: 0;
-  margin: 40px 0 0 60px;
+  margin: scale(39px 0 0 60px);
   list-style-type: none;
   white-space: nowrap;
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablet-portrait) {
     flex-direction: column;
+    margin: scale(40px 0 0 60px);
   }
 }
 
 .listItem {
+  @mixin text;
+  @mixin textSmallButton;
+
   @media (max-width: $tablet-portrait) {
-    margin-bottom: 34px;
+    margin-bottom: scale(42px);
   }
 }
 
 .lines {
-  width: 100%;
-  height: 100vh;
+  height: scale(100vh);
 }
 
 .line {
   position: absolute;
-  width: calc(100% + 400px);
-  min-width: 920px;
-  max-width: 1806px;
+  width: scale(calc(100% + 400px));
+  min-width: scale(920px);
+  max-width: scale(1806px);
 }
 
 .line:first-of-type {
-  top: 526px;
-  left: -146px;
+  top: scale(526px);
+  left: scale(-146px);
   transform: rotate(17.89deg);
 
   @media (max-width: 1400px) {
-    top: 726px;
-    left: -146px;
+    top: scale(746px);
+    left: scale(-146px);
   }
 }
 
 .line:nth-of-type(2n) {
-  top: 546px;
-  left: -160px;
+  top: scale(546px);
+  left: scale(-160px);
   transform: rotate(4.24deg);
 
   @media (max-width: 1400px) {
-    top: 706px;
-    left: -160px;
+    top: scale(728px);
+    left: scale(-160px);
   }
 }
 
 .link {
   box-sizing: border-box;
-  padding-bottom: 10px;
+  padding-right: 23px;
+  padding-bottom: scale(10px);
   border-bottom: 1px solid #242424;
   border-left: 1px solid #242424;
-  margin-right: 8px;
+  margin-right: scale(8px);
   color: #333;
   text-decoration: none;
   text-transform: uppercase;
-}
-
-.lineContainer {
-  position: absolute;
-  width: 100%;
 }

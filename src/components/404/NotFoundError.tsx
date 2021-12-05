@@ -15,13 +15,17 @@ export default function NotFoundError() {
       const newWidth = document.documentElement.clientWidth;
       setScreenWidth(newWidth);
     };
+    window.addEventListener('load', setWindowWidth);
     window.addEventListener('resize', setWindowWidth);
-    return () => window.removeEventListener('resize', setWindowWidth);
+    return () => {
+      window.removeEventListener('resize', setWindowWidth);
+      window.removeEventListener('load', setWindowWidth);
+    };
   }, []);
 
   return (
     <section className={classes.error}>
-      <Link href={'/'}><a>{screenWidth < 1024 ? <SmallLogo className={classes.logo} src={'/images/small-logo.svg'} layout={'fill'}/> : <Logo className={classes.logo} src={'/images/logo.svg'} layout={'fill'}/>}</a></Link>
+      <Link href={'/'}><a>{screenWidth < 723 ? <SmallLogo className={classes.logo} src={'/images/small-logo.svg'} layout={'fill'}/> : <Logo className={classes.logo} src={'/images/logo.svg'} layout={'fill'}/>}</a></Link>
       <div className={classes.contentContainer}>
         <h1 className={classes.title}>Ощибка 404</h1>
         <h2 className={classes.subtitle}>Кажется, такой страницы не существует</h2>
