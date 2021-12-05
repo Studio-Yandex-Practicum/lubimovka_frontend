@@ -14,7 +14,7 @@ const FestivalTeamSection: FC<FestivalTeamSectionProps> = (props) => {
 
   const selectedCards = useMemo(()=> {
     return cards.filter(card => card.team === 'fest');
-  }, []);
+  }, [cards]);
 
   return (
     <section className={styles.section}>

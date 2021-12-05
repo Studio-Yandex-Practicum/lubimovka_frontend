@@ -41,11 +41,11 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
 
   const selectedCards = useMemo(() => {
     return cards.filter(card => card.team === 'art');
-  }, []);
+  }, [cards]);
 
   const checkForMultiplicity = useCallback((n: number) => {
     return selectedCards.length % n === 0;
-  }, []);
+  }, [selectedCards]);
 
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
