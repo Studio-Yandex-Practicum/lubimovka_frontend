@@ -1,5 +1,4 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import Error from 'next/error';
 
 import { AppLayout } from 'components/app-layout';
 import TrusteesSection from 'components/trustees-section/trustees-section';
@@ -10,16 +9,11 @@ import { fetcher } from 'shared/fetcher';
 import textData from './assets/mock-text-data.json';
 
 interface ITrusteesProps {
-  errorCode?: number,
   trustees: Array<Sponsor>,
 }
 
-const Trustees = ({ errorCode, trustees }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  if (errorCode) {
-    return (
-      <Error statusCode={errorCode}/>
-    );
-  }
+const Trustees = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { trustees } = props;
 
   return (
     <AppLayout>
@@ -45,20 +39,19 @@ const fetchTrustees = async () => {
 };
 
 export const getServerSideProps: GetServerSideProps<ITrusteesProps> = async () => {
-  try {
-    const trustees = await fetchTrustees();
+  const trustees = await fetchTrustees();
 
+  if (!trustees) {
     return {
-      props: {
-        trustees,
-      },
-    };
-  } catch (error) {
-    return {
-      errorCode: 500,
-      trustees: []
+      notFound: true,
     };
   }
+
+  return {
+    props: {
+      trustees,
+    },
+  };
 };
 
 export default Trustees;
