@@ -1,74 +1,79 @@
-import { FC, useState } from 'react';
-import { useKeenSlider } from 'keen-slider/react';
+import { useState, Children } from 'react';
 import classNames from 'classnames/bind';
+import { useKeenSlider } from 'keen-slider/react';
 
-import { SliderButton } from '../slider-button';
-import { SliderDots } from '../slider-dots';
-import { Url } from 'shared/types';
+import { SliderButton } from 'components/ui/slider-button';
+import { SliderDots } from 'components/ui/slider-dots';
 
 import styles from './image-slider.module.css';
-const cx = classNames.bind(styles);
 
-export type TImageItem = {
-  image: Url;
-  caption: string;
-}
+const cx = classNames.bind(styles);
 
 interface IImageSliderProps {
   className?: string;
-  images: TImageItem[];
+  showDots?: boolean;
+  initialSlide?: number;
+  children: React.ReactNode;
 }
 
-export const ImageSlider: FC<IImageSliderProps> = (props) => {
-  const { className, images } = props;
+export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
+  const {
+    className,
+    showDots = true,
+    initialSlide = 0,
+    children
+  } = props;
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
     spacing: 15,
+    initial: initialSlide,
     slideChanged(s) {
       setCurrentSlide(s.details().relativeSlide);
     },
   });
 
   return (
-    <div className={cx('imageSlider', className)}>
-      {slider && (
-        <>
-          <SliderButton
-            direction='left'
-            className={cx('arrow', 'arrowLeft')}
-            onClick={slider.prev}
-          />
-          <SliderButton
-            direction='right'
-            className={cx('arrow', 'arrowRight')}
-            onClick={slider.next}
-          />
-        </>
-      )}
-      <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
-        {images.map((image, idx) => (
-          <div
-            key={idx}
-            className={cx('keen-slider__slide', 'slide')}
-          >
-            <img
-              className={cx('image')}
-              src={image.image}
-              alt={image.caption}
-              draggable={false}
-            />
-          </div>
-        ))}
+    <div className={cx(className)}>
+      <div className={cx('container')}>
+        {slider && (
+          <>
+            <div className={cx('arrow', 'arrowLeft')}>
+              <SliderButton
+                className={cx('arrowButton')}
+                ariaLabel='Предыдущий слайд'
+                direction='left'
+                onClick={slider.prev}
+              />
+            </div>
+            <div className={cx('arrow', 'arrowRight')}>
+              <SliderButton
+                className={cx('arrowButton')}
+                ariaLabel='Следующий слайд'
+                direction='right'
+                onClick={slider.next}
+              />
+            </div>
+          </>
+        )}
+        <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
+          {Children.map(children, (slide) => (
+            <div className={cx('keen-slider__slide', 'slide')}>
+              {slide}
+            </div>
+          ))}
+        </div>
       </div>
-      {slider && <SliderDots
-        className={cx('dots')}
-        count={slider.details().size}
-        currentSlide={currentSlide}
-        onClick={(idx) => slider.moveToSlideRelative(idx)}
-      />}
+      {slider && showDots && (
+        <SliderDots
+          className={cx('dots')}
+          count={slider.details().size}
+          currentSlide={currentSlide}
+          onClick={(idx) => slider.moveToSlideRelative(idx)}
+        />
+      )}
     </div>
   );
 };

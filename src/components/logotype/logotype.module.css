@@ -1,0 +1,10 @@
+.link {
+  display: inline-flex;
+  color: inherit;
+  place-content: center;
+}
+
+.image {
+  width: scale(43px);
+  height: scale(35px);
+}

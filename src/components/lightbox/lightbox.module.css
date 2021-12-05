@@ -1,0 +1,3 @@
+.slider {
+  width: min(135vh, calc(var(--scale) * 976));
+}

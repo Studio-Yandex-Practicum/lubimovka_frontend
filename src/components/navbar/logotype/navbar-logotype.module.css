@@ -1,0 +1,10 @@
+.logotype {
+  display: flex;
+  align-self: center;
+  margin-right: scale(33px);
+  place-content: center;
+
+  @media (max-width: $tablet-portrait) {
+    margin-right: 0;
+  }
+}

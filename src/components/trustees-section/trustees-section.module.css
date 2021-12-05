@@ -1,0 +1,92 @@
+.section * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.section {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: var(--beige);
+}
+
+.menu {
+  padding: scale(40px 0 70px 70px);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 scale(30px);
+  margin: 0 auto;
+  row-gap: 120px;
+
+  @media (max-width: 767px) {
+    padding: 0 scale(25px);
+    row-gap: 32px;
+  }
+}
+
+.becomeTrustee {
+  width: 50%;
+  align-self: flex-end;
+  padding-bottom: 40px;
+  padding-left: scale(85px);
+
+  @media (max-width: 767px) {
+    width: 100%;
+    order: 3;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 68px;
+  }
+}
+
+.accent {
+  @mixin text;
+  @mixin textLarge;
+
+  max-width: scale(468px);
+  padding-left: scale(27px);
+
+  @media (max-width: 767px) {
+    max-width: none;
+    padding-left: scale(27px);
+  }
+}
+
+.mailLink {
+  display: inline-block;
+  border-bottom: scale(1px) solid;
+  color: inherit;
+  line-height: .9;
+  text-decoration: none;
+}
+
+.mainText {
+  width: 50%;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline2;
+
+  margin-bottom: 42px;
+}
+
+.narrative {
+  @mixin headline;
+  @mixin headline7;
+
+  max-width: scale(453px);
+  padding-left: scale(60px);
+
+  @media (max-width: 767px) {
+    max-width: none;
+  }
+}

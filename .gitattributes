@@ -1,0 +1,12 @@
+* text=auto
+
+*.md text
+*.svg text
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+
+.gitattributes export-ignore
+.gitignore export-ignore

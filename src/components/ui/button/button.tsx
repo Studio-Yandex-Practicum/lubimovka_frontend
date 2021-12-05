@@ -1,11 +1,13 @@
-import React, {FC, ButtonHTMLAttributes} from 'react';
+import React, { FC, ButtonHTMLAttributes } from 'react';
 import Link from 'next/link';
 import cn from 'classnames/bind';
-import {Icon, IIconProps} from '../icon';
+
+import { Icon, IIconProps } from '../icon';
 
 import styles from './button.module.css';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  type?: 'submit' | 'reset' | 'button';
   view?: 'primary' | 'secondary',
   iconPlace?: 'left' | 'right',
   icon?: IIconProps['glyph'],
@@ -24,6 +26,7 @@ const cx = cn.bind(styles);
 
 export const Button: FC<IButtonProps> = (props) => {
   const {
+    type = 'button',
     view = 'primary',
     href = '/',
     size,
@@ -41,7 +44,7 @@ export const Button: FC<IButtonProps> = (props) => {
   } = props;
 
   const classes = cx('button', view, border, icon && 'addon', iconPlace, iconPlace, size, [className]);
-  const style = {width: width, justifyContent: align, columnGap: gap};
+  const style = { width: width, justifyContent: align, columnGap: gap };
   const buttonChildren = (
     <React.Fragment>
       {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
@@ -54,14 +57,14 @@ export const Button: FC<IButtonProps> = (props) => {
     !isLink &&
       <button
         className={classes}
-        type='button'
+        type={type}
         disabled={disabled}
         style={style}
         {...restButtonProps}>
         {buttonChildren}
       </button>
       ||
-      <Link href={href} {...restButtonProps} >
+      <Link href={href} {...restButtonProps}>
         <a  style={style}
           className={cx(classes, 'link')}>
           {buttonChildren}

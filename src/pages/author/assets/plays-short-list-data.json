@@ -1,0 +1,71 @@
+{
+  "title": "Шорт-лист 2020 года",
+  "plays": [
+    {
+      "title": "Солнечная линия",
+      "city": "Санкт-Петербург",
+      "year": 2020,
+      "linkView": "https://lubimovka.ru/",
+      "linkDownload": "https://lubimovka.ru/",
+      "authors": [{
+        "id": 1,
+        "name": "Екатерина Августеняк"
+      }]
+    },
+    {
+      "title": "МАМА",
+      "city": "Санкт-Петербург",
+      "year": 2020,
+      "linkView": "https://lubimovka.ru/",
+      "linkDownload": "https://lubimovka.ru/",
+      "authors": [{
+        "id": 2,
+        "name": "Екатерина Августеняк"
+      }]
+    },
+    {
+      "title": "Конкретные разговоры пожилых супругов ни о чём",
+      "city": "Санкт-Петербург",
+      "year": 2020,
+      "linkView": "https://lubimovka.ru/",
+      "linkDownload": "https://lubimovka.ru/",
+      "authors": [{
+        "id": 3,
+        "name": "Екатерина Августеняк"
+      }]
+    },
+    {
+      "title": "Опус ДНК",
+      "city": "Санкт-Петербург",
+      "year": 2020,
+      "linkView": "https://lubimovka.ru/",
+      "linkDownload": "https://lubimovka.ru/",
+      "authors": [{
+        "id": 4,
+        "name": "Екатерина Августеняк"
+      }]
+    },
+    {
+      "title": "МАМА",
+      "city": "Санкт-Петербург",
+      "year": 2020,
+      "linkView": "https://lubimovka.ru/",
+      "linkDownload": "https://lubimovka.ru/",
+      "authors": [{
+        "id": 5,
+        "name": "Екатерина Августеняк"
+      }]
+    },
+    {
+      "title": "Конкретные разговоры пожилых супругов ни о чём",
+      "city": "Санкт-Петербург",
+      "year": 2020,
+      "linkView": "https://lubimovka.ru/",
+      "linkDownload": "https://lubimovka.ru/",
+      "authors": [{
+        "id": 6,
+        "name": "Екатерина Августеняк"
+      }]
+    }
+  ]
+}

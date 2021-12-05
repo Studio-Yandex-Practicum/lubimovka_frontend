@@ -1,0 +1,33 @@
+.button {
+  position: relative;
+  width: scale(72px);
+  height: scale(72px);
+  box-sizing: border-box;
+  padding-top: scale(24px);
+  border: 0;
+  margin: 0;
+  background-color: var(--coal);
+}
+
+.line {
+  display: block;
+  width: scale(20px);
+  height: scale(2px);
+  margin: scale(4px auto);
+  background-color: var(--beige);
+  transition: all .3s ease-in-out;
+}
+
+.button.open .line:nth-child(2) {
+  opacity: 0;
+}
+
+.button.open .line:nth-child(1) {
+  width: scale(24px);
+  transform: translateY(scale(6px)) rotate(45deg);
+}
+
+.button.open .line:nth-child(3) {
+  width: scale(24px);
+  transform: translateY(scale(-6px)) rotate(-45deg);
+}

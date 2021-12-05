@@ -1,0 +1,151 @@
+.container {
+  position: relative;
+  max-width: 100%;
+}
+
+.letters {
+  position: sticky;
+  z-index: 1;
+  display: grid;
+  box-sizing: border-box;
+  padding: 0 scale(15px);
+  border-bottom: 1px solid var(--coal);
+  margin: 0;
+  background-color: var(--beige);
+  column-gap: scale(12px);
+  grid-auto-flow: column;
+  list-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    border-top: 1px solid var(--coal);
+    background-color: var(--white);
+    column-gap: scale(23px);
+  }
+}
+
+.letter {
+  @mixin headline;
+  @mixin headline7;
+
+  position: relative;
+  width: scale(36px);
+  height: scale(48px);
+}
+
+.letterActive {
+  background: var(--coal);
+  color: var(--white);
+}
+
+.label {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.inputRadio {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: scale(24px);
+  margin: 0;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+
+.authors {
+  display: flex;
+  max-width: scale(812px);
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 scale(36px);
+  margin: 0 auto;
+
+  @media (max-width: $tablet-portrait) {
+    flex-direction: column-reverse;
+  }
+}
+
+.authorsList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  margin: scale(53px) 0 0;
+  list-style: none;
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: scale(19px);
+    margin: scale(16px) 0 0;
+  }
+}
+
+.author {
+  margin-bottom: scale(12px);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.link {
+  @mixin text;
+  @mixin textLarge;
+
+  padding: scale(1px) scale(8px) scale(3px);
+  color: var(--coal);
+  text-decoration: none;
+
+  &:active {
+    background-color: var(--coal);
+    color: var(--white);
+  }
+}
+
+.chosenLetter {
+  position: relative;
+  margin: scale(309px) scale(20px) 0 0;
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(56px) 0 0;
+  }
+}
+
+.bigLetter {
+  @mixin headline;
+
+  font-size: scale(100px);
+  line-height: scale(100px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline3;
+  }
+}
+
+.authorsQuantity {
+  @mixin text;
+  @mixin textLarge;
+
+  position: absolute;
+  top: calc(scale(8px) * -1);
+  right: calc(scale(7px) * -1);
+
+  @media (max-width: $tablet-portrait) {
+    right: calc(scale(14px) * -1);
+  }
+}

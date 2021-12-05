@@ -1,0 +1,162 @@
+.card {
+  display: grid;
+  padding-bottom: scale(48px);
+  gap: scale(16px) 0;
+  grid-template:
+    "time-location image"
+    "title         title"
+    "description   description"
+    "credits       credits"
+    "actions       actions" 1fr / 1fr minmax(0, scale(127px));
+
+  @media (min-width: $tablet-portrait) {
+    padding: 0;
+    gap: scale(16px) scale(32px);
+    grid-template:
+      "image time-location title       .       ."
+      "image time-location description credits actions" 1fr / minmax(0, scale(147px)) minmax(0, 12.5%) minmax(0, 27.5%) minmax(0, 30%) minmax(0, 17.5%);
+  }
+}
+
+.imageHolder {
+  grid-area: image;
+
+  @media (min-width: $tablet-portrait) {
+    margin-right: scale(-4px);
+  }
+}
+
+.imageCanvas {
+  position: relative;
+  width: 100%;
+  padding-top: 126%;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline6;
+
+  @media (min-width: $tablet-portrait) {
+    margin-top: scale(15px);
+  }
+}
+
+.timeLocation {
+  padding-right: scale(8px);
+  margin: 0;
+  grid-area: time-location;
+
+  @media (min-width: $tablet-portrait) {
+    padding: 0;
+  }
+}
+
+.hiddenText {
+  @mixin visually-hidden;
+}
+
+.time {
+  @mixin headline;
+  @mixin headline7;
+
+  margin-top: scale(19px);
+
+  @media (min-width: $tablet-portrait) {
+    @mixin headline6;
+
+    margin-top: scale(15px);
+  }
+}
+
+.location {
+  @mixin text;
+  @mixin textSmall;
+
+  @media (min-width: $tablet-portrait) {
+    margin: scale(16px) 0 0;
+  }
+}
+
+.description {
+  @mixin text;
+  @mixin textSmall;
+
+  margin: 0 0 scale(8px) scale(64px);
+  grid-area: description;
+  word-wrap: break-word;
+
+  @media (min-width: $tablet-portrait) {
+    margin: 0 0 scale(44px);
+  }
+}
+
+.credits {
+  @mixin text;
+  @mixin textSmall;
+
+  margin: 0;
+  grid-area: credits;
+}
+
+.creditsTitle {
+  display: inline;
+
+  &::after {
+    display: inline;
+    content: ": ";
+  }
+}
+
+.creditsValue {
+  display: inline;
+  margin: 0;
+
+  &::after {
+    content: "\A";
+    white-space: pre-line;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  grid-area: actions;
+}
+
+.card:not(:first-of-type) {
+  border-top: 1px solid var(--coal);
+
+  @media (min-width: $tablet-portrait) {
+    border-top: 0;
+    overflow-x: hidden;
+  }
+
+  .imageHolder {
+    @media (min-width: $tablet-portrait) {
+      position: relative;
+    }
+
+    &::before {
+      @media (min-width: $tablet-portrait) {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        display: block;
+        width: 100vw;
+        height: 1px;
+        background-color: var(--coal);
+        content: "";
+      }
+    }
+  }
+}

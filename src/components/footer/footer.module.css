@@ -1,0 +1,42 @@
+.footer {
+  display: grid;
+  padding: scale(42px 32px 54px);
+  grid-template:
+    "logo partners partners   partners"
+    "logo address  navigation projects"
+    "logo footnote footnote   footnote" 1fr / min-content 1fr scale(356px) scale(272px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin textMedium;
+
+    padding: 0;
+    grid-template:
+      "logo"
+      "address"
+      "navigation"
+      "projects"
+      "partners"
+      "footnote";
+  }
+}
+
+.logo {
+  width: scale(93px);
+  height: scale(80px);
+  margin-right: scale(82px);
+  grid-area: logo;
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(56px 0 0 58px);
+  }
+}
+
+.footnote {
+  margin-top: scale(49px);
+  grid-area: footnote;
+
+  @media (max-width: $tablet-portrait) {
+    border-top: 1px solid black;
+    margin-top: scale(92px);
+  }
+}

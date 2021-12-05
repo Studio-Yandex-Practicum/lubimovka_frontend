@@ -1,65 +1,89 @@
-import React, { FC, useEffect, useState, useCallback } from 'react';
+import React, { FC, useEffect, useState, useCallback, useImperativeHandle, forwardRef, useRef } from 'react';
 import cn from 'classnames';
 
-import styles from './droplist.module.css';
-
-// Компоненты
 import { DroplistItems } from './droplist-items';
 import { ListSelected } from './list-selected';
 import { ContainerButton } from './container-button';
 
-// utile
-import { createList } from './utils';
+import styles from './droplist.module.css';
 
-interface IDroplistProps {
-  type: 'years' | 'months';
-  cb: (selectList: string[]) => void,
-  data?: string[] | number[],
-  maxWidth?: number,
-  widthSelectedItem?: number,
+export interface IDroplistPublic {
+  deleteAll: () => void,
+  deleteItem: (value: string) => void,
+  addSelectItems: (valueList: string[]) => void,
 }
 
-export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
+interface IDroplistProps {
+  cb: (selectList: string[]) => void
+  data: string[] | number[]
+  type?: 'checkbox' | 'radio'
+  defaultValue?: string
+  ref?: React.ForwardedRef<IDroplistPublic>
+  className?: string
+}
+
+// eslint-disable-next-line react/display-name
+export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, ref): JSX.Element => {
   const {
-    type, 
-    cb, 
-    data, 
-    maxWidth, 
-    widthSelectedItem,
+    type = 'checkbox',
+    data,
+    cb,
+    className,
+    defaultValue
   } = props;
 
-  // Выбранный список пользователем.
   const [ selectList, setSelectList ] = useState<string[]>([]);
-
-  // Список для вывода
-  const [ list, getList ] = useState<string[] | number[]>([]);
-  // Выбран ли Dropdown
+  const [ list, setList ] = useState<string[] | number[]>([]);
   const [ activeDropdown, setActiveDropdown ] = useState(false);
 
+  const droplistRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Если передают свой объект
     if (Array.isArray(data)) {
-      getList(data);
+      setList(data);
       return;
-    }
-    // utils функция createList формирует массивы зависящий от передаваемого типа списка.
-    const list = createList(type);
-    if (list) {
-      getList(list);
     }
   }, [ data ]);
 
-  const handlerSubmit = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
+  useEffect(() => {
     cb(selectList);
-    setActiveDropdown(false);
-  }, [ selectList, cb, activeDropdown ]);
+  }, [cb, selectList]);
+
+  const deleteItemInSelectList = (value: string) => {
+    return setSelectList(state => [...state.filter((item) => item !== value.toLowerCase())]);
+  };
+
+  const handleClose = (e: MouseEvent) => {
+    const droplist = droplistRef.current;
+    if(e?.target instanceof Node && droplist) {
+      !droplist.contains(e.target) && setActiveDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    if (activeDropdown) {
+      document.addEventListener('mouseup', handleClose);
+      return;
+    }
+    document.removeEventListener('mouseup', handleClose);
+  }, [activeDropdown]);
+
+  useImperativeHandle(ref, () => ({
+    deleteAll: () => { setSelectList([]); },
+    deleteItem: (value: string) => { deleteItemInSelectList(value); },
+    addSelectItems: (valueList: string[]) => { setSelectList(valueList); },
+  }), []);
 
   const cbContainer = useCallback(() => {
     setActiveDropdown(state => !state);
-  }, [ activeDropdown ]);
+  }, []);
 
   const cbItems = useCallback((value: string, activeCheckbox: boolean) => {
+    if (type === 'radio') {
+      setSelectList([value]);
+      setTimeout(() => setActiveDropdown(false), 200);
+      return;
+    }
     if (activeCheckbox) {
       setSelectList(state => {
         const newState = state.slice(0);
@@ -68,51 +92,42 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
       });
       return;
     }
-    setSelectList(state => {
-      const previousState = state.slice(0);
-      const newState = previousState.filter((item: string | number) => item !== value.toLowerCase());
-      return newState;
-    });
-  }, [ selectList ]);
+    deleteItemInSelectList(value);
+  }, [type]);
 
-  const setMaxWidth = useCallback(() => {
-    if (widthSelectedItem) {
-      return widthSelectedItem + 'px';
-    }
-    switch (type) {
-    case 'months': return '110px';
-    case 'years': return '59px';
-    }
-  }, [ widthSelectedItem, type ]);
+  const getValue = (value: string) => {
+    deleteItemInSelectList(value);
+  };
+
+  const droplistClass = className ? className : styles.droplistWidth;
 
   return (
-    <div className={ cn(styles.dropdown) } style={{ maxWidth: maxWidth && maxWidth + 'px' }}>
-      <ContainerButton cb={ cbContainer } activeDropdown={ activeDropdown } />
+    <div className={cn(styles.droplist, droplistClass)} ref={droplistRef}>
+      <ContainerButton
+        cb={cbContainer}
+        activeDropdown={activeDropdown}
+        value={type === 'radio' && selectList[0] || defaultValue || 'Все'}
+      />
       <form
-        name='dropdown'
-        className={ cn(styles.form) }
-        onSubmit={ handlerSubmit }
+        name='droplist'
+        className={cn(styles.form)}
       >
-        <div className={ cn(styles.list, {
+        <div className={cn(styles.list, {
           [styles.active]: activeDropdown,
         })}>
-          {
-            list.map((month: string | number, i): JSX.Element => {
-              return (
-                <DroplistItems
-                  month={ month }
-                  key={ i }
-                  cb={ cbItems }
-                />
-              );
-            })
-          }
+          {(list as any[]).map((item: string | number, i): JSX.Element => (
+            <DroplistItems
+              type={type}
+              item={item}
+              key={i}
+              cb={cbItems}
+              activeCheckbox={selectList.some(itemSelect => itemSelect.toLocaleLowerCase() === String(item).toLocaleLowerCase())}
+            />
+          ))}
         </div>
-        { 
-          activeDropdown && selectList.length > 0
-          && <ListSelected selectList={ selectList } setMaxWidth={ setMaxWidth } />
-        }
+        {selectList.length > 0 && type !== 'radio'
+          && <ListSelected selectList={selectList} cb={getValue} activeDropdown={activeDropdown}/>}
       </form>
     </div>
   );
-};
+});

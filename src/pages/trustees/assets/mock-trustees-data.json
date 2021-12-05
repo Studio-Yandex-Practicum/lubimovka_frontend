@@ -1,0 +1,158 @@
+[
+  {
+    "id": 1,
+    "person": {
+      "id": 1,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 2,
+    "person": {
+      "id": 2,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 3,
+    "person": {
+      "id": 3,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 4,
+    "person": {
+      "id": 4,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 5,
+    "person": {
+      "id": 5,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 6,
+    "person": {
+      "id": 6,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 7,
+    "person": {
+      "id": 7,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 8,
+    "person": {
+      "id": 8,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 9,
+    "person": {
+      "id": 9,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 10,
+    "person": {
+      "id": 10,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 11,
+    "person": {
+      "id": 11,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  },
+  {
+    "id": 12,
+    "person": {
+      "id": 12,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
+  }
+]

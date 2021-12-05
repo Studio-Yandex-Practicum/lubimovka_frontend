@@ -1,0 +1,9 @@
+.text {
+  padding-right: scale(118px);
+  grid-area: text;
+
+  @media (max-width: $tablet-portrait) {
+    padding-right: scale(24px);
+    padding-left: scale(24px);
+  }
+}

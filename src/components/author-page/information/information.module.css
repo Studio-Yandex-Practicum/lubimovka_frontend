@@ -1,0 +1,50 @@
+.information {
+  display: grid;
+  padding: calc(var(--scale) * 85) calc(var(--scale) * 120);
+  grid-template-columns: 1fr 3fr 6fr;
+  grid-template-rows: auto;
+
+  @media (max-width: 959px) {
+    padding: calc(var(--scale) * 85) calc(var(--scale) * 100) calc(var(--scale) * 85) 0;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    padding: calc(var(--scale) * 56) calc(var(--scale) * 25);
+    grid-template-columns: 10fr;
+  }
+}
+
+.heading {
+  @mixin headline;
+  @mixin headline4;
+
+  grid-column: 2/3;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    padding: 0 calc(var(--scale) * 15);
+    grid-column: 1/1;
+  }
+}
+
+.blocksInfo {
+  padding: 0;
+  margin: calc(var(--scale) * 124) 0 0;
+
+  @media (max-width: $tablet-portrait) {
+    margin: calc(var(--scale) * 24) 0 0;
+  }
+}
+
+.anchorHeading {
+  @mixin text;
+  @mixin textLarge;
+
+  margin: calc(var(--scale) * 4) calc(var(--scale) * 6) calc(var(--scale) * 9);
+  font-feature-settings: 'ss01' on;
+}
+
+.anchor {
+  min-width: 25px;
+}

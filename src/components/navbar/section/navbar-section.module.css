@@ -1,0 +1,23 @@
+.section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: scale(0 9px);
+
+  &:not(:last-child)::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 1px;
+    height: 80%;
+    background-color: var(--coal);
+    content: '';
+  }
+}
+
+.primary {
+  flex-grow: 1;
+  padding: 0;
+  padding-right: scale(34px);
+}

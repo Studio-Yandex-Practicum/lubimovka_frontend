@@ -1,31 +1,43 @@
-.dropdown {
+.droplist {
+  position: relative;
+  display: block;
+}
+
+.droplistWidth {
   width: 100%;
-  max-width: 300px;
+  max-width: scale(300px);
+}
+
+.form {
+  width: inherit;
+  max-width: inherit;
 }
 
 .list {
+  position: absolute;
   overflow: auto;
+  width: inherit;
   max-height: 0;
-  border: 1px solid #242424;
+  border: scale(1px) solid var(--coal);
   border-top: none;
-  margin-bottom: 26px;
-  transition: all .1s ease-out;
+  background-color: var(--beige);
+  transition: all .2s ease-out;
   visibility: hidden;
 
   &::-webkit-scrollbar {
-    width: 4px;
-    height: 92px;
+    width: scale(4px);
+    height: scale(92px);
     background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    height: 92px;
+    height: scale(92px);
     background-color: var(--coal);
   }
 }
 
 .active {
   display: block;
-  max-height: 310px;
+  max-height: scale(310px);
   visibility: visible;
 }

@@ -1,4 +1,6 @@
 :root {
+  --true-black: #000;
+  --true-black-60: rgba(0, 0, 0, .6);
   --white: #fff;
   --black: #333;
   --black-15: rgba(51, 51, 51, .15);

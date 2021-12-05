@@ -1,58 +1,47 @@
 .container {
   position: relative;
   display: flex;
-  max-width: 1440px;
+  max-width: 100%;
   box-sizing: border-box;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
-  padding: 127px 70px 165px;
+  padding: scale(127px) scale(70px) scale(165px);
   margin: 0 auto;
 
-  @media (max-width: $laptop) {
-    padding: 336px 24px 100px;
-  }
-
-  @media (max-width: $mobile-landscape) {
+  @media (max-width: $tablet-portrait) {
     align-items: flex-start;
+    padding: scale(237px) scale(24px) scale(100px);
   }
 }
 
 .picture {
   position: absolute;
-  top: 268px;
+  top: scale(268px);
   left: 0;
   overflow: hidden;
-  width: 391px;
-  height: 200px;
+  width: scale(630px);
+  height: scale(330px);
   object-fit: cover;
 
-  @media (min-width: $tablet-landscape) {
-    width: 420px;
-    height: 218px;
-  }
-
-  @media (min-width: $desktop) {
-    width: 660px;
-    height: 330px;
-  }
-
-  @media (max-width: $laptop) {
-    top: 99px;
+  @media (max-width: $tablet-portrait) {
+    top: 0;
+    width: scale(392px);
+    height: scale(200px);
   }
 }
 
 .section {
   background-color: var(--beige);
 
-  &:nth-child(2n) {
+  &:nth-of-type(2n) {
     background-color: var(--white);
 
     & .container {
-      padding: 93px 70px 267px;
+      padding: scale(93px) scale(70px) scale(267px);
 
-      @media (max-width: $laptop) {
-        padding: 228px 24px 150px;
+      @media (max-width: $tablet-portrait) {
+        padding: scale(228px) scale(24px) scale(150px);
       }
     }
 
@@ -61,11 +50,11 @@
     }
 
     & .picture {
-      top: 277px;
+      top: scale(277px);
       right: 0;
       left: unset;
 
-      @media (max-width: $laptop) {
+      @media (max-width: $tablet-portrait) {
         top: 0;
       }
     }
@@ -82,12 +71,12 @@
 }
 
 .titleBox {
-  width: 448px;
-  margin: 0 0 51px 12px;
+  width: scale(448px);
+  margin: 0 0 scale(51px) scale(12px);
 
   @media (max-width: $tablet-portrait) {
-    width: 323px;
-    margin: 0 0 24px;
+    width: scale(323px);
+    margin: 0 0 scale(24px);
   }
 }
 
@@ -97,8 +86,8 @@
 }
 
 .paragraphText {
-  margin-top: 36px;
-  text-indent: 23px;
+  margin-top: scale(36px);
+  text-indent: scale(23px);
 
   &:first-of-type {
     margin-top: 0;
@@ -110,6 +99,6 @@
   box-sizing: border-box;
 
   @media (max-width: $tablet-portrait) {
-    padding: 0 0 16px 36px;
+    padding: 0 0 scale(16px) scale(36px);
   }
 }

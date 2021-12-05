@@ -1,8 +1,9 @@
 import { FC } from 'react';
-import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 import { Url } from 'shared/types';
+import { InfoLink } from '../ui/info-link';
+
 import styles from './critique-card.module.css';
 
 interface ICritiqueCardProps {
@@ -34,11 +35,17 @@ export const CritiqueCard: FC<ICritiqueCardProps> = (props) => {
       </p>
       {href && (
         <div className={cx('action')}>
-          <Link href={href}>
-            <a>
-              Читать полностью
-            </a>
-          </Link>
+          <InfoLink
+            isOutsideLink
+            href='#'
+            label='Читать полностью'
+            icon='arrow-45'
+            iconPlace='left'
+            size='s'
+            textTransform='uppercase'
+            border='borderBottomLeft'
+            className={cx('action')}
+          />
         </div>
       )}
     </article>

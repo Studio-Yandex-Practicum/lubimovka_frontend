@@ -1,0 +1,34 @@
+@value partners from '../partners/footer-partners.module.css';
+
+.address {
+  @mixin text;
+  @mixin textCaption;
+
+  margin-top: scale(46px);
+  font-style: normal;
+  grid-area: address;
+  white-space: pre;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin textSmall;
+
+    padding: scale(0 56px);
+    margin-top: scale(32px);
+  }
+
+  span {
+    @mixin headline;
+    @mixin headline7;
+
+    display: block;
+    margin-bottom: scale(18px);
+
+    @media (max-width: $tablet-portrait) {
+      margin-bottom: scale(8px);
+    }
+  }
+}
+
+.partners ~ .address {
+  margin: scale(60px 0 0 3px);
+}

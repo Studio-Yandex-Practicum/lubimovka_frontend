@@ -1,48 +1,41 @@
-import {ButtonHTMLAttributes, FC} from 'react';
-import cn from 'classnames';
+import { ButtonHTMLAttributes, FC } from 'react';
 import classNames from 'classnames/bind';
 
-import {Icon} from '../icon';
+import { IconButton } from 'components/ui/icon-button';
+import { Icon } from 'components/ui/icon';
 
 import styles from './slider-button.module.css';
 
 interface ISliderButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string,
-  direction: 'left' | 'right';
+  className?: string;
+  ariaLabel: string;
+  direction?: 'right' | 'left';
+  view?: 'ghost' | 'light';
 }
 
 const cx = classNames.bind(styles);
 
 export const SliderButton: FC<ISliderButtonProps> = (props) => {
-  const {className, direction, ...restProps } = props;
-  const arrowIcon = ({
-    left: 'arrow-left',
-    right: 'arrow-right',
-  } as const)[direction];
-
-  const firstCircleStyles = cx(
-    'circle',
-    {
-      left: direction === 'left',
-    }
-  );
-
-  const secondCircleStyles = cx(
-    'circle',
-    {
-      secondCircle: direction === 'right',
-      secondCircleLeft: direction === 'left',
-      left: direction === 'left',
-    }
-  );
+  const {
+    className,
+    ariaLabel,
+    direction = 'right',
+    view = 'ghost',
+    ...restProps
+  } = props;
 
   return(
-    <button className={cn(styles.sliderButton, className)} type='button' {...restProps}>
-      <div className={firstCircleStyles} />
-      <div className={secondCircleStyles}/>
-      <Icon glyph={arrowIcon} className={cn(styles.arrow)}/>
-    </button>
+    <IconButton
+      className={cx(
+        className,
+        'button',
+        direction
+      )}
+      ariaLabel={ariaLabel}
+      type='button'
+      view={view}
+      icon={<Icon glyph={direction === 'right' ? 'arrow-right' : 'arrow-left'}/>}
+      {...restProps}
+    />
   );
 };
-
-

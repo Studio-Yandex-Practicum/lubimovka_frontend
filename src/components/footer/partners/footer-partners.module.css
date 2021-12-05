@@ -1,0 +1,21 @@
+.partners {
+  display: flex;
+  align-items: flex-start;
+  grid-area: partners;
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: scale(84px);
+  }
+}
+
+.title {
+  @mixin text;
+  @mixin textCaption;
+
+  max-width: scale(100px);
+  margin-right: scale(44px);
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}

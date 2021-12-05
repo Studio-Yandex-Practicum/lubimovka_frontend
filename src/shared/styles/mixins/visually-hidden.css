@@ -5,3 +5,11 @@
   margin: -1px;
   clip: rect(0 0 0 0);
 }
+
+@define-mixin undo-visually-hidden {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  clip: auto;
+}
