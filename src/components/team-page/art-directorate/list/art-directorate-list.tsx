@@ -81,8 +81,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
           className={cx({ [styles.grid]: selectedCards.length < 5 && !checkForMultiplicity(3) },
             { [styles.flex]: checkForMultiplicity(3) },
             { [styles.flex]: selectedCards.length > 4 && !checkForMultiplicity(3) })}>
-          {cards.map((card) => (
-            card.team === 'art' &&
+          {selectedCards.map((card) => (
             <li key={card.id}
               className={cx({ [styles.fiveElements]: selectedCards.length > 4 && !checkForMultiplicity(3) },
                 { [styles.sixElements]: checkForMultiplicity(3) })}
