@@ -1,5 +1,3 @@
-@value expanded from './../../page/header/page-header.module.css';
-
 .section {
   position: relative;
   display: flex;
@@ -21,17 +19,4 @@
 .primary {
   flex-grow: 1;
   padding-right: scale(31px);
-}
-
-.expanded {
-  & .section {
-    &:not(:last-child)::after {
-      bottom: scale(10px);
-      height: 65%;
-    }
-  }
-
-  & .primary {
-    padding-right: scale(16px);
-  }
 }
