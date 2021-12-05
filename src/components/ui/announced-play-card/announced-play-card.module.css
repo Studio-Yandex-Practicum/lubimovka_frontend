@@ -54,7 +54,7 @@
 .date {
   padding: 0;
   margin: 0;
-  margin-right: scale(44px);
+  margin-right: scale(42px);
 
   @media (max-width: $tablet-portrait) {
     margin-right: scale(46px);
@@ -126,7 +126,7 @@
 
 .projectTextCoverExists {
   @media (max-width: $tablet-portrait) {
-    margin-bottom: scale(40px);
+    margin-bottom: scale(48px);
   }
 }
 
