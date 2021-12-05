@@ -1,6 +1,8 @@
-import { State } from 'components/library-filter/library-filter-reducer';
+interface IQueryParser {
+  [key: string]: string[]
+}
 
-function queryParser(querys: State): string {
+function queryParser(querys: IQueryParser): string {
   const parsedQuery: string[] = [];
 
   for (const [key, value] of Object.entries(querys)) {

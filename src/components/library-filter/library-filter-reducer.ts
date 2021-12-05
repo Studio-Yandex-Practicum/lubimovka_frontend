@@ -6,8 +6,9 @@ export type Action =
   { type: 'remove programme'; program: string } |
   { type: 'reset' }
 
-export interface State {
-  [key: string]: string[];
+export type State = {
+  festival: string[],
+  program: string[],
 }
 
 export interface ILibraryFilterReducer {
