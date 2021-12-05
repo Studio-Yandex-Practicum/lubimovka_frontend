@@ -21,7 +21,7 @@ interface IPiecesProps extends IPiecesFiltersProps {
   pieces: Play[];
 }
 
-const filterInitialState = { years: [], programmes: [] };
+const filterInitialState = { festival: [], program: [] };
 
 const Library = ({ errorCode, pieces, years, programs }:
   InferGetServerSidePropsType<typeof getServerSideProps>) => {

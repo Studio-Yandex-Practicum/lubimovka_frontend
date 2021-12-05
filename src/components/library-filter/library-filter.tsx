@@ -21,10 +21,10 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
 
   const handleTagClick = useCallback(
     (el: string): void => {
-      if (!filterState.programmes.find((i) => i === el)) {
-        filterDispatcher({ type: 'add programme', programme: el });
+      if (!filterState.program.find((i) => i === el)) {
+        filterDispatcher({ type: 'add programme', program: el });
       } else {
-        filterDispatcher({ type: 'remove programme', programme: el });
+        filterDispatcher({ type: 'remove programme', program: el });
       }
     }, [filterState, filterDispatcher]);
 
@@ -34,7 +34,7 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
   }, [filterDispatcher, droplistRef]);
 
   const handleYearsClick = useCallback((years: string[]): void => {
-    filterDispatcher({ type: 'add years', years: years });
+    filterDispatcher({ type: 'add years', festival: years });
   }, [filterDispatcher]);
 
   return (
@@ -48,11 +48,11 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
         <ul className={style.programmesList}>
           {programmes.map((el, id) => (
             <li onClick={() => handleTagClick(el)} className={style.programme} key={id}>
-              <Tag label={el} selected={filterState.programmes.includes(el)}/></li>
+              <Tag label={el} selected={filterState.program.includes(el)}/></li>
           ))}
         </ul>
       </div>
-      {(filterState.years.length > 0 || filterState.programmes.length > 0) && (
+      {(filterState.festival.length > 0 || filterState.program.length > 0) && (
         <>
           <div className={style.buttonWrap}>
             <Button onClick={handleResetClick} label='Очистить' size='s' icon='cross'

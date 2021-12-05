@@ -1,35 +1,13 @@
 import { State } from 'components/library-filter/library-filter-reducer';
 
 function queryParser(querys: State): string {
-  const { years, programmes } = querys;
-  let festivals: string[] = [];
-  let programs: string[] = [];
-  let parsedQuery = '';
+  const parsedQuery: string[] = [];
 
-  if (years.length > 0) {
-    years.forEach((el) => {
-      festivals = [...festivals, `festival=${el}`];
-    });
+  for (const [key, value] of Object.entries(querys)) {
+    value.forEach((el) => parsedQuery.push(`${key}=${el}`));
   }
 
-  if (programmes.length > 0) {
-    programmes.forEach((el) => {
-      programs = [...programs, `program=${encodeURI(el)}`];
-    });
-  }
-
-  const festival = festivals.join('&');
-  const program = programs.join('&');
-
-  if (festival && program) {
-    parsedQuery = `?${festival}&${program}`;
-  } else if (festival) {
-    parsedQuery = `?${festival}`;
-  } else if (program) {
-    parsedQuery = `?${program}`;
-  }
-
-  return parsedQuery;
+  return `?${parsedQuery.join('&')}`;
 }
 
 export default queryParser;
