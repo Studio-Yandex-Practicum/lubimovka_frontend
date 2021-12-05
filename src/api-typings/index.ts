@@ -11,6 +11,7 @@ export type { Event } from './models/Event';
 export type { EventTypeEnum } from './models/EventTypeEnum';
 export type { Festival } from './models/Festival';
 export type { FestivalTeams } from './models/FestivalTeams';
+export type { FestivalYears } from './models/FestivalYears';
 export type { Image } from './models/Image';
 export type { NameEnum } from './models/NameEnum';
 export type { NewsItem } from './models/NewsItem';

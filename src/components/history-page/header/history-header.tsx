@@ -9,7 +9,7 @@ interface IHistoryHeaderProps {
   data: {
     years: number[]
   },
-  selectYear: (year: number | undefined) => void
+  selectYear: (year: number ) => void
 }
 
 export const HistoryHeader: FC<IHistoryHeaderProps> = ({ data, selectYear }) => {
