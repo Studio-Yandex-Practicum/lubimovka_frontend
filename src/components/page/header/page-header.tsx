@@ -1,11 +1,10 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './page-header.module.css';
 
 interface IPageHeaderProps {
-  expanded?: boolean;
-  children: ReactNode,
+  expanded?: boolean,
 }
 
 const cx = classNames.bind(styles);
