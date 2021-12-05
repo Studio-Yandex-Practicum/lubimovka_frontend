@@ -1,5 +1,3 @@
-@value expanded from './../page/header/page-header.module.css';
-
 .link {
   display: inline-flex;
   color: inherit;
@@ -9,16 +7,4 @@
 .image {
   width: scale(43px);
   height: scale(35px);
-}
-
-.expanded {
-  & .image {
-    width: scale(123px);
-    height: scale(104px);
-
-    @media (max-width: $tablet-portrait) {
-      width: scale(91px);
-      height: scale(78px);
-    }
-  }
 }
