@@ -5,24 +5,15 @@ import { SliderYears } from 'components/ui/slider-years';
 
 import style from './history-header.module.css';
 
-interface TextItemData {
-  id: number,
-  year: number
-}
 interface IHistoryHeaderProps {
   data: {
-    headerContent: TextItemData[]
+    years: number[]
   },
   selectYear: (year: number | undefined) => void
 }
 
 export const HistoryHeader: FC<IHistoryHeaderProps> = ({ data, selectYear }) => {
-  const { headerContent } = data;
-
-  const years: number[] =[];
-  headerContent.map((item) => {
-    years.push(Number(item.year));
-  });
+  const { years } = data;
   const [currentYear, setCurrentYear] = useState(years[0]);
   const changeYearHandler = useCallback((year:number)=> {
     setCurrentYear(year);
