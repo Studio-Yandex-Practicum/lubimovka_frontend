@@ -5,21 +5,19 @@
   background: var(--beige);
 }
 
-.list {
-  display: flex;
-  overflow: hidden;
-  height: 100%;
-  align-items: center;
-  margin-left: 50%;
-}
-
 @media (max-width: $tablet-portrait) {
   .section {
     height: 88px;
     border-bottom: none;
   }
+}
 
-  .list {
-    margin-left: 40px;
+.yearsContainer {
+  padding-top: scale(35.5px);
+  margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    padding-top: scale(22px);
+    padding-left: scale(24px);
   }
 }

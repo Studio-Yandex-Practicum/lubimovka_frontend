@@ -1,14 +1,13 @@
-import { FC } from 'react';
+import React, { FC, useCallback, useState } from 'react';
+import cn from 'classnames';
 
-import { Menu } from 'components/ui/menu';
-import { MenuItem } from 'components/ui/menu/item';
+import { SliderYears } from 'components/ui/slider-years';
 
 import style from './history-header.module.css';
 
 interface TextItemData {
-  id: number
+  id: number,
   year: number
-  active?: boolean
 }
 interface IHistoryHeaderProps {
   data: {
@@ -19,29 +18,24 @@ interface IHistoryHeaderProps {
 
 export const HistoryHeader: FC<IHistoryHeaderProps> = ({ data, selectYear }) => {
   const { headerContent } = data;
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    const el = event.target as HTMLInputElement;
-    const id : number = Number(el.getAttribute('id'));
-    const result : TextItemData | undefined = headerContent.find(el => el.id === id);
-    const year: number | undefined = result?.year;
-    if(result) {
-      selectYear(year);
-    }
-  };
+
+  const years: number[] =[];
+  headerContent.map((item) => {
+    years.push(Number(item.year));
+  });
+  const [currentYear, setCurrentYear] = useState(years[0]);
+  const changeYearHandler = useCallback((year:number)=> {
+    setCurrentYear(year);
+    selectYear(year);
+  }, []);
   return (
     <section className={style.section}>
-      <div className={style.list}>
-        <Menu type='history'>
-          {headerContent.map((el) => (
-            <MenuItem  key={el.id} href='#' current={el.active}>
-              <div onClick={handleClick} id={el.id.toString()}>
-                {el.year}
-              </div>
-            </MenuItem>
-          ))}
-        </Menu>
-      </div>
+      <SliderYears
+        className={cn(style.yearsContainer)}
+        years={years}
+        onClick={changeYearHandler}
+        currentYear={currentYear}
+      />
     </section>
   );
 };

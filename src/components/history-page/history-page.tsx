@@ -22,17 +22,8 @@ export const HistoryPage: FC<IHistoryPageProps> = (props: IHistoryPageProps) => 
     if(year) {
       fetchStatistics(year)
         .then((result) => {
-          headerData.headerContent.forEach((item) => {
-            if(item.active) {
-              item.active = false;
-            }
-          });
-          headerData.headerContent.forEach((item) => {
-            if(item.year === year) {
-              item.active = true;
-            }
-          });
-          alert(result);
+
+          alert(year);
           if(result) {
             if(result.plays_count) {
               titleData.content[0].subtitle = result.plays_count?.toString();
