@@ -21,10 +21,11 @@ interface IPiecesProps extends IPiecesFiltersProps {
   pieces: Play[];
 }
 
+const filterInitialState = { years: [], programmes: [] };
+
 const Library = ({ errorCode, pieces, years, programs }:
   InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [piecesState, setPiecesState] = useState<Play[]>(pieces);
-  const filterInitialState = { years: [], programmes: [] };
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [filterState, filterDispatcher] = useReducer(
