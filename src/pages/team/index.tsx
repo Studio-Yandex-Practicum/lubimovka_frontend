@@ -57,15 +57,19 @@ const fetchVolunteers = async () => {
 };
 
 export const getServerSideProps: GetServerSideProps<ITeamProps> = async () => {
-  let result = await Promise.all([
-    fetchTeam(),
-    fetchVolunteers()
-  ]);
+  try {
+    const [team, volunteers] = await Promise.all([
+      fetchTeam(),
+      fetchVolunteers()
+    ]);
 
-  const team = result[0];
-  const volunteers = result[1];
-
-  if (!result) {
+    return {
+      props: {
+        team,
+        volunteers
+      },
+    };
+  } catch (error) {
     return {
       props: {
         errorCode: 500,
@@ -74,13 +78,6 @@ export const getServerSideProps: GetServerSideProps<ITeamProps> = async () => {
       }
     };
   }
-
-  return {
-    props: {
-      team,
-      volunteers
-    },
-  };
 };
 
 export default Team;
