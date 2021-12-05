@@ -1,5 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
+import Error from 'next/error';
 
 import { AppLayout } from 'components/app-layout';
 import TeamPage from 'components/team-page';
@@ -7,12 +8,17 @@ import { fetcher } from 'shared/fetcher';
 import { FestivalTeams, Volunteers } from 'api-typings';
 
 interface ITeamProps {
+  errorCode?: number,
   team: Array<FestivalTeams>,
   volunteers: Array<Volunteers> | undefined
 }
 
-const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { team, volunteers } = props;
+const Team = ({ errorCode, team, volunteers }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  if (errorCode) {
+    return (
+      <Error statusCode={errorCode}/>
+    );
+  }
 
   return (
     <AppLayout>
@@ -56,7 +62,11 @@ export const getServerSideProps: GetServerSideProps<ITeamProps> = async () => {
 
   if (!team) {
     return {
-      notFound: true,
+      props: {
+        errorCode: 500,
+        team: [],
+        volunteers: []
+      }
     };
   }
 
