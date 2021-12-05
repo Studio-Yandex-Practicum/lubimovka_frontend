@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Head from 'next/head';
 
 import { HistoryHeader } from './header';
@@ -8,7 +8,6 @@ import { fetcher } from 'shared/fetcher';
 import { Festival } from 'api-typings';
 
 import headerData from './assets/mock-data-header.json';
-import titleData from './assets/mock-data-title.json';
 import itselfData from './assets/mock-data-itself.json';
 
 interface IHistoryPageProps {
@@ -18,31 +17,28 @@ export const HistoryPage: FC<IHistoryPageProps> = (props: IHistoryPageProps) => 
   const {
     metaTitle,
   } = props;
+  const [currentTitleData, setCurrentTitleData] = useState({
+    plays_count: 756,
+    selected_plays_count: 145,
+    selectors_count: 145,
+    volunteers_count: 145,
+    events_count: 7,
+    cities_count: 15
+  });
   function selectYear(year: number | undefined) {
     if(year) {
       fetchStatistics(year)
         .then((result) => {
-
-          alert(year);
           if(result) {
-            if(result.plays_count) {
-              titleData.content[0].subtitle = result.plays_count?.toString();
-            }
-            if(result.selected_plays_count) {
-              titleData.content[1].subtitle = result.selected_plays_count.toString();
-            }
-            if(result.selectors_count) {
-              titleData.content[2].subtitle = result.selectors_count.toString();
-            }
-            if(result.volunteers_count) {
-              titleData.content[3].subtitle = result.volunteers_count.toString();
-            }
-            if(result.events_count) {
-              titleData.content[4].subtitle = result.events_count.toString();
-            }
-            if(result.cities_count) {
-              titleData.content[5].subtitle = result.cities_count.toString();
-            }
+            const titleCounts = {
+              plays_count: result.plays_count ? result.plays_count : 0,
+              selected_plays_count: result.selected_plays_count ? result.selected_plays_count : 0,
+              selectors_count: result.selectors_count ? result.selectors_count : 0,
+              volunteers_count: result.volunteers_count ? result.volunteers_count : 0,
+              events_count: result.events_count ? result.events_count : 0,
+              cities_count: result.cities_count ? result.cities_count : 0
+            };
+            setCurrentTitleData(titleCounts);
           }
         }).catch((error) => {
           throw(error);
@@ -55,7 +51,7 @@ export const HistoryPage: FC<IHistoryPageProps> = (props: IHistoryPageProps) => 
         <title>{metaTitle}</title>
       </Head>
       <HistoryHeader data={headerData} selectYear={selectYear}/>
-      <HistoryTitle data={titleData}/>
+      <HistoryTitle data={currentTitleData}/>
       <HistoryItself data={itselfData}/>
     </>
   );
@@ -64,7 +60,7 @@ const fetchStatistics = async (year: number) => {
   let data;
 
   try {
-    data = await fetcher<Festival>(`/festivals/${year}`);
+    data = await fetcher<Festival>(`/info/festivals/${year}`);
   } catch (error) {
     return;
   }
