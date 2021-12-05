@@ -1,7 +1,7 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import TeamPage from 'components/team-page';
 import { fetcher } from 'shared/fetcher';
 import { FestivalTeams, Volunteers } from 'api-typings';

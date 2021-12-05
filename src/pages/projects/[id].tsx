@@ -1,8 +1,10 @@
 // @ts-nocheck
 
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { Fragment } from 'react';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
+import { PageBreadcrumbs } from 'components/page';
 import { ProjectLayout } from 'components/project-layout';
 import { Breadcrumb } from 'components/breadcrumb';
 import { ProjectHeadline } from 'components/project-headline';
@@ -32,12 +34,12 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
   return (
     <AppLayout>
       <ProjectLayout>
-        <AppLayout.Breadcrumbs>
+        <PageBreadcrumbs>
           <Breadcrumb
             text="Проекты"
             path="/projects"
           />
-        </AppLayout.Breadcrumbs>
+        </PageBreadcrumbs>
         <ProjectHeadline
           title={title}
           //TODO: добавить поле в ответ бекенда
@@ -47,8 +49,8 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
         <ProjectLayout.Description>
           {description}
         </ProjectLayout.Description>
-        {contents && contents.map(({ content_type, content_item }) => (
-          <>
+        {contents && contents.map(({ content_type, content_item }, index) => (
+          <Fragment key={index}>
             {content_type === 'imagesblock' && (
               <ProjectLayout.Storey type="photos">
                 <Section title={content_item.title}>
@@ -76,11 +78,11 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                           year,
                           linkView: url_reading,
                           linkDownload: url_download,
-                        }}
-                        author={{
-                          // TODO: добавить реальные данные в ответ бекенда
-                          id: 0,
-                          name: 'Константин Константинопольский',
+                          authors:[{
+                            // TODO: добавить реальные данные в ответ бекенда
+                            id: 0,
+                            name: 'Константин Константинопольский',
+                          }]
                         }}
                       />
                     ))}
@@ -111,10 +113,11 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
               <ProjectLayout.Storey type="videos">
                 <Section title={content_item.title}>
                   <VideoList>
-                    {content_item.items.map(({ title, url }) => (
-                      <VideoList.Item key={title}>
-                        <Video src={url}/>
-                      </VideoList.Item>
+                    {content_item.items.map(({ url }) => (
+                      <Video
+                        key={url}
+                        src={url}
+                      />
                     ))}
                   </VideoList>
                 </Section>
@@ -143,7 +146,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                 </Section>
               </ProjectLayout.Storey>
             )}
-          </>
+          </Fragment>
         ))}
         <ProjectLayout.Storey type="invitation">
           <ProjectInvitation email="trololo@ololo.com"/>
@@ -178,7 +181,7 @@ export const getServerSideProps: GetServerSideProps<ProjectModel, Record<'id', s
 
   return {
     props: {
-      ...project
+      ...project,
     },
   };
 };

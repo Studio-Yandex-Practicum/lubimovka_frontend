@@ -1,17 +1,17 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
+import { FooterCopyright } from 'components/footer-copyright';
 import { FooterAddress } from './address';
 import { FooterNavigation } from './navigation';
 import { FooterProjects } from './projects';
 import { FooterPartners } from './partners';
-import { InfoLink } from 'components/ui/info-link';
 
 import Logo from 'shared/images/logo-full.svg';
 import styles from './footer.module.css';
 
 interface IFooterProps {
-  children: ReactNode,
+  children?: ReactNode,
   className?: string,
 }
 
@@ -27,55 +27,7 @@ export const Footer = (props: IFooterProps): JSX.Element => {
     <footer className={cx('footer', className)}>
       <Logo className={cx('logo')}/>
       {children}
-      <div className={cx('footnote')}>
-        <div className={cx('copyright')}>
-          &copy; Любимовка, {new Date().getFullYear()}
-        </div>
-        <InfoLink
-          isOutsideLink
-          href='#'
-          label='Политика конфиденциальности'
-          hoverStyle='bottomLine'
-          size='xs'
-          textDecoration='textDecorationNone'
-          className={cx('footnoteLink')}
-        />
-        <dl className={cx('credits')}>
-          <div className={cx('shishki')}>
-            <dt className={cx('term')}>
-              дизайн сайта
-            </dt>
-            <dd>
-              <InfoLink
-                isOutsideLink
-                href='#'
-                label='shishki.collective'
-                hoverStyle='bottomLine'
-                size='xs'
-                textDecoration='textDecorationNone'
-                className={cx('footnoteLink')}
-              />
-            </dd>
-          </div>
-          <div>
-            <dt>
-              вёрстка и разработка
-            </dt>
-            <dd>
-              студенты&nbsp;
-              <InfoLink
-                isOutsideLink
-                href='#'
-                label='Яндекс.Практикума'
-                hoverStyle='bottomLine'
-                size='xs'
-                textDecoration='textDecorationNone'
-                className={cx('footnoteLink')}
-              />
-            </dd>
-          </div>
-        </dl>
-      </div>
+      <FooterCopyright className={cx('footnote')}/>
     </footer>
   );
 };

@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { useState, useEffect } from 'react';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import { Button } from 'components/ui/button';
 import LibraryForm from 'components/library-form/library-form';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
@@ -19,14 +19,14 @@ const mockCard = {
   play: {
     title: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
-    year: '2020',
+    year: 2020,
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
+    authors: [{
+      id: 1,
+      name: 'Екатерина Августеняк',
+    }]
   },
-  author: {
-    id: 1,
-    name: 'Екатерина Августеняк',
-  }
 };
 
 type Letter = string;

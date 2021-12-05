@@ -1,0 +1,5 @@
+.footer {
+  @media (max-width: $tablet-portrait) {
+    margin-top: scale(100px);
+  }
+}

@@ -1,10 +1,9 @@
 import classNames from 'classnames/bind';
 import React, { useEffect } from 'react';
 
-import { Droplist } from 'components/ui/droplist/droplist';
 import { Icon } from 'components/ui/icon';
 import { InfoLink } from 'components/ui/info-link';
-import { MONTHS, YEARS } from 'shared/constants/months-and-years';
+import { MonthsAndYearsFilter } from '../months-and-years-filter';
 
 import styles from './section-title-for-blog.module.css';
 
@@ -18,12 +17,14 @@ export const SectionTitleForBlog = (
 ): JSX.Element => {
   const { email } = props;
 
-  const [month, setMonth] = React.useState(MONTHS[new Date().getMonth()]);
-  const [year, setYear] = React.useState(new Date().getFullYear().toString());
+  const [month, setMonth] = React.useState<number>();
+  const [year, setYear] = React.useState<number>();
 
   // const [articles, setArticles] = React.useState([]);
 
-  useEffect(() => {}, [year, month]);
+  useEffect(() => {
+    // console.log(`месяц: ${month}, год: ${year}`);
+  }, [year, month]);
 
   return (
     <section className={cx('section')}>
@@ -46,26 +47,12 @@ export const SectionTitleForBlog = (
           />
         </p>
       </div>
-      <div className={cx('drop')}>
-        <Droplist
-          data={MONTHS}
-          type='radio'
-          defaultValue={MONTHS[new Date().getMonth()]}
-          cb={([string]) => {
-            setMonth(string);
-          }}
-          className={cx('droplistTypelistMonths')}
-        />
-        <Droplist
-          data={YEARS}
-          type='radio'
-          defaultValue={new Date().getFullYear().toString()}
-          cb={([number]) => {
-            setYear(number);
-          }}
-          className={cx('droplistTypelistYears')}
-        />
-      </div>
+      <MonthsAndYearsFilter
+        className={cx('drop')}
+        filterCallBack={(month, year) => {
+          setMonth(month);
+          setYear(year);
+        }}/>
     </section>
   );
 };

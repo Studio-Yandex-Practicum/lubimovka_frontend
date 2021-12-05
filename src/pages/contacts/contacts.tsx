@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import ContactsLayout from 'components/contacts-layout';
 import ContactsTitle from 'components/contacts-title';
 import ContactsAuthors from 'components/contacts-authors';
@@ -11,7 +11,7 @@ import Form from 'components/ui/form/form';
 import TextInput from 'components/ui/text-input/text-input';
 import TextArea from 'components/ui/text-area';
 import { Button } from 'components/ui/button';
-import { validEmailRegexp } from 'shared/regexps';
+import { validEmailRegexp } from 'shared/constants/regexps';
 
 const Contacts: NextPage = () => {
   const [name, setName] = useState('');
@@ -132,7 +132,7 @@ const Contacts: NextPage = () => {
               </Form.Actions>
               <Form.Disclaimer>
                 {'Нажимая на кнопку «Отправить» вы даёте согласие '}
-                <Link href="/">
+                <Link href="/privacy-policy">
                   <a>на обработку персональных данных </a>
                 </Link>
               </Form.Disclaimer>

@@ -2,7 +2,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Error from 'next/error';
 import Head from 'next/head';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import AuthorsPage from 'components/library-authors-page';
 import { fetcher } from 'shared/fetcher';
 import { PaginatedAuthorListList, AuthorList } from 'api-typings';
