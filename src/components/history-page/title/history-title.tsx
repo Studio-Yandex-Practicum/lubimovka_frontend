@@ -12,7 +12,11 @@ interface IHistoryTitle {
     selectors_count: number,
     volunteers_count: number,
     events_count: number,
-    cities_count: number
+    cities_count: number,
+    video_link: string,
+    start_date: string,
+    end_date: string,
+    description: string
   }
 }
 const iconPlace = 'right';
@@ -26,14 +30,20 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
     selectors_count,
     volunteers_count,
     events_count,
-    cities_count } = data;
+    cities_count,
+    video_link,
+    start_date,
+    end_date,
+    description } = data;
 
+  const startDate = new Date(start_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' });
+  const finishDate = new Date(end_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' });
   return (
     <section className={style.section}>
       <img src={imageUrl} alt='Изображение' className={style.image}/>
       <div className={style.content}>
-        <h2 className={cn(style.dataSubtitle)}>5–12 сентября</h2>
-        <p className={cn(style.datatext)}>В Москве на площадке «8/3». Читки fringe-программы фестиваля впервые прошли в Центре Вознесенского.</p>
+        <h2 className={cn(style.dataSubtitle)}>{startDate} - {finishDate}</h2>
+        <p className={cn(style.datatext)}>{description}</p>
         <div className={cn(style.gridcontent)}>
           <div className={cn(style.card)}>
             <div className={style.buttonDisplay}>
@@ -66,6 +76,7 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
                 iconPlace={iconPlace}
                 icon={icon}
                 href='#'
+                isLink={true}
                 align={alignStart}
                 size='l'
                 gap='8px'
@@ -81,6 +92,7 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
                 iconPlace={iconPlace}
                 icon={icon}
                 href='#'
+                isLink={true}
                 align={alignStart}
                 size='l'
                 gap='8px'
@@ -120,10 +132,11 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
 
             <div className={style.buttonDisplay}>
               <Button
-                label={'Шорт-лист'}
+                label='Шорт&#8209;лист'
                 iconPlace={iconPlace}
                 icon={icon}
                 href='#'
+                isLink={true}
                 align={alignStart}
                 size='l'
                 gap='8px'
@@ -132,10 +145,11 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
             </div>
             <div className={style.buttonDisplay}>
               <Button
-                label={'Fringe-программа'}
+                label='Fringe&#8209;программа'
                 iconPlace={iconPlace}
                 icon={icon}
                 href='#'
+                isLink={true}
                 align={alignStart}
                 size='l'
                 gap='8px'
@@ -144,10 +158,11 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
             </div>
             <div className={style.buttonDisplay}>
               <Button
-                label={'Особо отмеченные'}
+                label='Особо&nbsp;отмеченные'
                 iconPlace={iconPlace}
                 icon={icon}
                 href='#'
+                isLink={true}
                 align={alignStart}
                 size='l'
                 gap='8px'
@@ -156,10 +171,11 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
             </div>
             <div className={style.buttonDisplay}>
               <Button
-                label={'Внеконкурсная программа'}
+                label='Внеконкурсная&nbsp;программа'
                 iconPlace={iconPlace}
                 icon={icon}
                 href='#'
+                isLink={true}
                 align={alignStart}
                 size='l'
                 gap='8px'
@@ -172,10 +188,11 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
             <h2 className={style.subtitle}>Дополнительно</h2>
             <div className={style.buttonDisplay}>
               <Button
-                label={'Записи в блоге'}
+                label='Записи&nbsp;в&nbsp;блоге'
                 iconPlace={iconPlace}
                 icon={icon}
                 href='#'
+                isLink={true}
                 align={alignStart}
                 size='l'
                 gap='8px'
@@ -184,10 +201,11 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
             </div>
             <div className={style.buttonDisplay}>
               <Button
-                label={'Видео с фестиваля'}
+                label='Видео&nbsp;с&nbsp;фестиваля'
                 iconPlace={iconPlace}
                 icon={icon}
-                href='#'
+                href={video_link}
+                isLink={true}
                 align={alignStart}
                 size='l'
                 gap='8px'

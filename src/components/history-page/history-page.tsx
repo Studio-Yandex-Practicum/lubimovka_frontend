@@ -23,7 +23,11 @@ export const HistoryPage: FC<IHistoryPageProps> = (props: IHistoryPageProps) => 
     selectors_count: 145,
     volunteers_count: 145,
     events_count: 7,
-    cities_count: 15
+    cities_count: 15,
+    video_link: '#',
+    start_date: '2020-09-5',
+    end_date: '2020-09-12',
+    description: 'В Москве на площадке «8/3». Читки fringe-программы фестиваля впервые прошли в Центре Вознесенского.'
   });
   function selectYear(year: number | undefined) {
     if(year) {
@@ -36,7 +40,11 @@ export const HistoryPage: FC<IHistoryPageProps> = (props: IHistoryPageProps) => 
               selectors_count: result.selectors_count ? result.selectors_count : 0,
               volunteers_count: result.volunteers_count ? result.volunteers_count : 0,
               events_count: result.events_count ? result.events_count : 0,
-              cities_count: result.cities_count ? result.cities_count : 0
+              cities_count: result.cities_count ? result.cities_count : 0,
+              video_link: result.video_link ? result.video_link : '#',
+              start_date: result.start_date ? result.start_date : '2020-09-5',
+              end_date: result.end_date ? result.end_date : '2020-09-12',
+              description: result.description ? result.description : ''
             };
             setCurrentTitleData(titleCounts);
           }
