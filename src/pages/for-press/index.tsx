@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { AppLayout } from 'components/app-layout/index';
 import { ForPressHero } from 'components/for-press-hero';
 import { ForPressPressReleasesView } from 'components/for-press-press-releases-view';
-import data from './assets/mock-data.json';
+import { pressRelease } from './assets/pressRelease';
 
 interface IForPressProps {
   metaTitle: string;
@@ -17,8 +17,8 @@ const ForPress: NextPage<IForPressProps> = (props: IForPressProps) => {
       <Head>
         <title>{metaTitle}</title>
       </Head>
-      <ForPressHero />
-      <ForPressPressReleasesView defaultCover={data.defaultCover} pressReleases={data.pressReleases} />
+      <ForPressHero/>
+      <ForPressPressReleasesView defaultCover={pressRelease.defaultCover} pressReleases={pressRelease.pressReleases}/>
     </AppLayout>
   );
 };
