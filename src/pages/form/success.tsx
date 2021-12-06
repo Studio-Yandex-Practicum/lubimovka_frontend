@@ -2,7 +2,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 import { PageTransition } from 'components/page-transition';
 import { PlayProposalSuccessLayout } from 'components/play-proposal-success-layout';
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 
 interface IPlayProposalSuccessProps {
   referer: string | null,

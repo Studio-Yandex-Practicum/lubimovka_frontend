@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { useState, useEffect } from 'react';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import { Button } from 'components/ui/button';
 import LibraryForm from 'components/library-form/library-form';
 import { BasicPlayCard } from 'components/ui/basic-play-card';

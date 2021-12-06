@@ -1,0 +1,80 @@
+.footnote {
+  @mixin text;
+  @mixin textCaption;
+
+  display: flex;
+  align-items: flex-start;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin textCaption;
+
+    flex-direction: column;
+    padding: scale(32px 28px 63px);
+  }
+}
+
+.copyright {
+  margin: scale(0 32px 0 0);
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(0 0 10px 0);
+  }
+}
+
+.footnoteLink {
+  @media (max-width: $tablet-portrait) {
+    text-decoration: underline;
+  }
+}
+
+.credits {
+  display: flex;
+  margin: scale(0 0 0 374px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(254px);
+    flex-direction: column;
+    margin: scale(59px 0 0 0);
+  }
+
+  dt {
+    &::after {
+      display: inline;
+      content: ' –';
+    }
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.shishki {
+  display: grid;
+  margin-right: scale(44px);
+  grid-template:
+    "logo text"
+    "logo text" 1fr / min-content 1fr;
+
+  @media (max-width: $tablet-portrait) {
+    margin-right: 0;
+    margin-bottom: scale(16px);
+  }
+
+  &::before {
+    display: block;
+    width: scale(27px);
+    height: scale(25px);
+    margin-right: scale(4px);
+    background-image: url('./footer-copyright.assets/shishki.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: '';
+    grid-area: logo;
+
+    @media (max-width: $tablet-portrait) {
+      margin-top: scale(6px);
+      margin-right: scale(9px);
+    }
+  }
+}

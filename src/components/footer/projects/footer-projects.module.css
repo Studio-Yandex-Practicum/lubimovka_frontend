@@ -5,9 +5,8 @@
   grid-area: projects;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(0 55px);
-    margin-top: scale(46px);
-    margin-bottom: scale(26px);
+    padding: scale(0 56px);
+    margin: scale(46px 0 26px);
   }
 }
 
