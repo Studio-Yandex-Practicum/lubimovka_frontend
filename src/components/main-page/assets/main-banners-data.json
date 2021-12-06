@@ -6,7 +6,7 @@
     "buttonText": "Билеты",
     "buttonUrl": "#",
     "imgAlt": "Любимовка",
-    "imgUrl": "https://sun9-15.userapi.com/impg/BrbXevIzjABChomHzzXuKYJ0ZTWrcuhy_lQnwA/dshSQq8AJVQ.jpg?size=720x414&quality=95&sign=2ceeb729a98f8fd68fb5b4e975b6234c&type=album"
+    "imgUrl": "/images/main/banners.jpg"
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "buttonText": "Подробнее",
     "buttonUrl": "#",
     "imgAlt": "Любимовка",
-    "imgUrl": "https://sun9-15.userapi.com/impg/BrbXevIzjABChomHzzXuKYJ0ZTWrcuhy_lQnwA/dshSQq8AJVQ.jpg?size=720x414&quality=95&sign=2ceeb729a98f8fd68fb5b4e975b6234c&type=album"
+    "imgUrl": "/images/main/banners.jpg"
   },
   {
     "id": 3,
@@ -24,6 +24,6 @@
     "buttonText": "Читать",
     "buttonUrl": "#",
     "imgAlt": "Любимовка",
-    "imgUrl": "https://sun9-15.userapi.com/impg/BrbXevIzjABChomHzzXuKYJ0ZTWrcuhy_lQnwA/dshSQq8AJVQ.jpg?size=720x414&quality=95&sign=2ceeb729a98f8fd68fb5b4e975b6234c&type=album"
+    "imgUrl": "/images/main/banners.jpg"
   }
 ]

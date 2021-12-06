@@ -1,35 +1,21 @@
-import React, { useCallback, useRef, FC, forwardRef, useImperativeHandle } from 'react';
+import React, { useEffect, useCallback, useRef, FC } from 'react';
+import Image from 'next/image';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button';
+import { IMainBannersProps } from '../main-banners';
 
 import styles from './banner-item.module.css';
-// import { IMainBannersProps } from '../main-banners';
 
-export interface IBanerItemPublic {
-  scrollHandler: () => void,
-}
-export interface IMainBannersProps {
-  id: number
-  title: string
-  desc: string
-  buttonText: string
-  buttonUrl: string
-  imgAlt: string
-  imgUrl: string
-  ref?: React.ForwardedRef<IBanerItemPublic>
+function debounce(cb: () => void, delay: number) {
+  let timer: ReturnType<typeof setTimeout>;
+  return function() {
+    clearTimeout(timer);
+    timer = setTimeout(cb, delay || 0);
+  };
 }
 
-// function debounce(cb: () => void, delay: number) {
-//   let timer: ReturnType<typeof setTimeout>;
-//   return function() {
-//     clearTimeout(timer);
-//     timer = setTimeout(cb, delay || 0);
-//   };
-// }
-
-// eslint-disable-next-line react/display-name
-export const MainBannerItem: FC<IMainBannersProps> = forwardRef((props, ref):JSX.Element => {
+export const MainBannerItem: FC<IMainBannersProps> = (props):JSX.Element => {
   const bannerRef = useRef<HTMLDivElement>(null);
   const bannerContainerRef = useRef<HTMLDivElement>(null);
 
@@ -52,22 +38,17 @@ export const MainBannerItem: FC<IMainBannersProps> = forwardRef((props, ref):JSX
     if (banner && bannerContainer) {
       bannerContainer.classList.remove(cn(styles.hideContainer));
     }
-    console.log(bannerRef);
   }, [bannerRef, bannerContainerRef]);
 
-  useImperativeHandle(ref, () => ({
-    scrollHandler: scrollHandler,
-  }), [scrollHandler]);
-
-  // useEffect(() => {
-  //   const handlerDebounced = debounce(scrollHandler, 10);
-  //   if (bannerRef.current && bannerContainerRef.current) {
-  //     window.addEventListener('scroll', handlerDebounced);
-  //   }
-  //   return () => {
-  //     window.removeEventListener('scroll', handlerDebounced);
-  //   };
-  // }, [scrollHandler]);
+  useEffect(() => {
+    const handlerDebounced = debounce(scrollHandler, 10);
+    if (bannerRef.current && bannerContainerRef.current) {
+      window.addEventListener('scroll', handlerDebounced);
+    }
+    return () => {
+      window.removeEventListener('scroll', handlerDebounced);
+    };
+  }, [scrollHandler]);
 
   return (
     <div className={cn(styles.banner)} ref={bannerRef}>
@@ -90,12 +71,15 @@ export const MainBannerItem: FC<IMainBannersProps> = forwardRef((props, ref):JSX
             className={cn(styles.button)}
           />
         </div>
-        <img 
+        <Image 
           src={imgUrl}
           alt={imgAlt}
           className={cn(styles.img)}
+          width={630}
+          height={277}
+          layout="intrinsic"
         />
       </div>
     </div>
   );
-});
+};

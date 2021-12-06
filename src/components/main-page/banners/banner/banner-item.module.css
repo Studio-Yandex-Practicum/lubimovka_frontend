@@ -31,6 +31,7 @@
   @mixin text;
   @mixin textLarge;
 
+  min-width: scale(318px);
   max-width: scale(384px);
   margin: 0 scale(62px 24px 62px);
 }
@@ -40,11 +41,7 @@
 }
 
 .img {
-  @mixin img;
-
-  display: flex;
-  max-width: scale(486px);
-  height: scale(228px);
+  object-fit: cover;
 }
 
 @media (max-width: $tablet-portrait) {
