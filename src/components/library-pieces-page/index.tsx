@@ -1,22 +1,31 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, Dispatch, useRef, RefObject } from 'react';
 import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 
 import LibraryForm from 'components/library-form/library-form';
 import LibraryFilter from 'components/library-filter/library-filter';
-import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
+import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
+import { IDroplistPublic } from 'components/ui/droplist';
 import LibraryFiltersModal from './library-filters-modal';
+import LibraryPreloader from './library-preloader/library-preloader';
+import { Play } from 'api-typings';
+import { Action } from 'components/library-filter/library-filter-reducer';
 
 import styles from './index.module.css';
 
 interface ILibraryPageProps {
-  items: IBasicPlayCardProps[];
+  isLoading: boolean;
+  items: Play[];
+  years: number[];
+  programmes: string[];
+  filterDispatcher: Dispatch<Action>;
 }
 
-const LibraryPage: FC<ILibraryPageProps> = ({ items }) => {
+const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programmes, filterDispatcher }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const droplistRef = useRef(null) as RefObject<IDroplistPublic>;
 
   function handleFiltersClick():void {
     setIsModalOpen((prev) => !prev);
@@ -53,7 +62,8 @@ const LibraryPage: FC<ILibraryPageProps> = ({ items }) => {
             </Menu>
           </div>
           <div className={styles.filter}>
-            <LibraryFilter/>
+            <LibraryFilter years={years} programmes={programmes}
+              filterDispatcher={filterDispatcher} droplistRef={droplistRef}/>
           </div>
         </div>
         <section className={styles.section}>
@@ -61,20 +71,52 @@ const LibraryPage: FC<ILibraryPageProps> = ({ items }) => {
           <div className={styles.search}>
             <LibraryForm/>
           </div>
-          <div className={styles.pieces}>
-            <BasicPlayCardList>
-              {(items as IBasicPlayCardProps[]).map((item, idx) => (
-                <BasicPlayCard key={idx} {...item}/>
-              ))}
-            </BasicPlayCardList>
-          </div>
+          {isLoading ? (
+            <div className={styles.loader}>
+              <LibraryPreloader/>
+            </div>
+          ) : (
+            <div className={styles.pieces}>
+              <BasicPlayCardList>
+                {items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
+                  <BasicPlayCard
+                    key={id}
+                    play={{
+                      title: name,
+                      city,
+                      year,
+                      linkView: url_reading ? url_reading : '',
+                      linkDownload: url_download ? url_download : '',
+                      authors
+                    }}/>
+                ))}
+              </BasicPlayCardList>
+            </div>
+          )}
         </section>
         <section className={styles.piecesMobile}>
-          {(items as IBasicPlayCardProps[]).map((item, idx) => (
-            <BasicPlayCard key={idx} {...item}/>
-          ))}
+          {isLoading ? (
+            <LibraryPreloader/>
+          ) : (
+            <>
+              {items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
+                <BasicPlayCard
+                  key={id}
+                  play={{
+                    title: name,
+                    city,
+                    year,
+                    linkView: url_reading ? url_reading : '',
+                    linkDownload: url_download ? url_download : '',
+                    authors
+                  }}/>
+              ))}
+            </>
+          )}
         </section>
-        {isModalOpen && <LibraryFiltersModal/>}
+        {isModalOpen && (<LibraryFiltersModal><LibraryFilter years={years} programmes={programmes}
+          filterDispatcher={filterDispatcher} onCheckResults={handleFiltersClick}
+          droplistRef={droplistRef}/></LibraryFiltersModal>)}
       </div>
     </main>
   );
