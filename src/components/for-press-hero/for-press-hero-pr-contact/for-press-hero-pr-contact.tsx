@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
+import Image from 'next/image';
 
 import { Url } from 'shared/types';
 import { InfoLink } from 'components/ui/info-link';
@@ -26,7 +27,9 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContact> = ({ data, custom
       <h6 className={cx('intro')}>
         По вопросам PR и аккредитации пишите {data.nameDative}
       </h6>
-      <img className={cx('photo')} src={data.photo} alt={data.name}/>
+      <div className={cx('photo')}>
+        <Image src={data.photo} alt={data.name} layout='fill' objectFit='cover'/>
+      </div>
       <dl className={cx('info')}>
         <dt className={cx('hiddenText')}>
           Email:
