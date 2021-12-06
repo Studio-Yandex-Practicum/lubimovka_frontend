@@ -4,32 +4,33 @@ import cn from 'classnames/bind';
 import { NewsCard } from 'components/ui/news-card';
 
 import style from './news-list.module.css';
+import { NewsItemList } from 'api-typings';
 
 const cx = cn.bind(style);
 
-interface NewsCardData {
-  id: number;
-  title: string;
-  description: string;
-  image?: string;
-  pub_date: string;
+// interface NewsCardData {
+//   id: number;
+//   title: string;
+//   description: string;
+//   image?: string;
+//   pub_date: string;
 
-}
+// }
 interface INewsList {
-  newsCardData: Array<NewsCardData>;
+  newsListData: Array<NewsItemList>;
   className?: string;
 }
 
-export const NewsList: FC<INewsList> = ({ newsCardData, className }) => {
-  return(
+export const NewsList: FC<INewsList> = ({ newsListData, className }) => {
+  return (
     <ul className={cx('newsList', className)}>
-      {newsCardData.map((data) => (
+      {newsListData.map((data) => (
         <li key={data.id}>
           <NewsCard
             newsId={data.id}
             title={data.title}
             description={data.description}
-            date={data.pub_date}
+            date={data.pub_date!}
             isMainPage={false}
           />
         </li>
