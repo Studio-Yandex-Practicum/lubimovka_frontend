@@ -1,6 +1,9 @@
 @value partners from '../partners/footer-partners.module.css';
 
 .address {
+  @mixin text;
+  @mixin textCaption;
+
   margin-top: scale(46px);
   font-style: normal;
   grid-area: address;
@@ -9,8 +12,8 @@
   @media (max-width: $tablet-portrait) {
     @mixin textSmall;
 
-    padding: scale(0 55px);
-    margin-top: scale(33px);
+    padding: scale(0 56px);
+    margin-top: scale(32px);
   }
 
   span {

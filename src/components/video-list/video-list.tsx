@@ -1,7 +1,5 @@
-import { ReactNode, HTMLAttributes } from 'react';
+import { ReactNode, HTMLAttributes, Children } from 'react';
 import classNames from 'classnames/bind';
-
-import { VideoListItem } from './item';
 
 import styles from './video-list.module.css';
 
@@ -13,12 +11,19 @@ interface IVideoListProps extends HTMLAttributes<HTMLUListElement> {
 
 export const VideoList = (props: IVideoListProps): JSX.Element => {
   const { children } = props;
+  const childrenCount = Children.count(children);
 
-  return(
+  return childrenCount > 1 ? (
     <ul className={cx('list')}>
-      {children}
+      {Children.map(children, (child) => (
+        <li className={cx('item')}>
+          {child}
+        </li>
+      ))}
     </ul>
+  ) : (
+    <div className={cx('only-child')}>
+      {children}
+    </div>
   );
 };
-
-VideoList.Item = VideoListItem;

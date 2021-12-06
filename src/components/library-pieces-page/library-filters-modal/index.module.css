@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   overflow: auto;
   width: 100%;
   height: 100%;
@@ -10,16 +10,8 @@
   flex-direction: column;
   padding: scale(103px) scale(24px) scale(56px);
   background-color: var(--beige);
-}
 
-.buttons {
-  display: flex;
-  max-width: 100%;
-  margin-top: scale(80px);
-}
-
-.button {
   @media (max-width: $tablet-portrait) {
-    width: scale(183px);
+    display: flex;
   }
 }

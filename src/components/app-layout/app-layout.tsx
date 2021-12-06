@@ -1,7 +1,12 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { Page } from 'components/page';
+import Page, {
+  PageHeader,
+  PageFooter,
+  PageBurgerButton,
+  PageOverlayMenu,
+} from 'components/page';
 import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
 import { Navbar } from 'components/navbar';
@@ -10,6 +15,7 @@ import { Footer } from 'components/footer';
 import { OverlayNav } from 'components/overlay-nav';
 import { BurgerButton } from 'components/ui/burger-button';
 import { FooterPartnerList } from 'components/footer-partner-list';
+import { FooterCopyright } from 'components/footer-copyright';
 import { DonationLink } from 'components/donation-link';
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
 import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
@@ -26,25 +32,29 @@ interface IAppLayoutProps {
   hiddenPartners?: boolean,
 }
 
-const AppLayout = (props: IAppLayoutProps): JSX.Element => {
+export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
   const {
     children,
     hiddenPartners,
   } = props;
-
   const { projects, generalPartners } = useAppSettings();
-
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
 
-  const toggleOverlayMenu = () => setIsOverlayMenuOpen(!isOverlayMenuOpen);
+  const toggleOverlayMenu = useCallback(() => {
+    setIsOverlayMenuOpen(!isOverlayMenuOpen);
+  }, [isOverlayMenuOpen]);
 
-  useDisableBodyScroll(isOverlayMenuOpen);
+  useDisableBodyScroll(isMobile && isOverlayMenuOpen);
+
+  useEffect(() => {
+    if (!isMobile) setIsOverlayMenuOpen(false);
+  }, [isMobile]);
 
   return (
     <Page>
-      <Page.Header>
+      <PageHeader>
         <Navbar>
           <Navbar.Logotype>
             <Logotype
@@ -82,11 +92,63 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
             </Navbar.Section>
           </Navbar.Actions>
         </Navbar>
-      </Page.Header>
+      </PageHeader>
       {children}
+      <PageFooter>
+        <Footer>
+          {!hiddenPartners && (
+            <Footer.Partners>
+              <FooterPartnerList>
+                {generalPartners.map((partner) => (
+                  <FooterPartnerList.Item
+                    key={partner.name}
+                    logo={partner.logo}
+                    name={partner.name}
+                  />
+                ))}
+              </FooterPartnerList>
+            </Footer.Partners>
+          )}
+          <Footer.Address>
+            <span>
+              Площадка «8/3»
+            </span>
+            Москва,{'\n'}
+            ул. Казакова, 8, стр. 3{'\n'}
+            Метро «Курская»{'\n'}
+          </Footer.Address>
+          <Footer.Navigation>
+            <Menu type="footer-navigation">
+              {footerNavigationItems.map((item, index) => (
+                <Menu.Item
+                  key={index}
+                  href={item.href}
+                >
+                  {item.text}
+                </Menu.Item>
+              ))}
+            </Menu>
+          </Footer.Navigation>
+          <Footer.Projects>
+            <Menu type="footer-project-list">
+              <Menu.Item href="/projects">
+                Все проекты
+              </Menu.Item>
+              {projects.map((item, index) => (
+                <Menu.Item
+                  key={index}
+                  href={`/projects/${item.slug}`}
+                >
+                  {item.title}
+                </Menu.Item>
+              ))}
+            </Menu>
+          </Footer.Projects>
+        </Footer>
+      </PageFooter>
       {isMobile && (
         <>
-          <Page.OverlayMenu isOpen={isOverlayMenuOpen}>
+          <PageOverlayMenu isOpen={isOverlayMenuOpen}>
             <OverlayNav>
               <OverlayNav.Logotype>
                 <Logotype href='/' title="Фестиваль Любимовка"/>
@@ -94,7 +156,11 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
               <OverlayNav.Menu>
                 <Menu type="overlay-navigation">
                   {mainNavigationItems.map((item) => (
-                    <Menu.Item key={item.href} href={item.href}>
+                    <Menu.Item
+                      key={item.href}
+                      href={item.href}
+                      current={router.asPath === item.href}
+                    >
                       {item.text}
                     </Menu.Item>
                   ))}
@@ -114,80 +180,31 @@ const AppLayout = (props: IAppLayoutProps): JSX.Element => {
               </OverlayNav.Actions>
               <OverlayNav.Socials>
                 <Menu type='overlay-social-links'>
-                  {socialLinkItems.map((item) => (
+                  {socialLinkItems.sort((a, b) => a.mobileOrder - b.mobileOrder).map((item) => (
                     <Menu.Item
                       key={item.href}
                       href={item.href}
-                      mods={{ primary: !!item.primary }}>
+                      mods={item.mods}
+                    >
                       {item.text}
                       <Icon glyph='arrow-right'/>
                     </Menu.Item>
                   ))}
                 </Menu>
               </OverlayNav.Socials>
-              <Footer/>
+              <OverlayNav.Copyright>
+                <FooterCopyright/>
+              </OverlayNav.Copyright>
             </OverlayNav>
-          </Page.OverlayMenu>
-          <Page.BurgerButton>
-            <BurgerButton isOpen={isOverlayMenuOpen} onClick={toggleOverlayMenu}/>
-          </Page.BurgerButton>
+          </PageOverlayMenu>
+          <PageBurgerButton>
+            <BurgerButton
+              isOpen={isOverlayMenuOpen}
+              onClick={toggleOverlayMenu}
+            />
+          </PageBurgerButton>
         </>
       )}
-      <Footer>
-        <Footer.Logo/>
-        {!hiddenPartners && (
-          <Footer.Partners>
-            <FooterPartnerList>
-              {generalPartners.map((partner) => (
-                <FooterPartnerList.Item
-                  key={partner.name}
-                  logo={partner.logo}
-                  name={partner.name}
-                />
-              ))}
-            </FooterPartnerList>
-          </Footer.Partners>
-        )}
-        <Footer.Address>
-          <span>
-            Площадка «8/3»
-          </span>
-          Москва,{'\n'}
-          ул. Казакова, 8, стр. 3{'\n'}
-          Метро «Курская»{'\n'}
-        </Footer.Address>
-        <Footer.Navigation>
-          <Menu type="footer-navigation">
-            {footerNavigationItems.map((item, index) => (
-              <Menu.Item
-                key={index}
-                href={item.href}
-              >
-                {item.text}
-              </Menu.Item>
-            ))}
-          </Menu>
-        </Footer.Navigation>
-        <Footer.Projects>
-          <Menu type="footer-project-list">
-            <Menu.Item href="/projects">
-              Все проекты
-            </Menu.Item>
-            {projects.map((item, index) => (
-              <Menu.Item
-                key={index}
-                href={`/projects/${item.slug}`}
-              >
-                {item.title}
-              </Menu.Item>
-            ))}
-          </Menu>
-        </Footer.Projects>
-      </Footer>
     </Page>
   );
 };
-
-AppLayout.Breadcrumbs = Page.Breadcrumbs;
-
-export default AppLayout;

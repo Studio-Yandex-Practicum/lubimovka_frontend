@@ -19,6 +19,14 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
 
   const link = `/blog/${encodeURIComponent(id)}`;
 
+  const [imgWidth, setImgWidth] = React.useState<number>();
+  const [imgHeight, setImgHeight] = React.useState<number>();
+
+  const handleImageLoad = (e: { naturalWidth: number, naturalHeight: number }) => {
+    setImgWidth(e.naturalWidth);
+    setImgHeight(e.naturalHeight);
+  };
+
   return (
     <Link href={link}>
       <a className={cn(styles.cardLinkWrapper, styles[firstCardSizeMode])}>
@@ -28,11 +36,12 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
               className={styles.img}
               src={image}
               alt={`изображение статьи: ${heading}`}
-              width='100%'
-              height='100%'
+              width={imgWidth || 100}
+              height={imgHeight || 100}
               layout='responsive'
               objectFit='cover'
               priority
+              onLoadingComplete={handleImageLoad}
             />
           </div>
           <div className={styles.content}>

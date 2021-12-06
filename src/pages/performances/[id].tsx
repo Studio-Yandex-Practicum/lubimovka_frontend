@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Image from 'next/image';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import { PerformanceLayout } from 'components/performance-layout';
 import { PerformanceHeadline } from 'components/performance-headline';
 import { PerformanceDetails } from 'components/performance-details';

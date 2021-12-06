@@ -12,7 +12,11 @@
 }
 
 .menu {
-  padding: scale(40px 0 70px 70px);
+  padding: scale(40px 0 70px 60px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(2px 0 32px 24px);
+  }
 }
 
 .container {
