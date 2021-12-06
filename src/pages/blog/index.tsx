@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 
-import AppLayout from 'components/app-layout/index';
+import { AppLayout } from 'components/app-layout/index';
 import MasonryGrid from 'components/ui/masonry-grid/masonry-grid';
 import { SectionTitleForBlog } from 'components/section-title-for-blog/section-title-for-blog';
 import { BlogCard } from 'components/ui/blog-card';
@@ -25,7 +25,7 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
       <Head>
         <title>{metaTitle}</title>
       </Head>
-      <SectionTitleForBlog email='critics@lubimovka.ru'/>
+      <SectionTitleForBlog email='critics@lubimovka.ru' />
       <MasonryGrid isLoaded={isLoaded}>
         {data.map((card) => {
           return (
