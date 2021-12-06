@@ -48,19 +48,18 @@
 
 .infoBlock {
   position: relative;
-  padding-bottom: scale(259px);
-  margin: scale(69px) 0 0 scale(213px);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: scale(149px);
+  margin: scale(69px 0 0 213px);
 
   @media (max-width: $tablet-portrait) {
-    padding-bottom: scale(250px);
-    margin: scale(69px) scale(22px) 0 0;
+    padding-bottom: scale(150px);
+    margin: scale(69px 22px 0 0);
   }
 }
 
 .asterisk {
-  position: absolute;
-  top: 0;
-  left: 0;
   margin: 0;
 }
 
@@ -68,11 +67,8 @@
   @mixin text;
   @mixin textLarge;
 
-  position: absolute;
-  top: scale(25px);
-  left: scale(25px);
+  margin-left: 25px;
   max-width: scale(426px);
-  margin: 0;
 }
 
 .indent {
