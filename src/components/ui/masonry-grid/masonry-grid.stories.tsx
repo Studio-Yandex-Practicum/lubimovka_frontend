@@ -1,9 +1,10 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import mockData from './assets/mock-cardData.json';
 import MasonryGrid from './masonry-grid';
 import { BlogCard } from '../blog-card';
+
+import mockData from './assets/mock-cardData.json';
 
 export default {
   component: MasonryGrid,
@@ -18,7 +19,7 @@ const TemplateBig: ComponentStory<typeof MasonryGrid> = (args) => (
         image={card.image}
         author={card.author_url_title}
         heading={card.title}
-        description={card.subtitle}
+        description={card.description}
         id={card.id}
         firstCardSizeMode='big'
       />;
@@ -34,7 +35,7 @@ const TemplateRegular: ComponentStory<typeof MasonryGrid> = (args) => (
         image={card.image}
         author={card.author_url_title}
         heading={card.title}
-        description={card.subtitle}
+        description={card.description}
         id={card.id}
         firstCardSizeMode='regular'
       />;

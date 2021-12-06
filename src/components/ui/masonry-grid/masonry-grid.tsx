@@ -1,5 +1,4 @@
 import React, { ReactNode, useCallback } from 'react';
-// React.useLayoutEffect = React.useEffect;
 
 import styles from './masonry-grid.module.css';
 
@@ -25,7 +24,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ isLoaded, children }) => {
       const rowGap = parseInt(gridStyles.getPropertyValue('grid-row-gap'));
 
       // вычисляем нужную высоту контентной части карточки
-      const rowSpan = Math.ceil((item.firstChild.offsetHeight + rowGap) / (rowHeight + rowGap));
+      const rowSpan = Math.ceil((item.firstChild.firstChild.offsetHeight + rowGap) / (rowHeight + rowGap));
 
       //растягиваем карточку на нужное кол-во грид-строк
       // устанавливаем в стили карточки конечную грид-строку, до которой должна растянуться карточка
