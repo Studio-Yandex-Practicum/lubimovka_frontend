@@ -35,7 +35,8 @@ const News: NextPage<INewsProps> = (props: INewsProps) => {
       })
       .catch(error => console.log(error));
   }, []);
-  console.log(news)
+
+
   return (
     <AppLayout>
       <NewsPage metaTitle={metaTitle} setNews={setNews} news={news || []} />

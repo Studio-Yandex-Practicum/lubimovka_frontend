@@ -17,7 +17,7 @@ const cx = cn.bind(style);
 
 // }
 interface INewsList {
-  newsListData: Array<NewsItemList>;
+  newsListData: NewsItemList[];
   className?: string;
 }
 

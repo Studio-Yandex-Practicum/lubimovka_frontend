@@ -8,7 +8,7 @@ import { MonthsAndYearsFilter } from 'components/months-and-years-filter';
 import { NewsItemList, PaginatedNewsItemListList } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
 
-import MockNewsData from './assets/mock-data-news.json';
+// import MockNewsData from './assets/mock-data-news.json';
 import style from './news-page.module.css';
 
 
