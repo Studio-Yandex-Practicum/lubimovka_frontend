@@ -1,11 +1,11 @@
 import { NextPage } from 'next';
+import { useEffect, useState } from 'react';
 
 import { AppLayout } from 'components/app-layout/index';
 import { NewsPage } from 'components/news-page';
-import { useEffect, useState } from 'react';
 import { NewsItemList, PaginatedNewsItemListList } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
-import { NewsList } from 'components/news-page/news-list';
+// import { NewsList } from 'components/news-page/news-list';
 
 interface INewsProps {
   metaTitle: string;
@@ -31,15 +31,14 @@ const News: NextPage<INewsProps> = (props: INewsProps) => {
     fetchNewsList()
       .then(data => {
         setNews(data?.results);
-        console.log(data?.results);
+        // console.log(data?.results);
       })
-      .catch(error => console.log(error));
+      .catch(error => error); //console.log(error)
   }, []);
-
 
   return (
     <AppLayout>
-      <NewsPage metaTitle={metaTitle} setNews={setNews} news={news || []} />
+      <NewsPage metaTitle={metaTitle} setNews={setNews} news={news || []}/>
     </AppLayout>
   );
 };

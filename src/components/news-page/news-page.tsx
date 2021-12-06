@@ -11,9 +11,7 @@ import { fetcher } from 'shared/fetcher';
 // import MockNewsData from './assets/mock-data-news.json';
 import style from './news-page.module.css';
 
-
 const cx = cn.bind(style);
-
 
 interface INewsPageProps {
   metaTitle: string;
@@ -24,7 +22,7 @@ interface INewsPageProps {
 const fetchNewsListFiltered = async (month: number, year: number) => {
   let data;
   try {
-    data = await fetcher<PaginatedNewsItemListList>(`/news?month=${month}&year=${year}`)
+    data = await fetcher<PaginatedNewsItemListList>(`/news?month=${month}&year=${year}`);
   } catch (error) {
     return;
   }
@@ -48,7 +46,7 @@ export const NewsPage: FC<INewsPageProps> = (props: INewsPageProps): JSX.Element
           setNews(news?.results);
 
         })
-        .catch(error => console.log(error))
+        .catch(error => error); //console.log(error)
     }
 
   }, [year, month, setNews]);
@@ -58,13 +56,13 @@ export const NewsPage: FC<INewsPageProps> = (props: INewsPageProps): JSX.Element
       <Head>
         <title>{metaTitle}</title>
       </Head>
-      <NewsTitle title='Новости' />
+      <NewsTitle title='Новости'/>
       <MonthsAndYearsFilter className={cx('droplistСontainer')}
         filterCallBack={(month, year) => {
           setMonth(month);
           setYear(year);
-        }} />
-      <NewsList newsListData={news} />
+        }}/>
+      <NewsList newsListData={news}/>
     </>
   );
 };

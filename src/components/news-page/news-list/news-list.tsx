@@ -2,9 +2,9 @@ import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { NewsCard } from 'components/ui/news-card';
+import { NewsItemList } from 'api-typings';
 
 import style from './news-list.module.css';
-import { NewsItemList } from 'api-typings';
 
 const cx = cn.bind(style);
 

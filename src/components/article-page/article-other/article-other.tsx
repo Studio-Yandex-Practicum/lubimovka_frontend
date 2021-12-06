@@ -37,7 +37,7 @@ export const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
             />
           ))}
         </BlogList> :
-        <NewsList newsListData={newsArticle} className={cx('newsList')} />
+        <NewsList newsListData={newsArticle} className={cx('newsList')}/>
       }
 
     </section>
