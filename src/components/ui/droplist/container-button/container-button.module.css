@@ -24,6 +24,7 @@
   color: var(--coal);
   cursor: pointer;
   transition: background-color .4s ease-out, color .2s ease;
+  user-select: none;
 
   &:hover {
     background-color: var(--coal);

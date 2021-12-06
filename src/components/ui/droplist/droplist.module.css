@@ -22,6 +22,7 @@
   border-top: none;
   background-color: var(--beige);
   transition: all .2s ease-out;
+  user-select: none;
   visibility: hidden;
 
   &::-webkit-scrollbar {
