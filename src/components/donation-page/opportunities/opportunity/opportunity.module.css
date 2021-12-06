@@ -52,23 +52,27 @@
   }
 }
 
+.pictureContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.opportunityWrapper:nth-child(odd) > .intro > .pictureContainer {
+  @media (max-width: $tablet-portrait) {
+    justify-content: flex-end;
+  }
+}
+
 .picture {
+  position: relative;
   width: scale(780px);
   height: scale(300px);
-  object-fit: cover;
   vertical-align: bottom;
 
   @media (max-width: $tablet-portrait) {
     width: scale(390px);
     height: scale(200px);
-  }
-}
-
-.opportunityWrapper:nth-child(odd) > .intro > .pictureContainer {
-  @media (max-width: $tablet-portrait) {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-end;
   }
 }
 

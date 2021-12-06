@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
+import Image from 'next/image';
 
 import { Url } from '../../../../shared/types/common';
 
@@ -23,7 +24,14 @@ export const Opportunity: FC<IOpportunityProps> = (props) => {
           {title}
         </h2>
         <div className={cx('pictureContainer')}>
-          <img src={picture} className={cx('picture')}/>
+          <div className={cx('picture')}>
+            <Image
+              src={picture}
+              alt='Изображение творческих людей, поглощённых творческим процессом'
+              layout='fill'
+              objectFit='cover'
+            />
+          </div>
         </div>
       </div>
       <ul className={cx('kickies')}>
