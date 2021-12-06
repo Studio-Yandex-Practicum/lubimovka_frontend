@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import MasonryGrid from './masonry-grid';
+import { MasonryGrid } from './masonry-grid';
 import { BlogCard } from '../blog-card';
 
 import mockData from './assets/mock-cardData.json';

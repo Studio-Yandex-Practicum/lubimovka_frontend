@@ -7,7 +7,7 @@ interface MasonryGridProps {
   isLoaded: boolean;
 }
 
-const MasonryGrid: React.FC<MasonryGridProps> = ({ isLoaded, children }) => {
+export const MasonryGrid: React.FC<MasonryGridProps> = ({ isLoaded, children }) => {
 
   // реф для доступа к грид-сетке
   const gridRef = React.useRef<HTMLUListElement>(null);
@@ -30,7 +30,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ isLoaded, children }) => {
       // устанавливаем в стили карточки конечную грид-строку, до которой должна растянуться карточка
       item.style.setProperty('grid-row-end', 'span ' + rowSpan);
     }
-  };
+  }
 
   const resizeAllGridItems = useCallback(() => {
 
@@ -67,5 +67,3 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ isLoaded, children }) => {
     </section>
   );
 };
-
-export default MasonryGrid;

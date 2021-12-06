@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import React from 'react';
 
-import MasonryGrid from 'components/ui/masonry-grid/masonry-grid';
+import { MasonryGrid } from 'components/ui/masonry-grid/masonry-grid';
 import { BlogCard } from 'components/ui/blog-card';
 
 import styles from './section-grid-for-blog.module.css';
