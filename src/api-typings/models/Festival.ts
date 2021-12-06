@@ -2,8 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Nested } from './Nested';
-
 export type Festival = {
     readonly id: number;
     start_date: string;
@@ -18,6 +16,8 @@ export type Festival = {
     cities_count?: number;
     video_link: string;
     blog_entries: string;
-    readonly volunteers: Array<Nested>;
-    readonly images: Array<Nested>;
+    teams: Array<number>;
+    sponsors: Array<number>;
+    volunteers: Array<number>;
+    images: Array<number>;
 }

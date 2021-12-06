@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 import type { Image } from './Image';
+import type { PerformancePerson } from './PerformancePerson';
 import type { Play } from './Play';
 
 /**
@@ -11,7 +12,7 @@ import type { Play } from './Play';
 export type Performance = {
     readonly id: number;
     play: Play;
-    readonly team: string;
+    persons: Array<PerformancePerson>;
     images_in_block: Array<Image>;
     name: string;
     main_image: string;
@@ -20,5 +21,5 @@ export type Performance = {
     description: string;
     text: string;
     age_limit: number;
-    events: number;
+    event: number;
 }

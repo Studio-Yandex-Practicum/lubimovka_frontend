@@ -6,10 +6,10 @@ import type { EventTypeEnum } from './EventTypeEnum';
 
 export type Event = {
     readonly id: number;
-    type: EventTypeEnum;
+    type?: EventTypeEnum;
     readonly event_body: string;
     date_time: string;
     paid?: boolean;
-    url: string;
+    url?: string;
     place: string;
 }
