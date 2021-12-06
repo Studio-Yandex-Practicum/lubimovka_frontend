@@ -12,7 +12,7 @@ const scale = (options) => (...values) => {
     return (`scale(${values.join(', ')})`);
   }
 
-  return targetValues.replace(/(\d*\.?\d+)px/gi, `calc(var(${customProperty}) * $1)`);
+  return targetValues.replace(/(-?\d*\.?\d+)px/gi, `calc(var(${customProperty}) * $1)`);
 };
 
 // eslint-disable-next-line no-undef

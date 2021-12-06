@@ -10,7 +10,7 @@ import { MainPlatforms } from 'components/main-page/platforms';
 import { MainShortList } from 'components/main-page/shortList';
 import { MainArchive } from 'components/main-page/archive';
 import { MainPartners } from 'components/main-page/partners';
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
 
 import data from 'components/main-page/assets/mock-data.json';
 import mainEventsData from 'components/main-page/assets/main-events.json';

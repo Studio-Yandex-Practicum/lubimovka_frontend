@@ -2,31 +2,16 @@ import React, { FC, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames';
 
-import PersonCard from '../../../ui/person-card/person-card';
+import { PersonCard } from '../../../ui/person-card/person-card';
 import { FeedbackPopup } from 'components/ui/feedback-popup';
+import { Volunteers } from 'api-typings';
 
 import styles from './volunteers-list.module.css';
 
 const cx = classNames.bind(styles);
 
-interface PersonCardData {
-  id: number;
-  person: {
-    id: number;
-    first_name: string;
-    last_name: string;
-    middle_name: string;
-    city: string;
-    email: string;
-    image: string;
-  };
-  year: number;
-  review_title: string;
-  review_text: string;
-}
-
 interface VolunteersCardsProps {
-  cards: Array<PersonCardData>,
+  cards: Array<Volunteers>,
   currentYear: number
 }
 
