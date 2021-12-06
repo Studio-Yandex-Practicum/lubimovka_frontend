@@ -15,5 +15,3 @@ storybook-static
 .idea
 .prettierrc
 .DS_Store
-
-.gitattributes

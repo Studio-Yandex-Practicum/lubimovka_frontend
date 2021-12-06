@@ -1,7 +1,8 @@
 import { FC } from 'react';
+import cn from 'classnames';
+
 import { Button } from 'components/ui/button';
 
-import cn from 'classnames';
 import styles from './another-plays.module.css';
 
 interface dataList {

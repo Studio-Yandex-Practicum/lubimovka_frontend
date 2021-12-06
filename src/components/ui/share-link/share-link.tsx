@@ -1,8 +1,9 @@
 import { FC, useEffect, useState } from 'react';
+import classNames from 'classnames/bind';
+
 import { InfoLink } from '../info-link';
 
 import styles from './share-link.module.css';
-import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
@@ -32,7 +33,6 @@ export const ShareLink: FC<IShareLinkProps> = (props) => {
   const facebook = `https://www.facebook.com/sharer.php?src=sp&u=${encodeURI(url)}%2F&title=${encodeURI(title)}&utm_source=share2`;
   const vk = `https://vk.com/share.php?url=${encodeURI(url)}%2F&title=${encodeURI(title)}&utm_source=share2`;
   const tweeter = `https://twitter.com/intent/tweet?text=${encodeURI(title)}&url=${encodeURI(url)}%2F&utm_source=share2`;
-
 
   return (
     <div className={cx('container', className)}>

@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ForPressHeroPrContact } from './for-press-hero-pr-contact';
+
 import mockData from './assets/mock-data.json';
 
 export default {

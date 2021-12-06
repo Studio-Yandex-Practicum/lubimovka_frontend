@@ -18,15 +18,13 @@ const Template: ComponentStory<typeof TextArea> = (args) => <TextArea {...args}/
 
 export const Default = Template.bind({});
 Default.args = {
-  ariaLabel: 'Текст сообщения',
   placeholder: 'Текст сообщения',
   rows: 4,
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  ariaLabel: 'Текст сообщения',
   placeholder: 'Текст сообщения',
   rows: 4,
-  errorMessage: 'Что-то пошло не так...'
+  errorText: 'Что-то пошло не так...'
 };

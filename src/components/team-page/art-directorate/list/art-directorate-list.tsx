@@ -1,31 +1,17 @@
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
-import styles from './art-directorate-list.module.css';
-
-import PersonCard from '../../../ui/person-card/person-card';
 import classNames from 'classnames/bind';
+
+import { PersonCard } from '../../../ui/person-card/person-card';
+import { FestivalTeams } from 'api-typings';
+
+import styles from './art-directorate-list.module.css';
 
 const cx = classNames.bind(styles);
 
-interface PersonCardData {
-  id: number;
-  person: {
-    id: number;
-    first_name: string;
-    last_name: string;
-    middle_name: string;
-    city: string;
-    email: string;
-    image: string;
-  };
-  team: string;
-  position: string;
-}
-
 interface ArtDirectorateCardsProps {
-  cards: Array<PersonCardData>
+  cards: Array<FestivalTeams>
 }
-
 
 const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
@@ -53,9 +39,13 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
     },
   });
 
-  const selectedCards = useMemo(()=> {
+  const selectedCards = useMemo(() => {
     return cards.filter(card => card.team === 'art');
-  }, []);
+  }, [cards]);
+
+  const checkForMultiplicity = useCallback((n: number) => {
+    return selectedCards.length % n === 0;
+  }, [selectedCards]);
 
   useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
@@ -75,7 +65,7 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
             <div key={card.id} className="keen-slider__slide">
               <PersonCard
                 participant={true}
-                link={card.person.image}
+                image={card.person.image}
                 about={card.position}
                 name={`${card.person.first_name} ${card.person.last_name}`}
               >
@@ -88,17 +78,17 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
       {
         Number(screenWidth) > 728 &&
         <ul
-          className={cx({ [styles.grid]: selectedCards.length < 5 || selectedCards.length > 6 },
-            { [styles.flex]: selectedCards.length === 6 },
-            { [styles.flex]: selectedCards.length === 5 })}>
-          {cards.map((card) => (
-            card.team === 'art' &&
+          className={cx({ [styles.grid]: selectedCards.length < 5 && !checkForMultiplicity(3) },
+            { [styles.flex]: checkForMultiplicity(3) },
+            { [styles.flex]: selectedCards.length > 4 && !checkForMultiplicity(3) })}>
+          {selectedCards.map((card) => (
             <li key={card.id}
-              className={cx({ [styles.fiveElements]: selectedCards.length === 5 },
-                { [styles.sixElements]: selectedCards.length === 6 })}>
+              className={cx({ [styles.fiveElements]: selectedCards.length > 4 && !checkForMultiplicity(3) },
+                { [styles.sixElements]: checkForMultiplicity(3) })}
+            >
               <PersonCard
                 participant={true}
-                link={card.person.image}
+                image={card.person.image}
                 about={card.position}
                 name={`${card.person.first_name} ${card.person.last_name}`}
               >

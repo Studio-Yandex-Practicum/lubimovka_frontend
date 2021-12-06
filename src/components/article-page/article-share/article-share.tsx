@@ -1,9 +1,9 @@
 import React from 'react';
-
 import cn from 'classnames/bind';
 
-import styles from './article-share.module.css';
 import { ShareLink } from '../../ui/share-link';
+
+import styles from './article-share.module.css';
 
 const cx = cn.bind(styles);
 

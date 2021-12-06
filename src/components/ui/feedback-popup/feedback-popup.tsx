@@ -4,33 +4,18 @@ import classNames from 'classnames/bind';
 
 import { SliderButton } from '../slider-button';
 import { SliderDots } from '../slider-dots';
+import { IconButton } from 'components/ui/icon-button';
 import { Icon } from '../icon';
-import { Url } from 'shared/types';
-
+import { Volunteers } from 'api-typings';
 
 import styles from './feedback-popup.module.css';
+
 const cx = classNames.bind(styles);
 
-export type PersonCardData = {
-  id: number;
-  person: {
-    id: number;
-    first_name: string;
-    last_name: string;
-    middle_name: string;
-    city: string;
-    email: string;
-    image: Url;
-  };
-  year: number;
-  review_title: string;
-  review_text: string;
-}
-
 interface IFeedbackPopupProps {
-  onClose: React.MouseEventHandler<HTMLButtonElement>,
-  isOpen?: boolean;
-  cards: Array<PersonCardData>;
+  onClose: () => void,
+  isOpen: boolean;
+  cards: Array<Volunteers>;
   currentYear: number;
   openedSlide: number
 }
@@ -79,12 +64,16 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 onClick={slider.prev}
               />
               {Number(screenWidth) < 729 &&
-              <button className={cx('buttonClose')} onClick={onClose}>
-                <Icon
-                  className={cx('cross')}
-                  glyph={'cross'}
+              <div className={cx('close')}>
+                <IconButton
+                  className={cx('closeButton')}
+                  ariaLabel='Закрыть лайтбокс'
+                  type='button'
+                  view='light'
+                  icon={<Icon glyph='cross'/>}
+                  onClick={onClose}
                 />
-              </button>}
+              </div>}
               <img
                 className={cx('image')}
                 src={card.person.image}
@@ -97,7 +86,7 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 currentSlide={currentSlide}
                 onClick={(idx) => slider.moveToSlideRelative(idx)}
               />}
-              <p className={cx('title')}>{card.review_title}</p>
+              {card.review_title === '' ? '' : <p className={cx('title')}>{card.review_title}</p>}
               <p className={cx('text')}>{card.review_text}</p>
               {Number(screenWidth) > 728 &&
               <SliderDots
@@ -120,4 +109,3 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
     </div>
   );
 };
-

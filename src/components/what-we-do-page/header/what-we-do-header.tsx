@@ -1,14 +1,9 @@
 import { FC } from 'react';
 import cn from 'classnames';
 
-import { Menu } from 'components/ui/menu';
+import { AboutUsMenu } from 'components/what-we-do-page/about-us-menu';
 
 import styles from './what-we-do-header.module.css';
-
-interface ISubmenu {
-  text: string
-  href: string
-}
 
 interface IWhatWeDoHeaderProps {
   data: {
@@ -18,28 +13,18 @@ interface IWhatWeDoHeaderProps {
     image: {
       url: string
       alt: string
-    },
-    submenu: ISubmenu[]
+    }
   }
 }
 
 export const WhatWeDoHeader: FC<IWhatWeDoHeaderProps> = ({ data }): JSX.Element => {
-  const { title, desc, image, submenu } = data;
+  const { title, desc, image } = data;
   
   return (
     <section className={cn(styles.header)}>
       <div className={cn(styles.content)}>
         <div className={cn(styles.menu)}>
-          <Menu type={'general-submenu'}>
-            {submenu.map(item => (
-              <Menu.Item
-                key={item.text}
-                href={item.href}
-              >
-                {item.text}
-              </Menu.Item>
-            ))}
-          </Menu>
+          <AboutUsMenu/>
         </div>
         <h1 className={cn(styles.title)}>
           {title}

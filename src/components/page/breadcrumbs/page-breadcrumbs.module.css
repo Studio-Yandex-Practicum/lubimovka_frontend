@@ -1,0 +1,13 @@
+.breadcrumbs {
+  padding: scale(0 32px);
+  margin-top: scale(32px);
+
+  @media (max-width: $tablet-portrait) {
+    position: absolute;
+    top: 0;
+    top: scale(30px);
+    left: scale(86px);
+    padding: 0;
+    margin: 0;
+  }
+}

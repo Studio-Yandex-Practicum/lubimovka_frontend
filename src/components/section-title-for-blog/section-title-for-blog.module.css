@@ -1,0 +1,111 @@
+.section {
+  display: grid;
+  box-sizing: border-box;
+  padding: scale(27px 287px 61px 93px);
+  margin-bottom: scale(17px);
+  grid-template-areas:
+    "asterisk title"
+    "text drop";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  @media (max-width: $tablet-portrait) {
+    display: flex;
+    flex-direction: column;
+    padding: scale(0 20px 23px 24px);
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline1;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: scale(0 0 18px 98px);
+  margin: 0;
+  grid-area: title;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    padding: scale(0 50px 0 0);
+    margin-bottom: scale(22px);
+  }
+}
+
+.asterisk {
+  width: scale(25px);
+  height: scale(25px);
+  padding-bottom: 0;
+  margin: auto 0 0;
+  fill: var(--coal);
+  grid-area: asterisk;
+  line-height: 0;
+}
+
+.icon {
+  grid-area: icon;
+}
+
+.drop {
+  padding: scale(8px 0 0 96px);
+  grid-area: drop;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0;
+  }
+}
+
+.text {
+  padding: scale(0 0 0 27px);
+  margin: 0;
+  grid-area: text;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(0 0 0 32px);
+  }
+}
+
+.paragraph {
+  @mixin text;
+  @mixin textLarge;
+
+  padding: 0;
+  margin: 0;
+  margin-bottom: scale(31px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin textSmall;
+
+    margin-bottom: scale(16px);
+    letter-spacing: 0;
+  }
+}
+
+.paragraphConnect {
+  @mixin text;
+  @mixin textBlogSmall;
+
+  padding: scale(1px 50px 0 0);
+  margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline;
+    @mixin headline7;
+
+    margin-bottom: scale(70px);
+  }
+}
+
+.link {
+  letter-spacing: .1px;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline;
+    @mixin headline7;
+
+    letter-spacing: scale(-.2px);
+  }
+}

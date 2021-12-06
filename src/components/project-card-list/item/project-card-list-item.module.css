@@ -1,0 +1,23 @@
+.item {
+  display: block;
+  width: 50%;
+  box-sizing: border-box;
+
+  &:nth-child(3n) {
+    margin-right: 25%;
+    margin-left: 25%;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    width: unset;
+
+    &:nth-child(3n) {
+      margin-right: unset;
+      margin-left: unset;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: scale(100px);
+    }
+  }
+}

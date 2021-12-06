@@ -1,12 +1,14 @@
 import React from 'react';
 import cn from 'classnames/bind';
+import Image from 'next/image';
 
-const cx = cn.bind(styles);
-
-import styles from './article-title.module.css';
 import { Button } from '../../ui/button';
 import { InfoLink } from '../../ui/info-link';
 import { Url } from '../../../shared/types';
+
+import styles from './article-title.module.css';
+
+const cx = cn.bind(styles);
 
 interface IArticleTitle {
   isBlog: boolean,
@@ -43,7 +45,14 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
         href={isBlog ? '/blog' : '/news'}
       />
 
-      <img className={cx('img')} src={imgLink} alt={title}/>
+      <div className={cx('img')}>
+        <Image
+          src={imgLink}
+          alt={title}
+          layout='fill'
+          objectFit='cover'
+        />
+      </div>
 
       <h3 className={cx('title')}>{title}</h3>
       <h6 className={cx('description')}>{description}</h6>

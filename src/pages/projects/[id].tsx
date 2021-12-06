@@ -1,21 +1,25 @@
 // @ts-nocheck
 
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { Fragment } from 'react';
 
-import AppLayout from 'components/app-layout';
+import { AppLayout } from 'components/app-layout';
+import { PageBreadcrumbs } from 'components/page';
 import { ProjectLayout } from 'components/project-layout';
-import { ProjectHeader } from 'components/project-header';
-import { ProjectDescription } from 'components/project-description';
+import { Breadcrumb } from 'components/breadcrumb';
+import { ProjectHeadline } from 'components/project-headline';
 import { ProjectInvitation } from 'components/project-invitation';
 import { PhotoGallery } from 'components/photo-gallery';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
-import { AnnouncedPlayCardList } from 'components/ui/announced-play-card-list';
+import { PerformanceSection } from 'components/performance-section';
 import { Video } from 'components/video';
 import { VideoList } from 'components/video-list';
 import { RawText } from 'components/raw-text';
 import { Section } from 'components/section';
+import { PersonCard } from 'components/ui/person-card';
+import { PersonCardList } from 'components/person-card-list';
 import { fetcher } from 'shared/fetcher';
 import { Project as ProjectModel } from 'api-typings';
 
@@ -30,54 +34,65 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
   return (
     <AppLayout>
       <ProjectLayout>
-        <ProjectHeader
+        <PageBreadcrumbs>
+          <Breadcrumb
+            text="Проекты"
+            path="/projects"
+          />
+        </PageBreadcrumbs>
+        <ProjectHeadline
           title={title}
+          //TODO: добавить поле в ответ бекенда
           intro=""
           image={image}
         />
-        <ProjectDescription>
+        <ProjectLayout.Description>
           {description}
-        </ProjectDescription>
-        {contents && contents.map(({ content_type, content_item }) => (
-          <>
+        </ProjectLayout.Description>
+        {contents && contents.map(({ content_type, content_item }, index) => (
+          <Fragment key={index}>
             {content_type === 'imagesblock' && (
-              <Section title={content_item.title}>
-                <PhotoGallery>
-                  {content_item.items.map(({ title, image }) => (
-                    <PhotoGallery.Item
-                      key={title}
-                      image={image}
-                    />
-                  ))}
-                </PhotoGallery>
-              </Section>
+              <ProjectLayout.Storey type="photos">
+                <Section title={content_item.title}>
+                  <PhotoGallery>
+                    {content_item.items.map(({ title, image }) => (
+                      <PhotoGallery.Item
+                        key={title}
+                        image={image}
+                      />
+                    ))}
+                  </PhotoGallery>
+                </Section>
+              </ProjectLayout.Storey>
             )}
             {content_type === 'playsblock' && (
-              <Section title={content_item.title}>
-                <BasicPlayCardList>
-                  {content_item.items.map(({ id, name, city, year, url_download, url_reading }) => (
-                    <BasicPlayCard
-                      key={id}
-                      play={{
-                        title: name,
-                        city,
-                        year,
-                        linkView: url_reading,
-                        linkDownload: url_download,
-                      }}
-                      author={{
-                        // TODO: добавить реальные данные в ответ бекенда
-                        id: 0,
-                        name: 'Константин Константинопольский',
-                      }}
-                    />
-                  ))}
-                </BasicPlayCardList>
-              </Section>
+              <ProjectLayout.Storey type="plays">
+                <Section title={content_item.title}>
+                  <BasicPlayCardList>
+                    {content_item.items.map(({ id, name, city, year, url_download, url_reading }) => (
+                      <BasicPlayCard
+                        key={id}
+                        play={{
+                          title: name,
+                          city,
+                          year,
+                          linkView: url_reading,
+                          linkDownload: url_download,
+                          authors:[{
+                            // TODO: добавить реальные данные в ответ бекенда
+                            id: 0,
+                            name: 'Константин Константинопольский',
+                          }]
+                        }}
+                      />
+                    ))}
+                  </BasicPlayCardList>
+                </Section>
+              </ProjectLayout.Storey>
             )}
             {content_type === 'performancesblock' && (
-              <Section title={content_item.title}>
-                <AnnouncedPlayCardList>
+              <ProjectLayout.Storey type="performances">
+                <PerformanceSection title={content_item.title}>
                   {content_item.items.map(({ id, name }) => (
                     <AnnouncedPlayCard
                       key={id}
@@ -85,34 +100,57 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                       date="12 декабря"
                       time="11:00"
                       title={name}
-                      playwrightArray={[]}
-                      directorArray={[]}
-                      buttonLinks={[]}
-                      coverResourceUrl=""
+                      playwrightArray={['Ольга Казакова', 'Антон Чехов']}
+                      directorArray={['Катя Ганюшина']}
+                      buttonLinks={['https://lubimovka.timepad.ru/event/1746579/', 'https://lubimovka.timepad.ru/event/1746502/']}
+                      coverResourceUrl="https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg"
                     />
                   ))}
-                </AnnouncedPlayCardList>
-              </Section>
+                </PerformanceSection>
+              </ProjectLayout.Storey>
             )}
             {content_type === 'videosblock' && (
-              <Section title={content_item.title}>
-                <VideoList>
-                  {content_item.items.map(({ title, url }) => (
-                    <VideoList.Item key={title}>
-                      <Video src={url}/>
-                    </VideoList.Item>
-                  ))}
-                </VideoList>
-              </Section>
+              <ProjectLayout.Storey type="videos">
+                <Section title={content_item.title}>
+                  <VideoList>
+                    {content_item.items.map(({ url }) => (
+                      <Video
+                        key={url}
+                        src={url}
+                      />
+                    ))}
+                  </VideoList>
+                </Section>
+              </ProjectLayout.Storey>
             )}
             {content_type === 'text' && (
-              <RawText>
-                {content_item.text}
-              </RawText>
+              <ProjectLayout.Storey type="text">
+                <RawText>
+                  {content_item.text}
+                </RawText>
+              </ProjectLayout.Storey>
             )}
-          </>
+            {content_type === 'personsblock' && (
+              <ProjectLayout.Storey type="persons">
+                <Section title={content_item.title}>
+                  <PersonCardList>
+                    {content_item.items.map(({ id, first_name, last_name, image }) => (
+                      <PersonCard
+                        key={id}
+                        name={`${first_name} ${last_name}`}
+                        image={image}
+                        participant={false}
+                      />
+                    ))}
+                  </PersonCardList>
+                </Section>
+              </ProjectLayout.Storey>
+            )}
+          </Fragment>
         ))}
-        <ProjectInvitation email=""/>
+        <ProjectLayout.Storey type="invitation">
+          <ProjectInvitation email="trololo@ololo.com"/>
+        </ProjectLayout.Storey>
       </ProjectLayout>
     </AppLayout>
   );
@@ -124,8 +162,6 @@ const fetchProject = async (projectId: string) => {
   try {
     data = await fetcher<ProjectModel>(`/projects/${projectId}/`);
   } catch (error) {
-    // TODO: обработать ошибку, добавим после реализации страницы ошибки
-
     return;
   }
 
@@ -145,7 +181,7 @@ export const getServerSideProps: GetServerSideProps<ProjectModel, Record<'id', s
 
   return {
     props: {
-      ...project
+      ...project,
     },
   };
 };

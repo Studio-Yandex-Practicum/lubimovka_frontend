@@ -1,8 +1,9 @@
 import { HTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 
-import styles from './video.module.css';
 import { Url } from 'shared/types';
+
+import styles from './video.module.css';
 
 interface IVideoProps extends HTMLAttributes<HTMLIFrameElement>{
   src: Url,

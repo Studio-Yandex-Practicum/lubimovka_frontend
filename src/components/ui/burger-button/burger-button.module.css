@@ -29,5 +29,5 @@
 
 .button.open .line:nth-child(3) {
   width: scale(24px);
-  transform: translateY(calc(-1 * scale(6px))) rotate(-45deg);
+  transform: translateY(scale(-6px)) rotate(-45deg);
 }
