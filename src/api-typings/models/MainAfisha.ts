@@ -12,5 +12,7 @@ import type { Event } from './Event';
  */
 export type MainAfisha = {
     title: string;
+    description: string;
+    button_label: string;
     items: Array<Event>;
 }

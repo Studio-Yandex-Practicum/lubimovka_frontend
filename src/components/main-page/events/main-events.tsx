@@ -13,7 +13,7 @@ export const MainEvents: FC<MainAfisha> = ({ items }) => {
         {
           items.map(item => (
             <li key={item.id} className={styles.list}>
-              <AnnouncedPlayCard
+              {/* <AnnouncedPlayCard
                 date={item.date_time}
                 time={item.date_time}
                 title={item.event_body.name}
@@ -22,7 +22,7 @@ export const MainEvents: FC<MainAfisha> = ({ items }) => {
                 eventDescription={item.event_body.description}
                 buttonLinks={item.buttonLinks}
                 coverResourceUrl={item.coverResourceUrl && item.coverResourceUrl}
-              />
+              /> */}
             </li>
           ))}
       </ul>

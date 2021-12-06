@@ -14,11 +14,11 @@ import { MainArchive } from 'components/main-page/archive';
 import { MainPartners } from 'components/main-page/partners';
 import AppLayout from 'components/app-layout';
 
-import data from 'components/main-page/assets/mock-data.json';
-import mainEventsData from 'components/main-page/assets/main-events.json';
-import mainPlatformsData from 'components/main-page/assets/main-platforms-data.json';
-import mainShortListData from 'components/main-page/assets/main-short-list-data.json';
-import mainArchiveData from 'components/main-page/assets/main-archive-data.json';
+// import data from 'components/main-page/assets/mock-data.json';
+// import mainEventsData from 'components/main-page/assets/main-events.json';
+// import mainPlatformsData from 'components/main-page/assets/main-platforms-data.json';
+// import mainShortListData from 'components/main-page/assets/main-short-list-data.json';
+// import mainArchiveData from 'components/main-page/assets/main-archive-data.json';
 import styles from './index.module.css';
 
 const cx = cn.bind(styles);
@@ -37,10 +37,8 @@ const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof g
           {afisha && (
             <MainTitle
               title={afisha.title}
-              // view={title.view}
-              // buttonLink={title.buttonLink}
-              // buttonText={title.buttonText}
-              // text={title.text}
+              buttonText={afisha.button_label}
+              description={afisha.description}
             />
           )}
           {afisha.items && <MainEvents {...afisha}/>}
