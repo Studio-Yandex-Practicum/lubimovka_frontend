@@ -1,10 +1,10 @@
 .aside {
   @mixin hideScrollbar;
 
-  position: absolute;
+  position: fixed;
   z-index: 99;
-  top: 0;
   right: 0;
+  bottom: 0;
   width: scale(468px);
   height: calc(100vh - scale(61px));
   box-sizing: border-box;
@@ -19,14 +19,15 @@
     transform: translate(0, 0);
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: $tablet-portrait) {
     position: initial;
     z-index: 1;
     width: 100%;
     height: scale(934px);
-    padding: scale(36px 24px 102px);
+    padding: scale(36px 0 102px 24px);
     margin-bottom: scale(50px);
     grid-area: aside;
+    overflow-y: hidden;
     transform: translate(0, 0);
   }
 }
@@ -38,7 +39,7 @@
   justify-content: space-between;
   margin-bottom: scale(36px);
 
-  @media (max-width: 1200px) {
+  @media (max-width: $tablet-portrait) {
     height: scale(124px);
     margin-bottom: scale(66px);
   }
@@ -48,7 +49,7 @@
   width: scale(156px);
   padding-left: scale(40px);
 
-  @media (max-width: 1200px) {
+  @media (max-width: $tablet-portrait) {
     padding-left: 0;
   }
 }
@@ -61,9 +62,10 @@
   margin: 0 auto;
   list-style-type: none;
 
-  @media (max-width: 1200px) {
+  @media (max-width: $tablet-portrait) {
     display: grid;
     width: 100%;
+    margin-right: scale(24px);
     column-gap: 32px;
     grid-template-columns: repeat(3, minmax(scale(304px), max-content));
     overflow-x: scroll;
@@ -78,8 +80,12 @@
     margin-bottom: 0;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: $tablet-portrait) {
     width: scale(304px);
+
+    &:last-of-type {
+      padding-right: scale(24px);
+    }
   }
 }
 
