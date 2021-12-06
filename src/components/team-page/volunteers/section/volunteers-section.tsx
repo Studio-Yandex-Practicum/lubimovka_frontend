@@ -13,7 +13,7 @@ import styles from './volunteers-section.module.css';
 const cx = classNames.bind(styles);
 
 interface VolunteersSectionProps {
-  cards: Array<Volunteers> | undefined
+  cards: Array<Volunteers>
 }
 
 const VolunteersSection: FC<VolunteersSectionProps> = (props) => {

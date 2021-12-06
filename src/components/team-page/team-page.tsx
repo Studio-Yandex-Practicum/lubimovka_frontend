@@ -13,7 +13,7 @@ const cn = classNames;
 
 interface TeamPageProps {
   team: Array<FestivalTeams>,
-  volunteers: Array<Volunteers> | undefined
+  volunteers: Array<Volunteers>
 }
 
 const TeamPage: FC<TeamPageProps> = ({ team, volunteers }) => {

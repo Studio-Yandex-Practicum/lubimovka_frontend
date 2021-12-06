@@ -32,26 +32,29 @@ const fetchTrustees = async () => {
   try {
     data = await fetcher<Array<Sponsor>>('/info/about-festival/sponsors/');
   } catch (error) {
-    return;
+    throw error;
   }
 
   return data;
 };
 
 export const getServerSideProps: GetServerSideProps<ITrusteesProps> = async () => {
-  const trustees = await fetchTrustees();
+  try {
+    const trustees = await fetchTrustees();
 
-  if (!trustees) {
     return {
-      notFound: true,
+      props: {
+        trustees,
+      }
+    };
+  } catch(error) {
+    return {
+      props: {
+        errorCode: 500,
+        trustees: []
+      }
     };
   }
-
-  return {
-    props: {
-      trustees,
-    },
-  };
 };
 
 export default Trustees;
