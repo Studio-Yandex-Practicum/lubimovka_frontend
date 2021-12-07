@@ -12,27 +12,28 @@ const cx = cn.bind(styles);
 export const MainAside: FC = () => {
   const { title, buttonText, buttonLink, blogData } = data.aside;
   return (
-    <aside className={cx('aside')}>
-      <div className={cx('heading')}>
-        <h2 className={cx('title')}>{title}</h2>
-        <div className={cx('buttonContainer')}>
-          <Button
-            label={buttonText}
-            isLink
-            href={buttonLink}
-            width="100%"
-            border="bottomLeft"
-            iconPlace="left"
-            icon="arrow-right"
-            align="start"
-            gap="9px"
-            size="s"
-          />
+    <section className={cx('container')}>
+      <aside className={cx('aside')}>
+        <div className={cx('heading')}>
+          <h2 className={cx('title')}>{title}</h2>
+          <div className={cx('buttonContainer')}>
+            <Button
+              label={buttonText}
+              isLink
+              href={buttonLink}
+              width="100%"
+              border="bottomLeft"
+              iconPlace="left"
+              icon="arrow-right"
+              align="start"
+              gap="9px"
+              size="s"
+            />
+          </div>
         </div>
-      </div>
 
-      <ul className={cx('list')}>
-        {blogData &&
+        <ul className={cx('list')}>
+          {blogData &&
           blogData.map((blogCard, i) => (
             <li key={i} className={cx('item')}>
               <BlogCard
@@ -44,7 +45,8 @@ export const MainAside: FC = () => {
               />
             </li>
           ))}
-      </ul>
-    </aside>
+        </ul>
+      </aside>
+    </section>
   );
 };
