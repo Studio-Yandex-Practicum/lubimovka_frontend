@@ -43,7 +43,7 @@
 .icon {
   width: scale(25px);
   height: scale(25px);
-  margin-left: calc(-1 * scale(5px));
+  margin-left: scale(-5px);
   fill: var(--coal);
 }
 

@@ -19,7 +19,7 @@
     @mixin headline4;
 
     width: scale(367px);
-    margin: scale(35px 0 0 23px);
+    margin: scale(11px 0 0 23px);
   }
 }
 
@@ -66,20 +66,66 @@
 .advertisement {
   display: flex;
   flex: 23 23 46%;
-  flex-flow: row nowrap;
-  align-items: flex-start;
+  flex-flow: column nowrap;
+  align-items: center;
   justify-content: center;
+  padding: scale(49px 0 0 0);
 }
 
-.advStub {
-  width: 91%;
-  height: 91%;
-  margin: scale(25px 0 0 0);
-  background-color: white;
+.iframe {
+  width: 510px;
+  height: 492px;
+  background: transparent !important;
 
   @media (max-width: $tablet-portrait) {
-    width: scale(366px);
-    height: scale(524px);
-    margin: scale(58px 0 0 0);
+    display: none;
+  }
+}
+
+.qrcodeContainer {
+  display: flex;
+  flex-flow: row nowrap;
+
+  @media (max-width: $tablet-portrait) {
+    flex-flow: column nowrap;
+  }
+}
+
+.qrcode {
+  position: relative;
+  width: 220px;
+  height: 220px;
+
+  @media (max-width: $tablet-portrait) {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+.qrcodeAdviseDesktop {
+  @mixin text;
+  @mixin textCaption;
+
+  width: scale(200px);
+  max-width: 270px;
+  padding: scale(0 0 0 10px);
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}
+
+.qrcodeAdviseMobile {
+  display: none;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+
+    @mixin text;
+    @mixin textCaption;
+
+    width: 100%;
+    max-width: 250px;
+    padding: scale(10px 0 0 0);
   }
 }

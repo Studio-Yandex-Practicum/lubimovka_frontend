@@ -8,7 +8,7 @@
   "opportunities": [
     {
       "title": "На что пойдут ваши пожертвования",
-      "picture": "https://static1-repo.aif.ru/1/20/710610/dd2109faa26d4e5b49699199be0b8f25.jpg",
+      "picture": "/images/donation/pic1.png",
       "kickies": [
         "Проезд в Москву драматургов и отборщиков из других городов",
         "Проживание в Москве драматургов и отборщиков из других городов и стран во время фестиваля",
@@ -24,7 +24,7 @@
     },
     {
       "title": "Что мы можем делать, если соберем достаточно средств",
-      "picture": "https://image.jimcdn.com/app/cms/image/transf/dimension=origxorig:format=jpg/path/s110a72d13043dfd2/image/i0152ee3833f79081/version/1413255507/image.jpg",
+      "picture": "/images/donation/pic2.png",
       "kickies": [
         "Система индивидуальных грантов, которые чтобы драматурги творили, не отвлекаясь на поиски источников дохода",
         "Фестивальная газета",

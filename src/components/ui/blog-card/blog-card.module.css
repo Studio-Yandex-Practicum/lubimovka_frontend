@@ -1,22 +1,10 @@
 .cardLinkWrapper {
   color: inherit;
   text-decoration: none;
-
-  @media (max-width: $tablet-portrait) {
-    padding: scale(0 13px 0 15px);
-  }
 }
 
 .regular:nth-child(1) {
   grid-column: auto;
-}
-
-.big:nth-child(1) {
-  grid-column: span 2;
-
-  @media (max-width: 1024px) {
-    grid-column: auto;
-  }
 }
 
 .card {

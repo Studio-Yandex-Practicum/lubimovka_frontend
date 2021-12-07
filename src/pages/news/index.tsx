@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import AppLayout from 'components/app-layout/index';
+import { AppLayout } from 'components/app-layout/index';
 import { NewsPage } from 'components/news-page';
 
 interface INewsProps {

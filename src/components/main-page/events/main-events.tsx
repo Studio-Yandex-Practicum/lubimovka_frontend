@@ -6,6 +6,7 @@ import { MainAfisha } from 'api-typings';
 import styles from './main-events.module.css';
 
 export const MainEvents: FC<MainAfisha> = ({ items }) => {
+  console.log(items);
 
   return (
     <section className={styles.events}>
@@ -13,16 +14,18 @@ export const MainEvents: FC<MainAfisha> = ({ items }) => {
         {
           items.map(item => (
             <li key={item.id} className={styles.list}>
-              {/* <AnnouncedPlayCard
+              <AnnouncedPlayCard
+                id={item.id}
                 date={item.date_time}
-                time={item.date_time}
                 title={item.event_body.name}
-                playwrightArray={item.playwrightArray}
-                directorArray={item.event_body.description}
-                eventDescription={item.event_body.description}
-                buttonLinks={item.buttonLinks}
-                coverResourceUrl={item.coverResourceUrl && item.coverResourceUrl}
-              /> */}
+                dramatists ={item.event_body.team.Драматург}
+                directors={item.event_body.team.Режиссёр}
+                description={item.event_body.description}
+                buttonLink={item.url}
+                imageUrl={item.event_body.image}
+                projectText ={item.event_body.project}
+                paid={item.paid}
+              />
             </li>
           ))}
       </ul>
