@@ -7,10 +7,9 @@ import { SectionTitleForBlog } from 'components/section-title-for-blog/section-t
 import { SectionGridForBlog } from 'components/section-grid-for-blog/section-grid-for-blog';
 import { fetcher } from 'shared/fetcher';
 import { PaginatedBlogItemListList } from 'api-typings';
-import { BlogItemList } from 'api-typings/models/BlogItemList';
+import { BlogItem } from 'shared/types';
 
-// import { BlogCard } from 'components/ui/blog-card';
-// import data from './assets/mock-cardData.json';
+import data from 'components/section-grid-for-blog/assets/mock-cardData.json';
 
 interface IBlogProps {
   metaTitle: string;
@@ -18,7 +17,9 @@ interface IBlogProps {
 const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
   const { metaTitle } = props;
 
-  const [blogs, setBlogs] = useState<Array<BlogItemList> | undefined>(undefined);
+  const [blogs, setBlogs] = useState<Array<BlogItem> | undefined>(undefined);
+
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const fetchPerformance = async () => {
     let data;
@@ -33,7 +34,8 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
   useEffect(() => {
     fetchPerformance()
       .then(data => {
-        return setBlogs(data?.results);
+        setIsLoaded(true);
+        setBlogs(data?.results);
       })
       .catch(err => alert(`err: ${err}`));
   }, []);
@@ -41,21 +43,17 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
   useEffect(() => {
     if (blogs !== undefined && blogs.length > 0)
       console.log('useEffect', blogs);
+    setIsLoaded(true);
   }, [blogs]);
 
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   return (
     <AppLayout>
       <Head>
         <title>{metaTitle}</title>
       </Head>
-      <SectionTitleForBlog email='critics@lubimovka.ru' setBlogs={setBlogs}/>
-      <SectionGridForBlog isLoaded={isLoaded}/>
+      <SectionTitleForBlog email='critics@lubimovka.ru' setBlogs={setBlogs} />
+      <SectionGridForBlog isLoaded={isLoaded} blogs={blogs} />
     </AppLayout>
   );
 };

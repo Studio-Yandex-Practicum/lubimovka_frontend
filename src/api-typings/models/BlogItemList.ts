@@ -3,8 +3,11 @@
 /* eslint-disable */
 
 export type BlogItemList = {
-    readonly id: number;
-    title: string;
-    description: string;
-    image?: string;
+    id: number,
+    pub_date: string,
+    title: string,
+    description: string,
+    author_url: string,
+    author_url_title: string,
+    image: string,
 }

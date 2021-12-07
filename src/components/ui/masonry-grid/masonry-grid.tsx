@@ -51,8 +51,8 @@ export const MasonryGrid: React.FC<MasonryGridProps> = ({ isLoaded, children }) 
   }, []);
 
   React.useEffect(() => {
-    if (isLoaded)
-      resizeAllGridItems();
+    // if (isLoaded)
+    resizeAllGridItems();
     window.addEventListener('resize', resizeAllGridItems);
     return () => {
       window.removeEventListener('resize', resizeAllGridItems);
