@@ -1,11 +1,10 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-
-import AppLayout from 'components/app-layout/index';
-// import MasonryGrid from 'components/ui/masonry-grid/masonry-grid';
+import { AppLayout } from 'components/app-layout/index';
 import { SectionTitleForBlog } from 'components/section-title-for-blog/section-title-for-blog';
+import { SectionGridForBlog } from 'components/section-grid-for-blog/section-grid-for-blog';
 import { fetcher } from 'shared/fetcher';
 import { PaginatedBlogItemListList } from 'api-typings';
 import { BlogItemList } from 'api-typings/models/BlogItemList';
@@ -31,22 +30,24 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
     return data;
   };
 
-  // TODO: будет ли какой-нибудь лоадер?
   useEffect(() => {
     fetchPerformance()
       .then(data => {
         return setBlogs(data?.results);
       })
-      // TODO: как-то обработать ошибку. Должен пользователь о ней знать? Если да - то как ее выводить?
       .catch(err => alert(`err: ${err}`));
   }, []);
 
-  // Этот useEffect нужен для проверки получения значений blogs. В дальнейшем, когда прикрутим MasonryGrid - его удалим за ненадобностью.
-  // TODO: удалить useEffect
   useEffect(() => {
     if (blogs !== undefined && blogs.length > 0)
       console.log('useEffect', blogs);
   }, [blogs]);
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   return (
     <AppLayout>
@@ -54,21 +55,7 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
         <title>{metaTitle}</title>
       </Head>
       <SectionTitleForBlog email='critics@lubimovka.ru' setBlogs={setBlogs}/>
-      {/* <MasonryGrid>
-        {data.map((card) => {
-          return (
-            <BlogCard
-              key={card.id}
-              image={card.image}
-              author={card.author}
-              heading={card.title}
-              description={card.subtitle}
-              link={card.link}
-              firstCardSizeMode='big'
-            />
-          );
-        })}
-      </MasonryGrid> */}
+      <SectionGridForBlog isLoaded={isLoaded}/>
     </AppLayout>
   );
 };

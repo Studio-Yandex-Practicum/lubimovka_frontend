@@ -1,22 +1,10 @@
 .cardLinkWrapper {
   color: inherit;
   text-decoration: none;
-
-  @media (max-width: $tablet-portrait) {
-    padding: scale(0 13px 0 15px);
-  }
 }
 
 .regular:nth-child(1) {
   grid-column: auto;
-}
-
-.big:nth-child(1) {
-  grid-column: span 2;
-
-  @media (max-width: 1024px) {
-    grid-column: auto;
-  }
 }
 
 .card {
@@ -29,15 +17,13 @@
 }
 
 .imgContainer {
+  position: relative;
   overflow: hidden;
+  width: 100%;
+  max-height: scale(343px);
 }
 
 .img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-height: 343px;
-  object-fit: cover;
   transition: transform 400ms cubic-bezier(.6, 0, .5, 1);
 }
 
@@ -54,28 +40,36 @@
 
 .author {
   @mixin text;
-  @mixin textBlogAuthor;
+  @mixin textSmall;
 
   align-self: flex-start;
-  padding: 16px 0 16px;
+  padding: scale(16px 0 16px);
 
   @media (max-width: 576px) {
-    padding-left: 30px;
+    padding-left: scale(30px);
+  }
+
+  @media (max-width: $tablet-portrait) {
+    @mixin textBlogAuthor;
   }
 }
 
 .heading {
   align-self: flex-start;
   padding: 0;
-  padding-bottom: 16px;
+  padding-bottom: scale(16px);
   margin: 0;
 
   @mixin headline;
-  @mixin headline6;
+  @mixin headline5;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+  }
 }
 
 .description {
-  padding: 0 2px 0 31px;
+  padding: scale(0 2px 0 31px);
 
   @mixin text;
   @mixin textSmall;

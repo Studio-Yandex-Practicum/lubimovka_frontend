@@ -19,7 +19,6 @@ const parseErrors = (lines) => lines.split('\n').reduce((errors, line) => {
   return errors;
 }, []);
 
-
 const groupErrorsByPath = (errors) => {
   return errors.reduce((groups, { path, line, column, message }) => {
     groups[path] = [

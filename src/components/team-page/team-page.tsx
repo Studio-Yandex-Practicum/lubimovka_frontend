@@ -1,21 +1,31 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
+import classNames from 'classnames';
 
 import ArtDirectorateSection from './art-directorate/section/art-directorate-section';
 import FestivalTeamSection from './festival-team/festival-team-section';
 import VolunteersSection from './volunteers/section/volunteers-section';
-import Submenu from './submenu/submenu';
+import { FestivalTeams, Volunteers } from 'api-typings';
+import { AboutUsMenu } from 'components/what-we-do-page/about-us-menu/about-us-menu';
 
-import SubmenuData from './assets/submenu-data.json';
-import VolunteersData from './assets/mock-data-volunteers.json';
-import ArtFestTeamsData from './assets/mock-data-art.json';
+import styles from './team-page.module.css';
 
-const TeamPage: FC = () => {
+const cn = classNames;
+
+interface TeamPageProps {
+  team: Array<FestivalTeams>,
+  volunteers: Array<Volunteers>
+}
+
+const TeamPage: FC<TeamPageProps> = ({ team, volunteers }) => {
+
   return (
     <>
-      <Submenu submenu={SubmenuData}/>
-      <ArtDirectorateSection cards={ArtFestTeamsData}/>
-      <FestivalTeamSection cards={ArtFestTeamsData}/>
-      <VolunteersSection cards={VolunteersData}/>
+      <div className={cn(styles.menu)}>
+        <AboutUsMenu/>
+      </div>
+      <ArtDirectorateSection cards={team}/>
+      <FestivalTeamSection cards={team}/>
+      <VolunteersSection cards={volunteers}/>
     </>
   );
 };

@@ -1,12 +1,19 @@
-type Action =
-  { type: 'add years'; years: string[] } |
-  { type: 'add programme'; programme: string } |
-  { type: 'remove programme'; programme: string } |
+import { Dispatch } from 'react';
+
+export type Action =
+  { type: 'add years'; festival: string[] } |
+  { type: 'add programme'; program: string } |
+  { type: 'remove programme'; program: string } |
   { type: 'reset' }
 
-interface State {
-  years: string[];
-  programmes: string[]
+export type State = {
+  festival: string[],
+  program: string[],
+}
+
+export interface ILibraryFilterReducer {
+  filterState: State;
+  filterDispatcher: Dispatch<Action>;
 }
 
 function reducer(state: State, action: Action): State {
@@ -14,24 +21,24 @@ function reducer(state: State, action: Action): State {
   case 'add years':
     return {
       ...state,
-      years: action.years
+      festival: action.festival
     };
   case 'add programme':
     return {
       ...state,
-      programmes: [...state.programmes, action.programme]
+      program: [...state.program, action.program]
     };
   case 'remove programme':
     return {
       ...state,
-      programmes:state.programmes.filter(
-        (el, index, arr) => index !== arr.indexOf(action.programme)
+      program: state.program.filter(
+        (el, index, arr) => index !== arr.indexOf(action.program)
       )
     };
   case 'reset':
     return {
-      years: [],
-      programmes: []
+      festival: [],
+      program: []
     };
   default:
     return state;

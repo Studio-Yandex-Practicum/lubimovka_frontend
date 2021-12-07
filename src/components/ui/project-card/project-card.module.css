@@ -1,16 +1,6 @@
 .link {
   display: flex;
-  width: 50%;
   text-decoration: none;
-
-  @media (max-width: $tablet-portrait) {
-    width: 100%;
-    margin: 0;
-  }
-}
-
-.link:nth-child(3n) {
-  margin-left: scale(353px);
 
   @media (max-width: $tablet-portrait) {
     margin: 0;
@@ -18,13 +8,10 @@
 }
 
 .card {
-  width: 100%;
   flex-flow: column nowrap;
-  margin-bottom: scale(100px);
 
   @media (min-width: $tablet-portrait) {
     display: flex;
-    width: 100%;
     height: scale(500px);
     flex-flow: column wrap;
     margin: 0;
@@ -40,12 +27,6 @@
   @media (max-width: $tablet-portrait) {
     width: 100%;
     height: scale(297px);
-  }
-}
-
-.link:nth-child(2n) > .card > .imageContainer {
-  @media (max-width: $tablet-portrait) {
-    justify-content: end;
   }
 }
 
@@ -83,14 +64,6 @@
   }
 }
 
-.link:nth-child(-n+2) > .card > .title {
-  padding-top: 0;
-
-  @media (max-width: $tablet-portrait) {
-    padding: scale(24px 0 17px 0);
-  }
-}
-
 .titleArrow {
   display: none;
 
@@ -113,5 +86,13 @@
   @media (max-width: $tablet-portrait) {
     width: 100%;
     padding: scale(0 0 0 62px);
+  }
+}
+
+.even {
+  .imageContainer {
+    @media (max-width: $tablet-portrait) {
+      justify-content: end;
+    }
   }
 }

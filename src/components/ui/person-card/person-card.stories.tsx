@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import PersonCard from './person-card';
+import { PersonCard } from './person-card';
 
 export default {
   title: 'UI/PersonCard',

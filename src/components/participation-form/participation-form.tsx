@@ -223,8 +223,7 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
       <Form.Disclaimer>
         Нажимая на кнопку «Отправить» вы даёте согласие
         {' '}
-        {/* TODO: добавить ссылку на политику конфиденциальности */}
-        <Link href="#">
+        <Link href="/privacy-policy">
           <a>на обработку персональных данных</a>
         </Link>
       </Form.Disclaimer>

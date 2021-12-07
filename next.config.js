@@ -36,6 +36,10 @@ module.exports = {
         source: '/api/:path*',
         destination: 'https://lubimovka.kiryanov.ru/api/v1/:path*/',
       },
+      {
+        source: '/privacy-policy',
+        destination: 'http://lubimovka.ru/privacy-policy.pdf',
+      }
     ];
   },
   images: {
