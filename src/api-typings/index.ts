@@ -39,5 +39,3 @@ export type { Sponsor } from './models/Sponsor';
 export type { StaticPages } from './models/StaticPages';
 export type { TeamEnum } from './models/TeamEnum';
 export type { Volunteers } from './models/Volunteers';
-export type { IPlatforms } from './models/Platforms';
-export type { IPlatform } from './models/PlatformItem';

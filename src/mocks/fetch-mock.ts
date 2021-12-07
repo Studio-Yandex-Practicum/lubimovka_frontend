@@ -9,7 +9,6 @@ import performance from './data/performance';
 import form from 'mocks/data/form';
 import project from './data/project';
 import { PaginatedProjectListList, PaginatedAuthorListList } from 'api-typings';
-import platforms from './data/platforms';
 
 fetchMock.config.fallbackToNetwork = true;
 
@@ -25,7 +24,6 @@ mockedFetch
   }))
   .get({ matcher: addOriginToApiPath('/info/partners/'), query: { type: 'general' } }, partners.filter(({ type }) => type === 'general'))
   .get({ matcher: new RegExp(addOriginToApiPath('/library/performances/\\d+')) }, performance)
-  .get(addOriginToApiPath('/form'), form)
-  .get(addOriginToApiPath('/'), platforms);
+  .get(addOriginToApiPath('/form'), form);
 
 export default mockedFetch;
