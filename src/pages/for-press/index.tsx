@@ -4,21 +4,31 @@ import Head from 'next/head';
 import { AppLayout } from 'components/app-layout/index';
 import { ForPressHero } from 'components/for-press-hero';
 import { ForPressPressReleasesView } from 'components/for-press-press-releases-view';
-import { pressRelease } from './assets/pressRelease';
+import { pressReleases, forPressProps, prPerson } from '../../mocks/data/forPress';
 
-interface IForPressProps {
-  metaTitle: string;
-}
-
-const ForPress: NextPage<IForPressProps> = (props: IForPressProps) => {
-  const { metaTitle } = props;
+const ForPress: NextPage = () => {
   return (
     <AppLayout>
       <Head>
-        <title>{metaTitle}</title>
+        <title>{forPressProps.metaTitle}</title>
       </Head>
-      <ForPressHero/>
-      <ForPressPressReleasesView defaultCover={pressRelease.defaultCover} pressReleases={pressRelease.pressReleases}/>
+      <ForPressHero data={{
+        forPressHeroTitle: {
+          title: forPressProps.title,
+        },
+        forPressHeroDescription: {
+          description: forPressProps.description,
+          link: forPressProps.link,
+        },
+        prPerson: {
+          name: prPerson.name,
+          nameDative: prPerson.nameDative,
+          email: prPerson.email,
+          role: prPerson.role,
+          photo: prPerson.photo,
+        }
+      }}/>
+      <ForPressPressReleasesView defaultCover={pressReleases.defaultCover} pressReleases={pressReleases.pressReleases}/>
     </AppLayout>
   );
 };

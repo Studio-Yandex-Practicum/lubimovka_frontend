@@ -10,7 +10,7 @@
   row-gap: scale(32px);
 
   @media (max-width: $tablet-portrait) {
-    padding-top: scale(35px);
+    padding-top: scale(11px);
     padding-bottom: scale(100px);
     padding-left: scale(23px);
     gap: 0;

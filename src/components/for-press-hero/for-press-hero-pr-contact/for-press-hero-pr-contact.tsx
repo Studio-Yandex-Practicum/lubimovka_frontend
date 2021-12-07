@@ -9,18 +9,18 @@ import styles from './for-press-hero-pr-contact.module.css';
 
 const cx = cn.bind(styles);
 
-export interface IForPressHeroPrContact {
+export interface IForPressHeroPrContactProps {
   data: {
     name: string,
     nameDative: string,
     email: string,
-    description: string,
+    role: string,
     photo: Url,
    },
    customClass?: string;
 }
 
-export const ForPressHeroPrContact: FC<IForPressHeroPrContact> = ({ data, customClass }) => {
+export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, customClass }) => {
 
   return (
     <div className={cx([customClass])}>
@@ -47,7 +47,7 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContact> = ({ data, custom
           Должность:
         </dt>
         <dd className={cx('description')}>
-          {data.description}
+          {data.role}
         </dd>
       </dl>
     </div>
