@@ -1,19 +1,19 @@
 import { PressReleases, ForPressProps, PRPerson } from '../../shared/types/for-press';
 
 export const forPressProps: ForPressProps = {
-  metaTitle: "Фестиваль Любимовка - Для прессы",
-  title: "Для прессы",
-  description: "Фотографии можно скачать в альбомах на странице фестиваля в Facebook.",
-  link: "https://www.facebook.com/festival.lubimovka/photos",
-}
+  metaTitle: 'Фестиваль Любимовка - Для прессы',
+  title: 'Для прессы',
+  description: 'Фотографии можно скачать в альбомах на странице фестиваля в Facebook.',
+  link: 'https://www.facebook.com/festival.lubimovka/photos',
+};
 
 export const prPerson: PRPerson = {
-  name: "Анна Загородникова",
-  nameDative: "Анне Загородниковой",
-  email: "annaszagorodnikova@gmail.com",
-  role: "PR-директор фестиваля, координатор по связям со СМИ",
-  photo: "/images/for-press/for-press-pr-contact.jpg"
-}
+  name: 'Анна Загородникова',
+  nameDative: 'Анне Загородниковой',
+  email: 'annaszagorodnikova@gmail.com',
+  role: 'PR-директор фестиваля, координатор по связям со СМИ',
+  photo: '/images/for-press/for-press-pr-contact.jpg'
+};
 
 export const pressReleases: PressReleases = {
   defaultCover: '/images/for-press/for-press-cover.jpg',
