@@ -16,7 +16,7 @@ interface ISectionTitleForBlogProps {
   setBlogs: Function;
 }
 
-const fetchPerformance = async (month: number, year: number) => {
+const fetchFilterBlogs = async (month: number, year: number) => {
   let data;
   try {
     data = await fetcher<PaginatedBlogItemListList>(`/blog?month=${month + 1}&year=${year}`);
@@ -35,15 +35,12 @@ export const SectionTitleForBlog = (
   const [month, setMonth] = React.useState<number>();
   const [year, setYear] = React.useState<number>();
 
-  // TODO: будет ли какой-нибудь лоадер?
   useEffect(() => {
     if (month !== undefined && year !== undefined) {
-      fetchPerformance(month, year)
+      fetchFilterBlogs(month, year)
         .then(data => {
           setBlogs(data?.results);
-          // TODO: будем ли говорить, что ничего не найдено? или просто уберем все статьи со страницы?
         })
-        // TODO: как-то обработать ошибку. Должен пользователь о ней знать? Если да - то как ее выводить?
         .catch(err => alert(`err: ${err}`));
     }
   }, [year, month, setBlogs]);

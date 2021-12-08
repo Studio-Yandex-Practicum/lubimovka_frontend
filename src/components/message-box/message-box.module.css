@@ -1,0 +1,13 @@
+.message-box {
+  @mixin text;
+  @mixin textLarge;
+
+  margin: 0 auto;
+  color: var(--red);
+  text-align: center;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline;
+    @mixin headline7;
+  }
+}

@@ -3,9 +3,10 @@
   text-decoration: none;
 }
 
+/*
 .regular:nth-child(1) {
   grid-column: auto;
-}
+} */
 
 .card {
   position: relative;

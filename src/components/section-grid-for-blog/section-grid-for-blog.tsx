@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { MasonryGrid } from 'components/ui/masonry-grid/masonry-grid';
 import { BlogCard } from 'components/ui/blog-card';
@@ -10,20 +10,15 @@ import styles from './section-grid-for-blog.module.css';
 const cx = classNames.bind(styles);
 
 interface ISectionGridForBlogProps {
-  isLoaded: boolean;
   blogs: Array<BlogItem> | undefined;
 }
 export const SectionGridForBlog = (
   props: ISectionGridForBlogProps
 ): JSX.Element => {
-  const { isLoaded, blogs } = props;
-
-  useEffect(() => {
-    console.log(isLoaded);
-  }, [isLoaded]);
+  const { blogs } = props;
 
   return (
-    <MasonryGrid isLoaded={isLoaded}>
+    <MasonryGrid>
       {blogs?.map((blog) => {
         return (
           <li
