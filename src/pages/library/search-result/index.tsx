@@ -1,10 +1,11 @@
-import { NextPage } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import { useState, useEffect } from 'react';
 import AppLayout from 'components/app-layout';
 import { Button } from 'components/ui/button';
 import LibraryForm from 'components/library-form/library-form';
-import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
+import { fetcher } from 'shared/fetcher';
 
 import SearchResultAuthors from 'components/search-result-authors/search-result-authors';
 import style from './index.module.css';
@@ -27,6 +28,8 @@ const mockCard = {
     name: 'Екатерина Августеняк',
   }
 };
+
+type Data = { plays: [], authors: [] };
 
 type Letter = string;
 
@@ -54,23 +57,40 @@ const filteredAuthors = Object.values(
 const mockPieces = Array.from(Array(3)).map(() => mockCard);
 
 
-const SearchResult: NextPage = () => {
+export const getServerSideProps = async (context) => {
+  const { query } = context;
+  console.log(query);
+
+  const res = await fetch(`https://lubimovka.kiryanov.ru/api/v1/library/search/?q=${encodeURI(query.q)}`);
+  const data: Data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+const SearchResult: NextPage = ( { data } ) => {
 
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string | undefined>('');
 
   useEffect(() => {
+    const url = document.URL;
     setScreenWidth(document.documentElement.clientWidth);
+    setSearchQuery(decodeURI(url.slice(url.indexOf('=')+1)));
   }, []);
 
   return (
     <AppLayout>
       <main className ={style.page}>
         <div className={style.buttonWrapper}>
-          <Button isLink={true} label={Number(screenWidth) < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
+          <Button href={'/library'} isLink={true} label={Number(screenWidth) < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
         </div>
         <div className={style.topWrapper}>
           <p className={style.info}>
-            По запросу «август» мы нашли
+            По запросу «{searchQuery}» мы нашли
           </p>
           <div className={style.formWrapper}>
             <LibraryForm></LibraryForm>
@@ -79,8 +99,8 @@ const SearchResult: NextPage = () => {
         <section className={style.result}>
           <div className={style.pieces}>
             <BasicPlayCardList>
-              {mockPieces.map((piece, i) => (
-                <BasicPlayCard key={i} {...piece}/>
+              {data.plays.map((play) => (
+                <BasicPlayCard key={play.id} {...play}/>
               ))}
             </BasicPlayCardList>
           </div>
