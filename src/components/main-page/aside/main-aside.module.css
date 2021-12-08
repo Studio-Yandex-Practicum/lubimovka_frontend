@@ -1,12 +1,12 @@
 .aside {
   @mixin hideScrollbar;
 
-  position: fixed;
+  position: absolute;
   z-index: 99;
+  top: 0;
   right: 0;
-  bottom: 0;
   width: scale(468px);
-  height: calc(100vh - scale(61px));
+  height: 100vh;
   box-sizing: border-box;
   padding: scale(60px 56px 60px 56px);
   background-color: var(--light-green);
@@ -30,6 +30,16 @@
     overflow-y: hidden;
     transform: translate(0, 0);
   }
+}
+
+.header {
+  position: fixed;
+}
+
+.footer {
+  position: absolute;
+  top: initial;
+  bottom: 0;
 }
 
 .heading {
