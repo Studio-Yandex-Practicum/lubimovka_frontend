@@ -32,11 +32,13 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
   const checkPosition = useCallback(() => {
 
     const height = document.body.offsetHeight;
+    const heightFooter = document.querySelector('footer')?.offsetHeight;
     const screenHeight = window.innerHeight;
-
     const scrolled = window.scrollY;
     const threshold = height - screenHeight / 4;
-    const position = scrolled + screenHeight;
+    let position = scrolled + screenHeight;
+    if (heightFooter)
+      position += heightFooter;
 
     if (position >= threshold) {
       if (blogs !== undefined && blogs?.length >= limit)
