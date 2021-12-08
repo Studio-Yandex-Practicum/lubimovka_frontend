@@ -3,6 +3,7 @@ import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
 import { BlogCard } from '../../ui/blog-card';
+
 import styles from './main-aside.module.css';
 import data from '../assets/mock-data.json';
 
@@ -39,7 +40,7 @@ export const MainAside: FC = () => {
                 author={blogCard.author}
                 heading={blogCard.heading}
                 description={blogCard.description}
-                link={blogCard.link}
+                id={blogCard.id}
               />
             </li>
           ))}

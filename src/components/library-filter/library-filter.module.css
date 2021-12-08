@@ -26,3 +26,27 @@
     cursor: pointer;
   }
 }
+
+.buttonWrap {
+  display: block;
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}
+
+.mobileButtons {
+  display: none;
+  max-width: 100%;
+  margin-top: scale(80px);
+
+  @media (max-width: $tablet-portrait) {
+    display: flex;
+  }
+}
+
+.button {
+  @media (max-width: $tablet-portrait) {
+    width: scale(183px);
+  }
+}

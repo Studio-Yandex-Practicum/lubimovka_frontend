@@ -1,13 +1,18 @@
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import { useState, useEffect } from 'react';
-import AppLayout from 'components/app-layout';
+
+import { AppLayout } from 'components/app-layout';
 import { Button } from 'components/ui/button';
 import LibraryForm from 'components/library-form/library-form';
 import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
+<<<<<<< HEAD
 import { fetcher } from 'shared/fetcher';
 
+=======
+>>>>>>> 5ab82aeb6c0b99d68e6dbd92a1c1f4e5ea024813
 import SearchResultAuthors from 'components/search-result-authors/search-result-authors';
+
 import style from './index.module.css';
 
 const mockAuthors = ['Августеняк Екатерина', 'Августеняк Екатерина', 'Августеняк Екатерина',
@@ -19,14 +24,14 @@ const mockCard = {
   play: {
     title: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
-    year: '2020',
+    year: 2020,
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
+    authors: [{
+      id: 1,
+      name: 'Екатерина Августеняк',
+    }]
   },
-  author: {
-    id: 1,
-    name: 'Екатерина Августеняк',
-  }
 };
 
 type Data = { plays: [], authors: [] };
@@ -113,7 +118,6 @@ const SearchResult: NextPage = ( { data } ) => {
           </div>
         </section>
       </main>
-
 
     </AppLayout>
   );

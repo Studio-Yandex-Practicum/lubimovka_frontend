@@ -1,29 +1,14 @@
 import { FC, useState, useEffect } from 'react';
-
-import PersonCard from '../ui/person-card/person-card';
 import { useKeenSlider } from 'keen-slider/react';
-import 'keen-slider/keen-slider.min.css';
 
+import { PersonCard } from '../ui/person-card/person-card';
+import 'keen-slider/keen-slider.min.css';
+import { Sponsor } from 'api-typings';
 
 import style from './trustees-persons-list.module.css';
 
-interface TrusteePersonData {
-  id: number,
-  person: {
-    id: number,
-    first_name: string,
-    last_name: string,
-    middle_name: string,
-    city: string,
-    email: string,
-    image: string,
-  };
-  team?: string,
-  position: string
-}
-
 interface TrusteesPersonsProps {
-  trustees: Array<TrusteePersonData>
+  trustees: Array<Sponsor>
 }
 
 const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {

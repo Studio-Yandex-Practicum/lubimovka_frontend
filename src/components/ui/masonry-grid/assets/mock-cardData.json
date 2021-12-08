@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "image": "/images/blog/image-for-blog-1.jpg",
+    "author_url_title": "Лара Бессмертная",
+    "title": "«dsf Человек является источником жеста, смысла, правды»",
+    "description": "МК «Документальность в современном театре и современном искусстве»",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  },
+  {
+    "id": 2,
+    "image": "/images/blog/image-for-blog-2.jpg",
+    "author_url_title": "Лара Бессмертная",
+    "title": "«Человек является источником жеста, смысла, правды»",
+    "description": "МК «Документальность в современном театре и современном искусстве»",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  },
+  {
+    "id": 3,
+    "image": "/images/blog/image-for-blog-3.jpg",
+    "author_url_title": "Лара Бессмертная",
+    "title": "«Человек является источником жеста, смысла, правды»",
+    "description": "МК «Документальность в современном театре и современном искусстве»",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  },
+  {
+    "id": 4,
+    "image": "/images/blog/image-for-blog-4.jpg",
+    "author_url_title": "Лара Бессмертная",
+    "title": "«Человек является источником жеста, смысла, правды»",
+    "description": "МК «Документальность в современном театре и современном искусстве»",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  },
+  {
+    "id": 5,
+    "image": "/images/blog/image-for-blog-5.jpg",
+    "author_url_title": "Лара Бессмертная",
+    "title": "«Человек является источником жеста, смысла, правды»",
+    "description": "МК «Документальность в современном театре и современном искусстве»",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  },
+  {
+    "id": 6,
+    "image": "/images/blog/image-for-blog-6.jpg",
+    "author_url_title": "Лара Бессмертная",
+    "title": "«Человек является источником жеста, смысла, правды»",
+    "description": "МК «Документальность в современном театре и современном искусстве»",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  },
+  {
+    "id": 7,
+    "image": "/images/blog/image-for-blog-7.jpg",
+    "author_url_title": "Diam volutpat",
+    "title": "«Tortor consequat id porta»",
+    "description": "Et magnis dis parturient montes nascetur ridiculus. Arcu felis bibendum ut tristique. Malesuada proin libero nunc consequat interdum varius sit.",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  },
+  {
+    "id": 8,
+    "image": "/images/blog/image-for-blog-8.jpg",
+    "author_url_title": "Turpis nunc eget",
+    "title": "«zdfEget nullam non nisi est sit amet.»",
+    "description": "Sed nisi lacus sed viverra»",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  },
+  {
+    "id": 9,
+    "image": "/images/blog/image-for-blog-9.jpg",
+    "author_url_title": "Adipiscing commodo",
+    "title": "« sdfsd   Vel elit scelerisque mauris pellentesque»",
+    "description": "Eu volutpat odio facilisis mauris sit amet. In hendrerit gravida rutrum quisque non. Luctus accumsan tortor posuere ac ut consequat semper viverra.",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  },
+  {
+    "id": 10,
+    "image": "/images/blog/image-for-blog-10.jpg",
+    "author_url_title": "Facilisi etiam",
+    "title": "«Est ultricies»",
+    "description": "In nulla posuere sollicitudin aliquam»",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  },
+  {
+    "id": 11,
+    "image": "/images/blog/image-for-blog-11.jpg",
+    "author_url_title": "Fermentum leo",
+    "title": "«Malesuada proin»",
+    "description": "Semper eget duis at tellus at»",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  },
+  {
+    "id": 12,
+    "image": "/images/blog/image-for-blog-1.jpg",
+    "author_url_title": "Facilisi etiam",
+    "title": "«Malesuada proin libero nunc consequat interdum varius sit»",
+    "description": "Turpis nunc eget lorem dolor sed. Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.»",
+    "author_url": "https://yandex.ru/",
+    "pub_date": "2021-12-04T06:06:07.503Z"
+  }
+]

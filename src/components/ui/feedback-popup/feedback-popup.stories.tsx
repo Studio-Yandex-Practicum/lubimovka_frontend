@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { FeedbackPopup, PersonCardData } from './feedback-popup';
+import { Volunteers } from 'api-typings';
+import { FeedbackPopup } from './feedback-popup';
 
-const fakeData: PersonCardData[] = [
+const fakeData: Volunteers[] = [
   {
     id: 1,
     person: {

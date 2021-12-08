@@ -1,31 +1,35 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
+import Image from 'next/image';
 
-import styles from './for-press-hero-pr-contact.module.css';
 import { Url } from 'shared/types';
 import { InfoLink } from 'components/ui/info-link';
 
+import styles from './for-press-hero-pr-contact.module.css';
+
 const cx = cn.bind(styles);
 
-export interface IForPressHeroPrContact {
+export interface IForPressHeroPrContactProps {
   data: {
     name: string,
     nameDative: string,
     email: string,
-    description: string,
+    role: string,
     photo: Url,
    },
    customClass?: string;
 }
 
-export const ForPressHeroPrContact: FC<IForPressHeroPrContact> = ({ data, customClass }) => {
+export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, customClass }) => {
 
   return (
     <div className={cx([customClass])}>
       <h6 className={cx('intro')}>
         По вопросам PR и аккредитации пишите {data.nameDative}
       </h6>
-      <img className={cx('photo')} src={data.photo} alt={data.name}/>
+      <div className={cx('photo')}>
+        <Image src={data.photo} alt={data.name} layout='fill' objectFit='cover'/>
+      </div>
       <dl className={cx('info')}>
         <dt className={cx('hiddenText')}>
           Email:
@@ -43,7 +47,7 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContact> = ({ data, custom
           Должность:
         </dt>
         <dd className={cx('description')}>
-          {data.description}
+          {data.role}
         </dd>
       </dl>
     </div>

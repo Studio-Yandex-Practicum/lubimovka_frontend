@@ -1,25 +1,12 @@
 import React, { FC } from 'react';
 
 import ArtDirectorateList from 'components/team-page/art-directorate/list';
+import { FestivalTeams } from 'api-typings';
+
 import styles from './art-directorate-section.module.css';
 
-interface PersonCardData {
-  id: number,
-  person: {
-    id: number;
-    first_name: string;
-    last_name: string;
-    middle_name: string;
-    city: string;
-    email: string;
-    image: string;
-  };
-  team: string,
-  position: string
-}
-
 interface ArtDirectorateSectionProps {
-  cards: Array<PersonCardData>
+  cards: Array<FestivalTeams>
 }
 
 const ArtDirectorateSection: FC<ArtDirectorateSectionProps> = (props) => {

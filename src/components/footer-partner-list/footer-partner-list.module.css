@@ -1,12 +1,11 @@
 .list {
   display: flex;
+  flex-wrap: wrap;
   padding: 0;
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
-    display: grid;
-    padding: scale(30px 24px 0);
-    grid-auto-rows: scale(118px);
-    grid-template-columns: repeat(2, scale(182px));
+    display: flex;
+    width: 100%;
   }
 }

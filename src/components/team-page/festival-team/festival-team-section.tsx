@@ -1,25 +1,12 @@
 import React, { FC, useMemo } from 'react';
 
 import TrusteesPersons from 'components/trustees-persons-list';
+import { FestivalTeams } from 'api-typings';
+
 import styles from './festival-team-section.module.css';
 
-interface PersonCardData {
-  id: number,
-  person: {
-    id: number,
-    first_name: string,
-    last_name: string,
-    middle_name: string,
-    city: string,
-    email: string,
-    image: string,
-  };
-  team: string,
-  position: string
-}
-
 interface FestivalTeamSectionProps {
-  cards: Array<PersonCardData>
+  cards: Array<FestivalTeams>
 }
 
 const FestivalTeamSection: FC<FestivalTeamSectionProps> = (props) => {
@@ -27,7 +14,7 @@ const FestivalTeamSection: FC<FestivalTeamSectionProps> = (props) => {
 
   const selectedCards = useMemo(()=> {
     return cards.filter(card => card.team === 'fest');
-  }, []);
+  }, [cards]);
 
   return (
     <section className={styles.section}>

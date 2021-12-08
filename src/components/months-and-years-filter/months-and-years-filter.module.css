@@ -1,0 +1,50 @@
+.drop {
+  position: relative;
+  display: grid;
+  grid-column-gap: scale(30px);
+  grid-template-areas:
+    'month year'
+    'err-month err-year';
+  grid-template-columns: repeat(2, min-content);
+  grid-template-rows: min-content;
+}
+
+.error {
+  @mixin text;
+  @mixin textCaption;
+
+  display: inline-block;
+  margin-top: scale(3px);
+  color: var(--red);
+  opacity: 0;
+}
+
+.errorMonth {
+  grid-area: err-month;
+}
+
+.errorYear {
+  grid-area: err-year;
+}
+
+.errorVisible {
+  opacity: 1;
+}
+
+.droplistTypelistMonths {
+  z-index: 1;
+  width: scale(240px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(183px);
+  }
+}
+
+.droplistTypelistYears {
+  z-index: 1;
+  width: scale(150px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(152px);
+  }
+}

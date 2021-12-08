@@ -1,8 +1,7 @@
 import { NextPage } from 'next';
 
-import AppLayout from 'components/app-layout/index';
+import { AppLayout } from 'components/app-layout/index';
 import { HistoryPage } from 'components/history-page';
-
 
 interface IHistoryProps {
   metaTitle: string;

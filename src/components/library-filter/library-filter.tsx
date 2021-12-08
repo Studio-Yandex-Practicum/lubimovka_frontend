@@ -1,63 +1,72 @@
-import React, { FC, useCallback, useReducer } from 'react';
+import React, { FC, useCallback, RefObject, Dispatch, useContext } from 'react';
 
-import { Droplist } from 'components/ui/droplist';
+import { Droplist, IDroplistPublic } from 'components/ui/droplist';
 import { Tag } from 'components/ui/tag';
 import { Button } from 'components/ui/button';
-
-import reducer from './library-filter-reducer';
+import { Action } from 'components/library-filter/library-filter-reducer';
+import CurrentFiltersContext from 'pages/library/library-filters-context';
 
 import style from './library-filter.module.css';
 
-const mockYears = ['2020', '2010', '2000', '1994', '1990'];
+export interface LibraryFilterProps {
+  years: number[];
+  programmes: string[];
+  filterDispatcher: Dispatch<Action>;
+  onCheckResults?: () => void;
+  droplistRef: RefObject<IDroplistPublic>;
+}
 
-const mockProgrammes = ['шорт-лист', 'внеконкурсная программа', 'fringe-программа',
-  'лонг-лист акции 7х7', 'Lark + Любимовка'];
-
-const LibraryFilter: FC = () => {
-  const filterInitialState = { years: [], programmes: [] };
-
-  const [filterState, filterDispatcher] = useReducer(
-    reducer,
-    filterInitialState,
-    undefined
-  );
+const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispatcher, onCheckResults, droplistRef }) => {
+  const filterState = useContext(CurrentFiltersContext);
 
   const handleTagClick = useCallback(
     (el: string): void => {
-      if (!filterState.programmes.find((i) => i === el)) {
-        filterDispatcher({ type: 'add programme', programme: el });
+      if (!filterState.program.find((i) => i === el)) {
+        filterDispatcher({ type: 'add programme', program: el });
       } else {
-        filterDispatcher({ type: 'remove programme', programme: el });
+        filterDispatcher({ type: 'remove programme', program: el });
       }
-    }, [filterState]);
+    }, [filterState, filterDispatcher]);
 
   const handleResetClick = useCallback((): void => {
     filterDispatcher({ type: 'reset' });
-  }, []);
+    droplistRef.current?.deleteAll();
+  }, [filterDispatcher, droplistRef]);
+
+  const handleYearsClick = useCallback((years: string[]): void => {
+    filterDispatcher({ type: 'add years', festival: years });
+  }, [filterDispatcher]);
 
   return (
     <div className={style.container}>
       <div className={style.years}>
         <h2 className={style.title}>Годы фестиваля</h2>
-        <Droplist type='checkbox' cb={selectList => {
-          filterDispatcher({ type: 'add years', years: selectList });
-        }} data={mockYears}
-        />
+        <Droplist type='checkbox' cb={handleYearsClick} data={years} ref={droplistRef}/>
       </div>
       <div className={style.programmes}>
         <h2 className={style.title}>Программа</h2>
         <ul className={style.programmesList}>
-          {mockProgrammes.map((el, id) => (
+          {programmes.map((el, id) => (
             <li onClick={() => handleTagClick(el)} className={style.programme} key={id}>
-              <Tag label={el} selected={filterState.programmes.includes(el)}/></li>
+              <Tag label={el} selected={filterState.program.includes(el)}/></li>
           ))}
         </ul>
       </div>
-      {(filterState.years.length > 0 || filterState.programmes.length > 0) &&
-      <Button onClick={handleResetClick} label='Очистить' size='s' icon='cross'
-        iconPlace='left' border='bottomLeft' width='scale(143px)' align='start'
-        gap='scale(3px)'/>
-      }
+      {(filterState.festival.length > 0 || filterState.program.length > 0) && (
+        <>
+          <div className={style.buttonWrap}>
+            <Button onClick={handleResetClick} label='Очистить' size='s' icon='cross'
+              iconPlace='left' border='bottomLeft' width='scale(143px)' align='start'
+              gap='scale(3px)'/>
+          </div>
+          <div className={style.mobileButtons}>
+            <Button onClick={handleResetClick} size='l' iconPlace='right' icon='cross'
+              label='Очистить' border='full' className={style.button}/>
+            <Button onClick={onCheckResults} size='l' iconPlace='right' icon='arrow-right'
+              label='Посмотреть' border='full' className={style.button}/>
+          </div>
+        </>
+      )}
     </div>
   );
 };

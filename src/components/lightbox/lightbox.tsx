@@ -4,6 +4,7 @@ import { Modal } from 'components/ui/modal';
 import { LightboxImageSlider } from 'components/lightbox-image-slider';
 
 import styles from './lightbox.module.css';
+
 const cx = classNames.bind(styles);
 
 interface ILightboxProps {

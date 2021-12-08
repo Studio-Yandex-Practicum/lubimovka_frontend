@@ -53,8 +53,8 @@
   @media (max-width: $tablet-portrait) {
     position: absolute;
     z-index: 1;
-    bottom: calc(-1 * scale(64px));
-    left: calc(-1 * scale(2px));
+    bottom: scale(-64px);
+    left: scale(-2px);
   }
 }
 

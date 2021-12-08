@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
+import classNames from 'classnames/bind';
 
 import { Icon, IIconProps } from '../icon';
-import styles from './info-link.module.css';
 
-import classNames from 'classnames/bind';
+import styles from './info-link.module.css';
 
 const cx = classNames.bind(styles);
 
