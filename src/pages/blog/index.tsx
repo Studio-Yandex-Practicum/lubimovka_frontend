@@ -47,11 +47,13 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
   }, [limit, blogs]);
 
   useEffect(() => {
+    const ac = new AbortController();
     fetchBlogList(limit)
       .then(data => {
         setBlogs(data?.results);
       })
       .catch(err => alert(`err: ${err}`));
+    return () => ac.abort();
   }, [limit]);
 
   useEffect(() => {
