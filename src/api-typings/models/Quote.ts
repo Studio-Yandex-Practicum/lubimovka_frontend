@@ -2,4 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type EventTypeEnum = 'PERFORMANCE' | 'MASTERCLASS' | 'READING';
+export type Quote = {
+    quote: string;
+}

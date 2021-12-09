@@ -2,6 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Content_object } from './Content_object';
+
 /**
  * Content (Item/Block) Serializer
  *
@@ -10,5 +12,5 @@
  */
 export type BaseContent = {
     readonly content_type: string;
-    readonly content_item: string;
+    readonly content_item: Content_object;
 }

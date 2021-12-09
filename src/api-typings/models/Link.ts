@@ -2,9 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type ProjectList = {
-    readonly id: number;
+export type Link = {
     title: string;
     description: string;
-    image: string;
+    url: string;
 }

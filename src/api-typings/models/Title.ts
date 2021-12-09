@@ -2,6 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type FestivalYears = {
-  years: number[]
+export type Title = {
+    title: string;
 }

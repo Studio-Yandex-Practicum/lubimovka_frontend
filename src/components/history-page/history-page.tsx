@@ -5,7 +5,7 @@ import { HistoryHeader } from './header';
 import { HistoryTitle } from './title';
 import { HistoryItself } from './itself';
 import { fetcher } from 'shared/fetcher';
-import { Festival, FestivalYears } from 'api-typings';
+import { Festival, Years } from 'api-typings';
 
 import itselfData from './assets/mock-data-itself.json';
 
@@ -103,19 +103,17 @@ export const HistoryPage: FC<IHistoryPageProps> = (props: IHistoryPageProps) => 
 };
 const fetchStatistics = async (year: number) => {
   let data;
-
   try {
     data = await fetcher<Festival>(`/info/festivals/${year}`);
   } catch (error) {
     return;
   }
-
   return data;
 };
 const fetchInitStateYear = async () => {
   let data;
   try {
-    data = await fetcher<FestivalYears>('/info/festivals/years');
+    data = await fetcher<Years>('/info/festivals/years');
   } catch (error) {
     return;
   }

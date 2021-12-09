@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type Image = {
+export type PerformancesBlock = {
     title: string;
-    image: string;
+    readonly items: Array<string>;
 }
