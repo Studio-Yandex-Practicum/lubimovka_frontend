@@ -1,11 +1,10 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { NextPage } from 'next';
 import { useEffect, useState, useCallback } from 'react';
 
 import { AppLayout } from 'components/app-layout/index';
 import { NewsPage } from 'components/news-page';
 import { NewsItemList, PaginatedNewsItemListList } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
-
 
 interface INewsProps {
   metaTitle: string;
@@ -18,8 +17,6 @@ const News: NextPage<INewsProps> = (props: INewsProps) => {
   const [news, setNews] = useState<Array<NewsItemList> | undefined>();
   const [limit, setLimit] = useState<number>(10);
   const [offset, setOffset] = useState<number>(0);
-
-
 
   const fetchNewsList = async (limit: number) => {
     let data;
@@ -47,9 +44,7 @@ const News: NextPage<INewsProps> = (props: INewsProps) => {
       }
     }
 
-
   }, [limit, news, offset]);
-
 
   useEffect(() => {
     fetchNewsList(limit)
@@ -63,18 +58,18 @@ const News: NextPage<INewsProps> = (props: INewsProps) => {
     document.addEventListener('scroll', scrollHandler);
     return function () {
       document.removeEventListener('scroll', scrollHandler);
-    }
-  }, [scrollHandler])
-
+    };
+  }, [scrollHandler]);
 
   return (
     <AppLayout>
-      <NewsPage metaTitle={metaTitle} setNews={setNews} news={news || []} />
+      <NewsPage
+        metaTitle={metaTitle}
+        setNews={setNews}
+        news={news || []}
+      />
     </AppLayout>
   );
-
 };
 
-
 export default News;
-
