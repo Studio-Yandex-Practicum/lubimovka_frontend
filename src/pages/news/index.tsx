@@ -1,11 +1,11 @@
-import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { GetServerSideProps, NextPage } from 'next';
+import { useEffect, useState, useCallback } from 'react';
 
 import { AppLayout } from 'components/app-layout/index';
 import { NewsPage } from 'components/news-page';
 import { NewsItemList, PaginatedNewsItemListList } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
-// import { NewsList } from 'components/news-page/news-list';
+
 
 interface INewsProps {
   metaTitle: string;
@@ -16,31 +16,65 @@ const News: NextPage<INewsProps> = (props: INewsProps) => {
   } = props;
 
   const [news, setNews] = useState<Array<NewsItemList> | undefined>();
+  const [limit, setLimit] = useState<number>(10);
+  const [offset, setOffset] = useState<number>(0);
 
-  const fetchNewsList = async () => {
+
+
+  const fetchNewsList = async (limit: number) => {
     let data;
     try {
-      data = await fetcher<PaginatedNewsItemListList>('/news');
+      data = await fetcher<PaginatedNewsItemListList>(`/news/?limit=${limit}&offset=${offset}`);
     } catch (error) {
       return;
     }
     return data;
   };
 
+  const scrollHandler = useCallback(() => {
+
+    const height = document.body.offsetHeight;
+    const screenHeight = window.innerHeight;
+
+    const scrolled = window.scrollY;
+    const threshold = height - screenHeight / 4;
+    const position = scrolled + screenHeight;
+
+    if (position >= threshold) {
+      if (news !== undefined && news?.length >= limit) {
+        setLimit(prevState => prevState + 10);
+        setOffset(prevState => prevState + 10);
+      }
+    }
+
+
+  }, [limit, news, offset]);
+
+
   useEffect(() => {
-    fetchNewsList()
+    fetchNewsList(limit)
       .then(data => {
         setNews(data?.results);
-        // console.log(data?.results);
       })
-      .catch(error => error); //console.log(error)
-  }, []);
+      .catch(error => error);
+  }, [limit]);
+
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandler);
+    return function () {
+      document.removeEventListener('scroll', scrollHandler);
+    }
+  }, [scrollHandler])
+
 
   return (
     <AppLayout>
-      <NewsPage metaTitle={metaTitle} setNews={setNews} news={news || []}/>
+      <NewsPage metaTitle={metaTitle} setNews={setNews} news={news || []} />
     </AppLayout>
   );
+
 };
 
+
 export default News;
+
