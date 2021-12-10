@@ -54,9 +54,10 @@
     }],
     "import/newline-after-import": ["error", {
       "count": 1
-    }]
+    }],
+    "no-unreachable": "error"
   },
   "settings": {
-    "import/internal-regex": "^(api-typings|components|mocks|pages|shared)/"
+    "import/internal-regex": "^(api-typings|components|mocks|pages|shared|providers)/"
   }
 }
