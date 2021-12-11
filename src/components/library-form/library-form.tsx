@@ -23,7 +23,6 @@ const LibraryForm: FC = () => {
     setUrl(document.URL.slice(0, document.URL.indexOf('/library')));
   }, []);
 
-
   return (
     <form
       noValidate

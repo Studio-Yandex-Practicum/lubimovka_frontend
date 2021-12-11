@@ -12,7 +12,7 @@ export interface IBasicPlayCardProps {
   type?: 'performance';
   play: {
     id?: number;
-    title: string;
+    name: string;
     city: string;
     year: number;
     linkView: string;
@@ -53,7 +53,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       className={cx('card')}
     >
       <div className={cx('container')}>
-        <h6 className={cx('title')}>{play.title}</h6>
+        <h6 className={cx('title')}>{play.name}</h6>
         <div>
           <Button
             className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
