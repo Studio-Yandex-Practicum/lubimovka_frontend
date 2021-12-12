@@ -34,18 +34,6 @@ type Play = {
   url_reading: string;
 }
 
-// type PlayForBasicPlayCardComponent = {
-
-//   id?: number;
-//   title: string;
-//   city: string;
-//   year: number;
-//   linkView: string;
-//   linkDownload: string;
-//   authors: AuthorFromPlay [];
-
-// }
-
 type Letter = string;
 
 interface IAccElem {
@@ -56,8 +44,6 @@ interface IAccElem {
 interface IFilteredAuthors {
   [key: Letter]: IAccElem
 }
-
-// const mockPieces = Array.from(Array(3)).map(() => mockCard);
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { q }:any = context.query;

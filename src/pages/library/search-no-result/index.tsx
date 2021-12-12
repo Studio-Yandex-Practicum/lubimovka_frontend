@@ -15,14 +15,14 @@ const SearchResult: NextPage = () => {
 
   useEffect(() => {
     const url = document.URL;
-    const handleHashChange = (url: string) => {
+    const handleRouteChange = (url: string) => {
       setSearchQuery(decodeURI(url.slice(url.indexOf('=')+1)));
     };
     setScreenWidth(document.documentElement.clientWidth);
-    router.events.on('routeChangeComplete', handleHashChange);
+    router.events.on('routeChangeComplete', handleRouteChange);
     setSearchQuery(decodeURI(url.slice(url.indexOf('=')+1)));
     return () => {
-      router.events.off('routeChangeComplete', handleHashChange);
+      router.events.off('routeChangeComplete', handleRouteChange);
     };
 
   }, [router]);
