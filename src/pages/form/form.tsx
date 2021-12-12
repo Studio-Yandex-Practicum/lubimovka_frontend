@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -8,37 +8,69 @@ import PlayProposalLayout from 'components/play-proposal-layout';
 import PlayProposalTitle from 'components/play-proposal-title';
 import { ParticipationForm } from 'components/participation-form';
 import {
-  validIntegerRegexp,
   validYearRegexp,
   validEmailRegexp,
   validPhoneNumberRegexp,
 } from 'shared/constants/regexps';
 import { Nullable } from 'shared/types';
 
+enum ActionTypes {
+  FieldChange,
+  Reset,
+}
+
+type Action<T = unknown> =
+  { type: ActionTypes.FieldChange, payload: { name: string, value: T} }
+  | { type: ActionTypes.Reset }
+
+const initialFormState = {
+  firstName: { value: '', wasChanged: false },
+  lastName: { value: '', wasChanged: false },
+  birthYear: { value: '', wasChanged: false },
+  city: { value: '', wasChanged: false },
+  phoneNumber: { value: '', wasChanged: false },
+  email: { value: '', wasChanged: false },
+  playTitle: { value: '', wasChanged: false },
+  playYear: { value: '', wasChanged: false },
+  playFile: { value: { name: '' }, wasChanged: false },
+};
+
+const formReducer = (state: typeof initialFormState, action: Action) => {
+  switch (action.type) {
+  case ActionTypes.FieldChange:
+    return {
+      ...state,
+      [action.payload.name]: {
+        value: action.payload.value,
+        wasChanged: true,
+      },
+    };
+  case ActionTypes.Reset:
+    return initialFormState;
+  default:
+    return state;
+  }
+};
+
 const Participation: NextPage = () => {
-  const [firstName, setFirstName] = useState('');
-  const [firstNameWasChanged, setFirstNameWasChanged] = useState(false);
-  const [lastName, setLastName] = useState('');
-  const [lastNameWasChanged, setLastNameWasChanged] = useState(false);
-  const [birthYear, setBirthYear] = useState('');
-  const [birthYearWasChanged, setBirthYearWasChanged] = useState(false);
-  const [city, setCity] = useState('');
-  const [cityWasChanged, setCityWasChanged] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [phoneNumberWasChanged, setPhoneNumberWasChanged] = useState(false);
-  const [email, setEmail] = useState('');
-  const [emailWasChanged, setEmailWasChanged] = useState(false);
-  const [playTitle, setPlayTitle] = useState('');
-  const [playTitleWasChanged, setPlayTitleWasChanged] = useState(false);
-  const [playYear, setPlayYear] = useState('');
-  const [playYearWasChanged, setPlayYearWasChanged] = useState(false);
-  const [playFile, setPlayFile] = useState<Nullable<File>>();
-  const [playFileWasChanged, setPlayFileWasChanged] = useState(false);
+  const [formState, dispatch] = useReducer(formReducer, initialFormState);
+
+  const {
+    firstName,
+    lastName,
+    birthYear,
+    city,
+    phoneNumber,
+    email,
+    playTitle,
+    playYear,
+    playFile,
+  } = formState;
 
   const router = useRouter();
 
   const getFirstNameError = () => {
-    if (firstName.length < 2) {
+    if (firstName.value.length < 2) {
       return 'Имя должно содержать минимум 2 символа';
     }
 
@@ -46,7 +78,7 @@ const Participation: NextPage = () => {
   };
 
   const getLastNameError = () => {
-    if (lastName.length < 2) {
+    if (lastName.value.length < 2) {
       return 'Фамилия должна содержать минимум 2 символа';
     }
 
@@ -54,7 +86,7 @@ const Participation: NextPage = () => {
   };
 
   const getBirthYearError = () => {
-    if (!validYearRegexp.test(birthYear)) {
+    if (!validYearRegexp.test(birthYear.value)) {
       return 'Неверный год рождения';
     }
 
@@ -62,7 +94,7 @@ const Participation: NextPage = () => {
   };
 
   const getCityError = () => {
-    if (city.length < 2) {
+    if (city.value.length < 2) {
       return 'Город должен содержать минимум 2 символа';
     }
 
@@ -70,7 +102,7 @@ const Participation: NextPage = () => {
   };
 
   const getPhoneNumberError = () => {
-    if (!validPhoneNumberRegexp.test(phoneNumber)) {
+    if (!validPhoneNumberRegexp.test(phoneNumber.value)) {
       return 'Некорректный номер телефона';
     }
 
@@ -78,11 +110,11 @@ const Participation: NextPage = () => {
   };
 
   const getEmailError = () => {
-    if (!email.length) {
+    if (!email.value.length) {
       return 'Поле E-mail обязательно для заполнения';
     }
 
-    if (!validEmailRegexp.test(email)) {
+    if (!validEmailRegexp.test(email.value)) {
       return 'Неверный формат адреса электронной почты';
     }
 
@@ -90,7 +122,7 @@ const Participation: NextPage = () => {
   };
 
   const getPlayTitleError = () => {
-    if (!playTitle.length) {
+    if (!playTitle.value.length) {
       return 'Название обязательно для заполнения';
     }
 
@@ -98,7 +130,7 @@ const Participation: NextPage = () => {
   };
 
   const getPlayYearError = () => {
-    if (!validYearRegexp.test(playYear)) {
+    if (!validYearRegexp.test(playYear.value)) {
       return 'Неверный год';
     }
 
@@ -106,68 +138,29 @@ const Participation: NextPage = () => {
   };
 
   const getPlayFileError = () => {
-    if (!playFile) {
+    if (!playFile.value) {
       return 'Файл обязателен';
     }
 
-    if (playFile && /[а-яА-ЯЁё]/.test(playFile?.name)) {
+    if (playFile.value && /[а-яА-ЯЁё]/.test(playFile.value.name)) {
       return 'Файл содержит кириллицу, пожалуйста, переименуйте его.';
     }
 
-    if (playFile && /[^A-Za-z._-]/.test(playFile?.name)) {
+    if (playFile.value && /[^A-Za-z._-]/.test(playFile.value.name)) {
       return 'Пожалуйста, используйте только латинские символы и знаки - и _';
     }
 
     return;
   };
 
-  const handleFirstNameChange = (value: string) => {
-    setFirstNameWasChanged(true);
-    setFirstName(value);
-  };
-
-  const handleLastNameChange = (value: string) => {
-    setLastNameWasChanged(true);
-    setLastName(value);
-  };
-
-  const handleBirthYearChange = (value: string) => {
-    if (!validIntegerRegexp.test(value)) return;
-
-    setBirthYearWasChanged(true);
-    setBirthYear(value);
-  };
-
-  const handleCityChange = (value: string) => {
-    setCityWasChanged(true);
-    setCity(value);
-  };
-
-  const handlePhoneNumberChange = (value: string) => {
-    setPhoneNumberWasChanged(true);
-    setPhoneNumber(value);
-  };
-
-  const handleEmailChange = (value: string) => {
-    setEmailWasChanged(true);
-    setEmail(value);
-  };
-
-  const handlePlayTitleChange = (value: string) => {
-    setPlayTitleWasChanged(true);
-    setPlayTitle(value);
-  };
-
-  const handlePlayYearChange = (value: string) => {
-    if (!validIntegerRegexp.test(value)) return;
-
-    setPlayYearWasChanged(true);
-    setPlayYear(value);
-  };
-
-  const handlePlayFileChange = (file: Nullable<File>) => {
-    setPlayFileWasChanged(true);
-    setPlayFile(file);
+  const handleFieldChange = <T,>(name: keyof typeof initialFormState) => (value: T) => {
+    dispatch({
+      type: ActionTypes.FieldChange,
+      payload: {
+        name,
+        value,
+      },
+    });
   };
 
   const canSubmit = (
@@ -182,8 +175,8 @@ const Participation: NextPage = () => {
     && !getPlayFileError()
   );
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     router.push('/form/success');
   };
 
@@ -202,33 +195,33 @@ const Participation: NextPage = () => {
           <PlayProposalTitle/>
           <PlayProposalLayout.Form>
             <ParticipationForm
-              firstName={firstName}
-              onFirstNameChange={handleFirstNameChange}
-              firstNameError={firstNameWasChanged ? getFirstNameError() : undefined}
-              lastName={lastName}
-              onLastNameChange={handleLastNameChange}
-              lastNameError={lastNameWasChanged ? getLastNameError() : undefined}
-              birthYear={birthYear}
-              onBirthYearChange={handleBirthYearChange}
-              birthYearError={birthYearWasChanged ? getBirthYearError() : undefined}
-              city={city}
-              cityError={cityWasChanged ? getCityError() : undefined}
-              onCityChange={handleCityChange}
-              phoneNumber={phoneNumber}
-              onPhoneNumberChange={handlePhoneNumberChange}
-              phoneNumberError={phoneNumberWasChanged ? getPhoneNumberError() : undefined}
-              email={email}
-              onEmailChange={handleEmailChange}
-              emailError={emailWasChanged ? getEmailError() : undefined}
-              playTitle={playTitle}
-              playTitleError={playTitleWasChanged ? getPlayTitleError() : undefined}
-              onPlayTitleChange={handlePlayTitleChange}
-              playYear={playYear}
-              playYearError={playYearWasChanged ? getPlayYearError() : undefined}
-              onPlayYearChange={handlePlayYearChange}
-              playFileName={playFile?.name}
-              playFileError={playFileWasChanged ? getPlayFileError() : undefined}
-              onPlayFileChange={handlePlayFileChange}
+              firstName={firstName.value}
+              onFirstNameChange={handleFieldChange<string>('firstName')}
+              firstNameError={firstName.wasChanged ? getFirstNameError() : undefined}
+              lastName={lastName.value}
+              onLastNameChange={handleFieldChange<string>('lastName')}
+              lastNameError={lastName.wasChanged ? getLastNameError() : undefined}
+              birthYear={birthYear.value}
+              onBirthYearChange={handleFieldChange<string>('birthYear')}
+              birthYearError={birthYear.wasChanged ? getBirthYearError() : undefined}
+              city={city.value}
+              cityError={city.wasChanged ? getCityError() : undefined}
+              onCityChange={handleFieldChange<string>('city')}
+              phoneNumber={phoneNumber.value}
+              onPhoneNumberChange={handleFieldChange<string>('phoneNumber')}
+              phoneNumberError={phoneNumber.wasChanged ? getPhoneNumberError() : undefined}
+              email={email.value}
+              onEmailChange={handleFieldChange<string>('email')}
+              emailError={email.wasChanged ? getEmailError() : undefined}
+              playTitle={playTitle.value}
+              playTitleError={playTitle.wasChanged ? getPlayTitleError() : undefined}
+              onPlayTitleChange={handleFieldChange<string>('playTitle')}
+              playYear={playYear.value}
+              playYearError={playYear.wasChanged ? getPlayYearError() : undefined}
+              onPlayYearChange={handleFieldChange<string>('playYear')}
+              playFileName={playFile.value ? playFile.value.name : undefined}
+              playFileError={playFile.wasChanged ? getPlayFileError() : undefined}
+              onPlayFileChange={handleFieldChange<Nullable<File>>('playFile')}
               canSubmit={canSubmit}
               onSubmit={handleSubmit}
             />
