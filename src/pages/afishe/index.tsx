@@ -13,10 +13,7 @@ import styles from 'components/afishe-page/afishe.module.css';
 const cx = cn.bind(styles);
 
 interface IAfisheProps {
-  title: string,
-  entrance: string,
-  registration: string,
-  discussion: string,
+  title: string[],
   festival: boolean,
   regular: boolean,
 }
@@ -30,7 +27,7 @@ const Afishe: NextPage<IAfisheProps> = () => {
   return (
     <AppLayout>
       <main className={cx('main')}>
-        {title && <AfisheTitle title={title.title} entrance={title.entrance} registration={title.registration} discussion={title.discussion}/>}
+        {title && <AfisheTitle festival={festival} title={festival ? title.festTitle : title.regTitle} entrance={title.entrance} registration={title.registration} discussion={title.discussion}/>}
         {festival && <FestivalDays data={festivalData}/>}
         {regular && <RegularDays/>}
       </main>
