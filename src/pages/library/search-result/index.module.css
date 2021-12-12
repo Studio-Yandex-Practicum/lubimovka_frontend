@@ -55,6 +55,13 @@
   }
 }
 
+.noResult {
+  @mixin text;
+  @mixin textLarge;
+
+  margin-top: scale(33px);
+}
+
 .result {
   display: flex;
   flex-wrap: nowrap;

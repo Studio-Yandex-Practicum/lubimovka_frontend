@@ -1,6 +1,5 @@
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import { useState, useEffect } from 'react';
-import Router from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
 import { Button } from 'components/ui/button';
@@ -11,25 +10,6 @@ import SearchResultAuthors from 'components/search-result-authors/search-result-
 import { fetcher } from 'shared/fetcher';
 
 import style from './index.module.css';
-
-// const mockAuthors = ['Августеняк Екатерина', 'Августеняк Екатерина', 'Августеняк Екатерина',
-//   'Августеняк Екатерина', 'Августеняк Екатерина', 'Августеняк Екатерина', 'Августеняк Екатерина',
-//   'Августеняк Екатерина', 'Августеняк Екатерина','Августеняк Екатерина',
-//   'Александрин Егор', 'Борисов Борис', 'Фёдоров Фёдор'];
-
-// const mockCard = {
-//   play: {
-//     title: 'Конкретные разговоры пожилых супругов ни о чём',
-//     city: 'Санкт-Петербург',
-//     year: 2020,
-//     linkView: 'https://lubimovka.ru/',
-//     linkDownload: 'https://lubimovka.ru/',
-//     authors: [{
-//       id: 1,
-//       name: 'Екатерина Августеняк',
-//     }]
-//   },
-// };
 
 type Data = { plays: Play[], authors: AuthorFromData[] };
 
@@ -45,14 +25,26 @@ type AuthorFromData = {
 }
 
 type Play = {
-  id?: number;
+  id: number;
   name: string;
+  authors: AuthorFromPlay [];
   city: string;
   year: number;
-  linkView: string;
-  linkDownload: string;
-  authors: AuthorFromPlay [];
+  url_download: string;
+  url_reading: string;
 }
+
+// type PlayForBasicPlayCardComponent = {
+
+//   id?: number;
+//   title: string;
+//   city: string;
+//   year: number;
+//   linkView: string;
+//   linkDownload: string;
+//   authors: AuthorFromPlay [];
+
+// }
 
 type Letter = string;
 
@@ -69,10 +61,16 @@ interface IFilteredAuthors {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { q }:any = context.query;
-  // console.log(query);
-
   const data: Data = await fetcher(`/library/search/?q=${encodeURI(q)}`);
-  //const data: Data = await res.json();
+
+  if (!data.plays.length && !data.authors.length) {
+    return {
+      redirect: {
+        destination: `/library/search-no-result?q=${encodeURI(q)}`,
+        statusCode: 301,
+      },
+    };
+  }
 
   return {
     props: {
@@ -84,15 +82,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
-  const [searchQuery, setSearchQuery] = useState<string | undefined>('');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const [filteredAuthors, setFilteredAuthors] = useState<IAccElem[] | null>(null);
 
   useEffect(() => {
     const url = document.URL;
-    if (!data.plays.length && !data.authors.length) {
-      Router.push(url.slice(0, document.URL.indexOf('/library'))+'/library');
-      return;
-    }
     setFilteredAuthors(Object.values(
       data.authors.reduce((acc:IFilteredAuthors, author:AuthorFromData) => {
         const firstLetter: Letter = author.first_letter;
@@ -126,9 +120,22 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
         <section className={style.result}>
           <div className={style.pieces}>
             <BasicPlayCardList>
-              {data.plays.map((play: Play) => (
-                <BasicPlayCard key={play.id} {...{ play }}/>
-              ))}
+              {data.plays.map((playFromServer: Play) => {
+
+                const play = {
+                  id: playFromServer.id,
+                  title: playFromServer.name,
+                  city: playFromServer.city,
+                  year: playFromServer.year,
+                  linkView: playFromServer.url_reading,
+                  linkDownload: playFromServer.url_download,
+                  authors: playFromServer.authors,
+                };
+
+                return (
+                  <BasicPlayCard key={play.id} {... { play }}/>
+                );
+              })}
             </BasicPlayCardList>
           </div>
           <div className={style.authors}>
