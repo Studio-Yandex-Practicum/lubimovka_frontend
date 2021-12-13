@@ -72,7 +72,7 @@ export const HistoryPage: FC<IHistoryPageProps> = (props: IHistoryPageProps) => 
               events_count: result.events_count ? result.events_count : 0,
               cities_count: result.cities_count ? result.cities_count : 0,
               video_link: result.video_link ? result.video_link : '#',
-              start_date: result.start_date ? result.start_date : '2020-09-5',
+              start_date: result.start_date ? result.start_date : '2020-09-6',
               end_date: result.end_date ? result.end_date : '2020-09-12',
               description: result.description ? result.description : ''
             };
