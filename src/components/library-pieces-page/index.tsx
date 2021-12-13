@@ -12,6 +12,7 @@ import LibraryFiltersModal from './library-filters-modal';
 import LibraryPreloader from './library-preloader/library-preloader';
 import { Play } from 'api-typings';
 import { Action } from 'components/library-filter/library-filter-reducer';
+import { IProgram } from 'pages/library';
 
 import styles from './index.module.css';
 
@@ -19,7 +20,7 @@ interface ILibraryPageProps {
   isLoading: boolean;
   items: Play[];
   years: number[];
-  programmes: string[];
+  programmes: Array<IProgram>;
   filterDispatcher: Dispatch<Action>;
 }
 
