@@ -7,31 +7,37 @@ import styles from './plays.module.css';
 
 interface PlaysData {
   id?: number,
-  title: string,
+  name: string,
   city: string,
   year: number,
-  linkView: string,
-  linkDownload: string,
+  url_reading: string,
+  url_download: string,
   authors: AuthorData[],
 }
+
 interface AuthorData {
   id: number,
   name: string,
 }
+
 interface IAuthorPlays {
-  data: {
-    plays: PlaysData[],
-    title: string,
-  }
+    data: PlaysData[],
 }
 
 export const AuthorPlays: FC<IAuthorPlays> = ({ data }) => {
   return (
     <section className={cn(styles.playsContainer)}>
       <ul className={cn(styles.list)}>
-        {data.plays.map((item, idx) => (
+        {data.map((item, idx) => (
           <li className={cn(styles.item)} key={idx}>
-            <BasicPlayCard play={item}/>
+            <BasicPlayCard play={{
+              title: item.name,
+              city: item.city,
+              year: item.year,
+              linkView: item.url_reading,
+              linkDownload: item.url_download,
+              authors: item.authors
+            }}/>
           </li>
         ))}
       </ul>

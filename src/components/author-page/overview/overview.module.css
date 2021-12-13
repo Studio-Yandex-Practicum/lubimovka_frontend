@@ -109,7 +109,7 @@
   @mixin text;
   @mixin textMedium;
 
-  padding: 0 calc(var(--scale) * 30) 0;
+  padding: 0 calc(var(--scale) * 40) 0;
   margin: 0 0 calc(var(--scale) * 56);
   grid-area: city;
 }

@@ -105,8 +105,8 @@
 .closeButton {
   width: 100%;
   height: 100%;
-  object-position: center;
   object-fit: fill;
+  object-position: center;
 
   @mixin sliderButtonAnimationBase;
 }
