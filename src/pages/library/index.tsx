@@ -11,9 +11,14 @@ import reducer from 'components/library-filter/library-filter-reducer';
 import queryParser from './library-query-parser';
 import CurrentFiltersContext from './library-filters-context';
 
+export interface IProgram {
+  'pk': number,
+  'name': string
+}
+
 export interface IPiecesFiltersProps {
   years: Array<number[]>;
-  programs: Array<string[]>;
+  programs: Array<IProgram>;
 }
 
 interface IPiecesProps extends IPiecesFiltersProps {
