@@ -10,6 +10,7 @@ import { Icon } from 'components/ui/icon';
 import { IDroplistPublic } from 'components/ui/droplist';
 import LibraryFiltersModal from './library-filters-modal';
 import LibraryPreloader from './library-preloader/library-preloader';
+import LibraryTagsMobile from 'components/library-tags-mobile/library-tags-mobile';
 import { Play } from 'api-typings';
 import { Action } from 'components/library-filter/library-filter-reducer';
 import { IProgram } from 'pages/library';
@@ -53,14 +54,18 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
               <Menu.Item
                 href='/library'
               >
-        Пьесы
+                Пьесы
               </Menu.Item>
               <Menu.Item
                 href='/library/authors'
               >
-        Авторы
+                Авторы
               </Menu.Item>
             </Menu>
+          </div>
+          <div className={styles.mobileTags}>
+            <LibraryTagsMobile years={years} programmes={programmes}
+              filterDispatcher={filterDispatcher} droplistRef={droplistRef}/>
           </div>
           <div className={styles.filter}>
             <LibraryFilter years={years} programmes={programmes}
