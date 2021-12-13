@@ -47,8 +47,8 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
       <div className={style.programmes}>
         <h2 className={style.title}>Программа</h2>
         <ul className={style.programmesList}>
-          {programmes.map(({ pk, name }, id) => (
-            <li onClick={() => handleTagClick(String(pk))} className={style.programme} key={id}>
+          {programmes.map(({ pk, name }) => (
+            <li onClick={() => handleTagClick(String(pk))} className={style.programme} key={pk}>
               <Tag label={name} selected={filterState.program.includes(String(pk))}/></li>
           ))}
         </ul>
