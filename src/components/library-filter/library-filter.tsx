@@ -5,12 +5,13 @@ import { Tag } from 'components/ui/tag';
 import { Button } from 'components/ui/button';
 import { Action } from 'components/library-filter/library-filter-reducer';
 import CurrentFiltersContext from 'pages/library/library-filters-context';
+import { IProgram } from 'pages/library';
 
 import style from './library-filter.module.css';
 
 export interface LibraryFilterProps {
   years: number[];
-  programmes: string[];
+  programmes: Array<IProgram>;
   filterDispatcher: Dispatch<Action>;
   onCheckResults?: () => void;
   droplistRef: RefObject<IDroplistPublic>;
@@ -46,9 +47,9 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
       <div className={style.programmes}>
         <h2 className={style.title}>Программа</h2>
         <ul className={style.programmesList}>
-          {programmes.map((el, id) => (
-            <li onClick={() => handleTagClick(el)} className={style.programme} key={id}>
-              <Tag label={el} selected={filterState.program.includes(el)}/></li>
+          {programmes.map(({ pk, name }, id) => (
+            <li onClick={() => handleTagClick(String(pk))} className={style.programme} key={id}>
+              <Tag label={name} selected={filterState.program.includes(String(pk))}/></li>
           ))}
         </ul>
       </div>
