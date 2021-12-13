@@ -12,12 +12,6 @@ import { AuthorRequest } from 'components/author-page/request';
 import { fetcher } from 'shared/fetcher';
 import { AuthorRetrieve as AuthorRetrieveModel } from 'api-typings';
 
-// import authorsList from '../../mocks/data/authors';
-// import overviewData from '../../mocks/assets/assetsAuthors/overview-author-data.json';
-// import playsShortListData from '../../mocks/assets/assetsAuthors/plays-short-list-data.json';
-// import anotherPlaysData from '../../mocks/assets/assetsAuthors/another-plays-data.json';
-// import informationData from '../../mocks/assets/assetsAuthors/information-author-data.json';
-
 import styles from 'components/author-page/author.module.css';
 
 const fetchAuthors = async (authorId: string) => {
@@ -89,10 +83,6 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): 
         <AuthorInformation
           data={other_links}
         />
-        {/*<AuthorOverview data={overviewData}/>*/}
-        {/*<AuthorPlays data={playsShortListData}/>*/}
-        {/*<AnotherPlays data={anotherPlaysData}/>*/}
-        {/*<AuthorInformation data={informationData}/>*/}
         <AuthorRequest/>
       </div>
     </AppLayout>
