@@ -16,23 +16,13 @@ const LibraryTagsMobile: FC <LibraryTagsMobileProps> = ({ programmes, filterDisp
   const filterState = useContext(CurrentFiltersContext);
 
   const selectedProgrammes = useMemo(()=> {
-    return programmes.filter((tag) => {
-      for (let i = 0; i < filterState.program.length; i++) {
-        if (tag.pk === Number(filterState.program[i])) {
-          return tag;
-        }
-      }
-    });
+    return programmes.filter((tag) => filterState.program.includes(String(tag.pk)));
   }, [filterState.program, programmes]);
 
   const handleTagClick = useCallback(
     (el: string): void => {
-      if (!filterState.program.find((i) => i === el)) {
-        filterDispatcher({ type: 'add programme', program: el });
-      } else {
-        filterDispatcher({ type: 'remove programme', program: el });
-      }
-    }, [filterState, filterDispatcher]);
+      filterDispatcher({ type: 'remove programme', program: el });
+    }, [filterDispatcher]);
 
   const handleYearsClick = useCallback((year: string): void => {
     filterDispatcher({ type: 'remove year', festival: year });
