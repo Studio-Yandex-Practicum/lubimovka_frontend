@@ -42,14 +42,19 @@ const Library = ({ errorCode, pieces, years, programs }:
   useEffect(() => {
     setIsLoading(true);
     const parsedQuery = queryParser(filterState);
+    const urlWithQuery = parsedQuery.length > 0 ? `/library?${parsedQuery}` : '/library';
 
-    fetchPieces(parsedQuery).then(res => {
-      setPiecesState(res);
-      setIsLoading(false);
-    }).catch(() => {
-      setPiecesState(pieces);
-      setIsLoading(false);
-    });
+    fetchPieces(parsedQuery)
+      .then(res => {
+        window.history.replaceState('/library', document.title, urlWithQuery);
+
+        setPiecesState(res);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setPiecesState(pieces);
+        setIsLoading(false);
+      });
   }, [pieces, filterState]);
 
   if (errorCode) {
@@ -72,7 +77,7 @@ const Library = ({ errorCode, pieces, years, programs }:
 };
 
 const fetchPieces = async (parsedQuery?: string) => {
-  const path = parsedQuery ? `/library/plays${parsedQuery}` : '/library/plays';
+  const path = parsedQuery ? `/library/plays?${parsedQuery}` : '/library/plays';
 
   try {
     const { results } = await fetcher<PaginatedPlayList>(path);
