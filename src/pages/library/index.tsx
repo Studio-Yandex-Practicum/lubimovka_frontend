@@ -42,7 +42,7 @@ const Library = ({ errorCode, pieces, years, programs }:
   useEffect(() => {
     setIsLoading(true);
     const parsedQuery = queryParser(filterState);
-    const urlWithQuery = parsedQuery.length > 0 ? `/library?${parsedQuery}` : '/library';
+    const urlWithQuery = parsedQuery ? `/library?${parsedQuery}` : '/library';
 
     fetchPieces(parsedQuery)
       .then(res => {
