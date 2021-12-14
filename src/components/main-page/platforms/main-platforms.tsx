@@ -13,24 +13,21 @@ interface ICard {
   link: string[]
 }
 interface IMainPlatformsProps {
-  data: {
-    id: number
-    title: string
-    content: ICard[]
-  }
+  id: number
+  title: string
+  content: ICard[]
 }
 
-export const MainPlatforms: FC<IMainPlatformsProps> = ({ data }) => {
-  const { title, content } = data;
+export const MainPlatforms: FC<IMainPlatformsProps> = ({ title, content }) => {
 
   return (
     <section className={cn(styles.section)}>
       <h2 className={cn(styles.titleMain)}>{title}</h2>
 
       <ul className={cn(styles.list)}>
-        {content.map(card => (
+        { content.map(card => (
           <li className={cn(styles.item)} key={card.id}>
-            {<Icon glyph='map' className={styles.mapIcon}/>}
+            {<Icon glyph='map' className={ styles.mapIcon}/>}
             <h3 className={cn(styles.title)}>
               {card.title}
             </h3>
