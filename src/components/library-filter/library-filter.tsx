@@ -1,4 +1,5 @@
-import React, { FC, useCallback, RefObject, Dispatch, useContext } from 'react';
+import React, { FC, useCallback, RefObject, Dispatch, useContext, useEffect } from 'react';
+import Router, { useRouter } from 'next/router';
 
 import { Droplist, IDroplistPublic } from 'components/ui/droplist';
 import { Tag } from 'components/ui/tag';
@@ -19,6 +20,7 @@ export interface LibraryFilterProps {
 
 const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispatcher, onCheckResults, droplistRef }) => {
   const filterState = useContext(CurrentFiltersContext);
+  const router = useRouter();
 
   const handleTagClick = useCallback(
     (el: string): void => {
@@ -37,6 +39,13 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
   const handleYearsClick = useCallback((years: string[]): void => {
     filterDispatcher({ type: 'add years', festival: years });
   }, [filterDispatcher]);
+
+  useEffect(() => {
+    Router.push({
+      pathname: router.pathname,
+      query: { festival: filterState.festival, program: filterState.program  },
+    });
+  }, [filterState.festival, filterState.program, router.pathname]);
 
   return (
     <div className={style.container}>
