@@ -2,12 +2,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type BlogItemList = {
+export type NewsItemBase = {
     readonly id: number;
-    pub_date?: string;
     title: string;
     description: string;
-    author_url: string;
-    author_url_title: string;
     image?: string;
+    pub_date?: string;
 }

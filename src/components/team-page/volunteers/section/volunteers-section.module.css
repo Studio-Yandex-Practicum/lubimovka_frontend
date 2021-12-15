@@ -67,8 +67,8 @@
   @mixin text;
   @mixin textLarge;
 
-  margin-left: 25px;
   max-width: scale(426px);
+  margin-left: 25px;
 }
 
 .indent {

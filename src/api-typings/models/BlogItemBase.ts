@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type BlogItemList = {
+export type BlogItemBase = {
     readonly id: number;
     pub_date?: string;
     title: string;

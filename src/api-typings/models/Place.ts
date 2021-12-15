@@ -2,10 +2,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type NewsItemList = {
+export type Place = {
     readonly id: number;
-    title: string;
+    name: string;
     description: string;
-    image?: string;
-    pub_date?: string;
+    city: string;
+    address: string;
+    map_link: string;
 }

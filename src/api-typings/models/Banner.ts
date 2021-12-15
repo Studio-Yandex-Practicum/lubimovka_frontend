@@ -2,12 +2,13 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type BlogItemList = {
+import type { ButtonEnum } from './ButtonEnum';
+
+export type Banner = {
     readonly id: number;
-    pub_date?: string;
     title: string;
     description: string;
-    author_url: string;
-    author_url_title: string;
-    image?: string;
+    url: string;
+    image: string;
+    button: ButtonEnum;
 }
