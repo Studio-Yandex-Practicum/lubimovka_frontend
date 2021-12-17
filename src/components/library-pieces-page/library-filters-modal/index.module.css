@@ -9,14 +9,14 @@
   flex-direction: column;
   padding: scale(103px) scale(24px) scale(56px);
   background-color: var(--beige);
+  opacity: 0;
   transition: visibility .5s, opacity .5s linear;
   visibility: hidden;
-  opacity: 0;
 }
 
 .isOpen {
   z-index: 1;
   opacity: 1;
-  visibility: visible;
   transition: visibility .5s, opacity .5s linear;
+  visibility: visible;
 }
