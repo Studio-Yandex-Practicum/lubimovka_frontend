@@ -2,6 +2,7 @@ import { Dispatch } from 'react';
 
 export type Action =
   { type: 'add years'; festival: string[] } |
+  { type: 'remove year'; festival: string } |
   { type: 'add programme'; program: string } |
   { type: 'remove programme'; program: string } |
   { type: 'reset' }
@@ -22,6 +23,13 @@ function reducer(state: State, action: Action): State {
     return {
       ...state,
       festival: action.festival
+    };
+  case 'remove year':
+    return {
+      ...state,
+      festival: state.festival.filter(
+        (year, index, arr) => index !== arr.indexOf(action.festival)
+      )
     };
   case 'add programme':
     return {

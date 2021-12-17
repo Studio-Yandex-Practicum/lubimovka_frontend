@@ -17,7 +17,10 @@ export const MainPlatforms: FC<MainPlaces> = ({ items }) => {
       <ul className={cn(styles.list)}>
         {items.map(card => (
           <li className={cn(styles.item)} key={card.id}>
-            {<Icon glyph='map' className={styles.mapIcon}/>}
+            <Icon
+              className={styles.mapIcon}
+              glyph='map'
+            />
             <h3 className={cn(styles.title)}>
               {card.name}
             </h3>

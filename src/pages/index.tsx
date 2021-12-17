@@ -14,11 +14,19 @@ import { MainArchive } from 'components/main-page/archive';
 import { MainPartners } from 'components/main-page/partners';
 import { AppLayout } from 'components/app-layout';
 
+<<<<<<< HEAD
 // import data from 'components/main-page/assets/mock-data.json';
 // import mainEventsData from 'components/main-page/assets/main-events.json';
 // import mainPlatformsData from 'components/main-page/assets/main-platforms-data.json';
 // import mainShortListData from 'components/main-page/assets/main-short-list-data.json';
 // import mainArchiveData from 'components/main-page/assets/main-archive-data.json';
+=======
+import data from 'components/main-page/assets/mock-data.json';
+import mainEventsData from 'components/main-page/assets/main-events.json';
+import mainShortListData from 'components/main-page/assets/main-short-list-data.json';
+import mainArchiveData from 'components/main-page/assets/main-archive-data.json';
+import mainPlatformsData from 'components/main-page/assets/main-platforms-data.json';
+>>>>>>> fcade51bd54dfa466b5acc49d9722cb7d9fb51b5
 import styles from './index.module.css';
 
 const cx = cn.bind(styles);
@@ -41,12 +49,23 @@ const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof g
               description={afisha.description}
             />
           )}
+<<<<<<< HEAD
           {afisha.items && <MainEvents {...afisha}/>}
           {blog && <MainAside {...blog}/>}
           {banners && <MainBanners {...banners}/>}
           {places && <MainPlatforms {...places}/>}
           {short_list && <MainShortList {...short_list}/>}
           {video_archive && <MainArchive {...video_archive}/>}
+=======
+          {events && <MainEvents data={mainEventsData}/>}
+          {aside && <MainAside/>}
+          {banners && <MainBanners/>}
+          {platforms && <MainPlatforms {...mainPlatformsData}/>}
+          {shortList && <MainShortList data={mainShortListData}/>}
+          {archive && mainArchiveData.map((el) => (
+            <MainArchive key={el.id} data={el}/>
+          ))}
+>>>>>>> fcade51bd54dfa466b5acc49d9722cb7d9fb51b5
           {partners && <MainPartners/>}
         </main>
       </>

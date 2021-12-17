@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import Image from 'next/image';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button';
@@ -7,55 +8,83 @@ import { InfoLink } from 'components/ui/info-link';
 
 import styles from './overview.module.css';
 
-interface dataList {
-  id: string;
-  paragraph: string;
+interface otherLinksList {
+  name: string,
+  link: string,
+  isPinned: boolean,
+  orderNumber: number,
+}
+
+interface socialDataList {
+  name: string,
+  link: string,
 }
 
 interface IAuthorOverview {
   data: {
-    photo: string,
+    image?: string,
     name: string,
     city: string,
     quote: string,
-    description: string,
-    dataList: {
-      title: string;
-      list: dataList[];
-    }
+    biography: string,
+    other_links: otherLinksList[],
+    achievements: Array<string>,
+    social_networks: socialDataList[],
+    email: string,
   }
 }
 
 export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
 
   const {
-    photo
+    image,
+    name,
+    city,
+    quote,
+    biography,
+    other_links,
+    achievements,
+    social_networks,
+    email,
   } = data;
 
   const [isExpand, setExpand] = useState(true);
 
   return (
     <section className={cn(styles.overview)}>
-      <div className={cn(photo ? styles.personalInfo : styles.personalInfoNoPhoto)}>
+      <div className={cn(image ? styles.personalInfo : styles.personalInfoNoPhoto)}>
         <div className={cn(styles.button)}>
-          <Button size='s' iconPlace='right' icon='arrow-left' label='Библиотека' border='bottomRight' isLink={true}/>
+          <Button
+            size='s'
+            iconPlace='right'
+            icon='arrow-left'
+            label='Библиотека'
+            border='bottomRight'
+            isLink={true}/>
         </div>
 
-        {photo &&
-        <div className={cn(styles.photoBox)}>
-          <img className={cn(styles.photo)} src={data.photo} alt={`Фотография автора ${data.name}`}/>
-        </div>
+        {image &&
+          <div className={cn(styles.photoBox)}>
+            <Image
+              className={cn(styles.photo)}
+              src={image}
+              alt={`Фотография автора ${ name }`}
+              layout='fill'
+            />
+          </div>
         }
-        <h1 className={cn(styles.fullName)}>{data.name}</h1>
-        <p className={cn(styles.city)}>{data.city}</p>
+        <h1 className={cn(styles.fullName)}>{name}</h1>
+        <p className={cn(styles.city)}>{city}</p>
         <q className={cn(styles.quote)}>
-          <p className={cn(styles.quoteParagraph)}>{data.quote}</p>
+          <p className={cn(styles.quoteParagraph)}>{quote}</p>
         </q>
       </div>
 
       <div className={cn(styles.overviewInfo)}>
         <div className={cn(styles.overviewBlock)}>
-          <p className={cn(styles.overviewParagraph, isExpand ? styles.expandButton : styles.rollUpButton)}>{data.description}</p>
+          <p className={cn(styles.overviewParagraph, isExpand ? styles.expandButton : styles.rollUpButton)}>
+            {biography}
+          </p>
           <Button
             width='100%'
             size='s'
@@ -65,11 +94,13 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
             border='topLeft'
             onClick={() => setExpand(!isExpand)}
           />
+
           <div className={cn(styles.overviewBlockAuthorInfo)}>
-            {data.dataList.list.map((item) =>
-              <div className={cn(styles.overviewLinkHeading)} key={item.id}>
+            {other_links.map((item, idx) =>
+              <div className={cn(styles.overviewLinkHeading)} key={idx}>
                 <InfoLink
-                  label={item.paragraph}
+                  label={item.name}
+                  href={item.link}
                   icon='arrow-right'
                   iconPlace='right'
                   size='xl'
@@ -85,39 +116,32 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
           <div className={cn(styles.overviewTagsBlock)}>
             <h2 className={cn(styles.overviewTagsHeading)}>Достижения</h2>
             <div className={cn(styles.tagWrapper)}>
-              <div className={cn(styles.tag)}>
-                <Tag label='шорт-лист' selected={false}/>
-              </div>
-              <div className={cn(styles.tag)}>
-                <Tag label='внеконкурсная программа' selected={false}/>
-              </div>
-              <div className={cn(styles.tag)}>
-                <Tag label='fringe-программа' selected={false}/>
-              </div>
+              {achievements.map((item, idx) =>
+                <div className={cn(styles.tag)} key={idx}>
+                  <Tag
+                    label={item}
+                    selected={false}
+                  />
+                </div>
+              )}
             </div>
           </div>
 
           <div className={cn(styles.overviewSocialWrapper)}>
             <h2 className={cn(styles.overviewSocialLinkHeading)}>Социальные сети</h2>
             <div className={cn(styles.overviewSocialLinkBlock)}>
-              <InfoLink
-                isOutsideLink={true}
-                href='https://www.facebook.com/festival.lubimovka'
-                label='fb'
-                icon='arrow-right'
-                iconPlace='left'
-                size='s'
-                border='borderBottomLeft'
-              />
-              <InfoLink
-                isOutsideLink={true}
-                href='https://www.facebook.com/festival.lubimovka'
-                label='vk'
-                icon='arrow-right'
-                iconPlace='left'
-                size='s'
-                border='borderBottomLeft'
-              />
+              {social_networks.map((item, idx) =>
+                <InfoLink
+                  key={idx}
+                  href={item.link}
+                  label={item.name}
+                  isOutsideLink={true}
+                  icon='arrow-right'
+                  iconPlace='left'
+                  size='s'
+                  border='borderBottomLeft'
+                />
+              )}
             </div>
           </div>
 
@@ -125,8 +149,8 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
             <p className={cn(styles.email)}>E-mail для связи</p>
             <InfoLink
               isOutsideLink={true}
-              href='mailto://more@lubimovka.ru'
-              label='avgustyniak@gmail.com'
+              href={`mailto://${ email }`}
+              label={email}
               size='l'
               textDecoration='underline'
             />

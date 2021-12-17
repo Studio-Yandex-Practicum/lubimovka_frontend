@@ -74,6 +74,12 @@ export type Person = {
   city: string,
   email: string,
   image: Url,
+  roles: PersonRole[],
+}
+
+export type PersonRole = {
+  name: string,
+  slug: string,
 }
 
 export type Team = {
