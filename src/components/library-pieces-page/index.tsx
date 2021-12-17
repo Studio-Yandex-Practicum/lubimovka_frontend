@@ -64,7 +64,8 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             </Menu>
           </div>
           <div className={styles.mobileTags}>
-            <LibraryTagsMobile programmes={programmes} filterDispatcher={filterDispatcher}/>
+            <LibraryTagsMobile programmes={programmes} filterDispatcher={filterDispatcher}
+              droplistRef={droplistRef}/>
           </div>
           <div className={styles.filter}>
             <LibraryFilter years={years} programmes={programmes}
