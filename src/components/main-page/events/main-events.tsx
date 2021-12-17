@@ -5,6 +5,20 @@ import { MainAfisha } from 'api-typings';
 
 import styles from './main-events.module.css';
 
+interface ITeam {
+  Драматург: string[]
+  Режиссёр: string[]
+}
+
+export interface event_body {
+  id: number
+  description: string
+  image: string
+  name: string
+  project: null | string
+  team: ITeam
+}
+
 export const MainEvents: FC<MainAfisha> = ({ items }) => {
   console.log(items);
 
@@ -23,7 +37,7 @@ export const MainEvents: FC<MainAfisha> = ({ items }) => {
                 description={item.event_body.description}
                 buttonLink={item.url}
                 imageUrl={item.event_body.image}
-                projectText ={item.event_body.project}
+                projectText={item.event_body.project === null ? null : item.event_body.project}
                 paid={item.paid}
               />
             </li>

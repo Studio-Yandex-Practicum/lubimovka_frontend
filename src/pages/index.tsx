@@ -42,8 +42,8 @@ const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof g
             />
           )}
           {afisha.items && <MainEvents {...afisha}/>}
-          {blog && <MainAside data={blog}/>}
-          {banners && <MainBanners/>}
+          {blog && <MainAside {...blog}/>}
+          {banners && <MainBanners {...banners}/>}
           {places && <MainPlatforms {...places}/>}
           {short_list && <MainShortList {...short_list}/>}
           {video_archive && <MainArchive {...video_archive}/>}

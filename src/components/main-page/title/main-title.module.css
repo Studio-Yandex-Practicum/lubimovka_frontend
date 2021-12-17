@@ -1,11 +1,11 @@
 .section {
-  display: flex;
+  /* display: flex;
   box-sizing: border-box;
-  flex-direction: column;
-  margin: 0;
+  flex-direction: column; */
+  margin: 0 auto;
   grid-area: title;
 
-  &&.primary {
+  /* &&.primary {
     max-width: scale(640px);
     padding-left: scale(17px);
     margin: auto;
@@ -27,28 +27,40 @@
     @media (max-width: $tablet-portrait) {
       padding: 0 85px 142px 24px;
     }
-  }
+  } */
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: end;
+  margin-bottom: scale(10px);
 }
 
 .title {
+  @mixin headline;
+  @mixin headline2;
+
+  margin-right: scale(20px);
   white-space: pre-wrap;
 
-  @mixin headline;
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+  }
 
-  &&.primary {
+  /* &&.primary {
     display: inline;
     margin-right: 15px;
 
     @mixin headline2;
 
     @media (max-width: $tablet-portrait) {
-      /* Текстовые стили для того, чтобы сделать размер заголовка не резиновым */
       font-size: 40px;
       line-height: 40px;
     }
-  }
+  } */
 
-  &&.secondary {
+  /* &&.secondary {
     @mixin headline1;
 
     margin: scale(0 0 15px 0);
@@ -60,17 +72,21 @@
     @media (max-width: $tablet-portrait) {
       margin-bottom: 13px;
 
-      /* Текстовые стили для того, чтобы сделать размер заголовка не резиновым */
       font-size: 40px;
       line-height: 40px;
     }
-  }
+  } */
 }
 
 .buttonContainer {
-  display: inline-block;
+  /* position: absolute;
+  right: scale(-180px);
+  bottom: scale(6px);
+  display: inline-block; */
+  width: scale(180px);
+  transform: translateY(-6px);
 
-  &&.primary {
+  /* &&.primary {
     width: scale(180px);
     padding-bottom: scale(6px);
 
@@ -84,38 +100,37 @@
 
     @media (max-width: $tablet-portrait) {
       width: 180px;
-    }
-  }
+    } */
 
-  &&.secondary {
+  /* } */
+
+  /* &&.secondary {
     width: scale(360px);
     min-width: 244px;
 
     @media (max-width: $tablet-portrait) {
       width: 244px;
     }
-  }
+  } */
 }
 
 .button {
   border-color: var(--true-black);
 
-  &.secondary.button {
-    /* Текстовые стили для того, чтобы сделать размер текста кнопки не резиновыми */
+  /* &.secondary.button {
     font-size: 16px;
     line-height: 22px;
   }
 
   &.primary.button {
     @media (max-width: $tablet-portrait) {
-      /* Текстовые стили для того, чтобы сделать размер текста кнопки не резиновыми */
       font-size: 16px;
       line-height: 14px;
     }
-  }
+  } */
 }
 
-.wrapper.primary {
+/* .wrapper.primary {
   display: inline;
   flex-direction: row;
   align-items: flex-end;
@@ -124,17 +139,24 @@
   @media (max-width: $tablet-portrait) {
     margin: 0;
   }
-}
+} */
 
-.text {
-  width: scale(432px);
-  align-self: flex-end;
-  padding-right: scale(43px);
-
+.desc {
   @mixin text;
   @mixin textLarge;
+
+  width: 100%;
+  max-width: scale(432px);
+
+  /* align-self: flex-end;
+  padding-right: scale(43px); */
 
   @media (max-width: $tablet-portrait) {
     display: none;
   }
+}
+
+.icon > svg {
+  width: scale(24px);
+  height: scale(24px);
 }
