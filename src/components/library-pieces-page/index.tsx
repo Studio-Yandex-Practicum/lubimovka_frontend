@@ -119,9 +119,9 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             </>
           )}
         </section>
-        {isModalOpen && (<LibraryFiltersModal><LibraryFilter years={years} programmes={programmes}
+        <LibraryFiltersModal isModalOpen={isModalOpen}><LibraryFilter years={years} programmes={programmes}
           filterDispatcher={filterDispatcher} onCheckResults={handleFiltersClick}
-          droplistRef={droplistRef}/></LibraryFiltersModal>)}
+          droplistRef={droplistRef}/></LibraryFiltersModal>
       </div>
     </main>
   );
