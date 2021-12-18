@@ -1,6 +1,5 @@
 .section {
   width: 100%;
-  height: 97px;
   border-bottom: 1px solid var(--coal);
   background: var(--beige);
 }
@@ -13,7 +12,8 @@
 }
 
 .yearsContainer {
-  padding-top: scale(35.5px);
+  padding-top: scale(31px);
+  padding-bottom: scale(25px);
   margin: 0;
 
   @media (max-width: $tablet-portrait) {

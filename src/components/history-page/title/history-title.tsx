@@ -22,7 +22,7 @@ interface IHistoryTitle {
 const iconPlace = 'right';
 const icon = 'arrow-right';
 const alignStart = 'start';
-const imageUrl = 'https://iscr.ru/images/2021/11/16/Group-28-1.png';
+const imageUrl = 'https://s1.hostingkartinok.com/uploads/images/2021/12/fb0c8e1baf21b0ca306ee98a6678c0d8.png';
 
 export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
   const { plays_count,
