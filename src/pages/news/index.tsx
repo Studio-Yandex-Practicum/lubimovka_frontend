@@ -32,8 +32,11 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   useEffect(() => {
     fetchNewsList(12, offset)
       .then(data => {
-        setNews(data?.results);
-
+        if (!data?.results) {
+          return news;
+        } if (news !== undefined) {
+          return news.concat(data.results);
+        }
       })
       .catch(error => error);
   }, [offset]);
