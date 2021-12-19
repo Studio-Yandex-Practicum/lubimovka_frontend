@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button/button';
@@ -17,14 +17,15 @@ interface IHistoryTitle {
     start_date: string,
     end_date: string,
     description: string
-  }
+  },
+  currentYear: number
 }
 const iconPlace = 'right';
 const icon = 'arrow-right';
 const alignStart = 'start';
 const imageUrl = 'https://s1.hostingkartinok.com/uploads/images/2021/12/fb0c8e1baf21b0ca306ee98a6678c0d8.png';
 
-export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
+export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
   const { plays_count,
     selected_plays_count,
     selectors_count,
@@ -38,6 +39,10 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
 
   const startDate = new Date(start_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' });
   const finishDate = new Date(end_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' });
+  const [urlVolonters, setUrlVolonters] = React.useState(`/team/?year=${currentYear}`);
+  React.useEffect(() => {
+    setUrlVolonters(`/team/?year=${currentYear}`);
+  }, [currentYear]);
   return (
     <section className={style.section}>
       <img src={imageUrl} alt='Изображение' className={style.image}/>
@@ -91,7 +96,7 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data }) => {
                 label={volunteers_count.toString()}
                 iconPlace={iconPlace}
                 icon={icon}
-                href='#'
+                href={urlVolonters}
                 isLink={true}
                 align={alignStart}
                 size='l'

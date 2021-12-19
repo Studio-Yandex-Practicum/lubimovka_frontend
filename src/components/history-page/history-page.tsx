@@ -30,6 +30,7 @@ export const HistoryPage: FC<IHistoryPageProps> = (props: IHistoryPageProps) => 
   });
   const [isLoading, setIsLoading] = useState(false);
   const [years, setYears] = useState({ years: [2020,2019] });
+  const [currentYear, setCurrentYear] = useState(years.years[0]);
   useEffect(() => {
     fetchInitStateYear()
       .then((years) => {
@@ -61,6 +62,7 @@ export const HistoryPage: FC<IHistoryPageProps> = (props: IHistoryPageProps) => 
   }, []);
   function selectYear(year: number ) {
     if(year) {
+      setCurrentYear(year);
       fetchStatistics(year)
         .then((result) => {
           if(result) {
@@ -96,7 +98,7 @@ export const HistoryPage: FC<IHistoryPageProps> = (props: IHistoryPageProps) => 
         <title>{metaTitle}</title>
       </Head>
       <HistoryHeader data={years} selectYear={selectYear}/>
-      <HistoryTitle data={currentTitleData}/>
+      <HistoryTitle data={currentTitleData} currentYear={currentYear}/>
       <HistoryItself data={itselfData}/>
     </>
   );
