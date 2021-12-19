@@ -1,9 +1,10 @@
-import classes from './NotFoundError.module.css';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+
 import Logo from '../../images/logo.svg';
 import SmallLogo from '../../images/small-logo.svg';
 import Lines from '../../images/404lines.svg';
+import classes from './NotFoundError.module.css';
 
 export default function NotFoundError() {
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
