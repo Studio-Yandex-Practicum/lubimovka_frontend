@@ -8,14 +8,7 @@ import style from './news-list.module.css';
 
 const cx = cn.bind(style);
 
-// interface NewsCardData {
-//   id: number;
-//   title: string;
-//   description: string;
-//   image?: string;
-//   pub_date: string;
 
-// }
 interface INewsList {
   newsListData: NewsItemList[];
   className?: string;

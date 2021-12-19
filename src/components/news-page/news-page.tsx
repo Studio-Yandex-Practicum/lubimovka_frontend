@@ -14,7 +14,6 @@ import style from './news-page.module.css';
 const cx = cn.bind(style);
 
 interface INewsPageProps {
-  metaTitle: string;
   setNews: (news: NewsItemList[] | undefined) => void;
   news: NewsItemList[];
 }
@@ -31,7 +30,6 @@ const fetchNewsListFiltered = async (month: number, year: number) => {
 
 export const NewsPage: FC<INewsPageProps> = (props: INewsPageProps): JSX.Element => {
   const {
-    metaTitle,
     setNews,
     news
   } = props;
@@ -53,16 +51,13 @@ export const NewsPage: FC<INewsPageProps> = (props: INewsPageProps): JSX.Element
 
   return (
     <>
-      <Head>
-        <title>{metaTitle}</title>
-      </Head>
-      <NewsTitle title='Новости'/>
+      <NewsTitle title='Новости' />
       <MonthsAndYearsFilter className={cx('droplistСontainer')}
         filterCallBack={(month, year) => {
           setMonth(month);
           setYear(year);
-        }}/>
-      <NewsList newsListData={news}/>
+        }} />
+      <NewsList newsListData={news} />
     </>
   );
 };
