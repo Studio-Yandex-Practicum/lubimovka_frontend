@@ -7,8 +7,6 @@ import { NewsItemList } from 'api-typings';
 import style from './news-list.module.css';
 
 const cx = cn.bind(style);
-
-
 interface INewsList {
   newsListData: NewsItemList[];
   className?: string;

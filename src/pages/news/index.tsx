@@ -1,11 +1,10 @@
-import { NextPage } from 'next';
 import { useEffect, useState, useCallback } from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+
 import { AppLayout } from 'components/app-layout/index';
 import { NewsPage } from 'components/news-page';
 import { NewsItemList, PaginatedNewsItemListList } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
-
 
 const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
@@ -24,7 +23,7 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     if (position >= threshold) {
       if (news !== undefined && news?.length >= offset) {
         setOffset(offset + 12);
-        console.log('scroll');
+        // console.log('scroll');
       }
     }
 

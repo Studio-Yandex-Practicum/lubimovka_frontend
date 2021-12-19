@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect } from 'react';
-import Head from 'next/head';
 import cn from 'classnames/bind';
 
 import { NewsTitle } from './news-title';
@@ -51,13 +50,13 @@ export const NewsPage: FC<INewsPageProps> = (props: INewsPageProps): JSX.Element
 
   return (
     <>
-      <NewsTitle title='Новости' />
+      <NewsTitle title='Новости'></NewsTitle>
       <MonthsAndYearsFilter className={cx('droplistСontainer')}
         filterCallBack={(month, year) => {
           setMonth(month);
           setYear(year);
-        }} />
-      <NewsList newsListData={news} />
+        }}></MonthsAndYearsFilter>
+      <NewsList newsListData={news}></NewsList>
     </>
   );
 };
