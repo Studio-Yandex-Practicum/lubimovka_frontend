@@ -3,18 +3,17 @@
 /* eslint-disable */
 
 import type { BaseContent } from './BaseContent';
+import type { NewsItemBase } from './NewsItemBase';
 
 /**
  * Adds "contents" field to any serializer.
  */
-export type BlogItem = {
+export type NewsItemDetailed = {
     readonly id: number;
     title: string;
     description: string;
     image?: string;
-    author_url: string;
-    author_url_title: string;
+    pub_date?: string;
     readonly contents: Array<BaseContent>;
-    readonly created: string;
-    readonly modified: string;
+    readonly other_news: Array<NewsItemBase>;
 }
