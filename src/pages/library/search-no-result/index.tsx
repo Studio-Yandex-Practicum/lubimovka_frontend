@@ -4,23 +4,27 @@ import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
 import { Button } from 'components/ui/button';
+import useWindowDimensions from 'components/library-authors-page/useWindowDimensions';
 import LibraryForm from 'components/library-form/library-form';
 
 import style from '../search-result/index.module.css';
 
 const SearchResult: NextPage = () => {
   const router = useRouter();
-  const [screenWidth, setScreenWidth] = useState<number | null>(null);
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const { width } = useWindowDimensions();
+  const [searchQuery, setSearchQuery] = useState<string | null>('');
 
   useEffect(() => {
-    const url = document.URL;
-    const handleRouteChange = (url: string) => {
-      setSearchQuery(decodeURI(url.slice(url.indexOf('=')+1)));
+    const { searchParams } = new URL(document.URL);
+
+    const handleRouteChange = () => {
+      setSearchQuery(searchParams.get('q'));
     };
-    setScreenWidth(document.documentElement.clientWidth);
+
+    handleRouteChange();
+
     router.events.on('routeChangeComplete', handleRouteChange);
-    setSearchQuery(decodeURI(url.slice(url.indexOf('=')+1)));
+
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
@@ -31,7 +35,7 @@ const SearchResult: NextPage = () => {
     <AppLayout>
       <main className ={style.page}>
         <div className={style.buttonWrapper}>
-          <Button href={'/library'} isLink={true} label={Number(screenWidth) < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
+          <Button href={'/library'} isLink={true} label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
         </div>
         <div className={style.topWrapper}>
           <p className={style.info}>

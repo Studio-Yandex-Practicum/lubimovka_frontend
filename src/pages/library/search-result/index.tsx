@@ -8,6 +8,7 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import SearchResultAuthors from 'components/search-result-authors/search-result-authors';
 import { fetcher } from 'shared/fetcher';
+import useWindowDimensions from 'components/library-authors-page/useWindowDimensions';
 
 import style from './index.module.css';
 
@@ -45,34 +46,41 @@ interface IFilteredAuthors {
   [key: Letter]: IAccElem
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { q }:any = context.query;
-  const data: Data = await fetcher(`/library/search/?q=${encodeURI(q)}`);
+export const getServerSideProps: GetServerSideProps = async ( { query } ) => {
+  try {
+    const q = String(query.q);
+    const data: Data = await fetcher(`/library/search/?q=${encodeURI(q)}`);
 
-  if (!data.plays.length && !data.authors.length) {
+    if (!data.plays.length && !data.authors.length) {
+      return {
+        redirect: {
+          destination: `/library/search-no-result?q=${encodeURI(q)}`,
+          statusCode: 301,
+        },
+      };
+    }
+
     return {
-      redirect: {
-        destination: `/library/search-no-result?q=${encodeURI(q)}`,
-        statusCode: 301,
+      props: {
+        data,
       },
     };
+  } catch(error) {
+    return {
+      props: {
+        errorCode: 500,
+      }
+    };
   }
-
-  return {
-    props: {
-      data,
-    },
-  };
 };
 
 const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof getServerSideProps>) => {
-
-  const [screenWidth, setScreenWidth] = useState<number | null>(null);
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [filteredAuthors, setFilteredAuthors] = useState<IAccElem[] | null>(null);
+  const { width } = useWindowDimensions();
+  const [searchQuery, setSearchQuery] = useState<string | null>('');
+  const [filteredAuthors, setFilteredAuthors] = useState<IAccElem[]>([]);
 
   useEffect(() => {
-    const url = document.URL;
+    const { searchParams } = new URL(document.URL);
     setFilteredAuthors(Object.values(
       data.authors.reduce((acc:IFilteredAuthors, author:AuthorFromData) => {
         const firstLetter: Letter = author.first_letter;
@@ -85,15 +93,14 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
       }, {})
     ));
 
-    setScreenWidth(document.documentElement.clientWidth);
-    setSearchQuery(decodeURI(url.slice(url.indexOf('=')+1)));
+    setSearchQuery(searchParams.get('q'));
   }, [data]);
 
   return (
     <AppLayout>
       <main className ={style.page}>
         <div className={style.buttonWrapper}>
-          <Button href={'/library'} isLink={true} label={Number(screenWidth) < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
+          <Button href={'/library'} isLink={true} label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
         </div>
         <div className={style.topWrapper}>
           <p className={style.info}>
@@ -119,14 +126,14 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
                 };
 
                 return (
-                  <BasicPlayCard key={play.id} {... { play }}/>
+                  <BasicPlayCard key={play.id} play={play}/>
                 );
               })}
             </BasicPlayCardList>
           </div>
           <div className={style.authors}>
             <ul className={style.authorsList}>
-              {filteredAuthors?.map((authors) => (
+              {filteredAuthors.map((authors) => (
                 <SearchResultAuthors key={authors.title} authors={authors}/>
               ))}
             </ul>
