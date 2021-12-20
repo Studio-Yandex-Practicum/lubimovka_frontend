@@ -37,7 +37,7 @@ const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof g
           {afisha && (
             <MainTitle
               title={afisha.title}
-              buttonText={afisha.button_label}
+              button_label={afisha.button_label}
               description={afisha.description}
             />
           )}
