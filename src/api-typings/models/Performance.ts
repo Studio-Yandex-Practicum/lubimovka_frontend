@@ -6,7 +6,7 @@ import type { Image } from './Image';
 import type { Play } from './Play';
 
 /**
- * Сериализатор Спектакля для отображения на странице Спектакля
+ * Сериализатор Спектакля для отображения на странице Спектакля.
  */
 export type Performance = {
     readonly id: number;
