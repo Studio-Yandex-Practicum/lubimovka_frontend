@@ -73,10 +73,10 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
       <Head>
         <title>{metaTitle}</title>
       </Head>
-      <SectionTitleForBlog email='critics@lubimovka.ru' setBlogs={setBlogs} />
-      <SectionGridForBlog blogs={blogs} />
+      <SectionTitleForBlog email='critics@lubimovka.ru' setBlogs={setBlogs}/>
+      <SectionGridForBlog blogs={blogs}/>
       {blogs !== undefined && blogs.length < 1 &&
-        <MessageBox message='За этот период времени ничего не найдено. Попробуйте изменить запрос.' />
+        <MessageBox message='За этот период времени ничего не найдено. Попробуйте изменить запрос.'/>
       }
     </AppLayout>
   );
