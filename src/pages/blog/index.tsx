@@ -63,11 +63,6 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
     };
   }, [checkPosition]);
 
-  // useEffect(() => {
-  //   if (blogs !== undefined && blogs.length > 0)
-  //     console.log('useEffect', blogs);
-  // }, [blogs]);
-
   return (
     <AppLayout>
       <Head>
@@ -83,3 +78,32 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
 };
 
 export default Blog;
+
+// const fetchBlogList = async (limit: number, offset: number) => {
+//   let data;
+//   try {
+//     data = await fetcher<PaginatedBlogItemListList>(`/blog?limit=${limit}&offset=${offset}`);
+//   } catch (error) {
+//     return;
+//   }
+//   return data;
+// };
+
+// export const getServerSideProps: GetServerSideProps<PaginatedBlogItemListList> = async () => {
+
+//   const blogList = await fetchBlogList(1, 0);
+
+//   if (!blogList) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: {
+//       ...blogList
+//     },
+//   };
+// };
+
+// export default Blog;
