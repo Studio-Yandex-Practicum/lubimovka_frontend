@@ -1,16 +1,23 @@
-import partnerLogo from '../assets/partners/partnerLogo.png';
+import { Partner } from 'api-typings';
 
-export default [
+import fondProhorovaLogo from '../assets/partners/fond-prohorova.png';
+import sbtgLogo from '../assets/partners/sbtg.png';
+
+const partners: Partner[] = [
   {
+    id: 1,
     name: 'Фонд Михаила Прохорова',
     url: '',
-    logo: partnerLogo.src,
+    image: fondProhorovaLogo.src,
     type: 'general'
   },
   {
-    name: 'Фонд Михаила Прохорова',
+    id: 2,
+    name: 'SBTG',
     url: '',
-    logo: partnerLogo.src,
+    image: sbtgLogo.src,
     type: 'general'
   },
 ];
+
+export default partners;

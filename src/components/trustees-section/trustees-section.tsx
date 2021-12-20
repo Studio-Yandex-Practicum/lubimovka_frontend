@@ -1,6 +1,8 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 
-import {Icon} from '../ui/icon';
+import { Icon } from '../ui/icon';
+import { AboutUsMenu } from 'components/what-we-do-page/about-us-menu/about-us-menu';
+import { InfoLink } from 'components/ui/info-link/info-link';
 
 import style from './trustees-section.module.css';
 
@@ -18,11 +20,20 @@ const TrusteesSection: FC<TrusteesSectionProps> = ({ text, children }) => {
 
   return (
     <section className={style.section}>
+      <div className={style.menu}>
+        <AboutUsMenu/>
+      </div>
       <div className={style.container}>
         <div className={style.becomeTrustee}>
-          <Icon glyph={'asterisk'} />
+          <Icon glyph={'asterisk'}/>
           <p className={style.accent}>{accent}
-            <a className={style.mailLink} href={`mailto:${link}`} target="_blank" rel="noreferrer">{link}</a>
+            <InfoLink
+              href={'mailto://job@lubimovka.ru'}
+              isOutsideLink={true}
+              label={link}
+              size={'xl'}
+              textDecoration={'underline'}
+            />
           </p>
         </div>
         <div className={style.mainText}>
@@ -36,3 +47,4 @@ const TrusteesSection: FC<TrusteesSectionProps> = ({ text, children }) => {
 };
 
 export default TrusteesSection;
+

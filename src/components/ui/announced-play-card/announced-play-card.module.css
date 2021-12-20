@@ -1,33 +1,37 @@
 .card {
   display: flex;
-  max-width: 420px;
-  flex-direction: row;
-  list-style-type: none;
+  width: scale(420px);
 
   @media (max-width: $tablet-portrait) {
-    width: 100%;
-    padding: 32px 0;
+    width: scale(414px);
+    padding: scale(32px 14px 32px 24px);
     border-top: var(--coal) solid 1px;
   }
 }
 
 .cover {
-  width: 120px;
-  height: 161px;
-  padding-right: 31px;
+  position: relative;
+  width: scale(120px);
+  height: scale(161px);
+  margin-right: scale(31px);
   object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
-    width: 92px;
-    height: 123px;
+    width: scale(92px);
+    height: scale(123px);
+    margin-right: scale(29px);
   }
 }
 
 .info {
   display: flex;
-  width: 269px;
+  width: scale(269px);
   flex-direction: column;
   justify-content: space-evenly;
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(243px);
+  }
 }
 
 .dateInfo {
@@ -36,20 +40,28 @@
 
   display: flex;
   flex-direction: row;
+  margin-bottom: scale(4px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(16px);
+  }
+}
+
+.dateInfoNoCover {
+  margin-bottom: scale(16px);
 }
 
 .date {
   padding: 0;
   margin: 0;
-  margin-right: 44px;
+  margin-right: scale(42px);
 
   @media (max-width: $tablet-portrait) {
-    margin-right: 46px;
+    margin-right: scale(46px);
   }
 }
 
-.time {
-  padding: 0;
+.date:last-child {
   margin: 0;
 }
 
@@ -57,18 +69,15 @@
   @mixin headline;
   @mixin headline5;
 
-  display: block;
-  width: 419px;
-  margin-top: 4px;
+  max-width: scale(419px);
+  margin-bottom: scale(16px);
 
   @media (max-width: $tablet-portrait) {
-    width: 382px;
-    margin-top: 16px;
-  }
-}
+    @mixin headline6;
 
-.titleNoCover {
-  margin-top: 16px;
+    max-width: scale(243px);
+    margin-bottom: scale(8px);
+  }
 }
 
 .credits {
@@ -76,53 +85,66 @@
   @mixin textSmall;
 
   display: flex;
-  width: 240px;
+  max-width: scale(240px);
   flex-direction: column;
-  margin: 16px 0 0 30px;
+  margin-bottom: scale(20px);
+  margin-left: scale(30px);
 
   @media (max-width: $tablet-portrait) {
+    max-width: scale(243px);
+    margin-bottom: scale(8px);
     margin-left: 0;
   }
 }
 
 .creditsEntry {
-  display: inline;
+  display: block;
   padding: 0;
   margin: 0;
 }
 
-.eventDescription {
+.description {
   @mixin text;
   @mixin textSmall;
 
-  width: 359px;
-  margin: 16px 0 0 30px;
+  width: scale(359px);
+  margin-bottom: scale(16px);
+  margin-left: scale(30px);
 
   @media (max-width: $tablet-portrait) {
     margin-left: 0;
   }
 }
 
-.description {
+.projectText {
   @mixin text;
   @mixin textCaption;
 
-  width: 150px;
-  padding-top: 20px;
-  margin: 0;
+  width: scale(150px);
+  margin-bottom: scale(16px);
+}
 
+.projectTextCoverExists {
   @media (max-width: $tablet-portrait) {
-    padding-top: 8px;
+    margin-bottom: scale(48px);
   }
 }
 
 .button {
-  margin-bottom: 16px;
+  display: grid;
+  width: scale(154px);
+  margin-bottom: scale(16px);
+  grid-template-columns: scale(21px) max-content;
 
   @media (max-width: $tablet-portrait) {
-    margin-right: 26px;
+    margin-right: scale(26px);
     margin-bottom: 0;
   }
+}
+
+.button > svg {
+  width: scale(25px);
+  height: scale(25px);
 }
 
 .button:last-child {
@@ -130,19 +152,16 @@
 }
 
 .buttonContainer {
-  margin-top: 16px;
-
   @media (max-width: $tablet-portrait) {
     display: flex;
-    width: 380px;
+    width: scale(380px);
     flex-direction: row;
   }
 }
 
 .buttonContainerCoverExists {
   @media (max-width: $tablet-portrait) {
-    margin-top: 48px;
-    margin-left: -123px;
+    margin-left: calc(var(--scale) * -123);
   }
 }
 

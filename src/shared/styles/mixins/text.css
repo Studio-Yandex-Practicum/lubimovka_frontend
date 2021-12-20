@@ -49,3 +49,13 @@
   font-size: scale(16px);
   line-height: scale(24px);
 }
+
+@define-mixin textBlogSmall {
+  font-size: scale(16px);
+  line-height: scale(18px);
+}
+
+@define-mixin textBlogAuthor {
+  font-size: scale(16px);
+  line-height: scale(20px);
+}

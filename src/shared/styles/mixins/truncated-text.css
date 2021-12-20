@@ -3,4 +3,5 @@
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $linesNumber;
+  word-break: break-word;
 }

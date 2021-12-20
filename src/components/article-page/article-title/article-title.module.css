@@ -9,7 +9,7 @@
     'b title title c'
     'b description description img'
     'b date author img';
-  grid-template-columns: min-content 1fr 1fr 2.555fr;
+  grid-template-columns: scale(90px) 1fr 1fr min-content;
 
   @media (max-width: $tablet-portrait) {
     padding: scale(32px 0 0 24px);
@@ -25,7 +25,23 @@
   }
 }
 
-.backButton {
+.containerTypeNews {
+  @media (max-width: $tablet-portrait) {
+    padding: scale(32px 0 75px 24px);
+  }
+}
+
+.backButtonBlog {
+  width: scale(90px) !important;
+  grid-area: button;
+
+  @media (max-width: $tablet-portrait) {
+    left: scale(60px);
+  }
+}
+
+.backButtonNews {
+  width: scale(125px) !important;
   grid-area: button;
 
   @media (max-width: $tablet-portrait) {
@@ -84,6 +100,7 @@
 
 .dateNews {
   padding-left: scale(60px);
+  justify-self: start;
 }
 
 .author {
@@ -98,15 +115,17 @@
 }
 
 .img {
-  max-height: scale(421px);
-  padding-top: scale(30px);
+  position: relative;
+  width: scale(690px);
+  height: scale(421px);
+  margin-top: scale(30px);
   grid-area: img;
-  object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
-    max-height: scale(218px);
-    padding-top: scale(40px);
-    padding-left: scale(30px);
+    width: scale(357px);
+    height: scale(218px);
+    margin-top: scale(40px);
+    margin-left: scale(30px);
     justify-self: end;
   }
 }

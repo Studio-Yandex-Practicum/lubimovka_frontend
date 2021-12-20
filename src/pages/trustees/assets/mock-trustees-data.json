@@ -1,97 +1,158 @@
 [
   {
     "id": 1,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 1,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   },
-
   {
     "id": 2,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 2,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   },
-
   {
     "id": 3,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 3,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   },
-
   {
     "id": 4,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 4,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   },
-
   {
     "id": 5,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 5,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   },
-
   {
     "id": 6,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 6,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   },
-
   {
     "id": 7,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 7,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   },
-
   {
     "id": 8,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 8,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   },
-
   {
     "id": 9,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 9,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   },
-
   {
     "id": 10,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 10,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   },
-
   {
     "id": 11,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 11,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   },
-
   {
     "id": 12,
-    "name": "Тереза Шимчак",
-    "link": "https://images.unsplash.com/photo-1630255732364-a69ade0f0543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    "about": "Драматург, сценарист, преподаватель",
-    "participant": true
+    "person": {
+      "id": 12,
+      "first_name": "Тереза",
+      "last_name": "Шимчак",
+      "middle_name": "Шимчак",
+      "city": "Москва",
+      "email": "123@yandex.ru",
+      "image": "/images/person/person.jpg"
+    },
+    "position": "Драматург, сценарист, преподаватель"
   }
 ]

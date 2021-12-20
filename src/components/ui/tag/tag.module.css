@@ -17,3 +17,43 @@
     color: var(--white);
   }
 }
+
+.tagIcon {
+  display: inline-block;
+  border: 1px solid var(--coal);
+  border-top: none;
+  transition: 300ms;
+  white-space: nowrap;
+
+  &:hover,
+  &.active {
+    border: 1px solid transparent;
+    border-top: none;
+    background: var(--coal);
+    color: var(--white);
+  }
+}
+
+.tagContainer {
+  display: flex;
+  align-items: center;
+}
+
+.tagText {
+  @mixin text;
+  @mixin textMedium;
+
+  padding: 4px 0 8px 8px;
+  text-align: left;
+
+  &:hover,
+  &.active {
+    color: var(--white);
+  }
+}
+
+.icon {
+  padding-top: 4px;
+  padding-right: 4px;
+  cursor: pointer;
+}

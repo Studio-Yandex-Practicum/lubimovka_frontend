@@ -1,44 +1,31 @@
-import { FC, SyntheticEvent, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames/bind';
 
 import { SliderButton } from '../slider-button';
 import { SliderDots } from '../slider-dots';
+import { IconButton } from 'components/ui/icon-button';
 import { Icon } from '../icon';
-import { Url } from 'shared/types';
-
+import { Volunteers } from 'api-typings';
 
 import styles from './feedback-popup.module.css';
+
 const cx = classNames.bind(styles);
 
-export type PersonCardData = {
-  id: number;
-  person: {
-    id: number;
-    first_name: string;
-    second_name: string;
-    middle_name: string;
-    city: string;
-    email: string;
-    image: Url;
-  };
-  year: number;
-  title: string;
-  review: string;
-}
-
 interface IFeedbackPopupProps {
-  onClose: React.MouseEventHandler<HTMLButtonElement>,
-  isOpen?: boolean;
-  cards: Array<PersonCardData>;
+  onClose: () => void,
+  isOpen: boolean;
+  cards: Array<Volunteers>;
+  currentYear: number;
+  openedSlide: number
 }
 
 export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
-  const { isOpen, cards, onClose } = props;
+  const { isOpen, cards, currentYear, openedSlide, onClose } = props;
 
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(openedSlide);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
@@ -49,36 +36,49 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
   });
 
   useEffect(() => {
+    slider?.moveToSlide(openedSlide);
+  }, [isOpen]);
+
+  useEffect(() => {
     setScreenWidth(document.documentElement.clientWidth);
   }, []);
 
+  useEffect(() => {
+    slider?.refresh();
+  }, [screenWidth, currentYear]);
+
   return (
-    <div ref={sliderRef} className={cx('keen-slider', 'slider', {[styles.isOpen]: isOpen})}>
-      {cards.map((card, idx) => (
+    <div ref={sliderRef} className={cx('keen-slider', 'slider', { [styles.isOpen]: isOpen })}>
+      {cards.map((card) => (
         <div
-          key={idx}
+          key={card.id}
           className={cx('keen-slider__slide', 'slide')}
         >
           <div className={cx('container')}>
             {slider &&
             <>
               <SliderButton
-                direction='left'
                 className={cx('arrow', 'arrowLeft')}
+                ariaLabel='Предыдущий отзыв'
+                direction='left'
                 onClick={slider.prev}
               />
               {Number(screenWidth) < 729 &&
-              <button className={cx('buttonClose')} onClick={onClose}>
-                <Icon
-                  className={cx('cross')}
-                  glyph={'cross'}
+              <div className={cx('close')}>
+                <IconButton
+                  className={cx('closeButton')}
+                  ariaLabel='Закрыть лайтбокс'
+                  type='button'
+                  view='light'
+                  icon={<Icon glyph='cross'/>}
+                  onClick={onClose}
                 />
-              </button>}
+              </div>}
               <img
                 className={cx('image')}
                 src={card.person.image}
               />
-              <h2 className={cx('name')}>{`${card.person.first_name} ${card.person.second_name}`}</h2>
+              <h2 className={cx('name')}>{`${card.person.first_name} ${card.person.last_name}`}</h2>
               {Number(screenWidth) < 729 &&
               <SliderDots
                 className={cx('dots')}
@@ -86,8 +86,8 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 currentSlide={currentSlide}
                 onClick={(idx) => slider.moveToSlideRelative(idx)}
               />}
-              <p className={cx('title')}>{card.title}</p>
-              <p className={cx('text')}>{card.review}</p>
+              {card.review_title === '' ? '' : <p className={cx('title')}>{card.review_title}</p>}
+              <p className={cx('text')}>{card.review_text}</p>
               {Number(screenWidth) > 728 &&
               <SliderDots
                 className={cx('dots')}
@@ -96,8 +96,9 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
                 onClick={(idx) => slider.moveToSlideRelative(idx)}
               />}
               <SliderButton
-                direction='right'
                 className={cx('arrow', 'arrowRight')}
+                ariaLabel='Следующий отзыв'
+                direction='right'
                 onClick={slider.next}
               />
             </>
@@ -108,4 +109,3 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
     </div>
   );
 };
-

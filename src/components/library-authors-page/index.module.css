@@ -1,0 +1,149 @@
+.wrap {
+  position: relative;
+}
+
+.topWrap {
+  position: absolute;
+  z-index: -1;
+  top: calc(scale(91px) * -1);
+  left: 0;
+  width: 100%;
+  height: 0;
+
+  @media (max-width: $tablet-portrait) {
+    height: 90%;
+  }
+}
+
+.top {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--white);
+
+  @media (max-width: $tablet-portrait) {
+    height: scale(140px);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  max-width: 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: scale(58px) 0 scale(210px);
+  margin: 0 auto;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0 0 scale(100px);
+  }
+}
+
+.menuWrap {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: calc(100% - scale(270px));
+
+  @media (max-width: $tablet-portrait) {
+    top: scale(47px);
+    left: 0;
+    width: 100%;
+    height: calc(100% - scale(166px));
+  }
+}
+
+.menu {
+  position: sticky;
+  top: 0;
+  left: auto;
+  height: scale(62px);
+  box-sizing: border-box;
+  align-self: flex-start;
+  padding-top: scale(21px);
+  padding-left: scale(30px);
+  background-color: var(--beige);
+
+  @media (max-width: $tablet-portrait) {
+    top: calc(scale(9px) * -1);
+    height: scale(134px);
+    padding-top: scale(48px);
+    padding-left: scale(24px);
+    background-color: var(--white);
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline1;
+
+  z-index: 4;
+  width: scale(720px);
+  box-sizing: border-box;
+  align-self: flex-end;
+  padding-right: scale(108px);
+  margin: 0 0 scale(16px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    width: scale(298px);
+    align-self: flex-start;
+    padding-right: scale(24px);
+    margin: 0 0 scale(8px) scale(24px);
+  }
+}
+
+.search {
+  position: sticky;
+  z-index: 3;
+  top: scale(30px);
+  width: scale(800px);
+  height: scale(52px);
+  box-sizing: border-box;
+  padding: 0 scale(80px) scale(20px);
+  background-color: var(--beige);
+
+  &::before {
+    position: absolute;
+    z-index: 0;
+    top: calc(scale(30px) * -1);
+    left: 0;
+    width: 100%;
+    height: scale(30px);
+    background-color: var(--beige);
+    content: '';
+  }
+
+  @media (max-width: $tablet-portrait) {
+    position: static;
+    width: 100%;
+    height: scale(32px);
+    padding: 0 scale(24px);
+    margin-bottom: scale(77px);
+    background-color: var(--white);
+
+    &::before {
+      height: 0;
+    }
+  }
+}
+
+.pagination {
+  width: 100%;
+  margin-bottom: calc(scale(48px) * -1);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: 0;
+  }
+}
+
+.paginateBar {
+  top: scale(82px) !important;
+}

@@ -1,41 +1,24 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
 
-import { Icon } from '../../icon';
+import { Tag } from 'components/ui/tag';
 
 import styles from './list-selected.module.css';
 
 interface IListSelectedProps {
-  selectList: string[],
-  setMaxWidth: () => string,
+  selectList: string[]
+  cb: (value: string) => void
+  activeDropdown: boolean
 }
 
-export const ListSelected: FC<IListSelectedProps> = ({ selectList, setMaxWidth }): JSX.Element => {
+export const ListSelected: FC<IListSelectedProps> = ({ selectList, cb, activeDropdown }): JSX.Element => {
   return (
-    <div className={ cn(styles.container, {
-      [styles.bottom]: selectList.length > 1,
-    })}>
-      <ul 
-        className={ cn(styles.list) } 
-        style={{ gridTemplateColumns: `repeat(auto-fit, max(${setMaxWidth()}))` }}
-      >
-        {
-          selectList.map((item, i) => {
-            return (
-              <li className={ cn(styles.item) } key={ i } >
-                { item }
-              </li>
-            );
-          })
-        }
+    <div className={cn(styles.container, { [styles.lower]: activeDropdown })}>
+      <ul className={cn(styles.list)}>
+        {selectList.map((item, i) => (
+          <Tag label={item} key={i} selected={true} isIcon={true} cb={cb}/>
+        ))}
       </ul>
-      <button className={ cn(styles.button) } >
-        <Icon 
-          glyph='arrow-right' 
-          fill='black' 
-          className={ styles.iconArrowRight } 
-        />
-      </button>
     </div>
   );
 };

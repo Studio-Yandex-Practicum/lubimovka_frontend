@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import classNames from 'classnames/bind';
 
 import { Crewman } from 'shared/types';
@@ -26,14 +26,14 @@ export const PerformanceCrew: FC<IPerformanceCrewProps> = (props) => {
   return (
     <dl className={cx('list')}>
       {restCrew.map(({ name, role }) => (
-        <>
+        <Fragment key="role">
           <dt className={cx('title')}>
             {getRoleTitle(role)}
           </dt>
           <dd className={cx('description')}>
             {name}
           </dd>
-        </>
+        </Fragment>
       ))}
       <dt className={cx('title')}>
         Актёры

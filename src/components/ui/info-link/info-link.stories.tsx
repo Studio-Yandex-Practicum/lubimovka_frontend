@@ -7,7 +7,7 @@ export default {
   component: InfoLink,
 } as ComponentMeta<typeof InfoLink>;
 
-const Template: ComponentStory<typeof InfoLink> = (args) => <InfoLink {...args} />;
+const Template: ComponentStory<typeof InfoLink> = (args) => <InfoLink {...args}/>;
 
 export const SocialMediaLink = Template.bind({});
 SocialMediaLink.args = {

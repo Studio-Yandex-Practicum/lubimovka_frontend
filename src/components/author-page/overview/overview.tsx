@@ -1,55 +1,159 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import Image from 'next/image';
+import cn from 'classnames';
+
 import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
+import { InfoLink } from 'components/ui/info-link';
 
-import cn from 'classnames';
 import styles from './overview.module.css';
 
-const withPhoto = true; // В пропсах должно быть
+interface otherLinksList {
+  name: string,
+  link: string,
+  isPinned: boolean,
+  orderNumber: number,
+}
 
-export const AuthorOverview: FC = () => {
+interface socialDataList {
+  name: string,
+  link: string,
+}
+
+interface IAuthorOverview {
+  data: {
+    image?: string,
+    name: string,
+    city: string,
+    quote: string,
+    biography: string,
+    other_links: otherLinksList[],
+    achievements: Array<string>,
+    social_networks: socialDataList[],
+    email: string,
+  }
+}
+
+export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
+
+  const {
+    image,
+    name,
+    city,
+    quote,
+    biography,
+    other_links,
+    achievements,
+    social_networks,
+    email,
+  } = data;
+
+  const [isExpand, setExpand] = useState(true);
+
   return (
-    <section className={ cn(styles.overview) }>
-      <div className={ cn(withPhoto ? styles.personalInfo : styles.personalInfoNoPhoto) }>
-        <div className={ cn(styles.button) }>
-          <Button size='s' iconPlace='right' icon='arrow-left' label='Библиотека' border='bottomRight' isLink={ true }/>
+    <section className={cn(styles.overview)}>
+      <div className={cn(image ? styles.personalInfo : styles.personalInfoNoPhoto)}>
+        <div className={cn(styles.button)}>
+          <Button
+            size='s'
+            iconPlace='right'
+            icon='arrow-left'
+            label='Библиотека'
+            border='bottomRight'
+            isLink={true}/>
         </div>
-        { withPhoto && <div className={ cn(styles.photo) }>Author Image</div> }
-        <h1 className={cn(styles.fullName)}>Екатерина Августеняк</h1>
-        <p className={ cn(styles.city) }>Санкт-Петербург</p>
-        <q className={ cn(styles.quote) }>
-          <p className={ cn(styles.quoteParagraph) }> У меня не было задачи написать какой-то комический текст,
-            мне было интересно сделать именно пьесу-каталог. </p>
+
+        {image &&
+          <div className={cn(styles.photoBox)}>
+            <Image
+              className={cn(styles.photo)}
+              src={image}
+              alt={`Фотография автора ${ name }`}
+              layout='fill'
+            />
+          </div>
+        }
+        <h1 className={cn(styles.fullName)}>{name}</h1>
+        <p className={cn(styles.city)}>{city}</p>
+        <q className={cn(styles.quote)}>
+          <p className={cn(styles.quoteParagraph)}>{quote}</p>
         </q>
       </div>
-      <div className={ cn(styles.overviewInfo) }>
-        <div className={ cn(styles.overviewBlock) }>
-          <p className={ cn(styles.overviewParagraph) }>Художница, драматург, режиссёр. Занимается исследованием
-            перформативных возможностей языка и художественным анализом когнитивных особенностей участников
-            современных коммуникаций. Создает тексты для театра, применяет драматургические практики в разных
-            медиумах.</p>
+
+      <div className={cn(styles.overviewInfo)}>
+        <div className={cn(styles.overviewBlock)}>
+          <p className={cn(styles.overviewParagraph, isExpand ? styles.expandButton : styles.rollUpButton)}>
+            {biography}
+          </p>
+          <Button
+            width='100%'
+            size='s'
+            iconPlace='right'
+            icon={isExpand ? 'arrow-down' : 'arrow-up'}
+            label={isExpand ? 'Полный текст' : 'Свернуть'}
+            border='topLeft'
+            onClick={() => setExpand(!isExpand)}
+          />
+
+          <div className={cn(styles.overviewBlockAuthorInfo)}>
+            {other_links.map((item, idx) =>
+              <div className={cn(styles.overviewLinkHeading)} key={idx}>
+                <InfoLink
+                  label={item.name}
+                  href={item.link}
+                  icon='arrow-right'
+                  iconPlace='right'
+                  size='xl'
+                  border='borderTop'
+                  iconClassName={cn(styles.link)}
+                />
+              </div>
+            )}
+          </div>
         </div>
-        <div className={ cn(styles.overviewSet) }>
-          <div className={ cn(styles.overviewTagsBlock) }>
-            <h2 className={ cn(styles.overviewTagsHeading) }>Достижения</h2>
-            <div className={ cn(styles.tag) }>
-              <Tag label='шорт-лист' selected={false}/>
-            </div>
-            <div className={ cn(styles.tag) }>
-              <Tag label='внеконкурсная программа' selected={ false }/>
-            </div>
-            <div className={ cn(styles.tag) }>
-              <Tag label='fringe-программа' selected={ false }/>
+
+        <div className={cn(styles.overviewSet)}>
+          <div className={cn(styles.overviewTagsBlock)}>
+            <h2 className={cn(styles.overviewTagsHeading)}>Достижения</h2>
+            <div className={cn(styles.tagWrapper)}>
+              {achievements.map((item, idx) =>
+                <div className={cn(styles.tag)} key={idx}>
+                  <Tag
+                    label={item}
+                    selected={false}
+                  />
+                </div>
+              )}
             </div>
           </div>
-          <div>
-            <h2 className={ cn(styles.overviewTagsHeading) }>Социальные сети</h2>
-            <Button size='s' iconPlace='left' icon='arrow-right' label='fb' border='bottomLeft'/>
-            <Button size='s' iconPlace='left' icon='arrow-right' label='vk' border='bottomLeft'/>
+
+          <div className={cn(styles.overviewSocialWrapper)}>
+            <h2 className={cn(styles.overviewSocialLinkHeading)}>Социальные сети</h2>
+            <div className={cn(styles.overviewSocialLinkBlock)}>
+              {social_networks.map((item, idx) =>
+                <InfoLink
+                  key={idx}
+                  href={item.link}
+                  label={item.name}
+                  isOutsideLink={true}
+                  icon='arrow-right'
+                  iconPlace='left'
+                  size='s'
+                  border='borderBottomLeft'
+                />
+              )}
+            </div>
           </div>
-          <div>
-            <p className={ cn(styles.email) }>E-mail для связи</p>
-            <a className={ cn(styles.email) } href='#'>e-mail@e.mail</a>
+
+          <div className={cn(styles.overviewSocialWrapper)}>
+            <p className={cn(styles.email)}>E-mail для связи</p>
+            <InfoLink
+              isOutsideLink={true}
+              href={`mailto://${ email }`}
+              label={email}
+              size='l'
+              textDecoration='underline'
+            />
           </div>
         </div>
       </div>

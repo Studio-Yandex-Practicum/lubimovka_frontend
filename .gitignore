@@ -4,6 +4,10 @@ storybook-static
 
 .next
 
+.env
+.env.local
+.env.*.local
+
 .stylelintcache
 .eslintcache
 
@@ -11,5 +15,3 @@ storybook-static
 .idea
 .prettierrc
 .DS_Store
-
-.gitattributes

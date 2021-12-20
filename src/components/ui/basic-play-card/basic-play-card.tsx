@@ -1,34 +1,52 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import cn from 'classnames/bind';
+
 import { Button } from '../button';
 import { InfoLink } from '../info-link';
 
-import { Url } from 'shared/types';
-
 import styles from './basic-play-card.module.css';
+
 const cx  = cn.bind(styles);
 
 export interface IBasicPlayCardProps {
+  type?: 'performance';
   play: {
+    id?: number;
     title: string;
     city: string;
-    year: string;
-    linkView: Url;
-    linkDownload: Url;
-  };
-  author: {
-    id: number,
-    name: string;
+    year: number;
+    linkView: string;
+    linkDownload: string;
+    authors: Author [];
   };
   buttonVisibility?: boolean;
+}
+
+type Author = {
+  id: number,
+  name: string,
 }
 
 export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
   const {
     play,
-    author,
     buttonVisibility,
   } = props;
+
+  const authorsHiddenLabel = (
+    <React.Fragment>
+      {
+        play.authors.length > 1 ?
+          (<dt className={cx('hiddenText')}>
+          Авторы:
+          </dt>)
+          :
+          (<dt className={cx('hiddenText')}>
+          Автор:
+          </dt>)
+      }
+    </React.Fragment>
+  );
 
   return (
     <article
@@ -64,16 +82,19 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         </div>
       </div>
       <dl className={cx('info')}>
-        <dt className={cx('hiddenText')}>
-          Автор:
-        </dt>
-        <InfoLink
-          isOutsideLink={false}
-          href={`/authors/${author.id}`}
-          label={author.name}
-          size='l'
-          className={cx('author')}
-        />
+        {authorsHiddenLabel}
+        {play.authors.map((i) => (
+          <dd className={cx('author', play.authors.length > 1 && 'authorMultiple')} key={i.id}>
+            <InfoLink
+              isOutsideLink={false}
+              href={`/authors/${i.id}`}
+              label={i.name}
+              size='l'
+              className={cx('author', play.authors.length > 1 && 'authorMultiple')}
+            />
+          </dd>
+        )
+        )}
         <dt className={cx('hiddenText')}>
           Город:
         </dt>

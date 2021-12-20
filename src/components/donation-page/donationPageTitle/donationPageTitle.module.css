@@ -1,0 +1,131 @@
+.componentContainer {
+  display: flex;
+  flex-flow: row nowrap;
+
+  @media (max-width: $tablet-portrait) {
+    flex-flow: column nowrap;
+  }
+}
+
+.header {
+  @mixin headline;
+  @mixin headline3;
+
+  width: scale(629px);
+  margin: scale(59px 0 0 120px);
+  white-space: pre-wrap;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    width: scale(367px);
+    margin: scale(11px 0 0 23px);
+  }
+}
+
+.text {
+  @mixin headline;
+  @mixin headline6;
+
+  width: scale(537px);
+  padding: 0;
+  margin: scale(54px 0 0 180px);
+  white-space: pre-wrap;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline7;
+
+    width: scale(304px);
+    margin: scale(24px 0 0 85px);
+  }
+}
+
+.footnote {
+  @mixin text;
+  @mixin textMedium;
+
+  position: relative;
+  width: scale(345px);
+  padding: 0;
+  margin: scale(117px 0 0 180px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(338px);
+    margin: scale(58px 0 0 51px);
+  }
+}
+
+.asterisk {
+  position: absolute;
+  top: calc(-25 * var(--scale));
+  left: calc(-25 * var(--scale));
+  width: scale(25px);
+  height: scale(25px);
+}
+
+.advertisement {
+  display: flex;
+  flex: 23 23 46%;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: scale(49px 0 0 0);
+}
+
+.iframe {
+  width: 510px;
+  height: 492px;
+  background: transparent !important;
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}
+
+.qrcodeContainer {
+  display: flex;
+  flex-flow: row nowrap;
+
+  @media (max-width: $tablet-portrait) {
+    flex-flow: column nowrap;
+  }
+}
+
+.qrcode {
+  position: relative;
+  width: 220px;
+  height: 220px;
+
+  @media (max-width: $tablet-portrait) {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+.qrcodeAdviseDesktop {
+  @mixin text;
+  @mixin textCaption;
+
+  width: scale(200px);
+  max-width: 270px;
+  padding: scale(0 0 0 10px);
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}
+
+.qrcodeAdviseMobile {
+  display: none;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+
+    @mixin text;
+    @mixin textCaption;
+
+    width: 100%;
+    max-width: 250px;
+    padding: scale(10px 0 0 0);
+  }
+}

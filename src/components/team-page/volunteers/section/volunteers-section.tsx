@@ -1,37 +1,23 @@
 import React, { FC, useCallback, useMemo, useState } from 'react';
 import cn from 'classnames';
+import classNames from 'classnames/bind';
 
-import styles from './volunteers-section.module.css';
 import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
 import VolunteersList from 'components/team-page/volunteers/list';
 import { InfoLink } from 'components/ui/info-link';
-import classNames from 'classnames/bind';
+import { Volunteers } from 'api-typings';
+
+import styles from './volunteers-section.module.css';
 
 const cx = classNames.bind(styles);
 
-interface PersonCardData {
-  id: number;
-  person: {
-    id: number;
-    first_name: string;
-    second_name: string;
-    middle_name: string;
-    city: string;
-    email: string;
-    image: string;
-  };
-  year: number;
-  title: string;
-  review: string;
-}
-
 interface VolunteersSectionProps {
-  cards: Array<PersonCardData>;
+  cards: Array<Volunteers>
 }
 
 const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
-  const { cards } = props;
+  const { cards = [] } = props;
 
   const years = useMemo(() => {
     return Array.from(new Set(cards.map(card => card.year))).sort().reverse();
@@ -57,7 +43,7 @@ const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
           onClick={changeYearHandler}
           currentYear={currentYear}
         />
-        <VolunteersList cards={selectedCards}/>
+        <VolunteersList cards={selectedCards} currentYear={currentYear}/>
         <div className={styles.infoBlock}>
           <Icon className={styles.asterisk} glyph={'asterisk'}/>
           <p className={cx('info')}>

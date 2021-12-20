@@ -1,0 +1,46 @@
+.intro {
+  @mixin headline;
+  @mixin headline6;
+
+  max-width: scale(387px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(366px);
+  }
+}
+
+.photo {
+  position: relative;
+  width: scale(150px);
+  height: scale(182px);
+  margin: scale(25px auto 32px 31px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(24px auto 24px 63px);
+  }
+}
+
+.info {
+  margin: 0;
+}
+
+.email {
+  max-width: scale(479px);
+  margin: 0;
+  margin-bottom: scale(8px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(367px);
+  }
+}
+
+.description {
+  @mixin text;
+  @mixin textSmall;
+
+  max-width: scale(269px);
+}
+
+.hiddenText {
+  @mixin visually-hidden;
+}

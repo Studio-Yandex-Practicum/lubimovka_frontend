@@ -114,6 +114,10 @@
   }
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .borderBottomLeft {
   height: scale(24px);
   padding-right: scale(9px);
@@ -124,9 +128,7 @@
 .borderTop {
   width: inherit;
   justify-content: space-between;
-  padding-top: scale(4px);
-  padding-right: scale(7px);
-  padding-left: scale(7px);
+  padding: scale(4px) scale(7px);
   border-top: scale(1px) solid var(--coal);
 }
 

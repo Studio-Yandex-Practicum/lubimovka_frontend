@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
+import classNames from 'classnames/bind';
 
 import { Icon, IIconProps } from '../icon';
-import styles from './info-link.module.css';
 
-import classNames from 'classnames/bind';
+import styles from './info-link.module.css';
 
 const cx = classNames.bind(styles);
 
@@ -17,8 +17,10 @@ export interface ILinkProps {
   hoverStyle?: 'invert' | 'bottomLine' | 'bottomLineAndInvert';
   size?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'number';
   textDecoration?: 'textDecorationNone' | 'underline';
+  textTransform?: 'uppercase';
   border?: 'borderNone' | 'borderBottomLeft' | 'borderTop';
   className?: string;
+  iconClassName?: string;
 }
 
 export const InfoLink: FC<ILinkProps> = (props) => {
@@ -31,8 +33,10 @@ export const InfoLink: FC<ILinkProps> = (props) => {
     hoverStyle = 'invert',
     size = 's',
     textDecoration = 'textDecorationNone',
+    textTransform,
     border = 'borderNone',
     className,
+    iconClassName,
     ...restLinkProps
   } = props;
 
@@ -41,6 +45,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
     icon && 'flex',
     [size],
     [textDecoration],
+    [textTransform],
     [border],
     [hoverStyle],
     className
@@ -48,9 +53,9 @@ export const InfoLink: FC<ILinkProps> = (props) => {
 
   const linkChildren = (
     <React.Fragment>
-      {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
+      {iconPlace === 'left' && icon && <Icon className={cx(iconClassName)} glyph={icon}/>}
       {<span className={cx('label', [iconPlace])}>{label}</span>}
-      {iconPlace === 'right' && icon && <Icon glyph={icon}/>}
+      {iconPlace === 'right' && icon && <Icon className={cx(iconClassName)} glyph={icon}/>}
     </React.Fragment>
   );
 

@@ -1,22 +1,14 @@
 import { FC, useState, useEffect } from 'react';
-
-import PersonCard from '../ui/person-card/person-card';
 import { useKeenSlider } from 'keen-slider/react';
-import 'keen-slider/keen-slider.min.css';
 
+import { PersonCard } from '../ui/person-card/person-card';
+import 'keen-slider/keen-slider.min.css';
+import { Sponsor } from 'api-typings';
 
 import style from './trustees-persons-list.module.css';
 
-interface TrusteePersonData {
-  id: number,
-  name: string,
-  link: string,
-  about: string,
-  participant: boolean
-}
-
 interface TrusteesPersonsProps {
-  trustees: Array<TrusteePersonData>
+  trustees: Array<Sponsor>
 }
 
 const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
@@ -63,10 +55,10 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
           {trustees.map((trustee) => (
             <div key={trustee.id} className="keen-slider__slide">
               <PersonCard
-                participant={trustee.participant}
-                link={trustee.link}
-                about={trustee.about}
-                name={trustee.name}
+                participant={true}
+                image={trustee.person.image}
+                about={trustee.position}
+                name={`${trustee.person.first_name} ${trustee.person.last_name}`}
               >
               </PersonCard>
             </div>
@@ -80,10 +72,10 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
           {trustees.map((trustee) => (
             <li key={trustee.id} className={style.trusteesListItem}>
               <PersonCard
-                participant={trustee.participant}
-                link={trustee.link}
-                about={trustee.about}
-                name={trustee.name}
+                participant={true}
+                image={trustee.person.image}
+                about={trustee.position}
+                name={`${trustee.person.first_name} ${trustee.person.last_name}`}
               >
               </PersonCard>
             </li>

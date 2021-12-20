@@ -1,21 +1,50 @@
-.plays {
-  display: grid;
-  padding: 134px 60px;
+.playsContainer {
+  position: relative;
+  display: flex;
+  overflow: scroll;
+  padding: calc(var(--scale) * 134) calc(var(--scale) * 60);
   background-color: var(--beige);
-  gap: calc(var(--scale) * 30);
-  grid-row: auto;
-  grid-template-columns: repeat(5, 2fr);
 
-  @media (max-width: 1199px) {
-    grid-template-columns: repeat(4, 2fr);
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 10px;
   }
 
-  @media (max-width: 999px) {
-    grid-template-columns: repeat(3, 2fr);
+  &::-webkit-scrollbar-track {
+    background-color: var(--beige);
   }
 
-  @media (max-width: 728px) {
-    grid-template-columns: repeat(1, 2fr);
-    justify-items: center;
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, .8);
+  }
+
+  @media (max-width: $tablet-portrait) {
+    @mixin hideScrollbar;
+
+    padding: calc(var(--scale) * 10) 0 calc(var(--scale) * 80) calc(var(--scale) * 24);
+  }
+}
+
+.list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  @media (max-width: $tablet-portrait) {
+    margin: 0 calc(var(--scale) * 24) 0 0;
+  }
+}
+
+.item {
+  width: calc(var(--scale) * 240);
+  margin: 0 calc(var(--scale) * 30) 0 0;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    width: calc(var(--scale) * 244);
   }
 }

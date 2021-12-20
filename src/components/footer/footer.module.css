@@ -1,13 +1,10 @@
 .footer {
-  @mixin text;
-  @mixin textCaption;
-
   display: grid;
-  padding: scale(42px 32px 56px);
+  padding: scale(42px 32px 54px);
   grid-template:
     "logo partners partners   partners"
     "logo address  navigation projects"
-    "logo footnote footnote   footnote" 1fr / min-content 1fr scale(360px) scale(244px);
+    "logo footnote footnote   footnote" 1fr / min-content 1fr scale(356px) scale(272px);
 
   @media (max-width: $tablet-portrait) {
     @mixin textMedium;
@@ -30,92 +27,16 @@
   grid-area: logo;
 
   @media (max-width: $tablet-portrait) {
-    margin-right: 0;
-    margin-left: scale(58px);
+    margin: scale(56px 0 0 58px);
   }
 }
 
 .footnote {
-  display: flex;
   margin-top: scale(49px);
   grid-area: footnote;
 
   @media (max-width: $tablet-portrait) {
-    @mixin textCaption;
-
-    flex-direction: column;
-    padding: scale(32px 28px 74px);
     border-top: 1px solid black;
-    margin-top: scale(70px);
-  }
-}
-
-.copyright {
-  margin: scale(0 32px 0 0);
-
-  @media (max-width: $tablet-portrait) {
-    margin: scale(0 0 10px 0);
-  }
-}
-
-.link {
-  color: inherit;
-  text-decoration: none;
-
-  @media (max-width: $tablet-portrait) {
-    text-decoration: underline;
-  }
-}
-
-.credits {
-  display: flex;
-  width: scale(424px);
-  margin: 0 0 0 auto;
-
-  @media (max-width: $tablet-portrait) {
-    width: scale(254px);
-    flex-direction: column;
-    margin: scale(59px 0 0 0);
-  }
-
-  dt {
-    &::after {
-      display: inline;
-      content: ' –';
-    }
-  }
-
-  dd {
-    margin: 0;
-  }
-}
-
-.shishki {
-  display: grid;
-  margin-right: scale(38px);
-  grid-template:
-    "logo text"
-    "logo text" 1fr / min-content 1fr;
-
-  @media (max-width: $tablet-portrait) {
-    margin-right: 0;
-    margin-bottom: scale(16px);
-  }
-
-  &::before {
-    display: block;
-    width: scale(27px);
-    height: scale(25px);
-    margin-right: scale(4px);
-    background-image: url('./footer.assets/shishki.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    content: '';
-    grid-area: logo;
-
-    @media (max-width: $tablet-portrait) {
-      margin-top: scale(6px);
-      margin-right: scale(9px);
-    }
+    margin-top: scale(92px);
   }
 }

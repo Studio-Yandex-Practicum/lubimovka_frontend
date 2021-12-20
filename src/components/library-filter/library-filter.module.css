@@ -1,0 +1,52 @@
+.container {
+  width: scale(269px);
+}
+
+.title {
+  @mixin headline;
+  @mixin headline7;
+
+  margin-bottom: scale(16px);
+}
+
+.years {
+  margin-bottom: scale(38px);
+}
+
+.programmesList {
+  display: grid;
+  padding: 0;
+  margin: 0 0 scale(75px);
+  list-style: none;
+  row-gap: scale(13px);
+}
+
+.programme {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.buttonWrap {
+  display: block;
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}
+
+.mobileButtons {
+  display: none;
+  max-width: 100%;
+  margin-top: scale(80px);
+
+  @media (max-width: $tablet-portrait) {
+    display: flex;
+  }
+}
+
+.button {
+  @media (max-width: $tablet-portrait) {
+    width: scale(183px);
+  }
+}

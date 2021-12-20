@@ -1,6 +1,11 @@
 .section {
   width: 100%;
+  padding-bottom: scale(128px);
   background-color: var(--white);
+
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: scale(72px);
+  }
 }
 
 .article_container {
@@ -36,6 +41,7 @@
     @mixin headline6;
 
     max-width: scale(366px);
+    padding-top: scale(56px);
     padding-right: 0;
   }
 }
@@ -47,6 +53,7 @@
   padding-top: scale(72px);
   padding-right: scale(100px);
   margin: 0 auto;
+  white-space: pre-wrap;
 
   @media (max-width: $tablet-portrait) {
     max-width: scale(366px);
@@ -56,7 +63,15 @@
 }
 
 .article_container > h4 + p {
-  padding-top: scale(24px);
+  padding-top: scale(36px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-top: scale(24px);
+  }
+}
+
+.article_container > p + p {
+  padding-top: scale(16px);
 }
 
 .article_container > blockquote {
@@ -68,6 +83,7 @@
   padding: scale(56px 18.75% 72px 31.25%);
   margin: scale(110px auto 0);
   background-color: var(--light-green);
+  white-space: pre-wrap;
   word-break: break-word;
 
   @media (max-width: $tablet-portrait) {

@@ -1,0 +1,104 @@
+.opportunityWrapper {
+  padding: 0;
+  margin: scale(177px 0 0 0);
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(58px 0 0 0);
+  }
+}
+
+.intro {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  @media (max-width: $tablet-portrait) {
+    flex-flow: column-reverse nowrap;
+  }
+}
+
+.opportunityWrapper:nth-child(even) > .intro {
+  flex-flow: row-reverse nowrap;
+  justify-content: flex-end;
+
+  @media (max-width: $tablet-portrait) {
+    flex-flow: column-reverse nowrap;
+  }
+}
+
+.header {
+  width: scale(482px);
+  align-self: flex-end;
+
+  @mixin headline;
+  @mixin headline4;
+
+  margin: 0 0 0 scale(32px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    width: scale(359px);
+    align-self: flex-start;
+    margin: scale(46px 0 0 24px);
+  }
+}
+
+.opportunityWrapper:nth-child(even) > .intro > .header {
+  margin: 0 0 0 scale(59px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(46px 0 0 24px);
+  }
+}
+
+.pictureContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.opportunityWrapper:nth-child(odd) > .intro > .pictureContainer {
+  @media (max-width: $tablet-portrait) {
+    justify-content: flex-end;
+  }
+}
+
+.picture {
+  position: relative;
+  width: scale(780px);
+  height: scale(300px);
+  vertical-align: bottom;
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(390px);
+    height: scale(200px);
+  }
+}
+
+.kickies {
+  display: grid;
+  padding: 0;
+  margin: scale(73px 32px 0 32px);
+  gap: scale(119px) 0;
+  grid-template-columns: repeat(5, 1fr);
+  list-style: none;
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(24px 0 0 0);
+    gap: scale(24px) 0;
+    grid-template-columns: 1fr;
+  }
+}
+
+.kicky {
+  @mixin headline;
+  @mixin headline7;
+
+  width: scale(237px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(305px);
+    margin: scale(0 0 0 85px);
+  }
+}

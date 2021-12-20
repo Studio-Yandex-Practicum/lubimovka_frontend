@@ -1,22 +1,20 @@
-import {NextPage} from 'next';
+import { NextPage } from 'next';
 import cn from 'classnames/bind';
 
-import {AfisheTitle} from 'components/afishe-page/title';
-import {FestivalDays} from 'components/afishe-page/festival-days';
-import {RegularDays} from 'components/afishe-page/regular-days';
-import AppLayout from 'components/app-layout';
+import { AfisheTitle } from 'components/afishe-page/title';
+import { FestivalDays } from 'components/afishe-page/festival-days';
+import { RegularEvents } from 'components/afishe-page/regular-events';
+import { AppLayout } from 'components/app-layout';
+
 import data from './assets/mock-data.json';
 import festivalData from './assets/afishe-fesival-data.json';
-
+import regularData from './assets/afishe-regular-data.json';
 import styles from 'components/afishe-page/afishe.module.css';
 
 const cx = cn.bind(styles);
 
 interface IAfisheProps {
-  title: string,
-  entrance: string,
-  registration: string,
-  discussion: string,
+  title: string[],
   festival: boolean,
   regular: boolean,
 }
@@ -30,9 +28,9 @@ const Afishe: NextPage<IAfisheProps> = () => {
   return (
     <AppLayout>
       <main className={cx('main')}>
-        {title && <AfisheTitle title={title.title} entrance={title.entrance} registration={title.registration} discussion={title.discussion}/>}
+        {title && <AfisheTitle festival={festival} title={festival ? title.festTitle : title.regTitle} entrance={title.entrance} registration={title.registration} discussion={title.discussion}/>}
         {festival && <FestivalDays data={festivalData}/>}
-        {regular && <RegularDays/>}
+        {regular && <RegularEvents data={regularData}/>}
       </main>
     </AppLayout>
   );

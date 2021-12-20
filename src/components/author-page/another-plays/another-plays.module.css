@@ -8,7 +8,7 @@
     padding: calc(var(--scale) * 85) calc(var(--scale) * 40) calc(var(--scale) * 85) 0;
   }
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     padding: calc(var(--scale) * 56) calc(var(--scale) * 25);
     grid-template-columns: 10fr;
   }
@@ -21,7 +21,7 @@
   max-width: calc(var(--scale) * 490);
   grid-column: 2/3;
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
     grid-column: 1/1;
@@ -30,10 +30,10 @@
 
 .blocks {
   padding: 0;
-  margin: 70px 0 0;
+  margin: calc(var(--scale) * 70) 0 0;
   list-style-type: none;
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     margin: calc(var(--scale) * 24) 0 0;
   }
 }
@@ -53,13 +53,14 @@
   @mixin headline6;
 
   max-width: calc(var(--scale) * 500);
-  margin: 16px 0 25px;
+  margin: calc(var(--scale) * 16) 0  calc(var(--scale) * 15);
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline7;
   }
 }
 
 .downloadButton {
-  margin: calc(var(--scale) * 15) 0 0;
+  margin: calc(var(--scale) * 5) 0;
+  text-decoration: none;
 }
