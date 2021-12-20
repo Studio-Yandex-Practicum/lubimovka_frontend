@@ -14,9 +14,9 @@ import { AppLayout } from 'components/app-layout';
 
 import data from 'components/main-page/assets/mock-data.json';
 import mainEventsData from 'components/main-page/assets/main-events.json';
-import mainPlatformsData from 'components/main-page/assets/main-platforms-data.json';
 import mainShortListData from 'components/main-page/assets/main-short-list-data.json';
 import mainArchiveData from 'components/main-page/assets/main-archive-data.json';
+import mainPlatformsData from 'components/main-page/assets/main-platforms-data.json';
 import styles from './index.module.css';
 
 const cx = cn.bind(styles);
@@ -42,7 +42,7 @@ const MainPage: NextPage = () => {
           {events && <MainEvents data={mainEventsData}/>}
           {aside && <MainAside/>}
           {banners && <MainBanners/>}
-          {platforms && <MainPlatforms data={mainPlatformsData[0]}/>}
+          {platforms && <MainPlatforms {...mainPlatformsData}/>}
           {shortList && <MainShortList data={mainShortListData}/>}
           {archive && mainArchiveData.map((el) => (
             <MainArchive key={el.id} data={el}/>

@@ -10,8 +10,10 @@ import { Icon } from 'components/ui/icon';
 import { IDroplistPublic } from 'components/ui/droplist';
 import LibraryFiltersModal from './library-filters-modal';
 import LibraryPreloader from './library-preloader/library-preloader';
+import LibraryTagsMobile from 'components/library-tags-mobile/library-tags-mobile';
 import { Play } from 'api-typings';
 import { Action } from 'components/library-filter/library-filter-reducer';
+import { IProgram } from 'pages/library';
 
 import styles from './index.module.css';
 
@@ -19,7 +21,7 @@ interface ILibraryPageProps {
   isLoading: boolean;
   items: Play[];
   years: number[];
-  programmes: string[];
+  programmes: Array<IProgram>;
   filterDispatcher: Dispatch<Action>;
 }
 
@@ -52,14 +54,18 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
               <Menu.Item
                 href='/library'
               >
-        Пьесы
+                Пьесы
               </Menu.Item>
               <Menu.Item
                 href='/library/authors'
               >
-        Авторы
+                Авторы
               </Menu.Item>
             </Menu>
+          </div>
+          <div className={styles.mobileTags}>
+            <LibraryTagsMobile programmes={programmes} filterDispatcher={filterDispatcher}
+              droplistRef={droplistRef}/>
           </div>
           <div className={styles.filter}>
             <LibraryFilter years={years} programmes={programmes}
@@ -114,9 +120,9 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             </>
           )}
         </section>
-        {isModalOpen && (<LibraryFiltersModal><LibraryFilter years={years} programmes={programmes}
+        <LibraryFiltersModal isModalOpen={isModalOpen}><LibraryFilter years={years} programmes={programmes}
           filterDispatcher={filterDispatcher} onCheckResults={handleFiltersClick}
-          droplistRef={droplistRef}/></LibraryFiltersModal>)}
+          droplistRef={droplistRef}/></LibraryFiltersModal>
       </div>
     </main>
   );

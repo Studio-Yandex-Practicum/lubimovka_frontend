@@ -198,7 +198,16 @@
     display: grid;
     box-sizing: border-box;
     padding: scale(56px) scale(85px) scale(100px);
-    margin-top: scale(89px);
+    margin-top: scale(124px);
     row-gap: scale(48px);
+  }
+}
+
+.mobileTags {
+  display: none;
+  background-color: var(--white);
+
+  @media (max-width: $tablet-portrait) {
+    display: flex;
   }
 }

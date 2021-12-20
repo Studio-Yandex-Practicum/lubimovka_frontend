@@ -11,7 +11,7 @@
   grid-template-columns: 2fr 6fr 9fr;
   grid-template-rows: auto;
 
-  @media (max-width: 959px) {
+  @media (max-width: $tablet-portrait) {
     background-color: var(--light-green);
     grid-template-areas:
       'button'
@@ -32,7 +32,7 @@
   grid-template-columns: 2fr 6fr 9fr;
   grid-template-rows: auto;
 
-  @media (max-width: 959px) {
+  @media (max-width: $tablet-portrait) {
     background-color: var(--light-green);
     grid-template-areas:
       'button'
@@ -47,14 +47,15 @@
   margin: calc(var(--scale) * 30);
   grid-area: button;
 
-  @media (max-width: 959px) {
-    justify-self: start;
+  @media (max-width: $tablet-portrait) {
+    position: absolute;
+    top: calc(var(--scale) * 7);
+    left: calc(var(--scale) * 60);
   }
 
-  @media (max-width: 724px) {
-    position: absolute;
-    top: 5px;
-    left: 80px;
+  @media (max-width: 500px) {
+    top: calc(var(--scale) * 3);
+    left: calc(var(--scale) * 50);
   }
 }
 
@@ -66,7 +67,7 @@
   grid-area: photo;
   justify-self: center;
 
-  @media (max-width: 959px) {
+  @media (max-width: $tablet-portrait) {
     margin: 0 0 0 calc(var(--scale) * 30);
     justify-self: start;
   }
@@ -82,8 +83,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: calc(var(--scale) * 275);
-  height: calc(var(--scale) * 355);
+  width: inherit;
+  height: inherit;
   object-fit: cover;
   transform: translate(-50%, -50%);
 }
@@ -100,7 +101,7 @@
   @media (max-width: 600px) {
     @mixin headline4;
 
-    margin: calc(var(--scale) * 16) 0 0 calc(var(--scale) * 20);
+    margin: calc(var(--scale) * 16) 0 calc(var(--scale) * 14) calc(var(--scale) * 20);
   }
 }
 
@@ -108,13 +109,9 @@
   @mixin text;
   @mixin textMedium;
 
-  padding: 0 calc(var(--scale) * 30) 0;
+  padding: 0 calc(var(--scale) * 40) 0;
   margin: 0 0 calc(var(--scale) * 56);
   grid-area: city;
-
-  @media (max-width: 414px) {
-    margin: calc(var(--scale) * 14) 0 0;
-  }
 }
 
 .quote {
@@ -131,12 +128,12 @@
     align-self: end;
   }
 
-  @media (max-width: 959px) {
+  @media (max-width: $tablet-portrait) {
     margin: 0 0 calc(var(--scale) * 72) calc(var(--scale) * 60);
     justify-self: start;
   }
 
-  @media (max-width: 728px) {
+  @media (max-width: 600px) {
     @mixin headline7;
 
     margin: calc(var(--scale) * 28) calc(var(--scale) * 20) calc(var(--scale) * 72) calc(var(--scale) * 60);
@@ -151,7 +148,7 @@
   max-width: calc(var(--scale) * 600);
   margin: 0 calc(var(--scale) * 10);
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline7;
   }
 }
@@ -164,12 +161,12 @@
   grid-template-rows: auto;
   justify-items: start;
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     gap: 5rem;
     grid-template-columns: 10fr;
   }
 
-  @media (max-width: 414px) {
+  @media (max-width: 600px) {
     padding: calc(var(--scale) * 56) 0 calc(var(--scale) * 120);
   }
 }
@@ -178,36 +175,30 @@
   padding: 0 calc(var(--scale) * 25);
   grid-column: 2/3;
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     grid-column: auto;
     grid-row: 2/2;
     justify-self: center;
   }
 
-  @media (max-width: 414px) {
+  @media (max-width: 600px) {
     padding: 0 calc(var(--scale) * 25);
   }
-}
-
-.overviewButton {
-  width: calc(var(--scale) * 480);
 }
 
 .overviewParagraph {
   @mixin text;
   @mixin textLarge;
 
+  overflow: hidden;
   max-width: calc(var(--scale) * 479);
+  max-height: 100%;
   margin: 0 0 calc(var(--scale) * 30);
+  transition: all 1s linear;
 }
 
 .expandButton {
-  overflow: hidden;
-  height: calc(var(--scale) * 200);
-}
-
-.rollUpButton {
-  overflow: visible;
+  max-height: calc(var(--scale) * 200);
 }
 
 .overviewBlockAuthorInfo {
@@ -241,7 +232,7 @@
     max-width: calc(var(--scale) * 400);
   }
 
-  @media (max-width: 728px) {
+  @media (max-width: $tablet-portrait) {
     max-width: calc(var(--scale) * 300);
     grid-column: auto;
     grid-row: 1/2;
