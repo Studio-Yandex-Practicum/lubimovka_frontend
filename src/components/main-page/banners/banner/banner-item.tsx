@@ -3,19 +3,20 @@ import Image from 'next/image';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button';
-import { IMainBannersProps } from '../main-banners';
 
 import styles from './banner-item.module.css';
 
-function debounce(cb: () => void, delay: number) {
-  let timer: ReturnType<typeof setTimeout>;
-  return function() {
-    clearTimeout(timer);
-    timer = setTimeout(cb, delay || 0);
-  };
+interface IMainBannerItem {
+  title: string
+  desc: string
+  buttonText: string
+  buttonUrl: string
+  imgAlt: string
+  imgUrl: string
+  cb: (handlerDebounced: () => void) => void
 }
 
-export const MainBannerItem: FC<IMainBannersProps> = (props):JSX.Element => {
+export const MainBannerItem: FC<IMainBannerItem> = (props):JSX.Element => {
   const bannerRef = useRef<HTMLDivElement>(null);
   const bannerContainerRef = useRef<HTMLDivElement>(null);
 
@@ -26,6 +27,7 @@ export const MainBannerItem: FC<IMainBannersProps> = (props):JSX.Element => {
     buttonUrl,
     imgAlt,
     imgUrl,
+    cb
   } = props;
 
   const scrollHandler = useCallback(() => {
@@ -41,14 +43,8 @@ export const MainBannerItem: FC<IMainBannersProps> = (props):JSX.Element => {
   }, [bannerRef, bannerContainerRef]);
 
   useEffect(() => {
-    const handlerDebounced = debounce(scrollHandler, 10);
-    if (bannerRef.current && bannerContainerRef.current) {
-      window.addEventListener('scroll', handlerDebounced);
-    }
-    return () => {
-      window.removeEventListener('scroll', handlerDebounced);
-    };
-  }, [scrollHandler]);
+    cb(scrollHandler);
+  }, []);
 
   return (
     <div className={cn(styles.banner)} ref={bannerRef}>
