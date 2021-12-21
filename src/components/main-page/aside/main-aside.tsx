@@ -3,11 +3,16 @@ import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
 import { BlogCard } from '../../ui/blog-card';
-import { MainBanners } from 'api-typings';
+import { Banner } from 'api-typings';
 
 import styles from './main-aside.module.css';
 
 const cx = cn.bind(styles);
+
+interface IMainAside {
+  title: string
+  items: Array<Banner>;
+}
 
 // author_url: "http://kotov.production"
 // author_url_title: "Сергей Котов"
@@ -17,9 +22,7 @@ const cx = cn.bind(styles);
 // pub_date: "2021-12-19T18:48:00" - даты нету
 // title: "Заголовок 3"
 
-export const MainAside: FC<MainBanners> = (props) => {
-  const { title, items } = props;
-
+export const MainAside: FC<IMainAside> = ({ title, items }) => {
   return (
     <aside className={cx('aside')}>
       <div className={cx('heading')}>

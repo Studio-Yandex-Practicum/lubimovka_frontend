@@ -42,7 +42,7 @@ const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof g
             />
           )}
           {afisha.items && <MainEvents {...afisha}/>}
-          {blog ? <MainAside {...blog}/> : <MainAside {...news}/>}
+          {blog ? <MainAside title={blog.title} {...blog}/> : <MainAside {...news}/>}
           {banners && <MainBanners {...banners}/>}
           {places && <MainPlatforms {...places}/>}
           {short_list && <MainShortList {...short_list}/>}
