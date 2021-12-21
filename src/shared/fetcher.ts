@@ -1,4 +1,4 @@
-import { addOriginToApiPath } from 'shared/helpers/url';
+import { addBaseUrlToApiPath } from 'shared/helpers/url';
 
 export const fetcher = async <T = unknown>(path: string, options?: RequestInit): Promise<T>  => {
   let fetchImplementation = fetch;
@@ -7,7 +7,7 @@ export const fetcher = async <T = unknown>(path: string, options?: RequestInit):
     fetchImplementation = (await import('mocks/fetch-mock')).default;
   }
 
-  const response = await fetchImplementation(addOriginToApiPath(path), options);
+  const response = await fetchImplementation(addBaseUrlToApiPath(path), options);
 
   if (response.ok) {
     const data = await response.json();

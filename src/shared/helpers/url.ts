@@ -1,4 +1,7 @@
+import getConfig from 'next/config';
+
 const apiPath = '/api';
+const { publicRuntimeConfig } = getConfig();
 
 const normalizePath = (path: string):string => {
   if (!path) {
@@ -7,7 +10,6 @@ const normalizePath = (path: string):string => {
   return path.startsWith('/') ? path : `/${path}`;
 };
 
-export const addOriginToPath = (path: string, prefix = ''): string => `${process.env.ORIGIN}${normalizePath(prefix)}${normalizePath(path)}`;
+export const addBaseUrlToPath = (path: string, prefix = ''): string => `${publicRuntimeConfig.baseUrl}${normalizePath(prefix)}${normalizePath(path)}`;
 
-export const addOriginToApiPath = (path: string): string => addOriginToPath(path, apiPath);
-
+export const addBaseUrlToApiPath = (path: string): string => addBaseUrlToPath(path, apiPath);
