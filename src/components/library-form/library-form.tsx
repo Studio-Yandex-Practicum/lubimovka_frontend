@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent, FormEvent, useEffect, useCallback } from 'react';
+import React, { FC, useState, ChangeEvent, FormEvent, useCallback } from 'react';
 import { useRouter } from 'next/router';
 
 import { Button } from 'components/ui/button';
@@ -11,8 +11,6 @@ const LibraryForm: FC = () => {
 
   const [urlQuery, setUrlQuery] = useState<string>('');
 
-  const [url, setUrl] = useState<string>('');
-
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>): void => {
     setSearchInput(e.target.value);
     setUrlQuery(encodeURI(`?q=${e.target.value}`));
@@ -20,12 +18,8 @@ const LibraryForm: FC = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    router.push(`${url}/library/search-result${urlQuery}`);
+    router.push(`/library/search-result${urlQuery}`);
   };
-
-  useEffect ( () => {
-    setUrl(document.URL.slice(0, document.URL.indexOf('/library')));
-  }, []);
 
   return (
     <form
@@ -45,7 +39,7 @@ const LibraryForm: FC = () => {
       />
       <Button label='Искать' size='s' icon='arrow-right' type='submit'
         iconPlace='left' border='none' isLink={true}
-        href={`${url}/library/search-result${urlQuery}`} align='start' className={style.button}/>
+        href={`/library/search-result${urlQuery}`} align='start' className={style.button}/>
     </form>
   );
 };
