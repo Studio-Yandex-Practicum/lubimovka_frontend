@@ -95,12 +95,12 @@ export type TeamPerson = {
 
 export type BlogItem = {
   id: number,
-  pub_date: string,
+  pub_date?: string,
   title: string,
   description: string,
   author_url: string,
   author_url_title: string,
-  image: Url,
+  image?: Url,
 }
 
 export type NewsItem = {

@@ -1,5 +1,4 @@
-import { NextPage } from 'next';
-import Head from 'next/head';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import React, { useState, useEffect, useCallback } from 'react';
 
 import { AppLayout } from 'components/app-layout/index';
@@ -10,51 +9,60 @@ import { PaginatedBlogItemListList } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
 import { BlogItem } from 'shared/types';
 
-interface IBlogProps {
-  metaTitle: string;
-}
-const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
-  const { metaTitle } = props;
+const LIMIT = 1;
 
-  const [blogs, setBlogs] = useState<Array<BlogItem> | undefined>(undefined);
-  const [limit, setLimit] = useState<number>(10);
+const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
-  const fetchBlogList = async (limit: number) => {
+  const [blogs, setBlogs] = useState<Array<BlogItem> | undefined>(props.results);
+  const [offset, setOffset] = useState<number>(LIMIT);
+
+  const checkPosition = useCallback(() => {
+    const height = document.body.offsetHeight;
+    const heightFooter = document.querySelector('footer')?.offsetHeight;
+    const screenHeight = window.innerHeight;
+    const scrolled = window.scrollY;
+    const threshold = height - screenHeight / 3;
+    let position = scrolled + screenHeight;
+    if (heightFooter)
+      position += heightFooter;
+    if (position >= threshold && blogs !== undefined) {
+      setOffset(blogs?.length);
+    }
+  }, [blogs]);
+
+  const fetchBlogList = async (limit: number, offset: number, signal: AbortSignal = new AbortController().signal) => {
     let data;
     try {
-      data = await fetcher<PaginatedBlogItemListList>(`/blog?limit=${limit}`);
+      data = await fetcher<PaginatedBlogItemListList>(`/blog?limit=${limit}&offset=${offset}`, { signal: signal });
     } catch (error) {
       return;
     }
     return data;
   };
 
-  const checkPosition = useCallback(() => {
-
-    const height = document.body.offsetHeight;
-    const heightFooter = document.querySelector('footer')?.offsetHeight;
-    const screenHeight = window.innerHeight;
-    const scrolled = window.scrollY;
-    const threshold = height - screenHeight / 4;
-    let position = scrolled + screenHeight;
-    if (heightFooter)
-      position += heightFooter;
-
-    if (position >= threshold) {
-      if (blogs !== undefined && blogs?.length >= limit)
-        setLimit(limit + 10);
-    }
-  }, [limit, blogs]);
-
   useEffect(() => {
-    const ac = new AbortController();
-    fetchBlogList(limit)
+    const abortController = new AbortController();
+    fetchBlogList(LIMIT, offset, abortController.signal)
       .then(data => {
-        setBlogs(data?.results);
+        if (data !== undefined) {
+          const results = data?.results;
+          setBlogs(bl => {
+            if (!bl && !results)
+              return [];
+            if (!bl)
+              return results;
+            if (!results)
+              return bl;
+
+            return bl.concat(results);
+          });
+        }
       })
-      .catch(err => alert(`err: ${err}`));
-    return () => ac.abort();
-  }, [limit]);
+      .catch(error => error);
+    return () => {
+      abortController.abort();
+    };
+  }, [offset]);
 
   useEffect(() => {
     window.addEventListener('scroll', checkPosition);
@@ -65,9 +73,6 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
 
   return (
     <AppLayout>
-      <Head>
-        <title>{metaTitle}</title>
-      </Head>
       <SectionTitleForBlog email='critics@lubimovka.ru' setBlogs={setBlogs}/>
       <SectionGridForBlog blogs={blogs}/>
       {blogs !== undefined && blogs.length < 1 &&
@@ -77,33 +82,30 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
   );
 };
 
+const fetchBlogListPrimary = async (limit: number) => {
+  let data;
+  try {
+    data = await fetcher<PaginatedBlogItemListList>(`/blog?limit=${limit}&offset=0`);
+  } catch (error) {
+    return;
+  }
+  return data;
+};
+
+export const getServerSideProps: GetServerSideProps<PaginatedBlogItemListList> = async () => {
+  const blogList = await fetchBlogListPrimary(LIMIT);
+
+  if (!blogList) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      ...blogList
+    },
+  };
+};
+
 export default Blog;
-
-// const fetchBlogList = async (limit: number, offset: number) => {
-//   let data;
-//   try {
-//     data = await fetcher<PaginatedBlogItemListList>(`/blog?limit=${limit}&offset=${offset}`);
-//   } catch (error) {
-//     return;
-//   }
-//   return data;
-// };
-
-// export const getServerSideProps: GetServerSideProps<PaginatedBlogItemListList> = async () => {
-
-//   const blogList = await fetchBlogList(1, 0);
-
-//   if (!blogList) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   return {
-//     props: {
-//       ...blogList
-//     },
-//   };
-// };
-
-// export default Blog;
