@@ -18,7 +18,7 @@ const fetchAuthors = async (authorId: string) => {
   let data;
 
   try {
-    data = await fetcher<AuthorRetrieveModel>(`/library/authors/${ authorId }`);
+    data = await fetcher<AuthorRetrieveModel>(`/library/authors/${authorId}/`);
   } catch (error) {
     return;
   }
