@@ -4,38 +4,27 @@
   z-index: 99;
   top: 0;
   overflow: hidden;
+  width: scale(270px);
+  height: 100vh;
+  margin-left: auto;
+  transition: all .3s ease-in;
 
   @media (max-width: $tablet-portrait) {
     position: initial;
+  }
+
+  &:hover {
+    width: scale(468px);
   }
 }
 
 .aside {
   @mixin hideScrollbar;
 
-  position: -webkit-sticky;
-  position: sticky;
-  z-index: 99;
-  top: 0;
-
-  /* right: 0;
-  bottom: 0; */
-
-  /* width: scale(468px); */
-  width: scale(468px);
-  height: 100vh;
   box-sizing: border-box;
   padding: scale(60px 56px 60px 56px);
-  margin-left: auto;
   background-color: var(--light-green);
   overflow-y: scroll;
-  transform: translate(60%, 0);
-  transition: transform .3s ease-in;
-
-  &:hover {
-    cursor: pointer;
-    transform: translate(0, 0);
-  }
 
   @media (max-width: $tablet-portrait) {
     position: initial;

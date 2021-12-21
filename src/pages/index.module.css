@@ -1,4 +1,6 @@
 .main {
+  display: flex;
+
   /* position: relative;
   display: grid;
   overflow: hidden;
@@ -50,4 +52,11 @@
     grid-template-columns: 100%;
     grid-template-rows: repeat(7, max-content);
   }
+}
+
+.content {
+  width: 100%;
+  padding-top: scale(61px);
+
+  /* margin-top: -100vh; */
 }
