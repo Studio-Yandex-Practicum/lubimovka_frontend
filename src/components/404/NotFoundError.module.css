@@ -1,0 +1,147 @@
+.error {
+  @mixin text;
+
+  position: relative;
+  overflow: hidden;
+  max-width: scale(1440px);
+  margin: 0 auto;
+  background: #ecebe8;
+  color: #242424;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(32px 24px);
+  }
+}
+
+.logo {
+  position: absolute;
+  top: scale(28px);
+  left: scale(32px);
+  width: scale(93px);
+  height: scale(80px);
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    position: static;
+    width: scale(34px);
+    height: scale(43px);
+  }
+}
+
+.contentContainer {
+  display: flex;
+  width: 100vw;
+  max-width: scale(720px);
+  flex-direction: column;
+  margin: scale(83px 152px 0 auto);
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(69px auto 0);
+  }
+}
+
+.title {
+  @mixin text;
+  @mixin textLarge;
+
+  margin: scale(0 auto 25px 0);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(11px);
+  }
+}
+
+.subtitle {
+  @mixin headline;
+  @mixin headline3;
+
+  max-width: scale(720px);
+  margin: scale(0 0 24px 0);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(16px);
+
+    @mixin headline5;
+  }
+}
+
+.text {
+  @mixin headline;
+  @mixin headline7;
+
+  max-width: scale(415px);
+  margin: scale(0 0 0 60px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(306px);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: scale(39px 0 0 60px);
+  list-style-type: none;
+  white-space: nowrap;
+
+  @media (max-width: $tablet-portrait) {
+    flex-direction: column;
+    margin: scale(40px 0 0 60px);
+  }
+}
+
+.listItem {
+  @mixin text;
+  @mixin textSmallButton;
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(42px);
+  }
+}
+
+.lines {
+  height: scale(100vh);
+}
+
+.line {
+  position: absolute;
+  width: scale(calc(100% + 400px));
+  min-width: scale(920px);
+  max-width: scale(1806px);
+}
+
+.line:first-of-type {
+  top: scale(526px);
+  left: scale(-146px);
+  transform: rotate(17.89deg);
+
+  @media (max-width: 1400px) {
+    top: scale(746px);
+    left: scale(-146px);
+  }
+}
+
+.line:nth-of-type(2n) {
+  top: scale(546px);
+  left: scale(-160px);
+  transform: rotate(4.24deg);
+
+  @media (max-width: 1400px) {
+    top: scale(728px);
+    left: scale(-160px);
+  }
+}
+
+.link {
+  box-sizing: border-box;
+  padding-right: 23px;
+  padding-bottom: scale(10px);
+  border-bottom: 1px solid #242424;
+  border-left: 1px solid #242424;
+  margin-right: scale(8px);
+  color: #333;
+  text-decoration: none;
+  text-transform: uppercase;
+}

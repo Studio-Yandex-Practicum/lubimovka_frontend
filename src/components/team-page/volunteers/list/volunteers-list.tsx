@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames';
+import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 
 import { PersonCard } from '../../../ui/person-card/person-card';
 import { FeedbackPopup } from 'components/ui/feedback-popup';
@@ -83,6 +84,11 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
     };
   }, []);
 
+  useEffect(() => {
+    isFeedbackPopupOpen ? disableBodyScroll({ savePosition: true }) : enableBodyScroll();
+
+    return () => enableBodyScroll();
+  }, [isFeedbackPopupOpen]);
   return (
     <>
       {

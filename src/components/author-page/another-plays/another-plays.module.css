@@ -62,4 +62,5 @@
 
 .downloadButton {
   margin: calc(var(--scale) * 5) 0;
+  text-decoration: none;
 }
