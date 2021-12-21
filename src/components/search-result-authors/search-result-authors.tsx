@@ -2,14 +2,14 @@ import { FC } from 'react';
 
 import style from './search-result-authors.module.css';
 
-interface SearchResultAuthorsProps {
+interface ISearchResultAuthorsProps {
   authors: {
     title: string,
     data: string[],
   }
 }
 
-const SearchResultAuthors: FC<SearchResultAuthorsProps> = ({ authors }) => {
+const SearchResultAuthors: FC<ISearchResultAuthorsProps> = ({ authors }) => {
   return (
     <li className={style.authors}>
       <span className={style.alphabeetLetter}>{authors.title}</span>

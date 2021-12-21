@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import { useState, useEffect } from 'react';
 
 import { AppLayout } from 'components/app-layout';
@@ -7,27 +7,33 @@ import LibraryForm from 'components/library-form/library-form';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import SearchResultAuthors from 'components/search-result-authors/search-result-authors';
+import { fetcher } from 'shared/fetcher';
+import useWindowDimensions from 'components/library-authors-page/useWindowDimensions';
 
 import style from './index.module.css';
 
-const mockAuthors = ['Августеняк Екатерина', 'Августеняк Екатерина', 'Августеняк Екатерина',
-  'Августеняк Екатерина', 'Августеняк Екатерина', 'Августеняк Екатерина', 'Августеняк Екатерина',
-  'Августеняк Екатерина', 'Августеняк Екатерина','Августеняк Екатерина',
-  'Александрин Егор', 'Борисов Борис', 'Фёдоров Фёдор'];
+type Data = { plays: Play[], authors: AuthorFromData[] };
 
-const mockCard = {
-  play: {
-    title: 'Конкретные разговоры пожилых супругов ни о чём',
-    city: 'Санкт-Петербург',
-    year: 2020,
-    linkView: 'https://lubimovka.ru/',
-    linkDownload: 'https://lubimovka.ru/',
-    authors: [{
-      id: 1,
-      name: 'Екатерина Августеняк',
-    }]
-  },
-};
+type AuthorFromPlay = {
+  id: number,
+  name: string,
+}
+
+type AuthorFromData = {
+  id: number,
+  name: string,
+  first_letter: string,
+}
+
+type Play = {
+  id: number;
+  name: string;
+  authors: AuthorFromPlay [];
+  city: string;
+  year: number;
+  url_download: string;
+  url_reading: string;
+}
 
 type Letter = string;
 
@@ -40,37 +46,65 @@ interface IFilteredAuthors {
   [key: Letter]: IAccElem
 }
 
-const filteredAuthors = Object.values(
-  mockAuthors.reduce((acc:IFilteredAuthors, author) => {
-    const firstLetter: Letter = author[0].toLocaleUpperCase();
-    if (!acc[firstLetter]) {
-      acc[firstLetter] = { title: firstLetter, data: [author] };
-    } else {
-      acc[firstLetter].data.push(author);
+export const getServerSideProps: GetServerSideProps = async ( { query } ) => {
+  try {
+    const q = String(query.q);
+    const data: Data = await fetcher(`/library/search/?q=${encodeURI(q)}`);
+
+    if (!data.plays.length && !data.authors.length) {
+      return {
+        redirect: {
+          destination: `/library/search-no-result?q=${encodeURI(q)}`,
+          statusCode: 301,
+        },
+      };
     }
-    return acc;
-  }, {})
-);
 
-const mockPieces = Array.from(Array(3)).map(() => mockCard);
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch(error) {
+    return {
+      props: {
+        errorCode: 500,
+      }
+    };
+  }
+};
 
-const SearchResult: NextPage = () => {
-
-  const [screenWidth, setScreenWidth] = useState<number | null>(null);
+const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { width } = useWindowDimensions();
+  const [searchQuery, setSearchQuery] = useState<string | null>('');
+  const [filteredAuthors, setFilteredAuthors] = useState<IAccElem[]>([]);
 
   useEffect(() => {
-    setScreenWidth(document.documentElement.clientWidth);
-  }, []);
+    const { searchParams } = new URL(document.URL);
+    setFilteredAuthors(Object.values(
+      data.authors.reduce((acc:IFilteredAuthors, author:AuthorFromData) => {
+        const firstLetter: Letter = author.first_letter;
+        if (!acc[firstLetter]) {
+          acc[firstLetter] = { title: firstLetter, data: [author.name] };
+        } else {
+          acc[firstLetter].data.push(author.name);
+        }
+        return acc;
+      }, {})
+    ));
+
+    setSearchQuery(searchParams.get('q'));
+  }, [data]);
 
   return (
     <AppLayout>
       <main className ={style.page}>
         <div className={style.buttonWrapper}>
-          <Button isLink={true} label={Number(screenWidth) < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
+          <Button href={'/library'} isLink={true} label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
         </div>
         <div className={style.topWrapper}>
           <p className={style.info}>
-            По запросу «август» мы нашли
+            По запросу «{searchQuery}» мы нашли
           </p>
           <div className={style.formWrapper}>
             <LibraryForm></LibraryForm>
@@ -79,9 +113,22 @@ const SearchResult: NextPage = () => {
         <section className={style.result}>
           <div className={style.pieces}>
             <BasicPlayCardList>
-              {mockPieces.map((piece, i) => (
-                <BasicPlayCard key={i} {...piece}/>
-              ))}
+              {data.plays.map((playFromServer: Play) => {
+
+                const play = {
+                  id: playFromServer.id,
+                  title: playFromServer.name,
+                  city: playFromServer.city,
+                  year: playFromServer.year,
+                  linkView: playFromServer.url_reading,
+                  linkDownload: playFromServer.url_download,
+                  authors: playFromServer.authors,
+                };
+
+                return (
+                  <BasicPlayCard key={play.id} play={play}/>
+                );
+              })}
             </BasicPlayCardList>
           </div>
           <div className={style.authors}>
