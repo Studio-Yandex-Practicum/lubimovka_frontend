@@ -6,7 +6,6 @@ import { BlogCard } from '../../ui/blog-card';
 import { MainBanners } from 'api-typings';
 
 import styles from './main-aside.module.css';
-// import data from '../assets/mock-data.json';
 
 const cx = cn.bind(styles);
 
@@ -15,7 +14,7 @@ const cx = cn.bind(styles);
 // description: "Описание 3"
 // id: 37
 // image: "https://lubimovka.kiryanov.ru/media/images/articles/blogitems/giphy_PJxObfG.gif"
-// pub_date: "2021-12-19T18:48:00"
+// pub_date: "2021-12-19T18:48:00" - даты нету
 // title: "Заголовок 3"
 
 export const MainAside: FC<MainBanners> = (props) => {
@@ -29,7 +28,7 @@ export const MainAside: FC<MainBanners> = (props) => {
           <Button
             label="Все записи"
             isLink
-            href="#"
+            href="/blog"
             width="100%"
             border="bottomLeft"
             iconPlace="left"
