@@ -1,3 +1,9 @@
+.pageWrapper {
+  @media (max-width: $tablet-portrait) {
+    background: linear-gradient(to bottom, var(--white) scale(100px), transparent scale(100px) 100%);
+  }
+}
+
 .page {
   padding-top: scale(65px);
   padding-right: scale(120px);
@@ -60,6 +66,25 @@
   @mixin textLarge;
 
   margin-top: scale(33px);
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}
+
+.noResultMobile {
+  display: none;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin text;
+    @mixin textLarge;
+
+    display: block;
+    order: 3;
+    padding-top: 30px;
+    padding-left: scale(60px);
+    background-color: var(--beige);
+  }
 }
 
 .result {
@@ -79,11 +104,23 @@
   width: scale(828px);
 
   @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}
+
+.piecesMobile {
+  display: none;
+
+  @media (max-width: $tablet-portrait) {
+    display: grid;
     width: 100%;
     order: 2;
     padding-top: scale(100px);
+    padding-right: scale(85px);
     padding-bottom: scale(100px);
+    padding-left: scale(85px);
     background-color: var(--beige);
+    row-gap: scale(48px);
   }
 }
 
