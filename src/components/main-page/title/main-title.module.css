@@ -8,11 +8,21 @@
 }
 
 .wrapper {
+  max-width: scale(640px);
   margin-bottom: scale(10px);
 
   @media (max-width: $tablet-portrait) {
+    max-width: scale(286px);
     padding: 0 scale(24px);
     margin-bottom: 0;
+  }
+}
+
+.width {
+  max-width: scale(460px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(286px);
   }
 }
 
@@ -20,18 +30,16 @@
   @mixin headline;
   @mixin headline2;
 
-  margin-bottom: scale(14px);
-  white-space: pre-wrap;
+  display: inline;
+  margin-right: scale(15px);
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
-
-    max-width: scale(192px);
   }
 }
 
 .buttonContainer {
-  width: 100%;
+  display: inline-block;
   max-width: scale(180px);
 }
 
@@ -49,6 +57,10 @@
   @media (max-width: $tablet-portrait) {
     display: none;
   }
+}
+
+.margin {
+  margin-left: scale(132px);
 }
 
 .icon > svg {

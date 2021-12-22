@@ -13,12 +13,14 @@ export interface IMainTitle {
 
 const cx = cn.bind(styles);
 export const MainTitle: FC<IMainTitle> = ({ title, button_label, description }) => {
-  // Если в заголовке только два слова - разделяем их символом переноса строки, в противном случае оставляем всё как есть
-  const titleSpace = title.split(' ').length === 2 ? title.replace(' ', '\n') : title;
+  const titleSpace = title.split(' ').length > 2 ? title.replace(',', ',\n') : title.replace(' ', '\n');
+  console.log(titleSpace);
 
   return (
     <section className={cx('section')}>
-      <div className={cx('wrapper')}>
+      <div className={cx('wrapper', {
+        ['width']: title.split(' ').length === 2
+      })}>
         <h1 className={cx('title')}>{titleSpace}</h1>
         <div className={cx('buttonContainer')}>
           <Button
@@ -34,7 +36,9 @@ export const MainTitle: FC<IMainTitle> = ({ title, button_label, description }) 
           />
         </div>
       </div>
-      <p className={cx('desc')}>{description}</p>
+      <p className={cx('desc', {
+        ['margin']: title.split(' ').length > 2
+      })}>{description}</p>
     </section>
   );
 };
