@@ -1,8 +1,13 @@
 name: Create and publish a Docker image
 
+concurrency:
+  group: Server_deploy
+  cancel-in-progress: true
+
 on:
   push:
-    branches: ['main']
+    branches:
+      - main
 
 env:
   REGISTRY: ghcr.io
@@ -51,14 +56,19 @@ jobs:
         name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
+          host: ${{ secrets.CI_DEPLOY_HOST }}
+          username: ${{ secrets.CI_DEPLOY_USERNAME }}
+          key: ${{ secrets.CI_DEPLOY_SSH_PRIVATE_KEY }}
           script: |
             cd ${{ env.REPOSITORY_NAME }}/infra_deploy
-            
-            git pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
+
+            # Export all variables from .github_vars
+            set -a
+            source .github_vars
+
+            # Lowercase for image_name
+            IMAGE_NAME=$(echo ${{ env.IMAGE_NAME }} | tr '[A-Z]' '[a-z]')
+            docker pull ${{ env.REGISTRY }}/$IMAGE_NAME:main
 
             docker-compose -f frontend_deploy.yaml -p frontend down
             docker-compose -f frontend_deploy.yaml -p frontend up -d
