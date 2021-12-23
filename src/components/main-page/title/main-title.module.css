@@ -3,12 +3,14 @@
   box-sizing: border-box;
   flex-direction: column;
   margin: 0;
+  margin-top: calc(-100vh + scale(60px));
   grid-area: title;
 
   &&.primary {
     max-width: scale(640px);
     padding-left: scale(17px);
     margin: auto;
+    margin-top: calc(-100vh + scale(60px));
 
     @media (max-width: 992px) {
       padding: 0;
@@ -17,6 +19,7 @@
     @media (max-width: $tablet-portrait) {
       max-width: 310px;
       padding: 0 0 0 24px;
+      margin-top: 42px;
       margin-bottom: 33px;
     }
   }
@@ -27,6 +30,10 @@
     @media (max-width: $tablet-portrait) {
       padding: 0 85px 142px 24px;
     }
+  }
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: 42px;
   }
 }
 

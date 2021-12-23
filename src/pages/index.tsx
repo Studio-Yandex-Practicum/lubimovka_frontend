@@ -30,27 +30,25 @@ const MainPage: NextPage = () => {
           <title>{metaTitle}</title>
         </Head>
         <main className={cx('main')}>
-          <div className={cx('content')}>
-            {title && (
-              <MainTitle
-                title={title.title}
-                view={title.view}
-                buttonLink={title.buttonLink}
-                buttonText={title.buttonText}
-                text={title.text}
-              />
-            )}
-            {events && <MainEvents data={mainEventsData}/>}
-            
-            {banners && <MainBanners/>}
-            {platforms && <MainPlatforms {...mainPlatformsData}/>}
-            {shortList && <MainShortList data={mainShortListData}/>}
-            {archive && mainArchiveData.map((el) => (
-              <MainArchive key={el.id} data={el}/>
-            ))}
-            {partners && <MainPartners/>}
-          </div>
           {aside && <MainAside/>}
+          {title && (
+            <MainTitle
+              title={title.title}
+              view={title.view}
+              buttonLink={title.buttonLink}
+              buttonText={title.buttonText}
+              text={title.text}
+            />
+          )}
+          {events && <MainEvents data={mainEventsData}/>}
+          
+          {banners && <MainBanners/>}
+          {platforms && <MainPlatforms {...mainPlatformsData}/>}
+          {shortList && <MainShortList data={mainShortListData}/>}
+          {archive && mainArchiveData.map((el) => (
+            <MainArchive key={el.id} data={el}/>
+          ))}
+          {partners && <MainPartners/>}
         </main>
       </>
     </AppLayout>

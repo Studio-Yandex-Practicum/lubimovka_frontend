@@ -28,6 +28,7 @@ export const MainAside: FC = () => {
               align="start"
               gap="9px"
               size="s"
+              className={cx('button')}
             />
           </div>
         </div>
