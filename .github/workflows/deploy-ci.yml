@@ -62,7 +62,7 @@ jobs:
           script: |
             cd ${{ env.REPOSITORY_NAME }}/infra_deploy
             
-            git pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
 
             docker-compose -f frontend_deploy.yaml -p frontend down
             docker-compose -f frontend_deploy.yaml -p frontend up -d
