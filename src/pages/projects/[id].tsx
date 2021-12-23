@@ -97,13 +97,16 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                     <AnnouncedPlayCard
                       key={id}
                       //TODO: исправить ответ бекенда, сейчас возвращаются данные для страницы спектакля
-                      date="12 декабря"
-                      time="11:00"
+                      isPerformance={true}
+                      id={id}
+                      date='2021-11-13T17:00:00.000Z'
                       title={name}
-                      playwrightArray={['Ольга Казакова', 'Антон Чехов']}
-                      directorArray={['Катя Ганюшина']}
-                      buttonLinks={['https://lubimovka.timepad.ru/event/1746579/', 'https://lubimovka.timepad.ru/event/1746502/']}
-                      coverResourceUrl="https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg"
+                      dramatists={['Ольга Казакова', 'Антон Чехов']}
+                      directors={['Катя Ганюшина']}
+                      buttonLink={'https://lubimovka.timepad.ru/event/1746579/'}
+                      imageUrl="/images/projects/performance_mama.jpg"
+                      projectText="читка проекта Любимовка.Eщё"
+                      paid={true}
                     />
                   ))}
                 </PerformanceSection>

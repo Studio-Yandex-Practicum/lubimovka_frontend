@@ -10,10 +10,10 @@
 }
 
 .photo {
+  position: relative;
   width: scale(150px);
   height: scale(182px);
   margin: scale(25px auto 32px 31px);
-  object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
     margin: scale(24px auto 24px 63px);

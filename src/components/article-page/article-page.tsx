@@ -13,7 +13,7 @@ import ArticleTitle from './article-title';
 import ArticleShare from './article-share';
 import { ArticleMainText } from './article-maintext';
 import { ArticleOther } from './article-other';
-import { BlogData, ComplexItem, NewsData, Person, Play, Team } from '../../shared/types';
+import { BlogData, ComplexItem, NewsData, Person, PersonRole, Play, Team } from '../../shared/types';
 
 import styles from './article-page.module.css';
 
@@ -22,6 +22,8 @@ const cx = cn.bind(styles);
 interface IArticlePageProps {
   data: BlogData | NewsData
 }
+
+const convertRolesToString = (roles: PersonRole[]) => roles.map(role => role.name).join(', ');
 
 export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => {
   const { data } = props;
@@ -138,8 +140,7 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
                   participant={true}
                   image={item.image}
                   name={`${item.first_name} ${item.last_name}`}
-                  // TODO: добавить реальные данные в ответ бекенда
-                  about='Драматург, сценарист, преподаватель'
+                  about={convertRolesToString(item.roles)}
                 />
               )}
             </PersonCardList>

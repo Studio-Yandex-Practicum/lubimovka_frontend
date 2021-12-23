@@ -1,9 +1,9 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
+import { AppLayout } from 'components/app-layout';
+import { ArticlePage } from 'components/article-page';
 import { fetcher } from 'shared/fetcher';
-import { AppLayout } from '../../components/app-layout';
-import { ArticlePage } from '../../components/article-page';
-import { BlogData } from '../../shared/types';
+import { BlogData } from 'shared/types';
 
 const BlogArticle = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
