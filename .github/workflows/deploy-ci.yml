@@ -50,7 +50,7 @@ jobs:
     # runs-on: ubuntu-latest
     environment:
       name: Server_deploy
-    needs: build-and-push-image
+    # needs: build-and-push-image
     steps:
       -
         name: executing remote ssh commands to deploy
