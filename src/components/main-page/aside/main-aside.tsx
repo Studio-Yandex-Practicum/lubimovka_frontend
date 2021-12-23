@@ -3,6 +3,7 @@ import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
 import { BlogCard } from '../../ui/blog-card';
+import { MainNews } from 'components/main-page/news';
 
 import styles from './main-aside.module.css';
 import data from '../assets/mock-data.json';
@@ -32,7 +33,7 @@ export const MainAside: FC = () => {
       </div>
 
       <ul className={cx('list')}>
-        {blogData &&
+        {/* {blogData &&
           blogData.map((blogCard, i) => (
             <li key={i}>
               <BlogCard
@@ -43,7 +44,11 @@ export const MainAside: FC = () => {
                 id={blogCard.id}
               />
             </li>
-          ))}
+          ))} */}
+        <li>
+          {<MainNews/>}
+          {<MainNews/>}
+        </li>
       </ul>
     </aside>
   );
