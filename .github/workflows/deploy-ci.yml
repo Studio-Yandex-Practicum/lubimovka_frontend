@@ -7,6 +7,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  REPOSITORY_NAME: Lubimovka_backend
 
 jobs:
   build-and-push-image:
@@ -39,3 +40,24 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+  deploy-image-on-server:
+    name: Deploy new docker image on server
+    runs-on: ubuntu-latest
+    environment:
+      name: Server_deploy
+    needs: build-and-push-image
+    steps:
+      -
+        name: executing remote ssh commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.CI_DEPLOY_HOST }}
+          username: ${{ secrets.CI_DEPLOY_USERNAME }}
+          key: ${{ secrets.CI_DEPLOY_SSH_PRIVATE_KEY }}
+          script: |
+            cd ${{ env.REPOSITORY_NAME }}/infra_deploy
+            
+            git pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
+
+            docker-compose -f frontend_deploy.yaml -p frontend down
+            docker-compose -f frontend_deploy.yaml -p frontend up -d
