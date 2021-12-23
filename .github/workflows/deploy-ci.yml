@@ -1,8 +1,13 @@
 name: Create and publish a Docker image
 
+concurrency:
+  group: Server_deploy
+  cancel-in-progress: true
+
 on:
   push:
-    branches: ['main']
+    branches:
+      - main
 
 env:
   REGISTRY: ghcr.io
