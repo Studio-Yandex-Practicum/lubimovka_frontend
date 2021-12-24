@@ -23,6 +23,7 @@
   border: 1px solid var(--coal);
   border-top: none;
   transition: 300ms;
+  white-space: nowrap;
 
   &:hover,
   &.active {

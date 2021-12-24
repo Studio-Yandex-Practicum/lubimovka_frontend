@@ -225,7 +225,25 @@ const blogArticle: BlogData = {
             middle_name: 'Викентьевич',
             city: 'Сковородино',
             email: 'mikhejvishnyakova@lubimovka.ru',
-            image: '/images/person/person.jpg'
+            image: '/images/person/person.jpg',
+            roles: [
+              {
+                name: 'Актёр',
+                slug: 'actor'
+              },
+              {
+                name: 'Драматург',
+                slug: 'dramatist'
+              },
+              {
+                name: 'Иллюстрации',
+                slug: 'illustrations'
+              },
+              {
+                name: 'Режиссёр',
+                slug: 'director'
+              }
+            ]
           },
           {
             id: 129,
@@ -236,7 +254,25 @@ const blogArticle: BlogData = {
             middle_name: 'Антоновна',
             city: '',
             email: 'null',
-            image: '/images/person/person.jpg'
+            image: '/images/person/person.jpg',
+            roles: [
+              {
+                name: 'Актёр',
+                slug: 'actor'
+              },
+              {
+                name: 'Драматург',
+                slug: 'dramatist'
+              },
+              {
+                name: 'Иллюстрации',
+                slug: 'illustrations'
+              },
+              {
+                name: 'Режиссёр',
+                slug: 'director'
+              }
+            ]
           },
           {
             id: 112,
@@ -247,7 +283,25 @@ const blogArticle: BlogData = {
             middle_name: 'Наумовна',
             city: 'Старый Оскол',
             email: 'emmanuilgalkin@lubimovka.ru',
-            image: '/images/person/person.jpg'
+            image: '/images/person/person.jpg',
+            roles: [
+              {
+                name: 'Актёр',
+                slug: 'actor'
+              },
+              {
+                name: 'Драматург',
+                slug: 'dramatist'
+              },
+              {
+                name: 'Иллюстрации',
+                slug: 'illustrations'
+              },
+              {
+                name: 'Режиссёр',
+                slug: 'director'
+              }
+            ]
           },
           {
             id: 83,
@@ -258,7 +312,25 @@ const blogArticle: BlogData = {
             middle_name: 'Викентьевич',
             city: 'Сковородино',
             email: 'mikhejvishnyakova@lubimovka.ru',
-            image: '/images/person/person.jpg'
+            image: '/images/person/person.jpg',
+            roles: [
+              {
+                name: 'Актёр',
+                slug: 'actor'
+              },
+              {
+                name: 'Драматург',
+                slug: 'dramatist'
+              },
+              {
+                name: 'Иллюстрации',
+                slug: 'illustrations'
+              },
+              {
+                name: 'Режиссёр',
+                slug: 'director'
+              }
+            ]
           },
           {
             id: 130,
@@ -269,7 +341,25 @@ const blogArticle: BlogData = {
             middle_name: 'Антоновна',
             city: '',
             email: 'null',
-            image: '/images/person/person.jpg'
+            image: '/images/person/person.jpg',
+            roles: [
+              {
+                name: 'Актёр',
+                slug: 'actor'
+              },
+              {
+                name: 'Драматург',
+                slug: 'dramatist'
+              },
+              {
+                name: 'Иллюстрации',
+                slug: 'illustrations'
+              },
+              {
+                name: 'Режиссёр',
+                slug: 'director'
+              }
+            ]
           },
           {
             id: 113,
@@ -280,7 +370,8 @@ const blogArticle: BlogData = {
             middle_name: 'Наумовна',
             city: 'Старый Оскол',
             email: 'emmanuilgalkin@lubimovka.ru',
-            image: '/images/person/person.jpg'
+            image: '/images/person/person.jpg',
+            roles: []
           }
         ]
       }

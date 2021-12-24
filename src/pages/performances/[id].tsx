@@ -187,7 +187,7 @@ const fetchPerformance = async (performanceId: string) => {
   let data;
 
   try {
-    data = await fetcher<PerformanceModel>(`/library/performances/${performanceId}`);
+    data = await fetcher<PerformanceModel>(`/library/performances/${performanceId}/`);
   } catch (error) {
     return;
   }

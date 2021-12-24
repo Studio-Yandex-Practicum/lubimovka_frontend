@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Performance } from 'api-typings';
 
 import galleryImage from '../assets/performance/gallery-item.jpg';

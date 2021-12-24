@@ -1,11 +1,16 @@
 .main {
   position: relative;
   width: 100%;
+  box-sizing: border-box;
+  padding-bottom: scale(293px);
+  padding-left: scale(121px);
   background-color: var(--white);
 
   @media (max-width: $tablet-portrait) {
     display: flex;
     flex-direction: column;
+    padding-bottom: scale(150px);
+    padding-left: 0;
   }
 }
 
@@ -29,12 +34,12 @@
 
 .navigation {
   display: grid;
-  max-width: scale(1019px);
+  max-width: max-content;
   column-gap: scale(30px);
   grid-template-areas:
     "label       .  "
     "droplist  button";
-  grid-template-columns: scale(166px) scale(420px);
+  grid-template-columns: scale(149px) scale(420px);
 
   @media (max-width: $tablet-portrait) {
     width: 88.41%;
@@ -52,7 +57,7 @@
   @mixin headline;
   @mixin headline7;
 
-  width: scale(166px);
+  width: scale(149px);
   box-sizing: border-box;
   padding-bottom: scale(17px);
   grid-area: label;
@@ -124,7 +129,7 @@
 .pressReleaseText {
   max-width: scale(840px);
   margin-top: scale(62px);
-  grid-area: text;
+  margin-left: scale(179px);
 
   @media (max-width: $tablet-portrait) {
     margin-right: scale(24px);
@@ -180,6 +185,10 @@
   margin: 0;
   gap: scale(20px);
   list-style-type: none;
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: 0;
+  }
 }
 
 .pressReleaseText > ul > li {

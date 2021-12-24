@@ -1,0 +1,25 @@
+.programmesList {
+  @mixin hideScrollbar;
+
+  --card-width: max-content;
+
+  display: grid;
+  max-width: 100vw;
+  box-sizing: border-box;
+  justify-content: start;
+  padding: scale(0 0 16px);
+  margin: scale(0 0 0 24px);
+  background-color: var(--white);
+  gap: 2px;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fit, var(--card-width));
+  list-style: none;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.programme {
+  cursor: pointer;
+  scroll-snap-align: start;
+}
