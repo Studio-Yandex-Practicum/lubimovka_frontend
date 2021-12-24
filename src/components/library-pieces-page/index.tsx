@@ -64,7 +64,8 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             </Menu>
           </div>
           <div className={styles.mobileTags}>
-            <LibraryTagsMobile programmes={programmes} filterDispatcher={filterDispatcher}/>
+            <LibraryTagsMobile programmes={programmes} filterDispatcher={filterDispatcher}
+              droplistRef={droplistRef}/>
           </div>
           <div className={styles.filter}>
             <LibraryFilter years={years} programmes={programmes}
@@ -119,9 +120,9 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             </>
           )}
         </section>
-        {isModalOpen && (<LibraryFiltersModal><LibraryFilter years={years} programmes={programmes}
+        <LibraryFiltersModal isModalOpen={isModalOpen}><LibraryFilter years={years} programmes={programmes}
           filterDispatcher={filterDispatcher} onCheckResults={handleFiltersClick}
-          droplistRef={droplistRef}/></LibraryFiltersModal>)}
+          droplistRef={droplistRef}/></LibraryFiltersModal>
       </div>
     </main>
   );

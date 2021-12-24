@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Image from 'next/image';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button';
@@ -7,7 +8,6 @@ import { MainVideoArchive } from 'api-typings';
 import styles from './main-archive.module.css';
 
 export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => {
-  
   return ( 
     <section className={cn(styles.archive)}>
       <div className={cn(styles.content)}>
@@ -24,6 +24,7 @@ export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => {
               iconPlace='left'
               border='bottomLeft'
               size='s'
+              className={cn(styles.button)}
             />
           </span>
           всех читок и событий
@@ -32,15 +33,17 @@ export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => {
           На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации.
         </p>
       </div>
-      {/* <div className={cn(styles.video)}>
-        <iframe 
-          width='100%' 
-          height='100%'
-          src={`https://www.youtube.com/embed/${ videoKey }`}
-          frameBorder="0" 
-          allowFullScreen 
-        />
-      </div> */}
+      <div className={cn(styles.img)}>
+        <a href="#" className={cn(styles.linkImg)}>
+          <Image
+            alt='YOUTUBE'
+            src="/images/main/archive.jpg"
+            width={540}
+            height={258}
+            layout="responsive"
+          />
+        </a>
+      </div>
     </section>
   );
 };
