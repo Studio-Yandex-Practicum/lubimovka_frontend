@@ -1,51 +1,5 @@
 .main {
-  /* display: grid; */
-
-  /* grid-template-areas:
-    "title aside"
-    "events aside"
-    "banners aside"
-    "platforms aside"
-    "shortList aside"
-    "archive aside"
-    "partners aside";
-    grid-template-columns: 1fr; */
-
-  /* position: relative;
-  overflow: hidden;
-  width: 100%;
-  min-width: var(--page-content-min-width);
-  box-sizing: border-box;
-  padding-top: scale(61px);
-  margin: 0 auto;
-  grid-template-areas:
-    "title title"
-    "events ."
-    "banners ."
-    "platforms platforms"
-    "shortList ."
-    "archive archive"
-    "partners .";
-  grid-template-columns: minmax(scale(500px), scale(1110px)) 1fr;
-  grid-template-rows: repeat(6, max-content);
-
-  @media screen and (max-width: 1200px) {
-    grid-template-areas:
-      "title"
-      "events"
-      "aside"
-      "banners"
-      "platforms"
-      "shortList"
-      "archive"
-      "partners";
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(7, max-content);
-  }
-
-  @media (max-width: 992px) {
-    justify-items: center;
-  } */
+  display: block;
 
   @media (max-width: $tablet-portrait) {
     display: grid;
@@ -58,8 +12,5 @@
       "shortList"
       "archive"
       "partners";
-
-    /* grid-template-columns: 100%;
-    grid-template-rows: repeat(7, max-content); */
   }
 }

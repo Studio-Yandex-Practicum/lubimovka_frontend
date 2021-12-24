@@ -14,9 +14,6 @@
   transition: all .3s ease-in;
 
   &:hover {
-    /* position: fixed; */
-
-    /* transform: translateX(-200px); */
     width: scale(468px);
   }
 
@@ -35,6 +32,8 @@
 
 .aside {
   position: absolute;
+  top: 0;
+  left: 0;
   width: calc(var(--scale) * 468);
   box-sizing: border-box;
   padding: scale(60px 56px 60px 56px);
@@ -115,12 +114,7 @@
   @mixin headline4;
 
   display: -webkit-box;
-
-  /* overflow: hidden; */
   width: scale(340px);
-
-  /* -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; */
 
   @media (max-width: $tablet-portrait) {
     @mixin headline5;
