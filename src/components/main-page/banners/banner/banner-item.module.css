@@ -69,6 +69,7 @@
     display: grid;
     max-height: scale(452px);
     grid-template-columns: repeat(auto-fit, minmax(scale(366px), max-content));
+    transition: all .6s ease-out;
   }
 
   .button {

@@ -28,25 +28,19 @@ function debounce(cb: () => void, delay: number) {
 }
 
 export const MainBanners: FC<IProps> = ({ data }):JSX.Element => {
-  const [scrollHandlers, setScrollHandler] = useState([]);
-
-  const scrollBanners = useCallback(() => scrollHandlers.map((item: () => void) => item()), [scrollHandlers]);
+  const [scrollHandlers, setScrollHandler] = useState<(() => void)[]>([]);
 
   useEffect(() => {
-    const handlerDebounced = debounce(scrollBanners, 10);
+    const handlerDebounced = debounce(() => scrollHandlers.map((item: () => void) => item()), 10);
     if (scrollHandlers.length) {
       window.addEventListener('scroll', handlerDebounced);
     }
-    return () => window.removeEventListener('scroll', handlerDebounced);
-  }, [scrollHandlers, scrollBanners]);
+    return () => { window.removeEventListener('scroll', handlerDebounced);};
+  }, [scrollHandlers]);
 
-  const cb = (handlerDebounced: () => void) => {
-    setScrollHandler(state => {
-      const newState = state.slice(0);
-      newState.push(handlerDebounced);
-      return newState;
-    });
-  };
+  const cb = useCallback((handlerDebounced: () => void) => {
+    setScrollHandler(state => [...state, handlerDebounced]);
+  }, [setScrollHandler]);
 
   return (
     <section className={cn(styles.banners)}>
