@@ -87,7 +87,6 @@
 .list {
   @mixin hideScrollbar;
 
-  width: scale(270px);
   padding: 0;
   margin: 0 auto;
   list-style-type: none;
