@@ -1,6 +1,6 @@
 .archive {
   width: 100%;
-  padding: scale(68px 0 108px 0);
+  padding: scale(62px 0 108px 0);
   background-color: var(--light-green);
   grid-area: archive;
 }
@@ -15,7 +15,7 @@
   @mixin headline;
   @mixin headline2;
 
-  margin: scale(0 0 18px 150px);
+  margin: 0 0 scale(22px 150px);
 }
 
 .text {
@@ -34,6 +34,11 @@
   margin: scale(0 20px 0 6px);
 }
 
+.button > svg {
+  width: scale(25px);
+  height: scale(25px);
+}
+
 .desc {
   @mixin text;
   @mixin textLarge;
@@ -42,30 +47,21 @@
   margin-left: scale(210px);
 }
 
-.video {
-  width: 100%;
-  max-width: 33.75rem;
-  height: 16.125rem;
+.img {
+  max-width: scale(540px);
+  height: scale(258px);
   margin: 0 auto;
-}
-
-@media (min-width: $desktop) {
-  .video {
-    max-width: scale(540px);
-    height: scale(258px);
-  }
 }
 
 @media (max-width: $tablet-portrait) {
   .archive {
-    padding-top: scale(75px);
-    padding-bottom: scale(100px);
+    padding: scale(75px 0 100px 0);
   }
 
   .title {
     @mixin headline4;
 
-    margin-left: scale(24px);
+    margin: 0 0 scale(18px 24px);
   }
 
   .text {
@@ -84,15 +80,13 @@
     margin: scale(0 24px 34px 85px);
   }
 
-  .video {
-    margin-right: 0;
-    margin-left: auto;
-  }
-}
-
-@media (max-width: 415px) {
-  .video {
+  .img {
     max-width: scale(540px);
     height: scale(258px);
+  }
+
+  .linkImg {
+    display: block;
+    margin-left: scale(54px);
   }
 }

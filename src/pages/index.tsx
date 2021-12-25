@@ -30,6 +30,7 @@ const MainPage: NextPage = () => {
           <title>{metaTitle}</title>
         </Head>
         <main className={cx('main')}>
+          {aside && <MainAside/>}
           {title && (
             <MainTitle
               title={title.title}
@@ -40,7 +41,7 @@ const MainPage: NextPage = () => {
             />
           )}
           {events && <MainEvents data={mainEventsData}/>}
-          {aside && <MainAside/>}
+          
           {banners && <MainBanners/>}
           {platforms && <MainPlatforms {...mainPlatformsData}/>}
           {shortList && <MainShortList data={mainShortListData}/>}

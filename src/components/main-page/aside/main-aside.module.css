@@ -1,48 +1,65 @@
-.aside {
-  position: absolute;
-  z-index: 2;
+.container {
+  @mixin hideScrollbar;
+
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 99;
   top: 0;
-  right: 0;
-  width: scale(468px);
-  height: scale(770px);
-  box-sizing: border-box;
-  padding: scale(122px 56px 56px 56px);
-  background-color: var(--light-green);
+  overflow: hidden;
+  width: scale(270px);
+  height: 100vh;
+  margin-left: auto;
+  grid-area: aside;
   overflow-y: scroll;
-  transform: translate(60%, 0);
-  transition: transform .3s ease-in;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 70%;
-  }
-
-  &::-webkit-scrollbar-track {
-    margin: scale(50px 0);
-    background: transparent;
-    border-radius: 5px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--black-15);
-    border-radius: 6px;
-  }
+  transition: all .3s ease-in;
 
   &:hover {
-    cursor: pointer;
-    transform: translate(0, 0);
+    width: scale(468px);
   }
 
-  @media screen and (max-width: 1200px) {
+  @media (max-width: $tablet-portrait) {
     position: initial;
-    display: flex;
+    z-index: 1;
     width: 100%;
-    height: 240px;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
+    overflow-x: scroll;
+
+    &:hover {
+      width: 100%;
+    }
+  }
+}
+
+.aside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--scale) * 468);
+  box-sizing: border-box;
+  padding: scale(60px 56px 60px 56px);
+  background-color: var(--light-green);
+
+  @media (max-width: $tablet-portrait) {
+    position: initial;
+    z-index: 1;
+    width: 100%;
+    height: scale(934px);
+    padding: scale(36px 0 102px 24px);
+    margin-bottom: scale(50px);
     grid-area: aside;
+    overflow-y: hidden;
     transform: translate(0, 0);
   }
+}
+
+.header {
+  position: fixed;
+}
+
+.footer {
+  position: absolute;
+  top: initial;
+  bottom: 0;
 }
 
 .heading {
@@ -50,27 +67,70 @@
   height: scale(145px);
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: scale(36px);
+
+  @media (max-width: $tablet-portrait) {
+    height: scale(124px);
+    margin-bottom: scale(66px);
+  }
 }
 
 .buttonContainer {
-  width: scale(154px);
-  padding-left: scale(45px);
+  width: scale(156px);
+  padding-left: scale(40px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: 0;
+  }
 }
 
 .list {
-  display: grid;
-  padding: scale(36px 0);
-  margin: 0;
-  grid-auto-rows: max-content;
-  grid-template-columns: 100%;
-  grid-template-rows: repeat(3, max-content);
+  @mixin hideScrollbar;
+
+  padding: 0;
+  margin: 0 auto;
   list-style-type: none;
-  row-gap: scale(36px);
+
+  @media (max-width: $tablet-portrait) {
+    display: grid;
+    width: 100%;
+    margin-right: scale(24px);
+    column-gap: 32px;
+    grid-template-columns: repeat(3, minmax(scale(304px), max-content));
+    overflow-x: scroll;
+  }
+}
+
+.item {
+  display: flex;
+  margin-bottom: scale(36px);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(304px);
+
+    &:last-of-type {
+      padding-right: scale(24px);
+    }
+  }
 }
 
 .title {
-  width: scale(204px);
-
   @mixin headline;
   @mixin headline4;
+
+  display: -webkit-box;
+  width: scale(340px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline5;
+  }
+}
+
+.button > svg {
+  width: scale(25px);
+  height: scale(25px);
 }
