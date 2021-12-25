@@ -83,12 +83,12 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         </div>
         <h3 className={cx('title')}>{title}</h3>
         {directors && directors.length > 0 && dramatists && dramatists.length > 0 &&
-        <div className={cx('credits')}>
+        <div className={cx('credits', description && 'creditsDescriptionExists')}>
           {creditsRendered}
         </div>
         }
         {description &&
-        <div className={cx('description')}>
+        <div className={cx('description', imageUrl && 'descriptionCoverExists')}>
           {description}
         </div>
         }
