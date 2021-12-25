@@ -34,10 +34,10 @@ export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => {
         </p>
       </div>
       <div className={cn(styles.img)}>
-        <a href="#" className={cn(styles.linkImg)}>
+        <a href={url} className={cn(styles.linkImg)}>
           <Image
             alt='YOUTUBE'
-            src="/images/main/archive.jpg"
+            src={photo}
             width={540}
             height={258}
             layout="responsive"

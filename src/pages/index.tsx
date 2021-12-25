@@ -43,8 +43,8 @@ const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof g
           )}
           {afisha.items && <MainEvents {...afisha}/>}
           {blog ? <MainAside title={blog.title} {...blog}/> : <MainAside {...news}/>}
-          {banners && <MainBanners {...banners}/>}
-          {places && <MainPlatforms {...places}/>}
+          {banners && banners.items.length && <MainBanners {...banners}/>}
+          {places && places.items.length && <MainPlatforms {...places}/>}
           {short_list && <MainShortList {...short_list}/>}
           {video_archive && <MainArchive {...video_archive}/>}
           {partners && <MainPartners/>}
@@ -58,7 +58,7 @@ const fetchMain = async () => {
   let data;
 
   try {
-    data = await fetcher<Main>('/main');
+    data = await fetcher<Main>('/main/');
   } catch (error) {
     // TODO: обработать ошибку, добавим после реализации страницы ошибки
 
@@ -72,7 +72,7 @@ const fetchPartners = async () => {
   let partners;
 
   try {
-    partners = await fetcher<Partner>('/info/partners');
+    partners = await fetcher<Partner>('/info/partners/');
   } catch (error) {
     // TODO: обработать ошибку, добавим после реализации страницы ошибки
 
@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await fetchMain();
   const partners = await fetchPartners();
 
-  if (!data) {
+  if (!data || !partners) {
     return {
       notFound: true,
     };
