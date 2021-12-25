@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import Image from 'next/image';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button';
@@ -8,11 +7,11 @@ import { InfoLink } from 'components/ui/info-link';
 
 import styles from './overview.module.css';
 
-interface otherLinksList {
+interface otherLinks {
   name: string,
   link: string,
-  isPinned: boolean,
-  orderNumber: number,
+  is_pinned: boolean,
+  order_number: number,
 }
 
 interface socialDataList {
@@ -22,12 +21,12 @@ interface socialDataList {
 
 interface IAuthorOverview {
   data: {
-    image?: string,
+    image: string,
     name: string,
     city: string,
     quote: string,
     biography: string,
-    other_links: otherLinksList[],
+    other_links: otherLinks[],
     achievements: Array<string>,
     social_networks: socialDataList[],
     email: string,
@@ -35,7 +34,6 @@ interface IAuthorOverview {
 }
 
 export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
-
   const {
     image,
     name,
@@ -65,11 +63,10 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
 
         {image &&
           <div className={cn(styles.photoBox)}>
-            <Image
+            <img
               className={cn(styles.photo)}
               src={image}
               alt={`Фотография автора ${ name }`}
-              layout='fill'
             />
           </div>
         }
