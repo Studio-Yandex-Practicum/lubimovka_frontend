@@ -24,27 +24,28 @@ interface IMainAside {
 
 export const MainAside: FC<IMainAside> = ({ title, items }) => {
   return (
-    <aside className={cx('aside')}>
-      <div className={cx('heading')}>
-        <h2 className={cx('title')}>{title}</h2>
-        <div className={cx('buttonContainer')}>
-          <Button
-            label="Все записи"
-            isLink
-            href="/blog"
-            width="100%"
-            border="bottomLeft"
-            iconPlace="left"
-            icon="arrow-right"
-            align="start"
-            gap="9px"
-            size="s"
-          />
+    <section className={cx('container')}>
+      <aside className={cx('aside')}>
+        <div className={cx('heading')}>
+          <h2 className={cx('title')}>{title}</h2>
+          <div className={cx('buttonContainer')}>
+            <Button
+              label="Все записи"
+              isLink
+              href="/blog"
+              width="100%"
+              border="bottomLeft"
+              iconPlace="left"
+              icon="arrow-right"
+              align="start"
+              gap="9px"
+              size="s"
+            />
+          </div>
         </div>
-      </div>
 
-      <ul className={cx('list')}>
-        {items &&
+        <ul className={cx('list')}>
+          {items &&
           items.map((item) => (
             <li key={item.id}>
               <BlogCard
@@ -56,7 +57,8 @@ export const MainAside: FC<IMainAside> = ({ title, items }) => {
               />
             </li>
           ))}
-      </ul>
-    </aside>
+        </ul>
+      </aside>
+    </section>
   );
 };

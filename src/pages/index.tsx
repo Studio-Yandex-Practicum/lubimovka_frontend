@@ -34,6 +34,7 @@ const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof g
           <title>Главная</title>
         </Head>
         <main className={cx('main')}>
+          {blog ? <MainAside title={blog.title} {...blog}/> : <MainAside {...news}/>}
           {afisha && (
             <MainTitle
               title={afisha.title}
@@ -42,7 +43,6 @@ const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof g
             />
           )}
           {afisha.items && <MainEvents {...afisha}/>}
-          {blog ? <MainAside title={blog.title} {...blog}/> : <MainAside {...news}/>}
           {banners && banners.items.length && <MainBanners {...banners}/>}
           {places && places.items.length && <MainPlatforms {...places}/>}
           {short_list && <MainShortList {...short_list}/>}

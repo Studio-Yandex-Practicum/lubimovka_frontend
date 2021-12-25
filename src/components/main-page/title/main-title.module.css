@@ -1,9 +1,12 @@
 .section {
-  margin: 0 auto;
+  display: grid;
+  margin-top: calc(-100vh + scale(60px));
   grid-area: title;
+  justify-items: center;
 
   @media (max-width: $tablet-portrait) {
     width: 100%;
+    margin-top: scale(60px);
   }
 }
 
@@ -23,6 +26,10 @@
 
   @media (max-width: $tablet-portrait) {
     max-width: scale(286px);
+  }
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: 42px;
   }
 }
 
