@@ -14,9 +14,11 @@ const cn = classNames;
 interface TeamPageProps {
   team: Array<FestivalTeams>,
   volunteers: Array<Volunteers>
+  searchQuery: string
 }
 
-const TeamPage: FC<TeamPageProps> = ({ team, volunteers }) => {
+const TeamPage: FC<TeamPageProps> = ({ team, volunteers, searchQuery }) => {
+  console.log(searchQuery);
 
   return (
     <>
