@@ -36,7 +36,9 @@ npm run build
 
 ### Переменные окружения
 
-- `MOCKS` – boolean, включает моки.
+- `MOCKS` – boolean, включает моки;
+- `BASE_URL`;
+- `API_BASE_URL`;
 
 [Как добавить переменную окружения локально?](https://nextjs.org/docs/basic-features/environment-variables)
 

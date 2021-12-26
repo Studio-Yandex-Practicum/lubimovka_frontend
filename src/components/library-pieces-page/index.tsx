@@ -1,5 +1,6 @@
 import { FC, useState, useEffect, Dispatch, useRef, RefObject } from 'react';
 import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
+import { useRouter } from 'next/router';
 
 import LibraryForm from 'components/library-form/library-form';
 import LibraryFilter from 'components/library-filter/library-filter';
@@ -29,6 +30,8 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const droplistRef = useRef(null) as RefObject<IDroplistPublic>;
 
+  const router = useRouter();
+
   function handleFiltersClick():void {
     setIsModalOpen((prev) => !prev);
   }
@@ -53,18 +56,21 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             <Menu type='history'>
               <Menu.Item
                 href='/library'
+                current={router.asPath === '/library'}
               >
                 Пьесы
               </Menu.Item>
               <Menu.Item
                 href='/library/authors'
+                current={router.asPath === '/library/authors'}
               >
                 Авторы
               </Menu.Item>
             </Menu>
           </div>
           <div className={styles.mobileTags}>
-            <LibraryTagsMobile programmes={programmes} filterDispatcher={filterDispatcher}/>
+            <LibraryTagsMobile programmes={programmes} filterDispatcher={filterDispatcher}
+              droplistRef={droplistRef}/>
           </div>
           <div className={styles.filter}>
             <LibraryFilter years={years} programmes={programmes}
@@ -119,9 +125,9 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             </>
           )}
         </section>
-        {isModalOpen && (<LibraryFiltersModal><LibraryFilter years={years} programmes={programmes}
+        <LibraryFiltersModal isModalOpen={isModalOpen}><LibraryFilter years={years} programmes={programmes}
           filterDispatcher={filterDispatcher} onCheckResults={handleFiltersClick}
-          droplistRef={droplistRef}/></LibraryFiltersModal>)}
+          droplistRef={droplistRef}/></LibraryFiltersModal>
       </div>
     </main>
   );
