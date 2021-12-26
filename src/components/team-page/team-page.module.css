@@ -3,6 +3,6 @@
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(6px) 0 0 scale(24px);
+    padding: scale(2px 0 0 24px);
   }
 }

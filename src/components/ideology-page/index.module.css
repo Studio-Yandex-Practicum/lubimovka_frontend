@@ -6,10 +6,10 @@
   position: absolute;
   z-index: 10;
   top: scale(40px);
-  left: scale(70px);
+  left: scale(60px);
 
   @media (max-width: $tablet-portrait) {
     position: static;
-    margin: scale(2px 11px 32px);
+    padding: scale(2px 0 32px 24px);
   }
 }
