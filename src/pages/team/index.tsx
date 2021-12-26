@@ -1,7 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import Error from 'next/error';
-import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
@@ -17,24 +16,7 @@ interface ITeamProps {
 
 const Team = ({ errorCode, team, volunteers }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState<string | null>('');
-
-  useEffect(() => {
-    const { searchParams } = new URL(document.URL);
-
-    const handleRouteChange = () => {
-      setSearchQuery(searchParams.get('q'));
-    };
-
-    handleRouteChange();
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-
-  }, [router]);
+  const queryYear = Number(router.query.year);
 
   if (errorCode) {
     return (
@@ -48,7 +30,7 @@ const Team = ({ errorCode, team, volunteers }: InferGetServerSidePropsType<typeo
         <title>{'Организаторы'}</title>
       </Head>
       <main>
-        <TeamPage team={team} volunteers={volunteers} searchQuery={searchQuery}/>
+        <TeamPage team={team} volunteers={volunteers} queryYear={queryYear}/>
       </main>
     </AppLayout>
   );

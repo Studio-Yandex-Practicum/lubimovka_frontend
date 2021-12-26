@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import classNames from 'classnames';
 
 import ArtDirectorateSection from './art-directorate/section/art-directorate-section';
@@ -14,11 +14,15 @@ const cn = classNames;
 interface TeamPageProps {
   team: Array<FestivalTeams>,
   volunteers: Array<Volunteers>
-  searchQuery: string
+  queryYear: number
 }
 
-const TeamPage: FC<TeamPageProps> = ({ team, volunteers, searchQuery }) => {
-  console.log(searchQuery);
+const TeamPage: FC<TeamPageProps> = ({ team, volunteers, queryYear }) => {
+  useEffect(() => {
+    if (document.location.hash !== '') {
+      document.location.replace(document.location.hash);
+    }
+  }, []);
 
   return (
     <>
@@ -27,7 +31,9 @@ const TeamPage: FC<TeamPageProps> = ({ team, volunteers, searchQuery }) => {
       </div>
       <ArtDirectorateSection cards={team}/>
       <FestivalTeamSection cards={team}/>
-      <VolunteersSection cards={volunteers}/>
+      <div id="volunteers">
+        <VolunteersSection cards={volunteers} queryYear={queryYear}/>
+      </div>
     </>
   );
 };
