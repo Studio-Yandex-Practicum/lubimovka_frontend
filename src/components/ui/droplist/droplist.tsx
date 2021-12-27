@@ -72,7 +72,7 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
     deleteAll: () => { setSelectList([]); },
     deleteItem: (value: string) => { deleteItemInSelectList(value); },
     addSelectItems: (valueList: string[]) => { setSelectList(valueList); },
-  }), []);
+  }), [ref]);
 
   const cbContainer = useCallback(() => {
     setActiveDropdown(state => !state);

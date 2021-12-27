@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, Dispatch, useRef, RefObject } from 'react';
+import { FC, useState, useEffect, Dispatch, useRef, RefObject, useContext } from 'react';
 import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 import { useRouter } from 'next/router';
 
@@ -15,6 +15,7 @@ import LibraryTagsMobile from 'components/library-tags-mobile/library-tags-mobil
 import { Play } from 'api-typings';
 import { Action } from 'components/library-filter/library-filter-reducer';
 import { IProgram } from 'pages/library';
+import CurrentFiltersContext from '../../pages/library/library-filters-context';
 
 import styles from './index.module.css';
 
@@ -27,14 +28,20 @@ interface ILibraryPageProps {
 }
 
 const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programmes, filterDispatcher }) => {
+  const filterState = useContext(CurrentFiltersContext);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const droplistRef = useRef(null) as RefObject<IDroplistPublic>;
+  const [droplistRef,droplistRefMobile] = [useRef(null) as RefObject<IDroplistPublic>,useRef(null) as RefObject<IDroplistPublic>];
 
   const router = useRouter();
 
   function handleFiltersClick():void {
     setIsModalOpen((prev) => !prev);
   }
+
+  useEffect(() => {
+    droplistRef.current?.addSelectItems(filterState.festival);
+    droplistRefMobile.current?.addSelectItems(filterState.festival);
+  },[]);
 
   useEffect(() => {
     isModalOpen ? disableBodyScroll({ savePosition: true }) : enableBodyScroll();
@@ -70,7 +77,7 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
           </div>
           <div className={styles.mobileTags}>
             <LibraryTagsMobile programmes={programmes} filterDispatcher={filterDispatcher}
-              droplistRef={droplistRef}/>
+              droplistRef={droplistRefMobile}/>
           </div>
           <div className={styles.filter}>
             <LibraryFilter years={years} programmes={programmes}
@@ -127,7 +134,7 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
         </section>
         <LibraryFiltersModal isModalOpen={isModalOpen}><LibraryFilter years={years} programmes={programmes}
           filterDispatcher={filterDispatcher} onCheckResults={handleFiltersClick}
-          droplistRef={droplistRef}/></LibraryFiltersModal>
+          droplistRef={droplistRefMobile}/></LibraryFiltersModal>
       </div>
     </main>
   );

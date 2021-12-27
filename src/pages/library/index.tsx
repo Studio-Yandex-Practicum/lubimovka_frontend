@@ -7,7 +7,7 @@ import { AppLayout } from 'components/app-layout';
 import LibraryPage from 'components/library-pieces-page';
 import { fetcher } from 'shared/fetcher';
 import { PaginatedPlayList, Play } from 'api-typings';
-import reducer from 'components/library-filter/library-filter-reducer';
+import reducer, { State } from 'components/library-filter/library-filter-reducer';
 import queryParser from './library-query-parser';
 import CurrentFiltersContext from './library-filters-context';
 
@@ -24,18 +24,19 @@ export interface IPiecesFiltersProps {
 interface IPiecesProps extends IPiecesFiltersProps {
   errorCode?: number;
   pieces: Play[];
+  defaultState: State
 }
 
-const filterInitialState = { festival: [], program: [] };
+const getArrayFromQuery = (value?:string|string[])  => Array.isArray(value) ? value : value?.split(',') || [];
 
-const Library = ({ errorCode, pieces, years, programs }:
+const Library = ({ errorCode, pieces, years, programs,defaultState }:
   InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [piecesState, setPiecesState] = useState<Play[]>(pieces);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [filterState, filterDispatcher] = useReducer(
     reducer,
-    filterInitialState,
+    defaultState,
     undefined
   );
 
@@ -102,15 +103,19 @@ const fetchPiecesFilters = async () => {
   }
 };
 
-export const getServerSideProps: GetServerSideProps<IPiecesProps> = async () => {
+export const getServerSideProps: GetServerSideProps<IPiecesProps> = async ({ query }) => {
+  const defaultState:State = {
+    festival: getArrayFromQuery(query.festival),
+    program: getArrayFromQuery(query.program) };
   try {
     const { years, programs } = await fetchPiecesFilters();
 
     return {
       props: {
         pieces: await fetchPieces(),
-        years: years,
-        programs: programs
+        defaultState,
+        years,
+        programs
       },
     };
   } catch (error) {
@@ -119,7 +124,8 @@ export const getServerSideProps: GetServerSideProps<IPiecesProps> = async () => 
         errorCode: 500,
         pieces: [],
         years: [],
-        programs: []
+        programs: [],
+        defaultState: { festival: [], program: [] }
       }
     };
   }
