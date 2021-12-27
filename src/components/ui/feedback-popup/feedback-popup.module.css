@@ -35,6 +35,7 @@
 
   @media (max-width: 728px) {
     width: 100%;
+    height: 100vh;
     padding: scale(80px) scale(24px) scale(156px);
   }
 }
@@ -67,6 +68,10 @@
   @mixin textLarge;
 
   margin-top: scale(50px);
+
+  @media (max-width: 728px) {
+    overflow-y: scroll;
+  }
 }
 
 .arrow {
