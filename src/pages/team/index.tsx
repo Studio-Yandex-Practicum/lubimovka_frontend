@@ -1,6 +1,7 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import Error from 'next/error';
+import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
 import TeamPage from 'components/team-page';
@@ -14,6 +15,9 @@ interface ITeamProps {
 }
 
 const Team = ({ errorCode, team, volunteers }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const router = useRouter();
+  const queryYear = Number(router.query.year);
+
   if (errorCode) {
     return (
       <Error statusCode={errorCode}/>
@@ -26,7 +30,7 @@ const Team = ({ errorCode, team, volunteers }: InferGetServerSidePropsType<typeo
         <title>{'Организаторы'}</title>
       </Head>
       <main>
-        <TeamPage team={team} volunteers={volunteers}/>
+        <TeamPage team={team} volunteers={volunteers} queryYear={queryYear}/>
       </main>
     </AppLayout>
   );

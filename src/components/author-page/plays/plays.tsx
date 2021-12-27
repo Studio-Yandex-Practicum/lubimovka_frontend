@@ -5,23 +5,23 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 
 import styles from './plays.module.css';
 
-interface PlaysData {
+interface Play {
   id?: number,
   name: string,
   city: string,
   year: number,
   url_reading: string,
   url_download: string,
-  authors: AuthorData[],
+  authors: AuthorForPlay[],
 }
 
-interface AuthorData {
+interface AuthorForPlay {
   id: number,
   name: string,
 }
 
 interface IAuthorPlays {
-    data: PlaysData[],
+    data: Play[],
 }
 
 export const AuthorPlays: FC<IAuthorPlays> = ({ data }) => {

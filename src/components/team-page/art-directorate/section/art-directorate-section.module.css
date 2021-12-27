@@ -27,12 +27,12 @@
   @mixin headline;
   @mixin headline2;
 
-  padding: scale(43px) 0 scale(80px) 53%;
+  padding: scale(59px) 0 scale(80px) 53%;
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    padding: scale(16px) 0 scale(32px);
+    padding: scale(32px) 0;
   }
 }

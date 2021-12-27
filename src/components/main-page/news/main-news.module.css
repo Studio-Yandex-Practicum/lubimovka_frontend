@@ -1,0 +1,38 @@
+.link {
+  display: block;
+  padding-bottom: scale(72px);
+  text-decoration: none;
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+}
+
+.article {
+  padding-top: scale(16px);
+  border-top: scale(1px) solid black;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline5;
+
+  max-width: scale(336px);
+  margin: 0;
+  margin-bottom: scale(16px);
+}
+
+.desc {
+  @mixin text;
+  @mixin textLarge;
+
+  max-width: scale(304px);
+  margin: 0 0 scale(16px 32px);
+}
+
+.date {
+  @mixin text;
+  @mixin textSmall;
+
+  margin: 0;
+}

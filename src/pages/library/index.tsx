@@ -42,7 +42,7 @@ const Library = ({ errorCode, pieces, years, programs }:
   useEffect(() => {
     setIsLoading(true);
     const parsedQuery = queryParser(filterState);
-    const urlWithQuery = parsedQuery ? `/library?${parsedQuery}` : '/library';
+    const urlWithQuery = parsedQuery ? `/library/?${parsedQuery}` : '/library/';
 
     fetchPieces(parsedQuery)
       .then(res => {
@@ -77,7 +77,7 @@ const Library = ({ errorCode, pieces, years, programs }:
 };
 
 const fetchPieces = async (parsedQuery?: string) => {
-  const path = parsedQuery ? `/library/plays?${parsedQuery}` : '/library/plays';
+  const path = parsedQuery ? `/library/plays/?${parsedQuery}` : '/library/plays/';
 
   try {
     const { results } = await fetcher<PaginatedPlayList>(path);
@@ -92,7 +92,7 @@ const fetchPieces = async (parsedQuery?: string) => {
 
 const fetchPiecesFilters = async () => {
   try {
-    const { years, programs } = await fetcher<IPiecesFiltersProps>('/library/playfilters');
+    const { years, programs } = await fetcher<IPiecesFiltersProps>('/library/playfilters/');
     if(!years || !programs) {
       throw 'no results';
     }

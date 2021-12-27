@@ -12,7 +12,7 @@
 }
 
 .menu {
-  padding: scale(40px 0 70px 60px);
+  padding: scale(40px 0 59px 60px);
 
   @media (max-width: $tablet-portrait) {
     padding: scale(2px 0 32px 24px);
@@ -80,7 +80,11 @@
   @mixin headline;
   @mixin headline2;
 
-  margin-bottom: 42px;
+  margin-bottom: 32px;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+  }
 }
 
 .narrative {
@@ -90,7 +94,7 @@
   max-width: scale(453px);
   padding-left: scale(60px);
 
-  @media (max-width: 767px) {
+  @media (max-width: $tablet-portrait) {
     max-width: none;
   }
 }

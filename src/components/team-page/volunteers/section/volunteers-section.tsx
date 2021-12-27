@@ -14,16 +14,17 @@ const cx = classNames.bind(styles);
 
 interface VolunteersSectionProps {
   cards: Array<Volunteers>
+  queryYear: number
 }
 
 const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
-  const { cards = [] } = props;
+  const { cards = [], queryYear } = props;
 
   const years = useMemo(() => {
     return Array.from(new Set(cards.map(card => card.year))).sort().reverse();
   }, [cards]);
 
-  const [currentYear, setCurrentYear] = useState(years[0]);
+  const [currentYear, setCurrentYear] = useState(queryYear ? queryYear : years[0]);
 
   const selectedCards = useMemo(()=> {
     return cards.filter(card => card.year === currentYear);

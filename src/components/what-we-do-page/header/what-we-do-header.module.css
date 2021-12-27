@@ -10,7 +10,7 @@
 }
 
 .menu {
-  margin: scale(40px 0 70px 70px);
+  padding: scale(40px 0 67px 60px);
 }
 
 .title {
@@ -73,7 +73,7 @@
 
 @media (max-width: $tablet-portrait) {
   .menu {
-    margin: scale(26px 0 32px 24px);
+    padding: scale(2px 0 32px 24px);
   }
 
   .title {
