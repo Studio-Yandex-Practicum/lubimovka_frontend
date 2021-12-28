@@ -17,7 +17,7 @@ const fetchAuthors = async (authorId: string) => {
   let data;
 
   try {
-    data = await fetcher<AuthorRetrieveModel>(`/v1/library/authors/${authorId}/`);
+    data = await fetcher<AuthorRetrieveModel>(`/v1/library/authors/${ authorId }/`);
   } catch (error) {
     return;
   }
@@ -61,7 +61,7 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): 
     <AppLayout>
       <div className={cn(styles.author)}>
         <AuthorOverview
-          image={image}
+          photo={image}
           name={name}
           city={city}
           quote={quote}

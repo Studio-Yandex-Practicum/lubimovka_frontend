@@ -21,7 +21,7 @@ interface socialDataList {
 
 interface IAuthorOverview {
   data: {
-    image: string,
+    image?: string,
     name: string,
     city: string,
     quote: string,
@@ -30,6 +30,7 @@ interface IAuthorOverview {
     achievements: Array<string>,
     social_networks: socialDataList[],
     email: string,
+    drawButton: boolean,
   }
 }
 
@@ -47,6 +48,8 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
   } = data;
 
   const [isExpand, setExpand] = useState(true);
+
+  const drawButton = data.biography;
 
   return (
     <section className={cn(styles.overview)}>
@@ -82,15 +85,17 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
           <p className={cn(styles.overviewParagraph, isExpand ? styles.expandButton : styles.rollUpButton)}>
             {biography}
           </p>
-          <Button
-            width='100%'
-            size='s'
-            iconPlace='right'
-            icon={isExpand ? 'arrow-down' : 'arrow-up'}
-            label={isExpand ? 'Полный текст' : 'Свернуть'}
-            border='topLeft'
-            onClick={() => setExpand(!isExpand)}
-          />
+          {drawButton.length > 305 &&
+            <Button
+              width='100%'
+              size='s'
+              iconPlace='right'
+              icon={isExpand ? 'arrow-down' : 'arrow-up'}
+              label={isExpand ? 'Полный текст' : 'Свернуть'}
+              border='topLeft'
+              onClick={() => setExpand(!isExpand)}
+            />
+          }
 
           <div className={cn(styles.overviewBlockAuthorInfo)}>
             {other_links.map((item, idx) =>
