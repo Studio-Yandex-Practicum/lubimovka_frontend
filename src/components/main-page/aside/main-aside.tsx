@@ -2,15 +2,37 @@ import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
+import { BlogCard } from '../../ui/blog-card';
+import { Banner } from 'api-typings';
 import { MainNews } from 'components/main-page/news';
 
 import styles from './main-aside.module.css';
-import data from '../assets/mock-data.json';
 
 const cx = cn.bind(styles);
 
-export const MainAside: FC = () => {
-  const { title, buttonText, buttonLink } = data.aside;
+interface IMainAside {
+  type: 'blog' | 'news';
+  title: string;
+  items: Array<Banner>;
+}
+
+// blog
+// author_url: "http://greene.net/"
+// author_url_title: "Колобова Полина Александровна"
+// description: "Кидать советовать неожиданный факультет мотоцикл. Термин белье выдержать выдержать плод близко. Куча следовательно провал страсть райком. Что подземный низкий нож. Горький пятеро хлеб."
+// id: 5
+// image: "https://lubimovka.kiryanov.ru/media/images/articles/blogitems/example_OpxSu9g.jpg"
+// pub_date: "2006-01-14T01:01:41"
+// title: "Иной торопливый а дьявол тревога дальний эфф
+
+// news
+// description: "Кидать передо столетие еврейский угол витрина смертельный. Спалить социалистический через намерение. Что пропаганда космос собеседник. Другой даль мимо человечек очутиться тревога угроза. Девка рассуждение штаб художественный хозяйка металл."
+// id: 2
+// image: "https://lubimovka.kiryanov.ru/media/images/articles/newsitems/example_lJ5wCTO.jpg"
+// pub_date: "1987-08-13T20:03:51"
+// title: "Зарплата правый уничтожение освобождение."
+
+export const MainAside: FC<IMainAside> = ({ type, title, items }) => {
   return (
     <section className={cx('container')}>
       <aside className={cx('aside')}>
@@ -18,9 +40,9 @@ export const MainAside: FC = () => {
           <h2 className={cx('title')}>{title}</h2>
           <div className={cx('buttonContainer')}>
             <Button
-              label={buttonText}
+              label="Все записи"
               isLink
-              href={buttonLink}
+              href="/blog"
               width="100%"
               border="bottomLeft"
               iconPlace="left"
@@ -28,18 +50,26 @@ export const MainAside: FC = () => {
               align="start"
               gap="9px"
               size="s"
-              className={cx('button')}
             />
           </div>
         </div>
 
         <ul className={cx('list')}>
-          <li>
-            {<MainNews/>}
-            {<MainNews/>}
-            {<MainNews/>}
-            {<MainNews/>}
-          </li>
+          {items &&
+          items.map((item) => (
+            <li key={item.id} className={cx('item')}>
+              {
+                type === 'blog' ?
+                  <BlogCard
+                    image={item.image}
+                    author={item.author_url_title}
+                    heading={item.title}
+                    description={item.description}
+                    id={item.id}
+                  />
+                  : <MainNews/>}
+            </li>
+          ))}
         </ul>
       </aside>
     </section>

@@ -1,6 +1,6 @@
 .events {
   width: calc(100% - scale(270px));
-  padding: 110px 0 114px;
+  padding: scale(110px 0 114px);
   grid-area: events;
 
   @media (max-width: $tablet-portrait) {

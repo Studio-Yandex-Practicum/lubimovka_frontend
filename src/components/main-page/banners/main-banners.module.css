@@ -1,5 +1,5 @@
 .banners {
-  padding: scale(0 32px);
+  padding: 0 scale(32px);
   grid-area: banners;
 }
 
@@ -40,7 +40,7 @@
   @mixin textLarge;
 
   max-width: scale(384px);
-  margin: scale(0 0 24px 62px);
+  margin: 0 0 scale(24px 62px);
 }
 
 .img {
@@ -52,11 +52,11 @@
 
 @media (max-width: $tablet-portrait) {
   .banners {
-    padding: scale(0 24px);
+    padding: 0 scale(24px);
   }
 
   .title {
-    padding: scale(16px 0);
+    padding: scale(16px) 0;
   }
 
   .content {
@@ -65,7 +65,7 @@
 
   .desc {
     max-width: scale(318px);
-    margin: scale(0);
+    margin: 0;
     margin-bottom: scale(28px);
 
     @mixin textMedium;

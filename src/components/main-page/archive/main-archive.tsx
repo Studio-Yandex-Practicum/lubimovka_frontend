@@ -3,32 +3,23 @@ import Image from 'next/image';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button';
+import { MainVideoArchive } from 'api-typings';
 
 import styles from './main-archive.module.css';
 
-interface IMainArchiveProps {
-  data: {
-    id: number
-    title: string[]
-    buttonLink: string
-    desc: string
-    videoKey: string
-  }
-}
-
-export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
-  const { title, buttonLink, desc } = data;
-
+export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => {
   return ( 
     <section className={cn(styles.archive)}>
       <div className={cn(styles.content)}>
         <h2 className={cn(styles.title)}>
-          <p className={cn(styles.text)}>{title[0]}</p>
+          <p className={cn(styles.text)}>
+            Видео-архив
+          </p>
           <span className={cn(styles.link)}>
             <Button 
               label='YOUTUBE'
               isLink={true} 
-              href={buttonLink}
+              href={url}
               icon='arrow-right'
               iconPlace='left'
               border='bottomLeft'
@@ -36,17 +27,17 @@ export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
               className={cn(styles.button)}
             />
           </span>
-          {title[1]}
+          всех читок и событий
         </h2>
         <p className={cn(styles.desc)}>
-          {desc}
+          На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации.
         </p>
       </div>
       <div className={cn(styles.img)}>
-        <a href="#" className={cn(styles.linkImg)}>
+        <a href={url} className={cn(styles.linkImg)}>
           <Image
             alt='YOUTUBE'
-            src="/images/main/archive.jpg"
+            src={photo}
             width={540}
             height={258}
             layout="responsive"

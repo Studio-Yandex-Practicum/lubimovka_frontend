@@ -1,3 +1,4 @@
+
 import { FC } from 'react';
 
 import { Partners } from 'components/partners';

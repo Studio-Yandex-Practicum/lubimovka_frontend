@@ -7,41 +7,38 @@ import styles from './main-title.module.css';
 
 export interface IMainTitle {
   title: string;
-  view: string;
-  text?: string;
-  buttonText: string;
-  buttonLink: string;
+  description: string;
+  button_label: string;
 }
 
 const cx = cn.bind(styles);
-export const MainTitle: FC<IMainTitle> = (params) => {
-  const { view, text, buttonText, buttonLink } = params;
+export const MainTitle: FC<IMainTitle> = ({ title, button_label, description }) => {
+  const titleSpace = title.split(' ').length > 2 ? title.replace(',', ',\n') : title.replace(' ', '\n');
+  console.log(titleSpace);
 
-  // Если в заголовке только два слова - разделяем их символом переноса строки, в противном случае оставляем всё как есть
-  const title =
-    params.title.split(' ').length === 2 ? params.title.replace(' ', '\n') : params.title;
   return (
-    <section className={cx('section', view)}>
-      <div className={cx('wrapper', view)}>
-        <h1 className={cx('title', view)}>{`${title}`}</h1>
-        <div className={cx('buttonContainer', view)}>
+    <section className={cx('section')}>
+      <div className={cx('wrapper', {
+        ['width']: title.split(' ').length === 2
+      })}>
+        <h1 className={cx('title')}>{titleSpace}</h1>
+        <div className={cx('buttonContainer')}>
           <Button
-            label={buttonText}
+            label={button_label}
             isLink
-            href={buttonLink}
-            size={view === 'primary' && 's' || 'l'}
-            border={(view === 'secondary' && 'full') || 'bottomLeft'}
+            href='/afishe'
+            size='s'
+            border='bottomLeft'
+            iconPlace='left'
+            className={cx('icon')}
             icon="arrow-right"
-            iconPlace={view === 'secondary' && 'right' || 'left'}
             width="100%"
-            align={view === 'secondary' && 'space-between' || 'start'}
-            gap="8px"
-            className={cx('button', view)}
           />
         </div>
       </div>
-
-      {view === 'primary' && <p className={cx('text')}>{text}</p>}
+      <p className={cx('desc', {
+        ['margin']: title.split(' ').length > 2
+      })}>{description}</p>
     </section>
   );
 };
