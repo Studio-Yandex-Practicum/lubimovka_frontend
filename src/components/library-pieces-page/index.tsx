@@ -88,6 +88,11 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             </div>
           ) : (
             <div className={styles.pieces}>
+              {!items.length &&
+                <p className={styles.noResult}>
+                  Ничего не найдено. Попробуйте изменить параметры поиска.
+                </p>
+              }
               <BasicPlayCardList>
                 {items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
                   <BasicPlayCard
@@ -106,6 +111,11 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
           )}
         </section>
         <section className={styles.piecesMobile}>
+          {!items.length &&
+            <p className={styles.noResult}>
+              Ничего не найдено. Попробуйте изменить параметры поиска.
+            </p>
+          }
           {isLoading ? (
             <LibraryPreloader/>
           ) : (
