@@ -35,6 +35,7 @@
   top: 0;
   left: 0;
   width: calc(var(--scale) * 468);
+  min-height: 100vh;
   box-sizing: border-box;
   padding: scale(60px 56px 60px 56px);
   background-color: var(--light-green);
@@ -87,7 +88,6 @@
 .list {
   @mixin hideScrollbar;
 
-  width: scale(270px);
   padding: 0;
   margin: 0 auto;
   list-style-type: none;

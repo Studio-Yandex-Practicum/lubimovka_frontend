@@ -34,7 +34,7 @@ const MainPage: NextPage = ({ data, partners }: InferGetStaticPropsType<typeof g
           <title>Главная</title>
         </Head>
         <main className={cx('main')}>
-          {blog ? <MainAside title={blog.title} {...blog}/> : <MainAside {...news}/>}
+          {/* blog ? <MainAside type="blog" {...blog}/> : */ <MainAside type="news" {...news}/>}
           {afisha && (
             <MainTitle
               title={afisha.title}

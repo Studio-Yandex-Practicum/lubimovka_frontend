@@ -4,25 +4,35 @@ import cn from 'classnames/bind';
 import { Button } from 'components/ui/button';
 import { BlogCard } from '../../ui/blog-card';
 import { Banner } from 'api-typings';
+import { MainNews } from 'components/main-page/news';
 
 import styles from './main-aside.module.css';
 
 const cx = cn.bind(styles);
 
 interface IMainAside {
-  title: string
+  type: 'blog' | 'news';
+  title: string;
   items: Array<Banner>;
 }
 
-// author_url: "http://kotov.production"
-// author_url_title: "Сергей Котов"
-// description: "Описание 3"
-// id: 37
-// image: "https://lubimovka.kiryanov.ru/media/images/articles/blogitems/giphy_PJxObfG.gif"
-// pub_date: "2021-12-19T18:48:00" - даты нету
-// title: "Заголовок 3"
+// blog
+// author_url: "http://greene.net/"
+// author_url_title: "Колобова Полина Александровна"
+// description: "Кидать советовать неожиданный факультет мотоцикл. Термин белье выдержать выдержать плод близко. Куча следовательно провал страсть райком. Что подземный низкий нож. Горький пятеро хлеб."
+// id: 5
+// image: "https://lubimovka.kiryanov.ru/media/images/articles/blogitems/example_OpxSu9g.jpg"
+// pub_date: "2006-01-14T01:01:41"
+// title: "Иной торопливый а дьявол тревога дальний эфф
 
-export const MainAside: FC<IMainAside> = ({ title, items }) => {
+// news
+// description: "Кидать передо столетие еврейский угол витрина смертельный. Спалить социалистический через намерение. Что пропаганда космос собеседник. Другой даль мимо человечек очутиться тревога угроза. Девка рассуждение штаб художественный хозяйка металл."
+// id: 2
+// image: "https://lubimovka.kiryanov.ru/media/images/articles/newsitems/example_lJ5wCTO.jpg"
+// pub_date: "1987-08-13T20:03:51"
+// title: "Зарплата правый уничтожение освобождение."
+
+export const MainAside: FC<IMainAside> = ({ type, title, items }) => {
   return (
     <section className={cx('container')}>
       <aside className={cx('aside')}>
@@ -47,14 +57,17 @@ export const MainAside: FC<IMainAside> = ({ title, items }) => {
         <ul className={cx('list')}>
           {items &&
           items.map((item) => (
-            <li key={item.id}>
-              <BlogCard
-                image={item.image}
-                author={item.author_url_title}
-                heading={item.title}
-                description={item.description}
-                id={item.id}
-              />
+            <li key={item.id} className={cx('item')}>
+              {
+                type === 'blog' ?
+                  <BlogCard
+                    image={item.image}
+                    author={item.author_url_title}
+                    heading={item.title}
+                    description={item.description}
+                    id={item.id}
+                  />
+                  : <MainNews/>}
             </li>
           ))}
         </ul>
