@@ -45,7 +45,7 @@ export const Partners: FC<IPartnersProps> = ({ align = 'left', data = mockData, 
                 <Link href={partner.link}>
                   <a className={cx('link')}>
                     <div className={cx('imageContainer')}>
-                      <Image src={partner.image} layout='fill' objectFit='contain'/>
+                      <Image src={partner.image} layout='fill' objectFit='contain' alt={partners.title}/>
                     </div>
                     {partner.text && <p className={cx('text')}>{partner.text}</p>}
                   </a>

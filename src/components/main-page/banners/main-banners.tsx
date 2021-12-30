@@ -1,12 +1,18 @@
+/* eslint-disable import/no-unresolved */
 import { FC } from 'react';
+import Image from 'next/image';
 import cn from 'classnames';
+import { Banner } from 'api-typings';
 
 import { Button } from 'components/ui/button';
-import { MainBanners, Banner } from 'api-typings';
+
+interface IMainBanners {
+  items: Array<Banner>
+}
 
 import styles from './main-banners.module.css';
 
-export const MainBanners: FC<MainBanners> = ({ items }) => {
+export const MainBanners: FC<IMainBanners> = ({ items }) => {
   return (
     <section className={cn(styles.banners)}>
       <ul className={cn(styles.list)}>
@@ -31,10 +37,13 @@ export const MainBanners: FC<MainBanners> = ({ items }) => {
                     href={item.url}
                   />
                 </div>
-                <img 
-                  src='"https://lubimovka.kiryanov.ru/media/images/main/banner/banner_ihwbuQU.jpg"'
-                  alt='Волонтеры'
+                <Image
+                  src={item.image}
+                  alt={item.title}
                   className={cn(styles.img)}
+                  width={486}
+                  height={228}
+                  layout="responsive"
                 />
               </div>
             </li>

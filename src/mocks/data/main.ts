@@ -1,6 +1,18 @@
-import { Main } from 'api-typings';
+import type { IMainAfisha } from 'components/main-page/events/main-events';
+import type { MainBanners, MainBlog, MainFirstScreen, MainNews, MainPlaces, MainShortList, MainVideoArchive } from 'api-typings';
 
-const main: Main = {
+interface IMain {
+  first_screen?: MainFirstScreen;
+  blog?: MainBlog;
+  news?: MainNews;
+  afisha?: IMainAfisha;
+  banners?: MainBanners;
+  short_list?: MainShortList;
+  places?: MainPlaces;
+  video_archive?: MainVideoArchive;
+}
+
+export const main: IMain = {
   first_screen: {
     title: 'Открыт прием пьес на фестиваль 2021 года',
     url: 'https://lubimovks.url.ru',
@@ -64,6 +76,7 @@ const main: Main = {
             Режиссёр: ['Фёкла Захаров'],
           },
           project_title: null,
+          image: '/public/images/main/performance_mama.jpg'
         },
         id: 1,
         paid: true,

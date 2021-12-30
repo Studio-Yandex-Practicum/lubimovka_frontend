@@ -1,9 +1,10 @@
+/* eslint-disable import/no-unresolved */
 import { FC } from 'react';
 import cn from 'classnames/bind';
+import { BlogItemList } from 'api-typings';
 
 import { Button } from 'components/ui/button';
 import { BlogCard } from '../../ui/blog-card';
-import { Banner } from 'api-typings';
 import { MainNews } from 'components/main-page/news';
 
 import styles from './main-aside.module.css';
@@ -13,7 +14,7 @@ const cx = cn.bind(styles);
 interface IMainAside {
   type: 'blog' | 'news';
   title: string;
-  items: Array<Banner>;
+  items: Array<BlogItemList>;
 }
 
 // blog
@@ -67,7 +68,12 @@ export const MainAside: FC<IMainAside> = ({ type, title, items }) => {
                     description={item.description}
                     id={item.id}
                   />
-                  : <MainNews/>}
+                  : <MainNews
+                    id={item.id}
+                    title={item.title}
+                    description={item.description}
+                    pub_date={item.pub_date}
+                  />}
             </li>
           ))}
         </ul>

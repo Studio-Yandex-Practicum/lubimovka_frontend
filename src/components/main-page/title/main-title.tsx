@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { FC } from 'react';
 import cn from 'classnames/bind';
 
@@ -14,7 +15,7 @@ export interface IMainTitle {
 const cx = cn.bind(styles);
 export const MainTitle: FC<IMainTitle> = ({ title, button_label, description }) => {
   const titleSpace = title.split(' ').length > 2 ? title.replace(',', ',\n') : title.replace(' ', '\n');
-  console.log(titleSpace);
+  // console.log(titleSpace);
 
   return (
     <section className={cx('section')}>

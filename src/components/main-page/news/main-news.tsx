@@ -1,24 +1,30 @@
+/* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
 import Link from 'next/link';
 import cn from 'classnames/bind';
+import { NewsItemList } from 'api-typings';
 
 import styles from './main-news.module.css';
 
 const cx = cn.bind(styles);
 
-export const MainNews: FC = () => {
+export const MainNews: FC<NewsItemList> = ({ title, description, pub_date }) => {
   return (
     <Link href='#'>
       <a className={cx('link')}>
         <article className={cx('article')}>
           <h3 className={cx('title')}>
-            Дизайн Любимовки-2021
+            {title}
           </h3>
           <p className={cx('desc')}>
-            Присылайте ваши варианты текстовых описаний.
+            {description}
           </p>
           <p className={cx('date')}>
-            05 октября 2020
+            {
+              pub_date ? `${new Date(pub_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' })}
+              ${new Date(pub_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', year: 'numeric' })}`
+                : 'Дата'
+            }
           </p>
         </article>
       </a>
