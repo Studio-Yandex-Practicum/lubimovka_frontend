@@ -19,13 +19,13 @@ export const MainNews: FC<NewsItemList> = ({ title, description, pub_date }) => 
           <p className={cx('desc')}>
             {description}
           </p>
-          <p className={cx('date')}>
+          <time className={cx('date')}>
             {
               pub_date ? `${new Date(pub_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' })}
               ${new Date(pub_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', year: 'numeric' })}`
                 : 'Дата'
             }
-          </p>
+          </time>
         </article>
       </a>
     </Link>

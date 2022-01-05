@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 import type { Image } from './Image';
+import type { LocalEvent } from './LocalEvent';
 import type { Play } from './Play';
 
 /**
@@ -13,6 +14,7 @@ export type Performance = {
     play: Play;
     readonly team: string;
     images_in_block: Array<Image>;
+    events: Array<LocalEvent>;
     name: string;
     main_image: string;
     bottom_image: string;
@@ -20,5 +22,5 @@ export type Performance = {
     description: string;
     text: string;
     age_limit: number;
-    events: number;
+    duration?: string;
 }
