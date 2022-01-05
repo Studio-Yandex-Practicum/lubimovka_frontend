@@ -1,35 +1,30 @@
 .section {
   display: grid;
-  margin-top: calc(-100vh + scale(60px));
+  margin: calc(-100vh + scale(60px)) 0 110px;
   grid-area: title;
   justify-items: center;
 
   @media (max-width: $tablet-portrait) {
-    width: 100%;
-    margin-top: scale(60px);
+    box-sizing: border-box;
+    padding: 0 scale(24px);
+    margin: scale(42px 0 34px);
+    justify-items: initial;
   }
 }
 
 .wrapper {
-  max-width: scale(640px);
-  margin-bottom: scale(10px);
-
-  @media (max-width: $tablet-portrait) {
-    max-width: scale(286px);
-    padding: 0 scale(24px);
-    margin-bottom: 0;
-  }
-}
-
-.width {
   max-width: scale(460px);
 
   @media (max-width: $tablet-portrait) {
     max-width: scale(286px);
   }
+}
+
+.width {
+  max-width: scale(640px);
 
   @media (max-width: $tablet-portrait) {
-    margin-top: 42px;
+    max-width: scale(286px);
   }
 }
 
@@ -48,18 +43,15 @@
 .buttonContainer {
   display: inline-block;
   max-width: scale(180px);
-}
-
-.button {
-  border-color: var(--true-black);
+  margin-top: 4px;
 }
 
 .desc {
   @mixin text;
   @mixin textLarge;
 
-  width: 100%;
   max-width: scale(432px);
+  margin-top: scale(10px);
 
   @media (max-width: $tablet-portrait) {
     display: none;
@@ -67,7 +59,7 @@
 }
 
 .margin {
-  margin-left: scale(132px);
+  margin: scale(10px auto 0);
 }
 
 .icon > svg {

@@ -14,15 +14,13 @@ export interface IMainTitle {
 
 const cx = cn.bind(styles);
 export const MainTitle: FC<IMainTitle> = ({ title, button_label, description }) => {
-  const titleSpace = title.split(' ').length > 2 ? title.replace(',', ',\n') : title.replace(' ', '\n');
-  // console.log(titleSpace);
-
+  const moreTwo = title.split(' ').length > 2;
   return (
     <section className={cx('section')}>
       <div className={cx('wrapper', {
-        ['width']: title.split(' ').length === 2
+        'width': moreTwo
       })}>
-        <h1 className={cx('title')}>{titleSpace}</h1>
+        <h1 className={cx('title')}>{title}</h1>
         <div className={cx('buttonContainer')}>
           <Button
             label={button_label}
@@ -36,10 +34,12 @@ export const MainTitle: FC<IMainTitle> = ({ title, button_label, description }) 
             width="100%"
           />
         </div>
+        <p className={cx('desc', {
+          'margin': moreTwo
+        })}>
+          {description}
+        </p>
       </div>
-      <p className={cx('desc', {
-        ['margin']: title.split(' ').length > 2
-      })}>{description}</p>
     </section>
   );
 };
