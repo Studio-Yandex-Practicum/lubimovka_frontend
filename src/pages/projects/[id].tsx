@@ -101,8 +101,16 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                       id={id}
                       date="2021-11-13T17:00:00.000Z"
                       title={name}
-                      dramatists={['Ольга Казакова', 'Антон Чехов']}
-                      directors={['Катя Ганюшина']}
+                      team={[
+                        {
+                          name: 'Драматурги',
+                          persons: ['Ольга Казакова', 'Антон Чехов']
+                        },
+                        {
+                          name: 'Режиссёр',
+                          persons: ['Катя Ганюшина']
+                        },
+                      ]}
                       buttonLink={'https://lubimovka.timepad.ru/event/1746579/'}
                       imageUrl="/images/projects/performance_mama.jpg"
                       projectText="читка проекта Любимовка.Eщё"

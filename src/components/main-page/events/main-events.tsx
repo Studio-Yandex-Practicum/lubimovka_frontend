@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 export const MainEvents: FC<IMainAfisha> = () => {
   const mocks = main.afisha?.items;
 
-  return ( 
+  return (
     <section className={styles.events}>
       <ul className={styles.content}>
         {
@@ -20,14 +20,13 @@ export const MainEvents: FC<IMainAfisha> = () => {
             <li key={item.id} className={cx('list')}>
               <AnnouncedPlayCard
                 id={item.id}
-                date={item.date_time}
-                title={item.event_body.name}
-                dramatists ={item.event_body.team.Драматург}
-                directors={item.event_body.team.Режиссёр}
-                description={item.event_body.description}
-                buttonLink={item.url}
-                imageUrl={item.event_body.image}
-                projectText="читка проекта Любимовка.Ещё"
+                date={item.date}
+                title={item.title}
+                team={item.team}
+                description={item.eventDescription && item.eventDescription}
+                projectText={item.projectCopy}
+                buttonLink={item.buttonLink}
+                imageUrl={item.coverResourceUrl && item.coverResourceUrl}
                 paid={item.paid}
               />
             </li>
