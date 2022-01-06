@@ -18,7 +18,7 @@ export interface IAnnouncedPlayCardProps {
   description?:string;
   buttonLink: string;
   imageUrl?: string;
-  projectText?: string;
+  projectText?: string | null;
   className?: string;
   paid?: boolean;
 }
@@ -92,7 +92,11 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           {description}
         </div>
         }
-        <p className={cx('projectText', imageUrl && 'projectTextCoverExists')}>{projectText}</p>
+        {projectText !== null &&
+        <p className={cx('projectText', imageUrl && 'projectTextCoverExists')}>
+          {projectText}
+        </p>
+        }
         <div className={cx('buttonContainer', imageUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
           <Button
             view="primary"

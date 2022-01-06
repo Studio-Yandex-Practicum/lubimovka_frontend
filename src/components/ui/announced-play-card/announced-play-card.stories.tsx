@@ -110,3 +110,17 @@ ReadingWithCredits.args = {
   projectText: 'читка проекта Любимовка.Ещё',
   paid: false,
 };
+
+export const ReadingWithCreditsNoProject = Template.bind({});
+ReadingWithCreditsNoProject.args = {
+  isPerformance: true,
+  id: 1,
+  date:'2021-11-13T17:00:00.000Z',
+  title: 'Коммуналка на Петроградской',
+  dramatists: ['Ольга Казакова', 'Антон Чехов'],
+  directors: ['Катя Ганюшина'],
+  description: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
+  buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
+  projectText: null,
+  paid: false,
+};
