@@ -20,8 +20,16 @@ PerformancePaid.args = {
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'МАМА',
-  dramatists: ['Ольга Казакова', 'Антон Чехов'],
-  directors: ['Катя Ганюшина'],
+  team: [
+    {
+      name: 'Драматурги',
+      persons: ['Ольга Казакова', 'Антон Чехов']
+    },
+    {
+      name: 'Режиссёр',
+      persons: ['Катя Ганюшина']
+    },
+  ],
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
   imageUrl: 'https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg',
   projectText: 'читка проекта Любимовка.Ещё',
@@ -34,8 +42,16 @@ PerformancePaidWithDescription.args = {
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'МАМА',
-  dramatists: ['Ольга Казакова', 'Антон Чехов'],
-  directors: ['Катя Ганюшина'],
+  team: [
+    {
+      name: 'Драматурги',
+      persons: ['Ольга Казакова', 'Антон Чехов']
+    },
+    {
+      name: 'Режиссёр',
+      persons: ['Катя Ганюшина']
+    },
+  ],
   description: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
   imageUrl: 'https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg',
@@ -49,8 +65,16 @@ PerformanceNoTickets.args = {
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'МАМА',
-  dramatists: ['Ольга Казакова', 'Антон Чехов'],
-  directors: ['Катя Ганюшина'],
+  team: [
+    {
+      name: 'Драматурги',
+      persons: ['Ольга Казакова', 'Антон Чехов']
+    },
+    {
+      name: 'Режиссёр',
+      persons: ['Катя Ганюшина']
+    },
+  ],
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
   imageUrl: 'https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg',
   projectText: 'читка проекта Любимовка.Ещё',
@@ -63,8 +87,16 @@ PerformancePaidNoCover.args = {
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'МАМА',
-  dramatists: ['Ольга Казакова', 'Антон Чехов'],
-  directors: ['Катя Ганюшина'],
+  team: [
+    {
+      name: 'Драматурги',
+      persons: ['Ольга Казакова', 'Антон Чехов']
+    },
+    {
+      name: 'Режиссёр',
+      persons: ['Катя Ганюшина']
+    },
+  ],
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
   projectText: 'читка проекта Любимовка.Ещё',
   paid: true,
@@ -76,8 +108,16 @@ PerformanceNotPaidNoCover.args = {
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'Коммуналка на Петроградской',
-  dramatists: ['Ольга Казакова', 'Антон Чехов'],
-  directors: ['Катя Ганюшина'],
+  team: [
+    {
+      name: 'Драматурги',
+      persons: ['Ольга Казакова', 'Антон Чехов']
+    },
+    {
+      name: 'Режиссёр',
+      persons: ['Катя Ганюшина']
+    },
+  ],
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
   projectText: 'читка проекта Любимовка.Ещё',
   paid: false,
@@ -89,8 +129,7 @@ ReadingNoCredits.args = {
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'Что я узнал о творчестве благодаря драматургам',
-  dramatists: [],
-  directors: [],
+  team: [],
   description: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
   projectText: 'читка проекта Любимовка.Ещё',
@@ -103,8 +142,16 @@ ReadingWithCredits.args = {
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'Коммуналка на Петроградской',
-  dramatists: ['Ольга Казакова', 'Антон Чехов'],
-  directors: ['Катя Ганюшина'],
+  team: [
+    {
+      name: 'Драматурги',
+      persons: ['Ольга Казакова', 'Антон Чехов']
+    },
+    {
+      name: 'Режиссёр',
+      persons: ['Катя Ганюшина']
+    },
+  ],
   description: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
   projectText: 'читка проекта Любимовка.Ещё',
@@ -117,8 +164,16 @@ ReadingWithCreditsNoProject.args = {
   id: 1,
   date:'2021-11-13T17:00:00.000Z',
   title: 'Коммуналка на Петроградской',
-  dramatists: ['Ольга Казакова', 'Антон Чехов'],
-  directors: ['Катя Ганюшина'],
+  team: [
+    {
+      name: 'Драматурги',
+      persons: ['Ольга Казакова', 'Антон Чехов']
+    },
+    {
+      name: 'Режиссёр',
+      persons: ['Катя Ганюшина']
+    },
+  ],
   description: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
   projectText: null,
