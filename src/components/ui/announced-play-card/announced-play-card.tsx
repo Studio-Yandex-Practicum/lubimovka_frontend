@@ -13,14 +13,18 @@ export interface IAnnouncedPlayCardProps {
   id?: number;
   date: string;
   title: string;
-  dramatists?: string [];
-  directors?: string [];
-  description?:string;
+  team?: TeamEntry[];
+  description?: string;
   buttonLink: string;
   imageUrl?: string;
   projectText?: string | null;
   className?: string;
   paid?: boolean;
+}
+
+type TeamEntry = {
+  name: string;
+  persons: string [];
 }
 
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
@@ -29,8 +33,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
     id,
     date,
     title,
-    dramatists,
-    directors,
+    team,
     description,
     buttonLink,
     imageUrl,
@@ -40,31 +43,17 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   } = props;
 
   const creditsArrayToString = (array: string []) => {
-    const string = array.join(', ').replace(/, ([^,]*)$/, ' и $1');
+    const string = array.join(', ').replace(/, ([^,]*)$/, ' и\xa0\$1');
     return string;
   };
 
   const creditsRendered = (
     <React.Fragment>
-      {
-        dramatists && dramatists.length > 1 ?
-          (<p className={cx('creditsEntry')}>
-        Драматурги: {creditsArrayToString (dramatists)}
-          </p>)
-          :
-          (<p className={cx('creditsEntry')}>
-        Драматург: {dramatists}
-          </p>)
-      }
-      {
-        directors && directors.length > 1 ?
-          (<p className={cx('creditsEntry')}>
-        Режиссёры: {creditsArrayToString (directors)}
-          </p>)
-          :
-          (<p className={cx('creditsEntry')}>
-          Режиссёр: {directors}
-          </p>)
+      {team &&
+      team.map((i, idx) => <p className={cx('creditsEntry')} key={idx}>
+        {i.name}: {creditsArrayToString(i.persons)}
+      </p>
+      )
       }
     </React.Fragment>
   );
@@ -82,10 +71,10 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           <p className={cx('date')}>{new Date(date).toLocaleTimeString('ru-Ru', { timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric' })}</p>
         </div>
         <h3 className={cx('title')}>{title}</h3>
-        {directors && directors.length > 0 && dramatists && dramatists.length > 0 &&
-        <div className={cx('credits', description && 'creditsDescriptionExists')}>
-          {creditsRendered}
-        </div>
+        {team &&
+          <div className={cx('credits', description && 'creditsDescriptionExists')}>
+            {creditsRendered}
+          </div>
         }
         {description &&
         <div className={cx('description', imageUrl && 'descriptionCoverExists')}>
