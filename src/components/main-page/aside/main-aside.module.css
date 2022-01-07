@@ -131,7 +131,7 @@
   }
 }
 
-.button > svg {
+.icon > svg {
   width: scale(25px);
   height: scale(25px);
 }

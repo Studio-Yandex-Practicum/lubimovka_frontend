@@ -1,7 +1,18 @@
-.mainPartners {
-  padding: scale(107px 0 179px 60px);
+.partners {
+  width: calc(100% - scale(270px));
+  padding: scale(120px 60px 180px);
+  box-sizing: border-box;
+  background-color: var(--beige);
+  grid-area: partners;
 
-  @media screen and (max-width: $tablet-portrait) {
-    padding: 56px 0 100px 24px;
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+    padding: scale(56px 24px) 0;
   }
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }

@@ -1,39 +1,41 @@
 /* eslint-disable import/no-unresolved */
 import { FC } from 'react';
 import Link from 'next/link';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 import { MainPlaces } from 'api-typings';
 
 import { Icon } from 'components/ui/icon';
 
 import styles from './main-platforms.module.css';
 
+const cx = cn.bind(styles);
+
 export const MainPlatforms: FC<MainPlaces> = ({ items }) => {
   return (
-    <section className={cn(styles.section)}>
-      <h2 className={cn(styles.titleMain)}>
+    <section className={cx('section')}>
+      <h2 className={cx('titleMain')}>
         Площадки
       </h2>
 
-      <ul className={cn(styles.list)}>
+      <ul className={cx('list')}>
         {items.map(card => (
-          <li className={cn(styles.item)} key={card.id}>
+          <li className={cx('item')} key={card.id}>
             <Icon
-              className={styles.mapIcon}
+              className={cx('mapIcon')}
               glyph='map'
             />
-            <h3 className={cn(styles.title)}>
+            <h3 className={cx('title')}>
               {card.name}
             </h3>
-            <p className={cn(styles.desc)}>
+            <p className={cx('desc')}>
               {card.description}
             </p>
             <Link href={card.map_link}>
-              <a className={cn(styles.link)}>
-                <p className={cn(styles.text)}>
+              <a className={cx('link')}>
+                <p className={cx('text')}>
                   {card.address}
                 </p>
-                <span className={cn(styles.icon)}>
+                <span className={cx('icon')}>
                   {<Icon glyph={'arrow-right'} fill={'black'}/>}
                 </span>
               </a>

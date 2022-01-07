@@ -1,23 +1,25 @@
 /* eslint-disable import/no-unresolved */
 import { FC } from 'react';
 import Image from 'next/image';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 import { MainVideoArchive } from 'api-typings';
 
 import { Button } from 'components/ui/button';
 
 import styles from './main-archive.module.css';
 
+const cx = cn.bind(styles);
+
 export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => {
   return ( 
-    <section className={cn(styles.archive)}>
-      <div className={cn(styles.content)}>
-        <h2 className={cn(styles.title)}>
-          <p className={cn(styles.text)}>
+    <section className={cx('archive')}>
+      <div className={cx('content')}>
+        <h2 className={cx('title')}>
+          <p className={cx('text')}>
             Видео-архив
           </p>
-          <span className={cn(styles.link)}>
-            <Button 
+          <span className={cx('link')}>
+            <Button
               label='YOUTUBE'
               isLink={true} 
               href={url}
@@ -25,17 +27,17 @@ export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => {
               iconPlace='left'
               border='bottomLeft'
               size='s'
-              className={cn(styles.button)}
+              className={cx('icon')}
             />
           </span>
           всех читок и событий
         </h2>
-        <p className={cn(styles.desc)}>
+        <p className={cx('desc')}>
           На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации.
         </p>
       </div>
-      <div className={cn(styles.img)}>
-        <a href={url} className={cn(styles.linkImg)}>
+      <div className={cx('img')}>
+        <a href={url} className={cx('linkImg')}>
           <Image
             alt='YOUTUBE'
             src={photo}

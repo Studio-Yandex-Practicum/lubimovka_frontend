@@ -1,60 +1,30 @@
-import { FC, HTMLAttributes } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import { FC, ReactNode /* HTMLAttributes */ } from 'react';
+// import Link from 'next/link';
+// import Image from 'next/image';
 import cn from 'classnames/bind';
 
-import { Section } from 'components/section';
-import { Url } from 'shared/types/common';
+// import { Section } from 'components/section';
+// import { Url } from 'shared/types/common';
 
 import styles from './partners.module.css';
-import mockData from './assets/mock-data.json';
+// import mockData from './assets/mock-data.json';
 
 const cx = cn.bind(styles);
 
-interface IPartnersProps extends HTMLAttributes<HTMLElement> {
-  align?: 'left' | 'center';
-  data?: [
-    {
-      id: number;
-      title: string;
-      content: [
-        {
-          id: number;
-          image: Url;
-          link: Url;
-          text: string;
-        },
-      ];
-    },
-  ];
+interface IPartners {
+  title: string
+  children: ReactNode
 }
 
-export const Partners: FC<IPartnersProps> = ({ align = 'left', data = mockData, className }) => {
+export const Partners: FC<IPartners> = ({ title, children }) => {
   return (
-    <div className={cx('container', className)}>
-      {data.map((partners) => (
-        <Section
-          type='partners'
-          title={partners.title}
-          key={partners.id}
-          titleTag={partners.id === 1 ? 'h2' : 'h3'}
-        >
-          <ul className={cx('list', align)}>
-            {partners.content.map((partner) => (
-              <li className={cx('listElement')} key={partner.id}>
-                <Link href={partner.link}>
-                  <a className={cx('link')}>
-                    <div className={cx('imageContainer')}>
-                      <Image src={partner.image} layout='fill' objectFit='contain' alt={partners.title}/>
-                    </div>
-                    {partner.text && <p className={cx('text')}>{partner.text}</p>}
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Section>
-      ))}
-    </div>
+    <aside className={cx('partners')}>
+      <h4 className={cx('title')}>
+        {title}
+      </h4>
+      <ul className={cx('list')}>
+        {children}
+      </ul>
+    </aside>
   );
 };

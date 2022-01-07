@@ -1,12 +1,11 @@
 .archive {
-  width: 100%;
+  width: calc(100% - scale(270px));
   padding: scale(62px 0 108px 0);
   background-color: var(--light-green);
   grid-area: archive;
 }
 
 .content {
-  width: 100%;
   max-width: scale(866px);
   margin-bottom: scale(14px);
 }
@@ -19,6 +18,7 @@
 }
 
 .text {
+  line-height: scale(72px);
   display: inline-block;
   overflow: hidden;
   max-width: scale(480px);
@@ -34,11 +34,6 @@
   margin: scale(0 20px 0 6px);
 }
 
-.button > svg {
-  width: scale(25px);
-  height: scale(25px);
-}
-
 .desc {
   @mixin text;
   @mixin textLarge;
@@ -48,13 +43,20 @@
 }
 
 .img {
+  @mixin text;
+  @mixin textLarge;
   max-width: scale(540px);
-  height: scale(258px);
   margin: 0 auto;
+}
+
+.icon > svg {
+  width: scale(25px);
+  height: scale(25px);
 }
 
 @media (max-width: $tablet-portrait) {
   .archive {
+    width: 100%;
     padding: scale(75px 0 100px 0);
   }
 
@@ -65,6 +67,7 @@
   }
 
   .text {
+    @mixin headline4;
     max-width: scale(260px);
     text-overflow: clip;
   }
@@ -82,7 +85,6 @@
 
   .img {
     max-width: scale(540px);
-    height: scale(258px);
   }
 
   .linkImg {

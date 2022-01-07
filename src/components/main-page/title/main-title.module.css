@@ -1,6 +1,6 @@
 .section {
   display: grid;
-  margin: calc(-100vh + scale(60px)) 0 110px;
+  margin-top: scale(60px);
   grid-area: title;
   justify-items: center;
 

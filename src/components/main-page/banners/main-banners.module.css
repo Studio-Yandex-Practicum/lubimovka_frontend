@@ -1,6 +1,10 @@
 .banners {
+  display: grid;
   padding: 0 scale(32px);
   grid-area: banners;
+  width: calc(100% - scale(270px));
+  box-sizing: border-box;
+  
 }
 
 .list {
@@ -10,8 +14,6 @@
 }
 
 .item {
-  width: 100%;
-  max-width: scale(1100px);
   border-top: scale(1px) solid var(--coal);
 }
 
@@ -50,8 +52,14 @@
   max-width: scale(486px);
 }
 
+.icon > svg {
+  width: scale(24px);
+  height: scale(24px);
+}
+
 @media (max-width: $tablet-portrait) {
   .banners {
+    width: 100%;
     padding: 0 scale(24px);
   }
 
@@ -72,6 +80,6 @@
   }
 
   .container {
-    grid-template-columns: repeat(auto-fit, minmax(scale(366px), max-content));
+    grid-template-columns: repeat(auto-fit, minmax(scale(320px), max-content));
   }
 }

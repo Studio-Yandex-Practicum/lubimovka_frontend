@@ -1,4 +1,4 @@
-import type { IMainAfisha } from 'components/main-page/events/main-events';
+import type { IMainAfisha } from 'components/main-page/events/main-events.props';
 import type { MainBanners, MainBlog, MainFirstScreen, MainNews, MainPlaces, MainShortList, MainVideoArchive } from 'api-typings';
 
 interface IMain {

@@ -6,13 +6,14 @@ import { Button } from 'components/ui/button';
 
 import styles from './main-title.module.css';
 
+const cx = cn.bind(styles);
+
 export interface IMainTitle {
   title: string;
   description: string;
   button_label: string;
 }
 
-const cx = cn.bind(styles);
 export const MainTitle: FC<IMainTitle> = ({ title, button_label, description }) => {
   const moreTwo = title.split(' ').length > 2;
   return (

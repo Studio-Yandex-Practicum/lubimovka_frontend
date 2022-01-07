@@ -51,6 +51,7 @@ export const MainAside: FC<IMainAside> = ({ type, title, items }) => {
               align="start"
               gap="9px"
               size="s"
+              className={cx('icon')}
             />
           </div>
         </div>
