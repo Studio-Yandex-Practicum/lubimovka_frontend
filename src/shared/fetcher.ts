@@ -3,7 +3,7 @@ import { addBaseUrlToApiPath } from 'shared/helpers/url';
 export const fetcher = async <T = unknown>(path: string, options?: RequestInit): Promise<T>  => {
   let fetchImplementation = fetch;
 
-  if (process.env.MOCKS === 'true') {
+  if (process.env.NEXT_PUBLIC_MOCKS === 'true') {
     fetchImplementation = (await import('mocks/fetch-mock')).default;
   }
 

@@ -19,7 +19,7 @@ fetchMock.config.fallbackToNetwork = true;
 const mockedFetch = fetchMock.sandbox();
 
 mockedFetch
-  .get({ matcher: new RegExp(addBaseUrlToApiPath('/projects/\\d+')) }, project)
+  .get(new RegExp(addBaseUrlToApiPath('/projects/\\d+')), project)
   .get(addBaseUrlToApiPath('/library/authors'), (<PaginatedAuthorListList>{
     results: authors,
   }))
@@ -32,10 +32,13 @@ mockedFetch
   .get(addBaseUrlToApiPath('/projects/'), (<PaginatedProjectListList>{
     results: projects,
   }))
-  .get({ matcher: addBaseUrlToApiPath('/info/partners/'), query: { type: 'general' } }, partners.filter(({ type }) => type === 'general'))
-  .get({ matcher: new RegExp(addBaseUrlToApiPath('/library/performances/\\d+')) }, performance)
+  .get({
+    url: addBaseUrlToApiPath('/info/partners/'),
+    query: { in_footer_partner: 'true' },
+  }, partners.filter(({ in_footer_partner }) => in_footer_partner))
+  .get(new RegExp(addBaseUrlToApiPath('/library/performances/\\d+')), performance)
   .get(addBaseUrlToApiPath('/form'), form)
-  .get({ matcher: new RegExp(addBaseUrlToApiPath('/blog/\\d+')) }, blogArticle)
-  .get({ matcher: new RegExp(addBaseUrlToApiPath('/news/\\d+')) }, newsArticle);
+  .get(new RegExp(addBaseUrlToApiPath('/blog/\\d+')), blogArticle)
+  .get(new RegExp(addBaseUrlToApiPath('/news/\\d+')), newsArticle);
 
 export default mockedFetch;
