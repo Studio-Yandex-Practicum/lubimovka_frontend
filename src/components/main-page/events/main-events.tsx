@@ -24,7 +24,7 @@ export const MainEvents: FC<IMainAfisha> = ({ items }) => {
                 description={item.event_body.description}
                 buttonLink={item.url}
                 imageUrl={item.event_body.image}
-                projectText={/* item.event_body.project_title === null ? null : item.event_body.project_title */ 'Ругается eslint'}
+                projectText={item.event_body.project_title && item.event_body.project_title}
                 paid={item.paid}
               />
             </li>

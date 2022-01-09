@@ -1,24 +1,8 @@
-.container {
-  margin-top: -100vh;
-
-  @media (max-width: $tablet-portrait) {
-    margin-top: 0;
-  }
-}
-
 .main {
-  display: grid;
-    grid-template-areas:
-      "aside"
-      "title"
-      "events"
-      "banners"
-      "platforms"
-      "shortList"
-      "archive"
-      "partners";
+  display: block;
 
   @media (max-width: $tablet-portrait) {
+    display: grid;
     grid-template-areas:
       "title"
       "events"

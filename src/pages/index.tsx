@@ -39,21 +39,17 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
         </Head>
         <main className={cx('main')}>
           {blog ? <MainAside type="blog" {...blog}/> : <MainAside type="news" {...news}/>}
-          <div className={cx('container')}>
-            {afisha && (
-              <MainTitle
-                title={afisha.title}
-                button_label={afisha.button_label}
-                description={afisha.description}
-              />
-            )}
-            {(afisha ? afisha.items : afisha) && <MainEvents {...afisha}/>}
-            {banners && banners.items.length && <MainBanners {...banners}/>}
-            {places && places.items.length && <MainPlatforms {...places}/>}
-            {/* {short_list && <MainShortList data={short_list}/>} */}
-            {video_archive && <MainArchive {...video_archive}/>}
-            {partners && <MainPartners partners={partners}/>}
-          </div>
+          {<MainTitle
+            title={afisha.title}
+            button_label={afisha.button_label}
+            description={afisha.description}
+          />}
+          {(afisha ? afisha.items : afisha) && <MainEvents {...afisha}/>}
+          {banners && banners.items.length && <MainBanners {...banners}/>}
+          {places && places.items.length && <MainPlatforms {...places}/>}
+          {/* {short_list && <MainShortList data={short_list}/>} */}
+          {video_archive && <MainArchive {...video_archive}/>}
+          {partners && <MainPartners partners={partners}/>}
         </main>
       </>
     </AppLayout>

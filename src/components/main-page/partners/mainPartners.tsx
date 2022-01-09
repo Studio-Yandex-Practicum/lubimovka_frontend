@@ -16,15 +16,13 @@ interface IPartner {
 }
 
 export const MainPartners: FC<IPartner> = ({ partners }) => {
-  console.log(partners);
-
-  const filterPartners = (partners: IPartner, type: string) => {
-    return partners.filter(p => p.type === type);
+  const filterPartners = (type: string) => {
+    return partners.filter((p: Partner) => p.type === type);
   };
 
   const returnElements = (type: string) => (
-    filterPartners(partners, type).map((p: Partner) => {
-      return <li key={p.id}>
+    filterPartners(type).map((p: Partner) => (
+      <li key={p.id}>
         <Link href={p.url}>
           <a className={cx('link')}>
             <div className={cx('imageContainer')}>
@@ -38,8 +36,8 @@ export const MainPartners: FC<IPartner> = ({ partners }) => {
             {/* {p.name && <p className={cx('text')}>{p.name}</p>} */}
           </a>
         </Link>
-      </li>;
-    }));
+      </li>
+    )));
 
   return (
     <section className={cx('partners')}>

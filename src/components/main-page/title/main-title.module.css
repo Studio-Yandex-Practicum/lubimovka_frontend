@@ -1,14 +1,15 @@
 .section {
   display: grid;
-  margin-top: scale(60px);
+  padding-top: scale(60px);
   grid-area: title;
   justify-items: center;
+  margin-top: scale(-100vh);
 
   @media (max-width: $tablet-portrait) {
     box-sizing: border-box;
-    padding: 0 scale(24px);
-    margin: scale(42px 0 34px);
+    padding: scale(18px 24px 0);
     justify-items: initial;
+    margin-top: scale(0);
   }
 }
 

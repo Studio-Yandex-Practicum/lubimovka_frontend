@@ -23,15 +23,14 @@
   padding: 0;
   margin: 0;
   column-gap: 30px;
-  grid-auto-rows: minmax(scale(118px), scale(137px));
-  grid-template-columns: repeat(auto-fit, minmax(scale(182px), scale(210px)));
+  grid-auto-rows: minmax(scale(20px), scale(100px));
+  grid-template-columns: repeat(4, 1fr);
   list-style-type: none;
   row-gap: scale(15px);
 
   @media (max-width: $tablet-portrait) {
-    /* column-gap: 0; */
-    grid-auto-rows: scale(118px);
+    grid-auto-rows: minmax(scale(18px), scale(50px));
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 0;
+    row-gap: scale(40px);
   }
 }
