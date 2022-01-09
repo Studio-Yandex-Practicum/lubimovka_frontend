@@ -9,14 +9,16 @@ const partners: Partner[] = [
     name: 'Фонд Михаила Прохорова',
     url: '',
     image: fondProhorovaLogo.src,
-    type: 'general'
+    type: 'general',
+    in_footer_partner: true,
   },
   {
     id: 2,
     name: 'SBTG',
     url: '',
     image: sbtgLogo.src,
-    type: 'general'
+    type: 'general',
+    in_footer_partner: false,
   },
 ];
 
