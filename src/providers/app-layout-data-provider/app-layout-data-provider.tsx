@@ -14,7 +14,7 @@ export const AppLayoutDataProvider: FC = (props) => {
     let response: ApiPartner[];
 
     try {
-      response = await fetcher('/info/partners/?type=general');
+      response = await fetcher('/info/partners/?in_footer_partner=true');
     } catch (error) {
       return;
     }
