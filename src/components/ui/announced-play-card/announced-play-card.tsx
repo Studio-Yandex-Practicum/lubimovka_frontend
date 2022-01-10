@@ -28,6 +28,7 @@ type TeamEntry = {
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const {
     isPerformance,
+    key,
     date,
     title,
     team,
@@ -56,7 +57,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   );
 
   return (
-    <article className={cx('card', [className])}>
+    <article className={cx('card', className)}>
       {imageUrl &&
         <div className={cx('cover')}>
           <Image src={imageUrl} alt={title} layout="fill" objectFit="cover"/>
