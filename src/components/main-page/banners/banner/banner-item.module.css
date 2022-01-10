@@ -1,0 +1,83 @@
+.banner {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  max-width: scale(1100px);
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: scale(1px) solid var(--coal);
+}
+
+.title {
+  @mixin headline;
+  @mixin headline6;
+
+  max-width: scale(570px);
+  padding: scale(20px 56px);
+}
+
+.container {
+  display: flex;
+  max-height: scale(300px);
+  justify-content: space-between;
+  transition: all .4s ease-out;
+}
+
+.content {
+  padding-left: scale(56px);
+}
+
+.desc {
+  @mixin text;
+  @mixin textLarge;
+
+  min-width: scale(318px);
+  max-width: scale(384px);
+  margin: 0 scale(62px 24px 62px);
+}
+
+.button {
+  margin-bottom: scale(20px);
+}
+
+.img {
+  object-fit: cover;
+}
+
+@media (max-width: $tablet-portrait) {
+  .banners {
+    padding: 0 scale(24px);
+  }
+
+  .title {
+    padding: scale(16px) 0;
+  }
+
+  .content {
+    padding: 0;
+  }
+
+  .desc {
+    max-width: scale(318px);
+    margin: 0;
+    margin-bottom: scale(28px);
+
+    @mixin textMedium;
+  }
+
+  .container {
+    display: grid;
+    max-height: scale(452px);
+    grid-template-columns: repeat(auto-fit, minmax(scale(366px), max-content));
+    transition: all .6s ease-out;
+  }
+
+  .button {
+    margin: 0 scale(20px 16px) auto;
+  }
+}
+
+.hideContainer {
+  overflow: hidden;
+  max-height: 0;
+}

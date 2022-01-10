@@ -22,7 +22,7 @@ import styles from './index.module.css';
 
 const cx = cn.bind(styles);
 
-const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const MainPage: NextPage = ({ data = main, /* partners */ }: InferGetStaticPropsType<typeof getStaticProps>) => {
   console.log(data);
 
   const { afisha, blog, news, banners, places, video_archive, short_list } = data;
@@ -46,7 +46,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
           {short_list && <MainShortList {...short_list}/>}
           {places && places.items.length && <MainPlatforms {...places}/>}
           {video_archive && <MainArchive {...video_archive}/>}
-          {partners && <MainPartners partners={partners}/>}
+          {/* {partners && <MainPartners partners={partners}/>} */}
         </main>
       </>
     </AppLayout>
@@ -88,7 +88,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       // data,
-      partners,
+      // partners,
     },
   };
 };
