@@ -19,8 +19,9 @@ export const MainPartners: FC<IPartner> = ({ partners }) => {
     <section className={cx('partners')}>
       <Partners 
         title='Партнёры фестиваля' 
-        partners={partners.filter((p: Partner) => p.type === 'festival')}
-      />
+        partners={partners.filter((p: Partner) => p.type !== 'info')}
+      >
+      </Partners>
       <Partners 
         title='Информационные партнёры' 
         partners={partners.filter((p: Partner) => p.type === 'info')}
