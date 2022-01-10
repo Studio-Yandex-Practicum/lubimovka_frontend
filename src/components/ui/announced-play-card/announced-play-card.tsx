@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, HTMLAttributes, DetailedHTMLProps } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
@@ -8,9 +8,8 @@ import styles from './announced-play-card.module.css';
 
 const cx = cn.bind(styles);
 
-export interface IAnnouncedPlayCardProps {
+export interface IAnnouncedPlayCardProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   isPerformance?: boolean;
-  id?: number;
   date: string;
   title: string;
   team?: TeamEntry[];
@@ -18,7 +17,6 @@ export interface IAnnouncedPlayCardProps {
   buttonLink: string;
   imageUrl?: string;
   projectText?: string | null;
-  className?: string;
   paid?: boolean;
 }
 
@@ -30,7 +28,6 @@ type TeamEntry = {
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const {
     isPerformance,
-    id,
     date,
     title,
     team,
@@ -67,8 +64,8 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
       }
       <div className={cx('info')}>
         <div className={cx('dateInfo', !imageUrl && 'dateInfoNoCover')}>
-          <p className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' })}</p>
-          <p className={cx('date')}>{new Date(date).toLocaleTimeString('ru-Ru', { timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric' })}</p>
+          <time dateTime={date} className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' })}</time>
+          <time dateTime={date} className={cx('date')}>{new Date(date).toLocaleTimeString('ru-Ru', { timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric' })}</time>
         </div>
         <h3 className={cx('title')}>{title}</h3>
         {team &&
@@ -98,7 +95,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             label={isPerformance ? 'О спектакле' : 'Регистрация'}
             border="bottomLeft"
             isLink
-            href={isPerformance ? `/performances/${id}` : buttonLink}
+            href={isPerformance ? `/performances/${key}` : buttonLink}
           />
           {paid && isPerformance &&
           <Button
