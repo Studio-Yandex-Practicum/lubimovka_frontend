@@ -116,7 +116,64 @@ export const main: IMain = {
   },
   short_list: {
     title: 'Шорт-лист 2021 года',
-    items: []
+    items: [
+      {
+        id: 0,
+        name: 'МАМА',
+        authors: [
+          {
+            name: 'Екатерина Августеняк',
+            id: 0
+          }
+        ],
+        city: 'Санкт-Петербург',
+        year: 2020,
+        url_download: '#',
+        url_reading: '#'
+      },
+      {
+        id: 0,
+        name: 'Конкретные разговоры пожилых супругов ни о чём',
+        authors: [
+          {
+            name: 'Екатерина Августеняк',
+            id: 0
+          }
+        ],
+        city: 'Санкт-Петербург',
+        year: 2020,
+        url_download: '#',
+        url_reading: '#'
+      },
+      {
+        id: 0,
+        name: 'Конкретные разговоры пожилых супругов ни о чём',
+        authors: [
+          {
+            name: 'Екатерина Августеняк',
+            id: 0
+          }
+        ],
+        city: 'Санкт-Петербург',
+        year: 2020,
+        url_download: '#',
+        url_reading: '#'
+      },
+      {
+        id: 0,
+        name: 'Конкретные разговоры пожилых супругов ни о чём',
+        authors: [
+          {
+            name: 'Екатерина Августеняк',
+            id: 0
+          }
+        ],
+        city: 'Санкт-Петербург',
+        year: 2020,
+        url_download: '#',
+        url_reading: '#'
+      },
+    ]
   },
   places: {
     items: [

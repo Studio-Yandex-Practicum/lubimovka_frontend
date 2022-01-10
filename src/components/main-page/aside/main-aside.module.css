@@ -23,7 +23,6 @@
     width: 100%;
     height: 100%;
     overflow-x: scroll;
-    padding-top: scale(72px);
 
     &:hover {
       width: 100%;
@@ -36,10 +35,10 @@
   top: 0;
   left: 0;
   width: calc(var(--scale) * 468);
-  min-height: 100vh;
   box-sizing: border-box;
   padding: scale(60px 56px 60px 56px);
   background-color: var(--light-green);
+  
 
   @media (max-width: $tablet-portrait) {
     position: initial;
@@ -98,8 +97,9 @@
     width: 100%;
     margin-right: scale(24px);
     column-gap: 32px;
-    grid-template-columns: repeat(3, minmax(scale(304px), max-content));
+    grid-template-columns: repeat(auto-fill, scale(304px));
     overflow-x: scroll;
+    grid-auto-flow: column;
   }
 }
 

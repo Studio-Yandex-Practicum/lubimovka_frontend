@@ -14,3 +14,12 @@
       "partners";
   }
 }
+
+.wrapper {
+  margin-top: scale(-100vh);
+  grid-area: title;
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: 0;
+  }
+}

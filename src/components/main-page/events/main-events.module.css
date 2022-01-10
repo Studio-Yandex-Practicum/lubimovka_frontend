@@ -4,7 +4,7 @@
   grid-area: events;
 
   @media (max-width: $tablet-portrait) {
-    padding-top: scale(38px);
+    padding: scale(38px 0 42px);
     width: 100%;
   }
 }

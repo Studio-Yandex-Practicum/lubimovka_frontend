@@ -15,6 +15,7 @@
 
 .item {
   border-top: scale(1px) solid var(--coal);
+  margin-bottom: scale(50px);
 }
 
 .title {

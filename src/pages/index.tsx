@@ -16,11 +16,6 @@ import { MainArchive } from 'components/main-page/archive';
 import { MainPartners } from 'components/main-page/partners';
 import { AppLayout } from 'components/app-layout';
 
-// import data from 'components/main-page/assets/mock-data.json';
-// import mainEventsData from 'components/main-page/assets/main-events.json';
-// import mainPlatformsData from 'components/main-page/assets/main-platforms-data.json';
-// import mainShortListData from 'components/main-page/assets/main-short-list-data.json';
-// import mainArchiveData from 'components/main-page/assets/main-archive-data.json';
 import { main } from 'mocks/data/main';
 
 import styles from './index.module.css';
@@ -39,15 +34,17 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
         </Head>
         <main className={cx('main')}>
           {blog ? <MainAside type="blog" {...blog}/> : <MainAside type="news" {...news}/>}
-          {<MainTitle
-            title={afisha.title}
-            button_label={afisha.button_label}
-            description={afisha.description}
-          />}
+          <div className={cx('wrapper')}>
+            {afisha && <MainTitle
+              title={afisha.title}
+              button_label={afisha.button_label}
+              description={afisha.description}
+            />}
+          </div>
           {(afisha ? afisha.items : afisha) && <MainEvents {...afisha}/>}
           {banners && banners.items.length && <MainBanners {...banners}/>}
+          {short_list && <MainShortList {...short_list}/>}
           {places && places.items.length && <MainPlatforms {...places}/>}
-          {/* {short_list && <MainShortList data={short_list}/>} */}
           {video_archive && <MainArchive {...video_archive}/>}
           {partners && <MainPartners partners={partners}/>}
         </main>
@@ -62,11 +59,8 @@ const fetchMain = async () => {
   try {
     data = await fetcher<Main>('/main/');
   } catch (error) {
-    // TODO: обработать ошибку, добавим после реализации страницы ошибки
-
-    return;
+    throw error;
   }
-
   return data;
 };
 
@@ -76,11 +70,8 @@ const fetchPartners = async () => {
   try {
     partners = await fetcher<Partner>('/info/partners/');
   } catch (error) {
-    // TODO: обработать ошибку, добавим после реализации страницы ошибки
-
-    return;
+    throw error;
   }
-
   return partners;
 };
 
