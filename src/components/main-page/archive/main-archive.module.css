@@ -3,6 +3,13 @@
   padding: scale(62px 0 108px 0);
   background-color: var(--light-green);
   grid-area: archive;
+
+  @media (max-width: $tablet-portrait) {
+    .archive {
+      width: 100%;
+      padding: scale(75px 0 100px 0);
+    }
+  }
 }
 
 .content {
@@ -15,6 +22,14 @@
   @mixin headline2;
 
   margin: 0 0 scale(22px 150px);
+
+  @media (max-width: $tablet-portrait) {
+    .title {
+      @mixin headline4;
+
+      margin: 0 0 scale(18px 24px);
+    }
+  }
 }
 
 .text {
@@ -25,6 +40,15 @@
   line-height: scale(72px);
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @media (max-width: $tablet-portrait) {
+    .text {
+      @mixin headline4;
+
+      max-width: scale(260px);
+      text-overflow: clip;
+    }
+  }
 }
 
 .link {
@@ -32,6 +56,15 @@
   bottom: scale(42px);
   display: inline-block;
   margin: scale(0 20px 0 6px);
+
+  @media (max-width: $tablet-portrait) {
+    .link {
+      bottom: scale(32px);
+      display: inline-block;
+      margin: 0;
+      margin-left: scale(2px);
+    }
+  }
 }
 
 .desc {
@@ -40,6 +73,12 @@
 
   max-width: scale(432px);
   margin-left: scale(210px);
+
+  @media (max-width: $tablet-portrait) {
+    .desc {
+      margin: scale(0 24px 34px 85px);
+    }
+  }
 }
 
 .img {
@@ -48,6 +87,12 @@
 
   max-width: scale(540px);
   margin: 0 auto;
+
+  @media (max-width: $tablet-portrait) {
+    .img {
+      max-width: scale(540px);
+    }
+  }
 }
 
 .icon > svg {
@@ -56,39 +101,6 @@
 }
 
 @media (max-width: $tablet-portrait) {
-  .archive {
-    width: 100%;
-    padding: scale(75px 0 100px 0);
-  }
-
-  .title {
-    @mixin headline4;
-
-    margin: 0 0 scale(18px 24px);
-  }
-
-  .text {
-    @mixin headline4;
-
-    max-width: scale(260px);
-    text-overflow: clip;
-  }
-
-  .link {
-    bottom: scale(32px);
-    display: inline-block;
-    margin: 0;
-    margin-left: scale(2px);
-  }
-
-  .desc {
-    margin: scale(0 24px 34px 85px);
-  }
-
-  .img {
-    max-width: scale(540px);
-  }
-
   .linkImg {
     display: block;
     margin-left: scale(54px);

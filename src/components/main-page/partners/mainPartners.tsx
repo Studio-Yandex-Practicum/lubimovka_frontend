@@ -1,52 +1,30 @@
+/* eslint-disable import/order */
 /* eslint-disable import/no-unresolved */
 import { FC } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import cn from 'classnames/bind';
-import { Partner } from 'api-typings';
 
+import { Partner } from 'api-typings';
 import { Partners } from 'components/partners';
 
 import styles from './mainPartners.module.css';
 
 const cx = cn.bind(styles);
 
-interface IPartner {
+export interface IPartner {
   partners: Array<Partner>
 }
 
 export const MainPartners: FC<IPartner> = ({ partners }) => {
-  const filterPartners = (type: string) => {
-    return partners.filter((p: Partner) => p.type === type);
-  };
-
-  const returnElements = (type: string) => (
-    filterPartners(type).map((p: Partner) => (
-      <li key={p.id}>
-        <Link href={p.url}>
-          <a className={cx('link')}>
-            <div className={cx('imageContainer')}>
-              <Image 
-                src={p.image} 
-                alt={p.name}
-                layout='fill' 
-                objectFit='contain'
-              />
-            </div>
-            {/* {p.name && <p className={cx('text')}>{p.name}</p>} */}
-          </a>
-        </Link>
-      </li>
-    )));
-
   return (
     <section className={cx('partners')}>
-      <Partners title='Партнёры фестиваля'>
-        {returnElements('festival')}
-      </Partners>
-      <Partners title='Информационные партнёры'>
-        {returnElements('info')}
-      </Partners>
+      <Partners 
+        title='Партнёры фестиваля' 
+        partners={partners.filter((p: Partner) => p.type === 'festival')}
+      />
+      <Partners 
+        title='Информационные партнёры' 
+        partners={partners.filter((p: Partner) => p.type === 'info')}
+      />
     </section>
   );
 };

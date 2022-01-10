@@ -1,12 +1,12 @@
 .section {
   width: calc(100% - scale(270px));
-  grid-area: shortList;
-  padding: scale(90px 0 102px 60px);
   box-sizing: border-box;
+  padding: scale(90px 0 102px 60px);
+  grid-area: shortList;
+  overflow-y: hidden;
 
   @media (max-width: $tablet-portrait) {
     width: 100%;
-    max-width: scale(414px);
     padding: scale(40px 0 40px 30px);
   }
 }
@@ -20,6 +20,7 @@
 
   @media (max-width: $tablet-portrait) {
     margin-bottom: scale(24px);
+
     @mixin headline7;
   }
 }
@@ -28,12 +29,12 @@
   @mixin hideScrollbar;
 
   position: relative;
-  overflow: hidden;
-  overflow-x: scroll;
   display: grid;
-  gap: scale(30px);
+  overflow: hidden;
   padding-right: scale(30px);
+  gap: scale(30px);
   grid-template-columns: repeat(4, 1fr);
+  overflow-x: scroll;
 
   @media (max-width: $tablet-portrait) {
     grid-auto-flow: column;

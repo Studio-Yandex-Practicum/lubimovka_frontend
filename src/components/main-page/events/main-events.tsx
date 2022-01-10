@@ -1,20 +1,21 @@
 /* eslint-disable import/no-unresolved */
 import { FC } from 'react';
+import cn from 'classnames/bind';
 
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
 import { IMainAfisha } from './main-events.props';
 
 import styles from './main-events.module.css';
 
-export const MainEvents: FC<IMainAfisha> = ({ items }) => {
-  // console.log(items);
+const cx = cn.bind(styles);
 
+export const MainEvents: FC<IMainAfisha> = ({ items }) => {
   return (
     <section className={styles.events}>
       <ul className={styles.content}>
         {
           items.map(item => (
-            <li key={item.id} className={styles.list}>
+            <li key={item.id} className={cx('list')}>
               <AnnouncedPlayCard
                 id={item.id}
                 date={item.date_time}

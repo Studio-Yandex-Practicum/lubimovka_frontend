@@ -38,7 +38,6 @@
   box-sizing: border-box;
   padding: scale(60px 56px 60px 56px);
   background-color: var(--light-green);
-  
 
   @media (max-width: $tablet-portrait) {
     position: initial;
@@ -46,21 +45,10 @@
     width: 100%;
     height: scale(934px);
     padding: scale(36px 0 102px 24px);
-    margin-bottom: scale(50px);
     grid-area: aside;
     overflow-y: hidden;
     transform: translate(0, 0);
   }
-}
-
-.header {
-  position: fixed;
-}
-
-.footer {
-  position: absolute;
-  top: initial;
-  bottom: 0;
 }
 
 .heading {
@@ -72,7 +60,7 @@
 
   @media (max-width: $tablet-portrait) {
     height: scale(124px);
-    margin-bottom: scale(66px);
+    margin-bottom: scale(56px);
   }
 }
 
@@ -97,15 +85,14 @@
     width: 100%;
     margin-right: scale(24px);
     column-gap: 32px;
+    grid-auto-flow: column;
     grid-template-columns: repeat(auto-fill, scale(304px));
     overflow-x: scroll;
-    grid-auto-flow: column;
   }
 }
 
 .item {
   display: flex;
-  margin-bottom: scale(36px);
 
   &:last-of-type {
     margin-bottom: 0;

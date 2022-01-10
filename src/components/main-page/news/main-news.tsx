@@ -1,7 +1,9 @@
+/* eslint-disable import/order */
 /* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
 import Link from 'next/link';
 import cn from 'classnames/bind';
+
 import { NewsItemList } from 'api-typings';
 
 import styles from './main-news.module.css';

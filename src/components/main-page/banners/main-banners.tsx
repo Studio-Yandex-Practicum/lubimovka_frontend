@@ -1,14 +1,15 @@
+/* eslint-disable import/order */
 /* eslint-disable import/no-unresolved */
 import { FC } from 'react';
 import Image from 'next/image';
 import cn from 'classnames/bind';
-import { Banner, MainBanners as IMainBanners } from 'api-typings';
 
+import { Banner, MainBanners as IMainBanners } from 'api-typings';
 import { Button } from 'components/ui/button';
 
-const cx = cn.bind(styles);
-
 import styles from './main-banners.module.css';
+
+const cx = cn.bind(styles);
 
 export const MainBanners: FC<IMainBanners> = ({ items }) => {
   return (

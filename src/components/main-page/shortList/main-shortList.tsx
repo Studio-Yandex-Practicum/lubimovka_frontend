@@ -1,8 +1,9 @@
+/* eslint-disable import/order */
 /* eslint-disable import/no-unresolved */
 import { FC } from 'react';
 import cn from 'classnames/bind';
-import { MainShortList as IMainShortList } from 'api-typings';
 
+import { MainShortList as IMainShortList } from 'api-typings';
 import { main } from 'mocks/data/main';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 

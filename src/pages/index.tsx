@@ -59,7 +59,7 @@ const fetchMain = async () => {
   try {
     data = await fetcher<Main>('/main/');
   } catch (error) {
-    throw error;
+    // throw error;
   }
   return data;
 };
@@ -70,7 +70,7 @@ const fetchPartners = async () => {
   try {
     partners = await fetcher<Partner>('/info/partners/');
   } catch (error) {
-    throw error;
+    // throw error;
   }
   return partners;
 };
@@ -79,15 +79,15 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await fetchMain();
   const partners = await fetchPartners();
 
-  if (!data || !partners) {
-    return {
-      notFound: true,
-    };
-  }
+  // if (!data || !partners) {
+  //   return {
+  //     notFound: true,
+  //   };
+  // }
 
   return {
     props: {
-      data,
+      // data,
       partners,
     },
   };

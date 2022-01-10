@@ -4,6 +4,13 @@
   padding: scale(65px 60px 105px 60px);
   background-color: white;
   grid-area: platforms;
+
+  @media (max-width: $tablet-portrait) {
+    .section {
+      width: 100%;
+      padding: scale(56px 55px 100px 55px);
+    }
+  }
 }
 
 .titleMain {
@@ -11,6 +18,14 @@
   @mixin headline2;
 
   margin-bottom: scale(74px);
+
+  @media (max-width: $tablet-portrait) {
+    .titleMain {
+      @mixin headline4;
+
+      margin-bottom: scale(40px);
+    }
+  }
 }
 
 .list {
@@ -21,6 +36,12 @@
   grid-template-columns: repeat(auto-fit, minmax(scale(300px), max-content));
   list-style: none;
   row-gap: scale(40px);
+
+  @media (max-width: $tablet-portrait) {
+    .list {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 .item {
@@ -37,6 +58,13 @@
     width: scale(24px);
     height: scale(24px);
   }
+
+  @media (max-width: $tablet-portrait) {
+    .item {
+      min-height: auto;
+      padding: scale(16px 25px 20px 25px);
+    }
+  }
 }
 
 .mapIcon {
@@ -48,6 +76,12 @@
   @mixin headline7;
 
   margin-bottom: scale(15px);
+
+  @media (max-width: $tablet-portrait) {
+    .title {
+      margin-bottom: scale(8px);
+    }
+  }
 }
 
 .desc {
@@ -55,6 +89,13 @@
   @mixin textSmall;
 
   margin-left: scale(30px);
+
+  @media (max-width: $tablet-portrait) {
+    .desc {
+      margin-bottom: scale(20px);
+      margin-left: scale(16px);
+    }
+  }
 }
 
 .icon {
@@ -83,6 +124,12 @@
   &:hover .icon {
     transform: translateX(5px);
   }
+
+  @media (max-width: $tablet-portrait) {
+    .link {
+      padding-left: scale(16px);
+    }
+  }
 }
 
 .text {
@@ -90,39 +137,4 @@
   @mixin textSmall;
 
   margin-right: scale(8px);
-}
-
-@media (max-width: $tablet-portrait) {
-  .section {
-    width: 100%;
-    padding: scale(56px 55px 100px 55px);
-  }
-
-  .titleMain {
-    @mixin headline4;
-
-    margin-bottom: scale(40px);
-  }
-
-  .list {
-    grid-template-columns: 1fr;
-  }
-
-  .item {
-    min-height: auto;
-    padding: scale(16px 25px 20px 25px);
-  }
-
-  .title {
-    margin-bottom: scale(8px);
-  }
-
-  .desc {
-    margin-bottom: scale(20px);
-    margin-left: scale(16px);
-  }
-
-  .link {
-    padding-left: scale(16px);
-  }
 }

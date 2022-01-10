@@ -1,9 +1,5 @@
 .partners {
-  margin-bottom: scale(130px);
-
-  @media (max-width: $tablet-portrait) {
-    margin-bottom: scale(124px);
-  }
+  margin-bottom: scale(70px);
 
   &:last-of-type {
     margin-bottom: 0;
@@ -15,22 +11,33 @@
   @mixin headline6;
 
   max-width: scale(334px);
-  margin-bottom: scale(48px);
+  margin-bottom: scale(16px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(24px);
+  }
 }
 
 .list {
   display: grid;
   padding: 0;
   margin: 0;
-  column-gap: 30px;
-  grid-auto-rows: minmax(scale(20px), scale(100px));
-  grid-template-columns: repeat(4, 1fr);
+  margin-left: scale(60px);
+  column-gap: scale(30px);
+  grid-auto-rows: scale(138px);
+  grid-template-columns: repeat(auto-fill, scale(210px));
   list-style-type: none;
-  row-gap: scale(15px);
+  row-gap: scale(16px);
 
   @media (max-width: $tablet-portrait) {
-    grid-auto-rows: minmax(scale(18px), scale(50px));
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: scale(40px);
+    margin-left: 0;
+    column-gap: 0;
+    grid-auto-rows: scale(118px);
+    grid-template-columns: repeat(2, minmax(scale(170px), scale(182px)));
+    row-gap: 0;
   }
+}
+
+.item {
+  position: relative;
 }

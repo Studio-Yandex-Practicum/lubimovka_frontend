@@ -1,9 +1,10 @@
+/* eslint-disable import/order */
 /* eslint-disable import/no-unresolved */
 import { FC } from 'react';
 import Link from 'next/link';
 import cn from 'classnames/bind';
-import { MainPlaces } from 'api-typings';
 
+import { MainPlaces } from 'api-typings';
 import { Icon } from 'components/ui/icon';
 
 import styles from './main-platforms.module.css';
