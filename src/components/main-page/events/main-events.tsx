@@ -7,6 +7,28 @@ import { main } from 'mocks/data/main';
 
 import styles from './main-events.module.css';
 
+interface IItem {
+  id: number;
+  type: string;
+  date: string;
+  title: string;
+  team: TeamEntry [];
+  eventDescription?: string;
+  buttonLink: string;
+  coverResourceUrl?: string;
+  projectCopy: string;
+  paid?: boolean;
+}
+
+interface IMainEventsProps {
+  data: IItem[]
+}
+
+type TeamEntry = {
+  name: string;
+  persons: string [];
+}
+
 const cx = classNames.bind(styles);
 
 export const MainEvents: FC<IMainAfisha> = () => {
@@ -20,6 +42,7 @@ export const MainEvents: FC<IMainAfisha> = () => {
             <li key={item.id} className={cx('list')}>
               <AnnouncedPlayCard
                 isPerformance={item.type === 'PERFORMANCE'}
+                id={item.id}
                 date={item.date}
                 title={item.title}
                 team={item.team}
