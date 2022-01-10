@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, DetailedHTMLProps } from 'react';
+import React, { FC } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
@@ -8,8 +8,9 @@ import styles from './announced-play-card.module.css';
 
 const cx = cn.bind(styles);
 
-export interface IAnnouncedPlayCardProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface IAnnouncedPlayCardProps {
   isPerformance?: boolean;
+  id?: number;
   date: string;
   title: string;
   team?: TeamEntry[];
@@ -18,6 +19,7 @@ export interface IAnnouncedPlayCardProps extends DetailedHTMLProps<HTMLAttribute
   imageUrl?: string;
   projectText?: string | null;
   paid?: boolean;
+  className?: string;
 }
 
 type TeamEntry = {
@@ -28,7 +30,7 @@ type TeamEntry = {
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const {
     isPerformance,
-    key,
+    id,
     date,
     title,
     team,
@@ -96,7 +98,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
             label={isPerformance ? 'О спектакле' : 'Регистрация'}
             border="bottomLeft"
             isLink
-            href={isPerformance ? `/performances/${key}` : buttonLink}
+            href={isPerformance ? `/performances/${id}` : buttonLink}
           />
           {paid && isPerformance &&
           <Button
