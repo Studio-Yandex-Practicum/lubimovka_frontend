@@ -17,7 +17,6 @@ import { MainPartners } from 'components/main-page/partners';
 import { AppLayout } from 'components/app-layout';
 
 import { main } from 'mocks/data/main';
-
 import styles from './index.module.css';
 
 const cx = cn.bind(styles);

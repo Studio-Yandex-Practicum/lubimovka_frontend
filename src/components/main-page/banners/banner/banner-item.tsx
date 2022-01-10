@@ -8,7 +8,6 @@ import { Button } from 'components/ui/button';
 import styles from './banner-item.module.css';
 
 const cx = cn.bind(styles);
-
 interface IMainBannerItem {
   title: string
   desc: string
