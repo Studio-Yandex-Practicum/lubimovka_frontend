@@ -19,7 +19,7 @@ export const MainEvents: FC<IMainAfisha> = () => {
           mocks?.map(item => (
             <li key={item.id} className={cx('list')}>
               <AnnouncedPlayCard
-                id={item.id}
+                isPerformance={item.type === 'PERFORMANCE'}
                 date={item.date}
                 title={item.title}
                 team={item.team}
