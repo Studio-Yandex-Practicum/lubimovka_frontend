@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { NextPage } from 'next';
 import Head from 'next/head';
 import cn from 'classnames/bind';
@@ -10,6 +11,7 @@ import { MainPlatforms } from 'components/main-page/platforms';
 import { MainShortList } from 'components/main-page/shortList';
 import { MainArchive } from 'components/main-page/archive';
 import { MainPartners } from 'components/main-page/partners';
+import { FirstScreen } from 'components/main-page/first-screen';
 import { AppLayout } from 'components/app-layout';
 
 import data from 'components/main-page/assets/mock-data.json';
@@ -24,34 +26,37 @@ const cx = cn.bind(styles);
 const MainPage: NextPage = () => {
   const { title, events, aside, banners, platforms, partners, archive, shortList, metaTitle } = data;
   return (
-    <AppLayout hiddenPartners>
-      <>
-        <Head>
-          <title>{metaTitle}</title>
-        </Head>
-        <main className={cx('main')}>
-          {aside && <MainAside/>}
-          {title && (
-            <MainTitle
-              title={title.title}
-              view={title.view}
-              buttonLink={title.buttonLink}
-              buttonText={title.buttonText}
-              text={title.text}
-            />
-          )}
-          {events && <MainEvents data={mainEventsData}/>}
+    <>
+      <AppLayout hiddenPartners>
+        <>
+          <Head>
+            <title>{metaTitle}</title>
+          </Head>
+          <main className={cx('main')}>
+            <FirstScreen/>
+            {aside && <MainAside/>}
+            {title && (
+              <MainTitle
+                title={title.title}
+                view={title.view}
+                buttonLink={title.buttonLink}
+                buttonText={title.buttonText}
+                text={title.text}
+              />
+            )}
+            {events && <MainEvents data={mainEventsData}/>}
           
-          {banners && <MainBanners/>}
-          {platforms && <MainPlatforms {...mainPlatformsData}/>}
-          {shortList && <MainShortList data={mainShortListData}/>}
-          {archive && mainArchiveData.map((el) => (
-            <MainArchive key={el.id} data={el}/>
-          ))}
-          {partners && <MainPartners/>}
-        </main>
-      </>
-    </AppLayout>
+            {banners && <MainBanners/>}
+            {platforms && <MainPlatforms {...mainPlatformsData}/>}
+            {shortList && <MainShortList data={mainShortListData}/>}
+            {archive && mainArchiveData.map((el) => (
+              <MainArchive key={el.id} data={el}/>
+            ))}
+            {partners && <MainPartners/>}
+          </main>
+        </>
+      </AppLayout>
+    </>
   );
 };
 
