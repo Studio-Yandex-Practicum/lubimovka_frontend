@@ -6,10 +6,8 @@
   grid-area: platforms;
 
   @media (max-width: $tablet-portrait) {
-    .section {
-      width: 100%;
-      padding: scale(56px 55px 100px 55px);
-    }
+    width: 100%;
+    padding: scale(56px 55px 100px 55px);
   }
 }
 
@@ -20,11 +18,9 @@
   margin-bottom: scale(74px);
 
   @media (max-width: $tablet-portrait) {
-    .titleMain {
-      @mixin headline4;
+    @mixin headline4;
 
-      margin-bottom: scale(40px);
-    }
+    margin-bottom: scale(40px);
   }
 }
 
@@ -38,9 +34,7 @@
   row-gap: scale(40px);
 
   @media (max-width: $tablet-portrait) {
-    .list {
-      grid-template-columns: 1fr;
-    }
+    grid-template-columns: 1fr;
   }
 }
 
@@ -60,10 +54,8 @@
   }
 
   @media (max-width: $tablet-portrait) {
-    .item {
-      min-height: auto;
-      padding: scale(16px 25px 20px 25px);
-    }
+    min-height: auto;
+    padding: scale(16px 25px 20px 25px);
   }
 }
 
@@ -78,9 +70,7 @@
   margin-bottom: scale(15px);
 
   @media (max-width: $tablet-portrait) {
-    .title {
-      margin-bottom: scale(8px);
-    }
+    margin-bottom: scale(8px);
   }
 }
 
@@ -91,10 +81,8 @@
   margin-left: scale(30px);
 
   @media (max-width: $tablet-portrait) {
-    .desc {
-      margin-bottom: scale(20px);
-      margin-left: scale(16px);
-    }
+    margin-bottom: scale(20px);
+    margin-left: scale(16px);
   }
 }
 
@@ -126,9 +114,7 @@
   }
 
   @media (max-width: $tablet-portrait) {
-    .link {
-      padding-left: scale(16px);
-    }
+    padding-left: scale(16px);
   }
 }
 

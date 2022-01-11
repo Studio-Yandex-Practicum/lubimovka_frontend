@@ -7,10 +7,8 @@
   grid-area: banners;
 
   @media (max-width: $tablet-portrait) {
-    .banners {
-      width: 100%;
-      padding: scale(56px 24px 22px);
-    }
+    width: 100%;
+    padding: scale(56px 24px 22px);
   }
 }
 
@@ -33,9 +31,7 @@
   padding: scale(20px 56px);
 
   @media (max-width: $tablet-portrait) {
-    .title {
-      padding: scale(16px) 0;
-    }
+    padding: scale(16px) 0;
   }
 }
 
@@ -47,9 +43,7 @@
   row-gap: scale(16px);
 
   @media (max-width: $tablet-portrait) {
-    .container {
-      grid-template-columns: repeat(auto-fit, minmax(scale(320px), max-content));
-    }
+    grid-template-columns: repeat(auto-fit, minmax(scale(320px), max-content));
   }
 }
 
@@ -57,9 +51,7 @@
   padding-left: scale(56px);
 
   @media (max-width: $tablet-portrait) {
-    .content {
-      padding: scale(0);
-    }
+    padding: scale(0);
   }
 }
 
@@ -71,13 +63,11 @@
   margin: 0 0 scale(24px 62px);
 
   @media (max-width: $tablet-portrait) {
-    .desc {
-      @mixin textMedium;
+    @mixin textMedium;
 
-      max-width: scale(318px);
-      margin: 0;
-      margin-bottom: scale(28px);
-    }
+    max-width: scale(318px);
+    margin: 0;
+    margin-bottom: scale(28px);
   }
 }
 

@@ -41,3 +41,8 @@
 .item {
   position: relative;
 }
+
+.link {
+  position: relative;
+  display: contents;
+}

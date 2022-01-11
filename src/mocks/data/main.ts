@@ -132,7 +132,7 @@ export const main: IMain = {
         url_reading: '#'
       },
       {
-        id: 0,
+        id: 1,
         name: 'Конкретные разговоры пожилых супругов ни о чём',
         authors: [
           {
@@ -146,7 +146,7 @@ export const main: IMain = {
         url_reading: '#'
       },
       {
-        id: 0,
+        id: 2,
         name: 'Конкретные разговоры пожилых супругов ни о чём',
         authors: [
           {
@@ -160,7 +160,7 @@ export const main: IMain = {
         url_reading: '#'
       },
       {
-        id: 0,
+        id: 3,
         name: 'Конкретные разговоры пожилых супругов ни о чём',
         authors: [
           {
@@ -204,7 +204,7 @@ export const main: IMain = {
     ]
   },
   video_archive: {
-    photo: 'https://lubimovka.kiryanov.ru/media/core/2021-09-30_14.37.56.jpg',
+    photo: 'https://lubimovka.kiryanov.ru/media/images/main/banner/Rectangle_138.jpg',
     url: 'https://lubimovks.url.ru',
   }
 };
