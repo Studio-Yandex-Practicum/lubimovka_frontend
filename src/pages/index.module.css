@@ -4,6 +4,7 @@
   @media (max-width: $tablet-portrait) {
     display: grid;
     grid-template-areas:
+      "firstScreen"
       "title"
       "events"
       "aside"

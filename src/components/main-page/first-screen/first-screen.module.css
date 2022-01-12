@@ -1,0 +1,44 @@
+.firstScreen {
+	padding: scale(66px 80px 66px);
+	grid-area: firstScreen;
+
+	@media (max-width: $tablet-portrait) {
+		padding: scale(32px 24px 142px);
+	}
+}
+
+.container {
+	max-width: scale(882px);
+	margin-left: auto;
+
+	@media (max-width: $tablet-portrait) {
+		margin-left: initial;
+		max-width: scale(305px);
+	}
+}
+
+.title {
+	@mixin headline;
+	@mixin headline1;
+
+	color: var(--coal);
+	margin-bottom: scale(15px);
+
+	@media (max-width: $tablet-portrait) {
+		@mixin headline4;
+		margin-bottom: scale(12px);
+	}
+}
+
+.wrapper {
+	width: scale(360px);
+	height: scale(56px);
+
+	@media (max-width: $tablet-portrait) {
+		width: scale(244px);
+	}
+}
+
+.button {
+	height: 100%;
+}
