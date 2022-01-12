@@ -49,7 +49,7 @@ export const MainBannerItem: FC<IMainBannerItem> = (props):JSX.Element => {
   }, []);
 
   return (
-    <div className={cx('banner')} ref={bannerRef}>
+    <aside className={cx('banner')} ref={bannerRef}>
       <h2 className={cx('title')}>
         {title}
       </h2>
@@ -75,10 +75,10 @@ export const MainBannerItem: FC<IMainBannerItem> = (props):JSX.Element => {
             alt={imgAlt}
             className={cx('.img')}
             layout='fill'
-            objectFit='fill'
+            objectFit='cover'
           />
         </div>
       </div>
-    </div>
+    </aside>
   );
 };

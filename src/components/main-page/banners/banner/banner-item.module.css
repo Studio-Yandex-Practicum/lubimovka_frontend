@@ -1,14 +1,9 @@
 .banner {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-  max-width: scale(1100px);
-  flex-direction: column;
-  justify-content: space-between;
+  padding: scale(20px 0 50px 56px);
   border-top: scale(1px) solid var(--coal);
 
   @media (max-width: $tablet-portrait) {
-    padding: 0 scale(24px);
+    padding: scale(16px 0 50px 0);
   }
 }
 
@@ -17,10 +12,11 @@
   @mixin headline6;
 
   max-width: scale(570px);
-  padding: scale(20px 56px);
+  margin-bottom: scale(30px);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(16px) 0;
+    max-width: scale(350px);
+    margin-bottom: scale(16px);
   }
 }
 
@@ -35,14 +31,6 @@
     max-height: scale(452px);
     transition: all .6s ease-out;
     justify-content: initial;
-  }
-}
-
-.content {
-  padding-left: scale(56px);
-
-  @media (max-width: $tablet-portrait) {
-    padding: 0;
   }
 }
 
@@ -77,12 +65,17 @@
   height: scale(228px);
 
   @media (max-width: $tablet-portrait) {
-    height: scale(173px);
-    max-width: scale(366px);
+    height: scale(156px);
+    width: initial;
   }
 }
 
 .hideContainer {
   overflow: hidden;
   max-height: 0;
+}
+
+.icon > svg {
+  width: scale(24px);
+  height: scale(24px);
 }

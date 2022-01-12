@@ -36,6 +36,7 @@
   line-height: scale(72px);
   text-overflow: ellipsis;
   white-space: nowrap;
+  transform: translateY(scale(10px));
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;

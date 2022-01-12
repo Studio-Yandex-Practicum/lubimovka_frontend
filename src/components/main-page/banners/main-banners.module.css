@@ -19,11 +19,11 @@
 }
 
 .item {
-  border-top: scale(1px) solid var(--coal);
-  margin-bottom: scale(50px);
+  background-color: var(--beige);
+  position: relative;
 }
 
-.title {
+/* .title {
   @mixin headline;
   @mixin headline6;
 
@@ -81,4 +81,4 @@
 .icon > svg {
   width: scale(24px);
   height: scale(24px);
-}
+} */

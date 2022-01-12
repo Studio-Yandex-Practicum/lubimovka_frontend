@@ -68,7 +68,7 @@ const fetchPartners = async () => {
   let partners;
 
   try {
-    partners = await fetcher<Partner>('/info/partners/');
+    partners = await fetcher<Partner>('/v1/info/partners/');
   } catch (error) {
     // throw error;
   }
