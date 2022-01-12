@@ -1,9 +1,8 @@
 .banner {
   padding: scale(20px 0 50px 56px);
-  border-top: scale(1px) solid var(--coal);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(16px 0 50px 0);
+    padding: scale(16px 0 24px 0);
   }
 }
 
