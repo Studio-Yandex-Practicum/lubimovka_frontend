@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/order */
 import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import Head from 'next/head';
 import cn from 'classnames/bind';
@@ -23,9 +21,14 @@ import styles from './index.module.css';
 const cx = cn.bind(styles);
 
 const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(data);
+  console.log(data, partners);
 
   const { afisha, blog, news, banners, places, video_archive, short_list } = data;
+
+  function notEmpty<T>(items: T[]) {
+    return items && items.length !== 0;
+  }
+
   return (
     <AppLayout hiddenPartners>
       <>
@@ -35,18 +38,19 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
         <main className={cx('main')}>
           {blog ? <MainAside type="blog" {...blog}/> : <MainAside type="news" {...news}/>}
           <div className={cx('wrapper')}>
-            {afisha && <MainTitle
+            {afisha && Object.keys(afisha) && 
+            <MainTitle
               title={afisha.title}
               button_label={afisha.button_label}
               description={afisha.description}
             />}
           </div>
-          {(afisha ? afisha.items : afisha) && <MainEvents {...afisha}/>}
-          {banners && banners.items.length && <MainBanners {...banners}/>}
-          {short_list && <MainShortList {...short_list}/>}
-          {places && places.items.length && <MainPlatforms {...places}/>}
+          {afisha && notEmpty(afisha.items) && <MainEvents {...afisha}/>}
+          {banners && notEmpty(banners.items) && <MainBanners {...banners}/>}
+          {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
+          {places && notEmpty(places.items) && <MainPlatforms {...places}/>}
           {video_archive && <MainArchive {...video_archive}/>}
-          {partners && <MainPartners partners={partners}/>}
+          {partners && notEmpty(partners) && <MainPartners partners={partners}/>}
         </main>
       </>
     </AppLayout>
@@ -54,40 +58,34 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
 };
 
 const fetchMain = async () => {
-  let data;
-
   try {
-    data = await fetcher<Main>('/main/');
+    return await fetcher<Main>('/v1/main/');
   } catch (error) {
-    // throw error;
+    return;
   }
-  return data;
 };
 
 const fetchPartners = async () => {
-  let partners;
-
   try {
-    partners = await fetcher<Partner>('/v1/info/partners/');
+    return await fetcher<Partner>('/v1/info/partners/');
   } catch (error) {
-    // throw error;
+    return;
   }
-  return partners;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await fetchMain();
   const partners = await fetchPartners();
 
-  // if (!data || !partners) {
-  //   return {
-  //     notFound: true,
-  //   };
-  // }
+  if (!data || !partners) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
-      // data,
+      data,
       partners,
     },
   };
