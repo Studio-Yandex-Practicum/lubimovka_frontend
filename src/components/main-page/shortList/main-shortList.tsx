@@ -1,5 +1,3 @@
-/* eslint-disable import/order */
-/* eslint-disable import/no-unresolved */
 import { FC } from 'react';
 import cn from 'classnames/bind';
 

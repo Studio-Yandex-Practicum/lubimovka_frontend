@@ -1,5 +1,3 @@
-/* eslint-disable import/order */
-/* eslint-disable import/no-unresolved */
 import { FC } from 'react';
 import cn from 'classnames/bind';
 
@@ -29,7 +27,7 @@ export const MainAside: FC<IMainAside> = ({ type, title, items }) => {
             <Button
               label="Все записи"
               isLink
-              href="/blog"
+              href={type === 'blog' ? '/blog' : '/news'}
               width="100%"
               border="bottomLeft"
               iconPlace="left"

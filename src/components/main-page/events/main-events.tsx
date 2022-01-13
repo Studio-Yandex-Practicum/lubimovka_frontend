@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { FC } from 'react';
 import cn from 'classnames/bind';
 
@@ -25,7 +24,7 @@ export const MainEvents: FC<IMainAfisha> = ({ items }) => {
                 description={item.event_body.description}
                 buttonLink={item.url}
                 imageUrl={item.event_body.image}
-                projectText={item.event_body.project_title && item.event_body.project_title}
+                projectText={item.event_body.project_title && undefined}
                 paid={item.paid}
               />
             </li>

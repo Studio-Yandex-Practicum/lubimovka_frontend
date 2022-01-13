@@ -21,8 +21,6 @@ import styles from './index.module.css';
 const cx = cn.bind(styles);
 
 const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(data, partners);
-
   const { afisha, blog, news, banners, places, video_archive, short_list } = data;
 
   function notEmpty<T>(items: T[]) {

@@ -1,5 +1,3 @@
-/* eslint-disable import/order */
-/* eslint-disable import/no-unresolved */
 import { FC } from 'react';
 import Image from 'next/image';
 import cn from 'classnames/bind';
