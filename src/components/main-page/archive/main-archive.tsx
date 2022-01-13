@@ -38,7 +38,11 @@ export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => {
         </p>
       </div>
       <div className={cx('img')}>
-        <a href={url} className={cx('linkImg')}>
+        <a 
+          href={url} 
+          className={cx('linkImg')}
+          target='_blank'
+        >
           <Image
             alt='YOUTUBE'
             src={photo}

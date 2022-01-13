@@ -10,3 +10,28 @@
     padding: scale(56px 24px) 0;
   }
 }
+
+.link {
+  text-decoration: none;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: scale(83px);
+  transition: all .3s;
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
+.text {
+  @mixin text;
+  @mixin textPartners;
+
+  text-align: center;
+  margin: 0;
+  margin: scale(20px 0 15px);
+}

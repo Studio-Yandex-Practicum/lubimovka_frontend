@@ -29,6 +29,10 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
     return items && items.length !== 0;
   }
 
+  function notEmptyKey<T>(items: T) {
+    return Object.keys(items).length !== 0;
+  }
+
   return (
     <AppLayout hiddenPartners>
       <>
@@ -38,7 +42,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
         <main className={cx('main')}>
           {blog ? <MainAside type="blog" {...blog}/> : <MainAside type="news" {...news}/>}
           <div className={cx('wrapper')}>
-            {afisha && Object.keys(afisha) && 
+            {afisha && notEmptyKey(afisha) &&
             <MainTitle
               title={afisha.title}
               button_label={afisha.button_label}
@@ -50,7 +54,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
           {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
           {places && notEmpty(places.items) && <MainPlatforms {...places}/>}
           {video_archive && <MainArchive {...video_archive}/>}
-          {partners && notEmpty(partners) && <MainPartners partners={partners}/>}
+          {partners && notEmptyKey(partners) && <MainPartners {...partners}/>}
         </main>
       </>
     </AppLayout>
@@ -67,7 +71,14 @@ const fetchMain = async () => {
 
 const fetchPartners = async () => {
   try {
-    return await fetcher<Partner>('/v1/info/partners/');
+    const general = await fetcher<Partner>('/v1/info/partners/?type=general');
+    const festival = await fetcher<Partner>('/v1/info/partners/?type=festival');
+    const info = await fetcher<Partner>('/v1/info/partners/?type=info');
+    return {
+      general,
+      festival,
+      info
+    };
   } catch (error) {
     return;
   }

@@ -37,12 +37,3 @@
     row-gap: 0;
   }
 }
-
-.item {
-  position: relative;
-}
-
-.link {
-  position: relative;
-  display: contents;
-}
