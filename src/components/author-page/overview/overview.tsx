@@ -48,9 +48,9 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
 
   const [isExpand, setExpand] = useState(true);
 
-  const drawButton = data.biography;
+  const toDrawButton = data.biography;
 
-  const is_pinned = true;
+  const pinnedLinks = other_links.filter((item) => item.is_pinned);
 
   return (
     <section className={cn(styles.overview)}>
@@ -86,7 +86,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
           <p className={cn(styles.overviewParagraph, isExpand ? styles.expandButton : styles.rollUpButton)}>
             {biography}
           </p>
-          {drawButton.length > 305 &&
+          {toDrawButton.length > 305 &&
             <Button
               width='100%'
               size='s'
@@ -99,7 +99,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
           }
 
           <div className={cn(styles.overviewBlockAuthorInfo)}>
-            {is_pinned && other_links
+            {pinnedLinks.length > 0  && other_links
               .sort((link1,link2) => link1.order_number - link2.order_number)
               .map((item, idx) =>
                 <div className={cn(styles.overviewLinkHeading)} key={idx}>
