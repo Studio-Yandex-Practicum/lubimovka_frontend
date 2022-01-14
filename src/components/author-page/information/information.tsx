@@ -21,19 +21,21 @@ export const AuthorInformation: FC<IAuthorInformation> = ({ data }) => {
     <section className={cn(styles.information)}>
       <h2 className={cn(styles.heading)}>Публикации и другие материалы</h2>
       <div className={cn(styles.blocksInfo)}>
-        {data.map((item, idx) =>
-          <div className={cn(styles.anchorHeading)} key={idx}>
-            <InfoLink
-              label={item.name}
-              href={item.link}
-              icon='arrow-right'
-              iconPlace='right'
-              size='xl'
-              border='borderTop'
-              iconClassName={cn(styles.anchor)}
-            />
-          </div>
-        )}
+        {data
+          .sort((link1,link2) => link1.order_number - link2.order_number)
+          .map((item, idx) =>
+            <div className={cn(styles.anchorHeading)} key={idx}>
+              <InfoLink
+                label={item.name}
+                href={item.link}
+                icon='arrow-right'
+                iconPlace='right'
+                size='xl'
+                border='borderTop'
+                iconClassName={cn(styles.anchor)}
+              />
+            </div>
+          )}
       </div>
     </section>
   );

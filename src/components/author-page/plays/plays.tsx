@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { FC } from 'react';
 import cn from 'classnames';
 
@@ -10,8 +11,8 @@ interface Play {
   name: string,
   city: string,
   year: number,
-  url_reading: string,
-  url_download: string,
+  url_download?: string | null,
+  url_reading?: string | null,
   authors: AuthorForPlay[],
 }
 

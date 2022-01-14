@@ -21,7 +21,7 @@ interface socialDataList {
 
 interface IAuthorOverview {
   data: {
-    image?: string,
+    image: string,
     name: string,
     city: string,
     quote: string,
@@ -30,7 +30,6 @@ interface IAuthorOverview {
     achievements: Array<string>,
     social_networks: socialDataList[],
     email: string,
-    drawButton: boolean,
   }
 }
 
@@ -50,6 +49,8 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
   const [isExpand, setExpand] = useState(true);
 
   const drawButton = data.biography;
+
+  const is_pinned = true;
 
   return (
     <section className={cn(styles.overview)}>
@@ -98,19 +99,21 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
           }
 
           <div className={cn(styles.overviewBlockAuthorInfo)}>
-            {other_links.map((item, idx) =>
-              <div className={cn(styles.overviewLinkHeading)} key={idx}>
-                <InfoLink
-                  label={item.name}
-                  href={item.link}
-                  icon='arrow-right'
-                  iconPlace='right'
-                  size='xl'
-                  border='borderTop'
-                  iconClassName={cn(styles.link)}
-                />
-              </div>
-            )}
+            {is_pinned && other_links
+              .sort((link1,link2) => link1.order_number - link2.order_number)
+              .map((item, idx) =>
+                <div className={cn(styles.overviewLinkHeading)} key={idx}>
+                  <InfoLink
+                    label={item.name}
+                    href={item.link}
+                    icon='arrow-right'
+                    iconPlace='right'
+                    size='xl'
+                    border='borderTop'
+                    iconClassName={cn(styles.link)}
+                  />
+                </div>
+              )}
           </div>
         </div>
 

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import cn from 'classnames';
 
@@ -42,45 +41,20 @@ export const getServerSideProps: GetServerSideProps<AuthorRetrieveModel, Record<
   };
 };
 
-const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
+const Author = (data: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const {
-    name,
-    city,
-    quote,
-    biography,
-    achievements,
-    social_networks,
-    email,
-    other_links,
     plays,
     other_plays,
-    image,
-  } = props;
+    other_links,
+  } = data;
 
   return (
     <AppLayout>
       <div className={cn(styles.author)}>
-        <AuthorOverview
-          photo={image}
-          name={name}
-          city={city}
-          quote={quote}
-          description={biography}
-          tag={achievements}
-          socialLink={social_networks}
-          email={email}
-          otherLinks={other_links}
-          data={props}
-        />
-        <AuthorPlays
-          data={plays}
-        />
-        <AnotherPlays
-          data={other_plays}
-        />
-        <AuthorInformation
-          data={other_links}
-        />
+        <AuthorOverview data={data}/>
+        {plays && <AuthorPlays data={plays}/>}
+        {other_plays && <AnotherPlays data={other_plays}/>}
+        {other_links && <AuthorInformation data={other_links}/>}
         <AuthorRequest/>
       </div>
     </AppLayout>
