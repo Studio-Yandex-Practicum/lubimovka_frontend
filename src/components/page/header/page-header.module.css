@@ -1,4 +1,6 @@
 .header {
+  display: flex;
+  flex-direction: column;
   border-bottom: 1px solid var(--coal);
 
   @media (max-width: $tablet-portrait) {

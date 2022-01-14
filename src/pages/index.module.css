@@ -4,6 +4,10 @@
   position: relative;
 
   @media (max-width: $tablet-portrait) {
+    order: 1;
+  }
+
+  @media (max-width: $tablet-portrait) {
     height: scale(367px);
   }
 }
