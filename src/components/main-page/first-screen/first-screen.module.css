@@ -41,4 +41,9 @@
 
 .button {
 	height: 100%;
+
+	> svg {
+		width: scale(25px);
+		height: scale(25px);
+	}
 }
