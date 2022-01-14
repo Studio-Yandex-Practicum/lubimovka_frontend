@@ -1,6 +1,10 @@
 .selection {
   padding: scale(54px 60px 45px);
   background-color: var(--beige);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(40px) 0 0;
+  }
 }
 
 .mainTitle {
@@ -9,6 +13,14 @@
 
   max-width: scale(540px);
   margin: 0 scale(180px 56px) auto;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    padding: 0 scale(24px);
+    margin: 0;
+    margin-bottom: scale(24px);
+  }
 }
 
 .list {
@@ -21,17 +33,31 @@
   grid-template-columns: repeat(auto-fit, minmax(scale(350px), max-content));
   list-style: none;
   row-gap: scale(64px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0 scale(24px);
+    margin-bottom: scale(72px);
+    grid-template-columns: none;
+  }
 }
 
 .item {
   display: grid;
   align-content: start;
   row-gap: scale(24px);
+
+  @media (max-width: $tablet-portrait) {
+    row-gap: 0;
+  }
 }
 
 .number {
   @mixin headline;
   @mixin headline1;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+  }
 }
 
 .title {
@@ -39,11 +65,26 @@
   @mixin headline6;
 
   min-height: scale(96px);
+
+  @media (max-width: $tablet-portrait) {
+    min-height: 0;
+    margin-bottom: scale(24px);
+  }
 }
 
 .desc {
   @mixin text;
   @mixin textSmall;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(280px);
+    align-self: right;
+    margin: 0 scale(24px 24px) auto;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .poster {
@@ -55,6 +96,10 @@
   background-color: var(--light-green);
   column-gap: scale(20px);
   grid-template-columns: repeat(auto-fit, minmax(scale(305px), max-content));
+
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: scale(72px);
+  }
 }
 
 .posterTitle {
@@ -80,55 +125,8 @@
 
   max-width: scale(485px);
   margin: scale(220px) 0 0 auto;
-}
 
-@media (max-width: $tablet-portrait) {
-  .selection {
-    padding: scale(40px) 0 0;
-  }
-
-  .mainTitle {
-    @mixin headline4;
-
-    padding: 0 scale(24px);
-    margin: 0;
-    margin-bottom: scale(24px);
-  }
-
-  .list {
-    padding: 0 scale(24px);
-    margin-bottom: scale(72px);
-    grid-template-columns: none;
-  }
-
-  .item {
-    row-gap: 0;
-  }
-
-  .number {
-    @mixin headline4;
-  }
-
-  .title {
-    min-height: 0;
-    margin-bottom: scale(24px);
-  }
-
-  .desc {
-    max-width: scale(280px);
-    align-self: right;
-    margin: 0 scale(24px 24px) auto;
-
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
-
-  .poster {
-    padding-bottom: scale(72px);
-  }
-
-  .posterDesc {
+  @media (max-width: $tablet-portrait) {
     max-width: scale(305px);
     margin-top: scale(24px);
   }

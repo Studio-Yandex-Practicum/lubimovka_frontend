@@ -1,44 +1,62 @@
 import Head from 'next/head';
-import { NextPage } from 'next';
+import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 
+import { Partner } from 'api-typings';
+
+import { fetcher } from 'shared/fetcher';
 import { AppLayout } from 'components/app-layout';
 import { WhatWeDoHeader } from 'components/what-we-do-page/header';
 import { WhatWeDoDesc } from 'components/what-we-do-page/desc';
 import { WhatWeDoAuthors } from 'components/what-we-do-page/authors';
 import { WhatWeDoSelection } from 'components/what-we-do-page/selection';
 import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
-import { WhatWeDoPartners } from 'components/what-we-do-page/partners';
+// import { WhatWeDoPartners } from 'components/what-we-do-page/partners';
 
-import headerData from 'components/what-we-do-page/assets/header-data.json';
-import descData from 'components/what-we-do-page/assets/desc-data.json';
-import AuthorsData from 'components/what-we-do-page/assets/authors-data.json';
-import SelectionData from 'components/what-we-do-page/assets/selection-data.json';
-import SelectionContacts from 'components/what-we-do-page/assets/contacts-data.json';
-
-const Page: NextPage = ():JSX.Element => (
+const Page: NextPage = ({partners}: InferGetStaticPropsType<typeof getStaticProps>):JSX.Element => (
   <AppLayout>
     <Head>
-      <title>{'what-we-do'}</title>
+      <title>{'Что мы делаем? Любимовка'}</title>
     </Head>
     <main>
-      {headerData.map((data) => (
-        <WhatWeDoHeader key={data.id} data={data}/>
-      ))}
-      {descData.map((data, i) => (
-        <WhatWeDoDesc key={i} data={data}/>
-      ))}
-      {AuthorsData.map((data) => (
-        <WhatWeDoAuthors key={data.id} data={data}/>
-      ))}
-      {SelectionData.map((data) => (
-        <WhatWeDoSelection key={data.id} data={data}/>
-      ))}
-      {SelectionContacts.map((data) => (
-        <WhatWeDoContacts key={data.id} data={data}/>
-      ))}
-      <WhatWeDoPartners/>
+      <WhatWeDoHeader/>
+      <WhatWeDoDesc/>
+      <WhatWeDoAuthors/>
+      <WhatWeDoSelection/>
+      <WhatWeDoContacts/>
+      {/* <WhatWeDoPartners/> */}
     </main>
   </AppLayout>
 );
+
+const fetchPartners = async () => {
+  try {
+    const general = await fetcher<Partner>('/v1/info/partners/?type=general');
+    const festival = await fetcher<Partner>('/v1/info/partners/?type=festival');
+    const info = await fetcher<Partner>('/v1/info/partners/?type=info');
+    return {
+      general,
+      festival,
+      info
+    };
+  } catch (error) {
+    return;
+  }
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const partners = await fetchPartners();
+
+  if (!partners) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      partners,
+    },
+  };
+};
 
 export default Page;

@@ -1,6 +1,10 @@
 .contacts {
   padding: scale(72px 170px 164px 150px);
   color: var(--white);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(56px 24px 50px);
+  }
 }
 
 .title {
@@ -9,6 +13,12 @@
 
   max-width: scale(485px);
   margin-bottom: scale(36px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    margin-bottom: scale(28px);
+  }
 }
 
 .desc {
@@ -19,26 +29,14 @@
   max-width: scale(610px);
   align-items: baseline;
   margin-left: auto;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline7;
+  }
 }
 
 .asterisk {
   display: block;
   margin: 0;
   margin-bottom: scale(14px);
-}
-
-@media (max-width: $tablet-portrait) {
-  .contacts {
-    padding: scale(56px 24px 50px);
-  }
-
-  .title {
-    @mixin headline6;
-
-    margin-bottom: scale(28px);
-  }
-
-  .desc {
-    @mixin headline7;
-  }
 }

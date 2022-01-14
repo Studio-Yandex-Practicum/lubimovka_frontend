@@ -1,27 +1,25 @@
-import { FC } from 'react';
-import cn from 'classnames';
+import React from 'react';
+import cn from 'classnames/bind';
 
 import styles from './what-we-do-authors.module.css';
 
-interface IWhatWeDoAuthorsProps {
-  data: {
-    id: number
-    title: string
-    authors: string[]
-  }
-}
+const cx = cn.bind(styles);
 
-export const WhatWeDoAuthors: FC<IWhatWeDoAuthorsProps> = ({ data }): JSX.Element => {
-  const { title, authors } = data;
-
+export const WhatWeDoAuthors = (): JSX.Element => {
+  const authors = [
+    'Михаил Угаров', 'Алексей Слаповский', 'Ольга Михайлова', 'Елена Гремина',
+    'Иван Вырыпаев', 'Олег Богаев', 'Василий Сигарев', 'Ксения Драгунская',
+    'Ольга Мухина', 'Ксения Драгунская', 'Елена Исаева', 'Максим Курочкин',
+    'братья Пресняковы', 'братья Дурненковы', 'Юрий Клавдиев', 'Евгений Гришковец'
+  ];
   return (
-    <section className={cn(styles.authors)}>
-      <h2 className={cn(styles.title)}>
-        {title}
+    <section className={cx('authors')}>
+      <h2 className={cx('title')}>
+        В качестве начинающих авторов в своё время здесь представляли свои пьесы
       </h2>
-      <ul className={cn(styles.list)}>
+      <ul className={cx('list')}>
         {authors.map((author, i) => (
-          <li className={cn(styles.item)} key={i}>
+          <li className={cx('item')} key={i}>
             {author}
           </li>
         ))}

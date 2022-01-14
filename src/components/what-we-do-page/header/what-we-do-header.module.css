@@ -11,6 +11,10 @@
 
 .menu {
   padding: scale(40px 0 67px 60px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(2px 0 32px 24px);
+  }
 }
 
 .title {
@@ -19,6 +23,12 @@
 
   max-width: scale(924px);
   margin: 0 0 scale(53px 62px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    margin: 0 scale(24px 30px 24px);
+  }
 }
 
 .containerText {
@@ -27,6 +37,10 @@
   flex-direction: column;
   align-self: end;
   margin: 0 scale(110px 15px 85px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: 0 scale(24px 72px 85px);
+  }
 }
 
 .desc {
@@ -69,20 +83,4 @@
   min-width: scale(24px);
   height: 53%;
   background-color: var(--beige);
-}
-
-@media (max-width: $tablet-portrait) {
-  .menu {
-    padding: scale(2px 0 32px 24px);
-  }
-
-  .title {
-    @mixin headline4;
-
-    margin: 0 scale(24px 30px 24px);
-  }
-
-  .containerText {
-    margin: 0 scale(24px 72px 85px);
-  }
 }

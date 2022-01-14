@@ -1,17 +1,31 @@
 .descItem {
   padding: scale(92px 24px 170px) 0;
   background-color: var(--beige);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(56px 24px 72px) 0;
+  }
 }
 
 .content {
   display: grid;
   column-gap: scale(90px);
   row-gap: scale(24px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(72px);
+    grid-template-columns: repeat(auto-fit, minmax(scale(274px), max-content));
+  }
 }
 
 .contentReception {
   margin: 0 0 scale(190px 120px);
   grid-template-columns: repeat(auto-fit, minmax(scale(440px), max-content));
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: 0;
+    margin-left: scale(24px);
+  }
 }
 
 .container {
@@ -23,6 +37,12 @@
   @mixin headline3;
 
   margin-bottom: scale(76px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    margin-bottom: scale(24px);
+  }
 }
 
 .title {
@@ -30,61 +50,50 @@
   @mixin headline5;
 
   margin-bottom: scale(24px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+  }
 }
 
 .desc {
   @mixin text;
   @mixin textLarge;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin textMedium;
+  }
 }
 
 .contentSelected {
   margin-bottom: scale(140px);
   grid-template-columns: repeat(auto-fit, minmax(scale(600px), max-content));
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: 0;
+  }
 }
 
 .containerSelected {
   margin-top: scale(20px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-left: scale(24px);
+    grid-row-start: 1;
+  }
 }
 
 .containerInvite {
   margin-left: scale(210px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-left: scale(24px);
+  }
 }
 
 @media (max-width: $tablet-portrait) {
-  .descItem {
-    padding: scale(56px 24px 72px) 0;
-  }
-
-  .contentReception {
-    margin-bottom: 0;
-    margin-left: scale(24px);
-  }
-
-  .contentSelected {
-    margin-bottom: 0;
-  }
-
-  .content {
-    margin-bottom: scale(72px);
-    grid-template-columns: repeat(auto-fit, minmax(scale(274px), max-content));
-  }
-
-  .mainTitle {
-    @mixin headline4;
-
-    margin-bottom: scale(24px);
-  }
-
-  .title {
-    @mixin headline6;
-  }
-
   .titleWidth {
     max-width: scale(330px);
-  }
-
-  .desc {
-    @mixin textMedium;
   }
 
   .containerImg {
@@ -93,14 +102,5 @@
 
   .imgSelected {
     grid-row-start: 2;
-  }
-
-  .containerSelected {
-    margin-left: scale(24px);
-    grid-row-start: 1;
-  }
-
-  .containerInvite {
-    margin-left: scale(24px);
   }
 }

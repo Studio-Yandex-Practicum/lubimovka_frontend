@@ -4,6 +4,10 @@
   align-items: center;
   padding: scale(86px 24px 150px);
   background-color: var(--white);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(56px 24px 72px);
+  }
 }
 
 .title {
@@ -12,6 +16,13 @@
 
   max-width: scale(600px);
   margin: 0 scale(120px 82px) auto;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    margin: 0;
+    margin-bottom: scale(40px);
+  }
 }
 
 .list {
@@ -31,17 +42,4 @@
   @mixin textLarge;
 
   line-height: scale(24px);
-}
-
-@media (max-width: $tablet-portrait) {
-  .authors {
-    padding: scale(56px 24px 72px);
-  }
-
-  .title {
-    @mixin headline6;
-
-    margin: 0;
-    margin-bottom: scale(40px);
-  }
 }
