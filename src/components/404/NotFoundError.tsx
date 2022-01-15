@@ -26,7 +26,7 @@ export default function NotFoundError() {
     <section className={classes.error}>
       <Link href={'/'}><a>{screenWidth && screenWidth < 723 ? <SmallLogo className={classes.logo} src={'/images/small-logo.svg'} layout={'fill'}/> : <Logo className={classes.logo} src={'/images/logo.svg'} layout={'fill'}/>}</a></Link>
       <div className={classes.contentContainer}>
-        <h1 className={classes.title}>Ощибка 404</h1>
+        <h1 className={classes.title}>Ошибка 404</h1>
         <h2 className={classes.subtitle}>Кажется, такой страницы не существует</h2>
         <p className={classes.text}>Для этого может быть несколько причин: неправильный адрес, мы ее удалили, ее вообще никогда не существовало или вам это снится.</p>
         <ul className={classes.list}>

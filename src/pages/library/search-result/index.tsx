@@ -97,22 +97,43 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
   }, [data]);
 
   return (
-    <AppLayout>
-      <main className ={style.page}>
-        <div className={style.buttonWrapper}>
-          <Button href={'/library'} isLink={true} label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
-        </div>
-        <div className={style.topWrapper}>
-          <p className={style.info}>
-            По запросу «{searchQuery}» мы нашли
-          </p>
-          <div className={style.formWrapper}>
-            <LibraryForm></LibraryForm>
+    <div className={style.pageWrapper}>
+      <AppLayout>
+        <main className ={style.page}>
+          <div className={style.buttonWrapper}>
+            <Button href={'/library'} isLink={true} label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
           </div>
-        </div>
-        <section className={style.result}>
-          <div className={style.pieces}>
-            <BasicPlayCardList>
+          <div className={style.topWrapper}>
+            <p className={style.info}>
+              По запросу «{searchQuery}» мы нашли
+            </p>
+            <div className={style.formWrapper}>
+              <LibraryForm></LibraryForm>
+            </div>
+          </div>
+          <section className={style.result}>
+            <div className={style.pieces}>
+              <BasicPlayCardList>
+                {data.plays.map((playFromServer: Play) => {
+
+                  const play = {
+                    id: playFromServer.id,
+                    title: playFromServer.name,
+                    city: playFromServer.city,
+                    year: playFromServer.year,
+                    linkView: playFromServer.url_reading,
+                    linkDownload: playFromServer.url_download,
+                    authors: playFromServer.authors,
+                  };
+
+                  return (
+                    <BasicPlayCard key={play.id} play={play}/>
+                  );
+                })}
+              </BasicPlayCardList>
+            </div>
+            <div className={style.piecesMobile}>
+
               {data.plays.map((playFromServer: Play) => {
 
                 const play = {
@@ -129,19 +150,20 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
                   <BasicPlayCard key={play.id} play={play}/>
                 );
               })}
-            </BasicPlayCardList>
-          </div>
-          <div className={style.authors}>
-            <ul className={style.authorsList}>
-              {filteredAuthors.map((authors) => (
-                <SearchResultAuthors key={authors.title} authors={authors}/>
-              ))}
-            </ul>
-          </div>
-        </section>
-      </main>
 
-    </AppLayout>
+            </div>
+            <div className={style.authors}>
+              <ul className={style.authorsList}>
+                {filteredAuthors.map((authors) => (
+                  <SearchResultAuthors key={authors.title} authors={authors}/>
+                ))}
+              </ul>
+            </div>
+          </section>
+        </main>
+
+      </AppLayout>
+    </div>
   );
 };
 

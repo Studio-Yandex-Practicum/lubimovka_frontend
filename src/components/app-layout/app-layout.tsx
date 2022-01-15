@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useState } from 'react';
+import { ReactNode, ReactElement, useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import Page, {
@@ -22,7 +22,7 @@ import { footerNavigationItems } from 'shared/constants/footer-navigation-items'
 import { socialLinkItems } from 'shared/constants/social-link-items';
 import { donationPath } from 'shared/constants/donation-path';
 import { participationFormPath } from 'shared/constants/participation-form-path';
-import { useAppSettings } from 'components/app';
+import { useAppLayoutData } from 'providers/app-layout-data-provider';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 import * as breakpoints from 'shared/breakpoints.js';
@@ -30,14 +30,16 @@ import * as breakpoints from 'shared/breakpoints.js';
 interface IAppLayoutProps {
   children: ReactNode,
   hiddenPartners?: boolean,
+  screenImg?: ReactElement,
 }
 
 export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
   const {
     children,
     hiddenPartners,
+    screenImg,
   } = props;
-  const { projects, generalPartners } = useAppSettings();
+  const { projects, partners } = useAppLayoutData();
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
@@ -55,6 +57,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
   return (
     <Page>
       <PageHeader>
+        {screenImg}
         <Navbar>
           <Navbar.Logotype>
             <Logotype
@@ -99,7 +102,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
           {!hiddenPartners && (
             <Footer.Partners>
               <FooterPartnerList>
-                {generalPartners.map((partner) => (
+                {partners && partners.length > 0 && partners.map((partner) => (
                   <FooterPartnerList.Item
                     key={partner.name}
                     logo={partner.logo}
@@ -130,19 +133,21 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
             </Menu>
           </Footer.Navigation>
           <Footer.Projects>
-            <Menu type="footer-project-list">
-              <Menu.Item href="/projects">
-                Все проекты
-              </Menu.Item>
-              {projects.map((item, index) => (
-                <Menu.Item
-                  key={index}
-                  href={`/projects/${item.slug}`}
-                >
-                  {item.title}
+            {projects && projects.length && (
+              <Menu type="footer-project-list">
+                <Menu.Item href="/projects">
+                  Все проекты
                 </Menu.Item>
-              ))}
-            </Menu>
+                {projects.map((item, index) => (
+                  <Menu.Item
+                    key={index}
+                    href={`/projects/${item.slug}`}
+                  >
+                    {item.title}
+                  </Menu.Item>
+                ))}
+              </Menu>
+            )}
           </Footer.Projects>
         </Footer>
       </PageFooter>

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Image from 'next/image';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button';
@@ -16,7 +17,7 @@ interface IMainArchiveProps {
 }
 
 export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
-  const { title, buttonLink, desc, videoKey } = data;
+  const { title, buttonLink, desc } = data;
 
   return ( 
     <section className={cn(styles.archive)}>
@@ -32,6 +33,7 @@ export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
               iconPlace='left'
               border='bottomLeft'
               size='s'
+              className={cn(styles.button)}
             />
           </span>
           {title[1]}
@@ -40,14 +42,16 @@ export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
           {desc}
         </p>
       </div>
-      <div className={cn(styles.video)}>
-        <iframe 
-          width='100%' 
-          height='100%'
-          src={`https://www.youtube.com/embed/${ videoKey }`}
-          frameBorder="0" 
-          allowFullScreen 
-        />
+      <div className={cn(styles.img)}>
+        <a href="#" className={cn(styles.linkImg)}>
+          <Image
+            alt='YOUTUBE'
+            src="/images/main/archive.jpg"
+            width={540}
+            height={258}
+            layout="responsive"
+          />
+        </a>
       </div>
     </section>
   );

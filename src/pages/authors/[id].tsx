@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import cn from 'classnames';
 
@@ -18,11 +17,10 @@ const fetchAuthors = async (authorId: string) => {
   let data;
 
   try {
-    data = await fetcher<AuthorRetrieveModel>(`/library/authors/${authorId}/`);
+    data = await fetcher<AuthorRetrieveModel>(`/v1/library/authors/${authorId}/`);
   } catch (error) {
     return;
   }
-
   return data;
 };
 
@@ -63,7 +61,7 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): 
     <AppLayout>
       <div className={cn(styles.author)}>
         <AuthorOverview
-          photo={image}
+          image={image}
           name={name}
           city={city}
           quote={quote}
