@@ -47,8 +47,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
       - name: send message
+        if: ${{ failure() }}
         uses: appleboy/telegram-action@master
-        if: ${{ !failure() }}
         with:
           to: ${{ secrets.TELEGRAM_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
