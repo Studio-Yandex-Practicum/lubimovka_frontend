@@ -25,6 +25,12 @@
   &:hover {
     opacity: .7;
   }
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(160px);
+    max-height: scale(50px);
+    margin: auto;
+  }
 }
 
 .text {
