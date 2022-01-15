@@ -51,7 +51,7 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          if: ${{ steps.build-image.outcome == 'failure' }}
+          if: ${{ steps.build-image.outcome == 'success' }}
           message: Ошибка сборки и загрузки образа
   deploy-image-on-server:
     name: Deploy new docker image on server
