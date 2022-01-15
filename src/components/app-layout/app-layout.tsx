@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useState } from 'react';
+import { ReactNode, ReactElement, useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import Page, {
@@ -30,12 +30,14 @@ import * as breakpoints from 'shared/breakpoints.js';
 interface IAppLayoutProps {
   children: ReactNode,
   hiddenPartners?: boolean,
+  screenImg?: ReactElement,
 }
 
 export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
   const {
     children,
     hiddenPartners,
+    screenImg,
   } = props;
   const { projects, partners } = useAppLayoutData();
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
@@ -55,6 +57,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
   return (
     <Page>
       <PageHeader>
+        {screenImg}
         <Navbar>
           <Navbar.Logotype>
             <Logotype
