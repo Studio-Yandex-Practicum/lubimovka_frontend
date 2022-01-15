@@ -43,7 +43,6 @@
     position: initial;
     z-index: 1;
     width: 100%;
-    height: scale(934px);
     padding: scale(36px 0 102px 24px);
     grid-area: aside;
     overflow-y: hidden;
@@ -93,6 +92,7 @@
 
 .item {
   display: flex;
+  margin-bottom: scale(72px);
 
   &:last-of-type {
     margin-bottom: 0;
@@ -100,6 +100,7 @@
 
   @media (max-width: $tablet-portrait) {
     width: scale(304px);
+    margin-bottom: 0;
 
     &:last-of-type {
       padding-right: scale(24px);
