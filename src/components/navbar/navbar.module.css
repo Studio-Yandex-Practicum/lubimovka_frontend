@@ -2,7 +2,6 @@
   display: flex;
   align-items: flex-start;
   padding: scale(0 0 0 30px);
-  margin: 0 auto;
 
   @media (max-width: $tablet-portrait) {
     padding: scale(32px 24px 24px);
