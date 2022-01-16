@@ -56,3 +56,9 @@
     }
   }
 }
+
+.brand {
+  @media (max-width: $tablet-portrait) {
+    background-color: var(--light-green);
+  }
+}

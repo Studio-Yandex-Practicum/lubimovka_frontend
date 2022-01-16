@@ -29,6 +29,7 @@ import * as breakpoints from 'shared/breakpoints.js';
 
 interface IAppLayoutProps {
   expandedHeader?: boolean,
+  headerTheme?: 'brand',
   children: ReactNode,
   hiddenPartners?: boolean,
   screenImg?: ReactElement,
@@ -37,6 +38,7 @@ interface IAppLayoutProps {
 export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
   const {
     expandedHeader,
+    headerTheme,
     children,
     hiddenPartners,
     screenImg,
@@ -58,7 +60,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
 
   return (
     <Page>
-      <PageHeader expanded={expandedHeader}>
+      <PageHeader expanded={expandedHeader} theme={headerTheme}>
         {screenImg}
         <Navbar>
           <Navbar.Logotype>
