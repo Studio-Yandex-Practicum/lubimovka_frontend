@@ -24,7 +24,7 @@ export const Report: FC<IReportProps> = (props) => {
           isOutsideLink={true}
           href={`mailto://${email}`}
           label={email}
-          textDecoration='underline'
+          textDecoration="underline"
         />
       </p>
     </div>

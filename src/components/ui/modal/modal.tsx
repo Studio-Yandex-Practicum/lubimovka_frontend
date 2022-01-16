@@ -39,7 +39,7 @@ export const Modal = (props: IModalProps): JSX.Element | null=> {
     <Portal>
       <FocusLock returnFocus>
         <div
-          role='dialog'
+          role="dialog"
           className={cx('container')}
           tabIndex={-1}
           onKeyDown={handleKeyDown}

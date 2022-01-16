@@ -13,14 +13,14 @@ import { MainArchive } from 'components/main-page/archive';
 import { MainPartners } from 'components/main-page/partners';
 import { FirstScreen } from 'components/main-page/first-screen';
 import { AppLayout } from 'components/app-layout';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
+import * as breakpoints from 'shared/breakpoints.js';
 
 import data from 'components/main-page/assets/mock-data.json';
 import mainEventsData from 'components/main-page/assets/main-events.json';
 import mainShortListData from 'components/main-page/assets/main-short-list-data.json';
 import mainArchiveData from 'components/main-page/assets/main-archive-data.json';
 import mainPlatformsData from 'components/main-page/assets/main-platforms-data.json';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
-import * as breakpoints from 'shared/breakpoints.js';
 import styles from './index.module.css';
 
 const cx = cn.bind(styles);
@@ -31,11 +31,11 @@ const MainPage: NextPage = () => {
   return (
     <>
       <AppLayout hiddenPartners screenImg={true && <div className={cx('wrapper')}>
-        <Image 
-          alt='screen' 
+        <Image
+          alt="screen"
           src={isMobile ? '/images/main/screen-mobile.jpg' : '/images/main/screen.jpg'}
-          layout='fill'
-          objectFit='fill'
+          layout="fill"
+          objectFit="fill"
         />
       </div>}>
         <>
@@ -55,7 +55,6 @@ const MainPage: NextPage = () => {
               />
             )}
             {events && <MainEvents data={mainEventsData}/>}
-          
             {banners && <MainBanners/>}
             {platforms && <MainPlatforms {...mainPlatformsData}/>}
             {shortList && <MainShortList data={mainShortListData}/>}

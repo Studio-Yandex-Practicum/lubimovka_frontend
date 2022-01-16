@@ -213,10 +213,10 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
           className={cx('action')}
           type="submit"
           iconPlace="right"
-          icon='arrow-right'
+          icon="arrow-right"
           size="l"
           border="full"
-          label='Отправить'
+          label="Отправить"
           disabled={!canSubmit}
         />
       </Form.Actions>

@@ -12,6 +12,7 @@
     "no-console": ["error"],
     "indent": ["error", 2],
     "quotes": ["error", "single"],
+    "jsx-quotes": ["error", "prefer-double"],
     "semi": ["error", "always"],
     "react/jsx-tag-spacing": ["error", {
       "closingSlash": "never",

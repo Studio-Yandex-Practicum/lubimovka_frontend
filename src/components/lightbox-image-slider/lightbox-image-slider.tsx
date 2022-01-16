@@ -38,18 +38,18 @@ export const LightboxImageSlider = (props: ILightboxImageSliderProps): JSX.Eleme
           <div className={cx('arrow', 'arrowLeft')}>
             <SliderButton
               className={cx('arrowButton')}
-              ariaLabel='Предыдущий слайд'
-              direction='left'
-              view='light'
+              ariaLabel="Предыдущий слайд"
+              direction="left"
+              view="light"
               onClick={slider.prev}
             />
           </div>
           <div className={cx('arrow', 'arrowRight')}>
             <SliderButton
               className={cx('arrowButton')}
-              ariaLabel='Следующий слайд'
-              direction='right'
-              view='light'
+              ariaLabel="Следующий слайд"
+              direction="right"
+              view="light"
               onClick={slider.next}
             />
           </div>
@@ -65,10 +65,10 @@ export const LightboxImageSlider = (props: ILightboxImageSliderProps): JSX.Eleme
           <div className={cx('close')}>
             <IconButton
               className={cx('closeButton')}
-              ariaLabel='Закрыть лайтбокс'
-              type='button'
-              view='light'
-              icon={<Icon glyph='cross'/>}
+              ariaLabel="Закрыть лайтбокс"
+              type="button"
+              view="light"
+              icon={<Icon glyph="cross"/>}
               onClick={onClose}
             />
           </div>

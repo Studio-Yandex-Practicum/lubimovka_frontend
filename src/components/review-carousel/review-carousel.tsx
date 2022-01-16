@@ -58,15 +58,15 @@ export const ReviewCarousel: FC<IReviewCarousel> = (props) => {
             />
             <div className={cx('arrows')}>
               <SliderButton
-                ariaLabel='Предыдущий отзыв'
-                direction='left'
+                ariaLabel="Предыдущий отзыв"
+                direction="left"
                 className={cx('arrow', 'arrowLeft')}
                 onClick={carousel.prev}
                 disabled={currentSlideIndex === 0}
               />
               <SliderButton
-                ariaLabel='Следующий отзыв'
-                direction='right'
+                ariaLabel="Следующий отзыв"
+                direction="right"
                 className={cx('arrow', 'arrowRight')}
                 onClick={carousel.next}
                 disabled={currentSlideIndex === carousel.details().size - 1}

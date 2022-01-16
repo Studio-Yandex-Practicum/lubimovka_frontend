@@ -40,7 +40,7 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
           </div>
           <h2 className={cx('title')}>
             {title}
-            <Icon className={cx('titleArrow')} glyph="arrow-right" fill='#000' focusable="false"/>
+            <Icon className={cx('titleArrow')} glyph="arrow-right" fill="#000" focusable="false"/>
           </h2>
           <p className={cx('description')}>
             {description}

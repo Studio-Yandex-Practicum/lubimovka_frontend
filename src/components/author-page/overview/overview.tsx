@@ -57,11 +57,11 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
       <div className={cn(image ? styles.personalInfo : styles.personalInfoNoPhoto)}>
         <div className={cn(styles.button)}>
           <Button
-            size='s'
-            iconPlace='right'
-            icon='arrow-left'
-            label='Библиотека'
-            border='bottomRight'
+            size="s"
+            iconPlace="right"
+            icon="arrow-left"
+            label="Библиотека"
+            border="bottomRight"
             isLink={true}/>
         </div>
 
@@ -88,12 +88,12 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
           </p>
           {toDrawButton.length > 305 &&
             <Button
-              width='100%'
-              size='s'
-              iconPlace='right'
+              width="100%"
+              size="s"
+              iconPlace="right"
               icon={isExpand ? 'arrow-down' : 'arrow-up'}
               label={isExpand ? 'Полный текст' : 'Свернуть'}
-              border='topLeft'
+              border="topLeft"
               onClick={() => setExpand(!isExpand)}
             />
           }
@@ -106,10 +106,10 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
                   <InfoLink
                     label={item.name}
                     href={item.link}
-                    icon='arrow-right'
-                    iconPlace='right'
-                    size='xl'
-                    border='borderTop'
+                    icon="arrow-right"
+                    iconPlace="right"
+                    size="xl"
+                    border="borderTop"
                     iconClassName={cn(styles.link)}
                   />
                 </div>
@@ -141,10 +141,10 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
                   href={item.link}
                   label={item.name}
                   isOutsideLink={true}
-                  icon='arrow-right'
-                  iconPlace='left'
-                  size='s'
-                  border='borderBottomLeft'
+                  icon="arrow-right"
+                  iconPlace="left"
+                  size="s"
+                  border="borderBottomLeft"
                 />
               )}
             </div>
@@ -156,8 +156,8 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
               isOutsideLink={true}
               href={`mailto://${ email }`}
               label={email}
-              size='l'
-              textDecoration='underline'
+              size="l"
+              textDecoration="underline"
             />
           </div>
         </div>
