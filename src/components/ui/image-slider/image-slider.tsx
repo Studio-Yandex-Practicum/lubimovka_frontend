@@ -43,16 +43,16 @@ export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
             <div className={cx('arrow', 'arrowLeft')}>
               <SliderButton
                 className={cx('arrowButton')}
-                ariaLabel='Предыдущий слайд'
-                direction='left'
+                ariaLabel="Предыдущий слайд"
+                direction="left"
                 onClick={slider.prev}
               />
             </div>
             <div className={cx('arrow', 'arrowRight')}>
               <SliderButton
                 className={cx('arrowButton')}
-                ariaLabel='Следующий слайд'
-                direction='right'
+                ariaLabel="Следующий слайд"
+                direction="right"
                 onClick={slider.next}
               />
             </div>

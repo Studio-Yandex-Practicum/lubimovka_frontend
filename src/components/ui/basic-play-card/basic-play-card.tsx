@@ -57,25 +57,25 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         <div>
           <Button
             className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
-            width='100%'
-            size='l'
-            view='primary'
-            iconPlace='right'
-            icon='arrow-45'
-            label='Смотреть читку'
-            border='top'
+            width="100%"
+            size="l"
+            view="primary"
+            iconPlace="right"
+            icon="arrow-45"
+            label="Смотреть читку"
+            border="top"
             isLink
             href={play.linkView}
           />
           <Button
             className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
-            width='100%'
-            size='l'
-            view='primary'
-            iconPlace='right'
-            icon='arrow-down'
-            label='Скачать пьесу'
-            border='top'
+            width="100%"
+            size="l"
+            view="primary"
+            iconPlace="right"
+            icon="arrow-down"
+            label="Скачать пьесу"
+            border="top"
             isLink
             href={play.linkDownload}
           />
@@ -89,7 +89,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
               isOutsideLink={false}
               href={`/authors/${i.id}`}
               label={i.name}
-              size='l'
+              size="l"
               className={cx('author', play.authors.length > 1 && 'authorMultiple')}
             />
           </dd>

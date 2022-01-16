@@ -8,7 +8,7 @@ const cx = cn.bind(styles);
 
 export const MainNews: FC = () => {
   return (
-    <Link href='#'>
+    <Link href="#">
       <a className={cx('link')}>
         <article className={cx('article')}>
           <h3 className={cx('title')}>

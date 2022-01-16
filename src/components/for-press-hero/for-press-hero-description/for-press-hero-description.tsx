@@ -23,13 +23,13 @@ export const ForPressHeroDescription: FC<IForPressHeroDescriptionProps> = ({ dat
       <p className={cx('description')}>{data.description}</p>
       <Button
         className={cx('button')}
-        align='start'
-        size='s'
-        view='primary'
-        iconPlace='left'
-        icon='arrow-right'
-        label='Фотоальбомы'
-        border='bottomLeft'
+        align="start"
+        size="s"
+        view="primary"
+        iconPlace="left"
+        icon="arrow-right"
+        label="Фотоальбомы"
+        border="bottomLeft"
         isLink
         href={data.link}
       />

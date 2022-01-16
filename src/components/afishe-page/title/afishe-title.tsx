@@ -17,7 +17,7 @@ export const AfisheTitle: FC<IAfisheTitle> = ({ festival, title, discussion, ent
     <section className={styles.section}>
       <h1 className={styles.title}>{title}</h1>
       {festival && (<div className={styles.discussionInfo}>
-        <Icon glyph='asterisk'/>
+        <Icon glyph="asterisk"/>
         <p className={styles.discussion}>{discussion}</p>
       </div>)}
       <div className={styles.entranceInfo}>

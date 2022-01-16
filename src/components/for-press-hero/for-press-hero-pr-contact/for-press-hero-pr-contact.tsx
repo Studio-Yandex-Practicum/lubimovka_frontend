@@ -28,7 +28,7 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, c
         По вопросам PR и аккредитации пишите {data.nameDative}
       </h6>
       <div className={cx('photo')}>
-        <Image src={data.photo} alt={data.name} layout='fill' objectFit='cover'/>
+        <Image src={data.photo} alt={data.name} layout="fill" objectFit="cover"/>
       </div>
       <dl className={cx('info')}>
         <dt className={cx('hiddenText')}>
@@ -39,8 +39,8 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, c
             isOutsideLink={true}
             href={`mailto://${data.email}`}
             label={data.email}
-            size= 'l'
-            textDecoration='underline'
+            size= "l"
+            textDecoration="underline"
           />
         </dd>
         <dt className={cx('hiddenText')}>

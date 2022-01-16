@@ -53,15 +53,15 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
       <div className={styles.content}>
         <div className={styles.sidebar}>
           <div className={styles.menu}>
-            <Menu type='history'>
+            <Menu type="history">
               <Menu.Item
-                href='/library'
+                href="/library"
                 current={router.asPath === '/library'}
               >
                 Пьесы
               </Menu.Item>
               <Menu.Item
-                href='/library/authors'
+                href="/library/authors"
                 current={router.asPath === '/library/authors'}
               >
                 Авторы

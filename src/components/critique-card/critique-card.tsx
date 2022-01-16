@@ -37,13 +37,13 @@ export const CritiqueCard: FC<ICritiqueCardProps> = (props) => {
         <div className={cx('action')}>
           <InfoLink
             isOutsideLink
-            href='#'
-            label='Читать полностью'
-            icon='arrow-45'
-            iconPlace='left'
-            size='s'
-            textTransform='uppercase'
-            border='borderBottomLeft'
+            href="#"
+            label="Читать полностью"
+            icon="arrow-45"
+            iconPlace="left"
+            size="s"
+            textTransform="uppercase"
+            border="borderBottomLeft"
             className={cx('action')}
           />
         </div>

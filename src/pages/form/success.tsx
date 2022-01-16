@@ -11,7 +11,7 @@ const PlayProposalSuccess = ({ referer }: InferGetServerSidePropsType<typeof get
   return (
     <>
       {referer && (
-        <PageTransition type='rightToLeft'>
+        <PageTransition type="rightToLeft">
           <AppLayout>
             <PlayProposalSuccessLayout/>
           </AppLayout>

@@ -29,7 +29,7 @@ export const DonationPageTitle: FC<IDonationPageTitleProps> = (props) => {
           {text}
         </p>
         <p className={cx('footnote')}>
-          <Icon className={cx('asterisk')} glyph="asterisk" fill='--var(coal)'/>
+          <Icon className={cx('asterisk')} glyph="asterisk" fill="--var(coal)"/>
           {footnote}
         </p>
       </div>
@@ -46,9 +46,9 @@ export const DonationPageTitle: FC<IDonationPageTitleProps> = (props) => {
               <div className={cx('qrcode')}>
                 <Image
                   src={qrcode}
-                  alt='QR-code для отправки доната'
-                  layout='fill'
-                  objectFit='cover'
+                  alt="QR-code для отправки доната"
+                  layout="fill"
+                  objectFit="cover"
                 />
               </div>
             </a>

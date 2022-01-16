@@ -50,7 +50,7 @@ export const MonthsAndYearsFilter: React.FC<IFilter> = (props) => {
     <div className={cx('drop', className)}>
       <Droplist
         data={createMonthList(year || currentYear)}
-        type='radio'
+        type="radio"
         defaultValue={'Месяц'}
         cb={([month]) => callBackForMonth(month)}
         className={cx('droplistTypelistMonths')}
@@ -58,7 +58,7 @@ export const MonthsAndYearsFilter: React.FC<IFilter> = (props) => {
       />
       <Droplist
         data={createYearList()}
-        type='radio'
+        type="radio"
         defaultValue={'Год'}
         cb={([year]) => callBackForYear(year)}
         className={cx('droplistTypelistYears')}

@@ -26,13 +26,13 @@ export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
           <p className={cn(styles.text)}>{title[0]}</p>
           <span className={cn(styles.link)}>
             <Button 
-              label='YOUTUBE'
+              label="YOUTUBE"
               isLink={true} 
               href={buttonLink}
-              icon='arrow-right'
-              iconPlace='left'
-              border='bottomLeft'
-              size='s'
+              icon="arrow-right"
+              iconPlace="left"
+              border="bottomLeft"
+              size="s"
               className={cn(styles.button)}
             />
           </span>
@@ -45,7 +45,7 @@ export const MainArchive: FC<IMainArchiveProps> = ({ data }) => {
       <div className={cn(styles.img)}>
         <a href="#" className={cn(styles.linkImg)}>
           <Image
-            alt='YOUTUBE'
+            alt="YOUTUBE"
             src="/images/main/archive.jpg"
             width={540}
             height={258}

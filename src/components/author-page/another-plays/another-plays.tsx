@@ -26,11 +26,11 @@ export const AnotherPlays: FC<IAnotherPlays> = ({ data }) => {
             <p className={cx('paragraph')}>{item.name}</p>
             <a className={cx('downloadButton')} href={item.link} download>
               <Button
-                size='l'
-                iconPlace='right'
-                icon='arrow-down'
-                label='Скачать'
-                border='none'
+                size="l"
+                iconPlace="right"
+                icon="arrow-down"
+                label="Скачать"
+                border="none"
               />
             </a>
           </li>
