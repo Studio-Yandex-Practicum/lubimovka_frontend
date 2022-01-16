@@ -22,7 +22,7 @@ export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown,
       <p className={cn(styles.text)}>
         {value}
       </p>
-      {<Icon glyph='arrow-down'
+      {<Icon glyph="arrow-down"
         fill={activeDropdown ? 'white' : 'black'} 
         className={cn(styles.iconArrowDown, { [styles.rotateUp]: activeDropdown })}
       />}

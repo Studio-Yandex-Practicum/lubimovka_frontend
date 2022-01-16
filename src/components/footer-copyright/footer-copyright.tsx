@@ -26,11 +26,11 @@ export const FooterCopyright: FC<IFooterCopyright> = (props) => {
       <InfoLink
         className={cx('footnoteLink')}
         isOutsideLink
-        href='/privacy-policy'
-        label='Политика конфиденциальности'
-        hoverStyle='bottomLine'
-        size='xs'
-        textDecoration='textDecorationNone'
+        href="/privacy-policy"
+        label="Политика конфиденциальности"
+        hoverStyle="bottomLine"
+        size="xs"
+        textDecoration="textDecorationNone"
       />
       <dl className={cx('credits')}>
         <div className={cx('shishki')}>
@@ -40,11 +40,11 @@ export const FooterCopyright: FC<IFooterCopyright> = (props) => {
           <dd>
             <InfoLink
               isOutsideLink
-              href='https://shishki.co'
-              label='shishki.collective'
-              hoverStyle='bottomLine'
-              size='xs'
-              textDecoration='textDecorationNone'
+              href="https://shishki.co"
+              label="shishki.collective"
+              hoverStyle="bottomLine"
+              size="xs"
+              textDecoration="textDecorationNone"
               className={cx('footnoteLink')}
             />
           </dd>
@@ -57,11 +57,11 @@ export const FooterCopyright: FC<IFooterCopyright> = (props) => {
             студенты&nbsp;
             <InfoLink
               isOutsideLink
-              href='https://practicum.yandex.ru'
-              label='Яндекс.Практикума'
-              hoverStyle='bottomLine'
-              size='xs'
-              textDecoration='textDecorationNone'
+              href="https://practicum.yandex.ru"
+              label="Яндекс.Практикума"
+              hoverStyle="bottomLine"
+              size="xs"
+              textDecoration="textDecorationNone"
               className={cx('footnoteLink')}
             />
           </dd>

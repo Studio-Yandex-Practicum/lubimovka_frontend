@@ -28,16 +28,16 @@ export const MainBanners = () => {
                 Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.
               </p>
               <Button 
-                label='читать' 
-                iconPlace='left' 
-                icon='arrow-right' 
-                gap='4px'
-                border='bottomLeft'
+                label="читать" 
+                iconPlace="left" 
+                icon="arrow-right" 
+                gap="4px"
+                border="bottomLeft"
               />
             </div>
             <img 
-              src='https://sun9-15.userapi.com/impg/BrbXevIzjABChomHzzXuKYJ0ZTWrcuhy_lQnwA/dshSQq8AJVQ.jpg?size=720x414&quality=95&sign=2ceeb729a98f8fd68fb5b4e975b6234c&type=album'
-              alt='Волонтеры'
+              src="https://sun9-15.userapi.com/impg/BrbXevIzjABChomHzzXuKYJ0ZTWrcuhy_lQnwA/dshSQq8AJVQ.jpg?size=720x414&quality=95&sign=2ceeb729a98f8fd68fb5b4e975b6234c&type=album"
+              alt="Волонтеры"
               className={cn(styles.img)}
             />
           </div>

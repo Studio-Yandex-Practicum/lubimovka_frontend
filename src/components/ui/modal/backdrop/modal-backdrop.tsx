@@ -16,7 +16,7 @@ export const ModalBackdrop: FC<IModalBackdropProps> = (props) => {
   return (
     <div
       className={cx('backdrop', [className])}
-      role='button'
+      role="button"
       tabIndex={-1}
       onClick={onClick}
     />

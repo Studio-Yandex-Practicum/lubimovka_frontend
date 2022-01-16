@@ -32,10 +32,10 @@ const MainPage: NextPage = () => {
     <>
       <AppLayout hiddenPartners screenImg={true && <div className={cx('wrapper')}>
         <Image
-          alt='screen'
+          alt="screen"
           src={isMobile ? '/images/main/screen-mobile.jpg' : '/images/main/screen.jpg'}
-          layout='fill'
-          objectFit='fill'
+          layout="fill"
+          objectFit="fill"
         />
       </div>}>
         <>

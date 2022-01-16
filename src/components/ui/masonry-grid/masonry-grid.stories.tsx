@@ -21,7 +21,7 @@ const TemplateBig: ComponentStory<typeof MasonryGrid> = (args) => (
         heading={card.title}
         description={card.description}
         id={card.id}
-        firstCardSizeMode='big'
+        firstCardSizeMode="big"
       />;
     })}
   </MasonryGrid>
@@ -37,7 +37,7 @@ const TemplateRegular: ComponentStory<typeof MasonryGrid> = (args) => (
         heading={card.title}
         description={card.description}
         id={card.id}
-        firstCardSizeMode='regular'
+        firstCardSizeMode="regular"
       />;
     })}
   </MasonryGrid>

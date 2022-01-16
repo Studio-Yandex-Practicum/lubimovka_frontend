@@ -32,7 +32,7 @@ export const SliderButton: FC<ISliderButtonProps> = (props) => {
         direction
       )}
       ariaLabel={ariaLabel}
-      type='button'
+      type="button"
       view={view}
       icon={<Icon glyph={direction === 'right' ? 'arrow-right' : 'arrow-left'}/>}
       {...restProps}

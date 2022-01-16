@@ -19,11 +19,11 @@ export const FirstScreen: FC = () => {
           <Button
             label={'ПОДАТЬ ПЬЕСУ'}
             isLink
-            href='#'
-            size='l'
-            border='full'
+            href="#"
+            size="l"
+            border="full"
             icon="arrow-right"
-            iconPlace='right'
+            iconPlace="right"
             width="100%"
             className={cx('button')}
           />

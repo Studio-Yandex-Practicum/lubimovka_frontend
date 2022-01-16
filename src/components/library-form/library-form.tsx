@@ -24,22 +24,22 @@ const LibraryForm: FC = () => {
   return (
     <form
       noValidate
-      name='searchForm'
+      name="searchForm"
       className={style.searchForm}
       onSubmit={handleSubmit}
     >
       <input
-        name='search'
-        type='text'
+        name="search"
+        type="text"
         spellCheck={false}
         className={style.searchInput}
         value={searchInput}
         onChange={handleChange}
-        placeholder='Автор или название пьесы'
+        placeholder="Автор или название пьесы"
       />
-      <Button label='Искать' size='s' icon='arrow-right' type='submit'
-        iconPlace='left' border='none' isLink={true}
-        href={`/library/search-result${urlQuery}`} align='start' className={style.button}/>
+      <Button label="Искать" size="s" icon="arrow-right" type="submit"
+        iconPlace="left" border="none" isLink={true}
+        href={`/library/search-result${urlQuery}`} align="start" className={style.button}/>
     </form>
   );
 };

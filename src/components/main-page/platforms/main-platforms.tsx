@@ -29,7 +29,7 @@ export const MainPlatforms: FC<IMainPlatformsProps> = ({ title, content }) => {
           <li className={cn(styles.item)} key={card.id}>
             <Icon
               className={styles.mapIcon}
-              glyph='map'
+              glyph="map"
             />
             <h3 className={cn(styles.title)}>
               {card.title}

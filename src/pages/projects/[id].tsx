@@ -99,7 +99,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                       //TODO: исправить ответ бекенда, сейчас возвращаются данные для страницы спектакля
                       isPerformance={true}
                       id={id}
-                      date='2021-11-13T17:00:00.000Z'
+                      date="2021-11-13T17:00:00.000Z"
                       title={name}
                       dramatists={['Ольга Казакова', 'Антон Чехов']}
                       directors={['Катя Ганюшина']}
