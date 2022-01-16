@@ -4,7 +4,7 @@ import { Droplist, IDroplistPublic } from 'components/ui/droplist';
 import { Tag } from 'components/ui/tag';
 import { Button } from 'components/ui/button';
 import { Action } from 'components/library-filter/library-filter-reducer';
-import CurrentFiltersContext from 'pages/library/library-filters-context';
+import { LibraryFiltersProviderContext } from 'providers/library-filters-provider';
 import { IProgram } from 'pages/library';
 
 import style from './library-filter.module.css';
@@ -18,7 +18,7 @@ export interface LibraryFilterProps {
 }
 
 const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispatcher, onCheckResults, droplistRef }) => {
-  const filterState = useContext(CurrentFiltersContext);
+  const filterState = useContext(LibraryFiltersProviderContext);
 
   const handleTagClick = useCallback(
     (el: string): void => {
