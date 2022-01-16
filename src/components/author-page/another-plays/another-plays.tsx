@@ -1,9 +1,11 @@
 import { FC } from 'react';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
 
 import styles from './another-plays.module.css';
+
+const cx = cn.bind(styles);
 
 interface dataList {
   name: string;
@@ -16,13 +18,13 @@ interface IAnotherPlays {
 
 export const AnotherPlays: FC<IAnotherPlays> = ({ data }) => {
   return (
-    <section className={cn(styles.anotherPlays)}>
-      <h2 className={cn(styles.heading)}>Другие пьесы</h2>
-      <ul className={cn(styles.blocks)}>
+    <section className={cx('anotherPlays')}>
+      <h2 className={cx('heading')}>Другие пьесы</h2>
+      <ul className={cx('blocks')}>
         {data.map((item, idx) =>
-          <li className={cn(styles.block)} key={idx}>
-            <p className={cn(styles.paragraph)}>{item.name}</p>
-            <a className={cn(styles.downloadButton)} href={item.link} download>
+          <li className={cx('block')} key={idx}>
+            <p className={cx('paragraph')}>{item.name}</p>
+            <a className={cx('downloadButton')} href={item.link} download>
               <Button
                 size="l"
                 iconPlace="right"

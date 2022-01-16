@@ -34,7 +34,7 @@ const Authors = ({ errorCode, authors }: InferGetServerSidePropsType<typeof getS
 
 const fetchAuthors = async () => {
   try {
-    const { results } = await fetcher<PaginatedAuthorListList>('/library/authors/');
+    const { results } = await fetcher<PaginatedAuthorListList>('/v1/library/authors/');
     if(!results) {
       throw 'no results';
     }

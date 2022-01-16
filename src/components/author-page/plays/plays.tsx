@@ -1,10 +1,12 @@
 // @ts-nocheck
 import { FC } from 'react';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 
 import styles from './plays.module.css';
+
+const cx = cn.bind(styles);
 
 interface Play {
   id?: number,
@@ -27,10 +29,10 @@ interface IAuthorPlays {
 
 export const AuthorPlays: FC<IAuthorPlays> = ({ data }) => {
   return (
-    <section className={cn(styles.playsContainer)}>
-      <ul className={cn(styles.list)}>
+    <section className={cx('playsContainer')}>
+      <ul className={cx('list')}>
         {data.map((item, idx) => (
-          <li className={cn(styles.item)} key={idx}>
+          <li className={cx('item')} key={idx}>
             <BasicPlayCard play={{
               title: item.name,
               city: item.city,

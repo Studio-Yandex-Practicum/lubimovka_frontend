@@ -1,20 +1,22 @@
 import { FC } from 'react';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 
 import { Icon } from 'components/ui/icon';
 import { InfoLink } from 'components/ui/info-link';
 
 import styles from './request.module.css';
 
+const cx = cn.bind(styles);
+
 export const AuthorRequest: FC = () => {
   return (
-    <section className={cn(styles.request)}>
-      <div className={cn(styles.footnoteInfo)}>
+    <section className={cx('request')}>
+      <div className={cx('footnoteInfo')}>
         <Icon
-          className={cn(styles.asterisk)}
+          className={cx('asterisk')}
           glyph="asterisk"
         />
-        <p className={cn(styles.footnote)}>Это ваша страница? Если вы хотите внести изменения, пожалуйста, напишите
+        <p className={cx('footnote')}>Это ваша страница? Если вы хотите внести изменения, пожалуйста, напишите
           нам на&nbsp;
         <InfoLink
           isOutsideLink={true}
