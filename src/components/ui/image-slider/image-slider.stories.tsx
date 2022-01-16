@@ -40,7 +40,7 @@ Default.args = {
       src={image.image}
       alt={image.description}
       layout="fill"
-      objectFit='cover'
+      objectFit="cover"
     />
   ))
 };

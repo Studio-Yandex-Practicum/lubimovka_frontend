@@ -23,7 +23,7 @@ export const WhatWeDoContacts: FC<IWhatWeDoContactsProps> = ({ data }): JSX.Elem
       </h3>
       <p className={cn(styles.desc)}>
         <span className={cn(styles.asterisk)}>
-          {<Icon glyph='asterisk' fill='black'
+          {<Icon glyph="asterisk" fill="black"
             className={styles.asterisk}/>}
         </span>
         {desc}

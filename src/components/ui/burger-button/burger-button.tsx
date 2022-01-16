@@ -15,7 +15,7 @@ export const BurgerButton = (props: IBurgerButtonProps): JSX.Element => {
   return (
     <div
       className={cx('button', { open: isOpen })}
-      role='button'
+      role="button"
       aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
       onClick={onClick}
     >

@@ -30,7 +30,7 @@ export const SectionTitleForBlog = (
     <section className={cx('section')}>
       <h1 className={cx('title')}>Блог Любимовки</h1>
       <div className={cx('asterisk')}>
-        <Icon glyph='asterisk' width='100%' height='100%' fill='var(--coal)'/>
+        <Icon glyph="asterisk" width="100%" height="100%" fill="var(--coal)"/>
       </div>
       <div className={cx('text')}>
         <p className={cx('paragraph')}>
@@ -43,7 +43,7 @@ export const SectionTitleForBlog = (
           <InfoLink
             className={cx('link')}
             label={email}
-            textDecoration='underline'
+            textDecoration="underline"
           />
         </p>
       </div>

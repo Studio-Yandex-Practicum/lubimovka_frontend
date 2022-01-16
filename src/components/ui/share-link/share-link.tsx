@@ -36,9 +36,9 @@ export const ShareLink: FC<IShareLinkProps> = (props) => {
 
   return (
     <div className={cx('container', className)}>
-      <InfoLink href={facebook} label='Fb' icon={icon} iconPlace={iconPlace} size={size} border={border} className={cx('links')}/>
-      <InfoLink href={vk} label='Vk' icon={icon} iconPlace={iconPlace} size={size} border={border} className={cx('links')}/>
-      <InfoLink href={tweeter} label='Twtr' icon={icon} iconPlace={iconPlace} size={size} border={border} className={cx('links')}/>
+      <InfoLink href={facebook} label="Fb" icon={icon} iconPlace={iconPlace} size={size} border={border} className={cx('links')}/>
+      <InfoLink href={vk} label="Vk" icon={icon} iconPlace={iconPlace} size={size} border={border} className={cx('links')}/>
+      <InfoLink href={tweeter} label="Twtr" icon={icon} iconPlace={iconPlace} size={size} border={border} className={cx('links')}/>
     </div>
   );
 };

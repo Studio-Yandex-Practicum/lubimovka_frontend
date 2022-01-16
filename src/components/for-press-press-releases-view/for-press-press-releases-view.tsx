@@ -60,7 +60,7 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = (p
           Выберите год фестиваля
         </p>
         <Droplist
-          type='radio'
+          type="radio"
           data={pressReleaseYears}
           cb={(i: string[]) => {
             setPressReleaseYearSelected(Number(i));
@@ -69,14 +69,14 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = (p
           defaultValue={pressReleaseDefaultYear.toString()}
         />
         <Button
-          view='primary'
+          view="primary"
           className={cx('button')}
-          align='center'
-          gap='11px'
-          size='s'
-          border='bottomLeft'
-          iconPlace='right'
-          icon='arrow-down'
+          align="center"
+          gap="11px"
+          size="s"
+          border="bottomLeft"
+          iconPlace="right"
+          icon="arrow-down"
           label={pressReleaseSelected === undefined ?
             'Пресс-релиз не найден'
             : pressReleaseSelected !== undefined && isMobile

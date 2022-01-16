@@ -32,7 +32,7 @@ const Template: Story = () => {
             src={image.image}
             alt={`Изображениe ${index}`}
             layout="fill"
-            objectFit='cover'
+            objectFit="cover"
           />
         ))}
       </Lightbox>

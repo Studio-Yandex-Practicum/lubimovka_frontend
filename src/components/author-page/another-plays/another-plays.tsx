@@ -24,11 +24,11 @@ export const AnotherPlays: FC<IAnotherPlays> = ({ data }) => {
             <p className={cn(styles.paragraph)}>{item.name}</p>
             <a className={cn(styles.downloadButton)} href={item.link} download>
               <Button
-                size='l'
-                iconPlace='right'
-                icon='arrow-down'
-                label='Скачать'
-                border='none'
+                size="l"
+                iconPlace="right"
+                icon="arrow-down"
+                label="Скачать"
+                border="none"
               />
             </a>
           </li>

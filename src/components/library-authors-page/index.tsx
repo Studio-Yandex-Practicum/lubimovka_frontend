@@ -36,15 +36,15 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
       <div className={styles.content}>
         <div className={styles.menuWrap}>
           <div className={styles.menu}>
-            <Menu type='history'>
+            <Menu type="history">
               <Menu.Item
-                href='/library'
+                href="/library"
                 current={router.asPath === '/library'}
               >
         Пьесы
               </Menu.Item>
               <Menu.Item
-                href='/library/authors'
+                href="/library/authors"
                 current={router.asPath === '/library/authors'}
               >
         Авторы

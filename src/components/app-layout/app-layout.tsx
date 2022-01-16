@@ -156,7 +156,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
           <PageOverlayMenu isOpen={isOverlayMenuOpen}>
             <OverlayNav>
               <OverlayNav.Logotype>
-                <Logotype href='/' title="Фестиваль Любимовка"/>
+                <Logotype href="/" title="Фестиваль Любимовка"/>
               </OverlayNav.Logotype>
               <OverlayNav.Menu>
                 <Menu type="overlay-navigation">
@@ -172,19 +172,19 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
                 </Menu>
               </OverlayNav.Menu>
               <OverlayNav.Actions>
-                <Menu type='overlay-actions'>
+                <Menu type="overlay-actions">
                   <Menu.Item href={participationFormPath}>
                     Подать пьесу
-                    <Icon glyph='arrow-right'/>
+                    <Icon glyph="arrow-right"/>
                   </Menu.Item>
                   <Menu.Item href={donationPath}>
                     Поддержать
-                    <Icon glyph='arrow-right'/>
+                    <Icon glyph="arrow-right"/>
                   </Menu.Item>
                 </Menu>
               </OverlayNav.Actions>
               <OverlayNav.Socials>
-                <Menu type='overlay-social-links'>
+                <Menu type="overlay-social-links">
                   {socialLinkItems.sort((a, b) => a.mobileOrder - b.mobileOrder).map((item) => (
                     <Menu.Item
                       key={item.href}
@@ -192,7 +192,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
                       mods={item.mods}
                     >
                       {item.text}
-                      <Icon glyph='arrow-right'/>
+                      <Icon glyph="arrow-right"/>
                     </Menu.Item>
                   ))}
                 </Menu>

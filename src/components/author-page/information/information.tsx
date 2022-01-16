@@ -26,10 +26,10 @@ export const AuthorInformation: FC<IAuthorInformation> = ({ data }) => {
             <InfoLink
               label={item.name}
               href={item.link}
-              icon='arrow-right'
-              iconPlace='right'
-              size='xl'
-              border='borderTop'
+              icon="arrow-right"
+              iconPlace="right"
+              size="xl"
+              border="borderTop"
               iconClassName={cn(styles.anchor)}
             />
           </div>
