@@ -1,11 +1,13 @@
 import { FC, useState } from 'react';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
 import { InfoLink } from 'components/ui/info-link';
 
 import styles from './overview.module.css';
+
+const cx = cn.bind(styles);
 
 interface otherLinks {
   name: string,
@@ -49,9 +51,9 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
   const [isExpand, setExpand] = useState(true);
 
   return (
-    <section className={cn(styles.overview)}>
-      <div className={cn(image ? styles.personalInfo : styles.personalInfoNoPhoto)}>
-        <div className={cn(styles.button)}>
+    <section className={cx('overview')}>
+      <div className={cx(image ? 'personalInfo' : 'personalInfoNoPhoto')}>
+        <div className={cx('button')}>
           <Button
             href='/library/authors'
             size='s'
@@ -64,24 +66,24 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
         </div>
 
         {image &&
-          <div className={cn(styles.photoBox)}>
+          <div className={cx('photoBox')}>
             <img
-              className={cn(styles.photo)}
+              className={cx('photo')}
               src={image}
               alt={`Фотография автора ${name}`}
             />
           </div>
         }
-        <h1 className={cn(styles.fullName)}>{name}</h1>
-        <p className={cn(styles.city)}>{city}</p>
-        <q className={cn(styles.quote)}>
-          <p className={cn(styles.quoteParagraph)}>{quote}</p>
+        <h1 className={cx('fullName')}>{name}</h1>
+        <p className={cx('city')}>{city}</p>
+        <q className={cx('quote')}>
+          <p className={cx('quoteParagraph')}>{quote}</p>
         </q>
       </div>
 
-      <div className={cn(styles.overviewInfo)}>
-        <div className={cn(styles.overviewBlock)}>
-          <p className={cn(styles.overviewParagraph, isExpand ? styles.expandButton : styles.rollUpButton)}>
+      <div className={cx('overviewInfo')}>
+        <div className={cx('overviewBlock')}>
+          <p className={cx('overviewParagraph', isExpand ? styles.expandButton : styles.rollUpButton)}>
             {biography}
           </p>
           <Button
@@ -94,9 +96,9 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
             onClick={() => setExpand(!isExpand)}
           />
 
-          <div className={cn(styles.overviewBlockAuthorInfo)}>
+          <div className={cx('overviewBlockAuthorInfo')}>
             {other_links.map((item, idx) =>
-              <div className={cn(styles.overviewLinkHeading)} key={idx}>
+              <div className={cx('overviewLinkHeading')} key={idx}>
                 <InfoLink
                   label={item.name}
                   href={item.link}
@@ -104,19 +106,19 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
                   iconPlace='right'
                   size='xl'
                   border='borderTop'
-                  iconClassName={cn(styles.link)}
+                  iconClassName={cx('link')}
                 />
               </div>
             )}
           </div>
         </div>
 
-        <div className={cn(styles.overviewSet)}>
-          <div className={cn(styles.overviewTagsBlock)}>
-            <h2 className={cn(styles.overviewTagsHeading)}>Достижения</h2>
-            <div className={cn(styles.tagWrapper)}>
+        <div className={cx('overviewSet')}>
+          <div className={cx('overviewTagsBlock')}>
+            <h2 className={cx('overviewTagsHeading')}>Достижения</h2>
+            <div className={cx('tagWrapper')}>
               {achievements.map((item, idx) =>
-                <div className={cn(styles.tag)} key={idx}>
+                <div className={cx('tag')} key={idx}>
                   <Tag
                     label={item}
                     selected={false}
@@ -126,9 +128,9 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
             </div>
           </div>
 
-          <div className={cn(styles.overviewSocialWrapper)}>
-            <h2 className={cn(styles.overviewSocialLinkHeading)}>Социальные сети</h2>
-            <div className={cn(styles.overviewSocialLinkBlock)}>
+          <div className={cx('overviewSocialWrapper')}>
+            <h2 className={cx('overviewSocialLinkHeading')}>Социальные сети</h2>
+            <div className={cx('overviewSocialLinkBlock')}>
               {social_networks.map((item, idx) =>
                 <InfoLink
                   key={idx}
@@ -144,8 +146,8 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
             </div>
           </div>
 
-          <div className={cn(styles.overviewSocialWrapper)}>
-            <p className={cn(styles.email)}>E-mail для связи</p>
+          <div className={cx('overviewSocialWrapper')}>
+            <p className={cx('email')}>E-mail для связи</p>
             <InfoLink
               isOutsideLink={true}
               href={`mailto://${email}`}

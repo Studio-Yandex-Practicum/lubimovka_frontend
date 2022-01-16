@@ -1,5 +1,5 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
 import { AuthorOverview } from 'components/author-page/overview';
@@ -11,6 +11,8 @@ import { fetcher } from 'shared/fetcher';
 import { AuthorRetrieve as AuthorRetrieveModel } from 'api-typings';
 
 import styles from 'components/author-page/author.module.css';
+
+const cx = cn.bind(styles);
 
 const fetchAuthors = async (authorId: string) => {
   let data;
@@ -50,7 +52,7 @@ const Author = (data: InferGetServerSidePropsType<typeof getServerSideProps>): J
 
   return (
     <AppLayout>
-      <div className={cn(styles.author)}>
+      <div className={cx('author')}>
         <AuthorOverview data={data}/>
         {plays && <AuthorPlays data={plays}/>}
         {other_plays && <AnotherPlays data={other_plays}/>}
