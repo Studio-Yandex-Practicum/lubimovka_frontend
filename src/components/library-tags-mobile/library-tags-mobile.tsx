@@ -1,7 +1,7 @@
 import React, { FC, useCallback, Dispatch, useContext, useMemo, RefObject } from 'react';
 
 import { Action } from 'components/library-filter/library-filter-reducer';
-import CurrentFiltersContext from 'pages/library/library-filters-context';
+import { LibraryFiltersProviderContext } from 'providers/library-filters-provider';
 import { IProgram } from 'pages/library';
 import { Tag } from 'components/ui/tag';
 import { IDroplistPublic } from 'components/ui/droplist';
@@ -15,7 +15,7 @@ export interface LibraryTagsMobileProps {
 }
 
 const LibraryTagsMobile: FC <LibraryTagsMobileProps> = ({ programmes, filterDispatcher, droplistRef }) => {
-  const filterState = useContext(CurrentFiltersContext);
+  const filterState = useContext(LibraryFiltersProviderContext);
 
   const selectedProgrammes = useMemo(()=> {
     return programmes.filter((tag) => filterState.program.includes(String(tag.pk)));

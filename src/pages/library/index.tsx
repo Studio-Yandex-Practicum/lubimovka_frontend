@@ -9,7 +9,7 @@ import { fetcher } from 'shared/fetcher';
 import { PaginatedPlayList, Play } from 'api-typings';
 import reducer from 'components/library-filter/library-filter-reducer';
 import queryParser from './library-query-parser';
-import CurrentFiltersContext from './library-filters-context';
+import LibraryFiltersProvider from 'providers/library-filters-provider';
 
 export interface IProgram {
   'pk': number,
@@ -64,7 +64,7 @@ const Library = ({ errorCode, pieces, years, programs }:
   }
 
   return (
-    <CurrentFiltersContext.Provider value={filterState}>
+    <LibraryFiltersProvider value={filterState}>
       <AppLayout>
         <Head>
           <title>Библиотека</title>
@@ -72,7 +72,7 @@ const Library = ({ errorCode, pieces, years, programs }:
         <LibraryPage isLoading={isLoading} items={piecesState} years={years.flat()}
           programmes={programs.flat()} filterDispatcher={filterDispatcher}/>
       </AppLayout>
-    </CurrentFiltersContext.Provider>
+    </LibraryFiltersProvider>
   );
 };
 
