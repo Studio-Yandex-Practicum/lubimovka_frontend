@@ -46,8 +46,8 @@ export const getServerSideProps: GetServerSideProps<AuthorRetrieveModel, Record<
 const Author = (data: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const {
     plays,
-    other_plays,
-    other_links,
+    other_plays: otherPlays,
+    other_links: otherLinks,
   } = data;
 
   return (
@@ -55,8 +55,8 @@ const Author = (data: InferGetServerSidePropsType<typeof getServerSideProps>): J
       <div className={cx('author')}>
         <AuthorOverview data={data}/>
         {plays && <AuthorPlays data={plays}/>}
-        {other_plays && <AnotherPlays data={other_plays}/>}
-        {other_links && <AuthorInformation data={other_links}/>}
+        {otherPlays && <AnotherPlays data={otherPlays}/>}
+        {otherLinks && <AuthorInformation links={otherLinks}/>}
         <AuthorRequest/>
       </div>
     </AppLayout>
