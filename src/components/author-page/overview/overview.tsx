@@ -48,21 +48,19 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
 
   const [isExpand, setExpand] = useState(true);
 
-  const toDrawButton = data.biography;
-
-  const pinnedLinks = other_links.filter((item) => item.is_pinned);
-
   return (
     <section className={cn(styles.overview)}>
       <div className={cn(image ? styles.personalInfo : styles.personalInfoNoPhoto)}>
         <div className={cn(styles.button)}>
           <Button
+            href='/library/authors'
             size='s'
             iconPlace='right'
             icon='arrow-left'
             label='Библиотека'
             border='bottomRight'
-            isLink={true}/>
+            isLink={true}
+          />
         </div>
 
         {image &&
@@ -70,7 +68,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
             <img
               className={cn(styles.photo)}
               src={image}
-              alt={`Фотография автора ${ name }`}
+              alt={`Фотография автора ${name}`}
             />
           </div>
         }
@@ -86,34 +84,30 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
           <p className={cn(styles.overviewParagraph, isExpand ? styles.expandButton : styles.rollUpButton)}>
             {biography}
           </p>
-          {toDrawButton.length > 305 &&
-            <Button
-              width='100%'
-              size='s'
-              iconPlace='right'
-              icon={isExpand ? 'arrow-down' : 'arrow-up'}
-              label={isExpand ? 'Полный текст' : 'Свернуть'}
-              border='topLeft'
-              onClick={() => setExpand(!isExpand)}
-            />
-          }
+          <Button
+            width='100%'
+            size='s'
+            iconPlace='right'
+            icon={isExpand ? 'arrow-down' : 'arrow-up'}
+            label={isExpand ? 'Полный текст' : 'Свернуть'}
+            border='topLeft'
+            onClick={() => setExpand(!isExpand)}
+          />
 
           <div className={cn(styles.overviewBlockAuthorInfo)}>
-            {pinnedLinks.length > 0  && other_links
-              .sort((link1,link2) => link1.order_number - link2.order_number)
-              .map((item, idx) =>
-                <div className={cn(styles.overviewLinkHeading)} key={idx}>
-                  <InfoLink
-                    label={item.name}
-                    href={item.link}
-                    icon='arrow-right'
-                    iconPlace='right'
-                    size='xl'
-                    border='borderTop'
-                    iconClassName={cn(styles.link)}
-                  />
-                </div>
-              )}
+            {other_links.map((item, idx) =>
+              <div className={cn(styles.overviewLinkHeading)} key={idx}>
+                <InfoLink
+                  label={item.name}
+                  href={item.link}
+                  icon='arrow-right'
+                  iconPlace='right'
+                  size='xl'
+                  border='borderTop'
+                  iconClassName={cn(styles.link)}
+                />
+              </div>
+            )}
           </div>
         </div>
 
@@ -154,7 +148,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
             <p className={cn(styles.email)}>E-mail для связи</p>
             <InfoLink
               isOutsideLink={true}
-              href={`mailto://${ email }`}
+              href={`mailto://${email}`}
               label={email}
               size='l'
               textDecoration='underline'
