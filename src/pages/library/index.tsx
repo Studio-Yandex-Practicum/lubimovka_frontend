@@ -8,7 +8,7 @@ import LibraryPage from 'components/library-pieces-page';
 import { fetcher } from 'shared/fetcher';
 import { PaginatedPlayList, Play } from 'api-typings';
 import reducer from 'components/library-filter/library-filter-reducer';
-import queryParser from './library-query-parser';
+import queryParser from '../../components/library-pieces-page/library-query-parser';
 import LibraryFiltersProvider from 'providers/library-filters-provider';
 
 export interface IProgram {
