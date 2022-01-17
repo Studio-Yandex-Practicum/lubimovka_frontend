@@ -18,7 +18,7 @@ const fetchAuthors = async (authorId: string) => {
   let data;
 
   try {
-    data = await fetcher<AuthorRetrieveModel>(`/v1/library/authors/${ authorId }/`);
+    data = await fetcher<AuthorRetrieveModel>(`/library/authors/${authorId}/`);
   } catch (error) {
     return;
   }
@@ -43,20 +43,26 @@ export const getServerSideProps: GetServerSideProps<AuthorRetrieveModel, Record<
   };
 };
 
-const Author = (data: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
+const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const {
     plays,
-    other_plays: otherPlays,
+    other_plays: anotherPlays,
     other_links: otherLinks,
-  } = data;
+  } = props;
+
+  const availablePlays = plays.length !== 0;
+
+  const availableAnotherPlays = anotherPlays.length !== 0;
+
+  const notPinnedLinks = otherLinks.filter((item) => !item.is_pinned);
 
   return (
     <AppLayout>
       <div className={cx('author')}>
-        <AuthorOverview data={data}/>
-        {plays && <AuthorPlays plays={plays}/>}
-        {otherPlays && <AnotherPlays data={otherPlays}/>}
-        {otherLinks && <AuthorInformation links={otherLinks}/>}
+        <AuthorOverview props={props}/>
+        {availablePlays && <AuthorPlays plays={plays}/>}
+        {availableAnotherPlays && <AnotherPlays links={anotherPlays}/>}
+        {notPinnedLinks.length > 0 && <AuthorInformation links={otherLinks}/>}
         <AuthorRequest/>
       </div>
     </AppLayout>
