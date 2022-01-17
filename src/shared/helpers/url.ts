@@ -1,4 +1,4 @@
-const apiPath = '/api';
+import { apiPath } from 'shared/constants/api-path';
 
 const normalizePath = (path: string):string => {
   if (!path) {
