@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { FC } from 'react';
 import cn from 'classnames/bind';
 
@@ -13,8 +12,8 @@ interface Play {
   name: string,
   city: string,
   year: number,
-  url_download?: string | null,
-  url_reading?: string | null,
+  url_download: string,
+  url_reading: string,
   authors: AuthorForPlay[],
 }
 
@@ -37,8 +36,8 @@ export const AuthorPlays: FC<IAuthorPlays> = ({ data }) => {
               title: item.name,
               city: item.city,
               year: item.year,
-              linkView: item.url_reading,
-              linkDownload: item.url_download,
+              linkView: item.url_reading ? item.url_reading : '',
+              linkDownload: item.url_download ? item.url_download : '',
               authors: item.authors
             }}/>
           </li>

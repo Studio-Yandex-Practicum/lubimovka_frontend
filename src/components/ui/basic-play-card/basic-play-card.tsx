@@ -87,7 +87,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
           <dd className={cx('author', play.authors.length > 1 && 'authorMultiple')} key={i.id}>
             <InfoLink
               isOutsideLink={false}
-              href={`/authors/${i.id}`}
+              href={`/library/authors/${i.id}`}
               label={i.name}
               size="l"
               className={cx('author', play.authors.length > 1 && 'authorMultiple')}
