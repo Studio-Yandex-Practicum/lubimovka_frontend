@@ -4,38 +4,28 @@ import cn from 'classnames/bind';
 import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
 import { InfoLink } from 'components/ui/info-link';
+import { OtherLink , SocialNetwork } from 'api-typings';
+import { numberOfCharacters } from 'shared/constants/numbers';
 
 import styles from './overview.module.css';
 
 const cx = cn.bind(styles);
 
-interface otherLinks {
-  name: string,
-  link: string,
-  is_pinned: boolean,
-  order_number: number,
-}
-
-interface socialDataList {
-  name: string,
-  link: string,
-}
-
 interface IAuthorOverview {
-  data: {
+  props: {
     image: string,
     name: string,
     city: string,
     quote: string,
     biography: string,
-    other_links: otherLinks[],
+    other_links: OtherLink[],
     achievements: Array<string>,
-    social_networks: socialDataList[],
+    social_networks: SocialNetwork[],
     email: string,
   }
 }
 
-export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
+export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
   const {
     image,
     name,
@@ -43,16 +33,14 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
     quote,
     biography,
     other_links: otherLinks,
-    achievements,
     social_networks: socialNetworks,
+    achievements,
     email,
-  } = data;
+  } = props;
 
   const [isExpand, setExpand] = useState(true);
 
-  const presenceOfButton = data.biography;
-
-  const numberOfCharacters = 305;
+  const presenceOfButton = props.biography;
 
   const pinnedLinks = otherLinks.filter((item) => item.is_pinned);
 
@@ -83,13 +71,13 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
         <h1 className={cx('fullName')}>{name}</h1>
         <p className={cx('city')}>{city}</p>
         <q className={cx('quote')}>
-          <p className={cx('quoteParagraph')}>{quote}</p>
+          <p className={cx('quoteText')}>{quote}</p>
         </q>
       </div>
 
       <div className={cx('overviewInfo')}>
-        <div className={cx('overviewBlock')}>
-          <p className={cx('overviewParagraph', isExpand ? 'expandButton' : '')}>
+        <div className={cx('descriptionWrapper')}>
+          <p className={cx('description', isExpand ? 'descriptionExpanded' : '')}>
             {biography}
           </p>
           {presenceOfButton.length > numberOfCharacters &&
@@ -104,11 +92,11 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ data }) => {
             />
           }
 
-          <div className={cx('overviewBlockAuthorInfo')}>
+          <div className={cx('authorLinks')}>
             {pinnedLinks.length > 0  && otherLinks
               .sort((link1,link2) => link1.order_number - link2.order_number)
               .map((item, idx) =>
-                <div className={cx('overviewLinkHeading')} key={idx}>
+                <div className={cx('linkHeading')} key={idx}>
                   <InfoLink
                     label={item.name}
                     href={item.link}
