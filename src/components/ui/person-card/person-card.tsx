@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Icon } from '../icon';
 
 import styles from './person-card.module.css';
-import Logo from 'shared/images/logo.svg';
+import Logo from 'shared/images/compact-logo.svg';
 
 const cx = cn.bind(styles);
 

@@ -18,6 +18,5 @@
 
 .primary {
   flex-grow: 1;
-  padding: 0;
-  padding-right: scale(34px);
+  padding-right: scale(31px);
 }

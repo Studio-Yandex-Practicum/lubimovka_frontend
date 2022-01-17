@@ -25,7 +25,7 @@ module.exports = {
   images: {
     domains: ['lubimovka.kiryanov.ru'],
   },
-  env: {
+  publicRuntimeConfig: {
     baseUrl,
-  },
+  }
 };
