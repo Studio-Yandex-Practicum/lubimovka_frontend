@@ -2,35 +2,21 @@ import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { Play } from 'api-typings';
 
 import styles from './plays.module.css';
 
 const cx = cn.bind(styles);
 
-interface Play {
-  id?: number,
-  name: string,
-  city: string,
-  year: number,
-  url_download: string,
-  url_reading: string,
-  authors: AuthorForPlay[],
-}
-
-interface AuthorForPlay {
-  id: number,
-  name: string,
-}
-
 interface IAuthorPlays {
-    data: Play[],
+  plays: Play[],
 }
 
-export const AuthorPlays: FC<IAuthorPlays> = ({ data }) => {
+export const AuthorPlays: FC<IAuthorPlays> = ({ plays }) => {
   return (
     <section className={cx('playsContainer')}>
       <ul className={cx('list')}>
-        {data.map((item, idx) => (
+        {plays.map((item, idx) => (
           <li className={cx('item')} key={idx}>
             <BasicPlayCard play={{
               title: item.name,

@@ -54,7 +54,7 @@ const Author = (data: InferGetServerSidePropsType<typeof getServerSideProps>): J
     <AppLayout>
       <div className={cx('author')}>
         <AuthorOverview data={data}/>
-        {plays && <AuthorPlays data={plays}/>}
+        {plays && <AuthorPlays plays={plays}/>}
         {otherPlays && <AnotherPlays data={otherPlays}/>}
         {otherLinks && <AuthorInformation links={otherLinks}/>}
         <AuthorRequest/>
