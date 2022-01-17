@@ -24,6 +24,7 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/server.js ./server.js
 COPY --from=builder /app/next.config.js ./next.config.js
+COPY --from=builder /app/src/shared/constants/api-path.js ./src/shared/constants/api-path.js
 
 USER nextjs
 
