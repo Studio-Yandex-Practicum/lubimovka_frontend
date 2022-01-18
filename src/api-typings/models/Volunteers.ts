@@ -9,5 +9,5 @@ export type Volunteers = {
     person: Persons;
     year?: number;
     review_title?: string;
-    review_text: string;
+    review_text?: string;
 }

@@ -8,6 +8,6 @@ export type Nested = {
     readonly modified: string;
     year?: number;
     review_title?: string;
-    review_text: string;
+    review_text?: string;
     person: number;
 }
