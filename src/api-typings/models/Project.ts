@@ -10,6 +10,10 @@ import type { BaseContent } from './BaseContent';
 export type Project = {
     readonly id: number;
     title: string;
+    /**
+     * Короткое интро к проекту. Показывается в списке проектов с заголовком.
+     */
+    intro: string;
     description: string;
     image: string;
     readonly contents: Array<BaseContent>;

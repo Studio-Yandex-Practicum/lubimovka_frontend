@@ -4,7 +4,7 @@ import { Icon } from 'components/ui/icon';
 
 import styles from './afishe-title.module.css';
 
-interface IAfisheTitle {
+interface IAfishaTitle {
     festival: boolean
     title: string,
     discussion: string,
@@ -12,7 +12,7 @@ interface IAfisheTitle {
     registration: string,
 }
 
-export const AfisheTitle: FC<IAfisheTitle> = ({ festival, title, discussion, entrance, registration }) => {
+export const AfishaTitle: FC<IAfishaTitle> = ({ festival, title, discussion, entrance, registration }) => {
   return (
     <section className={styles.section}>
       <h1 className={styles.title}>{title}</h1>

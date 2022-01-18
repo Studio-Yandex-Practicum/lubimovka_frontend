@@ -5,7 +5,7 @@
 import type { AuthorForPlay } from './AuthorForPlay';
 
 /**
- * Сериализатор Пьесы
+ * Сериализатор Пьесы.
  */
 export type Play = {
     readonly id: number;

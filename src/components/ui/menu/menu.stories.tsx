@@ -5,7 +5,7 @@ import { Menu } from './menu';
 const demoItems = [
   {
     text: 'Афиша',
-    href: '/afishe',
+    href: '/afisha',
   },
   {
     text: 'Библиотека',

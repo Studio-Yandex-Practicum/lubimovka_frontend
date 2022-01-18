@@ -6,7 +6,7 @@ export const mainNavigationItems = [
   },
   {
     text: 'Афиша',
-    href: '/afishe',
+    href: '/afisha/events',
   },
   {
     text: 'Библиотека',

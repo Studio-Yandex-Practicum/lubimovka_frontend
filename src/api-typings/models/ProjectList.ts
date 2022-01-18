@@ -5,6 +5,9 @@
 export type ProjectList = {
     readonly id: number;
     title: string;
-    description: string;
+    /**
+     * Короткое интро к проекту. Показывается в списке проектов с заголовком.
+     */
+    intro: string;
     image: string;
 }

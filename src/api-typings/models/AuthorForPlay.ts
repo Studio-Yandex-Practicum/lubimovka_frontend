@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 /**
- * Сериализатор полного имени Автора
+ * Сериализатор полного имени Автора.
  */
 export type AuthorForPlay = {
     readonly name: string;
