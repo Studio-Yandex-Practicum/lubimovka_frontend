@@ -140,7 +140,7 @@
   }
 }
 
-.quoteParagraph {
+.quoteText {
   @mixin headline;
   @mixin headline6;
 
@@ -171,7 +171,7 @@
   }
 }
 
-.overviewBlock {
+.descriptionWrapper {
   padding: 0 calc(var(--scale) * 25);
   grid-column: 2/3;
 
@@ -186,7 +186,7 @@
   }
 }
 
-.overviewParagraph {
+.description {
   @mixin text;
   @mixin textLarge;
 
@@ -197,16 +197,16 @@
   transition: all 1s linear;
 }
 
-.expandButton {
+.descriptionExpanded {
   max-height: calc(var(--scale) * 200);
 }
 
-.overviewBlockAuthorInfo {
+.authorLinks {
   max-width: calc(var(--scale) * 479);
   margin: calc(var(--scale) * 80) 0 0;
 }
 
-.overviewLinkHeading {
+.linkHeading {
   @mixin text;
   @mixin textLarge;
 
