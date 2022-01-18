@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
-
 import { BlogItemList } from 'api-typings';
 
 import { Button } from 'components/ui/button';
@@ -17,31 +16,30 @@ interface IMainAside {
   items: Array<BlogItemList>;
 }
 
-export const MainAside: FC<IMainAside> = ({ type, title, items }) => {
-  return (
-    <section className={cx('container')}>
-      <aside className={cx('aside')}>
-        <div className={cx('heading')}>
-          <h2 className={cx('title')}>{title}</h2>
-          <div className={cx('buttonContainer')}>
-            <Button
-              label="Все записи"
-              isLink
-              href={type === 'blog' ? '/blog' : '/news'}
-              width="100%"
-              border="bottomLeft"
-              iconPlace="left"
-              icon="arrow-right"
-              align="start"
-              gap="9px"
-              size="s"
-              className={cx('icon')}
-            />
-          </div>
+export const MainAside: FC<IMainAside> = ({ type, title, items }) => (
+  <section className={cx('container')}>
+    <aside className={cx('aside')}>
+      <div className={cx('heading')}>
+        <h2 className={cx('title')}>{title}</h2>
+        <div className={cx('buttonContainer')}>
+          <Button
+            label="Все записи"
+            isLink
+            href={type === 'blog' ? '/blog' : '/news'}
+            width="100%"
+            border="bottomLeft"
+            iconPlace="left"
+            icon="arrow-right"
+            align="start"
+            gap="9px"
+            size="s"
+            className={cx('icon')}
+          />
         </div>
+      </div>
 
-        <ul className={cx('list')}>
-          {items &&
+      <ul className={cx('list')}>
+        {items &&
           items.map((item) => (
             <li key={item.id} className={cx('item')}>
               {
@@ -61,8 +59,7 @@ export const MainAside: FC<IMainAside> = ({ type, title, items }) => {
                   />}
             </li>
           ))}
-        </ul>
-      </aside>
-    </section>
-  );
-};
+      </ul>
+    </aside>
+  </section>
+);

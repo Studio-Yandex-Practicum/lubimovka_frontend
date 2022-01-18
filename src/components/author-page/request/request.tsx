@@ -12,16 +12,16 @@ export const AuthorRequest: FC = () => {
       <div className={cn(styles.footnoteInfo)}>
         <Icon
           className={cn(styles.asterisk)}
-          glyph='asterisk'
+          glyph="asterisk"
         />
         <p className={cn(styles.footnote)}>Это ваша страница? Если вы хотите внести изменения, пожалуйста, напишите
           нам на&nbsp;
         <InfoLink
           isOutsideLink={true}
-          href='mailto://autors@lubimovka.ru'
-          label='autors@lubimovka.ru'
-          size='l'
-          textDecoration='underline'
+          href="mailto://autors@lubimovka.ru"
+          label="autors@lubimovka.ru"
+          size="l"
+          textDecoration="underline"
         />
         </p>
       </div>

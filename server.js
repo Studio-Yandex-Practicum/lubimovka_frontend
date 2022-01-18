@@ -2,6 +2,8 @@ const express = require('express');
 const next = require('next');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
+const { apiPath } = require('./src/shared/constants/api-path');
+
 const environment = process.env.NODE_ENV || 'development';
 const port = parseInt(process.env.PORT, 10) || 3000;
 
@@ -21,11 +23,11 @@ app
     });
 
     server.use(
-      '/api',
+      apiPath,
       createProxyMiddleware({
         target: apiBaseUrl,
         pathRewrite: {
-          '^/api': '/',
+          [`^${apiPath}`]: '/',
         },
         changeOrigin: true,
       }),

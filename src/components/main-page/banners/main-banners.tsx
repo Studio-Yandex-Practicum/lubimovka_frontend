@@ -27,24 +27,24 @@ export const MainBanners: FC<IMainBanners> = ({ items }) => (
                   </p>
                   <Button 
                     label={item.button}
-                    iconPlace='left' 
-                    icon='arrow-right' 
-                    gap='4px'
-                    border='bottomLeft'
+                    iconPlace="left" 
+                    icon="arrow-right" 
+                    gap="4px"
+                    border="bottomLeft"
                     isLink={true}
                     href={item.url}
                     className={cx('button')}
                   />
                 </div>
                 <Link href={item.url}>
-                  <a className={cx('link')} target='_blank'>
+                  <a className={cx('link')} target="_blank">
                     <Image 
                       src={item.image}
                       alt={item.title}
                       width={486}
                       height={228}
-                      layout='responsive'
-                      objectFit='cover'
+                      layout="responsive"
+                      objectFit="cover"
                     />
                   </a>
                 </Link>

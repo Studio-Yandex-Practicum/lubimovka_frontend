@@ -28,6 +28,7 @@ import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 import * as breakpoints from 'shared/breakpoints.js';
 
 interface IAppLayoutProps {
+  expandedHeader?: boolean,
   children: ReactNode,
   hiddenPartners?: boolean,
   screenImg?: ReactElement,
@@ -35,6 +36,7 @@ interface IAppLayoutProps {
 
 export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
   const {
+    expandedHeader,
     children,
     hiddenPartners,
     screenImg,
@@ -56,13 +58,14 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
 
   return (
     <Page>
-      <PageHeader>
+      <PageHeader expanded={expandedHeader}>
         {screenImg}
         <Navbar>
           <Navbar.Logotype>
             <Logotype
               href="/"
               title="Фестиваль Любимовка"
+              full={expandedHeader}
             />
           </Navbar.Logotype>
           <Navbar.Actions>
@@ -156,7 +159,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
           <PageOverlayMenu isOpen={isOverlayMenuOpen}>
             <OverlayNav>
               <OverlayNav.Logotype>
-                <Logotype href='/' title="Фестиваль Любимовка"/>
+                <Logotype href="/" title="Фестиваль Любимовка"/>
               </OverlayNav.Logotype>
               <OverlayNav.Menu>
                 <Menu type="overlay-navigation">
@@ -172,19 +175,19 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
                 </Menu>
               </OverlayNav.Menu>
               <OverlayNav.Actions>
-                <Menu type='overlay-actions'>
+                <Menu type="overlay-actions">
                   <Menu.Item href={participationFormPath}>
                     Подать пьесу
-                    <Icon glyph='arrow-right'/>
+                    <Icon glyph="arrow-right"/>
                   </Menu.Item>
                   <Menu.Item href={donationPath}>
                     Поддержать
-                    <Icon glyph='arrow-right'/>
+                    <Icon glyph="arrow-right"/>
                   </Menu.Item>
                 </Menu>
               </OverlayNav.Actions>
               <OverlayNav.Socials>
-                <Menu type='overlay-social-links'>
+                <Menu type="overlay-social-links">
                   {socialLinkItems.sort((a, b) => a.mobileOrder - b.mobileOrder).map((item) => (
                     <Menu.Item
                       key={item.href}
@@ -192,7 +195,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
                       mods={item.mods}
                     >
                       {item.text}
-                      <Icon glyph='arrow-right'/>
+                      <Icon glyph="arrow-right"/>
                     </Menu.Item>
                   ))}
                 </Menu>

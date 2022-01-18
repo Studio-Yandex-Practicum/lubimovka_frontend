@@ -40,10 +40,10 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
     <AppLayout hiddenPartners screenImg={first_screen && notEmptyKey(first_screen) && 
     <div className={cx('wrapperImage')}>
       <Image 
-        alt='screen' 
+        alt="screen" 
         src={isMobile ? '/images/main/screen-mobile.jpg' : '/images/main/screen.jpg'}
-        layout='fill'
-        objectFit='fill'
+        layout="fill"
+        objectFit="fill"
       />
     </div>}>
       <>
@@ -75,7 +75,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
 
 const fetchMain = async () => {
   try {
-    return await fetcher<Main>('/v1/main/');
+    return await fetcher<Main>('/main/');
   } catch (error) {
     return;
   }
@@ -83,9 +83,9 @@ const fetchMain = async () => {
 
 const fetchPartners = async () => {
   try {
-    const general = await fetcher<Partner>('/v1/info/partners/?type=general');
-    const festival = await fetcher<Partner>('/v1/info/partners/?type=festival');
-    const info = await fetcher<Partner>('/v1/info/partners/?type=info');
+    const general = await fetcher<Partner>('/info/partners/?type=general');
+    const festival = await fetcher<Partner>('/info/partners/?type=festival');
+    const info = await fetcher<Partner>('/info/partners/?type=info');
     return {
       general,
       festival,

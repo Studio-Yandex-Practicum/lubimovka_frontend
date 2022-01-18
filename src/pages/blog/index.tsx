@@ -22,7 +22,7 @@ const Blog: NextPage<IBlogProps> = (props: IBlogProps) => {
       <Head>
         <title>{metaTitle}</title>
       </Head>
-      <SectionTitleForBlog email='critics@lubimovka.ru'/>
+      <SectionTitleForBlog email="critics@lubimovka.ru"/>
       <SectionGridForBlog isLoaded={isLoaded}/>
     </AppLayout>
   );

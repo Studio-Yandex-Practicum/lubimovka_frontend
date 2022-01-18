@@ -109,7 +109,7 @@ export const Droplist: FC<IDroplistProps> = forwardRef((props: IDroplistProps, r
         value={type === 'radio' && selectList[0] || defaultValue || 'Все'}
       />
       <form
-        name='droplist'
+        name="droplist"
         className={cn(styles.form)}
       >
         <div className={cn(styles.list, {

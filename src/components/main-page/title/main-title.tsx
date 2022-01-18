@@ -25,10 +25,10 @@ export const MainTitle: FC<IMainTitle> = ({ title, button_label, description }) 
           <Button
             label={button_label}
             isLink
-            href='/afishe'
-            size='s'
-            border='bottomLeft'
-            iconPlace='left'
+            href="/afishe"
+            size="s"
+            border="bottomLeft"
+            iconPlace="left"
             className={cx('icon')}
             icon="arrow-right"
             width="100%"

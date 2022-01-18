@@ -60,7 +60,7 @@ export const FileInput: FC<IFileInputProps> = (props) => {
           >
             <Icon
               className={styles.icon}
-              glyph='cross'
+              glyph="cross"
             />
           </button>
           <p className={cx('file')}>

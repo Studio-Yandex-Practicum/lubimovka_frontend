@@ -1,9 +1,58 @@
+@value navbar from './../../navbar/navbar.module.css';
+@value section from './../../navbar/section/navbar-section.module.css';
+@value primary from './../../navbar/section/navbar-section.module.css';
+@value logotype from './../../navbar/logotype/navbar-logotype.module.css';
+@value image from './../../logotype/logotype.module.css';
+
 .header {
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid var(--coal);
 
   @media (max-width: $tablet-portrait) {
-    border-bottom: none;
+    border: none;
+  }
+}
+
+.expanded {
+  border: none;
+
+  & .navbar {
+    padding-left: scale(25px);
+
+    @media (max-width: $tablet-portrait) {
+      padding: scale(24px);
+    }
+  }
+
+  & .section {
+    &:not(:last-child)::after {
+      bottom: scale(10px);
+      height: 65%;
+    }
+  }
+
+  & .primary {
+    padding-right: scale(16px);
+  }
+
+  & .logotype {
+    padding-top: scale(19px);
+    margin-right: scale(50px);
+
+    @media (max-width: $tablet-portrait) {
+      padding-top: 0;
+      margin-right: 0;
+    }
+  }
+
+  & .image {
+    width: scale(123px);
+    height: scale(104px);
+
+    @media (max-width: $tablet-portrait) {
+      width: scale(91px);
+      height: scale(78px);
+    }
   }
 }
