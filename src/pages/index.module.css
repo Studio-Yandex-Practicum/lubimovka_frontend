@@ -1,15 +1,18 @@
 .wrapperImage {
   width: 100%;
-  height: scale(294px);
+  height: scale(293px);
   position: relative;
 
   @media (max-width: $tablet-portrait) {
     order: 1;
-  }
-
-  @media (max-width: $tablet-portrait) {
     height: scale(367px);
   }
+}
+
+.wrapperScreen {
+	height: 100vh;
+  padding: scale(66px 80px 66px);
+	box-sizing: border-box;
 }
 
 .main {
@@ -32,7 +35,7 @@
 
 .wrapper {
   margin-top: scale(-100vh);
-  grid-area: firstScreen;
+  grid-area: title;
 
   @media (max-width: $tablet-portrait) {
     margin-top: 0;

@@ -38,6 +38,7 @@
   box-sizing: border-box;
   padding: scale(60px 56px 60px 56px);
   background-color: var(--light-green);
+  height: inherit;
 
   @media (max-width: $tablet-portrait) {
     position: initial;

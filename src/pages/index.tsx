@@ -1,4 +1,5 @@
 import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import cn from 'classnames/bind';
 import Image from 'next/image';
@@ -26,7 +27,43 @@ const cx = cn.bind(styles);
 const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { first_screen, afisha, blog, news, banners, places, video_archive, short_list } = data;
 
+  const [displayFirstScreen, setDisplayFirstScreen] = useState(true);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+
+  const wrapperImageRef = useRef(null);
+  const firstScreenRef = useRef(null);
+
+  const handlerScroll = useCallback(() => {
+    const top = firstScreenRef.current.clientHeight + wrapperImageRef.current.clientHeight + 72;
+    const delay = top / 1.8;
+    window.scrollTo({
+      top: top,
+      behavior: 'smooth'
+    });
+    document.body.style.overflowY = 'hidden';
+    setTimeout(() => {
+      setDisplayFirstScreen(false);
+      document.body.style.overflowY = 'initial';
+    }, delay);
+  }, [setDisplayFirstScreen]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handlerScroll, { once: true });
+    if (displayFirstScreen === false) {
+      window.removeEventListener('scroll', handlerScroll);
+    }
+    // console.log(window.pageYOffset);
+    if (window.pageYOffset !== 0) {
+      window.removeEventListener('scroll', handlerScroll);
+      setDisplayFirstScreen(false);
+    }
+  }), [displayFirstScreen];
+
+  useEffect(() => {
+    if (wrapperImageRef.current) {
+      firstScreenRef.current.style.height = firstScreenRef.current.clientHeight - wrapperImageRef.current.clientHeight - 147 + 'px';
+    }
+  }, []);
 
   function notEmpty<T>(items: T[]) {
     return items && items.length !== 0;
@@ -37,30 +74,33 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
   }
 
   return (
-    <AppLayout hiddenPartners screenImg={first_screen && notEmptyKey(first_screen) && 
-    <div className={cx('wrapperImage')}>
-      <Image 
-        alt="screen" 
-        src={isMobile ? '/images/main/screen-mobile.jpg' : '/images/main/screen.jpg'}
-        layout="fill"
-        objectFit="fill"
-      />
-    </div>}>
+    <AppLayout hiddenPartners expandedHeader={displayFirstScreen}
+      screenImg={first_screen && notEmptyKey(first_screen) &&
+       displayFirstScreen && <div className={cx('wrapperImage')} ref={wrapperImageRef}>
+        <Image 
+          alt="screen" 
+          src={isMobile ? '/images/main/screen-mobile.jpg' : '/images/main/screen.jpg'}
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>}>
       <>
         <Head>
           <title>Главная</title>
         </Head>
         <main className={cx('main')}>
+          {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <div className={cx('wrapperScreen')} ref={firstScreenRef}>
+            <MainFirstScreen/>
+          </div>}
           {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
-          <div className={cx('wrapper')}>
-            {first_screen && notEmptyKey(first_screen) && <MainFirstScreen/>}
-          </div>
           {afisha && notEmptyKey(afisha) &&
-          <MainTitle
-            title={afisha.title}
-            button_label={afisha.button_label}
-            description={afisha.description}
-          />}
+          <div className={cx('wrapper')}>
+            <MainTitle
+              title={afisha.title}
+              button_label={afisha.button_label}
+              description={afisha.description}
+            />
+          </div>}
           {afisha && notEmpty(afisha.items) && <MainEvents {...afisha}/>}
           {banners && notEmpty(banners.items) && <MainBanners {...banners}/>}
           {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
