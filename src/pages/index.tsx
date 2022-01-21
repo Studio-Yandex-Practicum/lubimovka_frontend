@@ -34,17 +34,22 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
   const firstScreenRef = useRef(null);
 
   const handlerScroll = useCallback(() => {
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     const top = firstScreenRef.current.clientHeight + wrapperImageRef.current.clientHeight + 72;
     const delay = top / 1.8;
     window.scrollTo({
       top: top,
       behavior: 'smooth'
     });
+    document.body.style.paddingRight = scrollbarWidth + 'px';
     document.body.style.overflowY = 'hidden';
     setTimeout(() => {
       setDisplayFirstScreen(false);
-      document.body.style.overflowY = 'initial';
     }, delay);
+    setTimeout(() => {
+      document.body.style.overflowY = '';
+      document.body.style.paddingRight = '';
+    }, delay + 10);
   }, [setDisplayFirstScreen]);
 
   useEffect(() => {
@@ -60,9 +65,12 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
   }), [displayFirstScreen];
 
   useEffect(() => {
-    if (wrapperImageRef.current) {
-      firstScreenRef.current.style.height = firstScreenRef.current.clientHeight - wrapperImageRef.current.clientHeight - 147 + 'px';
-    }
+    window.addEventListener('resize', () => {
+      if (wrapperImageRef.current) {
+        firstScreenRef.current.style.height = '100vh';
+        firstScreenRef.current.style.height = firstScreenRef.current.clientHeight - wrapperImageRef.current.clientHeight - 147 + 'px';
+      }
+    });
   }, []);
 
   function notEmpty<T>(items: T[]) {
