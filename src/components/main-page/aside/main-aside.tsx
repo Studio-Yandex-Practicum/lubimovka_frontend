@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import cn from 'classnames/bind';
+import classNames from 'classnames/bind';
 import { BlogItemList } from 'api-typings';
 
 import { Button } from 'components/ui/button';
@@ -8,7 +8,7 @@ import { MainNews } from 'components/main-page/news';
 
 import styles from './main-aside.module.css';
 
-const cx = cn.bind(styles);
+const cx = classNames.bind(styles);
 
 interface IMainAside {
   type: 'blog' | 'news';

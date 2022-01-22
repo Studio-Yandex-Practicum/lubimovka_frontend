@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
-import cn from 'classnames/bind';
+import classNames from 'classnames/bind';
 import { NewsItemList } from 'api-typings';
 
 import styles from './main-news.module.css';
 
-const cx = cn.bind(styles);
+const cx = classNames.bind(styles);
 
 export const MainNews: FC<NewsItemList> = ({ title, description, pub_date, id }) => (
   <Link href={`/news/${id}`}>

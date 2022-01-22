@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import cn from 'classnames/bind';
+import classNames from 'classnames/bind';
 import { MainVideoArchive } from 'api-typings';
 
 import { Button } from 'components/ui/button';
 
 import styles from './main-archive.module.css';
 
-const cx = cn.bind(styles);
+const cx = classNames.bind(styles);
 
 export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => (
   <section className={cx('archive')}>
