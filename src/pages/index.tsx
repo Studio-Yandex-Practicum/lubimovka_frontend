@@ -78,7 +78,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
             <title>Главная. Любимовка</title>
           </Head>
           <main className={cx('main')}>
-            {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen/>}
+            {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
             {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
             {afisha && notEmptyKey(afisha) &&
             <div className={cx('wrapper')}>
