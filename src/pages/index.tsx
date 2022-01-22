@@ -111,11 +111,9 @@ const fetchMain = async () => {
 
 const fetchPartners = async () => {
   try {
-    const general = await fetcher<Partner>('/info/partners/?type=general');
     const festival = await fetcher<Partner>('/info/partners/?type=festival');
     const info = await fetcher<Partner>('/info/partners/?type=info');
     return {
-      general,
       festival,
       info
     };

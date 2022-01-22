@@ -14,8 +14,8 @@ export interface IPartner {
   [key: string]: Array<Partner>
 }
 
-export const MainPartners: FC<IPartner> = ({ general, festival, info }) => {
-  const layout = (type: Array<Partner>, text?: string) => (
+export const MainPartners: FC<IPartner> = ({ festival, info }) => {
+  const layout = (type: Array<Partner>, name: boolean = false) => (
     type.map((p: Partner) => (
       <li key={p.id}>
         <Link href={p.url}>
@@ -28,7 +28,7 @@ export const MainPartners: FC<IPartner> = ({ general, festival, info }) => {
                 objectFit="scale-down"
               />
             </div>
-            {text && <p className={cx('text')}>{text}</p>}
+            {name && <p className={cx('text')}>{p.name}</p>}
           </a>
         </Link>
       </li>
@@ -37,9 +37,8 @@ export const MainPartners: FC<IPartner> = ({ general, festival, info }) => {
 
   return (
     <section className={cx('partners')}>
-      {(general || festival) && <Partners title="Партнёры фестиваля">
-        {general && layout(general, 'Генеральный партнёр')}
-        {festival && layout(festival)}
+      {festival && <Partners title="Партнёры фестиваля">
+        {layout(festival, true)}
       </Partners>}
       {info && <Partners title="Информационные партнёры">
         {layout(info)}
