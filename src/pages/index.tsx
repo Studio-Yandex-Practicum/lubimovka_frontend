@@ -12,8 +12,8 @@ import { MainBanners } from 'components/main-page/banners';
 import { MainPlatforms } from 'components/main-page/platforms';
 import { MainShortList } from 'components/main-page/shortList';
 import { MainArchive } from 'components/main-page/archive';
-import { MainPartners } from 'components/main-page/partners';
 import { MainFirstScreen } from 'components/main-page/first-screen';
+import { Partners } from 'components/partners';
 import { AppLayout } from 'components/app-layout';
 import { main } from 'mocks/data/main';
 
@@ -93,7 +93,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
             {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
             {places && notEmpty(places.items) && <MainPlatforms {...places}/>}
             {video_archive && <MainArchive {...video_archive}/>}
-            {partners && notEmptyKey(partners) && <MainPartners {...partners}/>}
+            {partners && notEmptyKey(partners) && <Partners {...partners}/>}
           </main>
         </>
       </AppLayout>
