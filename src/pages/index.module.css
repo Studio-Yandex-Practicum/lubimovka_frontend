@@ -10,12 +10,12 @@
 .background {
   @mixin background;
 
-  height: calc(40vh - scale(123px));
+  height: calc(45vh - scale(123px));
   background-image: url('/images/main/puddleInMoscow.jpg');
 
   @media (max-width: $tablet-portrait) {
     order: 1;
-    height: calc(50vh - scale(126px));
+    height: calc(55vh - scale(126px));
   }
 }
 

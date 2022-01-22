@@ -1,11 +1,11 @@
 .firstScreen {
 	padding: scale(66px 80px 66px);
 	box-sizing: border-box;
-  height: 60vh;
+  height: 55vh;
 
 	@media (max-width: $tablet-portrait) {
 		padding: scale(32px 24px) 0;
-    height: 50vh;
+    height: 45vh;
 	}
 }
 
