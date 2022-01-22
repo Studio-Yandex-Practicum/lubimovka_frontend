@@ -1,18 +1,22 @@
-.wrapperImage {
-  width: 100%;
-  height: scale(293px);
-  position: relative;
+.marginTop {
+  margin-top: calc(-100vh + scale(61px));
+  transition: all .8s;
 
   @media (max-width: $tablet-portrait) {
-    order: 1;
-    height: scale(367px);
+    margin-top: calc(-100vh + scale(91px));
   }
 }
 
-.wrapperScreen {
-	height: 100vh;
-  padding: scale(66px 80px 66px);
-	box-sizing: border-box;
+.background {
+  @mixin background;
+
+  height: calc(40vh - scale(123px));
+  background-image: url('/images/main/puddleInMoscow.jpg');
+
+  @media (max-width: $tablet-portrait) {
+    order: 1;
+    height: calc(50vh - scale(126px));
+  }
 }
 
 .main {
@@ -34,7 +38,7 @@
 }
 
 .wrapper {
-  margin-top: scale(-100vh);
+  margin-top: -100vh;
   grid-area: title;
 
   @media (max-width: $tablet-portrait) {
