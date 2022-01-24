@@ -23,6 +23,9 @@
   background-color: var(--beige);
   transition: all .2s ease-out;
   visibility: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
   &::-webkit-scrollbar {
     width: scale(4px);
