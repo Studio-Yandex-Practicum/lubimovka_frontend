@@ -2,8 +2,12 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
+<<<<<<< HEAD
 import { IMainAfisha } from './main-events.props';
 import { main } from 'mocks/data/main';
+=======
+import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
+>>>>>>> aeb78002 (refactor: изменение в свойствах компонента AnnouncedPlayCard, форматирование даты теперь за пределами компонента; связанные изменения в других компонентах)
 
 import styles from './main-events.module.css';
 
@@ -43,11 +47,12 @@ export const MainEvents: FC<IMainAfisha> = () => {
               <AnnouncedPlayCard
                 isPerformance={item.type === 'PERFORMANCE'}
                 id={item.id}
-                date={item.date}
+                formattedDate={formatDate(item.date)}
+                formattedTime={formatTime(item.date)}
                 title={item.title}
                 team={item.team}
                 description={item.eventDescription && item.eventDescription}
-                projectText={item.projectCopy}
+                project={item.projectCopy}
                 buttonLink={item.buttonLink}
                 imageUrl={item.coverResourceUrl && item.coverResourceUrl}
                 paid={item.paid}

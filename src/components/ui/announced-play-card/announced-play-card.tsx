@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
+import { Nullable } from 'shared/types';
 import { Button } from '../button';
 
 import styles from './announced-play-card.module.css';
@@ -11,13 +12,14 @@ const cx = cn.bind(styles);
 export interface IAnnouncedPlayCardProps {
   isPerformance?: boolean;
   id?: number;
-  date: string;
+  formattedDate: string;
+  formattedTime: string;
   title: string;
   team?: TeamEntry[];
   description?: string;
   buttonLink: string;
   imageUrl?: string;
-  projectText?: string | null;
+  project?: Nullable<string>;
   paid?: boolean;
   className?: string;
 }
@@ -31,27 +33,23 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const {
     isPerformance,
     id,
-    date,
+    formattedDate,
+    formattedTime,
     title,
     team,
     description,
     buttonLink,
     imageUrl,
-    projectText,
+    project,
     className,
     paid,
   } = props;
-
-  const creditsArrayToString = (array: string []) => {
-    const string = array.join(', ').replace(/, ([^,]*)$/, ' и\xa0\$1');
-    return string;
-  };
 
   const creditsRendered = (
     <React.Fragment>
       {team &&
       team.map((i, idx) => <p className={cx('creditsEntry')} key={idx}>
-        {i.name}: {creditsArrayToString(i.persons)}
+        {i.name}: {i.persons.join(', ').replace(/, ([^,]*)$/, ' и\xa0\$1')}
       </p>
       )
       }
@@ -66,10 +64,10 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         </div>
       }
       <div className={cx('info')}>
-        <div className={cx('dateInfo', !imageUrl && 'dateInfoNoCover')}>
-          <time dateTime={date} className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' })}</time>
-          <time dateTime={date} className={cx('date')}>{new Date(date).toLocaleTimeString('ru-Ru', { timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric' })}</time>
-        </div>
+        <time className={cx('dateInfo', !imageUrl && 'dateInfoNoCover')}>
+          <span className={cx('date')}>{formattedDate}</span>
+          <span className={cx('date')}>{formattedTime}</span>
+        </time>
         <h3 className={cx('title')}>{title}</h3>
         {team &&
           <div className={cx('credits', description && 'creditsDescriptionExists')}>
@@ -81,9 +79,9 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
           {description}
         </div>
         }
-        {projectText !== null &&
+        {project &&
         <p className={cx('projectText', imageUrl && 'projectTextCoverExists')}>
-          {projectText}
+          {project}
         </p>
         }
         <div className={cx('buttonContainer', imageUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>

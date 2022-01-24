@@ -18,7 +18,8 @@ export const PerformancePaid = Template.bind({});
 PerformancePaid.args = {
   isPerformance: true,
   id: 1,
-  date:'2021-11-13T17:00:00.000Z',
+  formattedDate: '24 января',
+  formattedTime: '20:00',
   title: 'МАМА',
   team: [
     {
@@ -32,7 +33,7 @@ PerformancePaid.args = {
   ],
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
   imageUrl: 'https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg',
-  projectText: 'читка проекта Любимовка.Ещё',
+  project: 'читка проекта Любимовка.Ещё',
   paid: true,
 };
 
@@ -40,7 +41,8 @@ export const PerformancePaidWithDescription = Template.bind({});
 PerformancePaidWithDescription.args = {
   isPerformance: true,
   id: 1,
-  date:'2021-11-13T17:00:00.000Z',
+  formattedDate: '24 января',
+  formattedTime: '20:00',
   title: 'МАМА',
   team: [
     {
@@ -55,7 +57,7 @@ PerformancePaidWithDescription.args = {
   description: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
   imageUrl: 'https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg',
-  projectText: 'читка проекта Любимовка.Ещё',
+  project: 'читка проекта Любимовка.Ещё',
   paid: true,
 };
 
@@ -63,7 +65,8 @@ export const PerformanceNoTickets = Template.bind({});
 PerformanceNoTickets.args = {
   isPerformance: true,
   id: 1,
-  date:'2021-11-13T17:00:00.000Z',
+  formattedDate: '24 января',
+  formattedTime: '20:00',
   title: 'МАМА',
   team: [
     {
@@ -77,7 +80,7 @@ PerformanceNoTickets.args = {
   ],
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
   imageUrl: 'https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg',
-  projectText: 'читка проекта Любимовка.Ещё',
+  project: 'читка проекта Любимовка.Ещё',
   paid: false,
 };
 
@@ -85,7 +88,8 @@ export const PerformancePaidNoCover = Template.bind({});
 PerformancePaidNoCover.args = {
   isPerformance: true,
   id: 1,
-  date:'2021-11-13T17:00:00.000Z',
+  formattedDate: '24 января',
+  formattedTime: '20:00',
   title: 'МАМА',
   team: [
     {
@@ -98,7 +102,7 @@ PerformancePaidNoCover.args = {
     },
   ],
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
-  projectText: 'читка проекта Любимовка.Ещё',
+  project: 'читка проекта Любимовка.Ещё',
   paid: true,
 };
 
@@ -106,7 +110,8 @@ export const PerformanceNotPaidNoCover = Template.bind({});
 PerformanceNotPaidNoCover.args = {
   isPerformance: true,
   id: 1,
-  date:'2021-11-13T17:00:00.000Z',
+  formattedDate: '24 января',
+  formattedTime: '20:00',
   title: 'Коммуналка на Петроградской',
   team: [
     {
@@ -119,7 +124,7 @@ PerformanceNotPaidNoCover.args = {
     },
   ],
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
-  projectText: 'читка проекта Любимовка.Ещё',
+  project: 'читка проекта Любимовка.Ещё',
   paid: false,
 };
 
@@ -127,12 +132,13 @@ export const ReadingNoCredits = Template.bind({});
 ReadingNoCredits.args = {
   isPerformance: true,
   id: 1,
-  date:'2021-11-13T17:00:00.000Z',
+  formattedDate: '24 января',
+  formattedTime: '20:00',
   title: 'Что я узнал о творчестве благодаря драматургам',
   team: [],
   description: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
-  projectText: 'читка проекта Любимовка.Ещё',
+  project: 'читка проекта Любимовка.Ещё',
   paid: false,
 };
 
@@ -140,7 +146,8 @@ export const ReadingWithCredits = Template.bind({});
 ReadingWithCredits.args = {
   isPerformance: true,
   id: 1,
-  date:'2021-11-13T17:00:00.000Z',
+  formattedDate: '24 января',
+  formattedTime: '20:00',
   title: 'Коммуналка на Петроградской',
   team: [
     {
@@ -154,7 +161,7 @@ ReadingWithCredits.args = {
   ],
   description: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
-  projectText: 'читка проекта Любимовка.Ещё',
+  project: 'читка проекта Любимовка.Ещё',
   paid: false,
 };
 
@@ -162,7 +169,8 @@ export const ReadingWithCreditsNoProject = Template.bind({});
 ReadingWithCreditsNoProject.args = {
   isPerformance: true,
   id: 1,
-  date:'2021-11-13T17:00:00.000Z',
+  formattedDate: '24 января',
+  formattedTime: '20:00',
   title: 'Коммуналка на Петроградской',
   team: [
     {
@@ -176,6 +184,6 @@ ReadingWithCreditsNoProject.args = {
   ],
   description: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
-  projectText: null,
+  project: null,
   paid: false,
 };
