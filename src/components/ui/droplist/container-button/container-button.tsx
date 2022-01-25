@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import { FC, useCallback } from 'react';
 import classNames from 'classnames/bind';
 
 import { Icon } from 'components/ui/icon';
@@ -24,10 +24,10 @@ export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown,
       <p className={cx('text')}>
         {value}
       </p>
-      {<Icon glyph="arrow-down"
+      <Icon glyph="arrow-down"
         fill={activeDropdown ? 'white' : 'black'} 
         className={cx('iconArrowDown', { 'rotateUp': activeDropdown })}
-      />}
+      />
     </div>
   );
 };
