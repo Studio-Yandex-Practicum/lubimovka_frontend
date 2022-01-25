@@ -79,12 +79,12 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         </PerformanceLayout.Text>
         <PerformanceLayout.Play>
           <Section
-            type='play'
-            title='Почитать пьесу'
-            titleTag='h6'
+            type="play"
+            title="Почитать пьесу"
+            titleTag="h6"
           >
             <BasicPlayCard
-              type='performance'
+              type="performance"
               play={{
                 title: play.name,
                 city: play.city,
@@ -126,9 +126,9 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
                 key={index}
                 src={image.image}
                 // TODO: узнать насчет описания изображений в админке
-                alt=''
+                alt=""
                 layout="fill"
-                objectFit='cover'
+                objectFit="cover"
               />
             ))}
           </Lightbox>
@@ -173,9 +173,9 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         </PerformanceLayout.BottomImage>
         <PerformanceLayout.Share>
           <Share
-            firstLine='Рассказать'
-            secondLine='о спектакле'
-            size='l'
+            firstLine="Рассказать"
+            secondLine="о спектакле"
+            size="l"
           />
         </PerformanceLayout.Share>
       </PerformanceLayout>

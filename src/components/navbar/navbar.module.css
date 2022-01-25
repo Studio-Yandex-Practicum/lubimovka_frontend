@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   align-items: flex-start;
-  padding: scale(0 0 0 30px);
+  padding-left: scale(30px);
   /* margin: 0 auto; */
 
   @media (max-width: $tablet-portrait) {

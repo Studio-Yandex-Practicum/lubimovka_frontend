@@ -95,29 +95,29 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
         <p className={cx('projectText', imageUrl && 'projectTextCoverExists')}>{projectText}</p>
         <div className={cx('buttonContainer', imageUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
           <Button
-            view='primary'
+            view="primary"
             className={cx('button')}
-            align='start'
-            gap='9px'
-            size='s'
-            iconPlace='left'
-            icon='arrow-right'
+            align="start"
+            gap="9px"
+            size="s"
+            iconPlace="left"
+            icon="arrow-right"
             label={isPerformance ? 'О спектакле' : 'Регистрация'}
-            border='bottomLeft'
+            border="bottomLeft"
             isLink
             href={isPerformance ? `/performances/${id}` : buttonLink}
           />
           {paid && isPerformance &&
           <Button
-            view='primary'
+            view="primary"
             className={cx('button')}
-            align='start'
-            gap='9px'
-            size='s'
-            iconPlace='left'
-            icon='arrow-right'
-            label='Билеты'
-            border='bottomLeft'
+            align="start"
+            gap="9px"
+            size="s"
+            iconPlace="left"
+            icon="arrow-right"
+            label="Билеты"
+            border="bottomLeft"
             isLink
             href={buttonLink}
           />

@@ -1,6 +1,5 @@
-// @ts-nocheck
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
 import { AuthorOverview } from 'components/author-page/overview';
@@ -13,11 +12,13 @@ import { AuthorRetrieve as AuthorRetrieveModel } from 'api-typings';
 
 import styles from 'components/author-page/author.module.css';
 
+const cx = cn.bind(styles);
+
 const fetchAuthors = async (authorId: string) => {
   let data;
 
   try {
-    data = await fetcher<AuthorRetrieveModel>(`/v1/library/authors/${authorId}/`);
+    data = await fetcher<AuthorRetrieveModel>(`/library/authors/${authorId}/`);
   } catch (error) {
     return;
   }
@@ -44,43 +45,24 @@ export const getServerSideProps: GetServerSideProps<AuthorRetrieveModel, Record<
 
 const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const {
-    name,
-    city,
-    quote,
-    biography,
-    achievements,
-    social_networks,
-    email,
-    other_links,
     plays,
-    other_plays,
-    image,
+    other_plays: anotherPlays,
+    other_links: otherLinks,
   } = props;
+
+  const availablePlays = plays.length !== 0;
+
+  const availableAnotherPlays = anotherPlays.length !== 0;
+
+  const notPinnedLinks = otherLinks.filter((item) => !item.is_pinned);
 
   return (
     <AppLayout>
-      <div className={cn(styles.author)}>
-        <AuthorOverview
-          image={image}
-          name={name}
-          city={city}
-          quote={quote}
-          description={biography}
-          tag={achievements}
-          socialLink={social_networks}
-          email={email}
-          otherLinks={other_links}
-          data={props}
-        />
-        <AuthorPlays
-          data={plays}
-        />
-        <AnotherPlays
-          data={other_plays}
-        />
-        <AuthorInformation
-          data={other_links}
-        />
+      <div className={cx('author')}>
+        <AuthorOverview props={props}/>
+        {availablePlays && <AuthorPlays plays={plays}/>}
+        {availableAnotherPlays && <AnotherPlays links={anotherPlays}/>}
+        {notPinnedLinks.length > 0 && <AuthorInformation links={otherLinks}/>}
         <AuthorRequest/>
       </div>
     </AppLayout>

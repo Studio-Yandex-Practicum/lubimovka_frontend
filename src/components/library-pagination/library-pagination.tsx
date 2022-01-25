@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect, useMemo } from 'react';
 import cn from 'classnames';
 
+import { InfoLink } from '../ui/info-link';
 import { IAuthorInfo } from 'components/library-authors-page';
 
 import style from './library-pagination.module.css';
@@ -29,14 +30,18 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, 
           <li key={index} className={cn(style.letter, { [style.letterActive]: letter === el })}>
             <label htmlFor={el} className={style.label}>{el}</label>
             <input onClick={(e) => {setLetter(el); setLetterElement(e.target as HTMLInputElement);}}
-              type='radio' name='letter' id={el} value={el} className={style.inputRadio}/>
+              type="radio" name="letter" id={el} value={el} className={style.inputRadio}/>
           </li>
         ))}
       </ul>
       <div className={style.authors}>
         <ul className={style.authorsList}>
           {chosenAuthors.length > 0 && chosenAuthors.map((el) => (
-            <li key={el.id} className={style.author}><a href='#' className={style.link}>{el.name}</a></li>
+            <li key={el.id} className={style.author}>
+              <InfoLink isOutsideLink={false} href={`/library/authors/${el.id}`} label={el.name} size="l" className={style.link}>
+                {el.name}
+              </InfoLink>
+            </li>
           ))}
         </ul>
         <div className={style.chosenLetter}>

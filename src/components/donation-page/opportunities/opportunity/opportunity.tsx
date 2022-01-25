@@ -27,9 +27,9 @@ export const Opportunity: FC<IOpportunityProps> = (props) => {
           <div className={cx('picture')}>
             <Image
               src={picture}
-              alt='Изображение творческих людей, поглощённых творческим процессом'
-              layout='fill'
-              objectFit='cover'
+              alt="Изображение творческих людей, поглощённых творческим процессом"
+              layout="fill"
+              objectFit="cover"
             />
           </div>
         </div>

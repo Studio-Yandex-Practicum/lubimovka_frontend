@@ -22,7 +22,7 @@ const Template: Story<typeof Modal> = () => {
         Backdrop={Modal.Backdrop}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <input type="text" placeholder='Поле ввода'/>
+          <input type="text" placeholder="Поле ввода"/>
           <button onClick={toggleVisibility}>Закрыть модалку</button>
         </div>
       </Modal>
