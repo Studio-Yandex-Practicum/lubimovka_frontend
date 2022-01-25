@@ -10,7 +10,7 @@ import { MainBanners } from 'components/main-page/banners';
 import { MainPlatforms } from 'components/main-page/platforms';
 import { MainShortList } from 'components/main-page/shortList';
 import { MainArchive } from 'components/main-page/archive';
-import { Partners } from 'components/partners';
+import { Partners, IPartner } from 'components/partners';
 import { FirstScreen } from 'components/main-page/first-screen';
 import { AppLayout } from 'components/app-layout';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
@@ -61,7 +61,7 @@ const MainPage: NextPage = () => {
             {archive && mainArchiveData.map((el) => (
               <MainArchive key={el.id} data={el}/>
             ))}
-            {partners && <Partners {...partners}/>}
+            {partners && <Partners {...partners as IPartner}/>}
           </main>
         </>
       </AppLayout>
