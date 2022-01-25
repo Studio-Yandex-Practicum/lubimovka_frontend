@@ -1,7 +1,7 @@
-import React, { FC, useEffect, useState, useCallback, useRef, HTMLAttributes } from 'react';
+import { FC, useEffect, useState, useCallback, useRef } from 'react';
 import classNames from 'classnames/bind';
 
-import { List } from './list';
+import { DroplistItems } from './droplist-items';
 import { ListSelected } from './list-selected';
 import { ContainerButton } from './container-button';
 
@@ -9,24 +9,27 @@ import styles from './droplist.module.css';
 
 const cx = classNames.bind(styles);
 
-interface IDroplistProps extends HTMLAttributes<HTMLDivElement> {
+export type DroplistOption = {
+  value: number,
+  text: string,
+}
+interface IDroplistProps {
   type: 'single' | 'multiple'
-  list: string[]
-  selectList: string[] | string
-  onAdd: (element: string) => void
-  onDelete: (element: string) => void
-  defaultValue?: string
+  options: string[]
+  selectedOptions: DroplistOption[]
+  onChange: ((selectedOptions: DroplistOption) => void)
+  placeholder?: string
+  className?: string
 }
 
 export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
   const {
     type,
-    list,
-    selectList,
-    onAdd,
-    onDelete,
+    options,
+    selectedOptions,
+    onChange,
     className,
-    defaultValue
+    placeholder
   } = props;
 
   const [ activeDropdown, setActiveDropdown ] = useState(false);
@@ -52,19 +55,15 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
     setActiveDropdown(state => !state);
   }, []);
 
-  const handlerDeleteItem = (item: string) => {
-    onDelete(item);
+  const handlerClick = (item: string, counter: number) => {
+    if (type === 'single') {
+      setTimeout(() => setActiveDropdown(false), 200);
+    }
+    onChange({ value: counter, text: item });
   };
 
-  const handlerClick = (findItem: string | boolean | undefined, item: string) => {
-    if (type === 'single' && !findItem) {
-      onAdd(item);
-      setTimeout(() => setActiveDropdown(false), 200);
-      return;
-    }
-    if (type === 'multiple') {
-      findItem ? onDelete(item) : onAdd(item);
-    }
+  const handlerDeleteItem = (item: string, counter: number | undefined) => {
+    counter && onChange({ value: counter, text: item });
   };
 
   const droplistClass = className ? className : 'droplistWidth';
@@ -74,31 +73,29 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
       <ContainerButton
         cb={cbContainer}
         activeDropdown={activeDropdown}
-        value={type === 'single' && !Array.isArray(selectList) && selectList || defaultValue || 'Все'}
+        value={type === 'single' && selectedOptions[0].text || placeholder || 'Все'}
       />
-      <form
-        name="droplist"
-        className={cx('form')}
-      >
+      <div className={cx('container')}>
         <ul className={cx('list', {
           'active': activeDropdown,
         })}>
-          {list.map((item, i) =>
-            <List 
+          {options.map((item, i) =>
+            <DroplistItems 
               key={i} 
               type={type} 
-              selectList={selectList} 
-              item={item} 
+              selectList={selectedOptions} 
+              value={item} 
               handlerClick={handlerClick}
+              counter={i}
             />)}
         </ul>
-        {selectList.length > 0 && type === 'multiple' && 
+        {selectedOptions.length > 0 && type === 'multiple' && 
           <ListSelected 
-            selectList={selectList} 
+            selectList={selectedOptions} 
             activeDropdown={activeDropdown} 
             handlerDeleteItem={handlerDeleteItem}
           />}
-      </form>
+      </div>
     </div>
   );
 };

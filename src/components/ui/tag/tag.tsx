@@ -11,18 +11,19 @@ interface ITagProps {
   label: string;
   selected: boolean;
   isIcon?: boolean;
-  cb?: (value: string) => void;
+  cb?: (value: string, counter: number | undefined) => void;
+  counter?: number
 }
 export const Tag: FC<ITagProps> = (props) => {
   const {
-    label, selected, cb, isIcon
+    label, selected, cb, isIcon, counter
   } = props;
   const handleClick = React.useCallback((e:React.MouseEvent) => {
     e.preventDefault();
     if(cb) {
-      cb(label);
+      cb(label, counter);
     }
-  },[cb, label]);
+  },[cb, counter, label]);
   return (
     isIcon ?
       <div className={cx('tagIcon', { 'active': selected })}>

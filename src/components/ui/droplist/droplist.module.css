@@ -8,7 +8,7 @@
   max-width: scale(300px);
 }
 
-.form {
+.container {
   width: inherit;
   max-width: inherit;
 }
