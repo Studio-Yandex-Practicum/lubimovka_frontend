@@ -7,7 +7,7 @@ import { FooterNavigation } from './navigation';
 import { FooterProjects } from './projects';
 import { FooterPartners } from './partners';
 
-import Logo from 'shared/images/logo-full.svg';
+import Logo from 'shared/images/full-logo.svg';
 import styles from './footer.module.css';
 
 interface IFooterProps {

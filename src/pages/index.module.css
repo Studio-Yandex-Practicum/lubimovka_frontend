@@ -1,9 +1,24 @@
+.wrapper {
+  width: 100%;
+  height: scale(294px);
+  position: relative;
+
+  @media (max-width: $tablet-portrait) {
+    order: 1;
+  }
+
+  @media (max-width: $tablet-portrait) {
+    height: scale(367px);
+  }
+}
+
 .main {
   display: block;
 
   @media (max-width: $tablet-portrait) {
     display: grid;
     grid-template-areas:
+      "firstScreen"
       "title"
       "events"
       "aside"

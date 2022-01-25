@@ -113,10 +113,10 @@ const Contacts: NextPage = () => {
       <ContactsLayout>
         <ContactsLayout.Column>
           <ContactsLayout.Title>
-            <ContactsTitle id='contact'/>
+            <ContactsTitle id="contact"/>
           </ContactsLayout.Title>
           <ContactsLayout.Form>
-            <Form aria-labelledby='contact' onSubmit={handleSubmit}>
+            <Form aria-labelledby="contact" onSubmit={handleSubmit}>
               <Form.Field>
                 <TextInput
                   value={name.value}

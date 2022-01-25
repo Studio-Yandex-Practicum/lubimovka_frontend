@@ -1,4 +1,5 @@
-import React from 'react';
+
+import { Image } from 'next';
 import cn from 'classnames/bind';
 
 import { AboutUsMenu } from 'components/what-we-do-page/about-us-menu';

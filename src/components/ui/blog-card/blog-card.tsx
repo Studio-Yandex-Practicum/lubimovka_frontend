@@ -38,8 +38,8 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
               alt={`изображение статьи: ${heading}`}
               width={imgWidth || 100}
               height={imgHeight || 100}
-              layout='responsive'
-              objectFit='cover'
+              layout="responsive"
+              objectFit="cover"
               priority
               onLoadingComplete={handleImageLoad}
             />

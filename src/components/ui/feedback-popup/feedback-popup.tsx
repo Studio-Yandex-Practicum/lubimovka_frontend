@@ -59,18 +59,18 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
             <>
               <SliderButton
                 className={cx('arrow', 'arrowLeft')}
-                ariaLabel='Предыдущий отзыв'
-                direction='left'
+                ariaLabel="Предыдущий отзыв"
+                direction="left"
                 onClick={slider.prev}
               />
               {Number(screenWidth) < 729 &&
               <div className={cx('close')}>
                 <IconButton
                   className={cx('closeButton')}
-                  ariaLabel='Закрыть лайтбокс'
-                  type='button'
-                  view='light'
-                  icon={<Icon glyph='cross'/>}
+                  ariaLabel="Закрыть лайтбокс"
+                  type="button"
+                  view="light"
+                  icon={<Icon glyph="cross"/>}
                   onClick={onClose}
                 />
               </div>}
@@ -97,8 +97,8 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
               />}
               <SliderButton
                 className={cx('arrow', 'arrowRight')}
-                ariaLabel='Следующий отзыв'
-                direction='right'
+                ariaLabel="Следующий отзыв"
+                direction="right"
                 onClick={slider.next}
               />
             </>

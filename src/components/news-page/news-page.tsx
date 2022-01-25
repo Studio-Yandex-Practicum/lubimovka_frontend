@@ -32,7 +32,7 @@ export const NewsPage: FC<INewsPageProps> = (props: INewsPageProps) => {
       <Head>
         <title>{metaTitle}</title>
       </Head>
-      <NewsTitle title='Новости'/>
+      <NewsTitle title="Новости"/>
       <MonthsAndYearsFilter className={cx('droplistСontainer')} filterCallBack={handleFiltered}/>
       <NewsList newsCardData={MockNewsData}/>
     </>

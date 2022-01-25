@@ -46,15 +46,15 @@ const fetchPartners = async () => {
 export const getStaticProps: GetStaticProps = async () => {
   const partners = await fetchPartners();
 
-  if (!partners) {
-    return {
-      notFound: true,
-    };
-  }
+  // if (!partners) {
+  //   return {
+  //     notFound: true,
+  //   };
+  // }
 
   return {
     props: {
-      partners,
+      // partners,
     },
   };
 };
