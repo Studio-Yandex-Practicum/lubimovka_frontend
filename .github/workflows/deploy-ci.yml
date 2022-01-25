@@ -71,6 +71,7 @@ jobs:
           username: ${{ secrets.CI_DEPLOY_USERNAME }}
           key: ${{ secrets.CI_DEPLOY_SSH_PRIVATE_KEY }}
           script: |
+            cd ../../usr/local/src/
             cd ${{ env.REPOSITORY_NAME }}/infra_deploy
 
             # Export all variables from .github_vars
