@@ -1,55 +1,47 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import cn from 'classnames';
+import classNames from 'classnames/bind';
 
+import { MainPlaces } from 'api-typings';
 import { Icon } from 'components/ui/icon';
 
 import styles from './main-platforms.module.css';
 
-interface ICard {
-  id: number
-  title: string
-  desc: string
-  link: string[]
-}
-interface IMainPlatformsProps {
-  id: number
-  title: string
-  content: ICard[]
-}
+const cx = classNames.bind(styles);
 
-export const MainPlatforms: FC<IMainPlatformsProps> = ({ title, content }) => {
+export const MainPlatforms: FC<MainPlaces> = ({ items }) => (
+  <section className={cx('section')}>
+    <h2 className={cx('titleMain')}>
+        Площадки
+    </h2>
 
-  return (
-    <section className={cn(styles.section)}>
-      <h2 className={cn(styles.titleMain)}>{title}</h2>
-
-      <ul className={cn(styles.list)}>
-        {content.map(card => (
-          <li className={cn(styles.item)} key={card.id}>
-            <Icon
-              className={styles.mapIcon}
-              glyph="map"
-            />
-            <h3 className={cn(styles.title)}>
-              {card.title}
-            </h3>
-            <p className={cn(styles.desc)}>
-              {card.desc}
-            </p>
-            <Link href={card.link[1]}>
-              <a className={cn(styles.link)}>
-                <p className={cn(styles.text)}>
-                  {card.link[0]}
-                </p>
-                <span className={cn(styles.icon)}>
-                  {<Icon glyph={'arrow-right'} fill={'black'}/>}
-                </span>
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-};
+    <ul className={cx('list')}>
+      {items.map(card => (
+        <li className={cx('item')} key={card.id}>
+          <Icon
+            className={cx('mapIcon')}
+            glyph="map"
+          />
+          <h3 className={cx('title')}>
+            {card.name}
+          </h3>
+          <p className={cx('desc')}>
+            {card.description}
+          </p>
+          <Link href={card.map_link}>
+            <a className={cx('link')}>
+              <p className={cx('text')}>
+                {card.address}
+              </p>
+              <Icon 
+                glyph={'arrow-right'} 
+                fill={'black'}
+                className={cx('icon')}
+              />
+            </a>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </section>
+);

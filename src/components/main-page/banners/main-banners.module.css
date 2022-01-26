@@ -1,6 +1,14 @@
 .banners {
-  padding: scale(0 32px);
+  display: grid;
+  width: calc(100% - scale(270px));
+  box-sizing: border-box;
+  padding: scale(114px 32px) 0;
   grid-area: banners;
+
+  @media (max-width: $tablet-portrait) {
+    width: auto;
+    padding: scale(56px 24px) 0;
+  }
 }
 
 .list {
@@ -10,68 +18,88 @@
 }
 
 .item {
-  width: 100%;
-  max-width: scale(1100px);
-  border-top: scale(1px) solid var(--coal);
+  border-top: 1px solid var(--coal);
 }
 
 .title {
   @mixin headline;
   @mixin headline6;
 
-  max-width: scale(570px);
-  padding: scale(20px 56px);
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  box-sizing: border-box;
+  padding: scale(20px 480px 20px 50px);
+  background-color: var(--beige);
+
+  @media (max-width: $tablet-portrait) {
+    width: auto;
+    padding: scale(16px 16px 16px) 0;
+  }
 }
 
 .container {
   display: grid;
-  justify-content: space-between;
-  column-gap: scale(16px);
-  grid-template-columns: repeat(auto-fit, minmax(scale(468px), max-content));
-  row-gap: scale(16px);
+  grid-template-columns: 1fr scale(486px);
+
+  @media (max-width: $tablet-portrait) {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @media (max-width: $tablet-portrait) {
+      padding-bottom: scale(24px);
+    }
+  }
+}
+
+.item:last-of-type .container {
+  padding-bottom: scale(56px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: scale(48px);
+  }
 }
 
 .content {
-  padding-left: scale(56px);
+  padding-left: scale(50px);
 }
 
 .desc {
   @mixin text;
   @mixin textLarge;
+  @mixin limitText;
 
   max-width: scale(384px);
-  margin: scale(0 0 24px 62px);
-}
+  margin: 0 0 scale(24px 62px);
+  -webkit-line-clamp: 15;
 
-.img {
-  @mixin img;
-
-  display: flex;
-  max-width: scale(486px);
-}
-
-@media (max-width: $tablet-portrait) {
-  .banners {
-    padding: scale(0 24px);
-  }
-
-  .title {
-    padding: scale(16px 0);
-  }
-
-  .content {
-    padding: scale(0);
-  }
-
-  .desc {
-    max-width: scale(318px);
-    margin: scale(0);
-    margin-bottom: scale(28px);
-
+  @media (max-width: $tablet-portrait) {
     @mixin textMedium;
+
+    margin: 0;
+    margin-bottom: scale(28px);
+  }
+}
+
+.button {
+  z-index: auto;
+  margin-bottom: scale(20px);
+
+  > svg {
+    width: scale(24px);
+    height: scale(24px);
   }
 
-  .container {
-    grid-template-columns: repeat(auto-fit, minmax(scale(366px), max-content));
+  @media (max-width: $tablet-portrait) {
+    margin: 0 scale(20px 16px) auto;
+  }
+}
+
+.link {
+  list-style: none;
+  transition: all .3s;
+
+  &:hover {
+    opacity: .9;
   }
 }

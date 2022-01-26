@@ -1,7 +1,0 @@
-.mainPartners {
-  padding: scale(107px 0 179px 60px);
-
-  @media screen and (max-width: $tablet-portrait) {
-    padding: 56px 0 100px 24px;
-  }
-}

@@ -2,12 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Сериализатор Изображения
- */
 export type Image = {
-    /**
-     * Загрузите фотографию
-     */
+    title: string;
     image: string;
 }
