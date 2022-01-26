@@ -1,12 +1,22 @@
 import { FC } from 'react';
 import classNames from 'classnames/bind';
-import { MainShortList as IMainShortList } from 'api-typings';
 
+import { Play } from 'api-typings';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 
 import styles from './main-shortList.module.css';
 
 const cx = classNames.bind(styles);
+
+interface IPlay extends Play {
+    url_download: string;
+    url_reading: string;
+}
+
+interface IMainShortList {
+    title: string;
+    items: Array<IPlay>;
+}
 
 export const MainShortList: FC<IMainShortList>= ({ title, items }) => (
   <section className={cx('section')}>

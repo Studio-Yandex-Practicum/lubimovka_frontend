@@ -25,16 +25,16 @@
   @mixin headline;
   @mixin headline6;
 
-  padding: scale(20px 480px 20px 50px);
-  box-sizing: border-box;
-  background-color: var(--beige);
-  z-index: 1;
   position: sticky;
+  z-index: 1;
   top: 0;
+  box-sizing: border-box;
+  padding: scale(20px 480px 20px 50px);
+  background-color: var(--beige);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(16px 16px 16px) 0;
     width: auto;
+    padding: scale(16px 16px 16px) 0;
   }
 }
 
@@ -82,8 +82,8 @@
 }
 
 .button {
-  margin-bottom: scale(20px);
   z-index: auto;
+  margin-bottom: scale(20px);
 
   > svg {
     width: scale(24px);

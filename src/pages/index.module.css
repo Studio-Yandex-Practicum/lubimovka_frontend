@@ -13,8 +13,8 @@
   height: calc(45vh - scale(123px));
 
   @media (max-width: $tablet-portrait) {
-    order: 1;
     height: calc(55vh - scale(126px));
+    order: 1;
   }
 }
 

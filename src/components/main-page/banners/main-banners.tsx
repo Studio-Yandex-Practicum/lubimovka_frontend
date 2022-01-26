@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import classNames from 'classnames/bind';
-import { Banner, MainBanners as IMainBanners } from 'api-typings';
 
+import { Banner, MainBanners as IMainBanners } from 'api-typings';
 import { Button } from 'components/ui/button';
 
 import styles from './main-banners.module.css';

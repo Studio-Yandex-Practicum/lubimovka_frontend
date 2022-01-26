@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import classNames from 'classnames/bind';
-import { MainFirstScreen as IMainFirstScreen } from 'api-typings';
 
+import { MainFirstScreen as IMainFirstScreen } from 'api-typings';
 import { Button } from 'components/ui/button';
 
 import styles from './main-first-screen.module.css';

@@ -2,8 +2,8 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Partner } from 'api-typings';
 
+import { Partner } from 'api-typings';
 import { PartnersLayout } from 'components/partners-layout';
 
 import styles from './partners.module.css';

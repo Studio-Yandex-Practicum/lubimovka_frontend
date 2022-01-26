@@ -1,10 +1,10 @@
 .section {
+  position: relative;
   width: calc(100% - scale(270px));
   box-sizing: border-box;
   padding: scale(65px 60px 105px 60px);
   background-color: white;
   grid-area: platforms;
-  position: relative;
 
   @media (max-width: $tablet-portrait) {
     width: 100%;
@@ -56,9 +56,9 @@
 }
 
 .mapIcon {
-  margin-bottom: scale(14px);
   width: scale(24px);
   height: scale(24px);
+  margin-bottom: scale(14px);
 }
 
 .title {
@@ -85,9 +85,9 @@
 }
 
 .icon {
+  display: flex;
   width: scale(24px);
   height: scale(24px);
-  display: flex;
   transition: all .3s;
 }
 

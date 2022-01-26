@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import classNames from 'classnames/bind';
-import { BlogItemList } from 'api-typings';
 
+import { BlogItemList } from 'api-typings';
 import { Button } from 'components/ui/button';
 import { BlogCard } from 'components/ui/blog-card';
 import { MainNews } from 'components/main-page/news';

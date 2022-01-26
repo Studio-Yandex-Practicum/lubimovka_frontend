@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
-import { MainVideoArchive } from 'api-typings';
 
+import { MainVideoArchive } from 'api-typings';
 import { Button } from 'components/ui/button';
 
 import styles from './main-archive.module.css';

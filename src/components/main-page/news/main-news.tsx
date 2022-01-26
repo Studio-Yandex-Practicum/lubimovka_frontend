@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames/bind';
+
 import { NewsItemList } from 'api-typings';
 
 import styles from './main-news.module.css';
