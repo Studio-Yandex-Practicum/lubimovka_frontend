@@ -1,9 +1,15 @@
 .section {
-  width: 100%;
+  position: relative;
+  width: calc(100% - scale(270px));
   box-sizing: border-box;
   padding: scale(65px 60px 105px 60px);
   background-color: white;
   grid-area: platforms;
+
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+    padding: scale(56px 55px 100px 55px);
+  }
 }
 
 .titleMain {
@@ -11,6 +17,12 @@
   @mixin headline2;
 
   margin-bottom: scale(74px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    margin-bottom: scale(40px);
+  }
 }
 
 .list {
@@ -21,6 +33,10 @@
   grid-template-columns: repeat(auto-fit, minmax(scale(300px), max-content));
   list-style: none;
   row-gap: scale(40px);
+
+  @media (max-width: $tablet-portrait) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .item {
@@ -32,9 +48,16 @@
   padding: scale(15px 30px 26px 30px);
   border-bottom: scale(1px) solid var(--coal);
   border-left: scale(1px) solid var(--coal);
+
+  @media (max-width: $tablet-portrait) {
+    min-height: auto;
+    padding: scale(16px 25px 20px 25px);
+  }
 }
 
 .mapIcon {
+  width: scale(24px);
+  height: scale(24px);
   margin-bottom: scale(14px);
 }
 
@@ -43,6 +66,10 @@
   @mixin headline7;
 
   margin-bottom: scale(15px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(8px);
+  }
 }
 
 .desc {
@@ -50,10 +77,17 @@
   @mixin textSmall;
 
   margin-left: scale(30px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(20px);
+    margin-left: scale(16px);
+  }
 }
 
 .icon {
   display: flex;
+  width: scale(24px);
+  height: scale(24px);
   transition: all .3s;
 }
 
@@ -73,6 +107,10 @@
   &:hover .icon {
     transform: translateX(5px);
   }
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: scale(16px);
+  }
 }
 
 .text {
@@ -80,34 +118,4 @@
   @mixin textSmall;
 
   margin-right: scale(8px);
-}
-
-@media (max-width: $tablet-portrait) {
-  .section {
-    padding: scale(56px 55px 100px 55px);
-  }
-
-  .titleMain {
-    @mixin headline4;
-
-    margin-bottom: scale(40px);
-  }
-
-  .item {
-    min-height: auto;
-    padding: scale(16px 25px 20px 25px);
-  }
-
-  .title {
-    margin-bottom: scale(8px);
-  }
-
-  .desc {
-    margin-bottom: scale(20px);
-    margin-left: scale(16px);
-  }
-
-  .link {
-    padding-left: scale(16px);
-  }
 }

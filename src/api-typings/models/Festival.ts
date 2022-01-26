@@ -18,6 +18,7 @@ export type Festival = {
     cities_count?: number;
     video_link: string;
     blog_entries: string;
+    press_release_image: string;
     readonly volunteers: Array<Nested>;
     readonly images: Array<Nested>;
 }

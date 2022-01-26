@@ -1,0 +1,39 @@
+.partners {
+  margin-bottom: scale(70px);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline6;
+
+  max-width: scale(334px);
+  margin-bottom: scale(16px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(24px);
+  }
+}
+
+.list {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  margin-left: scale(60px);
+  column-gap: scale(30px);
+  grid-auto-rows: scale(138px);
+  grid-template-columns: repeat(auto-fill, scale(210px));
+  list-style-type: none;
+  row-gap: scale(16px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-left: 0;
+    column-gap: 0;
+    grid-auto-rows: scale(118px);
+    grid-template-columns: repeat(2, minmax(scale(170px), scale(182px)));
+    row-gap: 0;
+  }
+}
