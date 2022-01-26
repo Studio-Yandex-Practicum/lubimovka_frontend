@@ -11,6 +11,7 @@
 
 .menu {
   padding: scale(40px 0 67px 60px);
+  background-color: var(--light-green);
 
   @media (max-width: $tablet-portrait) {
     padding: scale(2px 0 32px 24px);
@@ -57,14 +58,23 @@
 
 .container {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: scale(720px) 1fr;
+
+  @media (max-width: $tablet-portrait) {
+    grid-template-columns: scale(390px) 1fr;
+  }
 }
 
-.img {
-  @mixin img;
+.wrapper {
+  position: relative;
+  width: scale(720px);
+  height: scale(414px);
 
-  width: calc(100% - scale(24px));
-  max-width: scale(720px);
+  @media (max-width: $tablet-portrait) {
+    width: scale(390px);
+    height: scale(224px);
+  }
 }
 
 .containerSpace {
