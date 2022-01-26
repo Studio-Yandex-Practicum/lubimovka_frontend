@@ -1,12 +1,16 @@
 .archive {
-  width: 100%;
+  width: calc(100% - scale(270px));
   padding: scale(62px 0 108px 0);
   background-color: var(--light-green);
   grid-area: archive;
+
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+    padding: scale(75px 0 100px 0);
+  }
 }
 
 .content {
-  width: 100%;
   max-width: scale(866px);
   margin-bottom: scale(14px);
 }
@@ -16,15 +20,27 @@
   @mixin headline2;
 
   margin: 0 0 scale(22px 150px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    margin: 0 0 scale(18px 24px);
+  }
 }
 
 .text {
   display: inline-block;
-  overflow: hidden;
   max-width: scale(480px);
   margin: 0;
-  text-overflow: ellipsis;
+  line-height: scale(72px);
   white-space: nowrap;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    max-width: scale(260px);
+    text-overflow: clip;
+  }
 }
 
 .link {
@@ -32,11 +48,13 @@
   bottom: scale(42px);
   display: inline-block;
   margin: scale(0 20px 0 6px);
-}
 
-.button > svg {
-  width: scale(25px);
-  height: scale(25px);
+  @media (max-width: $tablet-portrait) {
+    bottom: scale(32px);
+    display: inline-block;
+    margin: 0;
+    margin-left: scale(2px);
+  }
 }
 
 .desc {
@@ -45,46 +63,30 @@
 
   max-width: scale(432px);
   margin-left: scale(210px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(0 24px 34px 85px);
+  }
 }
 
 .img {
+  @mixin text;
+  @mixin textLarge;
+
   max-width: scale(540px);
-  height: scale(258px);
   margin: 0 auto;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(540px);
+  }
+}
+
+.icon > svg {
+  width: scale(25px);
+  height: scale(25px);
 }
 
 @media (max-width: $tablet-portrait) {
-  .archive {
-    padding: scale(75px 0 100px 0);
-  }
-
-  .title {
-    @mixin headline4;
-
-    margin: 0 0 scale(18px 24px);
-  }
-
-  .text {
-    max-width: scale(260px);
-    text-overflow: clip;
-  }
-
-  .link {
-    bottom: scale(32px);
-    display: inline-block;
-    margin: 0;
-    margin-left: scale(2px);
-  }
-
-  .desc {
-    margin: scale(0 24px 34px 85px);
-  }
-
-  .img {
-    max-width: scale(540px);
-    height: scale(258px);
-  }
-
   .linkImg {
     display: block;
     margin-left: scale(54px);

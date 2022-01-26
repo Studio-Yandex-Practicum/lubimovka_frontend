@@ -1,49 +1,56 @@
-import cn from 'classnames';
+import React, { FC } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import classNames from 'classnames/bind';
 
+import { Banner, MainBanners as IMainBanners } from 'api-typings';
 import { Button } from 'components/ui/button';
 
 import styles from './main-banners.module.css';
 
-export const MainBanners = () => {
-  return (
-    <section className={cn(styles.banners)}>
-      <ul className={cn(styles.list)}>
-        <li className={cn(styles.item)}>
-          <h2 className={cn(styles.title)}>
-            Премьера спектакля Ивана Вырыпаева «Солнечная линия»
-          </h2>
-        </li>
-        <li className={cn(styles.item)}>
-          <h2 className={cn(styles.title)}>
-            Любимовка в театре «Современник»
-          </h2>
-        </li>
-        <li className={cn(styles.item)}>
-          <h2 className={cn(styles.title)}>
-            Волонтёры Любимовки 2020 о своих впечатлениях
-          </h2>
-          <div className={cn(styles.container)}>
-            <div className={cn(styles.content)}>
-              <p className={cn(styles.desc)}>
-                Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.
-              </p>
-              <Button 
-                label="читать" 
-                iconPlace="left" 
-                icon="arrow-right" 
-                gap="4px"
-                border="bottomLeft"
-              />
-            </div>
-            <img 
-              src="https://sun9-15.userapi.com/impg/BrbXevIzjABChomHzzXuKYJ0ZTWrcuhy_lQnwA/dshSQq8AJVQ.jpg?size=720x414&quality=95&sign=2ceeb729a98f8fd68fb5b4e975b6234c&type=album"
-              alt="Волонтеры"
-              className={cn(styles.img)}
-            />
-          </div>
-        </li>
-      </ul>
-    </section>
-  );
-};
+const cx = classNames.bind(styles);
 
+export const MainBanners: FC<IMainBanners> = ({ items }) => (
+  <section className={cx('banners')}>
+    <ul className={cx('list')}>
+      {
+        items.map((item: Banner) => (
+          <li className={cx('item')} key={item.id}>
+            <h3 className={cx('title')}>
+              {item.title}
+            </h3>
+            <aside className={cx('container')}>
+              <div className={cx('content')}>
+                <p className={cx('desc')}>
+                  {item.description}
+                </p>
+                <Button 
+                  label={item.button}
+                  iconPlace="left" 
+                  icon="arrow-right" 
+                  gap="4px"
+                  border="bottomLeft"
+                  isLink={true}
+                  href={item.url}
+                  className={cx('button')}
+                />
+              </div>
+              <Link href={item.url}>
+                <a className={cx('link')} target="_blank">
+                  <Image 
+                    src={item.image}
+                    alt={item.title}
+                    width={486}
+                    height={228}
+                    layout="responsive"
+                    objectFit="cover"
+                  />
+                </a>
+              </Link>
+            </aside>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+);

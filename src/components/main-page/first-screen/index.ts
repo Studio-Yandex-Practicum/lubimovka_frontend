@@ -1,1 +1,1 @@
-export * from './first-screen';
+export * from './main-first-screen';
