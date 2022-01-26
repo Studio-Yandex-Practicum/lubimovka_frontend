@@ -1,5 +1,4 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useState } from 'react';
+import { useState, FC } from 'react';
 import Head from 'next/head';
 
 import { HistoryHeader } from './header';
@@ -10,14 +9,14 @@ import { Festival, Years } from 'api-typings';
 
 import itselfData from './assets/mock-data-itself.json';
 
-export const HistoryPage = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const {
-    years, titleCounts
-  } = props;
+interface IHistoryPage  {
+  years: Years,
+  titleCounts: Festival
+}
+export const HistoryPage: FC<IHistoryPage> = ({ years, titleCounts }) => {
   const [currentTitleData, setCurrentTitleData] = useState(titleCounts);
-  const [currentYear, setCurrentYear] = useState(years ? (years.years[0] ? years.years[0] : 2022) : 2022);
-console.log(years);
-console.log(titleCounts)
+  const [currentYear, setCurrentYear] = useState(years.years[0]);
+
   function selectYear(year: number ) {
     if(year) {
       setCurrentYear(year);
@@ -34,17 +33,15 @@ console.log(titleCounts)
   return (
     <>
       <Head>
-
       </Head>
-
+      <HistoryHeader data={years} selectYear={selectYear}/>
+      <HistoryTitle data={currentTitleData} currentYear={currentYear}/>
       <HistoryItself data={itselfData}/>
+
     </>
   );
 };
-/*
-<HistoryHeader data={years} selectYear={selectYear}/>
-      <HistoryTitle data={currentTitleData} currentYear={currentYear}/>
-      */
+
 const fetchStatistics = async (year: number) => {
   let data;
   try {
@@ -54,37 +51,4 @@ const fetchStatistics = async (year: number) => {
   }
   return data;
 };
-const fetchInitStateYear = async () => {
-  let data;
-  try {
-    data = await fetcher<Years>('/info/festivals/years/');
-  } catch (error) {
-    return;
-  }
-  return data;
-};
-type History = {
-  titleCounts : Festival,
-  years : Years
-}
-export const getServerSideProps: GetServerSideProps<History> = async () => {
-  const years = await fetchInitStateYear();
-  if (!years) {
-    return {
-      notFound: true,
-    };
-  }
-  else {
-    const titleCounts = await fetchStatistics(years.years[0]);
-    if(!titleCounts) {
-      return {
-        notFound: true,
-      };
-    }
-    return {
-      props: {
-        titleCounts: titleCounts, years: years
-      },
-    };
-  }
-};
+

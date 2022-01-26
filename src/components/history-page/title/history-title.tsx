@@ -2,22 +2,12 @@ import React, { FC } from 'react';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button/button';
+import { Festival } from 'api-typings';
 
 import style from './history-title.module.css';
 
 interface IHistoryTitle {
-  data: {
-    plays_count: number,
-    selected_plays_count: number,
-    selectors_count: number,
-    volunteers_count: number,
-    events_count: number,
-    cities_count: number,
-    video_link: string,
-    start_date: string,
-    end_date: string,
-    description: string
-  },
+  data: Festival,
   currentYear: number
 }
 const iconPlace = 'right';
@@ -45,7 +35,7 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
   }, [currentYear]);
   return (
     <section className={style.section}>
-      <img src={imageUrl} alt='Изображение' className={style.image}/>
+      <img src={imageUrl} alt="Изображение" className={style.image}/>
       <div className={style.content}>
         <h2 className={cn(style.dataSubtitle)}>{startDate} - {finishDate}</h2>
         <p className={cn(style.datatext)}>{description}</p>
@@ -53,10 +43,10 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
           <div className={cn(style.card)}>
             <div className={style.buttonDisplay}>
               <Button
-                label={plays_count.toString()}
+                label={plays_count ? plays_count.toString() : ''}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.title)}>
               </Button>
             </div>
@@ -65,10 +55,10 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
           <div className={cn(style.card)}>
             <div className={style.buttonDisplay}>
               <Button
-                label={selected_plays_count.toString()}
+                label={selected_plays_count ? selected_plays_count.toString() : ''}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.title)}>
               </Button>
             </div>
@@ -77,14 +67,14 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
           <div className={cn(style.card)}>
             <div className={style.buttonDisplay}>
               <Button
-                label={selectors_count.toString()}
+                label={selectors_count ? selectors_count.toString() : ''}
                 iconPlace={iconPlace}
                 icon={icon}
-                href='#'
+                href="#"
                 isLink={true}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.title)}>
               </Button>
             </div>
@@ -93,14 +83,14 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
           <div className={cn(style.card)}>
             <div className={style.buttonDisplay}>
               <Button
-                label={volunteers_count.toString()}
+                label={volunteers_count ? volunteers_count.toString() : ''}
                 iconPlace={iconPlace}
                 icon={icon}
                 href={urlVolonters}
                 isLink={true}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.title)}>
               </Button>
             </div>
@@ -109,10 +99,10 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
           <div className={cn(style.card)}>
             <div className={style.buttonDisplay}>
               <Button
-                label={events_count.toString()}
+                label={events_count ? events_count.toString() : ''}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.title)}>
               </Button>
             </div>
@@ -121,10 +111,10 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
           <div className={cn(style.card)}>
             <div className={style.buttonDisplay}>
               <Button
-                label={cities_count.toString()}
+                label={cities_count ? cities_count.toString() : ''}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.title)}>
               </Button>
             </div>
@@ -137,53 +127,53 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
 
             <div className={style.buttonDisplay}>
               <Button
-                label='Шорт&#8209;лист'
+                label="Шорт&#8209;лист"
                 iconPlace={iconPlace}
                 icon={icon}
-                href='#'
+                href="#"
                 isLink={true}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.subtitle)}>
               </Button>
             </div>
             <div className={style.buttonDisplay}>
               <Button
-                label='Fringe&#8209;программа'
+                label="Fringe&#8209;программа"
                 iconPlace={iconPlace}
                 icon={icon}
-                href='#'
+                href="#"
                 isLink={true}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.subtitle)}>
               </Button>
             </div>
             <div className={style.buttonDisplay}>
               <Button
-                label='Особо&nbsp;отмеченные'
+                label="Особо&nbsp;отмеченные"
                 iconPlace={iconPlace}
                 icon={icon}
-                href='#'
+                href="#"
                 isLink={true}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.subtitle)}>
               </Button>
             </div>
             <div className={style.buttonDisplay}>
               <Button
-                label='Внеконкурсная&nbsp;программа'
+                label="Внеконкурсная&nbsp;программа"
                 iconPlace={iconPlace}
                 icon={icon}
-                href='#'
+                href="#"
                 isLink={true}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.subtitle)}>
               </Button>
             </div>
@@ -193,27 +183,27 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
             <h2 className={style.subtitle}>Дополнительно</h2>
             <div className={style.buttonDisplay}>
               <Button
-                label='Записи&nbsp;в&nbsp;блоге'
+                label="Записи&nbsp;в&nbsp;блоге"
                 iconPlace={iconPlace}
                 icon={icon}
-                href='#'
+                href="#"
                 isLink={true}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.subtitle)}>
               </Button>
             </div>
             <div className={style.buttonDisplay}>
               <Button
-                label='Видео&nbsp;с&nbsp;фестиваля'
+                label="Видео&nbsp;с&nbsp;фестиваля"
                 iconPlace={iconPlace}
                 icon={icon}
                 href={video_link}
                 isLink={true}
                 align={alignStart}
-                size='l'
-                gap='8px'
+                size="l"
+                gap="8px"
                 className={cn(style.button, style.link, style.subtitle)}>
               </Button>
             </div>

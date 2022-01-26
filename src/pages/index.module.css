@@ -1,7 +1,7 @@
 .wrapper {
+  position: relative;
   width: 100%;
   height: scale(294px);
-  position: relative;
 
   @media (max-width: $tablet-portrait) {
     order: 1;
