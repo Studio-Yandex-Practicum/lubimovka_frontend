@@ -33,9 +33,11 @@ export const MainPlatforms: FC<MainPlaces> = ({ items }) => (
               <p className={cx('text')}>
                 {card.address}
               </p>
-              <span className={cx('icon')}>
-                {<Icon glyph={'arrow-right'} fill={'black'}/>}
-              </span>
+              <Icon 
+                glyph={'arrow-right'} 
+                fill={'black'}
+                className={cx('icon')}
+              />
             </a>
           </Link>
         </li>

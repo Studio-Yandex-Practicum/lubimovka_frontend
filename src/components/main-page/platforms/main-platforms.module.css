@@ -49,11 +49,6 @@
   border-bottom: scale(1px) solid var(--coal);
   border-left: scale(1px) solid var(--coal);
 
-  > svg {
-    width: scale(24px);
-    height: scale(24px);
-  }
-
   @media (max-width: $tablet-portrait) {
     min-height: auto;
     padding: scale(16px 25px 20px 25px);
@@ -62,6 +57,8 @@
 
 .mapIcon {
   margin-bottom: scale(14px);
+  width: scale(24px);
+  height: scale(24px);
 }
 
 .title {
@@ -88,13 +85,10 @@
 }
 
 .icon {
+  width: scale(24px);
+  height: scale(24px);
   display: flex;
   transition: all .3s;
-
-  > svg {
-    width: scale(24px);
-    height: scale(24px);
-  }
 }
 
 .link {

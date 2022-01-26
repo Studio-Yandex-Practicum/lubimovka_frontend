@@ -25,11 +25,10 @@
   @mixin headline;
   @mixin headline6;
 
-  /* width: scale(572px); */
   padding: scale(20px 480px 20px 50px);
   box-sizing: border-box;
   background-color: var(--beige);
-  z-index: 9;
+  z-index: 1;
   position: sticky;
   top: 0;
 
@@ -84,6 +83,7 @@
 
 .button {
   margin-bottom: scale(20px);
+  z-index: auto;
 
   > svg {
     width: scale(24px);

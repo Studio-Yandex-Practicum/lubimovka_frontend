@@ -15,7 +15,7 @@ interface IMain {
 export const main: IMain = {
   first_screen: {
     title: 'Открыт прием пьес на фестиваль 2021 года',
-    url: 'https://lubimovks.url.ru',
+    url: 'https://www.rabstol.net/uploads/gallery/main/108/rabstol_net_winter_30.jpg',
     url_title: 'Заголовок для ссылки для первой страницы',
   },
   blog: {

@@ -24,7 +24,7 @@ const cx = cn.bind(styles);
 const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { first_screen, afisha, blog, news, banners, places, video_archive, short_list } = data;
 
-  const [displayFirstScreen, setDisplayFirstScreen] = useState(true);
+  const [displayFirstScreen, setDisplayFirstScreen] = useState(false);
   const [delay, setDelay] = useState(false);
 
   const hideFirstScreen = useCallback((delay: number) => {
@@ -40,7 +40,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
   }, [delay]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handlerScroll);
+    displayFirstScreen && window.addEventListener('scroll', handlerScroll);
     if (displayFirstScreen === false) {
       window.removeEventListener('scroll', handlerScroll);
     }
@@ -50,6 +50,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
   }), [];
 
   useEffect(() => {
+    first_screen && notEmptyKey(first_screen) && setDisplayFirstScreen(true);
     // Отключаю скролл, при перезагрузке страницы
     if (window.pageYOffset !== 0) {
       window.removeEventListener('scroll', handlerScroll);
@@ -71,7 +72,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
         hiddenPartners 
         expandedHeader={displayFirstScreen}
         screenImg={first_screen && notEmptyKey(first_screen) &&
-        displayFirstScreen && <div className={cx('background')}/>}
+        displayFirstScreen && <div className={cx('background')} style={{  backgroundImage: `url(${first_screen.url})` }}/>}
       >
         <>
           <Head>

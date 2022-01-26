@@ -30,13 +30,10 @@
 
 .text {
   display: inline-block;
-  overflow: hidden;
   max-width: scale(480px);
   margin: 0;
   line-height: scale(72px);
-  text-overflow: ellipsis;
   white-space: nowrap;
-  transform: translateY(scale(10px));
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;

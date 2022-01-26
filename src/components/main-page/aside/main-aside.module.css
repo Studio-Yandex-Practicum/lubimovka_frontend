@@ -12,6 +12,7 @@
   grid-area: aside;
   overflow-y: scroll;
   transition: all .3s ease-in;
+  background-color: var(--light-green);
 
   &:hover {
     width: scale(468px);
@@ -36,9 +37,8 @@
   left: 0;
   width: calc(var(--scale) * 468);
   box-sizing: border-box;
-  padding: scale(60px 56px 60px 56px);
-  background-color: var(--light-green);
-  height: inherit;
+  padding: scale(60px 56px 0 56px);
+  height: 100%;
 
   @media (max-width: $tablet-portrait) {
     position: initial;
@@ -96,6 +96,7 @@
   margin-bottom: scale(72px);
 
   &:last-of-type {
+    padding-bottom: scale(60px);
     margin-bottom: 0;
   }
 
