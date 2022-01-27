@@ -14,12 +14,12 @@ export type DroplistOption = {
   text: string,
 }
 interface IDroplistProps {
-  type: 'single' | 'multiple'
-  options: DroplistOption[]
-  selectedOptions: DroplistOption[]
-  onChange: ((selectedOptions: DroplistOption) => void)
-  placeholder?: string
-  className?: string
+  type: 'single' | 'multiple';
+  options: DroplistOption[];
+  selectedOptions: DroplistOption[];
+  onChange: ((selectedOptions: DroplistOption) => void);
+  placeholder?: string;
+  className?: string;
 }
 
 export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
