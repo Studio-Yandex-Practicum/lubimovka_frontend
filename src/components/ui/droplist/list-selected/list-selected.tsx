@@ -19,7 +19,7 @@ export const ListSelected: FC<IListSelectedProps> = ({ selectList, activeDropdow
     <ul className={cx('list')}>
       {Array.isArray(selectList) && selectList.map((item, i) => (
         <Tag 
-          label={`${item.text[0]}${item.text.slice(1).toLowerCase()}`} 
+          label={`${item.text[0].toUpperCase()}${item.text.slice(1).toLowerCase()}`} 
           key={i} 
           selected={true} 
           isIcon={true}

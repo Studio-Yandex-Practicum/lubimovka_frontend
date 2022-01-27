@@ -17,7 +17,7 @@ interface IDroplistItemsProps {
 }
 
 export const DroplistItems: FC<IDroplistItemsProps> = ({ type, selectList, value, handlerClick, counter }): JSX.Element => {
-  const findItem = type === 'multiple' ? selectList.find(item => item.value === counter) : selectList[0].value === counter;
+  const findItem = selectList.find(item => item.value === counter);
 
   return (
     <li className={cx('item', { 'itemCheckbox': type === 'multiple' })}
