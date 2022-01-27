@@ -15,7 +15,7 @@ export type DroplistOption = {
 }
 interface IDroplistProps {
   type: 'single' | 'multiple'
-  options: string[]
+  options: DroplistOption[]
   selectedOptions: DroplistOption[]
   onChange: ((selectedOptions: DroplistOption) => void)
   placeholder?: string
@@ -79,14 +79,14 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
         <ul className={cx('list', {
           'active': activeDropdown,
         })}>
-          {options.map((item, i) =>
+          {options.map(item =>
             <DroplistItems 
-              key={i} 
+              key={item.value} 
               type={type} 
               selectList={selectedOptions} 
-              value={item} 
+              value={item.text}
               handlerClick={handlerClick}
-              counter={i}
+              counter={item.value}
             />)}
         </ul>
         {selectedOptions.length > 0 && type === 'multiple' && 
