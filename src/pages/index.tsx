@@ -23,6 +23,7 @@ const cx = cn.bind(styles);
 
 const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { first_screen, afisha, blog, news, banners, places, video_archive, short_list } = data;
+  console.log(data)
 
   const [displayFirstScreen, setDisplayFirstScreen] = useState(false);
   const [delay, setDelay] = useState(false);
@@ -82,16 +83,15 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
             {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
             {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
             {afisha && notEmptyKey(afisha) &&
-            <div className={cx('wrapper')}>
+            <div className={cx({ 'wrapper': news || blog })}>
               <MainTitle
                 title={afisha.title}
-                button_label={afisha.button_label}
                 description={afisha.description}
               />
             </div>}
             {afisha && notEmpty(afisha.items) && <MainEvents {...afisha}/>}
             {banners && notEmpty(banners.items) && <MainBanners {...banners}/>}
-            {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
+            {/* {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>} */}
             {places && notEmpty(places.items) && <MainPlatforms {...places}/>}
             {video_archive && <MainArchive {...video_archive}/>}
             {partners && notEmptyKey(partners) && <Partners {...partners}/>}
