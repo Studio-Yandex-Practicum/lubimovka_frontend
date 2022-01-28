@@ -37,7 +37,7 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, c
         <dd className={cx('email')}>
           <InfoLink
             isOutsideLink={true}
-            href={`mailto://${data.email}`}
+            href={`mailto:${data.email}`}
             label={data.email}
             size= "l"
             textDecoration="underline"

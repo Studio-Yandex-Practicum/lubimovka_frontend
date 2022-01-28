@@ -50,7 +50,7 @@ const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
           <p className={cx('info')}>
             Если вы хотите быть волонтером, напишите нам на
             <InfoLink
-              href={'mailto://job@lubimovka.ru'}
+              href={'mailto:job@lubimovka.ru'}
               isOutsideLink={true}
               label={'job@lubimovka.ru'}
               size={'xl'}
