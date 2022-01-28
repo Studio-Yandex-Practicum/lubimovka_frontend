@@ -2,8 +2,8 @@ import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import cn from 'classnames/bind';
-import { Main, Partner } from 'api-typings';
 
+import { Main, Partner } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
 import { MainTitle } from 'components/main-page/title';
 import { MainEvents } from 'components/main-page/events';
@@ -68,8 +68,8 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
 
   return (
     <div className={cx({ 'marginTop': delay })}>
-      <AppLayout 
-        hiddenPartners 
+      <AppLayout
+        hiddenPartners
         expandedHeader={displayFirstScreen}
         screenImg={first_screen && notEmptyKey(first_screen) &&
         displayFirstScreen && <div className={cx('background')} style={{  backgroundImage: `url(${first_screen.url})` }}/>}
