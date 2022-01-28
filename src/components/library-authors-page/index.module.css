@@ -108,6 +108,7 @@
   height: scale(52px);
   box-sizing: border-box;
   padding: 0 scale(80px) scale(20px);
+  margin-left: scale(30px);
   background-color: var(--beige);
 
   &::before {
@@ -127,6 +128,7 @@
     height: scale(32px);
     padding: 0 scale(24px);
     margin-bottom: scale(77px);
+    margin-left: 0;
     background-color: var(--white);
 
     &::before {
