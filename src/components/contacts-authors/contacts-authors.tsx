@@ -1,5 +1,7 @@
 import classNames from 'classnames/bind';
 
+import { InfoLink } from 'components/ui/info-link/info-link';
+
 import styles from './contacts-authors.module.css';
 
 const cx = classNames.bind(styles);
@@ -17,9 +19,15 @@ const ContactsAuthors = (props: IContactsAuthorsProps): JSX.Element => {
         Если вы хотите внести изменения в свою страницу: добавить пьесы, ссылки
         на статьи или публикации, напишите нам. Приложите файлы и ссылки.
       </p>
-      <a className={cx('email')} href={`mailto:${email}`}>
-        {email}
-      </a>
+      <div className={cx('emailContainer')}>
+        <InfoLink
+          className={cx('email')}
+          isOutsideLink={true}
+          href={`mailto:${email}`}
+          label={email}
+          textDecoration="underline"
+        />
+      </div>
     </address>
   );
 };
