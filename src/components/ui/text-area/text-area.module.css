@@ -4,6 +4,7 @@
 
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   padding: scale(8px);
   border: 0;
