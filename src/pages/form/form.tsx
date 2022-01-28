@@ -15,16 +15,37 @@ import {
 import { Nullable } from 'shared/types';
 import { fetcher } from 'shared/fetcher';
 
-enum ActionTypes {
+interface ParticipationFormFields {
+  firstName: string,
+  lastName: string,
+  birthYear: string,
+  city: string,
+  phoneNumber: string,
+  email: string,
+  playTitle: string,
+  playYear: string,
+  playFile: Nullable<File>,
+}
+
+enum ParticipationFormActionTypes {
   FieldChange,
   Reset,
 }
 
-type Action<T = unknown> =
-  { type: ActionTypes.FieldChange, payload: { name: string, value: T} }
-  | { type: ActionTypes.Reset }
+type ParticipationFormAction<K extends keyof ParticipationFormFields = keyof ParticipationFormFields> =
+  | { type: ParticipationFormActionTypes.FieldChange, payload: { field: K, value: ParticipationFormFields[K] } }
+  | { type: ParticipationFormActionTypes.Reset }
 
-const initialFormState = {
+type ParticipationFormStateFields<T> = {
+  [K in keyof T]: {
+    value: T[K],
+    wasChanged: boolean,
+  }
+}
+
+type ParticipationFormState = ParticipationFormStateFields<ParticipationFormFields>
+
+const initialParticipationFormState: ParticipationFormState = {
   firstName: { value: '', wasChanged: false },
   lastName: { value: '', wasChanged: false },
   birthYear: { value: '', wasChanged: false },
@@ -33,28 +54,28 @@ const initialFormState = {
   email: { value: '', wasChanged: false },
   playTitle: { value: '', wasChanged: false },
   playYear: { value: '', wasChanged: false },
-  playFile: { value: { name: '' }, wasChanged: false },
+  playFile: { value: null, wasChanged: false },
 };
 
-const formReducer = (state: typeof initialFormState, action: Action) => {
+const participationFormReducer = (state: ParticipationFormState, action: ParticipationFormAction) => {
   switch (action.type) {
-  case ActionTypes.FieldChange:
+  case ParticipationFormActionTypes.FieldChange:
     return {
       ...state,
-      [action.payload.name]: {
+      [action.payload.field]: {
         value: action.payload.value,
         wasChanged: true,
       },
     };
-  case ActionTypes.Reset:
-    return initialFormState;
+  case ParticipationFormActionTypes.Reset:
+    return initialParticipationFormState;
   default:
     return state;
   }
 };
 
 const Participation: NextPage = () => {
-  const [formState, dispatch] = useReducer(formReducer, initialFormState);
+  const [formState, dispatch] = useReducer(participationFormReducer, initialParticipationFormState);
 
   const {
     firstName,
@@ -154,11 +175,11 @@ const Participation: NextPage = () => {
     return;
   };
 
-  const handleFieldChange = <T,>(name: keyof typeof initialFormState) => (value: T) => {
+  const handleFieldChange = (field: keyof ParticipationFormState) => (value: ParticipationFormFields[typeof field]) => {
     dispatch({
-      type: ActionTypes.FieldChange,
+      type: ParticipationFormActionTypes.FieldChange,
       payload: {
-        name,
+        field,
         value,
       },
     });
@@ -189,7 +210,7 @@ const Participation: NextPage = () => {
     data.append('email', email.value);
     data.append('title', playTitle.value);
     data.append('year', playYear.value);
-    data.append('file', playFile.value);
+    data.append('file', playFile.value!);
 
     try {
       fetcher('/library/participation/', {
@@ -219,32 +240,32 @@ const Participation: NextPage = () => {
           <PlayProposalLayout.Form>
             <ParticipationForm
               firstName={firstName.value}
-              onFirstNameChange={handleFieldChange<string>('firstName')}
+              onFirstNameChange={handleFieldChange('firstName')}
               firstNameError={firstName.wasChanged ? getFirstNameError() : undefined}
               lastName={lastName.value}
-              onLastNameChange={handleFieldChange<string>('lastName')}
+              onLastNameChange={handleFieldChange('lastName')}
               lastNameError={lastName.wasChanged ? getLastNameError() : undefined}
               birthYear={birthYear.value}
-              onBirthYearChange={handleFieldChange<string>('birthYear')}
+              onBirthYearChange={handleFieldChange('birthYear')}
               birthYearError={birthYear.wasChanged ? getBirthYearError() : undefined}
               city={city.value}
               cityError={city.wasChanged ? getCityError() : undefined}
-              onCityChange={handleFieldChange<string>('city')}
+              onCityChange={handleFieldChange('city')}
               phoneNumber={phoneNumber.value}
-              onPhoneNumberChange={handleFieldChange<string>('phoneNumber')}
+              onPhoneNumberChange={handleFieldChange('phoneNumber')}
               phoneNumberError={phoneNumber.wasChanged ? getPhoneNumberError() : undefined}
               email={email.value}
-              onEmailChange={handleFieldChange<string>('email')}
+              onEmailChange={handleFieldChange('email')}
               emailError={email.wasChanged ? getEmailError() : undefined}
               playTitle={playTitle.value}
               playTitleError={playTitle.wasChanged ? getPlayTitleError() : undefined}
-              onPlayTitleChange={handleFieldChange<string>('playTitle')}
+              onPlayTitleChange={handleFieldChange('playTitle')}
               playYear={playYear.value}
               playYearError={playYear.wasChanged ? getPlayYearError() : undefined}
-              onPlayYearChange={handleFieldChange<string>('playYear')}
+              onPlayYearChange={handleFieldChange('playYear')}
               playFileName={playFile.value ? playFile.value.name : undefined}
               playFileError={playFile.wasChanged ? getPlayFileError() : undefined}
-              onPlayFileChange={handleFieldChange<Nullable<File>>('playFile')}
+              onPlayFileChange={handleFieldChange('playFile')}
               canSubmit={canSubmit}
               onSubmit={handleSubmit}
             />
