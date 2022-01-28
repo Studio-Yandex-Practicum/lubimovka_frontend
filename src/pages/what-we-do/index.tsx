@@ -9,6 +9,7 @@ import { WhatWeDoHeader } from 'components/what-we-do-page/header';
 import { WhatWeDoDesc } from 'components/what-we-do-page/desc';
 import { WhatWeDoAuthors } from 'components/what-we-do-page/authors';
 import { WhatWeDoSelection } from 'components/what-we-do-page/selection';
+import { WhatWeDoPoster } from 'components/what-we-do-page/poster';
 import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
 // import { WhatWeDoPartners } from 'components/what-we-do-page/partners';
 
@@ -22,6 +23,7 @@ const Page: NextPage = ({partners}: InferGetStaticPropsType<typeof getStaticProp
       <WhatWeDoDesc/>
       <WhatWeDoAuthors/>
       <WhatWeDoSelection/>
+      <WhatWeDoPoster/>
       <WhatWeDoContacts/>
       {/* <WhatWeDoPartners/> */}
     </main>

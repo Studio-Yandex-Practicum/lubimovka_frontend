@@ -17,7 +17,10 @@ export const WhatWeDoContacts = (): JSX.Element => (
         {<Icon glyph="asterisk" fill="black"
           className={styles.asterisk}/>}
       </span>
-        Команда Любимовки самостоятельно привлекает режиссеров для работы. Если вам хочется стать режиссером одной из читок, напишите нам про себя.
+      <div>
+        Команда Любимовки самостоятельно привлекает режиссеров для работы. 
+        Если вам хочется стать режиссером одной из читок, <a href="mailto:festival@lubimovka.ru" className={cx('link')}>напишите нам</a> про себя.
+      </div>
     </p>
   </section>
 );

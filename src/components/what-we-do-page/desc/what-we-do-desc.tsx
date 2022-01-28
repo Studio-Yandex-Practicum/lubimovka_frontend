@@ -8,7 +8,7 @@ const cx = cn.bind(styles);
 
 export const WhatWeDoDesc = (): JSX.Element => (
   <section className={cx('descItem')}>
-    <div className={cx('content', 'contentReception')}>
+    <aside className={cx('content', 'acceptance')}>
       <div className={cx('container')}>
         <h2 className={cx('mainTitle')}>
             Что мы делаем
@@ -29,9 +29,9 @@ export const WhatWeDoDesc = (): JSX.Element => (
           layout="responsive"
         />
       </div>
-    </div>
+    </aside>
       
-    <div className={cx('content', 'contentSelected')}>
+    <aside className={cx('content', 'selected')}>
       <Image 
         src="/images/what-we-do/desc-img-two.jpg"
         alt="Пьесы, прошедшие отбор"
@@ -47,9 +47,9 @@ export const WhatWeDoDesc = (): JSX.Element => (
             Вход на все мероприятия фестиваля Любимовка всегда был и всегда будет свободным.
         </p>
       </div>
-    </div>
+    </aside>
 
-    <div className={cx('container', 'containerInvite')}>
+    <aside className={cx('container', 'containerInvite')}>
       <h3 className={cx('title')}>
           После каждой читки мы приглашаем авторов и аудиторию к обсуждению пьесы.
       </h3>
@@ -57,6 +57,6 @@ export const WhatWeDoDesc = (): JSX.Element => (
           Мы не спорим о вкусах. Мы судим произведения по законам, предлагаемым произведениями. Мы исходим из того, что за каждой пьесой стоит личный авторский замысел. 
           Мы уважаем авторский выбор художественных целей и творческих методов. Мы ценим готовность автора обсуждать свою работу и доверяем ему в его дальнейшей работе.
       </p>
-    </div>
+    </aside>
   </section>
 );

@@ -1,9 +1,9 @@
 .contacts {
   padding: scale(72px 170px 164px 150px);
-  color: var(--white);
+  background-color: var(--white);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(56px 24px 50px);
+    padding: scale(56px 24px 72px);
   }
 }
 
@@ -17,7 +17,7 @@
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    margin-bottom: scale(28px);
+    margin-bottom: scale(34px);
   }
 }
 
@@ -27,7 +27,6 @@
 
   display: flex;
   max-width: scale(610px);
-  align-items: baseline;
   margin-left: auto;
 
   @media (max-width: $tablet-portrait) {
@@ -36,7 +35,17 @@
 }
 
 .asterisk {
-  display: block;
-  margin: 0;
-  margin-bottom: scale(14px);
+  transform: translateY(scale(-10px));
+  width: scale(25px);
+  height: scale(25px);
+  margin-right: scale(2px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-right: scale(6px);
+  }
+}
+
+.link {
+  display: inline;
+  color: var(--coal);
 }

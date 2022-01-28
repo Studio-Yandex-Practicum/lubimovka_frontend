@@ -62,7 +62,7 @@
   grid-template-columns: scale(720px) 1fr;
 
   @media (max-width: $tablet-portrait) {
-    grid-template-columns: scale(390px) 1fr;
+    grid-template-columns: 1fr scale(24px);
   }
 }
 
@@ -72,7 +72,7 @@
   height: scale(414px);
 
   @media (max-width: $tablet-portrait) {
-    width: scale(390px);
+    width: 100%;
     height: scale(224px);
   }
 }
