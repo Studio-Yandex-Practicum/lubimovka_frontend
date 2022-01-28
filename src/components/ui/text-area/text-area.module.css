@@ -18,6 +18,19 @@
     opacity: .7;
   }
 
+  &::-webkit-scrollbar {
+    width: scale(4px);
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--coal);
+  }
+
+  &::-webkit-resizer {
+    background-color: var(--coal);
+  }
+
   &:focus {
     border-right: 1px solid var(--coal);
   }
