@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import cn from 'classnames';
 
 import { Menu } from 'components/ui/menu';
 import LibraryForm from 'components/library-form';
@@ -39,15 +40,15 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
             <Menu type="history">
               <Menu.Item
                 href="/library"
-                current={router.asPath === '/library'}
+                current={false}
               >
-        Пьесы
+                <p className={cn(styles.tabLink, { [styles.active]: router.asPath === '/library' })}>Пьесы</p>
               </Menu.Item>
               <Menu.Item
                 href="/library/authors"
-                current={router.asPath === '/library/authors'}
+                current={true}
               >
-        Авторы
+                <p className={cn(styles.tabLink, { [styles.active]: router.asPath === '/library/authors' })}>Авторы</p>
               </Menu.Item>
             </Menu>
           </div>
