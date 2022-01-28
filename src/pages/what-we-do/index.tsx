@@ -11,9 +11,9 @@ import { WhatWeDoAuthors } from 'components/what-we-do-page/authors';
 import { WhatWeDoSelection } from 'components/what-we-do-page/selection';
 import { WhatWeDoPoster } from 'components/what-we-do-page/poster';
 import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
-// import { WhatWeDoPartners } from 'components/what-we-do-page/partners';
+import { Partners } from 'components/partners';
 
-const Page: NextPage = ({partners}: InferGetStaticPropsType<typeof getStaticProps>):JSX.Element => (
+const Page: NextPage = ({ partners }: InferGetStaticPropsType<typeof getStaticProps>):JSX.Element => (
   <AppLayout>
     <Head>
       <title>{'Что мы делаем? Любимовка'}</title>
@@ -25,18 +25,16 @@ const Page: NextPage = ({partners}: InferGetStaticPropsType<typeof getStaticProp
       <WhatWeDoSelection/>
       <WhatWeDoPoster/>
       <WhatWeDoContacts/>
-      {/* <WhatWeDoPartners/> */}
+      <Partners {...partners}/>
     </main>
   </AppLayout>
 );
 
 const fetchPartners = async () => {
   try {
-    const general = await fetcher<Partner>('/v1/info/partners/?type=general');
-    const festival = await fetcher<Partner>('/v1/info/partners/?type=festival');
-    const info = await fetcher<Partner>('/v1/info/partners/?type=info');
+    const festival = await fetcher<Partner>('/info/partners/?type=festival');
+    const info = await fetcher<Partner>('/info/partners/?type=info');
     return {
-      general,
       festival,
       info
     };
@@ -48,15 +46,15 @@ const fetchPartners = async () => {
 export const getStaticProps: GetStaticProps = async () => {
   const partners = await fetchPartners();
 
-  // if (!partners) {
-  //   return {
-  //     notFound: true,
-  //   };
-  // }
+  if (!partners) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
-      // partners,
+      partners,
     },
   };
 };
