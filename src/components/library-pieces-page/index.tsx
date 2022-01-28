@@ -59,13 +59,13 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
                 href="/library"
                 current={true}
               >
-                <p className={cn(styles.tabLink, { [styles.active]: router.asPath === '/library' })}>Пьесы</p>
+                <p className={cn(styles.tabLink, styles.active)}>Пьесы</p>
               </Menu.Item>
               <Menu.Item
                 href="/library/authors"
                 current={false}
               >
-                <p className={cn(styles.tabLink, { [styles.active]: router.asPath === '/library/authors' })}>Авторы</p>
+                <p className={cn(styles.tabLink)}>Авторы</p>
               </Menu.Item>
             </Menu>
           </div>

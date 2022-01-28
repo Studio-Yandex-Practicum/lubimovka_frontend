@@ -42,13 +42,13 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
                 href="/library"
                 current={false}
               >
-                <p className={cn(styles.tabLink, { [styles.active]: router.asPath === '/library' })}>Пьесы</p>
+                <p className={cn(styles.tabLink)}>Пьесы</p>
               </Menu.Item>
               <Menu.Item
                 href="/library/authors"
                 current={true}
               >
-                <p className={cn(styles.tabLink, { [styles.active]: router.asPath === '/library/authors' })}>Авторы</p>
+                <p className={cn(styles.tabLink, styles.active)}>Авторы</p>
               </Menu.Item>
             </Menu>
           </div>
