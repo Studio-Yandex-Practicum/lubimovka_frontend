@@ -13,6 +13,7 @@ import {
   validPhoneNumberRegexp,
 } from 'shared/constants/regexps';
 import { Nullable } from 'shared/types';
+import { fetcher } from 'shared/fetcher';
 
 enum ActionTypes {
   FieldChange,
@@ -177,6 +178,28 @@ const Participation: NextPage = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const data = new FormData();
+
+    data.append('birth_year', birthYear.value);
+    data.append('first_name', firstName.value);
+    data.append('last_name', lastName.value);
+    data.append('city', city.value);
+    data.append('phone_number', phoneNumber.value);
+    data.append('email', email.value);
+    data.append('title', playTitle.value);
+    data.append('year', playYear.value);
+    data.append('file', playFile.value);
+
+    try {
+      fetcher('/library/participation/', {
+        method: 'POST',
+        body: data,
+      });
+    } catch (error) {
+      return;
+    }
+
     router.push('/form/success');
   };
 
