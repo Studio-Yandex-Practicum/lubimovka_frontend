@@ -38,7 +38,7 @@
     left: 0;
     display: block;
     width: 0;
-    height: scale(1px);
+    height: 1px;
     background-color: var(--coal);
     content: "";
     transition: width .5s ease-in;
