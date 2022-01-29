@@ -1,4 +1,4 @@
-const apiPath = '/api';
+const apiPath = '/webapi';
 
 module.exports = {
   apiPath,
