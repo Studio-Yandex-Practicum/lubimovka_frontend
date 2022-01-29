@@ -85,12 +85,7 @@ export type PersonRole = {
 export type Team = {
   name: string,
   slug: string,
-  persons: TeamPerson[]
-}
-
-export type TeamPerson = {
-  id: number,
-  full_name: string
+  persons: string[]
 }
 
 export type BlogItem = {

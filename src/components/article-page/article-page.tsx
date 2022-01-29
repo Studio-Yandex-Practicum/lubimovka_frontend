@@ -13,7 +13,7 @@ import ArticleTitle from './article-title';
 import ArticleShare from './article-share';
 import { ArticleMainText } from './article-maintext';
 import { ArticleOther } from './article-other';
-import { BlogData, ComplexItem, NewsData, Person, PersonRole, Play, Team } from '../../shared/types';
+import { BlogData, ComplexItem, NewsData, Person, PersonRole, Play } from '../../shared/types';
 
 import styles from './article-page.module.css';
 
@@ -40,27 +40,21 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
     }
   });
 
-  const authors: string[] = [];
-  const illustrators: string[] = [];
-  const photographers: string[] = [];
-
-  function pushCreators (teamItem:Team, creators: string[]) {
-    teamItem.persons.forEach(el => {
-      creators.push(el.full_name);
-    });
-  }
+  let authors: string[] = [];
+  let illustrators: string[] = [];
+  let photographers: string[] = [];
 
   if ('team' in data) {
     data.team.forEach(teamItem => {
       switch (teamItem.slug) {
       case 'illustrations':
-        pushCreators(teamItem, illustrators);
+        illustrators = teamItem.persons;
         break;
       case 'text':
-        pushCreators(teamItem, authors);
+        authors = teamItem.persons;
         break;
       case 'photo':
-        pushCreators(teamItem, photographers);
+        photographers = teamItem.persons;
         break;
       }
     });
