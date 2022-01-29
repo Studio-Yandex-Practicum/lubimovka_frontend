@@ -2,8 +2,8 @@ import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import cn from 'classnames/bind';
-import { Main, Partner } from 'api-typings';
 
+import { Main, Partner } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
 import { MainTitle } from 'components/main-page/title';
 import { MainEvents } from 'components/main-page/events';
@@ -72,7 +72,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
         hiddenPartners 
         expandedHeader={displayFirstScreen}
         screenImg={first_screen && notEmptyKey(first_screen) &&
-        displayFirstScreen && <div className={cx('background')} style={{  backgroundImage: `url(${first_screen.url})` }}/>}
+        displayFirstScreen && <div className={cx('background')} style={{  backgroundImage: `url(${first_screen.image})` }}/>}
       >
         <>
           <Head>
@@ -82,10 +82,9 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
             {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
             {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
             {afisha && notEmptyKey(afisha) &&
-            <div className={cx('wrapper')}>
+            <div className={cx({ 'wrapper': news || blog })}>
               <MainTitle
                 title={afisha.title}
-                button_label={afisha.button_label}
                 description={afisha.description}
               />
             </div>}

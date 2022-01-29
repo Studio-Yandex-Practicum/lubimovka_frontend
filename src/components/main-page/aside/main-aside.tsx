@@ -31,7 +31,6 @@ export const MainAside: FC<IMainAside> = ({ type, title, items }) => (
             iconPlace="left"
             icon="arrow-right"
             align="start"
-            gap="9px"
             size="s"
             className={cx('icon')}
           />
@@ -45,7 +44,7 @@ export const MainAside: FC<IMainAside> = ({ type, title, items }) => (
               {
                 type === 'blog' ?
                   <BlogCard
-                    image={item.image}
+                    image="/images/main/puddleInMoscow.jpg"
                     author={item.author_url_title}
                     heading={item.title}
                     description={item.description}

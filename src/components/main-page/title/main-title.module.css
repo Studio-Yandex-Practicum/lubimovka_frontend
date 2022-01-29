@@ -1,6 +1,7 @@
 .section {
   display: grid;
   padding-top: scale(60px);
+  grid-area: title;
   justify-items: center;
 
   @media (max-width: $tablet-portrait) {
