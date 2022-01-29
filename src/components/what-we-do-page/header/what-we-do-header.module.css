@@ -47,8 +47,6 @@
 }
 
 .img {
-  @mixin img;
-
   width: calc(100% - scale(24px));
   max-width: scale(720px);
 }
