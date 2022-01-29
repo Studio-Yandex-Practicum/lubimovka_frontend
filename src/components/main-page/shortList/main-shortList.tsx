@@ -31,8 +31,8 @@ export const MainShortList: FC<IMainShortList>= ({ title, items }) => (
             title: item.name,
             city: item.city,
             year: item.year,
-            linkView: item.url_reading,
-            linkDownload: item.url_download,
+            linkView: '#',
+            linkDownload: '#',
             authors: item.authors,
           }}
           key={item.id}

@@ -2,8 +2,8 @@ import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import cn from 'classnames/bind';
-import { Main, Partner } from 'api-typings';
 
+import { Main, Partner } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
 import { MainTitle } from 'components/main-page/title';
 import { MainEvents } from 'components/main-page/events';
@@ -23,7 +23,6 @@ const cx = cn.bind(styles);
 
 const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { first_screen, afisha, blog, news, banners, places, video_archive, short_list } = data;
-  console.log(data)
 
   const [displayFirstScreen, setDisplayFirstScreen] = useState(false);
   const [delay, setDelay] = useState(false);
@@ -73,7 +72,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
         hiddenPartners 
         expandedHeader={displayFirstScreen}
         screenImg={first_screen && notEmptyKey(first_screen) &&
-        displayFirstScreen && <div className={cx('background')} style={{  backgroundImage: `url(${first_screen.url})` }}/>}
+        displayFirstScreen && <div className={cx('background')} style={{  backgroundImage: `url(${first_screen.image})` }}/>}
       >
         <>
           <Head>
@@ -91,7 +90,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
             </div>}
             {afisha && notEmpty(afisha.items) && <MainEvents {...afisha}/>}
             {banners && notEmpty(banners.items) && <MainBanners {...banners}/>}
-            {/* {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>} */}
+            {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
             {places && notEmpty(places.items) && <MainPlatforms {...places}/>}
             {video_archive && <MainArchive {...video_archive}/>}
             {partners && notEmptyKey(partners) && <Partners {...partners}/>}

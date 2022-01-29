@@ -1,8 +1,8 @@
 .section {
   display: grid;
   padding-top: scale(60px);
-  justify-items: center;
   grid-area: title;
+  justify-items: center;
 
   @media (max-width: $tablet-portrait) {
     box-sizing: border-box;

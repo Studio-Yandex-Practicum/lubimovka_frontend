@@ -44,7 +44,7 @@ export const MainAside: FC<IMainAside> = ({ type, title, items }) => (
               {
                 type === 'blog' ?
                   <BlogCard
-                    image={item.image ? item.image : '/images/main/screen.jpg'}
+                    image="/images/main/puddleInMoscow.jpg"
                     author={item.author_url_title}
                     heading={item.title}
                     description={item.description}
