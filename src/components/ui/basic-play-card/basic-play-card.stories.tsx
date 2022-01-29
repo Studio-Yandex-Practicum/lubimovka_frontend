@@ -70,3 +70,21 @@ PlayCardWithVisibleButtons.args = {
   },
   buttonVisibility: true,
 };
+
+export const PlayCardWithoutViewButton = Template.bind({});
+PlayCardWithoutViewButton.args = {
+  play: {
+    id: 3,
+    title: 'Конкретные разговоры пожилых супругов ни о чём',
+    city: 'Санкт-Петербург',
+    year: 2020,
+    linkView: 'https://lubimovka.ru/',
+    linkDownload: 'https://lubimovka.ru/',
+    authors: [{
+      id: 1,
+      name: 'Екатерина Августеняк',
+    }],
+  },
+  buttonVisibility: false,
+  hidesViewButton: true,
+};
