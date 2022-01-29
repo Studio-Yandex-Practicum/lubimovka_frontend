@@ -88,21 +88,34 @@ const Contacts: NextPage = () => {
   const getFieldError = <K extends keyof ContactFormFields>(field: K, value: ContactFormFields[K]) => {
     switch (field) {
     case 'name':
+      if (!value.length) {
+        return 'Это поле не может быть пустым';
+      }
       if (value.length < 2) {
-        return 'Имя должно содержать минимум 2 символа';
+        return 'Имя должно состоять более чем из 2 символов';
+      }
+      if (value.length > 50) {
+        return 'Имя должно состоять менее чем из 50 символов';
       }
       break;
     case 'email':
       if (!value.length) {
-        return 'Поле E-mail обязательно для заполнения';
+        return 'Это поле не может быть пустым';
       }
+
       if (!validEmailRegexp.test(value)) {
-        return 'Неверный формат адреса электронной почты';
+        return 'Введите правильный адрес электронной почты';
       }
       break;
     case 'message':
       if (!value.length) {
-        return 'Поле обязательно для заполнения';
+        return 'Это поле не может быть пустым';
+      }
+      if (value.length < 2) {
+        return 'Вопрос должен состоять более чем из 2 символов';
+      }
+      if (value.length > 500) {
+        return 'Вопрос должен состоять менее чем из 500 символов';
       }
       break;
     default:
