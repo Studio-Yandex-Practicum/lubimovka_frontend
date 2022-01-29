@@ -93,7 +93,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
           }
 
           <div className={cx('authorLinks')}>
-            {pinnedLinks.length > 0  && otherLinks
+            {pinnedLinks.length > 0  && pinnedLinks
               .sort((link1,link2) => link1.order_number - link2.order_number)
               .map((item, idx) =>
                 <div className={cx('linkHeading')} key={idx}>
@@ -130,16 +130,18 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
             <h2 className={cx('overviewSocialLinkHeading')}>Социальные сети</h2>
             <div className={cx('overviewSocialLinkBlock')}>
               {socialNetworks.map((item, idx) =>
-                <InfoLink
-                  key={idx}
-                  href={item.link}
-                  label={item.name}
-                  isOutsideLink={true}
-                  icon="arrow-right"
-                  iconPlace="left"
-                  size="s"
-                  border="borderBottomLeft"
-                />
+                <div className={cx('overviewSocialLink')} key={idx}>
+                  <InfoLink
+                    key={idx}
+                    href={item.link}
+                    label={item.name}
+                    isOutsideLink={true}
+                    icon="arrow-right"
+                    iconPlace="left"
+                    size="s"
+                    border="borderBottomLeft"
+                  />
+                </div>
               )}
             </div>
           </div>

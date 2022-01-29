@@ -172,6 +172,7 @@
 }
 
 .descriptionWrapper {
+  min-width: 90%;
   padding: 0 calc(var(--scale) * 25);
   grid-column: 2/3;
 
@@ -252,9 +253,12 @@
 }
 
 .overviewSocialLinkBlock {
-  display: grid;
-  gap: calc(var(--scale) * 8);
-  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+}
+
+.overviewSocialLink {
+  display: inline-block;
+  margin: 0 calc(var(--scale) * 8) calc(var(--scale) * 8) 0;
 }
 
 .overviewSocialLinkHeading {

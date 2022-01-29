@@ -57,12 +57,12 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): 
   const notPinnedLinks = otherLinks.filter((item) => !item.is_pinned);
 
   return (
-    <AppLayout headerTheme="brand">
+    <AppLayout>
       <div className={cx('author')}>
         <AuthorOverview props={props}/>
         {availablePlays && <AuthorPlays plays={plays}/>}
         {availableAnotherPlays && <AnotherPlays links={anotherPlays}/>}
-        {notPinnedLinks.length > 0 && <AuthorInformation links={otherLinks}/>}
+        {notPinnedLinks.length > 0 && <AuthorInformation links={notPinnedLinks}/>}
         <AuthorRequest/>
       </div>
     </AppLayout>
