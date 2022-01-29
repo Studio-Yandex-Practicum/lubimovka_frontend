@@ -47,6 +47,8 @@ type ParticipationFormStateFields<T> = {
 
 type ParticipationFormState = ParticipationFormStateFields<ParticipationFormFields>;
 
+const CURRENT_YEAR = new Date().getFullYear().toString();
+
 const initialParticipationFormState: ParticipationFormState = {
   firstName: { value: '', wasChanged: false },
   lastName: { value: '', wasChanged: false },
@@ -103,46 +105,85 @@ const Participation: NextPage = () => {
   const getFieldError = <K extends keyof ParticipationFormFields>(field: K, value: ParticipationFormFields[K]) => {
     switch (field) {
     case 'firstName':
+      if (!(value as ParticipationFormFields['firstName']).length) {
+        return 'Это поле не может быть пустым';
+      }
       if ((value as ParticipationFormFields['firstName']).length < 2) {
-        return 'Имя должно содержать минимум 2 символа';
+        return 'Имя должно состоять более чем из 2 символов';
+      }
+      if ((value as ParticipationFormFields['firstName']).length > 50) {
+        return 'Имя должно состоять менее чем из 50 символов';
       }
       break;
     case 'lastName':
+      if (!(value as ParticipationFormFields['lastName']).length) {
+        return 'Это поле не может быть пустым';
+      }
       if ((value as ParticipationFormFields['lastName']).length < 2) {
         return 'Фамилия должна содержать минимум 2 символа';
       }
+      if ((value as ParticipationFormFields['lastName']).length > 50) {
+        return 'Фамилия должна состоять менее чем из 50 символов';
+      }
       break;
     case 'birthYear':
+      if (!(value as ParticipationFormFields['birthYear']).length) {
+        return 'Это поле не может быть пустым';
+      }
+
       if (!validYearRegexp.test((value as ParticipationFormFields['birthYear']))) {
-        return 'Неверный год рождения';
+        return 'Убедитесь, что это значение больше либо равно 1900';
+      }
+      if ((value as ParticipationFormFields['birthYear']) > CURRENT_YEAR) {
+        return `Убедитесь, что это значение больше либо равно ${CURRENT_YEAR}`;
       }
       break;
     case 'city':
+      if (!(value as ParticipationFormFields['city']).length) {
+        return 'Это поле не может быть пустым';
+      }
       if ((value as ParticipationFormFields['city']).length < 2) {
         return 'Город должен содержать минимум 2 символа';
       }
+      if ((value as ParticipationFormFields['city']).length > 50) {
+        return 'Город должен состоять менее чем из 50 символов';
+      }
       break;
     case 'phoneNumber':
+      if (!(value as ParticipationFormFields['phoneNumber']).length) {
+        return 'Это поле не может быть пустым';
+      }
       if (!validPhoneNumberRegexp.test((value as ParticipationFormFields['phoneNumber']))) {
         return 'Некорректный номер телефона';
       }
       break;
     case 'email':
       if (!(value as ParticipationFormFields['email']).length) {
-        return 'Поле E-mail обязательно для заполнения';
+        return 'Это поле не может быть пустым';
       }
       if (!validEmailRegexp.test((value as ParticipationFormFields['email']))) {
-        return 'Неверный формат адреса электронной почты';
+        return 'Введите правильный адрес электронной почты';
       }
       break;
     case 'title':
       if (!(value as ParticipationFormFields['title']).length) {
-        return 'Название обязательно для заполнения';
+        return 'Это поле не может быть пустым';
+      }
+      if ((value as ParticipationFormFields['title']).length > 200) {
+        return 'Название пьесы должно состоять менее чем из 200 символов';
       }
       break;
     case 'year':
+      if (!(value as ParticipationFormFields['year']).length) {
+        return 'Это поле не может быть пустым';
+      }
+
       if (!validYearRegexp.test((value as ParticipationFormFields['year']))) {
-        return 'Неверный год';
+        return 'Убедитесь, что это значение больше либо равно 1900';
+      }
+
+      if ((value as ParticipationFormFields['year']) > CURRENT_YEAR) {
+        return `Убедитесь, что это значение больше либо равно ${CURRENT_YEAR}`;
       }
       break;
     case 'file':
