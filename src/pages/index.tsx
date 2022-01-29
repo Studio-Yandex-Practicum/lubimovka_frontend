@@ -1,8 +1,10 @@
-import { NextPage } from 'next';
+import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
+import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import cn from 'classnames/bind';
-import Image from 'next/image';
 
+import { Main, Partner } from 'api-typings';
+import { fetcher } from 'shared/fetcher';
 import { MainTitle } from 'components/main-page/title';
 import { MainEvents } from 'components/main-page/events';
 import { MainAside } from 'components/main-page/aside';
@@ -10,63 +12,132 @@ import { MainBanners } from 'components/main-page/banners';
 import { MainPlatforms } from 'components/main-page/platforms';
 import { MainShortList } from 'components/main-page/shortList';
 import { MainArchive } from 'components/main-page/archive';
-import { MainPartners } from 'components/main-page/partners';
-import { FirstScreen } from 'components/main-page/first-screen';
+import { MainFirstScreen } from 'components/main-page/first-screen';
+import { Partners } from 'components/partners';
 import { AppLayout } from 'components/app-layout';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
-import * as breakpoints from 'shared/breakpoints.js';
+import { main } from 'mocks/data/main';
 
-import data from 'components/main-page/assets/mock-data.json';
-import mainEventsData from 'components/main-page/assets/main-events.json';
-import mainShortListData from 'components/main-page/assets/main-short-list-data.json';
-import mainArchiveData from 'components/main-page/assets/main-archive-data.json';
-import mainPlatformsData from 'components/main-page/assets/main-platforms-data.json';
 import styles from './index.module.css';
 
 const cx = cn.bind(styles);
 
-const MainPage: NextPage = () => {
-  const { title, events, aside, banners, platforms, partners, archive, shortList, metaTitle } = data;
-  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { first_screen, afisha, blog, news, banners, places, video_archive, short_list } = data;
+
+  const [displayFirstScreen, setDisplayFirstScreen] = useState(false);
+  const [delay, setDelay] = useState(false);
+
+  const hideFirstScreen = useCallback((delay: number) => {
+    setTimeout(() => {
+      setDelay(false);
+      setDisplayFirstScreen(false);
+    }, delay);
+  }, [displayFirstScreen]);
+
+  const handlerScroll = useCallback(() => {
+    setDelay(true);
+    hideFirstScreen(1000);
+  }, [delay]);
+
+  useEffect(() => {
+    displayFirstScreen && window.addEventListener('scroll', handlerScroll);
+    if (displayFirstScreen === false) {
+      window.removeEventListener('scroll', handlerScroll);
+    }
+    return () => {
+      window.removeEventListener('scroll', handlerScroll);
+    };
+  }), [];
+
+  useEffect(() => {
+    first_screen && notEmptyKey(first_screen) && setDisplayFirstScreen(true);
+    // Отключаю скролл, при перезагрузке страницы
+    if (window.pageYOffset !== 0) {
+      window.removeEventListener('scroll', handlerScroll);
+      setDisplayFirstScreen(false);
+    }
+  }, []);
+
+  function notEmpty<T>(items: T[]) {
+    return items && items.length !== 0;
+  }
+
+  function notEmptyKey<T>(items: T) {
+    return Object.keys(items).length !== 0;
+  }
+
   return (
-    <>
-      <AppLayout hiddenPartners screenImg={true && <div className={cx('wrapper')}>
-        <Image
-          alt="screen"
-          src={isMobile ? '/images/main/screen-mobile.jpg' : '/images/main/screen.jpg'}
-          layout="fill"
-          objectFit="fill"
-        />
-      </div>}>
+    <div className={cx({ 'marginTop': delay })}>
+      <AppLayout 
+        hiddenPartners 
+        expandedHeader={displayFirstScreen}
+        screenImg={first_screen && notEmptyKey(first_screen) &&
+        displayFirstScreen && <div className={cx('background')} style={{  backgroundImage: `url(${first_screen.image})` }}/>}
+      >
         <>
           <Head>
-            <title>{metaTitle}</title>
+            <title>Главная. Любимовка</title>
           </Head>
           <main className={cx('main')}>
-            <FirstScreen/>
-            {aside && <MainAside/>}
-            {title && (
+            {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
+            {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
+            {afisha && notEmptyKey(afisha) &&
+            <div className={cx({ 'wrapper': news || blog })}>
               <MainTitle
-                title={title.title}
-                view={title.view}
-                buttonLink={title.buttonLink}
-                buttonText={title.buttonText}
-                text={title.text}
+                title={afisha.title}
+                description={afisha.description}
               />
-            )}
-            {events && <MainEvents data={mainEventsData}/>}
-            {banners && <MainBanners/>}
-            {platforms && <MainPlatforms {...mainPlatformsData}/>}
-            {shortList && <MainShortList data={mainShortListData}/>}
-            {archive && mainArchiveData.map((el) => (
-              <MainArchive key={el.id} data={el}/>
-            ))}
-            {partners && <MainPartners/>}
+            </div>}
+            {afisha && notEmpty(afisha.items) && <MainEvents {...afisha}/>}
+            {banners && notEmpty(banners.items) && <MainBanners {...banners}/>}
+            {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
+            {places && notEmpty(places.items) && <MainPlatforms {...places}/>}
+            {video_archive && <MainArchive {...video_archive}/>}
+            {partners && notEmptyKey(partners) && <Partners {...partners}/>}
           </main>
         </>
       </AppLayout>
-    </>
+    </div>
   );
+};
+
+const fetchMain = async () => {
+  try {
+    return await fetcher<Main>('/main/');
+  } catch (error) {
+    return;
+  }
+};
+
+const fetchPartners = async () => {
+  try {
+    const festival = await fetcher<Partner>('/info/partners/?type=festival');
+    const info = await fetcher<Partner>('/info/partners/?type=info');
+    return {
+      festival,
+      info
+    };
+  } catch (error) {
+    return;
+  }
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await fetchMain();
+  const partners = await fetchPartners();
+
+  if (!data || !partners) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      data,
+      partners,
+    },
+  };
 };
 
 export default MainPage;

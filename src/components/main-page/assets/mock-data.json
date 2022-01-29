@@ -42,5 +42,26 @@
   "platforms": true,
   "archive": true,
   "shortList": true,
-  "partners": true
+  "partners": {
+    "festival": [
+      {
+        "id": 2,
+        "image": "https://lubimovka.kiryanov.ru/media/images/info/partnerslogo/%D0%98%D0%9F_%D0%9B%D0%BE%D0%B3%D0%B8%D0%BD%D0%BE%D0%B2_%D0%93%D1%83%D1%81%D0%B5%D0%B2.jpg",
+        "in_footer_partner": false,
+        "name": "ИП «Логинов Гусев»",
+        "type": "festival",
+        "url": "http://echpi.net/"
+      }
+    ],
+    "info": [
+      {
+        "id": 2,
+        "image": "https://lubimovka.kiryanov.ru/media/images/info/partnerslogo/%D0%98%D0%9F_%D0%9B%D0%BE%D0%B3%D0%B8%D0%BD%D0%BE%D0%B2_%D0%93%D1%83%D1%81%D0%B5%D0%B2.jpg",
+        "in_footer_partner": false,
+        "name": "ИП «Логинов Гусев»",
+        "type": "festival",
+        "url": "http://echpi.net/"
+      }
+    ]
+  }
 }

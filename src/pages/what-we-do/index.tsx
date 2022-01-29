@@ -7,7 +7,6 @@ import { WhatWeDoDesc } from 'components/what-we-do-page/desc';
 import { WhatWeDoAuthors } from 'components/what-we-do-page/authors';
 import { WhatWeDoSelection } from 'components/what-we-do-page/selection';
 import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
-import { WhatWeDoPartners } from 'components/what-we-do-page/partners';
 
 import headerData from 'components/what-we-do-page/assets/header-data.json';
 import descData from 'components/what-we-do-page/assets/desc-data.json';
@@ -36,7 +35,6 @@ const Page: NextPage = ():JSX.Element => (
       {SelectionContacts.map((data) => (
         <WhatWeDoContacts key={data.id} data={data}/>
       ))}
-      <WhatWeDoPartners/>
     </main>
   </AppLayout>
 );

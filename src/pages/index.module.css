@@ -1,14 +1,20 @@
-.wrapper {
-  position: relative;
-  width: 100%;
-  height: scale(294px);
+.marginTop {
+  margin-top: calc(-100vh + scale(61px));
+  transition: all .8s;
 
   @media (max-width: $tablet-portrait) {
-    order: 1;
+    margin-top: calc(-100vh + scale(91px));
   }
+}
+
+.background {
+  @mixin background;
+
+  height: calc(45vh - scale(123px));
 
   @media (max-width: $tablet-portrait) {
-    height: scale(367px);
+    height: calc(55vh - scale(126px));
+    order: 1;
   }
 }
 
@@ -27,5 +33,14 @@
       "shortList"
       "archive"
       "partners";
+  }
+}
+
+.wrapper {
+  margin-top: -100vh;
+  grid-area: title;
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: 0;
   }
 }

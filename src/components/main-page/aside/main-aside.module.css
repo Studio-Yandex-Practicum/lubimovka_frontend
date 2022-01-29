@@ -9,6 +9,7 @@
   width: scale(270px);
   height: 100vh;
   margin-left: auto;
+  background-color: var(--light-green);
   grid-area: aside;
   overflow-y: scroll;
   transition: all .3s ease-in;
@@ -35,31 +36,19 @@
   top: 0;
   left: 0;
   width: calc(var(--scale) * 468);
+  height: 100%;
   box-sizing: border-box;
-  padding: scale(60px 56px 60px 56px);
-  background-color: var(--light-green);
+  padding: scale(60px 56px 0 56px);
 
   @media (max-width: $tablet-portrait) {
     position: initial;
     z-index: 1;
     width: 100%;
-    height: scale(934px);
     padding: scale(36px 0 102px 24px);
-    margin-bottom: scale(50px);
     grid-area: aside;
     overflow-y: hidden;
     transform: translate(0, 0);
   }
-}
-
-.header {
-  position: fixed;
-}
-
-.footer {
-  position: absolute;
-  top: initial;
-  bottom: 0;
 }
 
 .heading {
@@ -71,7 +60,7 @@
 
   @media (max-width: $tablet-portrait) {
     height: scale(124px);
-    margin-bottom: scale(66px);
+    margin-bottom: scale(56px);
   }
 }
 
@@ -96,21 +85,24 @@
     width: 100%;
     margin-right: scale(24px);
     column-gap: 32px;
-    grid-template-columns: repeat(3, minmax(scale(304px), max-content));
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fill, scale(304px));
     overflow-x: scroll;
   }
 }
 
 .item {
   display: flex;
-  margin-bottom: scale(36px);
+  margin-bottom: scale(72px);
 
   &:last-of-type {
+    padding-bottom: scale(60px);
     margin-bottom: 0;
   }
 
   @media (max-width: $tablet-portrait) {
     width: scale(304px);
+    margin-bottom: 0;
 
     &:last-of-type {
       padding-right: scale(24px);
@@ -130,7 +122,8 @@
   }
 }
 
-.button > svg {
+.icon > svg {
   width: scale(25px);
   height: scale(25px);
+  margin-right: scale(9px);
 }

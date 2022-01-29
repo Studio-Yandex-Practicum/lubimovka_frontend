@@ -1,44 +1,33 @@
 import { FC } from 'react';
+import classNames from 'classnames/bind';
 
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
+import { IMainAfisha } from './main-events.props';
+import { main } from 'mocks/data/main';
 
 import styles from './main-events.module.css';
 
-interface IItem {
-  id: number;
-  type: string;
-  date: string;
-  title: string;
-  playwrightArray: string [];
-  directorArray: string [];
-  eventDescription?: string;
-  buttonLink: string;
-  coverResourceUrl?: string;
-  projectCopy: string;
-  paid?: boolean;
-}
-interface IMainEventsProps {
-  data: IItem[]
-}
+const cx = classNames.bind(styles);
 
-export const MainEvents: FC<IMainEventsProps> = ({ data }) => {
-  return (
+export const MainEvents: FC<IMainAfisha> = () => {
+  const mocks = main.afisha?.items;
+
+  return ( 
     <section className={styles.events}>
       <ul className={styles.content}>
         {
-          data.map(item => (
-            <li key={item.id} className={styles.list}>
+          mocks?.map(item => (
+            <li key={item.id} className={cx('list')}>
               <AnnouncedPlayCard
-                isPerformance={item.type === 'PERFORMANCE'}
                 id={item.id}
-                date={item.date}
-                title={item.title}
-                dramatists={item.playwrightArray}
-                directors={item.directorArray}
-                description={item.eventDescription && item.eventDescription}
-                projectText={item.projectCopy}
-                buttonLink={item.buttonLink}
-                imageUrl={item.coverResourceUrl && item.coverResourceUrl}
+                date={item.date_time}
+                title={item.event_body.name}
+                dramatists ={item.event_body.team.Драматург}
+                directors={item.event_body.team.Режиссёр}
+                description={item.event_body.description}
+                buttonLink={item.url}
+                imageUrl={item.event_body.image}
+                projectText="читка проекта Любимовка.Ещё"
                 paid={item.paid}
               />
             </li>
