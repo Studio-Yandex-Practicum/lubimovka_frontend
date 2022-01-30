@@ -23,6 +23,8 @@ import { PersonCardList } from 'components/person-card-list';
 import { fetcher } from 'shared/fetcher';
 import { Project as ProjectModel } from 'api-typings';
 
+const convertRolesToString = (roles: PersonRole[]) => roles.map(role => role.name).join(', ');
+
 const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const {
     title,
@@ -136,12 +138,13 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
               <ProjectLayout.Storey type="persons">
                 <Section title={content_item.title}>
                   <PersonCardList>
-                    {content_item.items.map(({ id, first_name, last_name, image }) => (
+                    {content_item.items.map(({ id, first_name, last_name, image, roles }) => (
                       <PersonCard
                         key={id}
                         name={`${first_name} ${last_name}`}
                         image={image}
-                        participant={false}
+                        participant={true}
+                        about={convertRolesToString(roles)}
                       />
                     ))}
                   </PersonCardList>
