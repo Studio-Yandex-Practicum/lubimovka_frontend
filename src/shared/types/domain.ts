@@ -16,7 +16,9 @@ export type Partner = {
   url?: Url,
 }
 
+export type Persons = string[];
+
 export type Crewman = {
   name: string,
-  role: 'Actor' | 'Adapter' | 'Dramatist' | 'Director' |'Interpreter',
+  persons: Persons,
 }

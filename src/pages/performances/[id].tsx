@@ -25,7 +25,7 @@ import { Performance as PerformanceModel } from 'api-typings';
 const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const {
     play,
-    persons,
+    team,
     images_in_block,
     name,
     main_image,
@@ -103,7 +103,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             duration="1 ч. 15 мин."
             ageLimit={age_limit}
           />
-          <PerformanceCrew crew={persons}/>
+          <PerformanceCrew crew={team}/>
         </PerformanceLayout.Aside>
         <PerformanceLayout.Gallery>
           <PhotoGallery>
