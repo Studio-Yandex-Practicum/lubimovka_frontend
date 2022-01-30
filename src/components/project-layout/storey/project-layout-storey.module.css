@@ -22,6 +22,10 @@
 
 .videos {
   margin-top: scale(98px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: 0;
+  }
 }
 
 .photos {
@@ -31,14 +35,26 @@
 
 .plays {
   margin-top: scale(94px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0;
+  }
 }
 
 .performances {
   margin-top: scale(124px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0;
+  }
 }
 
 .persons {
   margin-top: scale(124px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0;
+  }
 }
 
 .text {
