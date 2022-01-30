@@ -17,6 +17,7 @@ export const main: IMain = {
     title: 'Открыт прием пьес на фестиваль 2021 года',
     url: 'https://www.rabstol.net/uploads/gallery/main/108/rabstol_net_winter_30.jpg',
     url_title: 'Заголовок для ссылки для первой страницы',
+    image: '/images/main/puddleInMoscow.jpg'
   },
   blog: {
     title: 'string',

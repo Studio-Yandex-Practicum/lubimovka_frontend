@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import cn from 'classnames';
 
 import { Menu } from 'components/ui/menu';
@@ -22,8 +21,6 @@ interface IAuthorsPageProps {
 const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
   const { width } = useWindowDimensions();
   const [ratio, setRatio] = useState<number>(1);
-
-  const router = useRouter();
 
   useEffect(() => {
     setRatio(width * 0.27);

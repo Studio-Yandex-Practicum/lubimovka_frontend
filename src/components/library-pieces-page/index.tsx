@@ -1,6 +1,5 @@
 import { FC, useState, useEffect, Dispatch, useRef, RefObject } from 'react';
 import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
-import { useRouter } from 'next/router';
 import cn from 'classnames';
 
 import LibraryForm from 'components/library-form/library-form';
@@ -30,8 +29,6 @@ interface ILibraryPageProps {
 const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programmes, filterDispatcher }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const droplistRef = useRef(null) as RefObject<IDroplistPublic>;
-
-  const router = useRouter();
 
   function handleFiltersClick():void {
     setIsModalOpen((prev) => !prev);
