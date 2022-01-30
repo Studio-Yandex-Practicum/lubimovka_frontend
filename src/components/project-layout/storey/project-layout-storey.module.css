@@ -25,6 +25,7 @@
 }
 
 .photos {
+  padding: 0;
   margin-top: scale(144px);
 }
 
