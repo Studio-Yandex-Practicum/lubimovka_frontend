@@ -10,10 +10,9 @@ const cx = classNames.bind(styles);
 export interface IMainTitle {
   title: string;
   description: string;
-  button_label: string;
 }
 
-export const MainTitle: FC<IMainTitle> = ({ title, button_label, description }) => {
+export const MainTitle: FC<IMainTitle> = ({ title, description }) => {
   const moreTwo = title.split(' ').length > 2;
   return (
     <section className={cx('section')}>
@@ -23,7 +22,7 @@ export const MainTitle: FC<IMainTitle> = ({ title, button_label, description }) 
         <h1 className={cx('title')}>{title}</h1>
         <div className={cx('buttonContainer')}>
           <Button
-            label={button_label}
+            label="ПОЛНАЯ АФИША"
             isLink
             href="/afishe"
             size="s"

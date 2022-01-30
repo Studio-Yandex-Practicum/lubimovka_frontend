@@ -7,6 +7,6 @@ export type PerformanceMediaReview = {
     media_name: string;
     text: string;
     image: string;
-    url?: string;
-    pub_date?: string;
+    url?: string | null;
+    pub_date?: string | null;
 }

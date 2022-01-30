@@ -19,6 +19,6 @@ export type Festival = {
     video_link: string;
     blog_entries: string;
     press_release_image: string;
-    readonly volunteers: Array<Nested>;
+    readonly volunteers: string;
     readonly images: Array<Nested>;
 }

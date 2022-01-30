@@ -125,4 +125,5 @@
 .icon > svg {
   width: scale(25px);
   height: scale(25px);
+  margin-right: scale(9px);
 }
