@@ -38,8 +38,13 @@ type Play = {
 type Letter = string;
 
 interface IAccElem {
-  title: Letter
-  data: string[]
+  title: Letter,
+  data: Author[],
+}
+
+interface Author {
+  id: number,
+  name: string,
 }
 
 interface IFilteredAuthors {
@@ -85,9 +90,9 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
       data.authors.reduce((acc:IFilteredAuthors, author:AuthorFromData) => {
         const firstLetter: Letter = author.first_letter;
         if (!acc[firstLetter]) {
-          acc[firstLetter] = { title: firstLetter, data: [author.name] };
+          acc[firstLetter] = { title: firstLetter, data: [{ name: author.name, id: author.id }] };
         } else {
-          acc[firstLetter].data.push(author.name);
+          acc[firstLetter].data.push({ name: author.name, id: author.id });
         }
         return acc;
       }, {})
@@ -101,14 +106,22 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
       <AppLayout>
         <main className ={style.page}>
           <div className={style.buttonWrapper}>
-            <Button href={'/library'} isLink={true} label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
+            <Button
+              href="/library"
+              isLink={true}
+              label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
+              width="max-content"
+              icon="arrow-left"
+              iconPlace="right"
+              border="bottomRight"
+            />
           </div>
           <div className={style.topWrapper}>
             <p className={style.info}>
               По запросу «{searchQuery}» мы нашли
             </p>
             <div className={style.formWrapper}>
-              <LibraryForm></LibraryForm>
+              <LibraryForm/>
             </div>
           </div>
           <section className={style.result}>
