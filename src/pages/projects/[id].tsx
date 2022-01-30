@@ -71,7 +71,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
               <ProjectLayout.Storey type="plays">
                 <Section title={content_item.title}>
                   <BasicPlayCardList>
-                    {content_item.items.map(({ id, name, city, year, url_download, url_reading }) => (
+                    {content_item.items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
                       <BasicPlayCard
                         key={id}
                         play={{
@@ -80,11 +80,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                           year,
                           linkView: url_reading,
                           linkDownload: url_download,
-                          authors:[{
-                            // TODO: добавить реальные данные в ответ бекенда
-                            id: 0,
-                            name: 'Константин Константинопольский',
-                          }]
+                          authors: authors,
                         }}
                       />
                     ))}
