@@ -1,7 +1,7 @@
 import { FC, Fragment } from 'react';
 import classNames from 'classnames/bind';
 
-import { Crewman } from 'shared/types';
+import { Crewman, Persons } from 'shared/types';
 
 import styles from './performance-crew.module.css';
 
@@ -11,36 +11,23 @@ export interface IPerformanceCrewProps {
   crew: Crewman[],
 }
 
-const getRoleTitle = (roleId: string) => ({
-  adapter: 'Адаптация текста',
-  dramatist: 'Драматург',
-  director: 'Режиссёр',
-  interpreter: 'Перевод',
-}[roleId.toLocaleLowerCase()]);
+const convertNamesToString = (persons: Persons) => persons.map(person => person).join(', ');
 
 export const PerformanceCrew: FC<IPerformanceCrewProps> = (props) => {
   const { crew } = props;
 
-  const [actors, restCrew] = crew.reduce<Crewman[][]>(([a, r], crewman) => crewman.role === 'Actor' ? [[...a, crewman], r] : [a, [...r, crewman]], [[], []]);
-
   return (
     <dl className={cx('list')}>
-      {restCrew.map(({ name, role }) => (
+      {crew.map(({ persons, name }) => (
         <Fragment key="role">
           <dt className={cx('title')}>
-            {getRoleTitle(role)}
+            {name}
           </dt>
           <dd className={cx('description')}>
-            {name}
+            {convertNamesToString(persons)}
           </dd>
         </Fragment>
       ))}
-      <dt className={cx('title')}>
-        Актёры
-      </dt>
-      <dd className={cx('description')}>
-        {actors.map(({ name }) => name).join(', ')}
-      </dd>
     </dl>
   );
 };
