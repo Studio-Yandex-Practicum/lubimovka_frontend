@@ -40,26 +40,6 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
     }
   });
 
-  let authors: string[] = [];
-  let illustrators: string[] = [];
-  let photographers: string[] = [];
-
-  if ('team' in data) {
-    data.team.forEach(teamItem => {
-      switch (teamItem.slug) {
-      case 'illustrations':
-        illustrators = teamItem.persons;
-        break;
-      case 'text':
-        authors = teamItem.persons;
-        break;
-      case 'photo':
-        photographers = teamItem.persons;
-        break;
-      }
-    });
-  }
-
   return (
     <>
       <Head>
@@ -139,11 +119,10 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
               )}
             </PersonCardList>
           </Section>}
+
         <ArticleShare
           isBlog={'other_blogs' in data}
-          authors={authors}
-          illustrators={illustrators}
-          photographers={photographers}
+          team={'team' in data ? data.team : undefined}
         />
       </main>
       <ArticleOther

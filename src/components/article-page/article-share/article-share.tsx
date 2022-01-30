@@ -2,6 +2,7 @@ import React from 'react';
 import cn from 'classnames/bind';
 
 import { ShareLink } from '../../ui/share-link';
+import { Team } from '../../../shared/types';
 
 import styles from './article-share.module.css';
 
@@ -9,43 +10,35 @@ const cx = cn.bind(styles);
 
 interface IArticleShare {
   isBlog: boolean;
-  authors?: string[];
-  photographers?: string[];
-  illustrators?: string[];
+  team?: Team[];
 }
-
-const renderCreators = (label: string, creators: string[]) => {
-  if (creators.length == 0) {
-    return null;
-  }
-  return(
-    <dl>
-      <dt className={cx('label')}>{label}</dt>
-      {
-        creators.map(creator => {
-          return <dd key={creator} className={cx('creator')}>{creator}</dd>;
-        })
-      }
-    </dl>
-  );
-};
 
 const ArticleShare: React.FC<IArticleShare> = (props) => {
   const {
     isBlog,
-    authors = [],
-    photographers = [],
-    illustrators = [],
+    team,
   } = props;
 
   return (
     <section className={cx('container', { newsContainer: !isBlog })}>
-      {(authors.length + photographers.length + illustrators.length > 0) &&
+      {team &&
         <div className={cx('creators')}>
-          {renderCreators('Текст', authors)}
-          {renderCreators('Фото', photographers)}
-          {renderCreators('Иллюстрации', illustrators)}
+          {
+            team.map((elem: Team, idx: number) => {
+              return(
+                <dl key={idx}>
+                  <dt className={cx('label')}>{elem.name}</dt>
+                  {
+                    elem.persons.map((person: string) => {
+                      return <dd key={person} className={cx('creator')}>{person}</dd>;
+                    })
+                  }
+                </dl>
+              );
+            })
+          }
         </div>}
+
       <div className={cx('share', { blogShare: isBlog, newsShare: !isBlog })}>
         <ShareLink className={cx('links')}/>
         <h4 className={cx('shareTitle')}>
