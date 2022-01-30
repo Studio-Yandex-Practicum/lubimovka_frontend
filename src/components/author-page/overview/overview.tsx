@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useMemo } from 'react';
 import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
@@ -42,7 +42,9 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
 
   const presenceOfButton = props.biography;
 
-  const pinnedLinks = otherLinks.filter((item) => item.is_pinned);
+  const pinnedLinks = useMemo(() => otherLinks.filter((item) => {
+    return item.is_pinned;
+  }), [otherLinks]);
 
   return (
     <section className={cx('overview')}>

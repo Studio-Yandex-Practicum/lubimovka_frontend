@@ -1,4 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { useMemo } from 'react';
+
 import cn from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
@@ -54,7 +56,9 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): 
 
   const availableAnotherPlays = anotherPlays.length !== 0;
 
-  const notPinnedLinks = otherLinks.filter((item) => !item.is_pinned);
+  const notPinnedLinks = useMemo(() => otherLinks.filter((item) => {
+    return !item.is_pinned;
+  }), [otherLinks]);
 
   return (
     <AppLayout>
