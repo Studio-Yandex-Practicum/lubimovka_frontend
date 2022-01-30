@@ -382,38 +382,23 @@ const blogArticle: BlogData = {
       name: 'Иллюстрации',
       slug: 'illustrations',
       persons: [
-        {
-          id: 14,
-          full_name: 'Назар Алексеева'
-        },
-        {
-          id: 29,
-          full_name: 'Гремислав Алексеев'
-        }
+        'Назар Алексеева',
+        'Гремислав Алексеев'
       ]
     },
     {
       name: 'Текст',
       slug: 'text',
       persons: [
-        {
-          id: 54,
-          full_name: 'Олег Абрамова'
-        },
-        {
-          id: 67,
-          full_name: 'Будимир Александров'
-        }
+        'Олег Абрамова',
+        'Будимир Александров'
       ]
     },
     {
       name: 'Фото',
       slug: 'photo',
       persons: [
-        {
-          id: 35,
-          full_name: 'Галактион Гусев'
-        }
+        'Галактион Гусев'
       ]
     }
   ],
