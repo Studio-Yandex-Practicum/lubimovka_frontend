@@ -43,8 +43,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
         </PageBreadcrumbs>
         <ProjectHeadline
           title={title}
-          //TODO: добавить поле в ответ бекенда
-          intro=""
+          intro={description}
           image={image}
         />
         <ProjectLayout.Description>
