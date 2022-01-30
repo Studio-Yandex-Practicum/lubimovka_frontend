@@ -86,5 +86,4 @@ PlayCardWithoutViewButton.args = {
     }],
   },
   buttonVisibility: false,
-  hidesViewButton: true,
 };

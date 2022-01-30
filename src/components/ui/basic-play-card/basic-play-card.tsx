@@ -20,7 +20,6 @@ export interface IBasicPlayCardProps {
     authors: Author [];
   };
   buttonVisibility?: boolean;
-  hidesViewButton?: boolean;
 }
 
 type Author = {
@@ -32,7 +31,6 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
   const {
     play,
     buttonVisibility,
-    hidesViewButton,
   } = props;
 
   const authorsHiddenLabel = (
@@ -57,7 +55,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       <div className={cx('container')}>
         <h6 className={cx('title')}>{play.title}</h6>
         <div>
-          {!hidesViewButton &&
+          {play.linkView &&
             <Button
               className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
               width="100%"
