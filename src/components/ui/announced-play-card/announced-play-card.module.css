@@ -1,9 +1,7 @@
 .card {
   display: flex;
-  width: scale(420px);
 
   @media (max-width: $tablet-portrait) {
-    width: scale(414px);
     box-sizing: border-box;
     padding: scale(32px 14px 32px 24px);
     border-top: var(--coal) solid 1px;
