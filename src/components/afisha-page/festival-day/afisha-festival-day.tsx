@@ -48,10 +48,7 @@ export const FestivalDay: FC<IFestivalDayProps> = (props) => {
   const info = useMemo(() => getInfo(date), [date]);
   const isOpened = useMemo(() => getStatus(date), [date]);
 
-  const registration = useMemo(() => cx({
-    opened: isOpened,
-    closed: !isOpened
-  }), [isOpened]);
+  const registration = useMemo(() => cx({opened: isOpened, closed: !isOpened}), [isOpened]);
 
   return (
     <section className={cx('section')}>
@@ -65,7 +62,7 @@ export const FestivalDay: FC<IFestivalDayProps> = (props) => {
           {info}
         </p>
       </div>
-      {plays.map(play => (
+      {plays.map(play =>
         <EventCard
           key={play.id}
           className={cx('event')}
@@ -76,7 +73,8 @@ export const FestivalDay: FC<IFestivalDayProps> = (props) => {
           description={play.description}
           director={play.director}
           playwright={play.playwright}
-          registrationUrl={`${isOpened ? play.registrationUrl : ''}`}/>)
+          registrationUrl={`${isOpened ? play.registrationUrl : ''}`}
+        />
       )}
     </section>
   );
