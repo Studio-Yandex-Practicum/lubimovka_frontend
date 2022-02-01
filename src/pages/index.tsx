@@ -1,4 +1,4 @@
-import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
+import { NextPage, InferGetServerSidePropsType, GetServerSideProps } from 'next';
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import cn from 'classnames/bind';
@@ -21,7 +21,7 @@ import styles from './index.module.css';
 
 const cx = cn.bind(styles);
 
-const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsType <typeof getServerSideProps>) => {
   const { first_screen, afisha, blog, news, banners, places, video_archive, short_list } = data;
 
   const [displayFirstScreen, setDisplayFirstScreen] = useState(false);
@@ -122,7 +122,7 @@ const fetchPartners = async () => {
   }
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps  = async () => {
   const data = await fetchMain();
   const partners = await fetchPartners();
 
