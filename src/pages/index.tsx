@@ -32,12 +32,12 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
       setDelay(false);
       setDisplayFirstScreen(false);
     }, delay);
-  }, [displayFirstScreen]);
+  }, []);
 
   const handlerScroll = useCallback(() => {
     setDelay(true);
     hideFirstScreen(1000);
-  }, [delay]);
+  }, [hideFirstScreen]);
 
   useEffect(() => {
     displayFirstScreen && window.addEventListener('scroll', handlerScroll);
@@ -56,7 +56,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetStaticPropsType<t
       window.removeEventListener('scroll', handlerScroll);
       setDisplayFirstScreen(false);
     }
-  }, []);
+  }, [first_screen, handlerScroll]);
 
   function notEmpty<T>(items: T[]) {
     return items && items.length !== 0;
