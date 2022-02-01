@@ -1,7 +1,0 @@
-.margin {
-  padding: scale(0 30px);
-
-  @media (max-width: $tablet-portrait) {
-    padding: scale(0 24px);
-  }
-}
