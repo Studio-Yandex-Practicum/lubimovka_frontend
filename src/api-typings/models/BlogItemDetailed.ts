@@ -11,7 +11,7 @@ export type BlogItemDetailed = {
     readonly id: number;
     title: string;
     description: string;
-    image?: string;
+    image: string;
     author_url: string;
     author_url_title: string;
     pub_date?: string;
