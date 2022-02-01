@@ -57,7 +57,11 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): 
   const notPinnedLinks = otherLinks.filter((item) => !item.is_pinned);
 
   return (
-    <AppLayout>
+    <AppLayout
+      navbarProps={{
+        colors: 'brand',
+      }}
+    >
       <div className={cx('author')}>
         <AuthorOverview props={props}/>
         {availablePlays && <AuthorPlays plays={plays}/>}
