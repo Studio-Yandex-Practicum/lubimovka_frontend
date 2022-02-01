@@ -79,9 +79,9 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
 
       <div className={cx('overviewInfo')}>
         <div className={cx('descriptionWrapper')}>
-          <p className={cx('description', isExpand ? 'descriptionExpanded' : '')}>
+          <pre className={cx('description', isExpand ? 'descriptionExpanded' : '')}>
             {biography}
-          </p>
+          </pre>
           {presenceOfButton.length > numberOfCharacters &&
             <Button
               width="100%"

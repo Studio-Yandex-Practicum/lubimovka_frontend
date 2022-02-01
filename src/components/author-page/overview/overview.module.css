@@ -196,6 +196,7 @@
   max-height: 100%;
   margin: 0 0 calc(var(--scale) * 30);
   transition: all 1s linear;
+  white-space: pre-wrap;
 }
 
 .descriptionExpanded {
