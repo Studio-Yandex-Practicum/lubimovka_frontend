@@ -23,12 +23,14 @@
   @mixin headline;
   @mixin headline1;
 
+  max-width: scale(800px);
   margin-bottom: scale(15px);
   color: var(--coal);
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
+    max-width: scale(305px);
     margin-bottom: scale(12px);
   }
 }
@@ -42,11 +44,17 @@
   }
 }
 
-.button {
-  height: 100%;
+.button > svg {
+  min-width: scale(25px);
+  height: scale(25px);
+}
 
-  > svg {
-    width: scale(25px);
-    height: scale(25px);
+.button > span {
+  @mixin limitText;
+
+  -webkit-line-clamp: 1;
+
+  @media (max-width: $tablet-portrait) {
+    -webkit-line-clamp: 2;
   }
 }

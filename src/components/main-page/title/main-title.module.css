@@ -12,14 +12,6 @@
 }
 
 .wrapper {
-  max-width: scale(460px);
-
-  @media (max-width: $tablet-portrait) {
-    max-width: scale(286px);
-  }
-}
-
-.width {
   max-width: scale(640px);
 
   @media (max-width: $tablet-portrait) {

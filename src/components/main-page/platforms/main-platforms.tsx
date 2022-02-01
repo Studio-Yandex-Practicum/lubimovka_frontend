@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import Link from 'next/link';
 import classNames from 'classnames/bind';
 
-import { MainPlaces } from 'api-typings';
+import { MainPlaces, Place } from 'api-typings';
 import { Icon } from 'components/ui/icon';
+import { InfoLink } from 'components/ui/info-link';
 
 import styles from './main-platforms.module.css';
 
@@ -16,7 +16,7 @@ export const MainPlatforms: FC<MainPlaces> = ({ items }) => (
     </h2>
 
     <ul className={cx('list')}>
-      {items.map(card => (
+      {items.map((card: Place) => (
         <li className={cx('item')} key={card.id}>
           <Icon
             className={cx('mapIcon')}
@@ -28,18 +28,15 @@ export const MainPlatforms: FC<MainPlaces> = ({ items }) => (
           <p className={cx('desc')}>
             {card.description}
           </p>
-          <Link href={card.map_link}>
-            <a className={cx('link')}>
-              <p className={cx('text')}>
-                {card.address}
-              </p>
-              <Icon
-                glyph={'arrow-right'}
-                fill={'black'}
-                className={cx('icon')}
-              />
-            </a>
-          </Link>
+          <InfoLink
+            isOutsideLink
+            label={card.address}
+            icon="arrow-right"
+            iconPlace="right"
+            size="m"
+            className={cx('link')}
+            href={card.map_link}
+          />
         </li>
       ))}
     </ul>

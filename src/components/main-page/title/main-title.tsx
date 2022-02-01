@@ -14,6 +14,7 @@ export interface IMainTitle {
 }
 
 export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
+
   return (
     <section className={cx('section')}>
       <div className={cx('wrapper', {

@@ -1,22 +1,28 @@
 import { FC } from 'react';
 import classNames from 'classnames/bind';
 
+import { AfishaEvent, EventPerformance } from 'api-typings';
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
-import { IMainAfisha } from './main-events.props';
 import { format } from 'shared/helpers/format-date';
-import { main } from 'mocks/data/main';
 
 import styles from './main-events.module.css';
 
 const cx = classNames.bind(styles);
-const mocks = main.afisha?.items;
 
-export const MainEvents: FC<IMainAfisha> = () => {
+interface IAfishaEvent extends AfishaEvent {
+  event_body: EventPerformance;
+}
+
+interface IMainAfisha {
+  items: Array<IAfishaEvent>
+}
+
+export const MainEvents: FC<IMainAfisha> = ({ items }) => {
   return (
     <section className={styles.events}>
       <ul className={styles.content}>
         {
-          mocks?.map(item => (
+          items.map(item => (
             <li key={item.id} className={cx('list')}>
               <AnnouncedPlayCard
                 id={item.id}
@@ -27,8 +33,9 @@ export const MainEvents: FC<IMainAfisha> = () => {
                 description={item.event_body.description}
                 buttonLink={item.url}
                 imageUrl={item.event_body.image}
-                project="читка проекта Любимовка.Ещё"
+                project={item.event_body.project_title}
                 paid={item.paid}
+                isPerformance={item.type === 'PERFORMANCE' ? true : false}
               />
             </li>
           ))}
