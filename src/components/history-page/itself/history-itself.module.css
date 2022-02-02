@@ -1,8 +1,8 @@
 .section {
   display: flex;
   flex-direction: column;
-  margin-top: 99px;
-  background-color: var (--white);
+  padding-top: 99px;
+  background: var(--white);
 }
 
 .contentTop {

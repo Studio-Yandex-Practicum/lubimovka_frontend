@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import cn from 'classnames';
 
 import { Menu } from 'components/ui/menu';
 import LibraryForm from 'components/library-form';
@@ -22,8 +22,6 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
   const { width } = useWindowDimensions();
   const [ratio, setRatio] = useState<number>(1);
 
-  const router = useRouter();
-
   useEffect(() => {
     setRatio(width * 0.27);
   }, [width]);
@@ -39,15 +37,15 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
             <Menu type="history">
               <Menu.Item
                 href="/library"
-                current={router.asPath === '/library'}
+                current={false}
               >
-        Пьесы
+                <p className={cn(styles.tabLink)}>Пьесы</p>
               </Menu.Item>
               <Menu.Item
                 href="/library/authors"
-                current={router.asPath === '/library/authors'}
+                current={true}
               >
-        Авторы
+                <p className={cn(styles.tabLink, styles.active)}>Авторы</p>
               </Menu.Item>
             </Menu>
           </div>

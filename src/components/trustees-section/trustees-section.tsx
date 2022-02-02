@@ -28,7 +28,7 @@ const TrusteesSection: FC<TrusteesSectionProps> = ({ text, children }) => {
           <Icon glyph={'asterisk'}/>
           <p className={style.accent}>{accent}
             <InfoLink
-              href={'mailto://job@lubimovka.ru'}
+              href={'mailto:job@lubimovka.ru'}
               isOutsideLink={true}
               label={link}
               size={'xl'}

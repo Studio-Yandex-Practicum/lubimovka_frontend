@@ -1,9 +1,58 @@
-.navbar {
+@value section, primary from 'section/navbar-section.module.css';
+@value logotype from 'logotype/navbar-logotype.module.css';
+
+.common {
   display: flex;
   align-items: flex-start;
+  border-bottom: 1px solid var(--coal);
+
+  @media (max-width: $tablet-portrait) {
+    border: 0;
+  }
+}
+
+.normal {
+  composes: common;
   padding-left: scale(30px);
 
   @media (max-width: $tablet-portrait) {
     padding: scale(32px 24px 24px);
+  }
+}
+
+.expanded {
+  composes: common;
+  padding-left: scale(25px);
+  border: 0;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(24px);
+  }
+
+  .section {
+    &:not(:last-child)::after {
+      bottom: scale(10px);
+      height: 65%;
+    }
+  }
+
+  .primary {
+    padding-right: scale(16px);
+  }
+
+  .logotype {
+    padding-top: scale(19px);
+    margin-right: scale(50px);
+
+    @media (max-width: $tablet-portrait) {
+      padding-top: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+.brand {
+  @media (max-width: $tablet-portrait) {
+    background-color: var(--light-green);
   }
 }

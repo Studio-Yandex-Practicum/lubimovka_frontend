@@ -2,14 +2,14 @@ import { ReactNode, ReactElement, useCallback, useEffect, useState } from 'react
 import { useRouter } from 'next/router';
 
 import Page, {
-  PageHeader,
+  PageNavbar,
   PageFooter,
   PageBurgerButton,
   PageOverlayMenu,
 } from 'components/page';
 import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
-import { Navbar } from 'components/navbar';
+import { Navbar, INavbarProps } from 'components/navbar';
 import { Logotype } from 'components/logotype';
 import { Footer } from 'components/footer';
 import { OverlayNav } from 'components/overlay-nav';
@@ -28,17 +28,17 @@ import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 import * as breakpoints from 'shared/breakpoints.js';
 
 interface IAppLayoutProps {
-  expandedHeader?: boolean,
-  children: ReactNode,
   hiddenPartners?: boolean,
+  navbarProps?: Exclude<INavbarProps, 'children'>
+  children: ReactNode,
   screenImg?: ReactElement,
 }
 
 export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
   const {
-    expandedHeader,
     children,
     hiddenPartners,
+    navbarProps,
     screenImg,
   } = props;
   const { projects, partners } = useAppLayoutData();
@@ -58,14 +58,14 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
 
   return (
     <Page>
-      <PageHeader expanded={expandedHeader}>
+      <PageNavbar>
         {screenImg}
-        <Navbar>
+        <Navbar {...navbarProps}>
           <Navbar.Logotype>
             <Logotype
               href="/"
               title="Фестиваль Любимовка"
-              full={expandedHeader}
+              full={navbarProps?.view === 'expanded'}
             />
           </Navbar.Logotype>
           <Navbar.Actions>
@@ -98,7 +98,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
             </Navbar.Section>
           </Navbar.Actions>
         </Navbar>
-      </PageHeader>
+      </PageNavbar>
       {children}
       <PageFooter>
         <Footer>
