@@ -5,10 +5,10 @@
   background-color: var(--light-green);
 
   @media (max-width: $tablet-portrait) {
-		display: block;
+    display: block;
+    padding: scale(56px 24px 72px 24px);
     padding-bottom: scale(72px);
-		padding: scale(56px 24px 72px 24px);
-		margin: 0;
+    margin: 0;
   }
 }
 
@@ -23,10 +23,10 @@
   @mixin headline;
   @mixin headline1;
 
-	display: block;
+  display: block;
   margin-bottom: scale(16px);
 
-	@media (max-width: $tablet-portrait) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline4;
   }
 }

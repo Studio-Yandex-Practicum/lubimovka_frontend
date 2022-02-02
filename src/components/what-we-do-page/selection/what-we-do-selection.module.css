@@ -72,8 +72,8 @@
 
 .container {
   display: grid;
-  row-gap: scale(24px);
   margin-left: scale(64px);
+  row-gap: scale(24px);
 
   @media (max-width: $tablet-portrait) {
     margin-left: scale(60px);
@@ -91,6 +91,6 @@
   @mixin text;
   @mixin textLarge;
 
-  font-weight: 400;
   display: block;
+  font-weight: 400;
 }

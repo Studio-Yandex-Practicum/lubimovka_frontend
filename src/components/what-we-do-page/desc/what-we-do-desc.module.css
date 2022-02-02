@@ -78,8 +78,8 @@
   margin-top: scale(20px);
 
   @media (max-width: $tablet-portrait) {
-    margin-left: scale(24px);
     margin-top: 0;
+    margin-left: scale(24px);
     grid-row-start: 1;
   }
 }

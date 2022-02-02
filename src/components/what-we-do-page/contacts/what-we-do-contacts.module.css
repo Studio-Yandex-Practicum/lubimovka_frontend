@@ -35,10 +35,10 @@
 }
 
 .asterisk {
-  transform: translateY(scale(-10px));
   width: scale(25px);
   height: scale(25px);
   margin-right: scale(2px);
+  transform: translateY(scale(-10px));
 
   @media (max-width: $tablet-portrait) {
     margin-right: scale(6px);

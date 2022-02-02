@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 
 import { Partner } from 'api-typings';
-
 import { fetcher } from 'shared/fetcher';
 import { AppLayout } from 'components/app-layout';
 import { WhatWeDoHeader } from 'components/what-we-do-page/header';
@@ -11,7 +10,7 @@ import { WhatWeDoAuthors } from 'components/what-we-do-page/authors';
 import { WhatWeDoSelection } from 'components/what-we-do-page/selection';
 import { WhatWeDoPoster } from 'components/what-we-do-page/poster';
 import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
-import { Partners } from 'components/partners';
+import { WhatWeDoPartner } from 'components/what-we-do-page/partners';
 
 const Page: NextPage = ({ partners }: InferGetStaticPropsType<typeof getStaticProps>):JSX.Element => (
   <AppLayout>
@@ -25,7 +24,7 @@ const Page: NextPage = ({ partners }: InferGetStaticPropsType<typeof getStaticPr
       <WhatWeDoSelection/>
       <WhatWeDoPoster/>
       <WhatWeDoContacts/>
-      <Partners {...partners}/>
+      <WhatWeDoPartner {...partners}/>
     </main>
   </AppLayout>
 );
