@@ -1,7 +1,5 @@
 .partners {
-  width: calc(100% - scale(270px));
   box-sizing: border-box;
-  padding: scale(106px 60px 160px);
   background-color: var(--beige);
   grid-area: partners;
 
