@@ -57,6 +57,11 @@
     top: calc(var(--scale) * 3);
     left: calc(var(--scale) * 50);
   }
+
+  @media (max-width: 370px) {
+    top: calc(var(--scale) * -3);
+    left: calc(var(--scale) * 50);
+  }
 }
 
 .photoBox {
