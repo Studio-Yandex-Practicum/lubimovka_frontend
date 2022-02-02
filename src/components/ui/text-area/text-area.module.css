@@ -4,6 +4,7 @@
 
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   padding: scale(8px);
   border: 0;
@@ -15,6 +16,19 @@
   &::placeholder {
     color: var(--coal);
     opacity: .7;
+  }
+
+  &::-webkit-scrollbar {
+    width: scale(4px);
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--coal);
+  }
+
+  &::-webkit-resizer {
+    background-color: var(--coal);
   }
 
   &:focus {

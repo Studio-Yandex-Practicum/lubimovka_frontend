@@ -61,7 +61,11 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): 
   }), [otherLinks]);
 
   return (
-    <AppLayout>
+    <AppLayout
+      navbarProps={{
+        colors: 'brand',
+      }}
+    >
       <div className={cx('author')}>
         <AuthorOverview props={props}/>
         {availablePlays && <AuthorPlays plays={plays}/>}

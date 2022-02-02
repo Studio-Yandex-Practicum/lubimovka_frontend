@@ -23,7 +23,7 @@ SocialMediaLink.args = {
 export const LinkInTextBlocks = Template.bind({});
 LinkInTextBlocks.args = {
   isOutsideLink: true,
-  href: 'mailto://more@lubimovka.ru',
+  href: 'mailto:more@lubimovka.ru',
   label: 'more@lubimovka.ru',
   size: 'l',
   textDecoration: 'underline'

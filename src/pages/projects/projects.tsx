@@ -32,12 +32,12 @@ const Projects = ({ errorCode, projects }: InferGetServerSidePropsType<typeof ge
         </ProjectsLayout.Headline>
         <ProjectsLayout.List>
           <ProjectCardList>
-            {projects.map(({ id, title, description, image }, index) => (
+            {projects.map(({ id, title, intro, image }, index) => (
               <ProjectCardList.Item key={id}>
                 <ProjectCard
                   id={id}
                   title={title}
-                  description={description}
+                  description={intro}
                   image={image}
                   even={isEven(index)}
                 />

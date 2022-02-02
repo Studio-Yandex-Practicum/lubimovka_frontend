@@ -30,15 +30,15 @@ interface IParticipationFormProps {
   email: string,
   emailError?: string,
   onEmailChange: (value: string) => void,
-  playTitle: string,
-  playTitleError?: string,
-  onPlayTitleChange: (value: string) => void,
-  playYear: string,
-  playYearError?: string,
-  onPlayYearChange: (value: string) => void,
-  playFileName?: string,
-  playFileError?: string,
-  onPlayFileChange: (file: Nullable<File>) => void,
+  title: string,
+  titleError?: string,
+  onTitleChange: (value: string) => void,
+  year: string,
+  yearError?: string,
+  onYearChange: (value: string) => void,
+  fileName?: string,
+  fileError?: string,
+  onFileChange: (file: Nullable<File>) => void,
   canSubmit: boolean,
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void,
 }
@@ -67,15 +67,15 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
     email,
     emailError,
     onEmailChange,
-    playTitle,
-    playTitleError,
-    onPlayTitleChange,
-    playYear,
-    playYearError,
-    onPlayYearChange,
-    playFileName,
-    playFileError,
-    onPlayFileChange,
+    title,
+    titleError,
+    onTitleChange,
+    year,
+    yearError,
+    onYearChange,
+    fileName,
+    fileError,
+    onFileChange,
     canSubmit,
     onSubmit,
   } = props;
@@ -170,10 +170,10 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
             hiddenCaption
           >
             <TextInput
-              value={playTitle}
+              value={title}
               placeholder="Название"
-              errorText={playTitleError}
-              onChange={onPlayTitleChange}
+              errorText={titleError}
+              onChange={onTitleChange}
             />
           </FormField>
         </Form.Field>
@@ -183,10 +183,10 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
             hiddenCaption
           >
             <TextInput
-              value={playYear}
+              value={year}
               placeholder="Год написания"
-              errorText={playYearError}
-              onChange={onPlayYearChange}
+              errorText={yearError}
+              onChange={onYearChange}
             />
           </FormField>
         </Form.Field>
@@ -197,9 +197,9 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
           >
             <FileInput
               accept={ACCEPTABLE_FILE_TYPES}
-              fileName={playFileName}
-              errorText={playFileError}
-              onChange={onPlayFileChange}
+              fileName={fileName}
+              errorText={fileError}
+              onChange={onFileChange}
             />
           </FormField>
         </Form.Field>

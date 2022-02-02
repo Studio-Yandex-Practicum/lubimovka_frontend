@@ -152,7 +152,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
             <p className={cx('email')}>E-mail для связи</p>
             <InfoLink
               isOutsideLink={true}
-              href={`mailto://${email}`}
+              href={`mailto:${email}`}
               label={email}
               size="l"
               textDecoration="underline"

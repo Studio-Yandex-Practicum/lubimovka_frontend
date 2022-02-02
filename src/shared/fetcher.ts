@@ -1,5 +1,19 @@
 import { addBaseUrlToApiPath } from 'shared/helpers/url';
 
+const handleResponse = async (response: Response) => {
+  if (response.status === 204) {
+    return;
+  }
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw data;
+  }
+
+  return data;
+};
+
 export const fetcher = async <T = unknown>(path: string, options?: RequestInit): Promise<T>  => {
   let fetchImplementation = fetch;
 
@@ -7,13 +21,5 @@ export const fetcher = async <T = unknown>(path: string, options?: RequestInit):
     fetchImplementation = (await import('mocks/fetch-mock')).default;
   }
 
-  const response = await fetchImplementation(addBaseUrlToApiPath(path), options);
-
-  if (response.ok) {
-    const data = await response.json();
-
-    return data;
-  }
-
-  throw new Error('Invalid response');
+  return fetchImplementation(addBaseUrlToApiPath(path), options).then(handleResponse);
 };
