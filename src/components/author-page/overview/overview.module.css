@@ -172,7 +172,7 @@
 
 .descriptionSet {
   @media (max-width: $tablet-portrait) {
-    padding: 0 calc(var(--scale) * 25) calc(var(--scale) * 80);
+    padding: 0 calc(var(--scale) * 25) calc(var(--scale) * 60);
   }
 }
 
@@ -213,7 +213,7 @@
   padding: calc(var(--scale) * 80) 0 0;
 
   @media (max-width: $tablet-portrait) {
-    padding: calc(var(--scale) * 80) calc(var(--scale) * 25) calc(var(--scale) * 70);
+    padding: 0 calc(var(--scale) * 25) calc(var(--scale) * 70);
   }
 }
 
