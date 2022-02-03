@@ -127,11 +127,6 @@
   flex-direction: inherit;
   padding: 0 calc(var(--scale) * 20) 0 0;
   grid-area: quote;
-  quotes: "\00ab" "\00bb";
-
-  &::after {
-    align-self: end;
-  }
 
   @media (max-width: $tablet-portrait) {
     margin: 0 0 calc(var(--scale) * 72) calc(var(--scale) * 60);

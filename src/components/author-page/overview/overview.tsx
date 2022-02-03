@@ -72,9 +72,9 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
         }
         <h1 className={cx('fullName')}>{name}</h1>
         <p className={cx('city')}>{city}</p>
-        <q className={cx('quote')}>
+        <div className={cx('quote')}>
           <p className={cx('quoteText')}>{quote}</p>
-        </q>
+        </div>
       </div>
 
       <div className={cx('overviewInfo')}>
