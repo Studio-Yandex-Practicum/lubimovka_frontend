@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 
 import { Icon } from '../icon';
 
 import styles from './tag.module.css';
+
+const cx = cn.bind(styles);
 
 interface ITagProps {
   label: string;
@@ -23,16 +25,16 @@ export const Tag: FC<ITagProps> = (props) => {
   },[cb, label]);
   return (
     isIcon ?
-      <div className={selected ? cn(styles.tagIcon, styles.active) : cn(styles.tagIcon)}>
-        <div className={cn(styles.tagContainer)}>
-          <p className={selected ? cn(styles.tagText, styles.active) : cn(styles.tagText)}>{label}</p>
-          <div className={cn(styles.icon)} onClick={handleClick}>
+      <div className={cx('tagIcon', { 'active': selected })}>
+        <div className={cx('tagContainer')}>
+          <p className={cx('tagText', { 'active': selected })}>{label}</p>
+          <div className={cx('icon')} onClick={handleClick}>
             <Icon glyph={'cross'}/>
           </div>
         </div>
       </div>
       :
-      <div className={selected ? cn(styles.tag, styles.active) : cn(styles.tag)}>
+      <div className={cx('tag', { 'active': selected })}>
         {label}
       </div>
   );
