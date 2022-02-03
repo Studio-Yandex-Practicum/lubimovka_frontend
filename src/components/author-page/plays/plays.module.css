@@ -7,7 +7,7 @@
     @mixin hideScrollbar;
 
     overflow: scroll;
-    padding: calc(var(--scale) * 10) 0 calc(var(--scale) * 80) calc(var(--scale) * 24);
+    padding: calc(var(--scale) * 10) 0 calc(var(--scale) * 80) calc(var(--scale) * 25);
     scroll-behavior: smooth;
   }
 }

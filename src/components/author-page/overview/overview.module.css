@@ -103,7 +103,7 @@
   margin: calc(var(--scale) * 55) 0 calc(var(--scale) * 10) calc(var(--scale) * 30);
   grid-area: fullName;
 
-  @media (max-width: 600px) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
     margin: calc(var(--scale) * 16) 0 calc(var(--scale) * 14) calc(var(--scale) * 20);
@@ -134,14 +134,10 @@
   grid-area: quote;
 
   @media (max-width: $tablet-portrait) {
-    margin: 0 0 calc(var(--scale) * 72) calc(var(--scale) * 60);
-    justify-self: start;
-  }
-
-  @media (max-width: 600px) {
     @mixin headline7;
 
     margin: calc(var(--scale) * 28) calc(var(--scale) * 20) calc(var(--scale) * 72) calc(var(--scale) * 60);
+    justify-self: start;
   }
 }
 
@@ -167,27 +163,28 @@
   justify-items: start;
 
   @media (max-width: $tablet-portrait) {
-    gap: 5rem;
-    grid-template-columns: 10fr;
-  }
-
-  @media (max-width: 600px) {
-    padding: calc(var(--scale) * 56) 0 calc(var(--scale) * 120);
+    display: flex;
+    flex-direction: column-reverse;
+    padding: calc(var(--scale) * 77) 0 0;
+    justify-items: start;
   }
 }
 
 .descriptionWrapper {
   min-width: 90%;
-  padding: 0 calc(var(--scale) * 25);
   grid-column: 2/3;
 
   @media (max-width: $tablet-portrait) {
+    padding: 0;
+    background-color: var(--white);
     grid-column: auto;
     grid-row: 2/2;
     justify-self: center;
   }
+}
 
-  @media (max-width: 600px) {
+.descriptionSet {
+  @media (max-width: $tablet-portrait) {
     padding: 0 calc(var(--scale) * 25);
   }
 }
@@ -202,6 +199,10 @@
   margin: 0 0 calc(var(--scale) * 30);
   transition: all 1s linear;
   white-space: pre-wrap;
+
+  @media (max-width: $tablet-portrait) {
+    padding: calc(var(--scale) * 56) 0 0 0;
+  }
 }
 
 .descriptionExpanded {
@@ -211,6 +212,10 @@
 .authorLinks {
   max-width: calc(var(--scale) * 479);
   margin: calc(var(--scale) * 80) 0 0;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0 calc(var(--scale) * 25) calc(var(--scale) * 70);
+  }
 }
 
 .linkHeading {
@@ -241,6 +246,7 @@
 
   @media (max-width: $tablet-portrait) {
     max-width: calc(var(--scale) * 300);
+    padding: 0 calc(var(--scale) * 25) calc(var(--scale) * 100) calc(var(--scale) * 25);
     grid-column: auto;
     grid-row: 1/2;
     justify-self: center;

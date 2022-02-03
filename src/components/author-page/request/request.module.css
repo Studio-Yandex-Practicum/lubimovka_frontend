@@ -7,7 +7,7 @@
   justify-items: end;
 
   @media (max-width: $tablet-portrait) {
-    padding: calc(var(--scale) * 64) calc(var(--scale) * 65);
+    padding: calc(var(--scale) * 64) calc(var(--scale) * 65) 0;
   }
 }
 

@@ -1,10 +1,13 @@
 import { FC, useState, useMemo } from 'react';
 import cn from 'classnames/bind';
 
+import * as breakpoints from 'shared/breakpoints.js';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
+import { AuthorPlays } from '../plays';
 import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
 import { InfoLink } from 'components/ui/info-link';
-import { OtherLink , SocialNetwork } from 'api-typings';
+import { OtherLink, Play, SocialNetwork } from 'api-typings';
 import { numberOfCharacters } from 'shared/constants/numbers';
 
 import styles from './overview.module.css';
@@ -22,6 +25,7 @@ interface IAuthorOverview {
     achievements: Array<string>,
     social_networks: SocialNetwork[],
     email: string,
+    plays: Play[],
   }
 }
 
@@ -36,11 +40,16 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
     social_networks: socialNetworks,
     achievements,
     email,
+    plays,
   } = props;
 
   const [isExpand, setExpand] = useState(true);
 
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+
   const presenceOfButton = props.biography;
+
+  const availablePlays = isMobile && plays.length !== 0;
 
   const pinnedLinks = useMemo(() => otherLinks.filter((item) => {
     return item.is_pinned;
@@ -79,20 +88,27 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
 
       <div className={cx('overviewInfo')}>
         <div className={cx('descriptionWrapper')}>
-          <pre className={cx('description', isExpand ? 'descriptionExpanded' : '')}>
-            {biography}
-          </pre>
-          {presenceOfButton.length > numberOfCharacters &&
-            <Button
-              width="100%"
-              size="s"
-              iconPlace="right"
-              icon={isExpand ? 'arrow-down' : 'arrow-up'}
-              label={isExpand ? 'Полный текст' : 'Свернуть'}
-              border="topLeft"
-              onClick={() => setExpand(!isExpand)}
+          {availablePlays &&
+            <AuthorPlays
+              plays={plays}
             />
           }
+          <div className={cx('descriptionSet')}>
+            <pre className={cx('description', isExpand ? 'descriptionExpanded' : '')}>
+              {biography}
+            </pre>
+            {presenceOfButton.length > numberOfCharacters &&
+              <Button
+                width="100%"
+                size="s"
+                iconPlace="right"
+                icon={isExpand ? 'arrow-down' : 'arrow-up'}
+                label={isExpand ? 'Полный текст' : 'Свернуть'}
+                border="topLeft"
+                onClick={() => setExpand(!isExpand)}
+              />
+            }
+          </div>
 
           <div className={cx('authorLinks')}>
             {pinnedLinks.length > 0  && pinnedLinks
