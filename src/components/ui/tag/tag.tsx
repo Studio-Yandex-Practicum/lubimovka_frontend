@@ -20,7 +20,7 @@ export const Tag: FC<ITagProps> = (props) => {
     if(cb) {
       cb(label);
     }
-  },[cb]);
+  },[cb, label]);
   return (
     isIcon ?
       <div className={selected ? cn(styles.tagIcon, styles.active) : cn(styles.tagIcon)}>
