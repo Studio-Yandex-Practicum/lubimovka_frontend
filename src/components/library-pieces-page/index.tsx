@@ -115,7 +115,9 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             </p>
           }
           {isLoading ? (
-            <LibraryPreloader/>
+            <div className={styles.loaderMobile}>
+              <LibraryPreloader/>
+            </div>
           ) : (
             <>
               {items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
