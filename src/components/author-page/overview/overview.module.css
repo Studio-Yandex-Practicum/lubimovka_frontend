@@ -170,6 +170,12 @@
   }
 }
 
+.descriptionSet {
+  @media (max-width: $tablet-portrait) {
+    padding: 0 calc(var(--scale) * 25);
+  }
+}
+
 .descriptionWrapper {
   min-width: 90%;
   grid-column: 2/3;
@@ -183,12 +189,6 @@
   }
 }
 
-.descriptionSet {
-  @media (max-width: $tablet-portrait) {
-    padding: 0 calc(var(--scale) * 25);
-  }
-}
-
 .description {
   @mixin text;
   @mixin textLarge;
@@ -197,7 +197,6 @@
   max-width: calc(var(--scale) * 479);
   max-height: 100%;
   margin: 0 0 calc(var(--scale) * 30);
-  transition: all 1s linear;
   white-space: pre-wrap;
 
   @media (max-width: $tablet-portrait) {
@@ -211,10 +210,10 @@
 
 .authorLinks {
   max-width: calc(var(--scale) * 479);
-  margin: calc(var(--scale) * 80) 0 0;
+  padding: calc(var(--scale) * 80) 0 0;
 
   @media (max-width: $tablet-portrait) {
-    padding: 0 calc(var(--scale) * 25) calc(var(--scale) * 70);
+    padding: calc(var(--scale) * 80) calc(var(--scale) * 25) calc(var(--scale) * 70);
   }
 }
 
@@ -253,7 +252,6 @@
   }
 
   @media (max-width: 414px) {
-    margin: 0 0 0 calc(var(--scale) * 25);
     justify-self: start;
   }
 }
