@@ -55,6 +55,8 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
     return item.is_pinned;
   }), [otherLinks]);
 
+  const availablePins = pinnedLinks.length !== 0;
+
   return (
     <section className={cx('overview')}>
       <div className={cx(image ? 'personalInfo' : 'personalInfoNoPhoto')}>
@@ -109,24 +111,25 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
               />
             }
           </div>
-
-          <div className={cx('authorLinks')}>
-            {pinnedLinks.length > 0  && pinnedLinks
-              .sort((link1,link2) => link1.order_number - link2.order_number)
-              .map((item, idx) =>
-                <div className={cx('linkHeading')} key={idx}>
-                  <InfoLink
-                    label={item.name}
-                    href={item.link}
-                    icon="arrow-right"
-                    iconPlace="right"
-                    size="xl"
-                    border="borderTop"
-                    iconClassName={cx('link')}
-                  />
-                </div>
-              )}
-          </div>
+          {availablePins &&
+            <div className={cx('authorLinks')}>
+              {pinnedLinks.length > 0  && pinnedLinks
+                .sort((link1,link2) => link1.order_number - link2.order_number)
+                .map((item, idx) =>
+                  <div className={cx('linkHeading')} key={idx}>
+                    <InfoLink
+                      label={item.name}
+                      href={item.link}
+                      icon="arrow-right"
+                      iconPlace="right"
+                      size="xl"
+                      border="borderTop"
+                      iconClassName={cx('link')}
+                    />
+                  </div>
+                )}
+            </div>
+          }
         </div>
 
         <div className={cx('overviewSet')}>
