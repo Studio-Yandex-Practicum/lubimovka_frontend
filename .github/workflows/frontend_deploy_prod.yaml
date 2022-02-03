@@ -11,6 +11,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: lubimovka_frontend-1
+  DEPLOY_PATH: /usr/local/src
 
 jobs:
   build-and-push-image-to-github-packages:
