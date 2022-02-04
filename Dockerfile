@@ -1,16 +1,16 @@
-FROM node:alpine AS deps
+FROM node:17.4.0-alpine3.14 AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 
-FROM node:alpine AS builder
+FROM node:17.4.0-alpine3.14 AS builder
 WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 RUN npm run build && npm ci --production --ignore-scripts
 
-FROM node:alpine AS runner
+FROM node:17.4.0-alpine3.14 AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
