@@ -8,7 +8,7 @@ import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
 import { InfoLink } from 'components/ui/info-link';
 import { OtherLink, Play, SocialNetwork } from 'api-typings';
-import { numberOfCharacters } from 'shared/constants/numbers';
+import { numberOfCharacters, zero } from 'shared/constants/numbers';
 
 import styles from './overview.module.css';
 
@@ -47,19 +47,15 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
 
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
-  const availableButton = props.biography;
-
-  const availablePlays = isMobile && plays.length !== 0;
-
-  const availableTags = achievements.length !== 0;
-
-  const availableSocialNetworks = socialNetworks.length !== 0;
-
   const pinnedLinks = useMemo(() => otherLinks.filter((item) => {
     return item.is_pinned;
   }), [otherLinks]);
 
-  const availablePins = pinnedLinks.length !== 0;
+  const availablePins = pinnedLinks.length > zero;
+  const availableButton = biography.length > numberOfCharacters;
+  const availablePlays = isMobile && plays.length > zero;
+  const availableTags = achievements.length > zero;
+  const availableSocialNetworks = socialNetworks.length > zero;
 
   return (
     <section className={cx('overview')}>
@@ -109,7 +105,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
               <pre className={cx('description', isExpand ? 'descriptionExpanded' : '')}>
                 {biography}
               </pre>
-              {availableButton.length > numberOfCharacters &&
+              {availableButton &&
                 <Button
                   width="100%"
                   size="s"
@@ -125,7 +121,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
 
           {availablePins &&
             <div className={cx('authorLinks')}>
-              {pinnedLinks.length > 0  && pinnedLinks
+              {pinnedLinks
                 .sort((link1,link2) => link1.order_number - link2.order_number)
                 .map((item, idx) =>
                   <div className={cx('linkHeading')} key={idx}>
@@ -188,7 +184,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
               <p className={cx('email')}>E-mail для связи</p>
               <InfoLink
                 isOutsideLink={true}
-                href={`mailto:${ email }`}
+                href={`mailto:${email}`}
                 label={email}
                 size="l"
                 textDecoration="underline"
