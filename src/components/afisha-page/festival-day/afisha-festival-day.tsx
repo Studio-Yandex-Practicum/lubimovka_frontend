@@ -48,7 +48,10 @@ export const FestivalDay: FC<IFestivalDayProps> = (props) => {
   const info = useMemo(() => getInfo(date), [date]);
   const isOpened = useMemo(() => getStatus(date), [date]);
 
-  const registration = useMemo(() => cx({opened: isOpened, closed: !isOpened}), [isOpened]);
+  const registration = useMemo(() => cx({
+    opened: isOpened,
+    closed: !isOpened,
+  }), [isOpened]);
 
   return (
     <section className={cx('section')}>
