@@ -3,15 +3,15 @@
   @mixin textMedium;
 
   display: inline-block;
-  padding: 4px 8px 8px 8px;
-  border: 1px solid var(--coal);
+  padding: scale(4px 8px 8px 8px);
+  border: scale(1px) solid var(--coal);
   border-top: none;
   text-align: left;
   transition: 300ms;
 
   &:hover,
   &.active {
-    border: 1px solid transparent;
+    border: scale(1px) solid transparent;
     border-top: none;
     background: var(--coal);
     color: var(--white);
@@ -20,14 +20,14 @@
 
 .tagIcon {
   display: inline-block;
-  border: 1px solid var(--coal);
+  border: scale(1px) solid var(--coal);
   border-top: none;
   transition: 300ms;
   white-space: nowrap;
 
   &:hover,
   &.active {
-    border: 1px solid transparent;
+    border: scale(1px) solid transparent;
     border-top: none;
     background: var(--coal);
     color: var(--white);
@@ -43,7 +43,7 @@
   @mixin text;
   @mixin textMedium;
 
-  padding: 4px 0 8px 8px;
+  padding: scale(4px 0 8px 8px);
   text-align: left;
 
   &:hover,
@@ -53,7 +53,12 @@
 }
 
 .icon {
-  padding-top: 4px;
-  padding-right: 4px;
+  padding-top: scale(4px);
+  padding-right: scale(4px);
   cursor: pointer;
+}
+
+svg {
+  width: scale(25px);
+  height: scale(25px);
 }
