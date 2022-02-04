@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, HTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,11 +10,12 @@ import styles from './partners.module.css';
 
 const cx = classNames.bind(styles);
 
-export interface IPartner {
-  [key: string]: Array<Partner>
+export interface IPartner extends HTMLAttributes<HTMLDivElement> {
+  festival: Array<Partner>
+  info: Array<Partner>
 }
 
-export const Partners: FC<IPartner> = ({ festival, info }) => {
+export const Partners: FC<IPartner> = ({ festival, info, className }) => {
   const layout = (type: Array<Partner>, name: boolean = false) => (
     type.map((p: Partner) => (
       <li key={p.id}>
@@ -36,7 +37,7 @@ export const Partners: FC<IPartner> = ({ festival, info }) => {
   );
 
   return (
-    <section className={cx('partners')}>
+    <section className={cx('partners', className)}>
       {festival && <PartnersLayout title="Партнёры фестиваля">
         {layout(festival, true)}
       </PartnersLayout>}

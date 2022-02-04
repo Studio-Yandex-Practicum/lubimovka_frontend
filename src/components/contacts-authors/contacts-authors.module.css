@@ -15,10 +15,11 @@
   margin: scale(16px 0 0 60px);
 }
 
+.emailContainer {
+  margin-top: scale(24px);
+}
+
 .email {
   @mixin headline;
   @mixin headline6;
-
-  display: block;
-  margin-top: scale(24px);
 }

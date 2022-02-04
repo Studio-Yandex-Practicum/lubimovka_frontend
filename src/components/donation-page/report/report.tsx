@@ -22,7 +22,7 @@ export const Report: FC<IReportProps> = (props) => {
         <InfoLink
           className={cx('reportEmail')}
           isOutsideLink={true}
-          href={`mailto://${email}`}
+          href={`mailto:${email}`}
           label={email}
           textDecoration="underline"
         />
