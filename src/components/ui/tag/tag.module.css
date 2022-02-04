@@ -57,8 +57,3 @@
   padding-right: scale(4px);
   cursor: pointer;
 }
-
-svg {
-  width: scale(25px);
-  height: scale(25px);
-}
