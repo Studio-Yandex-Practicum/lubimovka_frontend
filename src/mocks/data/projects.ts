@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ProjectList } from 'api-typings';
 
 const projects: ProjectList[] = [
