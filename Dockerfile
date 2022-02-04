@@ -10,7 +10,7 @@ COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 RUN npm run build && npm ci --production --ignore-scripts
 
-FROM node:17.4.0-alpine3.14 AS runner
+#FROM node:17.4.0-alpine3.14 AS runner
 FROM node:16-alpine AS runner
 WORKDIR /app
 
