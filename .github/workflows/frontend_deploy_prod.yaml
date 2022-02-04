@@ -96,6 +96,9 @@ jobs:
             #echo "DEV_SUBDOMAIN=${{ secrets.DEV_SUBDOMAIN }}" >> .github_vars
             #echo "TEST_SUBDOMAIN=${{ secrets.TEST_SUBDOMAIN }}" >> .github_vars
             
+            # docker network create develop_db_network || true
+            docker network create develop_swag_network || true
+
             # Установка приложения - frontend
             cp -rf ${{ env.DEPLOY_PATH }}/develop/lubimovka-frontend.service /etc/systemd/system/lubimovka-frontend.service
             systemctl daemon-reload
@@ -103,6 +106,14 @@ jobs:
 
             # После установки удаляем файлы
             rm ${{ env.DEPLOY_PATH }}/develop/lubimovka-frontend.service
+
+  send_message:
+    name: Send message
+    runs-on: ubuntu-latest
+    environment:
+      name: develop_deploy
+    needs: deploy
+    steps:
       -
         name: Send message after updating the image on the server
         uses: appleboy/telegram-action@master
@@ -110,3 +121,4 @@ jobs:
           to: ${{ secrets.TELEGRAM_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: Код на сервере разработки обновлён!
+  
