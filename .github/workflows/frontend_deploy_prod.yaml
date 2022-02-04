@@ -1,4 +1,4 @@
-name: Create and publish a frontend Docker  image
+name: Create and publish a frontend Docker image
 concurrency:
   group: develop_deploy
   cancel-in-progress: true
@@ -121,4 +121,3 @@ jobs:
           to: ${{ secrets.TELEGRAM_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: Код на сервере разработки обновлён!
-  
