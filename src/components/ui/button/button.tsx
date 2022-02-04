@@ -20,6 +20,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string,
   align?: 'start' | 'end' | 'center' | 'space-between',
   gap?: string
+  target?: '_blank' | '_self' | '_parent' | '_top'
 }
 
 const cx = cn.bind(styles);
@@ -40,6 +41,7 @@ export const Button: FC<IButtonProps> = (props) => {
     disabled = false,
     className = '',
     gap = '0',
+    target,
     ...restButtonProps
   } = props;
 
@@ -65,11 +67,10 @@ export const Button: FC<IButtonProps> = (props) => {
       </button>
       ||
       <Link href={href} {...restButtonProps}>
-        <a  style={style}
+        <a  style={style} target={target}
           className={cx(classes, 'link')}>
           {buttonChildren}
         </a>
       </Link>
   );
 };
-
