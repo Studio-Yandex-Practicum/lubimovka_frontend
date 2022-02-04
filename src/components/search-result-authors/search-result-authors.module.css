@@ -8,7 +8,7 @@
   }
 }
 
-.alphabeetLetter {
+.alphabetLetter {
   @mixin headline;
   @mixin headline4;
 }

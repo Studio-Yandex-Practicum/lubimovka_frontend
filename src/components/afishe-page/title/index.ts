@@ -1,1 +1,1 @@
-export * from './afishe-title';
+export * from './afisha-title';

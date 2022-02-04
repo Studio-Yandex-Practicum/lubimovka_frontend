@@ -68,9 +68,11 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsTy
 
   return (
     <div className={cx({ 'marginTop': delay })}>
-      <AppLayout 
-        hiddenPartners 
-        expandedHeader={displayFirstScreen}
+      <AppLayout
+        hiddenPartners
+        navbarProps={{
+          view: displayFirstScreen ? 'expanded': 'normal',
+        }}
         screenImg={first_screen && notEmptyKey(first_screen) &&
         displayFirstScreen && <div className={cx('background')} style={{  backgroundImage: `url(${first_screen.image})` }}/>}
       >

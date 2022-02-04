@@ -20,7 +20,7 @@ export const AuthorRequest: FC = () => {
           нам на&nbsp;
         <InfoLink
           isOutsideLink={true}
-          href="mailto://autors@lubimovka.ru"
+          href="mailto:autors@lubimovka.ru"
           label="autors@lubimovka.ru"
           size="l"
           textDecoration="underline"
