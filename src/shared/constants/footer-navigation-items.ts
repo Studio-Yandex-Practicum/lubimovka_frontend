@@ -5,7 +5,7 @@ export const footerNavigationItems = [
   },
   {
     text: 'Афиша',
-    href: '/afishe',
+    href: '/afisha/events',
   },
   {
     text: 'Библиотека',

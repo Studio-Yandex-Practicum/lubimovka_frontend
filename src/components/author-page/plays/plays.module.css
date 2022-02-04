@@ -1,44 +1,33 @@
 .playsContainer {
   position: relative;
-  display: flex;
-  overflow: scroll;
-  padding: calc(var(--scale) * 134) calc(var(--scale) * 60);
+  padding: calc(var(--scale) * 130) calc(var(--scale) * 30);
   background-color: var(--beige);
-
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 10px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: var(--beige);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, .8);
-  }
 
   @media (max-width: $tablet-portrait) {
     @mixin hideScrollbar;
 
-    padding: calc(var(--scale) * 10) 0 calc(var(--scale) * 80) calc(var(--scale) * 24);
+    overflow: scroll;
+    padding: calc(var(--scale) * 10) 0 calc(var(--scale) * 80) calc(var(--scale) * 25);
+    scroll-behavior: smooth;
   }
 }
 
 .list {
   display: flex;
+  flex-wrap: wrap;
   padding: 0;
   margin: 0;
   list-style: none;
 
   @media (max-width: $tablet-portrait) {
+    flex-wrap: nowrap;
     margin: 0 calc(var(--scale) * 24) 0 0;
   }
 }
 
 .item {
   width: calc(var(--scale) * 240);
-  margin: 0 calc(var(--scale) * 30) 0 0;
+  margin: 0 calc(var(--scale) * 30) calc(var(--scale) * 30) 0;
 
   &:last-of-type {
     margin-right: 0;

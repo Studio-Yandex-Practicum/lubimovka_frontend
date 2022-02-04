@@ -5,6 +5,12 @@
   ],
   "rules": {
     "number-leading-zero": "never",
+    "property-no-unknown": [
+      true,
+      {
+          "ignoreProperties": [ "composes" ]
+      }
+    ],
     "at-rule-no-unknown": [
       true,
       {

@@ -14,7 +14,7 @@ interface IAuthorPlays {
 
 export const AuthorPlays: FC<IAuthorPlays> = ({ plays }) => {
   return (
-    <section className={cx('playsContainer')}>
+    <div className={cx('playsContainer')}>
       <ul className={cx('list')}>
         {plays.map((item, idx) => (
           <li className={cx('item')} key={idx}>
@@ -29,6 +29,6 @@ export const AuthorPlays: FC<IAuthorPlays> = ({ plays }) => {
           </li>
         ))}
       </ul>
-    </section>
+    </div>
   );
 };
