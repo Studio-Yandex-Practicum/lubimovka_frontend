@@ -2,42 +2,16 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
-<<<<<<< HEAD
 import { IMainAfisha } from './main-events.props';
-import { main } from 'mocks/data/main';
-=======
 import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
->>>>>>> aeb78002 (refactor: изменение в свойствах компонента AnnouncedPlayCard, форматирование даты теперь за пределами компонента; связанные изменения в других компонентах)
+import { main } from 'mocks/data/main';
 
 import styles from './main-events.module.css';
 
-interface IItem {
-  id: number;
-  type: string;
-  date: string;
-  title: string;
-  team: TeamEntry [];
-  eventDescription?: string;
-  buttonLink: string;
-  coverResourceUrl?: string;
-  projectCopy: string;
-  paid?: boolean;
-}
-
-interface IMainEventsProps {
-  data: IItem[]
-}
-
-type TeamEntry = {
-  name: string;
-  persons: string [];
-}
-
 const cx = classNames.bind(styles);
+const mocks = main.afisha?.items;
 
 export const MainEvents: FC<IMainAfisha> = () => {
-  const mocks = main.afisha?.items;
-
   return (
     <section className={styles.events}>
       <ul className={styles.content}>
@@ -45,16 +19,15 @@ export const MainEvents: FC<IMainAfisha> = () => {
           mocks?.map(item => (
             <li key={item.id} className={cx('list')}>
               <AnnouncedPlayCard
-                isPerformance={item.type === 'PERFORMANCE'}
                 id={item.id}
-                formattedDate={formatDate(item.date)}
-                formattedTime={formatTime(item.date)}
-                title={item.title}
-                team={item.team}
-                description={item.eventDescription && item.eventDescription}
-                project={item.projectCopy}
-                buttonLink={item.buttonLink}
-                imageUrl={item.coverResourceUrl && item.coverResourceUrl}
+                formattedDate={formatDate(item.date_time)}
+                formattedTime={formatTime(item.date_time)}
+                title={item.event_body.name}
+                team={item.event_body.team}
+                description={item.event_body.description}
+                buttonLink={item.url}
+                imageUrl={item.event_body.image}
+                project="читка проекта Любимовка.Ещё"
                 paid={item.paid}
               />
             </li>
