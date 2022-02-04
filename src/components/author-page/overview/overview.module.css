@@ -156,7 +156,7 @@
 
 .overviewInfo {
   display: grid;
-  padding: calc(var(--scale) * 77) 0;
+  padding: calc(var(--scale) * 77) 0 0;
   gap: 1rem;
   grid-template-columns: 2fr 5fr 7fr;
   grid-template-rows: auto;

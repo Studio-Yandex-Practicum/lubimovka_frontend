@@ -47,9 +47,13 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
 
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
-  const presenceOfButton = props.biography;
+  const availableButton = props.biography;
 
   const availablePlays = isMobile && plays.length !== 0;
+
+  const availableTags = achievements.length !== 0;
+
+  const availableSocialNetworks = socialNetworks.length !== 0;
 
   const pinnedLinks = useMemo(() => otherLinks.filter((item) => {
     return item.is_pinned;
@@ -83,34 +87,42 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
         }
         <h1 className={cx('fullName')}>{name}</h1>
         <p className={cx('city')}>{city}</p>
-        <div className={cx('quote')}>
-          <p className={cx('quoteText')}>{quote}</p>
-        </div>
+
+        {quote &&
+          <div className={cx('quote')}>
+            <p className={cx('quoteText')}>{quote}</p>
+          </div>
+        }
       </div>
 
       <div className={cx('overviewInfo')}>
         <div className={cx('descriptionWrapper')}>
+
           {availablePlays &&
             <AuthorPlays
               plays={plays}
             />
           }
-          <div className={cx('descriptionSet')}>
-            <pre className={cx('description', isExpand ? 'descriptionExpanded' : '')}>
-              {biography}
-            </pre>
-            {presenceOfButton.length > numberOfCharacters &&
-              <Button
-                width="100%"
-                size="s"
-                iconPlace="right"
-                icon={isExpand ? 'arrow-down' : 'arrow-up'}
-                label={isExpand ? 'Полный текст' : 'Свернуть'}
-                border="topLeft"
-                onClick={() => setExpand(!isExpand)}
-              />
-            }
-          </div>
+
+          {biography &&
+            <div className={cx('descriptionSet')}>
+              <pre className={cx('description', isExpand ? 'descriptionExpanded' : '')}>
+                {biography}
+              </pre>
+              {availableButton.length > numberOfCharacters &&
+                <Button
+                  width="100%"
+                  size="s"
+                  iconPlace="right"
+                  icon={isExpand ? 'arrow-down' : 'arrow-up'}
+                  label={isExpand ? 'Полный текст' : 'Свернуть'}
+                  border="topLeft"
+                  onClick={() => setExpand(!isExpand)}
+                />
+              }
+            </div>
+          }
+
           {availablePins &&
             <div className={cx('authorLinks')}>
               {pinnedLinks.length > 0  && pinnedLinks
@@ -133,50 +145,56 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
         </div>
 
         <div className={cx('overviewSet')}>
-          <div className={cx('overviewTagsBlock')}>
-            <h2 className={cx('overviewTagsHeading')}>Достижения</h2>
-            <div className={cx('tagWrapper')}>
-              {achievements.map((item, idx) =>
-                <div className={cx('tag')} key={idx}>
-                  <Tag
-                    label={item}
-                    selected={false}
-                  />
-                </div>
-              )}
+          {availableTags &&
+            <div className={cx('overviewTagsBlock')}>
+              <h2 className={cx('overviewTagsHeading')}>Достижения</h2>
+              <div className={cx('tagWrapper')}>
+                {achievements.map((item, idx) =>
+                  <div className={cx('tag')} key={idx}>
+                    <Tag
+                      label={item}
+                      selected={false}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          }
 
-          <div className={cx('overviewSocialWrapper')}>
-            <h2 className={cx('overviewSocialLinkHeading')}>Социальные сети</h2>
-            <div className={cx('overviewSocialLinkBlock')}>
-              {socialNetworks.map((item, idx) =>
-                <div className={cx('overviewSocialLink')} key={idx}>
-                  <InfoLink
-                    key={idx}
-                    href={item.link}
-                    label={item.name}
-                    isOutsideLink={true}
-                    icon="arrow-right"
-                    iconPlace="left"
-                    size="s"
-                    border="borderBottomLeft"
-                  />
-                </div>
-              )}
+          {availableSocialNetworks &&
+            <div className={cx('overviewSocialWrapper')}>
+              <h2 className={cx('overviewSocialLinkHeading')}>Социальные сети</h2>
+              <div className={cx('overviewSocialLinkBlock')}>
+                {socialNetworks.map((item, idx) =>
+                  <div className={cx('overviewSocialLink')} key={idx}>
+                    <InfoLink
+                      key={idx}
+                      href={item.link}
+                      label={item.name}
+                      isOutsideLink={true}
+                      icon="arrow-right"
+                      iconPlace="left"
+                      size="s"
+                      border="borderBottomLeft"
+                    />
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          }
 
-          <div className={cx('overviewSocialWrapper')}>
-            <p className={cx('email')}>E-mail для связи</p>
-            <InfoLink
-              isOutsideLink={true}
-              href={`mailto:${email}`}
-              label={email}
-              size="l"
-              textDecoration="underline"
-            />
-          </div>
+          {email &&
+            <div className={cx('overviewSocialWrapper')}>
+              <p className={cx('email')}>E-mail для связи</p>
+              <InfoLink
+                isOutsideLink={true}
+                href={`mailto:${ email }`}
+                label={email}
+                size="l"
+                textDecoration="underline"
+              />
+            </div>
+          }
         </div>
       </div>
     </section>
