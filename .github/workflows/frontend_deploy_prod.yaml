@@ -96,6 +96,7 @@ jobs:
             #echo "DEV_SUBDOMAIN=${{ secrets.DEV_SUBDOMAIN }}" >> .github_vars
             #echo "TEST_SUBDOMAIN=${{ secrets.TEST_SUBDOMAIN }}" >> .github_vars
             
+            # Создание сети вынесено отдельно для возможности независимо перезапускать контейнеры (через external networks)
             # docker network create develop_db_network || true
             docker network create develop_swag_network || true
 
