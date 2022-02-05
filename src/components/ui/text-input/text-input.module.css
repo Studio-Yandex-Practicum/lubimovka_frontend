@@ -4,6 +4,7 @@
 
   display: block;
   width: 100%;
+  box-sizing: border-box;
   padding: scale(8px);
   border: 0;
   border-bottom: 1px solid var(--coal);
