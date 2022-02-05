@@ -8,6 +8,7 @@ import { PageBreadcrumbs } from 'components/page';
 import { ProjectLayout } from 'components/project-layout';
 import { Breadcrumb } from 'components/breadcrumb';
 import { ProjectHeadline } from 'components/project-headline';
+import { ProjectLink } from 'components/project-link';
 import { ProjectInvitation } from 'components/project-invitation';
 import { PhotoGallery } from 'components/photo-gallery';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
@@ -157,6 +158,15 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                     ))}
                   </PersonCardList>
                 </Section>
+              </ProjectLayout.Storey>
+            )}
+            {content_type === 'link' && (
+              <ProjectLayout.Storey type="link">
+                <ProjectLink
+                  title={content_item.title}
+                  description={content_item.description}
+                  url={content_item.url}
+                />
               </ProjectLayout.Storey>
             )}
           </Fragment>

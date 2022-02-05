@@ -49,6 +49,25 @@
   }
 }
 
+.link {
+  padding: scale(72px 0 141px);
+  margin-top: scale(112px);
+  background-color: var(--light-green);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(56px 0 72px);
+  }
+
+  .holder {
+    max-width: scale(808px);
+    margin-left: scale(362px);
+
+    @media (max-width: $tablet-portrait) {
+      margin-left: 0;
+    }
+  }
+}
+
 .invitation {
   margin-top: scale(100px);
 
