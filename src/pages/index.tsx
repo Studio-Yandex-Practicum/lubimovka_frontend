@@ -13,7 +13,7 @@ import { MainPlatforms } from 'components/main-page/platforms';
 import { MainShortList } from 'components/main-page/shortList';
 import { MainArchive } from 'components/main-page/archive';
 import { MainFirstScreen } from 'components/main-page/first-screen';
-import { Partners } from 'components/partners';
+import { MainPartner } from 'components/main-page/partners';
 import { AppLayout } from 'components/app-layout';
 import { main } from 'mocks/data/main';
 
@@ -95,7 +95,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsTy
             {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
             {places && notEmpty(places.items) && <MainPlatforms {...places}/>}
             {video_archive && <MainArchive {...video_archive}/>}
-            {partners && notEmptyKey(partners) && <Partners {...partners}/>}
+            {partners && notEmptyKey(partners) && <MainPartner {...partners}/>}
           </main>
         </>
       </AppLayout>

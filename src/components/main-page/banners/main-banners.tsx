@@ -33,6 +33,7 @@ export const MainBanners: FC<IMainBanners> = ({ items }) => (
                   isLink={true}
                   href={item.url}
                   className={cx('button')}
+                  target="_blank"
                 />
               </div>
               <Link href={item.url}>
