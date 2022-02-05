@@ -8,7 +8,6 @@ import { PageBreadcrumbs } from 'components/page';
 import { ProjectLayout } from 'components/project-layout';
 import { Breadcrumb } from 'components/breadcrumb';
 import { ProjectHeadline } from 'components/project-headline';
-import { ProjectInvitation } from 'components/project-invitation';
 import { PhotoGallery } from 'components/photo-gallery';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
@@ -20,6 +19,7 @@ import { RawText } from 'components/raw-text';
 import { Section } from 'components/section';
 import { PersonCard } from 'components/ui/person-card';
 import { PersonCardList } from 'components/person-card-list';
+import { CallToEmail } from 'components/call-to-email';
 import { fetcher } from 'shared/fetcher';
 import { Project as ProjectModel } from 'api-typings';
 import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
@@ -162,7 +162,13 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
           </Fragment>
         ))}
         <ProjectLayout.Storey type="invitation">
-          <ProjectInvitation email="trololo@ololo.com"/>
+          <CallToEmail
+            type="project"
+            title="Проект открыт к сотрудничеству"
+            description="Мы находимся в постоянном поиске режиссёров и актеров, заинтересованных в постановке читок."
+            callToActionText="Пишите на"
+            email="hello@lubimovka.ru"
+          />
         </ProjectLayout.Storey>
       </ProjectLayout>
     </AppLayout>
