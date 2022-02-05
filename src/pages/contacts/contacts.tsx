@@ -1,6 +1,5 @@
 import { useReducer, useState } from 'react';
 import { NextPage } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { AppLayout } from 'components/app-layout';
@@ -243,22 +242,16 @@ const Contacts: NextPage = () => {
             </Form>
           </ContactsLayout.Form>
         </ContactsLayout.Column>
-        <ContactsLayout.Image>
-          <Image
-            src="/images/contacts/play-script.jpg"
-            alt="Напечатанная читка в руках человека"
-            layout="fill"
-            objectFit="cover"
-          />
-        </ContactsLayout.Image>
-        <ContactsLayout.Authors>
-          <CallToEmail
-            type="contacts"
-            title="Для авторов"
-            description="Если вы хотите внести изменения в свою страницу: добавить пьесы, ссылки на статьи или публикации, напишите нам. Приложите файлы и ссылки."
-            email="hello@lubimovka.ru"
-          />
-        </ContactsLayout.Authors>
+        <ContactsLayout.Column>
+          <ContactsLayout.CallToEmail>
+            <CallToEmail
+              type="contacts"
+              title="Для авторов"
+              description="Если вы хотите внести изменения в свою страницу: добавить пьесы, ссылки на статьи или публикации, напишите нам. Приложите файлы и ссылки."
+              email="hello@lubimovka.ru"
+            />
+          </ContactsLayout.CallToEmail>
+        </ContactsLayout.Column>
       </ContactsLayout>
     </AppLayout>
   );
