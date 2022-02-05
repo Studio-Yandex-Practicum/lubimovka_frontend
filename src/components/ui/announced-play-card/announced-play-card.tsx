@@ -26,7 +26,7 @@ export interface IAnnouncedPlayCardProps {
 
 type TeamEntry = {
   name: string;
-  persons: string[];
+  persons: string [];
 }
 
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {

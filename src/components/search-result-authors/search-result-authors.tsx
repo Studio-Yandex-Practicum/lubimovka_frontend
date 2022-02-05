@@ -1,22 +1,37 @@
 import { FC } from 'react';
 
+import { InfoLink } from '../ui/info-link';
+
 import style from './search-result-authors.module.css';
 
 interface ISearchResultAuthorsProps {
   authors: {
     title: string,
-    data: string[],
+    data: Author[],
   }
+}
+
+interface Author {
+  id: number,
+  name: string,
 }
 
 const SearchResultAuthors: FC<ISearchResultAuthorsProps> = ({ authors }) => {
   return (
     <li className={style.authors}>
-      <span className={style.alphabeetLetter}>{authors.title}</span>
+      <span className={style.alphabetLetter}>{authors.title}</span>
       <ul className={style.authorsList}>
-        {authors.data.map((author, i) => (
-          <li className={style.authorsItem} key={i}>
-            <a href="?" className={style.authorsLink}>{author}</a>
+        {authors.data.map((author,idx) => (
+          <li className={style.authorsItem} key={idx}>
+            <InfoLink
+              isOutsideLink={false}
+              href={`/library/authors/${author.id}`}
+              label={author.name}
+              size="l"
+              className={style.authorsLink}
+            >
+              {authors.data}
+            </InfoLink>
           </li>
         ))}
       </ul>
@@ -25,3 +40,4 @@ const SearchResultAuthors: FC<ISearchResultAuthorsProps> = ({ authors }) => {
 };
 
 export default SearchResultAuthors;
+

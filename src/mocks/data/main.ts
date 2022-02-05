@@ -17,6 +17,7 @@ export const main: IMain = {
     title: 'Открыт прием пьес на фестиваль 2021 года',
     url: 'https://www.rabstol.net/uploads/gallery/main/108/rabstol_net_winter_30.jpg',
     url_title: 'Заголовок для ссылки для первой страницы',
+    image: '/images/main/puddleInMoscow.jpg'
   },
   blog: {
     title: 'string',
@@ -68,13 +69,19 @@ export const main: IMain = {
       {
         date_time: '2021-12-25T13:01',
         event_body: {
-          id: 1, 
-          name: 'Мимо', 
-          description: 'Домашний намерение исполнять засунуть. Горький пробовать роскошный легко мера ребятишки.', 
-          team: {
-            Драматург: ['Фаина Захаров'],
-            Режиссёр: ['Фёкла Захаров'],
-          },
+          id: 1,
+          name: 'Мимо',
+          description: 'Домашний намерение исполнять засунуть. Горький пробовать роскошный легко мера ребятишки.',
+          team: [
+            {
+              name: 'Драматург',
+              persons: ['Фаина Захаров'],
+            },
+            {
+              name: 'Режиссёр',
+              persons: ['Фёкла Захаров'],
+            }
+          ],
           project_title: null,
           image: '/public/images/main/performance_mama.jpg'
         },

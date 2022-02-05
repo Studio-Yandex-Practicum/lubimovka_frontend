@@ -43,3 +43,9 @@
     content: '';
   }
 }
+
+.list {
+  @media (max-width: $tablet-portrait) {
+    border-top: var(--coal) solid 1px;
+  }
+}

@@ -36,10 +36,10 @@ export const AppLayoutDataProvider: FC = (props) => {
       return;
     }
 
-    setProjects(response.results?.map(({ id, title, description, image }) => ({
+    setProjects(response.results?.map(({ id, title, intro, image }) => ({
       slug: id.toString(),
       title,
-      description,
+      description: intro,
       image,
     })));
   };

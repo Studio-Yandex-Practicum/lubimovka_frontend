@@ -8,3 +8,15 @@
   width: scale(43px);
   height: scale(35px);
 }
+
+.full {
+  .image {
+    width: scale(123px);
+    height: scale(104px);
+
+    @media (max-width: $tablet-portrait) {
+      width: scale(91px);
+      height: scale(78px);
+    }
+  }
+}

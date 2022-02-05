@@ -1,0 +1,7 @@
+.root {
+  margin: scale(64px 0 0 120px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(64px 0 0);
+  }
+}
