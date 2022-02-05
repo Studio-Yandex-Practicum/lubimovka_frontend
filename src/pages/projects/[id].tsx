@@ -58,14 +58,12 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
             {content_type === 'imagesblock' && (
               <ProjectLayout.Storey type="photos">
                 <Section title={content_item.title}>
-                  <PhotoGallery>
-                    {content_item.items.map(({ title, image }) => (
-                      <PhotoGallery.Item
-                        key={title}
-                        image={image}
-                      />
-                    ))}
-                  </PhotoGallery>
+                  <PhotoGallery
+                    photos={content_item.items.map(({ image, title }) => ({
+                      url: image,
+                      description: title,
+                    }))}
+                  />
                 </Section>
               </ProjectLayout.Storey>
             )}
