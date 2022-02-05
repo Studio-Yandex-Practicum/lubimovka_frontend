@@ -1,0 +1,39 @@
+.header {
+  @mixin headline;
+  @mixin headline4;
+
+  margin: scale(0 0 20px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    margin: scale(0 24px 16px);
+  }
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  @media (max-width: $tablet-portrait) {
+    flex-direction: column;
+    margin: scale(0 24px 0 86px);
+  }
+}
+
+.text {
+  @mixin text;
+  @mixin textLarge;
+
+  max-width: scale(410px);
+  margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(16px);
+  }
+}
+
+.button {
+  width: scale(298px);
+}
