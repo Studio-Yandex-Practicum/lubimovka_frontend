@@ -30,12 +30,11 @@ export const ProjectLink: FC<IProjectLinkProps> = (props) => {
           label="YOUTUBE"
           href={url}
           size="l"
-          isLink
+          isOutsideLink
           border="full"
           icon="arrow-right"
           iconPlace="right"
           className={cx('button')}
-          target="_blank"
         />
       </div>
     </>

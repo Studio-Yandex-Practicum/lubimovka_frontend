@@ -17,10 +17,10 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   width?: string
   className?: string,
   isLink?: boolean,
+  isOutsideLink?: boolean,
   href?: string,
   align?: 'start' | 'end' | 'center' | 'space-between',
   gap?: string
-  target?: '_blank' | '_self' | '_parent' | '_top'
 }
 
 const cx = cn.bind(styles);
@@ -32,6 +32,7 @@ export const Button: FC<IButtonProps> = (props) => {
     href = '/',
     size,
     isLink,
+    isOutsideLink,
     icon,
     iconPlace,
     label,
@@ -41,7 +42,6 @@ export const Button: FC<IButtonProps> = (props) => {
     disabled = false,
     className = '',
     gap = '0',
-    target,
     ...restButtonProps
   } = props;
 
@@ -56,7 +56,23 @@ export const Button: FC<IButtonProps> = (props) => {
   );
 
   return (
-    !isLink &&
+    isLink &&
+    <Link href={href} {...restButtonProps}>
+      <a style={style}
+        className={cx(classes, 'link')}>
+        {buttonChildren}
+      </a>
+    </Link>
+    ||
+    isOutsideLink &&
+      <Link href={href} {...restButtonProps}>
+        <a style={style}
+          className={cx(classes, 'link')}
+          rel="noopener noreferrer" target="_blank">
+          {buttonChildren}
+        </a>
+      </Link>
+    ||
       <button
         className={classes}
         type={type}
@@ -65,12 +81,5 @@ export const Button: FC<IButtonProps> = (props) => {
         {...restButtonProps}>
         {buttonChildren}
       </button>
-      ||
-      <Link href={href} {...restButtonProps}>
-        <a  style={style} target={target}
-          className={cx(classes, 'link')}>
-          {buttonChildren}
-        </a>
-      </Link>
   );
 };
