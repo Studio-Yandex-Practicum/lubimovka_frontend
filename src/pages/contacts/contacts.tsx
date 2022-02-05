@@ -6,11 +6,11 @@ import Link from 'next/link';
 import { AppLayout } from 'components/app-layout';
 import ContactsLayout from 'components/contacts-layout';
 import ContactsTitle from 'components/contacts-title';
-import ContactsAuthors from 'components/contacts-authors';
 import Form from 'components/ui/form/form';
 import TextInput from 'components/ui/text-input/text-input';
 import TextArea from 'components/ui/text-area';
 import { Button } from 'components/ui/button';
+import { CallToEmail } from 'components/call-to-email';
 import { fetcher } from 'shared/fetcher';
 import { validEmailRegexp } from 'shared/constants/regexps';
 
@@ -252,7 +252,12 @@ const Contacts: NextPage = () => {
           />
         </ContactsLayout.Image>
         <ContactsLayout.Authors>
-          <ContactsAuthors email="hello@lubimovka.ru"/>
+          <CallToEmail
+            type="contacts"
+            title="Для авторов"
+            description="Если вы хотите внести изменения в свою страницу: добавить пьесы, ссылки на статьи или публикации, напишите нам. Приложите файлы и ссылки."
+            email="hello@lubimovka.ru"
+          />
         </ContactsLayout.Authors>
       </ContactsLayout>
     </AppLayout>
