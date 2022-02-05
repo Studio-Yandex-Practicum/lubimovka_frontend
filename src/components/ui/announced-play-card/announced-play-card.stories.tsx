@@ -56,7 +56,7 @@ PerformancePaidWithDescription.args = {
   ],
   description: 'Гости расскажут о своём творческом и организационном опыте и вдохновят аудиторию преодолевать любые границы.',
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
-  imageUrl: '/images/main/performance_mama.jpg',
+  imageUrl: 'https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg',
   project: 'читка проекта Любимовка.Ещё',
   paid: true,
 };
@@ -79,7 +79,7 @@ PerformanceNoTickets.args = {
     },
   ],
   buttonLink: 'https://lubimovka.timepad.ru/event/1746579/',
-  imageUrl: '/images/main/performance_mama.jpg',
+  imageUrl: 'https://img05.rl0.ru/afisha/1808x1016q65i/s2.afisha.ru/mediastorage/5e/c5/541412eb0ea14286bad43d20c55e.jpg',
   project: 'читка проекта Любимовка.Ещё',
   paid: false,
 };

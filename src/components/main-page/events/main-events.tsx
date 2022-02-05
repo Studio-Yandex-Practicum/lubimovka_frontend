@@ -2,8 +2,8 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
-import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
 import { IMainAfisha } from './main-events.props';
+import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
 import { main } from 'mocks/data/main';
 
 import styles from './main-events.module.css';
