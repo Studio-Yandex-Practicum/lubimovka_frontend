@@ -29,7 +29,7 @@ export const MainPlatforms: FC<MainPlaces> = ({ items }) => (
             {card.description}
           </p>
           <Link href={card.map_link}>
-            <a className={cx('link')}>
+            <a className={cx('link')} target="_blank">
               <p className={cx('text')}>
                 {card.address}
               </p>

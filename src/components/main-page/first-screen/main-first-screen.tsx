@@ -25,6 +25,7 @@ export const MainFirstScreen: FC<IMainFirstScreen> = ({ title, url_title, url })
           iconPlace="right"
           width="100%"
           className={cx('button')}
+          target="_blank"
         />
       </div>
     </div>
