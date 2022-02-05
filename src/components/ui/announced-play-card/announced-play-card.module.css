@@ -1,9 +1,8 @@
 .card {
   display: flex;
-  width: scale(420px);
 
   @media (max-width: $tablet-portrait) {
-    width: scale(414px);
+    box-sizing: border-box;
     padding: scale(32px 14px 32px 24px);
     border-top: var(--coal) solid 1px;
   }
@@ -97,6 +96,12 @@
   }
 }
 
+.creditsDescriptionExists {
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(16px);
+  }
+}
+
 .creditsEntry {
   display: block;
   padding: 0;
@@ -113,6 +118,14 @@
 
   @media (max-width: $tablet-portrait) {
     margin-left: 0;
+  }
+}
+
+.descriptionCoverExists {
+  max-width: scale(240px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(243px);
   }
 }
 

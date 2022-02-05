@@ -24,7 +24,7 @@ export const MainTitle: FC<IMainTitle> = ({ title, description }) => {
           <Button
             label="ПОЛНАЯ АФИША"
             isLink
-            href="/afishe"
+            href="/afisha/events"
             size="s"
             border="bottomLeft"
             iconPlace="left"

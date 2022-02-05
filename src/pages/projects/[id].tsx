@@ -22,6 +22,7 @@ import { PersonCard } from 'components/ui/person-card';
 import { PersonCardList } from 'components/person-card-list';
 import { fetcher } from 'shared/fetcher';
 import { Project as ProjectModel } from 'api-typings';
+import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
 
 const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const {
@@ -99,13 +100,22 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                       //TODO: исправить ответ бекенда, сейчас возвращаются данные для страницы спектакля
                       isPerformance={true}
                       id={id}
-                      date="2021-11-13T17:00:00.000Z"
+                      formattedDate={formatDate('2021-11-13T17:00:00.000Z')}
+                      formattedTime={formatTime('2021-11-13T17:00:00.000Z')}
                       title={name}
-                      dramatists={['Ольга Казакова', 'Антон Чехов']}
-                      directors={['Катя Ганюшина']}
+                      team={[
+                        {
+                          name: 'Драматурги',
+                          persons: ['Ольга Казакова', 'Антон Чехов']
+                        },
+                        {
+                          name: 'Режиссёр',
+                          persons: ['Катя Ганюшина']
+                        },
+                      ]}
                       buttonLink={'https://lubimovka.timepad.ru/event/1746579/'}
                       imageUrl="/images/projects/performance_mama.jpg"
-                      projectText="читка проекта Любимовка.Eщё"
+                      project="читка проекта Любимовка.Eщё"
                       paid={true}
                     />
                   ))}
