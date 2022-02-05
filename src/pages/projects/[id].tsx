@@ -29,6 +29,7 @@ const convertRolesToString = (roles: PersonRole[]) => roles.map(role => role.nam
 const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const {
     title,
+    intro,
     description,
     image,
     contents,
@@ -45,7 +46,8 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
         </PageBreadcrumbs>
         <ProjectHeadline
           title={title}
-          intro={description}
+          intro={intro}
+          description={description}
           image={image}
         />
         <ProjectLayout.Description>
