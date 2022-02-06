@@ -1,7 +1,11 @@
 .title {
   max-width: scale(480px);
+  margin-top: scale(60px);
+  grid-column: 1;
+  grid-row: 1;
 
   @media (max-width: $tablet-portrait) {
-    max-width: unset;
+    max-width: auto;
+    margin-top: scale(32px);
   }
 }

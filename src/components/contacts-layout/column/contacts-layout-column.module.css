@@ -1,8 +1,39 @@
-.column {
-  margin: scale(60px 0 0 120px);
-  grid-area: form;
+@define-mixin cover-image {
+  &::before {
+    display: block;
+    padding-bottom: calc(100% / 720 * 280);
+    background-image: url("/images/contacts/play-script.jpg");
+    background-size: cover;
+    content: '';
 
-  @media (max-width: $tablet-portrait) {
-    margin: scale(32px 0 0);
+    @media (max-width: $tablet-portrait) {
+      margin-right: scale(-24px);
+    }
+  }
+}
+
+@define-mixin undo-cover-image {
+  &::before {
+    content: none;
+  }
+}
+
+.root {
+  &:first-child {
+    flex-basis: calc(50% - scale(120px));
+
+    @media (max-width: $tablet-portrait) {
+      @mixin cover-image;
+    }
+  }
+
+  &:last-child {
+    flex-basis: 50%;
+
+    @mixin cover-image;
+
+    @media (max-width: $tablet-portrait) {
+      @mixin undo-cover-image;
+    }
   }
 }
