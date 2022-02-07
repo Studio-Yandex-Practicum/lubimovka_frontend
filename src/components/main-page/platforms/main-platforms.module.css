@@ -93,8 +93,8 @@
 
 .link {
   width: 100%;
-  margin-top: auto;
   padding: 0 scale(4px);
+  margin-top: auto;
 }
 
 .link svg {
