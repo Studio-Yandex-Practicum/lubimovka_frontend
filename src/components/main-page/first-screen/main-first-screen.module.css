@@ -48,3 +48,13 @@
   min-width: scale(25px);
   height: scale(25px);
 }
+
+.button > span {
+  @mixin limitText;
+  -webkit-line-clamp: 1;
+
+  @media (max-width: $tablet-portrait) {
+    -webkit-line-clamp: 2;
+
+  }
+}
