@@ -25,11 +25,13 @@
 
   margin-bottom: scale(15px);
   color: var(--coal);
+  max-width: scale(800px);
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
     margin-bottom: scale(12px);
+    max-width: scale(305px);
   }
 }
 
