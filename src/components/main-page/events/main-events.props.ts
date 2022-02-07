@@ -2,10 +2,10 @@ import type { EventTypeEnum } from 'api-typings';
 
 interface IEvent_body {
   id: number
-  description: string
-  image: string
+  description?: string
+  image?: string
   name: string
-  project_title: null | string
+  project_title: string | null
   team: {
     name: string;
     persons: string[];

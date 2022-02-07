@@ -15,11 +15,11 @@
   justify-content: center;
   padding: 0;
   margin: 0;
-  column-gap: 120px;
-  grid-row-gap: 48px;
-  grid-template-columns: repeat(2, minmax(364px, max-content));
+  column-gap: scale(120px);
+  grid-row-gap: scale(48px);
+  grid-template-columns: repeat(2, minmax(scale(364px), max-content));
   list-style: none;
-  row-gap: 74px;
+  row-gap: scale(74px);
 
   @media (max-width: 960px) {
     grid-template-columns: repeat(1, minmax(320px, max-content));
@@ -37,7 +37,7 @@
     position: absolute;
     top: 0;
     left: 50%;
-    width: 1px;
+    width: scale(1px);
     height: calc(100%);
     background-color: var(--coal);
     content: '';
