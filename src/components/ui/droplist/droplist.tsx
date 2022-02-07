@@ -73,7 +73,7 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
       <ContainerButton
         cb={cbContainer}
         activeDropdown={activeDropdown}
-        value={type === 'single' && selectedOptions.length ? selectedOptions[0].text : placeholder || 'Все'}
+        value={type === 'single' && selectedOptions[0].text || placeholder || 'Все'}
       />
       <div className={cx('container')}>
         <ul className={cx('list', {

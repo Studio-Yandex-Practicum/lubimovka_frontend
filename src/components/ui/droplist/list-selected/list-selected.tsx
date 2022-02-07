@@ -17,7 +17,7 @@ interface IListSelectedProps {
 export const ListSelected: FC<IListSelectedProps> = ({ selectList, activeDropdown, handlerDeleteItem }): JSX.Element => (
   <div className={cx('container', { 'lower': activeDropdown })}>
     <ul className={cx('list')}>
-      {selectList.map((item, i) => (
+      {Array.isArray(selectList) && selectList.map((item, i) => (
         <Tag 
           label={`${item.text[0].toUpperCase()}${item.text.slice(1).toLowerCase()}`} 
           key={i} 
