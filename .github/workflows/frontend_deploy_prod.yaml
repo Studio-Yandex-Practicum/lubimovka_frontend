@@ -1,6 +1,6 @@
-name: Create and publish a frontend Docker  image
+name: Create and publish a frontend Docker image
 concurrency:
-  group: develop_deploy
+  group: prod_deploy
   cancel-in-progress: true
 
 on:
@@ -48,7 +48,7 @@ jobs:
           labels: runnumber=${GITHUB_RUN_ID}
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:develop,
+            ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:prod,
             ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:release,
             ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest,
             ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
@@ -64,72 +64,12 @@ jobs:
 
             ${{ steps.build-image.outputs.labels }} - ${{ steps.build-image.outcome }}
   
-  deploy:
-    name: Deploy changes on server
-    runs-on: ubuntu-latest
-    environment:
-      name: develop_deploy
-    needs: build-and-push-image-to-github-packages
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: release
-      -
-        name: Create SSH key 
-        # (SSH_KNOWN_HOSTS=ssh-keyscan -H сервер, SSH_PRIVATE_KEY - ключ с ПК, которому разрешен вход)
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-      -
-        name: Create folder for application
-        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} mkdir -p ${{ env.DEPLOY_PATH }}
-      -
-        name: Deploy with scp
-        run: scp -r infra_deploy/develop/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ env.DEPLOY_PATH }}
-      -
-        name: Executing remote ssh commands to deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-          script: |
-            cd ${{ env.DEPLOY_PATH }}/develop/
-
-            # GitHub variables СДЕЛАТЬ ПРОВЕРКУ!!!!
-            #echo "IMAGE_FRONT=${{ secrets.IMAGE_FRONT }}" >> .github_vars
-            #echo "IMAGE_FRONT_TAG=${{ secrets.IMAGE_FRONT_TAG }}" >> .github_vars
-            #echo "FRONT_BASE_URL=${{ secrets.FRONT_BASE_URL }}" >> .github_vars
-            #echo "DEVELOP_API_BASE_URL=${{ secrets.DEVELOP_API_BASE_URL }}" >> .github_vars
-            #echo "TEST_API_BASE_URL=${{ secrets.TEST_API_BASE_URL }}" >> .github_vars
-            #echo "DEV_SUBDOMAIN=${{ secrets.DEV_SUBDOMAIN }}" >> .github_vars
-            #echo "TEST_SUBDOMAIN=${{ secrets.TEST_SUBDOMAIN }}" >> .github_vars
-            
-            # Создание сети вынесено отдельно для возможности независимо перезапускать контейнеры (через external networks)
-            # docker network create develop_db_network || true
-            docker network create develop_swag_network || true
-
-            # Установка приложения - frontend
-            cp -rf ${{ env.DEPLOY_PATH }}/develop/lubimovka-frontend.service /etc/systemd/system/lubimovka-frontend.service
-            systemctl daemon-reload
-            systemctl restart lubimovka-frontend.service
-
-            # После установки удаляем файлы
-            rm ${{ env.DEPLOY_PATH }}/develop/lubimovka-frontend.service
-
   send_message:
     name: Send message
     runs-on: ubuntu-latest
     environment:
-      name: develop_deploy
-    needs: deploy
+      name: prod_deploy
+    needs: build-and-push-image-to-github-packages
     steps:
       -
         name: Send message after updating the image on the server
@@ -137,4 +77,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: Код на сервере разработки обновлён!
+          message: К container registry загружен prod frontend!
