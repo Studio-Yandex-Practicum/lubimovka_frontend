@@ -1,11 +1,13 @@
 import type { EventTypeEnum } from 'api-typings';
 
+import { Nullable } from 'shared/types';
+
 interface IEvent_body {
   id: number
-  description?: string
-  image?: string
+  description: string
+  image: string
   name: string
-  project_title: string | null
+  project_title: Nullable<string>
   team: {
     name: string;
     persons: string[];
@@ -17,7 +19,7 @@ interface IItems {
   type: EventTypeEnum;
   event_body: IEvent_body;
   date_time: string;
-  paid?: boolean;
+  paid: boolean;
   url: string;
   place: string;
 }
