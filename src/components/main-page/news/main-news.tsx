@@ -9,7 +9,14 @@ import styles from './main-news.module.css';
 
 const cx = classNames.bind(styles);
 
-export const MainNews: FC<NewsItemList> = ({ title, description, pub_date, id }) => (
+interface INewsItemList extends NewsItemList {
+  id: number;
+  title: string;
+  description: string;
+  pub_date: string;
+}
+
+export const MainNews: FC<INewsItemList> = ({ title, description, pub_date, id }) => (
   <Link href={`/news/${id}`}>
     <a className={cx('link')}>
       <article className={cx('article')}>

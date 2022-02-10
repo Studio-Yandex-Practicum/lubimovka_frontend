@@ -10,10 +10,20 @@ import styles from './main-aside.module.css';
 
 const cx = classNames.bind(styles);
 
+interface IBlogItemList extends BlogItemList {
+  id: number;
+  pub_date: string;
+  title: string;
+  description: string;
+  author_url: string;
+  author_url_title: string;
+  image: string;
+}
+
 interface IMainAside {
   type: 'blog' | 'news';
   title: string;
-  items: Array<BlogItemList>;
+  items: Array<IBlogItemList>;
 }
 
 export const MainAside: FC<IMainAside> = ({ type, title, items }) => (
