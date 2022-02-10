@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import classNames from 'classnames/bind';
 
-import { BlogItemList } from 'api-typings';
+import { NewsItemList, BlogItemList } from 'api-typings';
 import { Button } from 'components/ui/button';
 import { BlogCard } from 'components/ui/blog-card';
 import { MainNews } from 'components/main-page/news';
@@ -10,10 +10,10 @@ import styles from './main-aside.module.css';
 
 const cx = classNames.bind(styles);
 
-interface IMainAside {
+interface IMainAside extends BlogItemList {
   type: 'blog' | 'news';
   title: string;
-  items: Array<BlogItemList>;
+  items: Array<NewsItemList>;
 }
 
 export const MainAside: FC<IMainAside> = ({ type, title, items }) => (
