@@ -3,6 +3,7 @@ import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 import { NewsItemList } from 'api-typings';
+import { formatDate } from 'shared/helpers/formatDateServerData';
 
 import styles from './main-news.module.css';
 
@@ -19,9 +20,7 @@ export const MainNews: FC<NewsItemList> = ({ title, description, pub_date, id })
           {description}
         </p>
         <time dateTime={pub_date} className={cx('date')}>
-          {pub_date ? `${new Date(pub_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' })}
-              ${new Date(pub_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', year: 'numeric' })}`
-            : 'Дата'}
+          {formatDate(pub_date)} {new Date(pub_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', year: 'numeric' })}
         </time>
       </article>
     </a>
