@@ -53,13 +53,13 @@
 
 .heading {
   display: flex;
-  height: scale(145px);
+  min-height: scale(145px);
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: scale(36px);
 
   @media (max-width: $tablet-portrait) {
-    height: scale(124px);
+    min-height: scale(124px);
     margin-bottom: scale(56px);
   }
 }
@@ -115,7 +115,8 @@
   @mixin headline4;
 
   display: -webkit-box;
-  width: scale(340px);
+  max-width: scale(204px);
+  margin-bottom: 20px;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline5;
