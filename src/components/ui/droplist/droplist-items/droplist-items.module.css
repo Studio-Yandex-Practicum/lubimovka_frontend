@@ -53,9 +53,9 @@
 .text {
   @mixin text;
   @mixin textLarge;
-  
-  margin: 0;
+
   padding: 0;
+  margin: 0;
   text-transform: lowercase;
 
   &::first-letter {
