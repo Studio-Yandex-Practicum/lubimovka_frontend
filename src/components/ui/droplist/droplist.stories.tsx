@@ -28,9 +28,7 @@ MonthsDroplist.args = {
   ],
   selectedOptions: [{ value: 11, text: 'Декабрь' }],
   placeholder: 'Месяц',
-  onChange: (selectedOptions) => {
-    console.log(`Удалился или добавился ${selectedOptions} объект`);
-  },
+  onChange: (selectedOptions) => {selectedOptions;},
 };
 
 export const YearsDroplist = Template.bind({});
@@ -48,7 +46,5 @@ YearsDroplist.args = {
     { value: 8, text: '2021' },
   ],
   selectedOptions: [{ value: 0, text: '2010' }],
-  onChange: (selectedOptions) => {
-    console.log(`Удалился или добавился ${selectedOptions} объект`);
-  },
+  onChange: (selectedOptions) => {selectedOptions;},
 };
