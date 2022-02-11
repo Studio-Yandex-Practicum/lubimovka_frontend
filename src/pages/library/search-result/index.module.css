@@ -1,7 +1,13 @@
 .pageWrapper {
+  width: 100%;
+
   @media (max-width: $tablet-portrait) {
     background: linear-gradient(to bottom, var(--white) scale(100px), transparent scale(100px) 100%);
   }
+}
+
+.pageWrapper * {
+  box-sizing: border-box;
 }
 
 .page {
