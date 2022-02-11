@@ -1,21 +1,11 @@
 .layout {
-  display: grid;
+  display: flex;
   box-sizing: border-box;
+  justify-content: flex-end;
   padding-bottom: scale(180px);
-  grid-template-areas:
-    'form image'
-    'form authors';
-  grid-template-columns: 1fr 50vw;
 
   @media (max-width: $tablet-portrait) {
-    padding-right: scale(24px);
-    padding-bottom: scale(150px);
-    padding-left: scale(24px);
-    grid-template-areas:
-      'image'
-      'form'
-      'form'
-      'authors';
-    grid-template-columns: 100%;
+    display: block;
+    padding: scale(0 24px 150px 24px);
   }
 }

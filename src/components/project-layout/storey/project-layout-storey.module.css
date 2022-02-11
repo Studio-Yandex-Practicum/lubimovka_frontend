@@ -22,22 +22,39 @@
 
 .videos {
   margin-top: scale(98px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: 0;
+  }
 }
 
 .photos {
+  padding: 0;
   margin-top: scale(144px);
 }
 
 .plays {
   margin-top: scale(94px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0;
+  }
 }
 
 .performances {
   margin-top: scale(124px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0;
+  }
 }
 
 .persons {
   margin-top: scale(124px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0;
+  }
 }
 
 .text {
@@ -50,11 +67,21 @@
 }
 
 .invitation {
+  padding-bottom: scale(169px);
   margin-top: scale(100px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-bottom: 0;
+  }
 
   .holder {
     max-width: scale(516px);
-    margin-right: scale(200px);
+    margin-right: scale(227px);
     margin-left: auto;
+
+    @media (max-width: $tablet-portrait) {
+      margin-right: 0;
+      margin-left: 0;
+    }
   }
 }

@@ -10,6 +10,7 @@
 
   @media (max-width: $tablet-portrait) {
     padding: calc(var(--scale) * 56) calc(var(--scale) * 25);
+    margin: 0;
     grid-template-columns: 10fr;
   }
 }

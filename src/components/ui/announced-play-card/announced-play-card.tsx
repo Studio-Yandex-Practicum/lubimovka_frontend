@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
+import { Nullable } from 'shared/types';
 import { Button } from '../button';
 
 import styles from './announced-play-card.module.css';
@@ -11,88 +12,78 @@ const cx = cn.bind(styles);
 export interface IAnnouncedPlayCardProps {
   isPerformance?: boolean;
   id?: number;
-  date: string;
+  formattedDate: string;
+  formattedTime: string;
   title: string;
-  dramatists?: string [];
-  directors?: string [];
-  description?:string;
+  team?: TeamEntry[];
+  description?: string;
   buttonLink: string;
   imageUrl?: string;
-  projectText?: string;
-  className?: string;
+  project?: Nullable<string>;
   paid?: boolean;
+  className?: string;
+}
+
+type TeamEntry = {
+  name: string;
+  persons: string [];
 }
 
 export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   const {
     isPerformance,
     id,
-    date,
+    formattedDate,
+    formattedTime,
     title,
-    dramatists,
-    directors,
+    team,
     description,
     buttonLink,
     imageUrl,
-    projectText,
+    project,
     className,
     paid,
   } = props;
 
-  const creditsArrayToString = (array: string []) => {
-    const string = array.join(', ').replace(/, ([^,]*)$/, ' и $1');
-    return string;
-  };
-
   const creditsRendered = (
     <React.Fragment>
-      {
-        dramatists && dramatists.length > 1 ?
-          (<p className={cx('creditsEntry')}>
-        Драматурги: {creditsArrayToString (dramatists)}
-          </p>)
-          :
-          (<p className={cx('creditsEntry')}>
-        Драматург: {dramatists}
-          </p>)
-      }
-      {
-        directors && directors.length > 1 ?
-          (<p className={cx('creditsEntry')}>
-        Режиссёры: {creditsArrayToString (directors)}
-          </p>)
-          :
-          (<p className={cx('creditsEntry')}>
-          Режиссёр: {directors}
-          </p>)
+      {team &&
+      team.map((i, idx) => <p className={cx('creditsEntry')} key={idx}>
+        {i.name}: {i.persons.join(', ').replace(/, ([^,]*)$/, ' и\xa0\$1')}
+      </p>
+      )
       }
     </React.Fragment>
   );
 
   return (
-    <article className={cx('card', [className])}>
+    <article className={cx('card', className)}>
       {imageUrl &&
         <div className={cx('cover')}>
           <Image src={imageUrl} alt={title} layout="fill" objectFit="cover"/>
         </div>
       }
       <div className={cx('info')}>
-        <div className={cx('dateInfo', !imageUrl && 'dateInfoNoCover')}>
-          <p className={cx('date')}>{new Date(date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' })}</p>
-          <p className={cx('date')}>{new Date(date).toLocaleTimeString('ru-Ru', { timeZone: 'Europe/Moscow', hour:'numeric', minute:'numeric' })}</p>
-        </div>
+        <time className={cx('dateInfo', !imageUrl && 'dateInfoNoCover')}>
+          <span className={cx('date')}>{formattedDate}</span>
+          <span className={cx('date')}>{formattedTime}</span>
+        </time>
         <h3 className={cx('title')}>{title}</h3>
-        {directors && directors.length > 0 && dramatists && dramatists.length > 0 &&
-        <div className={cx('credits')}>
-          {creditsRendered}
-        </div>
+        {team &&
+          <div className={cx('credits', description && 'creditsDescriptionExists')}>
+            {creditsRendered}
+          </div>
         }
         {description &&
-        <div className={cx('description')}>
+        <div className={cx('description', imageUrl && 'descriptionCoverExists')}>
           {description}
         </div>
         }
-        <p className={cx('projectText', imageUrl && 'projectTextCoverExists')}>{projectText}</p>
+        {project &&
+        <p className={cx('projectText', imageUrl && 'projectTextCoverExists')}>
+          {project}
+        </p>
+        }
         <div className={cx('buttonContainer', imageUrl ? 'buttonContainerCoverExists' : 'buttonNoCover')}>
           <Button
             view="primary"

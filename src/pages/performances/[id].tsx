@@ -1,6 +1,5 @@
 // @ts-nocheck
 
-import { useState } from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Image from 'next/image';
 
@@ -15,7 +14,6 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
-import { Lightbox } from 'components/lightbox';
 // import { ReviewCarousel } from 'components/review-carousel';
 // import { CritiqueCard } from 'components/critique-card';
 // import { ReviewCard } from 'components/review-card';
@@ -25,7 +23,7 @@ import { Performance as PerformanceModel } from 'api-typings';
 const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const {
     play,
-    persons,
+    team,
     images_in_block,
     name,
     main_image,
@@ -34,16 +32,8 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
     description,
     text,
     age_limit,
+    duration,
   } = props;
-
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(0);
-
-  const toggleLightboxVisibility = () => setIsLightboxOpen(!isLightboxOpen);
-  const handlePhotoGalleryItemClick = (id: number) => () => {
-    setSelectedImage(id);
-    setIsLightboxOpen(true);
-  };
 
   // TODO: добавить недостающие данные в ответ бекенда
   const formattedDate = new Date('2021-05-13T01:00:00.000Z').toLocaleDateString('ru-Ru', {
@@ -99,39 +89,18 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         </PerformanceLayout.Play>
         <PerformanceLayout.Aside>
           <PerformanceDetails
-            // TODO: добавить в ответ бекенда недостающие данные
-            duration="1 ч. 15 мин."
+            duration={duration}
             ageLimit={age_limit}
           />
-          <PerformanceCrew crew={persons}/>
+          <PerformanceCrew crew={team}/>
         </PerformanceLayout.Aside>
         <PerformanceLayout.Gallery>
-          <PhotoGallery>
-            {images_in_block.map(({ image }, index) => (
-              <PhotoGallery.Item
-                key={image}
-                image={image}
-                zoomIn
-                onClick={handlePhotoGalleryItemClick(index)}
-              />
-            ))}
-          </PhotoGallery>
-          <Lightbox
-            isOpen={isLightboxOpen}
-            initialSlideIndex={selectedImage}
-            onClose={toggleLightboxVisibility}
-          >
-            {images_in_block.map((image, index) => (
-              <Image
-                key={index}
-                src={image.image}
-                // TODO: узнать насчет описания изображений в админке
-                alt=""
-                layout="fill"
-                objectFit="cover"
-              />
-            ))}
-          </Lightbox>
+          <PhotoGallery
+            photos={images_in_block.map(({ image, title }) => ({
+              url: image,
+              description: title,
+            }))}
+          />
         </PerformanceLayout.Gallery>
         {/* TODO: добавить в ответ бекенда недостающие данные */}
         {/* <PerformanceLayout.Critique>

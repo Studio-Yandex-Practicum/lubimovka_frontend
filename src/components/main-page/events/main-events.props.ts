@@ -1,17 +1,15 @@
 import type { EventTypeEnum } from 'api-typings';
 
-interface ITeam {
-  Драматург: string[]
-  Режиссёр: string[]
-}
-
 interface IEvent_body {
   id: number
   description: string
   image: string
   name: string
   project_title: null | string
-  team: ITeam
+  team: {
+    name: string;
+    persons: string[];
+  }[]
 }
 
 interface IItems {

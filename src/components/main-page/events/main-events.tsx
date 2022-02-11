@@ -3,16 +3,16 @@ import classNames from 'classnames/bind';
 
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
 import { IMainAfisha } from './main-events.props';
+import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
 import { main } from 'mocks/data/main';
 
 import styles from './main-events.module.css';
 
 const cx = classNames.bind(styles);
+const mocks = main.afisha?.items;
 
 export const MainEvents: FC<IMainAfisha> = () => {
-  const mocks = main.afisha?.items;
-
-  return ( 
+  return (
     <section className={styles.events}>
       <ul className={styles.content}>
         {
@@ -20,14 +20,14 @@ export const MainEvents: FC<IMainAfisha> = () => {
             <li key={item.id} className={cx('list')}>
               <AnnouncedPlayCard
                 id={item.id}
-                date={item.date_time}
+                formattedDate={formatDate(item.date_time)}
+                formattedTime={formatTime(item.date_time)}
                 title={item.event_body.name}
-                dramatists ={item.event_body.team.Драматург}
-                directors={item.event_body.team.Режиссёр}
+                team={item.event_body.team}
                 description={item.event_body.description}
                 buttonLink={item.url}
                 imageUrl={item.event_body.image}
-                projectText="читка проекта Любимовка.Ещё"
+                project="читка проекта Любимовка.Ещё"
                 paid={item.paid}
               />
             </li>
