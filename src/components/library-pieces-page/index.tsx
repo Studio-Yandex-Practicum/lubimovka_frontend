@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, Dispatch, useRef, RefObject } from 'react';
+import { FC, useState, useEffect, Dispatch, } from 'react';
 import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 import cn from 'classnames';
 
@@ -8,7 +8,7 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
-import { IDroplistPublic } from 'components/ui/droplist';
+import { DroplistOption } from 'components/ui/droplist';
 import LibraryFiltersModal from './library-filters-modal';
 import LibraryPreloader from './library-preloader/library-preloader';
 import LibraryTagsMobile from 'components/library-tags-mobile/library-tags-mobile';
@@ -21,16 +21,15 @@ import styles from './index.module.css';
 interface ILibraryPageProps {
   isLoading: boolean;
   items: Play[];
-  years: number[];
+  years: DroplistOption[];
   programmes: Array<IProgram>;
   filterDispatcher: Dispatch<Action>;
 }
 
 const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programmes, filterDispatcher }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const droplistRef = useRef(null) as RefObject<IDroplistPublic>;
 
-  function handleFiltersClick():void {
+  function handleFiltersClick(): void {
     setIsModalOpen((prev) => !prev);
   }
 
@@ -67,12 +66,11 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             </Menu>
           </div>
           <div className={styles.mobileTags}>
-            <LibraryTagsMobile programmes={programmes} filterDispatcher={filterDispatcher}
-              droplistRef={droplistRef}/>
+            <LibraryTagsMobile programmes={programmes} filterDispatcher={filterDispatcher}/>
           </div>
           <div className={styles.filter}>
             <LibraryFilter years={years} programmes={programmes}
-              filterDispatcher={filterDispatcher} droplistRef={droplistRef}/>
+              filterDispatcher={filterDispatcher}/>
           </div>
         </div>
         <section className={styles.section}>
@@ -87,9 +85,9 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
           ) : (
             <div className={styles.pieces}>
               {!items.length &&
-                <p className={styles.noResult}>
+              <p className={styles.noResult}>
                   Ничего не найдено. Попробуйте изменить параметры поиска.
-                </p>
+              </p>
               }
               <BasicPlayCardList>
                 {items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
@@ -110,9 +108,9 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
         </section>
         <section className={styles.piecesMobile}>
           {!items.length &&
-            <p className={styles.noResult}>
+          <p className={styles.noResult}>
               Ничего не найдено. Попробуйте изменить параметры поиска.
-            </p>
+          </p>
           }
           {isLoading ? (
             <div className={styles.loaderMobile}>
@@ -135,9 +133,12 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             </>
           )}
         </section>
-        <LibraryFiltersModal isModalOpen={isModalOpen}><LibraryFilter years={years} programmes={programmes}
-          filterDispatcher={filterDispatcher} onCheckResults={handleFiltersClick}
-          droplistRef={droplistRef}/></LibraryFiltersModal>
+        <LibraryFiltersModal
+          isModalOpen={isModalOpen}>
+          <LibraryFilter
+            years={years} programmes={programmes}
+            filterDispatcher={filterDispatcher}
+            onCheckResults={handleFiltersClick}/></LibraryFiltersModal>
       </div>
     </main>
   );
