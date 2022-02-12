@@ -46,18 +46,7 @@ jobs:
             ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:main,
             ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest,
             ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-      -
-        name: Send message if Build and push Docker failed
-        if: ${{ failure() }}
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_ID }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            Ошибка при сборке образа
-
-            ${{ steps.build-image.outputs.labels }} - ${{ steps.build-image.outcome }}
-  
+      
   deploy:
     name: Deploy changes on server
     runs-on: ubuntu-latest
@@ -131,4 +120,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: Код на сервере разработки обновлён!
+          message: На stage серрвере развернут образ frontend!

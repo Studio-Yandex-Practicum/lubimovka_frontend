@@ -60,7 +60,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            Ошибка при сборке образа
+            Ошибка при сборке образа frontend prod:
 
             ${{ steps.build-image.outputs.labels }} - ${{ steps.build-image.outcome }}
   
@@ -77,4 +77,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: К container registry загружен prod frontend!
+          message: В container registry загружен prod-образ frontend и готов к релизу!
