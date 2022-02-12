@@ -1,14 +1,16 @@
 import { Dispatch } from 'react';
 
+import { DroplistOption } from '../ui/droplist';
+
 export type Action =
-  { type: 'add years'; festival: string[] } |
-  { type: 'remove year'; festival: string } |
+  { type: 'add years'; festival: DroplistOption } |
+  { type: 'remove year'; festival: DroplistOption } |
   { type: 'add programme'; program: string } |
   { type: 'remove programme'; program: string } |
   { type: 'reset' }
 
 export type State = {
-  festival: string[],
+  festival: DroplistOption[],
   program: string[],
 }
 
@@ -22,13 +24,13 @@ function reducer(state: State, action: Action): State {
   case 'add years':
     return {
       ...state,
-      festival: action.festival
+      festival: [...state.festival, action.festival]
     };
   case 'remove year':
     return {
       ...state,
       festival: state.festival.filter(
-        (year, index, arr) => index !== arr.indexOf(action.festival)
+        ({ value }) => value !==  action.festival.value
       )
     };
   case 'add programme':

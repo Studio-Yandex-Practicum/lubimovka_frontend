@@ -1,6 +1,6 @@
-import React, { FC, useCallback, RefObject, Dispatch, useContext } from 'react';
+import React, { FC, useCallback, Dispatch, useContext } from 'react';
 
-import { Droplist, IDroplistPublic } from 'components/ui/droplist';
+import { Droplist, DroplistOption, } from 'components/ui/droplist';
 import { Tag } from 'components/ui/tag';
 import { Button } from 'components/ui/button';
 import { Action } from 'components/library-filter/library-filter-reducer';
@@ -10,14 +10,13 @@ import { IProgram } from 'pages/library';
 import style from './library-filter.module.css';
 
 export interface LibraryFilterProps {
-  years: number[];
+  years: DroplistOption[];
   programmes: Array<IProgram>;
   filterDispatcher: Dispatch<Action>;
   onCheckResults?: () => void;
-  droplistRef: RefObject<IDroplistPublic>;
 }
 
-const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispatcher, onCheckResults, droplistRef }) => {
+const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispatcher, onCheckResults }) => {
   const filterState = useContext(LibraryFiltersProviderContext);
 
   const handleTagClick = useCallback(
@@ -31,18 +30,21 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
 
   const handleResetClick = useCallback((): void => {
     filterDispatcher({ type: 'reset' });
-    droplistRef.current?.deleteAll();
-  }, [filterDispatcher, droplistRef]);
-
-  const handleYearsClick = useCallback((years: string[]): void => {
-    filterDispatcher({ type: 'add years', festival: years });
   }, [filterDispatcher]);
+
+  const handleYearsClick = useCallback((years: DroplistOption): void => {
+    if (!filterState.festival.find((i) => i.value === years.value)) {
+      filterDispatcher({ type: 'add years', festival: years  });
+    } else {
+      filterDispatcher({ type: 'remove year', festival: years  });
+    }
+  }, [filterDispatcher, filterState.festival]);
 
   return (
     <div className={style.container}>
       <div className={style.years}>
         <h2 className={style.title}>Годы фестиваля</h2>
-        <Droplist type="checkbox" cb={handleYearsClick} data={years} ref={droplistRef}/>
+        <Droplist type="multiple" onChange={handleYearsClick} options={years} selectedOptions={filterState.festival}/>
       </div>
       <div className={style.programmes}>
         <h2 className={style.title}>Программа</h2>
