@@ -24,6 +24,7 @@ module.exports = {
         mixinsDir: path.join(__dirname, 'src/shared/styles/mixins'),
       }
     ],
+    'postcss-import',
     [
       'postcss-simple-vars',
       {
