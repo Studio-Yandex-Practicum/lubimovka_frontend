@@ -98,18 +98,3 @@ jobs:
 
             # После установки удаляем файлы
             rm ${{ env.DEPLOY_PATH }}/stage/lubimovka-frontend.service
-
-  send_message:
-    name: Send message
-    runs-on: ubuntu-latest
-    environment:
-      name: stage_deploy
-    needs: deploy
-    steps:
-      -
-        name: Send message after updating the image on the server
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_ID }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: На stage серрвере развернут образ frontend!
