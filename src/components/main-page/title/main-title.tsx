@@ -18,13 +18,11 @@ export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
     <h1 className={cx('title')}>
       Афиша на сегодня, <br/> {formatDate(new Date().toString())}
     </h1> : 
-    <h1 className={cx('title')}>Афиша событий</h1>;
+    <h1 className={cx('title')}>Афиша <br/> событий</h1>;
 
   return (
     <section className={cx('section')}>
-      <div className={cx('wrapper', {
-        'width': afisha_today
-      })}>
+      <div className={cx('wrapper')}>
         {templateTitle}
         <div className={cx('buttonContainer')}>
           <Button
