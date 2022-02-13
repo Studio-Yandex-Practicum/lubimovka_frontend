@@ -1,14 +1,10 @@
 .item {
-  @mixin text;
-  @mixin textLarge;
-
   position: relative;
   display: block;
   padding: scale(12px 0 12px 30px);
   margin-bottom: scale(1px);
   background-color: transparent;
   cursor: pointer;
-  text-transform: lowercase;
   transition: background-color .2s ease-out;
 
   &:last-of-type {
@@ -17,10 +13,6 @@
 
   &:hover {
     background-color: rgba(255, 255, 255, .4);
-  }
-
-  &::first-letter {
-    text-transform: uppercase;
   }
 }
 
@@ -51,4 +43,22 @@
   border: scale(1px) solid var(--coal);
   margin: 0 scale(16px);
   background-color: transparent;
+}
+
+.icon {
+  width: scale(25px);
+  height: scale(25px);
+}
+
+.text {
+  @mixin text;
+  @mixin textLarge;
+
+  padding: 0;
+  margin: 0;
+  text-transform: lowercase;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 }

@@ -2,9 +2,25 @@ import { IPiecesFiltersProps } from 'pages/library';
 
 const playfilters: IPiecesFiltersProps = {
   'years': [
-    [
-      2020, 2010, 2000, 1994, 1990
-    ],
+    {
+      value: 2020,
+      text: '2020',
+    },
+
+    {
+      value: 2021,
+      text: '2021',
+    },
+
+    {
+      value: 2022,
+      text: '2022',
+    },
+
+    {
+      value: 2019,
+      text: '2019',
+    }
   ],
   'programs': [
     {

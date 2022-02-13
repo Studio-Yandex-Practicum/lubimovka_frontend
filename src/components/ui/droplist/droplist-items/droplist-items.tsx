@@ -1,33 +1,36 @@
-import React, { useCallback, FC } from 'react';
-import cn from 'classnames';
+import { FC } from 'react';
+import classNames from 'classnames/bind';
 
+import { DroplistOption } from 'components/ui/droplist';
 import { Icon } from 'components/ui/icon';
 
 import styles from './droplist-items.module.css';
 
+const cx = classNames.bind(styles);
+
 interface IDroplistItemsProps {
-  type: 'checkbox' | 'radio'
-  item: string | number,
-  cb: (value: string, activeCheckbox: boolean) => void,
-  activeCheckbox: boolean
+  type: 'single' | 'multiple'
+  selectList: DroplistOption[]
+  value: string
+  handlerClick: (item: string, counter: number) => void
+  counter: number
 }
 
-export const DroplistItems: FC<IDroplistItemsProps> = ({ item, cb, activeCheckbox, type }): JSX.Element => {
-
-  const handlerCheckbox = useCallback(() => {
-    cb(String(item), !activeCheckbox);
-  }, [activeCheckbox, cb, item]);
+export const DroplistItems: FC<IDroplistItemsProps> = ({ type, selectList, value, handlerClick, counter }): JSX.Element => {
+  const findItem = selectList.find(item => item.value === counter);
 
   return (
-    <div className={cn(styles.item, {
-      [styles.itemCheckbox]: type === 'checkbox' 
-    })} onClick={handlerCheckbox}>
-      {activeCheckbox && type === 'radio' && <span className={cn(styles.circle)}/>}
-      {type === 'checkbox' && 
-        <div className={cn(styles.checkbox)}>
-          {activeCheckbox && <Icon glyph="ok"/>}
-        </div>}
-      {item}
-    </div>
+    <li className={cx('item', { 'itemCheckbox': type === 'multiple' })}
+      onClick={() => handlerClick(value, counter)}
+    >
+      {findItem && type === 'single' && <span className={cx('circle')}/>}
+      {type === 'multiple' && 
+      <div className={cx('checkbox')}>
+        {findItem && <Icon glyph="ok" className={cx('icon')}/>}
+      </div>}
+      <p className={cx('text')}>
+        {value}
+      </p>
+    </li>
   );
 };
