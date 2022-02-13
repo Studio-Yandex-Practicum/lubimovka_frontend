@@ -1,9 +1,9 @@
 .link {
   display: block;
-  padding-bottom: scale(72px);
-  text-decoration: none;
-  border-top: scale(1px) solid black;
   width: 100%;
+  padding-bottom: scale(72px);
+  border-top: scale(1px) solid black;
+  text-decoration: none;
 
   &:last-of-type {
     padding-bottom: 0;
