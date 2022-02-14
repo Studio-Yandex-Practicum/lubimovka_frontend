@@ -86,7 +86,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsTy
             {afisha && notEmptyKey(afisha) &&
             <div className={cx({ 'wrapper': news || blog })}>
               <MainTitle
-                title={afisha.title}
+                afisha_today={afisha.afisha_today}
                 description={afisha.description}
               />
             </div>}
