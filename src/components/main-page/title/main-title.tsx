@@ -2,24 +2,26 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
+import { formatDate } from 'shared/helpers/formatDateServerData';
 
 import styles from './main-title.module.css';
 
 const cx = classNames.bind(styles);
 
 export interface IMainTitle {
-  title: string;
+  afisha_today: boolean;
   description: string;
 }
 
-export const MainTitle: FC<IMainTitle> = ({ title, description }) => {
-  const moreTwo = title.split(' ').length > 2;
+export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
   return (
     <section className={cx('section')}>
       <div className={cx('wrapper', {
-        'width': moreTwo
+        'width': afisha_today
       })}>
-        <h1 className={cx('title')}>{title}</h1>
+        <h1 className={cx('title')}>
+          {afisha_today ? `Афиша на сегодня, ${formatDate(new Date().toString())}` : 'Афиша событий'}
+        </h1>
         <div className={cx('buttonContainer')}>
           <Button
             label="ПОЛНАЯ АФИША"
@@ -34,7 +36,7 @@ export const MainTitle: FC<IMainTitle> = ({ title, description }) => {
           />
         </div>
         <p className={cx('desc', {
-          'margin': moreTwo
+          'margin': afisha_today
         })}>
           {description}
         </p>
