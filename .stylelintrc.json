@@ -16,6 +16,12 @@
       {
         "ignoreAtRules": ["define-mixin", "mixin", "value"]
       }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["export"]
+      }
     ]
   }
 }
