@@ -1,0 +1,84 @@
+name: Create and publish a frontend Docker image
+concurrency:
+  group: prod_deploy
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - release
+    types: [closed]
+
+on:
+  push:
+    branches:
+      - release
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: lubimovka_frontend
+  DEPLOY_PATH: /LUBIMOVKA
+
+jobs:
+  build-and-push-image-to-github-packages:
+    name: Push Docker image to GitHub Packages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: release
+      -
+        name: Docker login
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      -
+        name: Set variables
+        run: |
+          echo REP_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: Dockerfile
+          labels: runnumber=${GITHUB_RUN_ID}
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.REP_OWNER }}/${{ env.IMAGE_NAME }}:prod,
+            ${{ env.REGISTRY }}/${{ env.REP_OWNER }}/${{ env.IMAGE_NAME }}:release,
+            ${{ env.REGISTRY }}/${{ env.REP_OWNER }}/${{ env.IMAGE_NAME }}:latest,
+            ${{ env.REGISTRY }}/${{ env.REP_OWNER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+      -
+        name: Send message if Build and push Docker failed
+        if: ${{ failure() }}
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            Ошибка при сборке образа frontend prod:
+
+            ${{ steps.build-image.outputs.labels }} - ${{ steps.build-image.outcome }}
+  
+  send_message:
+    name: Send message
+    runs-on: ubuntu-latest
+    environment:
+      name: prod_deploy
+    needs: build-and-push-image-to-github-packages
+    steps:
+      -
+        name: Send message after updating the image on the server
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: В container registry загружен prod-образ frontend и готов к релизу!
