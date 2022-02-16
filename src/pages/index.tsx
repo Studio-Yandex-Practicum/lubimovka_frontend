@@ -83,13 +83,13 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsTy
           <main className={cx('main')}>
             {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
             {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
-            {afisha && notEmptyKey(afisha) &&
             <div className={cx({ 'wrapper': news || blog })}>
+              {afisha && notEmptyKey(afisha) && 
               <MainTitle
                 afisha_today={afisha.afisha_today}
                 description={afisha.description}
-              />
-            </div>}
+              />}
+            </div>
             {afisha && notEmpty(afisha.items) && <MainEvents {...afisha}/>}
             {banners && notEmpty(banners.items) && <MainBanners {...banners}/>}
             {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
