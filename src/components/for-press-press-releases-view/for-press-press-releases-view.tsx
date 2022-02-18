@@ -3,7 +3,7 @@ import cn from 'classnames/bind';
 import Image from 'next/image';
 
 import { Url } from 'shared/types';
-import { Droplist } from 'components/ui/droplist';
+// import { Droplist } from 'components/ui/droplist';
 import { Button } from 'components/ui/button';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import breakpoints from 'shared/breakpoints.js';
@@ -59,7 +59,7 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = (p
         <p className={cx('droplistLabel')}>
           Выберите год фестиваля
         </p>
-        <Droplist
+        {/* <Droplist
           type="radio"
           data={pressReleaseYears}
           cb={(i: string[]) => {
@@ -67,7 +67,7 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = (p
           }}
           className={cx('droplist')}
           defaultValue={pressReleaseDefaultYear.toString()}
-        />
+        /> */}
         <Button
           view="primary"
           className={cx('button')}
