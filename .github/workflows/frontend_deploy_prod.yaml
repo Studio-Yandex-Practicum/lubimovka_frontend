@@ -9,11 +9,6 @@ on:
       - release
     types: [closed]
 
-on:
-  push:
-    branches:
-      - release
-
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: lubimovka_frontend
