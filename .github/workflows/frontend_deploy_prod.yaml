@@ -62,7 +62,7 @@ jobs:
             Ошибка при сборке образа frontend prod:
 
             ${{ steps.build-image.outputs.labels }} - ${{ steps.build-image.outcome }}
-  
+
   send_message:
     name: Send message
     runs-on: ubuntu-latest
