@@ -32,7 +32,8 @@ only_first_BlogCard.decorators = [
       justifyContent: 'center',
       gap: '47px 60px',
       position: 'relative'
-    }}>
+    }}
+    >
       <Story/>
     </div>
   )
@@ -59,7 +60,8 @@ rectangular_vertical_aspectRatio_BlogCard.decorators = [
       justifyContent: 'center',
       gap: '47px 60px',
       position: 'relative'
-    }}>
+    }}
+    >
       <Story/>
       <Story/>
     </div>
@@ -87,7 +89,8 @@ rectangular_horizontal_aspectRatio_BlogCard.decorators = [
       justifyContent: 'center',
       gap: '47px 60px',
       position: 'relative'
-    }}>
+    }}
+    >
       <Story/>
       <Story/>
     </div>
@@ -115,7 +118,8 @@ square_aspectRatio_BlogCard.decorators = [
       justifyContent: 'center',
       gap: '47px 60px',
       position: 'relative'
-    }}>
+    }}
+    >
       <Story/>
       <Story/>
     </div>
@@ -143,7 +147,8 @@ grid_BlogCard.decorators = [
       justifyContent: 'center',
       gap: '47px 60px',
       position: 'relative'
-    }}>
+    }}
+    >
       <Story/>
       <Story/>
       <Story/>

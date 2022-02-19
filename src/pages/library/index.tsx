@@ -70,8 +70,13 @@ const Library = ({ errorCode, pieces, years, programs }:
         <Head>
           <title>Библиотека</title>
         </Head>
-        <LibraryPage isLoading={isLoading} items={piecesState} years={years.flat()}
-          programmes={programs.flat()} filterDispatcher={filterDispatcher}/>
+        <LibraryPage
+          isLoading={isLoading}
+          items={piecesState}
+          years={years.flat()}
+          programmes={programs.flat()}
+          filterDispatcher={filterDispatcher}
+        />
       </AppLayout>
     </LibraryFiltersProvider>
   );

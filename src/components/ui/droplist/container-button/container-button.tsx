@@ -17,14 +17,17 @@ export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown,
   const clickActiveDropdown = useCallback((): void => cb(), [ cb ]);
 
   return (
-    <div className={cx('container', {
-      'dark': activeDropdown,
-    })}
-    onClick={clickActiveDropdown}>
+    <div
+      className={cx('container', {
+        'dark': activeDropdown,
+      })}
+      onClick={clickActiveDropdown}
+    >
       <p className={cx('text')}>
         {value}
       </p>
-      <Icon glyph="arrow-down"
+      <Icon
+        glyph="arrow-down"
         fill={activeDropdown ? 'white' : 'black'} 
         className={cx('iconArrowDown', { 'rotateUp': activeDropdown })}
       />

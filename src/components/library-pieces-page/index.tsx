@@ -69,8 +69,11 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             <LibraryTagsMobile programmes={programmes} filterDispatcher={filterDispatcher}/>
           </div>
           <div className={styles.filter}>
-            <LibraryFilter years={years} programmes={programmes}
-              filterDispatcher={filterDispatcher}/>
+            <LibraryFilter
+              years={years}
+              programmes={programmes}
+              filterDispatcher={filterDispatcher}
+            />
           </div>
         </div>
         <section className={styles.section}>
@@ -100,7 +103,8 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
                       linkView: url_reading ? url_reading : '',
                       linkDownload: url_download ? url_download : '',
                       authors
-                    }}/>
+                    }}
+                  />
                 ))}
               </BasicPlayCardList>
             </div>
@@ -128,17 +132,21 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
                     linkView: url_reading ? url_reading : '',
                     linkDownload: url_download ? url_download : '',
                     authors
-                  }}/>
+                  }}
+                />
               ))}
             </>
           )}
         </section>
         <LibraryFiltersModal
-          isModalOpen={isModalOpen}>
+          isModalOpen={isModalOpen}
+        >
           <LibraryFilter
-            years={years} programmes={programmes}
+            years={years}
+            programmes={programmes}
             filterDispatcher={filterDispatcher}
-            onCheckResults={handleFiltersClick}/></LibraryFiltersModal>
+            onCheckResults={handleFiltersClick}
+          /></LibraryFiltersModal>
       </div>
     </main>
   );

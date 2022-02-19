@@ -19,7 +19,8 @@ export const FooterCopyright: FC<IFooterCopyright> = (props) => {
     <div className={cx(
       'footnote',
       className,
-    )}>
+    )}
+    >
       <div className={cx('copyright')}>
         &copy; Любимовка, {currentYear}
       </div>
