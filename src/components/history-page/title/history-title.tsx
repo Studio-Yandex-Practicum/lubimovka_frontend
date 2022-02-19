@@ -47,7 +47,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.title)}>
+                className={cn(style.button, style.link, style.title)}
+              >
               </Button>
             </div>
             <p className={cn(style.element)}>пьес прислали на конкурс</p>
@@ -59,7 +60,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.title)}>
+                className={cn(style.button, style.link, style.title)}
+              >
               </Button>
             </div>
             <p className={cn(style.element)}>пьес прошли отбор</p>
@@ -75,7 +77,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.title)}>
+                className={cn(style.button, style.link, style.title)}
+              >
               </Button>
             </div>
             <p className={cn(style.element)}>отборщиков читали пьесы</p>
@@ -91,7 +94,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.title)}>
+                className={cn(style.button, style.link, style.title)}
+              >
               </Button>
             </div>
             <p className={cn(style.element)}>волонтёров работали на фестивале</p>
@@ -103,7 +107,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.title)}>
+                className={cn(style.button, style.link, style.title)}
+              >
               </Button>
             </div>
             <p className={cn(style.element)}>событий прошло в образовательной программе</p>
@@ -115,7 +120,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.title)}>
+                className={cn(style.button, style.link, style.title)}
+              >
               </Button>
             </div>
             <p className={cn(style.element)}>число городов, откуда приехали авторы</p>
@@ -135,7 +141,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}>
+                className={cn(style.button, style.link, style.subtitle)}
+              >
               </Button>
             </div>
             <div className={style.buttonDisplay}>
@@ -148,7 +155,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}>
+                className={cn(style.button, style.link, style.subtitle)}
+              >
               </Button>
             </div>
             <div className={style.buttonDisplay}>
@@ -161,7 +169,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}>
+                className={cn(style.button, style.link, style.subtitle)}
+              >
               </Button>
             </div>
             <div className={style.buttonDisplay}>
@@ -174,7 +183,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}>
+                className={cn(style.button, style.link, style.subtitle)}
+              >
               </Button>
             </div>
 
@@ -191,7 +201,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}>
+                className={cn(style.button, style.link, style.subtitle)}
+              >
               </Button>
             </div>
             <div className={style.buttonDisplay}>
@@ -204,7 +215,8 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 align={alignStart}
                 size="l"
                 gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}>
+                className={cn(style.button, style.link, style.subtitle)}
+              >
               </Button>
             </div>
           </div>

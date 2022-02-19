@@ -55,7 +55,8 @@ const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
               label={'job@lubimovka.ru'}
               size={'xl'}
               textDecoration={'underline'}
-              className={cx('indent')}/>
+              className={cx('indent')}
+            />
               и расскажите о себе.
           </p>
         </div>

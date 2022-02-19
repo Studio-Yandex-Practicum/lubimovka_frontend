@@ -62,13 +62,17 @@ export const Button: FC<IButtonProps> = (props) => {
         type={type}
         disabled={disabled}
         style={style}
-        {...restButtonProps}>
+        {...restButtonProps}
+      >
         {buttonChildren}
       </button>
       ||
       <Link href={href} {...restButtonProps}>
-        <a  style={style} target={target}
-          className={cx(classes, 'link')}>
+        <a
+          style={style}
+          target={target}
+          className={cx(classes, 'link')}
+        >
           {buttonChildren}
         </a>
       </Link>

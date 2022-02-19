@@ -18,7 +18,8 @@ export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
     <section className={cx('section')}>
       <div className={cx('wrapper', {
         'width': afisha_today
-      })}>
+      })}
+      >
         <h1 className={cx('title')}>
           {afisha_today ? `Афиша на сегодня, ${formatDate(new Date().toString())}` : 'Афиша событий'}
         </h1>
@@ -37,7 +38,8 @@ export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
         </div>
         <p className={cx('desc', {
           'margin': afisha_today
-        })}>
+        })}
+        >
           {description}
         </p>
       </div>

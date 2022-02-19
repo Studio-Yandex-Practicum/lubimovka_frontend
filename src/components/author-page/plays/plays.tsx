@@ -25,7 +25,8 @@ export const AuthorPlays: FC<IAuthorPlays> = ({ plays }) => {
               linkView: item.url_reading ? item.url_reading : '',
               linkDownload: item.url_download ? item.url_download : '',
               authors: item.authors
-            }}/>
+            }}
+            />
           </li>
         ))}
       </ul>

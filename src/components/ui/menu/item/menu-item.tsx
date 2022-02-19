@@ -27,7 +27,8 @@ export const MenuItem: FC<IMenuItemProps> = (props) => {
         current,
         ...mods
       },
-    )}>
+    )}
+    >
       <Link href={href}>
         <a className={cx('link')}>
           {children}

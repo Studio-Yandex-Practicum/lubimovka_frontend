@@ -22,7 +22,8 @@ export const FormField: FC<IFormField> = (props) => {
     <label>
       <span className={cx({
         hidden: hiddenCaption,
-      })}>
+      })}
+      >
         {caption}
       </span>
       {children}
