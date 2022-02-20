@@ -128,7 +128,6 @@
   justify-self: flex-end;
 
   @media (max-width: $tablet-portrait) {
-    z-index: -1;
     width: 100%;
     margin: 0;
   }
