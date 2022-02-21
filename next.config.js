@@ -23,7 +23,7 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ['lubimovka.ru'],
+    domains: ['stage.dev.lubimovka.ru'],
   },
   publicRuntimeConfig: {
     baseUrl,
