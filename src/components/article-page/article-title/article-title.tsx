@@ -33,7 +33,8 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
 
   return (
     <section className={cx('container', { containerTypeNews: !isBlog })}>
-      <Button className={cx({ backButtonBlog: isBlog, backButtonNews: !isBlog })}
+      <Button
+        className={cx({ backButtonBlog: isBlog, backButtonNews: !isBlog })}
         label={isBlog ? 'Блог' : 'Новости'}
         size={'s'}
         iconPlace={'right'}

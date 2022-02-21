@@ -16,7 +16,8 @@ export const ProjectLayoutStorey: FC<IProjectLayoutStoreyProps> = (props) => {
     <div className={cx(
       'wrapper',
       type
-    )}>
+    )}
+    >
       <div className={cx('holder')}>
         {children}
       </div>

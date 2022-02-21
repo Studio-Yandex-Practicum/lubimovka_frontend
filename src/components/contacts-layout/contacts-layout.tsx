@@ -1,10 +1,9 @@
 import classNames from 'classnames/bind';
 
-import ContactsLayoutColumn from './column';
 import ContactsLayoutTitle from './title';
 import ContactsLayoutForm from './form';
-import ContactsLayoutImage from './image';
-import ContactsLayoutAuthors from './authors';
+import { ContactsLayoutColumn } from './column';
+import { ContactsLayoutCallToEmail } from './call-to-email';
 
 import styles from './contacts-layout.module.css';
 
@@ -24,10 +23,9 @@ const ContactsLayout = (props: IContactsLayoutProps): JSX.Element => {
   );
 };
 
-ContactsLayout.Column = ContactsLayoutColumn;
 ContactsLayout.Title = ContactsLayoutTitle;
 ContactsLayout.Form = ContactsLayoutForm;
-ContactsLayout.Image = ContactsLayoutImage;
-ContactsLayout.Authors = ContactsLayoutAuthors;
+ContactsLayout.CallToEmail = ContactsLayoutCallToEmail;
+ContactsLayout.Column = ContactsLayoutColumn;
 
 export default ContactsLayout;

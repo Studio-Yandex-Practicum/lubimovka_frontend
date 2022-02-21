@@ -90,9 +90,9 @@
 }
 
 .even {
-  .imageContainer {
+  .image {
     @media (max-width: $tablet-portrait) {
-      justify-content: end;
+      margin-left: auto;
     }
   }
 }

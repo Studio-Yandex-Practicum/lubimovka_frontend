@@ -85,6 +85,13 @@
     width: 100%;
     height: calc(100% - scale(166px));
     padding: 0;
+    pointer-events: none;
+  }
+}
+
+.sidebar * {
+  @media (max-width: $tablet-portrait) {
+    pointer-events: all;
   }
 }
 
@@ -128,7 +135,6 @@
   justify-self: flex-end;
 
   @media (max-width: $tablet-portrait) {
-    z-index: -1;
     width: 100%;
     margin: 0;
   }
@@ -189,6 +195,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: scale(50px);
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}
+
+.loaderMobile {
+  display: none;
+
+  @media (max-width: $tablet-portrait) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .pieces {

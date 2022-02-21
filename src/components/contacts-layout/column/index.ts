@@ -1,1 +1,1 @@
-export { default } from './contacts-layout-column';
+export * from './contacts-layout-column';

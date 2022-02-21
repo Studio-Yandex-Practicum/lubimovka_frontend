@@ -5,7 +5,7 @@ import Loader from './loader.gif';
 
 const LibraryPreloader: FC = () => {
   return (
-    <Image src={Loader} alt="Прелоадер"/>
+    <Image width={59} height={56} src={Loader} alt="Прелоадер"/>
   );
 };
 

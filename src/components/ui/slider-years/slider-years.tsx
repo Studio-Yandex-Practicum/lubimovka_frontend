@@ -40,7 +40,8 @@ export const SliderYears: FC<ISliderYearsProps> = ( { className, years, currentY
     <div ref={sliderRef} className={cx('keen-slider', [styles.slider], className)}>
       {years.map((year) => {
         return (
-          <h6 key={year}
+          <h6
+            key={year}
             onClick={() => onClick(year)}
             className={cx('keen-slider__slide', [styles.slide], { [styles.active]: currentYear === year })}
           >

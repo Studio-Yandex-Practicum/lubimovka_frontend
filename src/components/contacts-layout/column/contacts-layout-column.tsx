@@ -1,21 +1,16 @@
+import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './contacts-layout-column.module.css';
 
 const cx = classNames.bind(styles);
 
-interface IContactsLayoutColumnProps {
-  children: React.ReactNode;
-}
-
-const ContactsLayoutColumn = (props: IContactsLayoutColumnProps): JSX.Element => {
+export const ContactsLayoutColumn: FC = (props): JSX.Element => {
   const { children } = props;
 
   return (
-    <div className={cx('column')}>
+    <div className={cx('root')}>
       {children}
     </div>
   );
 };
-
-export default ContactsLayoutColumn;

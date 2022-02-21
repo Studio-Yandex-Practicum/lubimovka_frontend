@@ -38,7 +38,8 @@ export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => (
       <a 
         href={url} 
         className={cx('linkImg')}
-        target="_blank" rel="noreferrer"
+        target="_blank"
+        rel="noreferrer"
       >
         <Image
           alt="YOUTUBE"

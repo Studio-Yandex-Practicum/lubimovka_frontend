@@ -23,7 +23,7 @@
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    padding: 0 calc(var(--scale) * 15);
+    padding: 0;
     grid-column: 1/1;
   }
 }

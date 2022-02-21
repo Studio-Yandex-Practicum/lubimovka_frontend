@@ -8,7 +8,6 @@ import { PageBreadcrumbs } from 'components/page';
 import { ProjectLayout } from 'components/project-layout';
 import { Breadcrumb } from 'components/breadcrumb';
 import { ProjectHeadline } from 'components/project-headline';
-import { ProjectInvitation } from 'components/project-invitation';
 import { PhotoGallery } from 'components/photo-gallery';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
@@ -20,12 +19,17 @@ import { RawText } from 'components/raw-text';
 import { Section } from 'components/section';
 import { PersonCard } from 'components/ui/person-card';
 import { PersonCardList } from 'components/person-card-list';
+import { CallToEmail } from 'components/call-to-email';
 import { fetcher } from 'shared/fetcher';
 import { Project as ProjectModel } from 'api-typings';
+import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
+
+const convertRolesToString = (roles: PersonRole[]) => roles.map(role => role.name).join(', ');
 
 const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const {
     title,
+    intro,
     description,
     image,
     contents,
@@ -42,8 +46,8 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
         </PageBreadcrumbs>
         <ProjectHeadline
           title={title}
-          //TODO: добавить поле в ответ бекенда
-          intro=""
+          intro={intro}
+          description={description}
           image={image}
         />
         <ProjectLayout.Description>
@@ -54,14 +58,12 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
             {content_type === 'imagesblock' && (
               <ProjectLayout.Storey type="photos">
                 <Section title={content_item.title}>
-                  <PhotoGallery>
-                    {content_item.items.map(({ title, image }) => (
-                      <PhotoGallery.Item
-                        key={title}
-                        image={image}
-                      />
-                    ))}
-                  </PhotoGallery>
+                  <PhotoGallery
+                    photos={content_item.items.map(({ image, title }) => ({
+                      url: image,
+                      description: title,
+                    }))}
+                  />
                 </Section>
               </ProjectLayout.Storey>
             )}
@@ -69,7 +71,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
               <ProjectLayout.Storey type="plays">
                 <Section title={content_item.title}>
                   <BasicPlayCardList>
-                    {content_item.items.map(({ id, name, city, year, url_download, url_reading }) => (
+                    {content_item.items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
                       <BasicPlayCard
                         key={id}
                         play={{
@@ -78,11 +80,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                           year,
                           linkView: url_reading,
                           linkDownload: url_download,
-                          authors:[{
-                            // TODO: добавить реальные данные в ответ бекенда
-                            id: 0,
-                            name: 'Константин Константинопольский',
-                          }]
+                          authors: authors,
                         }}
                       />
                     ))}
@@ -99,13 +97,22 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                       //TODO: исправить ответ бекенда, сейчас возвращаются данные для страницы спектакля
                       isPerformance={true}
                       id={id}
-                      date="2021-11-13T17:00:00.000Z"
+                      formattedDate={formatDate('2021-11-13T17:00:00.000Z')}
+                      formattedTime={formatTime('2021-11-13T17:00:00.000Z')}
                       title={name}
-                      dramatists={['Ольга Казакова', 'Антон Чехов']}
-                      directors={['Катя Ганюшина']}
+                      team={[
+                        {
+                          name: 'Драматурги',
+                          persons: ['Ольга Казакова', 'Антон Чехов']
+                        },
+                        {
+                          name: 'Режиссёр',
+                          persons: ['Катя Ганюшина']
+                        },
+                      ]}
                       buttonLink={'https://lubimovka.timepad.ru/event/1746579/'}
                       imageUrl="/images/projects/performance_mama.jpg"
-                      projectText="читка проекта Любимовка.Eщё"
+                      project="читка проекта Любимовка.Eщё"
                       paid={true}
                     />
                   ))}
@@ -137,12 +144,13 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
               <ProjectLayout.Storey type="persons">
                 <Section title={content_item.title}>
                   <PersonCardList>
-                    {content_item.items.map(({ id, first_name, last_name, image }) => (
+                    {content_item.items.map(({ id, first_name, last_name, image, roles }) => (
                       <PersonCard
                         key={id}
                         name={`${first_name} ${last_name}`}
                         image={image}
-                        participant={false}
+                        participant={true}
+                        about={convertRolesToString(roles)}
                       />
                     ))}
                   </PersonCardList>
@@ -152,7 +160,13 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
           </Fragment>
         ))}
         <ProjectLayout.Storey type="invitation">
-          <ProjectInvitation email="trololo@ololo.com"/>
+          <CallToEmail
+            type="project"
+            title="Проект открыт к сотрудничеству"
+            description="Мы находимся в постоянном поиске режиссёров и актеров, заинтересованных в постановке читок."
+            callToActionText="Пишите на"
+            email="hello@lubimovka.ru"
+          />
         </ProjectLayout.Storey>
       </ProjectLayout>
     </AppLayout>

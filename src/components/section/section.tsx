@@ -24,11 +24,14 @@ export const Section = (props: ISectionProps): JSX.Element => {
   } = props;
 
   return (
-    <section className={cx(
-      'section',
-      type,
-      className
-    )} {...restProps}>
+    <section
+      className={cx(
+        'section',
+        type,
+        className
+      )}
+      {...restProps}
+    >
       <TitleTag className={cx('title')}>
         {title}
       </TitleTag>

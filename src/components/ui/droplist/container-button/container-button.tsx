@@ -1,31 +1,36 @@
-import React, { FC, useCallback } from 'react';
-import cn from 'classnames';
+import { FC, useCallback } from 'react';
+import classNames from 'classnames/bind';
 
 import { Icon } from 'components/ui/icon';
 
 import styles from './container-button.module.css';
 
+const cx = classNames.bind(styles);
+
 interface IContainerButtonProps {
   cb: () => void
   activeDropdown: boolean
-  value: string | number
+  value: string
 }
 
 export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown, value }): JSX.Element => {
   const clickActiveDropdown = useCallback((): void => cb(), [ cb ]);
 
   return (
-    <div className={cn(styles.container, {
-      [styles.dark]: activeDropdown,
-    })}
-    onClick={clickActiveDropdown}>
-      <p className={cn(styles.text)}>
+    <div
+      className={cx('container', {
+        'dark': activeDropdown,
+      })}
+      onClick={clickActiveDropdown}
+    >
+      <p className={cx('text')}>
         {value}
       </p>
-      {<Icon glyph="arrow-down"
+      <Icon
+        glyph="arrow-down"
         fill={activeDropdown ? 'white' : 'black'} 
-        className={cn(styles.iconArrowDown, { [styles.rotateUp]: activeDropdown })}
-      />}
+        className={cx('iconArrowDown', { 'rotateUp': activeDropdown })}
+      />
     </div>
   );
 };

@@ -10,6 +10,7 @@ import { PaginatedPlayList, Play } from 'api-typings';
 import reducer from 'components/library-filter/library-filter-reducer';
 import queryParser from '../../components/library-pieces-page/library-query-parser';
 import LibraryFiltersProvider from 'providers/library-filters-provider';
+import { DroplistOption } from '../../components/ui/droplist';
 
 export interface IProgram {
   'pk': number,
@@ -17,7 +18,7 @@ export interface IProgram {
 }
 
 export interface IPiecesFiltersProps {
-  years: Array<number[]>;
+  years: DroplistOption[];
   programs: Array<IProgram>;
 }
 
@@ -41,7 +42,7 @@ const Library = ({ errorCode, pieces, years, programs }:
 
   useEffect(() => {
     setIsLoading(true);
-    const parsedQuery = queryParser(filterState);
+    const parsedQuery = queryParser({ ...filterState, festival: filterState.festival.map(({ text })=>text) });
     const urlWithQuery = parsedQuery ? `/library/?${parsedQuery}` : '/library/';
 
     fetchPieces(parsedQuery)
@@ -69,8 +70,13 @@ const Library = ({ errorCode, pieces, years, programs }:
         <Head>
           <title>Библиотека</title>
         </Head>
-        <LibraryPage isLoading={isLoading} items={piecesState} years={years.flat()}
-          programmes={programs.flat()} filterDispatcher={filterDispatcher}/>
+        <LibraryPage
+          isLoading={isLoading}
+          items={piecesState}
+          years={years.flat()}
+          programmes={programs.flat()}
+          filterDispatcher={filterDispatcher}
+        />
       </AppLayout>
     </LibraryFiltersProvider>
   );
@@ -96,7 +102,7 @@ const fetchPiecesFilters = async () => {
     if(!years || !programs) {
       throw 'no results';
     }
-    return { years, programs };
+    return { years: years.map(value => ({ value: Number(value), text:String(value) })), programs };
   } catch (error) {
     throw error;
   }
