@@ -78,7 +78,8 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
       <div className={cx('container')}>
         <ul className={cx('list', {
           'active': activeDropdown,
-        })}>
+        })}
+        >
           {options.map(item =>
             <DroplistItems 
               key={item.value} 

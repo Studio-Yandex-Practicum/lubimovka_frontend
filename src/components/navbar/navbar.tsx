@@ -26,7 +26,8 @@ export const Navbar = (props: INavbarProps) => {
     <div className={cx(
       view,
       { brand: colors === 'brand' }
-    )}>
+    )}
+    >
       {children}
     </div>
   );

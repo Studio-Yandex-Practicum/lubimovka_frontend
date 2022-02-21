@@ -27,7 +27,8 @@ const ForPress: NextPage = () => {
           role: prPerson.role,
           photo: prPerson.photo,
         }
-      }}/>
+      }}
+      />
       <ForPressPressReleasesView defaultCover={pressReleases.defaultCover} pressReleases={pressReleases.pressReleases}/>
     </AppLayout>
   );

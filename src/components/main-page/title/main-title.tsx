@@ -39,7 +39,8 @@ export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
         </div>
         <p className={cx('desc', {
           'margin': afisha_today
-        })}>
+        })}
+        >
           {description}
         </p>
       </div>

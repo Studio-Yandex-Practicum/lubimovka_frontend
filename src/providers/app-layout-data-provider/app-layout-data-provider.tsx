@@ -50,10 +50,12 @@ export const AppLayoutDataProvider: FC = (props) => {
   }, []);
 
   return (
-    <AppLayoutDataContext.Provider value={{
-      projects,
-      partners,
-    }}>
+    <AppLayoutDataContext.Provider
+      value={{
+        projects,
+        partners,
+      }}
+    >
       {children}
     </AppLayoutDataContext.Provider>
   );

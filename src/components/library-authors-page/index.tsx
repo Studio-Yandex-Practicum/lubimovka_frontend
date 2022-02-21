@@ -55,9 +55,13 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
           <LibraryForm/>
         </div>
         <div className={styles.pagination}>
-          <LibraryPagination letters={letters} authors={authors}
+          <LibraryPagination
+            letters={letters}
+            authors={authors}
             top={width === 728 ? '60px' : width > 0 && width < 728 ?
-              `${ratio}px` : '92px'} className={width > 727 ? styles.paginateBar : undefined}/>
+              `${ratio}px` : '92px'}
+            className={width > 727 ? styles.paginateBar : undefined}
+          />
         </div>
       </div>
     </main>

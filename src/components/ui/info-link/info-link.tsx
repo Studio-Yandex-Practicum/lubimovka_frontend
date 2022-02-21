@@ -62,17 +62,20 @@ export const InfoLink: FC<ILinkProps> = (props) => {
   return (
     !isOutsideLink &&
     <Link href={href}>
-      <a className={classes}
+      <a
+        className={classes}
         {...restLinkProps}
       >
         {linkChildren}
       </a>
     </Link>
     ||
-    <a href={href}
+    <a
+      href={href}
       className={classes}
       {...restLinkProps}
-      rel="noopener noreferrer" target="_blank"
+      rel="noopener noreferrer"
+      target="_blank"
     >
       {linkChildren}
     </a>

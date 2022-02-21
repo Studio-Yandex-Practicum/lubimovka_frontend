@@ -52,7 +52,8 @@ export const SectionTitleForBlog = (
         filterCallBack={(month, year) => {
           setMonth(month);
           setYear(year);
-        }}/>
+        }}
+      />
     </section>
   );
 };

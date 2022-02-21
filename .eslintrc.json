@@ -28,6 +28,12 @@
       },
       "children": true
     }],
+    "react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
+    "react/jsx-max-props-per-line": ["error", {
+      "maximum": 1,
+      "when": "multiline"
+    }],
+    "react/jsx-closing-bracket-location": ["error", "line-aligned"],
     "eol-last": ["error", "always"],
     "no-multiple-empty-lines": ["error", {
       "max": 1,

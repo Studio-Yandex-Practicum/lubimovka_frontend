@@ -25,10 +25,14 @@ export const Logotype: FC<ILogotypeProps> = (props) => {
 
   return (
     <Link href={href}>
-      <a onClick={onClick} className={cx(
-        'link',
-        { full }
-      )} title={title}>
+      <a
+        onClick={onClick}
+        className={cx(
+          'link',
+          { full }
+        )}
+        title={title}
+      >
         {full
           ? <FullLogo className={cx('image')}/>
           : <CompactLogo className={cx('image')}/>

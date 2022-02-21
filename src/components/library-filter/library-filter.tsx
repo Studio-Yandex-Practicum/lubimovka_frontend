@@ -58,15 +58,37 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
       {(filterState.festival.length > 0 || filterState.program.length > 0) && (
         <>
           <div className={style.buttonWrap}>
-            <Button onClick={handleResetClick} label="Очистить" size="s" icon="cross"
-              iconPlace="left" border="bottomLeft" width="scale(143px)" align="start"
-              gap="scale(3px)"/>
+            <Button
+              onClick={handleResetClick}
+              label="Очистить"
+              size="s"
+              icon="cross"
+              iconPlace="left"
+              border="bottomLeft"
+              width="scale(143px)"
+              align="start"
+              gap="scale(3px)"
+            />
           </div>
           <div className={style.mobileButtons}>
-            <Button onClick={handleResetClick} size="l" iconPlace="right" icon="cross"
-              label="Очистить" border="full" className={style.button}/>
-            <Button onClick={onCheckResults} size="l" iconPlace="right" icon="arrow-right"
-              label="Посмотреть" border="full" className={style.button}/>
+            <Button
+              onClick={handleResetClick}
+              size="l"
+              iconPlace="right"
+              icon="cross"
+              label="Очистить"
+              border="full"
+              className={style.button}
+            />
+            <Button
+              onClick={onCheckResults}
+              size="l"
+              iconPlace="right"
+              icon="arrow-right"
+              label="Посмотреть"
+              border="full"
+              className={style.button}
+            />
           </div>
         </>
       )}

@@ -20,7 +20,8 @@ export const DroplistItems: FC<IDroplistItemsProps> = ({ type, selectList, value
   const findItem = selectList.find(item => item.value === counter);
 
   return (
-    <li className={cx('item', { 'itemCheckbox': type === 'multiple' })}
+    <li
+      className={cx('item', { 'itemCheckbox': type === 'multiple' })}
       onClick={() => handlerClick(value, counter)}
     >
       {findItem && type === 'single' && <span className={cx('circle')}/>}

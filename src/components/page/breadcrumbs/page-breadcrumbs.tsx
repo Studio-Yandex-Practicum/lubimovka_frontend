@@ -16,7 +16,8 @@ export const PageBreadcrumbs: FC<IBreadcrumbsProps> = (props) => {
     <div className={cx(
       'breadcrumbs',
       className,
-    )}>
+    )}
+    >
       {children}
     </div>
   );
