@@ -15,7 +15,7 @@ app
   .then(() => {
     const server = express();
 
-    const apiBaseUrl = process.env.API_BASE_URL || (environment === 'development' && 'https://lubimovka.kiryanov.ru/api/v1') || '';
+    const apiBaseUrl = process.env.API_BASE_URL || (environment === 'development' && 'https://stage.dev.lubimovka.ru/api/v1') || '';
 
     server.get('/privacy-policy', (request, response) => {
       // TODO: исправить путь к файлу, когда он появится
