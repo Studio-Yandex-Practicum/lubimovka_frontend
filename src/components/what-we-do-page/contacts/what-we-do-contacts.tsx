@@ -14,8 +14,11 @@ export const WhatWeDoContacts = (): JSX.Element => (
     </h3>
     <p className={cx('desc')}>
       <span className={cx('asterisk')}>
-        {<Icon glyph="asterisk" fill="black"
-          className={styles.asterisk}/>}
+        {<Icon
+          glyph="asterisk"
+          fill="black"
+          className={styles.asterisk}
+        />}
       </span>
       <div>
         Команда Любимовки самостоятельно привлекает режиссеров для работы. 
