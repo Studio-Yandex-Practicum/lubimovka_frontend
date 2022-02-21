@@ -1,54 +1,44 @@
-import { FC } from 'react';
-import cn from 'classnames';
+
+import Image from 'next/image';
+import cn from 'classnames/bind';
 
 import { AboutUsMenu } from 'components/what-we-do-page/about-us-menu';
 
 import styles from './what-we-do-header.module.css';
 
-interface IWhatWeDoHeaderProps {
-  data: {
-    id: number
-    title: string
-    desc: string[]
-    image: {
-      url: string
-      alt: string
-    }
-  }
-}
+const cx = cn.bind(styles);
 
-export const WhatWeDoHeader: FC<IWhatWeDoHeaderProps> = ({ data }): JSX.Element => {
-  const { title, desc, image } = data;
-  
-  return (
-    <section className={cn(styles.header)}>
-      <div className={cn(styles.content)}>
-        <div className={cn(styles.menu)}>
-          <AboutUsMenu/>
-        </div>
-        <h1 className={cn(styles.title)}>
-          {title}
-        </h1>
-        <div className={cn(styles.containerText)}>
-          <p className={cn(styles.desc)}>
-            {desc[0]}
-          </p>
-          <p className={cn(styles.desc)}>
-            {desc[1]}
-          </p>
-        </div>
+export const WhatWeDoHeader = (): JSX.Element => (
+  <section className={cx('header')}>
+    <nav className={cx('menu')}>
+      <AboutUsMenu/>
+    </nav>
+    <div className={cx('content')}>
+      <h1 className={cx('title')}>
+          Фестиваль молодой драматургии Любимовка —
+      </h1>
+      <div className={cx('containerText')}>
+        <p className={cx('desc')}>
+            это независимый некоммерческий коллективный проект российских драматургов
+        </p>
+        <p className={cx('desc')}>
+            В первые годы своего существования фестиваль проходил в подмосковной усадьбе Константина Сергеевича Станиславского, которое и дало название фестивалю.
+        </p>
       </div>
-      <div className={cn(styles.container)}>
-        <img 
-          src={image.url} 
-          className={cn(styles.img)}
-          alt={image.alt}
+    </div>
+    <div className={cx('container')}>
+      <div className={cx('wrapper')}>
+        <Image
+          src="/images/what-we-do/header.jpg"
+          alt="Что мы делаем?"
+          layout="fill"
+          objectFit="cover"
         />
-        <div className={cn(styles.containerSpace)}>
-          <div className={cn(styles.containerSpaceUp)}/>
-          <div className={cn(styles.containerSpaceDown)}/>
-        </div>
       </div>
-    </section>
-  );
-};
+      <div className={cx('containerSpace')}>
+        <div className={cx('containerSpaceUp')}/>
+        <div className={cx('containerSpaceDown')}/>
+      </div>
+    </div>
+  </section>
+);
