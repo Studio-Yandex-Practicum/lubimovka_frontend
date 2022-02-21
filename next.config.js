@@ -5,27 +5,27 @@ module.exports = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      issuer:/\.(js|ts)x?$/,
+      issuer: /\.(js|ts)x?$/,
       use: [
         {
-          loader: '@svgr/webpack',
+          loader: "@svgr/webpack",
           options: {
             svgoConfig: {
               plugins: {
                 removeViewBox: false,
-              }
-            }
-          }
-        }
+              },
+            },
+          },
+        },
       ],
     });
 
     return config;
   },
   images: {
-    domains: ['lubimovka.ru'],
+    domains: ['lubimovka.kiryanov.ru'],
   },
   publicRuntimeConfig: {
     baseUrl,
-  }
+  },
 };
