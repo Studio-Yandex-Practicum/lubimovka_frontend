@@ -85,6 +85,13 @@
     width: 100%;
     height: calc(100% - scale(166px));
     padding: 0;
+    pointer-events: none;
+  }
+}
+
+.sidebar * {
+  @media (max-width: $tablet-portrait) {
+    pointer-events: all;
   }
 }
 
