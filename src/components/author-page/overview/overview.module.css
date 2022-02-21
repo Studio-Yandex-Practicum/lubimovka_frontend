@@ -259,7 +259,15 @@
 .overviewSocialWrapper {
   display: grid;
   justify-content: start;
-  margin: calc(var(--scale) * 53) 0 0;
+  margin: 0 0 calc(var(--scale) * 53);
+
+  &:last-of-type {
+    margin: 0;
+  }
+}
+
+.overviewTagsBlock {
+  margin: 0 0 calc(var(--scale) * 53);
 }
 
 .overviewSocialLinkBlock {

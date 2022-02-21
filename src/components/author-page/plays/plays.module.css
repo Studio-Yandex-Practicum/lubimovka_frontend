@@ -27,7 +27,7 @@
 
 .item {
   width: calc(var(--scale) * 240);
-  margin: 0 calc(var(--scale) * 30) calc(var(--scale) * 30) 0;
+  margin: 0 calc(var(--scale) * 30) 0 0;
 
   &:last-of-type {
     margin-right: 0;
