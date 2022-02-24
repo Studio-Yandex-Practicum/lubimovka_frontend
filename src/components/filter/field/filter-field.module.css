@@ -1,0 +1,5 @@
+.root {
+  &:not(:last-child) {
+    margin-right: scale(30px);
+  }
+}
