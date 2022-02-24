@@ -1,8 +1,7 @@
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useRef, useEffect } from 'react';
 import classNames from 'classnames/bind';
 
 import { BlogEntryListItem } from './item';
-import { useDidMountEffect } from 'shared/hooks/use-did-mount-effect';
 
 import styles from './blog-entry-list.module.css';
 import blogEntryListVars from './blog-entry-list.vars.module.css';
@@ -35,13 +34,11 @@ export const BlogEntryList = (props: IBlogEntryListProps): JSX.Element => {
     });
   };
 
-  useDidMountEffect(() => {
+  useEffect(() => {
     if (!containerRef.current || getComputedStyle(containerRef.current).gridTemplateRows === 'masonry') return;
 
-    addEventListener('load', () => {
-      layout();
-    });
-  });
+    window.addEventListener('load', layout);
+  }, []);
 
   return (
     <ul
