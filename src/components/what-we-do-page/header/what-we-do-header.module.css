@@ -11,6 +11,11 @@
 
 .menu {
   padding: scale(40px 0 67px 60px);
+  background-color: var(--light-green);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(2px 0 32px 24px);
+  }
 }
 
 .title {
@@ -19,6 +24,12 @@
 
   max-width: scale(924px);
   margin: 0 0 scale(53px 62px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    margin: 0 scale(24px 30px 24px);
+  }
 }
 
 .containerText {
@@ -27,6 +38,10 @@
   flex-direction: column;
   align-self: end;
   margin: 0 scale(110px 15px 85px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: 0 scale(24px 72px 85px);
+  }
 }
 
 .desc {
@@ -43,12 +58,23 @@
 
 .container {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: scale(720px) 1fr;
+
+  @media (max-width: $tablet-portrait) {
+    grid-template-columns: 1fr scale(24px);
+  }
 }
 
-.img {
-  width: calc(100% - scale(24px));
-  max-width: scale(720px);
+.wrapper {
+  position: relative;
+  width: scale(720px);
+  height: scale(414px);
+
+  @media (max-width: $tablet-portrait) {
+    width: 100%;
+    height: scale(224px);
+  }
 }
 
 .containerSpace {
@@ -67,20 +93,4 @@
   min-width: scale(24px);
   height: 53%;
   background-color: var(--beige);
-}
-
-@media (max-width: $tablet-portrait) {
-  .menu {
-    padding: scale(2px 0 32px 24px);
-  }
-
-  .title {
-    @mixin headline4;
-
-    margin: 0 scale(24px 30px 24px);
-  }
-
-  .containerText {
-    margin: 0 scale(24px 72px 85px);
-  }
 }

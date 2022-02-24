@@ -1,67 +1,68 @@
-import { FC } from 'react';
-import cn from 'classnames';
+import React from 'react';
+import cn from 'classnames/bind';
 
 import styles from './what-we-do-selection.module.css';
 
-interface poster {
-  id: number
-  ampersand: string
-  title: string
-  desc: string
-}
+const cx = cn.bind(styles);
 
-interface Item {
-  id: number
-  title: string
-  desc: string[]
-}
-
-interface IWhatWeDoSelectionProps {
-  data: {
-    id: number
-    title: string
-    items: Item[]
-    poster: poster
-  }
-}
-
-export const WhatWeDoSelection: FC<IWhatWeDoSelectionProps> = ({ data }): JSX.Element => {
-  const { title, items, poster } = data;
-
-  return (
-    <section className={cn(styles.selection)}>
-      <h2 className={cn(styles.mainTitle)}>
-        {title}
-      </h2>
-      <ul className={cn(styles.list)}>
-        {items.map((data, i) => (
-          <li className={cn(styles.item)} key={i}>
-            <p className={cn(styles.number)}>
-              {i + 1}
-            </p>
-            <h3 className={cn(styles.title)}>
-              {data.title}
-            </h3>
-            {
-              data.desc.map((text, i) => (
-                <p className={cn(styles.desc)} key={i}>
-                  {text}
-                </p>
-              ))}
-          </li>
-        ))}
-      </ul>
-      <div className={cn(styles.poster)}>
-        <h3 className={cn(styles.posterTitle)}>
-          <span className={cn(styles.ampersand)}>
-            {poster.ampersand}
-          </span>
-          {poster.title}
+export const WhatWeDoSelection = (): JSX.Element => (
+  <section className={cx('selection')}>
+    <h2 className={cx('mainTitle')}>
+        Как происходит отбор
+    </h2>
+    <ol className={cx('list')}>
+      <li className={cx('item')}>
+        <span className={cx('number')}>
+            1
+        </span>
+        <h3 className={cx('title')}>
+            На первом этапе каждую пьесу, читают как минимум два отборщика
         </h3>
-        <p className={cn(styles.posterDesc)}>
-          {poster.desc}
-        </p>
-      </div>
-    </section>
-  );
-};
+        <div className={cx('container')}>
+          <p className={cx('desc')}>
+          Каждый отборщик ставит пьесе оценку: 
+            <b className={cx('strong')}>«да», «нет» или «затрудняюсь с оценкой».</b>
+          </p>
+          <p className={cx('desc')}>
+            Если пьеса получает две оценки «да», то она попадает в лонг-лист.
+          </p>
+          <p className={cx('desc')}>
+            В ином случае она отправляется следующим ридерам, пока в наборе оценок пьесы не появится два «да» или два «нет».
+          </p>
+        </div>
+      </li>
+
+      <li className={cx('item')}>
+        <span className={cx('number')}>
+            2
+        </span>
+        <h3 className={cx('title')}>
+            На первом этапе каждую пьесу, читают как минимум два отборщика
+        </h3>
+        <div className={cx('container')}>
+          <p className={cx('desc')}>
+          Каждый отборщик ставит каждой пьесе из лонг-листа оценку:
+            <b className={cx('strong')}>«да», «нет» или «затрудняюсь с оценкой».</b>
+          </p>
+          <p className={cx('desc')}>
+            По совокупности этих оценок формируется шорт-лист фестиваля.
+          </p>
+        </div>
+      </li>
+
+      <li className={cx('item')}>
+        <span className={cx('number')}>
+            3
+        </span>
+        <h3 className={cx('title')}>
+            Параллельно с отбором кураторы программы Fringe читают все пьесы
+        </h3>
+        <div className={cx('container')}>
+          <p className={cx('desc')}>
+            Коллегиально формируют специальную программу, для представления которой отводится отдельный день на фестивале.
+          </p>
+        </div>
+      </li>
+    </ol>
+  </section>
+);

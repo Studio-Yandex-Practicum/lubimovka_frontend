@@ -1,0 +1,45 @@
+.poster {
+  display: flex;
+  padding: scale(64px 150px 60px 120px);
+  margin: 0 scale(60px 45px);
+  background-color: var(--light-green);
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+    padding: scale(56px 24px 72px 24px);
+    padding-bottom: scale(72px);
+    margin: 0;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline6;
+
+  max-width: scale(468px);
+}
+
+.ampersand {
+  @mixin headline;
+  @mixin headline1;
+
+  display: block;
+  margin-bottom: scale(16px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+  }
+}
+
+.desc {
+  @mixin text;
+  @mixin textSmall;
+
+  max-width: scale(485px);
+  margin: scale(156px) auto 0;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(305px);
+    margin: scale(24px 0 0 60px);
+  }
+}

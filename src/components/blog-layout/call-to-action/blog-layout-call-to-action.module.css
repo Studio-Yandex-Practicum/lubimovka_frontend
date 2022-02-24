@@ -1,0 +1,8 @@
+.root {
+  @mixin text;
+
+  max-width: scale(320px);
+  padding-left: scale(25px);
+  margin-top: scale(32px);
+  grid-area: call-to-action;
+}
