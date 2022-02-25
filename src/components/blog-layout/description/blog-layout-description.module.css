@@ -19,5 +19,6 @@
     background-color: var(--coal);
     content: '';
     mask: url('../../../shared/icons/asterisk.svg') no-repeat 100% 100%;
+    mask-size: cover;
   }
 }
