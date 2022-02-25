@@ -1,5 +1,6 @@
 .root {
   @mixin text;
+  @mixin textSmall;
 
   max-width: scale(320px);
   padding-left: scale(25px);

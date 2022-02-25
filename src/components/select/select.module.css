@@ -32,7 +32,7 @@
   &::after {
     position: absolute;
     top: 50%;
-    right: 8px;
+    right: scale(8px);
     display: block;
     width: scale(25px);
     height: scale(25px);
@@ -40,6 +40,7 @@
     background-color: currentColor;
     content: '';
     mask: url('../../shared/icons/arrow-down.svg') 100% 100%;
+    mask-size: cover;
     transform: translateY(-50%);
   }
 }
