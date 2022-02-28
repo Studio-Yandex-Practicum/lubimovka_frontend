@@ -1,4 +1,4 @@
-import { ReactNode, forwardRef } from 'react';
+import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './blog-entry-list-item.module.css';
@@ -9,17 +9,12 @@ interface BlogEntryListItemProps {
 
 const cx = classNames.bind(styles);
 
-export const BlogEntryListItem = forwardRef<HTMLLIElement, BlogEntryListItemProps>((props, ref) => {
+export const BlogEntryListItem = (props: BlogEntryListItemProps) => {
   const { children } = props;
 
   return (
-    <li
-      className={cx('root')}
-      ref={ref}
-    >
+    <li className={cx('root')}>
       {children}
     </li>
   );
-});
-
-BlogEntryListItem.displayName = 'BlogEntryListItem';
+};
