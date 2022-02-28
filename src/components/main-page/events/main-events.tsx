@@ -1,13 +1,38 @@
 import { FC } from 'react';
 import classNames from 'classnames/bind';
 
+import { TypeA7fEnum } from 'api-typings';
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
-import { IMainAfisha } from './main-events.props';
 import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
 
 import styles from './main-events.module.css';
 
 const cx = classNames.bind(styles);
+
+interface IEvent_body {
+  name: string;
+  description: string;
+  team: {
+    name: string;
+    persons: string[];
+  }[]
+  image: string;
+  project_title: string;
+}
+
+interface IEvent {
+  readonly id: number;
+  type?: TypeA7fEnum;
+  event_body: IEvent_body;
+  date_time: string;
+  paid?: boolean;
+  url: string;
+  place: string;
+}
+
+interface IMainAfisha {
+  items: Array<IEvent>
+}
 
 export const MainEvents: FC<IMainAfisha> = ({ items }) => {
   return (
