@@ -13,7 +13,7 @@
     "type-check": "node bin/type-check.js",
     "storybook": "start-storybook -s public -p 3001",
     "build-storybook": "build-storybook -s public",
-    "update-typings": "rm -rf ./src/api-typings && npx openapi-typescript-codegen --input https://lubimovka.kiryanov.ru/api/v1/schema --output ./src/api-typings --useUnionTypes --exportCore false --exportServices false",
+    "update-typings": "rm -rf ./src/api-typings && npx openapi-typescript-codegen --input https://stage.dev.lubimovka.ru/api/v1/schema --output ./src/api-typings --useUnionTypes --exportCore false --exportServices false",
     "update-git-hooks": "npx simple-git-hooks"
   },
   "repository": {
@@ -56,6 +56,7 @@
     "postcss": "8.3.9",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-functions": "4.0.2",
+    "postcss-import": "14.0.2",
     "postcss-mixins": "8.1.0",
     "postcss-nested": "5.0.6",
     "postcss-preset-env": "6.7.0",

@@ -1,0 +1,18 @@
+.root {
+  display: grid;
+  padding: scale(60px 90px 200px);
+  grid-template:
+    ".              title"
+    "description    filter"
+    "call-to-action filter"
+    "main           main"
+    /1fr            1fr;
+}
+
+.month-field {
+  width: scale(240px);
+}
+
+.year-field {
+  width: scale(150px);
+}

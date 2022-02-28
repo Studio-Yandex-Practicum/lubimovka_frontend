@@ -1,0 +1,24 @@
+.root {
+  @mixin text;
+
+  position: relative;
+  max-width: scale(500px);
+  padding-left: scale(25px);
+  margin-top: scale(8px);
+  font-size: scale(20px);
+  grid-area: description;
+  line-height: scale(28px);
+
+  &::before {
+    position: absolute;
+    top: scale(-25px);
+    left: 0;
+    display: block;
+    width: scale(25px);
+    height: scale(25px);
+    background-color: var(--coal);
+    content: '';
+    mask: url('../../../shared/icons/asterisk.svg') no-repeat 100% 100%;
+    mask-size: cover;
+  }
+}

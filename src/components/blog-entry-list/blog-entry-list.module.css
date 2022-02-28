@@ -1,0 +1,10 @@
+@import "./blog-entry-list.vars.module";
+
+.root {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  grid-gap: $gap-tablet-portrait;
+  grid-template-columns: repeat($column-count-tablet-portrait, 1fr);
+  grid-template-rows: masonry;
+}
