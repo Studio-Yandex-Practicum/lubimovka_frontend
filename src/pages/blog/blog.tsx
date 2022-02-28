@@ -1,5 +1,5 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 import { objectToQueryString } from '@funboxteam/diamonds';
 
@@ -11,28 +11,31 @@ import { Select, SelectOption } from 'components/select';
 import { BlogLayout } from 'components/blog-layout';
 import { PageTitle } from 'components/page-title';
 import { InfoLink } from 'components/ui/info-link';
-import { useIntersectionObserver } from 'shared/hooks/use-interection-observer';
 import { useDidMountEffect } from 'shared/hooks/use-did-mount-effect';
 import { fetcher } from 'shared/fetcher';
 import { omitEmptyProperties } from 'shared/helpers/omit-empty-properties';
 import { PaginatedBlogItemListOutputList, BlogItemListOutput } from 'api-typings';
 import { months } from 'shared/constants/months';
+import { Url } from 'shared/types';
 
 import styles from 'components/blog-layout/blog-layout.module.css';
 
-const ENTRIES_PER_PAGE = 3;
+const ENTRIES_PER_PAGE = 6;
 const CALL_TO_ACTION_EMAIL = 'critics@lubimovka.ru';
 
 const cx = classNames.bind(styles);
 
+// TODO: Получать список лет из API
+const fromYear = 2013;
+const currentYear = new Date().getFullYear();
 const monthOptions = months.map((month, index) => ({
   text: month,
-  value: index,
+  value: index + 1,
 }));
-
-const yearOptions = [
-  { text: '2019', value: 2019 },
-];
+const yearOptions = Array.from(Array(currentYear - fromYear), (_, index) => ({
+  text: (index + fromYear).toString(),
+  value: index + fromYear,
+}));
 
 const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [blogEntries, setBlogEntries] = useState<BlogItemListOutput[]>(props.blogEntries);
@@ -40,8 +43,15 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   const [selectedYearOption, setSelectedYearOption] = useState<SelectOption>();
   const [offset, setOffset] = useState(0);
   const [hasMoreEntries, setHasMoreEntries] = useState(props.hasMoreEntries);
-  const lastEntryRef = useRef<HTMLLIElement>(null);
-  const isLastEntryIntersecting = useIntersectionObserver(lastEntryRef);
+  // TODO: постараться избавиться от лишнего filterWasChanged, возможно, унести стейт записей в объект
+  const [filterWasChanged, setFilterWasChanged] = useState(false);
+
+  const preloadImages = (images: Url[]) => Promise.all(images.map((url) => new Promise((resolve) => {
+    const image = new Image();
+
+    image.src = url;
+    image.addEventListener('load', resolve);
+  })));
 
   const fetchBlogEntries = async ()  => {
     const params = {
@@ -66,6 +76,9 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     } = response;
 
     if (results) {
+      const images = results.map(({ image }) => image);
+
+      await preloadImages(images);
       setBlogEntries((blogEntries) => [
         ...blogEntries,
         ...results,
@@ -82,13 +95,9 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     setSelectedYearOption(value);
   };
 
-  const isLastEntry = (index: number) => index === blogEntries.length - 1;
-
-  useEffect(() => {
-    if (hasMoreEntries && isLastEntryIntersecting) {
-      setOffset((offset) => offset + ENTRIES_PER_PAGE);
-    }
-  }, [isLastEntryIntersecting]);
+  const handleShouldLoadEntries = () => {
+    setOffset((offset) => offset + ENTRIES_PER_PAGE);
+  };
 
   useDidMountEffect(() => {
     if (!selectedYearOption?.value) {
@@ -96,12 +105,19 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     }
     setBlogEntries([]);
     setOffset(0);
+    setFilterWasChanged(true);
     setHasMoreEntries(true);
   }, [selectedMonthOption, selectedYearOption]);
 
   useDidMountEffect(() => {
+    if (!offset && !filterWasChanged) {
+      return;
+    }
     fetchBlogEntries();
-  }, [offset]);
+    if (filterWasChanged) {
+      setFilterWasChanged(false);
+    }
+  }, [offset, filterWasChanged]);
 
   return (
     <AppLayout>
@@ -145,14 +161,12 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           </Filter>
         </BlogLayout.Filter>
         <BlogLayout.Main>
-          <BlogEntryList>
-            {blogEntries.map((card, index) => (
-              <BlogEntryList.Item
-                key={card.id}
-                {...isLastEntry(index) ? {
-                  ref: lastEntryRef
-                } : {}}
-              >
+          <BlogEntryList
+            onShouldLoadEntries={handleShouldLoadEntries}
+            hasMoreEntries={hasMoreEntries}
+          >
+            {blogEntries.map((card) => (
+              <BlogEntryList.Item key={card.id}>
                 <BlogCard
                   image={card.image}
                   author={card.author_url_title}
