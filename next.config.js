@@ -8,7 +8,7 @@ module.exports = {
       issuer: /\.(js|ts)x?$/,
       use: [
         {
-          loader: "@svgr/webpack",
+          loader: '@svgr/webpack',
           options: {
             svgoConfig: {
               plugins: {
