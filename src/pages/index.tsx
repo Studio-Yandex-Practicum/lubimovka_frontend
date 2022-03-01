@@ -1,7 +1,7 @@
 import { NextPage, InferGetServerSidePropsType, GetServerSideProps } from 'next';
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
-import cn from 'classnames/bind';
+import classNames from 'classnames/bind';
 
 import { Main, Partner } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
@@ -19,7 +19,7 @@ import { main } from 'mocks/data/main';
 
 import styles from './index.module.css';
 
-const cx = cn.bind(styles);
+const cx = classNames.bind(styles);
 
 const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsType <typeof getServerSideProps>) => {
   const { first_screen, afisha, blog, news, banners, places, video_archive, short_list } = data;
@@ -74,7 +74,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsTy
           view: displayFirstScreen ? 'expanded': 'normal',
         }}
         screenImg={first_screen && notEmptyKey(first_screen) &&
-        displayFirstScreen && <div className={cx('background')} style={{  backgroundImage: `url(${first_screen.image})` }}/>}
+        displayFirstScreen && <div className={cx('background')} style={{ backgroundImage: `url(${first_screen.image})` }}/>}
       >
         <>
           <Head>
@@ -82,9 +82,9 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsTy
           </Head>
           <main className={cx('main')}>
             {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
-            {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
+            {news ? <MainAside type="news" {...news}/> : blog ? <MainAside type="blog" {...blog}/> : undefined}
             <div className={cx({ 'wrapper': news || blog })}>
-              {afisha && notEmptyKey(afisha) && 
+              {afisha && notEmptyKey(afisha) &&
               <MainTitle
                 afisha_today={afisha.afisha_today}
                 description={afisha.description}
