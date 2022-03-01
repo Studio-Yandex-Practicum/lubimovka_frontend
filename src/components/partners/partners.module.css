@@ -2,11 +2,6 @@
   box-sizing: border-box;
   background-color: var(--beige);
   grid-area: partners;
-
-  @media (max-width: $tablet-portrait) {
-    width: 100%;
-    padding: scale(56px 24px) 0;
-  }
 }
 
 .link {
