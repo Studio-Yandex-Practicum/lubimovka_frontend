@@ -1,11 +1,7 @@
 .menu {
-  @mixin hideScrollbar;
-
   display: flex;
-  overflow: auto;
   padding: 0;
   margin: 0;
-  scroll-behavior: smooth;
 }
 
 .item {
