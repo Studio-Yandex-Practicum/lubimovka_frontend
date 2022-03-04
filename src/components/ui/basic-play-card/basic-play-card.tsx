@@ -13,8 +13,8 @@ export interface IBasicPlayCardProps {
   play: {
     id?: number;
     title: string;
-    city: string;
-    year: number;
+    city?: string;
+    year?: number;
     linkView: string;
     linkDownload: string;
     authors: Author [];
@@ -47,6 +47,19 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       }
     </React.Fragment>
   );
+
+  const templateItem = (text: string, value: string) => {
+    return (
+      <>
+        <dt className={cx('hiddenText')}>
+          {text}
+        </dt>
+        <dd className={cx('city')}>
+          {value}
+        </dd>
+      </>
+    );
+  };
 
   return (
     <article
@@ -95,18 +108,8 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
           </dd>
         )
         )}
-        <dt className={cx('hiddenText')}>
-          Город:
-        </dt>
-        <dd className={cx('city')}>
-          {play.city}
-        </dd>
-        <dt className={cx('hiddenText')}>
-          Год:
-        </dt>
-        <dd className={cx('year')}>
-          {play.year}
-        </dd>
+        {play.city && templateItem('Город:', play.city)}
+        {play.year && templateItem('Год:', String(play.year))}
       </dl>
     </article>
   );

@@ -70,3 +70,18 @@ PlayCardWithVisibleButtons.args = {
   },
   buttonVisibility: true,
 };
+
+export const PlayCardWithHiddenCityAndYear = Template.bind({});
+PlayCardWithHiddenCityAndYear.args = {
+  play: {
+    id: 3,
+    title: 'Конкретные разговоры пожилых супругов ни о чём',
+    linkView: 'https://lubimovka.ru/',
+    linkDownload: 'https://lubimovka.ru/',
+    authors: [{
+      id: 1,
+      name: 'Екатерина Августеняк',
+    }],
+  },
+  buttonVisibility: false,
+};
