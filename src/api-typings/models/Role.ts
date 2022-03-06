@@ -2,10 +2,13 @@
 /* tslint:disable */
 /* eslint-disable */
 
+/**
+ * Role serializer.
+ *
+ * Used in Performance, Reading and Master-class serializers for afisha page
+ * and for individual Performance page.
+ */
 export type Role = {
     name: string;
-    /**
-     * Если пустое, то заполняется автоматически
-     */
-    slug: string;
+    readonly persons: Array<string>;
 }

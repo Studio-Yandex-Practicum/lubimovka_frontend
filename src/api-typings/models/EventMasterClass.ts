@@ -2,13 +2,15 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Role } from './Role';
+
 /**
- * Сериализатор мастер-класса на странице афиши.
+ * Master-class serializer for afisha page.
  */
 export type EventMasterClass = {
     readonly id: number;
     name: string;
     description: string;
-    readonly team: string;
+    team: Array<Role>;
     readonly project_title: string;
 }

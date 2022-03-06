@@ -2,13 +2,15 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Role } from './Role';
+
 /**
- * Сериализатор читки на странице афиши.
+ * Reading serializer for afisha page.
  */
 export type EventReading = {
     readonly id: number;
     name: string;
     description: string;
-    readonly team: string;
+    team: Array<Role>;
     readonly project_title: string;
 }

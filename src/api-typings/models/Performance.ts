@@ -5,14 +5,15 @@
 import type { Image } from './Image';
 import type { LocalEvent } from './LocalEvent';
 import type { Play } from './Play';
+import type { Role } from './Role';
 
 /**
- * Сериализатор Спектакля для отображения на странице Спектакля.
+ * Performance serializer for performance page.
  */
 export type Performance = {
     readonly id: number;
     play: Play;
-    readonly team: string;
+    team: Array<Role>;
     images_in_block: Array<Image>;
     events: Array<LocalEvent>;
     name: string;

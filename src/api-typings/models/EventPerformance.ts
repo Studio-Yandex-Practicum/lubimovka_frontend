@@ -2,14 +2,16 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Role } from './Role';
+
 /**
- * Сериализатор Спектакля для отображения на странице Афиши.
+ * Performance serializer for afisha page.
  */
 export type EventPerformance = {
     readonly id: number;
     name: string;
     description: string;
-    readonly team: string;
+    team: Array<Role>;
     image: string;
     readonly project_title: string;
 }
