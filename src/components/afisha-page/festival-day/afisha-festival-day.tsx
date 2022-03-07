@@ -42,6 +42,7 @@ export const FestivalDay: FC<IFestivalDayProps> = (props) => {
   const { date, plays } = props;
 
   const month = useMemo(() => getMonth(date), [date]);
+  
   const day = useMemo(() => getDay(date), [date]);
   const info = useMemo(() => getInfo(date), [date]);
   const isOpened = useMemo(() => getStatus(date), [date]);
