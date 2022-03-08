@@ -17,8 +17,8 @@ import styles from './news-list.module.css';
 interface NewsListProps {
   children: ReactNode | ReactNode[]
   className?: string
-  hasMoreEntries: boolean
-  onShouldLoadEntries: () => void
+  hasMoreEntries?: boolean
+  onShouldLoadEntries?: () => void
 }
 
 const cx = classNames.bind(styles);
@@ -35,7 +35,7 @@ const Component = (props: NewsListProps) => {
   const [pending, setPending] = useState(false);
 
   useEffect(() => {
-    if (!pending && shouldLoadEntries && hasMoreEntries) {
+    if (onShouldLoadEntries && !pending && shouldLoadEntries && hasMoreEntries) {
       setPending(true);
       onShouldLoadEntries();
       setPending(false);
