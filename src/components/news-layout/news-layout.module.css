@@ -1,0 +1,32 @@
+.root {
+  display: grid;
+  padding: scale(60px 90px 200px);
+  grid-template:
+    ".    title"
+    ".    filter"
+    "list list"
+    /1fr  1fr;
+}
+
+.title {
+  width: min-content;
+  margin-bottom: scale(16px);
+  grid-area: title;
+}
+
+.filter {
+  margin-bottom: scale(40px);
+  grid-area: filter;
+}
+
+.month-field {
+  width: scale(240px);
+}
+
+.year-field {
+  width: scale(150px);
+}
+
+.list {
+  grid-area: list;
+}
