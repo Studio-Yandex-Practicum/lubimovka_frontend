@@ -10,7 +10,7 @@ export interface INewsCardProps {
   newsId: number;
   title: string;
   description: string;
-  date: string;
+  date?: string;
   isMainPage: boolean;
   className?: string;
 }
@@ -32,7 +32,11 @@ export const NewsCard: React.FC<INewsCardProps> = (props) => {
           <h5 className={cx('title', { mainPageTitle: isMainPage })}>{title}</h5>
           <p className={cx('description', { mainPageDescription: isMainPage })}>{description}</p>
         </div>
-        <p className={cx('date', { mainPageDate: isMainPage })}>{new Date(date).toLocaleDateString('ru-Ru', { month: 'long', day:'numeric', year:'numeric' }).replace(' г.', '')}</p>
+        {date && (
+          <p className={cx('date', { mainPageDate: isMainPage })}>
+            {new Date(date).toLocaleDateString('ru-Ru', { month: 'long', day:'numeric', year:'numeric' }).replace(' г.', '')}
+          </p>
+        )}
       </a>
     </Link>
   );
