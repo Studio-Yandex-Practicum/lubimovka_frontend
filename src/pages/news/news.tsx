@@ -1,6 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Error from 'next/error';
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames/bind';
 import { objectToQueryString } from '@funboxteam/diamonds';
 
@@ -12,6 +12,7 @@ import { Select, SelectOption } from 'components/select';
 import { NewsList } from 'components/news-list';
 import { NewsCard } from 'components/ui/news-card';
 import { useDidMountEffect } from 'shared/hooks/use-did-mount-effect';
+import { useIntersection } from 'shared/hooks/use-intersection';
 import { fetcher } from 'shared/fetcher';
 import { omitEmptyProperties } from 'shared/helpers/omit-empty-properties';
 import { months } from 'shared/constants/months';
@@ -19,7 +20,7 @@ import { PaginatedNewsItemListList, NewsItemList } from 'api-typings';
 
 import styles from 'components/news-layout/news-layout.module.css';
 
-const ENTRIES_PER_PAGE = 3;
+const ENTRIES_PER_PAGE = 5;
 
 const cx = classNames.bind(styles);
 
@@ -45,6 +46,9 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   const [offset, setOffset] = useState(0);
   const [hasMoreEntries, setHasMoreEntries] = useState(props.hasMoreEntries);
   const [filterWasChanged, setFilterWasChanged] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>({ threshold: 1 });
+  const lastNewsIndex = useMemo(() => news.length - 1, [news]);
 
   const handleMonthChange = (value: SelectOption) => {
     setSelectedMonthOption(value);
@@ -87,6 +91,7 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
       ]);
     }
     setHasMoreEntries(!!next);
+    setPending(false);
   };
 
   useDidMountEffect(() => {
@@ -103,11 +108,18 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     if (!offset && !filterWasChanged) {
       return;
     }
+    setPending(true);
     fetchNews();
     if (filterWasChanged) {
       setFilterWasChanged(false);
     }
   }, [offset, filterWasChanged]);
+
+  useEffect(() => {
+    if (!pending && shouldLoadEntries && hasMoreEntries) {
+      handleShouldLoadEntries();
+    }
+  }, [pending, hasMoreEntries, shouldLoadEntries]);
 
   if (errorCode) {
     return (
@@ -143,9 +155,15 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           className={cx('list')}
           onShouldLoadEntries={handleShouldLoadEntries}
           hasMoreEntries={hasMoreEntries}
+          pending={pending}
         >
-          {news.map((entry) => (
-            <NewsList.Item key={entry.id}>
+          {news.map((entry, index) => (
+            <NewsList.Item
+              key={entry.id}
+              {...index === lastNewsIndex ? {
+                ref: bottomBoundaryRef,
+              } : {}}
+            >
               <NewsCard
                 newsId={entry.id}
                 title={entry.title}
