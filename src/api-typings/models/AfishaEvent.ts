@@ -2,7 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { BlankEnum } from './BlankEnum';
 import type { Event_Type_objects } from './Event_Type_objects';
 import type { TypeA7fEnum } from './TypeA7fEnum';
 
@@ -11,7 +10,7 @@ import type { TypeA7fEnum } from './TypeA7fEnum';
  */
 export type AfishaEvent = {
     readonly id: number;
-    type?: (TypeA7fEnum | BlankEnum);
+    type: TypeA7fEnum;
     /**
      * The response is different based on event type.
      */

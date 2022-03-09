@@ -10,7 +10,6 @@ export type { AuthorRetrieve } from './models/AuthorRetrieve';
 export type { AuthorSearch } from './models/AuthorSearch';
 export type { Banner } from './models/Banner';
 export type { BaseContent } from './models/BaseContent';
-export type { BlankEnum } from './models/BlankEnum';
 export type { BlogItemDetailOutput } from './models/BlogItemDetailOutput';
 export type { BlogItemList } from './models/BlogItemList';
 export type { BlogItemListOutput } from './models/BlogItemListOutput';
