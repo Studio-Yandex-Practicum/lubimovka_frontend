@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import classNames from 'classnames/bind';
 
-import { AfishaEvent } from 'api-typings';
+import { AfishaEvent, EventPerformance } from 'api-typings';
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
 import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
 
@@ -9,8 +9,12 @@ import styles from './main-events.module.css';
 
 const cx = classNames.bind(styles);
 
+interface IAfishaEvent extends AfishaEvent {
+  event_body: EventPerformance;
+}
+
 interface IMainAfisha {
-  items: Array<AfishaEvent>
+  items: Array<IAfishaEvent>
 }
 
 export const MainEvents: FC<IMainAfisha> = ({ items }) => {
