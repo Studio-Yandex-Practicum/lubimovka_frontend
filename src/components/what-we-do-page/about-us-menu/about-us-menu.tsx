@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef, UIEvent } from 'react';
 import { useRouter } from 'next/router';
 import classNames from 'classnames/bind';
 
@@ -15,12 +15,12 @@ export const AboutUsMenu: FC = (): JSX.Element => {
 
   useEffect(() => {
     if (menu.current) {
-      menu.current.scrollLeft = localStorage.getItem('positionScroll');
+      (menu.current as HTMLDivElement).scrollLeft = Number(localStorage.getItem('positionScroll'));
     }
   }, []);
 
-  const handlerScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    localStorage.setItem('positionScroll', e.target.scrollLeft);
+  const handlerScroll = (e: UIEvent<HTMLDivElement>) => {
+    localStorage.setItem('positionScroll', String((e.target as HTMLDivElement).scrollLeft));
   };
 
   return (
