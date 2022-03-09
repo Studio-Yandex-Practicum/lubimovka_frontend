@@ -1,11 +1,9 @@
-import React from 'react';
 import cn from 'classnames/bind';
 
-import { BlogList } from '../../ui/blog-card/list';
-import { BlogCard } from '../../ui/blog-card';
-import { BlogItem, NewsItem } from '../../../shared/types';
+import { BlogCard } from 'components/ui/blog-card';
 import { NewsList } from 'components/news-list';
 import { NewsCard } from 'components/ui/news-card';
+import { BlogItem, NewsItem } from 'shared/types';
 
 import styles from './article-other.module.css';
 
@@ -24,9 +22,11 @@ export const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
 
   return (
     <section className={cx('container', { newsListContainer: newsArticle.length > 0 })}>
-      <h2 className={cx('sectionTitle', { newsListTitle: newsArticle.length > 0 })}>Другие {blogArticle.length > 0 ? 'записи' : 'новости'}</h2>
+      <h2 className={cx('sectionTitle', { newsListTitle: newsArticle.length > 0 })}>
+        Другие {blogArticle.length > 0 ? 'записи' : 'новости'}
+      </h2>
       {blogArticle.length > 0 ?
-        <BlogList>
+        <>
           {blogArticle.map(item => (
             <BlogCard
               key={item.id}
@@ -37,8 +37,8 @@ export const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
               id={item.id}
             />
           ))}
-        </BlogList> : (
-          // TODO: отрефакторить страницу новости/записи блога. Разделить рендеринг. Избавиться от модальности.
+        </> : (
+          // TODO: отрефакторить страницу новости/записи блога. Разделить рендеринг. Избавиться от модальности. Избавиться от нейминга API в компонентах.
           <NewsList
             className={cx('list')}
           >
