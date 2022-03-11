@@ -1,13 +1,13 @@
-import { createContext, useContext, Dispatch } from 'react';
+import { createContext, useContext } from 'react';
 
 import { SelectOption } from 'components/select';
 import { NewsItemList } from 'api-typings';
 
 export type NewsContext = {
-  news: NewsItemList[]
-  setNews: Dispatch<NewsItemList[]>
-  handleShouldLoadEntries: () => void
+  entries: NewsItemList[]
   hasMoreEntries: boolean
+  setServerSideEntries: (value: { entries: NewsItemList[], hasMoreEntries: boolean }) => void
+  handleShouldLoadEntries: () => void
   selectedMonthOption?: SelectOption
   handleMonthChange: (value: SelectOption) => void
   selectedYearOption?: SelectOption

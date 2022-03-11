@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useReducer } from 'react';
 import { objectToQueryString } from '@funboxteam/diamonds';
 
 import { SelectOption } from 'components/select';
@@ -6,32 +6,88 @@ import { fetcher } from 'shared/fetcher';
 import { omitEmptyProperties } from 'shared/helpers/omit-empty-properties';
 import { useDidMountEffect } from 'shared/hooks/use-did-mount-effect';
 import { NewsContext } from './news-provider.context';
+import { entriesPerPage } from 'shared/constants/news';
 import { PaginatedNewsItemListList, NewsItemList } from 'api-typings';
 
-const ENTRIES_PER_PAGE = 5;
+export const initialNewsState = {
+  entries: [] as NewsItemList[],
+  offset: 0,
+  hasMoreEntries: false,
+};
+
+export enum NewsActionType {
+  AddNews,
+  setServerSideEntries,
+  SetOffset,
+  SetHasMoreEntries,
+  IncreaseOffset,
+  Reset,
+}
+
+export type NewsState = typeof initialNewsState;
+type NewsAction = { type: NewsActionType.AddNews, payload: NewsState['entries']}
+  | { type: NewsActionType.SetOffset, payload: NewsState['offset'] }
+  | { type: NewsActionType.setServerSideEntries, payload: Pick<NewsState, 'entries' | 'hasMoreEntries'> }
+  | { type: NewsActionType.SetHasMoreEntries, payload: NewsState['hasMoreEntries'] }
+  | { type: NewsActionType.IncreaseOffset }
+  | { type: NewsActionType.Reset }
+
+const newsReducer = (state: NewsState, action: NewsAction) => {
+  switch (action.type) {
+  case NewsActionType.AddNews:
+    return {
+      ...state,
+      entries: [
+        ...state.entries,
+        ...action.payload,
+      ]
+    };
+  case NewsActionType.setServerSideEntries:
+    return {
+      ...state,
+      ...action.payload,
+    };
+  case NewsActionType.SetOffset:
+    return {
+      ...state,
+      offset: action.payload,
+    };
+  case NewsActionType.SetHasMoreEntries:
+    return {
+      ...state,
+      hasMoreEntries: action.payload,
+    };
+  case NewsActionType.IncreaseOffset:
+    return {
+      ...state,
+      offset: state.offset + entriesPerPage,
+    };
+  case NewsActionType.Reset:
+    return initialNewsState;
+  default:
+    return state;
+  };
+};
 
 export const NewsProvider: FC = (props) => {
   const { children } = props;
-  const [news, setNews] = useState<NewsItemList[]>([]);
+  const [news, dispatch] = useReducer(newsReducer, initialNewsState);
   const [selectedMonthOption, setSelectedMonthOption] = useState<SelectOption>();
   const [selectedYearOption, setSelectedYearOption] = useState<SelectOption>();
-  const [offset, setOffset] = useState(0);
-  const [hasMoreEntries, setHasMoreEntries] = useState(true);
   const [filterWasChanged, setFilterWasChanged] = useState(false);
   const [pending, setPending] = useState(false);
 
   const fetchNews = async ()  => {
-    const params = {
-      limit: ENTRIES_PER_PAGE,
-      offset,
+    const params = omitEmptyProperties({
+      offset: news.offset,
+      limit: entriesPerPage,
       month: selectedMonthOption?.value,
       year: selectedYearOption?.value,
-    };
-    const filteredParams = omitEmptyProperties(params);
+    });
     let response;
 
     try {
-      response = await fetcher<PaginatedNewsItemListList>(`/news/${objectToQueryString(filteredParams)}`);
+      response = await fetcher<PaginatedNewsItemListList>(`/news/${objectToQueryString(params)}`);
     } catch {
       // TODO: обработать ошибку
       return;
@@ -43,13 +99,14 @@ export const NewsProvider: FC = (props) => {
     } = response;
 
     if (results) {
-      setNews((news) => [
-        ...news,
-        ...results,
-      ]);
+      dispatch({ type: NewsActionType.AddNews, payload: results });
     }
-    setHasMoreEntries(!!next);
+    dispatch({ type: NewsActionType.SetHasMoreEntries, payload: !!next });
     setPending(false);
+  };
+
+  const setServerSideEntries = (value: Pick<NewsState, 'entries' | 'hasMoreEntries'>) => {
+    dispatch({ type: NewsActionType.setServerSideEntries, payload: value });
   };
 
   const handleMonthChange = (value: SelectOption) => {
@@ -61,21 +118,19 @@ export const NewsProvider: FC = (props) => {
   };
 
   const handleShouldLoadEntries = () => {
-    setOffset((offset) => offset + ENTRIES_PER_PAGE);
+    dispatch({ type: NewsActionType.IncreaseOffset });
   };
 
   useDidMountEffect(() => {
     if (!selectedYearOption?.value) {
       return;
     }
-    setNews([]);
-    setOffset(0);
     setFilterWasChanged(true);
-    setHasMoreEntries(true);
+    dispatch({ type: NewsActionType.Reset });
   }, [selectedMonthOption, selectedYearOption]);
 
   useDidMountEffect(() => {
-    if (!offset && !filterWasChanged) {
+    if (!news.offset && !filterWasChanged) {
       return;
     }
     setPending(true);
@@ -83,13 +138,13 @@ export const NewsProvider: FC = (props) => {
     if (filterWasChanged) {
       setFilterWasChanged(false);
     }
-  }, [offset, filterWasChanged]);
+  }, [news.offset, filterWasChanged]);
 
   const contextValue = {
-    news,
-    setNews,
+    entries: news.entries,
+    hasMoreEntries: news.hasMoreEntries,
+    setServerSideEntries,
     handleShouldLoadEntries,
-    hasMoreEntries,
     selectedMonthOption,
     handleMonthChange,
     selectedYearOption,
@@ -98,9 +153,7 @@ export const NewsProvider: FC = (props) => {
   };
 
   return (
-    <NewsContext.Provider
-      value={contextValue}
-    >
+    <NewsContext.Provider value={contextValue}>
       {children}
     </NewsContext.Provider>
   );
