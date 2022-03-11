@@ -9,7 +9,7 @@ import { PageTitle } from 'components/page-title';
 import { Filter } from 'components/filter';
 import { Select } from 'components/select';
 import { NewsList } from 'components/news-list';
-import { NewsCard } from 'components/ui/news-card';
+import { NewsCard } from 'components/news-card';
 import { useNews } from 'providers/news-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
 import { fetcher } from 'shared/fetcher';

@@ -2,7 +2,7 @@ import cn from 'classnames/bind';
 
 import { BlogCard } from 'components/ui/blog-card';
 import { NewsList } from 'components/news-list';
-import { NewsCard } from 'components/ui/news-card';
+import { NewsCard } from 'components/news-card';
 import { BlogItem, NewsItem } from 'shared/types';
 
 import styles from './article-other.module.css';
