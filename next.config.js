@@ -33,4 +33,7 @@ module.exports = {
   publicRuntimeConfig: {
     baseUrl,
   },
+  experimental: {
+    scrollRestoration: true,
+  },
 };
