@@ -1,7 +1,7 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Error from 'next/error';
 import { useEffect, useMemo } from 'react';
 import classNames from 'classnames/bind';
+import { InferGetServerSidePropsType } from 'next';
 
 import { AppLayout } from 'components/app-layout';
 import { NewsLayout } from 'components/news-layout';
@@ -14,11 +14,10 @@ import { useNews } from 'providers/news-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
 import { fetcher } from 'shared/fetcher';
 import { months } from 'shared/constants/months';
+import { entriesPerPage } from 'shared/constants/news';
 import { PaginatedNewsItemListList } from 'api-typings';
 
 import styles from 'components/news-layout/news-layout.module.css';
-
-const ENTRIES_PER_PAGE = 5;
 
 const cx = classNames.bind(styles);
 
@@ -39,8 +38,8 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     errorCode,
   } = props;
   const {
-    news,
-    setNews,
+    entries,
+    setServerSideEntries,
     handleShouldLoadEntries,
     hasMoreEntries,
     selectedMonthOption,
@@ -50,11 +49,14 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     pending,
   } = useNews();
   const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>({ threshold: 1 });
-  const lastNewsIndex = useMemo(() => news ? news.length - 1 : 0, [news]);
+  const lastNewsIndex = useMemo(() => entries.length - 1, [entries]);
 
   useEffect(() => {
-    if (!news.length) {
-      setNews(props.news);
+    if (!entries.length && props.entries) {
+      setServerSideEntries({
+        entries: props.entries,
+        hasMoreEntries: props.hasMoreEntries,
+      });
     }
   }, []);
 
@@ -100,7 +102,7 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           hasMoreEntries={hasMoreEntries}
           pending={pending}
         >
-          {news.map((entry, index) => (
+          {entries.map((entry, index) => (
             <NewsList.Item
               key={entry.id}
               {...index === lastNewsIndex ? {
@@ -122,11 +124,11 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps = async () => {
   let response;
 
   try {
-    response = await fetcher<PaginatedNewsItemListList>(`/news/?limit=${ENTRIES_PER_PAGE}`);
+    response = await fetcher<PaginatedNewsItemListList>(`/news/?limit=${entriesPerPage}`);
   } catch {
     return {
       props: {
@@ -137,7 +139,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      news: response.results,
+      entries: response.results,
       hasMoreEntries: !!response.next,
     }
   };
