@@ -22,7 +22,7 @@ import { PersonCardList } from 'components/person-card-list';
 import { CallToEmail } from 'components/call-to-email';
 import { fetcher } from 'shared/fetcher';
 import { Project as ProjectModel } from 'api-typings';
-import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
+import { formatDateTime } from 'shared/helpers/format-date-time';
 
 const convertRolesToString = (roles: PersonRole[]) => roles.map(role => role.name).join(', ');
 
@@ -97,8 +97,8 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                       //TODO: исправить ответ бекенда, сейчас возвращаются данные для страницы спектакля
                       isPerformance={true}
                       id={id}
-                      formattedDate={formatDate('2021-11-13T17:00:00.000Z')}
-                      formattedTime={formatTime('2021-11-13T17:00:00.000Z')}
+                      formattedDate={formatDateTime('2021-11-13T17:00:00.000Z', 'dMMMM')}
+                      formattedTime={formatDateTime('2021-11-13T17:00:00.000Z', 'mH')}
                       title={name}
                       team={[
                         {
