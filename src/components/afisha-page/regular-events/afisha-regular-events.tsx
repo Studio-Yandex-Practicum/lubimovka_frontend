@@ -2,7 +2,7 @@ import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { AnnouncedPlayCard, IAnnouncedPlayCardProps } from 'components/ui/announced-play-card';
-import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
+import { formatDateTime } from 'shared/helpers/format-date-time';
 
 import styles from './afisha-regular-events.module.css';
 
@@ -20,8 +20,8 @@ export const RegularEvents: FC<IRegularEventsProps> = (props) => {
       {data.map((event) => (
         <AnnouncedPlayCard
           key={event.id}
-          formattedDate={formatDate(event.date_time)}
-          formattedTime={formatTime(event.date_time)}
+          formattedDate={formatDateTime(event.date_time, 'dMMMM')}
+          formattedTime={formatDateTime(event.date_time, 'mH')}
           title={event.title}
           team={event.team}
           buttonLink={event.buttonLink}

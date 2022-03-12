@@ -2,7 +2,7 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
-import { formatDate } from 'shared/helpers/formatDateServerData';
+import { formatDateTime } from 'shared/helpers/format-date-time';
 
 import styles from './main-title.module.css';
 
@@ -21,7 +21,7 @@ export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
       })}
       >
         <h1 className={cx('title')}>
-          {afisha_today ? `Афиша на сегодня, ${formatDate(new Date().toString())}` : 'Афиша событий'}
+          {afisha_today ? `Афиша на сегодня, ${formatDateTime(new Date(), 'dMMMM')}` : 'Афиша событий'}
         </h1>
         <div className={cx('buttonContainer')}>
           <Button
