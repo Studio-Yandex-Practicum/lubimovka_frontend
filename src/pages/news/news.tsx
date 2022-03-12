@@ -15,6 +15,7 @@ import { useIntersection } from 'shared/hooks/use-intersection';
 import { fetcher } from 'shared/fetcher';
 import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/news';
+import { formatDateTime } from 'shared/helpers/format-date-time';
 import { PaginatedNewsItemListList } from 'api-typings';
 
 import styles from 'components/news-layout/news-layout.module.css';
@@ -110,11 +111,10 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
               } : {}}
             >
               <NewsCard
-                newsId={entry.id}
                 title={entry.title}
                 description={entry.description}
-                date={entry.pub_date}
-                isMainPage={false}
+                date={entry.pub_date && formatDateTime(entry.pub_date, 'dMMMMYYYY')}
+                href={`/news/${entry.id}`}
               />
             </NewsList.Item>
           ))}

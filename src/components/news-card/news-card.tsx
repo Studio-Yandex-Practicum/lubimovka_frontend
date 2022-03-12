@@ -1,44 +1,49 @@
-import React from 'react';
-import Link from 'next/link';
-import cn from 'classnames/bind';
+import { FC } from 'react';
+import Link, { LinkProps } from 'next/link';
+import classNames from 'classnames/bind';
 
 import styles from './news-card.module.css';
 
-const cx = cn.bind(styles);
-
-export interface INewsCardProps {
-  newsId: number;
+interface NewsCardProps {
   title: string;
   description: string;
   date?: string;
-  isMainPage: boolean;
+  href: LinkProps['href']
   className?: string;
 }
 
-export const NewsCard: React.FC<INewsCardProps> = (props) => {
+const cx = classNames.bind(styles);
+
+export const NewsCard: FC<NewsCardProps> = (props) => {
   const {
-    newsId,
     title,
     description,
     date,
-    isMainPage,
+    href,
     className
   } = props;
 
   return (
-    <Link href={`/news/${encodeURIComponent(newsId)}`}>
-      <a className={cx('wrapper', { mainPageWrapper: isMainPage }, [className])}>
-        <div className={cx('container')}>
-          <h5 className={cx('title', { mainPageTitle: isMainPage })}>{title}</h5>
-          <p className={cx('description', { mainPageDescription: isMainPage })}>{description}</p>
-        </div>
-        {date && (
-          <p className={cx('date', { mainPageDate: isMainPage })}>
-            {new Date(date).toLocaleDateString('ru-Ru', { month: 'long', day:'numeric', year:'numeric' }).replace(' г.', '')}
-          </p>
-        )}
-      </a>
-    </Link>
+    <div className={cx('root', className)}>
+      {date && (
+        <time
+          className={cx('date')}
+          dateTime={date}
+        >
+          {date}
+        </time>
+      )}
+      <h5 className={cx('title')}>
+        <Link href={href}>
+          <a className={cx('link')}>
+            {title}
+          </a>
+        </Link>
+      </h5>
+      <p className={cx('description')}>
+        {description}
+      </p>
+    </div>
   );
 };
 

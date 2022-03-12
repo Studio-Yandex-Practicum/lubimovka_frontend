@@ -45,11 +45,10 @@ export const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
             {newsArticle.map((entry) => (
               <NewsList.Item key={entry.id}>
                 <NewsCard
-                  newsId={entry.id}
                   title={entry.title}
                   description={entry.description}
                   date={entry.pub_date}
-                  isMainPage={false}
+                  href={`/news/${entry.id}`}
                 />
               </NewsList.Item>
             ))}

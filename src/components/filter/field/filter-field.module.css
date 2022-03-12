@@ -1,4 +1,6 @@
 .root {
+  flex: 1;
+
   &:not(:last-child) {
     margin-right: scale(30px);
   }
