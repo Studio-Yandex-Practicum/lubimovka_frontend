@@ -1,26 +1,20 @@
-.wrapper {
-  display: flex;
+.root {
+  position: relative;
+  display: grid;
   justify-content: space-between;
-  padding: scale(16px 11px 64px 21px);
-  border-top: 1px solid var(--coal);
-  text-decoration: none;
-  transition: background-color .5s ease-in, color .5s ease-in;
+  padding: scale(16px 10px 64px 20px);
+  grid-template-areas:
+    "title       date"
+    "description .";
 
   &:hover {
     background-color: var(--light-green);
   }
 
   @media (max-width: $tablet-portrait) {
-    flex-direction: column-reverse;
-    padding: scale(16px 0 48px);
-  }
-}
-
-.mainPageWrapper {
-  flex-direction: column;
-
-  @media (max-width: $tablet-portrait) {
-    padding: scale(16px 0 72px);
+    display: block;
+    padding: scale(16px 24px 48px);
+    margin: scale(0 -24px);
   }
 }
 
@@ -28,7 +22,9 @@
   @mixin headline;
   @mixin headline5;
 
-  max-width: scale(681px);
+  max-width: scale(680px);
+  margin-bottom: scale(8px);
+  grid-area: title;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
@@ -37,13 +33,18 @@
   }
 }
 
-.mainPageTitle {
-  max-width: 681px;
+.link {
+  color: inherit;
+  text-decoration: none;
 
-  @media (max-width: $tablet-portrait) {
-    @mixin headline5;
-
-    max-width: scale(336px);
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    content: '';
   }
 }
 
@@ -51,19 +52,12 @@
   @mixin text;
   @mixin textLarge;
 
-  max-width: scale(491px);
-  padding: scale(8px 0 0 32px);
+  max-width: scale(490px);
+  margin-left: scale(32px);
+  grid-area: description;
 
   @media (max-width: $tablet-portrait) {
-    max-width: scale(333px);
-  }
-}
-
-.mainPageDescription {
-  max-width: scale(491px);
-
-  @media (max-width: $tablet-portrait) {
-    max-width: scale(304px);
+    max-width: scale(334px);
   }
 }
 
@@ -71,12 +65,10 @@
   @mixin text;
   @mixin textSmall;
 
-  @media (max-width: $tablet-portrait) {
-    padding-bottom: scale(16px);
-  }
-}
+  display: block;
+  grid-area: date;
 
-.mainPageDate {
-  padding-top: scale(16px);
-  padding-bottom: 0;
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(16px);
+  }
 }

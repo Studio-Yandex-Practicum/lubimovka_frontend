@@ -1,3 +1,4 @@
 .root {
   display: block;
+  border-top: 1px solid var(--coal);
 }

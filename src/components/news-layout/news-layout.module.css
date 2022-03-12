@@ -6,6 +6,11 @@
     ".    filter"
     "list list"
     /1fr  1fr;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+    padding: scale(0 24px 52px);
+  }
 }
 
 .title {
@@ -20,13 +25,16 @@
 }
 
 .month-field {
-  width: scale(240px);
+  max-width: scale(240px);
 }
 
 .year-field {
-  width: scale(150px);
+  max-width: scale(150px);
 }
 
 .list {
+  width: 100%;
+  max-width: scale(900px);
+  margin: 0 auto !important;
   grid-area: list;
 }
