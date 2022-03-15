@@ -5,7 +5,7 @@ module.exports = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      issuer:/\.(js|ts)x?$/,
+      issuer: /\.(js|ts)x?$/,
       use: [
         {
           loader: '@svgr/webpack',
@@ -13,10 +13,10 @@ module.exports = {
             svgoConfig: {
               plugins: {
                 removeViewBox: false,
-              }
-            }
-          }
-        }
+              },
+            },
+          },
+        },
       ],
     });
 
@@ -26,9 +26,14 @@ module.exports = {
     domains: [
       'stage.dev.lubimovka.ru',
       'lubimovka.kiryanov.ru',
+      'test.dev.lubimovka.ru',
+      '2022.lubimovka.ru',
     ],
   },
   publicRuntimeConfig: {
     baseUrl,
-  }
+  },
+  experimental: {
+    scrollRestoration: true,
+  },
 };

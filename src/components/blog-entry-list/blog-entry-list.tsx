@@ -27,8 +27,7 @@ export const BlogEntryList = (props: IBlogEntryListProps) => {
     onShouldLoadEntries,
   } = props;
   const containerRef = useRef<HTMLUListElement>(null);
-  const lastEntryRef = useRef<HTMLSpanElement>(null);
-  const shouldLoadEntries = useIntersection(lastEntryRef, { threshold: .85 });
+  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection({ threshold: .85 });
   const [loading, setLoading] = useState(false);
 
   const layout = () => {
@@ -70,7 +69,7 @@ export const BlogEntryList = (props: IBlogEntryListProps) => {
       ref={containerRef}
     >
       {children}
-      <span ref={lastEntryRef}/>
+      <span ref={bottomBoundaryRef}/>
     </ul>
   );
 };

@@ -6,16 +6,20 @@ import { FilterField } from './field';
 import styles from './filter.module.css';
 
 interface FilterProps {
-  children: ReactNode,
+  children: ReactNode
+  className?: string
 }
 
 const cx = classNames.bind(styles);
 
 const Component = (props: FilterProps): JSX.Element => {
-  const { children } = props;
+  const {
+    children,
+    className,
+  } = props;
 
   return (
-    <div className={cx('root')}>
+    <div className={cx('root', className)}>
       {children}
     </div>
   );

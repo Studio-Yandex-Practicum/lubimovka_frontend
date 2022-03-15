@@ -1,0 +1,74 @@
+.root {
+  position: relative;
+  display: grid;
+  justify-content: space-between;
+  padding: scale(16px 10px 64px 20px);
+  grid-template-areas:
+    "title       date"
+    "description .";
+
+  &:hover {
+    background-color: var(--light-green);
+  }
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+    padding: scale(16px 24px 48px);
+    margin: scale(0 -24px);
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline5;
+
+  max-width: scale(680px);
+  margin-bottom: scale(8px);
+  grid-area: title;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    max-width: scale(316px);
+  }
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    content: '';
+  }
+}
+
+.description {
+  @mixin text;
+  @mixin textLarge;
+
+  max-width: scale(490px);
+  margin-left: scale(32px);
+  grid-area: description;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(334px);
+  }
+}
+
+.date {
+  @mixin text;
+  @mixin textSmall;
+
+  display: block;
+  grid-area: date;
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(16px);
+  }
+}

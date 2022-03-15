@@ -10,9 +10,9 @@
 }
 
 .month-field {
-  width: scale(240px);
+  max-width: scale(240px);
 }
 
 .year-field {
-  width: scale(150px);
+  max-width: scale(150px);
 }
