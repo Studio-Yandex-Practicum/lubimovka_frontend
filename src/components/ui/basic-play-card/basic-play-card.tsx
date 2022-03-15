@@ -13,8 +13,8 @@ export interface IBasicPlayCardProps {
   play: {
     id?: number;
     title: string;
-    city: string;
-    year: number;
+    city?: string;
+    year?: number;
     linkView: string;
     linkDownload: string;
     authors: Author [];
@@ -95,18 +95,22 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
           </dd>
         )
         )}
-        <dt className={cx('hiddenText')}>
-          Город:
-        </dt>
-        <dd className={cx('city')}>
-          {play.city}
-        </dd>
-        <dt className={cx('hiddenText')}>
-          Год:
-        </dt>
-        <dd className={cx('year')}>
-          {play.year}
-        </dd>
+        {play.city && <>
+          <dt className={cx('hiddenText')}>
+            Город:
+          </dt>
+          <dd className={cx('city')}>
+            {play.city}
+          </dd>
+        </>}
+        {play.year && <>
+          <dt className={cx('hiddenText')}>
+            Год:
+          </dt>
+          <dd className={cx('year')}>
+            {play.year}
+          </dd>
+        </>}
       </dl>
     </article>
   );
