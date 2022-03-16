@@ -1,21 +1,22 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
+import { Festival, PlayFilters } from 'api-typings';
 
 import { Button } from 'components/ui/button/button';
-import { Festival } from 'api-typings';
 
 import style from './history-title.module.css';
 
 interface IHistoryTitle {
   data: Festival,
-  currentYear: number
+  currentYear: number,
+  playFilters: PlayFilters
 }
 const iconPlace = 'right';
 const icon = 'arrow-right';
 const alignStart = 'start';
 const imageUrl = 'https://s1.hostingkartinok.com/uploads/images/2021/12/fb0c8e1baf21b0ca306ee98a6678c0d8.png';
 
-export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
+export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear, playFilters }) => {
   const { plays_count,
     selected_plays_count,
     selectors_count,
@@ -26,7 +27,6 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
     start_date,
     end_date,
     description } = data;
-
   const startDate = new Date(start_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' });
   const finishDate = new Date(end_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' });
   const [urlVolonters, setUrlVolonters] = React.useState(`/team/?year=${currentYear}`);
@@ -130,64 +130,22 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
         <div className={style.links}>
           <div className={style.subsection}>
             <h2 className={style.subtitle}>Пьесы</h2>
-
-            <div className={style.buttonDisplay}>
-              <Button
-                label="Шорт&#8209;лист"
-                iconPlace={iconPlace}
-                icon={icon}
-                href="#"
-                isLink={true}
-                align={alignStart}
-                size="l"
-                gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}
-              >
-              </Button>
-            </div>
-            <div className={style.buttonDisplay}>
-              <Button
-                label="Fringe&#8209;программа"
-                iconPlace={iconPlace}
-                icon={icon}
-                href="#"
-                isLink={true}
-                align={alignStart}
-                size="l"
-                gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}
-              >
-              </Button>
-            </div>
-            <div className={style.buttonDisplay}>
-              <Button
-                label="Особо&nbsp;отмеченные"
-                iconPlace={iconPlace}
-                icon={icon}
-                href="#"
-                isLink={true}
-                align={alignStart}
-                size="l"
-                gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}
-              >
-              </Button>
-            </div>
-            <div className={style.buttonDisplay}>
-              <Button
-                label="Внеконкурсная&nbsp;программа"
-                iconPlace={iconPlace}
-                icon={icon}
-                href="#"
-                isLink={true}
-                align={alignStart}
-                size="l"
-                gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}
-              >
-              </Button>
-            </div>
-
+            {playFilters.programs.map((play, index) => (
+              <div className={style.buttonDisplay} key={index}>
+                <Button
+                  label={play.name}
+                  iconPlace={iconPlace}
+                  icon={icon}
+                  href={`/library/?program=${play.pk}`}
+                  isLink={true}
+                  align={alignStart}
+                  size="l"
+                  gap="8px"
+                  className={cn(style.button, style.link, style.subtitle)}
+                >
+                </Button>
+              </div>
+            ))}
           </div>
           <div className={style.subsection}>
             <h2 className={style.subtitle}>Дополнительно</h2>
@@ -196,7 +154,7 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear }) => {
                 label="Записи&nbsp;в&nbsp;блоге"
                 iconPlace={iconPlace}
                 icon={icon}
-                href="#"
+                href="/blog"
                 isLink={true}
                 align={alignStart}
                 size="l"
