@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
-import { Festival, PlayFilters } from 'api-typings';
 
 import { Button } from 'components/ui/button/button';
+import { Festival, PlayFilters } from 'api-typings';
 
 import style from './history-title.module.css';
 
