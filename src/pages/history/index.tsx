@@ -1,9 +1,9 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { Festival, Years, PlayFilters } from 'api-typings';
 
 import { AppLayout } from 'components/app-layout/index';
 import { HistoryPage } from 'components/history-page';
 import { fetcher } from 'shared/fetcher';
+import { Festival, Years, PlayFilters } from 'api-typings';
 
 const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {
