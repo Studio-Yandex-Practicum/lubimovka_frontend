@@ -1,77 +1,59 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import cn from 'classnames/bind';
 
 import { AfishaTitle } from 'components/afisha-page/title';
 import { FestivalDays } from 'components/afisha-page/festival-days';
-import { RegularEvents } from 'components/afisha-page/regular-events';
 import { AppLayout } from 'components/app-layout';
 import { fetcher } from 'shared/fetcher';
+import { AfishaInfoOutput, PaginatedAfishaEventListOutputList } from 'api-typings';
+import { RegularEvents } from 'components/afisha-page/regular-events';
 
-import data from '../../../mocks/data/afisha.json';
-import festivalData from '../../../mocks/assets/afisha/afisha-fesival-data.json';
-import regularData from '../../../mocks/assets/afisha/afisha-regular-data.json';
 import styles from 'components/afisha-page/afishe.module.css';
 
 const cx = cn.bind(styles);
 
-interface IAfisheProps {
-  title: string[],
-  festival: boolean,
-  regular: boolean,
+interface IAfishaProps {
+  info: AfishaInfoOutput,
+  events: PaginatedAfishaEventListOutputList
 }
 
-const Afisha: NextPage<IAfisheProps> = () => {
+const Afisha = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {
-    title,
-    festival,
-    regular,
-  } = data;
+    events,
+    info
+  } = props;
 
   return (
     <AppLayout>
       <main className={cx('main')}>
-        {title && (
-          <AfishaTitle
-            festival={festival}
-            title={festival ? title.festTitle : title.regTitle}
-            entrance={title.entrance}
-            registration={title.registration}
-            discussion={title.discussion}
-          />
-        )}
-        {festival && (
-          <FestivalDays data={festivalData}/>
-        )}
-        {regular && (
-          <RegularEvents data={regularData}/>
-        )}
+        <AfishaTitle {...info}/>
+        {info.festival_status ? <FestivalDays {...events}/> : <RegularEvents {...events}/>}
       </main>
     </AppLayout>
   );
 };
 
-const fetchEvents = async (offset?: number) => {
-  return await fetcher<any>(`afisha/_events/?limit=10${offset ? `&offset=${offset}` : ''}`);
-};
+const fetchEventsFestival = async (date: string) => await fetcher<PaginatedAfishaEventListOutputList>(`afisha/events/?dates=${date}`);
+const fetchEventsRegular = async () => await fetcher<PaginatedAfishaEventListOutputList>('afisha/events/?limit=10');
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  let response;
+const fetchInfo = async () => await fetcher<AfishaInfoOutput>('afisha/info/');
+
+export const getServerSideProps: GetServerSideProps<IAfishaProps> = async () => {
 
   try {
-    response = await fetchEvents();
-  } catch (err) {
+    const info = await fetchInfo();
+    const events = info.festival_status ? await fetchEventsFestival(info.afisha_dates[0]) : await fetchEventsRegular();
+
     return {
       props: {
-        errorCode: 500,
+        info,
+        events
       }
     };
-  }
-
-  return {
-    props: {
-      blogEntries: response.results,
-      hasMoreEntries: !!response.next,
-    }
+  } catch {
+    return {
+      notFound: true
+    };
   };
 };
 
