@@ -1,16 +1,11 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import cn from 'classnames/bind';
 
 import { AfishaTitle } from 'components/afisha-page/title';
-import { FestivalDays } from 'components/afisha-page/festival-days';
+import { FestivalEvents } from 'components/afisha-page/festival-events';
 import { AppLayout } from 'components/app-layout';
 import { fetcher } from 'shared/fetcher';
 import { AfishaInfoOutput, PaginatedAfishaEventListOutputList } from 'api-typings';
 import { RegularEvents } from 'components/afisha-page/regular-events';
-
-import styles from 'components/afisha-page/afishe.module.css';
-
-const cx = cn.bind(styles);
 
 interface IAfishaProps {
   info: AfishaInfoOutput,
@@ -25,9 +20,9 @@ const Afisha = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
 
   return (
     <AppLayout>
-      <main className={cx('main')}>
+      <main>
         <AfishaTitle {...info}/>
-        {info.festival_status ? <FestivalDays {...events}/> : <RegularEvents {...events}/>}
+        {info.festival_status ? <FestivalEvents {...events}/> : <RegularEvents {...events}/>}
       </main>
     </AppLayout>
   );
