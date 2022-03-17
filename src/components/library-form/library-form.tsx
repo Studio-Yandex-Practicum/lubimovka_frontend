@@ -44,7 +44,7 @@ const LibraryForm: FC = () => {
         type="submit"
         iconPlace="left"
         border="none"
-        isLink={true}
+        isLink
         href={`/library/search-result${urlQuery}`}
         align="start"
         className={style.button}

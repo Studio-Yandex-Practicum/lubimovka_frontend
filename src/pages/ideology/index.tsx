@@ -9,7 +9,9 @@ import textData from './assets/mock-data.json';
 const Ideology: NextPage = () => (
   <AppLayout>
     <Head>
-      <title>Идеология</title>
+      <title>
+        Идеология
+      </title>
     </Head>
     <IdeologyPage data={textData}/>
   </AppLayout>

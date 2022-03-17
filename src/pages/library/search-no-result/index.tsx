@@ -36,17 +36,27 @@ const SearchResult: NextPage = () => {
       <AppLayout>
         <main className ={style.page}>
           <div className={style.buttonWrapper}>
-            <Button href={'/library'} isLink={true} label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'} width={'max-content'} icon={'arrow-left'} iconPlace={'right'} border={'bottomRight'}></Button>
+            <Button
+              href={'/library'}
+              isLink
+              label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
+              width={'max-content'}
+              icon={'arrow-left'}
+              iconPlace={'right'}
+              border={'bottomRight'}
+            />
           </div>
           <div className={style.topWrapper}>
             <p className={style.info}>
-              По запросу «{searchQuery}» мы ничего не нашли
+              По запросу «
+              {searchQuery}
+              » мы ничего не нашли
             </p>
             <p className={style.noResultMobile}>
               Быть может, вы имели ввиду «Вырыпаев?». Проверьте, на всякий случай, правописание.
             </p>
             <div className={style.formWrapper}>
-              <LibraryForm></LibraryForm>
+              <LibraryForm/>
               <p className={style.noResult}>
                 Быть может, вы имели ввиду «Вырыпаев?». Проверьте, на всякий случай, правописание.
               </p>

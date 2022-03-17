@@ -22,14 +22,18 @@ export const Partners: FC<IPartner> = ({ festival, info, className }) => {
         <Link href={p.url}>
           <a className={cx('link')} target="_blank">
             <div className={cx('wrapper')}>
-              <Image 
-                src={p.image} 
+              <Image
+                src={p.image}
                 alt={p.name}
-                layout="fill" 
+                layout="fill"
                 objectFit="scale-down"
               />
             </div>
-            {name && <p className={cx('text')}>{p.name}</p>}
+            {name && (
+              <p className={cx('text')}>
+                {p.name}
+              </p>
+            )}
           </a>
         </Link>
       </li>
@@ -38,12 +42,16 @@ export const Partners: FC<IPartner> = ({ festival, info, className }) => {
 
   return (
     <section className={cx('partners', className)}>
-      {festival && <PartnersLayout title="Партнёры фестиваля">
-        {layout(festival, true)}
-      </PartnersLayout>}
-      {info && <PartnersLayout title="Информационные партнёры">
-        {layout(info)}
-      </PartnersLayout>}
+      {festival && (
+        <PartnersLayout title="Партнёры фестиваля">
+          {layout(festival, true)}
+        </PartnersLayout>
+      )}
+      {info && (
+        <PartnersLayout title="Информационные партнёры">
+          {layout(info)}
+        </PartnersLayout>
+      )}
     </section>
   );
 };

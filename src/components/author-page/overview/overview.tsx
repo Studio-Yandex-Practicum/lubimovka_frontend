@@ -67,12 +67,12 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
             icon="arrow-left"
             label="Библиотека"
             border="bottomRight"
-            isLink={true}
+            isLink
             href="/library/authors"
           />
         </div>
 
-        {image &&
+        {image && (
           <div className={cx('photoBox')}>
             <img
               className={cx('photo')}
@@ -80,32 +80,41 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
               alt={`Фотография автора ${name}`}
             />
           </div>
-        }
-        <h1 className={cx('fullName')}>{name}</h1>
-        <p className={cx('city')}>{city}</p>
+        )}
+        <h1 className={cx('fullName')}>
+          {name}
+        </h1>
+        <p className={cx('city')}>
+          {city}
+        </p>
 
-        {quote &&
-          <div className={cx('quote')}>
-            <p className={cx('quoteText')}>{quote}</p>
-          </div>
+        {quote
+          && (
+            <div className={cx('quote')}>
+              <p className={cx('quoteText')}>
+                {quote}
+              </p>
+            </div>
+          )
         }
       </div>
 
       <div className={cx('overviewInfo')}>
         <div className={cx('descriptionWrapper')}>
 
-          {availablePlays &&
+          {availablePlays && (
             <AuthorPlays
               plays={plays}
             />
-          }
+          )}
 
-          {biography &&
+          {biography && (
             <div className={cx('descriptionSet')}>
               <pre className={cx('description', isExpand ? 'descriptionExpanded' : '')}>
                 {biography}
               </pre>
-              {availableButton &&
+              {availableButton
+              && (
                 <Button
                   width="100%"
                   size="s"
@@ -115,15 +124,16 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
                   border="topLeft"
                   onClick={() => setExpand(!isExpand)}
                 />
+              )
               }
             </div>
-          }
+          )}
 
-          {availablePins &&
+          {availablePins && (
             <div className={cx('authorLinks')}>
               {pinnedLinks
                 .sort((link1,link2) => link1.order_number - link2.order_number)
-                .map((item, idx) =>
+                .map((item, idx) => (
                   <div className={cx('linkHeading')} key={idx}>
                     <InfoLink
                       label={item.name}
@@ -135,62 +145,71 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
                       iconClassName={cx('link')}
                     />
                   </div>
+                )
                 )}
             </div>
-          }
+          )}
         </div>
 
         <div className={cx('overviewSet')}>
-          {availableTags &&
+          {availableTags && (
             <div className={cx('overviewTagsBlock')}>
-              <h2 className={cx('overviewTagsHeading')}>Достижения</h2>
+              <h2 className={cx('overviewTagsHeading')}>
+                Достижения
+              </h2>
               <div className={cx('tagWrapper')}>
-                {achievements.map((item, idx) =>
+                {achievements.map((item, idx) => (
                   <div className={cx('tag')} key={idx}>
                     <Tag
                       label={item}
                       selected={false}
                     />
                   </div>
+                )
                 )}
               </div>
             </div>
-          }
+          )}
 
-          {availableSocialNetworks &&
+          {availableSocialNetworks && (
             <div className={cx('overviewSocialWrapper')}>
-              <h2 className={cx('overviewSocialLinkHeading')}>Социальные сети</h2>
+              <h2 className={cx('overviewSocialLinkHeading')}>
+                Социальные сети
+              </h2>
               <div className={cx('overviewSocialLinkBlock')}>
-                {socialNetworks.map((item, idx) =>
+                {socialNetworks.map((item, idx) => (
                   <div className={cx('overviewSocialLink')} key={idx}>
                     <InfoLink
                       key={idx}
                       href={item.link}
                       label={item.name}
-                      isOutsideLink={true}
+                      isOutsideLink
                       icon="arrow-right"
                       iconPlace="left"
                       size="s"
                       border="borderBottomLeft"
                     />
                   </div>
+                )
                 )}
               </div>
             </div>
-          }
+          )}
 
-          {email &&
+          {email && (
             <div className={cx('overviewSocialWrapper')}>
-              <p className={cx('email')}>E-mail для связи</p>
+              <p className={cx('email')}>
+                E-mail для связи
+              </p>
               <InfoLink
-                isOutsideLink={true}
+                isOutsideLink
                 href={`mailto:${email}`}
                 label={email}
                 size="l"
                 textDecoration="underline"
               />
             </div>
-          }
+          )}
         </div>
       </div>
     </section>

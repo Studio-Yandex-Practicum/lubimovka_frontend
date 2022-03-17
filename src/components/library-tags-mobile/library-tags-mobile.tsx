@@ -33,11 +33,13 @@ const LibraryTagsMobile: FC <LibraryTagsMobileProps> = ({ programmes, filterDisp
     <ul className={styles.programmesList}>
       {filterState.festival.map((year, idx) => (
         <li onClick={() => handleYearClick(year)} className={styles.programme} key={idx}>
-          <Tag label={year.text} selected={true} isIcon={true}/></li>
+          <Tag label={year.text} selected isIcon/>
+        </li>
       ))}
       {selectedProgrammes.map(({ pk, name }) => (
         <li onClick={() => handleTagClick(String(pk))} className={styles.programme} key={pk}>
-          <Tag label={name} selected={true} isIcon={true}/></li>
+          <Tag label={name} selected isIcon/>
+        </li>
       ))}
     </ul>
   );

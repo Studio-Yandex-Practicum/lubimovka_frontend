@@ -21,24 +21,23 @@ export const AfishaTitle: FC<IAfishaTitle> = ({ festival, title, discussion, ent
       <h1 className={cx('title')}>
         {title}
       </h1>
-
-      {festival &&
+      {festival && (
         <div className={cx('discussionInfo')}>
           <Icon glyph="asterisk"/>
           <p className={cx('discussion')}>
             {discussion}
           </p>
         </div>
-      }
-
+      )}
       <div className={cx('entranceInfo')}>
         <p className={cx('info')}>
           {entrance}
         </p>
-
-        {festival &&
-          <p className={cx('info')}>{registration}</p>
-        }
+        {festival && (
+          <p className={cx('info')}>
+            {registration}
+          </p>
+        )}
       </div>
     </section>
   );

@@ -19,7 +19,9 @@ interface Author {
 const SearchResultAuthors: FC<ISearchResultAuthorsProps> = ({ authors }) => {
   return (
     <li className={style.authors}>
-      <span className={style.alphabetLetter}>{authors.title}</span>
+      <span className={style.alphabetLetter}>
+        {authors.title}
+      </span>
       <ul className={style.authorsList}>
         {authors.data.map((author,idx) => (
           <li className={style.authorsItem} key={idx}>

@@ -27,7 +27,7 @@ export const Share: FC<IShareProps> = (props) => {
           {firstLine}
           <ShareLink className={cx('links')}/>
         </div>
-        <span className={cx('lineBreak')}></span>
+        <span className={cx('lineBreak')}/>
         {secondLine && `${secondLine} `}
         в&nbsp;соцсетях
       </div>

@@ -43,15 +43,20 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
   return (
     <div className={style.container}>
       <div className={style.years}>
-        <h2 className={style.title}>Годы фестиваля</h2>
+        <h2 className={style.title}>
+          Годы фестиваля
+        </h2>
         <Droplist type="multiple" onChange={handleYearsClick} options={years} selectedOptions={filterState.festival}/>
       </div>
       <div className={style.programmes}>
-        <h2 className={style.title}>Программа</h2>
+        <h2 className={style.title}>
+          Программа
+        </h2>
         <ul className={style.programmesList}>
           {programmes.map(({ pk, name }) => (
             <li onClick={() => handleTagClick(String(pk))} className={style.programme} key={pk}>
-              <Tag label={name} selected={filterState.program.includes(String(pk))}/></li>
+              <Tag label={name} selected={filterState.program.includes(String(pk))}/>
+            </li>
           ))}
         </ul>
       </div>

@@ -19,9 +19,9 @@ export const BurgerButton = (props: IBurgerButtonProps): JSX.Element => {
       aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
       onClick={onClick}
     >
-      <span className={cx('line')}></span>
-      <span className={cx('line')}></span>
-      <span className={cx('line')}></span>
+      <span className={cx('line')}/>
+      <span className={cx('line')}/>
+      <span className={cx('line')}/>
     </div>
   );
 };

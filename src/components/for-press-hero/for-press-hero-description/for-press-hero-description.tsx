@@ -20,7 +20,9 @@ export const ForPressHeroDescription: FC<IForPressHeroDescriptionProps> = ({ dat
 
   return (
     <div className={cx([customClass])}>
-      <p className={cx('description')}>{data.description}</p>
+      <p className={cx('description')}>
+        {data.description}
+      </p>
       <Button
         className={cx('button')}
         align="start"

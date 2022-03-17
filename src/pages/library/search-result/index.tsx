@@ -108,7 +108,7 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
           <div className={style.buttonWrapper}>
             <Button
               href="/library"
-              isLink={true}
+              isLink
               label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
               width="max-content"
               icon="arrow-left"
@@ -118,7 +118,9 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
           </div>
           <div className={style.topWrapper}>
             <p className={style.info}>
-              По запросу «{searchQuery}» мы нашли
+              По запросу «
+              {searchQuery}
+              » мы нашли
             </p>
             <div className={style.formWrapper}>
               <LibraryForm/>

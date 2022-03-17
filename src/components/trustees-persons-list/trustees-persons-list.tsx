@@ -49,39 +49,35 @@ const TrusteesPersons: FC<TrusteesPersonsProps> = ({ trustees }) => {
 
   return (
     <>
-      {
-        Number(screenWidth) < 729 &&
+      {Number(screenWidth) < 729 && (
         <div ref={sliderRef} className="keen-slider">
           {trustees.map((trustee) => (
             <div key={trustee.id} className="keen-slider__slide">
               <PersonCard
-                participant={true}
+                participant
                 image={trustee.person.image}
                 about={trustee.position}
                 name={`${trustee.person.first_name} ${trustee.person.last_name}`}
-              >
-              </PersonCard>
+              />
             </div>
           ))}
         </div>
-      }
+      )}
 
-      {
-        Number(screenWidth) > 728 &&
+      {Number(screenWidth) > 728 && (
         <ul className={style.trusteesList}>
           {trustees.map((trustee) => (
             <li key={trustee.id} className={style.trusteesListItem}>
               <PersonCard
-                participant={true}
+                participant
                 image={trustee.person.image}
                 about={trustee.position}
                 name={`${trustee.person.first_name} ${trustee.person.last_name}`}
-              >
-              </PersonCard>
+              />
             </li>
           ))}
         </ul>
-      }
+      )}
     </>
   );
 };

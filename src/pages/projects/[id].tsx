@@ -95,7 +95,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                     <AnnouncedPlayCard
                       key={id}
                       //TODO: исправить ответ бекенда, сейчас возвращаются данные для страницы спектакля
-                      isPerformance={true}
+                      isPerformance
                       id={id}
                       formattedDate={formatDateTime('2021-11-13T17:00:00.000Z', 'dMMMM')}
                       formattedTime={formatDateTime('2021-11-13T17:00:00.000Z', 'mH')}
@@ -113,7 +113,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                       buttonLink={'https://lubimovka.timepad.ru/event/1746579/'}
                       imageUrl="/images/projects/performance_mama.jpg"
                       project="читка проекта Любимовка.Eщё"
-                      paid={true}
+                      paid
                     />
                   ))}
                 </PerformanceSection>
@@ -149,7 +149,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                         key={id}
                         name={`${first_name} ${last_name}`}
                         image={image}
-                        participant={true}
+                        participant
                         about={convertRolesToString(roles)}
                       />
                     ))}

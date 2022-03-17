@@ -11,7 +11,9 @@ import mockData from './assets/mock-donation-data.json';
 const Donation: NextPage = () => (
   <AppLayout>
     <Head>
-      <title>{mockData.title}</title>
+      <title>
+        {mockData.title}
+      </title>
     </Head>
     <main>
       <DonationPageTitle

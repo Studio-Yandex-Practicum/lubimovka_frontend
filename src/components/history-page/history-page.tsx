@@ -1,5 +1,4 @@
 import { useState, FC } from 'react';
-import Head from 'next/head';
 
 import { HistoryHeader } from './header';
 import { HistoryTitle } from './title';
@@ -33,12 +32,9 @@ export const HistoryPage: FC<IHistoryPage> = ({ years, titleCounts, playFilters 
   }
   return (
     <>
-      <Head>
-      </Head>
       <HistoryHeader data={years} selectYear={selectYear}/>
       <HistoryTitle data={currentTitleData} currentYear={currentYear} playFilters={playFilters}/>
       <HistoryItself data={itselfData}/>
-
     </>
   );
 };

@@ -8,20 +8,22 @@ const cx = cn.bind(styles);
 export const WhatWeDoSelection = (): JSX.Element => (
   <section className={cx('selection')}>
     <h2 className={cx('mainTitle')}>
-        Как происходит отбор
+      Как происходит отбор
     </h2>
     <ol className={cx('list')}>
       <li className={cx('item')}>
         <span className={cx('number')}>
-            1
+          1
         </span>
         <h3 className={cx('title')}>
-            На первом этапе каждую пьесу, читают как минимум два отборщика
+          На первом этапе каждую пьесу, читают как минимум два отборщика
         </h3>
         <div className={cx('container')}>
           <p className={cx('desc')}>
-          Каждый отборщик ставит пьесе оценку: 
-            <b className={cx('strong')}>«да», «нет» или «затрудняюсь с оценкой».</b>
+            Каждый отборщик ставит пьесе оценку:
+            <b className={cx('strong')}>
+              «да», «нет» или «затрудняюсь с оценкой».
+            </b>
           </p>
           <p className={cx('desc')}>
             Если пьеса получает две оценки «да», то она попадает в лонг-лист.
@@ -34,15 +36,17 @@ export const WhatWeDoSelection = (): JSX.Element => (
 
       <li className={cx('item')}>
         <span className={cx('number')}>
-            2
+          2
         </span>
         <h3 className={cx('title')}>
-            На первом этапе каждую пьесу, читают как минимум два отборщика
+          На первом этапе каждую пьесу, читают как минимум два отборщика
         </h3>
         <div className={cx('container')}>
           <p className={cx('desc')}>
-          Каждый отборщик ставит каждой пьесе из лонг-листа оценку:
-            <b className={cx('strong')}>«да», «нет» или «затрудняюсь с оценкой».</b>
+            Каждый отборщик ставит каждой пьесе из лонг-листа оценку:
+            <b className={cx('strong')}>
+              «да», «нет» или «затрудняюсь с оценкой».
+            </b>
           </p>
           <p className={cx('desc')}>
             По совокупности этих оценок формируется шорт-лист фестиваля.
@@ -52,10 +56,10 @@ export const WhatWeDoSelection = (): JSX.Element => (
 
       <li className={cx('item')}>
         <span className={cx('number')}>
-            3
+          3
         </span>
         <h3 className={cx('title')}>
-            Параллельно с отбором кураторы программы Fringe читают все пьесы
+          Параллельно с отбором кураторы программы Fringe читают все пьесы
         </h3>
         <div className={cx('container')}>
           <p className={cx('desc')}>

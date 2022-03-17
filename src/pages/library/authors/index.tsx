@@ -25,7 +25,9 @@ const Authors = ({ errorCode, authors }: InferGetServerSidePropsType<typeof getS
   return (
     <AppLayout>
       <Head>
-        <title>Авторы</title>
+        <title>
+          Авторы
+        </title>
       </Head>
       <AuthorsPage letters={mockLetters} authors={authors}/>
     </AppLayout>

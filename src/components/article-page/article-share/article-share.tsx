@@ -20,12 +20,16 @@ const renderCreators = (label: string, creators: string[]) => {
   }
   return(
     <dl>
-      <dt className={cx('label')}>{label}</dt>
-      {
-        creators.map(creator => {
-          return <dd key={creator} className={cx('creator')}>{creator}</dd>;
-        })
-      }
+      <dt className={cx('label')}>
+        {label}
+      </dt>
+      {creators.map(creator => {
+        return (
+          <dd key={creator} className={cx('creator')}>
+            {creator}
+          </dd>
+        );
+      })}
     </dl>
   );
 };
@@ -40,16 +44,23 @@ const ArticleShare: React.FC<IArticleShare> = (props) => {
 
   return (
     <section className={cx('container', { newsContainer: !isBlog })}>
-      {(authors.length + photographers.length + illustrators.length > 0) &&
+      {(authors.length + photographers.length + illustrators.length > 0) && (
         <div className={cx('creators')}>
           {renderCreators('Текст', authors)}
           {renderCreators('Фото', photographers)}
           {renderCreators('Иллюстрации', illustrators)}
-        </div>}
+        </div>
+      )}
       <div className={cx('share', { blogShare: isBlog, newsShare: !isBlog })}>
         <ShareLink className={cx('links')}/>
         <h4 className={cx('shareTitle')}>
-          Поделиться <br/>{isBlog ? 'записью' : 'новостью'} в соцсетях</h4>
+          Поделиться
+          {' '}
+          <br/>
+          {isBlog ? 'записью' : 'новостью'}
+          {' '}
+          в соцсетях
+        </h4>
       </div>
     </section>
   );

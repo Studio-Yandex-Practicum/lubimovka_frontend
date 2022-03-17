@@ -17,7 +17,7 @@ export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
   return (
     <section className={cx('section')}>
       <div className={cx('wrapper', {
-        'width': afisha_today
+        width: afisha_today
       })}
       >
         <h1 className={cx('title')}>
@@ -37,7 +37,7 @@ export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
           />
         </div>
         <p className={cx('desc', {
-          'margin': afisha_today
+          margin: afisha_today
         })}
         >
           {description}

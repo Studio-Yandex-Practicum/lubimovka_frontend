@@ -55,54 +55,65 @@ export const FeedbackPopup: FC<IFeedbackPopupProps> = (props) => {
           className={cx('keen-slider__slide', 'slide')}
         >
           <div className={cx('container')}>
-            {slider &&
-            <>
-              <SliderButton
-                className={cx('arrow', 'arrowLeft')}
-                ariaLabel="Предыдущий отзыв"
-                direction="left"
-                onClick={slider.prev}
-              />
-              {Number(screenWidth) < 729 &&
-              <div className={cx('close')}>
-                <IconButton
-                  className={cx('closeButton')}
-                  ariaLabel="Закрыть лайтбокс"
-                  type="button"
-                  view="light"
-                  icon={<Icon glyph="cross"/>}
-                  onClick={onClose}
+            {slider && (
+              <>
+                <SliderButton
+                  className={cx('arrow', 'arrowLeft')}
+                  ariaLabel="Предыдущий отзыв"
+                  direction="left"
+                  onClick={slider.prev}
                 />
-              </div>}
-              <img
-                className={cx('image')}
-                src={card.person.image}
-              />
-              <h2 className={cx('name')}>{`${card.person.first_name} ${card.person.last_name}`}</h2>
-              {Number(screenWidth) < 729 &&
-              <SliderDots
-                className={cx('dots')}
-                count={slider.details().size}
-                currentSlide={currentSlide}
-                onClick={(idx) => slider.moveToSlideRelative(idx)}
-              />}
-              {card.review_title === '' ? '' : <p className={cx('title')}>{card.review_title}</p>}
-              <p className={cx('text')}>{card.review_text}</p>
-              {Number(screenWidth) > 728 &&
-              <SliderDots
-                className={cx('dots')}
-                count={slider.details().size}
-                currentSlide={currentSlide}
-                onClick={(idx) => slider.moveToSlideRelative(idx)}
-              />}
-              <SliderButton
-                className={cx('arrow', 'arrowRight')}
-                ariaLabel="Следующий отзыв"
-                direction="right"
-                onClick={slider.next}
-              />
-            </>
-            }
+                {Number(screenWidth) < 729 && (
+                  <div className={cx('close')}>
+                    <IconButton
+                      className={cx('closeButton')}
+                      ariaLabel="Закрыть лайтбокс"
+                      type="button"
+                      view="light"
+                      icon={<Icon glyph="cross"/>}
+                      onClick={onClose}
+                    />
+                  </div>
+                )}
+                <img
+                  className={cx('image')}
+                  src={card.person.image}
+                />
+                <h2 className={cx('name')}>
+                  {`${card.person.first_name} ${card.person.last_name}`}
+                </h2>
+                {Number(screenWidth) < 729 && (
+                  <SliderDots
+                    className={cx('dots')}
+                    count={slider.details().size}
+                    currentSlide={currentSlide}
+                    onClick={(idx) => slider.moveToSlideRelative(idx)}
+                  />
+                )}
+                {card.review_title === '' ? '' : (
+                  <p className={cx('title')}>
+                    {card.review_title}
+                  </p>
+                )}
+                <p className={cx('text')}>
+                  {card.review_text}
+                </p>
+                {Number(screenWidth) > 728 && (
+                  <SliderDots
+                    className={cx('dots')}
+                    count={slider.details().size}
+                    currentSlide={currentSlide}
+                    onClick={(idx) => slider.moveToSlideRelative(idx)}
+                  />
+                )}
+                <SliderButton
+                  className={cx('arrow', 'arrowRight')}
+                  ariaLabel="Следующий отзыв"
+                  direction="right"
+                  onClick={slider.next}
+                />
+              </>
+            )}
           </div>
         </div>
       ))}

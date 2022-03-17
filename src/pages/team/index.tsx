@@ -27,7 +27,9 @@ const Team = ({ errorCode, team, volunteers }: InferGetServerSidePropsType<typeo
   return (
     <AppLayout>
       <Head>
-        <title>{'Организаторы'}</title>
+        <title>
+          {'Организаторы'}
+        </title>
       </Head>
       <main>
         <TeamPage team={team} volunteers={volunteers} queryYear={queryYear}/>

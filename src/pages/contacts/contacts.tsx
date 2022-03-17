@@ -181,8 +181,7 @@ const Contacts: NextPage = () => {
     setTimeout(() => resetContactForm(), CONTACT_FORM_RESET_TIMEOUT);
   };
 
-  const canSubmit =
-    name.wasChanged && !name.error
+  const canSubmit = name.wasChanged && !name.error
     && email.wasChanged && !email.error
     && message.wasChanged && !message.error;
 
@@ -236,7 +235,9 @@ const Contacts: NextPage = () => {
               <Form.Disclaimer>
                 {'Нажимая на кнопку «Отправить» вы даёте согласие '}
                 <Link href="/privacy-policy">
-                  <a>на обработку персональных данных </a>
+                  <a>
+                    на обработку персональных данных
+                  </a>
                 </Link>
               </Form.Disclaimer>
             </Form>

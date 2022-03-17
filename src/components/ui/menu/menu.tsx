@@ -20,7 +20,7 @@ export const styles = {
   'overlay-actions': overlayActionsStyles,
   'overlay-social-links': overlaySocialLinksStyles,
   'social-links': socialLinksStyles,
-  'history': historyStyles,
+  history: historyStyles,
   'general-submenu': generalSubmenuStyles,
   'footer-navigation': footerNavigationStyles,
   'footer-project-list': footerProjectListStyles,
