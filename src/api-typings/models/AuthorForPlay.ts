@@ -7,5 +7,8 @@
  */
 export type AuthorForPlay = {
     readonly name: string;
-    readonly id: number;
+    /**
+     * Если не заполнено, будет сформировано автоматически
+     */
+    slug?: string;
 }

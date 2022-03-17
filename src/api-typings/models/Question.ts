@@ -9,4 +9,5 @@ export type Question = {
     question: string;
     author_name: string;
     author_email: string;
+    sent?: boolean;
 }

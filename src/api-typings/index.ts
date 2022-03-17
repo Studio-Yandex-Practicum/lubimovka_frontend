@@ -4,6 +4,7 @@
 export type { AfishaEvent } from './models/AfishaEvent';
 export type { AfishaEventListOutput } from './models/AfishaEventListOutput';
 export type { AfishaInfoOutput } from './models/AfishaInfoOutput';
+export type { AgeLimitEnum } from './models/AgeLimitEnum';
 export type { AuthorForPlay } from './models/AuthorForPlay';
 export type { AuthorList } from './models/AuthorList';
 export type { AuthorRetrieve } from './models/AuthorRetrieve';
@@ -80,6 +81,7 @@ export type { SearchResult } from './models/SearchResult';
 export type { Settings } from './models/Settings';
 export type { SocialNetwork } from './models/SocialNetwork';
 export type { Sponsor } from './models/Sponsor';
+export type { StatusEnum } from './models/StatusEnum';
 export type { TeamEnum } from './models/TeamEnum';
 export type { Text } from './models/Text';
 export type { Title } from './models/Title';

@@ -22,7 +22,6 @@ import styles from './index.module.css';
 const cx = classNames.bind(styles);
 
 const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsType <typeof getServerSideProps>) => {
-  console.log(data)
   const { first_screen, afisha, blog, news, banners, places, video_archive, short_list } = data;
 
   const [displayFirstScreen, setDisplayFirstScreen] = useState(false);
