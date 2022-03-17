@@ -21,8 +21,8 @@
   list-style: none;
   row-gap: scale(74px);
 
-  @media (max-width: 960px) {
-    grid-template-columns: repeat(1, minmax(320px, max-content));
+  @media (max-width: $tablet-portrait) {
+    grid-template-columns: repeat(1, minmax(320px, 1fr));
 
     &::before {
       display: none;
