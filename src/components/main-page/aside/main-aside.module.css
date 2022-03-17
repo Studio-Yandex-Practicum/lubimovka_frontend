@@ -19,11 +19,11 @@
   }
 
   @media (max-width: $tablet-portrait) {
-    position: initial;
+    position: static;
     z-index: 1;
     width: 100%;
     height: 100%;
-    overflow-x: scroll;
+    overflow-y: visible;
 
     &:hover {
       width: 100%;
@@ -46,7 +46,6 @@
     width: 100%;
     padding: scale(36px 0 102px 24px);
     grid-area: aside;
-    overflow-y: hidden;
     transform: translate(0, 0);
   }
 }
@@ -59,7 +58,7 @@
   margin-bottom: scale(36px);
 
   @media (max-width: $tablet-portrait) {
-    min-height: scale(124px);
+    min-height: 0;
     margin-bottom: scale(56px);
   }
 }
@@ -102,9 +101,10 @@
 
   @media (max-width: $tablet-portrait) {
     width: scale(304px);
-    margin-bottom: 0;
+    margin: 0;
 
     &:last-of-type {
+      padding: 0;
       padding-right: scale(24px);
     }
   }
