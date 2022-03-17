@@ -43,9 +43,7 @@ const tsc = spawnSync(tscCommand, { shell: true, encoding: 'utf8' });
 const errors = parseErrors(tsc.stdout);
 
 if (errors.length === 0) {
-  process.exitCode = 0;
-
-  return;
+  process.exit(0);
 }
 
 process.exitCode = 1;

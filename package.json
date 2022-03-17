@@ -2,7 +2,6 @@
   "name": "lubimovka_frontend",
   "version": "1.0.0",
   "description": "Фронтенд проекта «Любимовка»",
-  "main": "index.js",
   "scripts": {
     "postinstall": "next telemetry disable",
     "dev": "node server.js",
@@ -10,11 +9,11 @@
     "start": "NODE_ENV=production node server.js",
     "lint:js": "next lint",
     "lint:css": "stylelint **/*.css --cache --allow-empty-input --fix",
-    "type-check": "node bin/type-check.js",
+    "type-check": "node scripts/type-check.js",
     "storybook": "start-storybook -s public -p 3001",
     "build-storybook": "build-storybook -s public",
-    "update-typings": "rm -rf ./src/api-typings && npx openapi-typescript-codegen --input https://stage.dev.lubimovka.ru/api/v1/schema --output ./src/api-typings --useUnionTypes --exportCore false --exportServices false",
-    "update-git-hooks": "npx simple-git-hooks"
+    "update-typings": "node scripts/update-typings.js",
+    "update-git-hooks": "scripts/update-git-hooks.sh"
   },
   "repository": {
     "type": "git",
@@ -52,6 +51,7 @@
     "eslint-config-next": "12.0.4",
     "fetch-mock": "9.11.0",
     "lint-staged": "11.1.2",
+    "openapi-typescript-codegen": "0.20.1",
     "postcss": "8.3.9",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-functions": "4.0.2",
