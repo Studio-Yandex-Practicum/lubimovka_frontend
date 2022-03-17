@@ -45,9 +45,15 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
             />
           </div>
           <div className={styles.content}>
-            <p className={styles.author}>{author}</p>
-            <h6 className={styles.heading}>{heading}</h6>
-            <p className={styles.description}>{description}</p>
+            <p className={styles.author}>
+              {author}
+            </p>
+            <h6 className={styles.heading}>
+              {heading}
+            </h6>
+            <p className={styles.description}>
+              {description}
+            </p>
           </div>
         </article>
       </a>

@@ -35,15 +35,17 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
 
   const authorsHiddenLabel = (
     <React.Fragment>
-      {
-        play.authors.length > 1 ?
-          (<dt className={cx('hiddenText')}>
-          Авторы:
-          </dt>)
-          :
-          (<dt className={cx('hiddenText')}>
-          Автор:
-          </dt>)
+      {play.authors.length > 1
+        ? (
+          <dt className={cx('hiddenText')}>
+            Авторы:
+          </dt>
+        )
+        :          (
+          <dt className={cx('hiddenText')}>
+            Автор:
+          </dt>
+        )
       }
     </React.Fragment>
   );
@@ -53,7 +55,9 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       className={cx('card')}
     >
       <div className={cx('container')}>
-        <h6 className={cx('title')}>{play.title}</h6>
+        <h6 className={cx('title')}>
+          {play.title}
+        </h6>
         <div>
           <Button
             className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
@@ -95,22 +99,26 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
           </dd>
         )
         )}
-        {play.city && <>
-          <dt className={cx('hiddenText')}>
-            Город:
-          </dt>
-          <dd className={cx('city')}>
-            {play.city}
-          </dd>
-        </>}
-        {play.year && <>
-          <dt className={cx('hiddenText')}>
-            Год:
-          </dt>
-          <dd className={cx('year')}>
-            {play.year}
-          </dd>
-        </>}
+        {play.city && (
+          <>
+            <dt className={cx('hiddenText')}>
+              Город:
+            </dt>
+            <dd className={cx('city')}>
+              {play.city}
+            </dd>
+          </>
+        )}
+        {play.year && (
+          <>
+            <dt className={cx('hiddenText')}>
+              Год:
+            </dt>
+            <dd className={cx('year')}>
+              {play.year}
+            </dd>
+          </>
+        )}
       </dl>
     </article>
   );

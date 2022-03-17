@@ -26,10 +26,11 @@ const TrusteesSection: FC<TrusteesSectionProps> = ({ text, children }) => {
       <div className={style.container}>
         <div className={style.becomeTrustee}>
           <Icon glyph={'asterisk'}/>
-          <p className={style.accent}>{accent}
+          <p className={style.accent}>
+            {accent}
             <InfoLink
               href={'mailto:job@lubimovka.ru'}
-              isOutsideLink={true}
+              isOutsideLink
               label={link}
               size={'xl'}
               textDecoration={'underline'}
@@ -37,8 +38,12 @@ const TrusteesSection: FC<TrusteesSectionProps> = ({ text, children }) => {
           </p>
         </div>
         <div className={style.mainText}>
-          <h2 className={style.title}>{sectionTitle}</h2>
-          <p className={style.narrative}>{narrative}</p>
+          <h2 className={style.title}>
+            {sectionTitle}
+          </h2>
+          <p className={style.narrative}>
+            {narrative}
+          </p>
         </div>
         {children}
       </div>

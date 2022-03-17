@@ -15,11 +15,12 @@ export const FestivalDays: FC<IFestivalDaysProps> = (props) => {
   const { data } = props;
   return (
     <section className={cx('section')}>
-      {data.map(day =>
+      {data.map(day => (
         <FestivalDay
           key={day.id}
           {...day}
         />
+      )
       )}
     </section>
   );

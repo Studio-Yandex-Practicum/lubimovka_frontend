@@ -51,28 +51,32 @@ type History = {
 }
 export const getServerSideProps: GetServerSideProps<History> = async () => {
   const years = await fetchInitStateYear();
+
   if (!years) {
     return {
       notFound: true,
     };
   }
-  else {
-    const titleCounts = await fetchStatistics(years.years[0]);
-    if(!titleCounts) {
-      return {
-        notFound: true,
-      };
-    }
-    const playFilters = await fetchPlayFilters();
-    if(!playFilters) {
-      return {
-        notFound: true,
-      };
-    }
+
+  const titleCounts = await fetchStatistics(years.years[0]);
+
+  if (!titleCounts) {
     return {
-      props: {
-        titleCounts: titleCounts, years: years, playFilters: playFilters
-      },
+      notFound: true,
     };
   }
+
+  const playFilters = await fetchPlayFilters();
+
+  if (!playFilters) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      titleCounts: titleCounts, years: years, playFilters: playFilters
+    },
+  };
 };

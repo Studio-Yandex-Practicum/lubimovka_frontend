@@ -10,7 +10,9 @@ const ForPress: NextPage = () => {
   return (
     <AppLayout>
       <Head>
-        <title>{forPressProps.metaTitle}</title>
+        <title>
+          {forPressProps.metaTitle}
+        </title>
       </Head>
       <ForPressHero data={{
         forPressHeroTitle: {

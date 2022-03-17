@@ -38,4 +38,5 @@ Default.args = {
       role: dataHeroPrContact.role,
       photo: dataHeroPrContact.photo,
     }
-  } };
+  }
+};

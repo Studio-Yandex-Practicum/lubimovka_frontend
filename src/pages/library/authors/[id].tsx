@@ -74,21 +74,21 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): 
         <AuthorOverview
           props={props}
         />
-        {availablePlays &&
+        {availablePlays && (
           <AuthorPlays
             plays={plays}
           />
-        }
-        {availableAnotherPlays &&
+        )}
+        {availableAnotherPlays && (
           <AnotherPlays
             links={anotherPlays}
           />
-        }
-        {availableNotPinnedLinks &&
+        )}
+        {availableNotPinnedLinks && (
           <AuthorInformation
             links={notPinnedLinks}
           />
-        }
+        )}
         <AuthorRequest/>
       </div>
     </AppLayout>

@@ -10,7 +10,7 @@ const cx = cn.bind(styles);
 export const WhatWeDoContacts = (): JSX.Element => (
   <section className={cx('contacts')}>
     <h3 className={cx('title')}>
-        Конкурса для режиссеров читок на фестивале нет
+      Конкурса для режиссеров читок на фестивале нет
     </h3>
     <p className={cx('desc')}>
       <span className={cx('asterisk')}>
@@ -21,8 +21,14 @@ export const WhatWeDoContacts = (): JSX.Element => (
         />}
       </span>
       <div>
-        Команда Любимовки самостоятельно привлекает режиссеров для работы. 
-        Если вам хочется стать режиссером одной из читок, <a href="mailto:festival@lubimovka.ru" className={cx('link')}>напишите нам</a> про себя.
+        Команда Любимовки самостоятельно привлекает режиссеров для работы.
+        Если вам хочется стать режиссером одной из читок,
+        {' '}
+        <a href="mailto:festival@lubimovka.ru" className={cx('link')}>
+          напишите нам
+        </a>
+        {' '}
+        про себя.
       </div>
     </p>
   </section>

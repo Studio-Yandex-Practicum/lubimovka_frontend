@@ -119,9 +119,12 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
             <span>
               Площадка «8/3»
             </span>
-            Москва,{'\n'}
-            ул. Казакова, 8, стр. 3{'\n'}
-            Метро «Курская»{'\n'}
+            Москва,
+            {'\n'}
+            ул. Казакова, 8, стр. 3
+            {'\n'}
+            Метро «Курская»
+            {'\n'}
           </Footer.Address>
           <Footer.Navigation>
             <Menu type="footer-navigation">

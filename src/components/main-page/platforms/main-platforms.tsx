@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 export const MainPlatforms: FC<MainPlaces> = ({ items }) => (
   <section className={cx('section')}>
     <h2 className={cx('titleMain')}>
-        Площадки
+      Площадки
     </h2>
 
     <ul className={cx('list')}>
@@ -33,8 +33,8 @@ export const MainPlatforms: FC<MainPlaces> = ({ items }) => (
               <p className={cx('text')}>
                 {card.address}
               </p>
-              <Icon 
-                glyph={'arrow-right'} 
+              <Icon
+                glyph={'arrow-right'}
                 fill={'black'}
                 className={cx('icon')}
               />

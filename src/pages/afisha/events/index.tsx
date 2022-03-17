@@ -29,7 +29,7 @@ const Afisha: NextPage<IAfisheProps> = () => {
   return (
     <AppLayout>
       <main className={cx('main')}>
-        {title &&
+        {title && (
           <AfishaTitle
             festival={festival}
             title={festival ? title.festTitle : title.regTitle}
@@ -37,13 +37,13 @@ const Afisha: NextPage<IAfisheProps> = () => {
             registration={title.registration}
             discussion={title.discussion}
           />
-        }
-        {festival &&
+        )}
+        {festival && (
           <FestivalDays data={festivalData}/>
-        }
-        {regular &&
+        )}
+        {regular && (
           <RegularEvents data={regularData}/>
-        }
+        )}
       </main>
     </AppLayout>
   );

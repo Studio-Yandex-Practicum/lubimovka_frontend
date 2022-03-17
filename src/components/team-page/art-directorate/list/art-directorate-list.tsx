@@ -57,26 +57,25 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
 
   return (
     <>
-      {
-        Number(screenWidth) < 729 &&
+      {Number(screenWidth) < 729 && (
         <div ref={sliderRef} className="keen-slider">
           {cards.map((card) => (
-            card.team === 'art' &&
+            card.team === 'art'
+          && (
             <div key={card.id} className="keen-slider__slide">
               <PersonCard
-                participant={true}
+                participant
                 image={card.person.image}
                 about={card.position}
                 name={`${card.person.first_name} ${card.person.last_name}`}
-              >
-              </PersonCard>
+              />
             </div>
+          )
           ))}
         </div>
-      }
+      )}
 
-      {
-        Number(screenWidth) > 728 &&
+      {Number(screenWidth) > 728 && (
         <ul
           className={cx({ [styles.grid]: selectedCards.length < 5 && !checkForMultiplicity(3) },
             { [styles.flex]: checkForMultiplicity(3) },
@@ -89,16 +88,15 @@ const ArtDirectorateList: FC<ArtDirectorateCardsProps> = ({ cards }) => {
                 { [styles.sixElements]: checkForMultiplicity(3) })}
             >
               <PersonCard
-                participant={true}
+                participant
                 image={card.person.image}
                 about={card.position}
                 name={`${card.person.first_name} ${card.person.last_name}`}
-              >
-              </PersonCard>
+              />
             </li>
           ))}
         </ul>
-      }
+      )}
     </>
   );
 };

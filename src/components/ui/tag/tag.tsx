@@ -18,25 +18,30 @@ export const Tag: FC<ITagProps> = (props) => {
   const {
     label, selected, cb, isIcon, counter
   } = props;
+
   const handleClick = React.useCallback((e:React.MouseEvent) => {
     e.preventDefault();
     if(cb) {
       cb(label, counter);
     }
   },[cb, counter, label]);
+
   return (
-    isIcon ?
-      <div className={cx('tagIcon', { 'active': selected })}>
+    isIcon ? (
+      <div className={cx('tagIcon', { active: selected })}>
         <div className={cx('tagContainer')}>
-          <p className={cx('tagText', { 'active': selected })}>{label}</p>
+          <p className={cx('tagText', { active: selected })}>
+            {label}
+          </p>
           <div className={cx('icon')} onClick={handleClick}>
             <Icon glyph={'cross'}/>
           </div>
         </div>
       </div>
-      :
-      <div className={cx('tag', { 'active': selected })}>
+    ) : (
+      <div className={cx('tag', { active: selected })}>
         {label}
       </div>
+    )
   );
 };

@@ -25,7 +25,9 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, c
   return (
     <div className={cx([customClass])}>
       <h6 className={cx('intro')}>
-        По вопросам PR и аккредитации пишите {data.nameDative}
+        По вопросам PR и аккредитации пишите
+        {' '}
+        {data.nameDative}
       </h6>
       <div className={cx('photo')}>
         <Image src={data.photo} alt={data.name} layout="fill" objectFit="cover"/>
@@ -36,7 +38,7 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, c
         </dt>
         <dd className={cx('email')}>
           <InfoLink
-            isOutsideLink={true}
+            isOutsideLink
             href={`mailto:${data.email}`}
             label={data.email}
             size= "l"

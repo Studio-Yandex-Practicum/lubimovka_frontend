@@ -37,7 +37,9 @@ const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Волонтёры</h2>
+        <h2 className={styles.title}>
+          Волонтёры
+        </h2>
         <SliderYears
           className={cn(styles.yearsContainer)}
           years={years}
@@ -51,13 +53,13 @@ const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
             Если вы хотите быть волонтером, напишите нам на
             <InfoLink
               href={'mailto:job@lubimovka.ru'}
-              isOutsideLink={true}
+              isOutsideLink
               label={'job@lubimovka.ru'}
               size={'xl'}
               textDecoration={'underline'}
               className={cx('indent')}
             />
-              и расскажите о себе.
+            и расскажите о себе.
           </p>
         </div>
       </div>

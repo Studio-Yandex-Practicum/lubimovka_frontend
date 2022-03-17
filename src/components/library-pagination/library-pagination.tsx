@@ -20,7 +20,7 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, 
     el.name.startsWith(letter)) : [], [letter, authors]);
 
   useEffect(() => {
-    letterElement?.parentElement?.scrollIntoView({ 'block': 'nearest', 'behavior': 'smooth' });
+    letterElement?.parentElement?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }, [letterElement]);
 
   return (
@@ -28,7 +28,9 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, 
       <ul style={{ top: top }} className={cn(style.letters, [className])}>
         {letters.map((el, index) => (
           <li key={index} className={cn(style.letter, { [style.letterActive]: letter === el })}>
-            <label htmlFor={el} className={style.label}>{el}</label>
+            <label htmlFor={el} className={style.label}>
+              {el}
+            </label>
             <input
               onClick={(e) => {setLetter(el); setLetterElement(e.target as HTMLInputElement);}}
               type="radio"
@@ -51,8 +53,12 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, 
           ))}
         </ul>
         <div className={style.chosenLetter}>
-          <p className={style.bigLetter}>{letter}</p>
-          <p className={style.authorsQuantity}>{letter && String(chosenAuthors.length)}</p>
+          <p className={style.bigLetter}>
+            {letter}
+          </p>
+          <p className={style.authorsQuantity}>
+            {letter && String(chosenAuthors.length)}
+          </p>
         </div>
       </div>
     </div>

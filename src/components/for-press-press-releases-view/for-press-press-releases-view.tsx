@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
@@ -77,8 +77,8 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = (p
           border="bottomLeft"
           iconPlace="right"
           icon="arrow-down"
-          label={pressReleaseSelected === undefined ?
-            'Пресс-релиз не найден'
+          label={pressReleaseSelected === undefined
+            ? 'Пресс-релиз не найден'
             : pressReleaseSelected !== undefined && isMobile
               ? 'Скачать пресс-релиз в .pdf'
               : `Скачать пресс-релиз ${pressReleaseYearSelected} года в .pdf`}
@@ -93,32 +93,58 @@ export const ForPressPressReleasesView: FC<IForPressPressReleasesViewProps> = (p
             layout="fill"
             objectFit="cover"
             src={pressReleaseSelected ? pressReleaseSelected.cover : defaultCover}
-            alt={pressReleaseYearSelected ? `Обложка фестиваля ${pressReleaseYearSelected} года` :
-              'Обложка фестиваля не найдена'}
+            alt={pressReleaseYearSelected
+              ? `Обложка фестиваля ${pressReleaseYearSelected} года`
+              : 'Обложка фестиваля не найдена'}
           />
         </div>
       </div>
       <article className={cx('pressReleaseText')}>
-        {pressReleaseSelected === undefined ?
-          <p>Пресс-релиз этого года не найден</p>
+        {pressReleaseSelected === undefined
+          ? (
+            <p>
+              Пресс-релиз этого года не найден
+            </p>
+          )
           : pressReleaseSelected.contents.map((item, idx) => {
             switch (item.content_type) {
             case 'preamble':
-              return(<h6 key={idx}>{item.content_item.preamble}</h6>);
+              return(
+                <h6 key={idx}>
+                  {item.content_item.preamble}
+                </h6>
+              );
             case 'title':
-              return(isMobile ? <h6 key={idx}>{item.content_item.title}</h6> : <h4 key={idx}>{item.content_item.title}</h4>);
+              return(isMobile ? (
+                <h6 key={idx}>
+                  {item.content_item.title}
+                </h6>
+              ) : (
+                <h4 key={idx}>
+                  {item.content_item.title}
+                </h4>
+              ));
             case 'list':
               return (
                 <ul key={idx}>
                   {
-                    Array.isArray(item.content_item.list) &&
-                    item.content_item.list.map((listItem, idx) => {
-                      return(<li key={idx}>{listItem}</li>);
+                    Array.isArray(item.content_item.list)
+                    && item.content_item.list.map((listItem, idx) => {
+                      return(
+                        <li key={idx}>
+                          {listItem}
+                        </li>
+                      );
                     })
                   }
-                </ul>);
+                </ul>
+              );
             case 'text':
-              return(<p key={idx}>{item.content_item.text}</p>);
+              return(
+                <p key={idx}>
+                  {item.content_item.text}
+                </p>
+              );
             }
           })}
       </article>

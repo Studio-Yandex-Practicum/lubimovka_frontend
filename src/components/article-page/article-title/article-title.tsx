@@ -40,12 +40,11 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
         iconPlace={'right'}
         icon={'arrow-left'}
         border={'bottomRight'}
-        isLink={true}
+        isLink
         view={'primary'}
         align={'space-between'}
         href={isBlog ? '/blog' : '/news'}
       />
-
       <div className={cx('img')}>
         <Image
           src={imgLink}
@@ -54,22 +53,26 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
           objectFit="cover"
         />
       </div>
-
-      <h3 className={cx('title')}>{title}</h3>
-      <h6 className={cx('description')}>{description}</h6>
-
-      <p className={cx('date', { dateNews: !isBlog })}>{new Date(date).toLocaleDateString('ru-Ru', { month: 'long', day:'numeric', year:'numeric' }).replace(' г.', '')}</p>
-      {isBlog &&
-          <InfoLink
-            isOutsideLink={true}
-            label={author || ''}
-            icon={'arrow-45'}
-            iconPlace={'right'}
-            size={'m'}
-            href={authorLink}
-            className={cx('author')}
-          />
-      }
+      <h3 className={cx('title')}>
+        {title}
+      </h3>
+      <h6 className={cx('description')}>
+        {description}
+      </h6>
+      <p className={cx('date', { dateNews: !isBlog })}>
+        {new Date(date).toLocaleDateString('ru-Ru', { month: 'long', day:'numeric', year:'numeric' }).replace(' г.', '')}
+      </p>
+      {isBlog && (
+        <InfoLink
+          isOutsideLink
+          label={author || ''}
+          icon={'arrow-45'}
+          iconPlace={'right'}
+          size={'m'}
+          href={authorLink}
+          className={cx('author')}
+        />
+      )}
     </section>
   );
 };
