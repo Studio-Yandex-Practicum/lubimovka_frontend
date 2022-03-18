@@ -1,4 +1,4 @@
-import { useState, Children } from 'react';
+import { useState, Children, useMemo } from 'react';
 import classNames from 'classnames/bind';
 import { useKeenSlider } from 'keen-slider/react';
 
@@ -14,53 +14,73 @@ interface IImageSliderProps {
   showDots?: boolean;
   initialSlide?: number;
   children: React.ReactNode;
+  type?: 'image' | 'simple';
+  loop?: boolean;
 }
 
+// Думаю можно переименовать в Slider
 export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
   const {
     className,
     showDots = true,
+    loop = true,
     initialSlide = 0,
-    children
+    children,
+    type = 'image'
   } = props;
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showPrevBtn, setshowPrevBtn] = useState(loop || initialSlide !== 0);
+  const [showNextBtn, setshowNextBtn] = useState(loop || Children.count(children) - 1 !== initialSlide);
+
+  const media = useMemo(() => (type === 'image' ? 
+    {
+      'container': 'container_media',
+      'arrow': 'arrow_media',
+      'slider': 'slider_media',
+      'dots': 'dots_media'
+    } 
+    : {}) as Record<string, string>
+  , [type]);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
-    loop: true,
+    loop,
     spacing: 15,
     initial: initialSlide,
     slideChanged(s) {
       setCurrentSlide(s.details().relativeSlide);
+      if (!loop) {
+        setshowPrevBtn(s.details().relativeSlide !== 0);
+        setshowNextBtn(Children.count(children) - 1 !== s.details().relativeSlide);
+      }
     },
   });
 
   return (
     <div className={cx(className)}>
-      <div className={cx('container')}>
-        {slider && (
-          <>
-            <div className={cx('arrow', 'arrowLeft')}>
-              <SliderButton
-                className={cx('arrowButton')}
-                ariaLabel="Предыдущий слайд"
-                direction="left"
-                onClick={slider.prev}
-              />
-            </div>
-            <div className={cx('arrow', 'arrowRight')}>
-              <SliderButton
-                className={cx('arrowButton')}
-                ariaLabel="Следующий слайд"
-                direction="right"
-                onClick={slider.next}
-              />
-            </div>
-          </>
-        )}
-        <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
+      <div className={cx('container', media['container'])}>
+        {slider && showPrevBtn && (
+          <div className={cx('arrow', 'arrowLeft', media['arrow'])}>
+            <SliderButton
+              className={cx('arrowButton')}
+              ariaLabel="Предыдущий слайд"
+              direction="left"
+              onClick={slider.prev}
+            />
+          </div>)}
+
+        {slider && showNextBtn && (    
+          <div className={cx('arrow', 'arrowRight', media['arrow'])}>
+            <SliderButton
+              className={cx('arrowButton')}
+              ariaLabel="Следующий слайд"
+              direction="right"
+              onClick={slider.next}
+            />
+          </div>)}
+        <div ref={sliderRef} className={cx('keen-slider', 'slider', media['slider'])}>
           {Children.map(children, (slide) => (
-            <div className={cx('keen-slider__slide', 'slide')}>
+            <div className={cx('keen-slider__slide', type === 'image' ? 'slide' : '')}>
               {slide}
             </div>
           ))}
@@ -68,7 +88,7 @@ export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
       </div>
       {slider && showDots && (
         <SliderDots
-          className={cx('dots')}
+          className={cx('dots', media['dots'])}
           count={slider.details().size}
           currentSlide={currentSlide}
           onClick={(idx) => slider.moveToSlideRelative(idx)}

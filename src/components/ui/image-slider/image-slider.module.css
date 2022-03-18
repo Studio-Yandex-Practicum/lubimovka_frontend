@@ -9,7 +9,14 @@
   }
 }
 
-.slider {
+.container_media {
+  @media (max-width: $tablet-portrait) {
+    padding: 0;
+    text-align: right;
+  }
+}
+
+.slider_media {
   @media (max-width: $tablet-portrait) {
     margin-top: scale(19px);
   }
@@ -39,7 +46,9 @@
   width: scale(48px);
   height: scale(48px);
   transform: translateY(-50%);
+}
 
+.arrow_media {
   @media (max-width: $tablet-portrait) {
     position: static;
     display: inline-block;
@@ -75,6 +84,12 @@
 .dots {
   margin-top: scale(19px);
 
+  @media (max-width: $tablet-portrait) {
+    margin-top: scale(15px);
+  }
+}
+
+.dots_media {
   @media (max-width: $tablet-portrait) {
     margin-top: scale(15px);
   }

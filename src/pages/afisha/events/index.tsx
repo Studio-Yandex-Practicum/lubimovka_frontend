@@ -22,7 +22,7 @@ const Afisha = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
     <AppLayout>
       <main>
         <AfishaTitle {...info}/>
-        {info.festival_status ? <FestivalEvents {...events}/> : <RegularEvents {...events}/>}
+        {info.festival_status ? <FestivalEvents {...events} info={info}/> : <RegularEvents {...events}/>}
       </main>
     </AppLayout>
   );
