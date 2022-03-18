@@ -2,7 +2,7 @@ import { FC, useEffect, useRef, UIEvent } from 'react';
 import { useRouter } from 'next/router';
 import classNames from 'classnames/bind';
 
-import { Menu } from 'components/ui/menu';
+import { AboutUsMenuLayout } from 'components/what-we-do-page/about-us-menu-layout';
 import { navbarNavigationItems, INavbar } from 'shared/constants/navbar-navigation-items';
 
 import styles from './about-us-menu.module.css';
@@ -25,17 +25,17 @@ export const AboutUsMenu: FC = (): JSX.Element => {
 
   return (
     <div className={cx('menu')} ref={menu} onScroll={handlerScroll}>
-      <Menu type={'general-submenu'}>
+      <AboutUsMenuLayout>
         {navbarNavigationItems.map((list: INavbar) => (
-          <Menu.Item
+          <AboutUsMenuLayout.Item
             key={list.id}
             href={list.href}
             current={router.asPath === list.href}
           >
             {list.text}
-          </Menu.Item>
+          </AboutUsMenuLayout.Item>
         ))}
-      </Menu>
+      </AboutUsMenuLayout>
     </div>
   );
 };

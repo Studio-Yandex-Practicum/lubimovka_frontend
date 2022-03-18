@@ -69,8 +69,3 @@ export const History = Template.bind({});
 History.args = {
   type: 'history',
 };
-
-export const Submenu = Template.bind({});
-Submenu.args = {
-  type: 'general-submenu',
-};
