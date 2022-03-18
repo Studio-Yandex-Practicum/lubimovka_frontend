@@ -50,13 +50,15 @@ export const Button: FC<IButtonProps> = (props) => {
   const buttonChildren = (
     <React.Fragment>
       {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
-      {<span className={styles.label}>{label}</span>}
+      {<span className={styles.label}>
+        {label}
+      </span>}
       {iconPlace === 'right' && icon && <Icon glyph={icon}/>}
     </React.Fragment>
   );
 
   return (
-    !isLink &&
+    !isLink ? (
       <button
         className={classes}
         type={type}
@@ -66,7 +68,7 @@ export const Button: FC<IButtonProps> = (props) => {
       >
         {buttonChildren}
       </button>
-      ||
+    ) : (
       <Link href={href} {...restButtonProps}>
         <a
           style={style}
@@ -76,5 +78,6 @@ export const Button: FC<IButtonProps> = (props) => {
           {buttonChildren}
         </a>
       </Link>
+    )
   );
 };

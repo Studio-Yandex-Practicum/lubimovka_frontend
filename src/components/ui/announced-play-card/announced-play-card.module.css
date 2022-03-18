@@ -167,8 +167,6 @@
 .buttonContainer {
   @media (max-width: $tablet-portrait) {
     display: flex;
-    width: scale(380px);
-    flex-direction: row;
   }
 }
 

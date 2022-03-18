@@ -3,7 +3,7 @@ import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames';
 import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 
-import { PersonCard } from '../../../ui/person-card/person-card';
+import { PersonCard } from 'components/ui/person-card/person-card';
 import { FeedbackPopup } from 'components/ui/feedback-popup';
 import { Volunteers } from 'api-typings';
 
@@ -91,8 +91,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
   }, [isFeedbackPopupOpen]);
   return (
     <>
-      {
-        Number(screenWidth) < 729 &&
+      {Number(screenWidth) < 729 && (
         <div ref={sliderRef} className={cx('keen-slider', [styles.slidesContainer])}>
           {cards.map((card, idx) => (
             <div key={card.id} className="keen-slider__slide">
@@ -102,15 +101,13 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
                 response={card.review_text}
                 name={`${card.person.first_name} ${card.person.last_name}`}
                 handleClick={() => handleFeedbackPopupClick(idx)}
-              >
-              </PersonCard>
+              />
             </div>
           ))}
         </div>
-      }
+      )}
 
-      {
-        Number(screenWidth) > 728 &&
+      {Number(screenWidth) > 728 && (
         <ul className={styles.container}>
           {cards.map((card, idx) => (
             <li key={card.id}>
@@ -120,14 +117,19 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
                 response={card.review_text}
                 name={`${card.person.first_name} ${card.person.last_name}`}
                 handleClick={() => handleFeedbackPopupClick(idx)}
-              >
-              </PersonCard>
+              />
             </li>
           ))}
         </ul>
-      }
+      )}
 
-      <FeedbackPopup currentYear={currentYear} cards={cards} openedSlide={slide} isOpen={isFeedbackPopupOpen} onClose={closeFeedbackPopup}/>
+      <FeedbackPopup
+        currentYear={currentYear}
+        cards={cards}
+        openedSlide={slide}
+        isOpen={isFeedbackPopupOpen}
+        onClose={closeFeedbackPopup}
+      />
     </>
   );
 };

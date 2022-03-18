@@ -13,7 +13,7 @@ const ContactsTitle = (props: IContactsTitleProps): JSX.Element => {
 
   return (
     <h1 id={id} className={cx('title')}>
-        Если вам есть чем поделиться или хотите задать вопрос
+      Если вам есть чем поделиться или хотите задать вопрос
     </h1>
   );
 };

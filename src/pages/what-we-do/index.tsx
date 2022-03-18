@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
+import { NextPage, InferGetServerSidePropsType, GetServerSideProps  } from 'next';
 
 import { Partner } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
@@ -12,10 +12,12 @@ import { WhatWeDoPoster } from 'components/what-we-do-page/poster';
 import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
 import { WhatWeDoPartner } from 'components/what-we-do-page/partners';
 
-const Page: NextPage = ({ partners }: InferGetStaticPropsType<typeof getStaticProps>):JSX.Element => (
+const Page: NextPage = ({ partners }: InferGetServerSidePropsType<typeof getServerSideProps>):JSX.Element => (
   <AppLayout>
     <Head>
-      <title>{'Что мы делаем? Любимовка'}</title>
+      <title>
+        Что мы делаем? Любимовка
+      </title>
     </Head>
     <main>
       <WhatWeDoHeader/>
@@ -42,14 +44,8 @@ const fetchPartners = async () => {
   }
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const partners = await fetchPartners();
-
-  if (!partners) {
-    return {
-      notFound: true,
-    };
-  }
 
   return {
     props: {

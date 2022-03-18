@@ -10,7 +10,7 @@ export default {
 const Template: ComponentStory<typeof ProjectCard> = (args) => <ProjectCard {...args}/>;
 
 export const LubimovkaMore = Template.bind({});
-LubimovkaMore.args = {  
+LubimovkaMore.args = {
   id: 1,
   title: 'Любимовка.Ещё',
   description: 'Межсезонные читки и обсуждение пьес из списка отмеченных отборщиками Любимовки. Можно слушать, обсуждать и даже участвовать',

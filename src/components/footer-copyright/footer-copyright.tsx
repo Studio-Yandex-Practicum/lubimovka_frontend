@@ -22,7 +22,9 @@ export const FooterCopyright: FC<IFooterCopyright> = (props) => {
     )}
     >
       <div className={cx('copyright')}>
-        &copy; Любимовка, {currentYear}
+        &copy; Любимовка,
+        {' '}
+        {currentYear}
       </div>
       <InfoLink
         className={cx('footnoteLink')}

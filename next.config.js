@@ -26,9 +26,14 @@ module.exports = {
     domains: [
       'stage.dev.lubimovka.ru',
       'lubimovka.kiryanov.ru',
+      'test.dev.lubimovka.ru',
+      '2022.lubimovka.ru',
     ],
   },
   publicRuntimeConfig: {
     baseUrl,
+  },
+  experimental: {
+    scrollRestoration: true,
   },
 };

@@ -14,7 +14,9 @@ export const FormFieldset = (props: IFormFieldsetProps): JSX.Element => {
 
   return (
     <fieldset className={cx('fieldset')}>
-      <legend className={cx('legend')}>{legend}</legend>
+      <legend className={cx('legend')}>
+        {legend}
+      </legend>
       <div className={cx('content')}>
         {children}
       </div>

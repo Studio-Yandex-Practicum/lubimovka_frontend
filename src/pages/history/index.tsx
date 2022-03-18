@@ -1,17 +1,17 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-import { Festival, Years } from 'api-typings';
 import { AppLayout } from 'components/app-layout/index';
 import { HistoryPage } from 'components/history-page';
 import { fetcher } from 'shared/fetcher';
+import { Festival, Years, PlayFilters } from 'api-typings';
 
 const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {
-    years, titleCounts
+    years, titleCounts, playFilters
   } = props;
   return (
     <AppLayout>
-      <HistoryPage years={years} titleCounts={titleCounts}/>
+      <HistoryPage years={years} titleCounts={titleCounts} playFilters={playFilters}/>
     </AppLayout>
   );
 };
@@ -35,28 +35,48 @@ const fetchInitStateYear = async () => {
   }
   return data;
 };
+const fetchPlayFilters = async () => {
+  let data;
+  try {
+    data = await fetcher<PlayFilters>('/library/playfilters/');
+  } catch (error) {
+    return;
+  }
+  return data;
+};
 type History = {
   titleCounts : Festival,
-  years : Years
+  years : Years,
+  playFilters : PlayFilters
 }
 export const getServerSideProps: GetServerSideProps<History> = async () => {
   const years = await fetchInitStateYear();
+
   if (!years) {
     return {
       notFound: true,
     };
   }
-  else {
-    const titleCounts = await fetchStatistics(years.years[0]);
-    if(!titleCounts) {
-      return {
-        notFound: true,
-      };
-    }
+
+  const titleCounts = await fetchStatistics(years.years[0]);
+
+  if (!titleCounts) {
     return {
-      props: {
-        titleCounts: titleCounts, years: years
-      },
+      notFound: true,
     };
   }
+
+  const playFilters = await fetchPlayFilters();
+
+  if (!playFilters) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      titleCounts: titleCounts, years: years, playFilters: playFilters
+    },
+  };
 };

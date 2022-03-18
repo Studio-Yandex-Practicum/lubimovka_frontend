@@ -22,7 +22,7 @@ import { PersonCardList } from 'components/person-card-list';
 import { CallToEmail } from 'components/call-to-email';
 import { fetcher } from 'shared/fetcher';
 import { Project as ProjectModel } from 'api-typings';
-import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
+import { formatDateTime } from 'shared/helpers/format-date-time';
 
 const convertRolesToString = (roles: PersonRole[]) => roles.map(role => role.name).join(', ');
 
@@ -55,7 +55,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
         </ProjectLayout.Description>
         {contents && contents.map(({ content_type, content_item }, index) => (
           <Fragment key={index}>
-            {content_type === 'imagesblock' && (
+            {content_type === 'imagesblock' && content_item && (
               <ProjectLayout.Storey type="photos">
                 <Section title={content_item.title}>
                   <PhotoGallery
@@ -67,7 +67,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                 </Section>
               </ProjectLayout.Storey>
             )}
-            {content_type === 'playsblock' && (
+            {content_type === 'playsblock' && content_item && (
               <ProjectLayout.Storey type="plays">
                 <Section title={content_item.title}>
                   <BasicPlayCardList>
@@ -88,17 +88,17 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                 </Section>
               </ProjectLayout.Storey>
             )}
-            {content_type === 'performancesblock' && (
+            {content_type === 'performancesblock' && content_item &&  (
               <ProjectLayout.Storey type="performances">
                 <PerformanceSection title={content_item.title}>
                   {content_item.items.map(({ id, name }) => (
                     <AnnouncedPlayCard
                       key={id}
                       //TODO: исправить ответ бекенда, сейчас возвращаются данные для страницы спектакля
-                      isPerformance={true}
+                      isPerformance
                       id={id}
-                      formattedDate={formatDate('2021-11-13T17:00:00.000Z')}
-                      formattedTime={formatTime('2021-11-13T17:00:00.000Z')}
+                      formattedDate={formatDateTime('2021-11-13T17:00:00.000Z', 'dMMMM')}
+                      formattedTime={formatDateTime('2021-11-13T17:00:00.000Z', 'mH')}
                       title={name}
                       team={[
                         {
@@ -113,7 +113,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                       buttonLink={'https://lubimovka.timepad.ru/event/1746579/'}
                       imageUrl="/images/projects/performance_mama.jpg"
                       project="читка проекта Любимовка.Eщё"
-                      paid={true}
+                      paid
                     />
                   ))}
                 </PerformanceSection>
@@ -133,14 +133,14 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                 </Section>
               </ProjectLayout.Storey>
             )}
-            {content_type === 'text' && (
+            {content_type === 'text' && content_item && (
               <ProjectLayout.Storey type="text">
                 <RawText>
                   {content_item.text}
                 </RawText>
               </ProjectLayout.Storey>
             )}
-            {content_type === 'personsblock' && (
+            {content_type === 'personsblock' && content_item && (
               <ProjectLayout.Storey type="persons">
                 <Section title={content_item.title}>
                   <PersonCardList>
@@ -149,7 +149,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                         key={id}
                         name={`${first_name} ${last_name}`}
                         image={image}
-                        participant={true}
+                        participant
                         about={convertRolesToString(roles)}
                       />
                     ))}

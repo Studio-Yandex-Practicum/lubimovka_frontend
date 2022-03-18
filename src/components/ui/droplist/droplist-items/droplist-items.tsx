@@ -21,14 +21,15 @@ export const DroplistItems: FC<IDroplistItemsProps> = ({ type, selectList, value
 
   return (
     <li
-      className={cx('item', { 'itemCheckbox': type === 'multiple' })}
+      className={cx('item', { itemCheckbox: type === 'multiple' })}
       onClick={() => handlerClick(value, counter)}
     >
       {findItem && type === 'single' && <span className={cx('circle')}/>}
-      {type === 'multiple' && 
-      <div className={cx('checkbox')}>
-        {findItem && <Icon glyph="ok" className={cx('icon')}/>}
-      </div>}
+      {type === 'multiple' && (
+        <div className={cx('checkbox')}>
+          {findItem && <Icon glyph="ok" className={cx('icon')}/>}
+        </div>
+      )}
       <p className={cx('text')}>
         {value}
       </p>

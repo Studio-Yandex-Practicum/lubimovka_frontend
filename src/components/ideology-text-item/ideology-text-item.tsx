@@ -14,9 +14,15 @@ const TextItem: FC<ITextItemProps> = (props) => {
 
   return (
     <article className={style.article}>
-      <p className={cn(style.paragraph, style.numberBox)}>{number}</p>
-      <h3 className={style.title}>{title}</h3>
-      <div className={style.textBox}>{children}</div>
+      <p className={cn(style.paragraph, style.numberBox)}>
+        {number}
+      </p>
+      <h3 className={style.title}>
+        {title}
+      </h3>
+      <div className={style.textBox}>
+        {children}
+      </div>
     </article>
   );
 };

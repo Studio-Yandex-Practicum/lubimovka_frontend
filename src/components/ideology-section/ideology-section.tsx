@@ -32,12 +32,21 @@ const TextSection: FC<ITextSectionProps> = ({ data }) => {
       <div className={style.container}>
         <img src={image} alt="Изображение" className={style.picture}/>
         <div className={style.list}>
-          <p className={cn(style.paragraph, style.numberBox)}>{number}</p>
-          <h2 className={cn(style.title, style.titleBox)}>{title}</h2>
+          <p className={cn(style.paragraph, style.numberBox)}>
+            {number}
+          </p>
+          <h2 className={cn(style.title, style.titleBox)}>
+            {title}
+          </h2>
           {content.map((el) => (
             <TextItem key={el.id} number={el.number} title={el.title}>
               {el.text.map((item, index) => (
-                <p key={index} className={cn(style.paragraph, style.paragraphText)}>{item}</p>
+                <p
+                  key={index}
+                  className={cn(style.paragraph, style.paragraphText)}
+                >
+                  {item}
+                </p>
               ))}
             </TextItem>
           ))}

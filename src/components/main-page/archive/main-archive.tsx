@@ -14,12 +14,12 @@ export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => (
     <div className={cx('content')}>
       <h2 className={cx('title')}>
         <p className={cx('text')}>
-            Видео-архив
+          Видео-архив
         </p>
         <span className={cx('link')}>
           <Button
             label="YOUTUBE"
-            isLink={true} 
+            isLink
             href={url}
             icon="arrow-right"
             iconPlace="left"
@@ -28,15 +28,15 @@ export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => (
             className={cx('icon')}
           />
         </span>
-          всех читок и событий
+        всех читок и событий
       </h2>
       <p className={cx('desc')}>
-          На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации.
+        На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации.
       </p>
     </div>
     <div className={cx('img')}>
-      <a 
-        href={url} 
+      <a
+        href={url}
         className={cx('linkImg')}
         target="_blank"
         rel="noreferrer"

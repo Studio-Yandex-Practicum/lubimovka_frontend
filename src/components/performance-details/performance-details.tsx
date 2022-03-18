@@ -14,10 +14,14 @@ export const PerformanceDetails = (props: IPerformanceDetailsProps): JSX.Element
 
   return (
     <div className={cx('details')}>
-      <div>{duration}</div>
+      <div>
+        {duration}
+      </div>
       <div className={cx('ageLimit')}>
         {ageLimit}
-        <span>+</span>
+        <span>
+          +
+        </span>
       </div>
     </div>
   );
