@@ -22,3 +22,12 @@ export type Crewman = {
   name: string,
   persons: Persons,
 }
+
+export type BlogEntry = {
+  id: number
+  publicationDate: string
+  title: string
+  description: string
+  author: string
+  cover: Url
+};

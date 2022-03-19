@@ -1,75 +1,70 @@
-import { ReactNode, useRef, useEffect, useState, Children } from 'react';
+import {
+  ReactNode,
+  Children,
+  cloneElement,
+  isValidElement,
+  useLayoutEffect,
+  useState,
+} from 'react';
 import classNames from 'classnames/bind';
 
+import { useMediaQuery } from 'shared/hooks/use-media-query';
+import breakpoints from 'shared/breakpoints.js';
 import { BlogEntryListItem } from './item';
-import { useDidMountEffect } from 'shared/hooks/use-did-mount-effect';
-import { useIntersection } from 'shared/hooks/use-intersection';
 
 import styles from './blog-entry-list.module.css';
 import blogEntryListVars from './blog-entry-list.vars.module.css';
 
-interface IBlogEntryListProps {
-  children: ReactNode
-  hasMoreEntries: boolean
-  onShouldLoadEntries: () => void
+interface BlogEntryListProps {
+  children: ReactNode | ReactNode[],
 }
 
 const cx = classNames.bind(styles);
 
 const columnCount = parseInt(blogEntryListVars['column-count-tablet-portrait'], 10);
-const firstItemColumnSpan = parseInt(blogEntryListVars['first-item-column-span-tablet-portrait'], 10);
-const previousColumnIndexOffset = firstItemColumnSpan - 1;
 
-export const BlogEntryList = (props: IBlogEntryListProps) => {
+export const BlogEntryList = (props: BlogEntryListProps) => {
   const {
     children,
-    hasMoreEntries,
-    onShouldLoadEntries,
   } = props;
-  const containerRef = useRef<HTMLUListElement>(null);
-  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection({ threshold: .85 });
-  const [loading, setLoading] = useState(false);
+  const [columns, setColumns] = useState<ReactNode[][]>([]);
 
-  const layout = () => {
-    // https://css-tricks.com/a-lightweight-masonry-solution/
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
-    const elements = Array.from(containerRef.current!.children as HTMLCollectionOf<HTMLElement>);
+  useLayoutEffect(() => {
+    if (isMobile) return;
 
-    elements.slice(columnCount - previousColumnIndexOffset).forEach((element, index) => {
-      const previousElementIndex = index - previousColumnIndexOffset;
-      const previousElementBottom = elements[previousElementIndex > 0 ? previousElementIndex : 0].getBoundingClientRect().bottom;
-      const currentElementTop = element.getBoundingClientRect().top;
+    const columns: ReactNode[][] = Array.from(
+      { length: columnCount },
+      () => [],
+    );
 
-      element.style.marginTop = `${previousElementBottom + 60 - currentElementTop}px`;
+    Children.forEach(children, (child, index) => {
+      if (!isValidElement(child)) return;
+
+      const clonedElement = cloneElement(child, {
+        ...child.props,
+        key: index,
+      });
+
+      columns[index % columnCount].push(clonedElement);
     });
 
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    if (!containerRef.current || getComputedStyle(containerRef.current).gridTemplateRows === 'masonry') return;
-
-    window.addEventListener('load', layout);
-  });
-
-  useDidMountEffect(() => {
-    layout();
-  }, [Children.count(children)]);
-
-  useEffect(() => {
-    if (!loading && shouldLoadEntries && hasMoreEntries) {
-      setLoading(true);
-      onShouldLoadEntries();
-    }
-  }, [hasMoreEntries, shouldLoadEntries, loading, onShouldLoadEntries]);
+    setColumns(columns);
+  }, [children, isMobile]);
 
   return (
-    <ul
-      className={cx('root')}
-      ref={containerRef}
-    >
-      {children}
-      <span ref={bottomBoundaryRef}/>
+    <ul className={cx('root')}>
+      {isMobile
+        ? children
+        : columns.map((column, index) => (
+          <div
+            key={index}
+            className={cx('column')}
+          >
+            {column}
+          </div>
+        ))}
     </ul>
   );
 };

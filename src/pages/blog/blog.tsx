@@ -1,7 +1,7 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useState } from 'react';
+import Error from 'next/error';
+import { useMemo, useEffect } from 'react';
 import classNames from 'classnames/bind';
-import { objectToQueryString } from '@funboxteam/diamonds';
 
 import { AppLayout } from 'components/app-layout/index';
 import { BlogEntryList } from 'components/blog-entry-list';
@@ -11,21 +11,22 @@ import { Select, SelectOption } from 'components/select';
 import { BlogLayout } from 'components/blog-layout';
 import { PageTitle } from 'components/page-title';
 import { InfoLink } from 'components/ui/info-link';
-import { useDidMountEffect } from 'shared/hooks/use-did-mount-effect';
+import { useBlog } from 'providers/blog-provider';
+import { useIntersection } from 'shared/hooks/use-intersection';
 import { fetcher } from 'shared/fetcher';
-import { omitEmptyProperties } from 'shared/helpers/omit-empty-properties';
-import { PaginatedBlogItemListOutputList, BlogItemListOutput } from 'api-typings';
 import { months } from 'shared/constants/months';
-import { Url } from 'shared/types';
+import { entriesPerPage } from 'shared/constants/blog';
+
+import type { BlogState } from 'providers/blog-provider';
+import type { BlogEntry } from 'shared/types/domain';
+import type { PaginatedBlogItemListOutputList, BlogItemListOutput } from 'api-typings';
 
 import styles from 'components/blog-layout/blog-layout.module.css';
 
-const ENTRIES_PER_PAGE = 6;
 const CALL_TO_ACTION_EMAIL = 'critics@lubimovka.ru';
 
 const cx = classNames.bind(styles);
 
-// TODO: Получать список лет из API
 const fromYear = 2013;
 const currentYear = new Date().getFullYear();
 const monthOptions = months.map((month, index) => ({
@@ -38,86 +39,52 @@ const yearOptions = Array.from(Array(currentYear - fromYear), (_, index) => ({
 }));
 
 const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const [blogEntries, setBlogEntries] = useState<BlogItemListOutput[]>(props.blogEntries);
-  const [selectedMonthOption, setSelectedMonthOption] = useState<SelectOption>();
-  const [selectedYearOption, setSelectedYearOption] = useState<SelectOption>();
-  const [offset, setOffset] = useState(0);
-  const [hasMoreEntries, setHasMoreEntries] = useState(props.hasMoreEntries);
-  // TODO: постараться избавиться от лишнего filterWasChanged, возможно, унести стейт записей в объект
-  const [filterWasChanged, setFilterWasChanged] = useState(false);
+  const {
+    setPreloadedState,
+    entries,
+    hasMoreEntries,
+    handleShouldLoadEntries,
+    selectedMonth,
+    setSelectedMonth,
+    selectedYear,
+    setSelectedYear,
+    pending,
+    errorCode,
+  } = useBlog();
 
-  const preloadImages = (images: Url[]) => Promise.all(images.map((url) => new Promise((resolve) => {
-    const image = new Image();
+  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>({ threshold: 1 });
+  const selectedMonthOption = useMemo(() => monthOptions.find(({ value }) => value === selectedMonth), [selectedMonth]);
+  const selectedYearOption = useMemo(() => yearOptions.find(({ value }) => value === selectedYear), [selectedYear]);
+  const lastEntryIndex = useMemo(() => entries.length - 1, [entries]);
 
-    image.src = url;
-    image.addEventListener('load', resolve);
-  })));
-
-  const fetchBlogEntries = async ()  => {
-    const params = {
-      limit: ENTRIES_PER_PAGE,
-      offset,
-      month: selectedMonthOption?.value,
-      year: selectedYearOption?.value,
-    };
-    const filteredParams = omitEmptyProperties(params);
-    let response;
-
-    try {
-      response = await fetcher<PaginatedBlogItemListOutputList>(`/blog/${objectToQueryString(filteredParams)}`);
-    } catch {
-      // TODO: обработать ошибку
-      return;
-    }
-
-    const {
-      results,
-      next
-    } = response;
-
-    if (results) {
-      const images = results.map(({ image }) => image);
-
-      await preloadImages(images);
-      setBlogEntries((blogEntries) => [
-        ...blogEntries,
-        ...results,
-      ]);
-    }
-    setHasMoreEntries(!!next);
+  const handleMonthChange = ({ value }: SelectOption<number>) => {
+    setSelectedMonth(value);
   };
 
-  const handleMonthChange = (value: SelectOption) => {
-    setSelectedMonthOption(value);
+  const handleYearChange = ({ value }: SelectOption<number>) => {
+    setSelectedYear(value);
   };
 
-  const handleYearChange = (value: SelectOption) => {
-    setSelectedYearOption(value);
-  };
-
-  const handleShouldLoadEntries = () => {
-    setOffset((offset) => offset + ENTRIES_PER_PAGE);
-  };
-
-  useDidMountEffect(() => {
-    if (!selectedYearOption?.value) {
-      return;
+  useEffect(() => {
+    if (!entries.length && props.entries) {
+      setPreloadedState({
+        entries: props.entries,
+        hasMoreEntries: props.hasMoreEntries,
+      });
     }
-    setBlogEntries([]);
-    setOffset(0);
-    setFilterWasChanged(true);
-    setHasMoreEntries(true);
-  }, [selectedMonthOption, selectedYearOption]);
+  }, []);
 
-  useDidMountEffect(() => {
-    if (!offset && !filterWasChanged) {
-      return;
+  useEffect(() => {
+    if (!pending && shouldLoadEntries && hasMoreEntries) {
+      handleShouldLoadEntries();
     }
-    fetchBlogEntries();
-    if (filterWasChanged) {
-      setFilterWasChanged(false);
-    }
-  }, [offset, filterWasChanged]);
+  }, [pending, hasMoreEntries, shouldLoadEntries]);
+
+  if (errorCode) {
+    return (
+      <Error statusCode={errorCode}/>
+    );
+  }
 
   return (
     <AppLayout>
@@ -143,7 +110,7 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
         <BlogLayout.Filter>
           <Filter>
             <Filter.Field className={cx('month-field')}>
-              <Select
+              <Select<number>
                 placeholder="Месяц"
                 options={monthOptions}
                 selectedOption={selectedMonthOption}
@@ -151,7 +118,7 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
               />
             </Filter.Field>
             <Filter.Field className={cx('year-field')}>
-              <Select
+              <Select<number>
                 placeholder="Год"
                 options={yearOptions}
                 selectedOption={selectedYearOption}
@@ -161,18 +128,20 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           </Filter>
         </BlogLayout.Filter>
         <BlogLayout.Main>
-          <BlogEntryList
-            onShouldLoadEntries={handleShouldLoadEntries}
-            hasMoreEntries={hasMoreEntries}
-          >
-            {blogEntries.map((card) => (
-              <BlogEntryList.Item key={card.id}>
+          <BlogEntryList>
+            {entries.map((entry, index) => (
+              <BlogEntryList.Item
+                key={entry.id}
+                {...index === lastEntryIndex ? {
+                  ref: bottomBoundaryRef,
+                } : {}}
+              >
                 <BlogCard
-                  image={card.image}
-                  author={card.author_url_title}
-                  heading={card.title}
-                  description={card.description}
-                  id={card.id}
+                  id={entry.id}
+                  image={entry.cover}
+                  author={entry.author}
+                  heading={entry.title}
+                  description={entry.description}
                 />
               </BlogEntryList.Item>
             ))}
@@ -183,11 +152,11 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<Partial<BlogState>> = async () => {
   let response;
 
   try {
-    response = await fetcher<PaginatedBlogItemListOutputList>(`/blog/?limit=${ENTRIES_PER_PAGE}`);
+    response = await fetcher<PaginatedBlogItemListOutputList>(`/blog/?limit=${entriesPerPage}`);
   } catch {
     return {
       props: {
@@ -198,10 +167,28 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      blogEntries: response.results,
+      entries: response.results ? toBlogEntries(response.results) : [],
       hasMoreEntries: !!response.next,
     }
   };
 };
 
 export default Blog;
+
+function toBlogEntries(array: BlogItemListOutput[]): BlogEntry[] {
+  return array.map(({
+    id,
+    pub_date,
+    title,
+    description,
+    author_url_title,
+    image
+  }) => ({
+    id,
+    publicationDate: pub_date,
+    title,
+    description,
+    author: author_url_title,
+    cover: image,
+  }));
+};
