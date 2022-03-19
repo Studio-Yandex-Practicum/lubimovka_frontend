@@ -10,7 +10,7 @@ import { Filter } from 'components/filter';
 import { Select, SelectOption } from 'components/select';
 import { BlogLayout } from 'components/blog-layout';
 import { PageTitle } from 'components/page-title';
-import { InfoLink } from 'components/ui/info-link';
+import { Link } from 'components/ui/link';
 import { useBlog } from 'providers/blog-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
 import { fetcher } from 'shared/fetcher';
@@ -101,11 +101,9 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
         <BlogLayout.CallToAction>
           Если вы хотите стать автором, пишите на
           {' '}
-          <InfoLink
-            label={CALL_TO_ACTION_EMAIL}
-            textDecoration="underline"
-            href={`mailto:${CALL_TO_ACTION_EMAIL}`}
-          />
+          <Link href={`mailto:${CALL_TO_ACTION_EMAIL}`}>
+            {CALL_TO_ACTION_EMAIL}
+          </Link>
         </BlogLayout.CallToAction>
         <BlogLayout.Filter>
           <Filter>

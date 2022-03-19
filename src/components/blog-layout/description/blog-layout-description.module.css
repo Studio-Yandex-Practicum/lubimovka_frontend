@@ -1,13 +1,21 @@
 .root {
   @mixin text;
+  @mixin textLarge;
 
   position: relative;
   max-width: scale(500px);
   padding-left: scale(25px);
   margin-top: scale(8px);
-  font-size: scale(20px);
   grid-area: description;
-  line-height: scale(28px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin textSmall;
+
+    max-width: initial;
+    padding-top: scale(25px);
+    padding-left: scale(32px);
+    margin-top: scale(24px);
+  }
 
   &::before {
     position: absolute;
@@ -20,5 +28,10 @@
     content: '';
     mask: url('../../../shared/icons/asterisk.svg') no-repeat 100% 100%;
     mask-size: cover;
+
+    @media (max-width: $tablet-portrait) {
+      top: 0;
+      left: 0;
+    }
   }
 }
