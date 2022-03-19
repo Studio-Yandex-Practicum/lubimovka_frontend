@@ -1,23 +1,23 @@
-import { FC, useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './select.module.css';
 
-export type SelectOption = {
+export type SelectOption<ValueType = string | number> = {
   text: string
-  value: string | number
+  value: ValueType
 }
 
-interface SelectProps {
+interface SelectProps<T> {
   placeholder: string,
-  options: SelectOption[]
-  selectedOption?: SelectOption
-  onChange: (option: SelectOption) => void
+  options: SelectOption<T>[]
+  selectedOption?: SelectOption<T>
+  onChange: (option: SelectOption<T>) => void
 }
 
 const cx = classNames.bind(styles);
 
-export const Select: FC<SelectProps> = (props) => {
+export const Select = <ValueType,>(props: SelectProps<ValueType>) => {
   const [opened, setOpened] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const {
@@ -27,7 +27,7 @@ export const Select: FC<SelectProps> = (props) => {
     onChange,
   } = props;
 
-  const handleOptionCheck = (option: SelectOption) => () => {
+  const handleOptionCheck = (option: SelectOption<ValueType>) => () => {
     if (onChange) {
       onChange(option);
     }
