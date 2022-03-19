@@ -73,9 +73,9 @@ export const Select = <ValueType,>(props: SelectProps<ValueType>) => {
         {selectedOption?.text || placeholder}
       </button>
       <ul className={cx('dropdown')}>
-        {options.map((option) => (
+        {options.map((option, index) => (
           <li
-            key={option.value}
+            key={index}
             className={cx(option === selectedOption ? 'option-selected' : 'option-regular')}
             onMouseDown={handleOptionCheck(option)}
           >
