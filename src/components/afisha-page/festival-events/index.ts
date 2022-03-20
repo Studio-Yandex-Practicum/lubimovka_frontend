@@ -1,1 +1,1 @@
-export * from './afisha-festival-events';
+export * from './festival-events';

@@ -7,15 +7,3 @@
     padding: 0;
   }
 }
-
-.sliderContainer {
-  margin: scale(10px);
-}
-
-.sliderItem {
-  width: 50%;
-  margin: auto;
-  text-align: center;
-
-  /* padding: 0 scale(10px); */
-}

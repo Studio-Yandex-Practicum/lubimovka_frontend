@@ -9,14 +9,12 @@
   }
 }
 
-.container_media {
-  @media (max-width: $tablet-portrait) {
-    padding: 0;
-    text-align: right;
-  }
+.containerSlidesSimple {
+  width: 70%;
+  margin: auto;
 }
 
-.slider_media {
+.slider {
   @media (max-width: $tablet-portrait) {
     margin-top: scale(19px);
   }
@@ -48,7 +46,7 @@
   transform: translateY(-50%);
 }
 
-.arrow_media {
+.arrowImage {
   @media (max-width: $tablet-portrait) {
     position: static;
     display: inline-block;
@@ -84,12 +82,6 @@
 .dots {
   margin-top: scale(19px);
 
-  @media (max-width: $tablet-portrait) {
-    margin-top: scale(15px);
-  }
-}
-
-.dots_media {
   @media (max-width: $tablet-portrait) {
     margin-top: scale(15px);
   }

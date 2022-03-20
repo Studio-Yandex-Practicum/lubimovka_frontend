@@ -1,0 +1,14 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 0 calc(var(--scale) * 32);
+}
+
+.sliderContainer {
+  margin: scale(10px);
+}
+
+.sliderItem {
+  width: 100%;
+  text-align: center;
+}

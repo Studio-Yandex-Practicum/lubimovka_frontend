@@ -1,9 +1,10 @@
-import { useState, Children, useMemo } from 'react';
+import { useState, Children } from 'react';
 import classNames from 'classnames/bind';
 import { useKeenSlider } from 'keen-slider/react';
 
 import { SliderButton } from 'components/ui/slider-button';
 import { SliderDots } from 'components/ui/slider-dots';
+import { ucFirst } from 'shared/helpers/uc-first';
 
 import styles from './image-slider.module.css';
 
@@ -16,6 +17,7 @@ interface IImageSliderProps {
   children: React.ReactNode;
   type?: 'image' | 'simple';
   loop?: boolean;
+  handlerChange?: (i: number) => void;
 }
 
 // Думаю можно переименовать в Slider
@@ -26,41 +28,36 @@ export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
     loop = true,
     initialSlide = 0,
     children,
-    type = 'image'
+    type = 'image',
+    handlerChange
   } = props;
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showPrevBtn, setshowPrevBtn] = useState(loop || initialSlide !== 0);
   const [showNextBtn, setshowNextBtn] = useState(loop || Children.count(children) - 1 !== initialSlide);
 
-  const media = useMemo(() => (type === 'image' ? 
-    {
-      'container': 'container_media',
-      'arrow': 'arrow_media',
-      'slider': 'slider_media',
-      'dots': 'dots_media'
-    } 
-    : {}) as Record<string, string>
-  , [type]);
-
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop,
     spacing: 15,
     initial: initialSlide,
     slideChanged(s) {
-      setCurrentSlide(s.details().relativeSlide);
+      const { relativeSlide } = s.details();
+      setCurrentSlide(relativeSlide);
       if (!loop) {
-        setshowPrevBtn(s.details().relativeSlide !== 0);
-        setshowNextBtn(Children.count(children) - 1 !== s.details().relativeSlide);
+        setshowPrevBtn(relativeSlide !== 0);
+        setshowNextBtn(Children.count(children) - 1 !== relativeSlide);
+      }
+      if (handlerChange) {
+        handlerChange(relativeSlide);
       }
     },
   });
 
   return (
     <div className={cx(className)}>
-      <div className={cx('container', media['container'])}>
+      <div className={cx('container')}>
         {slider && showPrevBtn && (
-          <div className={cx('arrow', 'arrowLeft', media['arrow'])}>
+          <div className={cx('arrow', 'arrowLeft', `arrow${ucFirst(type)}`)}>
             <SliderButton
               className={cx('arrowButton')}
               ariaLabel="Предыдущий слайд"
@@ -70,7 +67,7 @@ export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
           </div>)}
 
         {slider && showNextBtn && (    
-          <div className={cx('arrow', 'arrowRight', media['arrow'])}>
+          <div className={cx('arrow', 'arrowRight', `arrow${ucFirst(type)}`)}>
             <SliderButton
               className={cx('arrowButton')}
               ariaLabel="Следующий слайд"
@@ -78,17 +75,19 @@ export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
               onClick={slider.next}
             />
           </div>)}
-        <div ref={sliderRef} className={cx('keen-slider', 'slider', media['slider'])}>
-          {Children.map(children, (slide) => (
-            <div className={cx('keen-slider__slide', type === 'image' ? 'slide' : '')}>
-              {slide}
-            </div>
-          ))}
+        <div className={cx(`containerSlides${ucFirst(type)}`)}>
+          <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
+            {Children.map(children, (slide) => (
+              <div className={cx('keen-slider__slide', type === 'image' ? 'slide' : '')}>
+                {slide}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       {slider && showDots && (
         <SliderDots
-          className={cx('dots', media['dots'])}
+          className={cx('dots')}
           count={slider.details().size}
           currentSlide={currentSlide}
           onClick={(idx) => slider.moveToSlideRelative(idx)}
