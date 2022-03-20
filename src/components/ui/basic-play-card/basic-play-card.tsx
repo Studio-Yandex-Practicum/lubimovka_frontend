@@ -23,7 +23,7 @@ export interface IBasicPlayCardProps {
 }
 
 type Author = {
-  id: number,
+  slug: number,
   name: string,
 }
 
@@ -88,10 +88,10 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       <dl className={cx('info')}>
         {authorsHiddenLabel}
         {play.authors.map((i) => (
-          <dd className={cx('author', play.authors.length > 1 && 'authorMultiple')} key={i.id}>
+          <dd className={cx('author', play.authors.length > 1 && 'authorMultiple')} key={i.slug}>
             <InfoLink
               isOutsideLink={false}
-              href={`/library/authors/${i.id}`}
+              href={`/library/authors/${i.slug}`}
               label={i.name}
               size="l"
               className={cx('author', play.authors.length > 1 && 'authorMultiple')}
