@@ -18,21 +18,21 @@ import styles from 'components/author-page/author.module.css';
 
 const cx = cn.bind(styles);
 
-const fetchAuthors = async (authorSlug: string) => {
+const fetchAuthors = async (authorId: string) => {
   let data;
 
   try {
-    data = await fetcher<AuthorRetrieveModel>(`/library/authors/${authorSlug}/`);
+    data = await fetcher<AuthorRetrieveModel>(`/library/authors/${authorId}/`);
   } catch (error) {
     return;
   }
   return data;
 };
 
-export const getServerSideProps: GetServerSideProps<AuthorRetrieveModel, Record<'slug', string>> = async ({ params }) => {
-  const { slug: authorSlug } = params!;
+export const getServerSideProps: GetServerSideProps<AuthorRetrieveModel, Record<'id', string>> = async ({ params }) => {
+  const { id: authorId } = params!;
 
-  const author = await fetchAuthors(authorSlug);
+  const author = await fetchAuthors(authorId);
 
   if (!author) {
     return {
