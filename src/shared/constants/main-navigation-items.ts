@@ -38,7 +38,7 @@ export const mainNavigationItems = [
   },
   {
     text: 'Для прессы',
-    href: '/for-press',
+    href: '/press-releases',
     mobileOnly: true,
   },
 ];
