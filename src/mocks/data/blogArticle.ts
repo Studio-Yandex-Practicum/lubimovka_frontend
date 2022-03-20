@@ -101,17 +101,16 @@ const blogArticle: BlogData = {
         title: 'Заголовок блока с пьессами',
         items: [
           {
-            //@ts-ignore
             id: 25,
             name: 'Головной',
             authors: [
               {
                 name: 'Эрнест Беляков',
-                id: 16
+                slug: 'Ernest_Belyakov'
               },
               {
                 name: 'Будимир Яковлева',
-                id: 10
+                slug: 'Budimir_Yakovleva'
               }
             ],
             city: 'Южноуральск',
@@ -120,17 +119,16 @@ const blogArticle: BlogData = {
             url_reading: 'http://www.spears.net/'
           },
           {
-            //@ts-ignore
             id: 26,
             name: 'Головной',
             authors: [
               {
                 name: 'Эрнест Беляков',
-                id: 16
+                slug: 'Ernest_Belyakov'
               },
               {
                 name: 'Будимир Яковлева',
-                id: 10
+                slug: 'Budimir_Yakovleva'
               }
             ],
             city: 'Южноуральск',
@@ -139,17 +137,16 @@ const blogArticle: BlogData = {
             url_reading: 'http://www.spears.net/'
           },
           {
-            //@ts-ignore
             id: 27,
             name: 'Головной',
             authors: [
               {
                 name: 'Эрнест Беляков',
-                id: 16
+                slug: 'Ernest_Belyakov'
               },
               {
                 name: 'Будимир Яковлева',
-                id: 10
+                slug: 'Budimir_Yakovleva'
               }
             ],
             city: 'Южноуральск',
@@ -158,17 +155,16 @@ const blogArticle: BlogData = {
             url_reading: 'http://www.spears.net/'
           },
           {
-            //@ts-ignore
             id: 28,
             name: 'Головной',
             authors: [
               {
                 name: 'Эрнест Беляков',
-                id: 16
+                slug: 'Ernest_Belyakov'
               },
               {
                 name: 'Будимир Яковлева',
-                id: 10
+                slug: 'Budimir_Yakovleva'
               }
             ],
             city: 'Южноуральск',
@@ -177,17 +173,16 @@ const blogArticle: BlogData = {
             url_reading: 'http://www.spears.net/'
           },
           {
-            //@ts-ignore
             id: 29,
             name: 'Головной',
             authors: [
               {
                 name: 'Эрнест Беляков',
-                id: 16
+                slug: 'Ernest_Belyakov'
               },
               {
                 name: 'Будимир Яковлева',
-                id: 10
+                slug: 'Budimir_Yakovleva'
               }
             ],
             city: 'Южноуральск',
@@ -196,17 +191,16 @@ const blogArticle: BlogData = {
             url_reading: 'http://www.spears.net/'
           },
           {
-            //@ts-ignore
             id: 30,
             name: 'Головной',
             authors: [
               {
                 name: 'Эрнест Беляков',
-                id: 16
+                slug: 'Ernest_Belyakov'
               },
               {
                 name: 'Будимир Яковлева',
-                id: 10
+                slug: 'Budimir_Yakovleva'
               }
             ],
             city: 'Южноуральск',
@@ -223,8 +217,7 @@ const blogArticle: BlogData = {
         title: 'Заголовок блока с персонами',
         items: [
           {
-            //@ts-ignore
-            id: 82,
+            slug: 'Mihey_Vishnyakov',
             created: '2021-11-21T22:06:07',
             modified: '2021-11-21T22:06:07',
             first_name: 'Михей',
@@ -253,8 +246,7 @@ const blogArticle: BlogData = {
             ]
           },
           {
-            //@ts-ignore
-            id: 129,
+            slug: 'Veniamin_Bykova',
             created: '2021-11-21T22:06:19',
             modified: '2021-11-21T22:06:20',
             first_name: 'Вениамин',
@@ -283,8 +275,7 @@ const blogArticle: BlogData = {
             ]
           },
           {
-            //@ts-ignore
-            id: 112,
+            slug: 'Emmanuil_Galkin',
             created: '2021-11-21T22:06:15',
             modified: '2021-11-21T22:06:15',
             first_name: 'Эммануил',
@@ -313,8 +304,7 @@ const blogArticle: BlogData = {
             ]
           },
           {
-            //@ts-ignore
-            id: 83,
+            slug: 'Mihey_Vishnyakov',
             created: '2021-11-21T22:06:07',
             modified: '2021-11-21T22:06:07',
             first_name: 'Михей',
@@ -343,8 +333,7 @@ const blogArticle: BlogData = {
             ]
           },
           {
-            //@ts-ignore
-            id: 130,
+            slug: 'Veniamin_Bykova',
             created: '2021-11-21T22:06:19',
             modified: '2021-11-21T22:06:20',
             first_name: 'Вениамин',
@@ -373,8 +362,7 @@ const blogArticle: BlogData = {
             ]
           },
           {
-            //@ts-ignore
-            id: 113,
+            slug: 'Emmanuil_Galkin',
             created: '2021-11-21T22:06:15',
             modified: '2021-11-21T22:06:15',
             first_name: 'Эммануил',

@@ -12,7 +12,7 @@ interface ISearchResultAuthorsProps {
 }
 
 interface Author {
-  id: number,
+  slug: string,
   name: string,
 }
 
@@ -27,7 +27,7 @@ const SearchResultAuthors: FC<ISearchResultAuthorsProps> = ({ authors }) => {
           <li className={style.authorsItem} key={idx}>
             <InfoLink
               isOutsideLink={false}
-              href={`/library/authors/${author.id}`}
+              href={`/library/authors/${author.slug}`}
               label={author.name}
               size="l"
               className={style.authorsLink}
