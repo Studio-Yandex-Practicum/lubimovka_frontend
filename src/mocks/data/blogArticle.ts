@@ -101,6 +101,7 @@ const blogArticle: BlogData = {
         title: 'Заголовок блока с пьессами',
         items: [
           {
+            //@ts-ignore
             id: 25,
             name: 'Головной',
             authors: [
@@ -119,6 +120,7 @@ const blogArticle: BlogData = {
             url_reading: 'http://www.spears.net/'
           },
           {
+            //@ts-ignore
             id: 26,
             name: 'Головной',
             authors: [
@@ -137,6 +139,7 @@ const blogArticle: BlogData = {
             url_reading: 'http://www.spears.net/'
           },
           {
+            //@ts-ignore
             id: 27,
             name: 'Головной',
             authors: [
@@ -155,6 +158,7 @@ const blogArticle: BlogData = {
             url_reading: 'http://www.spears.net/'
           },
           {
+            //@ts-ignore
             id: 28,
             name: 'Головной',
             authors: [
@@ -173,6 +177,7 @@ const blogArticle: BlogData = {
             url_reading: 'http://www.spears.net/'
           },
           {
+            //@ts-ignore
             id: 29,
             name: 'Головной',
             authors: [
@@ -191,6 +196,7 @@ const blogArticle: BlogData = {
             url_reading: 'http://www.spears.net/'
           },
           {
+            //@ts-ignore
             id: 30,
             name: 'Головной',
             authors: [
@@ -217,6 +223,7 @@ const blogArticle: BlogData = {
         title: 'Заголовок блока с персонами',
         items: [
           {
+            //@ts-ignore
             id: 82,
             created: '2021-11-21T22:06:07',
             modified: '2021-11-21T22:06:07',
@@ -246,6 +253,7 @@ const blogArticle: BlogData = {
             ]
           },
           {
+            //@ts-ignore
             id: 129,
             created: '2021-11-21T22:06:19',
             modified: '2021-11-21T22:06:20',
@@ -275,6 +283,7 @@ const blogArticle: BlogData = {
             ]
           },
           {
+            //@ts-ignore
             id: 112,
             created: '2021-11-21T22:06:15',
             modified: '2021-11-21T22:06:15',
@@ -304,6 +313,7 @@ const blogArticle: BlogData = {
             ]
           },
           {
+            //@ts-ignore
             id: 83,
             created: '2021-11-21T22:06:07',
             modified: '2021-11-21T22:06:07',
@@ -333,6 +343,7 @@ const blogArticle: BlogData = {
             ]
           },
           {
+            //@ts-ignore
             id: 130,
             created: '2021-11-21T22:06:19',
             modified: '2021-11-21T22:06:20',
@@ -362,6 +373,7 @@ const blogArticle: BlogData = {
             ]
           },
           {
+            //@ts-ignore
             id: 113,
             created: '2021-11-21T22:06:15',
             modified: '2021-11-21T22:06:15',
