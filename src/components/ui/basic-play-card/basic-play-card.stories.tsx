@@ -64,7 +64,7 @@ PlayCardWithVisibleButtons.args = {
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
     authors: [{
-      id: 1,
+      slug: 1,
       name: 'Екатерина Августеняк',
     }],
   },
@@ -79,7 +79,7 @@ PlayCardWithHiddenCityAndYear.args = {
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
     authors: [{
-      id: 1,
+      slug: 1,
       name: 'Екатерина Августеняк',
     }],
   },

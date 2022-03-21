@@ -15,12 +15,12 @@ import style from './index.module.css';
 type Data = { plays: Play[], authors: AuthorFromData[] };
 
 type AuthorFromPlay = {
-  id: number,
+  slug: number,
   name: string,
 }
 
 type AuthorFromData = {
-  id: number,
+  slug: number,
   name: string,
   first_letter: string,
 }
