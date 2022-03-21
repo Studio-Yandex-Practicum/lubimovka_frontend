@@ -15,7 +15,7 @@ import style from './index.module.css';
 type Data = { plays: Play[], authors: AuthorFromData[] };
 
 type AuthorFromPlay = {
-  slug: number,
+  slug: string,
   name: string,
 }
 
@@ -90,9 +90,9 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
       data.authors.reduce((acc:IFilteredAuthors, author:AuthorFromData) => {
         const firstLetter: Letter = author.first_letter;
         if (!acc[firstLetter]) {
-          acc[firstLetter] = { title: firstLetter, data: [{ name: author.name, id: author.id }] };
+          acc[firstLetter] = { title: firstLetter, data: [{ name: author.name, id: author.slug }] };
         } else {
-          acc[firstLetter].data.push({ name: author.name, id: author.id });
+          acc[firstLetter].data.push({ name: author.name, id: author.slug });
         }
         return acc;
       }, {})
