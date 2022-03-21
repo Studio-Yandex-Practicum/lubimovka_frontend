@@ -23,7 +23,7 @@ export interface IBasicPlayCardProps {
 }
 
 type Author = {
-  slug: number,
+  slug: string,
   name: string,
 }
 
