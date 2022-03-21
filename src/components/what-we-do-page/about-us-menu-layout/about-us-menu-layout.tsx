@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 
 import { AboutUsMenuItem } from './item';
@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 
 interface IAboutUsMenuLayoutProps extends HTMLAttributes<HTMLDivElement> {}
 
-export const AboutUsMenuLayout: FC<IAboutUsMenuLayoutProps> = (props): JSX.Element => {
+export const AboutUsMenuLayout = (props: IAboutUsMenuLayoutProps): JSX.Element => {
   const {
     className,
     children,
