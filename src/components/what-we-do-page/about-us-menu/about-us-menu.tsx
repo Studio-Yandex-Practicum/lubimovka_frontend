@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, UIEvent } from 'react';
+import { FC } from 'react';
 import { useRouter } from 'next/router';
 import classNames from 'classnames/bind';
 
@@ -11,20 +11,9 @@ const cx = classNames.bind(styles);
 
 export const AboutUsMenu: FC = (): JSX.Element => {
   const router = useRouter();
-  const menu = useRef(null);
-
-  useEffect(() => {
-    if (menu.current) {
-      (menu.current as HTMLDivElement).scrollLeft = Number(localStorage.getItem('positionScroll'));
-    }
-  }, []);
-
-  const handlerScroll = (e: UIEvent<HTMLDivElement>) => {
-    localStorage.setItem('positionScroll', String((e.target as HTMLDivElement).scrollLeft));
-  };
 
   return (
-    <div className={cx('menu')} ref={menu} onScroll={handlerScroll}>
+    <div className={cx('menu')}>
       <AboutUsMenuLayout>
         {navbarNavigationItems.map((list: INavbar) => (
           <AboutUsMenuLayout.Item
