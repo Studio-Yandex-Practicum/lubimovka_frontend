@@ -1,0 +1,11 @@
+.root {
+  display: inline-block;
+  border-bottom: 1px solid currentColor;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--coal);
+    color: var(--white);
+  }
+}

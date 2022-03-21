@@ -1,11 +1,9 @@
 $gap-tablet-portrait: scale(60px);
 $column-count-tablet-portrait: 4;
-$first-item-column-span-tablet-portrait: 2;
 
 :export {
   /* stylelint-disable property-no-unknown */
   column-count-tablet-portrait: $column-count-tablet-portrait;
-  first-item-column-span-tablet-portrait: $first-item-column-span-tablet-portrait;
   gap-tablet-portrait: $gap-tablet-portrait;
   /* stylelint-enable */
 }

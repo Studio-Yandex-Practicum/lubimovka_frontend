@@ -1,4 +1,8 @@
 .root {
   margin-top: scale(16px);
   grid-area: filter;
+
+  @media (max-width: $tablet-portrait) {
+    margin-top: scale(64px);
+  }
 }
