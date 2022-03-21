@@ -155,7 +155,7 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
               <PersonCardList>
                 {sectionPersons.items && sectionPersons.items.map(item => (
                   <PersonCard
-                    key={item.id}
+                    key={item.slug}
                     participant
                     image={item.image}
                     name={`${item.first_name} ${item.last_name}`}
