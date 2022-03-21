@@ -3,6 +3,9 @@
 /* eslint-disable */
 
 export type AuthorList = {
-    readonly id: number;
+    /**
+     * Формируется автоматически, может быть изменен вручную
+     */
+    slug: string;
     readonly name: string;
-}
+};
