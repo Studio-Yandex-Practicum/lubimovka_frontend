@@ -8,7 +8,10 @@ import type { Play } from './Play';
 import type { SocialNetwork } from './SocialNetwork';
 
 export type AuthorRetrieve = {
-    readonly id: number;
+    /**
+     * Формируется автоматически, может быть изменен вручную
+     */
+    slug: string;
     readonly name: string;
     readonly city: string;
     quote: string;
@@ -20,4 +23,4 @@ export type AuthorRetrieve = {
     plays: Array<Play>;
     other_plays: Array<OtherPlayLinks>;
     image: string;
-}
+};

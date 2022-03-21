@@ -3,7 +3,10 @@
 /* eslint-disable */
 
 export type AuthorSearch = {
-    readonly id: number;
+    /**
+     * Формируется автоматически, может быть изменен вручную
+     */
+    slug: string;
     readonly name: string;
     readonly first_letter: string;
-}
+};
