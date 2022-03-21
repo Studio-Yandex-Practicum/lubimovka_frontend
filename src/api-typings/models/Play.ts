@@ -11,8 +11,8 @@ export type Play = {
     readonly id: number;
     name: string;
     authors: Array<AuthorForPlay>;
-    city?: string | null;
-    year?: number | null;
+    city?: string;
+    year?: number;
     url_download: string;
-    url_reading?: string | null;
+    url_reading?: string;
 }

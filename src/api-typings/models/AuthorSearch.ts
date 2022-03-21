@@ -4,9 +4,9 @@
 
 export type AuthorSearch = {
     /**
-     * Если не заполнено, будет сформировано автоматически
+     * Формируется автоматически, может быть изменен вручную
      */
-    slug?: string;
+    slug: string;
     readonly name: string;
     readonly first_letter: string;
 }

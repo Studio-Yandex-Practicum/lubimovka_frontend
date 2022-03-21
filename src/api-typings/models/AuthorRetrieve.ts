@@ -9,9 +9,9 @@ import type { SocialNetwork } from './SocialNetwork';
 
 export type AuthorRetrieve = {
     /**
-     * Если не заполнено, будет сформировано автоматически
+     * Формируется автоматически, может быть изменен вручную
      */
-    slug?: string;
+    slug: string;
     readonly name: string;
     readonly city: string;
     quote: string;
