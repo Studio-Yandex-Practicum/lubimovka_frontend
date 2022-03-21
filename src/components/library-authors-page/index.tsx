@@ -9,7 +9,7 @@ import useWindowDimensions from './useWindowDimensions';
 import styles from './index.module.css';
 
 export interface IAuthorInfo {
-  id: number;
+  slug: string;
   name: string;
 }
 

@@ -20,7 +20,7 @@ CardDefault.args = {
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
     authors: [{
-      id: 1,
+      slug: 'Ekaterina_Avgustenyak',
       name: 'Екатерина Августеняк',
     }],
   },
@@ -38,15 +38,15 @@ PlayCardWithMultipleAuthors.args = {
     linkDownload: 'https://lubimovka.ru/',
     authors: [
       {
-        id: 1,
+        slug: 'Ekaterina_Avgustenyak',
         name: 'Екатерина Августеняк',
       },
       {
-        id: 2,
+        slug: 'Anton_Chehov',
         name: 'Антон Чехов',
       },
       {
-        id: 3,
+        slug: 'Vasiliy_Kostryakov',
         name: 'Василий Косотрясов',
       },
     ],
@@ -64,7 +64,7 @@ PlayCardWithVisibleButtons.args = {
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
     authors: [{
-      slug: 1,
+      slug: 'Ekaterina_Avgustenyak',
       name: 'Екатерина Августеняк',
     }],
   },
@@ -79,7 +79,7 @@ PlayCardWithHiddenCityAndYear.args = {
     linkView: 'https://lubimovka.ru/',
     linkDownload: 'https://lubimovka.ru/',
     authors: [{
-      slug: 1,
+      slug: 'Ekaterina_Avgustenyak',
       name: 'Екатерина Августеняк',
     }],
   },

@@ -130,7 +130,7 @@ export const main: IMain = {
         authors: [
           {
             name: 'Екатерина Августеняк',
-            id: 0
+            slug: 'Ekaterina_Avgustenyak'
           }
         ],
         city: 'Санкт-Петербург',
@@ -144,7 +144,7 @@ export const main: IMain = {
         authors: [
           {
             name: 'Екатерина Августеняк',
-            id: 0
+            slug: 'Ekaterina_Avgustenyak'
           }
         ],
         city: 'Санкт-Петербург',
@@ -158,7 +158,7 @@ export const main: IMain = {
         authors: [
           {
             name: 'Екатерина Августеняк',
-            id: 0
+            slug: 'Ekaterina_Avgustenyak'
           }
         ],
         city: 'Санкт-Петербург',
@@ -172,7 +172,7 @@ export const main: IMain = {
         authors: [
           {
             name: 'Екатерина Августеняк',
-            id: 0
+            slug: 'Ekaterina_Avgustenyak'
           }
         ],
         city: 'Санкт-Петербург',

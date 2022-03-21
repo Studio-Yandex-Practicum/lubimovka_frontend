@@ -61,7 +61,7 @@ export type Play = {
 
 export type PlayAuthor = {
   name: string,
-  slug: number
+  slug: string
 }
 
 export type Person = {
