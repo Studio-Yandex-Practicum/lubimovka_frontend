@@ -1,5 +1,6 @@
 .item {
   display: block;
+  margin: scale(10px) 0;
 
   @media (max-width: $tablet-portrait) {
     display: flex;
