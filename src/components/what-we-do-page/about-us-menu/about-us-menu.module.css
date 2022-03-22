@@ -1,0 +1,5 @@
+.menu {
+  @mixin hideScrollbar;
+
+  overflow: auto;
+}
