@@ -2,7 +2,7 @@ import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import cn from 'classnames/bind';
 
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
-import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
+// import { formatDate, formatTime } from 'shared/helpers/formatDateServerData';
 import { PaginatedAfishaEventListOutputList } from 'api-typings';
 import { visibility } from 'shared/helpers/visibility';
 import { getFetcherEventsRegular } from '../utils/fetchData';
@@ -19,7 +19,7 @@ export const RegularEvents: FC<PaginatedAfishaEventListOutputList> = (props) => 
 
   const [events, setEvents] = useState(results);
   const eventsRef = useRef<HTMLElement>(null);
- 
+
   const handlerScroll = useCallback(() => {
     if (!events || events.length >= Number(count)) {
       return;
@@ -28,7 +28,7 @@ export const RegularEvents: FC<PaginatedAfishaEventListOutputList> = (props) => 
       return;
     }
     isLoading = true;
-    fetchEvents().then(r => { 
+    fetchEvents().then(r => {
       setEvents([...(events || []), ...(r.results || []) ]);
       isLoading = false;
     });
@@ -46,8 +46,8 @@ export const RegularEvents: FC<PaginatedAfishaEventListOutputList> = (props) => 
       {events?.map((event) => (
         <AnnouncedPlayCard
           key={event.id}
-          formattedDate={formatDate(event.date_time)}
-          formattedTime={formatTime(event.date_time)}
+          formattedDate={''}
+          formattedTime={''}
           title={event.event_body.project_title}
           team={event.event_body.team}
           buttonLink={event.url}

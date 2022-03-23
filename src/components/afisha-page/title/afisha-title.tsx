@@ -22,21 +22,27 @@ export const AfishaTitle: FC<IAfishaTitle> = ({ festival_status, description, in
         {festival_status ? 'Афиша фестиваля' : 'Афиша событий'}
       </h1>
 
-      {festival_status &&
-        <div className={cx('discussionInfo')}>
-          <Icon glyph="asterisk"/>
-          <p className={cx('discussion')}>
-            {asterisk_text}
-          </p>
-        </div>
-      )}
+      {festival_status
+        && (
+          <div className={cx('discussionInfo')}>
+            <Icon glyph="asterisk"/>
+            <p className={cx('discussion')}>
+              {asterisk_text}
+            </p>
+          </div>
+        )
+      }
       <div className={cx('entranceInfo')}>
         <p className={cx('info')}>
           {description}
         </p>
 
-        {festival_status &&
-          <p className={cx('info')}>{info_registration}</p>
+        {festival_status
+          && (
+            <p className={cx('info')}>
+              {info_registration}
+            </p>
+          )
         }
       </div>
     </section>
