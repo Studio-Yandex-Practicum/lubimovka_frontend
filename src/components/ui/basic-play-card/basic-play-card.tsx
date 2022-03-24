@@ -3,6 +3,7 @@ import cn from 'classnames/bind';
 
 import { Button } from '../button';
 import { InfoLink } from '../info-link';
+import { AuthorForPlay } from 'api-typings';
 
 import styles from './basic-play-card.module.css';
 
@@ -15,16 +16,11 @@ export interface IBasicPlayCardProps {
     title: string;
     city?: string;
     year?: number;
-    linkView: string;
+    linkView?: string;
     linkDownload: string;
-    authors: Author [];
+    authors: AuthorForPlay[];
   };
   buttonVisibility?: boolean;
-}
-
-type Author = {
-  slug: string,
-  name: string,
 }
 
 export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
@@ -59,18 +55,22 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
           {play.title}
         </h6>
         <div>
-          <Button
-            className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
-            width="100%"
-            size="l"
-            view="primary"
-            iconPlace="right"
-            icon="arrow-45"
-            label="Смотреть читку"
-            border="top"
-            isLink
-            href={play.linkView}
-          />
+          {
+            play.linkView && (
+              <Button
+                className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
+                width="100%"
+                size="l"
+                view="primary"
+                iconPlace="right"
+                icon="arrow-45"
+                label="Смотреть читку"
+                border="top"
+                isLink
+                href={play.linkView}
+              />
+            )
+          }
           <Button
             className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
             width="100%"
@@ -87,12 +87,12 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       </div>
       <dl className={cx('info')}>
         {authorsHiddenLabel}
-        {play.authors.map((i) => (
-          <dd className={cx('author', play.authors.length > 1 && 'authorMultiple')} key={i.slug}>
+        {play.authors.map((item, i) => (
+          <dd className={cx('author', play.authors.length > 1 && 'authorMultiple')} key={item.slug + i}>
             <InfoLink
               isOutsideLink={false}
-              href={`/library/authors/${i.slug}`}
-              label={i.name}
+              href={`/library/authors/${item.slug}`}
+              label={item.name}
               size="l"
               className={cx('author', play.authors.length > 1 && 'authorMultiple')}
             />
