@@ -21,7 +21,7 @@ export const MainShortList: FC<IMainShortList>= ({ title, items }) => (
             title: item.name,
             city: item.city,
             year: item.year,
-            linkView: '#',
+            linkView: item.url_download,
             linkDownload: '#',
             authors: item.authors,
           }}
