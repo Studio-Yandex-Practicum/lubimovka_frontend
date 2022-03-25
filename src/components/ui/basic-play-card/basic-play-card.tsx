@@ -3,7 +3,6 @@ import cn from 'classnames/bind';
 
 import { Button } from '../button';
 import { InfoLink } from '../info-link';
-import { AuthorForPlay } from 'api-typings';
 
 import styles from './basic-play-card.module.css';
 
@@ -18,9 +17,14 @@ export interface IBasicPlayCardProps {
     year?: number;
     readingUrl?: string;
     downloadUrl: string;
-    authors: AuthorForPlay[];
+    authors: Author[];
   };
   buttonVisibility?: boolean;
+}
+
+type Author = {
+  slug: string,
+  name: string,
 }
 
 export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
