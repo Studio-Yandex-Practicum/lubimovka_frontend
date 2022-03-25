@@ -16,8 +16,8 @@ export interface IBasicPlayCardProps {
     title: string;
     city?: string;
     year?: number;
-    linkView?: string;
-    linkDownload: string;
+    readingUrl?: string;
+    downloadUrl: string;
     authors: AuthorForPlay[];
   };
   buttonVisibility?: boolean;
@@ -56,7 +56,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
         </h6>
         <div>
           {
-            play.linkView && (
+            play.readingUrl && (
               <Button
                 className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
                 width="100%"
@@ -67,7 +67,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
                 label="Смотреть читку"
                 border="top"
                 isLink
-                href={play.linkView}
+                href={play.readingUrl}
               />
             )
           }
@@ -81,7 +81,7 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             label="Скачать пьесу"
             border="top"
             isLink
-            href={play.linkDownload}
+            href={play.downloadUrl}
           />
         </div>
       </div>
