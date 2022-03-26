@@ -1,0 +1,34 @@
+@import "./press-release-layout.vars.module";
+
+.root {
+  display: grid;
+  padding: scale(0 $page-margin-tablet-portrait scale(220px));
+  background-color: var(--white);
+  grid-template-areas:
+    "title    cover"
+    "filter   filter"
+    "subtitle subtitle"
+    "content  content";
+  grid-template-columns: 1fr calc(scale(720px) - $page-margin-tablet-portrait);
+}
+
+.title {
+  grid-area: title;
+}
+
+.cover {
+  grid-area: cover;
+}
+
+.filter {
+  margin: scale(32px) 0 scale(64px);
+  grid-area: filter;
+}
+
+.year {
+  max-width: scale(148px);
+}
+
+.download {
+  max-width: scale(418px);
+}

@@ -1,0 +1,8 @@
+@import "../press-release-layout.vars.module";
+
+.root {
+  position: relative;
+  height: scale(268px);
+  margin-right: calc(-1 * $page-margin-tablet-portrait);
+  grid-area: cover;
+}
