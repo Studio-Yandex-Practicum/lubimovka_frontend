@@ -79,11 +79,10 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
                 title: play.name,
                 city: play.city,
                 year: play.year,
-                linkView: play.url_reading,
-                linkDownload: play.url_download,
+                readingUrl: play.url_reading,
+                downloadUrl: play.url_download,
                 authors: play.authors
               }}
-              buttonVisibility
             />
           </Section>
         </PerformanceLayout.Play>
