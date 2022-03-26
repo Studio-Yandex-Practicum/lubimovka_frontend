@@ -29,11 +29,6 @@
   }
 }
 
-.buttonVisible {
-  opacity: 1;
-  visibility: visible;
-}
-
 .container:hover .buttonCustom {
   opacity: 1;
   visibility: visible;
