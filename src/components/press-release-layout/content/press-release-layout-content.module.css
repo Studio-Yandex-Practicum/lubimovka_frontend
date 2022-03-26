@@ -1,0 +1,5 @@
+.root {
+  max-width: scale(840px);
+  margin: 0 auto;
+  grid-area: content;
+}
