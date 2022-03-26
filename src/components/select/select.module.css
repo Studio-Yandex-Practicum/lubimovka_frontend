@@ -34,8 +34,8 @@
     top: 50%;
     right: scale(8px);
     display: block;
-    width: scale(25px);
-    height: scale(25px);
+    width: scale(20px);
+    height: scale(20px);
     background-color: var(--coal);
     background-color: currentColor;
     content: '';
