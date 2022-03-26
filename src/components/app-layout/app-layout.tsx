@@ -117,7 +117,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
           )}
           <Footer.Address>
             <span>
-              Площадка «8/3»
+              «8/3»
             </span>
             Москва,
             {'\n'}
