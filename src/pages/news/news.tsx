@@ -80,7 +80,11 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           Новости
         </PageTitle>
         <Filter className={cx('filter')}>
-          <Filter.Field className={cx('month-field')}>
+          <Filter.Field
+            className={cx('month-field')}
+            caption="Выберите месяц"
+            hiddenCaption
+          >
             <Select
               placeholder="Месяц"
               options={monthOptions}
@@ -88,7 +92,11 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
               onChange={handleMonthChange}
             />
           </Filter.Field>
-          <Filter.Field className={cx('year-field')}>
+          <Filter.Field
+            className={cx('year-field')}
+            caption="Выберите год"
+            hiddenCaption
+          >
             <Select
               placeholder="Год"
               options={yearOptions}
