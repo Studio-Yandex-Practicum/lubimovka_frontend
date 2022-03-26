@@ -1,8 +1,8 @@
 const express = require('express');
 const next = require('next');
-const { createProxyMiddleware } = require('http-proxy-middleware');
 
-const { apiPath } = require('./src/shared/constants/api-path');
+const { apiPath } = require('../src/shared/constants/api-path');
+const { apiProxy } = require('./middlewares/api-proxy');
 
 const environment = process.env.NODE_ENV || 'development';
 const port = parseInt(process.env.PORT, 10) || 3000;
@@ -15,23 +15,20 @@ app
   .then(() => {
     const server = express();
 
-    const apiBaseUrl = process.env.API_BASE_URL || (environment === 'development' && 'https://stage.dev.lubimovka.ru/api/v1') || '';
-
-    server.get('/privacy-policy', (request, response) => {
+    server.get('/privacy-policy', function (request, response) {
       // TODO: исправить путь к файлу, когда он появится
       response.sendFile(__dirname + '/privacy-policy.pdf');
     });
 
-    server.use(
-      apiPath,
-      createProxyMiddleware({
-        target: apiBaseUrl,
-        pathRewrite: {
-          [`^${apiPath}`]: '/',
-        },
-        changeOrigin: true,
-      }),
-    );
+    server.get('/press-releases/:year/download', function (request, response, next) {
+      const targetUrl = `${apiPath}/info/press-releases/${request.params.year}/download/`;
+
+      request.url = targetUrl;
+      request.originalUrl = targetUrl;
+      next();
+    });
+
+    server.use(apiPath, apiProxy);
 
     server.all('*', (req, res) => handle(req, res));
 
