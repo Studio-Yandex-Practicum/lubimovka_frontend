@@ -78,8 +78,8 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>):
                           title: name,
                           city,
                           year,
-                          linkView: url_reading,
-                          linkDownload: url_download,
+                          readingUrl: url_reading,
+                          downloadUrl: url_download,
                           authors: authors,
                         }}
                       />

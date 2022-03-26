@@ -139,8 +139,8 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
                   title: item.name,
                   city: item.city,
                   year: item.year,
-                  linkView: item.url_reading,
-                  linkDownload: item.url_download,
+                  readingUrl: item.url_reading,
+                  downloadUrl: item.url_download,
                   authors: item.authors,
                 }}
               />

@@ -108,8 +108,8 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
                       title: name,
                       city,
                       year,
-                      linkView: url_reading ? url_reading : '',
-                      linkDownload: url_download ? url_download : '',
+                      readingUrl: url_reading,
+                      downloadUrl: url_download,
                       authors
                     }}
                   />
@@ -139,8 +139,8 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
                     title: name,
                     city,
                     year,
-                    linkView: url_reading ? url_reading : '',
-                    linkDownload: url_download ? url_download : '',
+                    readingUrl: url_reading,
+                    downloadUrl: url_download,
                     authors
                   }}
                 />

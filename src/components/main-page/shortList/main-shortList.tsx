@@ -27,7 +27,6 @@ export const MainShortList: FC<IMainShortList>= ({ title, items }) => (
       {items.map(item => (
         <BasicPlayCard
           play={{
-            id: item.id,
             title: item.name,
             city: item.city,
             year: item.year,
