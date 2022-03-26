@@ -132,17 +132,16 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
                 {data.plays.map((playFromServer: Play) => {
 
                   const play = {
-                    id: playFromServer.id,
                     title: playFromServer.name,
                     city: playFromServer.city,
                     year: playFromServer.year,
-                    linkView: playFromServer.url_reading,
-                    linkDownload: playFromServer.url_download,
+                    readingUrl: playFromServer.url_reading,
+                    downloadUrl: playFromServer.url_download,
                     authors: playFromServer.authors,
                   };
 
                   return (
-                    <BasicPlayCard key={play.id} play={play}/>
+                    <BasicPlayCard key={playFromServer.id} play={play}/>
                   );
                 })}
               </BasicPlayCardList>
@@ -152,17 +151,16 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
               {data.plays.map((playFromServer: Play) => {
 
                 const play = {
-                  id: playFromServer.id,
                   title: playFromServer.name,
                   city: playFromServer.city,
                   year: playFromServer.year,
-                  linkView: playFromServer.url_reading,
-                  linkDownload: playFromServer.url_download,
+                  readingUrl: playFromServer.url_reading,
+                  downloadUrl: playFromServer.url_download,
                   authors: playFromServer.authors,
                 };
 
                 return (
-                  <BasicPlayCard key={play.id} play={play}/>
+                  <BasicPlayCard key={playFromServer.id} play={play}/>
                 );
               })}
 
