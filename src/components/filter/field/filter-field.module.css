@@ -1,7 +1,22 @@
-.root {
+.normal {
   flex: 1;
 
   &:not(:last-child) {
     margin-right: scale(30px);
+  }
+}
+
+.caption {
+  @mixin text;
+
+  display: block;
+  margin-bottom: scale(16px);
+}
+
+.hidden-caption {
+  composes: normal;
+
+  .caption {
+    @mixin visually-hidden;
   }
 }
