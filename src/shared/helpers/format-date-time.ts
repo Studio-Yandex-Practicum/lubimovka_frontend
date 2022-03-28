@@ -22,19 +22,27 @@ const dMMMMYYYY = new DateTimeFormat(LOCALE, {
 
 const mH = new DateTimeFormat(LOCALE, {
   timeZone: TIME_ZONE,
-  hour:'numeric',
-  minute:'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
 });
 
 export const formatDateTime = (dateTime: DateTimeString | Date, formatter: 'dMMMM' | 'dMMMMYYYY' | 'mH') => {
   switch (formatter) {
-  case 'dMMMM':
-    return dMMMM.format(new Date(dateTime));
-  case 'dMMMMYYYY':
-    return dMMMMYYYY.format(new Date(dateTime)).replace(/\s*г\./, '');
-  case 'mH':
-    return mH.format(new Date(dateTime));
-  default:
-    return '';
+    case 'dMMMM':
+      return dMMMM.format(new Date(dateTime));
+    case 'dMMMMYYYY':
+      return dMMMMYYYY.format(new Date(dateTime)).replace(/\s*г\./, '');
+    case 'mH':
+      return mH.format(new Date(dateTime));
+    default:
+      return '';
   }
 };
+
+// TODO: добавить недостающие данные в ответ бекенда
+export const formattedDate = new Date('2021-05-13T01:00:00.000Z').toLocaleDateString('ru-Ru', {
+  month: 'long',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+}).replace(/[^a-zа-яё0-9\s]/, ' ');

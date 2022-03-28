@@ -14,6 +14,7 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
+import { formattedDate } from 'shared/helpers/format-date-time';
 // import { ReviewCarousel } from 'components/review-carousel';
 // import { CritiqueCard } from 'components/critique-card';
 // import { ReviewCard } from 'components/review-card';
@@ -35,14 +36,6 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
     duration,
   } = props;
 
-  // TODO: добавить недостающие данные в ответ бекенда
-  const formattedDate = new Date('2021-05-13T01:00:00.000Z').toLocaleDateString('ru-Ru', {
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-
   return (
     <AppLayout>
       <PerformanceLayout>
@@ -59,7 +52,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         </PerformanceLayout.Headline>
         {video && (
           <PerformanceLayout.Video>
-            <Video src={video}/>
+            <Video src={video} />
           </PerformanceLayout.Video>
         )}
         <PerformanceLayout.Text>
@@ -92,7 +85,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             duration={duration}
             ageLimit={age_limit}
           />
-          <PerformanceCrew crew={team}/>
+          <PerformanceCrew crew={team} />
         </PerformanceLayout.Aside>
         <PerformanceLayout.Gallery>
           <PhotoGallery
