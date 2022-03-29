@@ -20,7 +20,9 @@ const Template: Story = () => {
 
   return (
     <>
-      <button onClick={toggleVisibility}>Открыть лайтбокс</button>
+      <button onClick={toggleVisibility}>
+        Открыть лайтбокс
+      </button>
       <Lightbox
         isOpen={isOpen}
         onClose={toggleVisibility}

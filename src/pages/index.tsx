@@ -67,28 +67,32 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsTy
   }
 
   return (
-    <div className={cx({ 'marginTop': delay })}>
+    <div className={cx({ marginTop: delay })}>
       <AppLayout
         hiddenPartners
         navbarProps={{
           view: displayFirstScreen ? 'expanded': 'normal',
         }}
-        screenImg={first_screen && notEmptyKey(first_screen) &&
-        displayFirstScreen && <div className={cx('background')} style={{ backgroundImage: `url(${first_screen.image})` }}/>}
+        screenImg={first_screen && notEmptyKey(first_screen)
+        && displayFirstScreen && <div className={cx('background')} style={{ backgroundImage: `url(${first_screen.image})` }}/>}
       >
         <>
           <Head>
-            <title>Главная. Любимовка</title>
+            <title>
+              Главная. Любимовка
+            </title>
           </Head>
           <main className={cx('main')}>
             {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
             {news ? <MainAside type="news" {...news}/> : blog ? <MainAside type="blog" {...blog}/> : undefined}
-            <div className={cx({ 'wrapper': news || blog })}>
-              {afisha && notEmptyKey(afisha) &&
-              <MainTitle
-                afisha_today={afisha.afisha_today}
-                description={afisha.description}
-              />}
+            <div className={cx({ wrapper: news || blog })}>
+              {afisha && notEmptyKey(afisha)
+              && (
+                <MainTitle
+                  afisha_today={afisha.afisha_today}
+                  description={afisha.description}
+                />
+              )}
             </div>
             {afisha && notEmpty(afisha.items) && <MainEvents {...afisha}/>}
             {banners && notEmpty(banners.items) && <MainBanners {...banners}/>}

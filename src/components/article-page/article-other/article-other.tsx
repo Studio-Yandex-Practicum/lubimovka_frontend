@@ -23,21 +23,25 @@ export const ArticleOther: React.FC<IArticleOtherProps> = (props) => {
   return (
     <section className={cx('container', { newsListContainer: newsArticle.length > 0 })}>
       <h2 className={cx('sectionTitle', { newsListTitle: newsArticle.length > 0 })}>
-        Другие {blogArticle.length > 0 ? 'записи' : 'новости'}
+        Другие
+        {' '}
+        {blogArticle.length > 0 ? 'записи' : 'новости'}
       </h2>
-      {blogArticle.length > 0 ?
-        <>
-          {blogArticle.map(item => (
-            <BlogCard
-              key={item.id}
-              image={item.image}
-              author={item.author_url_title}
-              heading={item.title}
-              description={item.description}
-              id={item.id}
-            />
-          ))}
-        </> : (
+      {blogArticle.length > 0
+        ? (
+          <>
+            {blogArticle.map(item => (
+              <BlogCard
+                key={item.id}
+                image={item.image}
+                author={item.author_url_title}
+                heading={item.title}
+                description={item.description}
+                id={item.id}
+              />
+            ))}
+          </>
+        ) : (
           // TODO: отрефакторить страницу новости/записи блога. Разделить рендеринг. Избавиться от модальности. Избавиться от нейминга API в компонентах.
           <NewsList
             className={cx('list')}

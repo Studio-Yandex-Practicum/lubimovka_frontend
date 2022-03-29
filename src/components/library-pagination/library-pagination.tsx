@@ -20,7 +20,7 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, 
     el.name.startsWith(letter)) : [], [letter, authors]);
 
   useEffect(() => {
-    letterElement?.parentElement?.scrollIntoView({ 'block': 'nearest', 'behavior': 'smooth' });
+    letterElement?.parentElement?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }, [letterElement]);
 
   return (
@@ -28,7 +28,9 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, 
       <ul style={{ top: top }} className={cn(style.letters, [className])}>
         {letters.map((el, index) => (
           <li key={index} className={cn(style.letter, { [style.letterActive]: letter === el })}>
-            <label htmlFor={el} className={style.label}>{el}</label>
+            <label htmlFor={el} className={style.label}>
+              {el}
+            </label>
             <input
               onClick={(e) => {setLetter(el); setLetterElement(e.target as HTMLInputElement);}}
               type="radio"
@@ -43,16 +45,20 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, 
       <div className={style.authors}>
         <ul className={style.authorsList}>
           {chosenAuthors.length > 0 && chosenAuthors.map((el) => (
-            <li key={el.id} className={style.author}>
-              <InfoLink isOutsideLink={false} href={`/library/authors/${el.id}`} label={el.name} size="l" className={style.link}>
+            <li key={el.slug} className={style.author}>
+              <InfoLink isOutsideLink={false} href={`/library/authors/${el.slug}`} label={el.name} size="l" className={style.link}>
                 {el.name}
               </InfoLink>
             </li>
           ))}
         </ul>
         <div className={style.chosenLetter}>
-          <p className={style.bigLetter}>{letter}</p>
-          <p className={style.authorsQuantity}>{letter && String(chosenAuthors.length)}</p>
+          <p className={style.bigLetter}>
+            {letter}
+          </p>
+          <p className={style.authorsQuantity}>
+            {letter && String(chosenAuthors.length)}
+          </p>
         </div>
       </div>
     </div>

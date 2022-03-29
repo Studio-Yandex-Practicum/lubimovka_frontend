@@ -76,26 +76,29 @@ export const Droplist: FC<IDroplistProps> = (props): JSX.Element => {
         value={type === 'single' && selectedOptions[0] ? selectedOptions[0].text : placeholder || 'Все'}
       />
       <div className={cx('container')}>
-        <ul className={cx('list', {
-          'active': activeDropdown,
-        })}
+        <ul
+          className={cx('list', {
+            active: activeDropdown,
+          })}
         >
-          {options.map(item =>
-            <DroplistItems 
-              key={item.value} 
-              type={type} 
-              selectList={selectedOptions} 
+          {options.map(item => (
+            <DroplistItems
+              key={item.value}
+              type={type}
+              selectList={selectedOptions}
               value={item.text}
               handlerClick={handlerClick}
               counter={item.value}
-            />)}
+            />
+          ))}
         </ul>
-        {selectedOptions.length > 0 && type === 'multiple' && 
-          <ListSelected 
-            selectList={selectedOptions} 
-            activeDropdown={activeDropdown} 
+        {selectedOptions.length > 0 && type === 'multiple' && (
+          <ListSelected
+            selectList={selectedOptions}
+            activeDropdown={activeDropdown}
             handlerDeleteItem={handlerDeleteItem}
-          />}
+          />
+        )}
       </div>
     </div>
   );

@@ -15,7 +15,9 @@ import { WhatWeDoPartner } from 'components/what-we-do-page/partners';
 const Page: NextPage = ({ partners }: InferGetServerSidePropsType<typeof getServerSideProps>):JSX.Element => (
   <AppLayout>
     <Head>
-      <title>{'Что мы делаем? Любимовка'}</title>
+      <title>
+        Что мы делаем? Любимовка
+      </title>
     </Head>
     <main>
       <WhatWeDoHeader/>

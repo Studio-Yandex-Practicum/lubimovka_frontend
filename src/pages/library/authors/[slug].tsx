@@ -29,10 +29,10 @@ const fetchAuthors = async (authorId: string) => {
   return data;
 };
 
-export const getServerSideProps: GetServerSideProps<AuthorRetrieveModel, Record<'id', string>> = async ({ params }) => {
-  const { id: authorId } = params!;
+export const getServerSideProps: GetServerSideProps<AuthorRetrieveModel, Record<'slug', string>> = async ({ params }) => {
+  const { slug: authorSlug } = params!;
 
-  const author = await fetchAuthors(authorId);
+  const author = await fetchAuthors(authorSlug);
 
   if (!author) {
     return {
@@ -74,21 +74,21 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): 
         <AuthorOverview
           props={props}
         />
-        {availablePlays &&
+        {availablePlays && (
           <AuthorPlays
             plays={plays}
           />
-        }
-        {availableAnotherPlays &&
+        )}
+        {availableAnotherPlays && (
           <AnotherPlays
             links={anotherPlays}
           />
-        }
-        {availableNotPinnedLinks &&
+        )}
+        {availableNotPinnedLinks && (
           <AuthorInformation
             links={notPinnedLinks}
           />
-        }
+        )}
         <AuthorRequest/>
       </div>
     </AppLayout>

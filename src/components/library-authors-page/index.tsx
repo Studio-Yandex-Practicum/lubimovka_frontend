@@ -9,7 +9,7 @@ import useWindowDimensions from './useWindowDimensions';
 import styles from './index.module.css';
 
 export interface IAuthorInfo {
-  id: number;
+  slug: string;
   name: string;
 }
 
@@ -39,18 +39,24 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
                 href="/library"
                 current={false}
               >
-                <p className={cn(styles.tabLink)}>Пьесы</p>
+                <p className={cn(styles.tabLink)}>
+                  Пьесы
+                </p>
               </Menu.Item>
               <Menu.Item
                 href="/library/authors"
-                current={true}
+                current
               >
-                <p className={cn(styles.tabLink, styles.active)}>Авторы</p>
+                <p className={cn(styles.tabLink, styles.active)}>
+                  Авторы
+                </p>
               </Menu.Item>
             </Menu>
           </div>
         </div>
-        <h1 className={styles.title}>Библиотека</h1>
+        <h1 className={styles.title}>
+          Библиотека
+        </h1>
         <div className={styles.search}>
           <LibraryForm/>
         </div>
@@ -58,8 +64,8 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors }) => {
           <LibraryPagination
             letters={letters}
             authors={authors}
-            top={width === 728 ? '60px' : width > 0 && width < 728 ?
-              `${ratio}px` : '92px'}
+            top={width === 728 ? '60px' : width > 0 && width < 728
+              ? `${ratio}px` : '92px'}
             className={width > 727 ? styles.paginateBar : undefined}
           />
         </div>

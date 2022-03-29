@@ -115,14 +115,6 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
               </FooterPartnerList>
             </Footer.Partners>
           )}
-          <Footer.Address>
-            <span>
-              Площадка «8/3»
-            </span>
-            Москва,{'\n'}
-            ул. Казакова, 8, стр. 3{'\n'}
-            Метро «Курская»{'\n'}
-          </Footer.Address>
           <Footer.Navigation>
             <Menu type="footer-navigation">
               {footerNavigationItems.map((item, index) => (

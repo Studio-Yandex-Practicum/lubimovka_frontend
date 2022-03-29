@@ -15,12 +15,12 @@ import style from './index.module.css';
 type Data = { plays: Play[], authors: AuthorFromData[] };
 
 type AuthorFromPlay = {
-  id: number,
+  slug: string,
   name: string,
 }
 
 type AuthorFromData = {
-  id: number,
+  slug: number,
   name: string,
   first_letter: string,
 }
@@ -90,9 +90,9 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
       data.authors.reduce((acc:IFilteredAuthors, author:AuthorFromData) => {
         const firstLetter: Letter = author.first_letter;
         if (!acc[firstLetter]) {
-          acc[firstLetter] = { title: firstLetter, data: [{ name: author.name, id: author.id }] };
+          acc[firstLetter] = { title: firstLetter, data: [{ name: author.name, id: author.slug }] };
         } else {
-          acc[firstLetter].data.push({ name: author.name, id: author.id });
+          acc[firstLetter].data.push({ name: author.name, id: author.slug });
         }
         return acc;
       }, {})
@@ -108,7 +108,7 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
           <div className={style.buttonWrapper}>
             <Button
               href="/library"
-              isLink={true}
+              isLink
               label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
               width="max-content"
               icon="arrow-left"
@@ -118,7 +118,9 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
           </div>
           <div className={style.topWrapper}>
             <p className={style.info}>
-              По запросу «{searchQuery}» мы нашли
+              По запросу «
+              {searchQuery}
+              » мы нашли
             </p>
             <div className={style.formWrapper}>
               <LibraryForm/>
@@ -130,17 +132,16 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
                 {data.plays.map((playFromServer: Play) => {
 
                   const play = {
-                    id: playFromServer.id,
                     title: playFromServer.name,
                     city: playFromServer.city,
                     year: playFromServer.year,
-                    linkView: playFromServer.url_reading,
-                    linkDownload: playFromServer.url_download,
+                    readingUrl: playFromServer.url_reading,
+                    downloadUrl: playFromServer.url_download,
                     authors: playFromServer.authors,
                   };
 
                   return (
-                    <BasicPlayCard key={play.id} play={play}/>
+                    <BasicPlayCard key={playFromServer.id} play={play}/>
                   );
                 })}
               </BasicPlayCardList>
@@ -150,17 +151,16 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
               {data.plays.map((playFromServer: Play) => {
 
                 const play = {
-                  id: playFromServer.id,
                   title: playFromServer.name,
                   city: playFromServer.city,
                   year: playFromServer.year,
-                  linkView: playFromServer.url_reading,
-                  linkDownload: playFromServer.url_download,
+                  readingUrl: playFromServer.url_reading,
+                  downloadUrl: playFromServer.url_download,
                   authors: playFromServer.authors,
                 };
 
                 return (
-                  <BasicPlayCard key={play.id} play={play}/>
+                  <BasicPlayCard key={playFromServer.id} play={play}/>
                 );
               })}
 

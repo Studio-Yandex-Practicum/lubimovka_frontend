@@ -25,6 +25,8 @@ const Component = (props: BlogLayoutProps): JSX.Element => {
   );
 };
 
+Component.displayName = 'BlogLayout';
+
 export const BlogLayout = Object.assign(Component, {
   Title: BlogLayoutTitle,
   Filter: BlogLayoutFilter,

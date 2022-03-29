@@ -19,7 +19,7 @@ export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown,
   return (
     <div
       className={cx('container', {
-        'dark': activeDropdown,
+        dark: activeDropdown,
       })}
       onClick={clickActiveDropdown}
     >
@@ -28,8 +28,8 @@ export const ContainerButton: FC<IContainerButtonProps> = ({ cb, activeDropdown,
       </p>
       <Icon
         glyph="arrow-down"
-        fill={activeDropdown ? 'white' : 'black'} 
-        className={cx('iconArrowDown', { 'rotateUp': activeDropdown })}
+        fill={activeDropdown ? 'white' : 'black'}
+        className={cx('iconArrowDown', { rotateUp: activeDropdown })}
       />
     </div>
   );

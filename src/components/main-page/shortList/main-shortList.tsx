@@ -17,12 +17,11 @@ export const MainShortList: FC<IMainShortList>= ({ title, items }) => (
       {items.map((item: Play) => (
         <BasicPlayCard
           play={{
-            id: item.id,
             title: item.name,
             city: item.city,
             year: item.year,
-            linkView: item.url_download,
-            linkDownload: '#',
+            readingUrl: item.url_reading,
+            downloadUrl: item.url_download,
             authors: item.authors,
           }}
           key={item.id}

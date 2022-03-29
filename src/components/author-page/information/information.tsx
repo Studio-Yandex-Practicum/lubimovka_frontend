@@ -16,11 +16,13 @@ export const AuthorInformation: FC<IAuthorInformation> = ({ links }) => {
 
   return (
     <section className={cx('information')}>
-      <h2 className={cx('heading')}>Публикации и другие материалы</h2>
+      <h2 className={cx('heading')}>
+        Публикации и другие материалы
+      </h2>
       <div className={cx('blocksInfo')}>
         {links
           .sort((link1, link2) => link1.order_number - link2.order_number)
-          .map((item, idx) =>
+          .map((item, idx) => (
             <div className={cx('anchorHeading')} key={idx}>
               <InfoLink
                 label={item.name}
@@ -32,7 +34,7 @@ export const AuthorInformation: FC<IAuthorInformation> = ({ links }) => {
                 iconClassName={cx('anchor')}
               />
             </div>
-          )
+          ))
         }
       </div>
     </section>

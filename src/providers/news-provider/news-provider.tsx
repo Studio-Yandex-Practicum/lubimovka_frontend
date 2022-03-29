@@ -3,8 +3,9 @@ import { objectToQueryString } from '@funboxteam/diamonds';
 
 import { SelectOption } from 'components/select';
 import { fetcher } from 'shared/fetcher';
-import { omitEmptyProperties } from 'shared/helpers/omit-empty-properties';
 import { useDidMountEffect } from 'shared/hooks/use-did-mount-effect';
+import { omit } from 'shared/helpers/omit';
+import { isNil } from 'shared/helpers/is-nil';
 import { NewsContext } from './news-provider.context';
 import { entriesPerPage } from 'shared/constants/news';
 import { PaginatedNewsItemListList, NewsItemList } from 'api-typings';
@@ -77,13 +78,13 @@ export const NewsProvider: FC = (props) => {
   const [filterWasChanged, setFilterWasChanged] = useState(false);
   const [pending, setPending] = useState(false);
 
-  const fetchNews = async ()  => {
-    const params = omitEmptyProperties({
+  const fetchNews = async () => {
+    const params = omit({
       offset: news.offset,
       limit: entriesPerPage,
       month: selectedMonthOption?.value,
       year: selectedYearOption?.value,
-    });
+    }, isNil);
     let response;
 
     try {

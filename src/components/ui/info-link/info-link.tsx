@@ -53,31 +53,38 @@ export const InfoLink: FC<ILinkProps> = (props) => {
 
   const linkChildren = (
     <React.Fragment>
-      {iconPlace === 'left' && icon && <Icon className={cx(iconClassName)} glyph={icon}/>}
-      {<span className={cx('label', [iconPlace])}>{label}</span>}
-      {iconPlace === 'right' && icon && <Icon className={cx(iconClassName)} glyph={icon}/>}
+      {iconPlace === 'left' && icon && (
+        <Icon className={cx(iconClassName)} glyph={icon}/>
+      )}
+      <span className={cx('label', [iconPlace])}>
+        {label}
+      </span>
+      {iconPlace === 'right' && icon && (
+        <Icon className={cx(iconClassName)} glyph={icon}/>
+      )}
     </React.Fragment>
   );
 
   return (
-    !isOutsideLink &&
-    <Link href={href}>
+    !isOutsideLink ? (
+      <Link href={href}>
+        <a
+          className={classes}
+          {...restLinkProps}
+        >
+          {linkChildren}
+        </a>
+      </Link>
+    ) : (
       <a
+        href={href}
         className={classes}
         {...restLinkProps}
+        rel="noopener noreferrer"
+        target="_blank"
       >
         {linkChildren}
       </a>
-    </Link>
-    ||
-    <a
-      href={href}
-      className={classes}
-      {...restLinkProps}
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      {linkChildren}
-    </a>
+    )
   );
 };

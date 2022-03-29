@@ -69,7 +69,9 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
   return (
     <>
       <Head>
-        <title>{data.title}</title>
+        <title>
+          {data.title}
+        </title>
       </Head>
       <main>
         <ArticleTitle
@@ -85,13 +87,29 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
           {data.contents.map((item, idx) => {
             switch (item.content_type) {
             case 'preamble':
-              return (<h6 key={idx}>{item.content_item.preamble}</h6>);
+              return (
+                <h6 key={idx}>
+                  {item.content_item.preamble}
+                </h6>
+              );
             case 'title':
-              return (<h4 key={idx}>{item.content_item.title}</h4>);
+              return (
+                <h4 key={idx}>
+                  {item.content_item.title}
+                </h4>
+              );
             case 'quote':
-              return (<blockquote key={idx}>{item.content_item.quote}</blockquote>);
+              return (
+                <blockquote key={idx}>
+                  {item.content_item.quote}
+                </blockquote>
+              );
             case 'text':
-              return (<p key={idx}>{item.content_item.text}</p>);
+              return (
+                <p key={idx}>
+                  {item.content_item.text}
+                </p>
+              );
             case 'imagesblock':
               return (
                 <ImageSlider className={cx('imagesblock')} key={idx}>
@@ -110,41 +128,44 @@ export const ArticlePage: FC<IArticlePageProps> = (props: IArticlePageProps) => 
           })}
         </ArticleMainText>
 
-        {sectionPlays &&
+        {sectionPlays && (
           <Section type={'plays'} title={sectionPlays.title || ''} className={cx('sectionPlaysList')}>
             <BasicPlayCardList>
-              {sectionPlays.items &&
-              sectionPlays.items.map((item) => (
-                <BasicPlayCard
-                  key={item.id}
-                  play={{
-                    title: item.name,
-                    city: item.city,
-                    year: item.year,
-                    linkView: item.url_reading,
-                    linkDownload: item.url_download,
-                    authors: item.authors,
-                  }}
-                />
-              ))}
+              {sectionPlays.items
+            && sectionPlays.items.map((item) => (
+              <BasicPlayCard
+                key={item.id}
+                play={{
+                  title: item.name,
+                  city: item.city,
+                  year: item.year,
+                  readingUrl: item.url_reading,
+                  downloadUrl: item.url_download,
+                  authors: item.authors,
+                }}
+              />
+            ))}
             </BasicPlayCardList>
           </Section>
-        }
+        )}
 
-        {sectionPersons &&
-          <Section type={'persons'} title={sectionPersons.title || ''} className={cx('sectionPersonsList')}>
-            <PersonCardList>
-              {sectionPersons.items && sectionPersons.items.map(item =>
-                <PersonCard
-                  key={item.id}
-                  participant={true}
-                  image={item.image}
-                  name={`${item.first_name} ${item.last_name}`}
-                  about={convertRolesToString(item.roles)}
-                />
-              )}
-            </PersonCardList>
-          </Section>}
+        {sectionPersons
+          && (
+            <Section type={'persons'} title={sectionPersons.title || ''} className={cx('sectionPersonsList')}>
+              <PersonCardList>
+                {sectionPersons.items && sectionPersons.items.map(item => (
+                  <PersonCard
+                    key={item.slug}
+                    participant
+                    image={item.image}
+                    name={`${item.first_name} ${item.last_name}`}
+                    about={convertRolesToString(item.roles)}
+                  />
+                )
+                )}
+              </PersonCardList>
+            </Section>
+          )}
         <ArticleShare
           isBlog={'other_blogs' in data}
           authors={authors}

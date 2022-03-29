@@ -9,4 +9,4 @@ export type AuthorSearch = {
     slug: string;
     readonly name: string;
     readonly first_letter: string;
-}
+};

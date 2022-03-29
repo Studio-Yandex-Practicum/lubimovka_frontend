@@ -68,7 +68,9 @@ const Library = ({ errorCode, pieces, years, programs }:
     <LibraryFiltersProvider value={filterState}>
       <AppLayout>
         <Head>
-          <title>Библиотека</title>
+          <title>
+            Библиотека
+          </title>
         </Head>
         <LibraryPage
           isLoading={isLoading}

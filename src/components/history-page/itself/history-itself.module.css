@@ -130,7 +130,9 @@
   .contentBottom {
     flex-direction: column;
     justify-content: center;
+    margin-right: auto;
     margin-bottom: 36px;
+    margin-left: auto;
   }
 
   .image {

@@ -23,4 +23,4 @@ export type AuthorRetrieve = {
     plays: Array<Play>;
     other_plays: Array<OtherPlayLinks>;
     image: string;
-}
+};

@@ -1,11 +1,9 @@
-import type { IMainAfisha } from 'components/main-page/events/main-events.props';
 import type { MainBanners, MainBlog, MainFirstScreen, MainNews, MainPlaces, MainShortList, MainVideoArchive } from 'api-typings';
 
 interface IMain {
   first_screen?: MainFirstScreen;
   blog?: MainBlog;
   news?: MainNews;
-  afisha?: IMainAfisha;
   banners?: MainBanners;
   short_list?: MainShortList;
   places?: MainPlaces;
@@ -61,38 +59,6 @@ export const main: IMain = {
       },
     ]
   },
-  afisha: {
-    description: 'На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации.',
-    title: 'Афиша событий',
-    button_label: 'Полная афиша',
-    items: [
-      {
-        date_time: '2021-12-25T13:01',
-        event_body: {
-          id: 1,
-          name: 'Мимо',
-          description: 'Домашний намерение исполнять засунуть. Горький пробовать роскошный легко мера ребятишки.',
-          team: [
-            {
-              name: 'Драматург',
-              persons: ['Фаина Захаров'],
-            },
-            {
-              name: 'Режиссёр',
-              persons: ['Фёкла Захаров'],
-            }
-          ],
-          project_title: null,
-          image: '/public/images/main/performance_mama.jpg'
-        },
-        id: 1,
-        paid: true,
-        place: 'Москва',
-        type: 'READING',
-        url: 'https://www.youtube.com/watch?v=GsRNuncp2hM',
-      }
-    ]
-  },
   banners: {
     items: [
       {
@@ -130,7 +96,7 @@ export const main: IMain = {
         authors: [
           {
             name: 'Екатерина Августеняк',
-            id: 0
+            slug: 'Ekaterina_Avgustenyak'
           }
         ],
         city: 'Санкт-Петербург',
@@ -144,7 +110,7 @@ export const main: IMain = {
         authors: [
           {
             name: 'Екатерина Августеняк',
-            id: 0
+            slug: 'Ekaterina_Avgustenyak'
           }
         ],
         city: 'Санкт-Петербург',
@@ -158,7 +124,7 @@ export const main: IMain = {
         authors: [
           {
             name: 'Екатерина Августеняк',
-            id: 0
+            slug: 'Ekaterina_Avgustenyak'
           }
         ],
         city: 'Санкт-Петербург',
@@ -172,7 +138,7 @@ export const main: IMain = {
         authors: [
           {
             name: 'Екатерина Августеняк',
-            id: 0
+            slug: 'Ekaterina_Avgustenyak'
           }
         ],
         city: 'Санкт-Петербург',

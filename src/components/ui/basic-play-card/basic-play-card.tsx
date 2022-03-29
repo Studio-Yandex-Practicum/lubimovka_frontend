@@ -11,39 +11,43 @@ const cx  = cn.bind(styles);
 export interface IBasicPlayCardProps {
   type?: 'performance';
   play: {
-    id?: number;
     title: string;
     city?: string;
     year?: number;
-    linkView: string;
-    linkDownload: string;
-    authors: Author [];
+    readingUrl?: string;
+    downloadUrl: string;
+    authors: Author[];
   };
-  buttonVisibility?: boolean;
 }
 
 type Author = {
-  id: number,
+  slug: string,
   name: string,
 }
 
-export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
+export const BasicPlayCard: FC<IBasicPlayCardProps> = ({ play }) => {
   const {
-    play,
-    buttonVisibility,
-  } = props;
+    title,
+    city,
+    year,
+    readingUrl,
+    downloadUrl,
+    authors
+  } = play;
 
   const authorsHiddenLabel = (
     <React.Fragment>
-      {
-        play.authors.length > 1 ?
-          (<dt className={cx('hiddenText')}>
-          Авторы:
-          </dt>)
-          :
-          (<dt className={cx('hiddenText')}>
-          Автор:
-          </dt>)
+      {authors.length > 1
+        ? (
+          <dt className={cx('hiddenText')}>
+            Авторы:
+          </dt>
+        )
+        :          (
+          <dt className={cx('hiddenText')}>
+            Автор:
+          </dt>
+        )
       }
     </React.Fragment>
   );
@@ -53,22 +57,28 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
       className={cx('card')}
     >
       <div className={cx('container')}>
-        <h6 className={cx('title')}>{play.title}</h6>
+        <h6 className={cx('title')}>
+          {title}
+        </h6>
         <div>
+          {
+            readingUrl && (
+              <Button
+                className={cx('buttonCustom')}
+                width="100%"
+                size="l"
+                view="primary"
+                iconPlace="right"
+                icon="arrow-45"
+                label="Смотреть читку"
+                border="top"
+                isLink
+                href={readingUrl}
+              />
+            )
+          }
           <Button
-            className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
-            width="100%"
-            size="l"
-            view="primary"
-            iconPlace="right"
-            icon="arrow-45"
-            label="Смотреть читку"
-            border="top"
-            isLink
-            href={play.linkView}
-          />
-          <Button
-            className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
+            className={cx('buttonCustom')}
             width="100%"
             size="l"
             view="primary"
@@ -77,40 +87,44 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             label="Скачать пьесу"
             border="top"
             isLink
-            href={play.linkDownload}
+            href={downloadUrl}
           />
         </div>
       </div>
       <dl className={cx('info')}>
         {authorsHiddenLabel}
-        {play.authors.map((i) => (
-          <dd className={cx('author', play.authors.length > 1 && 'authorMultiple')} key={i.id}>
+        {authors.map((i) => (
+          <dd className={cx('author', authors.length > 1 && 'authorMultiple')} key={i.slug}>
             <InfoLink
               isOutsideLink={false}
-              href={`/library/authors/${i.id}`}
+              href={`/library/authors/${i.slug}`}
               label={i.name}
               size="l"
-              className={cx('author', play.authors.length > 1 && 'authorMultiple')}
+              className={cx('author', authors.length > 1 && 'authorMultiple')}
             />
           </dd>
         )
         )}
-        {play.city && <>
-          <dt className={cx('hiddenText')}>
-            Город:
-          </dt>
-          <dd className={cx('city')}>
-            {play.city}
-          </dd>
-        </>}
-        {play.year && <>
-          <dt className={cx('hiddenText')}>
-            Год:
-          </dt>
-          <dd className={cx('year')}>
-            {play.year}
-          </dd>
-        </>}
+        {city && (
+          <>
+            <dt className={cx('hiddenText')}>
+              Город:
+            </dt>
+            <dd className={cx('city')}>
+              {city}
+            </dd>
+          </>
+        )}
+        {year && (
+          <>
+            <dt className={cx('hiddenText')}>
+              Год:
+            </dt>
+            <dd className={cx('year')}>
+              {year}
+            </dd>
+          </>
+        )}
       </dl>
     </article>
   );

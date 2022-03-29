@@ -20,7 +20,9 @@ export const MainAside: FC<IMainAside> = ({ type, title, items }) => (
   <section className={cx('container')}>
     <aside className={cx('aside')}>
       <div className={cx('heading')}>
-        <h2 className={cx('title')}>{title}</h2>
+        <h2 className={cx('title')}>
+          {title}
+        </h2>
         <div className={cx('buttonContainer')}>
           <Button
             label="Все записи"
@@ -38,11 +40,11 @@ export const MainAside: FC<IMainAside> = ({ type, title, items }) => (
       </div>
 
       <ul className={cx('list')}>
-        {items &&
-          items.map((item) => (
-            <li key={item.id} className={cx('item')}>
-              {
-                type === 'blog' ?
+        {items && items.map((item) => (
+          <li key={item.id} className={cx('item')}>
+            {
+              type === 'blog'
+                ? (
                   <BlogCard
                     image={item.image}
                     author={item.author_url_title}
@@ -50,14 +52,17 @@ export const MainAside: FC<IMainAside> = ({ type, title, items }) => (
                     description={item.description}
                     id={item.id}
                   />
-                  : <MainNews
+                )
+                : (
+                  <MainNews
                     id={item.id}
                     title={item.title}
                     description={item.description}
                     pub_date={item.pub_date}
-                  />}
-            </li>
-          ))}
+                  />
+                )}
+          </li>
+        ))}
       </ul>
     </aside>
   </section>

@@ -24,13 +24,13 @@ export const MainBanners: FC<IMainBanners> = ({ items }) => (
                 <p className={cx('desc')}>
                   {item.description}
                 </p>
-                <Button 
+                <Button
                   label={item.button}
-                  iconPlace="left" 
-                  icon="arrow-right" 
+                  iconPlace="left"
+                  icon="arrow-right"
                   gap="4px"
                   border="bottomLeft"
-                  isLink={true}
+                  isLink
                   href={item.url}
                   className={cx('button')}
                   target="_blank"
@@ -38,7 +38,7 @@ export const MainBanners: FC<IMainBanners> = ({ items }) => (
               </div>
               <Link href={item.url}>
                 <a className={cx('link')} target="_blank">
-                  <Image 
+                  <Image
                     src={item.image}
                     alt={item.title}
                     width={486}

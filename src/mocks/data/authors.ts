@@ -2,19 +2,19 @@ import { AuthorList } from 'api-typings';
 
 const authors: AuthorList[] = [
   {
-    id: 1,
+    slug: 'Ekaterina_Avgustenyak',
     name: 'Августеняк Екатерина',
   },
   {
-    id: 2,
+    slug: 'Alexandrin_Egor',
     name: 'Александрин Егор',
   },
   {
-    id: 3,
+    slug: 'Borisov_Boris',
     name: 'Борисов Борис',
   },
   {
-    id: 4,
+    slug: 'Fedorov_Fyodor',
     name: 'Фёдоров Фёдор',
   },
 ];

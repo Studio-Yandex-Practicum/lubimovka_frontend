@@ -1,10 +1,8 @@
-@import "../blog-entry-list.vars.module";
-
 .root {
   display: block;
   align-self: start;
 
-  &:first-child {
-    grid-column: 1 / span $first-item-column-span-tablet-portrait;
+  &:not(:last-child) {
+    margin-bottom: scale(48px);
   }
 }

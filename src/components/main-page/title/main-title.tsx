@@ -14,11 +14,21 @@ export interface IMainTitle {
 }
 
 export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
-  const templateTitle = afisha_today ?
-    <h1 className={cx('title')}>
-      Афиша на сегодня, <br/> {formatDateTime(new Date(), 'dMMMM')}
-    </h1> : 
-    <h1 className={cx('title')}>Афиша <br/> событий</h1>;
+  const templateTitle = afisha_today
+    ? (
+      <h1 className={cx('title')}>
+        Афиша на сегодня,
+        <br/>
+        {formatDateTime(new Date(), 'dMMMM')}
+      </h1>
+    )
+    : (
+      <h1 className={cx('title')}>
+        Афиша
+        <br/>
+        событий
+      </h1>
+    );
 
   return (
     <section className={cx('section')}>
@@ -38,7 +48,7 @@ export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
           />
         </div>
         <p className={cx('desc', {
-          'margin': afisha_today
+          margin: afisha_today
         })}
         >
           {description}

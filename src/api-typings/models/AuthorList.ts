@@ -8,4 +8,4 @@ export type AuthorList = {
      */
     slug: string;
     readonly name: string;
-}
+};

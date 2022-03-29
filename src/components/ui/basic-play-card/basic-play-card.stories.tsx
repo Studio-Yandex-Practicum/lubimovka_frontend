@@ -13,75 +13,67 @@ const Template: ComponentStory<typeof BasicPlayCard> = (args) => <BasicPlayCard 
 export const CardDefault = Template.bind({});
 CardDefault.args = {
   play: {
-    id: 1,
     title: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
     year: 2020,
-    linkView: 'https://lubimovka.ru/',
-    linkDownload: 'https://lubimovka.ru/',
+    readingUrl: 'https://lubimovka.ru/',
+    downloadUrl: 'https://lubimovka.ru/',
     authors: [{
-      id: 1,
+      slug: 'Ekaterina_Avgustenyak',
       name: 'Екатерина Августеняк',
     }],
   },
-  buttonVisibility: false,
 };
 
 export const PlayCardWithMultipleAuthors = Template.bind({});
 PlayCardWithMultipleAuthors.args = {
   play: {
-    id: 2,
     title: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
     year: 2020,
-    linkView: 'https://lubimovka.ru/',
-    linkDownload: 'https://lubimovka.ru/',
+    readingUrl: 'https://lubimovka.ru/',
+    downloadUrl: 'https://lubimovka.ru/',
     authors: [
       {
-        id: 1,
+        slug: 'Ekaterina_Avgustenyak',
         name: 'Екатерина Августеняк',
       },
       {
-        id: 2,
+        slug: 'Anton_Chehov',
         name: 'Антон Чехов',
       },
       {
-        id: 3,
+        slug: 'Vasiliy_Kostryakov',
         name: 'Василий Косотрясов',
       },
     ],
   },
-  buttonVisibility: false,
 };
 
 export const PlayCardWithVisibleButtons = Template.bind({});
 PlayCardWithVisibleButtons.args = {
   play: {
-    id: 3,
     title: 'Конкретные разговоры пожилых супругов ни о чём',
     city: 'Санкт-Петербург',
     year: 2020,
-    linkView: 'https://lubimovka.ru/',
-    linkDownload: 'https://lubimovka.ru/',
+    readingUrl: 'https://lubimovka.ru/',
+    downloadUrl: 'https://lubimovka.ru/',
     authors: [{
-      id: 1,
+      slug: 'Ekaterina_Avgustenyak',
       name: 'Екатерина Августеняк',
     }],
   },
-  buttonVisibility: true,
 };
 
 export const PlayCardWithHiddenCityAndYear = Template.bind({});
 PlayCardWithHiddenCityAndYear.args = {
   play: {
-    id: 3,
     title: 'Конкретные разговоры пожилых супругов ни о чём',
-    linkView: 'https://lubimovka.ru/',
-    linkDownload: 'https://lubimovka.ru/',
+    readingUrl: 'https://lubimovka.ru/',
+    downloadUrl: 'https://lubimovka.ru/',
     authors: [{
-      id: 1,
+      slug: 'Ekaterina_Avgustenyak',
       name: 'Екатерина Августеняк',
     }],
   },
-  buttonVisibility: false,
 };

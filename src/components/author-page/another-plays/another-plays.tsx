@@ -15,11 +15,15 @@ interface IAnotherPlays {
 export const AnotherPlays: FC<IAnotherPlays> = ({ links }) => {
   return (
     <section className={cx('anotherPlays')}>
-      <h2 className={cx('heading')}>Другие пьесы</h2>
+      <h2 className={cx('heading')}>
+        Другие пьесы
+      </h2>
       <ul className={cx('blocks')}>
-        {links.map((item, idx) =>
+        {links.map((item, idx) => (
           <li className={cx('block')} key={idx}>
-            <p className={cx('paragraph')}>{item.name}</p>
+            <p className={cx('paragraph')}>
+              {item.name}
+            </p>
             <a className={cx('downloadButton')} href={item.link} download>
               <Button
                 size="l"
@@ -30,7 +34,7 @@ export const AnotherPlays: FC<IAnotherPlays> = ({ links }) => {
               />
             </a>
           </li>
-        )}
+        ))}
       </ul>
     </section>
   );

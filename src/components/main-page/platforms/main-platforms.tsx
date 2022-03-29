@@ -29,7 +29,7 @@ export const MainPlatforms: FC<MainPlaces> = ({ items }) => (
             {card.description}
           </p>
           <InfoLink
-            isOutsideLink={true}
+            isOutsideLink
             label={card.address}
             icon="arrow-right"
             iconPlace="right"

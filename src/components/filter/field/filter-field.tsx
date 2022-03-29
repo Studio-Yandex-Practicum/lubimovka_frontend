@@ -4,23 +4,37 @@ import classNames from 'classnames/bind';
 import styles from './filter-field.module.css';
 
 interface FilterFieldProps {
+  caption: string
   children: ReactNode
+  hiddenCaption?: boolean
   className?: string
 }
 
 const cx = classNames.bind(styles);
 
 export const FilterField = (props: FilterFieldProps): JSX.Element => {
-  const { children, className } = props;
+  const {
+    caption,
+    children,
+    hiddenCaption,
+    className,
+  } = props;
 
   return (
     <div
       className={cx(
-        'root',
+        hiddenCaption ? 'hidden-caption' : 'normal',
         className,
       )}
     >
-      {children}
+      <label>
+        <span className={cx('caption')}>
+          {caption}
+        </span>
+        <div className={cx('control')}>
+          {children}
+        </div>
+      </label>
     </div>
   );
 };

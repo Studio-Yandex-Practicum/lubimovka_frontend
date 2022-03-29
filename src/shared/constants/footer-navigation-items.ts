@@ -37,6 +37,6 @@ export const footerNavigationItems = [
   },
   {
     text: 'Для прессы',
-    href: '/for-press',
+    href: '/press-releases',
   },
 ];

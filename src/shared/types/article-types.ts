@@ -61,11 +61,11 @@ export type Play = {
 
 export type PlayAuthor = {
   name: string,
-  id: number
+  slug: string
 }
 
 export type Person = {
-  id: number,
+  slug: string,
   created: string,
   modified: string,
   first_name: string,

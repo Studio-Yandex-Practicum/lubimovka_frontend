@@ -16,15 +16,16 @@ export const AuthorRequest: FC = () => {
           className={cx('asterisk')}
           glyph="asterisk"
         />
-        <p className={cx('footnote')}>Это ваша страница? Если вы хотите внести изменения, пожалуйста, напишите
+        <p className={cx('footnote')}>
+          Это ваша страница? Если вы хотите внести изменения, пожалуйста, напишите
           нам на&nbsp;
-        <InfoLink
-          isOutsideLink={true}
-          href="mailto:autors@lubimovka.ru"
-          label="autors@lubimovka.ru"
-          size="l"
-          textDecoration="underline"
-        />
+          <InfoLink
+            isOutsideLink
+            href="mailto:autors@lubimovka.ru"
+            label="autors@lubimovka.ru"
+            size="l"
+            textDecoration="underline"
+          />
         </p>
       </div>
     </section>

@@ -14,10 +14,8 @@ const getDay = (date: string) => Number(getEventDate(date)[0]);
 
 const getStatus = (event: string): boolean => {
   const today = new Date();
-  return getDate(event).getMonth() === today.getMonth()
-    && getDay(event) === today.getDate()
-    || getDay(event) - today.getDate() === 1
-    && today.getHours() >= 12;
+  return getDate(event).getMonth() === (today.getMonth() && getDay(event) === today.getDate())
+    || (getDay(event) - today.getDate() === 1 && today.getHours() >= 12);
 };
 
 const getInfo = (date: string) => {
@@ -59,13 +57,15 @@ export const FestivalDay: FC<IFestivalDayProps> = (props) => {
         <p className={cx('date')}>
           <span className={cx('span')}>
             {day}
-          </span>&nbsp;{month}
+          </span>
+          &nbsp;
+          {month}
         </p>
         <p className={registration}>
           {info}
         </p>
       </div>
-      {plays.map(play =>
+      {plays.map(play => (
         <EventCard
           key={play.id}
           className={cx('event')}
@@ -76,9 +76,9 @@ export const FestivalDay: FC<IFestivalDayProps> = (props) => {
           description={play.description}
           director={play.director}
           playwright={play.playwright}
-          registrationUrl={`${isOpened ? play.registrationUrl : ''}`}
+          registrationUrl={isOpened ? play.registrationUrl : ''}
         />
-      )}
+      ))}
     </section>
   );
 };

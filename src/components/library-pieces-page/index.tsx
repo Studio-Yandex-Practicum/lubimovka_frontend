@@ -53,15 +53,19 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             <Menu type="history">
               <Menu.Item
                 href="/library"
-                current={true}
+                current
               >
-                <p className={cn(styles.tabLink, styles.active)}>Пьесы</p>
+                <p className={cn(styles.tabLink, styles.active)}>
+                  Пьесы
+                </p>
               </Menu.Item>
               <Menu.Item
                 href="/library/authors"
                 current={false}
               >
-                <p className={cn(styles.tabLink)}>Авторы</p>
+                <p className={cn(styles.tabLink)}>
+                  Авторы
+                </p>
               </Menu.Item>
             </Menu>
           </div>
@@ -77,7 +81,9 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
           </div>
         </div>
         <section className={styles.section}>
-          <h1 className={styles.title}>Библиотека</h1>
+          <h1 className={styles.title}>
+            Библиотека
+          </h1>
           <div className={styles.search}>
             <LibraryForm/>
           </div>
@@ -87,10 +93,12 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             </div>
           ) : (
             <div className={styles.pieces}>
-              {!items.length &&
-              <p className={styles.noResult}>
+              {!items.length
+              && (
+                <p className={styles.noResult}>
                   Ничего не найдено. Попробуйте изменить параметры поиска.
-              </p>
+                </p>
+              )
               }
               <BasicPlayCardList>
                 {items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
@@ -100,8 +108,8 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
                       title: name,
                       city,
                       year,
-                      linkView: url_reading ? url_reading : '',
-                      linkDownload: url_download ? url_download : '',
+                      readingUrl: url_reading,
+                      downloadUrl: url_download,
                       authors
                     }}
                   />
@@ -111,10 +119,12 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
           )}
         </section>
         <section className={styles.piecesMobile}>
-          {!items.length &&
-          <p className={styles.noResult}>
+          {!items.length
+          && (
+            <p className={styles.noResult}>
               Ничего не найдено. Попробуйте изменить параметры поиска.
-          </p>
+            </p>
+          )
           }
           {isLoading ? (
             <div className={styles.loaderMobile}>
@@ -129,8 +139,8 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
                     title: name,
                     city,
                     year,
-                    linkView: url_reading ? url_reading : '',
-                    linkDownload: url_download ? url_download : '',
+                    readingUrl: url_reading,
+                    downloadUrl: url_download,
                     authors
                   }}
                 />
@@ -146,7 +156,8 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
             programmes={programmes}
             filterDispatcher={filterDispatcher}
             onCheckResults={handleFiltersClick}
-          /></LibraryFiltersModal>
+          />
+        </LibraryFiltersModal>
       </div>
     </main>
   );

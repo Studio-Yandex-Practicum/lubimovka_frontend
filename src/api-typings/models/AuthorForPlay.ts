@@ -11,4 +11,4 @@ export type AuthorForPlay = {
      * Формируется автоматически, может быть изменен вручную
      */
     slug: string;
-}
+};

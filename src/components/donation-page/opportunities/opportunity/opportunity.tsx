@@ -37,7 +37,9 @@ export const Opportunity: FC<IOpportunityProps> = (props) => {
       <ul className={cx('kickies')}>
         {kickies.map((e,i) => {
           return (
-            <li className={cx('kicky')} key={i}>{e}</li>
+            <li className={cx('kicky')} key={i}>
+              {e}
+            </li>
           );
         })}
       </ul>
