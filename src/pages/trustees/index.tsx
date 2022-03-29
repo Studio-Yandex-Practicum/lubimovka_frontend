@@ -2,7 +2,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 import { AppLayout } from 'components/app-layout';
 import TrusteesSection from 'components/trustees-section/trustees-section';
-import TrusteesPersons from 'components/trustees-persons-list/trustees-persons-list';
+import PersonsList from 'components/persons-list/persons-list';
 import { Sponsor } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
 
@@ -19,7 +19,7 @@ const Trustees = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
     <AppLayout>
       <main>
         <TrusteesSection text={textData}>
-          <TrusteesPersons trustees={trustees}/>
+          <PersonsList persons={trustees}/>
         </TrusteesSection>
       </main>
     </AppLayout>

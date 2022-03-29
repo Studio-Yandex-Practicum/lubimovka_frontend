@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import ArtDirectorateList from 'components/team-page/art-directorate/list';
 import { FestivalTeams } from 'api-typings';
+import PersonsList from '../../../persons-list';
 
 import styles from './art-directorate-section.module.css';
 
@@ -18,7 +18,7 @@ const ArtDirectorateSection: FC<ArtDirectorateSectionProps> = (props) => {
         <h2 className={styles.title}>
           Арт-дирекция фестиваля
         </h2>
-        <ArtDirectorateList cards={cards}/>
+        <PersonsList persons={cards}/>
       </div>
     </section>
   );
