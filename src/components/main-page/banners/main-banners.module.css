@@ -27,7 +27,7 @@
 
   position: sticky;
   z-index: 1;
-  top: 0;
+  top: calc(var(--scale) * 62);
   box-sizing: border-box;
   padding: scale(20px 480px 20px 50px);
   background-color: var(--beige);

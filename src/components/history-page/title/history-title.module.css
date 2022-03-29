@@ -5,7 +5,7 @@
 
 .image {
   position: sticky;
-  top: 0;
+  top: calc(var(--scale) * 62);
   width: 45.83vw;
   height: 612px;
   margin-right: 4.17vw;
