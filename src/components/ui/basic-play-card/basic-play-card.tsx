@@ -14,8 +14,9 @@ export interface IBasicPlayCardProps {
     title: string;
     city?: string;
     year?: number;
-    readingUrl?: string;
-    downloadUrl: string;
+    // Для полей readingUrl и downloadUrl null лишний, нужно попросить бекендеров убрать nullable у этих полей
+    readingUrl?: string | null;
+    downloadUrl?: string | null;
     authors: Author[];
   };
 }
@@ -61,34 +62,34 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = ({ play }) => {
           {title}
         </h6>
         <div>
-          {
-            readingUrl && (
-              <Button
-                className={cx('buttonCustom')}
-                width="100%"
-                size="l"
-                view="primary"
-                iconPlace="right"
-                icon="arrow-45"
-                label="Смотреть читку"
-                border="top"
-                isLink
-                href={readingUrl}
-              />
-            )
-          }
-          <Button
-            className={cx('buttonCustom')}
-            width="100%"
-            size="l"
-            view="primary"
-            iconPlace="right"
-            icon="arrow-down"
-            label="Скачать пьесу"
-            border="top"
-            isLink
-            href={downloadUrl}
-          />
+          {readingUrl && (
+            <Button
+              className={cx('buttonCustom')}
+              width="100%"
+              size="l"
+              view="primary"
+              iconPlace="right"
+              icon="arrow-45"
+              label="Смотреть читку"
+              border="top"
+              isLink
+              href={readingUrl}
+            />
+          )}
+          {downloadUrl && (
+            <Button
+              className={cx('buttonCustom')}
+              width="100%"
+              size="l"
+              view="primary"
+              iconPlace="right"
+              icon="arrow-down"
+              label="Скачать пьесу"
+              border="top"
+              isLink
+              href={downloadUrl}
+            />
+          )}
         </div>
       </div>
       <dl className={cx('info')}>
