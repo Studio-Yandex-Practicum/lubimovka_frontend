@@ -30,7 +30,14 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, c
         {data.nameDative}
       </h6>
       <div className={cx('photo')}>
-        <Image src={data.photo} alt={data.name} layout="fill" objectFit="cover"/>
+        {data.photo && (
+          <Image
+            src={data.photo}
+            alt={data.name}
+            layout="fill"
+            objectFit="cover"
+          />
+        )}
       </div>
       <dl className={cx('info')}>
         <dt className={cx('hiddenText')}>
