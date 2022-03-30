@@ -17,13 +17,15 @@ import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
 import type { SelectOption } from 'components/select';
 import type { PressRelease } from 'api-typings';
 
+import { usePersistentData } from 'providers/persistent-data-provider';
+
 import styles from 'components/press-release-layout/press-release-layout.module.css';
-import { forPressProps, prPerson } from '../../mocks/data/forPress';
 
 const cx = classNames.bind(styles);
 
 const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
+  const { settings } = usePersistentData();
 
   if ('errorCode' in props) {
     return (
@@ -52,18 +54,19 @@ const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSidePr
     <AppLayout>
       <ForPressHero data={{
         forPressHeroTitle: {
-          title: forPressProps.title,
+          title: 'Для прессы',
         },
         forPressHeroDescription: {
-          description: forPressProps.description,
-          link: forPressProps.link,
+          description: 'Фотографии можно скачать в альбомах на странице фестиваля в Facebook.',
+          link: settings?.pressCenter.facebookGalleryUrl || '',
         },
         prPerson: {
-          name: prPerson.name,
-          nameDative: prPerson.nameDative,
-          email: prPerson.email,
-          role: prPerson.role,
-          photo: prPerson.photo,
+          // TODO: отрефакторить и отобразить процесс получение данных нормально, наапример, добавить
+          name: '',
+          nameDative: settings?.pressCenter.contactPerson || '',
+          email: settings?.pressCenter.contactEmail || '',
+          role: '',
+          photo: settings?.pressCenter.contactPersonPhoto || '',
         }
       }}
       />
