@@ -14,9 +14,8 @@ export interface IBasicPlayCardProps {
     title: string;
     city?: string;
     year?: number;
-    // Для полей readingUrl и downloadUrl null лишний, нужно попросить бекендеров убрать nullable у этих полей
-    readingUrl?: string | null;
-    downloadUrl?: string | null;
+    readingUrl?: string;
+    downloadUrl: string;
     authors: Author[];
   };
 }
@@ -62,45 +61,46 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = ({ play }) => {
           {title}
         </h6>
         <div>
-          {readingUrl && (
-            <Button
-              className={cx('buttonCustom')}
-              width="100%"
-              size="l"
-              view="primary"
-              iconPlace="right"
-              icon="arrow-45"
-              label="Смотреть читку"
-              border="top"
-              isLink
-              href={readingUrl}
-            />
-          )}
-          {downloadUrl && (
-            <Button
-              className={cx('buttonCustom')}
-              width="100%"
-              size="l"
-              view="primary"
-              iconPlace="right"
-              icon="arrow-down"
-              label="Скачать пьесу"
-              border="top"
-              isLink
-              href={downloadUrl}
-            />
-          )}
+          {
+            readingUrl && (
+              <Button
+                className={cx('buttonCustom')}
+                width="100%"
+                size="l"
+                view="primary"
+                iconPlace="right"
+                icon="arrow-45"
+                label="Смотреть читку"
+                border="top"
+                isLink
+                href={readingUrl}
+              />
+            )
+          }
+          <Button
+            className={cx('buttonCustom')}
+            width="100%"
+            size="l"
+            view="primary"
+            iconPlace="right"
+            icon="arrow-down"
+            label="Скачать пьесу"
+            border="top"
+            isLink
+            href={downloadUrl}
+          />
         </div>
       </div>
       <dl className={cx('info')}>
         {authorsHiddenLabel}
-        {authors.map((author) => (
-          <dd className={cx('author', authors.length > 1 && 'authorMultiple')} key={author.slug}>
+        {authors.map((i) => (
+          <dd className={cx('author', authors.length > 1 && 'authorMultiple')} key={i.slug}>
             <InfoLink
-              className={cx('author', authors.length > 1 && 'authorMultiple')}
-              href={`/${author.slug}`}
-              label={author.name}
+              isOutsideLink={false}
+              href={`/library/authors/${i.slug}`}
+              label={i.name}
               size="l"
+              className={cx('author', authors.length > 1 && 'authorMultiple')}
             />
           </dd>
         )
