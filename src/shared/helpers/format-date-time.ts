@@ -22,11 +22,18 @@ const dMMMMYYYY = new DateTimeFormat(LOCALE, {
 
 const mH = new DateTimeFormat(LOCALE, {
   timeZone: TIME_ZONE,
-  hour:'numeric',
-  minute:'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
 });
 
-export const formatDateTime = (dateTime: DateTimeString | Date, formatter: 'dMMMM' | 'dMMMMYYYY' | 'mH') => {
+const YYYYMMMMdmH = new DateTimeFormat(LOCALE, {
+  month: 'long',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+});
+
+export const formatDateTime = (dateTime: DateTimeString | Date, formatter: 'dMMMM' | 'dMMMMYYYY' | 'mH' | 'YYYYMMMMdmH') => {
   switch (formatter) {
   case 'dMMMM':
     return dMMMM.format(new Date(dateTime));
@@ -34,6 +41,8 @@ export const formatDateTime = (dateTime: DateTimeString | Date, formatter: 'dMMM
     return dMMMMYYYY.format(new Date(dateTime)).replace(/\s*г\./, '');
   case 'mH':
     return mH.format(new Date(dateTime));
+  case 'YYYYMMMMdmH':
+    return YYYYMMMMdmH.format(new Date(dateTime)).replace(/[^a-zа-яё0-9\s]/, ' ');
   default:
     return '';
   }

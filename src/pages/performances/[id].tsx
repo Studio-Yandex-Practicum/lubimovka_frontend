@@ -14,6 +14,7 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
+import { formatDateTime } from 'shared/helpers/format-date-time';
 // import { ReviewCarousel } from 'components/review-carousel';
 // import { CritiqueCard } from 'components/critique-card';
 // import { ReviewCard } from 'components/review-card';
@@ -33,16 +34,8 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
     text,
     age_limit,
     duration,
+    events,
   } = props;
-
-  // TODO: добавить недостающие данные в ответ бекенда
-  const formattedDate = new Date('2021-05-13T01:00:00.000Z').toLocaleDateString('ru-Ru', {
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-
   return (
     <AppLayout>
       <PerformanceLayout>
@@ -51,7 +44,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             title={name}
             // TODO: добавить в ответ бекенда недостающие данные
             description=""
-            date={formattedDate}
+            date={formatDateTime(events.date_time, 'YYYYMMMMdmH')}
             ticketsUrl=""
             text={description}
             image={main_image}
