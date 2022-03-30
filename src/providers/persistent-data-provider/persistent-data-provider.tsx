@@ -1,11 +1,13 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { fetcher } from 'shared/fetcher';
-import { AppLayoutDataContext } from './app-layout-data-provider.context';
+import { PersistentDataContext } from './persistent-data-provider.context';
+
+import type { FC } from 'react';
 import { Project, Partner } from 'shared/types';
 import { PaginatedProjectListList, Partner as ApiPartner } from 'api-typings';
 
-export const AppLayoutDataProvider: FC = (props) => {
+export const PersistentDataProvider: FC = (props) => {
   const { children } = props;
   const [projects, setProjects] = useState<Project[] | undefined>();
   const [partners, setPartners] = useState<Partner[] | undefined>();
@@ -50,13 +52,13 @@ export const AppLayoutDataProvider: FC = (props) => {
   }, []);
 
   return (
-    <AppLayoutDataContext.Provider
+    <PersistentDataContext.Provider
       value={{
         projects,
         partners,
       }}
     >
       {children}
-    </AppLayoutDataContext.Provider>
+    </PersistentDataContext.Provider>
   );
 };

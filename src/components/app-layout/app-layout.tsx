@@ -22,7 +22,7 @@ import { footerNavigationItems } from 'shared/constants/footer-navigation-items'
 import { socialLinkItems } from 'shared/constants/social-link-items';
 import { donationPath } from 'shared/constants/donation-path';
 import { participationFormPath } from 'shared/constants/participation-form-path';
-import { useAppLayoutData } from 'providers/app-layout-data-provider';
+import { usePersistentData } from 'providers/persistent-data-provider';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 import * as breakpoints from 'shared/breakpoints.js';
@@ -41,7 +41,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
     navbarProps,
     screenImg,
   } = props;
-  const { projects, partners } = useAppLayoutData();
+  const { projects, partners } = usePersistentData();
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
