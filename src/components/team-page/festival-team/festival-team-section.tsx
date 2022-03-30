@@ -1,6 +1,6 @@
 import React, { FC, useMemo } from 'react';
 
-import TrusteesPersons from 'components/trustees-persons-list';
+import PersonsList from 'components/persons-list';
 import { FestivalTeams } from 'api-typings';
 
 import styles from './festival-team-section.module.css';
@@ -22,7 +22,7 @@ const FestivalTeamSection: FC<FestivalTeamSectionProps> = (props) => {
         <h2 className={styles.title}>
           Команда фестиваля
         </h2>
-        <TrusteesPersons trustees={selectedCards}/>
+        <PersonsList persons={selectedCards}/>
       </div>
     </section>
   );
