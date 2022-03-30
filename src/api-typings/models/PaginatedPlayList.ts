@@ -9,4 +9,4 @@ export type PaginatedPlayList = {
     next?: string | null;
     previous?: string | null;
     results?: Array<Play>;
-}
+};

@@ -4,9 +4,9 @@
   "description": "Фронтенд проекта «Любимовка»",
   "scripts": {
     "postinstall": "next telemetry disable",
-    "dev": "node server.js",
+    "dev": "node server",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node server",
     "lint:js": "next lint",
     "lint:css": "stylelint **/*.css --cache --allow-empty-input --fix",
     "type-check": "node scripts/type-check.js",

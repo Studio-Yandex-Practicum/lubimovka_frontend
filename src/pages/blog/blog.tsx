@@ -107,7 +107,11 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
         </BlogLayout.CallToAction>
         <BlogLayout.Filter>
           <Filter>
-            <Filter.Field className={cx('month-field')}>
+            <Filter.Field
+              className={cx('month-field')}
+              caption="Выберите месяц"
+              hiddenCaption
+            >
               <Select<number>
                 placeholder="Месяц"
                 options={monthOptions}
@@ -115,7 +119,11 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                 onChange={handleMonthChange}
               />
             </Filter.Field>
-            <Filter.Field className={cx('year-field')}>
+            <Filter.Field
+              className={cx('year-field')}
+              caption="Выберите месяц"
+              hiddenCaption
+            >
               <Select<number>
                 placeholder="Год"
                 options={yearOptions}

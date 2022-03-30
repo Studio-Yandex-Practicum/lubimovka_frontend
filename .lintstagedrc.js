@@ -1,7 +1,11 @@
+const path = require('path');
+
+const buildEslintCommand = (filenames) =>
+  `next lint --file ${filenames
+    .map((f) => path.relative(process.cwd(), f))
+    .join(' --file ')}`;
+
 module.exports = {
-  '*.css': () => 'stylelint **/*.css --cache --allow-empty-input --fix',
-  '**/*.(ts|js)?(x)': (filenames) =>
-    `next lint --fix --file ${filenames
-      .map((file) => file.split(process.cwd())[1])
-      .join(' --file ')}`,
+  '*.css': 'stylelint **/*.css --cache --allow-empty-input --fix',
+  '*.{js,jsx,ts,tsx}': [buildEslintCommand],
 }

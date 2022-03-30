@@ -10,4 +10,4 @@ export type Volunteers = {
     year: number;
     review_title?: string;
     review_text?: string;
-}
+};

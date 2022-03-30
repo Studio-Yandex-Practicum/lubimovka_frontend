@@ -144,5 +144,6 @@
 .link {
   display: flex;
   width: min-content;
+  color: inherit;
   text-decoration: none;
 }
