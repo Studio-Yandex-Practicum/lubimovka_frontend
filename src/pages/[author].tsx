@@ -12,7 +12,7 @@ import { AuthorInformation } from 'components/author-page/information';
 import { AuthorRequest } from 'components/author-page/request';
 import { AuthorRetrieve as AuthorRetrieveModel } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
-import { zero } from '../../../shared/constants/numbers';
+import { zero } from '../shared/constants/numbers';
 
 import styles from 'components/author-page/author.module.css';
 
@@ -29,8 +29,8 @@ const fetchAuthors = async (authorId: string) => {
   return data;
 };
 
-export const getServerSideProps: GetServerSideProps<AuthorRetrieveModel, Record<'slug', string>> = async ({ params }) => {
-  const { slug: authorSlug } = params!;
+export const getServerSideProps: GetServerSideProps<AuthorRetrieveModel, Record<'author', string>> = async ({ params }) => {
+  const { author: authorSlug } = params!;
 
   const author = await fetchAuthors(authorSlug);
 
