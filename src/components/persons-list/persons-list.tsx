@@ -17,12 +17,11 @@ const PersonsList: FC<PersonsListProps> = ({ persons }) => {
       {persons.map((person) => (
         <li key={person.id} className={style.personsListItem}>
           <PersonCard
-            participant={true}
+            participant
             image={person.person.image}
             about={person.position}
             name={`${person.person.first_name} ${person.person.last_name}`}
-          >
-          </PersonCard>
+          />
         </li>
       ))}
     </ul>
