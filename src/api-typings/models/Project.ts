@@ -19,4 +19,4 @@ export type Project = {
     readonly contents: Array<BaseContent>;
     readonly created: string;
     readonly modified: string;
-}
+};

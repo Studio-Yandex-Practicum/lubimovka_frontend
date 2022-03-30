@@ -5,4 +5,4 @@
 export type ProgramType = {
     readonly pk: number;
     name: string;
-}
+};

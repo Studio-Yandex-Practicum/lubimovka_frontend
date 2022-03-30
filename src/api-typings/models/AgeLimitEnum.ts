@@ -2,4 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type ButtonEnum = 'TICKETS' | 'DETAILS' | 'READ';
+export type AgeLimitEnum = 0 | 6 | 12 | 13 | 16 | 17 | 18;

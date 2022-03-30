@@ -10,4 +10,4 @@ export type MainFirstScreen = {
     url_title: string;
     url: string;
     image: string;
-}
+};

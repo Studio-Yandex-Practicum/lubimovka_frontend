@@ -8,4 +8,4 @@ export type Sponsor = {
     readonly id: number;
     person: Persons;
     position: string;
-}
+};

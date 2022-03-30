@@ -21,4 +21,6 @@ export type Participation = {
      * Файл в одно из форматов ('doc', 'docx', 'txt', 'odt', 'pdf')
      */
     file: string;
-}
+    readonly exported_to_google: boolean;
+    readonly saved_to_storage: boolean;
+};

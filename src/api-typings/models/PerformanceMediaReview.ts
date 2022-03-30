@@ -9,4 +9,4 @@ export type PerformanceMediaReview = {
     image: string;
     url?: string | null;
     pub_date?: string | null;
-}
+};

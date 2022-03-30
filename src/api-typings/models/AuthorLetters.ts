@@ -2,5 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type BlankEnum = {
-}
+export type AuthorLetters = {
+    letters: Array<string>;
+};

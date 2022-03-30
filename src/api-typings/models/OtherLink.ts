@@ -13,4 +13,4 @@ export type OtherLink = {
      * Указывается для формирования порядка вывода информации
      */
     order_number: number;
-}
+};
