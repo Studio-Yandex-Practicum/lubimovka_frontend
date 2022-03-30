@@ -26,23 +26,24 @@ const mH = new DateTimeFormat(LOCALE, {
   minute: 'numeric',
 });
 
-export const formatDateTime = (dateTime: DateTimeString | Date, formatter: 'dMMMM' | 'dMMMMYYYY' | 'mH') => {
-  switch (formatter) {
-    case 'dMMMM':
-      return dMMMM.format(new Date(dateTime));
-    case 'dMMMMYYYY':
-      return dMMMMYYYY.format(new Date(dateTime)).replace(/\s*г\./, '');
-    case 'mH':
-      return mH.format(new Date(dateTime));
-    default:
-      return '';
-  }
-};
-
-// TODO: добавить недостающие данные в ответ бекенда
-export const formattedDate = new Date('2021-05-13T01:00:00.000Z').toLocaleDateString('ru-Ru', {
+const YYYYMMMMdmH = new DateTimeFormat(LOCALE, {
   month: 'long',
   day: 'numeric',
   hour: '2-digit',
   minute: '2-digit',
-}).replace(/[^a-zа-яё0-9\s]/, ' ');
+});
+
+export const formatDateTime = (dateTime: DateTimeString | Date, formatter: 'dMMMM' | 'dMMMMYYYY' | 'mH' | 'YYYYMMMMdmH') => {
+  switch (formatter) {
+  case 'dMMMM':
+    return dMMMM.format(new Date(dateTime));
+  case 'dMMMMYYYY':
+    return dMMMMYYYY.format(new Date(dateTime)).replace(/\s*г\./, '');
+  case 'mH':
+    return mH.format(new Date(dateTime));
+  case 'YYYYMMMMdmH':
+    return YYYYMMMMdmH.format(new Date(dateTime)).replace(/[^a-zа-яё0-9\s]/, ' ');
+  default:
+    return '';
+  }
+};

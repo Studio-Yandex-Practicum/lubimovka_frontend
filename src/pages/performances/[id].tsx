@@ -14,7 +14,7 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
-import { formattedDate } from 'shared/helpers/format-date-time';
+import { formatDateTime } from 'shared/helpers/format-date-time';
 // import { ReviewCarousel } from 'components/review-carousel';
 // import { CritiqueCard } from 'components/critique-card';
 // import { ReviewCard } from 'components/review-card';
@@ -34,8 +34,8 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
     text,
     age_limit,
     duration,
+    events,
   } = props;
-
   return (
     <AppLayout>
       <PerformanceLayout>
@@ -44,7 +44,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             title={name}
             // TODO: добавить в ответ бекенда недостающие данные
             description=""
-            date={formattedDate}
+            date={formatDateTime(events.date_time, 'YYYYMMMMdmH')}
             ticketsUrl=""
             text={description}
             image={main_image}
@@ -52,7 +52,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         </PerformanceLayout.Headline>
         {video && (
           <PerformanceLayout.Video>
-            <Video src={video} />
+            <Video src={video}/>
           </PerformanceLayout.Video>
         )}
         <PerformanceLayout.Text>
@@ -84,7 +84,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             duration={duration}
             ageLimit={age_limit}
           />
-          <PerformanceCrew crew={team} />
+          <PerformanceCrew crew={team}/>
         </PerformanceLayout.Aside>
         <PerformanceLayout.Gallery>
           <PhotoGallery
