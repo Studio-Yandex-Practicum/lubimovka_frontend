@@ -11,15 +11,13 @@ const cx  = cn.bind(styles);
 export interface IBasicPlayCardProps {
   type?: 'performance';
   play: {
-    id?: number;
     title: string;
     city?: string;
     year?: number;
-    linkView: string;
-    linkDownload: string;
-    authors: Author [];
+    readingUrl?: string;
+    downloadUrl: string;
+    authors: Author[];
   };
-  buttonVisibility?: boolean;
 }
 
 type Author = {
@@ -27,15 +25,19 @@ type Author = {
   name: string,
 }
 
-export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
+export const BasicPlayCard: FC<IBasicPlayCardProps> = ({ play }) => {
   const {
-    play,
-    buttonVisibility,
-  } = props;
+    title,
+    city,
+    year,
+    readingUrl,
+    downloadUrl,
+    authors
+  } = play;
 
   const authorsHiddenLabel = (
     <React.Fragment>
-      {play.authors.length > 1
+      {authors.length > 1
         ? (
           <dt className={cx('hiddenText')}>
             Авторы:
@@ -56,23 +58,27 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
     >
       <div className={cx('container')}>
         <h6 className={cx('title')}>
-          {play.title}
+          {title}
         </h6>
         <div>
+          {
+            readingUrl && (
+              <Button
+                className={cx('buttonCustom')}
+                width="100%"
+                size="l"
+                view="primary"
+                iconPlace="right"
+                icon="arrow-45"
+                label="Смотреть читку"
+                border="top"
+                isLink
+                href={readingUrl}
+              />
+            )
+          }
           <Button
-            className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
-            width="100%"
-            size="l"
-            view="primary"
-            iconPlace="right"
-            icon="arrow-45"
-            label="Смотреть читку"
-            border="top"
-            isLink
-            href={play.linkView}
-          />
-          <Button
-            className={cx('buttonCustom', buttonVisibility && 'buttonVisible')}
+            className={cx('buttonCustom')}
             width="100%"
             size="l"
             view="primary"
@@ -81,41 +87,41 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = (props) => {
             label="Скачать пьесу"
             border="top"
             isLink
-            href={play.linkDownload}
+            href={downloadUrl}
           />
         </div>
       </div>
       <dl className={cx('info')}>
         {authorsHiddenLabel}
-        {play.authors.map((i) => (
-          <dd className={cx('author', play.authors.length > 1 && 'authorMultiple')} key={i.slug}>
+        {authors.map((i) => (
+          <dd className={cx('author', authors.length > 1 && 'authorMultiple')} key={i.slug}>
             <InfoLink
               isOutsideLink={false}
               href={`/library/authors/${i.slug}`}
               label={i.name}
               size="l"
-              className={cx('author', play.authors.length > 1 && 'authorMultiple')}
+              className={cx('author', authors.length > 1 && 'authorMultiple')}
             />
           </dd>
         )
         )}
-        {play.city && (
+        {city && (
           <>
             <dt className={cx('hiddenText')}>
               Город:
             </dt>
             <dd className={cx('city')}>
-              {play.city}
+              {city}
             </dd>
           </>
         )}
-        {play.year && (
+        {year && (
           <>
             <dt className={cx('hiddenText')}>
               Год:
             </dt>
             <dd className={cx('year')}>
-              {play.year}
+              {year}
             </dd>
           </>
         )}

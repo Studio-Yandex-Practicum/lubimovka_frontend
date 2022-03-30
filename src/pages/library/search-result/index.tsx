@@ -20,7 +20,7 @@ type AuthorFromPlay = {
 }
 
 type AuthorFromData = {
-  slug: number,
+  slug: string,
   name: string,
   first_letter: string,
 }
@@ -43,7 +43,7 @@ interface IAccElem {
 }
 
 interface Author {
-  id: number,
+  slug: string,
   name: string,
 }
 
@@ -90,9 +90,9 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
       data.authors.reduce((acc:IFilteredAuthors, author:AuthorFromData) => {
         const firstLetter: Letter = author.first_letter;
         if (!acc[firstLetter]) {
-          acc[firstLetter] = { title: firstLetter, data: [{ name: author.name, id: author.slug }] };
+          acc[firstLetter] = { title: firstLetter, data: [{ name: author.name, slug: author.slug }] };
         } else {
-          acc[firstLetter].data.push({ name: author.name, id: author.slug });
+          acc[firstLetter].data.push({ name: author.name, slug: author.slug });
         }
         return acc;
       }, {})
@@ -132,17 +132,16 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
                 {data.plays.map((playFromServer: Play) => {
 
                   const play = {
-                    id: playFromServer.id,
                     title: playFromServer.name,
                     city: playFromServer.city,
                     year: playFromServer.year,
-                    linkView: playFromServer.url_reading,
-                    linkDownload: playFromServer.url_download,
+                    readingUrl: playFromServer.url_reading,
+                    downloadUrl: playFromServer.url_download,
                     authors: playFromServer.authors,
                   };
 
                   return (
-                    <BasicPlayCard key={play.id} play={play}/>
+                    <BasicPlayCard key={playFromServer.id} play={play}/>
                   );
                 })}
               </BasicPlayCardList>
@@ -152,17 +151,16 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
               {data.plays.map((playFromServer: Play) => {
 
                 const play = {
-                  id: playFromServer.id,
                   title: playFromServer.name,
                   city: playFromServer.city,
                   year: playFromServer.year,
-                  linkView: playFromServer.url_reading,
-                  linkDownload: playFromServer.url_download,
+                  readingUrl: playFromServer.url_reading,
+                  downloadUrl: playFromServer.url_download,
                   authors: playFromServer.authors,
                 };
 
                 return (
-                  <BasicPlayCard key={play.id} play={play}/>
+                  <BasicPlayCard key={playFromServer.id} play={play}/>
                 );
               })}
 

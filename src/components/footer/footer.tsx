@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
 import { FooterCopyright } from 'components/footer-copyright';
-import { FooterAddress } from './address';
 import { FooterNavigation } from './navigation';
 import { FooterProjects } from './projects';
 import { FooterPartners } from './partners';
@@ -32,7 +31,6 @@ export const Footer = (props: IFooterProps): JSX.Element => {
   );
 };
 
-Footer.Address = FooterAddress;
 Footer.Navigation = FooterNavigation;
 Footer.Projects = FooterProjects;
 Footer.Partners = FooterPartners;
