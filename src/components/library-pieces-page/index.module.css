@@ -70,12 +70,16 @@
 }
 
 .sidebar {
+  @mixin hideScrollbar;
+
   position: sticky;
   z-index: 1;
   top: 0;
   left: auto;
+  max-height: 100vh;
   box-sizing: border-box;
   padding: scale(21px) 0;
+  overflow-y: scroll;
 
   @media (max-width: $tablet-portrait) {
     position: absolute;
