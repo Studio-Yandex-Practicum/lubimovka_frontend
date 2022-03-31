@@ -80,6 +80,7 @@
 
 .noResultMobile {
   display: none;
+  margin: 0;
 
   @media (max-width: $tablet-portrait) {
     @mixin text;
