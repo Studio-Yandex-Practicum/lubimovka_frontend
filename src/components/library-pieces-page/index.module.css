@@ -197,13 +197,10 @@
 
 .loader {
   display: flex;
+  width: 100%;
+  min-height: scale(429px);
   align-items: center;
   justify-content: center;
-  margin-top: scale(50px);
-
-  @media (max-width: $tablet-portrait) {
-    display: none;
-  }
 }
 
 .loaderMobile {
