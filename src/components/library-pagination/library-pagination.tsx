@@ -16,7 +16,7 @@ interface LibraryPaginationProps {
   isLoading: boolean;
 }
 
-const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, authors, className, onChange, isLoading }) => {
+const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, authors, onChange, isLoading }) => {
   const [letter, setLetter] = useState<string>('');
   const [letterElement, setLetterElement] = useState<HTMLInputElement | null>(null);
 
@@ -34,7 +34,7 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, authors, class
 
   return (
     <div className={style.container}>
-      <ul className={cn(style.letters, [className])}>
+      <ul className={cn(style.letters)}>
         {letters.map((el) => (
           <li key={el} className={cn(style.letter, { [style.letterActive]: letter === el })}>
             <label htmlFor={el} className={style.label}>

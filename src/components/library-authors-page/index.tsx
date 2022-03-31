@@ -4,7 +4,6 @@ import cn from 'classnames';
 import { Menu } from 'components/ui/menu';
 import LibraryForm from 'components/library-form';
 import LibraryPagination from 'components/library-pagination';
-import useWindowDimensions from './useWindowDimensions';
 
 import styles from './index.module.css';
 import { useRouter } from 'next/router';
@@ -21,7 +20,6 @@ interface IAuthorsPageProps {
 }
 
 const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors, isLoading }) => {
-  const { width } = useWindowDimensions();
   const router = useRouter();
 
   const changeLetter = (letter:string) => {
@@ -68,7 +66,6 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors, isLoading }) => 
             letters={letters}
             authors={authors}
             onChange={changeLetter}
-            className={width > 727 ? styles.paginateBar : undefined}
           />
         </div>
       </div>
