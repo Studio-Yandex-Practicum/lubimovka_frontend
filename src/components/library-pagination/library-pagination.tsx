@@ -10,14 +10,13 @@ import LibraryPreloader from '../library-pieces-page/library-preloader/library-p
 
 interface LibraryPaginationProps {
   letters: string[];
-  top?: string;
   authors: Array<IAuthorInfo>;
   className?: string;
   onChange: (letter: string) => void;
   isLoading: boolean;
 }
 
-const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, className, onChange, isLoading }) => {
+const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, authors, className, onChange, isLoading }) => {
   const [letter, setLetter] = useState<string>('');
   const [letterElement, setLetterElement] = useState<HTMLInputElement | null>(null);
 
@@ -35,7 +34,7 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, top, authors, 
 
   return (
     <div className={style.container}>
-      <ul style={{ top: top }} className={cn(style.letters, [className])}>
+      <ul className={cn(style.letters, [className])}>
         {letters.map((el) => (
           <li key={el} className={cn(style.letter, { [style.letterActive]: letter === el })}>
             <label htmlFor={el} className={style.label}>
