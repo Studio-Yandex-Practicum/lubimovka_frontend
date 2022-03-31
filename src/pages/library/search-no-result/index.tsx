@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
+import * as breakpoints from 'shared/breakpoints.js';
 import { AppLayout } from 'components/app-layout';
 import { Button } from 'components/ui/button';
-import useWindowDimensions from 'components/library-authors-page/useWindowDimensions';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 import LibraryForm from 'components/library-form/library-form';
 
 import style from '../search-result/index.module.css';
 
 const SearchResult: NextPage = () => {
   const router = useRouter();
-  const { width } = useWindowDimensions();
   const [searchQuery, setSearchQuery] = useState<string | null>('');
 
   useEffect(() => {
@@ -31,6 +31,8 @@ const SearchResult: NextPage = () => {
 
   }, [router]);
 
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`) ?? null;
+
   return (
     <div className={style.pageWrapper}>
       <AppLayout>
@@ -39,7 +41,7 @@ const SearchResult: NextPage = () => {
             <Button
               href={'/library'}
               isLink
-              label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
+              label={isMobile !== null ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
               width={'max-content'}
               icon={'arrow-left'}
               iconPlace={'right'}

@@ -1,6 +1,7 @@
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import { useState, useEffect } from 'react';
 
+import * as breakpoints from 'shared/breakpoints.js';
 import { AppLayout } from 'components/app-layout';
 import { Button } from 'components/ui/button';
 import LibraryForm from 'components/library-form/library-form';
@@ -8,7 +9,7 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import SearchResultAuthors from 'components/search-result-authors/search-result-authors';
 import { fetcher } from 'shared/fetcher';
-import useWindowDimensions from 'components/library-authors-page/useWindowDimensions';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
 import style from './index.module.css';
 
@@ -80,7 +81,6 @@ export const getServerSideProps: GetServerSideProps = async ( { query } ) => {
 };
 
 const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { width } = useWindowDimensions();
   const [searchQuery, setSearchQuery] = useState<string | null>('');
   const [filteredAuthors, setFilteredAuthors] = useState<IAccElem[]>([]);
 
@@ -101,6 +101,8 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
     setSearchQuery(searchParams.get('q'));
   }, [data]);
 
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`) ?? null;
+
   return (
     <div className={style.pageWrapper}>
       <AppLayout>
@@ -109,7 +111,7 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
             <Button
               href="/library"
               isLink
-              label={width < 729 ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
+              label={isMobile !== null ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
               width="max-content"
               icon="arrow-left"
               iconPlace="right"
