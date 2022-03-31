@@ -15,6 +15,7 @@ export interface LibraryTagsMobileProps {
 
 const LibraryTagsMobile: FC <LibraryTagsMobileProps> = ({ programmes, filterDispatcher }) => {
   const filterState = useContext(LibraryFiltersProviderContext);
+  console.log(filterState)
 
   const selectedProgrammes = useMemo(()=> {
     return programmes.filter((tag) => filterState.program.includes(String(tag.pk)));
@@ -31,8 +32,8 @@ const LibraryTagsMobile: FC <LibraryTagsMobileProps> = ({ programmes, filterDisp
 
   return (
     <ul className={styles.programmesList}>
-      {filterState.festival.map((year, idx) => (
-        <li onClick={() => handleYearClick(year)} className={styles.programme} key={idx}>
+      {filterState.festival.map((year) => (
+        <li onClick={() => handleYearClick(year)} className={styles.programme} key={year.value}>
           <Tag label={year.text} selected isIcon/>
         </li>
       ))}
