@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { PressReleaseLayoutTitle } from './title';
 import { PressReleaseLayoutContent } from './content';
 import { PressReleaseLayoutCover } from './cover';
+import { PressReleaseLayoutActions } from './actions';
 
 import type { FC } from 'react';
 
@@ -26,5 +27,6 @@ export const PressReleaseLayout = Object.assign(Component, {
   Title: PressReleaseLayoutTitle,
   Cover: PressReleaseLayoutCover,
   Content: PressReleaseLayoutContent,
+  Actions: PressReleaseLayoutActions,
 });
 
