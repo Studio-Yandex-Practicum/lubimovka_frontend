@@ -1,0 +1,38 @@
+.root {
+  @mixin text;
+  @mixin textLarge;
+
+  big {
+    margin: scale(24px 0);
+    font-size: scale(28px);
+    line-height: scale(32px);
+  }
+
+  p {
+    margin: scale(16px 0);
+  }
+
+  p:not(:first-of-type) {
+    text-indent: scale(16px);
+  }
+
+  h3 {
+    margin: scale(24px 0);
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+  }
+
+  ul {
+    padding: scale(0 0 0 60px);
+    margin: scale(24px 0);
+
+    li {
+      margin: scale(16px 0);
+    }
+  }
+
+  p + h3 {
+    margin-top: scale(64px);
+  }
+}

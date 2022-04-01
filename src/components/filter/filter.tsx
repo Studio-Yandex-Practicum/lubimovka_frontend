@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
 
 import { FilterField } from './field';
-import { FilterActions } from './actions';
 
 import type { PropsWithChildren } from 'react';
 
@@ -30,5 +29,4 @@ Component.displayName = 'Filter';
 
 export const Filter = Object.assign(Component, {
   Field: FilterField,
-  Actions: FilterActions,
 });
