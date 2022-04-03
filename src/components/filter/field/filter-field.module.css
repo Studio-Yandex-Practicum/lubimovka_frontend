@@ -1,4 +1,4 @@
-.normal {
+.regular {
   flex: 1;
 
   &:not(:last-child) {
@@ -11,12 +11,33 @@
 
   display: block;
   margin-bottom: scale(16px);
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(220px);
+    margin-right: scale(16px);
+    margin-bottom: 0;
+    font-size: scale(20px);
+    line-height: scale(24px);
+  }
+}
+
+.label {
+  @media (max-width: $tablet-portrait) {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .hidden-caption {
-  composes: normal;
+  composes: regular;
 
   .caption {
     @mixin visually-hidden;
+  }
+
+  .control {
+    @media (max-width: $tablet-portrait) {
+      flex-grow: 1;
+    }
   }
 }
