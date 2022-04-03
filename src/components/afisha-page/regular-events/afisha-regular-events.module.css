@@ -26,6 +26,7 @@
   @media (max-width: $tablet-portrait) {
     width: inherit;
     padding: calc(var(--scale) * 32) calc(var(--scale) * 27);
+    border-top: 1px solid var(--coal);
     border-right: none;
     margin-bottom: 0;
 

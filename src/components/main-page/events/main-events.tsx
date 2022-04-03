@@ -29,6 +29,7 @@ export const MainEvents: FC<IMainAfisha> = () => {
                 imageUrl={item.event_body.image}
                 project="читка проекта Любимовка.Ещё"
                 paid={item.paid}
+                className={styles.event}
               />
             </li>
           ))}
