@@ -62,7 +62,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsTy
     return items && items.length !== 0;
   }
 
-  function notEmptyKey<T>(items: T) {
+  function notEmptyKey<T>(items: T[]) {
     return Object.keys(items).length !== 0;
   }
 
