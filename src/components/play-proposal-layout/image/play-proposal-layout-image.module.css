@@ -1,6 +1,6 @@
 .image {
   position: sticky;
-  top: calc(var(--scale) * 62);
+  top: calc(var(--scale) * var(--page-header-height));
   width: scale(660px);
   height: 100vh;
 

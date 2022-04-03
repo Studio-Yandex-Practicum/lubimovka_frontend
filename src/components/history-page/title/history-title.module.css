@@ -5,7 +5,7 @@
 
 .image {
   position: sticky;
-  top: calc(var(--scale) * 62);
+  top: calc(var(--scale) * var(--page-header-height));
   width: 45.83vw;
   height: 612px;
   margin-right: 4.17vw;
