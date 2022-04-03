@@ -84,7 +84,7 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsTy
           </Head>
           <main className={cx('main')}>
             {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
-            {news ? <MainAside type="news" {...news}/> : blog ? <MainAside type="blog" {...blog}/> : undefined}
+            {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
             <div className={cx({ wrapper: news || blog })}>
               {afisha && notEmptyKey(afisha)
               && (
