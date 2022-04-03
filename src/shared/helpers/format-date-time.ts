@@ -26,14 +26,14 @@ const mH = new DateTimeFormat(LOCALE, {
   minute: 'numeric',
 });
 
-const YYYYMMMMdmH = new DateTimeFormat(LOCALE, {
+const MMMMdmH = new DateTimeFormat(LOCALE, {
   month: 'long',
   day: 'numeric',
   hour: '2-digit',
   minute: '2-digit',
 });
 
-export const formatDateTime = (dateTime: DateTimeString | Date, formatter: 'dMMMM' | 'dMMMMYYYY' | 'mH' | 'YYYYMMMMdmH') => {
+export const formatDateTime = (dateTime: DateTimeString | Date, formatter: 'dMMMM' | 'dMMMMYYYY' | 'mH' | 'MMMMdmH') => {
   switch (formatter) {
   case 'dMMMM':
     return dMMMM.format(new Date(dateTime));
@@ -41,8 +41,8 @@ export const formatDateTime = (dateTime: DateTimeString | Date, formatter: 'dMMM
     return dMMMMYYYY.format(new Date(dateTime)).replace(/\s*г\./, '');
   case 'mH':
     return mH.format(new Date(dateTime));
-  case 'YYYYMMMMdmH':
-    return YYYYMMMMdmH.format(new Date(dateTime)).replace(/[^a-zа-яё0-9\s]/, ' ');
+  case 'MMMMdmH':
+    return MMMMdmH.format(new Date(dateTime)).replace(/,/, '');
   default:
     return '';
   }
