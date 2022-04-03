@@ -68,6 +68,7 @@ export type { Question } from './models/Question';
 export type { Quote } from './models/Quote';
 export type { Role } from './models/Role';
 export type { SearchResult } from './models/SearchResult';
+export type { Settings } from './models/Settings';
 export type { SocialNetwork } from './models/SocialNetwork';
 export type { Sponsor } from './models/Sponsor';
 export type { TeamEnum } from './models/TeamEnum';

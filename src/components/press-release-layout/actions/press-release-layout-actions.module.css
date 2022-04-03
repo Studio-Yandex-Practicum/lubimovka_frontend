@@ -1,0 +1,4 @@
+.root {
+  align-self: flex-end;
+  grid-area: actions;
+}
