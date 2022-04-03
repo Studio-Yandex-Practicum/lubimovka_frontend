@@ -1,0 +1,48 @@
+.personsList * {
+  box-sizing: border-box;
+}
+
+.personsList img {
+  max-width: 100%;
+}
+
+.personsList {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  row-gap: scale(60px);
+
+  @media (max-width: $tablet-portrait) {
+    overflow: auto;
+    flex-wrap: nowrap;
+    gap: scale(30px);
+  }
+}
+
+.personsListItem {
+  max-width: scale(210px);
+}
+
+.personsListItem:nth-of-type(8n+4),
+.personsListItem:nth-of-type(8n+5) {
+  @media (min-width: $tablet-portrait) {
+    display: flex;
+    min-width: 40%;
+    max-width: 50%;
+    flex-grow: 3;
+    justify-content: center;
+  }
+}
+
+.personsListItem:nth-of-type(8n+1),
+.personsListItem:nth-of-type(8n+2),
+.personsListItem:nth-of-type(8n+6),
+.personsListItem:nth-of-type(8n+7) {
+  @media (min-width: $tablet-portrait) {
+    margin-right: scale(27px);
+  }
+}

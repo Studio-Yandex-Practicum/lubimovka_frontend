@@ -23,11 +23,11 @@ export const FilterField = (props: FilterFieldProps): JSX.Element => {
   return (
     <div
       className={cx(
-        hiddenCaption ? 'hidden-caption' : 'normal',
+        hiddenCaption ? 'hidden-caption' : 'regular',
         className,
       )}
     >
-      <label>
+      <label className={cx('label')}>
         <span className={cx('caption')}>
           {caption}
         </span>

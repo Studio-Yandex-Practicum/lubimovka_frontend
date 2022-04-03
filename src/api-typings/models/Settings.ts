@@ -13,4 +13,4 @@ export type Settings = {
     email_on_author_page: string;
     for_press: ForPress;
     plays_reception_is_open: boolean;
-}
+};
