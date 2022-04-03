@@ -149,10 +149,10 @@
   @mixin hideScrollbar;
 
   position: sticky;
-  top: 30px;
-  max-height: calc(100vh - 30px);
+  top: scale(30px);
+  max-height: scale(calc(100vh - 30px));
   padding: 0;
-  padding-bottom: 30px;
+  padding-bottom: scale(30px);
   margin: 0;
   list-style: none;
   overflow-y: scroll;
