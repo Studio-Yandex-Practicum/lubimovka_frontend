@@ -19,7 +19,7 @@ import { PhotoGallery } from 'components/photo-gallery';
 // import { ReviewCard } from 'components/review-card';
 import { fetcher } from 'shared/fetcher';
 import { Performance as PerformanceModel } from 'api-typings';
-
+import { formatDateTime } from 'shared/helpers/format-date-time';
 const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
   const {
     play,
@@ -88,7 +88,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         </PerformanceLayout.Play>
         <PerformanceLayout.Aside>
           <PerformanceDetails
-            duration={duration}
+            duration={formatDateTime(duration, 'mH')}
             ageLimit={age_limit}
           />
           <PerformanceCrew crew={team}/>
