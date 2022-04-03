@@ -70,7 +70,6 @@ export type { PlayFilters } from './models/PlayFilters';
 export type { PlaysBlock } from './models/PlaysBlock';
 export type { Preamble } from './models/Preamble';
 export type { PressRelease } from './models/PressRelease';
-export type { PRManager } from './models/PRManager';
 export type { ProgramType } from './models/ProgramType';
 export type { Project } from './models/Project';
 export type { ProjectList } from './models/ProjectList';
