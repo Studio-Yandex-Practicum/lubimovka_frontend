@@ -16,8 +16,8 @@ export const AuthorPlays: FC<IAuthorPlays> = ({ plays }) => {
   return (
     <div className={cx('playsContainer')}>
       <ul className={cx('list')}>
-        {plays.map((item, idx) => (
-          <li className={cx('item')} key={idx}>
+        {plays.map((item, index) => (
+          <li className={cx('item')} key={index}>
             <BasicPlayCard play={{
               title: item.name,
               city: item.city,

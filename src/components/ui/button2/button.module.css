@@ -33,6 +33,7 @@ $border-width: 1px;
 
 .icon {
   display: block;
+  flex-shrink: 0;
 }
 
 .icon-left {

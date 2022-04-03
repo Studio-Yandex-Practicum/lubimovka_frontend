@@ -1,5 +1,4 @@
 import { useReducer, useState } from 'react';
-import { NextPage } from 'next';
 import Link from 'next/link';
 
 import { AppLayout } from 'components/app-layout';
@@ -10,8 +9,11 @@ import TextInput from 'components/ui/text-input/text-input';
 import TextArea from 'components/ui/text-area';
 import { Button } from 'components/ui/button';
 import { CallToEmail } from 'components/call-to-email';
+import { usePersistentData } from 'providers/persistent-data-provider';
 import { fetcher } from 'shared/fetcher';
 import { validEmailRegexp } from 'shared/constants/regexps';
+
+import type { NextPage } from 'next';
 
 interface ContactFormFields {
   name: string,
@@ -77,6 +79,7 @@ const contactFormReducer = (state: ContactFormState, action: ContactFormAction) 
 const Contacts: NextPage = () => {
   const [contactFormState, dispatch] = useReducer(contactFormReducer, initialContactFormState);
   const [formSuccessfullySent, setFormSuccessfullySent] = useState(false);
+  const { settings } = usePersistentData();
 
   const {
     name,
@@ -244,14 +247,16 @@ const Contacts: NextPage = () => {
           </ContactsLayout.Form>
         </ContactsLayout.Column>
         <ContactsLayout.Column>
-          <ContactsLayout.CallToEmail>
-            <CallToEmail
-              type="contacts"
-              title="Для авторов"
-              description="Если вы хотите внести изменения в свою страницу: добавить пьесы, ссылки на статьи или публикации, напишите нам. Приложите файлы и ссылки."
-              email="hello@lubimovka.ru"
-            />
-          </ContactsLayout.CallToEmail>
+          {settings?.emailAddresses.forAuthors && (
+            <ContactsLayout.CallToEmail>
+              <CallToEmail
+                type="contacts"
+                title="Для авторов"
+                description="Если вы хотите внести изменения в свою страницу: добавить пьесы, ссылки на статьи или публикации, напишите нам. Приложите файлы и ссылки."
+                email="hello@lubimovka.ru"
+              />
+            </ContactsLayout.CallToEmail>
+          )}
         </ContactsLayout.Column>
       </ContactsLayout>
     </AppLayout>

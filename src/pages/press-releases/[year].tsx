@@ -9,6 +9,7 @@ import { PageTitle } from 'components/page-title';
 import { Filter } from 'components/filter';
 import { Select } from 'components/select';
 import { Button } from 'components/ui/button2';
+import { HTMLMarkup } from 'components/html-markup';
 import { Icon } from 'components/ui/icon';
 import { ForPressHero } from 'components/for-press-hero';
 import { fetcher } from 'shared/fetcher';
@@ -17,13 +18,15 @@ import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
 import type { SelectOption } from 'components/select';
 import type { PressRelease } from 'api-typings';
 
+import { usePersistentData } from 'providers/persistent-data-provider';
+
 import styles from 'components/press-release-layout/press-release-layout.module.css';
-import { forPressProps, prPerson } from '../../mocks/data/forPress';
 
 const cx = classNames.bind(styles);
 
 const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
+  const { settings } = usePersistentData();
 
   if ('errorCode' in props) {
     return (
@@ -52,18 +55,19 @@ const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSidePr
     <AppLayout>
       <ForPressHero data={{
         forPressHeroTitle: {
-          title: forPressProps.title,
+          title: 'Для прессы',
         },
         forPressHeroDescription: {
-          description: forPressProps.description,
-          link: forPressProps.link,
+          description: 'Фотографии можно скачать в альбомах на странице фестиваля в Facebook.',
+          link: settings?.pressCenter.facebookGalleryUrl || '',
         },
         prPerson: {
-          name: prPerson.name,
-          nameDative: prPerson.nameDative,
-          email: prPerson.email,
-          role: prPerson.role,
-          photo: prPerson.photo,
+          // TODO: отрефакторить и отобразить процесс получение данных нормально, наапример, добавить
+          name: '',
+          nameDative: settings?.pressCenter.contactPerson || '',
+          email: settings?.pressCenter.contactEmail || '',
+          role: 'PR-директор фестиваля, координатор по связям со СМИ',
+          photo: settings?.pressCenter.contactPersonPhoto || '',
         }
       }}
       />
@@ -95,27 +99,36 @@ const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSidePr
               onChange={handleYearChange}
             />
           </Filter.Field>
-          <Filter.Actions>
-            <Button
-              icon={(
-                <Icon
-                  glyph="arrow-down"
-                  width="100%"
-                  height="100%"
-                />
-              )}
-              iconPosition="right"
-              border="right-bottom-left"
-              className={cx('download')}
-              href={`/press-releases/${selectedPressReleaseYear}/download`}
-            >
-              {`Скачать пресс-релиз ${selectedPressReleaseYear} года в .pdf`}
-            </Button>
-          </Filter.Actions>
         </Filter>
-        <PressReleaseLayout.Content>
-          {content}
-        </PressReleaseLayout.Content>
+        <PressReleaseLayout.Actions>
+          <Button
+            icon={(
+              <Icon
+                glyph="arrow-down"
+                width="100%"
+                height="100%"
+              />
+            )}
+            iconPosition="right"
+            border="right-bottom-left"
+            href={`/press-releases/${selectedPressReleaseYear}/download`}
+          >
+            Скачать пресс-релиз
+            {' '}
+            <span className={cx('additional-note')}>
+              {`${selectedPressReleaseYear} года`}
+              {' '}
+            </span>
+            в .pdf
+          </Button>
+        </PressReleaseLayout.Actions>
+        {content && (
+          <PressReleaseLayout.Content>
+            <HTMLMarkup
+              markup={content}
+            />
+          </PressReleaseLayout.Content>
+        )}
       </PressReleaseLayout>
     </AppLayout>
   );
