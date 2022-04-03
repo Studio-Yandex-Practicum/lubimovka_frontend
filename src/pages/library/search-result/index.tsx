@@ -101,22 +101,24 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
     setSearchQuery(searchParams.get('q'));
   }, [data]);
 
-  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`) ?? null;
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
   return (
     <div className={style.pageWrapper}>
       <AppLayout>
         <main className ={style.page}>
           <div className={style.buttonWrapper}>
-            <Button
-              href="/library"
-              isLink
-              label={isMobile !== null ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
-              width="max-content"
-              icon="arrow-left"
-              iconPlace="right"
-              border="bottomRight"
-            />
+            {isMobile !== null && (
+              <Button
+                href="/library"
+                isLink
+                label={isMobile ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
+                width="max-content"
+                icon="arrow-left"
+                iconPlace="right"
+                border="bottomRight"
+              />
+            )}
           </div>
           <div className={style.topWrapper}>
             <p className={style.info}>
