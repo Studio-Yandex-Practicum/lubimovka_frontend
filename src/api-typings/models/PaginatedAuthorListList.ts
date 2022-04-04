@@ -9,4 +9,4 @@ export type PaginatedAuthorListList = {
     next?: string | null;
     previous?: string | null;
     results?: Array<AuthorList>;
-}
+};

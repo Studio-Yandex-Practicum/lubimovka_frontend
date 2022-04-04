@@ -6,5 +6,5 @@ import type { EventInBlock } from './EventInBlock';
 
 export type EventsBlock = {
     title: string;
-    readonly items: Array<EventInBlock>;
-}
+    items: Array<EventInBlock>;
+};

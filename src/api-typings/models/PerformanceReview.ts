@@ -8,4 +8,4 @@ export type PerformanceReview = {
     text: string;
     url?: string | null;
     pub_date?: string | null;
-}
+};

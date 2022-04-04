@@ -13,4 +13,4 @@ export type MainAfisha = {
     afisha_today?: boolean;
     description: string;
     items: Array<AfishaEvent>;
-}
+};

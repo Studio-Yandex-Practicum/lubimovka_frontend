@@ -9,4 +9,4 @@ export type PaginatedPerformanceMediaReviewList = {
     next?: string | null;
     previous?: string | null;
     results?: Array<PerformanceMediaReview>;
-}
+};

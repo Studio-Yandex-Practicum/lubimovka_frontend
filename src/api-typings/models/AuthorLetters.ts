@@ -2,7 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type OtherPlayLinks = {
-    name: string;
-    link: string;
-}
+export type AuthorLetters = {
+    letters: Array<string>;
+};

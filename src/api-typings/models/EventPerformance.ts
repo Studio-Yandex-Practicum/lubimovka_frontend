@@ -14,4 +14,4 @@ export type EventPerformance = {
     team: Array<Role>;
     image: string;
     readonly project_title: string;
-}
+};

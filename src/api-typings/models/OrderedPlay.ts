@@ -4,16 +4,10 @@
 
 import type { AuthorForPlay } from './AuthorForPlay';
 
-/**
- * Сериализатор Пьесы.
- */
-export type Play = {
+export type OrderedPlay = {
     readonly id: number;
     name: string;
     authors: Array<AuthorForPlay>;
     city?: string;
-    published?: boolean;
     year?: number;
-    url_download: string;
-    url_reading?: string;
 };

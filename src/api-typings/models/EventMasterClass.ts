@@ -13,4 +13,4 @@ export type EventMasterClass = {
     description: string;
     team: Array<Role>;
     readonly project_title: string;
-}
+};

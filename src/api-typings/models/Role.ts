@@ -11,4 +11,4 @@
 export type Role = {
     name: string;
     readonly persons: Array<string>;
-}
+};

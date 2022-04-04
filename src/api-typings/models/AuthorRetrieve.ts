@@ -3,7 +3,6 @@
 /* eslint-disable */
 
 import type { OtherLink } from './OtherLink';
-import type { OtherPlayLinks } from './OtherPlayLinks';
 import type { Play } from './Play';
 import type { SocialNetwork } from './SocialNetwork';
 
@@ -21,6 +20,6 @@ export type AuthorRetrieve = {
     readonly email: string;
     other_links: Array<OtherLink>;
     plays: Array<Play>;
-    other_plays: Array<OtherPlayLinks>;
+    other_plays: Array<Play>;
     image: string;
 };

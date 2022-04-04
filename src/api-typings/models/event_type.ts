@@ -2,4 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type PartnerTypeEnum = 'general' | 'festival' | 'info';
+export type event_type = 'PERFORMANCE' | 'MASTERCLASS' | 'READING';

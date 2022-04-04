@@ -4,4 +4,4 @@
 
 export type Years = {
     years: Array<number>;
-}
+};

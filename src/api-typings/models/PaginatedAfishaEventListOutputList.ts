@@ -9,4 +9,4 @@ export type PaginatedAfishaEventListOutputList = {
     next?: string | null;
     previous?: string | null;
     results?: Array<AfishaEventListOutput>;
-}
+};

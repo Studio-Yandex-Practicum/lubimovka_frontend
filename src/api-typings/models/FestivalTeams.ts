@@ -11,7 +11,7 @@ export type FestivalTeams = {
     team: TeamEnum;
     position: string;
     /**
-     * Поставьте галочку, чтобы назначить человека PR-менеджером
+     * Поставьте галочку, чтобы назначить человека PR-директором
      */
-    is_pr_manager?: boolean;
-}
+    is_pr_director?: boolean;
+};

@@ -2,7 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { OrderedPlay } from './OrderedPlay';
+
 export type PlaysBlock = {
     title: string;
-    readonly items: Array<string>;
-}
+    items: Array<OrderedPlay>;
+};

@@ -10,4 +10,4 @@ export type BlogItemListOutput = {
     author_url: string;
     author_url_title: string;
     image: string;
-}
+};

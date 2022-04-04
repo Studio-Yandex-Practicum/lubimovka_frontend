@@ -23,4 +23,4 @@ export type Participation = {
     file: string;
     readonly exported_to_google: boolean;
     readonly saved_to_storage: boolean;
-}
+};
