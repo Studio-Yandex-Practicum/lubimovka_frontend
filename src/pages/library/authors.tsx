@@ -53,7 +53,7 @@ const Authors = ({ errorCode, authors, letters }: InferGetServerSidePropsType<ty
           Авторы
         </title>
       </Head>
-      <AuthorsPage letters={letters} authors={a} isLoading={isLoading}/>
+      <AuthorsPage letters={letters} authors={a} isLoading={isLoading} onLetterChange={()=>setIsLoading(true)}/>
     </AppLayout>
   );
 };
