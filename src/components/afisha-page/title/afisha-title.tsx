@@ -5,39 +5,45 @@ import { Icon } from 'components/ui/icon';
 
 import styles from './afisha-title.module.css';
 
-const cx = cn.bind(styles);
-
-interface IAfishaTitle {
-  festival: boolean,
-  title: string,
-  discussion: string,
-  entrance: string,
-  registration: string,
+interface IProps {
+  festivalStatus: boolean;
+  description: string;
+  infoRegistration?: string | undefined;
+  asteriskText?: string | undefined;
+  afishaDates: Array<string>;
 }
 
-export const AfishaTitle: FC<IAfishaTitle> = ({ festival, title, discussion, entrance, registration }) => {
+const cx = cn.bind(styles);
+
+export const AfishaTitle: FC<IProps> = ({ festivalStatus, description, infoRegistration, asteriskText }) => {
   return (
     <section className={cx('section')}>
       <h1 className={cx('title')}>
-        {title}
+        {festivalStatus ? 'Афиша фестиваля' : 'Афиша событий'}
       </h1>
-      {festival && (
-        <div className={cx('discussionInfo')}>
-          <Icon glyph="asterisk"/>
-          <p className={cx('discussion')}>
-            {discussion}
-          </p>
-        </div>
-      )}
+
+      {festivalStatus
+        && (
+          <div className={cx('discussionInfo')}>
+            <Icon glyph="asterisk"/>
+            <p className={cx('discussion')}>
+              {asteriskText}
+            </p>
+          </div>
+        )
+      }
       <div className={cx('entranceInfo')}>
         <p className={cx('info')}>
-          {entrance}
+          {description}
         </p>
-        {festival && (
-          <p className={cx('info')}>
-            {registration}
-          </p>
-        )}
+
+        {festivalStatus
+          && (
+            <p className={cx('info')}>
+              {infoRegistration}
+            </p>
+          )
+        }
       </div>
     </section>
   );

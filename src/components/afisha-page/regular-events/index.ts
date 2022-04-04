@@ -1,1 +1,1 @@
-export * from './afisha-regular-events';
+export * from './regular-events';

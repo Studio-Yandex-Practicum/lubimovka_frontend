@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+}
+
+.date {
+  display: flex;
+
+  @mixin text;
+}
+
+.number {
+  @mixin text;
+  @mixin headline;
+  @mixin headline1;
+}
+
+.month {
+  @mixin text;
+  @mixin headline;
+  @mixin textMedium;
+}
+
+.alignItemsTop {
+  align-items: flex-start;
+}
+
+.alignItemsCenter {
+  align-items: center;
+}
+
+.alignItemsBottom {
+  align-items: baseline;
+}
