@@ -24,10 +24,14 @@
 }
 
 .container {
+  @mixin hideScrollbar;
+
   position: absolute;
   top: 50%;
   left: 50%;
   display: flex;
+  overflow: auto;
+  max-height: 95vh;
   flex-direction: column;
   padding: scale(48px) scale(56px) scale(71px);
   background-color: var(--beige);
