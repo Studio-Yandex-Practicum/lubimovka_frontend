@@ -71,9 +71,9 @@ export const PersistentDataProvider: FC = (props) => {
         forAuthors: response.email_on_author_page,
       },
       pressCenter: {
-        contactPerson: response.for_press.pr_manager.pr_manager_name,
-        contactPersonPhoto: response.for_press.pr_manager.pr_manager_photo_link,
-        contactEmail: response.for_press.pr_manager.pr_manager_email,
+        contactPerson: response.for_press.pr_director.pr_director_name,
+        contactPersonPhoto: response.for_press.pr_director.pr_director_photo_link,
+        contactEmail: response.for_press.pr_director.pr_director_email,
         facebookGalleryUrl: response.for_press.photo_gallery_facebook_link,
       },
       canProposePlay: response.plays_reception_is_open,
