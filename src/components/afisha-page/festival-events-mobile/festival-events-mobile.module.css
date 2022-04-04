@@ -1,0 +1,17 @@
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.sliderContainer {
+  padding: scale(15px);
+}
+
+.sliderItem {
+  width: 100%;
+  text-align: center;
+}
+
+.preloaderContainer {
+  width: 100px;
+}

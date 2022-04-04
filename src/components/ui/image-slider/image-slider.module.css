@@ -9,6 +9,11 @@
   }
 }
 
+.containerSlidesSimple {
+  width: 70%;
+  margin: auto;
+}
+
 .slider {
   @media (max-width: $tablet-portrait) {
     margin-top: scale(19px);
@@ -39,7 +44,9 @@
   width: scale(48px);
   height: scale(48px);
   transform: translateY(-50%);
+}
 
+.arrowImage {
   @media (max-width: $tablet-portrait) {
     position: static;
     display: inline-block;
