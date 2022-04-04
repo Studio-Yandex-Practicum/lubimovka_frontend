@@ -145,7 +145,14 @@
 }
 
 .authorsList {
+  @mixin hideScrollbar;
+
+  position: sticky;
+  top: scale(30px);
+  max-height: scale(calc(100vh - 30px));
   padding: 0;
+  padding-bottom: scale(30px);
   margin: 0;
   list-style: none;
+  overflow-y: auto;
 }
