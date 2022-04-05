@@ -6,6 +6,7 @@
 .letters {
   position: sticky;
   z-index: 1;
+  top: scale(82px);
   display: grid;
   box-sizing: border-box;
   padding: 0 scale(15px);
@@ -24,6 +25,7 @@
   }
 
   @media (max-width: $tablet-portrait) {
+    top: scale(100px);
     border-top: 1px solid var(--coal);
     background-color: var(--white);
     column-gap: scale(23px);
@@ -123,6 +125,16 @@
 
   @media (max-width: $tablet-portrait) {
     margin: scale(56px) 0 0;
+  }
+}
+
+.letterDisabled {
+  cursor: default;
+  opacity: .2;
+  pointer-events: none;
+
+  &:hover {
+    color: var(--coal);
   }
 }
 

@@ -15,11 +15,11 @@
   display: flex;
   max-width: 100%;
   flex-direction: column;
-  padding: 0 scale(225px) scale(130px) scale(180px);
+  padding: 0 scale(30px);
   margin: 0 auto;
 
   @media (max-width: $tablet-portrait) {
-    padding: 0 0 scale(116px) scale(27px);
+    padding: 0 scale(25px);
   }
 }
 

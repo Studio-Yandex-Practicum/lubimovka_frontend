@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useRouter } from 'next/router';
 import classNames from 'classnames/bind';
 
-import { AboutUsMenuLayout } from 'components/what-we-do-page/about-us-menu-layout';
+import { AboutUsMenuItem } from 'components/what-we-do-page/about-us-menu/item';
 import { navbarNavigationItems, INavbar } from 'shared/constants/navbar-navigation-items';
 
 import styles from './about-us-menu.module.css';
@@ -14,17 +14,17 @@ export const AboutUsMenu: FC = (): JSX.Element => {
 
   return (
     <div className={cx('menu')}>
-      <AboutUsMenuLayout>
+      <ul className={cx('menuList')}>
         {navbarNavigationItems.map((list: INavbar) => (
-          <AboutUsMenuLayout.Item
+          <AboutUsMenuItem
             key={list.id}
             href={list.href}
             current={router.asPath === list.href}
           >
             {list.text}
-          </AboutUsMenuLayout.Item>
+          </AboutUsMenuItem>
         ))}
-      </AboutUsMenuLayout>
+      </ul>
     </div>
   );
 };

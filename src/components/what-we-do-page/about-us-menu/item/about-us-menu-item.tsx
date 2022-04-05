@@ -19,7 +19,7 @@ export const AboutUsMenuItem: FC<IAboutUsMenuItemProps> = (props): JSX.Element =
 
   useEffect(() => {
     if (liRef.current && current === true) {
-      liRef.current.scrollIntoView();
+      liRef.current.scrollIntoView(false);
     }
   }, [current]);
 
