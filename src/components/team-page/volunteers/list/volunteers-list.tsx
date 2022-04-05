@@ -8,6 +8,8 @@ import { FeedbackPopup } from 'components/ui/feedback-popup';
 import { Volunteers } from 'api-typings';
 
 import styles from './volunteers-list.module.css';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
+import breakpoints from 'shared/breakpoints';
 
 const cx = classNames.bind(styles);
 
@@ -17,9 +19,9 @@ interface VolunteersCardsProps {
 }
 
 const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
-  const [screenWidth, setScreenWidth] = useState<number | null>(null);
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
-  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
     spacing: 30,
     slidesPerView: 3,
     breakpoints: {
@@ -68,14 +70,6 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
   };
 
   useEffect(() => {
-    setScreenWidth(document.documentElement.clientWidth);
-  }, []);
-
-  useEffect(() => {
-    slider?.refresh();
-  }, [screenWidth, currentYear]);
-
-  useEffect(() => {
     document.addEventListener('keydown', handleEscClose);
     document.addEventListener('mousedown', handleOverlayClose);
     return() =>{
@@ -91,7 +85,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
   }, [isFeedbackPopupOpen]);
   return (
     <>
-      {Number(screenWidth) < 729 && (
+      {isMobile && (
         <div ref={sliderRef} className={cx('keen-slider', [styles.slidesContainer])}>
           {cards.map((card, idx) => (
             <div key={card.id} className="keen-slider__slide">
@@ -107,7 +101,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
         </div>
       )}
 
-      {Number(screenWidth) > 728 && (
+      {!isMobile && (
         <ul className={styles.container}>
           {cards.map((card, idx) => (
             <li key={card.id}>

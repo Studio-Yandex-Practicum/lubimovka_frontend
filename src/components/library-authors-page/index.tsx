@@ -17,13 +17,15 @@ interface IAuthorsPageProps {
   letters: string[];
   authors: Array<IAuthorInfo>;
   isLoading: boolean;
+  onLetterChange: () => void;
 }
 
-const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors, isLoading }) => {
+const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors, isLoading,onLetterChange }) => {
   const router = useRouter();
 
-  const changeLetter = (letter:string) => {
-    router.push(`${router.pathname}/${encodeURI(`?letter=${letter}`) }`,undefined,{ shallow: false });
+  const changeLetter = (letter: string) => {
+    onLetterChange();
+    router.push(`${router.pathname}/${encodeURI(`?letter=${letter}`)}`, undefined, { shallow: false, scroll: false });
   };
 
   return (

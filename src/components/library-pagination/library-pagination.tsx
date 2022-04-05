@@ -16,9 +16,15 @@ interface LibraryPaginationProps {
   isLoading: boolean;
 }
 
+const defaultLetters = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'К', 'Л', 'М', 'Н',
+  'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я'];
+
 const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, authors, onChange, isLoading }) => {
-  const [letter, setLetter] = useState<string>('');
+  const [letter, setLetter] = useState<string>();
   const [letterElement, setLetterElement] = useState<HTMLInputElement | null>(null);
+  useEffect(()=> {
+    setLetter(letters[0]);
+  },[]);
 
   const changeLetter = (e: React.MouseEvent<HTMLInputElement, MouseEvent>, el: string) => {
     setLetter(el);
@@ -35,8 +41,8 @@ const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, authors, onCha
   return (
     <div className={style.container}>
       <ul className={cn(style.letters)}>
-        {letters.map((el) => (
-          <li key={el} className={cn(style.letter, { [style.letterActive]: letter === el })}>
+        {defaultLetters.map((el) => (
+          <li key={el} className={cn(style.letter, { [style.letterActive]: letter === el,[style.letterDisabled]: !letters.includes(el) })}>
             <label htmlFor={el} className={style.label}>
               {el}
             </label>

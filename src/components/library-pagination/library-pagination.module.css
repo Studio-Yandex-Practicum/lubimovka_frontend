@@ -128,6 +128,16 @@
   }
 }
 
+.letterDisabled {
+  cursor: default;
+  opacity: .2;
+  pointer-events: none;
+
+  &:hover {
+    color: var(--coal);
+  }
+}
+
 .bigLetter {
   @mixin headline;
 
