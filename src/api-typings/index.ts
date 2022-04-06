@@ -89,7 +89,3 @@ export type { TypeA7fEnum } from './models/TypeA7fEnum';
 export type { VideosBlock } from './models/VideosBlock';
 export type { Volunteers } from './models/Volunteers';
 export type { Years } from './models/Years';
-
-export type { AfishaEventListOutput } from './models/AfishaEventListOutput';
-export type { PaginatedAfishaEventListOutputList } from './models/PaginatedAfishaEventListOutputList';
-export type { AfishaInfoOutput } from './models/AfishaInfoOutput';
