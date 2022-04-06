@@ -1,4 +1,4 @@
-.card {
+.root {
   box-sizing: border-box;
   padding: scale(55px 88px 72px);
   background-color: var(--white);

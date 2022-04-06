@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import classNames from 'classnames/bind';
 
-import { Url } from 'shared/types';
-import { InfoLink } from '../ui/info-link';
+import { InfoLink } from 'components/ui/info-link';
 
-import styles from './critique-card.module.css';
+import type { Url } from 'shared/types';
 
-interface ICritiqueCardProps {
+import styles from './media-review-card.module.css';
+
+interface MediaReviewCardProps {
   logo?: Url,
   text: string,
   href?: Url,
@@ -14,7 +15,7 @@ interface ICritiqueCardProps {
 
 const cx = classNames.bind(styles);
 
-export const CritiqueCard: FC<ICritiqueCardProps> = (props) => {
+export const MediaReviewCard: FC<MediaReviewCardProps> = (props) => {
   const {
     logo,
     text,
@@ -22,7 +23,7 @@ export const CritiqueCard: FC<ICritiqueCardProps> = (props) => {
   } = props;
 
   return (
-    <article className={cx('card')}>
+    <article className={cx('root')}>
       {logo && (
         <img
           className={cx('logo')}
@@ -37,7 +38,7 @@ export const CritiqueCard: FC<ICritiqueCardProps> = (props) => {
         <div className={cx('action')}>
           <InfoLink
             isOutsideLink
-            href="#"
+            href={href}
             label="Читать полностью"
             icon="arrow-45"
             iconPlace="left"
