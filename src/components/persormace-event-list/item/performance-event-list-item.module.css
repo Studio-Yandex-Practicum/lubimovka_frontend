@@ -1,0 +1,23 @@
+.root {
+  display: block;
+
+  &:not(:last-child) {
+    margin-bottom: scale(38px);
+  }
+}
+
+.date {
+  @mixin headline;
+  @mixin headline6;
+
+  display: block;
+  margin-bottom: scale(16px);
+}
+
+.action {
+  min-width: scale(280px);
+
+  @media (max-width: $tablet-portrait) {
+    min-width: scale(240px);
+  }
+}

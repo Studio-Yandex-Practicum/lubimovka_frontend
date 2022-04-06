@@ -1,27 +1,46 @@
-.layout {
+@import './performance-layout.vars.module.css';
+
+.root {
   display: grid;
+  padding: scale(0 $page-padding-tablet-portrait);
   grid-template:
     "headline      headline"
-    "aside         video"
-    "aside         text"
-    "aside         play"
+    "summary       content"
     "gallery       gallery"
-    "critique      critique"
-    "review        review"
+    "media-reviews media-reviews"
+    "reviews       reviews"
     "bottom-image  bottom-image"
-    "share         share" 1fr / 1fr scale(720px);
+    "share         share";
 
   @media (max-width: $tablet-portrait) {
-    grid-template:
-      "headline"
-      "aside"
-      "video"
-      "text"
-      "play"
-      "gallery"
-      "critique"
-      "review"
-      "bottom-image"
-      "share" 1fr;
+    display: block;
+    padding: scale(40px $page-padding-smartphone 0);
   }
+}
+
+.headline {
+  margin-bottom: scale(68px);
+  grid-area: headline;
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(100px);
+  }
+}
+
+.video {
+  height: scale(389px);
+  margin-bottom: scale(66px);
+
+  @media (max-width: $tablet-portrait) {
+    height: scale(206px);
+    margin-bottom: scale(32px);
+  }
+}
+
+.text {
+  margin-bottom: scale(80px);
+}
+
+.play {
+  margin-bottom: scale(144px);
 }

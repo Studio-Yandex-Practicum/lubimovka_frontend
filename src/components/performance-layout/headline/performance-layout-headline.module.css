@@ -1,8 +1,0 @@
-.headline {
-  margin-bottom: scale(68px);
-  grid-area: headline;
-
-  @media (max-width: $tablet-portrait) {
-    margin-bottom: scale(100px);
-  }
-}

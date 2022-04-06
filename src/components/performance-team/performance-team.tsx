@@ -1,24 +1,35 @@
-import { FC, Fragment } from 'react';
+import { Fragment } from 'react';
 import classNames from 'classnames/bind';
 
 import { Crewman, Persons } from 'shared/types';
 
-import styles from './performance-crew.module.css';
+import type { FC } from 'react';
+
+import styles from './performance-team.module.css';
 
 const cx = classNames.bind(styles);
 
-export interface IPerformanceCrewProps {
-  crew: Crewman[],
+export interface PerformanceTeamProps {
+  team: Crewman[],
+  className?: string
 }
 
 const convertNamesToString = (persons: Persons) => persons.map(person => person).join(', ');
 
-export const PerformanceCrew: FC<IPerformanceCrewProps> = (props) => {
-  const { crew } = props;
+export const PerformanceTeam: FC<PerformanceTeamProps> = (props) => {
+  const {
+    team,
+    className,
+  } = props;
 
   return (
-    <dl className={cx('list')}>
-      {crew.map(({ persons, name }) => (
+    <dl
+      className={cx(
+        'list',
+        className,
+      )}
+    >
+      {team.map(({ persons, name }) => (
         <Fragment key="role">
           <dt className={cx('title')}>
             {name}
