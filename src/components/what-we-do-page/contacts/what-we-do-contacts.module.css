@@ -47,7 +47,7 @@
 
 .link {
   display: inline-flex;
-  align-items: end;
+  align-items: flex-end;
   text-decoration-line: underline;
 
   > svg {
