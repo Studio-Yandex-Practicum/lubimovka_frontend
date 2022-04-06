@@ -2,7 +2,7 @@ import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import styles from './festival-date.module.css';
-import { formatDateTime } from 'shared/helpers/format-date-time';
+import { format } from 'shared/helpers/format-date';
 import { ucFirst } from 'shared/helpers/uc-first';
 
 interface IProps {
@@ -15,21 +15,20 @@ const cx = cn.bind(styles);
 export const FestivalDate: FC<IProps> = (props) => {
   const { dateTime, alignItems = 'center' } = props;
 
-  const dateInfo = formatDateTime(dateTime, 'dMMMM').split(' ');
+  const date = format('d', new Date(dateTime));
+  const month = format('MMMM', new Date(dateTime));
 
   return (
-    <>
-      <div className={cx('wrapper')}>
-        <p className={cx('date', `alignItems${ucFirst(alignItems)}`)}>
-          <span className={cx('number')}>
-            {dateInfo[0]}
-          </span>
-          &nbsp;
-          <span className={cx('month')}>
-            {dateInfo[1]}
-          </span>
-        </p>
-      </div>
-    </>
+    <div className={cx('wrapper')}>
+      <time className={cx('date', `alignItems${ucFirst(alignItems)}`)}>
+        <span className={cx('number')}>
+          {date}
+        </span>
+        &nbsp;
+        <span className={cx('month')}>
+          {month}
+        </span>
+      </time>
+    </div>
   );
 };

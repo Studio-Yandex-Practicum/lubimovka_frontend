@@ -9,7 +9,7 @@ import breakpoints from 'shared/breakpoints';
 
 import styles from './festival-event.module.css';
 import { AfishaEvent } from 'shared/types';
-import { formatDateTime } from 'shared/helpers/format-date-time';
+import { format } from 'shared/helpers/format-date';
 import { parseDate } from '../utils/parseDate';
 
 interface IProps extends AfishaEvent {
@@ -52,14 +52,16 @@ export const FestivalEvent: FC<IProps> = (props) => {
             closed: !registration,
           })}
           >
-            {registration ? 'открыта регистрация' : `Регистрация откроется ${formatDateTime(getYesterday(dateTime), 'dMMMM')} в 12:00`}
+            {registration
+              ? 'открыта регистрация'
+              : `Регистрация откроется ${format('dMMMM', getYesterday(dateTime))} в 12:00`}
           </p>
         </div>
       )}
       <EventCard
         key={props.id}
         className={cx('event')}
-        time={formatDateTime(dateTime, 'mH')}
+        time={format('H:mm', new Date(dateTime))}
         location={props.place}
         title={eventBody.projectTitle}
         image={'image' in eventBody ? eventBody.image : undefined}

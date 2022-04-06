@@ -7,7 +7,7 @@ import { visibility } from 'shared/helpers/visibility';
 import styles from './regular-events.module.css';
 import { useAfisha } from '../afisha-provider';
 import { useScroll } from 'shared/hooks/use-scroll';
-import { formatDateTime } from 'shared/helpers/format-date-time';
+import { format } from 'shared/helpers/format-date';
 import { Loader } from 'components/ui/loader';
 
 const cx = cn.bind(styles);
@@ -27,8 +27,8 @@ export const RegularEvents: FC = () => {
       {selectEvents().map((event) => (
         <AnnouncedPlayCard
           key={event.id}
-          formattedDate={formatDateTime(event.dateTime, 'dMMMM')}
-          formattedTime={formatDateTime(event.dateTime, 'mH')}
+          formattedDate={format('d MMMM', new Date(event.dateTime))}
+          formattedTime={format('H:mm', new Date(event.dateTime))}
           title={event.eventBody.name}
           team={event.eventBody.team}
           buttonLink={event.url}
