@@ -6,11 +6,12 @@ import type { ReactNode, PropsWithChildren } from 'react';
 import styles from './button.module.css';
 
 interface CommonProps {
-  size?: 'm'
-  icon: ReactNode
-  iconPosition: 'left' | 'right'
-  border?: 'right-bottom-left' | 'none'
+  size?: 'm' | 'l'
+  icon?: ReactNode
+  iconPosition?: 'left' | 'right'
+  border?: 'full' | 'right-bottom-left' | 'none'
   fullWidth?: boolean
+  upperCase?: boolean
   className?: string
 }
 
@@ -32,6 +33,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, PropsWit
     size = 'm',
     border = 'none',
     fullWidth,
+    upperCase,
     icon,
     iconPosition = 'left',
     children,
@@ -46,7 +48,10 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, PropsWit
       className={cx(
         size,
         `border-${border}`,
-        { 'full-width': fullWidth },
+        {
+          'full-width': fullWidth,
+          'upper-case': upperCase,
+        },
         className,
       )}
       // @ts-expect-error
