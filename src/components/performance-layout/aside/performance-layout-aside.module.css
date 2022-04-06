@@ -1,9 +1,0 @@
-.aside {
-  padding: scale(0 0 0 184px);
-  grid-area: aside;
-
-  @media (max-width: $tablet-portrait) {
-    padding: scale(56px 24px 72px 27px);
-    background-color: var(--white);
-  }
-}

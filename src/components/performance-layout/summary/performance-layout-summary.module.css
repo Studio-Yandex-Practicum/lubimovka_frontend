@@ -1,0 +1,11 @@
+@import '../performance-layout.vars.module.css';
+
+.root {
+  grid-area: summary;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(58px $page-padding-smartphone 72px);
+    margin: scale(0 -$page-padding-smartphone 24px);
+    background-color: var(--white);
+  }
+}

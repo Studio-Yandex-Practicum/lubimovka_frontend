@@ -1,10 +1,8 @@
-.review {
-  padding: 0 scale(60px);
+.root {
   margin-bottom: scale(64px);
-  grid-area: review;
+  grid-area: reviews;
 
   @media (max-width: $tablet-portrait) {
-    padding: 0;
     margin-bottom: 0;
   }
 }
