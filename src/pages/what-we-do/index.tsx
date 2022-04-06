@@ -26,7 +26,7 @@ const Page: NextPage = ({ partners }: InferGetServerSidePropsType<typeof getServ
       <WhatWeDoSelection/>
       <WhatWeDoPoster/>
       <WhatWeDoContacts/>
-      <WhatWeDoPartner {...partners}/>
+      {partners && <WhatWeDoPartner {...partners}/>}
     </main>
   </AppLayout>
 );
