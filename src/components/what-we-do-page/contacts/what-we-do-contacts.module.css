@@ -46,6 +46,19 @@
 }
 
 .link {
-  display: inline;
-  color: var(--coal);
+  display: inline-flex;
+  align-items: end;
+  text-decoration-line: underline;
+
+  > svg {
+    width: calc(var(--scale) * 25);
+    height: calc(var(--scale) * 25);
+  }
+
+  @media (max-width: $tablet-portrait) {
+    > svg {
+      width: calc(var(--scale) * 20);
+      height: calc(var(--scale) * 20);
+    }
+  }
 }
