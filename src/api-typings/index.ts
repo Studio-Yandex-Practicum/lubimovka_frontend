@@ -1,6 +1,10 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+
+export type { AfishaEvent } from './models/AfishaEvent';
+export type { AfishaEventListOutput } from './models/AfishaEventListOutput';
+export type { AfishaInfoOutput } from './models/AfishaInfoOutput';
 export type { AgeLimitEnum } from './models/AgeLimitEnum';
 export type { AuthorForPlay } from './models/AuthorForPlay';
 export type { AuthorList } from './models/AuthorList';
@@ -13,6 +17,13 @@ export type { BlogItemList } from './models/BlogItemList';
 export type { BlogItemListOutput } from './models/BlogItemListOutput';
 export type { BlogItemRole } from './models/BlogItemRole';
 export type { Content_object } from './models/Content_object';
+export type { event_type } from './models/event_type';
+export type { Event_Type_objects } from './models/Event_Type_objects';
+export type { EventInBlock } from './models/EventInBlock';
+export type { EventMasterClass } from './models/EventMasterClass';
+export type { EventPerformance } from './models/EventPerformance';
+export type { EventReading } from './models/EventReading';
+export type { EventsBlock } from './models/EventsBlock';
 export type { ExtendedPerson } from './models/ExtendedPerson';
 export type { Festival } from './models/Festival';
 export type { FestivalTeams } from './models/FestivalTeams';
@@ -35,7 +46,7 @@ export type { Nested } from './models/Nested';
 export type { NewsItemDetailed } from './models/NewsItemDetailed';
 export type { NewsItemList } from './models/NewsItemList';
 export type { OtherLink } from './models/OtherLink';
-export type { OtherPlayLinks } from './models/OtherPlayLinks';
+export type { PaginatedAfishaEventListOutputList } from './models/PaginatedAfishaEventListOutputList';
 export type { PaginatedAuthorListList } from './models/PaginatedAuthorListList';
 export type { PaginatedBlogItemListOutputList } from './models/PaginatedBlogItemListOutputList';
 export type { PaginatedNewsItemListList } from './models/PaginatedNewsItemListList';
@@ -73,7 +84,3 @@ export type { Title } from './models/Title';
 export type { VideosBlock } from './models/VideosBlock';
 export type { Volunteers } from './models/Volunteers';
 export type { Years } from './models/Years';
-
-export type { AfishaEventListOutput } from './models/AfishaEventListOutput';
-export type { PaginatedAfishaEventListOutputList } from './models/PaginatedAfishaEventListOutputList';
-export type { AfishaInfoOutput } from './models/AfishaInfoOutput';

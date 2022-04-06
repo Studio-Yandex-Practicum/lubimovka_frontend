@@ -1,4 +1,4 @@
-import type { EventTypeEnum } from 'api-typings';
+import type { event_type } from 'api-typings';
 
 interface IEvent_body {
   id: number
@@ -14,7 +14,7 @@ interface IEvent_body {
 
 interface IItems {
   readonly id: number;
-  type: EventTypeEnum;
+  type: event_type;
   event_body: IEvent_body;
   date_time: string;
   paid?: boolean;
