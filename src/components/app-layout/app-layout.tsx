@@ -50,7 +50,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
     setIsOverlayMenuOpen(!isOverlayMenuOpen);
   }, [isOverlayMenuOpen]);
 
-  useDisableBodyScroll(isMobile && isOverlayMenuOpen);
+  useDisableBodyScroll(isMobile === true && isOverlayMenuOpen);
 
   useEffect(() => {
     if (!isMobile) setIsOverlayMenuOpen(false);

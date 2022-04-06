@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: $tablet-portrait) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

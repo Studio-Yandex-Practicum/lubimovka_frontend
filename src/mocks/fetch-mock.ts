@@ -13,6 +13,7 @@ import { PaginatedProjectListList, PaginatedAuthorListList, PaginatedPlayList } 
 import { IPiecesFiltersProps } from 'pages/library';
 import blogArticle from './data/blogArticle';
 import newsArticle from './data/newsArticle';
+import { afishaInfo, getAfishaEvents } from './data/afisha';
 
 fetchMock.config.fallbackToNetwork = true;
 
@@ -39,6 +40,8 @@ mockedFetch
   .get(new RegExp(addBaseUrlToApiPath('/library/performances/\\d+')), performance)
   .get(addBaseUrlToApiPath('/form'), form)
   .get(new RegExp(addBaseUrlToApiPath('/blog/\\d+')), blogArticle)
-  .get(new RegExp(addBaseUrlToApiPath('/news/\\d+')), newsArticle);
+  .get(new RegExp(addBaseUrlToApiPath('/news/\\d+')), newsArticle)
+  .get(new RegExp(addBaseUrlToApiPath('/afisha/info')), afishaInfo)
+  .get(new RegExp(addBaseUrlToApiPath('/afisha/events/')), () => getAfishaEvents());
 
 export default mockedFetch;

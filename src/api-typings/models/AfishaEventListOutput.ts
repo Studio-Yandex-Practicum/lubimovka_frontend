@@ -19,4 +19,4 @@ export type AfishaEventListOutput = {
     paid?: boolean;
     url: string;
     place: string;
-}
+};

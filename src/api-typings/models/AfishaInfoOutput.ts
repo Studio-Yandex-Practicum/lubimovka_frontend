@@ -23,4 +23,4 @@ export type AfishaInfoOutput = {
      * Список дат на которые есть хотя бы одно событие.
      */
     afisha_dates: Array<string>;
-}
+};

@@ -146,10 +146,6 @@
   }
 }
 
-.paginateBar {
-  top: scale(82px) !important;
-}
-
 .tabLink {
   margin: 0;
   opacity: .2;
