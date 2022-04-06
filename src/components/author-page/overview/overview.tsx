@@ -8,7 +8,7 @@ import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
 import { InfoLink } from 'components/ui/info-link';
 import { OtherLink, Play, SocialNetwork } from 'api-typings';
-import { numberOfCharacters, zero } from 'shared/constants/numbers';
+import { numberOfCharacters } from 'shared/constants/numbers';
 
 import styles from './overview.module.css';
 
@@ -51,11 +51,11 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
     return item.is_pinned;
   }), [otherLinks]);
 
-  const availablePins = pinnedLinks.length > zero;
+  const availablePins = pinnedLinks.length > 0;
   const availableButton = biography.length > numberOfCharacters;
-  const availablePlays = isMobile && plays.length > zero;
-  const availableTags = achievements.length > zero;
-  const availableSocialNetworks = socialNetworks.length > zero;
+  const availablePlays = isMobile && plays.length > 0;
+  const availableTags = achievements.length > 0;
+  const availableSocialNetworks = socialNetworks.length > 0;
 
   return (
     <section className={cx('overview')}>
