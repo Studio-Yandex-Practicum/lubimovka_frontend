@@ -7,12 +7,12 @@
   line-height: scale(36px);
 }
 
-.ageLimit {
+.ageRestriction {
   position: relative;
   margin-left: scale(33px);
 }
 
-.ageLimit::before {
+.ageRestriction::before {
   position: absolute;
   top: 0;
   left: calc(-1 * scale(16px));

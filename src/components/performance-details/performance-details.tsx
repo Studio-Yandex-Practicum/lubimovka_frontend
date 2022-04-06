@@ -2,27 +2,41 @@ import classNames from 'classnames/bind';
 
 import styles from './performance-details.module.css';
 
-interface IPerformanceDetailsProps {
-  duration: string,
-  ageLimit: number,
+interface PerformanceDetailsProps {
+  duration?: string
+  ageRestriction?: number
+  className?: string
 }
 
 const cx = classNames.bind(styles);
 
-export const PerformanceDetails = (props: IPerformanceDetailsProps): JSX.Element => {
-  const { duration, ageLimit } = props;
+export const PerformanceDetails = (props: PerformanceDetailsProps): JSX.Element => {
+  const {
+    duration,
+    ageRestriction,
+    className
+  } = props;
 
   return (
-    <div className={cx('details')}>
-      <div>
-        {duration}
-      </div>
-      <div className={cx('ageLimit')}>
-        {ageLimit}
-        <span>
-          +
-        </span>
-      </div>
+    <div
+      className={cx(
+        'details',
+        className,
+      )}
+    >
+      {duration && (
+        <div>
+          {duration}
+        </div>
+      )}
+      {ageRestriction && (
+        <div className={cx('ageRestriction')}>
+          {ageRestriction}
+          <span>
+            +
+          </span>
+        </div>
+      )}
     </div>
   );
 };

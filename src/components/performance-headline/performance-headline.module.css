@@ -1,39 +1,26 @@
-.headline {
+@import '../performance-layout/performance-layout.vars.module.css';
+
+.root {
   display: grid;
-  padding-left: scale(120px);
-  grid-column-gap: scale(120px);
-  grid-template:
-    "title       image"
-    "description image" 1fr
-    "date    image"
-    "actions     image"
-    ".           image" scale(57px)
-    ".           text" / 1fr scale(720px);
+  grid-column-gap: scale($layout-column-gap-tablet-portrait);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
   @media (max-width: $tablet-portrait) {
-    padding-left: 0;
-    grid-template-areas:
-      "title"
-      "description"
-      "date"
-      "actions"
-      "image"
-      "image"
-      "text";
-    grid-template-columns: 1fr;
+    display: block;
   }
 }
 
 .title {
   @mixin headline;
-  @mixin headline1;
+  @mixin headline2;
 
-  margin: scale(62px) 0 0;
+  margin: scale(62px 0 36px);
+  word-wrap: break-word;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    margin: scale(0 24px);
+    margin-bottom: scale(16px);
   }
 }
 
@@ -41,23 +28,32 @@
   @mixin headline;
   @mixin headline7;
 
+  min-height: scale(284px);
   padding-left: scale(60px);
-  margin-top: scale(36px);
+  margin-bottom: scale(24px);
 
   @media (max-width: $tablet-portrait) {
-    padding-left: scale(86px);
-    margin-top: scale(16px);
-    margin-right: scale(24px);
+    min-height: initial;
+    padding-left: scale(60px);
+    margin-bottom: scale(30px);
+  }
+}
+
+.actions {
+  @media (max-width: $tablet-portrait) {
+    padding-left: scale(60px);
+    margin-bottom: scale(38px);
   }
 }
 
 .image {
   position: relative;
   height: scale(614px);
-  grid-area: image;
+  margin-right: scale(-$page-padding-tablet-portrait);
 
   @media (max-width: $tablet-portrait) {
     height: scale(450px);
+    margin-right: 0;
   }
 }
 
@@ -65,41 +61,11 @@
   @mixin headline;
   @mixin headline6;
 
-  padding-right: scale(130px);
-  margin: scale(48px 0 0);
-  grid-area: text;
+  margin-top: scale(48px);
 
   @media (max-width: $tablet-portrait) {
     @mixin headline7;
 
-    padding: scale(0 24px);
-    margin: scale(56px 0 0);
+    margin-top: scale(56px);
   }
-}
-
-.date {
-  @mixin headline;
-  @mixin headline6;
-
-  margin: scale(0 0 16px);
-  grid-area: date;
-
-  @media (max-width: $tablet-portrait) {
-    padding-left: scale(89px);
-    margin: scale(31px 0 0);
-  }
-}
-
-.actions {
-  grid-area: actions;
-
-  @media (max-width: $tablet-portrait) {
-    padding-left: scale(85px);
-    margin-top: scale(16px);
-    margin-bottom: scale(38px);
-  }
-}
-
-.action {
-  min-width: scale(240px);
 }

@@ -27,4 +27,4 @@ export type Performance = {
     text: string;
     age_limit?: AgeLimitEnum;
     duration?: string;
-}
+};

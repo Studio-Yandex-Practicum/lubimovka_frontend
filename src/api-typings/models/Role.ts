@@ -9,7 +9,7 @@
  * and for individual Performance page.
  */
 
- export type Role = {
+export type Role = {
     name: string;
     readonly persons: Array<string>;
 };

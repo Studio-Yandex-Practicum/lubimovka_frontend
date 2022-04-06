@@ -1,0 +1,8 @@
+.root {
+  margin-bottom: scale(112px);
+  grid-area: media-reviews;
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(76px);
+  }
+}

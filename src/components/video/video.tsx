@@ -1,24 +1,54 @@
-import { HTMLAttributes } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 
+import { Spinner } from 'components/spinner';
+
+import type { HTMLAttributes, ReactEventHandler } from 'react';
 import { Url } from 'shared/types';
 
 import styles from './video.module.css';
 
-interface IVideoProps extends HTMLAttributes<HTMLIFrameElement>{
+interface VideoProps extends HTMLAttributes<HTMLIFrameElement>{
   src: Url,
 }
 const cx = classNames.bind(styles);
 
-export const Video = (props: IVideoProps): JSX.Element => {
-  const { src, className, ...restProps } = props;
+export const Video = (props: VideoProps) => {
+  const {
+    src,
+    onLoad,
+    className,
+    ...restIFrameProps
+  } = props;
+  const [loading, setLoading] = useState(true);
+
+  const handleIFrameLoad: ReactEventHandler<HTMLIFrameElement> = (event) => {
+    setLoading(false);
+
+    if (onLoad) {
+      onLoad(event);
+    }
+  };
 
   return (
-    <iframe
-      className={cx('video', className)}
-      src={src}
-      allowFullScreen
-      {...restProps}
-    />
+    <div
+      className={cx(
+        { loading },
+        className,
+      )}
+    >
+      <iframe
+        onLoad={handleIFrameLoad}
+        className={cx('iframe')}
+        src={src}
+        allowFullScreen
+        {...restIFrameProps}
+      />
+      {loading && (
+        <Spinner
+          className={cx('spinner')}
+        />
+      )}
+    </div>
   );
 };

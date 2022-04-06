@@ -1,68 +1,46 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useMemo } from 'react';
+import Error from 'next/error';
 import cn from 'classnames/bind';
 
-import * as breakpoints from 'shared/breakpoints.js';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { AppLayout } from 'components/app-layout';
 import { AuthorOverview } from 'components/author-page/overview';
 import { AuthorPlays } from 'components/author-page/plays';
 import { AnotherPlays } from 'components/author-page/another-plays';
 import { AuthorInformation } from 'components/author-page/information';
 import { AuthorRequest } from 'components/author-page/request';
-import { AuthorRetrieve as AuthorRetrieveModel } from 'api-typings';
 import { fetcher } from 'shared/fetcher';
-import { zero } from '../shared/constants/numbers';
+import * as breakpoints from 'shared/breakpoints.js';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
 import styles from 'components/author-page/author.module.css';
 
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import type { AuthorRetrieve, Play } from 'api-typings';
+
 const cx = cn.bind(styles);
 
-const fetchAuthors = async (authorId: string) => {
-  let data;
-
-  try {
-    data = await fetcher<AuthorRetrieveModel>(`/library/authors/${authorId}/`);
-  } catch (error) {
-    return;
-  }
-  return data;
-};
-
-export const getServerSideProps: GetServerSideProps<AuthorRetrieveModel, Record<'author', string>> = async ({ params }) => {
-  const { author: authorSlug } = params!;
-
-  const author = await fetchAuthors(authorSlug);
-
-  if (!author) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      ...author,
-    },
-  };
-};
-
-const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element => {
-  const {
-    plays,
-    other_plays: anotherPlays,
-    other_links: otherLinks,
-  } = props;
-
+const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
-  const notPinnedLinks = useMemo(() => otherLinks.filter((item) => {
-    return !item.is_pinned;
-  }), [otherLinks]);
+  if ('errorCode' in props) {
+    return (
+      <Error statusCode={props.errorCode}/>
+    );
+  }
 
-  const availablePlays = !isMobile && plays.length > zero;
-  const availableAnotherPlays = anotherPlays.length > zero;
-  const availableNotPinnedLinks = notPinnedLinks.length > zero;
+  const {
+    name,
+    city,
+    quote,
+    biography,
+    achievements,
+    social_networks,
+    email,
+    additionalLinks,
+    plays,
+    image,
+    additionalPlayLinks,
+  } = props;
+  const notPinnedLinks = additionalLinks.filter((item) => !item.is_pinned);
 
   return (
     <AppLayout
@@ -72,19 +50,30 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): 
     >
       <div className={cx('author')}>
         <AuthorOverview
-          props={props}
+          props={{
+            image,
+            name,
+            city,
+            quote,
+            biography,
+            other_links: additionalLinks,
+            achievements,
+            social_networks,
+            email,
+            plays,
+          }}
         />
-        {availablePlays && (
+        {!isMobile && plays.length > 0 && (
           <AuthorPlays
             plays={plays}
           />
         )}
-        {availableAnotherPlays && (
+        {additionalPlayLinks.length > 0 && (
           <AnotherPlays
-            links={anotherPlays}
+            links={additionalPlayLinks}
           />
         )}
-        {availableNotPinnedLinks && (
+        {notPinnedLinks.length > 0 && (
           <AuthorInformation
             links={notPinnedLinks}
           />
@@ -96,3 +85,54 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>): 
 };
 
 export default Author;
+
+export const getServerSideProps = async (ctx: GetServerSidePropsContext<Record<'author', string>>) => {
+  const notFoundResult = {
+    notFound: true,
+  } as const;
+  const serverErrorResult = {
+    props: {
+      errorCode: 500,
+    },
+  } as const;
+
+  if (!ctx.params) {
+    return notFoundResult;
+  }
+
+  const { author: slug } = ctx.params;
+  let author: AuthorRetrieve;
+
+  try {
+    author = await fetcher(`/library/authors/${slug}/`);
+  } catch {
+    return serverErrorResult;
+  }
+
+  if (!author) {
+    return notFoundResult;
+  }
+
+  return {
+    props: {
+      name: author.name,
+      city: author.city,
+      quote: author.quote,
+      biography: author.biography,
+      achievements: author.achievements,
+      social_networks: author.social_networks,
+      email: author.email,
+      additionalLinks: author.other_links,
+      plays: author.plays,
+      image: author.image,
+      additionalPlayLinks: toAdditionalPlayLinks(author.other_plays),
+    },
+  };
+};
+
+function toAdditionalPlayLinks(plays: Play[]) {
+  return plays.map(({ name, url_download }) => ({
+    title: name,
+    ...url_download ? { href: url_download } : {},
+  }));
+};

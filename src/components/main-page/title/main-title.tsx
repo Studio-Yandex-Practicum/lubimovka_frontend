@@ -2,7 +2,7 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
-import { formatDateTime } from 'shared/helpers/format-date-time';
+import { format } from 'shared/helpers/format-date';
 
 import styles from './main-title.module.css';
 
@@ -19,7 +19,7 @@ export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
       <h1 className={cx('title')}>
         Афиша на сегодня,
         <br/>
-        {formatDateTime(new Date(), 'dMMMM')}
+        {format('d, MMMM', new Date())}
       </h1>
     )
     : (

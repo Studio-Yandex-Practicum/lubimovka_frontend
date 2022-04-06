@@ -2,11 +2,10 @@ $border-width: 1px;
 
 .common {
   position: relative;
-  display: flex;
+  display: inline-flex;
   box-sizing: border-box;
   align-items: center;
   justify-content: space-between;
-  padding: scale(0 8px);
   border: $border-width solid;
   color: inherit;
   isolation: isolate;
@@ -33,6 +32,8 @@ $border-width: 1px;
 
 .icon {
   display: block;
+  width: scale(20px);
+  height: scale(20px);
   flex-shrink: 0;
 }
 
@@ -51,13 +52,7 @@ $border-width: 1px;
 
 .m {
   composes: common;
-  padding-top: scale(8px);
-  padding-bottom: scale(8px);
-
-  .icon {
-    width: scale(20px);
-    height: scale(20px);
-  }
+  padding: scale(8px);
 
   .icon-left:not(:only-child) {
     margin-right: scale(8px);
@@ -73,8 +68,30 @@ $border-width: 1px;
   }
 }
 
+.l {
+  composes: common;
+  padding: scale(16px);
+
+  .icon-left:not(:only-child) {
+    margin-right: scale(16px);
+  }
+
+  .icon-right:not(:only-child) {
+    margin-left: scale(16px);
+  }
+
+  .text {
+    font-size: scale(16px);
+    line-height: scale(22px);
+  }
+}
+
 .common.border-none {
   border-color: transparent;
+}
+
+.common.common.border-full {
+  border-color: var(--coal);
 }
 
 .common.border-right-bottom-left {
@@ -84,6 +101,12 @@ $border-width: 1px;
 
 .common.full-width {
   width: 100%;
+}
+
+.common.upper-case {
+  .text {
+    text-transform: uppercase;
+  }
 }
 
 @keyframes background-slide {

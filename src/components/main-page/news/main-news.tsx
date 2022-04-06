@@ -3,7 +3,7 @@ import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 import { NewsItemList } from 'api-typings';
-import { formatDateTime } from 'shared/helpers/format-date-time';
+import { format } from 'shared/helpers/format-date';
 
 import styles from './main-news.module.css';
 
@@ -27,7 +27,7 @@ export const MainNews: FC<INewsItemList> = ({ title, description, pub_date, id }
           {description}
         </p>
         <time dateTime={pub_date} className={cx('date')}>
-          {formatDateTime(new Date(), 'dMMMMYYYY')}
+          {format('d MMMM yyy', new Date())}
         </time>
       </article>
     </a>

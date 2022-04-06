@@ -1,11 +1,10 @@
 .image {
   position: relative;
   height: scale(404px);
-  margin: scale(0 60px 34px);
+  margin-bottom: scale(60px);
   grid-area: bottom-image;
 
   @media (max-width: $tablet-portrait) {
     height: scale(252px);
-    margin: 0;
   }
 }

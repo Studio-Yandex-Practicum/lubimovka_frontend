@@ -1,0 +1,48 @@
+$particle-animation: particle 3s infinite ease-in-out;
+$particle-amplitude: 1.5;
+
+.inner {
+  display: flex;
+  box-sizing: content-box;
+  padding: calc(20% * $particle-amplitude) 0;
+}
+
+.inner::before,
+.inner::after {
+  display: block;
+  animation: $particle-animation;
+  content: '';
+}
+
+.particle {
+  animation: $particle-animation;
+  animation-direction: reverse;
+}
+
+.inner::before,
+.inner::after,
+.particle {
+  width: 20%;
+  height: 0;
+  padding-bottom: 20%;
+  margin-right: 20%;
+  background-color: var(--coal);
+}
+
+.inner::after {
+  margin-right: 0;
+}
+
+@keyframes particle {
+  25% {
+    transform: translateY(calc(100% * $particle-amplitude));
+  }
+
+  75% {
+    transform: translateY(calc(100% * -$particle-amplitude));
+  }
+
+  100% {
+    transform: none;
+  }
+}

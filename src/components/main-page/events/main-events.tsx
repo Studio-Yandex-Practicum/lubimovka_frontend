@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 
 import { AfishaEvent, EventPerformance } from 'api-typings';
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
-import { formatDateTime } from 'shared/helpers/format-date-time';
+import { format } from 'shared/helpers/format-date';
 
 import styles from './main-events.module.css';
 
@@ -26,8 +26,8 @@ export const MainEvents: FC<IMainAfisha> = ({ items }) => {
             <li key={item.id} className={cx('list')}>
               <AnnouncedPlayCard
                 id={item.id}
-                formattedDate={formatDateTime(item.date_time, 'dMMMM')}
-                formattedTime={formatDateTime(item.date_time, 'mH')}
+                formattedDate={format('d MMMM', new Date(item.date_time))}
+                formattedTime={format('H:m', new Date(item.date_time))}
                 title={item.event_body.name}
                 team={item.event_body.team}
                 description={item.event_body.description}

@@ -1,68 +1,63 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 
-import { Url } from 'shared/types';
-import { Button } from 'components/ui/button';
+import type { FC, ReactNode } from 'react';
+import type { Url } from 'shared/types';
 
 import styles from './performance-headline.module.css';
 
-interface IPerformanceHeadlineProps {
-  title: string,
-  description: string,
-  date: string,
-  ticketsUrl: Url,
-  text: string,
-  image: Url,
+interface PerformanceHeadlineProps {
+  title: string
+  description: string
+  text: string
+  cover: Url
+  actions: ReactNode | ReactNode[]
+  className?: string
 }
 
 const cx = classNames.bind(styles);
 
-export const PerformanceHeadline: FC<IPerformanceHeadlineProps> = (props) => {
+export const PerformanceHeadline: FC<PerformanceHeadlineProps> = (props) => {
   const {
     title,
     description,
-    date,
-    ticketsUrl,
-    image,
+    cover,
     text,
+    actions,
+    className,
   } = props;
 
   return (
-    <div className={cx('headline')}>
-      <h1 className={cx('title')}>
-        {title}
-      </h1>
-      <p className={cx('description')}>
-        {description}
-      </p>
-      <div className={cx('date')}>
-        {date}
+    <div
+      className={cx(
+        'root',
+        className
+      )}
+    >
+      <div>
+        <h1 className={cx('title')}>
+          {title}
+        </h1>
+        <p className={cx('description')}>
+          {description}
+        </p>
+        <div className={cx('actions')}>
+          {actions}
+        </div>
       </div>
-      <div className={cx('actions')}>
-        <Button
-          className={cx('action')}
-          view="primary"
-          href={ticketsUrl}
-          size="l"
-          isLink
-          icon="arrow-right"
-          iconPlace="right"
-          label="Билеты"
-          border="full"
-        />
+      <div>
+        <div className={cx('image')}>
+          <Image
+            src={cover}
+            alt=""
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <p className={cx('text')}>
+          {text}
+        </p>
       </div>
-      <div className={cx('image')}>
-        <Image
-          src={image}
-          alt=""
-          layout="fill"
-          objectFit="cover"
-        />
-      </div>
-      <p className={cx('text')}>
-        {text}
-      </p>
     </div>
   );
 };

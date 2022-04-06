@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+
 export type { AfishaEvent } from './models/AfishaEvent';
 export type { AfishaEventListOutput } from './models/AfishaEventListOutput';
 export type { AfishaInfoOutput } from './models/AfishaInfoOutput';
@@ -15,8 +16,8 @@ export type { BlogItemDetailOutput } from './models/BlogItemDetailOutput';
 export type { BlogItemList } from './models/BlogItemList';
 export type { BlogItemListOutput } from './models/BlogItemListOutput';
 export type { BlogItemRole } from './models/BlogItemRole';
-export type { Contacts } from './models/Contacts';
 export type { Content_object } from './models/Content_object';
+export type { event_type } from './models/event_type';
 export type { Event_Type_objects } from './models/Event_Type_objects';
 export type { EventInBlock } from './models/EventInBlock';
 export type { EventMasterClass } from './models/EventMasterClass';
@@ -47,7 +48,6 @@ export type { NewsItemList } from './models/NewsItemList';
 export type { OrderedImage } from './models/OrderedImage';
 export type { OrderedVideo } from './models/OrderedVideo';
 export type { OtherLink } from './models/OtherLink';
-export type { OtherPlayLinks } from './models/OtherPlayLinks';
 export type { PaginatedAfishaEventListOutputList } from './models/PaginatedAfishaEventListOutputList';
 export type { PaginatedAuthorListList } from './models/PaginatedAuthorListList';
 export type { PaginatedBlogItemListOutputList } from './models/PaginatedBlogItemListOutputList';
@@ -58,7 +58,6 @@ export type { PaginatedPlayList } from './models/PaginatedPlayList';
 export type { PaginatedProjectListList } from './models/PaginatedProjectListList';
 export type { Participation } from './models/Participation';
 export type { Partner } from './models/Partner';
-export type { PartnerTypeEnum } from './models/PartnerTypeEnum';
 export type { Performance } from './models/Performance';
 export type { PerformanceMediaReview } from './models/PerformanceMediaReview';
 export type { PerformanceReview } from './models/PerformanceReview';

@@ -1,16 +1,14 @@
-import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
-import { PerformanceLayoutHeadline } from './headline';
-import { PerformanceLayoutAside } from './aside';
-import { PerformanceLayoutVideo } from './video';
-import { PerformanceLayoutText } from './text';
-import { PerformanceLayoutPlay } from './play';
+import { PerformanceLayoutContent } from './content';
+import { PerformanceLayoutSummary } from './summary';
 import { PerformanceLayoutGallery } from './gallery';
-import { PerformanceLayoutCritique } from './critique';
-import { PerformanceLayoutReview } from './review';
+import { PerformanceLayoutMediaReviews } from './media-reviews';
+import { PerformanceLayoutReviews } from './reviews';
 import { PerformanceLayoutBottomImage } from './bottom-image';
 import { PerformanceLayoutShare } from './share';
+
+import type { ReactNode } from 'react';
 
 import styles from './performance-layout.module.css';
 
@@ -20,23 +18,25 @@ interface IPerformanceLayoutProps {
 
 const cx = classNames.bind(styles);
 
-export const PerformanceLayout = (props: IPerformanceLayoutProps): JSX.Element => {
+const Component = (props: IPerformanceLayoutProps) => {
   const { children } = props;
 
   return (
-    <div className={cx('layout')}>
+    <div className={cx('root')}>
       {children}
     </div>
   );
 };
 
-PerformanceLayout.Headline = PerformanceLayoutHeadline;
-PerformanceLayout.Aside = PerformanceLayoutAside;
-PerformanceLayout.Video = PerformanceLayoutVideo;
-PerformanceLayout.Text = PerformanceLayoutText;
-PerformanceLayout.Play = PerformanceLayoutPlay;
-PerformanceLayout.Gallery = PerformanceLayoutGallery;
-PerformanceLayout.Critique = PerformanceLayoutCritique;
-PerformanceLayout.Review = PerformanceLayoutReview;
-PerformanceLayout.BottomImage = PerformanceLayoutBottomImage;
-PerformanceLayout.Share = PerformanceLayoutShare;
+Component.displayName = 'PerformanceLayout';
+
+export const PerformanceLayout = Object.assign(Component, {
+  Summary: PerformanceLayoutSummary,
+  Content: PerformanceLayoutContent,
+  Gallery: PerformanceLayoutGallery,
+  MediaReviews: PerformanceLayoutMediaReviews,
+  Reviews: PerformanceLayoutReviews,
+  BottomImage: PerformanceLayoutBottomImage,
+  Share: PerformanceLayoutShare,
+});
+
