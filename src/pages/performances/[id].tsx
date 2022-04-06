@@ -13,9 +13,9 @@ import { Video } from 'components/video';
 import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
 import { PerformanceEventList } from 'components/persormace-event-list';
-// import { ReviewCarousel } from 'components/review-carousel';
-// import { CritiqueCard } from 'components/critique-card';
-// import { ReviewCard } from 'components/review-card';
+import { ReviewCarousel } from 'components/review-carousel';
+import { MediaReviewCard } from 'components/media-review-card';
+import { ReviewCard } from 'components/review-card';
 import { format } from 'shared/helpers/format-date';
 import { fetcher } from 'shared/fetcher';
 
@@ -25,6 +25,8 @@ import type {
   PaginatedPerformanceMediaReviewList,
   PaginatedPerformanceReviewList,
   LocalEvent,
+  PerformanceMediaReview,
+  PerformanceReview,
 } from 'api-typings';
 
 import styles from 'components/performance-layout/performance-layout.module.css';
@@ -45,8 +47,8 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
     ageRestriction,
     duration,
     events,
-    // mediaReviews,
-    // reviews,
+    mediaReviews,
+    reviews,
   } = props;
 
   return (
@@ -119,35 +121,39 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             }))}
           />
         </PerformanceLayout.Gallery>
-        {/* <PerformanceLayout.Critique>
-          <ReviewCarousel
-            title="Рецензии"
-            mode="single"
-          >
-            {critique.map(({ text, logo, href }, index) => (
-              <CritiqueCard
-                key={index}
-                text={text}
-                logo={logo}
-                href={href}
-              />
-            ))}
-          </ReviewCarousel>
-        </PerformanceLayout.Critique>
-        <PerformanceLayout.Review>
-          <ReviewCarousel
-            title="Отзывы зрителей"
-            mode="multiple"
-          >
-            {data.review.map(({ text, author }, index) => (
-              <ReviewCard
-                key={index}
-                text={text}
-                author={author}
-              />
-            ))}
-          </ReviewCarousel>
-        </PerformanceLayout.Review> */}
+        {mediaReviews && (
+          <PerformanceLayout.MediaReviews>
+            <ReviewCarousel
+              title="Рецензии"
+              mode="single"
+            >
+              {mediaReviews.map(({ text, logo, href }, index) => (
+                <MediaReviewCard
+                  key={index}
+                  text={text}
+                  logo={logo}
+                  href={href}
+                />
+              ))}
+            </ReviewCarousel>
+          </PerformanceLayout.MediaReviews>
+        )}
+        {reviews && (
+          <PerformanceLayout.Reviews>
+            <ReviewCarousel
+              title="Отзывы зрителей"
+              mode="multiple"
+            >
+              {reviews.map(({ text, author }, index) => (
+                <ReviewCard
+                  key={index}
+                  text={text}
+                  author={author}
+                />
+              ))}
+            </ReviewCarousel>
+          </PerformanceLayout.Reviews>
+        )}
         <PerformanceLayout.BottomImage>
           <Image
             src={bottom_image}
@@ -207,8 +213,12 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext<Record<'
       duration: performanceResponse.duration,
       events: toEvents(performanceResponse.events),
       // TODO: сейчас в ответе API возвращаются списки отзывов с пагинацией, которая фронтенду не нужна, нужно обсудить с бекендерами
-      mediaReviews: mediaReviewsResponse.results,
-      reviews: reviewsResponse.results,
+      mediaReviews: mediaReviewsResponse.results
+        ? toMediaReviews(mediaReviewsResponse.results)
+        : null,
+      reviews: reviewsResponse.results
+        ? toReviews(reviewsResponse.results)
+        : null,
     },
   };
 };
@@ -216,8 +226,24 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext<Record<'
 export default Performance;
 
 function toEvents(events: LocalEvent[]) {
-  return events.map((event) => ({
-    date: event.date_time,
-    ticketsUrl: event.url,
+  return events.map(({ date_time, url }) => ({
+    date: date_time,
+    ticketsUrl: url,
   }));
 }
+
+function toMediaReviews(reviews: PerformanceMediaReview[]) {
+  return reviews.map(({ image, url, text }) => ({
+    logo: image,
+    text,
+    ...url ? { href: url } : {}
+  }));
+};
+
+function toReviews(reviews: PerformanceReview[]) {
+  return reviews.map(({ reviewer_name, url, text }) => ({
+    author: reviewer_name,
+    text,
+    ...url ? { href: url } : {}
+  }));
+};
