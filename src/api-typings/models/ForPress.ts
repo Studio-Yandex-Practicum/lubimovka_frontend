@@ -2,9 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { PRManager } from './PRManager';
+import type { PRDirector } from './PRDirector';
 
 export type ForPress = {
-    pr_manager: PRManager;
+    pr_director: PRDirector;
     photo_gallery_facebook_link: string;
 };
