@@ -4,4 +4,4 @@
 
 export type Preamble = {
     preamble: string;
-}
+};

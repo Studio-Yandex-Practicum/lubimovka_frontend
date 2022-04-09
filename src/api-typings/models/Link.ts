@@ -6,4 +6,4 @@ export type Link = {
     title: string;
     description: string;
     url: string;
-}
+};

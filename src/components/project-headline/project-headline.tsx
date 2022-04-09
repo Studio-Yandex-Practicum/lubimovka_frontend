@@ -5,7 +5,7 @@ import { Url } from 'shared/types/common';
 
 import styles from './project-headline.module.css';
 
-interface IProjectHeadlineProps {
+interface ProjectHeadlineProps {
   title: string;
   intro: string;
   image: Url;
@@ -13,7 +13,7 @@ interface IProjectHeadlineProps {
 
 const cx = classNames.bind(styles);
 
-export const ProjectHeadline = (props: IProjectHeadlineProps): JSX.Element => {
+export const ProjectHeadline = (props: ProjectHeadlineProps) => {
   const { title, intro, image } = props;
 
   return (
