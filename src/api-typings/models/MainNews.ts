@@ -12,4 +12,4 @@ import type { NewsItemList } from './NewsItemList';
 export type MainNews = {
     title: string;
     items: Array<NewsItemList>;
-}
+};

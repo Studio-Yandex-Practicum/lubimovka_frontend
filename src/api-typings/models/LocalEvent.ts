@@ -12,4 +12,4 @@ export type LocalEvent = {
     url: string;
     place: string;
     pinned_on_main?: boolean;
-}
+};

@@ -12,4 +12,4 @@ import type { BlogItemList } from './BlogItemList';
 export type MainBlog = {
     title: string;
     items: Array<BlogItemList>;
-}
+};

@@ -8,4 +8,4 @@
 export type MainVideoArchive = {
     url: string;
     photo: string;
-}
+};

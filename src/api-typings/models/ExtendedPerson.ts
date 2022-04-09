@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Role } from './Role';
+import type { PersonRole } from './PersonRole';
 
 export type ExtendedPerson = {
     readonly id: string;
@@ -12,5 +12,5 @@ export type ExtendedPerson = {
     readonly city: string;
     readonly email: string;
     readonly image: string;
-    roles: Array<Role>;
-}
+    roles: Array<PersonRole>;
+};

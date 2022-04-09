@@ -7,5 +7,5 @@ export type NewsItemList = {
     title: string;
     description: string;
     image?: string;
-    pub_date?: string;
-}
+    pub_date: string;
+};

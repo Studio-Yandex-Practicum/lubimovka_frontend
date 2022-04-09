@@ -2,12 +2,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Persons } from './Persons';
-
-export type Volunteers = {
+export type VolunteerInFestival = {
     readonly id: number;
-    person: Persons;
     year: number;
     review_title?: string;
     review_text?: string;
+    person: number;
 };

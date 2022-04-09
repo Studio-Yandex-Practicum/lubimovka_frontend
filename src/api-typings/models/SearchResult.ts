@@ -11,4 +11,4 @@ import type { Play } from './Play';
 export type SearchResult = {
     plays: Array<Play>;
     authors: Array<AuthorSearch>;
-}
+};
