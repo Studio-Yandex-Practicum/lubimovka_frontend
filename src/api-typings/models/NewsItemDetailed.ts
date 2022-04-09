@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import type { BaseContent } from './BaseContent';
-import type { NewsItemBase } from './NewsItemBase';
+import type { NewsItemList } from './NewsItemList';
 
 /**
  * Adds "contents" field to any serializer.
@@ -13,7 +13,7 @@ export type NewsItemDetailed = {
     title: string;
     description: string;
     image?: string;
-    pub_date?: string;
+    pub_date: string;
     readonly contents: Array<BaseContent>;
-    readonly other_news: Array<NewsItemBase>;
-}
+    readonly other_news: Array<NewsItemList>;
+};

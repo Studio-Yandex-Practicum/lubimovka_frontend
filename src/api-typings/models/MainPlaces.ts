@@ -11,4 +11,4 @@ import type { Place } from './Place';
  */
 export type MainPlaces = {
     items: Array<Place>;
-}
+};

@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 import type { Nested } from './Nested';
+import type { VolunteerInFestival } from './VolunteerInFestival';
 
 export type Festival = {
     readonly id: number;
@@ -17,8 +18,8 @@ export type Festival = {
     events_count?: number;
     cities_count?: number;
     video_link: string;
-    blog_entries: string;
-    press_release_image: string;
-    readonly volunteers: string;
+    blog_entries?: string;
+    press_release_image?: string;
+    readonly volunteers: Array<VolunteerInFestival>;
     readonly images: Array<Nested>;
-}
+};

@@ -13,4 +13,4 @@ import type { Play } from './Play';
 export type MainShortList = {
     title: string;
     items: Array<Play>;
-}
+};

@@ -7,4 +7,4 @@ import type { ProgramType } from './ProgramType';
 export type PlayFilters = {
     years: Array<number>;
     programs: Array<ProgramType>;
-}
+};

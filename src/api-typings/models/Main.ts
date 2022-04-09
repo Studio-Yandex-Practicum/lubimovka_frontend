@@ -20,4 +20,4 @@ export type Main = {
     short_list?: MainShortList;
     places?: MainPlaces;
     video_archive?: MainVideoArchive;
-}
+};

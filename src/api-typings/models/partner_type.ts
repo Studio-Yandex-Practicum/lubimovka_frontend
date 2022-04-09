@@ -2,4 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type TypeA7fEnum = 'PERFORMANCE' | 'MASTERCLASS' | 'READING';
+export type partner_type = 'general' | 'festival' | 'info';
