@@ -1,13 +1,12 @@
-import { Children, FC } from 'react';
+import { Children } from 'react';
 import classNames from 'classnames/bind';
 
-import { IAnnouncedPlayCardProps } from 'components/ui/announced-play-card';
+import type { FC } from 'react';
 
 import styles from './performance-section.module.css';
 
 interface IPerformanceSectionProps {
   title: string,
-  children: FC<IAnnouncedPlayCardProps>[],
   className?: string,
 }
 
@@ -20,7 +19,7 @@ export const PerformanceSection: FC<IPerformanceSectionProps> = (props) => {
     className,
   } = props;
 
-  const hasOneChild = children.length === 1;
+  const hasOneChild = Children.count(children) === 1;
 
   return (
     <section
