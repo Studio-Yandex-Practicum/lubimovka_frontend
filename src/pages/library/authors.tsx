@@ -1,14 +1,14 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Error from 'next/error';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
 import AuthorsPage from 'components/library-authors-page';
 import { fetcher } from 'shared/fetcher';
-// @ts-ignore
-import { PaginatedAuthorListList, AuthorList, AuthorLetters } from 'api-typings';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+
+import type { PaginatedAuthorListList, AuthorList, AuthorLetters } from 'api-typings';
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
 type Letters = 'А' | 'Б' | 'В' | 'Г' | 'Д' | 'Е' | 'Ж' | 'З' | 'И' | 'К' | 'Л' | 'М' | 'Н' |
   'О' | 'П' | 'Р' | 'С' | 'Т' | 'У' | 'Ф' | 'Х' | 'Ц' | 'Ч' | 'Ш' | 'Щ' | 'Э' | 'Ю' | 'Я';
@@ -82,7 +82,7 @@ const getLetters = async () => {
   }
 };
 
-export const getServerSideProps: GetServerSideProps<IAuthorsProps> = async ({ query }) => {
+export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
   try {
     const letter = query?.letter;
     const letters = await getLetters();
