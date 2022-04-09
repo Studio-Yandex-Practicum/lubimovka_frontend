@@ -7,7 +7,7 @@ import {
 } from 'next/document';
 
 const Document = () => (
-  <Html>
+  <Html lang="ru">
     <Head>
       {/* https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs */}
       <link rel="icon" href="/favicon.ico" sizes="any"/>
