@@ -1,3 +1,6 @@
+// @ts-nocheck
+// TODO: уточнить у бекендеров, возможно, получится сразу в схеме указать enum для content_type блоков
+
 import { Fragment } from 'react';
 import classNames from 'classnames/bind';
 
@@ -26,7 +29,6 @@ import type {
 
 import styles from './constructor-content.module.css';
 
-// TODO: уточнить у бекендеров, возможно, получится сразу в схеме указать enum для content_type
 enum ConstructorBlockType {
   events = 'eventsblock',
   images = 'imagesblock',

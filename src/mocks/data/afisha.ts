@@ -1,7 +1,5 @@
-/* eslint-disable */
-
 import { AfishaEventListOutput, PaginatedAfishaEventListOutputList } from 'api-typings';
-import { TypeA7fEnum } from 'api-typings/models/TypeA7fEnum';
+import { event_type } from 'api-typings';
 
 import { AfishaInfoOutput } from 'api-typings';
 
@@ -37,7 +35,7 @@ const eventTmpl: AfishaEventListOutput = {
 function makerEvent() {
   let id = 0;
 
-  const types: Record<number, TypeA7fEnum> = {
+  const types: Record<number, event_type> = {
     0: 'MASTERCLASS',
     1: 'PERFORMANCE',
     2: 'READING'
