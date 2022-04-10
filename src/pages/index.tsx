@@ -1,6 +1,6 @@
 import { NextPage, InferGetServerSidePropsType, GetServerSideProps } from 'next';
 import React, { useState, useEffect, useCallback } from 'react';
-import Head from 'next/head';
+
 import classNames from 'classnames/bind';
 
 import { Main, Partner } from 'api-typings';
@@ -15,6 +15,7 @@ import { MainArchive } from 'components/main-page/archive';
 import { MainFirstScreen } from 'components/main-page/first-screen';
 import { MainPartner } from 'components/main-page/partners';
 import { AppLayout } from 'components/app-layout';
+import { SEO } from 'components/seo';
 import { main } from 'mocks/data/main';
 
 import styles from './index.module.css';
@@ -76,32 +77,26 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsTy
         screenImg={first_screen && notEmptyKey(first_screen)
         && displayFirstScreen && <div className={cx('background')} style={{ backgroundImage: `url(${first_screen.image})` }}/>}
       >
-        <>
-          <Head>
-            <title>
-              Главная. Любимовка
-            </title>
-          </Head>
-          <main className={cx('main')}>
-            {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
-            {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
-            <div className={cx({ wrapper: news || blog })}>
-              {afisha && notEmptyKey(afisha)
-              && (
-                <MainTitle
-                  afisha_today={afisha.afisha_today}
-                  description={afisha.description}
-                />
-              )}
-            </div>
-            {afisha && notEmpty(afisha.items) && <MainEvents {...afisha}/>}
-            {banners && notEmpty(banners.items) && <MainBanners {...banners}/>}
-            {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
-            {places && notEmpty(places.items) && <MainPlatforms {...places}/>}
-            {video_archive && <MainArchive {...video_archive}/>}
-            {partners && notEmptyKey(partners) && <MainPartner {...partners}/>}
-          </main>
-        </>
+        <SEO title="Главная"/>
+        <main className={cx('main')}>
+          {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
+          {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
+          <div className={cx({ wrapper: news || blog })}>
+            {afisha && notEmptyKey(afisha)
+            && (
+              <MainTitle
+                afisha_today={afisha.afisha_today}
+                description={afisha.description}
+              />
+            )}
+          </div>
+          {afisha && notEmpty(afisha.items) && <MainEvents {...afisha}/>}
+          {banners && notEmpty(banners.items) && <MainBanners {...banners}/>}
+          {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
+          {places && notEmpty(places.items) && <MainPlatforms {...places}/>}
+          {video_archive && <MainArchive {...video_archive}/>}
+          {partners && notEmptyKey(partners) && <MainPartner {...partners}/>}
+        </main>
       </AppLayout>
     </div>
   );

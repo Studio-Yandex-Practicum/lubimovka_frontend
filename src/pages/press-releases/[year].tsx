@@ -16,13 +16,19 @@ import { fetcher } from 'shared/fetcher';
 
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
 import type { SelectOption } from 'components/select';
-import type { PressRelease } from 'api-typings';
+import type { PressRelease as PressReleaseResponse } from 'api-typings';
+import type { Url } from 'shared/types';
 
 import { usePersistentData } from 'providers/persistent-data-provider';
 
 import styles from 'components/press-release-layout/press-release-layout.module.css';
 
 const cx = classNames.bind(styles);
+
+type PressRelease = {
+  cover: Url
+  content: string
+}
 
 const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
@@ -34,18 +40,22 @@ const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSidePr
     );
   }
 
+  let yearOptions: SelectOption<number>[] = [];
+  let selectedYearOption: SelectOption<number> | undefined;
+
   const {
     pressReleaseYears,
-    selectedPressReleaseYear,
-    cover,
-    content,
+    // @ts-ignore
+    selectedPressReleaseYear, cover, content,
   } = props;
 
-  const yearOptions = pressReleaseYears.map((year) => ({
-    text: year.toString(),
-    value: year,
-  }));
-  const selectedYearOption = yearOptions.find(({ value }) => value === selectedPressReleaseYear);
+  if (pressReleaseYears) {
+    yearOptions = pressReleaseYears.map((year) => ({
+      text: year.toString(),
+      value: year,
+    }));
+    selectedYearOption = yearOptions.find(({ value }) => value === selectedPressReleaseYear);
+  }
 
   const handleYearChange = ({ value }: SelectOption<number>) => {
     router.push(`/press-releases/${value}`, undefined, { scroll: false });
@@ -71,65 +81,67 @@ const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSidePr
         }
       }}
       />
-      <PressReleaseLayout>
-        <PressReleaseLayout.Title>
-          <PageTitle>
-            Пресс-релизы
-          </PageTitle>
-        </PressReleaseLayout.Title>
-        {cover && (
-          <PressReleaseLayout.Cover>
-            <Image
-              alt=""
-              src={cover}
-              layout="fill"
-              objectFit="cover"
-            />
-          </PressReleaseLayout.Cover>
-        )}
-        <Filter className={cx('filter')}>
-          <Filter.Field
-            className={cx('year')}
-            caption="Выберите год фестиваля"
-          >
-            <Select<number>
-              placeholder="Выберите год"
-              options={yearOptions}
-              selectedOption={selectedYearOption}
-              onChange={handleYearChange}
-            />
-          </Filter.Field>
-        </Filter>
-        <PressReleaseLayout.Actions>
-          <Button
-            icon={(
-              <Icon
-                glyph="arrow-down"
-                width="100%"
-                height="100%"
+      {pressReleaseYears && (
+        <PressReleaseLayout>
+          <PressReleaseLayout.Title>
+            <PageTitle>
+              Пресс-релизы
+            </PageTitle>
+          </PressReleaseLayout.Title>
+          {cover && (
+            <PressReleaseLayout.Cover>
+              <Image
+                alt=""
+                src={cover}
+                layout="fill"
+                objectFit="cover"
               />
-            )}
-            iconPosition="right"
-            border="right-bottom-left"
-            href={`/press-releases/${selectedPressReleaseYear}/download`}
-          >
-            Скачать пресс-релиз
-            {' '}
-            <span className={cx('additional-note')}>
-              {`${selectedPressReleaseYear} года`}
+            </PressReleaseLayout.Cover>
+          )}
+          <Filter className={cx('filter')}>
+            <Filter.Field
+              className={cx('year')}
+              caption="Выберите год фестиваля"
+            >
+              <Select<number>
+                placeholder="Выберите год"
+                options={yearOptions}
+                selectedOption={selectedYearOption}
+                onChange={handleYearChange}
+              />
+            </Filter.Field>
+          </Filter>
+          <PressReleaseLayout.Actions>
+            <Button
+              icon={(
+                <Icon
+                  glyph="arrow-down"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              iconPosition="right"
+              border="right-bottom-left"
+              href={`/press-releases/${selectedPressReleaseYear}/download`}
+            >
+              Скачать пресс-релиз
               {' '}
-            </span>
-            в .pdf
-          </Button>
-        </PressReleaseLayout.Actions>
-        {content && (
-          <PressReleaseLayout.Content>
-            <HTMLMarkup
-              markup={content}
-            />
-          </PressReleaseLayout.Content>
-        )}
-      </PressReleaseLayout>
+              <span className={cx('additional-note')}>
+                {`${selectedPressReleaseYear} года`}
+                {' '}
+              </span>
+              в .pdf
+            </Button>
+          </PressReleaseLayout.Actions>
+          {content && (
+            <PressReleaseLayout.Content>
+              <HTMLMarkup
+                markup={content}
+              />
+            </PressReleaseLayout.Content>
+          )}
+        </PressReleaseLayout>
+      )}
     </AppLayout>
   );
 };
@@ -147,9 +159,9 @@ const fetchPressReleaseYears = async () => {
   return response.years;
 };
 
-const fetchPressRelease = async (year: number) => {
+const fetchPressRelease = async (year: number): Promise<PressRelease | undefined> => {
   try {
-    const response = await fetcher<PressRelease>(`/info/press-releases/${year}/`);
+    const response = await fetcher<PressReleaseResponse>(`/info/press-releases/${year}/`);
     return {
       cover: response.image,
       content: response.text,
@@ -160,29 +172,35 @@ const fetchPressRelease = async (year: number) => {
 };
 
 export const getServerSideProps = async ({ params }: GetServerSidePropsContext) => {
-  const serverError = {
+  const serverErrorResult = {
     props: {
       errorCode: 500,
     },
-  };
+  } as const;
   const pressReleaseYears = await fetchPressReleaseYears();
 
-  if (!pressReleaseYears || !pressReleaseYears.length) {
-    return serverError;
+  if (!pressReleaseYears) {
+    return serverErrorResult;
   }
 
-  pressReleaseYears.sort((a, b) => a - b);
+  if (pressReleaseYears.length > 0) {
+    pressReleaseYears.sort((a, b) => a - b);
 
-  const selectedPressReleaseYear = Number(params?.year ?? pressReleaseYears[pressReleaseYears.length - 1]);
-  const pressRelease = await fetchPressRelease(selectedPressReleaseYear);
-  const notFound = !pressRelease;
+    const selectedPressReleaseYear = Number(params?.year ?? pressReleaseYears[pressReleaseYears.length - 1]);
+    const pressRelease = await fetchPressRelease(selectedPressReleaseYear);
+
+    return {
+      props: {
+        pressReleaseYears,
+        selectedPressReleaseYear,
+        ...pressRelease
+      }
+    };
+  }
 
   return {
-    notFound,
     props: {
-      pressReleaseYears,
-      selectedPressReleaseYear,
-      ...notFound ? {} : pressRelease,
+      pressReleaseYears: null,
     }
   };
 };

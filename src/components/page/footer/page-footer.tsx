@@ -9,8 +9,8 @@ export const PageFooter: FC = (props) => {
   const { children } = props;
 
   return (
-    <header className={cx('footer')}>
+    <footer className={cx('footer')}>
       {children}
-    </header>
+    </footer>
   );
 };

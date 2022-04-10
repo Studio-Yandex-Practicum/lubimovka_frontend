@@ -12,7 +12,7 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
-import { PerformanceEventList } from 'components/persormace-event-list';
+import { PerformanceEventList } from 'components/performance-event-list';
 import { ReviewCarousel } from 'components/review-carousel';
 import { MediaReviewCard } from 'components/media-review-card';
 import { ReviewCard } from 'components/review-card';
@@ -115,9 +115,8 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         </PerformanceLayout.Content>
         <PerformanceLayout.Gallery>
           <PhotoGallery
-            photos={images_in_block.map(({ image, title }) => ({
+            photos={images_in_block.map(({ image }) => ({
               url: image,
-              description: title,
             }))}
           />
         </PerformanceLayout.Gallery>

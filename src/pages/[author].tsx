@@ -7,6 +7,7 @@ import { AuthorPlays } from 'components/author-page/plays';
 import { AnotherPlays } from 'components/author-page/another-plays';
 import { AuthorInformation } from 'components/author-page/information';
 import { AuthorRequest } from 'components/author-page/request';
+import { SEO } from 'components/seo';
 import { fetcher } from 'shared/fetcher';
 import * as breakpoints from 'shared/breakpoints.js';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
@@ -48,6 +49,7 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
         colors: 'brand',
       }}
     >
+      <SEO title={name}/>
       <div className={cx('author')}>
         <AuthorOverview
           props={{
