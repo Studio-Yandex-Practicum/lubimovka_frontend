@@ -2,4 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type PartnerTypeEnum = 'general' | 'festival' | 'info';
+export type AuthorLetters = {
+    letters: Array<string>;
+};

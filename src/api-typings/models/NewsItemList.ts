@@ -8,4 +8,4 @@ export type NewsItemList = {
     description: string;
     image?: string;
     pub_date: string;
-}
+};

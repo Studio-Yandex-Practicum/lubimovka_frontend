@@ -10,4 +10,4 @@ export type Image = {
      * Загрузите фотографию
      */
     image: string;
-}
+};

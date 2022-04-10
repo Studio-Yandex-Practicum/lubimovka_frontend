@@ -13,4 +13,4 @@ import type { Content_object } from './Content_object';
 export type BaseContent = {
     readonly content_type: string;
     readonly content_item: Content_object;
-}
+};

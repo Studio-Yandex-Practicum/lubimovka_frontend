@@ -8,4 +8,4 @@ export type OrderedVideo = {
      */
     title?: string;
     url: string;
-}
+};

@@ -20,4 +20,4 @@ export type BlogItemDetailOutput = {
     readonly contents: Array<BaseContent>;
     team: Array<BlogItemRole>;
     other_blogs: Array<BlogItemList>;
-}
+};

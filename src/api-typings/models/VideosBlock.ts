@@ -6,5 +6,5 @@ import type { OrderedVideo } from './OrderedVideo';
 
 export type VideosBlock = {
     title: string;
-    readonly items: Array<OrderedVideo>;
-}
+    items: Array<OrderedVideo>;
+};

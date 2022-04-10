@@ -8,4 +8,4 @@ export type OrderedImage = {
      */
     title?: string;
     image: string;
-}
+};

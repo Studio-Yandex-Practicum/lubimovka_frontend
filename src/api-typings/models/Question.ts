@@ -10,4 +10,4 @@ export type Question = {
     author_name: string;
     author_email: string;
     sent?: boolean;
-}
+};

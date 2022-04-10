@@ -9,4 +9,4 @@ export type Place = {
     city: string;
     address: string;
     map_link: string;
-}
+};

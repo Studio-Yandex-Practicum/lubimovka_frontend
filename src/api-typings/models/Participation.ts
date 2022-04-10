@@ -6,6 +6,7 @@ export type Participation = {
     readonly id: number;
     year: number;
     birth_year: number;
+    readonly url_file_in_storage: string;
     readonly created: string;
     readonly modified: string;
     first_name: string;
@@ -23,4 +24,5 @@ export type Participation = {
     file: string;
     readonly exported_to_google: boolean;
     readonly saved_to_storage: boolean;
-}
+    readonly sent_to_email: boolean;
+};

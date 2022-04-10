@@ -16,4 +16,4 @@ export type NewsItemDetailed = {
     pub_date: string;
     readonly contents: Array<BaseContent>;
     readonly other_news: Array<NewsItemList>;
-}
+};

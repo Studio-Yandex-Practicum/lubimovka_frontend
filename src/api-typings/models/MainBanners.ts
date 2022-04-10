@@ -12,4 +12,4 @@ import type { Banner } from './Banner';
  */
 export type MainBanners = {
     items: Array<Banner>;
-}
+};

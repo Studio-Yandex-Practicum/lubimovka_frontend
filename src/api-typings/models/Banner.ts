@@ -9,4 +9,4 @@ export type Banner = {
     url: string;
     image: string;
     readonly button: string;
-}
+};

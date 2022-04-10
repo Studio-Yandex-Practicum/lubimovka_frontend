@@ -4,8 +4,9 @@
 
 import type { Persons } from './Persons';
 
-export type Sponsor = {
+export type Selectors = {
     readonly id: number;
     person: Persons;
+    year: number;
     position: string;
 };

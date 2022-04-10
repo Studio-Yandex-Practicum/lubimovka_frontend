@@ -10,4 +10,4 @@ export type ProjectList = {
      */
     intro: string;
     image: string;
-}
+};
