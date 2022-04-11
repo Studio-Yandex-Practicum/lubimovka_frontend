@@ -14,18 +14,26 @@ export interface IMainTitle {
 }
 
 export const MainTitle: FC<IMainTitle> = ({ afisha_today, description }) => {
+  const templateTitle = afisha_today
+    ? (
+      <h1 className={cx('title')}>
+        Афиша на сегодня,
+        <br/>
+        {format('d, MMMM', new Date())}
+      </h1>
+    )
+    : (
+      <h1 className={cx('title')}>
+        Афиша
+        <br/>
+        событий
+      </h1>
+    );
+
   return (
     <section className={cx('section')}>
-      <div className={cx('wrapper', {
-        width: afisha_today
-      })}
-      >
-        <h1 className={cx('title')}>
-          {afisha_today
-            ? `Афиша на сегодня, ${format('d, MMMM', new Date())}`
-            : 'Афиша событий'
-          }
-        </h1>
+      <div className={cx('wrapper')}>
+        {templateTitle}
         <div className={cx('buttonContainer')}>
           <Button
             label="ПОЛНАЯ АФИША"

@@ -92,26 +92,14 @@
 }
 
 .link {
-  display: flex;
-  align-items: center;
-  padding: scale(12px) 0;
-  margin: 0;
+  width: 100%;
+  padding: 0 scale(4px);
   margin-top: auto;
-  color: inherit;
-  text-decoration: none;
-  transition: all .3s;
+}
 
-  &:hover {
-    opacity: .8;
-  }
-
-  &:hover .icon {
-    transform: translateX(5px);
-  }
-
-  @media (max-width: $tablet-portrait) {
-    padding-left: scale(16px);
-  }
+.link svg {
+  min-width: scale(25px);
+  height: scale(25px);
 }
 
 .text {

@@ -21,7 +21,7 @@
   @media (max-width: $tablet-portrait) {
     margin-bottom: scale(24px);
 
-    @mixin headline7;
+    @mixin headline4;
   }
 }
 

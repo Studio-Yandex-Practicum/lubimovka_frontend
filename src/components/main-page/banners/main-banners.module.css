@@ -62,6 +62,10 @@
 
 .content {
   padding-left: scale(50px);
+
+  @media (max-width: $tablet-portrait) {
+    padding-left: 0;
+  }
 }
 
 .desc {

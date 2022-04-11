@@ -26,6 +26,7 @@ export const MainArchive: FC<MainVideoArchive> = ({ photo, url }) => (
             border="bottomLeft"
             size="s"
             className={cx('icon')}
+            target="_blank"
           />
         </span>
         всех читок и событий
