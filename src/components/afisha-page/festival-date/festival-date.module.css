@@ -4,6 +4,7 @@
   align-items: flex-end;
   align-items: center;
   justify-content: center;
+  padding-top: scale(10px);
 }
 
 .date {

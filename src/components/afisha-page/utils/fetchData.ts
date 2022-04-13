@@ -3,7 +3,8 @@ import { fetcher } from 'shared/fetcher';
 import { snakeToCamelObject } from 'shared/helpers/snake-to-camel';
 import { AfishaEvents, AfishaInfo } from 'shared/types';
 
-export const fetchInfo = async (): Promise<AfishaInfo> => snakeToCamelObject(await fetcher<AfishaInfoOutput>('afisha/info/')) as AfishaInfo;
-export const fetchEvents = async (offset?: number) =>
-  <AfishaEvents>snakeToCamelObject(await fetcher<AfishaEventListOutput>
-  (`afisha/events/?limit=${process.env.AFISHA_FETCH_EVENTS_LIMIT || 10}${offset ? `&offset=${offset}` : ''}`));
+export const fetchInfo = async () => <AfishaInfo>snakeToCamelObject(await fetcher<AfishaInfoOutput>('afisha/info/'));
+export const fetchEvents = async (offset: number = 0, limit: number = 10) => {
+  return <AfishaEvents>snakeToCamelObject(await fetcher<AfishaEventListOutput>
+  (`afisha/events/?limit=${limit}${offset ? `&offset=${offset}` : ''}`));
+};

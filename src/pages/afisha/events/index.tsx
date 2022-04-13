@@ -1,6 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-import { AfishaTitle } from 'components/afisha-page/title';
+import { AfishaTitle } from 'components/afisha-page/afisha-title';
 import { FestivalEvents } from 'components/afisha-page/festival-events';
 import { AppLayout } from 'components/app-layout';
 import { AfishaProvider } from 'components/afisha-page/afisha-provider';

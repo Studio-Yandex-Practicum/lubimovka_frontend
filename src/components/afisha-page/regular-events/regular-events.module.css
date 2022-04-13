@@ -42,3 +42,8 @@
     }
   }
 }
+
+.spinner {
+  width: scale(64px);
+  margin: 0 auto;
+}

@@ -1,5 +1,9 @@
 .section {
   display: flex;
   flex-direction: column;
-  padding: 0 calc(var(--scale) * 32);
+}
+
+.spinner {
+  width: scale(64px);
+  margin: 0 auto;
 }

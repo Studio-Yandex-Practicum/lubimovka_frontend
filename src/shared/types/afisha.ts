@@ -40,7 +40,7 @@ export type AfishaEvent = {
   paid?: boolean;
   url: string;
   place: string;
-};
+}
 
 export type AfishaEvents = {
     count: number;
