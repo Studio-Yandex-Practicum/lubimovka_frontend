@@ -4,7 +4,7 @@
   position: -webkit-sticky;
   position: sticky;
   z-index: 99;
-  top: 0;
+  top: calc(var(--scale) * var(--page-header-height));
   overflow: hidden;
   width: scale(270px);
   height: 100vh;

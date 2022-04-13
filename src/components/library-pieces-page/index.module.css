@@ -17,7 +17,7 @@
 
   @media (max-width: $tablet-portrait) {
     position: fixed;
-    z-index: 1;
+    z-index: 101;
     top: scale(32px);
     right: scale(24px);
     display: flex;
@@ -44,7 +44,7 @@
 
 .top {
   position: sticky;
-  top: calc(scale(50px) * -1);
+  top: calc(scale(112px) * -1);
   width: 100%;
   height: 0;
   background-color: var(--white);
@@ -74,7 +74,7 @@
 
   position: sticky;
   z-index: 1;
-  top: 0;
+  top: calc(var(--scale) * var(--page-header-height));
   left: auto;
   max-height: 100vh;
   box-sizing: border-box;
@@ -108,7 +108,7 @@
 
   @media (max-width: $tablet-portrait) {
     position: sticky;
-    top: calc(scale(9px) * -1);
+    top: calc(var(--scale) * var(--page-header-height));
     left: auto;
     height: scale(105px);
     padding: scale(48px) 0 0 scale(24px);
@@ -168,7 +168,7 @@
 .search {
   position: sticky;
   z-index: 3;
-  top: scale(48px);
+  top: calc(var(--scale) * var(--page-header-height) * 1.77);
   width: 100%;
   box-sizing: border-box;
   background-color: var(--beige);

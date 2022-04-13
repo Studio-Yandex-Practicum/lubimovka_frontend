@@ -1,6 +1,7 @@
 :root {
   --page-content-max-width: 1440px;
   --page-content-min-width: 414px;
+  --page-header-height: 62;
 
   /* Коэффициент для масштабирования размеров с помощью хелпера scale() */
   --scale: calc(100vw / 1440);

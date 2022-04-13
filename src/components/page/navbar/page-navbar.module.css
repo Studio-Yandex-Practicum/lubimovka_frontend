@@ -1,4 +1,7 @@
 .root {
-  display: flex;
-  flex-direction: column;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  background: var(--beige);
 }
