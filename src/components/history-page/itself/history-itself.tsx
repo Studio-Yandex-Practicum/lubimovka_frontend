@@ -6,7 +6,9 @@ interface TextItemData {
   text1: string,
   text2: string,
   text3: string,
-  text4: string
+  text4: string,
+  text5: string,
+  text6: string
 }
 
 interface ImageItemData {
@@ -59,10 +61,15 @@ export const HistoryItself: FC<IHistoryItself>= ({ data }) => {
           className={style.image}
         />
       </div>
-      <p className={style.text3}>
+      <p className={style.text2}>
         {historyContent.text4}
+      </p>
+      <p className={style.text2}>
+        {historyContent.text5}
+      </p>
+      <p className={style.text3}>
+        {historyContent.text6}
       </p>
     </section>
   );
 };
-
