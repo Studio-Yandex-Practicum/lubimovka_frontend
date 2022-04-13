@@ -96,7 +96,7 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
         </BlogLayout.Title>
         <BlogLayout.Description>
           Журналисты, театроведы, критики, искусствоведы и студенты профильных вузов ведут журнал фестиваля Любимовка
-          под руководством Натальи Дубашинской и Полины Пхор.
+          под руководством Анны Юсиной.
         </BlogLayout.Description>
         <BlogLayout.CallToAction>
           Если вы хотите стать автором, пишите на
