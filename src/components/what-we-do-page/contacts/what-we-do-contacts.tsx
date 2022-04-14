@@ -5,6 +5,8 @@ import { Icon } from 'components/ui/icon';
 
 import styles from './what-we-do-contacts.module.css';
 
+import { InfoLink } from 'components/ui/info-link';
+
 const cx = cn.bind(styles);
 
 export const WhatWeDoContacts = (): JSX.Element => (
@@ -24,9 +26,15 @@ export const WhatWeDoContacts = (): JSX.Element => (
         Команда Любимовки самостоятельно привлекает режиссеров для работы.
         Если вам хочется стать режиссером одной из читок,
         {' '}
-        <a href="mailto:festival@lubimovka.ru" className={cx('link')}>
-          напишите нам
-        </a>
+        <InfoLink
+          isOutsideLink
+          label="напишите нам"
+          icon="arrow-right"
+          iconPlace="right"
+          size="m"
+          className={cx('desc', 'link')}
+          href="mailto:festival@lubimovka.ru"
+        />
         {' '}
         про себя.
       </div>

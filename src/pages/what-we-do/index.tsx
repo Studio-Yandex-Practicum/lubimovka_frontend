@@ -13,7 +13,7 @@ import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
 import { WhatWeDoPartner } from 'components/what-we-do-page/partners';
 
 const Page: NextPage = ({ partners }: InferGetServerSidePropsType<typeof getServerSideProps>):JSX.Element => (
-  <AppLayout>
+  <AppLayout navbarProps={{ colors: 'brand' }}>
     <Head>
       <title>
         Что мы делаем? Любимовка
@@ -26,7 +26,7 @@ const Page: NextPage = ({ partners }: InferGetServerSidePropsType<typeof getServ
       <WhatWeDoSelection/>
       <WhatWeDoPoster/>
       <WhatWeDoContacts/>
-      <WhatWeDoPartner {...partners}/>
+      {partners && <WhatWeDoPartner {...partners}/>}
     </main>
   </AppLayout>
 );
