@@ -12,6 +12,7 @@ import { BlogLayout } from 'components/blog-layout';
 import { PageTitle } from 'components/page-title';
 import { Link } from 'components/ui/link';
 import { useBlog } from 'providers/blog-provider';
+import { usePersistentData } from 'providers/persistent-data-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
 import { fetcher } from 'shared/fetcher';
 import { months } from 'shared/constants/months';
@@ -22,8 +23,6 @@ import type { BlogEntry } from 'shared/types/domain';
 import type { PaginatedBlogItemListOutputList, BlogItemListOutput } from 'api-typings';
 
 import styles from 'components/blog-layout/blog-layout.module.css';
-
-const CALL_TO_ACTION_EMAIL = 'critics@lubimovka.ru';
 
 const cx = classNames.bind(styles);
 
@@ -51,11 +50,12 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     pending,
     errorCode,
   } = useBlog();
-
+  const { settings } = usePersistentData();
   const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>({ threshold: 1 });
   const selectedMonthOption = useMemo(() => monthOptions.find(({ value }) => value === selectedMonth), [selectedMonth]);
   const selectedYearOption = useMemo(() => yearOptions.find(({ value }) => value === selectedYear), [selectedYear]);
   const lastEntryIndex = useMemo(() => entries.length - 1, [entries]);
+  const callToActionEmail = settings?.emailAddresses.forAuthors;
 
   const handleMonthChange = ({ value }: SelectOption<number>) => {
     setSelectedMonth(value);
@@ -98,13 +98,15 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           Журналисты, театроведы, критики, искусствоведы и студенты профильных вузов ведут журнал фестиваля Любимовка
           под руководством Анны Юсиной.
         </BlogLayout.Description>
-        <BlogLayout.CallToAction>
-          Если вы хотите стать автором, пишите на
-          {' '}
-          <Link href={`mailto:${CALL_TO_ACTION_EMAIL}`}>
-            {CALL_TO_ACTION_EMAIL}
-          </Link>
-        </BlogLayout.CallToAction>
+        {callToActionEmail && (
+          <BlogLayout.CallToAction>
+            Если вы хотите стать автором, пишите на
+            {' '}
+            <Link href={`mailto:${callToActionEmail}`}>
+              {callToActionEmail}
+            </Link>
+          </BlogLayout.CallToAction>
+        )}
         <BlogLayout.Filter>
           <Filter>
             <Filter.Field
