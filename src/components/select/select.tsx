@@ -8,26 +8,35 @@ export type SelectOption<ValueType = string | number> = {
   value: ValueType
 }
 
+export type SelectOptionCheckHandler<ValueType = string | number> = (option: SelectOption<ValueType | null>) => void
+
 interface SelectProps<T> {
+  clearable?: boolean,
   placeholder: string,
   options: SelectOption<T>[]
   selectedOption?: SelectOption<T>
-  onChange: (option: SelectOption<T>) => void
+  onChange: SelectOptionCheckHandler<T>
 }
 
 const cx = classNames.bind(styles);
+
+const emptyOption = {
+  text: '-',
+  value: null,
+};
 
 export const Select = <ValueType,>(props: SelectProps<ValueType>) => {
   const [opened, setOpened] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const {
+    clearable = false,
     placeholder,
     options,
     selectedOption,
     onChange,
   } = props;
 
-  const handleOptionCheck = (option: SelectOption<ValueType>) => () => {
+  const handleOptionCheck = (option: SelectOption<ValueType | null>) => () => {
     if (onChange) {
       onChange(option);
     }
@@ -73,6 +82,14 @@ export const Select = <ValueType,>(props: SelectProps<ValueType>) => {
         {selectedOption?.text || placeholder}
       </button>
       <ul className={cx('dropdown')}>
+        {clearable && selectedOption && (
+          <li
+            className={cx('option-regular')}
+            onMouseDown={handleOptionCheck(emptyOption)}
+          >
+            {emptyOption.text}
+          </li>
+        )}
         {options.map((option, index) => (
           <li
             key={index}

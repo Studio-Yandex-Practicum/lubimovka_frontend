@@ -21,3 +21,8 @@
 .year-field {
   max-width: scale(150px);
 }
+
+.spinner {
+  width: scale(64px);
+  margin: 0 auto;
+}
