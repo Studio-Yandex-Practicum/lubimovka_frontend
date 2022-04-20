@@ -1,2 +1,1 @@
-export { default } from './news';
-export * from './news';
+export { default, getServerSideProps } from './news';

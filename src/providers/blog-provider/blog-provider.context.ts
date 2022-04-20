@@ -2,16 +2,17 @@ import { createContext, useContext } from 'react';
 
 import type { BlogEntry } from 'shared/types/domain';
 import type { BlogState } from './blog-provider';
+import type { Nullable } from 'shared/types';
 
 type BlogContextState = {
   setPreloadedState: (value: Partial<BlogState>) => void
   entries: BlogEntry[]
   hasMoreEntries: boolean
   handleShouldLoadEntries: () => void
-  selectedMonth?: number
-  setSelectedMonth: (value: number) => void
-  selectedYear?: number
-  setSelectedYear: (value: number) => void
+  selectedMonth?: Nullable<number>
+  setSelectedMonth: (value: Nullable<number>) => void
+  selectedYear?: Nullable<number>
+  setSelectedYear: (value: Nullable<number>) => void
   pending: boolean
   errorCode?: number
 }

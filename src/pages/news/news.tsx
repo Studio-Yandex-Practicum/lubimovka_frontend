@@ -1,7 +1,6 @@
 import Error from 'next/error';
 import { useEffect, useMemo } from 'react';
 import classNames from 'classnames/bind';
-import { InferGetServerSidePropsType } from 'next';
 
 import { AppLayout } from 'components/app-layout';
 import { NewsLayout } from 'components/news-layout';
@@ -16,7 +15,11 @@ import { fetcher } from 'shared/fetcher';
 import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/news';
 import { format } from 'shared/helpers/format-date';
-import { PaginatedNewsItemListList } from 'api-typings';
+import { getYearRange } from 'shared/helpers/get-year-range';
+
+import type { InferGetServerSidePropsType } from 'next';
+import type { PaginatedNewsItemListList } from 'api-typings';
+import type { SelectOptionCheckHandler } from 'components/select';
 
 import styles from 'components/news-layout/news-layout.module.css';
 
@@ -24,14 +27,13 @@ const cx = classNames.bind(styles);
 
 // TODO: Получать список лет из API
 const fromYear = 2013;
-const currentYear = new Date().getFullYear();
 const monthOptions = months.map((month, index) => ({
   text: month,
   value: index + 1,
 }));
-const yearOptions = Array.from(Array(currentYear - fromYear), (_, index) => ({
-  text: (index + fromYear).toString(),
-  value: index + fromYear,
+const yearOptions = getYearRange(fromYear).map((year) => ({
+  text: year.toString(),
+  value: year,
 }));
 
 const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -40,26 +42,47 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   } = props;
   const {
     entries,
-    setServerSideEntries,
     handleShouldLoadEntries,
     hasMoreEntries,
-    selectedMonthOption,
-    handleMonthChange,
-    selectedYearOption,
-    handleYearChange,
+    selectedMonth,
+    setSelectedMonth,
+    selectedYear,
+    setSelectedYear,
     pending,
   } = useNews();
+
   const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>({ threshold: 1 });
+
+  const selectedMonthOption = useMemo(() => (
+    monthOptions.find(({ value }) => value === selectedMonth)
+  ), [selectedMonth]);
+
+  const selectedYearOption = useMemo(() => (
+    yearOptions.find(({ value }) => value === selectedYear)
+  ), [selectedYear]);
+
   const lastNewsIndex = useMemo(() => entries.length - 1, [entries]);
 
-  useEffect(() => {
-    if (!entries.length && props.entries) {
-      setServerSideEntries({
-        entries: props.entries,
-        hasMoreEntries: props.hasMoreEntries,
-      });
-    }
-  }, []);
+  const handleMonthChange: SelectOptionCheckHandler<number> = ({ value }) => {
+    if (selectedMonth === value) return;
+
+    setSelectedMonth(value);
+  };
+
+  const handleYearChange: SelectOptionCheckHandler<number> = ({ value }) => {
+    if (selectedYear === value) return;
+
+    setSelectedYear(value);
+  };
+
+  // useEffect(() => {
+  //   if (!entries.length && props.entries) {
+  //     setServerSideEntries({
+  //       entries: props.entries,
+  //       hasMoreEntries: props.hasMoreEntries,
+  //     });
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (!pending && shouldLoadEntries && hasMoreEntries) {
@@ -85,7 +108,8 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             caption="Выберите месяц"
             hiddenCaption
           >
-            <Select
+            <Select<number>
+              clearable
               placeholder="Месяц"
               options={monthOptions}
               selectedOption={selectedMonthOption}
@@ -97,7 +121,8 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             caption="Выберите год"
             hiddenCaption
           >
-            <Select
+            <Select<number>
+              clearable
               placeholder="Год"
               options={yearOptions}
               selectedOption={selectedYearOption}
@@ -147,8 +172,10 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      entries: response.results,
-      hasMoreEntries: !!response.next,
+      preloadedNewsState: {
+        entries: response.results,
+        hasMoreEntries: !!response.next,
+      }
     }
   };
 };

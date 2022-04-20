@@ -7,12 +7,15 @@ import { AppLayout } from 'components/app-layout/index';
 import { BlogEntryList } from 'components/blog-entry-list';
 import { BlogCard } from 'components/ui/blog-card';
 import { Filter } from 'components/filter';
-import { Select, SelectOption } from 'components/select';
+import { Select } from 'components/select';
 import { BlogLayout } from 'components/blog-layout';
 import { PageTitle } from 'components/page-title';
 import { Link } from 'components/ui/link';
+import { Spinner } from 'components/spinner';
 import { useBlog } from 'providers/blog-provider';
+import { usePersistentData } from 'providers/persistent-data-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
+import { getYearRange } from 'shared/helpers/get-year-range';
 import { fetcher } from 'shared/fetcher';
 import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/blog';
@@ -20,22 +23,20 @@ import { entriesPerPage } from 'shared/constants/blog';
 import type { BlogState } from 'providers/blog-provider';
 import type { BlogEntry } from 'shared/types/domain';
 import type { PaginatedBlogItemListOutputList, BlogItemListOutput } from 'api-typings';
+import type { SelectOptionCheckHandler } from 'components/select';
 
 import styles from 'components/blog-layout/blog-layout.module.css';
-
-const CALL_TO_ACTION_EMAIL = 'critics@lubimovka.ru';
 
 const cx = classNames.bind(styles);
 
 const fromYear = 2013;
-const currentYear = new Date().getFullYear();
 const monthOptions = months.map((month, index) => ({
   text: month,
   value: index + 1,
 }));
-const yearOptions = Array.from(Array(currentYear - fromYear), (_, index) => ({
-  text: (index + fromYear).toString(),
-  value: index + fromYear,
+const yearOptions = getYearRange(fromYear).map((year) => ({
+  text: year.toString(),
+  value: year,
 }));
 
 const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -51,17 +52,22 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     pending,
     errorCode,
   } = useBlog();
-
+  const { settings } = usePersistentData();
   const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>({ threshold: 1 });
   const selectedMonthOption = useMemo(() => monthOptions.find(({ value }) => value === selectedMonth), [selectedMonth]);
   const selectedYearOption = useMemo(() => yearOptions.find(({ value }) => value === selectedYear), [selectedYear]);
   const lastEntryIndex = useMemo(() => entries.length - 1, [entries]);
+  const callToActionEmail = settings?.emailAddresses.forAuthors;
 
-  const handleMonthChange = ({ value }: SelectOption<number>) => {
+  const handleMonthChange: SelectOptionCheckHandler<number> = ({ value }) => {
+    if (selectedMonth === value) return;
+
     setSelectedMonth(value);
   };
 
-  const handleYearChange = ({ value }: SelectOption<number>) => {
+  const handleYearChange: SelectOptionCheckHandler<number> = ({ value }) => {
+    if (selectedYear === value) return;
+
     setSelectedYear(value);
   };
 
@@ -98,13 +104,15 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           Журналисты, театроведы, критики, искусствоведы и студенты профильных вузов ведут журнал фестиваля Любимовка
           под руководством Анны Юсиной.
         </BlogLayout.Description>
-        <BlogLayout.CallToAction>
-          Если вы хотите стать автором, пишите на
-          {' '}
-          <Link href={`mailto:${CALL_TO_ACTION_EMAIL}`}>
-            {CALL_TO_ACTION_EMAIL}
-          </Link>
-        </BlogLayout.CallToAction>
+        {callToActionEmail && (
+          <BlogLayout.CallToAction>
+            Если вы хотите стать автором, пишите на
+            {' '}
+            <Link href={`mailto:${callToActionEmail}`}>
+              {callToActionEmail}
+            </Link>
+          </BlogLayout.CallToAction>
+        )}
         <BlogLayout.Filter>
           <Filter>
             <Filter.Field
@@ -113,6 +121,7 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
               hiddenCaption
             >
               <Select<number>
+                clearable
                 placeholder="Месяц"
                 options={monthOptions}
                 selectedOption={selectedMonthOption}
@@ -125,6 +134,7 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
               hiddenCaption
             >
               <Select<number>
+                clearable
                 placeholder="Год"
                 options={yearOptions}
                 selectedOption={selectedYearOption}
@@ -134,6 +144,9 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           </Filter>
         </BlogLayout.Filter>
         <BlogLayout.Main>
+          {pending && (
+            <Spinner className={cx('spinner')}/>
+          )}
           <BlogEntryList>
             {entries.map((entry, index) => (
               <BlogEntryList.Item

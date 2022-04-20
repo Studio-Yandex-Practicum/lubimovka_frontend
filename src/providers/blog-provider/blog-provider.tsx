@@ -13,6 +13,7 @@ import type {
   BlogItemListOutput,
   PaginatedBlogItemListOutputList,
 } from 'api-typings';
+import type { Nullable } from 'shared/types';
 
 const defaultBlogState = {
   entries: [] as BlogEntry[],
@@ -64,8 +65,8 @@ const blogReducer = (state: BlogState, action: BlogAction) => {
 export const BlogProvider: FC = (props) => {
   const { children } = props;
   const [blog, dispatch] = useReducer(blogReducer, defaultBlogState);
-  const [selectedMonth, setSelectedMonth] = useState<number>();
-  const [selectedYear, setSelectedYear] = useState<number>();
+  const [selectedMonth, setSelectedMonth] = useState<Nullable<number>>(null);
+  const [selectedYear, setSelectedYear] = useState<Nullable<number>>(null);
   const [errorCode, setErrorCode] = useState<number>();
   const [filterWasChanged, setFilterWasChanged] = useState(false);
   const [pending, setPending] = useState(false);
@@ -107,10 +108,10 @@ export const BlogProvider: FC = (props) => {
   };
 
   useDidMountEffect(() => {
-    setFilterWasChanged(true);
-    if (!selectedYear) {
+    if (selectedMonth && !selectedYear) {
       return;
     }
+    setFilterWasChanged(true);
     dispatch({ type: BlogActionType.Reset });
   }, [selectedYear, selectedMonth]);
 

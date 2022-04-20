@@ -13,13 +13,12 @@ import { HTMLMarkup } from 'components/html-markup';
 import { Icon } from 'components/ui/icon';
 import { ForPressHero } from 'components/for-press-hero';
 import { fetcher } from 'shared/fetcher';
+import { usePersistentData } from 'providers/persistent-data-provider';
 
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
-import type { SelectOption } from 'components/select';
+import type { SelectOption, SelectOptionCheckHandler } from 'components/select';
 import type { PressRelease as PressReleaseResponse } from 'api-typings';
 import type { Url } from 'shared/types';
-
-import { usePersistentData } from 'providers/persistent-data-provider';
 
 import styles from 'components/press-release-layout/press-release-layout.module.css';
 
@@ -57,7 +56,7 @@ const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSidePr
     selectedYearOption = yearOptions.find(({ value }) => value === selectedPressReleaseYear);
   }
 
-  const handleYearChange = ({ value }: SelectOption<number>) => {
+  const handleYearChange: SelectOptionCheckHandler<number> = ({ value }) => {
     router.push(`/press-releases/${value}`, undefined, { scroll: false });
   };
 
