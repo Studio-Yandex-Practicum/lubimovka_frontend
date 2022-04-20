@@ -1,19 +1,23 @@
-.marginTop {
-  margin-top: calc(-100vh + scale(61px));
+.container {
+  margin-top: 0;
   transition: all .8s;
+}
+
+.marginTop {
+  margin-top: calc(-100vh + scale(123px));
 
   @media (max-width: $tablet-portrait) {
-    margin-top: calc(-100vh + scale(91px));
+    margin-top: calc(-100vh + scale(126px));
   }
 }
 
 .background {
   @mixin background;
 
-  height: calc(45vh - scale(123px));
+  height: calc(47vh - scale(123px));
 
   @media (max-width: $tablet-portrait) {
-    height: calc(55vh - scale(126px));
+    height: calc(56vh - scale(126px));
     order: 1;
   }
 }

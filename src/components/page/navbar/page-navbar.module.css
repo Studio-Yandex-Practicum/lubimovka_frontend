@@ -1,4 +1,10 @@
 .root {
+  position: sticky;
+  top: calc(-47vh + scale(123px));
   display: flex;
   flex-direction: column;
+
+  @media (max-width: $tablet-portrait) {
+    top: 0;
+  }
 }

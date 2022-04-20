@@ -25,39 +25,22 @@ const cx = classNames.bind(styles);
 const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsType <typeof getServerSideProps>) => {
   const { first_screen, afisha, blog, news, banners, places, video_archive, short_list } = data;
 
-  const [displayFirstScreen, setDisplayFirstScreen] = useState(false);
-  const [delay, setDelay] = useState(false);
-
-  const hideFirstScreen = useCallback((delay: number) => {
-    setTimeout(() => {
-      setDelay(false);
-      setDisplayFirstScreen(false);
-    }, delay);
-  }, []);
+  const [isScroll, setIsScroll] = useState(false);
 
   const handlerScroll = useCallback(() => {
-    setDelay(true);
-    hideFirstScreen(1000);
-  }, [hideFirstScreen]);
+    if (window.scrollY === 0) {
+      return setIsScroll(false);
+    }
+    if (!isScroll) {
+      setIsScroll(true);
+      window.scrollTo({ top: 1 });
+      setTimeout(() => window.removeEventListener('scroll', handlerScroll), 800);
+    }
+  }, [isScroll]);
 
   useEffect(() => {
-    displayFirstScreen && window.addEventListener('scroll', handlerScroll);
-    if (displayFirstScreen === false) {
-      window.removeEventListener('scroll', handlerScroll);
-    }
-    return () => {
-      window.removeEventListener('scroll', handlerScroll);
-    };
-  }), [];
-
-  useEffect(() => {
-    first_screen && notEmptyKey(first_screen) && setDisplayFirstScreen(true);
-    // Отключаю скролл, при перезагрузке страницы
-    if (window.pageYOffset !== 0) {
-      window.removeEventListener('scroll', handlerScroll);
-      setDisplayFirstScreen(false);
-    }
-  }, [first_screen, handlerScroll]);
+    window.addEventListener('scroll', handlerScroll);
+  }, [handlerScroll]);
 
   function notEmpty<T>(items: T[]) {
     return items && items.length !== 0;
@@ -68,18 +51,17 @@ const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsTy
   }
 
   return (
-    <div className={cx({ marginTop: delay })}>
+    <div className={cx('container', { marginTop: isScroll })}>
       <AppLayout
         hiddenPartners
         navbarProps={{
-          view: displayFirstScreen ? 'expanded': 'normal',
+          view: isScroll ? 'normal' : 'expanded',
         }}
-        screenImg={first_screen && notEmptyKey(first_screen)
-        && displayFirstScreen && <div className={cx('background')} style={{ backgroundImage: `url(${first_screen.image})` }}/>}
+        screenImg={first_screen && notEmptyKey(first_screen) && <div className={cx('background')} style={{ backgroundImage: `url(${first_screen.image})` }}/>}
       >
         <SEO title="Главная"/>
         <main className={cx('main')}>
-          {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
+          {first_screen && notEmptyKey(first_screen) && <MainFirstScreen {...first_screen}/>}
           {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
           <div className={cx({ wrapper: news || blog })}>
             {afisha && notEmptyKey(afisha)
