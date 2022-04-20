@@ -1,15 +1,10 @@
-import { ReactNode, ReactElement, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import Page, {
-  PageNavbar,
-  PageFooter,
-  PageBurgerButton,
-  PageOverlayMenu,
-} from 'components/page';
+import Page from 'components/page';
 import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
-import { Navbar, INavbarProps } from 'components/navbar';
+import { Navbar } from 'components/navbar';
 import { Logotype } from 'components/logotype';
 import { Footer } from 'components/footer';
 import { OverlayNav } from 'components/overlay-nav';
@@ -27,19 +22,24 @@ import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 import * as breakpoints from 'shared/breakpoints.js';
 
-interface IAppLayoutProps {
-  hiddenPartners?: boolean,
-  navbarProps?: Exclude<INavbarProps, 'children'>
-  children: ReactNode,
-  screenImg?: ReactElement,
+import type { ReactNode } from 'react';
+import type { NavbarProps } from 'components/navbar';
+
+type disallowedNavbarProps = 'children' | 'view'
+
+interface AppLayoutProps {
+  hiddenPartners?: boolean
+  navbarProps?: Exclude<NavbarProps, disallowedNavbarProps>
+  headBanner?: ReactNode
+  children: ReactNode
 }
 
-export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
+export const AppLayout = (props: AppLayoutProps) => {
   const {
     children,
     hiddenPartners,
     navbarProps,
-    screenImg,
+    headBanner,
   } = props;
   const { projects, partners } = usePersistentData();
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
@@ -50,7 +50,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
     setIsOverlayMenuOpen(!isOverlayMenuOpen);
   }, [isOverlayMenuOpen]);
 
-  useDisableBodyScroll(isMobile === true && isOverlayMenuOpen);
+  useDisableBodyScroll(!!isMobile && isOverlayMenuOpen);
 
   useEffect(() => {
     if (!isMobile) setIsOverlayMenuOpen(false);
@@ -58,9 +58,16 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
 
   return (
     <Page>
-      <PageNavbar>
-        {screenImg}
-        <Navbar {...navbarProps}>
+      {headBanner && (
+        <Page.HeadBanner>
+          {headBanner}
+        </Page.HeadBanner>
+      )}
+      <Page.Navbar>
+        <Navbar
+          view={headBanner ? 'expanded' : 'normal'}
+          {...navbarProps}
+        >
           <Navbar.Logotype>
             <Logotype
               href="/"
@@ -98,9 +105,9 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
             </Navbar.Section>
           </Navbar.Actions>
         </Navbar>
-      </PageNavbar>
+      </Page.Navbar>
       {children}
-      <PageFooter>
+      <Page.Footer>
         <Footer>
           {!hiddenPartners && (
             <Footer.Partners>
@@ -128,7 +135,7 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
             </Menu>
           </Footer.Navigation>
           <Footer.Projects>
-            {projects && projects.length && (
+            {projects && projects.length > 0 && (
               <Menu type="footer-project-list">
                 <Menu.Item href="/projects">
                   Все проекты
@@ -145,10 +152,10 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
             )}
           </Footer.Projects>
         </Footer>
-      </PageFooter>
+      </Page.Footer>
       {isMobile && (
         <>
-          <PageOverlayMenu isOpen={isOverlayMenuOpen}>
+          <Page.OverlayMenu isOpen={isOverlayMenuOpen}>
             <OverlayNav>
               <OverlayNav.Logotype>
                 <Logotype href="/" title="Фестиваль Любимовка"/>
@@ -196,13 +203,13 @@ export const AppLayout = (props: IAppLayoutProps): JSX.Element => {
                 <FooterCopyright/>
               </OverlayNav.Copyright>
             </OverlayNav>
-          </PageOverlayMenu>
-          <PageBurgerButton>
+          </Page.OverlayMenu>
+          <Page.BurgerButton>
             <BurgerButton
               isOpen={isOverlayMenuOpen}
               onClick={toggleOverlayMenu}
             />
-          </PageBurgerButton>
+          </Page.BurgerButton>
         </>
       )}
     </Page>

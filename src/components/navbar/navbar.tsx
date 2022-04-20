@@ -7,7 +7,7 @@ import { NavbarActions } from './actions';
 
 import styles from './navbar.module.css';
 
-export interface INavbarProps {
+export interface NavbarProps {
   view?: 'normal' | 'expanded',
   colors?: 'default' | 'brand',
   children?: ReactNode,
@@ -15,7 +15,7 @@ export interface INavbarProps {
 
 const cx = classNames.bind(styles);
 
-export const Navbar = (props: INavbarProps) => {
+export const Navbar = (props: NavbarProps) => {
   const {
     view = 'normal',
     colors = 'default',

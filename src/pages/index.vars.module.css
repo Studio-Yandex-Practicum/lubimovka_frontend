@@ -1,0 +1,2 @@
+$head-banner-height-tablet-portrait: 40vh;
+$headline-height-tablet-portrait: calc(60vh - var(--scale) * --var(--page-navbar-extended-height)); /* stylelint-disable-line */

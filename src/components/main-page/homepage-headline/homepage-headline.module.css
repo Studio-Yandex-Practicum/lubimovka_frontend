@@ -1,10 +1,8 @@
-.firstScreen {
-  height: 55vh;
+.root {
   box-sizing: border-box;
-  padding: scale(66px 80px 66px);
+  padding: scale(66px 80px);
 
   @media (max-width: $tablet-portrait) {
-    height: 45vh;
     padding: scale(32px 24px) 0;
   }
 }
@@ -41,20 +39,5 @@
 
   @media (max-width: $tablet-portrait) {
     width: scale(244px);
-  }
-}
-
-.button > svg {
-  min-width: scale(25px);
-  height: scale(25px);
-}
-
-.button > span {
-  @mixin limitText;
-
-  -webkit-line-clamp: 1;
-
-  @media (max-width: $tablet-portrait) {
-    -webkit-line-clamp: 2;
   }
 }

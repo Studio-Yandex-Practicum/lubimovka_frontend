@@ -1,22 +1,4 @@
-.marginTop {
-  margin-top: calc(-100vh + scale(61px));
-  transition: all .8s;
-
-  @media (max-width: $tablet-portrait) {
-    margin-top: calc(-100vh + scale(91px));
-  }
-}
-
-.background {
-  @mixin background;
-
-  height: calc(45vh - scale(123px));
-
-  @media (max-width: $tablet-portrait) {
-    height: calc(55vh - scale(126px));
-    order: 1;
-  }
-}
+@import './index.vars.module.css';
 
 .main {
   display: block;
@@ -24,7 +6,6 @@
   @media (max-width: $tablet-portrait) {
     display: grid;
     grid-template-areas:
-      "firstScreen"
       "title"
       "events"
       "aside"
@@ -43,4 +24,12 @@
   @media (max-width: $tablet-portrait) {
     margin-top: 0;
   }
+}
+
+.head-banner {
+  height: $head-banner-height-tablet-portrait;
+}
+
+.headline {
+  height: $headline-height-tablet-portrait;
 }
