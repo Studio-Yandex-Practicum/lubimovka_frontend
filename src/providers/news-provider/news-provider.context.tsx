@@ -1,17 +1,16 @@
 import { createContext, useContext } from 'react';
 
-import { SelectOption } from 'components/select';
-import { NewsItemList } from 'api-typings';
+import type { NewsItemList } from 'api-typings';
+import { Nullable } from 'shared/types';
 
-export type NewsContext = {
+type NewsContext = {
   entries: NewsItemList[]
   hasMoreEntries: boolean
-  setServerSideEntries: (value: { entries: NewsItemList[], hasMoreEntries: boolean }) => void
   handleShouldLoadEntries: () => void
-  selectedMonthOption?: SelectOption
-  handleMonthChange: (value: SelectOption) => void
-  selectedYearOption?: SelectOption
-  handleYearChange: (value: SelectOption) => void
+  selectedMonth?: Nullable<number>,
+  setSelectedMonth: (value: Nullable<number>) => void
+  selectedYear?: Nullable<number>,
+  setSelectedYear: (value: Nullable<number>) => void
   pending: boolean,
 }
 
