@@ -1,10 +1,5 @@
-import { NextPage, InferGetServerSidePropsType, GetServerSideProps } from 'next';
-import React, { useState, useEffect, useCallback } from 'react';
-
 import classNames from 'classnames/bind';
 
-import { Main, Partner } from 'api-typings';
-import { fetcher } from 'shared/fetcher';
 import { MainTitle } from 'components/main-page/title';
 import { MainEvents } from 'components/main-page/events';
 import { MainAside } from 'components/main-page/aside';
@@ -12,93 +7,100 @@ import { MainBanners } from 'components/main-page/banners';
 import { MainPlatforms } from 'components/main-page/platforms';
 import { MainShortList } from 'components/main-page/shortList';
 import { MainArchive } from 'components/main-page/archive';
-import { MainFirstScreen } from 'components/main-page/first-screen';
+import { HomepageHeadline } from 'components/main-page/homepage-headline';
 import { MainPartner } from 'components/main-page/partners';
 import { AppLayout } from 'components/app-layout';
+import { Banner } from 'components/banner';
 import { SEO } from 'components/seo';
-import { main } from 'mocks/data/main';
+import { fetcher } from 'shared/fetcher';
+
+import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
+import type { Main, Partner } from 'api-typings';
 
 import styles from './index.module.css';
 
 const cx = classNames.bind(styles);
 
-const MainPage: NextPage = ({ data = main, partners }: InferGetServerSidePropsType <typeof getServerSideProps>) => {
-  const { first_screen, afisha, blog, news, banners, places, video_archive, short_list } = data;
-
-  const [displayFirstScreen, setDisplayFirstScreen] = useState(false);
-  const [delay, setDelay] = useState(false);
-
-  const hideFirstScreen = useCallback((delay: number) => {
-    setTimeout(() => {
-      setDelay(false);
-      setDisplayFirstScreen(false);
-    }, delay);
-  }, []);
-
-  const handlerScroll = useCallback(() => {
-    setDelay(true);
-    hideFirstScreen(1000);
-  }, [hideFirstScreen]);
-
-  useEffect(() => {
-    displayFirstScreen && window.addEventListener('scroll', handlerScroll);
-    if (displayFirstScreen === false) {
-      window.removeEventListener('scroll', handlerScroll);
-    }
-    return () => {
-      window.removeEventListener('scroll', handlerScroll);
-    };
-  }), [];
-
-  useEffect(() => {
-    first_screen && notEmptyKey(first_screen) && setDisplayFirstScreen(true);
-    // Отключаю скролл, при перезагрузке страницы
-    if (window.pageYOffset !== 0) {
-      window.removeEventListener('scroll', handlerScroll);
-      setDisplayFirstScreen(false);
-    }
-  }, [first_screen, handlerScroll]);
-
-  function notEmpty<T>(items: T[]) {
-    return items && items.length !== 0;
-  }
-
-  function notEmptyKey<T>(items: T[]) {
-    return Object.keys(items).length !== 0;
-  }
+const MainPage = ({ data, partners }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const {
+    first_screen,
+    afisha,
+    blog,
+    news,
+    banners,
+    places,
+    video_archive,
+    short_list,
+  } = data;
 
   return (
-    <div className={cx({ marginTop: delay })}>
-      <AppLayout
-        hiddenPartners
-        navbarProps={{
-          view: displayFirstScreen ? 'expanded': 'normal',
-        }}
-        screenImg={first_screen && notEmptyKey(first_screen)
-        && displayFirstScreen && <div className={cx('background')} style={{ backgroundImage: `url(${first_screen.image})` }}/>}
-      >
-        <SEO title="Главная"/>
-        <main className={cx('main')}>
-          {first_screen && notEmptyKey(first_screen) && displayFirstScreen && <MainFirstScreen {...first_screen}/>}
-          {news ? <MainAside type="news" {...news}/> : <MainAside type="blog" {...blog}/>}
-          <div className={cx({ wrapper: news || blog })}>
-            {afisha && notEmptyKey(afisha)
-            && (
-              <MainTitle
-                afisha_today={afisha.afisha_today}
-                description={afisha.description}
-              />
-            )}
-          </div>
-          {afisha && notEmpty(afisha.items) && <MainEvents {...afisha}/>}
-          {banners && notEmpty(banners.items) && <MainBanners {...banners}/>}
-          {short_list && notEmpty(short_list.items) && <MainShortList {...short_list}/>}
-          {places && notEmpty(places.items) && <MainPlatforms {...places}/>}
-          {video_archive && <MainArchive {...video_archive}/>}
-          {partners && notEmptyKey(partners) && <MainPartner {...partners}/>}
-        </main>
-      </AppLayout>
-    </div>
+    <AppLayout
+      hiddenPartners
+      navbarProps={{
+        view: first_screen ? 'expanded': 'normal',
+      }}
+      headBanner={first_screen ? (
+        <Banner
+          className={cx('head-banner')}
+          image={first_screen.image}
+        />
+      ) : undefined}
+    >
+      <SEO title="Главная"/>
+      {first_screen && (
+        <HomepageHeadline
+          className={cx('headline')}
+          {...first_screen}
+        />
+      )}
+      <main className={cx('main')}>
+        <MainAside
+          {...news ? {
+            type: 'news',
+            ...news
+          } : {
+            type: 'blog',
+            ...blog
+          }}
+        />
+        <div className={cx({ wrapper: news || blog })}>
+          {afisha && (
+            <MainTitle
+              afisha_today={afisha.afisha_today}
+              description={afisha.description}
+            />
+          )}
+        </div>
+        {afisha && afisha.items.length > 0 && (
+          <MainEvents
+            {...afisha}
+          />
+        )}
+        {banners && banners.length > 0 && (
+          <MainBanners
+            {...banners}
+          />
+        )}
+        {short_list && short_list.items.length > 0 && (
+          <MainShortList
+            {...short_list}
+          />
+        )}
+        {places && places.items.length > 0 && (
+          <MainPlatforms {...places}/>
+        )}
+        {video_archive && (
+          <MainArchive
+            {...video_archive}
+          />
+        )}
+        {partners && partners.length > 0 && (
+          <MainPartner
+            {...partners}
+          />
+        )}
+      </main>
+    </AppLayout>
   );
 };
 
