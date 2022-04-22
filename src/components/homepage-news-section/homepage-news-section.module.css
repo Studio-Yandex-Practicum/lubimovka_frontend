@@ -1,53 +1,5 @@
-.container {
-  @mixin hideScrollbar;
-
-  position: -webkit-sticky;
-  position: sticky;
-  z-index: 99;
-  top: 0;
-  overflow: hidden;
-  width: scale(270px);
-  height: 100vh;
-  margin-left: auto;
-  background-color: var(--light-green);
-  grid-area: aside;
-  overflow-y: scroll;
-  transition: all .3s ease-in;
-
-  &:hover {
-    width: scale(468px);
-  }
-
-  @media (max-width: $tablet-portrait) {
-    position: static;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    overflow-y: visible;
-
-    &:hover {
-      width: 100%;
-    }
-  }
-}
-
-.aside {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: calc(var(--scale) * 468);
-  height: 100%;
-  box-sizing: border-box;
-  padding: scale(60px 56px 0 56px);
-
-  @media (max-width: $tablet-portrait) {
-    position: initial;
-    z-index: 1;
-    width: 100%;
-    padding: scale(36px 0 102px 24px);
-    grid-area: aside;
-    transform: translate(0, 0);
-  }
+.root {
+  padding: scale(60px 56px);
 }
 
 .heading {
@@ -63,7 +15,7 @@
   }
 }
 
-.buttonContainer {
+.action {
   width: scale(156px);
   padding-left: scale(40px);
 
@@ -73,10 +25,7 @@
 }
 
 .list {
-  @mixin hideScrollbar;
-
   padding: 0;
-  margin: 0 auto;
   list-style-type: none;
 
   @media (max-width: $tablet-portrait) {
