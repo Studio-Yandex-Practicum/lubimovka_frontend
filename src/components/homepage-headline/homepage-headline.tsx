@@ -8,16 +8,15 @@ import type { FC } from 'react';
 import styles from './homepage-headline.module.css';
 
 interface HomepageHeadlineProps {
-  // TODO: отрефакторить нейминг
-  title: string
-  url_title: string
-  url: string
   className?: string
+  title: string
+  url: string
+  callToAction: string
 }
 
 const cx = classNames.bind(styles);
 
-export const HomepageHeadline: FC<HomepageHeadlineProps> = ({ title, url_title, url, className }) => (
+export const HomepageHeadline: FC<HomepageHeadlineProps> = ({ title, callToAction, url, className }) => (
   <section
     className={cx(
       'root',
@@ -28,7 +27,7 @@ export const HomepageHeadline: FC<HomepageHeadlineProps> = ({ title, url_title, 
       <h1 className={cx('title')}>
         {title}
       </h1>
-      <div className={cx('wrapper')}>
+      <div className={cx('action')}>
         <Button
           className={cx('button')}
           upperCase
@@ -45,7 +44,7 @@ export const HomepageHeadline: FC<HomepageHeadlineProps> = ({ title, url_title, 
           href={url}
           target="_blank"
         >
-          {url_title}
+          {callToAction}
         </Button>
       </div>
     </div>

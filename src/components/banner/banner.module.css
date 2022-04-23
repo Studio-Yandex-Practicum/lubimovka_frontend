@@ -1,4 +1,5 @@
 .root {
   position: relative;
-  background-color: var(--light-green);
+  height: 100%;
+  background-color: var(--green);
 }

@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 
-import { HomepageLayoutAside } from './aside';
-import { HomepageLayoutMain } from './main';
-import { HomepageLayoutPrepend } from './prepend';
+import { HomepageLayoutFeed } from './feed';
+import { HomepageLayoutContent } from './content';
+import { HomepageLayoutEvents } from './events';
 
 import type { FC } from 'react';
 
@@ -23,7 +23,7 @@ const Component: FC = (props) => {
 Component.displayName = 'HomepageLayout';
 
 export const HomepageLayout = Object.assign(Component, {
-  Aside: HomepageLayoutAside,
-  Main: HomepageLayoutMain,
-  Prepend: HomepageLayoutPrepend,
+  Feed: HomepageLayoutFeed,
+  Content: HomepageLayoutContent,
+  Events: HomepageLayoutEvents,
 });

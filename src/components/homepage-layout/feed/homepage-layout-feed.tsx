@@ -2,11 +2,11 @@ import classNames from 'classnames/bind';
 
 import type { FC } from 'react';
 
-import styles from './homepage-layout-aside.module.css';
+import styles from './homepage-layout-feed.module.css';
 
 const cx = classNames.bind(styles);
 
-export const HomepageLayoutAside: FC = (props) => {
+export const HomepageLayoutFeed: FC = (props) => {
   const { children } = props;
 
   return (

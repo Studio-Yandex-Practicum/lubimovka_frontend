@@ -3,7 +3,7 @@
   padding: scale(66px 80px);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(32px 24px) 0;
+    padding: scale(32px 24px);
   }
 }
 
@@ -33,11 +33,10 @@
   }
 }
 
-.wrapper {
-  width: scale(360px);
-  height: scale(56px);
+.action {
+  max-width: scale(360px);
 
   @media (max-width: $tablet-portrait) {
-    width: scale(244px);
+    max-width: scale(244px);
   }
 }

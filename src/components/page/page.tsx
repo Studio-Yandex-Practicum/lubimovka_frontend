@@ -1,20 +1,22 @@
+import classNames from 'classnames/bind';
+
 import { PageBurgerButton } from './burger-button';
 import { PageNavbar } from './navbar';
 import { PageFooter } from './footer';
 import { PageOverlayMenu } from './overlay-menu';
 import { PageHeadBanner } from './head-banner';
 
-import type { ReactNode } from 'react';
+import type { FC } from 'react';
 
-interface PageProps {
-  children: ReactNode,
-}
+import styles from './page.module.css';
 
-const Component = (props: PageProps) => {
+const cx = classNames.bind(styles);
+
+const Component: FC = (props) => {
   const { children } = props;
 
   return (
-    <div>
+    <div className={cx('root')}>
       {children}
     </div>
   );
