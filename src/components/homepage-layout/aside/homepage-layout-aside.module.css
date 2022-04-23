@@ -2,6 +2,7 @@
 
 .root {
   position: sticky;
+  z-index: 1;
   top: 0;
   width: scale($aside-visible-width);
   height: 100vh;
