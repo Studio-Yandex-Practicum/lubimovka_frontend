@@ -12,6 +12,7 @@ $border-width: 1px;
   text-decoration: none;
 
   &:hover {
+    border-color: transparent;
     color: var(--white);
 
     &::before {
@@ -35,6 +36,8 @@ $border-width: 1px;
   width: scale(20px);
   height: scale(20px);
   flex-shrink: 0;
+  font-size: 0;
+  line-height: 0;
 }
 
 .icon-left {
@@ -48,6 +51,24 @@ $border-width: 1px;
 
 .text {
   @mixin text;
+}
+
+.s {
+  composes: common;
+  padding: scale(10px 8px);
+
+  .icon-left:not(:only-child) {
+    margin-right: scale(8px);
+  }
+
+  .icon-right:not(:only-child) {
+    margin-left: scale(8px);
+  }
+
+  .text {
+    font-size: scale(16px);
+    line-height: scale(20px);
+  }
 }
 
 .m {
@@ -97,6 +118,11 @@ $border-width: 1px;
 .common.border-right-bottom-left {
   border-color: var(--coal);
   border-top-color: transparent;
+}
+
+.common.border-bottom-left {
+  border-top-color: transparent;
+  border-right-color: transparent;
 }
 
 .common.full-width {
