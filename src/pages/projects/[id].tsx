@@ -4,7 +4,6 @@ import { PageBreadcrumbs } from 'components/page';
 import { ProjectLayout } from 'components/project-layout';
 import { Breadcrumb } from 'components/breadcrumb';
 import { ProjectHeadline } from 'components/project-headline';
-import { CallToEmail } from 'components/call-to-email';
 import { ConstructorContent } from 'components/constructor-content';
 import { fetcher } from 'shared/fetcher';
 
@@ -41,15 +40,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
           // @ts-expect-error
           blocks={contents}
         />
-        <ProjectLayout.Storey type="invitation">
-          <CallToEmail
-            type="project"
-            title="Проект открыт к сотрудничеству"
-            description="Мы находимся в постоянном поиске режиссёров и актеров, заинтересованных в постановке читок."
-            callToActionText="Пишите на"
-            email="hello@lubimovka.ru"
-          />
-        </ProjectLayout.Storey>
+        <ProjectLayout.Storey type="invitation"/>
       </ProjectLayout>
     </AppLayout>
   );
