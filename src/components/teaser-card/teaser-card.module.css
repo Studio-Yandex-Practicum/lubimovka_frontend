@@ -1,33 +1,11 @@
-.banners {
-  display: grid;
-  width: calc(100% - scale(270px));
-  box-sizing: border-box;
-  padding: scale(114px 32px) 0;
-  grid-area: banners;
-
-  @media (max-width: $tablet-portrait) {
-    width: auto;
-    padding: scale(56px 24px) 0;
-  }
-}
-
-.list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.item {
-  border-top: 1px solid var(--coal);
+.root {
+  display: block;
 }
 
 .title {
   @mixin headline;
   @mixin headline6;
 
-  position: sticky;
-  z-index: 1;
-  top: 0;
   box-sizing: border-box;
   padding: scale(20px 480px 20px 50px);
   background-color: var(--beige);
@@ -68,7 +46,7 @@
   }
 }
 
-.desc {
+.description {
   @mixin text;
   @mixin textLarge;
   @mixin limitText;
@@ -86,13 +64,7 @@
 }
 
 .button {
-  z-index: auto;
   margin-bottom: scale(20px);
-
-  > svg {
-    width: scale(24px);
-    height: scale(24px);
-  }
 
   @media (max-width: $tablet-portrait) {
     margin: 0 scale(20px 16px) auto;
