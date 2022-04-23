@@ -26,3 +26,11 @@
   width: scale(64px);
   margin: 0 auto;
 }
+
+.no-result {
+  @mixin text;
+  @mixin textLarge;
+
+  grid-area: list;
+  text-align: center;
+}
