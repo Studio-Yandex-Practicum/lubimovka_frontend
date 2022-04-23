@@ -78,3 +78,22 @@
   composes: common;
   padding: scale(60px 56px);
 }
+
+.places {
+  composes: common;
+  padding: scale(65px 60px 105px 60px);
+  background-color: white;
+
+  .title {
+    @mixin headline;
+    @mixin headline2;
+
+    margin-bottom: scale(74px);
+
+    @media (max-width: $tablet-portrait) {
+      @mixin headline4;
+
+      margin-bottom: scale(40px);
+    }
+  }
+}
