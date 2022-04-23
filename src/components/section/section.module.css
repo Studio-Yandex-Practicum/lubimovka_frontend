@@ -1,4 +1,4 @@
-.section {
+.common {
   box-sizing: border-box;
 }
 
@@ -17,6 +17,8 @@
 }
 
 .plays {
+  composes: common;
+
   .title {
     max-width: scale(450px);
     margin: 0 auto scale(48px) scale(300px);
@@ -29,6 +31,8 @@
 }
 
 .persons {
+  composes: common;
+
   .title {
     max-width: scale(450px);
     margin: 0 auto scale(58px) scale(300px);
@@ -41,6 +45,8 @@
 }
 
 .partners {
+  composes: common;
+
   .title {
     @mixin headline6;
 
@@ -54,6 +60,8 @@
 }
 
 .play {
+  composes: common;
+
   .title {
     @mixin visually-hidden;
 
@@ -64,4 +72,9 @@
       margin: scale(0 auto 32px);
     }
   }
+}
+
+.homepage-feed {
+  composes: common;
+  padding: scale(60px 56px);
 }
