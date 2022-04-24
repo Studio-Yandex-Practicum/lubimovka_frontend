@@ -1,0 +1,83 @@
+.error {
+  @mixin text;
+
+  position: relative;
+  overflow: hidden;
+  max-width: scale(1440px);
+  margin: 0 auto;
+  background: #ecebe8;
+  color: #242424;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(32px 24px);
+  }
+}
+
+.logo {
+  position: absolute;
+  top: scale(28px);
+  left: scale(32px);
+  width: scale(93px);
+  height: scale(80px);
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    position: static;
+    width: scale(34px);
+    height: scale(43px);
+  }
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  margin: scale(142px 50px 0 180px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(69px auto auto auto);
+  }
+}
+
+.subtitle {
+  @mixin headline;
+  @mixin headline3;
+
+  max-width: scale(870px);
+  margin: scale(0 0 24px 0);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(16px);
+
+    @mixin headline5;
+  }
+}
+
+.text {
+  @mixin headline;
+  @mixin headline6;
+
+  margin-bottom: scale(16px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(306px);
+  }
+}
+
+.leftBlock {
+  width: scale(480px);
+  margin: scale(0 0 0 60px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(20px auto);
+  }
+}
+
+.rightBlock {
+  width: scale(376px);
+  margin: scale(0 0 0 390px);
+
+  @media (max-width: $tablet-portrait) {
+    margin: scale(20px auto);
+  }
+}
