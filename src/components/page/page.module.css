@@ -1,0 +1,6 @@
+.root {
+  @media (max-width: $tablet-portrait) {
+    display: flex;
+    flex-direction: column;
+  }
+}

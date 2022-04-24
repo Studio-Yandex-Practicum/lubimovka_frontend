@@ -6,10 +6,10 @@ import type { ReactNode, PropsWithChildren } from 'react';
 import styles from './button.module.css';
 
 interface CommonProps {
-  size?: 'm' | 'l'
+  size?: 's' | 'm' | 'l'
   icon?: ReactNode
   iconPosition?: 'left' | 'right'
-  border?: 'full' | 'right-bottom-left' | 'none'
+  border?: 'full' | 'right-bottom-left' | 'bottom-left' | 'none'
   fullWidth?: boolean
   upperCase?: boolean
   className?: string

@@ -1,15 +1,6 @@
-.root {
+.common {
   position: relative;
-  display: grid;
-  justify-content: space-between;
   padding: scale(16px 10px 64px 20px);
-  grid-template-areas:
-    "title       date"
-    "description .";
-
-  &:hover {
-    background-color: var(--light-green);
-  }
 
   @media (max-width: $tablet-portrait) {
     display: block;
@@ -70,5 +61,26 @@
 
   @media (max-width: $tablet-portrait) {
     margin-bottom: scale(16px);
+  }
+}
+
+.regular {
+  composes: common;
+  display: grid;
+  justify-content: space-between;
+  grid-template-areas:
+    "title       date"
+    "description .";
+
+  &:hover {
+    background-color: var(--light-green);
+  }
+}
+
+.compact {
+  composes: common;
+
+  .date {
+    margin-top: scale(16px);
   }
 }
