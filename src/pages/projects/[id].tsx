@@ -40,7 +40,6 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
           // @ts-expect-error
           blocks={contents}
         />
-        <ProjectLayout.Storey type="invitation"/>
       </ProjectLayout>
     </AppLayout>
   );
