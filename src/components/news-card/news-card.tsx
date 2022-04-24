@@ -5,17 +5,19 @@ import classNames from 'classnames/bind';
 import styles from './news-card.module.css';
 
 interface NewsCardProps {
-  title: string;
-  description: string;
-  date?: string;
+  view?: 'refular' | 'compact'
+  title: string
+  description: string
+  date?: string
   href: LinkProps['href']
-  className?: string;
+  className?: string
 }
 
 const cx = classNames.bind(styles);
 
 export const NewsCard: FC<NewsCardProps> = (props) => {
   const {
+    view = 'regular',
     title,
     description,
     date,
@@ -24,15 +26,12 @@ export const NewsCard: FC<NewsCardProps> = (props) => {
   } = props;
 
   return (
-    <div className={cx('root', className)}>
-      {date && (
-        <time
-          className={cx('date')}
-          dateTime={date}
-        >
-          {date}
-        </time>
+    <div
+      className={cx(
+        view,
+        className,
       )}
+    >
       <h5 className={cx('title')}>
         <Link href={href}>
           <a className={cx('link')}>
@@ -43,6 +42,14 @@ export const NewsCard: FC<NewsCardProps> = (props) => {
       <p className={cx('description')}>
         {description}
       </p>
+      {date && (
+        <time
+          className={cx('date')}
+          dateTime={date}
+        >
+          {date}
+        </time>
+      )}
     </div>
   );
 };

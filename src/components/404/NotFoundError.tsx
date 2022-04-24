@@ -1,32 +1,23 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 
-import Logo from '../../images/logo.svg';
-import SmallLogo from '../../images/small-logo.svg';
-import Lines from '../../images/404lines.svg';
+import Logo from 'shared/images/full-logo.svg';
+import SmallLogo from 'shared/images/compact-logo.svg';
+import Lines from 'shared/images/404lines.svg';
 import classes from './NotFoundError.module.css';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
+import * as breakpoints from 'shared/breakpoints';
+import { Button } from 'components/ui/button';
 
 export default function NotFoundError() {
-  const [screenWidth, setScreenWidth] = useState<number | null>(null);
-
-  useEffect(() => {
-    const setWindowWidth = () => {
-      const newWidth = document.documentElement.clientWidth;
-      setScreenWidth(newWidth);
-    };
-    window.addEventListener('load', setWindowWidth);
-    window.addEventListener('resize', setWindowWidth);
-    return () => {
-      window.removeEventListener('resize', setWindowWidth);
-      window.removeEventListener('load', setWindowWidth);
-    };
-  }, []);
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
   return (
     <section className={classes.error}>
       <Link href={'/'}>
-        <a>
-          {screenWidth && screenWidth < 723 ? <SmallLogo className={classes.logo} src={'/images/small-logo.svg'} layout={'fill'}/> : <Logo className={classes.logo} src={'/images/logo.svg'} layout={'fill'}/>}
+        <a className={classes.logo}>
+          {isMobile
+            ? <SmallLogo layout={'fill'}/>
+            : <Logo layout={'fill'}/>}
         </a>
       </Link>
       <div className={classes.contentContainer}>
@@ -37,29 +28,45 @@ export default function NotFoundError() {
           Кажется, такой страницы не существует
         </h2>
         <p className={classes.text}>
-          Для этого может быть несколько причин: неправильный адрес, мы ее удалили, ее вообще никогда не существовало или вам это снится.
+          Для этого может быть несколько причин: неправильный адрес, мы ее удалили, ее вообще никогда не существовало
+          или вам это снится.
         </p>
         <ul className={classes.list}>
           <li className={classes.listItem}>
-            <Link href={'/'}>
-              <a className={classes.link}>
-                &rarr; На главную
-              </a>
-            </Link>
+            <Button
+              border="bottomLeft"
+              isLink
+              size={'s'}
+              className={classes.link}
+              iconPlace={'left'}
+              icon={'arrow-right'}
+              href={'/'}
+              label={'На главную'}
+            />
           </li>
           <li className={classes.listItem}>
-            <Link href={'/form'}>
-              <a className={classes.link}>
-                &rarr; Подать пьесу
-              </a>
-            </Link>
+            <Button
+              border="bottomLeft"
+              isLink
+              size={'s'}
+              className={classes.link}
+              iconPlace={'left'}
+              icon={'arrow-right'}
+              href={'/form'}
+              label={'Подать пьесу'}
+            />
           </li>
           <li className={classes.listItem}>
-            <Link href={'/donation'}>
-              <a className={classes.link}>
-                &rarr; Поддержать
-              </a>
-            </Link>
+            <Button
+              border="bottomLeft"
+              isLink
+              size={'s'}
+              className={classes.link}
+              iconPlace={'left'}
+              icon={'arrow-right'}
+              href={'/donation'}
+              label={'Поддержать'}
+            />
           </li>
         </ul>
       </div>

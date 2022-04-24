@@ -1,4 +1,10 @@
+import classNames from 'classnames/bind';
+
 import type { FC } from 'react';
+
+import styles from './page-head-banner.module.css';
+
+const cx = classNames.bind(styles);
 
 export const PageHeadBanner: FC = (props) => {
   const {
@@ -6,7 +12,7 @@ export const PageHeadBanner: FC = (props) => {
   } = props;
 
   return (
-    <div>
+    <div className={cx('root')}>
       {children}
     </div>
   );

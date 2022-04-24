@@ -1,7 +1,0 @@
-.padding {
-  padding: scale(70px 240px 138px 210px);
-
-  @media (max-width: $tablet-portrait) {
-    padding: scale(56px 24px) 0;
-  }
-}

@@ -1,0 +1,15 @@
+.root {
+  box-sizing: border-box;
+  padding: 0;
+  padding: scale(0 32px);
+  margin: 0;
+  list-style: none;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(0 24px);
+  }
+}
+
+.item {
+  border-top: 1px solid var(--coal);
+}

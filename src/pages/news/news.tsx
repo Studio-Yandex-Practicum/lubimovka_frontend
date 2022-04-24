@@ -75,15 +75,6 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     setSelectedYear(value);
   };
 
-  // useEffect(() => {
-  //   if (!entries.length && props.entries) {
-  //     setServerSideEntries({
-  //       entries: props.entries,
-  //       hasMoreEntries: props.hasMoreEntries,
-  //     });
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (!pending && shouldLoadEntries && hasMoreEntries) {
       handleShouldLoadEntries();

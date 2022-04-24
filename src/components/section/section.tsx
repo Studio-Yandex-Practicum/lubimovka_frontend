@@ -3,17 +3,17 @@ import classNames from 'classnames/bind';
 
 import styles from './section.module.css';
 
-interface ISectionProps extends HTMLAttributes<HTMLElement> {
-  type?: 'plays' | 'persons' | 'partners' | 'play';
-  title: string;
-  titleTag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  children: ReactNode;
-  className?: string;
+interface SectionProps extends HTMLAttributes<HTMLElement> {
+  type?: 'plays' | 'persons' | 'partners' | 'play' | 'homepage-feed' | 'places'
+  title: string
+  titleTag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  children: ReactNode
+  className?: string
 }
 
 const cx = classNames.bind(styles);
 
-export const Section = (props: ISectionProps): JSX.Element => {
+export const Section = (props: SectionProps) => {
   const {
     type,
     title,
@@ -26,7 +26,6 @@ export const Section = (props: ISectionProps): JSX.Element => {
   return (
     <section
       className={cx(
-        'section',
         type,
         className
       )}

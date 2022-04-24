@@ -1,4 +1,4 @@
-.section {
+.common {
   box-sizing: border-box;
 }
 
@@ -17,6 +17,8 @@
 }
 
 .plays {
+  composes: common;
+
   .title {
     max-width: scale(450px);
     margin: 0 auto scale(48px) scale(300px);
@@ -29,6 +31,8 @@
 }
 
 .persons {
+  composes: common;
+
   .title {
     max-width: scale(450px);
     margin: 0 auto scale(58px) scale(300px);
@@ -41,19 +45,26 @@
 }
 
 .partners {
+  composes: common;
+  padding: scale(100px 60px 30px);
+
   .title {
+    @mixin headline;
     @mixin headline6;
 
     max-width: scale(334px);
-    margin: scale(0 0 15px 0);
+    margin-bottom: scale(16px);
 
     @media (max-width: $tablet-portrait) {
+      max-width: scale(255px);
       margin-bottom: scale(24px);
     }
   }
 }
 
 .play {
+  composes: common;
+
   .title {
     @mixin visually-hidden;
 
@@ -62,6 +73,30 @@
 
       max-width: scale(366px);
       margin: scale(0 auto 32px);
+    }
+  }
+}
+
+.homepage-feed {
+  composes: common;
+  padding: scale(60px 56px);
+}
+
+.places {
+  composes: common;
+  padding: scale(65px 60px 105px 60px);
+  background-color: white;
+
+  .title {
+    @mixin headline;
+    @mixin headline2;
+
+    margin-bottom: scale(74px);
+
+    @media (max-width: $tablet-portrait) {
+      @mixin headline4;
+
+      margin-bottom: scale(40px);
     }
   }
 }
