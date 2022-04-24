@@ -1,4 +1,4 @@
-.item {
+.root {
   display: block;
 
   @media (max-width: $tablet-portrait) {
@@ -20,7 +20,7 @@
   }
 }
 
-.logoCanvas {
+.logo-canvas {
   position: relative;
   width: scale(100px);
   height: scale(40px);
@@ -30,6 +30,6 @@
   margin: auto;
 }
 
-.hiddenText {
+.hidden-text {
   @mixin visually-hidden;
 }

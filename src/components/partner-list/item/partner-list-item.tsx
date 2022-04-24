@@ -2,20 +2,21 @@ import { FC } from 'react';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 
-import { Url } from 'shared/types';
 import { ConditionalWrapper } from 'components/conditional-wrapper';
 
-import style from './footer-partner-list-item.module.css';
+import type { Url } from 'shared/types';
+
+import style from './partner-list-item.module.css';
 
 const cx = classNames.bind(style);
 
-interface IFooterPartnerListItemProps {
+interface PartnerListItemProps {
   name: string,
   logo: Url,
   url?: Url,
 }
 
-export const FooterPartnerListItem: FC<IFooterPartnerListItemProps> = (props) => {
+export const PartnerListItem: FC<PartnerListItemProps> = (props) => {
   const {
     name,
     logo,
@@ -23,7 +24,7 @@ export const FooterPartnerListItem: FC<IFooterPartnerListItemProps> = (props) =>
   } = props;
 
   return (
-    <li className={cx('item')}>
+    <li className={cx('root')}>
       <ConditionalWrapper
         condition={!!url}
         wrapper={(children) => (
@@ -33,7 +34,7 @@ export const FooterPartnerListItem: FC<IFooterPartnerListItemProps> = (props) =>
         )}
       >
         <>
-          <div className={cx('logoCanvas')}>
+          <div className={cx('logo-canvas')}>
             <Image
               className={cx('logo')}
               src={logo}
@@ -42,7 +43,7 @@ export const FooterPartnerListItem: FC<IFooterPartnerListItemProps> = (props) =>
               objectFit="contain"
             />
           </div>
-          <span className={cx('hiddenText')}>
+          <span className={cx('hidden-text')}>
             {name}
           </span>
         </>

@@ -46,14 +46,17 @@
 
 .partners {
   composes: common;
+  padding: scale(100px 60px 30px);
 
   .title {
+    @mixin headline;
     @mixin headline6;
 
     max-width: scale(334px);
-    margin: scale(0 0 15px 0);
+    margin-bottom: scale(16px);
 
     @media (max-width: $tablet-portrait) {
+      max-width: scale(255px);
       margin-bottom: scale(24px);
     }
   }

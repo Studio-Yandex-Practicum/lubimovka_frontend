@@ -9,7 +9,7 @@ import { Logotype } from 'components/logotype';
 import { Footer } from 'components/footer';
 import { OverlayNav } from 'components/overlay-nav';
 import { BurgerButton } from 'components/ui/burger-button';
-import { FooterPartnerList } from 'components/footer-partner-list';
+import { PartnerList } from 'components/partner-list';
 import { FooterCopyright } from 'components/footer-copyright';
 import { DonationLink } from 'components/donation-link';
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
@@ -111,15 +111,15 @@ export const AppLayout = (props: AppLayoutProps) => {
         <Footer>
           {!hiddenPartners && (
             <Footer.Partners>
-              <FooterPartnerList>
+              <PartnerList>
                 {partners && partners.length > 0 && partners.map((partner) => (
-                  <FooterPartnerList.Item
+                  <PartnerList.Item
                     key={partner.name}
                     logo={partner.logo}
                     name={partner.name}
                   />
                 ))}
-              </FooterPartnerList>
+              </PartnerList>
             </Footer.Partners>
           )}
           <Footer.Navigation>
