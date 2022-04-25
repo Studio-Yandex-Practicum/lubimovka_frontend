@@ -121,34 +121,34 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             />
           </Filter.Field>
         </Filter>
-        {((entries && entries.length) || 0) > 0 ? (
-          <NewsList
-            className={cx('list')}
-            onShouldLoadEntries={handleShouldLoadEntries}
-            hasMoreEntries={hasMoreEntries}
-            pending={pending}
-          >
-            {entries.map((entry, index) => (
-              <NewsList.Item
-                key={entry.id}
-                {...index === lastNewsIndex ? {
-                  ref: bottomBoundaryRef,
-                } : {}}
-              >
-                <NewsCard
-                  title={entry.title}
-                  description={entry.description}
-                  date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
-                  href={`/news/${entry.id}`}
-                />
-              </NewsList.Item>
-            ))}
-          </NewsList>
-        ) : (
-          <p className={cx('no-result')}>
-            Ничего не найдено. Попробуйте изменить параметры поиска.
-          </p>
-        )
+        <NewsList
+          className={cx('list')}
+          onShouldLoadEntries={handleShouldLoadEntries}
+          hasMoreEntries={hasMoreEntries}
+          pending={pending}
+        >
+          {entries.map((entry, index) => (
+            <NewsList.Item
+              key={entry.id}
+              {...index === lastNewsIndex ? {
+                ref: bottomBoundaryRef,
+              } : {}}
+            >
+              <NewsCard
+                title={entry.title}
+                description={entry.description}
+                date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
+                href={`/news/${entry.id}`}
+              />
+            </NewsList.Item>
+          ))}
+        </NewsList>
+        {!entries.length && !pending
+          && (
+            <p className={cx('no-result')}>
+              Ничего не найдено.
+            </p>
+          )
         }
       </NewsLayout>
     </AppLayout>

@@ -147,31 +147,29 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           {pending && (
             <Spinner className={cx('spinner')}/>
           )}
-          {((entries && entries.length) || 0) > 0 ? (
-            <BlogEntryList>
-              {entries.map((entry, index) => (
-                <BlogEntryList.Item
-                  key={entry.id}
-                  {...index === lastEntryIndex ? {
-                    ref: bottomBoundaryRef,
-                  } : {}}
-                >
-                  <BlogCard
-                    id={entry.id}
-                    image={entry.cover}
-                    author={entry.author}
-                    heading={entry.title}
-                    description={entry.description}
-                  />
-                </BlogEntryList.Item>
-              ))}
-            </BlogEntryList>
-          ) : (
+          {!entries.length && !pending && (
             <p className={cx('no-result')}>
-              Ничего не найдено. Попробуйте изменить параметры поиска.
+              Ничего не найдено.
             </p>
-          )
-          }
+          )}
+          <BlogEntryList>
+            {entries.map((entry, index) => (
+              <BlogEntryList.Item
+                key={entry.id}
+                {...index === lastEntryIndex ? {
+                  ref: bottomBoundaryRef,
+                } : {}}
+              >
+                <BlogCard
+                  id={entry.id}
+                  image={entry.cover}
+                  author={entry.author}
+                  heading={entry.title}
+                  description={entry.description}
+                />
+              </BlogEntryList.Item>
+            ))}
+          </BlogEntryList>
         </BlogLayout.Main>
       </BlogLayout>
     </AppLayout>
