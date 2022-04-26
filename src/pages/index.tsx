@@ -5,8 +5,6 @@ import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 import { HomepageLayout } from 'components/homepage-layout';
-import { MainTitle } from 'components/main-page/title';
-import { MainEvents } from 'components/main-page/events';
 import { NewsList } from 'components/news-list';
 import { NewsCard } from 'components/news-card';
 import { TeaserList } from 'components/teaser-list';
@@ -20,6 +18,7 @@ import { HomepageFeedSection } from 'components/homepage-feed-section';
 import { MainShortList } from 'components/main-page/shortList';
 import { HomepageVideoArchiveSection } from 'components/homepage-video-archive-section';
 import { HomepageHeadline } from 'components/homepage-headline';
+import { HomepageEventsSection } from 'components/homepage-events-section';
 import { AppLayout } from 'components/app-layout';
 import { Banner } from 'components/banner';
 import { SEO } from 'components/seo';
@@ -75,15 +74,26 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
             callToAction={first_screen.url_title}
           />
         )}
-        {afisha && afisha.items?.length > 0 && (
+        {!!afisha?.items.length && (
           <HomepageLayout.Events>
-            {/* <MainTitle
-              afisha_today={afisha.afisha_today}
-              description={afisha.description}
-            />
-            <MainEvents
-              {...afisha}
-            /> */}
+            <HomepageEventsSection
+              title={afisha!.afisha_today ? (
+                <>
+                  Афиша на сегодня,
+                  {' '}
+                  {format('d MMMM', new Date())}
+                </>
+              ) : (
+                <>
+                  Афиша
+                  <br/>
+                  событий
+                </>
+              )}
+              description={afisha!.description}
+            >
+              {' '}
+            </HomepageEventsSection>
           </HomepageLayout.Events>
         )}
         {!!news?.items.length && (
