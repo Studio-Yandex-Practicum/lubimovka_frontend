@@ -16,7 +16,7 @@ interface CommonProps {
 }
 
 interface ButtonProps extends CommonProps {
-  href: string
+  href?: string
   target?: '_blank' | '_self' | '_parent' | '_top'
 }
 

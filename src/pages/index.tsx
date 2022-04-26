@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import Error from 'next/error';
+import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 import { HomepageLayout } from 'components/homepage-layout';
@@ -90,21 +91,25 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
             <HomepageFeedSection
               title="Новости"
               action={(
-                <Button
-                  size="s"
-                  border="bottom-left"
+                <Link
                   href="/news"
-                  upperCase
-                  icon={(
-                    <Icon
-                      glyph="arrow-right"
-                      width="100%"
-                      height="100%"
-                    />
-                  )}
+                  passHref
                 >
-                  Все записи
-                </Button>
+                  <Button
+                    size="s"
+                    border="bottom-left"
+                    upperCase
+                    icon={(
+                      <Icon
+                        glyph="arrow-right"
+                        width="100%"
+                        height="100%"
+                      />
+                    )}
+                  >
+                    Все записи
+                  </Button>
+                </Link>
               )}
             >
               <NewsList className={cx('list')}>
