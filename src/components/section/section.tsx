@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import styles from './section.module.css';
 
 interface SectionProps extends HTMLAttributes<HTMLElement> {
-  type?: 'plays' | 'persons' | 'partners' | 'play' | 'homepage-feed' | 'places'
+  type?: 'plays' | 'persons' | 'partners' | 'play' | 'homepage-feed' | 'places' | 'homepage-shortlist'
   title: string
   titleTag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   children: ReactNode

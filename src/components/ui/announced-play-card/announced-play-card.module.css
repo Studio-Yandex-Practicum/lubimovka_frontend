@@ -24,12 +24,12 @@
 
 .info {
   display: flex;
-  width: scale(269px);
+  max-width: scale(269px);
   flex-direction: column;
   justify-content: space-evenly;
 
   @media (max-width: $tablet-portrait) {
-    width: scale(243px);
+    max-width: scale(243px);
   }
 }
 
@@ -112,7 +112,7 @@
   @mixin text;
   @mixin textSmall;
 
-  width: scale(359px);
+  max-width: scale(359px);
   margin-bottom: scale(16px);
   margin-left: scale(30px);
 

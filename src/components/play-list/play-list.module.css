@@ -1,0 +1,15 @@
+.root {
+  @mixin hideScrollbar;
+
+  display: grid;
+  padding: 0;
+  margin: 0;
+  gap: scale(30px);
+  grid-template-columns: repeat(4, 1fr);
+  overflow-x: scroll;
+
+  @media (max-width: $tablet-portrait) {
+    grid-auto-flow: column;
+    grid-template-columns: auto;
+  }
+}

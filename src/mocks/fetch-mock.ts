@@ -14,12 +14,14 @@ import { IPiecesFiltersProps } from 'pages/library';
 import blogArticle from './data/blogArticle';
 import newsArticle from './data/newsArticle';
 import { afishaInfo, getAfishaEvents } from './data/afisha';
+import { main } from './data/main';
 
 fetchMock.config.fallbackToNetwork = true;
 
 const mockedFetch = fetchMock.sandbox();
 
 mockedFetch
+  .get(addBaseUrlToApiPath('/main/'), main)
   .get(new RegExp(addBaseUrlToApiPath('/projects/\\d+')), project)
   .get(addBaseUrlToApiPath('/library/authors'), (<PaginatedAuthorListList>{
     results: authors,
