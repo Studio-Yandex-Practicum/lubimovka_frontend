@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import Error from 'next/error';
 import Link from 'next/link';
 import classNames from 'classnames/bind';
@@ -22,6 +20,8 @@ import { AppLayout } from 'components/app-layout';
 import { Banner } from 'components/banner';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { PlayList } from 'components/play-list';
+import { EventList } from 'components/event-list';
+import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
 import { SEO } from 'components/seo';
 import { fetcher } from 'shared/fetcher';
 import { format } from 'shared/helpers/format-date';
@@ -44,7 +44,8 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
   const {
     first_screen,
     afisha,
-    blog,
+    // TODO: добавить вывод записей блога, обсудить схему API с бекендерами — сейчас не очевидно, что возвращаются или новости или записи блога
+    // blog,
     news,
     banners,
     places,
@@ -78,7 +79,7 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
         {!!afisha?.items.length && (
           <HomepageLayout.Events>
             <HomepageEventsSection
-              title={afisha!.afisha_today ? (
+              title={afisha.afisha_today ? (
                 <>
                   Афиша на сегодня,
                   {' '}
@@ -93,7 +94,26 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
               )}
               description={afisha!.description}
             >
-              {' '}
+              <EventList>
+                {afisha.items.map((event) => (
+                  <EventList.Item key={event.id}>
+                    <AnnouncedPlayCard
+                      id={event.id}
+                      formattedDate={format('d MMMM', new Date(event.date_time))}
+                      formattedTime={format('H:m', new Date(event.date_time))}
+                      title={event.event_body.name}
+                      team={event.event_body.team}
+                      description={event.event_body.description}
+                      buttonLink={event.url}
+                      // TODO: разобраться, сча в схеме API нет поля с изображением
+                      // imageUrl={event.event_body.image}
+                      project={event.event_body.project_title}
+                      paid={event.paid}
+                      isPerformance={event.type === 'PERFORMANCE' ? true : false}
+                    />
+                  </EventList.Item>
+                ))}
+              </EventList>
             </HomepageEventsSection>
           </HomepageLayout.Events>
         )}

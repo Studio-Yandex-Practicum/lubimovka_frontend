@@ -24,7 +24,7 @@ export const HomepageEventsSection: FC<HomepageEventsSectionProps> = (props) => 
 
   return (
     <section className={cx('root')}>
-      <div className={cx('headline')}>
+      <div className={cx('heading')}>
         <h2 className={cx('title')}>
           {title}
         </h2>

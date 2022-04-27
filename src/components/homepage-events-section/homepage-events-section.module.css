@@ -1,8 +1,17 @@
 .root {
-  padding: scale(60px 60px 60px 440px);
+  padding: scale(60px);
 
   @media (max-width: $tablet-portrait) {
     padding: scale(32px 24px);
+  }
+}
+
+.heading {
+  margin-bottom: scale(110px);
+  margin-left: scale(380px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-left: 0;
   }
 }
 
