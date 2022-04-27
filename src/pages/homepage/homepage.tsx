@@ -15,12 +15,13 @@ import { PartnerList } from 'components/partner-list';
 import { AddressList } from 'components/address-list';
 import { AddressCard } from 'components/address-card';
 import { HomepageFeedSection } from 'components/homepage-feed-section';
-import { MainShortList } from 'components/main-page/shortList';
 import { HomepageVideoArchiveSection } from 'components/homepage-video-archive-section';
 import { HomepageHeadline } from 'components/homepage-headline';
 import { HomepageEventsSection } from 'components/homepage-events-section';
 import { AppLayout } from 'components/app-layout';
 import { Banner } from 'components/banner';
+import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { PlayList } from 'components/play-list';
 import { SEO } from 'components/seo';
 import { fetcher } from 'shared/fetcher';
 import { format } from 'shared/helpers/format-date';
@@ -145,9 +146,30 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
             />
           )}
           {!!short_list?.items.length && (
-            <MainShortList
-              {...short_list}
-            />
+            <Section
+              title={short_list.title}
+              type="homepage-shortlist"
+            >
+              <PlayList>
+                {short_list.items.map((item) => (
+                  <PlayList.Item key={item.id}>
+                    <BasicPlayCard
+                      play={{
+                        title: item.name,
+                        city: item.city,
+                        year: item.year,
+                        readingUrl: item.url_reading,
+                        downloadUrl: item.url_download,
+                        authors: item.authors,
+                      }}
+                    />
+                  </PlayList.Item>
+                ))}
+              </PlayList>
+            </Section>
+            // <MainShortList
+            //   {...short_list}
+            // />
           )}
           {!!places?.items.length && (
             <Section
