@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ContentUnitRichText } from './ContentUnitRichText';
 import type { EventsBlock } from './EventsBlock';
 import type { ImagesBlock } from './ImagesBlock';
 import type { Link } from './Link';
@@ -13,4 +14,4 @@ import type { Text } from './Text';
 import type { Title } from './Title';
 import type { VideosBlock } from './VideosBlock';
 
-export type Content_object = (EventsBlock | ImagesBlock | Link | PersonsBlock | PlaysBlock | Preamble | Quote | Text | Title | VideosBlock);
+export type Content_object = (ContentUnitRichText | EventsBlock | ImagesBlock | Link | PersonsBlock | PlaysBlock | Preamble | Quote | Text | Title | VideosBlock);

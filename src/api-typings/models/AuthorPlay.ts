@@ -5,10 +5,12 @@
 import type { AuthorForPlay } from './AuthorForPlay';
 
 /**
- * Сериализатор Пьесы.
+ * Сериализатор Пьесы из промежуточной модели м2м Автор-Пьеса.
+ *
+ * Используется для сортировки выдачи пьес.
  */
-export type Play = {
-    readonly id: number;
+export type AuthorPlay = {
+    id: number;
     name: string;
     authors: Array<AuthorForPlay>;
     city?: string;

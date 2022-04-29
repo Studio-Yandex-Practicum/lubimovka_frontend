@@ -5,7 +5,7 @@
 import type { BaseContent } from './BaseContent';
 
 /**
- * Adds "contents" field to any serializer.
+ * Add `contents` field to any serializer.
  */
 export type Project = {
     readonly id: number;
