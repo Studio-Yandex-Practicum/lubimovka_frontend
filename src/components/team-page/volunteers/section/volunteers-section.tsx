@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import { FC, useCallback, useMemo, useState } from 'react';
 import cn from 'classnames';
 import classNames from 'classnames/bind';
 
@@ -6,7 +6,9 @@ import { Icon } from 'components/ui/icon';
 import { SliderYears } from 'components/ui/slider-years';
 import VolunteersList from 'components/team-page/volunteers/list';
 import { InfoLink } from 'components/ui/info-link';
-import { Volunteers } from 'api-typings';
+import { usePersistentData } from 'providers/persistent-data-provider';
+
+import type { Volunteers } from 'api-typings';
 
 import styles from './volunteers-section.module.css';
 
@@ -19,6 +21,8 @@ interface VolunteersSectionProps {
 
 const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
   const { cards = [], queryYear } = props;
+  // TODO: отрефакторить компонент, привести к композиции, передавать email в качестве пропса
+  const { settings } = usePersistentData();
 
   const years = useMemo(() => {
     return Array.from(new Set(cards.map(card => card.year))).sort().reverse();
@@ -47,21 +51,23 @@ const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
           currentYear={currentYear}
         />
         <VolunteersList cards={selectedCards} currentYear={currentYear}/>
-        <div className={styles.infoBlock}>
-          <Icon className={styles.asterisk} glyph={'asterisk'}/>
-          <p className={cx('info')}>
-            Если вы хотите быть волонтером, напишите нам на
-            <InfoLink
-              href={'mailto:job@lubimovka.ru'}
-              isOutsideLink
-              label={'job@lubimovka.ru'}
-              size={'xl'}
-              textDecoration={'underline'}
-              className={cx('indent')}
-            />
-            и расскажите о себе.
-          </p>
-        </div>
+        {settings?.emailAddresses.forVolunteers && (
+          <div className={styles.infoBlock}>
+            <Icon className={styles.asterisk} glyph={'asterisk'}/>
+            <p className={cx('info')}>
+              Если вы хотите быть волонтером, напишите нам на
+              <InfoLink
+                href={`mailto:${settings?.emailAddresses.forVolunteers}`}
+                isOutsideLink
+                label={settings?.emailAddresses.forVolunteers}
+                size={'xl'}
+                textDecoration={'underline'}
+                className={cx('indent')}
+              />
+              и расскажите о себе.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,12 +1,11 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-
 import { AppLayout } from 'components/app-layout';
 import TrusteesSection from 'components/trustees-section/trustees-section';
 import PersonsList from 'components/persons-list/persons-list';
-import { Sponsor } from 'api-typings';
+import { usePersistentData } from 'providers/persistent-data-provider';
 import { fetcher } from 'shared/fetcher';
 
-import textData from './assets/mock-text-data.json';
+import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import type { Sponsor } from 'api-typings';
 
 interface ITrusteesProps {
   trustees: Array<Sponsor>,
@@ -14,11 +13,17 @@ interface ITrusteesProps {
 
 const Trustees = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { trustees } = props;
+  const { settings } = usePersistentData();
 
   return (
     <AppLayout>
       <main>
-        <TrusteesSection text={textData}>
+        <TrusteesSection
+          title="Попечители фестиваля"
+          description="Здесь представлены частные лица и организации, которые помогают Любимовке, внося существенные пожертвования на развитие фестиваля."
+          callToEmail="Если вы хотите стать попечителем фестиваля, напишите нам на "
+          callToEmailAddress={settings?.emailAddresses.charity}
+        >
           <PersonsList persons={trustees}/>
         </TrusteesSection>
       </main>

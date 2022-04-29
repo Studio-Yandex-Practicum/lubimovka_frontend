@@ -38,44 +38,35 @@
   }
 }
 
-.project {
+.author {
+  padding-left: scale(25px);
+
   .asterisk {
     display: flex;
     width: scale(25px);
     height: scale(25px);
-  }
-
-  .title {
-    @mixin headline5;
-
-    margin: scale(0 0 0 27px);
-
-    @media (max-width: $tablet-portrait) {
-      @mixin headline6;
-
-      margin-left: scale(30px);
-    }
+    transform: translateX(scale(-25px));
   }
 
   .description,
   .call-to-action {
     @mixin headline;
     @mixin headline7;
+
+    display: inline;
   }
+}
 
-  .description {
-    margin: scale(33px 0 0 85px);
-
-    @media (max-width: $tablet-portrait) {
-      margin: scale(16px 0 0 32px);
-    }
-  }
-
+.blog {
+  .description,
   .call-to-action {
-    margin: scale(24px 0 0 85px);
+    @mixin text;
+    @mixin textSmall;
+
+    display: inline;
 
     @media (max-width: $tablet-portrait) {
-      margin: scale(24px 0 0 32px);
+      @mixin textLarge;
     }
   }
 }

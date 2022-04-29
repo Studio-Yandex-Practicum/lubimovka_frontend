@@ -122,3 +122,12 @@
     }
   }
 }
+
+.author-call-to-email {
+  padding: scale(90px 70px 114px 840px);
+  background-color: var(--beige);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(80px 24px);
+  }
+}

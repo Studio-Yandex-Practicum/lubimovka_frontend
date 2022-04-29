@@ -6,11 +6,13 @@ import { AuthorOverview } from 'components/author-page/overview';
 import { AuthorPlays } from 'components/author-page/plays';
 import { AnotherPlays } from 'components/author-page/another-plays';
 import { AuthorInformation } from 'components/author-page/information';
-import { AuthorRequest } from 'components/author-page/request';
+import { CallToEmail } from 'components/call-to-email';
+import { Section } from 'components/section';
 import { SEO } from 'components/seo';
 import { fetcher } from 'shared/fetcher';
 import * as breakpoints from 'shared/breakpoints.js';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
+import { usePersistentData } from 'providers/persistent-data-provider';
 
 import styles from 'components/author-page/author.module.css';
 
@@ -21,6 +23,7 @@ const cx = cn.bind(styles);
 
 const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+  const { settings } = usePersistentData();
 
   if ('errorCode' in props) {
     return (
@@ -80,7 +83,15 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
             links={notPinnedLinks}
           />
         )}
-        <AuthorRequest/>
+        {settings?.emailAddresses.forAuthors && (
+          <Section type="author-call-to-email">
+            <CallToEmail
+              type="author"
+              description="Это ваша страница? Если вы хотите внести изменения, пожалуйста, напишите нам на "
+              email={settings.emailAddresses.forAuthors}
+            />
+          </Section>
+        )}
       </div>
     </AppLayout>
   );
