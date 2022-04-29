@@ -10,6 +10,9 @@ import type { Event_Type_objects } from './Event_Type_objects';
  */
 export type AfishaEvent = {
     readonly id: number;
+    /**
+     * Выберите тип события
+     */
     type: event_type;
     /**
      * The response is different based on event type.

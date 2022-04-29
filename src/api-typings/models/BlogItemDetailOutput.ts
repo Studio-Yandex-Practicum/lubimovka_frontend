@@ -7,7 +7,7 @@ import type { BlogItemList } from './BlogItemList';
 import type { BlogItemRole } from './BlogItemRole';
 
 /**
- * Adds "contents" field to any serializer.
+ * Add `contents` field to any serializer.
  */
 export type BlogItemDetailOutput = {
     readonly id: number;

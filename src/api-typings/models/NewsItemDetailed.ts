@@ -6,7 +6,7 @@ import type { BaseContent } from './BaseContent';
 import type { NewsItemList } from './NewsItemList';
 
 /**
- * Adds "contents" field to any serializer.
+ * Add `contents` field to any serializer.
  */
 export type NewsItemDetailed = {
     readonly id: number;
