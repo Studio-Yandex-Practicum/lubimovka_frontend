@@ -17,7 +17,7 @@ interface IArticleTitle {
   date: string,
   author?: string,
   authorLink?: Url,
-  imgLink: Url,
+  imgLink?: Url,
 }
 
 const ArticleTitle: React.FC<IArticleTitle> = (props) => {
@@ -45,14 +45,16 @@ const ArticleTitle: React.FC<IArticleTitle> = (props) => {
         align={'space-between'}
         href={isBlog ? '/blog' : '/news'}
       />
-      <div className={cx('img')}>
-        <Image
-          src={imgLink}
-          alt={title}
-          layout="fill"
-          objectFit="cover"
-        />
-      </div>
+      {imgLink && (
+        <div className={cx('img')}>
+          <Image
+            src={imgLink}
+            alt={title}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+      )}
       <h3 className={cx('title')}>
         {title}
       </h3>
