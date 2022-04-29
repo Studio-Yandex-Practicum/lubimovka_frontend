@@ -143,6 +143,13 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             </NewsList.Item>
           ))}
         </NewsList>
+        {!entries.length && !pending
+          && (
+            <p className={cx('no-result')}>
+              Ничего не найдено.
+            </p>
+          )
+        }
       </NewsLayout>
     </AppLayout>
   );

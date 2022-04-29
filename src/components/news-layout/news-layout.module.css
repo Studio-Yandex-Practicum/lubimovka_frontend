@@ -32,6 +32,14 @@
   max-width: scale(150px);
 }
 
+.no-result {
+  @mixin text;
+  @mixin textLarge;
+
+  grid-area: list;
+  text-align: center;
+}
+
 .list {
   width: 100%;
   max-width: scale(900px);

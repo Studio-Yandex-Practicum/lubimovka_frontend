@@ -147,6 +147,11 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           {pending && (
             <Spinner className={cx('spinner')}/>
           )}
+          {!entries.length && !pending && (
+            <p className={cx('no-result')}>
+              Ничего не найдено.
+            </p>
+          )}
           <BlogEntryList>
             {entries.map((entry, index) => (
               <BlogEntryList.Item
