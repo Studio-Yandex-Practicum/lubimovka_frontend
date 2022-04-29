@@ -1,9 +1,8 @@
 import classNames from 'classnames/bind';
+import { forwardRef } from 'react';
 
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
-
-import type { FC } from 'react';
 
 import styles from './homepage-headline.module.css';
 
@@ -16,12 +15,13 @@ interface HomepageHeadlineProps {
 
 const cx = classNames.bind(styles);
 
-export const HomepageHeadline: FC<HomepageHeadlineProps> = ({ title, callToAction, url, className }) => (
+export const HomepageHeadline = forwardRef<HTMLElement, HomepageHeadlineProps>(({ title, callToAction, url, className }, ref) => (
   <section
     className={cx(
       'root',
       className,
     )}
+    ref={ref}
   >
     <div className={cx('container')}>
       <h1 className={cx('title')}>
@@ -49,4 +49,6 @@ export const HomepageHeadline: FC<HomepageHeadlineProps> = ({ title, callToActio
       </div>
     </div>
   </section>
-);
+));
+
+HomepageHeadline.displayName = 'HomepageHeadline';
