@@ -9,11 +9,11 @@ import styles from './call-to-email.module.css';
 const cx = classNames.bind(styles);
 
 interface ICallToEmail {
-  type: 'contacts' | 'project';
-  title: string;
-  description: string;
-  callToActionText?: string;
-  email: Email;
+  type: 'contacts' | 'author' | 'blog'
+  title?: string
+  description: string
+  callToActionText?: string
+  email: Email
 }
 
 export const CallToEmail: FC<ICallToEmail> = (props) => {
@@ -27,12 +27,14 @@ export const CallToEmail: FC<ICallToEmail> = (props) => {
 
   return (
     <div className={cx(type)}>
-      {type === 'project' && (
+      {type === 'author' && (
         <Icon glyph="asterisk" className={cx('asterisk')}/>
       )}
-      <h2 className={cx('title')}>
-        {title}
-      </h2>
+      {title && (
+        <h2 className={cx('title')}>
+          {title}
+        </h2>
+      )}
       <address className={cx('address')}>
         <p className={cx('description')}>
           {description}

@@ -7,7 +7,6 @@ import playfilters from './data/playfilters';
 import projects from './data/projects';
 import partners from './data/partners';
 import performance from './data/performance';
-import form from 'mocks/data/form';
 import project from './data/project';
 import { PaginatedProjectListList, PaginatedAuthorListList, PaginatedPlayList } from 'api-typings';
 import { IPiecesFiltersProps } from 'pages/library';
@@ -40,7 +39,6 @@ mockedFetch
     query: { in_footer_partner: 'true' },
   }, partners.filter(({ in_footer_partner }) => in_footer_partner))
   .get(new RegExp(addBaseUrlToApiPath('/library/performances/\\d+')), performance)
-  .get(addBaseUrlToApiPath('/form'), form)
   .get(new RegExp(addBaseUrlToApiPath('/blog/\\d+')), blogArticle)
   .get(new RegExp(addBaseUrlToApiPath('/news/\\d+')), newsArticle)
   .get(new RegExp(addBaseUrlToApiPath('/afisha/info')), afishaInfo)

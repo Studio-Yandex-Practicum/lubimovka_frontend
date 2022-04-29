@@ -4,8 +4,15 @@ import classNames from 'classnames/bind';
 import styles from './section.module.css';
 
 interface SectionProps extends HTMLAttributes<HTMLElement> {
-  type?: 'plays' | 'persons' | 'partners' | 'play' | 'homepage-feed' | 'places' | 'homepage-shortlist'
-  title: string
+  type?: 'plays'
+  | 'persons'
+  | 'partners'
+  | 'play'
+  | 'homepage-feed'
+  | 'places'
+  | 'homepage-shortlist'
+  | 'author-call-to-email'
+  title?: string
   titleTag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   children: ReactNode
   className?: string
@@ -31,9 +38,11 @@ export const Section = (props: SectionProps) => {
       )}
       {...restProps}
     >
-      <TitleTag className={cx('title')}>
-        {title}
-      </TitleTag>
+      {title && (
+        <TitleTag className={cx('title')}>
+          {title}
+        </TitleTag>
+      )}
       {children}
     </section>
   );
