@@ -1,15 +1,4 @@
-.events {
-  width: calc(100% - scale(270px));
-  padding-top: scale(110px);
-  grid-area: events;
-
-  @media (max-width: $tablet-portrait) {
-    width: 100%;
-    padding: scale(15px 0 40px);
-  }
-}
-
-.content {
+.root {
   position: relative;
   display: grid;
   justify-content: center;
@@ -18,18 +7,10 @@
   column-gap: scale(120px);
   grid-row-gap: scale(48px);
   grid-template-columns: repeat(2, minmax(scale(364px), max-content));
-  list-style: none;
   row-gap: scale(74px);
 
   @media (max-width: $tablet-portrait) {
     grid-template-columns: repeat(1, minmax(320px, 1fr));
-
-    &::before {
-      display: none;
-    }
-  }
-
-  @media (max-width: $tablet-portrait) {
     row-gap: 0;
   }
 
@@ -41,5 +22,9 @@
     height: calc(100%);
     background-color: var(--coal);
     content: '';
+
+    @media (max-width: $tablet-portrait) {
+      display: none;
+    }
   }
 }

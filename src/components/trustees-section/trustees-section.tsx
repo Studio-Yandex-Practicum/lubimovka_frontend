@@ -1,22 +1,26 @@
-import React, { FC } from 'react';
-
-import { Icon } from '../ui/icon';
+import { Icon } from 'components/ui/icon';
 import { AboutUsMenu } from 'components/what-we-do-page/about-us-menu/about-us-menu';
 import { InfoLink } from 'components/ui/info-link/info-link';
+
+import type { FC } from 'react';
 
 import style from './trustees-section.module.css';
 
 interface TrusteesSectionProps {
-  text: {
-    sectionTitle: string,
-    accent: string,
-    link: string,
-    narrative: Array<string>,
-  }
+  title: string,
+  callToEmail: string,
+  callToEmailAddress?: string,
+  description: string,
 }
 
-const TrusteesSection: FC<TrusteesSectionProps> = ({ text, children }) => {
-  const { sectionTitle, accent, link, narrative } = text;
+const TrusteesSection: FC<TrusteesSectionProps> = (props) => {
+  const {
+    title,
+    callToEmail,
+    callToEmailAddress,
+    description,
+    children,
+  } = props;
 
   return (
     <section className={style.section}>
@@ -24,25 +28,27 @@ const TrusteesSection: FC<TrusteesSectionProps> = ({ text, children }) => {
         <AboutUsMenu/>
       </div>
       <div className={style.container}>
-        <div className={style.becomeTrustee}>
-          <Icon glyph={'asterisk'}/>
-          <p className={style.accent}>
-            {accent}
-            <InfoLink
-              href={'mailto:job@lubimovka.ru'}
-              isOutsideLink
-              label={link}
-              size={'xl'}
-              textDecoration={'underline'}
-            />
-          </p>
-        </div>
+        {callToEmailAddress && (
+          <div className={style.becomeTrustee}>
+            <Icon glyph={'asterisk'}/>
+            <p className={style.accent}>
+              {callToEmail}
+              <InfoLink
+                href={`mailto:${callToEmailAddress}`}
+                isOutsideLink
+                label={callToEmailAddress}
+                size={'xl'}
+                textDecoration={'underline'}
+              />
+            </p>
+          </div>
+        )}
         <div className={style.mainText}>
           <h2 className={style.title}>
-            {sectionTitle}
+            {title}
           </h2>
           <p className={style.narrative}>
-            {narrative}
+            {description}
           </p>
         </div>
         {children}

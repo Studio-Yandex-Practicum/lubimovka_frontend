@@ -1,0 +1,40 @@
+.root {
+  padding: scale(60px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(32px 24px);
+  }
+}
+
+.heading {
+  margin-bottom: scale(110px);
+  margin-left: scale(380px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-left: 0;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline2;
+
+  display: inline;
+  margin-right: scale(15px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+  }
+}
+
+.description {
+  @mixin text;
+  @mixin textLarge;
+
+  margin-top: scale(10px);
+  margin-left: scale(132px);
+
+  @media (max-width: $tablet-portrait) {
+    display: none;
+  }
+}

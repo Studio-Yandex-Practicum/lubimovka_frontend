@@ -3,6 +3,11 @@
   @mixin textCaption;
 
   margin-top: scale(16px);
+  margin-left: scale(61px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-left: 0;
+  }
 
   a {
     color: inherit;

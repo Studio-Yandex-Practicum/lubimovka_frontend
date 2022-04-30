@@ -100,3 +100,34 @@
     }
   }
 }
+
+.homepage-shortlist {
+  padding: scale(90px 60px 102px 60px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(40px 30px 40px 30px);
+  }
+
+  .title {
+    @mixin headline;
+    @mixin headline2;
+
+    max-width: scale(682px);
+    margin-bottom: scale(50px);
+
+    @media (max-width: $tablet-portrait) {
+      @mixin headline4;
+
+      margin-bottom: scale(24px);
+    }
+  }
+}
+
+.author-call-to-email {
+  padding: scale(90px 70px 114px 840px);
+  background-color: var(--beige);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(80px 24px);
+  }
+}

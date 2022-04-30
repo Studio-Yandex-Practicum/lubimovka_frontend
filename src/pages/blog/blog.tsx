@@ -10,8 +10,8 @@ import { Filter } from 'components/filter';
 import { Select } from 'components/select';
 import { BlogLayout } from 'components/blog-layout';
 import { PageTitle } from 'components/page-title';
-import { Link } from 'components/ui/link';
 import { Spinner } from 'components/spinner';
+import { CallToEmail } from 'components/call-to-email';
 import { useBlog } from 'providers/blog-provider';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
@@ -106,11 +106,11 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
         </BlogLayout.Description>
         {callToActionEmail && (
           <BlogLayout.CallToAction>
-            Если вы хотите стать автором, пишите на
-            {' '}
-            <Link href={`mailto:${callToActionEmail}`}>
-              {callToActionEmail}
-            </Link>
+            <CallToEmail
+              type="blog"
+              description="Если вы хотите стать автором, пишите на "
+              email={callToActionEmail}
+            />
           </BlogLayout.CallToAction>
         )}
         <BlogLayout.Filter>
@@ -146,6 +146,11 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
         <BlogLayout.Main>
           {pending && (
             <Spinner className={cx('spinner')}/>
+          )}
+          {!entries.length && !pending && (
+            <p className={cx('no-result')}>
+              Ничего не найдено.
+            </p>
           )}
           <BlogEntryList>
             {entries.map((entry, index) => (

@@ -253,7 +253,7 @@ const Contacts: NextPage = () => {
                 type="contacts"
                 title="Для авторов"
                 description="Если вы хотите внести изменения в свою страницу: добавить пьесы, ссылки на статьи или публикации, напишите нам. Приложите файлы и ссылки."
-                email="hello@lubimovka.ru"
+                email={settings.emailAddresses.forAuthors}
               />
             </ContactsLayout.CallToEmail>
           )}

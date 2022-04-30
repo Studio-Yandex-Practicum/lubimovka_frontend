@@ -2,8 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AuthorOtherPlay } from './AuthorOtherPlay';
+import type { AuthorPlay } from './AuthorPlay';
 import type { OtherLink } from './OtherLink';
-import type { Play } from './Play';
 import type { SocialNetwork } from './SocialNetwork';
 
 export type AuthorRetrieve = {
@@ -19,7 +20,7 @@ export type AuthorRetrieve = {
     social_networks: Array<SocialNetwork>;
     readonly email: string;
     other_links: Array<OtherLink>;
-    plays: Array<Play>;
-    other_plays: Array<Play>;
+    plays: Array<AuthorPlay>;
+    other_plays: Array<AuthorOtherPlay>;
     image: string;
 };

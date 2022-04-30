@@ -52,4 +52,9 @@
   @mixin textCaption;
 
   margin-top: scale(24px);
+  margin-left: scale(30px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-left: scale(32px);
+  }
 }

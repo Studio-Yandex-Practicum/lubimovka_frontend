@@ -1,16 +1,6 @@
-import type { MainBanners, MainBlog, MainFirstScreen, MainNews, MainPlaces, MainShortList, MainVideoArchive } from 'api-typings';
+import type { Main } from 'api-typings';
 
-interface IMain {
-  first_screen?: MainFirstScreen;
-  blog?: MainBlog;
-  news?: MainNews;
-  banners?: MainBanners;
-  short_list?: MainShortList;
-  places?: MainPlaces;
-  video_archive?: MainVideoArchive;
-}
-
-export const main: IMain = {
+export const main: Main = {
   first_screen: {
     title: 'Открыт прием пьес на фестиваль 2021 года',
     url: 'https://www.rabstol.net/uploads/gallery/main/108/rabstol_net_winter_30.jpg',
@@ -56,6 +46,40 @@ export const main: IMain = {
         image: 'https://lubimovka.kiryanov.ru/media/images/articles/newsitems/example_zIL9nMV.jpg',
         pub_date: '1978-05-03T17:02:25',
         title: 'Инвалид район товар металл дрогнуть.',
+      },
+    ]
+  },
+  afisha: {
+    afisha_today: true,
+    description: 'На все читки и мастер-классы фестиваля вход свободный по предварительной регистрации.',
+    items: [
+      {
+        id: 14,
+        type: 'READING',
+        event_body: {
+          id: 8,
+          name: 'Слать',
+          description: 'Каюта тесно пятеро сохранять выгнать легко монета выраженный. Шлем помолчать ставить роскошный роскошный космос миг.',
+          team: [
+            {
+              name: 'Драматург',
+              persons: [
+                'Геннадий Богданов'
+              ]
+            },
+            {
+              name: 'Режиссёр',
+              persons: [
+                'Артем Аксенов'
+              ]
+            }
+          ],
+          project_title: 'Любимовка.Ещё',
+        },
+        date_time: '2022-03-30T05:43:45',
+        paid: false,
+        url: 'https://yandex.ru/',
+        place: 'г. Шумиха, пр. Журавлева, д. 8/6, 159006'
       },
     ]
   },

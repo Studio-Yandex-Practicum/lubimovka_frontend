@@ -71,7 +71,7 @@ const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSidePr
           link: settings?.pressCenter.facebookGalleryUrl || '',
         },
         prPerson: {
-          // TODO: отрефакторить и отобразить процесс получение данных нормально, наапример, добавить
+          // TODO: отрефакторить и отобразить процесс получение данных нормально, например, добавить в общую раскладку спиннер
           name: '',
           nameDative: settings?.pressCenter.contactPerson || '',
           email: settings?.pressCenter.contactEmail || '',

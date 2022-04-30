@@ -12,7 +12,6 @@ export type Play = {
     name: string;
     authors: Array<AuthorForPlay>;
     city?: string;
-    published?: boolean;
     year?: number;
     url_download: string;
     url_reading?: string;

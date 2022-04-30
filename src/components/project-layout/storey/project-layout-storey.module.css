@@ -65,23 +65,3 @@
     margin: 0 auto;
   }
 }
-
-.invitation {
-  padding-bottom: scale(169px);
-  margin-top: scale(100px);
-
-  @media (max-width: $tablet-portrait) {
-    padding-bottom: 0;
-  }
-
-  .holder {
-    max-width: scale(516px);
-    margin-right: scale(227px);
-    margin-left: auto;
-
-    @media (max-width: $tablet-portrait) {
-      margin-right: 0;
-      margin-left: 0;
-    }
-  }
-}
