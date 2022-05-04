@@ -1,32 +1,22 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-
-import Logo from '../../images/logo.svg';
-import SmallLogo from '../../images/small-logo.svg';
+import Logo from 'shared/images/full-logo.svg';
+import SmallLogo from 'shared/images/compact-logo.svg';
 import classes from './ServerError.module.css';
-import { InfoLink } from 'components/ui/info-link';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
+import * as breakpoints from 'shared/breakpoints';
+import { Button } from 'components/ui/button';
 
 export default function ServerError() {
-  const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
-  useEffect(() => {
-    const setWindowWidth = () => {
-      const newWidth = document.documentElement.clientWidth;
-      setScreenWidth(newWidth);
-    };
-    window.addEventListener('load', setWindowWidth);
-    window.addEventListener('resize', setWindowWidth);
-    return () => {
-      window.removeEventListener('resize', setWindowWidth);
-      window.removeEventListener('load', setWindowWidth);
-    };
-  }, []);
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
   return (
     <section className={classes.error}>
       <Link href={'/'}>
-        <a>
-          {screenWidth && screenWidth < 723 ? <SmallLogo className={classes.logo} src={'/images/small-logo.svg'} layout={'fill'}/> : <Logo className={classes.logo} src={'/images/logo.svg'} layout={'fill'}/>}
+        <a className={classes.logo}>
+          {isMobile
+            ? <SmallLogo layout={'fill'}/>
+            : <Logo layout={'fill'}/>}
         </a>
       </Link>
       <div className={classes.contentContainer}>
@@ -37,13 +27,29 @@ export default function ServerError() {
           <p className={classes.text}>
             Чтобы узнать новости фестиваля, перейдите в наш Телеграм-канал
           </p>
-          <InfoLink label={'TLGRM'} isOutsideLink href={'https://t.me/'} border={'borderBottomLeft'} icon={'arrow-right'} iconPlace={'left'} size={'s'}/>
+          <Button
+            border="bottomLeft"
+            isLink
+            size={'s'}
+            iconPlace={'left'}
+            icon={'arrow-right'}
+            href={'https://t.me/lubimovka'}
+            label={'TLGRM'}
+          />
         </div>
         <div className={classes.rightBlock}>
           <p className={classes.text}>
             Или перезагрузите страницу
           </p>
-          <InfoLink label={'ПЕРЕЗАГРУЗИТЬ'} border={'borderBottomLeft'} icon={'arrow-right'} iconPlace={'left'} size={'s'}/>
+          <Button
+            border="bottomLeft"
+            size={'s'}
+            iconPlace={'left'}
+            icon={'arrow-right'}
+            type={'button'}
+            label={'Перезагрузить'}
+            onClick={()=>document.location.reload()}
+          />
         </div>
       </div>
     </section>
