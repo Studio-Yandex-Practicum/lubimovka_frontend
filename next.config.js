@@ -25,7 +25,7 @@ module.exports = {
   images: {
     domains: [
       'stage.dev.lubimovka.ru',
-      'lubimovka.kiryanov.ru',
+      'lubimovka.art',
       'test.dev.lubimovka.ru',
       '2022.lubimovka.ru',
     ],
