@@ -76,7 +76,10 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
             />
           )}
           {content_type === ConstructorBlockType.images && (
-            <Section title={content_item.title}>
+            <Section
+              type="projects"
+              title={content_item.title}
+            >
               <PhotoGallery
                 photos={content_item.items.map(({ image, title }) => ({
                   url: image,
@@ -86,7 +89,10 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
             </Section>
           )}
           {content_type === ConstructorBlockType.plays && (
-            <Section title={content_item.title}>
+            <Section
+              type="projects"
+              title={content_item.title}
+            >
               <BasicPlayCardList>
                 {content_item.items.map(({ id, name, city, year, authors }) => (
                   <BasicPlayCard
@@ -132,7 +138,10 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
             </PerformanceSection>
           )}
           {content_type === ConstructorBlockType.persons && (
-            <Section title={content_item.title}>
+            <Section
+              type="projects"
+              title={content_item.title}
+            >
               <PersonCardList>
                 {content_item.items.map(({ id, first_name, last_name, image, roles }) => (
                   <PersonCard
@@ -147,7 +156,10 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
             </Section>
           )}
           {content_type === ConstructorBlockType.videos && (
-            <Section title={content_item.title}>
+            <Section
+              type="projects"
+              title={content_item.title}
+            >
               <VideoList>
                 {content_item.items.map(({ url }) => (
                   <Video
@@ -163,4 +175,3 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
     </div>
   );
 };
-
