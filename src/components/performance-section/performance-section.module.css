@@ -1,3 +1,11 @@
+.root {
+  padding: scale(100px 0 50px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(50px 0 25px);
+  }
+}
+
 .title {
   @mixin headline;
   @mixin headline4;

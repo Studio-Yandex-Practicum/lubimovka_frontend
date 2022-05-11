@@ -12,6 +12,7 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
   | 'places'
   | 'homepage-shortlist'
   | 'author-call-to-email'
+  | 'projects'
   title?: string
   titleTag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   children: ReactNode
