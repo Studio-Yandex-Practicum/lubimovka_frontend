@@ -1,13 +1,14 @@
 import Error from 'next/error';
 
 import { AppLayout } from 'components/app-layout';
-import ArticleTitle from 'components/article-title';
+import { ArticleHeadline } from 'components/article-headline';
 import { ConstructorContent } from 'components/constructor-content';
 import { SEO } from 'components/seo';
 import { Section } from 'components/section';
 import { BlogEntryList } from 'components/blog-entry-list';
 import { BlogCard } from 'components/ui/blog-card';
 import { fetcher } from 'shared/fetcher';
+import { format } from 'shared/helpers/format-date';
 import { notFoundResult, serverErrorResult } from 'shared/constants/server-side-props';
 
 import type { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
@@ -37,14 +38,14 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
         title={title}
         description={description}
       />
-      <ArticleTitle
-        isBlog
+      <ArticleHeadline
+        variant="blog"
         title={title}
         description={description}
-        date={date}
-        imgLink={image}
+        date={format('d MMMM yyyy', new Date(date))}
+        cover={image}
         author={author}
-        authorLink={authorUrl}
+        authorUrl={authorUrl}
       />
       <ConstructorContent
         // @ts-expect-error

@@ -1,54 +1,3 @@
-.container {
-  display: grid;
-  box-sizing: border-box;
-  padding: scale(32px 0 0 30px);
-  margin: 0 auto;
-  grid-column-gap: scale(30px);
-  grid-template-areas:
-    'button a a a'
-    'b title title c'
-    'b description description img'
-    'b date author img';
-  grid-template-columns: scale(90px) 1fr 1fr min-content;
-
-  @media (max-width: $tablet-portrait) {
-    padding: scale(32px 0 0 24px);
-    grid-column-gap: 0;
-    grid-template-areas:
-      'button'
-      'img'
-      'date'
-      'title'
-      'description'
-      'author';
-    grid-template-columns: 1fr;
-  }
-}
-
-.containerTypeNews {
-  @media (max-width: $tablet-portrait) {
-    padding: scale(32px 0 75px 24px);
-  }
-}
-
-.backButtonBlog {
-  width: scale(90px) !important;
-  grid-area: button;
-
-  @media (max-width: $tablet-portrait) {
-    left: scale(60px);
-  }
-}
-
-.backButtonNews {
-  width: scale(125px) !important;
-  grid-area: button;
-
-  @media (max-width: $tablet-portrait) {
-    left: scale(60px);
-  }
-}
-
 .title {
   @mixin headline;
   @mixin headline3;
@@ -98,11 +47,6 @@
   }
 }
 
-.dateNews {
-  padding-left: scale(60px);
-  justify-self: start;
-}
-
 .author {
   align-self: center;
   grid-area: author;
@@ -114,12 +58,12 @@
   }
 }
 
-.img {
+.cover {
   position: relative;
   width: scale(690px);
   height: scale(421px);
   margin-top: scale(30px);
-  grid-area: img;
+  grid-area: cover;
 
   @media (max-width: $tablet-portrait) {
     width: scale(357px);
@@ -127,5 +71,46 @@
     margin-top: scale(40px);
     margin-left: scale(30px);
     justify-self: end;
+  }
+}
+
+.common {
+  display: grid;
+  box-sizing: border-box;
+  padding: scale(32px 0 0 150px);
+  grid-column-gap: scale(30px);
+  grid-template-areas:
+    'title       title       .'
+    'description description cover'
+    'date        author      cover';
+  grid-template-columns: 1fr 1fr min-content;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(32px 0 0 24px);
+    grid-column-gap: 0;
+    grid-template-areas:
+      'cover'
+      'date'
+      'title'
+      'description'
+      'author';
+    grid-template-columns: 1fr;
+  }
+}
+
+.blog {
+  composes: common;
+}
+
+.news {
+  composes: common;
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(32px 0 75px 24px);
+  }
+
+  .date {
+    padding-left: scale(60px);
+    justify-self: start;
   }
 }

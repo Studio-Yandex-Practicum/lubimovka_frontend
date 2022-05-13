@@ -1,7 +1,7 @@
 import Error from 'next/error';
 
 import { AppLayout } from 'components/app-layout';
-import ArticleTitle from 'components/article-title';
+import { ArticleHeadline } from 'components/article-headline';
 import { ConstructorContent } from 'components/constructor-content';
 import { Section } from 'components/section';
 import { NewsList } from 'components/news-list';
@@ -36,11 +36,12 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
         title={title}
         description={description}
       />
-      <ArticleTitle
+      <ArticleHeadline
+        variant="news"
         title={title}
         description={description}
-        date={date}
-        imgLink={image}
+        date={format('d MMMM yyyy', new Date(date))}
+        cover={image}
       />
       <ConstructorContent
         // @ts-expect-error
