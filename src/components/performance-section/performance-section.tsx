@@ -25,7 +25,6 @@ export const PerformanceSection: FC<IPerformanceSectionProps> = (props) => {
     <section
       className={cx(
         className,
-        ('root'),
         { hasOneChild },
       )}
     >
