@@ -1,7 +1,7 @@
 import Error from 'next/error';
 
 import { AppLayout } from 'components/app-layout';
-import ArticleTitle from 'components/article-page/article-title';
+import ArticleTitle from 'components/article-title';
 import { ConstructorContent } from 'components/constructor-content';
 import { SEO } from 'components/seo';
 import { Section } from 'components/section';
