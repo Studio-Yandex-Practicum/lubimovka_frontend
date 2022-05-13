@@ -1,47 +1,79 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Error from 'next/error';
 
+import { AppLayout } from 'components/app-layout';
+import ArticleTitle from 'components/article-page/article-title';
+import { ArticleOther } from 'components/article-page/article-other';
+import { ConstructorContent } from 'components/constructor-content';
+import { SEO } from 'components/seo';
 import { fetcher } from 'shared/fetcher';
-import { AppLayout } from '../../components/app-layout';
-import { ArticlePage } from '../../components/article-page';
-import { NewsData } from '../../shared/types';
+import { notFoundResult, serverErrorResult } from 'shared/constants/server-side-props';
+
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import type { NewsItemDetailed } from 'api-typings';
 
 const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  if ('errorCode' in props) {
+    return (
+      <Error statusCode={props.errorCode}/>
+    );
+  }
+
+  const {
+    title,
+    description,
+    image,
+    date,
+    constructorBlocks,
+    suggestedNews,
+  } = props;
 
   return (
     <AppLayout>
-      <ArticlePage data={props}/>
+      <SEO
+        title={title}
+        description={description}
+      />
+      <ArticleTitle
+        title={title}
+        description={description}
+        date={date}
+        imgLink={image}
+      />
+      <ConstructorContent
+        // @ts-expect-error
+        blocks={constructorBlocks}
+      />
+      {suggestedNews && (
+        <ArticleOther
+          newsArticle={suggestedNews}
+        />
+      )}
     </AppLayout>
   );
 };
 
-const fetchNewsArticle = async (newsId: string) => {
-  let data;
-
-  try {
-    data = await fetcher<NewsData>(`/news/${newsId}/`);
-  } catch (error) {
-    // TODO: обработать ошибку, добавим после реализации страницы ошибки
-
-    return;
+export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'id', string>>) => {
+  if (!params) {
+    return serverErrorResult;
   }
 
-  return data;
-};
+  const { id } = params;
+  let data: NewsItemDetailed;
 
-export const getServerSideProps: GetServerSideProps<NewsData, Record<'id', string>> = async ({ params }) => {
-  const { id: newsId } = params!;
-
-  const newsArticle = await fetchNewsArticle(newsId);
-
-  if (!newsArticle) {
-    return {
-      notFound: true,
-    };
+  try {
+    data = await fetcher<NewsItemDetailed>(`/news/${id}/`);
+  } catch {
+    return notFoundResult;
   }
 
   return {
     props: {
-      ...newsArticle
+      title: data.title,
+      description: data.description,
+      image: data.image,
+      date: data.pub_date,
+      constructorBlocks: data.contents,
+      suggestedNews: data.other_news,
     },
   };
 };

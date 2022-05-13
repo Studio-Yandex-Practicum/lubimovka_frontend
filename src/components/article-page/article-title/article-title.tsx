@@ -11,7 +11,7 @@ import styles from './article-title.module.css';
 const cx = cn.bind(styles);
 
 interface IArticleTitle {
-  isBlog: boolean,
+  isBlog?: boolean,
   title: string,
   description: string,
   date: string,
