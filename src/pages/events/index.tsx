@@ -13,7 +13,7 @@ interface IProps {
   events: AfishaEvents
 }
 
-const Afisha = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {
     events,
     info
@@ -53,4 +53,4 @@ export const getServerSideProps: GetServerSideProps<IProps> = async () => {
   };
 };
 
-export default Afisha;
+export default Events;

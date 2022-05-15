@@ -84,7 +84,7 @@ export const AppLayout = (props: AppLayoutProps) => {
                     <Menu.Item
                       key={item.href}
                       href={item.href}
-                      current={router.asPath === item.href}
+                      current={router.asPath.startsWith(item.href)}
                     >
                       {item.text}
                     </Menu.Item>

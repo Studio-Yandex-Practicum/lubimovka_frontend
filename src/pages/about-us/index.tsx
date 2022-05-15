@@ -1,5 +1,3 @@
-import Head from 'next/head';
-
 import { fetcher } from 'shared/fetcher';
 import { AppLayout } from 'components/app-layout';
 import { WhatWeDoHeader } from 'components/what-we-do-page/header';
@@ -10,12 +8,13 @@ import { WhatWeDoPoster } from 'components/what-we-do-page/poster';
 import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
 import { Section } from 'components/section';
 import { PartnerList } from 'components/partner-list';
+import { SEO } from 'components/seo';
 import { partnerTypes } from 'shared/constants/partner-types';
 
 import type { Partner, partner_type } from 'api-typings';
 import type { InferGetServerSidePropsType  } from 'next';
 
-const Page = ({ partners }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const AboutUs = ({ partners }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const getPartnersGroups = () => Object.keys(partners) as partner_type[];
 
   return (
@@ -23,11 +22,9 @@ const Page = ({ partners }: InferGetServerSidePropsType<typeof getServerSideProp
       navbarProps={{ colors: 'brand' }}
       hiddenPartners
     >
-      <Head>
-        <title>
-          Что мы делаем? Любимовка
-        </title>
-      </Head>
+      <SEO
+        title="Что мы делаем?"
+      />
       <main>
         <WhatWeDoHeader/>
         <WhatWeDoDesc/>
@@ -89,7 +86,7 @@ export const getServerSideProps = async () => {
   };
 };
 
-export default Page;
+export default AboutUs;
 
 function getPartnerGroupTitle(partnerType: keyof typeof partnerTypes) {
   return partnerTypes[partnerType];

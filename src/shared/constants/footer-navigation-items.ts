@@ -5,7 +5,7 @@ export const footerNavigationItems = [
   },
   {
     text: 'Афиша',
-    href: '/afisha/events',
+    href: '/events',
   },
   {
     text: 'Библиотека',
@@ -21,11 +21,11 @@ export const footerNavigationItems = [
   },
   {
     text: 'О фестивале',
-    href: '/what-we-do',
+    href: '/about-us',
   },
   {
     text: 'Организаторы',
-    href: '/team',
+    href: '/about-us/team',
   },
   {
     text: 'История',
