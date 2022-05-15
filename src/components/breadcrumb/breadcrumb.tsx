@@ -1,21 +1,34 @@
-import { Button } from 'components/ui/button';
+import Link from 'next/link';
 
-interface IBreadcrumbProps {
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
+
+interface BreadcrumbProps {
   text: string,
   path: string,
 }
 
-export const Breadcrumb = (props: IBreadcrumbProps): JSX.Element => {
+export const Breadcrumb = (props: BreadcrumbProps) => {
   const { text, path } = props;
 
   return (
-    <Button
-      label={text}
+    <Link
       href={path}
-      isLink
-      icon="arrow-left"
-      iconPlace="right"
-      border="bottomRight"
-    />
+      passHref
+    >
+      <Button
+        border="right-bottom"
+        size="s"
+        upperCase
+        icon={(
+          <Icon
+            glyph="arrow-left"
+          />
+        )}
+        iconPosition="right"
+      >
+        {text}
+      </Button>
+    </Link>
   );
 };

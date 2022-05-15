@@ -1,0 +1,72 @@
+.default-padding {
+  padding: scale(0 32px);
+}
+
+.root {
+  padding: scale(98px 0);
+}
+
+.section {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline4;
+
+  max-width: scale(716px);
+  margin: 0 auto;
+}
+
+.plain-text,
+.html-markup {
+  composes: section default-padding;
+  max-width: scale(716px);
+  margin: scale(0 auto 98px);
+}
+
+.events {
+  composes: section default-padding;
+  margin-bottom: scale(94px);
+}
+
+.plays,
+.persons,
+.videos {
+  composes: section default-padding;
+}
+
+.persons {
+  margin-bottom: scale(112px);
+
+  .title {
+    margin-bottom: scale(58px);
+  }
+}
+
+.plays {
+  margin-bottom: scale(124px);
+
+  .title {
+    margin-bottom: scale(48px);
+  }
+}
+
+.videos {
+  margin-bottom: scale(144px);
+
+  .title {
+    margin-bottom: scale(44px);
+  }
+}
+
+.images {
+  composes: section;
+  margin-bottom: scale(122px);
+
+  .title {
+    margin-bottom: scale(42px);
+  }
+}

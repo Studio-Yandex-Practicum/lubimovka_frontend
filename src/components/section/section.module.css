@@ -131,3 +131,19 @@
     padding: scale(80px 24px);
   }
 }
+
+.blog-entries {
+  padding: scale(0 90px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(0 24px);
+  }
+}
+
+.news {
+  padding: scale(0 90px);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(0 24px);
+  }
+}

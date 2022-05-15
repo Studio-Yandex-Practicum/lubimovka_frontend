@@ -20,6 +20,7 @@ import { ConstructorContentContextProvider } from './constructor-content.context
 import type { FC } from 'react';
 import { ConstructorBlock } from './constructor-content.types';
 
+import defaultStyles from './variant/default.module.css';
 import projectStyles from './variant/project.module.css';
 
 interface ConstructorContentProps {
@@ -28,12 +29,13 @@ interface ConstructorContentProps {
 }
 
 const variants = {
+  default: defaultStyles,
   project: projectStyles,
 };
 
 export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
   const {
-    variant = 'project',
+    variant = 'default',
     blocks,
   } = props;
   const cx = useMemo(() => classNames.bind(variants[variant]), [variant]);
