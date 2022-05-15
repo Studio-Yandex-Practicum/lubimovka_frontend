@@ -6,7 +6,7 @@ export const mainNavigationItems = [
   },
   {
     text: 'Афиша',
-    href: '/afisha/events',
+    href: '/events',
   },
   {
     text: 'Библиотека',
@@ -30,7 +30,7 @@ export const mainNavigationItems = [
   },
   {
     text: 'О фестивале',
-    href: '/what-we-do',
+    href: '/about-us',
   },
   {
     text: 'Контакты',
