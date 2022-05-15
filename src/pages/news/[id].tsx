@@ -6,6 +6,8 @@ import { ConstructorContent } from 'components/constructor-content';
 import { Section } from 'components/section';
 import { NewsList } from 'components/news-list';
 import { NewsCard } from 'components/news-card';
+import { PageBreadcrumbs } from 'components/page';
+import { Breadcrumb } from 'components/breadcrumb';
 import { SEO } from 'components/seo';
 import { fetcher } from 'shared/fetcher';
 import { format } from 'shared/helpers/format-date';
@@ -36,6 +38,12 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
         title={title}
         description={description}
       />
+      <PageBreadcrumbs>
+        <Breadcrumb
+          text="Блог"
+          path="/blog"
+        />
+      </PageBreadcrumbs>
       <ArticleHeadline
         variant="news"
         title={title}

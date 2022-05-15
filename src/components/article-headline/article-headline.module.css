@@ -77,7 +77,7 @@
 .common {
   display: grid;
   box-sizing: border-box;
-  padding: scale(32px 0 0 150px);
+  padding-left: scale(150px);
   grid-column-gap: scale(30px);
   grid-template-areas:
     'title       title       .'
@@ -86,7 +86,7 @@
   grid-template-columns: 1fr 1fr min-content;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(32px 0 0 24px);
+    padding-left: scale(24px);
     grid-column-gap: 0;
     grid-template-areas:
       'cover'

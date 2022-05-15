@@ -125,6 +125,11 @@ $border-width: 1px;
   border-right-color: transparent;
 }
 
+.common.border-right-bottom {
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
 .common.full-width {
   width: 100%;
 }

@@ -7,6 +7,8 @@ import { SEO } from 'components/seo';
 import { Section } from 'components/section';
 import { BlogEntryList } from 'components/blog-entry-list';
 import { BlogCard } from 'components/ui/blog-card';
+import { PageBreadcrumbs } from 'components/page';
+import { Breadcrumb } from 'components/breadcrumb';
 import { fetcher } from 'shared/fetcher';
 import { format } from 'shared/helpers/format-date';
 import { notFoundResult, serverErrorResult } from 'shared/constants/server-side-props';
@@ -38,6 +40,12 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
         title={title}
         description={description}
       />
+      <PageBreadcrumbs>
+        <Breadcrumb
+          text="Блог"
+          path="/blog"
+        />
+      </PageBreadcrumbs>
       <ArticleHeadline
         variant="blog"
         title={title}
