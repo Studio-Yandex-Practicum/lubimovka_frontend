@@ -1,7 +1,10 @@
 import Error from 'next/error';
+import classNames from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
 import { ArticleHeadline } from 'components/article-headline';
+import { ArticleFootnote } from 'components/article-footnote';
+import { Share } from 'components/share';
 import { ConstructorContent } from 'components/constructor-content';
 import { Section } from 'components/section';
 import { NewsList } from 'components/news-list';
@@ -15,6 +18,10 @@ import { notFoundResult, serverErrorResult } from 'shared/constants/server-side-
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type { NewsItemDetailed } from 'api-typings';
+
+import styles from 'components/article-layout/article-layout.module.css';
+
+const cx = classNames.bind(styles);
 
 const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   if ('errorCode' in props) {
@@ -55,6 +62,17 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
         // @ts-expect-error
         blocks={constructorBlocks}
       />
+      <ArticleFootnote
+        className={cx('footnote')}
+        colors="brand"
+        action={(
+          <Share
+            firstLine="Поделиться"
+            secondLine="новостью в соцсетях"
+            size="s"
+          />
+        )}
+      />
       {!!suggestedNews.length && (
         <Section
           type="news"
@@ -64,7 +82,6 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
             {suggestedNews.map((entry) => (
               <NewsList.Item key={entry.id}>
                 <NewsCard
-                  view="compact"
                   title={entry.title}
                   description={entry.description}
                   date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}

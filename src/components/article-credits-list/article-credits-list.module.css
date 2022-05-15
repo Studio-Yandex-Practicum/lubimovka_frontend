@@ -1,0 +1,14 @@
+.root {
+  @mixin text;
+
+  padding: 0;
+  margin: 0;
+}
+
+.persons {
+  margin-left: scale(30px);
+
+  &:not(:last-child) {
+    margin-bottom: scale(32px);
+  }
+}

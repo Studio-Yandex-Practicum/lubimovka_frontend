@@ -1,7 +1,9 @@
 import Error from 'next/error';
+import classNames from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
 import { ArticleHeadline } from 'components/article-headline';
+import { ArticleFootnote } from 'components/article-footnote';
 import { ConstructorContent } from 'components/constructor-content';
 import { SEO } from 'components/seo';
 import { Section } from 'components/section';
@@ -9,12 +11,18 @@ import { BlogEntryList } from 'components/blog-entry-list';
 import { BlogCard } from 'components/ui/blog-card';
 import { PageBreadcrumbs } from 'components/page';
 import { Breadcrumb } from 'components/breadcrumb';
+import { Share } from 'components/share';
+import { ArticleCreditsList } from 'components/article-credits-list';
 import { fetcher } from 'shared/fetcher';
 import { format } from 'shared/helpers/format-date';
 import { notFoundResult, serverErrorResult } from 'shared/constants/server-side-props';
 
 import type { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
 import type { BlogItemDetailOutput } from 'api-typings';
+
+import styles from 'components/article-layout/article-layout.module.css';
+
+const cx = classNames.bind(styles);
 
 const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   if ('errorCode' in props) {
@@ -32,6 +40,7 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
     suggestedBlogEntries,
     author,
     authorUrl,
+    team,
   } = props;
 
   return (
@@ -58,6 +67,21 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
       <ConstructorContent
         // @ts-expect-error
         blocks={constructorBlocks}
+      />
+      <ArticleFootnote
+        className={cx('footnote')}
+        credits={(
+          <ArticleCreditsList
+            items={team}
+          />
+        )}
+        action={(
+          <Share
+            firstLine="Поделиться"
+            secondLine="записью в соцсетях"
+            size="s"
+          />
+        )}
       />
       {!!suggestedBlogEntries.length && (
         <Section
