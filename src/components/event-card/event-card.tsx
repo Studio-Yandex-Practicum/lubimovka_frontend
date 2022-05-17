@@ -99,6 +99,7 @@ export const EventCard: FC<IEventCardProps> = (props) => {
             label="Регистрация"
             border="bottomLeft"
             href={registrationUrl}
+            isLink
           />
         </div>
       )}
