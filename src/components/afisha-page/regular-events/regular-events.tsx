@@ -1,45 +1,52 @@
-import { FC, useRef } from 'react';
+import { FC, useEffect } from 'react';
 import cn from 'classnames/bind';
 
 import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
-import { visibility } from 'shared/helpers/visibility';
+import { Spinner } from 'components/spinner';
+
+import { useIntersection } from 'shared/hooks/use-intersection';
+import { format } from 'shared/helpers/format-date';
 
 import styles from './regular-events.module.css';
+
 import { useAfisha } from '../afisha-provider';
-import { useScroll } from 'shared/hooks/use-scroll';
-import { format } from 'shared/helpers/format-date';
-import { Loader } from 'components/ui/loader';
 
 const cx = cn.bind(styles);
 
 export const RegularEvents: FC = () => {
   const { selectEvents, takeEvents, isLoading } = useAfisha();
-  const eventsRef = useRef<HTMLElement>(null);
+  const [bottomRef, shouldTakeEvents] = useIntersection<HTMLElement>();
+  const events = selectEvents();
 
-  useScroll(() => {
-    if (visibility(eventsRef.current).bottom) {
-      takeEvents();
-    };
-  });
+  useEffect(() => {
+    if (!shouldTakeEvents) {
+      return;
+    }
+    takeEvents();
+  }, [shouldTakeEvents, takeEvents]);
 
   return (
-    <section className={cx('section')} ref={eventsRef}>
-      {selectEvents().map((event) => (
-        <AnnouncedPlayCard
-          key={event.id}
-          formattedDate={format('d MMMM', new Date(event.dateTime))}
-          formattedTime={format('H:mm', new Date(event.dateTime))}
-          title={event.eventBody.name}
-          team={event.eventBody.team}
-          buttonLink={event.url}
-          className={styles.event}
-          project={event.eventBody.projectTitle}
-          isPerformance={event.type === 'PERFORMANCE'}
-          imageUrl={'image' in event.eventBody ? event.eventBody.image : undefined}
-          description={event.eventBody.description}
-        />
-      ))}
-      {isLoading() &&<Loader/>}
+    <section className={cx('section')}>
+      {events.map((e, i) => {
+        const ref = i===events.length - 1 ? bottomRef : undefined;
+        return (
+          <AnnouncedPlayCard
+            key={e.id}
+            formattedDate={format('d MMMM', new Date(e.dateTime))}
+            formattedTime={format('H:mm', new Date(e.dateTime))}
+            title={e.eventBody.name}
+            team={e.eventBody.team}
+            buttonLink={e.url}
+            className={styles.event}
+            project={e.eventBody.projectTitle}
+            isPerformance={e.type === 'PERFORMANCE'}
+            imageUrl={'image' in e.eventBody ? e.eventBody.image : undefined}
+            description={e.eventBody.description}
+            ref={ref}
+          />
+        );
+      })}
+      {isLoading() &&<Spinner className={cx('spinner')}/>}
     </section>
   );
 };

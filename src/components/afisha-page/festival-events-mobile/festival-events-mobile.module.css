@@ -3,15 +3,20 @@
   flex-direction: column;
 }
 
-.sliderContainer {
+.paginationContainer {
   padding: scale(15px);
 }
 
-.sliderItem {
+.paginationItem {
   width: 100%;
   text-align: center;
 }
 
 .preloaderContainer {
   width: 100px;
+}
+
+.spinner {
+  width: scale(64px);
+  margin: 0 auto;
 }

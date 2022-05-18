@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, {  forwardRef } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
@@ -29,7 +29,7 @@ type TeamEntry = {
   persons: string [];
 }
 
-export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
+export const AnnouncedPlayCard = forwardRef<HTMLElement, IAnnouncedPlayCardProps>((props, ref) => {
   const {
     isPerformance,
     id,
@@ -60,7 +60,7 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
   );
 
   return (
-    <article className={cx('card', className)}>
+    <article className={cx('card', className)} ref={ref}>
       {imageUrl && (
         <div className={cx('cover')}>
           <Image src={imageUrl} alt={title} layout="fill" objectFit="cover"/>
@@ -126,4 +126,6 @@ export const AnnouncedPlayCard: FC<IAnnouncedPlayCardProps> = (props) => {
       </div>
     </article>
   );
-};
+});
+
+AnnouncedPlayCard.displayName = 'AnnouncedPlayCard';

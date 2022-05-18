@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
 
-import styles from './festival-date.module.css';
 import { format } from 'shared/helpers/format-date';
 import { ucFirst } from 'shared/helpers/uc-first';
+
+import styles from './festival-date.module.css';
 
 interface IProps {
   dateTime: string;
