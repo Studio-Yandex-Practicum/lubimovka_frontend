@@ -8,6 +8,7 @@ import type {
   VideosBlock,
   Text,
   ContentUnitRichText,
+  Link,
 } from 'api-typings';
 
 export type ConstructorBlock = {
@@ -31,4 +32,7 @@ export type ConstructorBlock = {
 } | {
   content_type: ConstructorBlockType.HtmlMarkup
   content_item: ContentUnitRichText
+} | {
+  content_type: ConstructorBlockType.Link
+  content_item: Link
 }

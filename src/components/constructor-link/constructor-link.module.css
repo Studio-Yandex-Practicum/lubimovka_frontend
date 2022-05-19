@@ -1,0 +1,22 @@
+.root {
+  display: grid;
+  align-items: flex-start;
+  grid-gap: scale(100px);
+  grid-template-columns: scale(410px) auto;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+    margin: scale(0 24px 0 86px);
+  }
+}
+
+.description {
+  @mixin text;
+  @mixin textLarge;
+
+  margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(16px);
+  }
+}
