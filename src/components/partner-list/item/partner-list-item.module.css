@@ -1,4 +1,25 @@
-.root {
+.default {
+  display: flex;
+  width: scale(210px);
+  height: scale(137px);
+  align-items: center;
+  justify-content: center;
+  margin-right: scale(30px);
+  margin-bottom: scale(16px);
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(182.52px);
+    height: scale(118.5px);
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.compact {
   display: block;
 
   @media (max-width: $tablet-portrait) {

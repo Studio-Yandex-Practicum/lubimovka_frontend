@@ -114,6 +114,7 @@ export const AppLayout = (props: AppLayoutProps) => {
               <PartnerList>
                 {partners && partners.length > 0 && partners.map((partner) => (
                   <PartnerList.Item
+                    view="compact"
                     key={partner.name}
                     logo={partner.logo}
                     name={partner.name}
