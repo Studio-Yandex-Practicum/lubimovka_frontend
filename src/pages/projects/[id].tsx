@@ -42,7 +42,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
           {description}
         </ProjectLayout.Description>
         <ConstructorContent
-          type="project"
+          variant="project"
           // @ts-expect-error
           blocks={contents}
         />

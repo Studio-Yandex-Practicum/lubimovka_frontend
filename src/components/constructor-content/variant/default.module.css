@@ -70,3 +70,22 @@
     margin-bottom: scale(42px);
   }
 }
+
+.link {
+  composes: section;
+  padding: scale(70px 270px 140px 362px);
+  margin-bottom: scale(74px);
+  background-color: var(--light-green);
+
+  @media (max-width: $tablet-portrait) {
+    padding: scale(56px 26px 72px);
+  }
+
+  .title {
+    margin-bottom: scale(20px);
+
+    @media (max-width: $tablet-portrait) {
+      margin-bottom: scale(16px);
+    }
+  }
+}

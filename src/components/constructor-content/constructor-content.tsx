@@ -12,6 +12,7 @@ import { PersonCardList } from 'components/person-card-list';
 import { Video } from 'components/video';
 import { VideoList } from 'components/video-list';
 import { HTMLMarkup } from 'components/html-markup';
+import { ConstructorLink } from 'components/constructor-link';
 import { format } from 'shared/helpers/format-date';
 import { ConstructorContentSection } from './section';
 import { ConstructorBlockType } from './constructor-content.const';
@@ -160,6 +161,19 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                     />
                   ))}
                 </VideoList>
+              </ConstructorContentSection>
+            )}
+            {content_type === ConstructorBlockType.Link && (
+              <ConstructorContentSection
+                type="link"
+                title={content_item.title}
+              >
+                <ConstructorLink
+                  description={content_item.description}
+                  // TODO: получить текст ссылки в ответе API
+                  actionText="Перейти"
+                  url={content_item.url}
+                />
               </ConstructorContentSection>
             )}
           </Fragment>
