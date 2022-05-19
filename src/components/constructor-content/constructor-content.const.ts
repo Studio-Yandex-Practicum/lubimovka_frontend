@@ -5,6 +5,6 @@ export enum ConstructorBlockType {
   Videos = 'videosblock',
   Persons = 'personsblock',
   PlainText = 'text',
-  HtmlMarkup = 'rich_text',
+  HtmlMarkup = 'contentunitrichtext',
   Link = 'link',
 }
