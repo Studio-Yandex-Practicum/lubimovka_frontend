@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import cn from 'classnames/bind';
 import { isToday, isTomorrow } from 'date-fns';
 
-import { EventCard } from 'components/event-card';
+import { FestivalEventCard } from 'components/festival-event-card';
 
 import { Role } from 'shared/types';
 import { AfishaEvent } from 'shared/types';
@@ -37,6 +37,7 @@ export const FestivalEvent = forwardRef<HTMLElement, IProps>((props, ref) => {
   const registration = isToday(new Date(dateTime)) || (isTomorrow(new Date(dateTime))&& new Date().getHours() >= 12);
 
   return (
+    // TODO: тут происходит что-то непонятное: для чего этот компонент? зачем мы заворачиваем каждую карточку события в секцию? почему не редерим заголовки дат отдельным компонентом во вьюхе? семантически получается дичь
     <section key={props.id} className={cx('section')} ref={ref}>
       {isFirst && (
         <div className={cx('header')}>
@@ -61,7 +62,7 @@ export const FestivalEvent = forwardRef<HTMLElement, IProps>((props, ref) => {
           </p>
         </div>
       )}
-      <EventCard
+      <FestivalEventCard
         key={props.id}
         className={cx('event')}
         time={format('H:mm', new Date(dateTime))}

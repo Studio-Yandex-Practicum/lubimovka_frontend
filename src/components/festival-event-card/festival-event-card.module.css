@@ -1,4 +1,4 @@
-.card {
+.root {
   display: grid;
   padding-bottom: scale(48px);
   gap: scale(16px) 0;

@@ -1,12 +1,13 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import { Button } from 'components/ui/button/button';
-import { Url } from 'shared/types';
 
-import styles from './event-card.module.css';
+import type { VFC } from 'react';
+import type { Url } from 'shared/types';
 
-export interface IEventCardProps {
+import styles from './festival-event-card.module.css';
+
+export interface FestivalEventCardProps {
   image?: Url,
   time: string,
   location: string,
@@ -20,7 +21,7 @@ export interface IEventCardProps {
 
 const cx = classNames.bind(styles);
 
-export const EventCard: FC<IEventCardProps> = (props) => {
+export const FestivalEventCard: VFC<FestivalEventCardProps> = (props) => {
   const {
     image,
     time,
@@ -34,7 +35,7 @@ export const EventCard: FC<IEventCardProps> = (props) => {
   } = props;
 
   return (
-    <article className={cx('card', className)}>
+    <article className={cx('root', className)}>
       <h3 className={cx('title')}>
         {title}
       </h3>
