@@ -3,7 +3,7 @@
 }
 
 .root {
-  padding: scale(98px 0);
+  background-color: var(--white);
 }
 
 .section {
@@ -20,11 +20,13 @@
   margin: 0 auto;
 }
 
-.plain-text,
 .html-markup {
   composes: section default-padding;
-  max-width: scale(716px);
-  margin: scale(0 auto 98px);
+  margin-bottom: scale(98px);
+
+  &:first-child {
+    padding-top: scale(72px);
+  }
 }
 
 .events {
@@ -38,36 +40,27 @@
   composes: section default-padding;
 }
 
+.plays,
 .persons {
-  margin-bottom: scale(112px);
+  padding: scale(120px 0);
+  background-color: var(--beige);
+}
 
+.persons {
   .title {
     margin-bottom: scale(58px);
   }
 }
 
 .plays {
-  margin-bottom: scale(124px);
-
   .title {
     margin-bottom: scale(48px);
   }
 }
 
 .videos {
-  margin-bottom: scale(144px);
-
   .title {
     margin-bottom: scale(44px);
-  }
-}
-
-.images {
-  composes: section;
-  margin-bottom: scale(122px);
-
-  .title {
-    margin-bottom: scale(42px);
   }
 }
 
@@ -87,5 +80,27 @@
     @media (max-width: $tablet-portrait) {
       margin-bottom: scale(16px);
     }
+  }
+}
+
+.photo-carousel {
+  composes: section;
+  max-width: scale(716px);
+  margin: scale(0 auto 80px);
+
+  .title {
+    @mixin visually-hidden;
+  }
+}
+
+.html-markup-content {
+  h3,
+  h4,
+  p,
+  ul,
+  ol {
+    max-width: scale(840px);
+    margin-right: auto;
+    margin-left: auto;
   }
 }

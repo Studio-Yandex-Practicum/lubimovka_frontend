@@ -4,7 +4,6 @@ export enum ConstructorBlockType {
   Plays = 'playsblock',
   Videos = 'videosblock',
   Persons = 'personsblock',
-  PlainText = 'text',
   HtmlMarkup = 'contentunitrichtext',
   Link = 'link',
 }

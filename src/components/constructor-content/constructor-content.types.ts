@@ -6,7 +6,6 @@ import type {
   PlaysBlock,
   EventsBlock,
   VideosBlock,
-  Text,
   ContentUnitRichText,
   Link,
 } from 'api-typings';
@@ -26,9 +25,6 @@ export type ConstructorBlock = {
 } | {
   content_type: ConstructorBlockType.Videos
   content_item: VideosBlock
-} | {
-  content_type: ConstructorBlockType.PlainText
-  content_item: Text
 } | {
   content_type: ConstructorBlockType.HtmlMarkup
   content_item: ContentUnitRichText
