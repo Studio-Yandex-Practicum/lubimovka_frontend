@@ -57,14 +57,6 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
       <div className={cx('root')}>
         {blocks.map(({ content_type, content_item }, index) => (
           <Fragment key={index}>
-            {/* Обычные текстовые блоки без разметки являются legacy и будут удалены */}
-            {content_type === ConstructorBlockType.PlainText && (
-              <ConstructorContentSection type="plain-text">
-                <HTMLMarkup
-                  markup={content_item.text}
-                />
-              </ConstructorContentSection>
-            )}
             {content_type === ConstructorBlockType.HtmlMarkup && (
               <ConstructorContentSection type="html-markup">
                 <HTMLMarkup

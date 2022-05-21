@@ -20,7 +20,6 @@
   margin: 0 auto;
 }
 
-.plain-text,
 .html-markup {
   composes: section default-padding;
   max-width: scale(716px);
