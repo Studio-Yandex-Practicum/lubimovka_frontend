@@ -22,7 +22,7 @@ import { Banner } from 'components/banner';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { PlayList } from 'components/play-list';
 import { EventList } from 'components/event-list';
-import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
+import { EventCard } from 'components/event-card';
 import { SEO } from 'components/seo';
 import { useWelcomeScreenScroll } from 'shared/hooks/use-welcome-screen-scroll';
 import { fetcher } from 'shared/fetcher';
@@ -102,19 +102,18 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
               <EventList>
                 {afisha.items.map((event) => (
                   <EventList.Item key={event.id}>
-                    <AnnouncedPlayCard
-                      id={event.id}
-                      formattedDate={format('d MMMM', new Date(event.date_time))}
-                      formattedTime={format('H:m', new Date(event.date_time))}
+                    <EventCard
+                      // TODO: разобраться, сча в схеме API нет поля с изображением
+                      // @ts-expect-error
+                      imageUrl={event.event_body.image}
+                      date={format('d MMMM', new Date(event.date_time))}
+                      time={format('H:mm', new Date(event.date_time))}
                       title={event.event_body.name}
                       team={event.event_body.team}
                       description={event.event_body.description}
-                      buttonLink={event.url}
-                      // TODO: разобраться, сча в схеме API нет поля с изображением
-                      // imageUrl={event.event_body.image}
-                      project={event.event_body.project_title}
+                      projectTitle={event.event_body.project_title}
+                      actionUrl={event.url}
                       paid={event.paid}
-                      isPerformance={event.type === 'PERFORMANCE' ? true : false}
                     />
                   </EventList.Item>
                 ))}
