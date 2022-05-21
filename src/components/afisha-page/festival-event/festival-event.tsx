@@ -4,7 +4,6 @@ import { isToday, isTomorrow } from 'date-fns';
 
 import { FestivalEventCard } from 'components/festival-event-card';
 
-import { Role } from 'shared/types';
 import { AfishaEvent } from 'shared/types';
 
 import { useMediaQuery } from 'shared/hooks/use-media-query';
@@ -20,10 +19,6 @@ interface IProps extends AfishaEvent {
 };
 
 const cx = cn.bind(styles);
-
-const getCredits = (team: Role[], name: string) => team
-  .filter(i => i.name.startsWith(name))
-  .reduce((r, i) => r.concat(i.persons.join(', ')), '');
 
 const getYesterday = (dateTime: string) => {
   const date = new Date(dateTime);
@@ -71,8 +66,7 @@ export const FestivalEvent = forwardRef<HTMLElement, IProps>((props, ref) => {
         image={'image' in eventBody ? eventBody.image : undefined}
         description={eventBody.description}
         registrationUrl={registration ? props.url : undefined}
-        playwright={getCredits(eventBody.team, 'Драматург')}
-        director={getCredits(eventBody.team, 'Режиссер')}
+        credits={props.eventBody.team}
       />
     </section>
   );

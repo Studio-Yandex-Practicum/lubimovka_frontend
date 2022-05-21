@@ -100,30 +100,7 @@
 }
 
 .credits {
-  @mixin text;
-  @mixin textSmall;
-
-  margin: 0;
   grid-area: credits;
-}
-
-.creditsTitle {
-  display: inline;
-
-  &::after {
-    display: inline;
-    content: ": ";
-  }
-}
-
-.creditsValue {
-  display: inline;
-  margin: 0;
-
-  &::after {
-    content: "\A";
-    white-space: pre-line;
-  }
 }
 
 .actions {

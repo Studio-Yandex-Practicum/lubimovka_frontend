@@ -1,22 +1,24 @@
 import classNames from 'classnames/bind';
 
-import { Button } from 'components/ui/button/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
+import { CreditsList } from 'components/credits-list';
 
 import type { VFC } from 'react';
 import type { Url } from 'shared/types';
+import type { CreditsRole } from 'components/credits-list';
 
 import styles from './festival-event-card.module.css';
 
 export interface FestivalEventCardProps {
-  image?: Url,
-  time: string,
-  location: string,
-  title: string,
-  description: string,
-  playwright?: string,
-  director?: string,
-  registrationUrl?: Url,
-  className?: string,
+  image?: Url
+  time: string
+  location: string
+  title: string
+  description: string
+  credits: CreditsRole[]
+  registrationUrl?: Url
+  className?: string
 }
 
 const cx = classNames.bind(styles);
@@ -28,8 +30,7 @@ export const FestivalEventCard: VFC<FestivalEventCardProps> = (props) => {
     location,
     title,
     description,
-    playwright,
-    director,
+    credits,
     registrationUrl,
     className
   } = props;
@@ -45,6 +46,7 @@ export const FestivalEventCard: VFC<FestivalEventCardProps> = (props) => {
             <img
               className={cx('image')}
               src={image}
+              alt=""
             />
           </div>
         )}
@@ -66,42 +68,28 @@ export const FestivalEventCard: VFC<FestivalEventCardProps> = (props) => {
       <p className={cx('description')}>
         {description}
       </p>
-      {(playwright || director) && (
-        <dl className={cx('credits')}>
-          {playwright && (
-            <>
-              <dt className={cx('creditsTitle')}>
-                Драматург
-              </dt>
-              <dd className={cx('creditsValue')}>
-                {playwright}
-              </dd>
-            </>
-          )}
-          {director && (
-            <>
-              <dt className={cx('creditsTitle')}>
-                Режиссёр
-              </dt>
-              <dd className={cx('creditsValue')}>
-                {director}
-              </dd>
-            </>
-          )}
-        </dl>
-      )}
+      <CreditsList
+        size="s"
+        className={cx('credits')}
+        roles={credits}
+      />
       {registrationUrl && (
         <div className={cx('actions')}>
           <Button
-            view="primary"
             size="s"
-            iconPlace="left"
-            icon="arrow-right"
-            label="Регистрация"
-            border="bottomLeft"
+            border="bottom-left"
+            icon={(
+              <Icon
+                glyph="arrow-right"
+                width="100%"
+                height="100%"
+              />
+            )}
             href={registrationUrl}
-            isLink
-          />
+            target="_blank"
+          >
+            Регистрация
+          </Button>
         </div>
       )}
     </article>
