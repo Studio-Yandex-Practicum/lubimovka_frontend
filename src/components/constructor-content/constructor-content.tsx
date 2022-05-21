@@ -1,8 +1,10 @@
 //@ts-nocheck
 import { Fragment, useMemo } from 'react';
 import classNames from 'classnames/bind';
+import Image from 'next/image';
 
 import { PhotoGallery } from 'components/photo-gallery';
+import { ImageSlider } from 'components/ui/image-slider';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { PerformanceSection } from 'components/performance-section';
@@ -24,8 +26,13 @@ import { ConstructorBlock } from './constructor-content.types';
 import defaultStyles from './variant/default.module.css';
 import projectStyles from './variant/project.module.css';
 
+enum Variant {
+  Default = 'default',
+  Project = 'project',
+}
+
 interface ConstructorContentProps {
-  variant: 'project'
+  variant: `${Variant}`
   blocks: ConstructorBlock[]
 }
 
@@ -36,7 +43,7 @@ const variants = {
 
 export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
   const {
-    variant = 'default',
+    variant = Variant.Default,
     blocks,
   } = props;
   const cx = useMemo(() => classNames.bind(variants[variant]), [variant]);
@@ -67,15 +74,29 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
             )}
             {content_type === ConstructorBlockType.Images && (
               <ConstructorContentSection
-                type="images"
+                type={variant === Variant.Project ? 'photo-gallery' : 'photo-carousel'}
                 title={content_item.title}
               >
-                <PhotoGallery
-                  photos={content_item.items.map(({ image, title }) => ({
-                    url: image,
-                    description: title,
-                  }))}
-                />
+                {variant === Variant.Project ? (
+                  <PhotoGallery
+                    photos={content_item.items.map(({ image, title }) => ({
+                      url: image,
+                      description: title,
+                    }))}
+                  />
+                ) : (
+                  <ImageSlider>
+                    {content_item.items.map(({ image, title }) => (
+                      <Image
+                        key={image}
+                        src={image}
+                        alt={title}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    ))}
+                  </ImageSlider>
+                )}
               </ConstructorContentSection>
             )}
             {content_type === ConstructorBlockType.Plays && (

@@ -62,15 +62,6 @@
   }
 }
 
-.images {
-  composes: section;
-  margin-bottom: scale(122px);
-
-  .title {
-    margin-bottom: scale(42px);
-  }
-}
-
 .link {
   composes: section;
   padding: scale(70px 270px 140px 362px);
@@ -87,5 +78,15 @@
     @media (max-width: $tablet-portrait) {
       margin-bottom: scale(16px);
     }
+  }
+}
+
+.photo-carousel {
+  composes: section;
+  max-width: scale(716px);
+  margin: scale(0 auto 80px);
+
+  .title {
+    @mixin visually-hidden;
   }
 }

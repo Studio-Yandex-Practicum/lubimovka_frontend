@@ -62,7 +62,7 @@
   }
 }
 
-.images {
+.photo-gallery {
   composes: section;
   margin-bottom: scale(122px);
 
