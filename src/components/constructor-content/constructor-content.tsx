@@ -21,7 +21,7 @@ import { ConstructorBlockType } from './constructor-content.const';
 import { ConstructorContentContextProvider } from './constructor-content.context';
 
 import type { FC } from 'react';
-import { ConstructorBlock } from './constructor-content.types';
+import type { ConstructorBlock } from './constructor-content.types';
 
 import defaultStyles from './variant/default.module.css';
 import projectStyles from './variant/project.module.css';
