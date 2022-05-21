@@ -3,8 +3,9 @@ import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 import { HomepageLayout } from 'components/homepage-layout';
-import { NewsList } from 'components/news-list';
+import { HomepageFeedList } from 'components/homepage-feed-list';
 import { NewsCard } from 'components/news-card';
+import { BlogCard } from 'components/ui/blog-card';
 import { TeaserList } from 'components/teaser-list';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
@@ -47,8 +48,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   const {
     first_screen,
     afisha,
-    // TODO: добавить вывод записей блога, обсудить схему API с бекендерами — сейчас не очевидно, что возвращаются или новости или записи блога
-    // blog,
+    blog,
     news,
     banners,
     places,
@@ -121,13 +121,13 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             </HomepageEventsSection>
           </HomepageLayout.Events>
         )}
-        {!!news?.items.length && (
+        {(blog || news) && (
           <HomepageLayout.Feed>
             <HomepageFeedSection
-              title="Новости"
+              title={blog ? 'Дневник фестиваля' : 'Новости'}
               action={(
                 <Link
-                  href="/news"
+                  href={blog ? '/blog' : '/news'}
                   passHref
                 >
                   <Button
@@ -147,19 +147,34 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                 </Link>
               )}
             >
-              <NewsList className={cx('list')}>
-                {news.items.map((entry) => (
-                  <NewsList.Item key={entry.id}>
-                    <NewsCard
-                      view="compact"
-                      title={entry.title}
-                      description={entry.description}
-                      date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
-                      href={`/news/${entry.id}`}
-                    />
-                  </NewsList.Item>
-                ))}
-              </NewsList>
+              <HomepageFeedList>
+                {blog ? (
+                  blog.items.map((entry) => (
+                    <HomepageFeedList.Item key={entry.id}>
+                      <BlogCard
+                        id={entry.id}
+                        image={entry.image}
+                        author={entry.author_url_title}
+                        heading={entry.title}
+                        description={entry.description}
+                      />
+                    </HomepageFeedList.Item>
+                  ))
+                ) : (
+                  // @ts-ignore
+                  news.items.map((entry) => (
+                    <HomepageFeedList.Item key={entry.id}>
+                      <NewsCard
+                        view="compact"
+                        title={entry.title}
+                        description={entry.description}
+                        date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
+                        href={`/news/${entry.id}`}
+                      />
+                    </HomepageFeedList.Item>
+                  ))
+                )}
+              </HomepageFeedList>
             </HomepageFeedSection>
           </HomepageLayout.Feed>
         )}
