@@ -22,8 +22,7 @@
 
 .html-markup {
   composes: section default-padding;
-  max-width: scale(716px);
-  margin: scale(0 auto 98px);
+  margin-bottom: scale(98px);
 }
 
 .events {
@@ -86,5 +85,17 @@
     @media (max-width: $tablet-portrait) {
       margin-bottom: scale(16px);
     }
+  }
+}
+
+.html-markup-content {
+  h3,
+  h4,
+  p,
+  ul,
+  ol {
+    max-width: scale(716px);
+    margin-right: auto;
+    margin-left: auto;
   }
 }

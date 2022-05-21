@@ -61,6 +61,7 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
               <ConstructorContentSection type="html-markup">
                 <HTMLMarkup
                   markup={content_item.rich_text}
+                  className={cx('html-markup-content')}
                 />
               </ConstructorContentSection>
             )}
