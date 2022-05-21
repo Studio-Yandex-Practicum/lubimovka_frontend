@@ -29,13 +29,13 @@ import { format } from 'shared/helpers/format-date';
 import { partnerTypes } from 'shared/constants/partner-types';
 
 import type { InferGetServerSidePropsType } from 'next';
-import type { Main, Partner, partner_type } from 'api-typings';
+import type { Main as MainPageData, Partner, partner_type } from 'api-typings';
 
 import styles from 'components/homepage-layout/homepage-layout.module.css';
 
 const cx = classNames.bind(styles);
 
-const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [welcomeScreenBottomElementRef] = useWelcomeScreenScroll();
 
   if ('errorCode' in props) {
@@ -242,7 +242,7 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
 
 const fetchHomepageData = async () => {
   try {
-    return await fetcher<Main>('/main/');
+    return await fetcher<MainPageData>('/main/');
   } catch {
     return;
   }
@@ -291,7 +291,7 @@ export const getServerSideProps  = async () => {
   };
 };
 
-export default Homepage;
+export default Main;
 
 function getPartnerGroupTitle(partnerType: keyof typeof partnerTypes) {
   return partnerTypes[partnerType];
