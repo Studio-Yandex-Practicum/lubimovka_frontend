@@ -1,0 +1,108 @@
+.root {
+  display: flex;
+
+  @media (max-width: $tablet-portrait) {
+    box-sizing: border-box;
+    padding: scale(32px 14px 32px 24px);
+    border-top: var(--coal) solid 1px;
+  }
+}
+
+.image {
+  position: relative;
+  width: scale(120px);
+  height: scale(160px);
+  margin-right: scale(30px);
+  object-fit: cover;
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(92px);
+    height: scale(124px);
+  }
+}
+
+.info {
+  display: flex;
+  max-width: scale(269px);
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(243px);
+  }
+}
+
+.date-time {
+  @mixin text;
+  @mixin textLarge;
+
+  display: flex;
+  flex-direction: row;
+  margin-bottom: scale(16px);
+}
+
+.date {
+  padding: 0;
+  margin: 0;
+  margin-right: scale(42px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-right: scale(46px);
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline5;
+
+  max-width: scale(419px);
+  margin-bottom: scale(16px);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    max-width: scale(243px);
+    margin-bottom: scale(8px);
+  }
+}
+
+.credits {
+  @mixin text;
+  @mixin textSmall;
+
+  margin-bottom: scale(20px);
+  margin-left: scale(30px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(8px);
+    margin-left: 0;
+  }
+}
+
+.description {
+  @mixin text;
+  @mixin textSmall;
+
+  margin-bottom: scale(16px);
+
+  p {
+    margin: 0;
+  }
+}
+
+.action {
+  &:not(:last-child) {
+    margin-bottom: scale(16px);
+
+    @media (max-width: $tablet-portrait) {
+      margin-right: scale(26px);
+      margin-bottom: 0;
+    }
+  }
+}
+
+.actions {
+  @media (max-width: $tablet-portrait) {
+    display: flex;
+  }
+}
