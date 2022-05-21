@@ -28,6 +28,7 @@ import { useWelcomeScreenScroll } from 'shared/hooks/use-welcome-screen-scroll';
 import { fetcher } from 'shared/fetcher';
 import { format } from 'shared/helpers/format-date';
 import { partnerTypes } from 'shared/constants/partner-types';
+import { serverErrorResult } from 'shared/constants/server-side-props';
 
 import type { InferGetServerSidePropsType } from 'next';
 import type { Main as MainPageData, Partner, partner_type } from 'api-typings';
@@ -276,14 +277,9 @@ const fetchPartners = async () => {
 export const getServerSideProps  = async () => {
   const data = await fetchHomepageData();
   const partners = await fetchPartners();
-  const errorResult = {
-    props: {
-      errorCode: 500,
-    }
-  } as const;
 
   if (!data) {
-    return errorResult;
+    return serverErrorResult;
   }
 
   function groupPartnersByType(partners: Partner[]) {
