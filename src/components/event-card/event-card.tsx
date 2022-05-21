@@ -23,6 +23,7 @@ interface EventCardProps {
   performanceId?: string
   actionUrl: Url
   paid?: boolean
+  className?: string
 }
 
 const cx = classNames.bind(styles);
@@ -39,11 +40,12 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
     performanceId,
     actionUrl,
     paid,
+    className
   } = props;
 
   return (
     <div
-      className={cx('root')}
+      className={cx('root', className)}
       ref={ref}
     >
       {imageUrl && (
