@@ -1,101 +1,68 @@
-.card {
-  display: grid;
-  padding-bottom: scale(48px);
-  gap: scale(16px) 0;
-  grid-template:
-    "time-location image"
-    "title         title"
-    "description   description"
-    "credits       credits"
-    "actions       actions" 1fr / 1fr minmax(0, scale(127px));
+.root {
+  display: flex;
 
-  @media (min-width: $tablet-portrait) {
-    padding: 0;
-    gap: scale(16px) scale(32px);
-    grid-template:
-      "image time-location title       .       ."
-      "image time-location description credits actions" 1fr / minmax(0, scale(147px)) minmax(0, 12.5%) minmax(0, 27.5%) minmax(0, 30%) minmax(0, 17.5%);
+  @media (max-width: $tablet-portrait) {
+    box-sizing: border-box;
+    padding: scale(32px 14px 32px 24px);
+    border-top: var(--coal) solid 1px;
   }
-}
-
-.imageHolder {
-  grid-area: image;
-
-  @media (min-width: $tablet-portrait) {
-    margin-right: scale(-4px);
-  }
-}
-
-.imageCanvas {
-  position: relative;
-  width: 100%;
-  padding-top: 126%;
 }
 
 .image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: relative;
+  width: scale(120px);
+  height: scale(160px);
+  margin-right: scale(30px);
   object-fit: cover;
+
+  @media (max-width: $tablet-portrait) {
+    width: scale(92px);
+    height: scale(124px);
+  }
+}
+
+.info {
+  display: flex;
+  max-width: scale(269px);
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: scale(243px);
+  }
+}
+
+.date-time {
+  @mixin text;
+  @mixin textLarge;
+
+  display: flex;
+  flex-direction: row;
+  margin-bottom: scale(16px);
+}
+
+.date {
+  padding: 0;
+  margin: 0;
+  margin-right: scale(42px);
+
+  @media (max-width: $tablet-portrait) {
+    margin-right: scale(46px);
+  }
 }
 
 .title {
   @mixin headline;
-  @mixin headline6;
+  @mixin headline5;
 
-  @media (min-width: $tablet-portrait) {
-    margin-top: scale(15px);
-  }
-}
+  max-width: scale(419px);
+  margin-bottom: scale(16px);
 
-.timeLocation {
-  padding-right: scale(8px);
-  margin: 0;
-  grid-area: time-location;
-
-  @media (min-width: $tablet-portrait) {
-    padding: 0;
-  }
-}
-
-.hiddenText {
-  @mixin visually-hidden;
-}
-
-.time {
-  @mixin headline;
-  @mixin headline7;
-
-  margin-top: scale(19px);
-
-  @media (min-width: $tablet-portrait) {
+  @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    margin-top: scale(15px);
-  }
-}
-
-.location {
-  @mixin text;
-  @mixin textSmall;
-
-  @media (min-width: $tablet-portrait) {
-    margin: scale(16px) 0 0;
-  }
-}
-
-.description {
-  @mixin text;
-  @mixin textSmall;
-
-  margin: 0 0 scale(8px) scale(64px);
-  grid-area: description;
-  word-wrap: break-word;
-
-  @media (min-width: $tablet-portrait) {
-    margin: 0 0 scale(44px);
+    max-width: scale(243px);
+    margin-bottom: scale(8px);
   }
 }
 
@@ -103,60 +70,39 @@
   @mixin text;
   @mixin textSmall;
 
-  margin: 0;
-  grid-area: credits;
-}
+  margin-bottom: scale(20px);
+  margin-left: scale(30px);
 
-.creditsTitle {
-  display: inline;
-
-  &::after {
-    display: inline;
-    content: ": ";
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: scale(8px);
+    margin-left: 0;
   }
 }
 
-.creditsValue {
-  display: inline;
-  margin: 0;
+.description {
+  @mixin text;
+  @mixin textSmall;
 
-  &::after {
-    content: "\A";
-    white-space: pre-line;
+  margin-bottom: scale(16px);
+
+  p {
+    margin: 0;
+  }
+}
+
+.action {
+  &:not(:last-child) {
+    margin-bottom: scale(16px);
+
+    @media (max-width: $tablet-portrait) {
+      margin-right: scale(26px);
+      margin-bottom: 0;
+    }
   }
 }
 
 .actions {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  grid-area: actions;
-}
-
-.card:not(:first-of-type) {
-  border-top: 1px solid var(--coal);
-
-  @media (min-width: $tablet-portrait) {
-    border-top: 0;
-    overflow-x: hidden;
-  }
-
-  .imageHolder {
-    @media (min-width: $tablet-portrait) {
-      position: relative;
-    }
-
-    &::before {
-      @media (min-width: $tablet-portrait) {
-        position: absolute;
-        top: 0;
-        left: 100%;
-        display: block;
-        width: 100vw;
-        height: 1px;
-        background-color: var(--coal);
-        content: "";
-      }
-    }
+  @media (max-width: $tablet-portrait) {
+    display: flex;
   }
 }

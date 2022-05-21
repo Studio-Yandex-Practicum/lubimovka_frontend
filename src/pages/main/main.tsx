@@ -3,8 +3,9 @@ import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 import { HomepageLayout } from 'components/homepage-layout';
-import { NewsList } from 'components/news-list';
+import { HomepageFeedList } from 'components/homepage-feed-list';
 import { NewsCard } from 'components/news-card';
+import { BlogCard } from 'components/ui/blog-card';
 import { TeaserList } from 'components/teaser-list';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
@@ -21,21 +22,22 @@ import { Banner } from 'components/banner';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { PlayList } from 'components/play-list';
 import { EventList } from 'components/event-list';
-import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
+import { EventCard } from 'components/event-card';
 import { SEO } from 'components/seo';
 import { useWelcomeScreenScroll } from 'shared/hooks/use-welcome-screen-scroll';
 import { fetcher } from 'shared/fetcher';
 import { format } from 'shared/helpers/format-date';
 import { partnerTypes } from 'shared/constants/partner-types';
+import { serverErrorResult } from 'shared/constants/server-side-props';
 
 import type { InferGetServerSidePropsType } from 'next';
-import type { Main, Partner, partner_type } from 'api-typings';
+import type { Main as MainPageData, Partner, partner_type } from 'api-typings';
 
 import styles from 'components/homepage-layout/homepage-layout.module.css';
 
 const cx = classNames.bind(styles);
 
-const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [welcomeScreenBottomElementRef] = useWelcomeScreenScroll();
 
   if ('errorCode' in props) {
@@ -47,8 +49,7 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
   const {
     first_screen,
     afisha,
-    // TODO: добавить вывод записей блога, обсудить схему API с бекендерами — сейчас не очевидно, что возвращаются или новости или записи блога
-    // blog,
+    blog,
     news,
     banners,
     places,
@@ -101,19 +102,18 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
               <EventList>
                 {afisha.items.map((event) => (
                   <EventList.Item key={event.id}>
-                    <AnnouncedPlayCard
-                      id={event.id}
-                      formattedDate={format('d MMMM', new Date(event.date_time))}
-                      formattedTime={format('H:m', new Date(event.date_time))}
+                    <EventCard
+                      // TODO: разобраться, сча в схеме API нет поля с изображением
+                      // @ts-expect-error
+                      imageUrl={event.event_body.image}
+                      date={format('d MMMM', new Date(event.date_time))}
+                      time={format('H:mm', new Date(event.date_time))}
                       title={event.event_body.name}
                       team={event.event_body.team}
                       description={event.event_body.description}
-                      buttonLink={event.url}
-                      // TODO: разобраться, сча в схеме API нет поля с изображением
-                      // imageUrl={event.event_body.image}
-                      project={event.event_body.project_title}
+                      projectTitle={event.event_body.project_title}
+                      actionUrl={event.url}
                       paid={event.paid}
-                      isPerformance={event.type === 'PERFORMANCE' ? true : false}
                     />
                   </EventList.Item>
                 ))}
@@ -121,13 +121,13 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
             </HomepageEventsSection>
           </HomepageLayout.Events>
         )}
-        {!!news?.items.length && (
+        {(blog || news) && (
           <HomepageLayout.Feed>
             <HomepageFeedSection
-              title="Новости"
+              title={blog ? 'Дневник фестиваля' : 'Новости'}
               action={(
                 <Link
-                  href="/news"
+                  href={blog ? '/blog' : '/news'}
                   passHref
                 >
                   <Button
@@ -147,19 +147,34 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
                 </Link>
               )}
             >
-              <NewsList className={cx('list')}>
-                {news.items.map((entry) => (
-                  <NewsList.Item key={entry.id}>
-                    <NewsCard
-                      view="compact"
-                      title={entry.title}
-                      description={entry.description}
-                      date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
-                      href={`/news/${entry.id}`}
-                    />
-                  </NewsList.Item>
-                ))}
-              </NewsList>
+              <HomepageFeedList>
+                {blog ? (
+                  blog.items.map((entry) => (
+                    <HomepageFeedList.Item key={entry.id}>
+                      <BlogCard
+                        id={entry.id}
+                        image={entry.image}
+                        author={entry.author_url_title}
+                        heading={entry.title}
+                        description={entry.description}
+                      />
+                    </HomepageFeedList.Item>
+                  ))
+                ) : (
+                  // @ts-ignore
+                  news.items.map((entry) => (
+                    <HomepageFeedList.Item key={entry.id}>
+                      <NewsCard
+                        view="compact"
+                        title={entry.title}
+                        description={entry.description}
+                        date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
+                        href={`/news/${entry.id}`}
+                      />
+                    </HomepageFeedList.Item>
+                  ))
+                )}
+              </HomepageFeedList>
             </HomepageFeedSection>
           </HomepageLayout.Feed>
         )}
@@ -242,7 +257,7 @@ const Homepage = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
 
 const fetchHomepageData = async () => {
   try {
-    return await fetcher<Main>('/main/');
+    return await fetcher<MainPageData>('/main/');
   } catch {
     return;
   }
@@ -261,14 +276,9 @@ const fetchPartners = async () => {
 export const getServerSideProps  = async () => {
   const data = await fetchHomepageData();
   const partners = await fetchPartners();
-  const errorResult = {
-    props: {
-      errorCode: 500,
-    }
-  } as const;
 
   if (!data) {
-    return errorResult;
+    return serverErrorResult;
   }
 
   function groupPartnersByType(partners: Partner[]) {
@@ -291,7 +301,7 @@ export const getServerSideProps  = async () => {
   };
 };
 
-export default Homepage;
+export default Main;
 
 function getPartnerGroupTitle(partnerType: keyof typeof partnerTypes) {
   return partnerTypes[partnerType];

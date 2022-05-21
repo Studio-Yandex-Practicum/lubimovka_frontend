@@ -5,7 +5,7 @@ import { AppLayout } from 'components/app-layout';
 import { PerformanceLayout } from 'components/performance-layout';
 import { PerformanceHeadline } from 'components/performance-headline';
 import { PerformanceDetails } from 'components/performance-details';
-import { PerformanceTeam } from 'components/performance-team';
+import { CreditsList } from 'components/credits-list';
 import { HTMLMarkup } from 'components/html-markup';
 import { Share } from 'components/share';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
@@ -78,9 +78,9 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             duration={duration}
             ageRestriction={ageRestriction}
           />
-          <PerformanceTeam
+          <CreditsList
             className={cx('team')}
-            team={team}
+            roles={team}
           />
         </PerformanceLayout.Summary>
         <PerformanceLayout.Content>

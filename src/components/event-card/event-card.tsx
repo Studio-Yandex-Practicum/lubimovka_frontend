@@ -1,108 +1,137 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
+import Image from 'next/image';
+import Link from 'next/link';
+import { forwardRef } from 'react';
 
-import { Button } from 'components/ui/button/button';
-import { Url } from 'shared/types';
+import { CreditsList } from 'components/credits-list';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
+
+import type { Url } from 'shared/types';
+import type { CreditsRole } from 'components/credits-list';
 
 import styles from './event-card.module.css';
 
-export interface IEventCardProps {
-  image?: Url,
-  time: string,
-  location: string,
-  title: string,
-  description: string,
-  playwright?: string,
-  director?: string,
-  registrationUrl?: Url,
-  className?: string,
+interface EventCardProps {
+  imageUrl?: Url
+  date: string
+  time: string
+  title: string
+  team: CreditsRole[]
+  description: string
+  projectTitle?: string
+  performanceId?: string
+  actionUrl: Url
+  paid?: boolean
+  className?: string
 }
 
 const cx = classNames.bind(styles);
 
-export const EventCard: FC<IEventCardProps> = (props) => {
+export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref) => {
   const {
-    image,
+    imageUrl,
+    date,
     time,
-    location,
     title,
+    team,
     description,
-    playwright,
-    director,
-    registrationUrl,
+    projectTitle,
+    performanceId,
+    actionUrl,
+    paid,
     className
   } = props;
 
   return (
-    <article className={cx('card', className)}>
-      <h3 className={cx('title')}>
-        {title}
-      </h3>
-      <div className={cx('imageHolder')}>
-        {image && (
-          <div className={cx('imageCanvas')}>
-            <img
-              className={cx('image')}
-              src={image}
-            />
-          </div>
-        )}
-      </div>
-      <dl className={cx('timeLocation')}>
-        <dt className={cx('hiddenText')}>
-          Время
-        </dt>
-        <dd className={cx('time')}>
-          {time}
-        </dd>
-        <dt className={cx('hiddenText')}>
-          Место
-        </dt>
-        <dd className={cx('location')}>
-          {location}
-        </dd>
-      </dl>
-      <p className={cx('description')}>
-        {description}
-      </p>
-      {(playwright || director) && (
-        <dl className={cx('credits')}>
-          {playwright && (
-            <>
-              <dt className={cx('creditsTitle')}>
-                Драматург
-              </dt>
-              <dd className={cx('creditsValue')}>
-                {playwright}
-              </dd>
-            </>
-          )}
-          {director && (
-            <>
-              <dt className={cx('creditsTitle')}>
-                Режиссёр
-              </dt>
-              <dd className={cx('creditsValue')}>
-                {director}
-              </dd>
-            </>
-          )}
-        </dl>
-      )}
-      {registrationUrl && (
-        <div className={cx('actions')}>
-          <Button
-            view="primary"
-            size="s"
-            iconPlace="left"
-            icon="arrow-right"
-            label="Регистрация"
-            border="bottomLeft"
-            href={registrationUrl}
-            isLink
+    <div
+      className={cx('root', className)}
+      ref={ref}
+    >
+      {imageUrl && (
+        <div className={cx('image')}>
+          <Image
+            className={cx('image')}
+            src={imageUrl}
+            layout="fill"
+            objectFit="cover"
+            alt=""
           />
         </div>
       )}
-    </article>
+      <div className={cx('info')}>
+        <time className={cx('date-time')}>
+          <span className={cx('date')}>
+            {date}
+          </span>
+          <span>
+            {time}
+          </span>
+        </time>
+        <h3 className={cx('title')}>
+          {title}
+        </h3>
+        <CreditsList
+          className={cx('credits')}
+          size="s"
+          roles={team}
+        />
+        <div className={cx('description')}>
+          <p>
+            {description}
+          </p>
+          {projectTitle && (
+            <p>
+              читка проекта
+              {' '}
+              {projectTitle}
+            </p>
+          )}
+        </div>
+        <div className={cx('actions')}>
+          {performanceId && (
+            <Link
+              href={`/performances/${performanceId}`}
+              passHref
+            >
+              <Button
+                className={cx('action')}
+                size="s"
+                border="bottom-left"
+                upperCase
+                icon={(
+                  <Icon
+                    glyph="arrow-right"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+              >
+                О спектакле
+              </Button>
+            </Link>
+          )}
+          <Button
+            className={cx('action')}
+            size="s"
+            border="bottom-left"
+            upperCase
+            icon={(
+              <Icon
+                glyph="arrow-right"
+                width="100%"
+                height="100%"
+              />
+            )}
+            href={actionUrl}
+            target="_blank"
+          >
+            {paid ? 'Билеты' : 'Регистрация'}
+          </Button>
+        </div>
+      </div>
+    </div>
   );
-};
+});
+
+EventCard.displayName = 'EventCard';

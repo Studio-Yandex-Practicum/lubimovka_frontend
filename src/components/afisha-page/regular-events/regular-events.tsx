@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import cn from 'classnames/bind';
 
-import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
+import { EventCard } from 'components/event-card';
 import { Spinner } from 'components/spinner';
 
 import { useIntersection } from 'shared/hooks/use-intersection';
@@ -27,26 +27,29 @@ export const RegularEvents: FC = () => {
 
   return (
     <section className={cx('section')}>
-      {events.map((e, i) => {
-        const ref = i===events.length - 1 ? bottomRef : undefined;
+      {events.map((event, i) => {
+        const ref = i === events.length - 1 ? bottomRef : undefined;
+
         return (
-          <AnnouncedPlayCard
-            key={e.id}
-            formattedDate={format('d MMMM', new Date(e.dateTime))}
-            formattedTime={format('H:mm', new Date(e.dateTime))}
-            title={e.eventBody.name}
-            team={e.eventBody.team}
-            buttonLink={e.url}
-            className={styles.event}
-            project={e.eventBody.projectTitle}
-            isPerformance={e.type === 'PERFORMANCE'}
-            imageUrl={'image' in e.eventBody ? e.eventBody.image : undefined}
-            description={e.eventBody.description}
+          <EventCard
+            key={event.id}
+            className={cx('event')}
+            date={format('d MMMM', new Date(event.dateTime))}
+            time={format('H:mm', new Date(event.dateTime))}
+            title={event.eventBody.name}
+            team={event.eventBody.team}
+            projectTitle={event.eventBody.projectTitle}
+            // TODO: разобраться, сча в схеме API нет поля с изображением
+            // @ts-expect-error
+            imageUrl={event.eventBody.image}
+            description={event.eventBody.description}
+            actionUrl={event.url}
+            paid={event.paid}
             ref={ref}
           />
         );
       })}
-      {isLoading() &&<Spinner className={cx('spinner')}/>}
+      {isLoading() && <Spinner className={cx('spinner')}/>}
     </section>
   );
 };

@@ -8,7 +8,7 @@ import { ImageSlider } from 'components/ui/image-slider';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { PerformanceSection } from 'components/performance-section';
-import { AnnouncedPlayCard } from 'components/ui/announced-play-card';
+import { EventCard } from 'components/event-card';
 import { PersonCard } from 'components/ui/person-card';
 import { PersonCardList } from 'components/person-card-list';
 import { Video } from 'components/video';
@@ -124,22 +124,23 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                     name,
                     team,
                     image,
+                    description,
                     project_title,
                   },
                   url,
+                  paid
                 }) => (
-                  <AnnouncedPlayCard
+                  <EventCard
                     key={id}
-                    isPerformance
-                    id={id}
-                    formattedDate={format('d MMMM', new Date(date_time))}
-                    formattedTime={format('H:mm', new Date(date_time))}
+                    date={format('d MMMM', new Date(date_time))}
+                    time={format('H:mm', new Date(date_time))}
                     title={name}
                     team={team}
-                    buttonLink={url}
                     imageUrl={image}
-                    project={project_title}
-                    paid
+                    description={description}
+                    projectTitle={project_title}
+                    actionUrl={url}
+                    paid={paid}
                   />
                 ))}
               </PerformanceSection>
