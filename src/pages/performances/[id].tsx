@@ -16,6 +16,7 @@ import { PerformanceEventList } from 'components/performance-event-list';
 import { ReviewCarousel } from 'components/review-carousel';
 import { MediaReviewCard } from 'components/media-review-card';
 import { ReviewCard } from 'components/review-card';
+import { SEO } from 'components/seo';
 import { format } from 'shared/helpers/format-date';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
@@ -54,6 +55,10 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
 
   return (
     <AppLayout>
+      <SEO
+        title={title}
+        description={description}
+      />
       <PerformanceLayout>
         <PerformanceHeadline
           className={cx('headline')}
