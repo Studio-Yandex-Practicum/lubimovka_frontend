@@ -9,6 +9,7 @@ import { Filter } from 'components/filter';
 import { Select } from 'components/select';
 import { NewsList } from 'components/news-list';
 import { NewsCard } from 'components/news-card';
+import { SEO } from 'components/seo';
 import { useNews } from 'providers/news-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
 import { fetcher } from 'services/fetcher';
@@ -89,6 +90,9 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 
   return (
     <AppLayout>
+      <SEO
+        title="Новости"
+      />
       <NewsLayout>
         <PageTitle className={cx('title')}>
           Новости
