@@ -2,6 +2,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 import { AppLayout } from 'components/app-layout/index';
 import { HistoryPage } from 'components/history-page';
+import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
 import { Festival, Years, PlayFilters } from 'api-typings';
 
@@ -11,6 +12,9 @@ const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
   } = props;
   return (
     <AppLayout>
+      <SEO
+        title="История фестиваля"
+      />
       <HistoryPage years={years} titleCounts={titleCounts} playFilters={playFilters}/>
     </AppLayout>
   );
