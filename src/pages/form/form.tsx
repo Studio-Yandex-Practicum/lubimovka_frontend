@@ -7,6 +7,7 @@ import { AppLayout } from 'components/app-layout';
 import PlayProposalLayout from 'components/play-proposal-layout';
 import PlayProposalTitle from 'components/play-proposal-title';
 import { ParticipationForm } from 'components/participation-form';
+import { SEO } from 'components/seo';
 import {
   validYearRegexp,
   validEmailRegexp,
@@ -271,6 +272,9 @@ const Participation: NextPage = () => {
 
   return (
     <AppLayout>
+      <SEO
+        title="Приём пьес"
+      />
       <PlayProposalLayout>
         <PlayProposalLayout.Image>
           <Image
