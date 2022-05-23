@@ -1,6 +1,7 @@
 import { AppLayout } from 'components/app-layout';
 import TrusteesSection from 'components/trustees-section/trustees-section';
 import PersonsList from 'components/persons-list/persons-list';
+import { SEO } from 'components/seo';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { fetcher } from 'services/fetcher';
 
@@ -17,6 +18,9 @@ const Trustees = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
 
   return (
     <AppLayout>
+      <SEO
+        title="Попечители"
+      />
       <main>
         <TrusteesSection
           title="Попечители фестиваля"
@@ -63,4 +67,3 @@ export const getServerSideProps: GetServerSideProps<ITrusteesProps> = async () =
 };
 
 export default Trustees;
-
