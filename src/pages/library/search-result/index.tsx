@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 import * as breakpoints from 'shared/breakpoints.js';
 import { AppLayout } from 'components/app-layout';
+import { SEO } from 'components/seo';
 import { Button } from 'components/ui/button';
 import LibraryForm from 'components/library-form/library-form';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
@@ -106,6 +107,9 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
   return (
     <div className={style.pageWrapper}>
       <AppLayout>
+        <SEO
+          title="Результаты поиска по библиотеке"
+        />
         <main className ={style.page}>
           <div className={style.buttonWrapper}>
             {isMobile !== null && (

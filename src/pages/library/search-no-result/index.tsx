@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 import * as breakpoints from 'shared/breakpoints.js';
 import { AppLayout } from 'components/app-layout';
+import { SEO } from 'components/seo';
 import { Button } from 'components/ui/button';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import LibraryForm from 'components/library-form/library-form';
@@ -36,6 +37,9 @@ const SearchResult: NextPage = () => {
   return (
     <div className={style.pageWrapper}>
       <AppLayout>
+        <SEO
+          title="Ничего не найдено в библиотеке"
+        />
         <main className ={style.page}>
           <div className={style.buttonWrapper}>
             {isMobile !== null && (

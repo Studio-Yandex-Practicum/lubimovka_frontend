@@ -1,10 +1,10 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useEffect, useState, useReducer } from 'react';
 import Error from 'next/error';
-import Head from 'next/head';
 
 import { AppLayout } from 'components/app-layout';
 import LibraryPage from 'components/library-pieces-page';
+import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
 import { PaginatedPlayList, Play } from 'api-typings';
 import reducer from 'components/library-filter/library-filter-reducer';
@@ -67,11 +67,9 @@ const Library = ({ errorCode, pieces, years, programs }:
   return (
     <LibraryFiltersProvider value={filterState}>
       <AppLayout>
-        <Head>
-          <title>
-            Библиотека
-          </title>
-        </Head>
+        <SEO
+          title="Библиотека - пьесы"
+        />
         <LibraryPage
           isLoading={isLoading}
           items={piecesState}
