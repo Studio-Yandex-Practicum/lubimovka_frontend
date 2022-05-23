@@ -9,6 +9,7 @@ import TextInput from 'components/ui/text-input/text-input';
 import TextArea from 'components/ui/text-area';
 import { Button } from 'components/ui/button';
 import { CallToEmail } from 'components/call-to-email';
+import { SEO } from 'components/seo';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { fetcher } from 'services/fetcher';
 import { validEmailRegexp } from 'shared/constants/regexps';
@@ -192,6 +193,9 @@ const Contacts: NextPage = () => {
 
   return (
     <AppLayout>
+      <SEO
+        title="Контакты"
+      />
       <ContactsLayout>
         <ContactsLayout.Column>
           <ContactsLayout.Title>
