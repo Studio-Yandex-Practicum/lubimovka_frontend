@@ -51,7 +51,7 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     pending,
   } = useNews();
 
-  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>({ threshold: 1 });
+  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>();
 
   const selectedMonthOption = useMemo(() => (
     monthOptions.find(({ value }) => value === selectedMonth)
