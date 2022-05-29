@@ -54,7 +54,8 @@ const fetchProjects = async () => {
   let data;
 
   try {
-    data = await fetcher<PaginatedProjectListList>('/projects/');
+    // параметр ?limit=999 это костыль, предложенный бекендерами, чтобы получать сразу все проекты без учета пагинации вместо того, чтобы выпиливать пагинацию с бекенда
+    data = await fetcher<PaginatedProjectListList>('/projects/?limit=999');
   } catch (error) {
     return;
   }
