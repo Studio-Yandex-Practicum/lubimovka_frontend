@@ -153,15 +153,17 @@ const Contacts: NextPage = () => {
     };
 
     try {
-      await fetcher('/info/questions/', {
+      await fetcher('/feedback/questions/', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'
         },
         body: JSON.stringify(data),
       });
-    } catch (error) {
+    } catch ({ status, error }) {
       // TODO: добавить проверку типов выброшенного исключения, пока считаем, что всегда получаем ответ API
+
+      if (!status) return;
 
       for (let field in error as Record<string, string[]>) {
         dispatch({

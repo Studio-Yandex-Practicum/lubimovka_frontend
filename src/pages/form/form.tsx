@@ -232,12 +232,14 @@ const Participation: NextPage = () => {
     data.append('file', file.value!);
 
     try {
-      await fetcher('/library/participation/', {
+      await fetcher('/feedback/participation/', {
         method: 'POST',
         body: data,
       });
-    } catch (error) {
+    } catch ({ status, error }) {
       // TODO: добавить проверку типов выброшенного исключения, пока считаем, что всегда получаем ответ API
+
+      if (!status) return;
 
       for (let field in error as Record<string, string[]>) {
         dispatch({
