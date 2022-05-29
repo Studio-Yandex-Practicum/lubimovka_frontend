@@ -1,25 +1,36 @@
 import { addBaseUrlToApiPath } from 'shared/helpers/url';
 
-const handleResponse = async (response: Response) => {
-  if (response.status === 204) {
-    return;
+const fetchResource = (httpClient: typeof fetch) => <T = unknown>(path: string, options?: RequestInit) => {
+  return httpClient(addBaseUrlToApiPath(path), options).then((response) => handleResponse<T>(response));
+};
+
+export const fetcher = fetchResource(getHttpClientByEnvironment());
+
+async function handleResponse<T>(response: Response) {
+  let data;
+
+  try {
+    data = await response.json() as T;
+  } catch {
+    data = undefined as unknown as T;
   }
 
-  const data = await response.json();
-
   if (!response.ok) {
-    throw data;
+    throw {
+      status: response.status,
+      data,
+    };
   }
 
   return data;
 };
 
-export const fetcher = async <T = unknown>(path: string, options?: RequestInit): Promise<T>  => {
-  let fetchImplementation = fetch;
+function getHttpClientByEnvironment() {
+  let httpClient = fetch;
 
   if (process.env.NEXT_PUBLIC_MOCKS === 'true') {
-    fetchImplementation = (await import('mocks/fetch-mock')).default;
+    httpClient = require('mocks/fetch-mock').default;
   }
 
-  return fetchImplementation(addBaseUrlToApiPath(path), options).then(handleResponse);
+  return httpClient;
 };
