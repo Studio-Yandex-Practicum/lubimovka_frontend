@@ -53,7 +53,7 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     errorCode,
   } = useBlog();
   const { settings } = usePersistentData();
-  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>({ threshold: 1 });
+  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>();
   const selectedMonthOption = useMemo(() => monthOptions.find(({ value }) => value === selectedMonth), [selectedMonth]);
   const selectedYearOption = useMemo(() => yearOptions.find(({ value }) => value === selectedYear), [selectedYear]);
   const lastEntryIndex = useMemo(() => entries.length - 1, [entries]);
