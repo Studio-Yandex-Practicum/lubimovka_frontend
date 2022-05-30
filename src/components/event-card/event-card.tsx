@@ -20,7 +20,7 @@ interface EventCardProps {
   team: CreditsRole[]
   description: string
   projectTitle?: string
-  performanceId?: string
+  performanceUrl?: string
   actionUrl: Url
   paid?: boolean
   className?: string
@@ -37,7 +37,7 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
     team,
     description,
     projectTitle,
-    performanceId,
+    performanceUrl,
     actionUrl,
     paid,
     className
@@ -89,9 +89,9 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
           )}
         </div>
         <div className={cx('actions')}>
-          {performanceId && (
+          {performanceUrl && (
             <Link
-              href={`/performances/${performanceId}`}
+              href={performanceUrl}
               passHref
             >
               <Button
