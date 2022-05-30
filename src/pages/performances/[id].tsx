@@ -18,6 +18,7 @@ import { MediaReviewCard } from 'components/media-review-card';
 import { ReviewCard } from 'components/review-card';
 import { format } from 'shared/helpers/format-date';
 import { fetcher } from 'shared/fetcher';
+import { notFoundResult } from 'shared/constants/server-side-props';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type {
@@ -174,16 +175,12 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
 };
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext<Record<'id', string>>) => {
-  const notFoundResult = {
-    notFound: true,
-  } as const;
-
   if (!ctx.params) {
     return notFoundResult;
   }
 
   const { id: performanceId } = ctx.params;
-  let performanceResponse: PerformanceResponse;
+  let performanceResponse;
   let mediaReviewsResponse;
   let reviewsResponse;
 

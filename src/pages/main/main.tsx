@@ -110,8 +110,11 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                       time={format('H:mm', new Date(event.date_time))}
                       title={event.event_body.name}
                       team={event.event_body.team}
-                      description={event.event_body.description}
                       projectTitle={event.event_body.project_title}
+                      description={event.event_body.description}
+                      {...event.type === 'PERFORMANCE' ? {
+                        performanceUrl: `/performances/${event.event_body.id}`,
+                      } : {}}
                       actionUrl={event.url}
                       paid={event.paid}
                     />

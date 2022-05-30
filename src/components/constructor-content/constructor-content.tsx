@@ -119,8 +119,10 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
               >
                 {content_item.items.map(({
                   id,
+                  type,
                   date_time,
                   event_body: {
+                    id: performanceId,
                     name,
                     team,
                     image,
@@ -137,8 +139,11 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                     title={name}
                     team={team}
                     imageUrl={image}
-                    description={description}
                     projectTitle={project_title}
+                    description={description}
+                    {...type === 'PERFORMANCE' ? {
+                      performanceUrl: `/performances/${performanceId}`,
+                    } : {}}
                     actionUrl={url}
                     paid={paid}
                   />
