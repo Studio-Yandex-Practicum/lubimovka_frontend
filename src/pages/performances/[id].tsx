@@ -186,9 +186,9 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext<Record<'
 
   try {
     [performanceResponse, mediaReviewsResponse, reviewsResponse] = await Promise.all([
-      fetcher<PerformanceResponse>(`/library/performances/${performanceId}/`),
-      fetcher<PaginatedPerformanceMediaReviewList>(`/library/performances/${performanceId}/media-reviews/`),
-      fetcher<PaginatedPerformanceReviewList>(`/library/performances/${performanceId}/reviews/`),
+      fetcher<PerformanceResponse>(`/afisha/performances/${performanceId}/`),
+      fetcher<PaginatedPerformanceMediaReviewList>(`/afisha/performances/${performanceId}/media-reviews/`),
+      fetcher<PaginatedPerformanceReviewList>(`/afisha/performances/${performanceId}/reviews/`),
     ]);
   } catch {
     return notFoundResult;
