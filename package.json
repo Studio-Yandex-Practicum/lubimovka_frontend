@@ -13,7 +13,8 @@
     "storybook": "start-storybook -s public -p 3001",
     "build-storybook": "build-storybook -s public",
     "update-typings": "node scripts/update-typings.js",
-    "update-git-hooks": "scripts/update-git-hooks.sh"
+    "update-git-hooks": "scripts/update-git-hooks.sh",
+    "cypress": "cypress open"
   },
   "repository": {
     "type": "git",
