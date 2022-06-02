@@ -14,7 +14,11 @@
     "build-storybook": "build-storybook -s public",
     "update-typings": "node scripts/update-typings.js",
     "update-git-hooks": "scripts/update-git-hooks.sh",
-    "cypress": "cypress open"
+    "start-test-server": "node server/test-server",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "start-server-and-test start-test-server http://localhost:3000 cypress",
+    "e2e:headless": "start-server-and-test start-test-server http://localhost:3000 cypress:headless"
   },
   "repository": {
     "type": "git",

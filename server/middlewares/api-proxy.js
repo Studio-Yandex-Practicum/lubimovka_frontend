@@ -12,9 +12,9 @@ const options = {
   logLevel: environment === 'development' ? 'debug' : 'info',
 };
 
-const apiProxy = createProxyMiddleware(options);
+const apiProxyMiddleware = createProxyMiddleware(options);
 
 module.exports = {
-  apiProxy
+  apiProxyMiddleware,
 };
 
