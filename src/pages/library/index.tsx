@@ -5,7 +5,7 @@ import Head from 'next/head';
 
 import { AppLayout } from 'components/app-layout';
 import LibraryPage from 'components/library-pieces-page';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { PaginatedPlayList, Play } from 'api-typings';
 import reducer from 'components/library-filter/library-filter-reducer';
 import queryParser from '../../components/library-pieces-page/library-query-parser';

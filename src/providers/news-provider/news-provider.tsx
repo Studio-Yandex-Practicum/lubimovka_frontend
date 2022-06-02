@@ -1,7 +1,7 @@
 import { FC, useState, useReducer, useEffect } from 'react';
 import { objectToQueryString } from '@funboxteam/diamonds';
 
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { useDidMountEffect } from 'shared/hooks/use-did-mount-effect';
 import { omit } from 'shared/helpers/omit';
 import { isNil } from 'shared/helpers/is-nil';

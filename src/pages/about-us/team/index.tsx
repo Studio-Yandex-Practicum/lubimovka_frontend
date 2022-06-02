@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
 import TeamPage from 'components/team-page';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { FestivalTeams, Volunteers } from 'api-typings';
 
 interface ITeamProps {

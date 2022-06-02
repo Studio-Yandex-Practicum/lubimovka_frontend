@@ -11,7 +11,7 @@ import { NewsList } from 'components/news-list';
 import { NewsCard } from 'components/news-card';
 import { useNews } from 'providers/news-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/news';
 import { format } from 'shared/helpers/format-date';

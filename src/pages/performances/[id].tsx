@@ -17,7 +17,7 @@ import { ReviewCarousel } from 'components/review-carousel';
 import { MediaReviewCard } from 'components/media-review-card';
 import { ReviewCard } from 'components/review-card';
 import { format } from 'shared/helpers/format-date';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';

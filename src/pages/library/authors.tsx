@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
 import AuthorsPage from 'components/library-authors-page';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 
 import type { PaginatedAuthorListList, AuthorList, AuthorLetters } from 'api-typings';
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';

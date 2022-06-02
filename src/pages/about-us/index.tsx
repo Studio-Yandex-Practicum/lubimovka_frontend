@@ -1,4 +1,4 @@
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { AppLayout } from 'components/app-layout';
 import { WhatWeDoHeader } from 'components/what-we-do-page/header';
 import { WhatWeDoDesc } from 'components/what-we-do-page/desc';

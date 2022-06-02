@@ -6,7 +6,7 @@ import { ProjectsLayout } from 'components/projects-layout';
 import { ProjectCardList } from 'components/project-card-list';
 import { ProjectCard } from 'components/ui/project-card';
 import { PageTitle } from 'components/page-title';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { PaginatedProjectListList, ProjectList } from 'api-typings';
 import { isEven } from 'shared/helpers/is-even';
 

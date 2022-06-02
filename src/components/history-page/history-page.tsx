@@ -3,7 +3,7 @@ import { useState, FC } from 'react';
 import { HistoryHeader } from './header';
 import { HistoryTitle } from './title';
 import { HistoryItself } from './itself';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { Festival, Years, PlayFilters } from 'api-typings';
 
 import itselfData from './assets/mock-data-itself.json';

@@ -13,7 +13,7 @@ import { PageBreadcrumbs } from 'components/page';
 import { Breadcrumb } from 'components/breadcrumb';
 import { Share } from 'components/share';
 import { ArticleCreditsList } from 'components/article-credits-list';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { format } from 'shared/helpers/format-date';
 import { notFoundResult, serverErrorResult } from 'shared/constants/server-side-props';
 

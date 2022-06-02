@@ -10,7 +10,7 @@ import TextArea from 'components/ui/text-area';
 import { Button } from 'components/ui/button';
 import { CallToEmail } from 'components/call-to-email';
 import { usePersistentData } from 'providers/persistent-data-provider';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { validEmailRegexp } from 'shared/constants/regexps';
 
 import type { NextPage } from 'next';
