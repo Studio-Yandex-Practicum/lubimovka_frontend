@@ -12,7 +12,7 @@ import { Button } from 'components/ui/button2';
 import { HTMLMarkup } from 'components/html-markup';
 import { Icon } from 'components/ui/icon';
 import { ForPressHero } from 'components/for-press-hero';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { usePersistentData } from 'providers/persistent-data-provider';
 
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';

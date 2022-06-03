@@ -1,11 +1,9 @@
 const express = require('express');
 const next = require('next');
 
+const { environment, port } = require('../config/vars');
 const { apiPath } = require('../src/shared/constants/api-path');
-const { apiProxy } = require('./middlewares/api-proxy');
-
-const environment = process.env.NODE_ENV || 'development';
-const port = parseInt(process.env.PORT, 10) || 3000;
+const { apiProxyMiddleware } = require('./middlewares/api-proxy');
 
 const app = next({ dev: environment === 'development' });
 const handle = app.getRequestHandler();
@@ -28,7 +26,7 @@ app
       next();
     });
 
-    server.use(apiPath, apiProxy);
+    server.use(apiPath, apiProxyMiddleware);
 
     server.all('*', (req, res) => handle(req, res));
 

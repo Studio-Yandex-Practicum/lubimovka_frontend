@@ -13,7 +13,7 @@ import {
   validPhoneNumberRegexp,
 } from 'shared/constants/regexps';
 import { Nullable } from 'shared/types';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { snakeToCamel } from 'shared/helpers/snake-to-camel';
 
 interface ParticipationFormFields {

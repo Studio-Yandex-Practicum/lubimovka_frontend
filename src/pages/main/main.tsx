@@ -25,7 +25,7 @@ import { EventList } from 'components/event-list';
 import { EventCard } from 'components/event-card';
 import { SEO } from 'components/seo';
 import { useWelcomeScreenScroll } from 'shared/hooks/use-welcome-screen-scroll';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { format } from 'shared/helpers/format-date';
 import { partnerTypes } from 'shared/constants/partner-types';
 import { serverErrorResult } from 'shared/constants/server-side-props';

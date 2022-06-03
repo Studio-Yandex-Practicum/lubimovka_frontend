@@ -12,7 +12,7 @@ import { NewsCard } from 'components/news-card';
 import { PageBreadcrumbs } from 'components/page';
 import { Breadcrumb } from 'components/breadcrumb';
 import { SEO } from 'components/seo';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { format } from 'shared/helpers/format-date';
 import { notFoundResult, serverErrorResult } from 'shared/constants/server-side-props';
 

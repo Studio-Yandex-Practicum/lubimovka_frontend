@@ -6,7 +6,7 @@ import { Breadcrumb } from 'components/breadcrumb';
 import { ProjectHeadline } from 'components/project-headline';
 import { ConstructorContent } from 'components/constructor-content';
 import { SEO } from 'components/seo';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type { Project as ProjectModel } from 'api-typings';

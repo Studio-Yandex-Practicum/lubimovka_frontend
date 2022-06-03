@@ -2,7 +2,7 @@ import { AppLayout } from 'components/app-layout';
 import TrusteesSection from 'components/trustees-section/trustees-section';
 import PersonsList from 'components/persons-list/persons-list';
 import { usePersistentData } from 'providers/persistent-data-provider';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import type { Sponsor } from 'api-typings';

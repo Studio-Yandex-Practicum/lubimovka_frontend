@@ -16,7 +16,7 @@ import { useBlog } from 'providers/blog-provider';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
 import { getYearRange } from 'shared/helpers/get-year-range';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/blog';
 
