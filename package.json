@@ -69,6 +69,7 @@
     "postcss-mixins": "8.1.0",
     "postcss-nested": "5.0.6",
     "postcss-preset-env": "6.7.0",
+    "postcss-pxtorem": "6.0.0",
     "postcss-simple-vars": "6.0.3",
     "simple-git-hooks": "2.6.1",
     "start-server-and-test": "1.14.0",
