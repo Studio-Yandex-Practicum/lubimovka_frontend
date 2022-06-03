@@ -16,7 +16,7 @@
   display: block;
 
   &:not(:last-child) {
-    margin-right: calc(var(--scale) * 40);
+    margin-right: 40px;
   }
 }
 

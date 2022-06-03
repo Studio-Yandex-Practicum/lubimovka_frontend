@@ -1,4 +1,4 @@
-$gap-tablet-portrait: scale(60px);
+$gap-tablet-portrait: 60px;
 $column-count-tablet-portrait: 4;
 
 :export {

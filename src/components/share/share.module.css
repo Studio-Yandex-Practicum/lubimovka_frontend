@@ -4,7 +4,7 @@
 
   .links {
     position: relative;
-    top: calc(-1 * scale(22px));
+    top: calc(-1 * 22px);
     display: inline-flex;
   }
 }
@@ -22,7 +22,7 @@
   .innerContainer {
     @media (max-width: $tablet-portrait) {
       display: flex;
-      min-height: scale(48px);
+      min-height: 48px;
       flex-wrap: wrap;
       align-items: flex-end;
     }
@@ -41,7 +41,7 @@
   .links {
     @media (max-width: $tablet-portrait) {
       top: 0;
-      right: scale(4px);
+      right: 4px;
     }
   }
 }

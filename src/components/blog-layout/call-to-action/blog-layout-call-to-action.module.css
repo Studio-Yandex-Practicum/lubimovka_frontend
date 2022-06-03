@@ -1,6 +1,6 @@
 .root {
-  max-width: scale(320px);
-  padding-left: scale(25px);
-  margin-top: scale(32px);
+  max-width: 320px;
+  padding-left: 25px;
+  margin-top: 32px;
   grid-area: call-to-action;
 }

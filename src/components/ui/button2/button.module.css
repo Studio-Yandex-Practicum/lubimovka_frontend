@@ -34,8 +34,8 @@ $border-width: 1px;
 
 .icon {
   display: block;
-  width: scale(20px);
-  height: scale(20px);
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
   font-size: 0;
   line-height: 0;
@@ -56,55 +56,55 @@ $border-width: 1px;
 
 .s {
   composes: common;
-  padding: scale(10px 8px);
+  padding: 10px 8px;
 
   .icon-left:not(:only-child) {
-    margin-right: scale(8px);
+    margin-right: 8px;
   }
 
   .icon-right:not(:only-child) {
-    margin-left: scale(8px);
+    margin-left: 8px;
   }
 
   .text {
-    font-size: scale(16px);
-    line-height: scale(20px);
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 
 .m {
   composes: common;
-  padding: scale(8px);
+  padding: 8px;
 
   .icon-left:not(:only-child) {
-    margin-right: scale(8px);
+    margin-right: 8px;
   }
 
   .icon-right:not(:only-child) {
-    margin-left: scale(8px);
+    margin-left: 8px;
   }
 
   .text {
-    font-size: scale(20px);
-    line-height: scale(28px);
+    font-size: 20px;
+    line-height: 28px;
   }
 }
 
 .l {
   composes: common;
-  padding: scale(16px);
+  padding: 16px;
 
   .icon-left:not(:only-child) {
-    margin-right: scale(16px);
+    margin-right: 16px;
   }
 
   .icon-right:not(:only-child) {
-    margin-left: scale(16px);
+    margin-left: 16px;
   }
 
   .text {
-    font-size: scale(16px);
-    line-height: scale(22px);
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 

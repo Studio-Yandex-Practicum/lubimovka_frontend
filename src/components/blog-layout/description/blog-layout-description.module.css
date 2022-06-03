@@ -3,27 +3,27 @@
   @mixin textLarge;
 
   position: relative;
-  max-width: scale(500px);
-  padding-left: scale(25px);
-  margin-top: scale(8px);
+  max-width: 500px;
+  padding-left: 25px;
+  margin-top: 8px;
   grid-area: description;
 
   @media (max-width: $tablet-portrait) {
     @mixin textSmall;
 
     max-width: initial;
-    padding-top: scale(25px);
-    padding-left: scale(32px);
-    margin-top: scale(24px);
+    padding-top: 25px;
+    padding-left: 32px;
+    margin-top: 24px;
   }
 
   &::before {
     position: absolute;
-    top: scale(-25px);
+    top: -25px;
     left: 0;
     display: block;
-    width: scale(25px);
-    height: scale(25px);
+    width: 25px;
+    height: 25px;
     background-color: var(--coal);
     content: '';
     mask: url('../../../shared/icons/asterisk.svg') no-repeat 100% 100%;

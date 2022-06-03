@@ -3,32 +3,32 @@
 
   @media (max-width: $tablet-portrait) {
     box-sizing: border-box;
-    padding: scale(32px 14px 32px 24px);
+    padding: 32px 14px 32px 24px;
     border-top: var(--coal) solid 1px;
   }
 }
 
 .image {
   position: relative;
-  width: scale(120px);
-  height: scale(160px);
-  margin-right: scale(30px);
+  width: 120px;
+  height: 160px;
+  margin-right: 30px;
   object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
-    width: scale(92px);
-    height: scale(124px);
+    width: 92px;
+    height: 124px;
   }
 }
 
 .info {
   display: flex;
-  max-width: scale(269px);
+  max-width: 269px;
   flex-direction: column;
   justify-content: space-evenly;
 
   @media (max-width: $tablet-portrait) {
-    max-width: scale(243px);
+    max-width: 243px;
   }
 }
 
@@ -38,16 +38,16 @@
 
   display: flex;
   flex-direction: row;
-  margin-bottom: scale(16px);
+  margin-bottom: 16px;
 }
 
 .date {
   padding: 0;
   margin: 0;
-  margin-right: scale(42px);
+  margin-right: 42px;
 
   @media (max-width: $tablet-portrait) {
-    margin-right: scale(46px);
+    margin-right: 46px;
   }
 }
 
@@ -55,14 +55,14 @@
   @mixin headline;
   @mixin headline5;
 
-  max-width: scale(419px);
-  margin-bottom: scale(16px);
+  max-width: 419px;
+  margin-bottom: 16px;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    max-width: scale(243px);
-    margin-bottom: scale(8px);
+    max-width: 243px;
+    margin-bottom: 8px;
   }
 }
 
@@ -70,11 +70,11 @@
   @mixin text;
   @mixin textSmall;
 
-  margin-bottom: scale(20px);
-  margin-left: scale(30px);
+  margin-bottom: 20px;
+  margin-left: 30px;
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: scale(8px);
+    margin-bottom: 8px;
     margin-left: 0;
   }
 }
@@ -83,7 +83,7 @@
   @mixin text;
   @mixin textSmall;
 
-  margin-bottom: scale(16px);
+  margin-bottom: 16px;
 
   p {
     margin: 0;
@@ -92,10 +92,10 @@
 
 .action {
   &:not(:last-child) {
-    margin-bottom: scale(16px);
+    margin-bottom: 16px;
 
     @media (max-width: $tablet-portrait) {
-      margin-right: scale(26px);
+      margin-right: 26px;
       margin-bottom: 0;
     }
   }

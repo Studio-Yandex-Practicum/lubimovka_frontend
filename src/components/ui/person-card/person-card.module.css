@@ -4,35 +4,35 @@
 }
 
 .containerVolunteer {
-  width: scale(180px);
+  width: 180px;
 
   @media (max-width: $tablet-portrait) {
-    width: scale(213px);
+    width: 213px;
   }
 }
 
 .containerParticipant {
-  width: scale(210px);
+  width: 210px;
 
   @media (max-width: $tablet-portrait) {
-    width: scale(213px);
+    width: 213px;
   }
 }
 
 .imgVolunteer {
   position: relative;
   width: 100%;
-  height: scale(228px);
+  height: 228px;
 
   @media (max-width: $tablet-portrait) {
-    height: scale(265px);
+    height: 265px;
   }
 }
 
 .imgParticipant {
   position: relative;
   width: 100%;
-  height: scale(265px);
+  height: 265px;
 }
 
 .defaultImage {
@@ -48,15 +48,15 @@
 
 .comment {
   position: absolute;
-  top: scale(170px);
-  left: scale(14px);
+  top: 170px;
+  left: 14px;
   display: flex;
-  width: scale(45px);
-  height: scale(45px);
+  width: 45px;
+  height: 45px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: scale(10px);
+  padding: 10px;
   border: 0;
   background-color: var(--beige);
   border-radius: 50%;
@@ -64,8 +64,8 @@
   transition: padding 400ms cubic-bezier(.6, 0, .5, 1), width 400ms cubic-bezier(.6, 0, .5, 1), height 400ms cubic-bezier(.6, 0, .5, 1), top 400ms cubic-bezier(.6, 0, .5, 1), left 400ms cubic-bezier(.6, 0, .5, 1);
 
   @media (max-width: $tablet-portrait) {
-    top: scale(208px);
-    left: scale(16px);
+    top: 208px;
+    left: 16px;
   }
 }
 
@@ -74,15 +74,15 @@
 }
 
 .comment:hover {
-  top: scale(165px);
-  left: scale(9px);
-  width: scale(55px);
-  height: scale(55px);
-  padding: scale(15px);
+  top: 165px;
+  left: 9px;
+  width: 55px;
+  height: 55px;
+  padding: 15px;
 
   @media (max-width: $tablet-portrait) {
-    top: scale(203px);
-    left: scale(11px);
+    top: 203px;
+    left: 11px;
   }
 }
 
@@ -91,7 +91,7 @@
 
   display: -webkit-box;
   overflow: hidden;
-  margin-top: scale(16px);
+  margin-top: 16px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow-wrap: break-word;
@@ -116,8 +116,8 @@
 
   display: -webkit-box;
   overflow: hidden;
-  margin-top: scale(8px);
-  margin-left: scale(33px);
+  margin-top: 8px;
+  margin-left: 33px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
   overflow-wrap: break-word;

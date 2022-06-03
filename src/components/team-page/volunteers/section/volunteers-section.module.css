@@ -19,7 +19,7 @@
   margin: 0 auto;
 
   @media (max-width: $tablet-portrait) {
-    padding-left: scale(27px);
+    padding-left: 27px;
   }
 }
 
@@ -27,22 +27,22 @@
   @mixin headline;
   @mixin headline2;
 
-  padding: scale(125px) 0 0 50%;
+  padding: 125px 0 0 50%;
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    padding: scale(56px) 0 0;
+    padding: 56px 0 0;
   }
 }
 
 .yearsContainer {
-  padding-top: scale(46.5px);
+  padding-top: 46.5px;
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(36.5px) 0 0;
+    padding: 36.5px 0 0;
   }
 }
 
@@ -50,12 +50,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-bottom: scale(149px);
-  margin: scale(69px 0 0 213px);
+  padding-bottom: 149px;
+  margin: 69px 0 0 213px;
 
   @media (max-width: $tablet-portrait) {
-    padding-bottom: scale(150px);
-    margin: scale(69px 22px 0 0);
+    padding-bottom: 150px;
+    margin: 69px 22px 0 0;
   }
 }
 
@@ -67,10 +67,10 @@
   @mixin text;
   @mixin textLarge;
 
-  max-width: scale(426px);
+  max-width: 426px;
   margin-left: 25px;
 }
 
 .indent {
-  margin: 0 scale(5px);
+  margin: 0 5px;
 }

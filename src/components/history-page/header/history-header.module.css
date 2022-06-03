@@ -12,12 +12,12 @@
 }
 
 .yearsContainer {
-  padding-top: scale(31px);
-  padding-bottom: scale(25px);
+  padding-top: 31px;
+  padding-bottom: 25px;
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
-    padding-top: scale(22px);
-    padding-left: scale(24px);
+    padding-top: 22px;
+    padding-left: 24px;
   }
 }

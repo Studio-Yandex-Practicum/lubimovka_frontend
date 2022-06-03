@@ -7,39 +7,39 @@
   @mixin headline6;
 
   box-sizing: border-box;
-  padding: scale(20px 480px 20px 50px);
+  padding: 20px 480px 20px 50px;
   background-color: var(--beige);
 
   @media (max-width: $tablet-portrait) {
     width: auto;
-    padding: scale(16px 16px 16px) 0;
+    padding: 16px 16px 16px 0;
   }
 }
 
 .container {
   display: grid;
-  grid-template-columns: 1fr scale(486px);
+  grid-template-columns: 1fr 486px;
 
   @media (max-width: $tablet-portrait) {
     display: grid;
     grid-template-columns: 1fr;
 
     @media (max-width: $tablet-portrait) {
-      padding-bottom: scale(24px);
+      padding-bottom: 24px;
     }
   }
 }
 
 .item:last-of-type .container {
-  padding-bottom: scale(56px);
+  padding-bottom: 56px;
 
   @media (max-width: $tablet-portrait) {
-    padding-bottom: scale(48px);
+    padding-bottom: 48px;
   }
 }
 
 .content {
-  padding-left: scale(50px);
+  padding-left: 50px;
 
   @media (max-width: $tablet-portrait) {
     padding-left: 0;
@@ -51,23 +51,23 @@
   @mixin textLarge;
   @mixin limitText;
 
-  max-width: scale(384px);
-  margin: 0 0 scale(24px 62px);
+  max-width: 384px;
+  margin: 0 0 24px 62px;
   -webkit-line-clamp: 15;
 
   @media (max-width: $tablet-portrait) {
     @mixin textMedium;
 
     margin: 0;
-    margin-bottom: scale(28px);
+    margin-bottom: 28px;
   }
 }
 
 .button {
-  margin-bottom: scale(20px);
+  margin-bottom: 20px;
 
   @media (max-width: $tablet-portrait) {
-    margin: 0 scale(20px 16px) auto;
+    margin: 0 20px 16px auto;
   }
 }
 

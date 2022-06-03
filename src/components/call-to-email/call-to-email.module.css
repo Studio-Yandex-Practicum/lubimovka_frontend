@@ -19,33 +19,33 @@
   .title {
     @mixin headline4;
 
-    margin-bottom: scale(16px);
+    margin-bottom: 16px;
   }
 
   .description {
     @mixin text;
     @mixin textLarge;
 
-    max-width: scale(390px);
-    margin-left: scale(60px);
+    max-width: 390px;
+    margin-left: 60px;
   }
 
   .call-to-action {
     @mixin headline;
     @mixin headline6;
 
-    margin-top: scale(24px);
+    margin-top: 24px;
   }
 }
 
 .author {
-  padding-left: scale(25px);
+  padding-left: 25px;
 
   .asterisk {
     display: flex;
-    width: scale(25px);
-    height: scale(25px);
-    transform: translateX(scale(-25px));
+    width: 25px;
+    height: 25px;
+    transform: translateX(-25px);
   }
 
   .description,

@@ -15,7 +15,7 @@
 }
 
 .headline {
-  min-height: calc(100vh - var(--head-banner-height-tablet-portrait) - var(--scale) * var(--page-navbar-extended-height));
+  min-height: calc(100vh - var(--head-banner-height-tablet-portrait) - var(--page-navbar-extended-height));
   grid-area: headline;
 
   @media (max-width: $tablet-portrait) {

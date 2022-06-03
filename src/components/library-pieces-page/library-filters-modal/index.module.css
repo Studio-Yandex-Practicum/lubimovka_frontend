@@ -7,7 +7,7 @@
   height: 100%;
   box-sizing: border-box;
   flex-direction: column;
-  padding: scale(103px) scale(24px) scale(56px);
+  padding: 103px 24px 56px;
   background-color: var(--beige);
   opacity: 0;
   transition: visibility .5s, opacity .5s linear;

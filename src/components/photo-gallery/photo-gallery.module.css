@@ -7,7 +7,7 @@
   grid-template-columns: repeat(4, 1fr);
 
   @media screen and (max-width: $tablet-portrait) {
-    gap: scale(2px 3px);
+    gap: 2px 3px;
     grid-template-columns: repeat(2, 1fr);
   }
 }

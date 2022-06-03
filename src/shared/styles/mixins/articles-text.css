@@ -1,21 +1,21 @@
 @define-mixin articlesText {
-  margin: scale(0 0 16px);
+  margin: 0 0 16px;
   color: var(--coal);
   font-family: 'Formular', Arial, sans-serif;
   font-feature-settings: 'ss01' on;
-  font-size: scale(20px);
+  font-size: 20px;
   font-style: normal;
   font-weight: 300;
   letter-spacing: -.01em;
-  line-height: scale(28px);
-  text-indent: scale(60px);
+  line-height: 28px;
+  text-indent: 60px;
 
   &:last-of-type {
     margin-bottom: 0;
   }
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: scale(37px);
-    text-indent: scale(23px);
+    margin-bottom: 37px;
+    text-indent: 23px;
   }
 }

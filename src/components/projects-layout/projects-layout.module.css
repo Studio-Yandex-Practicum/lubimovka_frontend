@@ -1,8 +1,8 @@
 .layout {
   box-sizing: border-box;
-  padding-bottom: scale(234px);
+  padding-bottom: 234px;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(0 24px 100px);
+    padding: 0 24px 100px;
   }
 }

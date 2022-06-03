@@ -1,9 +1,9 @@
 .contacts {
-  padding: scale(72px 170px 164px 150px);
+  padding: 72px 170px 164px 150px;
   background-color: var(--white);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(56px 24px 72px);
+    padding: 56px 24px 72px;
   }
 }
 
@@ -11,13 +11,13 @@
   @mixin headline;
   @mixin headline5;
 
-  max-width: scale(485px);
-  margin-bottom: scale(36px);
+  max-width: 485px;
+  margin-bottom: 36px;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    margin-bottom: scale(34px);
+    margin-bottom: 34px;
   }
 }
 
@@ -26,7 +26,7 @@
   @mixin headline6;
 
   display: flex;
-  max-width: scale(610px);
+  max-width: 610px;
   margin-left: auto;
 
   @media (max-width: $tablet-portrait) {
@@ -35,13 +35,13 @@
 }
 
 .asterisk {
-  width: scale(25px);
-  height: scale(25px);
-  margin-right: scale(2px);
-  transform: translateY(scale(-10px));
+  width: 25px;
+  height: 25px;
+  margin-right: 2px;
+  transform: translateY(-10px);
 
   @media (max-width: $tablet-portrait) {
-    margin-right: scale(6px);
+    margin-right: 6px;
   }
 }
 
@@ -51,14 +51,14 @@
   text-decoration-line: underline;
 
   > svg {
-    width: calc(var(--scale) * 25);
-    height: calc(var(--scale) * 25);
+    width: 25px;
+    height: 25px;
   }
 
   @media (max-width: $tablet-portrait) {
     > svg {
-      width: calc(var(--scale) * 20);
-      height: calc(var(--scale) * 20);
+      width: 20px;
+      height: 20px;
     }
   }
 }

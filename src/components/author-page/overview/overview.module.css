@@ -44,43 +44,43 @@
 }
 
 .button {
-  margin: calc(var(--scale) * 30);
+  margin: 30px;
   grid-area: button;
 
   @media (max-width: $tablet-portrait) {
     position: absolute;
-    top: calc(var(--scale) * 7);
-    left: calc(var(--scale) * 60);
+    top: 7px;
+    left: 60px;
   }
 
   @media (max-width: 500px) {
-    top: calc(var(--scale) * 3);
-    left: calc(var(--scale) * 50);
+    top: 3px;
+    left: 50px;
   }
 
   @media (max-width: 370px) {
-    top: calc(var(--scale) * -3);
-    left: calc(var(--scale) * 50);
+    top: -3px;
+    left: 50px;
   }
 }
 
 .photoBox {
   position: relative;
   overflow: hidden;
-  width: calc(var(--scale) * 275);
-  height: calc(var(--scale) * 355);
+  width: 275px;
+  height: 355px;
   grid-area: photo;
   justify-self: center;
 
   @media (max-width: $tablet-portrait) {
-    margin: 0 0 0 calc(var(--scale) * 30);
+    margin: 0 0 0 30px;
     justify-self: start;
   }
 
   @media (max-width: 600px) {
-    width: calc(var(--scale) * 183);
-    height: calc(var(--scale) * 236);
-    margin: 0 0 0 calc(var(--scale) * 24);
+    width: 183px;
+    height: 236px;
+    margin: 0 0 0 24px;
   }
 }
 
@@ -99,14 +99,14 @@
   @mixin headline3;
 
   width: 100%;
-  max-width: calc(var(--scale) * 300);
-  margin: calc(var(--scale) * 55) 0 calc(var(--scale) * 10) calc(var(--scale) * 30);
+  max-width: 300px;
+  margin: 55px 0 10px 30px;
   grid-area: fullName;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    margin: calc(var(--scale) * 16) 0 calc(var(--scale) * 14) calc(var(--scale) * 20);
+    margin: 16px 0 14px 20px;
   }
 }
 
@@ -114,13 +114,13 @@
   @mixin text;
   @mixin textMedium;
 
-  padding: 0 calc(var(--scale) * 40) 0;
-  margin: 0 0 calc(var(--scale) * 56);
+  padding: 0 40px 0;
+  margin: 0 0 56px;
   grid-area: city;
 
   @media (max-width: $tablet-portrait) {
     padding: 0;
-    margin: 0 0 0 calc(var(--scale) * 20);
+    margin: 0 0 0 20px;
   }
 }
 
@@ -130,13 +130,13 @@
 
   display: flex;
   flex-direction: inherit;
-  padding: 0 calc(var(--scale) * 20) 0 0;
+  padding: 0 20px 0 0;
   grid-area: quote;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline7;
 
-    margin: calc(var(--scale) * 28) calc(var(--scale) * 20) calc(var(--scale) * 72) calc(var(--scale) * 60);
+    margin: 28px 20px 72px 60px;
     justify-self: start;
   }
 }
@@ -146,8 +146,8 @@
   @mixin headline6;
 
   width: 100%;
-  max-width: calc(var(--scale) * 600);
-  margin: 0 calc(var(--scale) * 10);
+  max-width: 600px;
+  margin: 0 10px;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline7;
@@ -156,7 +156,7 @@
 
 .overviewInfo {
   display: grid;
-  padding: calc(var(--scale) * 77) 0 0;
+  padding: 77px 0 0;
   gap: 1rem;
   grid-template-columns: 2fr 5fr 7fr;
   grid-template-rows: auto;
@@ -165,14 +165,14 @@
   @media (max-width: $tablet-portrait) {
     display: flex;
     flex-direction: column-reverse;
-    padding: calc(var(--scale) * 77) 0 0;
+    padding: 77px 0 0;
     justify-items: start;
   }
 }
 
 .descriptionSet {
   @media (max-width: $tablet-portrait) {
-    padding: 0 calc(var(--scale) * 25) calc(var(--scale) * 60);
+    padding: 0 25px 60px;
   }
 }
 
@@ -194,26 +194,26 @@
   @mixin textLarge;
 
   overflow: hidden;
-  max-width: calc(var(--scale) * 479);
+  max-width: 479px;
   max-height: 100%;
-  margin: 0 0 calc(var(--scale) * 30);
+  margin: 0 0 30px;
   white-space: pre-wrap;
 
   @media (max-width: $tablet-portrait) {
-    padding: calc(var(--scale) * 56) 0 0 0;
+    padding: 56px 0 0 0;
   }
 }
 
 .descriptionExpanded {
-  max-height: calc(var(--scale) * 200);
+  max-height: 200px;
 }
 
 .authorLinks {
-  max-width: calc(var(--scale) * 479);
-  padding: calc(var(--scale) * 80) 0 0;
+  max-width: 479px;
+  padding: 80px 0 0;
 
   @media (max-width: $tablet-portrait) {
-    padding: 0 calc(var(--scale) * 25) calc(var(--scale) * 70);
+    padding: 0 25px 70px;
   }
 }
 
@@ -225,27 +225,27 @@
 }
 
 .link {
-  min-width: calc(var(--scale) * 25);
+  min-width: 25px;
 }
 
 .overviewContacts {
-  max-width: calc(var(--scale) * 610);
+  max-width: 610px;
 }
 
 .overviewSet {
   display: block;
   width: 100%;
-  max-width: calc(var(--scale) * 500);
+  max-width: 500px;
   margin: 0;
   justify-self: center;
 
   @media (max-width: 1130px) {
-    max-width: calc(var(--scale) * 400);
+    max-width: 400px;
   }
 
   @media (max-width: $tablet-portrait) {
-    max-width: calc(var(--scale) * 300);
-    padding: 0 calc(var(--scale) * 25) calc(var(--scale) * 100) calc(var(--scale) * 25);
+    max-width: 300px;
+    padding: 0 25px 100px 25px;
     grid-column: auto;
     grid-row: 1/2;
     justify-self: center;
@@ -259,7 +259,7 @@
 .overviewSocialWrapper {
   display: grid;
   justify-content: start;
-  margin: 0 0 calc(var(--scale) * 53);
+  margin: 0 0 53px;
 
   &:last-of-type {
     margin: 0;
@@ -267,7 +267,7 @@
 }
 
 .overviewTagsBlock {
-  margin: 0 0 calc(var(--scale) * 53);
+  margin: 0 0 53px;
 }
 
 .overviewSocialLinkBlock {
@@ -276,28 +276,28 @@
 
 .overviewSocialLink {
   display: inline-block;
-  margin: 0 calc(var(--scale) * 8) calc(var(--scale) * 8) 0;
+  margin: 0 8px 8px 0;
 }
 
 .overviewSocialLinkHeading {
   @mixin headline;
   @mixin headline7;
 
-  margin: 0 0 calc(var(--scale) * 20);
+  margin: 0 0 20px;
 }
 
 .email {
   @mixin headline;
   @mixin headline7;
 
-  margin: calc(var(--scale) * 6) 0;
+  margin: 6px 0;
 }
 
 .overviewTagsHeading {
   @mixin headline;
   @mixin headline7;
 
-  margin: 0 0 calc(var(--scale) * 15);
+  margin: 0 0 15px;
 }
 
 .tagWrapper {
@@ -306,5 +306,5 @@
 
 .tag {
   display: inline-block;
-  margin: 0 calc(var(--scale) * 8) calc(var(--scale) * 8) 0;
+  margin: 0 8px 8px 0;
 }

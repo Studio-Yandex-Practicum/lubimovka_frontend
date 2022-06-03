@@ -6,9 +6,9 @@
 }
 
 .persons {
-  margin-left: scale(30px);
+  margin-left: 30px;
 
   &:not(:last-child) {
-    margin-bottom: scale(32px);
+    margin-bottom: 32px;
   }
 }

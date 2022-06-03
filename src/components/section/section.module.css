@@ -6,13 +6,13 @@
   @mixin headline;
   @mixin headline4;
 
-  max-width: scale(716px);
-  margin: 0 auto scale(48px);
+  max-width: 716px;
+  margin: 0 auto 48px;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    max-width: scale(366px);
+    max-width: 366px;
   }
 }
 
@@ -20,12 +20,12 @@
   composes: common;
 
   .title {
-    max-width: scale(450px);
-    margin: 0 auto scale(48px) scale(300px);
+    max-width: 450px;
+    margin: 0 auto 48px 300px;
 
     @media (max-width: $tablet-portrait) {
-      max-width: scale(366px);
-      margin: 0 auto scale(22px) scale(24px);
+      max-width: 366px;
+      margin: 0 auto 22px 24px;
     }
   }
 }
@@ -34,30 +34,30 @@
   composes: common;
 
   .title {
-    max-width: scale(450px);
-    margin: 0 auto scale(58px) scale(300px);
+    max-width: 450px;
+    margin: 0 auto 58px 300px;
 
     @media (max-width: $tablet-portrait) {
-      max-width: scale(366px);
-      margin: 0 auto scale(24px) scale(24px);
+      max-width: 366px;
+      margin: 0 auto 24px 24px;
     }
   }
 }
 
 .partners {
   composes: common;
-  padding: scale(100px 60px 30px);
+  padding: 100px 60px 30px;
 
   .title {
     @mixin headline;
     @mixin headline6;
 
-    max-width: scale(334px);
-    margin-bottom: scale(16px);
+    max-width: 334px;
+    margin-bottom: 16px;
 
     @media (max-width: $tablet-portrait) {
-      max-width: scale(255px);
-      margin-bottom: scale(24px);
+      max-width: 255px;
+      margin-bottom: 24px;
     }
   }
 }
@@ -71,79 +71,79 @@
     @media (max-width: $tablet-portrait) {
       @mixin undo-visually-hidden;
 
-      max-width: scale(366px);
-      margin: scale(0 auto 32px);
+      max-width: 366px;
+      margin: 0 auto 32px;
     }
   }
 }
 
 .homepage-feed {
   composes: common;
-  padding: scale(60px 56px);
+  padding: 60px 56px;
 }
 
 .places {
   composes: common;
-  padding: scale(65px 60px 105px 60px);
+  padding: 65px 60px 105px 60px;
   background-color: white;
 
   .title {
     @mixin headline;
     @mixin headline2;
 
-    margin-bottom: scale(74px);
+    margin-bottom: 74px;
 
     @media (max-width: $tablet-portrait) {
       @mixin headline4;
 
-      margin-bottom: scale(40px);
+      margin-bottom: 40px;
     }
   }
 }
 
 .homepage-shortlist {
-  padding: scale(90px 60px 102px 60px);
+  padding: 90px 60px 102px 60px;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(40px 30px 40px 30px);
+    padding: 40px 30px 40px 30px;
   }
 
   .title {
     @mixin headline;
     @mixin headline2;
 
-    max-width: scale(682px);
-    margin-bottom: scale(50px);
+    max-width: 682px;
+    margin-bottom: 50px;
 
     @media (max-width: $tablet-portrait) {
       @mixin headline4;
 
-      margin-bottom: scale(24px);
+      margin-bottom: 24px;
     }
   }
 }
 
 .author-call-to-email {
-  padding: scale(90px 70px 114px 840px);
+  padding: 90px 70px 114px 840px;
   background-color: var(--beige);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(80px 24px);
+    padding: 80px 24px;
   }
 }
 
 .blog-entries {
-  padding: scale(0 90px);
+  padding: 0 90px;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(0 24px);
+    padding: 0 24px;
   }
 }
 
 .news {
-  padding: scale(0 90px);
+  padding: 0 90px;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(0 24px);
+    padding: 0 24px;
   }
 }

@@ -1,9 +1,9 @@
 .default-padding {
-  padding: scale(0 32px);
+  padding: 0 32px;
 }
 
 .root {
-  padding: scale(98px 0);
+  padding: 98px 0;
 }
 
 .section {
@@ -16,18 +16,18 @@
   @mixin headline;
   @mixin headline4;
 
-  max-width: scale(716px);
+  max-width: 716px;
   margin: 0 auto;
 }
 
 .html-markup {
   composes: section default-padding;
-  margin-bottom: scale(98px);
+  margin-bottom: 98px;
 }
 
 .events {
   composes: section default-padding;
-  margin-bottom: scale(94px);
+  margin-bottom: 94px;
 }
 
 .plays,
@@ -37,53 +37,53 @@
 }
 
 .persons {
-  margin-bottom: scale(112px);
+  margin-bottom: 112px;
 
   .title {
-    margin-bottom: scale(58px);
+    margin-bottom: 58px;
   }
 }
 
 .plays {
-  margin-bottom: scale(124px);
+  margin-bottom: 124px;
 
   .title {
-    margin-bottom: scale(48px);
+    margin-bottom: 48px;
   }
 }
 
 .videos {
-  margin-bottom: scale(144px);
+  margin-bottom: 144px;
 
   .title {
-    margin-bottom: scale(44px);
+    margin-bottom: 44px;
   }
 }
 
 .photo-gallery {
   composes: section;
-  margin-bottom: scale(122px);
+  margin-bottom: 122px;
 
   .title {
-    margin-bottom: scale(42px);
+    margin-bottom: 42px;
   }
 }
 
 .link {
   composes: section;
-  padding: scale(70px 270px 140px 362px);
-  margin-bottom: scale(74px);
+  padding: 70px 270px 140px 362px;
+  margin-bottom: 74px;
   background-color: var(--light-green);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(56px 26px 72px);
+    padding: 56px 26px 72px;
   }
 
   .title {
-    margin-bottom: scale(20px);
+    margin-bottom: 20px;
 
     @media (max-width: $tablet-portrait) {
-      margin-bottom: scale(16px);
+      margin-bottom: 16px;
     }
   }
 }
@@ -94,7 +94,7 @@
   p,
   ul,
   ol {
-    max-width: scale(716px);
+    max-width: 716px;
     margin-right: auto;
     margin-left: auto;
   }

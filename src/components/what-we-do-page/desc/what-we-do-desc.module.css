@@ -1,46 +1,46 @@
 .descItem {
-  padding: scale(92px 24px 170px) 0;
+  padding: 92px 24px 170px 0;
   background-color: var(--beige);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(56px 24px 72px) 0;
+    padding: 56px 24px 72px 0;
   }
 }
 
 .content {
   display: grid;
-  column-gap: scale(90px);
-  row-gap: scale(24px);
+  column-gap: 90px;
+  row-gap: 24px;
 
   @media (max-width: $tablet-portrait) {
-    grid-template-columns: repeat(auto-fit, minmax(scale(274px), max-content));
+    grid-template-columns: repeat(auto-fit, minmax(274px, max-content));
   }
 }
 
 .acceptance {
-  margin: 0 0 scale(190px 120px);
-  grid-template-columns: scale(600px 450px);
+  margin: 0 0 190px 120px;
+  grid-template-columns: 600px 450px;
 
   @media (max-width: $tablet-portrait) {
-    margin: 0 0 scale(72px 24px);
+    margin: 0 0 72px 24px;
     grid-template-columns: 1fr;
   }
 }
 
 .container {
-  max-width: scale(600px);
+  max-width: 600px;
 }
 
 .mainTitle {
   @mixin headline;
   @mixin headline3;
 
-  margin-bottom: scale(76px);
+  margin-bottom: 76px;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    margin-bottom: scale(24px);
+    margin-bottom: 24px;
   }
 }
 
@@ -48,7 +48,7 @@
   @mixin headline;
   @mixin headline5;
 
-  margin-bottom: scale(24px);
+  margin-bottom: 24px;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
@@ -65,40 +65,40 @@
 }
 
 .selected {
-  margin-bottom: scale(140px);
-  grid-template-columns: scale(630px 600px);
+  margin-bottom: 140px;
+  grid-template-columns: 630px 600px;
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: scale(72px);
+    margin-bottom: 72px;
     grid-template-columns: 1fr;
   }
 }
 
 .containerSelected {
-  margin-top: scale(20px);
+  margin-top: 20px;
 
   @media (max-width: $tablet-portrait) {
     margin-top: 0;
-    margin-left: scale(24px);
+    margin-left: 24px;
     grid-row-start: 1;
   }
 }
 
 .containerInvite {
-  margin-left: scale(210px);
+  margin-left: 210px;
 
   @media (max-width: $tablet-portrait) {
-    margin-left: scale(24px);
+    margin-left: 24px;
   }
 }
 
 @media (max-width: $tablet-portrait) {
   .titleWidth {
-    max-width: scale(330px);
+    max-width: 330px;
   }
 
   .containerImg {
-    padding-left: scale(92px);
+    padding-left: 92px;
   }
 
   .imgSelected {

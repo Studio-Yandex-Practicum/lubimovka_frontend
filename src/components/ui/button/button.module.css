@@ -57,7 +57,7 @@
 
   align-items: center;
   justify-content: space-between;
-  padding: scale(16px 16px 18px 16px);
+  padding: 16px 16px 18px 16px;
 }
 
 .secondary {
@@ -69,43 +69,43 @@
 }
 
 .left.button.l {
-  padding-left: scale(16px);
+  padding-left: 16px;
 }
 
 .topLeft {
-  padding: scale(8px 9px 8px 12px);
+  padding: 8px 9px 8px 12px;
   border-top: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
 }
 
 .topLeft.addon {
-  padding: scale(0 0 6px 9px);
+  padding: 0 0 6px 9px;
 }
 
 .topLeft.addon .label,
 .topRight.addon .label {
-  padding-top: scale(5px);
+  padding-top: 5px;
 }
 
 .topRight {
-  padding: scale(8px 9px 8px 12px);
+  padding: 8px 9px 8px 12px;
   border-top: 1px solid var(--coal);
   border-right: 1px solid var(--coal);
 }
 
 .topRight.addon {
-  padding: scale(0 0 6px 9px);
+  padding: 0 0 6px 9px;
 }
 
 .bottomLeft {
-  padding: scale(7px 12px 9px 9px);
+  padding: 7px 12px 9px 9px;
   border-bottom: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
 }
 
 .bottomLeft.addon {
   @media (max-width: 1440px) {
-    padding: scale(3px 4px 2px 8px);
+    padding: 3px 4px 2px 8px;
   }
 }
 
@@ -115,13 +115,13 @@
 }
 
 .bottomRight {
-  padding: scale(7px 10px 9px 10px);
+  padding: 7px 10px 9px 10px;
   border-right: 1px solid var(--coal);
   border-bottom: 1px solid var(--coal);
 }
 
 .bottomRight.addon {
-  padding: scale(2px 0 4px 10px);
+  padding: 2px 0 4px 10px;
 }
 
 .top {
@@ -133,7 +133,7 @@
 }
 
 .none {
-  padding: scale(4px 4px 7px 4px);
+  padding: 4px 4px 7px 4px;
   border: 0;
 }
 

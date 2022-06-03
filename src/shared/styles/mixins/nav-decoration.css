@@ -2,15 +2,15 @@
   &::before,
   &::after {
     display: block;
-    width: scale(10px);
-    height: scale(24px);
+    width: 10px;
+    height: 24px;
     box-sizing: border-box;
     border: 1px solid currentColor;
     content: '';
 
     @media (max-width: $tablet-portrait) {
-      width: scale(12px);
-      height: scale(38px);
+      width: 12px;
+      height: 38px;
     }
   }
 

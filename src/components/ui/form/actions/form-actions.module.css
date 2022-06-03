@@ -1,6 +1,6 @@
 .actions {
-  margin-top: scale(24px);
-  margin-left: scale(61px);
+  margin-top: 24px;
+  margin-left: 61px;
 
   @media (max-width: $tablet-portrait) {
     margin-left: 0;

@@ -1,10 +1,10 @@
 @import '../performance-layout.vars.module.css';
 
 .gallery {
-  margin: scale(0 -$page-padding-tablet-portrait 146px);
+  margin: 0 -$page-padding-tablet-portrait 146px;
   grid-area: gallery;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(0 -$page-padding-smartphone 105px);
+    margin: 0 -$page-padding-smartphone 105px;
   }
 }

@@ -2,15 +2,15 @@
   @mixin headline;
   @mixin headline3;
 
-  max-width: scale(570px);
-  margin-top: scale(18px);
+  max-width: 570px;
+  margin-top: 18px;
   grid-area: title;
   word-break: break-word;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    max-width: scale(366px);
+    max-width: 366px;
   }
 }
 
@@ -18,17 +18,17 @@
   @mixin headline;
   @mixin headline6;
 
-  max-width: scale(480px);
-  margin-top: scale(22px);
-  margin-left: scale(60px);
+  max-width: 480px;
+  margin-top: 22px;
+  margin-left: 60px;
   grid-area: description;
   word-break: break-word;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline7;
 
-    max-width: scale(305px);
-    margin-top: scale(22px);
+    max-width: 305px;
+    margin-top: 22px;
   }
 }
 
@@ -41,8 +41,8 @@
   justify-self: center;
 
   @media (max-width: $tablet-portrait) {
-    padding-top: scale(24px);
-    padding-left: scale(60px);
+    padding-top: 24px;
+    padding-left: 60px;
     justify-self: start;
   }
 }
@@ -53,23 +53,23 @@
   justify-self: center;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(24px 0 75px 60px) !important;
+    margin: 24px 0 75px 60px !important;
     justify-self: start;
   }
 }
 
 .cover {
   position: relative;
-  width: scale(690px);
-  height: scale(421px);
-  margin-top: scale(30px);
+  width: 690px;
+  height: 421px;
+  margin-top: 30px;
   grid-area: cover;
 
   @media (max-width: $tablet-portrait) {
-    width: scale(357px);
-    height: scale(218px);
-    margin-top: scale(40px);
-    margin-left: scale(30px);
+    width: 357px;
+    height: 218px;
+    margin-top: 40px;
+    margin-left: 30px;
     justify-self: end;
   }
 }
@@ -77,8 +77,8 @@
 .common {
   display: grid;
   box-sizing: border-box;
-  padding-left: scale(150px);
-  grid-column-gap: scale(30px);
+  padding-left: 150px;
+  grid-column-gap: 30px;
   grid-template-areas:
     'title       title       .'
     'description description cover'
@@ -86,7 +86,7 @@
   grid-template-columns: 1fr 1fr min-content;
 
   @media (max-width: $tablet-portrait) {
-    padding-left: scale(24px);
+    padding-left: 24px;
     grid-column-gap: 0;
     grid-template-areas:
       'cover'
@@ -106,11 +106,11 @@
   composes: common;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(32px 0 75px 24px);
+    padding: 32px 0 75px 24px;
   }
 
   .date {
-    padding-left: scale(60px);
+    padding-left: 60px;
     justify-self: start;
   }
 }

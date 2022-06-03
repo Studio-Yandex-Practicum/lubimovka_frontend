@@ -1,5 +1,12 @@
+html {
+  font-size: calc(100vw / 1440 * 16);
+
+  @media (max-width: $tablet-portrait) {
+    font-size: calc(100vw / 414 * 16);
+  }
+}
+
 body {
   margin: 0;
   background-color: var(--beige);
-  scroll-behavior: smooth;
 }

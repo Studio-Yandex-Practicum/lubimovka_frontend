@@ -1,27 +1,27 @@
 .wrapper {
-  padding: scale(0 32px);
+  padding: 0 32px;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(0 24px);
+    padding: 0 24px;
   }
 }
 
 .description {
-  padding: scale(80px 0 120px);
+  padding: 80px 0 120px;
   background-color: var(--light-green);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(56px 0 72px);
+    padding: 56px 0 72px;
   }
 
   .holder {
-    max-width: scale(716px);
+    max-width: 716px;
     margin: 0 auto;
   }
 }
 
 .videos {
-  margin-top: scale(98px);
+  margin-top: 98px;
 
   @media (max-width: $tablet-portrait) {
     padding-left: 0;
@@ -30,11 +30,11 @@
 
 .photos {
   padding: 0;
-  margin-top: scale(144px);
+  margin-top: 144px;
 }
 
 .plays {
-  margin-top: scale(94px);
+  margin-top: 94px;
 
   @media (max-width: $tablet-portrait) {
     padding: 0;
@@ -42,7 +42,7 @@
 }
 
 .performances {
-  margin-top: scale(124px);
+  margin-top: 124px;
 
   @media (max-width: $tablet-portrait) {
     padding: 0;
@@ -50,7 +50,7 @@
 }
 
 .persons {
-  margin-top: scale(124px);
+  margin-top: 124px;
 
   @media (max-width: $tablet-portrait) {
     padding: 0;
@@ -58,10 +58,10 @@
 }
 
 .text {
-  margin-top: scale(56px);
+  margin-top: 56px;
 
   .holder {
-    max-width: scale(716px);
+    max-width: 716px;
     margin: 0 auto;
   }
 }

@@ -1,6 +1,6 @@
 .root {
   display: grid;
-  padding: scale(60px 90px 200px);
+  padding: 60px 90px 200px;
   grid-template:
     ".              title"
     "description    filter"
@@ -10,20 +10,20 @@
 
   @media (max-width: $tablet-portrait) {
     display: block;
-    padding: scale(24px 24px 102px);
+    padding: 24px 24px 102px;
   }
 }
 
 .month-field {
-  max-width: scale(240px);
+  max-width: 240px;
 }
 
 .year-field {
-  max-width: scale(150px);
+  max-width: 150px;
 }
 
 .spinner {
-  width: scale(64px);
+  width: 64px;
   margin: 0 auto;
 }
 

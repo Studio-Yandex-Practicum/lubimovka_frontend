@@ -2,10 +2,10 @@
   @mixin headline;
   @mixin headline4;
 
-  margin: scale(0 0 16px);
+  margin: 0 0 16px;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(0 24px 16px);
+    margin: 0 24px 16px;
   }
 }
 
@@ -13,10 +13,10 @@
   @mixin text;
   @mixin textLarge;
 
-  max-width: scale(508px);
+  max-width: 508px;
   margin: 0 auto;
 
   @media (max-width: $tablet-portrait) {
-    max-width: scale(304px);
+    max-width: 304px;
   }
 }

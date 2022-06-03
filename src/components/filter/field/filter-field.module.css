@@ -2,7 +2,7 @@
   flex: 1;
 
   &:not(:last-child) {
-    margin-right: scale(30px);
+    margin-right: 30px;
   }
 }
 
@@ -10,14 +10,14 @@
   @mixin text;
 
   display: block;
-  margin-bottom: scale(16px);
+  margin-bottom: 16px;
 
   @media (max-width: $tablet-portrait) {
-    max-width: scale(220px);
-    margin-right: scale(16px);
+    max-width: 220px;
+    margin-right: 16px;
     margin-bottom: 0;
-    font-size: scale(20px);
-    line-height: scale(24px);
+    font-size: 20px;
+    line-height: 24px;
   }
 }
 

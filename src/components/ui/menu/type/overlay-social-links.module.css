@@ -28,7 +28,7 @@
   @mixin textSmall;
 
   display: flex;
-  padding: scale(15px);
+  padding: 15px;
   color: var(--coal);
   place-content: center space-between;
   text-decoration: none;

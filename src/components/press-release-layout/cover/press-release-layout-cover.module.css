@@ -2,13 +2,13 @@
 
 .root {
   position: relative;
-  min-width: calc(scale(720px) - $page-margin-smartphone);
-  height: scale(268px);
+  min-width: calc(720px - $page-margin-smartphone);
+  height: 268px;
   margin-right: calc(-1 * $page-margin-tablet-portrait);
   grid-area: cover;
 
   @media (max-width: $tablet-portrait) {
     min-width: initial;
-    margin: scale(0 calc(-1 * $page-margin-smartphone));
+    margin: 0 -$page-margin-smartphone;
   }
 }

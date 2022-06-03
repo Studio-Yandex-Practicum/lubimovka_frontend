@@ -1,13 +1,13 @@
 .image {
   position: sticky;
   top: 0;
-  width: scale(660px);
+  width: 660px;
   height: 100vh;
 
   @media (max-width: $tablet-portrait) {
     position: relative;
-    width: calc(100% + scale(24px));
-    height: scale(152px);
-    margin-top: scale(10px);
+    width: calc(100% + 24px);
+    height: 152px;
+    margin-top: 10px;
   }
 }

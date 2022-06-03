@@ -39,7 +39,7 @@
     left: 0;
     display: block;
     width: 0;
-    height: scale(1px);
+    height: 1px;
     background-color: var(--coal);
     content: "";
     transition: width .5s ease-in;
@@ -62,7 +62,7 @@
     left: 0;
     display: block;
     width: 0;
-    height: scale(1px);
+    height: 1px;
     background-color: var(--coal);
     content: "";
     transition: width .5s ease-in;
@@ -103,7 +103,7 @@
     left: 0;
     display: block;
     width: 100%;
-    height: scale(1px);
+    height: 1px;
     background-color: var(--coal);
     content: "";
     transition: width .5s ease-in;
@@ -120,21 +120,21 @@
 }
 
 .borderBottomLeft {
-  height: scale(24px);
-  padding-right: scale(9px);
-  border-bottom: scale(1px) solid var(--coal);
-  border-left: scale(1px) solid var(--coal);
+  height: 24px;
+  padding-right: 9px;
+  border-bottom: 1px solid var(--coal);
+  border-left: 1px solid var(--coal);
 }
 
 .borderTop {
   width: inherit;
   justify-content: space-between;
-  padding: scale(4px) scale(7px);
-  border-top: scale(1px) solid var(--coal);
+  padding: 4px 7px;
+  border-top: 1px solid var(--coal);
 }
 
 .label.right {
-  padding-right: scale(8px);
+  padding-right: 8px;
 }
 
 .xs {

@@ -7,7 +7,7 @@
     content: '';
 
     @media (max-width: $tablet-portrait) {
-      margin-right: scale(-24px);
+      margin-right: -24px;
     }
   }
 }
@@ -20,7 +20,7 @@
 
 .root {
   &:first-child {
-    flex-basis: calc(50% - scale(120px));
+    flex-basis: calc(50% - 120px);
 
     @media (max-width: $tablet-portrait) {
       @mixin cover-image;

@@ -6,14 +6,14 @@
 .letters {
   position: sticky;
   z-index: 1;
-  top: scale(82px);
+  top: 82px;
   display: grid;
   box-sizing: border-box;
-  padding: 0 scale(15px);
+  padding: 0 15px;
   border-bottom: 1px solid var(--coal);
   margin: 0;
   background-color: var(--beige);
-  column-gap: scale(12px);
+  column-gap: 12px;
   grid-auto-flow: column;
   list-style: none;
   overflow-x: auto;
@@ -25,10 +25,10 @@
   }
 
   @media (max-width: $tablet-portrait) {
-    top: scale(100px);
+    top: 100px;
     border-top: 1px solid var(--coal);
     background-color: var(--white);
-    column-gap: scale(23px);
+    column-gap: 23px;
   }
 }
 
@@ -37,8 +37,8 @@
   @mixin headline7;
 
   position: relative;
-  width: scale(36px);
-  height: scale(48px);
+  width: 36px;
+  height: 48px;
 }
 
 .letterActive {
@@ -62,7 +62,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  height: scale(24px);
+  height: 24px;
   margin: 0;
   transform: translate(-50%, -50%);
   visibility: hidden;
@@ -70,11 +70,11 @@
 
 .authors {
   display: flex;
-  max-width: scale(812px);
+  max-width: 812px;
   box-sizing: border-box;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 0 scale(36px);
+  padding: 0 36px;
   margin: 0 auto;
 
   @media (max-width: $tablet-portrait) {
@@ -88,17 +88,17 @@
   align-items: flex-start;
   justify-content: flex-start;
   padding: 0;
-  margin: scale(53px) 0 0;
+  margin: 53px 0 0;
   list-style: none;
 
   @media (max-width: $tablet-portrait) {
-    padding-left: scale(19px);
-    margin: scale(16px) 0 0;
+    padding-left: 19px;
+    margin: 16px 0 0;
   }
 }
 
 .author {
-  margin-bottom: scale(12px);
+  margin-bottom: 12px;
 
   &:last-child {
     margin-bottom: 0;
@@ -109,7 +109,7 @@
   @mixin text;
   @mixin textLarge;
 
-  padding: scale(1px) scale(8px) scale(3px);
+  padding: 1px 8px 3px;
   color: var(--coal);
   text-decoration: none;
 
@@ -121,10 +121,10 @@
 
 .chosenLetter {
   position: relative;
-  margin: scale(309px) scale(20px) 0 0;
+  margin: 309px 20px 0 0;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(56px) 0 0;
+    margin: 56px 0 0;
   }
 }
 
@@ -141,8 +141,8 @@
 .bigLetter {
   @mixin headline;
 
-  font-size: scale(100px);
-  line-height: scale(100px);
+  font-size: 100px;
+  line-height: 100px;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline3;
@@ -154,10 +154,10 @@
   @mixin textLarge;
 
   position: absolute;
-  top: calc(scale(8px) * -1);
-  right: calc(scale(7px) * -1);
+  top: calc(8px * -1);
+  right: calc(7px * -1);
 
   @media (max-width: $tablet-portrait) {
-    right: calc(scale(14px) * -1);
+    right: calc(14px * -1);
   }
 }
