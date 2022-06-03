@@ -64,7 +64,6 @@
     "openapi-typescript-codegen": "0.20.1",
     "postcss": "8.3.9",
     "postcss-flexbugs-fixes": "5.0.2",
-    "postcss-functions": "4.0.2",
     "postcss-import": "14.0.2",
     "postcss-mixins": "8.1.0",
     "postcss-nested": "5.0.6",
