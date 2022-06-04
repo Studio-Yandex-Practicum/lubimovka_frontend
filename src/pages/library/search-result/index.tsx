@@ -108,7 +108,7 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
     <div className={style.pageWrapper}>
       <AppLayout>
         <SEO
-          title="Результаты поиска по библиотеке"
+          title="Результаты поиска"
         />
         <main className ={style.page}>
           <div className={style.buttonWrapper}>

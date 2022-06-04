@@ -273,7 +273,7 @@ const Participation: NextPage = () => {
   return (
     <AppLayout>
       <SEO
-        title="Приём пьес"
+        title="Подать пьесу"
       />
       <PlayProposalLayout>
         <PlayProposalLayout.Image>

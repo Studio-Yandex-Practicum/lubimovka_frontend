@@ -11,7 +11,7 @@ import mockData from './assets/mock-donation-data.json';
 const Donation: NextPage = () => (
   <AppLayout>
     <SEO
-      title={mockData.title}
+      title="Поддержать фестиваль"
     />
     <main>
       <DonationPageTitle

@@ -49,7 +49,7 @@ const Authors = ({ errorCode, authors, letters }: InferGetServerSidePropsType<ty
   return (
     <AppLayout>
       <SEO
-        title="Библиотека - авторы"
+        title="Авторы"
       />
       <AuthorsPage letters={letters} authors={a} isLoading={isLoading} onLetterChange={()=>setIsLoading(true)}/>
     </AppLayout>

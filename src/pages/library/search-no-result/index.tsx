@@ -38,7 +38,7 @@ const SearchResult: NextPage = () => {
     <div className={style.pageWrapper}>
       <AppLayout>
         <SEO
-          title="Ничего не найдено в библиотеке"
+          title="Ничего не найдено"
         />
         <main className ={style.page}>
           <div className={style.buttonWrapper}>
