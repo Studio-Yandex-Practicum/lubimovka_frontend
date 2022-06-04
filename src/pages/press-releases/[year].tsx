@@ -8,6 +8,7 @@ import { PressReleaseLayout } from 'components/press-release-layout';
 import { PageTitle } from 'components/page-title';
 import { Filter } from 'components/filter';
 import { Select } from 'components/select';
+import { SEO } from 'components/seo';
 import { Button } from 'components/ui/button2';
 import { HTMLMarkup } from 'components/html-markup';
 import { Icon } from 'components/ui/icon';
@@ -62,6 +63,9 @@ const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSidePr
 
   return (
     <AppLayout>
+      <SEO
+        title="Пресс-релизы"
+      />
       <ForPressHero data={{
         forPressHeroTitle: {
           title: 'Для прессы',

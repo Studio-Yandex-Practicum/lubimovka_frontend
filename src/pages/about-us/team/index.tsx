@@ -1,6 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import Head from 'next/head';
 import Error from 'next/error';
+import { SEO } from 'components/seo';
 import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
@@ -26,11 +26,9 @@ const Team = ({ errorCode, team, volunteers }: InferGetServerSidePropsType<typeo
 
   return (
     <AppLayout>
-      <Head>
-        <title>
-          {'Организаторы'}
-        </title>
-      </Head>
+      <SEO
+        title="Организаторы"
+      />
       <main>
         <TeamPage team={team} volunteers={volunteers} queryYear={queryYear}/>
       </main>

@@ -7,6 +7,7 @@ import { AfishaProvider } from 'components/afisha-page/afisha-provider';
 import { fetchEvents, fetchInfo } from 'components/afisha-page/utils/fetchData';
 import { AfishaEvents, AfishaInfo } from 'shared/types';
 import { RegularEvents } from 'components/afisha-page/regular-events';
+import { SEO } from 'components/seo';
 
 interface IProps {
   info: AfishaInfo;
@@ -21,6 +22,9 @@ const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
 
   return (
     <AppLayout>
+      <SEO
+        title="Афиша фестиваля"
+      />
       <main>
         <AfishaTitle
           {...info}

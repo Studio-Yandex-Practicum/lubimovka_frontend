@@ -12,6 +12,7 @@ import { BlogLayout } from 'components/blog-layout';
 import { PageTitle } from 'components/page-title';
 import { Spinner } from 'components/spinner';
 import { CallToEmail } from 'components/call-to-email';
+import { SEO } from 'components/seo';
 import { useBlog } from 'providers/blog-provider';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
@@ -94,6 +95,9 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 
   return (
     <AppLayout>
+      <SEO
+        title="Блог"
+      />
       <BlogLayout>
         <BlogLayout.Title>
           <PageTitle>

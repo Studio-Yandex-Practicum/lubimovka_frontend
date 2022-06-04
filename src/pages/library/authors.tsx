@@ -1,10 +1,10 @@
 import Error from 'next/error';
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
 import AuthorsPage from 'components/library-authors-page';
+import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
 
 import type { PaginatedAuthorListList, AuthorList, AuthorLetters } from 'api-typings';
@@ -48,11 +48,9 @@ const Authors = ({ errorCode, authors, letters }: InferGetServerSidePropsType<ty
 
   return (
     <AppLayout>
-      <Head>
-        <title>
-          Авторы
-        </title>
-      </Head>
+      <SEO
+        title="Авторы"
+      />
       <AuthorsPage letters={letters} authors={a} isLoading={isLoading} onLetterChange={()=>setIsLoading(true)}/>
     </AppLayout>
   );
