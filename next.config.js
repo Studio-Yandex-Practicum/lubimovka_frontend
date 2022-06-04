@@ -1,4 +1,4 @@
-const { baseUrl } = require('./config/vars');
+const { baseUrl, apiBaseUrl } = require('./config/vars');
 
 module.exports = {
   webpack(config) {
@@ -23,16 +23,27 @@ module.exports = {
   },
   images: {
     domains: [
-      'stage.dev.lubimovka.ru',
       'lubimovka.art',
-      'test.dev.lubimovka.ru',
       '2022.lubimovka.ru',
+      'stage.dev.lubimovka.ru',
+      'test.dev.lubimovka.ru',
     ],
   },
   publicRuntimeConfig: {
     baseUrl,
+    apiBaseUrl,
   },
   experimental: {
     scrollRestoration: true,
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/press-releases/:year/download',
+          destination: `${apiBaseUrl}/info/press-releases/:year/download/`,
+        }
+      ],
+    };
   },
 };

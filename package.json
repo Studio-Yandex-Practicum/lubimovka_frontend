@@ -4,9 +4,9 @@
   "description": "Фронтенд проекта «Любимовка»",
   "scripts": {
     "postinstall": "next telemetry disable",
-    "dev": "node server",
+    "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server",
+    "start": "next start",
     "lint:js": "next lint",
     "lint:css": "stylelint **/*.css --cache --allow-empty-input --fix",
     "type-check": "tsc --noEmit --incremental",
@@ -14,11 +14,11 @@
     "build-storybook": "build-storybook -s public",
     "update-typings": "node scripts/update-typings.js",
     "update-git-hooks": "scripts/update-git-hooks.sh",
-    "start-test-server": "node server/test-server",
+    "start-testing-server": "node scripts/start-testing-server",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
-    "e2e": "start-server-and-test start-test-server http://localhost:3000 cypress",
-    "e2e:headless": "start-server-and-test start-test-server http://localhost:3000 cypress:headless"
+    "e2e": "API_BASE_URL=http://localhost:3002/api PORT=3002 start-server-and-test start-testing-server http://localhost:3002 cypress",
+    "e2e:headless": "API_BASE_URL=http://localhost:3002/api PORT=3002 start-server-and-test start-testing-server http://localhost:3002 cypress:headless"
   },
   "repository": {
     "type": "git",

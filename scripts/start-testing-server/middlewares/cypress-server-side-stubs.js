@@ -1,11 +1,11 @@
 const nock = require('nock');
 const connect = require('connect');
 
-const { apiPath } = require('../../src/shared/constants/api-path');
+const { apiBaseUrl } = require('../../../config/vars');
 
 const cypressServerSideStubsMiddleware = () => {
   const middleware = connect();
-  const scope = nock(`http://localhost:3000${apiPath}`);
+  const scope = nock(apiBaseUrl);
 
   const addServerSideStub = (request, response) => {
     const chunks = [];
