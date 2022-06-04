@@ -2,9 +2,16 @@ const express = require('express');
 const next = require('next');
 
 const { cypressServerSideStubsMiddleware } = require('./middlewares/cypress-server-side-stubs');
-const { environment } = require('../config/vars');
+const { environment, port } = require('../../config/vars');
+const { log } = console;
 
-const app = next({ dev: environment === 'development' });
+const hostname = 'localhost';
+
+const app = next({
+  dev: environment === 'development',
+  hostname,
+  port,
+});
 const handle = app.getRequestHandler();
 
 app
@@ -18,9 +25,10 @@ app
       return handle(request, response);
     });
 
-    server.listen(3000, (error) => {
+    server.listen(port, (error) => {
       if (error) {
         throw error;
       }
+      log(`Testing server is ready on http://${hostname}:${port}`);
     });
   });

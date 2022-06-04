@@ -1,7 +1,7 @@
-import { addBaseUrlToApiPath } from 'shared/helpers/url';
+import { addApiBaseUrlToPath } from 'shared/helpers/url';
 
 const fetchResource = (httpClient: typeof fetch) => <T = unknown>(path: string, options?: RequestInit) => {
-  return httpClient(addBaseUrlToApiPath(path), options).then((response) => handleResponse<T>(response));
+  return httpClient(addApiBaseUrlToPath(path), options).then((response) => handleResponse<T>(response));
 };
 
 export const fetcher = fetchResource(getHttpClientByEnvironment());
