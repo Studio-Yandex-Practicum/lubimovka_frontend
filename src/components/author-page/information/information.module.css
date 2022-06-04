@@ -1,15 +1,15 @@
 .information {
   display: grid;
-  padding: calc(var(--scale) * 85) calc(var(--scale) * 120);
+  padding: 85px 120px;
   grid-template-columns: 1fr 3fr 6fr;
   grid-template-rows: auto;
 
   @media (max-width: 959px) {
-    padding: calc(var(--scale) * 85) calc(var(--scale) * 100) calc(var(--scale) * 85) 0;
+    padding: 85px 100px 85px 0;
   }
 
   @media (max-width: $tablet-portrait) {
-    padding: calc(var(--scale) * 56) calc(var(--scale) * 25);
+    padding: 56px 25px;
     grid-template-columns: 10fr;
   }
 }
@@ -30,10 +30,10 @@
 
 .blocksInfo {
   padding: 0;
-  margin: calc(var(--scale) * 124) 0 0;
+  margin: 124px 0 0;
 
   @media (max-width: $tablet-portrait) {
-    margin: calc(var(--scale) * 24) 0 0;
+    margin: 24px 0 0;
   }
 }
 
@@ -41,7 +41,7 @@
   @mixin text;
   @mixin textLarge;
 
-  margin: calc(var(--scale) * 4) calc(var(--scale) * 6) calc(var(--scale) * 9);
+  margin: 4px 6px 9px;
   font-feature-settings: 'ss01' on;
 }
 

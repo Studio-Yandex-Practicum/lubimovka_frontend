@@ -2,7 +2,7 @@
   display: block;
 
   &:not(:last-child) {
-    margin-bottom: scale(38px);
+    margin-bottom: 38px;
   }
 }
 
@@ -11,13 +11,13 @@
   @mixin headline6;
 
   display: block;
-  margin-bottom: scale(16px);
+  margin-bottom: 16px;
 }
 
 .action {
-  min-width: scale(280px);
+  min-width: 280px;
 
   @media (max-width: $tablet-portrait) {
-    min-width: scale(240px);
+    min-width: 240px;
   }
 }

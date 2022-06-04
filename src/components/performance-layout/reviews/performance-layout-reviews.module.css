@@ -1,5 +1,5 @@
 .root {
-  margin-bottom: scale(64px);
+  margin-bottom: 64px;
   grid-area: reviews;
 
   @media (max-width: $tablet-portrait) {

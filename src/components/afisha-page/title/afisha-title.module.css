@@ -1,17 +1,17 @@
 .section {
   display: grid;
-  padding: calc(var(--scale) * 58) 0 calc(var(--scale) * 112);
+  padding: 58px 0 112px;
   grid-template-areas: '. title''discussion entrance';
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);
-  row-gap: calc(var(--scale) * 7);
+  row-gap: 7px;
 
   @media (max-width: $tablet-portrait) {
-    padding: 0 calc(var(--scale) * 24) calc(var(--scale) * 30);
+    padding: 0 24px 30px;
     grid-template-areas: 'title''entrance''discussion';
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);
-    row-gap: calc(var(--scale) * 24);
+    row-gap: 24px;
   }
 }
 
@@ -19,24 +19,24 @@
   @mixin headline;
   @mixin headline1;
 
-  max-width: calc(var(--scale) * 542);
+  max-width: 542px;
   grid-area: title;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    max-width: calc(var(--scale) * 298);
+    max-width: 298px;
   }
 }
 
 .discussionInfo {
   display: flex;
   flex-direction: column;
-  padding-left: calc(var(--scale) * 125);
+  padding-left: 125px;
   grid-area: discussion;
 
   @media (max-width: $tablet-portrait) {
-    max-width: calc(var(--scale) * 261);
+    max-width: 261px;
     padding-left: 0;
   }
 }
@@ -45,11 +45,11 @@
   @mixin text;
   @mixin textSmall;
 
-  max-width: calc(var(--scale) * 325);
-  padding-left: calc(var(--scale) * 25);
+  max-width: 325px;
+  padding-left: 25px;
 
   @media (max-width: $tablet-portrait) {
-    padding-left: calc(var(--scale) * 20);
+    padding-left: 20px;
   }
 }
 
@@ -64,14 +64,14 @@
 
 .entranceInfo {
   display: flex;
-  max-width: calc(var(--scale) * 477);
+  max-width: 477px;
   flex-direction: column;
-  padding: calc(var(--scale) * 25) 0 0 calc(var(--scale) * 65);
-  gap: calc(var(--scale) * 16);
+  padding: 25px 0 0 65px;
+  gap: 16px;
   grid-area: entrance;
 
   @media (max-width: $tablet-portrait) {
-    max-width: calc(var(--scale) * 255);
+    max-width: 255px;
     padding: 0;
     gap: 0;
     justify-self: flex-end;

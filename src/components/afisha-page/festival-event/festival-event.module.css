@@ -7,10 +7,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: calc(var(--scale) * 1) solid var(--coal);
+  border-bottom: 1px solid var(--coal);
 
   @media (max-width: $tablet-portrait) {
-    height: calc(var(--scale) * 60);
+    height: 60px;
     padding-right: 0;
     margin-right: 0;
   }
@@ -18,8 +18,8 @@
 
 .opened {
   align-self: flex-end;
-  padding: calc(var(--scale) * 5) calc(var(--scale) * 25);
-  margin: 0 calc(var(--scale) * 90) 0 0;
+  padding: 5px 25px;
+  margin: 0 90px 0 0;
   background-color: var(--coal);
   color: var(--white);
 
@@ -32,7 +32,7 @@
 }
 
 .closed {
-  max-width: calc(var(--scale) * 202);
+  max-width: 202px;
   align-self: center;
 
   @mixin text;
@@ -45,9 +45,9 @@
 }
 
 .event {
-  padding: 0 calc(var(--scale) * 90) 0 calc(var(--scale) * 60);
+  padding: 0 90px 0 60px;
 
   @media (max-width: $tablet-portrait) {
-    padding: 0 calc(var(--scale) * 24) 0 calc(var(--scale) * 24);
+    padding: 0 24px 0 24px;
   }
 }

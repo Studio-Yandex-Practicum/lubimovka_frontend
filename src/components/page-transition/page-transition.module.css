@@ -12,8 +12,13 @@
     animation: rightToLeft 500ms 1 linear;
 
     @keyframes rightToLeft {
-      0% { transform: translate(scale(var(--page-content-min-width)), 0); }
-      100% { transform: translate(0, 0); }
+      0% {
+        transform: translate(var(--page-content-min-width), 0);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
     }
   }
 }

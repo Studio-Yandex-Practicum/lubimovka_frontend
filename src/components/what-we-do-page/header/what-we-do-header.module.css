@@ -10,11 +10,11 @@
 }
 
 .menu {
-  padding: scale(40px 0 67px 60px);
+  padding: 40px 0 67px 60px;
   background-color: var(--light-green);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(2px 0 32px 24px);
+    padding: 2px 0 32px 24px;
   }
 }
 
@@ -22,25 +22,25 @@
   @mixin headline;
   @mixin headline2;
 
-  max-width: scale(924px);
-  margin: 0 0 scale(53px 62px);
+  max-width: 924px;
+  margin: 0 0 53px 62px;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    margin: 0 scale(24px 30px 24px);
+    margin: 0 24px 30px 24px;
   }
 }
 
 .containerText {
   display: flex;
-  max-width: scale(520px);
+  max-width: 520px;
   flex-direction: column;
   align-self: end;
-  margin: 0 scale(110px 15px 85px);
+  margin: 0 110px 15px 85px;
 
   @media (max-width: $tablet-portrait) {
-    margin: 0 scale(24px 72px 85px);
+    margin: 0 24px 72px 85px;
   }
 }
 
@@ -48,8 +48,8 @@
   @mixin headline;
   @mixin textLarge;
 
-  margin-bottom: scale(20px);
-  line-height: scale(24px);
+  margin-bottom: 20px;
+  line-height: 24px;
 
   &:last-of-type {
     margin: 0;
@@ -59,21 +59,21 @@
 .container {
   position: relative;
   display: grid;
-  grid-template-columns: scale(720px) 1fr;
+  grid-template-columns: 720px 1fr;
 
   @media (max-width: $tablet-portrait) {
-    grid-template-columns: 1fr scale(24px);
+    grid-template-columns: 1fr 24px;
   }
 }
 
 .wrapper {
   position: relative;
-  width: scale(720px);
-  height: scale(414px);
+  width: 720px;
+  height: 414px;
 
   @media (max-width: $tablet-portrait) {
     width: 100%;
-    height: scale(224px);
+    height: 224px;
   }
 }
 
@@ -83,14 +83,14 @@
 
 .containerSpaceUp {
   width: 100%;
-  min-width: scale(24px);
+  min-width: 24px;
   height: 47%;
   background-color: var(--light-green);
 }
 
 .containerSpaceDown {
   width: 100%;
-  min-width: scale(24px);
+  min-width: 24px;
   height: 53%;
   background-color: var(--beige);
 }

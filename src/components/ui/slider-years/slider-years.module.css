@@ -28,12 +28,12 @@
     width: .6em;
     height: 1.6em;
     box-sizing: border-box;
-    border: scale(1px) solid currentColor;
+    border: 1px solid currentColor;
     content: "";
 
     @media (min-width: 1440px) {
-      width: scale(16px);
-      height: scale(41px);
+      width: 16px;
+      height: 41px;
     }
   }
 

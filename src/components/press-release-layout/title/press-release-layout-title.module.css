@@ -1,5 +1,5 @@
 .root {
   align-self: flex-end;
-  margin-bottom: scale(32px);
+  margin-bottom: 32px;
   grid-area: title;
 }

@@ -2,7 +2,7 @@
 
 .root {
   display: grid;
-  padding: scale(0 $page-padding-tablet-portrait);
+  padding: 0 $page-padding-tablet-portrait;
   grid-template:
     "headline      headline"
     "summary       content"
@@ -14,33 +14,33 @@
 
   @media (max-width: $tablet-portrait) {
     display: block;
-    padding: scale(40px $page-padding-smartphone 0);
+    padding: 40px $page-padding-smartphone 0;
   }
 }
 
 .headline {
-  margin-bottom: scale(68px);
+  margin-bottom: 68px;
   grid-area: headline;
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: scale(100px);
+    margin-bottom: 100px;
   }
 }
 
 .video {
-  height: scale(389px);
-  margin-bottom: scale(66px);
+  height: 389px;
+  margin-bottom: 66px;
 
   @media (max-width: $tablet-portrait) {
-    height: scale(206px);
-    margin-bottom: scale(32px);
+    height: 206px;
+    margin-bottom: 32px;
   }
 }
 
 .text {
-  margin-bottom: scale(80px);
+  margin-bottom: 80px;
 }
 
 .play {
-  margin-bottom: scale(144px);
+  margin-bottom: 144px;
 }

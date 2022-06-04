@@ -122,14 +122,14 @@
   .dataSubtitle {
     padding-top: 0;
     margin-bottom: 24px;
-    margin-left: calc(var(--scale) * 24);
+    margin-left: 24px;
   }
 
   .datatext {
     max-width: 100%;
-    margin-right: calc(var(--scale) * 24);
+    margin-right: 24px;
     margin-bottom: 53px;
-    margin-left: calc(var(--scale) * 24);
+    margin-left: 24px;
   }
 
   .content {
@@ -138,14 +138,14 @@
 
   .gridcontent {
     margin-bottom: 85px;
-    margin-left: calc(var(--scale) * 24);
+    margin-left: 24px;
     column-gap: 41px;
     grid-template-columns: repeat(2, 1fr);
     row-gap: 40px;
   }
 
   .element {
-    max-width: calc(var(--scale) * 153);
+    max-width: 153px;
     margin-top: 8px;
   }
 
@@ -154,7 +154,7 @@
     flex-direction: column;
     margin-right: 0;
     margin-bottom: 44px;
-    margin-left: calc(var(--scale) * 23);
+    margin-left: 23px;
   }
 
   .subsection {

@@ -1,7 +1,7 @@
 .container {
   position: relative;
   box-sizing: border-box;
-  padding: scale(0 77px);
+  padding: 0 77px;
 
   @media (max-width: $tablet-portrait) {
     padding: 0;
@@ -11,7 +11,7 @@
 
 .slider {
   @media (max-width: $tablet-portrait) {
-    margin-top: scale(19px);
+    margin-top: 19px;
   }
 }
 
@@ -36,8 +36,8 @@
 .arrow {
   position: absolute;
   top: 50%;
-  width: scale(48px);
-  height: scale(48px);
+  width: 48px;
+  height: 48px;
   transform: translateY(-50%);
 
   @media (max-width: $tablet-portrait) {
@@ -48,13 +48,13 @@
 
   &:last-of-type {
     @media (max-width: $tablet-portrait) {
-      margin-right: scale(24px);
+      margin-right: 24px;
     }
   }
 
   &:not(:last-of-type) {
     @media (max-width: $tablet-portrait) {
-      margin-right: scale(51px);
+      margin-right: 51px;
     }
   }
 }
@@ -73,9 +73,9 @@
 }
 
 .dots {
-  margin-top: scale(19px);
+  margin-top: 19px;
 
   @media (max-width: $tablet-portrait) {
-    margin-top: scale(15px);
+    margin-top: 15px;
   }
 }

@@ -3,6 +3,6 @@
   align-self: start;
 
   &:not(:last-child) {
-    margin-bottom: scale(48px);
+    margin-bottom: 48px;
   }
 }

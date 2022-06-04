@@ -1,7 +1,7 @@
 .container {
   position: relative;
   box-sizing: border-box;
-  padding: scale(0 100px);
+  padding: 0 100px;
 
   @media (max-width: $tablet-portrait) {
     padding: 0;
@@ -28,10 +28,10 @@
 
 .close {
   position: absolute;
-  top: scale(16px);
-  right: scale(16px);
-  width: scale(42px);
-  height: scale(42px);
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
 }
 
 .closeButton {
@@ -44,9 +44,9 @@
 .arrow {
   position: absolute;
   top: 50%;
-  width: scale(48px);
-  height: scale(48px);
-  padding: scale(9px);
+  width: 48px;
+  height: 48px;
+  padding: 9px;
   background-color: var(--beige);
   border-radius: 50%;
   transform: translateY(-50%);
@@ -54,9 +54,9 @@
   @media (max-width: $tablet-portrait) {
     z-index: 10;
     top: auto;
-    right: scale(16px);
-    width: scale(42px);
-    height: scale(42px);
+    right: 16px;
+    width: 42px;
+    height: 42px;
     padding: 0;
     background-color: unset;
     border-radius: 0;
@@ -68,7 +68,7 @@
   left: 0;
 
   @media (max-width: $tablet-portrait) {
-    bottom: scale(66px);
+    bottom: 66px;
     left: auto;
   }
 }
@@ -77,8 +77,8 @@
   right: 0;
 
   @media (max-width: $tablet-portrait) {
-    right: scale(16px);
-    bottom: scale(16px);
+    right: 16px;
+    bottom: 16px;
   }
 }
 

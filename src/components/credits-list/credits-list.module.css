@@ -14,13 +14,13 @@
 .persons {
   @mixin text;
 
-  margin-left: scale(28px);
+  margin-left: 28px;
 
   &:last-of-type {
-    width: scale(420px);
+    width: 420px;
 
     @media (max-width: $tablet-portrait) {
-      width: scale(337px);
+      width: 337px;
     }
   }
 }
@@ -48,12 +48,12 @@
   flex-direction: column;
 
   .item:not(:last-child) {
-    margin-bottom: scale(24px);
+    margin-bottom: 24px;
   }
 
   .persons {
     @mixin textLarge;
 
-    margin-left: scale(28px);
+    margin-left: 28px;
   }
 }

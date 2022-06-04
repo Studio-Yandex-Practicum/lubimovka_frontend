@@ -1,19 +1,19 @@
 .header {
   display: flex;
-  max-width: scale(718px);
+  max-width: 718px;
   align-items: center;
-  margin: scale(0 auto 35px);
+  margin: 0 auto 35px;
 
   @media (max-width: $tablet-portrait) {
     position: relative;
     align-items: flex-start;
-    margin: scale(0 27px 25px 24px);
+    margin: 0 27px 25px 24px;
   }
 }
 
 .slider {
   @media (max-width: $tablet-portrait) {
-    max-width: scale(414px);
+    max-width: 414px;
   }
 }
 
@@ -24,7 +24,7 @@
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    max-width: scale(214px);
+    max-width: 214px;
   }
 }
 
@@ -53,14 +53,14 @@
   @media (max-width: $tablet-portrait) {
     position: absolute;
     z-index: 1;
-    bottom: scale(-64px);
-    left: scale(-2px);
+    bottom: -64px;
+    left: -2px;
   }
 }
 
 .arrows {
   display: flex;
-  margin-left: scale(21px);
+  margin-left: 21px;
 
   @media (max-width: $tablet-portrait) {
     margin-left: auto;
@@ -69,10 +69,10 @@
 
 .arrow {
   position: relative;
-  width: scale(48px);
-  height: scale(48px);
+  width: 48px;
+  height: 48px;
 }
 
 .arrowRight {
-  margin-left: scale(21px);
+  margin-left: 21px;
 }

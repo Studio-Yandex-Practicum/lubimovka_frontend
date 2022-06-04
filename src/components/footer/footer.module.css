@@ -1,10 +1,10 @@
 .footer {
   display: grid;
-  padding: scale(42px 32px 54px);
+  padding: 42px 32px 54px;
   grid-template:
     "logo partners partners   partners"
     "logo address  navigation projects"
-    "logo footnote footnote   footnote" 1fr / min-content 1fr scale(356px) scale(272px);
+    "logo footnote footnote   footnote" 1fr / min-content 1fr 356px 272px;
 
   @media (max-width: $tablet-portrait) {
     @mixin textMedium;
@@ -21,22 +21,22 @@
 }
 
 .logo {
-  width: scale(93px);
-  height: scale(80px);
-  margin-right: scale(82px);
+  width: 93px;
+  height: 80px;
+  margin-right: 82px;
   grid-area: logo;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(56px 0 0 58px);
+    margin: 56px 0 0 58px;
   }
 }
 
 .footnote {
-  margin-top: scale(49px);
+  margin-top: 49px;
   grid-area: footnote;
 
   @media (max-width: $tablet-portrait) {
     border-top: 1px solid black;
-    margin-top: scale(92px);
+    margin-top: 92px;
   }
 }

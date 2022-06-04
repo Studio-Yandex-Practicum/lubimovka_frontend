@@ -4,7 +4,7 @@
 }
 
 .paginationContainer {
-  padding: scale(15px);
+  padding: 15px;
 }
 
 .paginationItem {
@@ -17,6 +17,6 @@
 }
 
 .spinner {
-  width: scale(64px);
+  width: 64px;
   margin: 0 auto;
 }

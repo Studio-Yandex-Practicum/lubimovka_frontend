@@ -5,11 +5,11 @@
 .menu {
   position: absolute;
   z-index: 10;
-  top: scale(40px);
-  left: scale(60px);
+  top: 40px;
+  left: 60px;
 
   @media (max-width: $tablet-portrait) {
     position: static;
-    padding: scale(2px 0 32px 24px);
+    padding: 2px 0 32px 24px;
   }
 }

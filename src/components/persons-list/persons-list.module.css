@@ -13,41 +13,41 @@
   padding: 0;
   margin: 0;
   list-style: none;
-  row-gap: scale(60px);
+  row-gap: 60px;
 
   @media (max-width: $tablet-portrait) {
     overflow: auto;
     flex-wrap: nowrap;
-    gap: scale(30px);
+    gap: 30px;
   }
 }
 
 .personsListItem {
-  max-width: scale(210px);
+  max-width: 210px;
 }
 
 .linear {
-  margin: scale(0 -20px);
+  margin: 0 -20px;
 
   .personsListItem {
-    margin: scale(0 30px);
+    margin: 0 30px;
   }
 }
 
 .five .personsListItem {
-  margin: scale(0 30px);
+  margin: 0 30px;
 }
 
 .four .personsListItem {
-  margin: scale(0 15px);
+  margin: 0 15px;
 }
 
 .three .personsListItem {
-  margin: scale(0 30px);
+  margin: 0 30px;
 }
 
 .three {
-  margin: scale(0 -40px);
+  margin: 0 -40px;
 
   .personsListItem:nth-child(3n+1) {
     margin-left: auto;
@@ -55,27 +55,27 @@
 }
 
 .four {
-  margin: scale(0 -20px);
+  margin: 0 -20px;
 
   .personsListItem:nth-child(8n-4) {
-    margin-left: scale(210px);
+    margin-left: 210px;
   }
 
   .personsListItem:nth-child(8n-3) {
-    margin-right: scale(208px);
-    margin-left: scale(256px);
+    margin-right: 208px;
+    margin-left: 256px;
   }
 }
 
 .five {
-  margin: scale(0 -40px);
+  margin: 0 -40px;
 
   .personsListItem:first-child {
-    margin-left: scale(180px);
+    margin-left: 180px;
   }
 
   .personsListItem:last-child {
-    margin-right: scale(180px);
+    margin-right: 180px;
   }
 
   .personsListItem:nth-child(3n+1) {

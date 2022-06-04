@@ -1,15 +1,15 @@
 .anotherPlays {
   display: grid;
-  padding: calc(var(--scale) * 85) calc(var(--scale) * 120);
+  padding: 85px 120px;
   grid-template-columns: 1fr 3fr 6fr;
   grid-template-rows: auto;
 
   @media (max-width: 959px) {
-    padding: calc(var(--scale) * 85) calc(var(--scale) * 40) calc(var(--scale) * 85) 0;
+    padding: 85px 40px 85px 0;
   }
 
   @media (max-width: $tablet-portrait) {
-    padding: calc(var(--scale) * 56) calc(var(--scale) * 25);
+    padding: 56px 25px;
     margin: 0;
     grid-template-columns: 10fr;
   }
@@ -19,7 +19,7 @@
   @mixin headline;
   @mixin headline4;
 
-  max-width: calc(var(--scale) * 490);
+  max-width: 490px;
   grid-column: 2/3;
 
   @media (max-width: $tablet-portrait) {
@@ -31,18 +31,18 @@
 
 .blocks {
   padding: 0;
-  margin: calc(var(--scale) * 70) 0 0;
+  margin: 70px 0 0;
   list-style-type: none;
 
   @media (max-width: $tablet-portrait) {
-    margin: calc(var(--scale) * 24) 0 0;
+    margin: 24px 0 0;
   }
 }
 
 .block {
   display: flex;
   width: 100%;
-  max-width: calc(var(--scale) * 751);
+  max-width: 751px;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
@@ -53,8 +53,8 @@
   @mixin headline;
   @mixin headline6;
 
-  max-width: calc(var(--scale) * 500);
-  margin: calc(var(--scale) * 16) 0  calc(var(--scale) * 15);
+  max-width: 500px;
+  margin: 16px 0  15px;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline7;
@@ -62,6 +62,6 @@
 }
 
 .downloadButton {
-  margin: calc(var(--scale) * 5) 0;
+  margin: 5px 0;
   text-decoration: none;
 }

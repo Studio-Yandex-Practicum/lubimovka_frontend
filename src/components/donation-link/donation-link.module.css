@@ -3,7 +3,7 @@
 
   display: flex;
   align-items: center;
-  padding-left: scale(5px);
+  padding-left: 5px;
   color: var(--coal);
   text-decoration: none;
   text-transform: uppercase;
@@ -15,7 +15,7 @@
     width: .6em;
     height: 1.6em;
     box-sizing: border-box;
-    border: scale(1px) solid currentColor;
+    border: 1px solid currentColor;
     content: '';
     visibility: hidden;
   }
@@ -41,13 +41,13 @@
 }
 
 .icon {
-  width: scale(25px);
-  height: scale(25px);
-  margin-left: scale(-5px);
+  width: 25px;
+  height: 25px;
+  margin-left: -5px;
   fill: var(--coal);
 }
 
 .text {
-  font-size: scale(14px);
-  line-height: scale(17px);
+  font-size: 14px;
+  line-height: 17px;
 }

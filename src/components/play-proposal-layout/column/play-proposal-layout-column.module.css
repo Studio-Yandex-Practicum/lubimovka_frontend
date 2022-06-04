@@ -1,9 +1,9 @@
 .column {
-  padding-bottom: scale(154px);
-  margin-top: scale(60px);
+  padding-bottom: 154px;
+  margin-top: 60px;
 
   @media (max-width: $tablet-portrait) {
     padding-bottom: 0;
-    margin-top: scale(32px);
+    margin-top: 32px;
   }
 }

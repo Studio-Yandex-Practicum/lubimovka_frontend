@@ -3,21 +3,21 @@
   @mixin headline6;
 
   display: flex;
-  margin-bottom: scale(18px);
-  line-height: scale(36px);
+  margin-bottom: 18px;
+  line-height: 36px;
 }
 
 .ageRestriction {
   position: relative;
-  margin-left: scale(33px);
+  margin-left: 33px;
 }
 
 .ageRestriction::before {
   position: absolute;
   top: 0;
-  left: calc(-1 * scale(16px));
-  width: scale(1px);
-  height: scale(32px);
+  left: calc(-1 * 16px);
+  width: 1px;
+  height: 32px;
   background-color: var(--coal);
   content: '';
 }
