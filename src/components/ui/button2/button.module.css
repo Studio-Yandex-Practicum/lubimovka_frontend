@@ -9,6 +9,7 @@ $border-width: 1px;
   border: $border-width solid;
   background: 0;
   color: inherit;
+  cursor: pointer;
   isolation: isolate;
   text-decoration: none;
 
@@ -112,7 +113,7 @@ $border-width: 1px;
   border-color: transparent;
 }
 
-.common.common.border-full {
+.common.border-full {
   border-color: var(--coal);
 }
 
@@ -139,6 +140,12 @@ $border-width: 1px;
   .text {
     text-transform: uppercase;
   }
+}
+
+.common.disabled {
+  border-color: var(--gray);
+  color: var(--gray);
+  pointer-events: none;
 }
 
 @keyframes background-slide {
