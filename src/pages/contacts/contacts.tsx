@@ -161,12 +161,10 @@ const Contacts: NextPage = () => {
         },
         body: JSON.stringify(data),
       });
-    } catch ({ status, error }) {
+    } catch ([ status, errors ]) {
       // TODO: добавить проверку типов выброшенного исключения, пока считаем, что всегда получаем ответ API
 
-      if (!status) return;
-
-      for (let field in error as Record<string, string[]>) {
+      for (let field in errors as Record<string, string[]>) {
         dispatch({
           type: ContactFormActionTypes.FieldError,
           payload: {
@@ -175,7 +173,7 @@ const Contacts: NextPage = () => {
               author_email: 'email',
               question: 'message',
             }[field] as keyof ContactFormFields,
-            error: (error as Record<string, string[]>)[field][0],
+            error: (errors as Record<string, string[]>)[field][0],
           },
         });
       }

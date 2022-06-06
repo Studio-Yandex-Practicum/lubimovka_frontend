@@ -16,10 +16,10 @@ async function handleResponse<T>(response: Response) {
   }
 
   if (!response.ok) {
-    throw {
-      status: response.status,
+    throw [
+      response.status,
       data,
-    };
+    ];
   }
 
   return data;
