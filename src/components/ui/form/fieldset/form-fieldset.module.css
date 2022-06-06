@@ -1,4 +1,4 @@
-.fieldset {
+.root {
   padding: 0;
   border: 0;
   margin: 0;
@@ -25,7 +25,7 @@
 
 .content {
   margin-top: 15px;
-  margin-left: 61px;
+  margin-left: 60px;
 
   @media (max-width: $tablet-portrait) {
     margin-left: 0;
