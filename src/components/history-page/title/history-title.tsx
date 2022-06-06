@@ -31,9 +31,9 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear, playFilters 
   } = data;
   const startDate = new Date(start_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' });
   const finishDate = new Date(end_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' });
-  const [urlVolonters, setUrlVolonters] = React.useState(`/team/?year=${currentYear}`);
+  const [urlVolonters, setUrlVolonters] = React.useState(`/about-us/team/?year=${currentYear}`);
   React.useEffect(() => {
-    setUrlVolonters(`/team/?year=${currentYear}`);
+    setUrlVolonters(`/about-us/team/?year=${currentYear}`);
   }, [currentYear]);
   return (
     <section className={style.section}>

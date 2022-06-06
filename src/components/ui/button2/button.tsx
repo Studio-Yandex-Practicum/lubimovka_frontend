@@ -12,6 +12,7 @@ interface CommonProps {
   border?: 'full' | 'right-bottom-left' | 'bottom-left' | 'right-bottom' | 'none'
   fullWidth?: boolean
   upperCase?: boolean
+  disabled?: boolean
   className?: string
 }
 
@@ -34,6 +35,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, PropsWit
     border = 'none',
     fullWidth,
     upperCase,
+    disabled,
     icon,
     iconPosition = 'left',
     children,
@@ -51,6 +53,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, PropsWit
         {
           'full-width': fullWidth,
           'upper-case': upperCase,
+          disabled,
         },
         className,
       )}

@@ -1,13 +1,14 @@
 import { FormFieldset } from './fieldset';
 import { FormField } from './field';
 import { FormActions } from './actions';
+import { FormError } from './error';
 import { FormDisclaimer } from './disclaimer';
 
-interface IFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
+interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode;
 }
 
-const Form = (props: IFormProps): JSX.Element => {
+const Component = (props: FormProps) => {
   const { children, ...restProps } = props;
 
   return (
@@ -17,9 +18,14 @@ const Form = (props: IFormProps): JSX.Element => {
   );
 };
 
-Form.Fieldset = FormFieldset;
-Form.Field = FormField;
-Form.Actions = FormActions;
-Form.Disclaimer = FormDisclaimer;
+Component.displayName = 'Form';
+
+const Form = Object.assign(Component, {
+  Fieldset: FormFieldset,
+  Field: FormField,
+  Actions: FormActions,
+  Error: FormError,
+  Disclaimer: FormDisclaimer,
+});
 
 export default Form;

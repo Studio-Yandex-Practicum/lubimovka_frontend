@@ -1,18 +1,16 @@
 import classNames from 'classnames/bind';
 
-import styles from './form-field.module.css';
+import { FC } from 'react';
 
-interface IFormFieldProps {
-  children: React.ReactNode;
-}
+import styles from './form-field.module.css';
 
 const cx = classNames.bind(styles);
 
-export const FormField = (props: IFormFieldProps): JSX.Element => {
+export const FormField: FC = (props) => {
   const { children } = props;
 
   return (
-    <div className={cx('field')}>
+    <div className={cx('root')}>
       {children}
     </div>
   );

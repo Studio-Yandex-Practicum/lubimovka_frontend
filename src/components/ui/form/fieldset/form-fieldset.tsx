@@ -1,19 +1,20 @@
 import classNames from 'classnames/bind';
 
+import type { FC } from 'react';
+
 import styles from './form-fieldset.module.css';
 
-interface IFormFieldsetProps extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
+interface FormFieldsetProps extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
   legend: string;
-  children: React.ReactNode;
 }
 
 const cx = classNames.bind(styles);
 
-export const FormFieldset = (props: IFormFieldsetProps): JSX.Element => {
+export const FormFieldset: FC<FormFieldsetProps> = (props) => {
   const { legend, children } = props;
 
   return (
-    <fieldset className={cx('fieldset')}>
+    <fieldset className={cx('root')}>
       <legend className={cx('legend')}>
         {legend}
       </legend>
