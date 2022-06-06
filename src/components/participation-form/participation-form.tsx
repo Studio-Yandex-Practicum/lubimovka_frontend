@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 
@@ -6,8 +5,11 @@ import Form from 'components/ui/form';
 import { FormField } from 'components/form-field';
 import TextInput from 'components/ui/text-input';
 import { FileInput } from 'components/ui/file-input';
-import { Button } from 'components/ui/button';
-import { Nullable } from 'shared/types';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
+
+import type { FC } from 'react';
+import type { Nullable } from 'shared/types';
 
 import styles from './participation-form.module.css';
 
@@ -39,6 +41,7 @@ interface IParticipationFormProps {
   fileName?: string,
   fileError?: string,
   onFileChange: (file: Nullable<File>) => void,
+  genericError?: string,
   canSubmit: boolean,
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void,
 }
@@ -76,6 +79,7 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
     fileName,
     fileError,
     onFileChange,
+    genericError,
     canSubmit,
     onSubmit,
   } = props;
@@ -210,15 +214,23 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
       </Form.Fieldset>
       <Form.Actions>
         <Button
-          className={cx('action')}
           type="submit"
-          iconPlace="right"
-          icon="arrow-right"
+          icon={(
+            <Icon
+              glyph="arrow-right"
+              width="100%"
+              height="100%"
+            />
+          )}
+          iconPosition="right"
           size="l"
           border="full"
-          label="Отправить"
+          upperCase
+          fullWidth
           disabled={!canSubmit}
-        />
+        >
+          Отправить
+        </Button>
       </Form.Actions>
       <Form.Disclaimer>
         Нажимая на кнопку «Отправить» вы даёте согласие
@@ -229,6 +241,11 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
           </a>
         </Link>
       </Form.Disclaimer>
+      {genericError && (
+        <Form.Error>
+          {genericError}
+        </Form.Error>
+      )}
     </Form>
   );
 };
