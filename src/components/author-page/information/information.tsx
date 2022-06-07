@@ -21,7 +21,6 @@ export const AuthorInformation: FC<IAuthorInformation> = ({ links }) => {
       </h2>
       <div className={cx('blocksInfo')}>
         {links
-          .sort((link1, link2) => link1.order_number - link2.order_number)
           .map((item, idx) => (
             <div className={cx('anchorHeading')} key={idx}>
               <InfoLink
