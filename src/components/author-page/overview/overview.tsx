@@ -1,6 +1,7 @@
 import { FC, useState, useMemo } from 'react';
-import cn from 'classnames/bind';
+import type { Achievement } from '../../../api-typings/models/Achievement';
 
+import cn from 'classnames/bind';
 import * as breakpoints from 'shared/breakpoints.js';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { AuthorPlays } from '../plays';
@@ -8,8 +9,8 @@ import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
 import { InfoLink } from 'components/ui/info-link';
 import { OtherLink, Play, SocialNetwork } from 'api-typings';
-import { numberOfCharacters } from 'shared/constants/numbers';
 
+import { numberOfCharacters } from 'shared/constants/numbers';
 import styles from './overview.module.css';
 
 const cx = cn.bind(styles);
@@ -22,7 +23,7 @@ interface IAuthorOverview {
     quote: string,
     biography: string,
     other_links: OtherLink[],
-    achievements: Array<string>,
+    achievements: Array<Achievement>,
     social_networks: SocialNetwork[],
     email: string,
     plays: Play[],
@@ -132,7 +133,6 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
           {availablePins && (
             <div className={cx('authorLinks')}>
               {pinnedLinks
-                .sort((link1,link2) => link1.order_number - link2.order_number)
                 .map((item, idx) => (
                   <div className={cx('linkHeading')} key={idx}>
                     <InfoLink
@@ -161,7 +161,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
                 {achievements.map((item, idx) => (
                   <div className={cx('tag')} key={idx}>
                     <Tag
-                      label={item}
+                      label={item.name}
                       selected={false}
                     />
                   </div>

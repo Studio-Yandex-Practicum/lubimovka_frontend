@@ -9,8 +9,4 @@ export type OtherLink = {
      * Закрепить ссылку вверху страницы?
      */
     is_pinned: boolean;
-    /**
-     * Указывается для формирования порядка вывода информации
-     */
-    order_number: number;
 };
