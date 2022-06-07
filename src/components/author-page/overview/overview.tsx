@@ -1,16 +1,17 @@
-import { FC, useState, useMemo } from 'react';
-import type { Achievement } from '../../../api-typings/models/Achievement';
+import { useState, useMemo } from 'react';
 
 import cn from 'classnames/bind';
 import * as breakpoints from 'shared/breakpoints.js';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
-import { AuthorPlays } from '../plays';
+import { AuthorPlays } from 'components/author-page/plays';
 import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
 import { InfoLink } from 'components/ui/info-link';
-import { OtherLink, Play, SocialNetwork } from 'api-typings';
-
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { numberOfCharacters } from 'shared/constants/numbers';
+
+import type { FC } from 'react';
+import type { OtherLink, Play, SocialNetwork, Achievement } from 'api-typings';
+
 import styles from './overview.module.css';
 
 const cx = cn.bind(styles);
