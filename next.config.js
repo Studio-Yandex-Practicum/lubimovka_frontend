@@ -1,3 +1,5 @@
+const { baseUrl, apiBaseUrl } = require('./config/vars');
+
 module.exports = {
   webpack(config) {
     config.module.rules.push({
@@ -27,7 +29,21 @@ module.exports = {
       'test.dev.lubimovka.ru',
     ],
   },
+  publicRuntimeConfig: {
+    baseUrl,
+    apiBaseUrl,
+  },
   experimental: {
     scrollRestoration: true,
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/press-releases/:year/download',
+          destination: `${apiBaseUrl}/info/press-releases/:year/download/`,
+        }
+      ],
+    };
   },
 };
