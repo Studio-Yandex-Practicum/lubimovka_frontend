@@ -17,8 +17,8 @@
     "start-testing-server": "node scripts/start-testing-server",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
-    "e2e": "API_BASE_URL=http://localhost:3002/api PORT=3002 start-server-and-test start-testing-server http://localhost:3002 cypress",
-    "e2e:headless": "API_BASE_URL=http://localhost:3002/api PORT=3002 start-server-and-test start-testing-server http://localhost:3002 cypress:headless"
+    "e2e": "NEXT_PUBLIC_API_BASE_URL=http://localhost:3002/api PORT=3002 start-server-and-test start-testing-server http://localhost:3002 cypress",
+    "e2e:headless": "NEXT_PUBLIC_API_BASE_URL=http://localhost:3002/api PORT=3002 start-server-and-test start-testing-server http://localhost:3002 cypress:headless"
   },
   "repository": {
     "type": "git",
