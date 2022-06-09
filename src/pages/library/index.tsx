@@ -1,16 +1,17 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useEffect, useState, useReducer } from 'react';
+import { useEffect, useState, useReducer, useRef } from 'react';
 import Error from 'next/error';
 
 import { AppLayout } from 'components/app-layout';
 import LibraryPage from 'components/library-pieces-page';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
-import { PaginatedPlayList, Play } from 'api-typings';
+import type { PaginatedPlayList, Play } from 'api-typings';
 import reducer from 'components/library-filter/library-filter-reducer';
+import type { State } from 'components/library-filter/library-filter-reducer';
 import queryParser from '../../components/library-pieces-page/library-query-parser';
 import LibraryFiltersProvider from 'providers/library-filters-provider';
-import { DroplistOption } from '../../components/ui/droplist';
+import type { DroplistOption } from '../../components/ui/droplist';
 
 export interface IProgram {
   'pk': number,
@@ -20,6 +21,7 @@ export interface IProgram {
 export interface IPiecesFiltersProps {
   years: DroplistOption[];
   programs: Array<IProgram>;
+  defaultState: State;
 }
 
 interface IPiecesProps extends IPiecesFiltersProps {
@@ -27,23 +29,26 @@ interface IPiecesProps extends IPiecesFiltersProps {
   pieces: Play[];
 }
 
-const filterInitialState = { festival: [], program: [] };
-
-const Library = ({ errorCode, pieces, years, programs }:
+const Library = ({ errorCode, pieces, years, programs, defaultState }:
   InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const isInitial = useRef<boolean>(true);
   const [piecesState, setPiecesState] = useState<Play[]>(pieces);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [filterState, filterDispatcher] = useReducer(
     reducer,
-    filterInitialState,
+    defaultState,
     undefined
   );
 
   useEffect(() => {
+    if(isInitial.current) {
+      isInitial.current = false;
+      return;
+    }
     setIsLoading(true);
     const parsedQuery = queryParser({ ...filterState, festival: filterState.festival.map(({ text })=>text) });
-    const urlWithQuery = parsedQuery ? `/library/?${parsedQuery}` : '/library/';
+    const urlWithQuery = parsedQuery ? `/library?${parsedQuery}` : '/library/';
 
     fetchPieces(parsedQuery)
       .then(res => {
@@ -108,15 +113,21 @@ const fetchPiecesFilters = async () => {
   }
 };
 
-export const getServerSideProps: GetServerSideProps<IPiecesProps> = async () => {
+export const getServerSideProps: GetServerSideProps<IPiecesProps> = async (context) => {
   try {
-    const { years, programs } = await fetchPiecesFilters();
-
+    const [{ years, programs },pieces] = await Promise.all([fetchPiecesFilters(),fetchPieces()]);
+    const { program,festival } = context.query;
+    const programState = (typeof program === 'string' && program.split(',')) || [];
+    const festivalState = (typeof festival === 'string' && festival.split(',')) || [];
     return {
       props: {
-        pieces: await fetchPieces(),
-        years: years,
-        programs: programs
+        pieces,
+        years,
+        programs,
+        defaultState: {
+          program: programState,
+          festival: festivalState.map(el=>({ text: el, value: Number(el) })),
+        }
       },
     };
   } catch (error) {
@@ -125,7 +136,11 @@ export const getServerSideProps: GetServerSideProps<IPiecesProps> = async () => 
         errorCode: 500,
         pieces: [],
         years: [],
-        programs: []
+        programs: [],
+        defaultState: {
+          program: [],
+          festival: [],
+        }
       }
     };
   }
