@@ -35,6 +35,7 @@ module.exports = {
   },
   experimental: {
     scrollRestoration: true,
+    outputStandalone: true,
   },
   async rewrites() {
     return {
