@@ -1,2 +1,1 @@
-export { default } from './[year]';
-export * from './[year]';
+export { default, getServerSideProps } from './[year]';

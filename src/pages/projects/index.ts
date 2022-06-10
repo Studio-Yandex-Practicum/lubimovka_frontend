@@ -1,2 +1,1 @@
-export { default } from './projects';
-export * from './projects';
+export { default, getServerSideProps } from './projects';
