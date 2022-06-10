@@ -1,3 +1,7 @@
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
+
 export const removeTrailingSlash = (url: string) => url.replace(/\/+$/, '');
 
 const normalizePath = (path: string) => {
@@ -7,8 +11,8 @@ const normalizePath = (path: string) => {
   return path.startsWith('/') ? path : `/${path}`;
 };
 
-const baseUrl = removeTrailingSlash(process.env.NEXT_PUBLIC_BASE_URL || '');
-const apiBaseUrl = removeTrailingSlash(process.env.NEXT_PUBLIC_API_BASE_URL || '');
+const baseUrl = removeTrailingSlash(publicRuntimeConfig.baseUrl);
+const apiBaseUrl = removeTrailingSlash(publicRuntimeConfig.apiBaseUrl);
 
 export const addBaseUrlToPath = (path: string) => `${baseUrl}${normalizePath(path)}`;
 export const addApiBaseUrlToPath = (path: string) => `${apiBaseUrl}${normalizePath(path)}`;
