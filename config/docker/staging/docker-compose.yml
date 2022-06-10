@@ -28,9 +28,6 @@ services:
   frontend_stage:
     image: "${IMAGE_FRONT}:${IMAGE_FRONT_TAG}"
     container_name: frontend_stage
-    environment:
-      BASE_URL: ${FRONT_BASE_URL}
-      API_BASE_URL: ${API_BASE_URL}
     networks:
       - stage_swag_network
     restart: always
