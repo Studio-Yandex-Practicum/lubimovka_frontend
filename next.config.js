@@ -1,4 +1,4 @@
-const { baseUrl, apiBaseUrl } = require('./config/vars');
+const { apiBaseUrl } = require('./config/vars');
 
 module.exports = {
   webpack(config) {
@@ -28,10 +28,6 @@ module.exports = {
       'stage.dev.lubimovka.ru',
       'test.dev.lubimovka.ru',
     ],
-  },
-  publicRuntimeConfig: {
-    baseUrl,
-    apiBaseUrl,
   },
   experimental: {
     scrollRestoration: true,
