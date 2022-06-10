@@ -2,11 +2,10 @@ const express = require('express');
 const next = require('next');
 
 const { cypressServerSideStubsMiddleware } = require('./middlewares/cypress-server-side-stubs');
-const { environment } = require('../../config/vars');
+const { environment, port } = require('../../config/vars');
 const { log } = console;
 
 const hostname = 'localhost';
-const port = '3002';
 
 const app = next({
   dev: environment === 'development',

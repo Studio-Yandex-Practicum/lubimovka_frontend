@@ -1,4 +1,4 @@
-const { apiBaseUrl } = require('./config/vars');
+const { baseUrl, apiBaseUrl } = require('./config/vars');
 
 module.exports = {
   webpack(config) {
@@ -29,9 +29,12 @@ module.exports = {
       'test.dev.lubimovka.ru',
     ],
   },
+  publicRuntimeConfig: {
+    baseUrl,
+    apiBaseUrl,
+  },
   experimental: {
     scrollRestoration: true,
-    outputStandalone: true,
   },
   async rewrites() {
     return {
