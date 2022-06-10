@@ -70,6 +70,7 @@
     "postcss-preset-env": "6.7.0",
     "postcss-pxtorem": "6.0.0",
     "postcss-simple-vars": "6.0.3",
+    "sharp": "0.30.6",
     "simple-git-hooks": "2.6.1",
     "start-server-and-test": "1.14.0",
     "stylelint": "13.13.1",
