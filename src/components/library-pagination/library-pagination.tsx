@@ -14,17 +14,15 @@ interface LibraryPaginationProps {
   className?: string;
   onChange: (letter: string) => void;
   isLoading: boolean;
+  defaultLetter: string;
 }
 
 const defaultLetters = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'К', 'Л', 'М', 'Н',
   'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я'];
 
-const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, authors, onChange, isLoading }) => {
-  const [letter, setLetter] = useState<string>();
+const LibraryPagination: FC<LibraryPaginationProps> = ({ letters, authors, onChange, isLoading,defaultLetter }) => {
+  const [letter, setLetter] = useState<string>(defaultLetter);
   const [letterElement, setLetterElement] = useState<HTMLInputElement | null>(null);
-  useEffect(()=> {
-    setLetter(letters[0]);
-  },[]);
 
   const changeLetter = (e: React.MouseEvent<HTMLInputElement, MouseEvent>, el: string) => {
     setLetter(el);

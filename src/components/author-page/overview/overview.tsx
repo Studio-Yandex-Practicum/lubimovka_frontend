@@ -13,6 +13,7 @@ import type { FC } from 'react';
 import type { OtherLink, Play, SocialNetwork, Achievement } from 'api-typings';
 
 import styles from './overview.module.css';
+import { Link } from '../../ui/link';
 
 const cx = cn.bind(styles);
 
@@ -161,10 +162,14 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
               <div className={cx('tagWrapper')}>
                 {achievements.map((item, idx) => (
                   <div className={cx('tag')} key={idx}>
-                    <Tag
-                      label={item.name}
-                      selected={false}
-                    />
+                    <Link href={`library/?festival=${item.year}&program=${item.id}`}>
+                      <a>
+                        <Tag
+                          label={item.name}
+                          selected={false}
+                        />
+                      </a>
+                    </Link>
                   </div>
                 )
                 )}

@@ -18,7 +18,9 @@ const LibraryForm: FC = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    router.push(`/library/search-result${urlQuery}`);
+    if(urlQuery) {
+      router.push(`/library/search-result${urlQuery}`);
+    }
   };
 
   return (
@@ -44,9 +46,10 @@ const LibraryForm: FC = () => {
         type="submit"
         iconPlace="left"
         border="none"
-        isLink
+        isLink={Boolean(urlQuery)}
         href={`/library/search-result${urlQuery}`}
         align="start"
+        disabled={!urlQuery}
         className={style.button}
       />
     </form>
