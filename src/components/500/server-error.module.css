@@ -3,40 +3,40 @@
 
   position: relative;
   overflow: hidden;
-  max-width: scale(1440px);
+  max-width: 1440px;
   margin: 0 auto;
   background: #ecebe8;
   color: #242424;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(32px 24px);
+    padding: 32px 24px;
   }
 }
 
 .logo {
   position: absolute;
-  top: scale(28px);
-  left: scale(32px);
-  width: scale(93px);
-  height: scale(80px);
+  top: 28px;
+  left: 32px;
+  width: 93px;
+  height: 80px;
   padding: 0;
   margin: 0;
   color: inherit;
 
   @media (max-width: $tablet-portrait) {
     position: static;
-    width: scale(34px);
-    height: scale(43px);
+    width: 34px;
+    height: 43px;
   }
 
   & svg {
-    width: scale(93px);
-    height: scale(80px);
+    width: 93px;
+    height: 80px;
 
     @media (max-width: $tablet-portrait) {
       position: static;
-      width: scale(34px);
-      height: scale(43px);
+      width: 34px;
+      height: 43px;
     }
   }
 }
@@ -44,10 +44,10 @@
 .contentContainer {
   display: flex;
   flex-direction: column;
-  margin: scale(142px 50px 0 180px);
+  margin: 142px 50px 0 180px;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(69px auto auto auto);
+    margin: 69px auto auto auto;
   }
 }
 
@@ -55,11 +55,11 @@
   @mixin headline;
   @mixin headline3;
 
-  max-width: scale(870px);
-  margin: scale(0 0 24px 0);
+  max-width: 870px;
+  margin: 0 0 24px 0;
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: scale(16px);
+    margin-bottom: 16px;
 
     @mixin headline5;
   }
@@ -69,27 +69,27 @@
   @mixin headline;
   @mixin headline6;
 
-  margin-bottom: scale(16px);
+  margin-bottom: 16px;
 
   @media (max-width: $tablet-portrait) {
-    width: scale(306px);
+    width: 306px;
   }
 }
 
 .leftBlock {
-  width: scale(480px);
-  margin: scale(0 0 0 60px);
+  width: 480px;
+  margin: 0 0 0 60px;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(20px auto);
+    margin: 20px auto;
   }
 }
 
 .rightBlock {
-  width: scale(376px);
-  margin: scale(0 0 0 390px);
+  width: 376px;
+  margin: 0 0 0 390px;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(20px auto);
+    margin: 20px auto;
   }
 }

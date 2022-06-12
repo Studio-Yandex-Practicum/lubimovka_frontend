@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Logo from 'shared/images/full-logo.svg';
 import SmallLogo from 'shared/images/compact-logo.svg';
-import classes from './ServerError.module.css';
+import classes from './server-error.module.css';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import * as breakpoints from 'shared/breakpoints';
 import { Button } from 'components/ui/button';
