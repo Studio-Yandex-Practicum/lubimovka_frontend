@@ -1,0 +1,95 @@
+.error {
+  @mixin text;
+
+  position: relative;
+  overflow: hidden;
+  max-width: 1440px;
+  margin: 0 auto;
+  background: #ecebe8;
+  color: #242424;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 32px 24px;
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  width: 93px;
+  height: 80px;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+
+  @media (max-width: $tablet-portrait) {
+    position: static;
+    width: 34px;
+    height: 43px;
+  }
+
+  & svg {
+    width: 93px;
+    height: 80px;
+
+    @media (max-width: $tablet-portrait) {
+      position: static;
+      width: 34px;
+      height: 43px;
+    }
+  }
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 142px 50px 0 180px;
+
+  @media (max-width: $tablet-portrait) {
+    margin: 69px auto auto auto;
+  }
+}
+
+.subtitle {
+  @mixin headline;
+  @mixin headline3;
+
+  max-width: 870px;
+  margin: 0 0 24px 0;
+
+  @media (max-width: $tablet-portrait) {
+    margin-bottom: 16px;
+
+    @mixin headline5;
+  }
+}
+
+.text {
+  @mixin headline;
+  @mixin headline6;
+
+  margin-bottom: 16px;
+
+  @media (max-width: $tablet-portrait) {
+    width: 306px;
+  }
+}
+
+.leftBlock {
+  width: 480px;
+  margin: 0 0 0 60px;
+
+  @media (max-width: $tablet-portrait) {
+    margin: 20px auto;
+  }
+}
+
+.rightBlock {
+  width: 376px;
+  margin: 0 0 0 390px;
+
+  @media (max-width: $tablet-portrait) {
+    margin: 20px auto;
+  }
+}
