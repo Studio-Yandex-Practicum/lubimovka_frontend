@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: scale(0 9px);
+  padding: 0 9px;
 
   &:not(:last-child)::after {
     position: absolute;
@@ -18,5 +18,5 @@
 
 .primary {
   flex-grow: 1;
-  padding-right: scale(31px);
+  padding-right: 31px;
 }

@@ -15,11 +15,11 @@
   display: flex;
   max-width: 100%;
   flex-direction: column;
-  padding: 0 scale(30px) scale(273px);
+  padding: 0 30px 273px;
   margin: 0 auto;
 
   @media (max-width: $tablet-portrait) {
-    padding: 0 0 scale(116px) scale(27px);
+    padding: 0 0 116px 27px;
   }
 }
 
@@ -27,12 +27,12 @@
   @mixin headline;
   @mixin headline2;
 
-  padding: scale(90px) scale(90px) scale(80px) 50%;
+  padding: 90px 90px 80px 50%;
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    padding: scale(56px) scale(90px) scale(32px) 0;
+    padding: 56px 90px 32px 0;
   }
 }

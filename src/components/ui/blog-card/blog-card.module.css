@@ -20,7 +20,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  max-height: scale(343px);
+  max-height: 343px;
 }
 
 .img {
@@ -43,10 +43,10 @@
   @mixin textSmall;
 
   align-self: flex-start;
-  padding: scale(16px 0 16px);
+  padding: 16px 0 16px;
 
   @media (max-width: 576px) {
-    padding-left: scale(30px);
+    padding-left: 30px;
   }
 
   @media (max-width: $tablet-portrait) {
@@ -57,7 +57,7 @@
 .heading {
   align-self: flex-start;
   padding: 0;
-  padding-bottom: scale(16px);
+  padding-bottom: 16px;
   margin: 0;
 
   @mixin headline;
@@ -69,7 +69,7 @@
 }
 
 .description {
-  padding: scale(0 2px 0 31px);
+  padding: 0 2px 0 31px;
 
   @mixin text;
   @mixin textSmall;

@@ -1,0 +1,21 @@
+.common {
+  display: grid;
+  padding: 72px 240px;
+  grid-gap: 48px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: $tablet-portrait) {
+    padding: 56px 24px;
+    grid-template-columns: auto;
+  }
+}
+
+.default {
+  composes: common;
+  background-color: var(--white);
+}
+
+.brand {
+  composes: common;
+  background-color: var(--light-green);
+}

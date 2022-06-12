@@ -2,7 +2,7 @@
 
 .root {
   display: grid;
-  padding: scale(0 $page-margin-tablet-portrait scale(220px));
+  padding: 0 $page-margin-tablet-portrait 220px;
   background-color: var(--white);
   grid-auto-columns: auto;
   grid-template-areas:
@@ -12,7 +12,7 @@
 
   @media (max-width: $tablet-portrait) {
     display: block;
-    padding: scale(44px $page-margin-smartphone scale(150px));
+    padding: 44px $page-margin-smartphone 150px;
   }
 }
 
@@ -21,17 +21,17 @@
 }
 
 .filter {
-  margin: scale(32px 30px 0 0);
+  margin: 32px 30px 0 0;
   grid-area: filter;
 
   @media (max-width: $tablet-portrait) {
     margin-right: 0;
-    margin-bottom: scale(28px);
+    margin-bottom: 28px;
   }
 }
 
 .year {
-  max-width: scale(148px);
+  max-width: 148px;
 
   @media (max-width: $tablet-portrait) {
     max-width: initial;

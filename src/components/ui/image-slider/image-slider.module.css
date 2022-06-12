@@ -1,7 +1,7 @@
 .container {
   position: relative;
   box-sizing: border-box;
-  padding: scale(0 77px);
+  padding: 0 77px;
 
   @media (max-width: $tablet-portrait) {
     padding: 0;
@@ -9,14 +9,9 @@
   }
 }
 
-.containerSlidesSimple {
-  width: 70%;
-  margin: auto;
-}
-
 .slider {
   @media (max-width: $tablet-portrait) {
-    margin-top: scale(19px);
+    margin-top: 19px;
   }
 }
 
@@ -41,12 +36,10 @@
 .arrow {
   position: absolute;
   top: 50%;
-  width: scale(48px);
-  height: scale(48px);
+  width: 48px;
+  height: 48px;
   transform: translateY(-50%);
-}
 
-.arrowImage {
   @media (max-width: $tablet-portrait) {
     position: static;
     display: inline-block;
@@ -55,13 +48,13 @@
 
   &:last-of-type {
     @media (max-width: $tablet-portrait) {
-      margin-right: scale(24px);
+      margin-right: 24px;
     }
   }
 
   &:not(:last-of-type) {
     @media (max-width: $tablet-portrait) {
-      margin-right: scale(51px);
+      margin-right: 51px;
     }
   }
 }
@@ -80,9 +73,9 @@
 }
 
 .dots {
-  margin-top: scale(19px);
+  margin-top: 19px;
 
   @media (max-width: $tablet-portrait) {
-    margin-top: scale(15px);
+    margin-top: 15px;
   }
 }

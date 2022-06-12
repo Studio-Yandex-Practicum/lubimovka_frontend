@@ -1,47 +1,123 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Error from 'next/error';
+import classNames from 'classnames/bind';
 
-import { fetcher } from 'shared/fetcher';
-import { AppLayout } from '../../components/app-layout';
-import { ArticlePage } from '../../components/article-page';
-import { NewsData } from '../../shared/types';
+import { AppLayout } from 'components/app-layout';
+import { ArticleHeadline } from 'components/article-headline';
+import { ArticleFootnote } from 'components/article-footnote';
+import { Share } from 'components/share';
+import { ConstructorContent } from 'components/constructor-content';
+import { Section } from 'components/section';
+import { NewsList } from 'components/news-list';
+import { NewsCard } from 'components/news-card';
+import { PageBreadcrumbs } from 'components/page';
+import { Breadcrumb } from 'components/breadcrumb';
+import { SEO } from 'components/seo';
+import { fetcher } from 'services/fetcher';
+import { format } from 'shared/helpers/format-date';
+import { notFoundResult, serverErrorResult } from 'shared/constants/server-side-props';
+
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import type { NewsItemDetailed } from 'api-typings';
+
+import styles from 'components/article-layout/article-layout.module.css';
+
+const cx = classNames.bind(styles);
 
 const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  if ('errorCode' in props) {
+    return (
+      <Error statusCode={props.errorCode}/>
+    );
+  }
+
+  const {
+    title,
+    description,
+    image,
+    date,
+    constructorBlocks,
+    suggestedNews,
+  } = props;
 
   return (
     <AppLayout>
-      <ArticlePage data={props}/>
+      <SEO
+        title={title}
+        description={description}
+      />
+      <PageBreadcrumbs>
+        <Breadcrumb
+          text="Блог"
+          path="/blog"
+        />
+      </PageBreadcrumbs>
+      <ArticleHeadline
+        variant="news"
+        title={title}
+        description={description}
+        date={format('d MMMM yyyy', new Date(date))}
+        cover={image}
+      />
+      <ConstructorContent
+        // @ts-expect-error
+        blocks={constructorBlocks}
+      />
+      <ArticleFootnote
+        className={cx('footnote')}
+        colors="brand"
+        action={(
+          <Share
+            firstLine="Поделиться"
+            secondLine="новостью в соцсетях"
+            size="s"
+          />
+        )}
+      />
+      {!!suggestedNews.length && (
+        <Section
+          type="news"
+          title="Другие новости"
+        >
+          <NewsList>
+            {suggestedNews.map((entry) => (
+              <NewsList.Item key={entry.id}>
+                <NewsCard
+                  title={entry.title}
+                  description={entry.description}
+                  date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
+                  href={`/news/${entry.id}`}
+                />
+              </NewsList.Item>
+            ))}
+          </NewsList>
+        </Section>
+      )}
     </AppLayout>
   );
 };
 
-const fetchNewsArticle = async (newsId: string) => {
-  let data;
-
-  try {
-    data = await fetcher<NewsData>(`/news/${newsId}/`);
-  } catch (error) {
-    // TODO: обработать ошибку, добавим после реализации страницы ошибки
-
-    return;
+export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'id', string>>) => {
+  if (!params) {
+    return serverErrorResult;
   }
 
-  return data;
-};
+  const { id } = params;
+  let data: NewsItemDetailed;
 
-export const getServerSideProps: GetServerSideProps<NewsData, Record<'id', string>> = async ({ params }) => {
-  const { id: newsId } = params!;
-
-  const newsArticle = await fetchNewsArticle(newsId);
-
-  if (!newsArticle) {
-    return {
-      notFound: true,
-    };
+  try {
+    data = await fetcher<NewsItemDetailed>(`/news/${id}/`);
+  } catch {
+    return notFoundResult;
   }
 
   return {
     props: {
-      ...newsArticle
+      title: data.title,
+      description: data.description,
+      image: data.image,
+      date: data.pub_date,
+      constructorBlocks: data.contents,
+      suggestedNews: data.other_news,
     },
   };
 };

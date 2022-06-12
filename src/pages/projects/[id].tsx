@@ -5,7 +5,8 @@ import { ProjectLayout } from 'components/project-layout';
 import { Breadcrumb } from 'components/breadcrumb';
 import { ProjectHeadline } from 'components/project-headline';
 import { ConstructorContent } from 'components/constructor-content';
-import { fetcher } from 'shared/fetcher';
+import { SEO } from 'components/seo';
+import { fetcher } from 'services/fetcher';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type { Project as ProjectModel } from 'api-typings';
@@ -21,6 +22,10 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
 
   return (
     <AppLayout>
+      <SEO
+        title={title}
+        description={description}
+      />
       <ProjectLayout>
         <PageBreadcrumbs>
           <Breadcrumb
@@ -37,6 +42,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
           {description}
         </ProjectLayout.Description>
         <ConstructorContent
+          variant="project"
           // @ts-expect-error
           blocks={contents}
         />

@@ -2,21 +2,21 @@
   @mixin headline;
   @mixin headline6;
 
-  max-width: scale(387px);
+  max-width: 387px;
 
   @media (max-width: $tablet-portrait) {
-    max-width: scale(366px);
+    max-width: 366px;
   }
 }
 
 .photo {
   position: relative;
-  width: scale(150px);
-  height: scale(182px);
-  margin: scale(25px auto 32px 31px);
+  width: 150px;
+  height: 182px;
+  margin: 25px auto 32px 31px;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(24px auto 24px 63px);
+    margin: 24px auto 24px 63px;
   }
 }
 
@@ -25,12 +25,12 @@
 }
 
 .email {
-  max-width: scale(479px);
+  max-width: 479px;
   margin: 0;
-  margin-bottom: scale(8px);
+  margin-bottom: 8px;
 
   @media (max-width: $tablet-portrait) {
-    max-width: scale(367px);
+    max-width: 367px;
   }
 }
 
@@ -38,7 +38,7 @@
   @mixin text;
   @mixin textSmall;
 
-  max-width: scale(269px);
+  max-width: 269px;
 }
 
 .hiddenText {

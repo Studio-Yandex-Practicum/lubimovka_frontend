@@ -3,11 +3,4 @@
   --page-content-min-width: 414px;
   --page-navbar-extended-height: 123px;
   --head-banner-height-tablet-portrait: 40vh;
-
-  /* Коэффициент для масштабирования размеров с помощью хелпера scale() */
-  --scale: calc(100vw / 1440);
-
-  @media (max-width: $tablet-portrait) {
-    --scale: calc(100vw / 414);
-  }
 }

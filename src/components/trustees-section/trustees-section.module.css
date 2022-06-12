@@ -12,22 +12,22 @@
 }
 
 .menu {
-  padding: scale(40px 0 59px 60px);
+  padding: 40px 0 59px 60px;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(2px 0 32px 24px);
+    padding: 2px 0 32px 24px;
   }
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 scale(30px);
+  padding: 0 30px;
   margin: 0 auto;
   row-gap: 120px;
 
   @media (max-width: 767px) {
-    padding: 0 scale(25px);
+    padding: 0 25px;
     row-gap: 32px;
   }
 }
@@ -36,7 +36,7 @@
   width: 50%;
   align-self: flex-end;
   padding-bottom: 40px;
-  padding-left: scale(85px);
+  padding-left: 85px;
 
   @media (max-width: 767px) {
     width: 100%;
@@ -51,18 +51,18 @@
   @mixin text;
   @mixin textLarge;
 
-  max-width: scale(468px);
-  padding-left: scale(27px);
+  max-width: 468px;
+  padding-left: 27px;
 
   @media (max-width: 767px) {
     max-width: none;
-    padding-left: scale(27px);
+    padding-left: 27px;
   }
 }
 
 .mailLink {
   display: inline-block;
-  border-bottom: scale(1px) solid;
+  border-bottom: 1px solid;
   color: inherit;
   line-height: .9;
   text-decoration: none;
@@ -91,8 +91,8 @@
   @mixin headline;
   @mixin headline7;
 
-  max-width: scale(453px);
-  padding-left: scale(60px);
+  max-width: 453px;
+  padding-left: 60px;
 
   @media (max-width: $tablet-portrait) {
     max-width: none;

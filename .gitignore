@@ -15,3 +15,7 @@ storybook-static
 .idea
 .prettierrc
 .DS_Store
+
+tsconfig.tsbuildinfo
+
+screenshots

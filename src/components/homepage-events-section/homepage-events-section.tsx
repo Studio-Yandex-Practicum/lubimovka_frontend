@@ -29,7 +29,7 @@ export const HomepageEventsSection: FC<HomepageEventsSectionProps> = (props) => 
           {title}
         </h2>
         <Link
-          href="/afisha/events"
+          href="/events"
           passHref
         >
           <Button

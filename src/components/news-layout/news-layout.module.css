@@ -1,6 +1,6 @@
 .root {
   display: grid;
-  padding: scale(60px 90px 200px);
+  padding: 60px 90px 200px;
   grid-template:
     ".    title"
     ".    filter"
@@ -9,27 +9,27 @@
 
   @media (max-width: $tablet-portrait) {
     display: block;
-    padding: scale(0 24px 52px);
+    padding: 0 24px 52px;
   }
 }
 
 .title {
   width: min-content;
-  margin-bottom: scale(16px);
+  margin-bottom: 16px;
   grid-area: title;
 }
 
 .filter {
-  margin-bottom: scale(40px);
+  margin-bottom: 40px;
   grid-area: filter;
 }
 
 .month-field {
-  max-width: scale(240px);
+  max-width: 240px;
 }
 
 .year-field {
-  max-width: scale(150px);
+  max-width: 150px;
 }
 
 .no-result {
@@ -42,7 +42,7 @@
 
 .list {
   width: 100%;
-  max-width: scale(900px);
+  max-width: 900px;
   margin: 0 auto !important;
   grid-area: list;
 }

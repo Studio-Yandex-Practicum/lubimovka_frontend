@@ -1,6 +1,6 @@
 .actions {
   display: flex;
-  height: scale(61px);
+  height: 61px;
   flex-grow: 1;
   place-content: stretch;
 

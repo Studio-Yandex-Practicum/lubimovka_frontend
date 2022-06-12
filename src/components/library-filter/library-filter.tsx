@@ -70,9 +70,9 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
               icon="cross"
               iconPlace="left"
               border="bottomLeft"
-              width="scale(143px)"
+              width="143px"
               align="start"
-              gap="scale(3px)"
+              gap="3px"
             />
           </div>
           <div className={style.mobileButtons}>

@@ -9,8 +9,9 @@ import TextInput from 'components/ui/text-input/text-input';
 import TextArea from 'components/ui/text-area';
 import { Button } from 'components/ui/button';
 import { CallToEmail } from 'components/call-to-email';
+import { SEO } from 'components/seo';
 import { usePersistentData } from 'providers/persistent-data-provider';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { validEmailRegexp } from 'shared/constants/regexps';
 
 import type { NextPage } from 'next';
@@ -153,17 +154,17 @@ const Contacts: NextPage = () => {
     };
 
     try {
-      await fetcher('/info/questions/', {
+      await fetcher('/feedback/questions/', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'
         },
         body: JSON.stringify(data),
       });
-    } catch (error) {
+    } catch ([ status, errors ]) {
       // TODO: добавить проверку типов выброшенного исключения, пока считаем, что всегда получаем ответ API
 
-      for (let field in error as Record<string, string[]>) {
+      for (let field in errors as Record<string, string[]>) {
         dispatch({
           type: ContactFormActionTypes.FieldError,
           payload: {
@@ -172,7 +173,7 @@ const Contacts: NextPage = () => {
               author_email: 'email',
               question: 'message',
             }[field] as keyof ContactFormFields,
-            error: (error as Record<string, string[]>)[field][0],
+            error: (errors as Record<string, string[]>)[field][0],
           },
         });
       }
@@ -190,6 +191,9 @@ const Contacts: NextPage = () => {
 
   return (
     <AppLayout>
+      <SEO
+        title="Контакты"
+      />
       <ContactsLayout>
         <ContactsLayout.Column>
           <ContactsLayout.Title>

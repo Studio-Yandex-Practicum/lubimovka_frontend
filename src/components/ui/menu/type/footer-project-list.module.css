@@ -7,10 +7,10 @@
   display: block;
 
   &:not(:first-child) {
-    margin-top: scale(15px);
+    margin-top: 15px;
 
     @media (max-width: $tablet-portrait) {
-      margin-top: scale(13px);
+      margin-top: 13px;
     }
   }
 }
@@ -28,7 +28,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: scale(1px);
+    height: 1px;
     animation: underline .5s;
     background-color: var(--coal);
     content: "";

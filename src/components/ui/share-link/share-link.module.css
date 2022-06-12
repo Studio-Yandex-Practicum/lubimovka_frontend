@@ -2,10 +2,10 @@
   display: flex;
   width: max-content;
   flex-direction: row;
-  margin: 0 scale(-4px);
+  margin: 0 -4px;
   background-color: transparent;
 }
 
 .links {
-  margin: 0 scale(4px);
+  margin: 0 4px;
 }

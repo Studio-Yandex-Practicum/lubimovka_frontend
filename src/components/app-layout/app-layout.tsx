@@ -84,7 +84,7 @@ export const AppLayout = (props: AppLayoutProps) => {
                     <Menu.Item
                       key={item.href}
                       href={item.href}
-                      current={router.asPath === item.href}
+                      current={router.asPath.startsWith(item.href)}
                     >
                       {item.text}
                     </Menu.Item>
@@ -114,6 +114,7 @@ export const AppLayout = (props: AppLayoutProps) => {
               <PartnerList>
                 {partners && partners.length > 0 && partners.map((partner) => (
                   <PartnerList.Item
+                    view="compact"
                     key={partner.name}
                     logo={partner.logo}
                     name={partner.name}

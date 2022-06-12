@@ -2,6 +2,6 @@
   height: var(--head-banner-height-tablet-portrait);
 
   @media (max-width: $tablet-portrait) {
-    height: scale(360px);
+    height: 360px;
   }
 }

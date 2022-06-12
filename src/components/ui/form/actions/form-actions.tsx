@@ -2,18 +2,18 @@ import classNames from 'classnames/bind';
 
 import styles from './form-actions.module.css';
 
-interface IFormActionsProps {
-  children: React.ReactNode;
-  className?: string;
+interface FormActionsProps {
+  children: React.ReactNode
+  className?: string
 }
 
 const cx = classNames.bind(styles);
 
-export const FormActions = (props: IFormActionsProps): JSX.Element => {
+export const FormActions = (props: FormActionsProps) => {
   const { children, className } = props;
 
   return (
-    <div className={cx('actions', className)}>
+    <div className={cx('root', className)}>
       {children}
     </div>
   );

@@ -1,0 +1,12 @@
+.root {
+  @mixin text;
+  @mixin textCaption;
+
+  margin-top: 16px;
+  margin-left: 60px;
+  color: var(--red);
+
+  @media (max-width: $tablet-portrait) {
+    margin-left: 0;
+  }
+}

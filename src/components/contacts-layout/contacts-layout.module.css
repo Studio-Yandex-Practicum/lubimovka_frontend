@@ -2,10 +2,10 @@
   display: flex;
   box-sizing: border-box;
   justify-content: flex-end;
-  padding-bottom: scale(180px);
+  padding-bottom: 180px;
 
   @media (max-width: $tablet-portrait) {
     display: block;
-    padding: scale(0 24px 150px 24px);
+    padding: 0 24px 150px 24px;
   }
 }

@@ -1,0 +1,7 @@
+.footnote {
+  margin: 0 30px 110px;
+
+  @media (max-width: $tablet-portrait) {
+    margin: 0 0 56px;
+  }
+}

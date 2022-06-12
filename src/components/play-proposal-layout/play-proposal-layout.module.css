@@ -3,7 +3,7 @@
   grid-template-columns: repeat(2, 1fr);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(0 24px);
+    padding: 0 24px;
     grid-template-columns: 100%;
   }
 }

@@ -17,7 +17,7 @@
     }
 
     &:not(:last-child) {
-      margin-bottom: scale(100px);
+      margin-bottom: 100px;
     }
   }
 }

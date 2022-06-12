@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export type { Achievement } from './models/Achievement';
 export type { AfishaEvent } from './models/AfishaEvent';
 export type { AfishaEventListOutput } from './models/AfishaEventListOutput';
 export type { AfishaInfoOutput } from './models/AfishaInfoOutput';

@@ -1,15 +1,15 @@
 @value partners from '../partners/footer-partners.module.css';
 
 .projects {
-  margin-top: scale(50px);
+  margin-top: 50px;
   grid-area: projects;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(0 56px);
-    margin: scale(46px 0 26px);
+    padding: 0 56px;
+    margin: 46px 0 26px;
   }
 }
 
 .partners ~ .projects {
-  margin-top: scale(62px);
+  margin-top: 62px;
 }

@@ -4,7 +4,7 @@
   grid-area: partners;
 
   @media (max-width: $tablet-portrait) {
-    margin-top: scale(84px);
+    margin-top: 84px;
   }
 }
 
@@ -12,8 +12,8 @@
   @mixin text;
   @mixin textCaption;
 
-  max-width: scale(100px);
-  margin-right: scale(44px);
+  max-width: 100px;
+  margin-right: 44px;
 
   @media (max-width: $tablet-portrait) {
     display: none;

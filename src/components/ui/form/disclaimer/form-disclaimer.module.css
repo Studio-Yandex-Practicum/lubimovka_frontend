@@ -1,9 +1,9 @@
-.disclaimer {
+.root {
   @mixin text;
   @mixin textCaption;
 
-  margin-top: scale(16px);
-  margin-left: scale(61px);
+  margin-top: 16px;
+  margin-left: 60px;
 
   @media (max-width: $tablet-portrait) {
     margin-left: 0;

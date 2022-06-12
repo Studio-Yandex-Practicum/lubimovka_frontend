@@ -1,9 +1,9 @@
 .opportunityWrapper {
   padding: 0;
-  margin: scale(177px 0 0 0);
+  margin: 177px 0 0 0;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(58px 0 0 0);
+    margin: 58px 0 0 0;
   }
 }
 
@@ -27,28 +27,28 @@
 }
 
 .header {
-  width: scale(482px);
+  width: 482px;
   align-self: flex-end;
 
   @mixin headline;
   @mixin headline4;
 
-  margin: 0 0 0 scale(32px);
+  margin: 0 0 0 32px;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    width: scale(359px);
+    width: 359px;
     align-self: flex-start;
-    margin: scale(46px 0 0 24px);
+    margin: 46px 0 0 24px;
   }
 }
 
 .opportunityWrapper:nth-child(even) > .intro > .header {
-  margin: 0 0 0 scale(59px);
+  margin: 0 0 0 59px;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(46px 0 0 24px);
+    margin: 46px 0 0 24px;
   }
 }
 
@@ -66,27 +66,27 @@
 
 .picture {
   position: relative;
-  width: scale(780px);
-  height: scale(300px);
+  width: 780px;
+  height: 300px;
   vertical-align: bottom;
 
   @media (max-width: $tablet-portrait) {
-    width: scale(390px);
-    height: scale(200px);
+    width: 390px;
+    height: 200px;
   }
 }
 
 .kickies {
   display: grid;
   padding: 0;
-  margin: scale(73px 32px 0 32px);
-  gap: scale(119px) 0;
+  margin: 73px 32px 0 32px;
+  gap: 119px 0;
   grid-template-columns: repeat(5, 1fr);
   list-style: none;
 
   @media (max-width: $tablet-portrait) {
-    margin: scale(24px 0 0 0);
-    gap: scale(24px) 0;
+    margin: 24px 0 0 0;
+    gap: 24px 0;
     grid-template-columns: 1fr;
   }
 }
@@ -95,10 +95,10 @@
   @mixin headline;
   @mixin headline7;
 
-  width: scale(237px);
+  width: 237px;
 
   @media (max-width: $tablet-portrait) {
-    width: scale(305px);
-    margin: scale(0 0 0 85px);
+    width: 305px;
+    margin: 0 0 0 85px;
   }
 }

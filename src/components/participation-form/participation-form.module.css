@@ -2,15 +2,10 @@
   @mixin text;
   @mixin textCaption;
 
-  margin-top: scale(16px);
-  margin-left: scale(30px);
+  margin-top: 16px;
+  margin-left: 30px;
 
   @media (max-width: $tablet-portrait) {
-    margin-left: scale(32px);
+    margin-left: 32px;
   }
-}
-
-.action {
-  width: 100%;
-  justify-content: space-between;
 }

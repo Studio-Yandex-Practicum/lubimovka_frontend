@@ -3,10 +3,11 @@ import cn from 'classnames/bind';
 
 import breakpoints from 'shared/breakpoints';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
-import { FestivalEventsMobile } from '../festival-events-mobile';
-import { FestivalEventsDesktop } from '../festival-events-desktop';
 
 import styles from './festival-events.module.css';
+
+import { FestivalEventsMobile } from '../festival-events-mobile';
+import { FestivalEventsDesktop } from '../festival-events-desktop';
 
 const cx = cn.bind(styles);
 

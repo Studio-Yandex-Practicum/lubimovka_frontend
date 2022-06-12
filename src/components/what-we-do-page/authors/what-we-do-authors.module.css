@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: scale(86px 120px 150px);
+  padding: 86px 120px 150px;
   background-color: var(--white);
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(56px 24px 72px);
+    padding: 56px 24px 72px;
   }
 }
 
@@ -14,14 +14,14 @@
   @mixin headline;
   @mixin headline5;
 
-  max-width: scale(600px);
-  margin: 0 0 scale(82px) auto;
+  max-width: 600px;
+  margin: 0 0 82px auto;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
     margin: 0;
-    margin-bottom: scale(40px);
+    margin-bottom: 40px;
   }
 }
 
@@ -31,15 +31,15 @@
   justify-content: center;
   padding: 0;
   margin: 0;
-  column-gap: scale(62px);
-  grid-template-columns: repeat(auto-fill, minmax(scale(240px), max-content));
+  column-gap: 62px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, max-content));
   list-style: none;
-  row-gap: scale(6px);
+  row-gap: 6px;
 }
 
 .item {
   @mixin headline;
   @mixin textLarge;
 
-  line-height: scale(24px);
+  line-height: 24px;
 }

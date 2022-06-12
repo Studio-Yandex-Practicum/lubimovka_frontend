@@ -5,18 +5,18 @@
 }
 
 .image {
-  width: scale(43px);
-  height: scale(35px);
+  width: 43px;
+  height: 35px;
 }
 
 .full {
   .image {
-    width: scale(123px);
-    height: scale(104px);
+    width: 123px;
+    height: 104px;
 
     @media (max-width: $tablet-portrait) {
-      width: scale(91px);
-      height: scale(78px);
+      width: 91px;
+      height: 78px;
     }
   }
 }

@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 
 import * as breakpoints from 'shared/breakpoints.js';
 import { AppLayout } from 'components/app-layout';
+import { SEO } from 'components/seo';
 import { Button } from 'components/ui/button';
 import LibraryForm from 'components/library-form/library-form';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import SearchResultAuthors from 'components/search-result-authors/search-result-authors';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 
 import style from './index.module.css';
@@ -106,6 +107,9 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
   return (
     <div className={style.pageWrapper}>
       <AppLayout>
+        <SEO
+          title="Результаты поиска"
+        />
         <main className ={style.page}>
           <div className={style.buttonWrapper}>
             {isMobile !== null && (

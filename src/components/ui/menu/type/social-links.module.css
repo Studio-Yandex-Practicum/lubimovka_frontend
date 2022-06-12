@@ -14,8 +14,8 @@
   display: flex;
   align-items: flex-start;
   color: var(--coal);
-  font-size: scale(16px);
-  line-height: scale(22px);
+  font-size: 16px;
+  line-height: 22px;
   text-decoration: none;
   white-space: nowrap;
 
@@ -25,7 +25,7 @@
     width: .6em;
     height: 1.6em;
     box-sizing: border-box;
-    border: scale(1px) solid currentColor;
+    border: 1px solid currentColor;
     content: '';
     visibility: hidden;
   }

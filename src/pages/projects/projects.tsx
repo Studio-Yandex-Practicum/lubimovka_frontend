@@ -6,7 +6,8 @@ import { ProjectsLayout } from 'components/projects-layout';
 import { ProjectCardList } from 'components/project-card-list';
 import { ProjectCard } from 'components/ui/project-card';
 import { PageTitle } from 'components/page-title';
-import { fetcher } from 'shared/fetcher';
+import { SEO } from 'components/seo';
+import { fetcher } from 'services/fetcher';
 import { PaginatedProjectListList, ProjectList } from 'api-typings';
 import { isEven } from 'shared/helpers/is-even';
 
@@ -24,6 +25,9 @@ const Projects = ({ errorCode, projects }: InferGetServerSidePropsType<typeof ge
 
   return (
     <AppLayout>
+      <SEO
+        title="Проекты"
+      />
       <ProjectsLayout>
         <ProjectsLayout.Headline>
           <PageTitle>
@@ -54,7 +58,8 @@ const fetchProjects = async () => {
   let data;
 
   try {
-    data = await fetcher<PaginatedProjectListList>('/projects/');
+    // параметр ?limit=999 это костыль, предложенный бекендерами, чтобы получать сразу все проекты без учета пагинации вместо того, чтобы выпиливать пагинацию с бекенда
+    data = await fetcher<PaginatedProjectListList>('/projects/?limit=999');
   } catch (error) {
     return;
   }
@@ -82,4 +87,3 @@ export const getServerSideProps: GetServerSideProps<IProjectsProps> = async () =
 };
 
 export default Projects;
-

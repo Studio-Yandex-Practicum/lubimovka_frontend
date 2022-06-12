@@ -16,13 +16,6 @@ export type Partner = {
   url?: Url,
 }
 
-export type Persons = string[];
-
-export type Crewman = {
-  name: string,
-  persons: Persons,
-}
-
 export type BlogEntry = {
   id: number
   publicationDate: string

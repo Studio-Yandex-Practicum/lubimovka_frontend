@@ -1,0 +1,139 @@
+.root {
+  display: grid;
+  padding-bottom: 48px;
+  gap: 16px 0;
+  grid-template:
+    "time-location image"
+    "title         title"
+    "description   description"
+    "credits       credits"
+    "actions       actions" 1fr / 1fr minmax(0, 127px);
+
+  @media (min-width: $tablet-portrait) {
+    padding: 0;
+    gap: 16px 32px;
+    grid-template:
+      "image time-location title       .       ."
+      "image time-location description credits actions" 1fr / minmax(0, 147px) minmax(0, 12.5%) minmax(0, 27.5%) minmax(0, 30%) minmax(0, 17.5%);
+  }
+}
+
+.imageHolder {
+  grid-area: image;
+
+  @media (min-width: $tablet-portrait) {
+    margin-right: -4px;
+  }
+}
+
+.imageCanvas {
+  position: relative;
+  width: 100%;
+  padding-top: 126%;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  @mixin headline;
+  @mixin headline6;
+
+  @media (min-width: $tablet-portrait) {
+    margin-top: 15px;
+  }
+}
+
+.timeLocation {
+  padding-right: 8px;
+  margin: 0;
+  grid-area: time-location;
+
+  @media (min-width: $tablet-portrait) {
+    padding: 0;
+  }
+}
+
+.hiddenText {
+  @mixin visually-hidden;
+}
+
+.time {
+  @mixin headline;
+  @mixin headline7;
+
+  margin-top: 19px;
+
+  @media (min-width: $tablet-portrait) {
+    @mixin headline6;
+
+    margin-top: 15px;
+  }
+}
+
+.location {
+  @mixin text;
+  @mixin textSmall;
+
+  @media (min-width: $tablet-portrait) {
+    margin: 16px 0 0;
+  }
+}
+
+.description {
+  @mixin text;
+  @mixin textSmall;
+
+  margin: 0 0 8px 64px;
+  grid-area: description;
+  word-wrap: break-word;
+
+  @media (min-width: $tablet-portrait) {
+    margin: 0 0 44px;
+  }
+}
+
+.credits {
+  grid-area: credits;
+}
+
+.actions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  grid-area: actions;
+}
+
+.card:not(:first-of-type) {
+  border-top: 1px solid var(--coal);
+
+  @media (min-width: $tablet-portrait) {
+    border-top: 0;
+    overflow-x: hidden;
+  }
+
+  .imageHolder {
+    @media (min-width: $tablet-portrait) {
+      position: relative;
+    }
+
+    &::before {
+      @media (min-width: $tablet-portrait) {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        display: block;
+        width: 100vw;
+        height: 1px;
+        background-color: var(--coal);
+        content: "";
+      }
+    }
+  }
+}

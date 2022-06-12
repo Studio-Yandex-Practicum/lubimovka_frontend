@@ -4,7 +4,7 @@ import { objectToQueryString } from '@funboxteam/diamonds';
 import { omit } from 'shared/helpers/omit';
 import { isNil } from 'shared/helpers/is-nil';
 import { useDidMountEffect } from 'shared/hooks/use-did-mount-effect';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { entriesPerPage } from 'shared/constants/blog';
 import { BlogContext } from './blog-provider.context';
 

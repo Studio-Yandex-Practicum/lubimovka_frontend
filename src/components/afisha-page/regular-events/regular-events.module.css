@@ -1,17 +1,17 @@
 .section {
   display: grid;
-  padding: calc(var(--scale) * 66) 0 calc(var(--scale) * 166);
+  padding: 66px 0 166px;
   grid-template-columns: repeat(3, 1fr);
 
   @media (max-width: $tablet-portrait) {
     display: flex;
     flex-direction: column;
-    padding: 0 0 calc(var(--scale) * 100) 0;
+    padding: 0 0 100px 0;
   }
 }
 
 .event {
-  padding: 0 calc(var(--scale) * 30) calc(var(--scale) * 72);
+  padding: 0 30px 72px;
   border-right: 1px solid var(--coal);
 
   &&:nth-last-child(-n+3) {
@@ -25,20 +25,25 @@
 
   @media (max-width: $tablet-portrait) {
     width: inherit;
-    padding: calc(var(--scale) * 32) calc(var(--scale) * 27);
+    padding: 32px 27px;
     border-right: none;
     margin-bottom: 0;
 
     &&:nth-last-child(-n+3) {
-      padding-bottom: calc(var(--scale) * 32);
+      padding-bottom: 32px;
     }
 
     &&:nth-child(3n) {
-      padding-right: calc(var(--scale) * 27);
+      padding-right: 27px;
     }
 
     &&:last-of-type {
       border-bottom: 1px solid var(--coal);
     }
   }
+}
+
+.spinner {
+  width: 64px;
+  margin: 0 auto;
 }

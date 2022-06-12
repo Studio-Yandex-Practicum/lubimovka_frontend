@@ -4,7 +4,7 @@
   position: sticky;
   z-index: 1;
   top: 0;
-  width: scale($aside-visible-width);
+  width: $aside-visible-width;
   height: 100vh;
   background-color: var(--light-green);
   grid-area: feed;
@@ -16,8 +16,8 @@
 
   @media (min-width: $tablet-portrait) {
     &:hover {
-      width: scale($aside-width);
-      margin-left: calc(scale($aside-visible-width) - scale($aside-width));
+      width: $aside-width;
+      margin-left: calc($aside-visible-width - $aside-width);
     }
   }
 
@@ -33,7 +33,7 @@
 }
 
 .inner {
-  width: scale($aside-width);
+  width: $aside-width;
   overflow-y: auto;
 
   @media (max-width: $tablet-portrait) {

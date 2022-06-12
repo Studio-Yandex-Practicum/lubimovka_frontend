@@ -1,6 +1,6 @@
 .button {
   justify-content: start;
-  gap: scale(3px);
+  gap: 3px;
 }
 
 .input {
@@ -11,14 +11,14 @@
   @mixin textCaption;
   @mixin text;
 
-  margin-bottom: scale(14px);
+  margin-bottom: 14px;
   color: #eb5757;
 }
 
 .selected {
   display: flex;
-  min-height: scale(32px);
-  margin-bottom: scale(6px);
+  min-height: 32px;
+  margin-bottom: 6px;
   background-color: var(--coal);
 }
 
@@ -32,7 +32,7 @@
 }
 
 .icon {
-  margin-right: scale(3px);
+  margin-right: 3px;
   fill: var(--white);
 }
 
@@ -41,7 +41,7 @@
   @mixin text;
 
   overflow: hidden;
-  margin-right: scale(9px);
+  margin-right: 9px;
   color: var(--beige);
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -51,10 +51,10 @@
   @mixin text;
   @mixin textCaption;
 
-  margin-top: scale(24px);
-  margin-left: scale(30px);
+  margin-top: 24px;
+  margin-left: 30px;
 
   @media (max-width: $tablet-portrait) {
-    margin-left: scale(32px);
+    margin-left: 32px;
   }
 }

@@ -1,4 +1,25 @@
-.root {
+.default {
+  display: flex;
+  width: 210px;
+  height: 137px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+  margin-bottom: 16px;
+
+  @media (max-width: $tablet-portrait) {
+    width: 182.52px;
+    height: 118.5px;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.compact {
   display: block;
 
   @media (max-width: $tablet-portrait) {
@@ -8,11 +29,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: scale(0 16px);
+    padding: 0 16px;
   }
 
   &:not(:last-child) {
-    margin-right: scale(28px);
+    margin-right: 28px;
 
     @media (max-width: $tablet-portrait) {
       margin-right: 0;
@@ -22,8 +43,8 @@
 
 .logo-canvas {
   position: relative;
-  width: scale(100px);
-  height: scale(40px);
+  width: 100px;
+  height: 40px;
 }
 
 .logo {

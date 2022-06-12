@@ -1,49 +1,139 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Error from 'next/error';
+import classNames from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
-import { ArticlePage } from 'components/article-page';
-import { fetcher } from 'shared/fetcher';
-import { BlogData } from 'shared/types';
+import { ArticleHeadline } from 'components/article-headline';
+import { ArticleFootnote } from 'components/article-footnote';
+import { ConstructorContent } from 'components/constructor-content';
+import { SEO } from 'components/seo';
+import { Section } from 'components/section';
+import { BlogEntryList } from 'components/blog-entry-list';
+import { BlogCard } from 'components/ui/blog-card';
+import { PageBreadcrumbs } from 'components/page';
+import { Breadcrumb } from 'components/breadcrumb';
+import { Share } from 'components/share';
+import { ArticleCreditsList } from 'components/article-credits-list';
+import { fetcher } from 'services/fetcher';
+import { format } from 'shared/helpers/format-date';
+import { notFoundResult, serverErrorResult } from 'shared/constants/server-side-props';
 
-const BlogArticle = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+import type { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
+import type { BlogItemDetailOutput } from 'api-typings';
+
+import styles from 'components/article-layout/article-layout.module.css';
+
+const cx = classNames.bind(styles);
+
+const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  if ('errorCode' in props) {
+    return (
+      <Error statusCode={props.errorCode}/>
+    );
+  }
+
+  const {
+    title,
+    description,
+    image,
+    date,
+    constructorBlocks,
+    suggestedBlogEntries,
+    author,
+    authorUrl,
+    team,
+  } = props;
 
   return (
     <AppLayout>
-      <ArticlePage data={props}/>
+      <SEO
+        title={title}
+        description={description}
+      />
+      <PageBreadcrumbs>
+        <Breadcrumb
+          text="Блог"
+          path="/blog"
+        />
+      </PageBreadcrumbs>
+      <ArticleHeadline
+        variant="blog"
+        title={title}
+        description={description}
+        date={format('d MMMM yyyy', new Date(date))}
+        cover={image}
+        author={author}
+        authorUrl={authorUrl}
+      />
+      <ConstructorContent
+        // @ts-expect-error
+        blocks={constructorBlocks}
+      />
+      <ArticleFootnote
+        className={cx('footnote')}
+        credits={(
+          <ArticleCreditsList
+            items={team}
+          />
+        )}
+        action={(
+          <Share
+            firstLine="Поделиться"
+            secondLine="записью в соцсетях"
+            size="s"
+          />
+        )}
+      />
+      {!!suggestedBlogEntries.length && (
+        <Section
+          type="blog-entries"
+          title="Другие записи"
+        >
+          <BlogEntryList>
+            {suggestedBlogEntries.map(({ id, image, author_url_title, title, description }) => (
+              <BlogEntryList.Item key={id}>
+                <BlogCard
+                  id={id}
+                  image={image}
+                  author={author_url_title}
+                  heading={title}
+                  description={description}
+                />
+              </BlogEntryList.Item>
+            ))}
+          </BlogEntryList>
+        </Section>
+      )}
     </AppLayout>
   );
 };
 
-const fetchBlogArticle = async (blogId: string) => {
-  let data;
-
-  try {
-    data = await fetcher<BlogData>(`/blog/${blogId}/`);
-  } catch (error) {
-    // TODO: обработать ошибку, добавим после реализации страницы ошибки
-
-    return;
+export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'id', string>>) => {
+  if (!params) {
+    return serverErrorResult;
   }
 
-  return data;
-};
+  const { id } = params;
+  let data: BlogItemDetailOutput;
 
-export const getServerSideProps: GetServerSideProps<BlogData, Record<'id', string>> = async ({ params }) => {
-  const { id: blogId } = params!;
-
-  const blogArticle = await fetchBlogArticle(blogId);
-
-  if (!blogArticle) {
-    return {
-      notFound: true,
-    };
+  try {
+    data = await fetcher<BlogItemDetailOutput>(`/blog/${id}/`);
+  } catch {
+    return notFoundResult;
   }
 
   return {
     props: {
-      ...blogArticle
+      title: data.title,
+      description: data.description,
+      image: data.image,
+      date: data.pub_date,
+      constructorBlocks: data.contents,
+      suggestedBlogEntries: data.other_blogs,
+      team: data.team,
+      author: data.author_url_title,
+      authorUrl: data.author_url,
     },
   };
 };
 
-export default BlogArticle;
+export default BlogEntry;

@@ -5,7 +5,7 @@
 
 .droplistWidth {
   width: 100%;
-  max-width: scale(300px);
+  max-width: 300px;
 }
 
 .container {
@@ -20,7 +20,7 @@
   max-height: 0;
   box-sizing: border-box;
   padding: 0;
-  border: scale(1px) solid var(--coal);
+  border: 1px solid var(--coal);
   border-top: none;
   margin: 0;
   background-color: var(--beige);
@@ -29,19 +29,19 @@
   visibility: hidden;
 
   &::-webkit-scrollbar {
-    width: scale(4px);
-    height: scale(92px);
+    width: 4px;
+    height: 92px;
     background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    height: scale(92px);
+    height: 92px;
     background-color: var(--coal);
   }
 }
 
 .active {
   display: block;
-  max-height: scale(310px);
+  max-height: 310px;
   visibility: visible;
 }

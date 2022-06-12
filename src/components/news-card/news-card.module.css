@@ -1,11 +1,11 @@
 .common {
   position: relative;
-  padding: scale(16px 10px 64px 20px);
+  padding: 16px 10px 64px 20px;
 
   @media (max-width: $tablet-portrait) {
     display: block;
-    padding: scale(16px 24px 48px);
-    margin: scale(0 -24px);
+    padding: 16px 24px 48px;
+    margin: 0 -24px;
   }
 }
 
@@ -13,14 +13,14 @@
   @mixin headline;
   @mixin headline5;
 
-  max-width: scale(680px);
-  margin-bottom: scale(8px);
+  max-width: 680px;
+  margin-bottom: 8px;
   grid-area: title;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
-    max-width: scale(316px);
+    max-width: 316px;
   }
 }
 
@@ -43,12 +43,12 @@
   @mixin text;
   @mixin textLarge;
 
-  max-width: scale(490px);
-  margin-left: scale(32px);
+  max-width: 490px;
+  margin-left: 32px;
   grid-area: description;
 
   @media (max-width: $tablet-portrait) {
-    max-width: scale(334px);
+    max-width: 334px;
   }
 }
 
@@ -60,7 +60,7 @@
   grid-area: date;
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: scale(16px);
+    margin-bottom: 16px;
   }
 }
 
@@ -81,6 +81,6 @@
   composes: common;
 
   .date {
-    margin-top: scale(16px);
+    margin-top: 16px;
   }
 }

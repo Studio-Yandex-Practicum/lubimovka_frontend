@@ -9,9 +9,10 @@ import { Filter } from 'components/filter';
 import { Select } from 'components/select';
 import { NewsList } from 'components/news-list';
 import { NewsCard } from 'components/news-card';
+import { SEO } from 'components/seo';
 import { useNews } from 'providers/news-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/news';
 import { format } from 'shared/helpers/format-date';
@@ -51,7 +52,7 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     pending,
   } = useNews();
 
-  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>({ threshold: 1 });
+  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>();
 
   const selectedMonthOption = useMemo(() => (
     monthOptions.find(({ value }) => value === selectedMonth)
@@ -89,6 +90,9 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 
   return (
     <AppLayout>
+      <SEO
+        title="Новости"
+      />
       <NewsLayout>
         <PageTitle className={cx('title')}>
           Новости

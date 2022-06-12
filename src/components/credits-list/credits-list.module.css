@@ -1,0 +1,59 @@
+.common {
+  margin: 0;
+}
+
+.role {
+  @mixin text;
+  @mixin textSmall;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.persons {
+  @mixin text;
+
+  margin-left: 28px;
+
+  &:last-of-type {
+    width: 420px;
+
+    @media (max-width: $tablet-portrait) {
+      width: 337px;
+    }
+  }
+}
+
+.s {
+  composes: common;
+
+  .role,
+  .persons {
+    display: inline;
+    margin: 0;
+  }
+
+  .role {
+    &::after {
+      display: inline;
+      content: ': ';
+    }
+  }
+}
+
+.m {
+  composes: common;
+  display: flex;
+  flex-direction: column;
+
+  .item:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  .persons {
+    @mixin textLarge;
+
+    margin-left: 28px;
+  }
+}

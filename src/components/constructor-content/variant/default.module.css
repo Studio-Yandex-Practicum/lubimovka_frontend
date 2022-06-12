@@ -1,0 +1,106 @@
+.default-padding {
+  padding: 0 32px;
+}
+
+.root {
+  background-color: var(--white);
+}
+
+.section {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline4;
+
+  max-width: 716px;
+  margin: 0 auto;
+}
+
+.html-markup {
+  composes: section default-padding;
+  margin-bottom: 98px;
+
+  &:first-child {
+    padding-top: 72px;
+  }
+}
+
+.events {
+  composes: section default-padding;
+  margin-bottom: 94px;
+}
+
+.plays,
+.persons,
+.videos {
+  composes: section default-padding;
+}
+
+.plays,
+.persons {
+  padding: 120px 0;
+  background-color: var(--beige);
+}
+
+.persons {
+  .title {
+    margin-bottom: 58px;
+  }
+}
+
+.plays {
+  .title {
+    margin-bottom: 48px;
+  }
+}
+
+.videos {
+  .title {
+    margin-bottom: 44px;
+  }
+}
+
+.link {
+  composes: section;
+  padding: 70px 270px 140px 362px;
+  margin-bottom: 74px;
+  background-color: var(--light-green);
+
+  @media (max-width: $tablet-portrait) {
+    padding: 56px 26px 72px;
+  }
+
+  .title {
+    margin-bottom: 20px;
+
+    @media (max-width: $tablet-portrait) {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.photo-carousel {
+  composes: section;
+  max-width: 716px;
+  margin: 0 auto 80px;
+
+  .title {
+    @mixin visually-hidden;
+  }
+}
+
+.html-markup-content {
+  h3,
+  h4,
+  p,
+  ul,
+  ol {
+    max-width: 840px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

@@ -18,9 +18,10 @@ interface IAuthorsPageProps {
   authors: Array<IAuthorInfo>;
   isLoading: boolean;
   onLetterChange: () => void;
+  defaultLetter: string;
 }
 
-const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors, isLoading,onLetterChange }) => {
+const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors, isLoading,onLetterChange,defaultLetter }) => {
   const router = useRouter();
 
   const changeLetter = (letter: string) => {
@@ -64,6 +65,7 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors, isLoading,onLett
         </div>
         <div className={styles.pagination}>
           <LibraryPagination
+            defaultLetter={defaultLetter}
             isLoading={isLoading}
             letters={letters}
             authors={authors}

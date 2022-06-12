@@ -12,11 +12,12 @@ import { BlogLayout } from 'components/blog-layout';
 import { PageTitle } from 'components/page-title';
 import { Spinner } from 'components/spinner';
 import { CallToEmail } from 'components/call-to-email';
+import { SEO } from 'components/seo';
 import { useBlog } from 'providers/blog-provider';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
 import { getYearRange } from 'shared/helpers/get-year-range';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/blog';
 
@@ -53,7 +54,7 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     errorCode,
   } = useBlog();
   const { settings } = usePersistentData();
-  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>({ threshold: 1 });
+  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>();
   const selectedMonthOption = useMemo(() => monthOptions.find(({ value }) => value === selectedMonth), [selectedMonth]);
   const selectedYearOption = useMemo(() => yearOptions.find(({ value }) => value === selectedYear), [selectedYear]);
   const lastEntryIndex = useMemo(() => entries.length - 1, [entries]);
@@ -94,6 +95,9 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 
   return (
     <AppLayout>
+      <SEO
+        title="Блог"
+      />
       <BlogLayout>
         <BlogLayout.Title>
           <PageTitle>

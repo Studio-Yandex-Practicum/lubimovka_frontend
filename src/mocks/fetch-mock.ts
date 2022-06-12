@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock';
 
-import { addBaseUrlToApiPath } from 'shared/helpers/url';
+import { addApiBaseUrlToPath } from 'shared/helpers/url';
 import authors from './data/authors';
 import plays from './data/plays';
 import playfilters from './data/playfilters';
@@ -20,28 +20,28 @@ fetchMock.config.fallbackToNetwork = true;
 const mockedFetch = fetchMock.sandbox();
 
 mockedFetch
-  .get(addBaseUrlToApiPath('/main/'), main)
-  .get(new RegExp(addBaseUrlToApiPath('/projects/\\d+')), project)
-  .get(addBaseUrlToApiPath('/library/authors'), (<PaginatedAuthorListList>{
+  .get(addApiBaseUrlToPath('/main/'), main)
+  .get(new RegExp(addApiBaseUrlToPath('/projects/\\d+')), project)
+  .get(addApiBaseUrlToPath('/library/authors'), (<PaginatedAuthorListList>{
     results: authors,
   }))
-  .get(addBaseUrlToApiPath('/library/plays'), (<PaginatedPlayList>{
+  .get(addApiBaseUrlToPath('/library/plays'), (<PaginatedPlayList>{
     results: plays,
   }))
-  .get(addBaseUrlToApiPath('/library/playfilters'), (<IPiecesFiltersProps>{
+  .get(addApiBaseUrlToPath('/library/playfilters'), (<IPiecesFiltersProps>{
     years: playfilters.years, programs: playfilters.programs,
   }))
-  .get(addBaseUrlToApiPath('/projects/'), (<PaginatedProjectListList>{
+  .get(addApiBaseUrlToPath('/projects/'), (<PaginatedProjectListList>{
     results: projects,
   }))
   .get({
-    url: addBaseUrlToApiPath('/info/partners/'),
+    url: addApiBaseUrlToPath('/info/partners/'),
     query: { in_footer_partner: 'true' },
   }, partners.filter(({ in_footer_partner }) => in_footer_partner))
-  .get(new RegExp(addBaseUrlToApiPath('/library/performances/\\d+')), performance)
-  .get(new RegExp(addBaseUrlToApiPath('/blog/\\d+')), blogArticle)
-  .get(new RegExp(addBaseUrlToApiPath('/news/\\d+')), newsArticle)
-  .get(new RegExp(addBaseUrlToApiPath('/afisha/info')), afishaInfo)
-  .get(new RegExp(addBaseUrlToApiPath('/afisha/events/')), () => getAfishaEvents());
+  .get(new RegExp(addApiBaseUrlToPath('/library/performances/\\d+')), performance)
+  .get(new RegExp(addApiBaseUrlToPath('/blog/\\d+')), blogArticle)
+  .get(new RegExp(addApiBaseUrlToPath('/news/\\d+')), newsArticle)
+  .get(new RegExp(addApiBaseUrlToPath('/afisha/info')), afishaInfo)
+  .get(new RegExp(addApiBaseUrlToPath('/afisha/events/')), () => getAfishaEvents());
 
 export default mockedFetch;

@@ -8,36 +8,36 @@
 }
 
 @define-mixin headline1 {
-  font-size: scale(72px);
-  line-height: scale(70px);
+  font-size: 72px;
+  line-height: 70px;
 }
 
 @define-mixin headline2 {
-  font-size: scale(64px);
-  line-height: scale(60px);
+  font-size: 64px;
+  line-height: 60px;
 }
 
 @define-mixin headline3 {
-  font-size: scale(56px);
-  line-height: scale(56px);
+  font-size: 56px;
+  line-height: 56px;
 }
 
 @define-mixin headline4 {
-  font-size: scale(40px);
-  line-height: scale(40px);
+  font-size: 40px;
+  line-height: 40px;
 }
 
 @define-mixin headline5 {
-  font-size: scale(36px);
-  line-height: scale(38px);
+  font-size: 36px;
+  line-height: 38px;
 }
 
 @define-mixin headline6 {
-  font-size: scale(28px);
-  line-height: scale(32px);
+  font-size: 28px;
+  line-height: 32px;
 }
 
 @define-mixin headline7 {
-  font-size: scale(20px);
-  line-height: scale(24px);
+  font-size: 20px;
+  line-height: 24px;
 }

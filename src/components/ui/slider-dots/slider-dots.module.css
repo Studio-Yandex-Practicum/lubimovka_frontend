@@ -4,11 +4,11 @@
 }
 
 .dot {
-  width: scale(6px);
-  height: scale(6px);
+  width: 6px;
+  height: 6px;
   padding: 0;
   border: 1px solid var(--coal);
-  margin: scale(0 8px);
+  margin: 0 8px;
   background: transparent;
   border-radius: 50%;
   cursor: pointer;

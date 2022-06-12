@@ -1,5 +1,4 @@
 import { useReducer } from 'react';
-import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
@@ -7,45 +6,51 @@ import { AppLayout } from 'components/app-layout';
 import PlayProposalLayout from 'components/play-proposal-layout';
 import PlayProposalTitle from 'components/play-proposal-title';
 import { ParticipationForm } from 'components/participation-form';
+import { SEO } from 'components/seo';
 import {
   validYearRegexp,
   validEmailRegexp,
   validPhoneNumberRegexp,
 } from 'shared/constants/regexps';
-import { Nullable } from 'shared/types';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { snakeToCamel } from 'shared/helpers/snake-to-camel';
 
+import type { Nullable } from 'shared/types';
+
 interface ParticipationFormFields {
-  firstName: string,
-  lastName: string,
-  birthYear: string,
-  city: string,
-  phoneNumber: string,
-  email: string,
-  title: string,
-  year: string,
-  file: Nullable<File>,
+  firstName: string
+  lastName: string
+  birthYear: string
+  city: string
+  phoneNumber: string
+  email: string
+  title: string
+  year: string
+  file: Nullable<File>
 }
 
-enum ParticipationFormActionTypes {
+enum ParticipationFormActionType {
   FieldChange,
   FieldError,
+  GenericError,
 }
 
 type ParticipationFormAction<K extends keyof ParticipationFormFields = keyof ParticipationFormFields> =
-  { type: ParticipationFormActionTypes.FieldChange, payload: { field: K, value: ParticipationFormFields[K], error?: string } }
-  | { type: ParticipationFormActionTypes.FieldError, payload: { field: K, error: string } }
+  { type: ParticipationFormActionType.FieldChange, payload: { field: K, value: ParticipationFormFields[K], error?: string } }
+  | { type: ParticipationFormActionType.FieldError, payload: { field: K, error: string } }
+  | { type: ParticipationFormActionType.GenericError, payload: string }
 
 type ParticipationFormStateFields<T> = {
   [K in keyof T]: {
-    value: T[K],
-    wasChanged: boolean,
-    error?: string,
+    value: T[K]
+    wasChanged: boolean
+    error?: string
   }
 }
 
-type ParticipationFormState = ParticipationFormStateFields<ParticipationFormFields>;
+type ParticipationFormState = ParticipationFormStateFields<ParticipationFormFields> & {
+  genericError?: string
+};
 
 const CURRENT_YEAR = new Date().getFullYear().toString();
 
@@ -63,16 +68,17 @@ const initialParticipationFormState: ParticipationFormState = {
 
 const participationFormReducer = (state: ParticipationFormState, action: ParticipationFormAction) => {
   switch (action.type) {
-  case ParticipationFormActionTypes.FieldChange:
+  case ParticipationFormActionType.FieldChange:
     return {
       ...state,
+      genericError: '',
       [action.payload.field]: {
         value: action.payload.value,
         wasChanged: true,
         error: action.payload.error,
       },
     };
-  case ParticipationFormActionTypes.FieldError:
+  case ParticipationFormActionType.FieldError:
     return {
       ...state,
       [action.payload.field]: {
@@ -80,12 +86,17 @@ const participationFormReducer = (state: ParticipationFormState, action: Partici
         error: action.payload.error,
       },
     };
+  case ParticipationFormActionType.GenericError:
+    return {
+      ...state,
+      genericError: action.payload,
+    };
   default:
     return state;
   }
 };
 
-const Participation: NextPage = () => {
+const Participation = () => {
   const [participationFormState, dispatch] = useReducer(participationFormReducer, initialParticipationFormState);
 
   const {
@@ -98,6 +109,7 @@ const Participation: NextPage = () => {
     title,
     year,
     file,
+    genericError,
   } = participationFormState;
 
   const router = useRouter();
@@ -207,7 +219,7 @@ const Participation: NextPage = () => {
 
   const handleFieldChange = <K extends keyof ParticipationFormFields>(field: K) => (value: ParticipationFormFields[K]) => {
     dispatch({
-      type: ParticipationFormActionTypes.FieldChange,
+      type: ParticipationFormActionType.FieldChange,
       payload: {
         field,
         value,
@@ -232,23 +244,34 @@ const Participation: NextPage = () => {
     data.append('file', file.value!);
 
     try {
-      await fetcher('/library/participation/', {
+      await fetcher('/feedback/participation/', {
         method: 'POST',
         body: data,
       });
-    } catch (error) {
-      // TODO: добавить проверку типов выброшенного исключения, пока считаем, что всегда получаем ответ API
+    } catch ([ status, errors ]) {
+      switch (status) {
+      case 400:
+        if ('non_field_errors' in (errors as Record<string, string[]>)) {
+          const [error] = (errors as Record<string, string[]>)['non_field_errors'];
+          dispatch({
+            type: ParticipationFormActionType.GenericError,
+            payload: error,
+          });
+          return;
+        }
 
-      for (let field in error as Record<string, string[]>) {
-        dispatch({
-          type: ParticipationFormActionTypes.FieldError,
-          payload: {
-            field: snakeToCamel(field) as keyof ParticipationFormFields,
-            error: (error as Record<string, string[]>)[field][0],
-          },
-        });
+        for (let field in errors as Record<string, string[]>) {
+          const [error] = (errors as Record<string, string[]>)[field];
+          dispatch({
+            type: ParticipationFormActionType.FieldError,
+            payload: {
+              field: snakeToCamel(field) as keyof ParticipationFormFields,
+              error,
+            },
+          });
+        }
+        break;
       }
-
       return;
     }
 
@@ -265,10 +288,14 @@ const Participation: NextPage = () => {
     && title.wasChanged && !title.error
     && year.wasChanged && !year.error
     && file.wasChanged && !file.error
+    && !genericError
   );
 
   return (
     <AppLayout>
+      <SEO
+        title="Подать пьесу"
+      />
       <PlayProposalLayout>
         <PlayProposalLayout.Image>
           <Image
@@ -309,6 +336,7 @@ const Participation: NextPage = () => {
               fileName={file.value ? file.value.name : undefined}
               fileError={file.wasChanged ? file.error : undefined}
               onFileChange={handleFieldChange('file')}
+              genericError={genericError}
               canSubmit={canSubmit}
               onSubmit={handleSubmit}
             />

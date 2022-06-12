@@ -1,7 +1,8 @@
 import { createContext, FC, ReactNode, useContext, useReducer } from 'react';
 
-import { setEvents, getInitialState, State, setDay } from './reducer';
 import { AfishaEvent, AfishaEvents, AfishaInfo } from 'shared/types';
+
+import { setEvents, getInitialState, State, setDay } from './reducer';
 import { reducer, setCondition } from './reducer';
 import { fetchEvents } from '../utils/fetchData';
 

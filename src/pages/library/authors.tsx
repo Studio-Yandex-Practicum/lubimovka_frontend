@@ -1,11 +1,11 @@
 import Error from 'next/error';
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
 import AuthorsPage from 'components/library-authors-page';
-import { fetcher } from 'shared/fetcher';
+import { SEO } from 'components/seo';
+import { fetcher } from 'services/fetcher';
 
 import type { PaginatedAuthorListList, AuthorList, AuthorLetters } from 'api-typings';
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
@@ -17,9 +17,15 @@ interface IAuthorsProps {
   errorCode?: number,
   authors: AuthorList[],
   letters: Array<Letters>
+  defaultLetter: string;
 }
 
-const Authors = ({ errorCode, authors, letters }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Authors = ({
+  errorCode,
+  authors,
+  letters,
+  defaultLetter = 'А'
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
   const [a, setAuthors] = useState<IAuthorsProps['authors']>(authors);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -30,7 +36,7 @@ const Authors = ({ errorCode, authors, letters }: InferGetServerSidePropsType<ty
     const handleRouteChange = () => {
       const { searchParams } = new URL(document.URL);
       setIsLoading(true);
-      fetchAuthors(searchParams.get('letter') || letters[0]).then(setAuthors).then(()=>setIsLoading(false));
+      fetchAuthors(searchParams.get('letter') || letters[0]).then(setAuthors).then(() => setIsLoading(false));
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);
@@ -48,12 +54,16 @@ const Authors = ({ errorCode, authors, letters }: InferGetServerSidePropsType<ty
 
   return (
     <AppLayout>
-      <Head>
-        <title>
-          Авторы
-        </title>
-      </Head>
-      <AuthorsPage letters={letters} authors={a} isLoading={isLoading} onLetterChange={()=>setIsLoading(true)}/>
+      <SEO
+        title="Авторы"
+      />
+      <AuthorsPage
+        defaultLetter={defaultLetter}
+        letters={letters}
+        authors={a}
+        isLoading={isLoading}
+        onLetterChange={() => setIsLoading(true)}
+      />
     </AppLayout>
   );
 };
@@ -76,7 +86,7 @@ const getLetters = async () => {
     if (!letters) {
       throw 'no results';
     }
-    return letters;
+    return letters.sort();
   } catch (error) {
     throw error;
   }
@@ -84,13 +94,15 @@ const getLetters = async () => {
 
 export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
   try {
-    const letter = query?.letter;
+    const letter = query.letter;
     const letters = await getLetters();
-    const authors = letter ? await fetchAuthors(typeof letter === 'string' ? letter : letters[0]) : [];
+    const defaultLetter = typeof letter === 'string' ? letter : letters[0] || 'А';
+    const authors = await fetchAuthors(defaultLetter);
     return {
       props: {
         authors,
         letters,
+        defaultLetter,
       },
     };
   } catch (error) {

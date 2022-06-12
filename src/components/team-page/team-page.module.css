@@ -1,8 +1,8 @@
 .menu {
-  padding: scale(40px) 0 0 scale(60px);
+  padding: 40px 0 0 60px;
   margin: 0;
 
   @media (max-width: $tablet-portrait) {
-    padding: scale(2px 0 0 24px);
+    padding: 2px 0 0 24px;
   }
 }

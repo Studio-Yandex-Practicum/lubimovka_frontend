@@ -5,7 +5,7 @@ import { AppLayout } from 'components/app-layout';
 import { PerformanceLayout } from 'components/performance-layout';
 import { PerformanceHeadline } from 'components/performance-headline';
 import { PerformanceDetails } from 'components/performance-details';
-import { PerformanceTeam } from 'components/performance-team';
+import { CreditsList } from 'components/credits-list';
 import { HTMLMarkup } from 'components/html-markup';
 import { Share } from 'components/share';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
@@ -16,8 +16,10 @@ import { PerformanceEventList } from 'components/performance-event-list';
 import { ReviewCarousel } from 'components/review-carousel';
 import { MediaReviewCard } from 'components/media-review-card';
 import { ReviewCard } from 'components/review-card';
+import { SEO } from 'components/seo';
 import { format } from 'shared/helpers/format-date';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
+import { notFoundResult } from 'shared/constants/server-side-props';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type {
@@ -53,6 +55,10 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
 
   return (
     <AppLayout>
+      <SEO
+        title={title}
+        description={description}
+      />
       <PerformanceLayout>
         <PerformanceHeadline
           className={cx('headline')}
@@ -78,9 +84,9 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             duration={duration}
             ageRestriction={ageRestriction}
           />
-          <PerformanceTeam
+          <CreditsList
             className={cx('team')}
-            team={team}
+            roles={team}
           />
         </PerformanceLayout.Summary>
         <PerformanceLayout.Content>
@@ -174,24 +180,20 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
 };
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext<Record<'id', string>>) => {
-  const notFoundResult = {
-    notFound: true,
-  } as const;
-
   if (!ctx.params) {
     return notFoundResult;
   }
 
   const { id: performanceId } = ctx.params;
-  let performanceResponse: PerformanceResponse;
+  let performanceResponse;
   let mediaReviewsResponse;
   let reviewsResponse;
 
   try {
     [performanceResponse, mediaReviewsResponse, reviewsResponse] = await Promise.all([
-      fetcher<PerformanceResponse>(`/library/performances/${performanceId}/`),
-      fetcher<PaginatedPerformanceMediaReviewList>(`/library/performances/${performanceId}/media-reviews/`),
-      fetcher<PaginatedPerformanceReviewList>(`/library/performances/${performanceId}/reviews/`),
+      fetcher<PerformanceResponse>(`/afisha/performances/${performanceId}/`),
+      fetcher<PaginatedPerformanceMediaReviewList>(`/afisha/performances/${performanceId}/media-reviews/`),
+      fetcher<PaginatedPerformanceReviewList>(`/afisha/performances/${performanceId}/reviews/`),
     ]);
   } catch {
     return notFoundResult;

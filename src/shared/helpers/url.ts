@@ -1,16 +1,18 @@
 import getConfig from 'next/config';
 
-import { apiPath } from 'shared/constants/api-path';
-
 const { publicRuntimeConfig } = getConfig();
 
-const normalizePath = (path: string):string => {
+export const removeTrailingSlash = (url: string) => url.replace(/\/+$/, '');
+
+const normalizePath = (path: string) => {
   if (!path) {
     return '';
   }
   return path.startsWith('/') ? path : `/${path}`;
 };
 
-export const addBaseUrlToPath = (path: string, prefix = ''): string => `${publicRuntimeConfig.baseUrl}${normalizePath(prefix)}${normalizePath(path)}`;
+const baseUrl = removeTrailingSlash(publicRuntimeConfig.baseUrl);
+const apiBaseUrl = removeTrailingSlash(publicRuntimeConfig.apiBaseUrl);
 
-export const addBaseUrlToApiPath = (path: string): string => addBaseUrlToPath(path, apiPath);
+export const addBaseUrlToPath = (path: string) => `${baseUrl}${normalizePath(path)}`;
+export const addApiBaseUrlToPath = (path: string) => `${apiBaseUrl}${normalizePath(path)}`;

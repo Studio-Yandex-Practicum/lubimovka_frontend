@@ -1,18 +1,18 @@
 .hero {
   display: grid;
-  padding: scale(58px 270px 117px 120px);
+  padding: 58px 270px 117px 120px;
   background-color: var(--beige);
-  column-gap: scale(213px);
+  column-gap: 213px;
   grid-template-areas:
     ".       title"
     "contact description";
   grid-template-columns: repeat (2, 1fr);
-  row-gap: scale(32px);
+  row-gap: 32px;
 
   @media (max-width: $tablet-portrait) {
-    padding-top: scale(11px);
-    padding-bottom: scale(100px);
-    padding-left: scale(23px);
+    padding-top: 11px;
+    padding-bottom: 100px;
+    padding-left: 23px;
     gap: 0;
     grid-template-areas:
       "title"
@@ -26,7 +26,7 @@
   grid-area: title;
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: scale(24px);
+    margin-bottom: 24px;
   }
 }
 
@@ -34,7 +34,7 @@
   grid-area: description;
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: scale(56px);
+    margin-bottom: 56px;
   }
 }
 

@@ -9,7 +9,7 @@ import { AuthorInformation } from 'components/author-page/information';
 import { CallToEmail } from 'components/call-to-email';
 import { Section } from 'components/section';
 import { SEO } from 'components/seo';
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import * as breakpoints from 'shared/breakpoints.js';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { usePersistentData } from 'providers/persistent-data-provider';

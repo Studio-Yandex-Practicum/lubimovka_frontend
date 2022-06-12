@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { fetcher } from 'shared/fetcher';
+import { fetcher } from 'services/fetcher';
 import { PersistentDataContext } from './persistent-data-provider.context';
 
 import type { FC } from 'react';

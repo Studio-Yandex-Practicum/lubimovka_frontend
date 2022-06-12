@@ -14,6 +14,7 @@ interface PartnerListItemProps {
   name: string,
   logo: Url,
   url?: Url,
+  view?: 'default' | 'compact',
 }
 
 export const PartnerListItem: FC<PartnerListItemProps> = (props) => {
@@ -21,10 +22,11 @@ export const PartnerListItem: FC<PartnerListItemProps> = (props) => {
     name,
     logo,
     url,
+    view = 'default',
   } = props;
 
   return (
-    <li className={cx('root')}>
+    <li className={cx(view)}>
       <ConditionalWrapper
         condition={!!url}
         wrapper={(children) => (
