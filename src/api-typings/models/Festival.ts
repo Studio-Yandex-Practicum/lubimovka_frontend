@@ -2,8 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { InfoLink } from './InfoLink';
 import type { Nested } from './Nested';
-import type { VolunteerInFestival } from './VolunteerInFestival';
 
 export type Festival = {
     readonly id: number;
@@ -20,6 +20,7 @@ export type Festival = {
     video_link: string;
     blog_entries?: string;
     press_release_image?: string;
-    readonly volunteers: Array<VolunteerInFestival>;
     readonly images: Array<Nested>;
+    readonly plays_links: Array<InfoLink>;
+    readonly additional_links: Array<InfoLink>;
 };
