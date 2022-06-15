@@ -165,7 +165,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
                     <Link href={`library/?festival=${item.year}&program=${item.id}`}>
                       <a>
                         <Tag
-                          label={item.name}
+                          label={`${item.name} ${item.year}`}
                           selected={false}
                         />
                       </a>
