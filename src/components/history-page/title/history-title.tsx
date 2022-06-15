@@ -2,21 +2,21 @@ import React, { FC } from 'react';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button/button';
-import { Festival, PlayFilters } from 'api-typings';
+import { Festival } from 'api-typings';
 
 import style from './history-title.module.css';
 
 interface IHistoryTitle {
   data: Festival,
   currentYear: number,
-  playFilters: PlayFilters
 }
+
 const iconPlace = 'right';
 const icon = 'arrow-right';
 const alignStart = 'start';
 const imageUrl = 'https://s1.hostingkartinok.com/uploads/images/2021/12/fb0c8e1baf21b0ca306ee98a6678c0d8.png';
 
-export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear, playFilters }) => {
+export const HistoryTitle: FC<IHistoryTitle> = ({ data, currentYear }) => {
   const {
     plays_count,
     selected_plays_count,
@@ -24,13 +24,22 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear, playFilters 
     volunteers_count,
     events_count,
     cities_count,
-    video_link,
     start_date,
     end_date,
+    plays_links,
+    additional_links,
     description
   } = data;
-  const startDate = new Date(start_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' });
-  const finishDate = new Date(end_date).toLocaleDateString('ru-Ru', { timeZone: 'Europe/Moscow', month: 'long', day:'numeric' });
+  const startDate = new Date(start_date).toLocaleDateString('ru-Ru', {
+    timeZone: 'Europe/Moscow',
+    month: 'long',
+    day: 'numeric'
+  });
+  const finishDate = new Date(end_date).toLocaleDateString('ru-Ru', {
+    timeZone: 'Europe/Moscow',
+    month: 'long',
+    day: 'numeric'
+  });
   const [urlVolonters, setUrlVolonters] = React.useState(`/about-us/team/?year=${currentYear}`);
   React.useEffect(() => {
     setUrlVolonters(`/about-us/team/?year=${currentYear}`);
@@ -148,13 +157,13 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear, playFilters 
             <h2 className={style.subtitle}>
               Пьесы
             </h2>
-            {playFilters.programs.map((play, index) => (
-              <div className={style.buttonDisplay} key={index}>
+            {plays_links.map(({ title, link }) => (
+              <div className={style.buttonDisplay} key={title}>
                 <Button
-                  label={play.name}
+                  label={title}
                   iconPlace={iconPlace}
                   icon={icon}
-                  href={`/library/?program=${play.pk}`}
+                  href={link}
                   isLink
                   align={alignStart}
                   size="l"
@@ -168,32 +177,22 @@ export const HistoryTitle: FC<IHistoryTitle>= ({ data, currentYear, playFilters 
             <h2 className={style.subtitle}>
               Дополнительно
             </h2>
-            <div className={style.buttonDisplay}>
-              <Button
-                label="Записи&nbsp;в&nbsp;блоге"
-                iconPlace={iconPlace}
-                icon={icon}
-                href="/blog"
-                isLink
-                align={alignStart}
-                size="l"
-                gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}
-              />
-            </div>
-            <div className={style.buttonDisplay}>
-              <Button
-                label="Видео&nbsp;с&nbsp;фестиваля"
-                iconPlace={iconPlace}
-                icon={icon}
-                href={video_link}
-                isLink
-                align={alignStart}
-                size="l"
-                gap="8px"
-                className={cn(style.button, style.link, style.subtitle)}
-              />
-            </div>
+
+            {additional_links.map(({ title, link }) => (
+              <div className={style.buttonDisplay} key={title}>
+                <Button
+                  label={title}
+                  iconPlace={iconPlace}
+                  icon={icon}
+                  href={link}
+                  isLink
+                  align={alignStart}
+                  size="l"
+                  gap="8px"
+                  className={cn(style.button, style.link, style.subtitle)}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
