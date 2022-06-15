@@ -37,6 +37,7 @@ export type { FestivalTeams } from './models/FestivalTeams';
 export type { ForPress } from './models/ForPress';
 export type { Image } from './models/Image';
 export type { ImagesBlock } from './models/ImagesBlock';
+export type { InfoLink } from './models/InfoLink';
 export type { Link } from './models/Link';
 export type { LocalEvent } from './models/LocalEvent';
 export type { Main } from './models/Main';

@@ -4,16 +4,15 @@ import { HistoryHeader } from './header';
 import { HistoryTitle } from './title';
 import { HistoryItself } from './itself';
 import { fetcher } from 'services/fetcher';
-import { Festival, Years, PlayFilters } from 'api-typings';
+import { Festival, Years } from 'api-typings';
 
 import itselfData from './assets/mock-data-itself.json';
 
 interface IHistoryPage  {
   years: Years,
   titleCounts: Festival,
-  playFilters: PlayFilters
 }
-export const HistoryPage: FC<IHistoryPage> = ({ years, titleCounts, playFilters }) => {
+export const HistoryPage: FC<IHistoryPage> = ({ years, titleCounts }) => {
   const [currentTitleData, setCurrentTitleData] = useState(titleCounts);
   const [currentYear, setCurrentYear] = useState(years.years[0]);
 
@@ -33,7 +32,7 @@ export const HistoryPage: FC<IHistoryPage> = ({ years, titleCounts, playFilters 
   return (
     <>
       <HistoryHeader data={years} selectYear={selectYear}/>
-      <HistoryTitle data={currentTitleData} currentYear={currentYear} playFilters={playFilters}/>
+      <HistoryTitle data={currentTitleData} currentYear={currentYear}/>
       <HistoryItself data={itselfData}/>
     </>
   );

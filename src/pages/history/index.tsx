@@ -8,14 +8,14 @@ import { Festival, Years, PlayFilters } from 'api-typings';
 
 const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {
-    years, titleCounts, playFilters
+    years, titleCounts
   } = props;
   return (
     <AppLayout>
       <SEO
         title="История фестиваля"
       />
-      <HistoryPage years={years} titleCounts={titleCounts} playFilters={playFilters}/>
+      <HistoryPage years={years} titleCounts={titleCounts}/>
     </AppLayout>
   );
 };
@@ -51,7 +51,6 @@ const fetchPlayFilters = async () => {
 type History = {
   titleCounts : Festival,
   years : Years,
-  playFilters : PlayFilters
 }
 export const getServerSideProps: GetServerSideProps<History> = async () => {
   const years = await fetchInitStateYear();
@@ -80,7 +79,7 @@ export const getServerSideProps: GetServerSideProps<History> = async () => {
 
   return {
     props: {
-      titleCounts: titleCounts, years: years, playFilters: playFilters
+      titleCounts: titleCounts, years: years
     },
   };
 };
