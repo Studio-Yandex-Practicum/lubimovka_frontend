@@ -1,8 +1,9 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import breakpoints from 'shared/breakpoints';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
+
+import type { FC } from 'react';
 
 import styles from './festival-events.module.css';
 
@@ -16,8 +17,11 @@ export const FestivalEvents: FC = () => {
 
   return (
     <section className={cx('section')}>
-      {isMobile && <FestivalEventsMobile/>}
-      {!isMobile && <FestivalEventsDesktop/>}
+      {isMobile ? (
+        <FestivalEventsMobile/>
+      ) : (
+        <FestivalEventsDesktop/>
+      )}
     </section>
   );
 };
