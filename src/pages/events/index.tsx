@@ -30,8 +30,11 @@ const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
           {...info}
         />
         <AfishaProvider events={events} info={info}>
-          {info.festivalStatus && <FestivalEvents/>}
-          {!info.festivalStatus && <RegularEvents/>}
+          {info.festivalStatus ? (
+            <FestivalEvents/>
+          ) : (
+            <RegularEvents/>
+          )}
         </AfishaProvider>
       </main>
     </AppLayout>

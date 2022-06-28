@@ -47,8 +47,8 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
       />
       <PageBreadcrumbs>
         <Breadcrumb
-          text="Блог"
-          path="/blog"
+          text="Новости"
+          path="/news"
         />
       </PageBreadcrumbs>
       <ArticleHeadline
