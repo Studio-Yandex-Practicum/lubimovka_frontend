@@ -6,7 +6,7 @@ import type { ReactNode, PropsWithChildren } from 'react';
 import styles from './button.module.css';
 
 interface CommonProps {
-  size?: 's' | 'm' | 'l'
+  size?: 'xs' | 's' | 'm' | 'l'
   icon?: ReactNode
   iconPosition?: 'left' | 'right'
   border?: 'full' | 'right-bottom-left' | 'bottom-left' | 'right-bottom' | 'none'
