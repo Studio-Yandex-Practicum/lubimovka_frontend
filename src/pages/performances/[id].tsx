@@ -7,7 +7,7 @@ import { PerformanceHeadline } from 'components/performance-headline';
 import { PerformanceDetails } from 'components/performance-details';
 import { CreditsList } from 'components/credits-list';
 import { HTMLMarkup } from 'components/html-markup';
-import { Share } from 'components/share';
+import { ShareLinks } from 'components/share-links';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
@@ -168,10 +168,9 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
           />
         </PerformanceLayout.BottomImage>
         <PerformanceLayout.Share>
-          <Share
+          <ShareLinks
             firstLine="Рассказать"
             secondLine="о спектакле"
-            size="l"
           />
         </PerformanceLayout.Share>
       </PerformanceLayout>

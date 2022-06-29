@@ -11,7 +11,7 @@ import { BlogEntryList } from 'components/blog-entry-list';
 import { BlogCard } from 'components/ui/blog-card';
 import { PageBreadcrumbs } from 'components/page';
 import { Breadcrumb } from 'components/breadcrumb';
-import { Share } from 'components/share';
+import { ShareLinks } from 'components/share-links';
 import { ArticleCreditsList } from 'components/article-credits-list';
 import { fetcher } from 'services/fetcher';
 import { format } from 'shared/helpers/format-date';
@@ -76,10 +76,9 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
           />
         )}
         action={(
-          <Share
+          <ShareLinks
             firstLine="Поделиться"
-            secondLine="записью в соцсетях"
-            size="s"
+            secondLine="записью"
           />
         )}
       />
@@ -107,7 +106,7 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
   );
 };
 
-export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'id', string>>) => {
+export const getServerSideProps = async ({ params, resolvedUrl }: GetServerSidePropsContext<Record<'id', string>>) => {
   if (!params) {
     return serverErrorResult;
   }
@@ -123,6 +122,7 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
 
   return {
     props: {
+      resolvedUrl,
       title: data.title,
       description: data.description,
       image: data.image,

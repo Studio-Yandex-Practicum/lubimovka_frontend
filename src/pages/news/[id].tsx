@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import { AppLayout } from 'components/app-layout';
 import { ArticleHeadline } from 'components/article-headline';
 import { ArticleFootnote } from 'components/article-footnote';
-import { Share } from 'components/share';
+import { ShareLinks } from 'components/share-links';
 import { ConstructorContent } from 'components/constructor-content';
 import { Section } from 'components/section';
 import { NewsList } from 'components/news-list';
@@ -66,10 +66,9 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
         className={cx('footnote')}
         colors="brand"
         action={(
-          <Share
+          <ShareLinks
             firstLine="Поделиться"
             secondLine="новостью в соцсетях"
-            size="s"
           />
         )}
       />
