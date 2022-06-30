@@ -26,6 +26,7 @@ export const HistoryTitle: FC<IHistoryTitle> = ({ data, currentYear }) => {
     cities_count,
     start_date,
     end_date,
+    festival_image,
     plays_links,
     additional_links,
     description
@@ -46,7 +47,7 @@ export const HistoryTitle: FC<IHistoryTitle> = ({ data, currentYear }) => {
   }, [currentYear]);
   return (
     <section className={style.section}>
-      <img src={imageUrl} alt="Изображение" className={style.image}/>
+      <img src={festival_image ||imageUrl} alt="Изображение" className={style.image}/>
       <div className={style.content}>
         <h2 className={cn(style.dataSubtitle)}>
           {startDate}
@@ -153,47 +154,51 @@ export const HistoryTitle: FC<IHistoryTitle> = ({ data, currentYear }) => {
           </div>
         </div>
         <div className={style.links}>
-          <div className={style.subsection}>
-            <h2 className={style.subtitle}>
-              Пьесы
-            </h2>
-            {plays_links.map(({ title, link }) => (
-              <div className={style.buttonDisplay} key={title}>
-                <Button
-                  label={title}
-                  iconPlace={iconPlace}
-                  icon={icon}
-                  href={link}
-                  isLink
-                  align={alignStart}
-                  size="l"
-                  gap="8px"
-                  className={cn(style.button, style.link, style.subtitle)}
-                />
-              </div>
-            ))}
-          </div>
-          <div className={style.subsection}>
-            <h2 className={style.subtitle}>
-              Дополнительно
-            </h2>
+          {plays_links.length > 0 && (
+            <div className={style.subsection}>
+              <h2 className={style.subtitle}>
+                Пьесы
+              </h2>
+              {plays_links.map(({ title, link }) => (
+                <div className={style.buttonDisplay} key={title}>
+                  <Button
+                    label={title}
+                    iconPlace={iconPlace}
+                    icon={icon}
+                    href={link}
+                    isLink
+                    align={alignStart}
+                    size="l"
+                    gap="8px"
+                    className={cn(style.button, style.link, style.subtitle)}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+          {additional_links.length > 0 && (
+            <div className={style.subsection}>
+              <h2 className={style.subtitle}>
+                Дополнительно
+              </h2>
 
-            {additional_links.map(({ title, link }) => (
-              <div className={style.buttonDisplay} key={title}>
-                <Button
-                  label={title}
-                  iconPlace={iconPlace}
-                  icon={icon}
-                  href={link}
-                  isLink
-                  align={alignStart}
-                  size="l"
-                  gap="8px"
-                  className={cn(style.button, style.link, style.subtitle)}
-                />
-              </div>
-            ))}
-          </div>
+              {additional_links.map(({ title, link }) => (
+                <div className={style.buttonDisplay} key={title}>
+                  <Button
+                    label={title}
+                    iconPlace={iconPlace}
+                    icon={icon}
+                    href={link}
+                    isLink
+                    align={alignStart}
+                    size="l"
+                    gap="8px"
+                    className={cn(style.button, style.link, style.subtitle)}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

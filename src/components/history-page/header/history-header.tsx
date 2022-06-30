@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC } from 'react';
 import cn from 'classnames';
 
 import { SliderYears } from 'components/ui/slider-years';
@@ -10,21 +10,17 @@ interface IHistoryHeaderProps {
     years: number[]
   },
   selectYear: (year: number ) => void
+  currentYear: number
 }
 
-export const HistoryHeader: FC<IHistoryHeaderProps> = ({ data, selectYear }) => {
+export const HistoryHeader: FC<IHistoryHeaderProps> = ({ data, selectYear, currentYear }) => {
   const { years } = data;
-  const [currentYear, setCurrentYear] = useState(years[0]);
-  const changeYearHandler = useCallback((year:number)=> {
-    setCurrentYear(year);
-    selectYear(year);
-  }, []);
   return (
     <section className={style.section}>
       <SliderYears
         className={cn(style.yearsContainer)}
         years={years}
-        onClick={changeYearHandler}
+        onClick={selectYear}
         currentYear={currentYear}
       />
     </section>
