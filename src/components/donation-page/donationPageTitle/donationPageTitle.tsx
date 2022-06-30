@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import cn from 'classnames/bind';
@@ -19,6 +19,26 @@ interface IDonationPageTitleProps {
 export const DonationPageTitle: FC<IDonationPageTitleProps> = (props) => {
   const { header, text, footnote } = props;
 
+  const setCurVWProperty = (): void => {
+    let vw = window.innerWidth;
+    document.documentElement.style.setProperty('--vw-donat', `${vw}`);
+  };
+
+  const debounce = (cb: Function, delay: number) => {
+    let timeout: number;
+    return () => {
+      clearTimeout(timeout);
+      timeout = window.setTimeout(cb, delay);
+    };
+  };
+
+  const resizeDebounce = debounce(setCurVWProperty, 500);
+
+  useEffect(() => {
+    setCurVWProperty();
+    window.addEventListener('resize', () => resizeDebounce());
+  }, []);
+
   return (
     <section className={cx('componentContainer')}>
       <div className={cx('data')}>
@@ -34,12 +54,14 @@ export const DonationPageTitle: FC<IDonationPageTitleProps> = (props) => {
         </p>
       </div>
       <div className={cx('advertisement')}>
-        <iframe
-          className={cx('iframe')}
-          src="https://goody.im/form/9bc4b4afb926640f7ef3fa8f/frame"
-          name="goody_container_form"
-          frameBorder="no"
-        />
+        <div className={cx('paymentFormContainer')}>
+          <iframe
+            className={cx('iframe')}
+            src="https://goody.im/form/9bc4b4afb926640f7ef3fa8f/frame"
+            name="goody_container_form"
+            frameBorder="no"
+          />
+        </div>
         <div className={cx('qrcodeContainer')}>
           <Link href="https://qr.nspk.ru/AS10004LII9QK8KP8ADRSSI2TIAV1NNF?type=01&bank=100000000007&crc=D63D">
             <a>

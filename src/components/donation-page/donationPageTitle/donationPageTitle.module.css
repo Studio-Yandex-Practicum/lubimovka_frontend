@@ -70,15 +70,32 @@
   align-items: center;
   justify-content: center;
   padding: 49px 0 0 0;
+  gap: 20px 0;
+}
+
+.paymentFormContainer {
+  position: relative;
+  width: calc(100vw / 1440 * 520);
+  height: calc(100vw / 1440 * 458);
+
+  @media (max-width: $tablet-portrait) {
+    width: calc(100vw - 2px);
+    height: min(calc(100vw * .88), 458px);
+  }
 }
 
 .iframe {
-  width: 510px;
-  height: 492px;
-  background: transparent !important;
+  position: absolute;
+  top: calc(.158 * 100vw - 228px);
+  left: calc(.176 * 100vw - 253px);
+  width: 520px;
+  height: 458px;
+  transform: scale(calc(var(--vw-donat) / 1440));
 
   @media (max-width: $tablet-portrait) {
-    display: none;
+    top: min(calc(.445 * 100vw - 231px), -1.4px);
+    left: calc(.518 * 100vw - 269px);
+    transform: scale(min(calc(var(--vw-donat) / 520), 1));
   }
 }
 
