@@ -19,7 +19,7 @@ export type Festival = {
     cities_count?: number;
     video_link: string;
     blog_entries?: string;
-    press_release_image?: string;
+    festival_image?: string;
     readonly images: Array<Nested>;
     readonly plays_links: Array<InfoLink>;
     readonly additional_links: Array<InfoLink>;

@@ -115,10 +115,11 @@ const fetchPiecesFilters = async () => {
 
 export const getServerSideProps: GetServerSideProps<IPiecesProps> = async (context) => {
   try {
-    const [{ years, programs },pieces] = await Promise.all([fetchPiecesFilters(),fetchPieces()]);
     const { program,festival } = context.query;
     const programState = (typeof program === 'string' && program.split(',')) || [];
     const festivalState = (typeof festival === 'string' && festival.split(',')) || [];
+    const [{ years, programs },pieces] = await Promise.all([fetchPiecesFilters(),fetchPieces(queryParser({ festival:festivalState,program:programState }))]);
+
     return {
       props: {
         pieces,
