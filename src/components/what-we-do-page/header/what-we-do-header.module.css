@@ -9,15 +9,6 @@
   background-color: var(--light-green);
 }
 
-.menu {
-  padding: 40px 0 67px 60px;
-  background-color: var(--light-green);
-
-  @media (max-width: $tablet-portrait) {
-    padding: 2px 0 32px 24px;
-  }
-}
-
 .title {
   @mixin headline;
   @mixin headline2;

@@ -2,17 +2,12 @@
 import Image from 'next/image';
 import cn from 'classnames/bind';
 
-import { AboutUsMenu } from 'components/what-we-do-page/about-us-menu';
-
 import styles from './what-we-do-header.module.css';
 
 const cx = cn.bind(styles);
 
 export const WhatWeDoHeader = (): JSX.Element => (
   <section className={cx('header')}>
-    <nav className={cx('menu')}>
-      <AboutUsMenu/>
-    </nav>
     <div className={cx('content')}>
       <h1 className={cx('title')}>
         Фестиваль молодой драматургии Любимовка —

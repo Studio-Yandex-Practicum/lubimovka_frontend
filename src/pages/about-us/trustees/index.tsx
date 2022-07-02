@@ -1,4 +1,5 @@
 import { AppLayout } from 'components/app-layout';
+import { AboutUsLayout } from 'components/about-us-layout';
 import TrusteesSection from 'components/trustees-section/trustees-section';
 import PersonsList from 'components/persons-list/persons-list';
 import { SEO } from 'components/seo';
@@ -18,10 +19,8 @@ const Trustees = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
 
   return (
     <AppLayout>
-      <SEO
-        title="Попечители"
-      />
-      <main>
+      <SEO title="Попечители"/>
+      <AboutUsLayout>
         <TrusteesSection
           title="Попечители фестиваля"
           description="Здесь представлены частные лица и организации, которые помогают Любимовке, внося существенные пожертвования на развитие фестиваля."
@@ -30,7 +29,7 @@ const Trustees = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
         >
           <PersonsList persons={trustees}/>
         </TrusteesSection>
-      </main>
+      </AboutUsLayout>
     </AppLayout>
   );
 };

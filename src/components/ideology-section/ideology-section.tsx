@@ -30,7 +30,11 @@ const TextSection: FC<ITextSectionProps> = ({ data }) => {
   return (
     <section className={style.section}>
       <div className={style.container}>
-        <img src={image} alt="Изображение" className={style.picture}/>
+        <img
+          className={style.picture}
+          src={image}
+          alt=""
+        />
         <div className={style.list}>
           <p className={cn(style.paragraph, style.numberBox)}>
             {number}

@@ -146,7 +146,7 @@
 }
 
 .authorsList {
-  @mixin hideScrollbar;
+  @mixin hide-scrollbars;
 
   position: sticky;
   top: 30px;

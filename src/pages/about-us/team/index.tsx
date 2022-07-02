@@ -1,18 +1,16 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Error from 'next/error';
 import { SEO } from 'components/seo';
 import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
-import TeamPage from 'components/team-page';
+import { AboutUsLayout } from 'components/about-us-layout';
+import ArtDirectorateSection from 'components/team-page/art-directorate/section/art-directorate-section';
+import FestivalTeamSection from 'components/team-page/festival-team/festival-team-section';
+import VolunteersSection from 'components/team-page/volunteers/section/volunteers-section';
 import { fetcher } from 'services/fetcher';
-import { FestivalTeams, Volunteers } from 'api-typings';
 
-interface ITeamProps {
-  errorCode?: number,
-  team: Array<FestivalTeams>,
-  volunteers: Array<Volunteers>
-}
+import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import type { FestivalTeams, Volunteers } from 'api-typings';
 
 const Team = ({ errorCode, team, volunteers }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
@@ -26,12 +24,14 @@ const Team = ({ errorCode, team, volunteers }: InferGetServerSidePropsType<typeo
 
   return (
     <AppLayout>
-      <SEO
-        title="Организаторы"
-      />
-      <main>
-        <TeamPage team={team} volunteers={volunteers} queryYear={queryYear}/>
-      </main>
+      <SEO title="Организаторы"/>
+      <AboutUsLayout>
+        <ArtDirectorateSection cards={team}/>
+        <FestivalTeamSection cards={team}/>
+        <div id="volunteers">
+          <VolunteersSection cards={volunteers} queryYear={queryYear}/>
+        </div>
+      </AboutUsLayout>
     </AppLayout>
   );
 };
@@ -60,7 +60,7 @@ const fetchVolunteers = async () => {
   return data;
 };
 
-export const getServerSideProps: GetServerSideProps<ITeamProps> = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const [team, volunteers] = await Promise.all([
       fetchTeam(),

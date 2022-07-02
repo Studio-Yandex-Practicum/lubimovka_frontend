@@ -1,5 +1,6 @@
 import { fetcher } from 'services/fetcher';
 import { AppLayout } from 'components/app-layout';
+import { AboutUsLayout } from 'components/about-us-layout';
 import { WhatWeDoHeader } from 'components/what-we-do-page/header';
 import { WhatWeDoDesc } from 'components/what-we-do-page/desc';
 import { WhatWeDoAuthors } from 'components/what-we-do-page/authors';
@@ -25,7 +26,7 @@ const AboutUs = ({ partners }: InferGetServerSidePropsType<typeof getServerSideP
       <SEO
         title="Что мы делаем?"
       />
-      <main>
+      <AboutUsLayout colors="brand">
         <WhatWeDoHeader/>
         <WhatWeDoDesc/>
         <WhatWeDoAuthors/>
@@ -49,7 +50,7 @@ const AboutUs = ({ partners }: InferGetServerSidePropsType<typeof getServerSideP
             </PartnerList>
           </Section>
         ))}
-      </main>
+      </AboutUsLayout>
     </AppLayout>
   );
 };

@@ -4,7 +4,7 @@
   background-color: var(--beige);
 
   @media (max-width: $tablet-portrait) {
-    @mixin hideScrollbar;
+    @mixin hide-scrollbars;
 
     overflow: scroll;
     padding: 10px 0 80px 25px;

@@ -1,5 +1,4 @@
 import { Icon } from 'components/ui/icon';
-import { AboutUsMenu } from 'components/what-we-do-page/about-us-menu/about-us-menu';
 import { InfoLink } from 'components/ui/info-link/info-link';
 
 import type { FC } from 'react';
@@ -24,9 +23,6 @@ const TrusteesSection: FC<TrusteesSectionProps> = (props) => {
 
   return (
     <section className={style.section}>
-      <div className={style.menu}>
-        <AboutUsMenu/>
-      </div>
       <div className={style.container}>
         {callToEmailAddress && (
           <div className={style.becomeTrustee}>
