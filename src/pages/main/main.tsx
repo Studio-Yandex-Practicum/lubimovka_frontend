@@ -24,7 +24,6 @@ import { PlayList } from 'components/play-list';
 import { EventList } from 'components/event-list';
 import { EventCard } from 'components/event-card';
 import { SEO } from 'components/seo';
-import { useWelcomeScreenScroll } from 'shared/hooks/use-welcome-screen-scroll';
 import { fetcher } from 'services/fetcher';
 import { format } from 'shared/helpers/format-date';
 import { partnerTypes } from 'shared/constants/partner-types';
@@ -38,8 +37,6 @@ import styles from 'components/homepage-layout/homepage-layout.module.css';
 const cx = classNames.bind(styles);
 
 const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const [welcomeScreenBottomElementRef] = useWelcomeScreenScroll();
-
   if ('errorCode' in props) {
     return (
       <Error statusCode={props.errorCode}/>
@@ -78,7 +75,6 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             title={first_screen.title}
             url={first_screen.url}
             callToAction={first_screen.url_title}
-            ref={welcomeScreenBottomElementRef}
           />
         )}
         {!!afisha?.items.length && (

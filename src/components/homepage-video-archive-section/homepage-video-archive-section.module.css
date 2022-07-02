@@ -27,7 +27,6 @@
 
 .action {
   bottom: 42px;
-  margin-right: 20px;
   margin-left: 6px;
 
   @media (max-width: $tablet-portrait) {

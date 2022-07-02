@@ -1,5 +1,5 @@
 .list {
-  @mixin hideScrollbar;
+  @mixin hide-scrollbars;
 
   --padding: 24px;
 

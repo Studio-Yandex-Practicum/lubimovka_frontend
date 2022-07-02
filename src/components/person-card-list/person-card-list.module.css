@@ -1,5 +1,5 @@
 .personCardList {
-  @mixin hideScrollbar;
+  @mixin hide-scrollbars;
 
   --card-width: 210px;
   --column-gap: 30px;

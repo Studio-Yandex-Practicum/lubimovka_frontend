@@ -1,37 +1,49 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Error from 'next/error';
 import { SEO } from 'components/seo';
 import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
-import TeamPage from 'components/team-page';
+import { AboutUsLayout } from 'components/about-us-layout';
+import ArtDirectorateSection from 'components/team-page/art-directorate/section/art-directorate-section';
+import FestivalTeamSection from 'components/team-page/festival-team/festival-team-section';
+import VolunteersSection from 'components/team-page/volunteers/section/volunteers-section';
 import { fetcher } from 'services/fetcher';
-import { FestivalTeams, Volunteers } from 'api-typings';
+import { serverErrorResult } from 'shared/constants/server-side-props';
 
-interface ITeamProps {
-  errorCode?: number,
-  team: Array<FestivalTeams>,
-  volunteers: Array<Volunteers>
-}
+import type { InferGetServerSidePropsType } from 'next';
+import type { FestivalTeams, Volunteers } from 'api-typings';
 
-const Team = ({ errorCode, team, volunteers }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
-  const queryYear = Number(router.query.year);
 
-  if (errorCode) {
+  if ('errorCode' in props) {
+    const { errorCode } = props;
+
     return (
       <Error statusCode={errorCode}/>
     );
   }
 
+  const queryYear = Number(router.query.year);
+  const {
+    artDirectorate,
+    volunteers,
+    restTeam,
+  } = props;
+
   return (
     <AppLayout>
-      <SEO
-        title="Организаторы"
-      />
-      <main>
-        <TeamPage team={team} volunteers={volunteers} queryYear={queryYear}/>
-      </main>
+      <SEO title="Организаторы"/>
+      <AboutUsLayout>
+        <ArtDirectorateSection cards={artDirectorate}/>
+        <FestivalTeamSection cards={restTeam}/>
+        <div id="volunteers">
+          <VolunteersSection
+            cards={volunteers}
+            queryYear={queryYear}
+          />
+        </div>
+      </AboutUsLayout>
     </AppLayout>
   );
 };
@@ -40,7 +52,7 @@ const fetchTeam = async () => {
   let data;
 
   try {
-    data = await fetcher<Array<FestivalTeams>>('/info/about-festival/team/');
+    data = await fetcher<FestivalTeams[]>('/info/about-festival/team/');
   } catch (error) {
     throw error;
   }
@@ -60,27 +72,28 @@ const fetchVolunteers = async () => {
   return data;
 };
 
-export const getServerSideProps: GetServerSideProps<ITeamProps> = async () => {
+export const getServerSideProps = async () => {
   try {
     const [team, volunteers] = await Promise.all([
       fetchTeam(),
-      fetchVolunteers()
+      fetchVolunteers(),
     ]);
+
+    const { art: artDirectorate, fest: restTeam } = team.reduce<Record<string, FestivalTeams[]>>((acc, entry) => {
+      (acc[entry.team] || (acc[entry.team] = [])).push(entry);
+
+      return acc;
+    }, {});
 
     return {
       props: {
-        team,
-        volunteers
+        artDirectorate,
+        volunteers,
+        restTeam,
       },
     };
   } catch (error) {
-    return {
-      props: {
-        errorCode: 500,
-        team: [],
-        volunteers: []
-      }
-    };
+    return serverErrorResult;
   }
 };
 

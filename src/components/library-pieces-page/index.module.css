@@ -32,7 +32,7 @@
 .topWrap {
   position: absolute;
   z-index: -1;
-  top: calc(91px * -1);
+  top: -91px;
   left: 0;
   width: 100%;
   height: 0;
@@ -70,7 +70,7 @@
 }
 
 .sidebar {
-  @mixin hideScrollbar;
+  @mixin hide-scrollbars;
 
   position: sticky;
   z-index: 1;

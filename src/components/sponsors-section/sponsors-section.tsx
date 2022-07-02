@@ -1,19 +1,18 @@
 import { Icon } from 'components/ui/icon';
-import { AboutUsMenu } from 'components/what-we-do-page/about-us-menu/about-us-menu';
 import { InfoLink } from 'components/ui/info-link/info-link';
 
 import type { FC } from 'react';
 
-import style from './trustees-section.module.css';
+import style from './sponsors-section.module.css';
 
-interface TrusteesSectionProps {
+interface SponsorsSectionProps {
   title: string,
   callToEmail: string,
   callToEmailAddress?: string,
   description: string,
 }
 
-const TrusteesSection: FC<TrusteesSectionProps> = (props) => {
+const SponsorsSection: FC<SponsorsSectionProps> = (props) => {
   const {
     title,
     callToEmail,
@@ -24,9 +23,6 @@ const TrusteesSection: FC<TrusteesSectionProps> = (props) => {
 
   return (
     <section className={style.section}>
-      <div className={style.menu}>
-        <AboutUsMenu/>
-      </div>
       <div className={style.container}>
         {callToEmailAddress && (
           <div className={style.becomeTrustee}>
@@ -57,5 +53,5 @@ const TrusteesSection: FC<TrusteesSectionProps> = (props) => {
   );
 };
 
-export default TrusteesSection;
+export default SponsorsSection;
 
