@@ -10,9 +10,9 @@ export const aboutUsNavigationItems = [
     href: '/about-us/team'
   },
   {
-    id: 'trustees',
+    id: 'sponsors',
     text: 'Попечители',
-    href: '/about-us/trustees'
+    href: '/about-us/sponsors'
   },
   {
     id: 'ideology',

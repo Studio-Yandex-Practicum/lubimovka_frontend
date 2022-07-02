@@ -1,6 +1,6 @@
 import { AppLayout } from 'components/app-layout';
 import { AboutUsLayout } from 'components/about-us-layout';
-import TrusteesSection from 'components/trustees-section/trustees-section';
+import SponsorsSection from 'components/sponsors-section/sponsors-section';
 import PersonsList from 'components/persons-list/persons-list';
 import { SEO } from 'components/seo';
 import { usePersistentData } from 'providers/persistent-data-provider';
@@ -9,32 +9,32 @@ import { fetcher } from 'services/fetcher';
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import type { Sponsor } from 'api-typings';
 
-interface ITrusteesProps {
-  trustees: Array<Sponsor>,
+interface ISponsorsProps {
+  sponsors: Array<Sponsor>,
 }
 
-const Trustees = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { trustees } = props;
+const Sponsors = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { sponsors } = props;
   const { settings } = usePersistentData();
 
   return (
     <AppLayout>
       <SEO title="Попечители"/>
       <AboutUsLayout>
-        <TrusteesSection
+        <SponsorsSection
           title="Попечители фестиваля"
           description="Здесь представлены частные лица и организации, которые помогают Любимовке, внося существенные пожертвования на развитие фестиваля."
           callToEmail="Если вы хотите стать попечителем фестиваля, напишите нам на "
           callToEmailAddress={settings?.emailAddresses.charity}
         >
-          <PersonsList persons={trustees}/>
-        </TrusteesSection>
+          <PersonsList persons={sponsors}/>
+        </SponsorsSection>
       </AboutUsLayout>
     </AppLayout>
   );
 };
 
-const fetchTrustees = async () => {
+const fetchSponsors = async () => {
   let data;
 
   try {
@@ -46,23 +46,23 @@ const fetchTrustees = async () => {
   return data;
 };
 
-export const getServerSideProps: GetServerSideProps<ITrusteesProps> = async () => {
+export const getServerSideProps: GetServerSideProps<ISponsorsProps> = async () => {
   try {
-    const trustees = await fetchTrustees();
+    const sponsors = await fetchSponsors();
 
     return {
       props: {
-        trustees,
+        sponsors,
       }
     };
   } catch(error) {
     return {
       props: {
         errorCode: 500,
-        trustees: []
+        sponsors: []
       }
     };
   }
 };
 
-export default Trustees;
+export default Sponsors;

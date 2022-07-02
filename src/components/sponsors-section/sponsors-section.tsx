@@ -3,16 +3,16 @@ import { InfoLink } from 'components/ui/info-link/info-link';
 
 import type { FC } from 'react';
 
-import style from './trustees-section.module.css';
+import style from './sponsors-section.module.css';
 
-interface TrusteesSectionProps {
+interface SponsorsSectionProps {
   title: string,
   callToEmail: string,
   callToEmailAddress?: string,
   description: string,
 }
 
-const TrusteesSection: FC<TrusteesSectionProps> = (props) => {
+const SponsorsSection: FC<SponsorsSectionProps> = (props) => {
   const {
     title,
     callToEmail,
@@ -53,5 +53,5 @@ const TrusteesSection: FC<TrusteesSectionProps> = (props) => {
   );
 };
 
-export default TrusteesSection;
+export default SponsorsSection;
 
