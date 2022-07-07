@@ -74,29 +74,20 @@
 }
 
 .paymentFormContainer {
-  position: relative;
-  width: calc(100vw / 1440 * 520);
-  height: calc(100vw / 1440 * 458);
-
-  @media (max-width: $tablet-portrait) {
-    width: calc(100vw - 2px);
-    height: min(calc(100vw * .88), 458px);
-  }
+  overflow: hidden;
+  width: 520px;
+  height: 458px;
 }
 
 .iframe {
-  position: absolute;
-  top: calc(.158 * 100vw - 228px);
-  left: calc(.176 * 100vw - 253px);
+  display: flex;
   width: 520px;
   height: 458px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
   transform: scale(calc(var(--vw-donat) / 1440));
-
-  @media (max-width: $tablet-portrait) {
-    top: min(calc(.445 * 100vw - 231px), -1.4px);
-    left: calc(.518 * 100vw - 269px);
-    transform: scale(min(calc(var(--vw-donat) / 520), 1));
-  }
+  transform-origin: 50%;
 }
 
 .qrcodeContainer {
