@@ -127,7 +127,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             }))}
           />
         </PerformanceLayout.Gallery>
-        {mediaReviews && (
+        {mediaReviews && mediaReviews.length > 0 && (
           <PerformanceLayout.MediaReviews>
             <ReviewCarousel
               title="Рецензии"
@@ -144,7 +144,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             </ReviewCarousel>
           </PerformanceLayout.MediaReviews>
         )}
-        {reviews && (
+        {reviews && reviews.length > 0 && (
           <PerformanceLayout.Reviews>
             <ReviewCarousel
               title="Отзывы зрителей"
