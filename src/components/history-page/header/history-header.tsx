@@ -5,16 +5,13 @@ import { SliderYears } from 'components/ui/slider-years';
 
 import style from './history-header.module.css';
 
-interface IHistoryHeaderProps {
-  data: {
-    years: number[]
-  },
+interface HistoryHeaderProps {
+  years: number[]
   selectYear: (year: number ) => void
   currentYear: number
 }
 
-export const HistoryHeader: FC<IHistoryHeaderProps> = ({ data, selectYear, currentYear }) => {
-  const { years } = data;
+export const HistoryHeader: FC<HistoryHeaderProps> = ({ years, selectYear, currentYear }) => {
   return (
     <section className={style.section}>
       <SliderYears

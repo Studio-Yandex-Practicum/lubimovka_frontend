@@ -1,5 +1,4 @@
-import Error from 'next/error';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { InferGetServerSidePropsType } from 'next';
 
 import { AppLayout } from 'components/app-layout';
 import { ProjectsLayout } from 'components/projects-layout';
@@ -8,26 +7,17 @@ import { ProjectCard } from 'components/ui/project-card';
 import { PageTitle } from 'components/page-title';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
-import { PaginatedProjectListList, ProjectList } from 'api-typings';
 import { isEven } from 'shared/helpers/is-even';
 
-interface IProjectsProps {
-  errorCode?: number,
-  projects: ProjectList[],
-}
+import type { PaginatedProjectListList } from 'api-typings';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 
-const Projects = ({ errorCode, projects }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  if (errorCode) {
-    return (
-      <Error statusCode={errorCode}/>
-    );
-  }
+const Projects = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { projects } = props;
 
   return (
     <AppLayout>
-      <SEO
-        title="Проекты"
-      />
+      <SEO title="Проекты"/>
       <ProjectsLayout>
         <ProjectsLayout.Headline>
           <PageTitle>
@@ -54,29 +44,15 @@ const Projects = ({ errorCode, projects }: InferGetServerSidePropsType<typeof ge
   );
 };
 
-const fetchProjects = async () => {
-  let data;
+export const getServerSideProps = async () => {
+  let projects;
 
   try {
-    // параметр ?limit=999 это костыль, предложенный бекендерами, чтобы получать сразу все проекты без учета пагинации вместо того, чтобы выпиливать пагинацию с бекенда
-    data = await fetcher<PaginatedProjectListList>('/projects/?limit=999');
-  } catch (error) {
-    return;
-  }
-
-  return data.results;
-};
-
-export const getServerSideProps: GetServerSideProps<IProjectsProps> = async () => {
-  const projects = await fetchProjects();
-
-  if (!projects) {
-    return {
-      props: {
-        errorCode: 500,
-        projects: [],
-      }
-    };
+    // параметр ?limit=9999 это костыль, предложенный бекендерами, чтобы получать сразу все проекты без учета пагинации вместо того, чтобы выпиливать пагинацию с бекенда
+    // TODO: разобраться, почему при генерации типов поля необязательные, убрать Required
+    ({ results: projects } = await fetcher<Required<PaginatedProjectListList>>('/projects/?limit=9999'));
+  } catch {
+    throw new InternalServerError();
   }
 
   return {

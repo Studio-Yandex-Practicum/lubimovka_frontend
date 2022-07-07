@@ -248,8 +248,8 @@ const Participation = () => {
         method: 'POST',
         body: data,
       });
-    } catch ([ status, errors ]) {
-      switch (status) {
+    } catch ({ statusCode, data: errors }) {
+      switch (statusCode) {
       case 400:
         if ('non_field_errors' in (errors as Record<string, string[]>)) {
           const [error] = (errors as Record<string, string[]>)['non_field_errors'];

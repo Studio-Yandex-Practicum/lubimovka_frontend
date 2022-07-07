@@ -6,12 +6,8 @@ import { SEO } from 'components/seo';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { fetcher } from 'services/fetcher';
 
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import type { InferGetServerSidePropsType } from 'next';
 import type { Sponsor } from 'api-typings';
-
-interface ISponsorsProps {
-  sponsors: Array<Sponsor>,
-}
 
 const Sponsors = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { sponsors } = props;
@@ -34,35 +30,20 @@ const Sponsors = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
   );
 };
 
-const fetchSponsors = async () => {
-  let data;
+export const getServerSideProps = async () => {
+  let sponsors;
 
   try {
-    data = await fetcher<Array<Sponsor>>('/info/about-festival/sponsors/');
+    sponsors = await fetcher<Sponsor[]>('/info/about-festival/sponsors/');
   } catch (error) {
     throw error;
   }
 
-  return data;
-};
-
-export const getServerSideProps: GetServerSideProps<ISponsorsProps> = async () => {
-  try {
-    const sponsors = await fetchSponsors();
-
-    return {
-      props: {
-        sponsors,
-      }
-    };
-  } catch(error) {
-    return {
-      props: {
-        errorCode: 500,
-        sponsors: []
-      }
-    };
-  }
+  return {
+    props: {
+      sponsors,
+    }
+  };
 };
 
 export default Sponsors;

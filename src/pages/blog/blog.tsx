@@ -17,6 +17,7 @@ import { useBlog } from 'providers/blog-provider';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { useIntersection } from 'shared/hooks/use-intersection';
 import { getYearRange } from 'shared/helpers/get-year-range';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { fetcher } from 'services/fetcher';
 import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/blog';
@@ -186,11 +187,7 @@ export const getServerSideProps: GetServerSideProps<Partial<BlogState>> = async 
   try {
     response = await fetcher<PaginatedBlogItemListOutputList>(`/blog/?limit=${entriesPerPage}`);
   } catch {
-    return {
-      props: {
-        errorCode: 500,
-      }
-    };
+    throw new InternalServerError();
   }
 
   return {

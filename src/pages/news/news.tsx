@@ -1,4 +1,3 @@
-import Error from 'next/error';
 import { useEffect, useMemo } from 'react';
 import classNames from 'classnames/bind';
 
@@ -17,8 +16,8 @@ import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/news';
 import { format } from 'shared/helpers/format-date';
 import { getYearRange } from 'shared/helpers/get-year-range';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 
-import type { InferGetServerSidePropsType } from 'next';
 import type { PaginatedNewsItemListList } from 'api-typings';
 import type { SelectOptionCheckHandler } from 'components/select';
 
@@ -37,10 +36,7 @@ const yearOptions = getYearRange(fromYear).map((year) => ({
   value: year,
 }));
 
-const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const {
-    errorCode,
-  } = props;
+const News = () => {
   const {
     entries,
     handleShouldLoadEntries,
@@ -81,12 +77,6 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
       handleShouldLoadEntries();
     }
   }, [pending, hasMoreEntries, shouldLoadEntries]);
-
-  if (errorCode) {
-    return (
-      <Error statusCode={errorCode}/>
-    );
-  }
 
   return (
     <AppLayout>
@@ -165,11 +155,7 @@ export const getServerSideProps = async () => {
   try {
     response = await fetcher<PaginatedNewsItemListList>(`/news/?limit=${entriesPerPage}`);
   } catch {
-    return {
-      props: {
-        errorCode: 500,
-      }
-    };
+    throw new InternalServerError();
   }
 
   return {
