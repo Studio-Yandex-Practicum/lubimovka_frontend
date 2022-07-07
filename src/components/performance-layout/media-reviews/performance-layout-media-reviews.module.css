@@ -1,8 +1,11 @@
+@import '../performance-layout.vars.module.css';
+
 .root {
-  margin-bottom: 112px;
+  min-width: 0;
+  margin: 0 -$page-padding-tablet-portrait 112px;
   grid-area: media-reviews;
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: 76px;
+    margin: 0 -$page-padding-smartphone 76px;
   }
 }

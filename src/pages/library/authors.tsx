@@ -1,4 +1,3 @@
-import Error from 'next/error';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -6,6 +5,7 @@ import { AppLayout } from 'components/app-layout';
 import AuthorsPage from 'components/library-authors-page';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import type { PaginatedAuthorListList, AuthorList, AuthorLetters } from 'api-typings';
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
@@ -14,14 +14,12 @@ type Letters = 'А' | 'Б' | 'В' | 'Г' | 'Д' | 'Е' | 'Ж' | 'З' | 'И' | '�
   'О' | 'П' | 'Р' | 'С' | 'Т' | 'У' | 'Ф' | 'Х' | 'Ц' | 'Ч' | 'Ш' | 'Щ' | 'Э' | 'Ю' | 'Я';
 
 interface IAuthorsProps {
-  errorCode?: number,
   authors: AuthorList[],
   letters: Array<Letters>
   defaultLetter: string;
 }
 
 const Authors = ({
-  errorCode,
   authors,
   letters,
   defaultLetter = 'А'
@@ -36,7 +34,10 @@ const Authors = ({
     const handleRouteChange = () => {
       const { searchParams } = new URL(document.URL);
       setIsLoading(true);
-      fetchAuthors(searchParams.get('letter') || letters[0]).then(setAuthors).then(() => setIsLoading(false));
+      fetchAuthors(searchParams.get('letter') || letters[0])
+        .then(setAuthors)
+        .then(() => setIsLoading(false));
+      // TODO: плохо, что мы никак не обрабатываем исключение, которое может быть выброшено в fetchAuthors
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);
@@ -45,12 +46,6 @@ const Authors = ({
     };
 
   }, [router]);
-
-  if (errorCode) {
-    return (
-      <Error statusCode={errorCode}/>
-    );
-  }
 
   return (
     <AppLayout>
@@ -68,52 +63,41 @@ const Authors = ({
   );
 };
 
-const fetchAuthors = async (letter: string) => {
-  try {
-    const { results } = await fetcher<PaginatedAuthorListList>(`/library/authors/?limit=1000&letter=${encodeURI(letter)}`);
-    if (!results) {
-      throw 'no results';
-    }
-    return results;
-  } catch (error) {
-    throw error;
-  }
-};
+async function fetchAuthors(letter: string) {
+  // TODO: сходу не разобрался, почему в сгенерированных типах поля PaginatedAuthorListList не обязательные, добавил Required в качестве временного решения
+  const { results } = await fetcher<Required<PaginatedAuthorListList>>(`/library/authors/?limit=9999&letter=${encodeURIComponent(letter)}`);
 
-const getLetters = async () => {
-  try {
-    const { letters } = await fetcher<AuthorLetters>('/library/author_letters/');
-    if (!letters) {
-      throw 'no results';
-    }
-    return letters.sort();
-  } catch (error) {
-    throw error;
-  }
-};
+  return results;
+}
 
 export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
-  try {
-    const letter = query.letter;
-    const letters = await getLetters();
-    const defaultLetter = typeof letter === 'string' ? letter : letters[0] || 'А';
-    const authors = await fetchAuthors(defaultLetter);
-    return {
-      props: {
-        authors,
-        letters,
-        defaultLetter,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        errorCode: 500,
-        authors: [],
-        letters: []
-      }
-    };
+  let letter: string | undefined;
+  let authors;
+
+  if ('letter' in query) {
+    letter = typeof query.letter === 'object' ? query.letter[0] : query.letter;
   }
+
+  let letters;
+  let defaultLetter: string;
+
+  try {
+    ({ letters } = await fetcher<AuthorLetters>('/library/author_letters/'));
+
+    defaultLetter = letter || letters[0] || 'А';
+
+    authors = await fetchAuthors(defaultLetter);
+  } catch {
+    throw new InternalServerError();
+  }
+
+  return {
+    props: {
+      authors,
+      letters,
+      defaultLetter,
+    },
+  };
 };
 
 export default Authors;

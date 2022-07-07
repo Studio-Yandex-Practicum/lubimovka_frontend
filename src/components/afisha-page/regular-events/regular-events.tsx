@@ -43,6 +43,9 @@ export const RegularEvents: FC = () => {
             // @ts-expect-error
             imageUrl={event.eventBody.image}
             description={event.eventBody.description}
+            {...event.type === 'PERFORMANCE' ? {
+              performanceUrl: `/performances/${event.eventBody.id}`,
+            } : {}}
             actionUrl={event.url}
             paid={event.paid}
             ref={ref}

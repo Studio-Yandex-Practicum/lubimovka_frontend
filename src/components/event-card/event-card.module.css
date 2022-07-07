@@ -1,10 +1,14 @@
 .root {
-  display: flex;
+  display: grid;
+  grid-template-areas:
+    "image summary"
+    "image actions";
 
   @media (max-width: $tablet-portrait) {
-    box-sizing: border-box;
     padding: 32px 14px 32px 24px;
-    border-top: var(--coal) solid 1px;
+    grid-template-areas:
+      "image   summary"
+      "actions actions";
   }
 }
 
@@ -13,6 +17,7 @@
   width: 120px;
   height: 160px;
   margin-right: 30px;
+  grid-area: image;
   object-fit: cover;
 
   @media (max-width: $tablet-portrait) {
@@ -21,14 +26,8 @@
   }
 }
 
-.info {
-  display: flex;
-  max-width: 269px;
-  flex-direction: column;
-
-  @media (max-width: $tablet-portrait) {
-    max-width: 243px;
-  }
+.summary {
+  grid-area: summary;
 }
 
 .date-time {
@@ -36,7 +35,6 @@
   @mixin textLarge;
 
   display: flex;
-  flex-direction: row;
   margin-bottom: 16px;
 }
 
@@ -101,7 +99,12 @@
 }
 
 .actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  grid-area: actions;
+
   @media (max-width: $tablet-portrait) {
-    display: flex;
+    flex-direction: row;
   }
 }
