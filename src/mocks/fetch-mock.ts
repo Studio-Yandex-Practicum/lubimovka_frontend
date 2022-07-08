@@ -3,13 +3,11 @@ import fetchMock from 'fetch-mock';
 import { addApiBaseUrlToPath } from 'shared/helpers/url';
 import authors from './data/authors';
 import plays from './data/plays';
-import playfilters from './data/playfilters';
 import projects from './data/projects';
 import partners from './data/partners';
 import performance from './data/performance';
 import project from './data/project';
 import { PaginatedProjectListList, PaginatedAuthorListList, PaginatedPlayList } from 'api-typings';
-import { IPiecesFiltersProps } from 'pages/library';
 import blogArticle from './data/blogArticle';
 import newsArticle from './data/newsArticle';
 import { afishaInfo, getAfishaEvents } from './data/afisha';
@@ -27,9 +25,6 @@ mockedFetch
   }))
   .get(addApiBaseUrlToPath('/library/plays'), (<PaginatedPlayList>{
     results: plays,
-  }))
-  .get(addApiBaseUrlToPath('/library/playfilters'), (<IPiecesFiltersProps>{
-    years: playfilters.years, programs: playfilters.programs,
   }))
   .get(addApiBaseUrlToPath('/projects/'), (<PaginatedProjectListList>{
     results: projects,
