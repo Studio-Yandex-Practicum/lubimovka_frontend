@@ -1,4 +1,3 @@
-import Error from 'next/error';
 import classNames from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
@@ -11,11 +10,12 @@ import { BlogEntryList } from 'components/blog-entry-list';
 import { BlogCard } from 'components/ui/blog-card';
 import { PageBreadcrumbs } from 'components/page';
 import { Breadcrumb } from 'components/breadcrumb';
-import { Share } from 'components/share';
+import { ShareLinks } from 'components/share-links';
 import { ArticleCreditsList } from 'components/article-credits-list';
 import { fetcher } from 'services/fetcher';
 import { format } from 'shared/helpers/format-date';
-import { notFoundResult, serverErrorResult } from 'shared/constants/server-side-props';
+import { notFoundResult } from 'shared/constants/server-side-props';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import type { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
 import type { BlogItemDetailOutput } from 'api-typings';
@@ -25,12 +25,6 @@ import styles from 'components/article-layout/article-layout.module.css';
 const cx = classNames.bind(styles);
 
 const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  if ('errorCode' in props) {
-    return (
-      <Error statusCode={props.errorCode}/>
-    );
-  }
-
   const {
     title,
     description,
@@ -76,10 +70,9 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
           />
         )}
         action={(
-          <Share
+          <ShareLinks
             firstLine="Поделиться"
-            secondLine="записью в соцсетях"
-            size="s"
+            secondLine="записью"
           />
         )}
       />
@@ -108,17 +101,18 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
 };
 
 export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'id', string>>) => {
-  if (!params) {
-    return serverErrorResult;
-  }
-
-  const { id } = params;
+  const { id } = params!;
   let data: BlogItemDetailOutput;
 
   try {
     data = await fetcher<BlogItemDetailOutput>(`/blog/${id}/`);
-  } catch {
-    return notFoundResult;
+  } catch ({ statusCode }) {
+    switch (statusCode) {
+    case 404:
+      return notFoundResult;
+    default:
+      throw new InternalServerError();
+    }
   }
 
   return {

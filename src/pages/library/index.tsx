@@ -1,80 +1,66 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useEffect, useState, useReducer, useRef } from 'react';
-import Error from 'next/error';
 
 import { AppLayout } from 'components/app-layout';
 import LibraryPage from 'components/library-pieces-page';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
-import type { PaginatedPlayList, Play } from 'api-typings';
 import reducer from 'components/library-filter/library-filter-reducer';
-import type { State } from 'components/library-filter/library-filter-reducer';
-import queryParser from '../../components/library-pieces-page/library-query-parser';
+// TODO: непонятно, зачем нам еще одна реализация, если утилита есть в пакете funbox/diamonds
+// причем сейчас queryParser делает все противоположно своему названию — превращает объект в строку
+// и лежит хелпер внутри компонента, нужно унести
+import queryParser from 'components/library-pieces-page/library-query-parser';
 import LibraryFiltersProvider from 'providers/library-filters-provider';
-import type { DroplistOption } from '../../components/ui/droplist';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import type { PaginatedPlayList, Play, PlayFilters } from 'api-typings';
+
+// TODO: скорее всего, этому интерфейсу здесь не место, потому что он никак не используется
 export interface IProgram {
   'pk': number,
   'name': string
 }
 
-export interface IPiecesFiltersProps {
-  years: DroplistOption[];
-  programs: Array<IProgram>;
-  defaultState: State;
-}
-
-interface IPiecesProps extends IPiecesFiltersProps {
-  errorCode?: number;
-  pieces: Play[];
-}
-
-const Library = ({ errorCode, pieces, years, programs, defaultState }:
-  InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const isInitial = useRef<boolean>(true);
+const Library = ({ pieces, years, programs, defaultState }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const isInitial = useRef<boolean>(true); //  TODO: Судя по неймингу, эта переменная нужна, чтобы скипнуть первый рендер в useEffect, но в проекте есть хук для этого
   const [piecesState, setPiecesState] = useState<Play[]>(pieces);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const [filterState, filterDispatcher] = useReducer(
-    reducer,
-    defaultState,
-    undefined
-  );
+  const [filterState, filterDispatcher] = useReducer(reducer, defaultState);
 
   useEffect(() => {
     if(isInitial.current) {
       isInitial.current = false;
       return;
     }
+
     setIsLoading(true);
-    const parsedQuery = queryParser({ ...filterState, festival: filterState.festival.map(({ text })=>text) });
+
+    const searchParams = {
+      ...filterState,
+      festival: filterState.festival.map(({ text }) => text),
+    };
+
+    // TODO: тут нужен рефакторинг. Сча вообще не понятно, почему мы не можем просто `/library?${query}`, где query — или undefined или строка параметров запроса с ?
+    const parsedQuery = queryParser(searchParams);
     const urlWithQuery = parsedQuery ? `/library?${parsedQuery}` : '/library/';
 
-    fetchPieces(parsedQuery)
-      .then(res => {
+    fetchPlays(searchParams)
+      .then((response) => {
         window.history.replaceState('/library', document.title, urlWithQuery);
-
-        setPiecesState(res);
+        setPiecesState(response);
         setIsLoading(false);
       })
       .catch(() => {
+        // TODO: Хм, а мы не хотим, например, показать 500, если запрос завершился ошибкой?
         setPiecesState(pieces);
         setIsLoading(false);
       });
   }, [pieces, filterState]);
 
-  if (errorCode) {
-    return (
-      <Error statusCode={errorCode}/>
-    );
-  }
-
   return (
     <LibraryFiltersProvider value={filterState}>
       <AppLayout>
-        <SEO
-          title="Библиотека - пьесы"
-        />
+        <SEO title="Пьесы"/>
         <LibraryPage
           isLoading={isLoading}
           items={piecesState}
@@ -87,63 +73,55 @@ const Library = ({ errorCode, pieces, years, programs, defaultState }:
   );
 };
 
-const fetchPieces = async (parsedQuery?: string) => {
-  const path = parsedQuery ? `/library/plays/?${parsedQuery}` : '/library/plays/';
+// TODO: Record<string, string[] – повзаимствовал из типов queryParser, но здесь нужен рефакторинг
+async function fetchPlays(params: Record<string, string[]>) {
+  const parsedQuery = queryParser(params);
+  // TODO: сходу не разобрался, почему в сгенерированных типах поля PaginatedPlayList не обязательные, добавил Required в качестве временного решения
+  // ?limit=50 временный костыль по просьбе бекенда на время, пока не реализован бесконечный скролл
+  const { results } = await fetcher<Required<PaginatedPlayList>>(`/library/plays/?limit=50${parsedQuery ? `&${parsedQuery}` : ''}`);
+
+  return results;
+}
+
+export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
+  const {
+    program,
+    festival
+  } = query;
+
+  const programState = (typeof program === 'string' && program.split(',')) || [];
+  const festivalState = (typeof festival === 'string' && festival.split(',')) || [];
+
+  let years;
+  let programs;
+  let results;
 
   try {
-    const { results } = await fetcher<PaginatedPlayList>(path);
-    if(!results) {
-      throw 'no results';
-    }
-    return results;
+    ({ years, programs } = await fetcher<PlayFilters>('/library/playfilters/'));
+    // TODO: разобраться почему поля в сгенерированных типах необязательные
+    results = await fetchPlays({ festival: festivalState, program: programState });
   } catch (error) {
-    throw error;
+    throw new InternalServerError();
   }
-};
 
-const fetchPiecesFilters = async () => {
-  try {
-    const { years, programs } = await fetcher<IPiecesFiltersProps>('/library/playfilters/');
-    if(!years || !programs) {
-      throw 'no results';
-    }
-    return { years: years.map(value => ({ value: Number(value), text:String(value) })), programs };
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const getServerSideProps: GetServerSideProps<IPiecesProps> = async (context) => {
-  try {
-    const [{ years, programs },pieces] = await Promise.all([fetchPiecesFilters(),fetchPieces()]);
-    const { program,festival } = context.query;
-    const programState = (typeof program === 'string' && program.split(',')) || [];
-    const festivalState = (typeof festival === 'string' && festival.split(',')) || [];
-    return {
-      props: {
-        pieces,
-        years,
-        programs,
-        defaultState: {
-          program: programState,
-          festival: festivalState.map(el=>({ text: el, value: Number(el) })),
-        }
+  return {
+    props: {
+      years: years.map((year) => ({
+        value: year,
+        text: year.toString(),
+      })),
+      // TODO: нейминг максимально непрозрачный, без чтения кода невозможно понять, что значит pieces
+      pieces: results,
+      defaultState: {
+        program: programState,
+        festival: festivalState.map(el=>({
+          value: Number(el),
+          text: el,
+        })),
       },
-    };
-  } catch (error) {
-    return {
-      props: {
-        errorCode: 500,
-        pieces: [],
-        years: [],
-        programs: [],
-        defaultState: {
-          program: [],
-          festival: [],
-        }
-      }
-    };
-  }
+      programs,
+    }
+  };
 };
 
 export default Library;

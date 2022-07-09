@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
 import { MenuProvider } from './menu.context';
@@ -12,6 +12,7 @@ import socialLinksStyles from './type/social-links.module.css';
 import footerNavigationStyles from './type/footer-navigation.module.css';
 import historyStyles from './type/history.module.css';
 import footerProjectListStyles from './type/footer-project-list.module.css';
+import aboutUsNavigationStyles from './type/about-us-navigation.module.css';
 
 export const styles = {
   'main-navigation': mainNavigationStyles,
@@ -22,17 +23,18 @@ export const styles = {
   history: historyStyles,
   'footer-navigation': footerNavigationStyles,
   'footer-project-list': footerProjectListStyles,
+  'about-us-navigation': aboutUsNavigationStyles,
 };
 
 export type MenuType = keyof typeof styles;
 
-interface IMenuProps {
+interface MenuProps {
   type: MenuType,
   className?: string,
   children: ReactNode,
 }
 
-export const Menu = (props: IMenuProps): JSX.Element => {
+const Component = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
   const {
     type,
     className,
@@ -42,12 +44,22 @@ export const Menu = (props: IMenuProps): JSX.Element => {
   const cx = classNames.bind(styles[type]);
 
   return (
-    <ul className={cx('menu', className)}>
+    <ul
+      className={cx(
+        'menu',
+        className
+      )}
+      ref={ref}
+    >
       <MenuProvider value={{ type }}>
         {children}
       </MenuProvider>
     </ul>
   );
-};
+});
 
-Menu.Item = MenuItem;
+Component.displayName = 'Menu';
+
+export const Menu = Object.assign(Component, {
+  Item: MenuItem,
+});

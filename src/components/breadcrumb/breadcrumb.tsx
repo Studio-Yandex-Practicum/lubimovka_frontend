@@ -23,6 +23,8 @@ export const Breadcrumb = (props: BreadcrumbProps) => {
         icon={(
           <Icon
             glyph="arrow-left"
+            width="100%"
+            height="100%"
           />
         )}
         iconPosition="right"

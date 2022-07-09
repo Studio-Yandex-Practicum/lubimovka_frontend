@@ -59,7 +59,7 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
           />
         </div>
       )}
-      <div className={cx('info')}>
+      <div className={cx('summary')}>
         <time className={cx('date-time')}>
           <span className={cx('date')}>
             {date}
@@ -88,47 +88,47 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
             </p>
           )}
         </div>
-        <div className={cx('actions')}>
-          {performanceUrl && (
-            <Link
-              href={performanceUrl}
-              passHref
-            >
-              <Button
-                className={cx('action')}
-                size="s"
-                border="bottom-left"
-                upperCase
-                icon={(
-                  <Icon
-                    glyph="arrow-right"
-                    width="100%"
-                    height="100%"
-                  />
-                )}
-              >
-                О спектакле
-              </Button>
-            </Link>
-          )}
-          <Button
-            className={cx('action')}
-            size="s"
-            border="bottom-left"
-            upperCase
-            icon={(
-              <Icon
-                glyph="arrow-right"
-                width="100%"
-                height="100%"
-              />
-            )}
-            href={actionUrl}
-            target="_blank"
+      </div>
+      <div className={cx('actions')}>
+        {performanceUrl && (
+          <Link
+            href={performanceUrl}
+            passHref
           >
-            {paid ? 'Билеты' : 'Регистрация'}
-          </Button>
-        </div>
+            <Button
+              className={cx('action')}
+              size="s"
+              border="bottom-left"
+              upperCase
+              icon={(
+                <Icon
+                  glyph="arrow-right"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+            >
+              О спектакле
+            </Button>
+          </Link>
+        )}
+        <Button
+          className={cx('action')}
+          size="s"
+          border="bottom-left"
+          upperCase
+          icon={(
+            <Icon
+              glyph="arrow-right"
+              width="100%"
+              height="100%"
+            />
+          )}
+          href={actionUrl}
+          target="_blank"
+        >
+          {paid ? 'Билеты' : 'Регистрация'}
+        </Button>
       </div>
     </div>
   );

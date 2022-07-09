@@ -1,4 +1,3 @@
-import Error from 'next/error';
 import cn from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
@@ -12,6 +11,8 @@ import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
 import * as breakpoints from 'shared/breakpoints.js';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
+import { notFoundResult } from 'shared/constants/server-side-props';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { usePersistentData } from 'providers/persistent-data-provider';
 
 import styles from 'components/author-page/author.module.css';
@@ -24,12 +25,6 @@ const cx = cn.bind(styles);
 const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const { settings } = usePersistentData();
-
-  if ('errorCode' in props) {
-    return (
-      <Error statusCode={props.errorCode}/>
-    );
-  }
 
   const {
     name,
@@ -99,31 +94,19 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
 
 export default Author;
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext<Record<'author', string>>) => {
-  const notFoundResult = {
-    notFound: true,
-  } as const;
-  const serverErrorResult = {
-    props: {
-      errorCode: 500,
-    },
-  } as const;
-
-  if (!ctx.params) {
-    return notFoundResult;
-  }
-
-  const { author: slug } = ctx.params;
-  let author: AuthorRetrieve;
+export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'author', string>>) => {
+  const { author: slug } = params!;
+  let author;
 
   try {
-    author = await fetcher(`/library/authors/${slug}/`);
-  } catch {
-    return serverErrorResult;
-  }
-
-  if (!author) {
-    return notFoundResult;
+    author = await fetcher<AuthorRetrieve>(`/library/authors/${slug}/`);
+  } catch ({ statusCode }) {
+    switch (statusCode) {
+    case 404:
+      return notFoundResult;
+    default:
+      throw new InternalServerError();
+    }
   }
 
   return {

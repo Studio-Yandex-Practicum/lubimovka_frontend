@@ -1,4 +1,3 @@
-import Error from 'next/error';
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 
@@ -24,11 +23,10 @@ import { PlayList } from 'components/play-list';
 import { EventList } from 'components/event-list';
 import { EventCard } from 'components/event-card';
 import { SEO } from 'components/seo';
-import { useWelcomeScreenScroll } from 'shared/hooks/use-welcome-screen-scroll';
 import { fetcher } from 'services/fetcher';
 import { format } from 'shared/helpers/format-date';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { partnerTypes } from 'shared/constants/partner-types';
-import { serverErrorResult } from 'shared/constants/server-side-props';
 
 import type { InferGetServerSidePropsType } from 'next';
 import type { Main as MainPageData, Partner, partner_type } from 'api-typings';
@@ -38,14 +36,6 @@ import styles from 'components/homepage-layout/homepage-layout.module.css';
 const cx = classNames.bind(styles);
 
 const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const [welcomeScreenBottomElementRef] = useWelcomeScreenScroll();
-
-  if ('errorCode' in props) {
-    return (
-      <Error statusCode={props.errorCode}/>
-    );
-  }
-
   const {
     first_screen,
     afisha,
@@ -78,7 +68,6 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             title={first_screen.title}
             url={first_screen.url}
             callToAction={first_screen.url_title}
-            ref={welcomeScreenBottomElementRef}
           />
         )}
         {!!afisha?.items.length && (
@@ -258,46 +247,20 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   );
 };
 
-const fetchHomepageData = async () => {
-  try {
-    return await fetcher<MainPageData>('/main/');
-  } catch {
-    return;
-  }
-};
-
-const fetchPartners = async () => {
-  try {
-    const response = await fetcher<Partner[]>('/info/partners/');
-
-    return response;
-  } catch {
-    return [];
-  }
-};
-
 export const getServerSideProps  = async () => {
-  const data = await fetchHomepageData();
-  const partners = await fetchPartners();
+  let pageData;
+  let partners = [];
 
-  if (!data) {
-    return serverErrorResult;
-  }
-
-  function groupPartnersByType(partners: Partner[]) {
-    return partners.reduce<Record<partner_type, Partner[]>>((groups, partner) => {
-      groups[partner.type] = groups[partner.type] ? [
-        ...groups[partner.type],
-        partner,
-      ] : [partner];
-
-      return groups;
-    }, {} as Record<partner_type, Partner[]>);
+  try {
+    pageData = await fetcher<MainPageData>('/main/');
+    partners = await fetcher<Partner[]>('/info/partners/');
+  } catch {
+    throw new InternalServerError();
   }
 
   return {
     props: {
-      ...data,
+      ...pageData,
       // TODO: договориться с бекендерами передавать массив значений для фильтра партнеров и избавиться от костыля с фильтрацией
       partners: groupPartnersByType(partners.filter(({ type }) => type !== 'general')),
     },
@@ -305,6 +268,17 @@ export const getServerSideProps  = async () => {
 };
 
 export default Main;
+
+function groupPartnersByType(partners: Partner[]) {
+  return partners.reduce<Record<partner_type, Partner[]>>((groups, partner) => {
+    groups[partner.type] = groups[partner.type] ? [
+      ...groups[partner.type],
+      partner,
+    ] : [partner];
+
+    return groups;
+  }, {} as Record<partner_type, Partner[]>);
+}
 
 function getPartnerGroupTitle(partnerType: keyof typeof partnerTypes) {
   return partnerTypes[partnerType];

@@ -7,7 +7,7 @@ import { PerformanceHeadline } from 'components/performance-headline';
 import { PerformanceDetails } from 'components/performance-details';
 import { CreditsList } from 'components/credits-list';
 import { HTMLMarkup } from 'components/html-markup';
-import { Share } from 'components/share';
+import { ShareLinks } from 'components/share-links';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
@@ -18,6 +18,7 @@ import { MediaReviewCard } from 'components/media-review-card';
 import { ReviewCard } from 'components/review-card';
 import { SEO } from 'components/seo';
 import { format } from 'shared/helpers/format-date';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 
@@ -126,7 +127,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             }))}
           />
         </PerformanceLayout.Gallery>
-        {mediaReviews && (
+        {mediaReviews && mediaReviews.length > 0 && (
           <PerformanceLayout.MediaReviews>
             <ReviewCarousel
               title="Рецензии"
@@ -143,7 +144,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             </ReviewCarousel>
           </PerformanceLayout.MediaReviews>
         )}
-        {reviews && (
+        {reviews && reviews.length > 0 && (
           <PerformanceLayout.Reviews>
             <ReviewCarousel
               title="Отзывы зрителей"
@@ -168,10 +169,9 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
           />
         </PerformanceLayout.BottomImage>
         <PerformanceLayout.Share>
-          <Share
+          <ShareLinks
             firstLine="Рассказать"
             secondLine="о спектакле"
-            size="l"
           />
         </PerformanceLayout.Share>
       </PerformanceLayout>
@@ -179,12 +179,10 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
   );
 };
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext<Record<'id', string>>) => {
-  if (!ctx.params) {
-    return notFoundResult;
-  }
+export default Performance;
 
-  const { id: performanceId } = ctx.params;
+export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'id', string>>) => {
+  const { id: performanceId } = params!;
   let performanceResponse;
   let mediaReviewsResponse;
   let reviewsResponse;
@@ -195,8 +193,13 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext<Record<'
       fetcher<PaginatedPerformanceMediaReviewList>(`/afisha/performances/${performanceId}/media-reviews/`),
       fetcher<PaginatedPerformanceReviewList>(`/afisha/performances/${performanceId}/reviews/`),
     ]);
-  } catch {
-    return notFoundResult;
+  } catch ({ statusCode }) {
+    switch (statusCode) {
+    case 404:
+      return notFoundResult;
+    default:
+      throw new InternalServerError();
+    }
   }
 
   return {
@@ -223,8 +226,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext<Record<'
     },
   };
 };
-
-export default Performance;
 
 function toEvents(events: LocalEvent[]) {
   return events.map(({ date_time, url }) => ({

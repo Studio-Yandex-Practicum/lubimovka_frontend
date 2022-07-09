@@ -11,6 +11,7 @@ import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import SearchResultAuthors from 'components/search-result-authors/search-result-authors';
 import { fetcher } from 'services/fetcher';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import style from './index.module.css';
 
@@ -52,34 +53,6 @@ interface Author {
 interface IFilteredAuthors {
   [key: Letter]: IAccElem
 }
-
-export const getServerSideProps: GetServerSideProps = async ( { query } ) => {
-  try {
-    const q = String(query.q);
-    const data: Data = await fetcher(`/library/search/?q=${encodeURI(q)}`);
-
-    if (!data.plays.length && !data.authors.length) {
-      return {
-        redirect: {
-          destination: `/library/search-no-result?q=${encodeURI(q)}`,
-          statusCode: 301,
-        },
-      };
-    }
-
-    return {
-      props: {
-        data,
-      },
-    };
-  } catch(error) {
-    return {
-      props: {
-        errorCode: 500,
-      }
-    };
-  }
-};
 
 const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [searchQuery, setSearchQuery] = useState<string | null>('');
@@ -189,3 +162,29 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
 };
 
 export default SearchResult;
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  let q = typeof query.q === 'string' ? query.q : '';
+  let data;
+
+  try {
+    data = await fetcher<Data>(`/library/search/?q=${encodeURI(q)}`);
+
+    if (!data.plays.length && !data.authors.length) {
+      return {
+        redirect: {
+          destination: `/library/search-no-result?q=${encodeURI(q)}`,
+          statusCode: 301,
+        },
+      };
+    }
+  } catch {
+    throw new InternalServerError();
+  }
+
+  return {
+    props: {
+      data,
+    },
+  };
+};

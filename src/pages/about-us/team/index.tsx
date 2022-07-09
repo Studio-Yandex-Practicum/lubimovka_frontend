@@ -1,87 +1,66 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import Error from 'next/error';
 import { SEO } from 'components/seo';
 import { useRouter } from 'next/router';
 
 import { AppLayout } from 'components/app-layout';
-import TeamPage from 'components/team-page';
+import { AboutUsLayout } from 'components/about-us-layout';
+import ArtDirectorateSection from 'components/team-page/art-directorate/section/art-directorate-section';
+import FestivalTeamSection from 'components/team-page/festival-team/festival-team-section';
+import VolunteersSection from 'components/team-page/volunteers/section/volunteers-section';
 import { fetcher } from 'services/fetcher';
-import { FestivalTeams, Volunteers } from 'api-typings';
 
-interface ITeamProps {
-  errorCode?: number,
-  team: Array<FestivalTeams>,
-  volunteers: Array<Volunteers>
-}
+import type { InferGetServerSidePropsType } from 'next';
+import type { FestivalTeams, Volunteers } from 'api-typings';
 
-const Team = ({ errorCode, team, volunteers }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
   const queryYear = Number(router.query.year);
-
-  if (errorCode) {
-    return (
-      <Error statusCode={errorCode}/>
-    );
-  }
+  const {
+    artDirectorate,
+    volunteers,
+    restTeam,
+  } = props;
 
   return (
     <AppLayout>
-      <SEO
-        title="Организаторы"
-      />
-      <main>
-        <TeamPage team={team} volunteers={volunteers} queryYear={queryYear}/>
-      </main>
+      <SEO title="Организаторы"/>
+      <AboutUsLayout>
+        <ArtDirectorateSection cards={artDirectorate}/>
+        <FestivalTeamSection cards={restTeam}/>
+        <div id="volunteers">
+          <VolunteersSection
+            cards={volunteers}
+            queryYear={queryYear}
+          />
+        </div>
+      </AboutUsLayout>
     </AppLayout>
   );
 };
 
-const fetchTeam = async () => {
-  let data;
+export const getServerSideProps = async () => {
+  let team;
+  let volunteers;
 
   try {
-    data = await fetcher<Array<FestivalTeams>>('/info/about-festival/team/');
+    team = await fetcher<FestivalTeams[]>('/info/about-festival/team/');
+    volunteers = await fetcher<Volunteers[]>('/info/about-festival/volunteers/');
   } catch (error) {
     throw error;
   }
 
-  return data;
-};
+  const { art: artDirectorate, fest: restTeam } = team.reduce<Record<string, FestivalTeams[]>>((acc, entry) => {
+    (acc[entry.team] || (acc[entry.team] = [])).push(entry);
 
-const fetchVolunteers = async () => {
-  let data;
+    return acc;
+  }, {});
 
-  try {
-    data = await fetcher<Array<Volunteers>>('/info/about-festival/volunteers/');
-  } catch (error) {
-    throw error;
-  }
-
-  return data;
-};
-
-export const getServerSideProps: GetServerSideProps<ITeamProps> = async () => {
-  try {
-    const [team, volunteers] = await Promise.all([
-      fetchTeam(),
-      fetchVolunteers()
-    ]);
-
-    return {
-      props: {
-        team,
-        volunteers
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        errorCode: 500,
-        team: [],
-        volunteers: []
-      }
-    };
-  }
+  return {
+    props: {
+      artDirectorate,
+      volunteers,
+      restTeam,
+    },
+  };
 };
 
 export default Team;

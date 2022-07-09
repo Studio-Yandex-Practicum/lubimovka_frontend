@@ -23,7 +23,7 @@ export const HomepageVideoArchiveSection: FC<HomepageVideoArchiveSectionProps> =
         Видео-архив
         <Button
           className={cx('action')}
-          size="s"
+          size="xs"
           icon={(
             <Icon
               glyph="arrow-right"
@@ -32,11 +32,13 @@ export const HomepageVideoArchiveSection: FC<HomepageVideoArchiveSectionProps> =
             />
           )}
           border="bottom-left"
+          upperCase
           target="_blank"
           href={url}
         >
-          YOUTUBE
+          Youtube
         </Button>
+        {' '}
         всех читок и событий
       </h2>
       <p className={cx('description')}>

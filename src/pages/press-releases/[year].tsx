@@ -189,7 +189,7 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext) 
   if (pressReleaseYears.length > 0) {
     pressReleaseYears.sort((a, b) => a - b);
 
-    const selectedPressReleaseYear = Number(params?.year ?? pressReleaseYears[pressReleaseYears.length - 1]);
+    const selectedPressReleaseYear = params?.year ? Number(params.year) : pressReleaseYears[pressReleaseYears.length - 1];
     const pressRelease = await fetchPressRelease(selectedPressReleaseYear);
 
     return {

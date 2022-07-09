@@ -1,5 +1,5 @@
 .root {
-  @mixin hideScrollbar;
+  @mixin hide-scrollbars;
 
   display: grid;
   padding: 0;

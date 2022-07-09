@@ -26,7 +26,12 @@ export const FestivalEventsDesktop: FC = () => {
   return (
     <section className={cx('section')}>
       {events.map((e, i) => {
-        const ref = i===events.length - 1 ? bottomRef : undefined;
+        const ref = i === events.length - 1 ? bottomRef : undefined;
+
+        // TODO: Тут происходит что-то не вполне понятное. Вместо того, чтобы сгруппировать события по датам и отрендерить
+        // очевидным образом, мы зачем-то родили обертку для каждой карточки, которая инкапсулирует в себе логику показа заголовка секции.
+        // При этом теперь каждая карточка обернута в <section>, не оч понятно, зачем
+
         return (
           <FestivalEvent
             key={e.id}
@@ -36,7 +41,7 @@ export const FestivalEventsDesktop: FC = () => {
           />
         );
       })}
-      {isLoading() &&<Spinner className={cx('spinner')}/>}
+      {isLoading() && <Spinner className={cx('spinner')}/>}
     </section>
   );
 };

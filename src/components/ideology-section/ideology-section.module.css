@@ -6,12 +6,12 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
-  padding: 127px 70px 165px;
+  padding: 128px 72px 164px;
   margin: 0 auto;
 
   @media (max-width: $tablet-portrait) {
     align-items: flex-start;
-    padding: 237px 24px 100px;
+    padding: 240px 24px 100px;
   }
 }
 
@@ -37,19 +37,19 @@
   &:nth-of-type(2n) {
     background-color: var(--white);
 
-    & .container {
-      padding: 93px 70px 267px;
+    .container {
+      padding: 92px 72px 268px;
 
       @media (max-width: $tablet-portrait) {
         padding: 228px 24px 150px;
       }
     }
 
-    & .list {
+    .list {
       align-self: flex-start;
     }
 
-    & .picture {
+    .picture {
       top: 277px;
       right: 0;
       left: unset;
@@ -57,6 +57,12 @@
       @media (max-width: $tablet-portrait) {
         top: 0;
       }
+    }
+  }
+
+  &:first-child {
+    .container {
+      padding-top: 20px;
     }
   }
 }

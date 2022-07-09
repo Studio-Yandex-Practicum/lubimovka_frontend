@@ -7,6 +7,8 @@ import { ProjectHeadline } from 'components/project-headline';
 import { ConstructorContent } from 'components/constructor-content';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { notFoundResult } from 'shared/constants/server-side-props';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type { Project as ProjectModel } from 'api-typings';
@@ -51,22 +53,19 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
   );
 };
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext<Record<'id', string>>) => {
-  const notFoundResult = {
-    notFound: true,
-  } as const;
-
-  if (!ctx.params) {
-    return notFoundResult;
-  }
-
-  const { id: projectId } = ctx.params;
-  let project: ProjectModel;
+export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'id', string>>) => {
+  const { id: projectId } = params!;
+  let project;
 
   try {
-    project = await fetcher(`/projects/${projectId}/`);
-  } catch {
-    return notFoundResult;
+    project = await fetcher<ProjectModel>(`/projects/${projectId}/`);
+  } catch ({ statusCode }) {
+    switch (statusCode) {
+    case 404:
+      return notFoundResult;
+    default:
+      throw new InternalServerError();
+    }
   }
 
   return {

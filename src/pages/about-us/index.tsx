@@ -1,5 +1,5 @@
-import { fetcher } from 'services/fetcher';
 import { AppLayout } from 'components/app-layout';
+import { AboutUsLayout } from 'components/about-us-layout';
 import { WhatWeDoHeader } from 'components/what-we-do-page/header';
 import { WhatWeDoDesc } from 'components/what-we-do-page/desc';
 import { WhatWeDoAuthors } from 'components/what-we-do-page/authors';
@@ -9,6 +9,7 @@ import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
 import { Section } from 'components/section';
 import { PartnerList } from 'components/partner-list';
 import { SEO } from 'components/seo';
+import { fetcher } from 'services/fetcher';
 import { partnerTypes } from 'shared/constants/partner-types';
 
 import type { Partner, partner_type } from 'api-typings';
@@ -25,7 +26,7 @@ const AboutUs = ({ partners }: InferGetServerSidePropsType<typeof getServerSideP
       <SEO
         title="Что мы делаем?"
       />
-      <main>
+      <AboutUsLayout colors="brand">
         <WhatWeDoHeader/>
         <WhatWeDoDesc/>
         <WhatWeDoAuthors/>
@@ -49,33 +50,18 @@ const AboutUs = ({ partners }: InferGetServerSidePropsType<typeof getServerSideP
             </PartnerList>
           </Section>
         ))}
-      </main>
+      </AboutUsLayout>
     </AppLayout>
   );
 };
 
-const fetchPartners = async () => {
-  try {
-    const response = await fetcher<Partner[]>('/info/partners/');
-
-    return response;
-  } catch {
-    return [];
-  }
-};
-
 export const getServerSideProps = async () => {
-  const partners = await fetchPartners();
+  let partners;
 
-  function groupPartnersByType(partners: Partner[]) {
-    return partners.reduce<Record<partner_type, Partner[]>>((groups, partner) => {
-      groups[partner.type] = groups[partner.type] ? [
-        ...groups[partner.type],
-        partner,
-      ] : [partner];
-
-      return groups;
-    }, {} as Record<partner_type, Partner[]>);
+  try {
+    partners = await fetcher<Partner[]>('/info/partners/');
+  } catch (error) {
+    throw error;
   }
 
   return {
@@ -87,6 +73,17 @@ export const getServerSideProps = async () => {
 };
 
 export default AboutUs;
+
+function groupPartnersByType(partners: Partner[]) {
+  return partners.reduce<Record<partner_type, Partner[]>>((groups, partner) => {
+    groups[partner.type] = groups[partner.type] ? [
+      ...groups[partner.type],
+      partner,
+    ] : [partner];
+
+    return groups;
+  }, {} as Record<partner_type, Partner[]>);
+}
 
 function getPartnerGroupTitle(partnerType: keyof typeof partnerTypes) {
   return partnerTypes[partnerType];

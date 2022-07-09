@@ -1,5 +1,5 @@
 .programmesList {
-  @mixin hideScrollbar;
+  @mixin hide-scrollbars;
 
   --card-width: max-content;
 

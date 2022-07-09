@@ -1,17 +1,23 @@
 import { NextPage } from 'next';
+
 import { SEO } from 'components/seo';
-
 import { AppLayout } from 'components/app-layout';
-import IdeologyPage from 'components/ideology-page';
+import { AboutUsLayout } from 'components/about-us-layout';
+import IdeologySection from 'components/ideology-section';
 
-import textData from './assets/mock-data.json';
+import { ideologyItems } from 'shared/constants/ideology-items';
 
 const Ideology: NextPage = () => (
   <AppLayout>
-    <SEO
-      title="Идеология"
-    />
-    <IdeologyPage data={textData}/>
+    <SEO title="Идеология"/>
+    <AboutUsLayout>
+      {ideologyItems.map((item) => (
+        <IdeologySection
+          key={item.id}
+          data={item}
+        />
+      ))}
+    </AboutUsLayout>
   </AppLayout>
 );
 

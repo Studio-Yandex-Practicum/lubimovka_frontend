@@ -1,8 +1,9 @@
 import { addApiBaseUrlToPath } from 'shared/helpers/url';
 
-const fetchResource = (httpClient: typeof fetch) => <T = unknown>(path: string, options?: RequestInit) => {
-  return httpClient(addApiBaseUrlToPath(path), options).then((response) => handleResponse<T>(response));
-};
+const fetchResource = (httpClient: typeof fetch) => async <T>(path: string, options?: RequestInit) => (
+  httpClient(addApiBaseUrlToPath(path), options)
+    .then((response) => handleResponse<T>(response))
+);
 
 export const fetcher = fetchResource(getHttpClientByEnvironment());
 
@@ -10,19 +11,17 @@ async function handleResponse<T>(response: Response) {
   let data;
 
   try {
-    data = await response.json() as T;
-  } catch {
-    data = undefined as unknown as T;
-  }
+    data = await response.json();
+  } catch {}
 
   if (!response.ok) {
-    throw [
-      response.status,
+    throw {
+      statusCode: response.status,
       data,
-    ];
+    };
   }
 
-  return data;
+  return data as T;
 };
 
 function getHttpClientByEnvironment() {

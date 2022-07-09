@@ -1,0 +1,7 @@
+$menu-padding-mobile: 24px;
+
+:export {
+  /* stylelint-disable property-no-unknown */
+  menu-padding-mobile: $menu-padding-mobile;
+  /* stylelint-enable */
+}

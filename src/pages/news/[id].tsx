@@ -1,10 +1,9 @@
-import Error from 'next/error';
 import classNames from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
 import { ArticleHeadline } from 'components/article-headline';
 import { ArticleFootnote } from 'components/article-footnote';
-import { Share } from 'components/share';
+import { ShareLinks } from 'components/share-links';
 import { ConstructorContent } from 'components/constructor-content';
 import { Section } from 'components/section';
 import { NewsList } from 'components/news-list';
@@ -14,7 +13,8 @@ import { Breadcrumb } from 'components/breadcrumb';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
 import { format } from 'shared/helpers/format-date';
-import { notFoundResult, serverErrorResult } from 'shared/constants/server-side-props';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { notFoundResult } from 'shared/constants/server-side-props';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type { NewsItemDetailed } from 'api-typings';
@@ -24,12 +24,6 @@ import styles from 'components/article-layout/article-layout.module.css';
 const cx = classNames.bind(styles);
 
 const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  if ('errorCode' in props) {
-    return (
-      <Error statusCode={props.errorCode}/>
-    );
-  }
-
   const {
     title,
     description,
@@ -47,8 +41,8 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
       />
       <PageBreadcrumbs>
         <Breadcrumb
-          text="Блог"
-          path="/blog"
+          text="Новости"
+          path="/news"
         />
       </PageBreadcrumbs>
       <ArticleHeadline
@@ -66,10 +60,9 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
         className={cx('footnote')}
         colors="brand"
         action={(
-          <Share
+          <ShareLinks
             firstLine="Поделиться"
             secondLine="новостью в соцсетях"
-            size="s"
           />
         )}
       />
@@ -97,17 +90,18 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
 };
 
 export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'id', string>>) => {
-  if (!params) {
-    return serverErrorResult;
-  }
-
-  const { id } = params;
-  let data: NewsItemDetailed;
+  const { id } = params!;
+  let data;
 
   try {
     data = await fetcher<NewsItemDetailed>(`/news/${id}/`);
-  } catch {
-    return notFoundResult;
+  } catch ({ statusCode }) {
+    switch (statusCode) {
+    case 404:
+      return notFoundResult;
+    default:
+      throw new InternalServerError();
+    }
   }
 
   return {

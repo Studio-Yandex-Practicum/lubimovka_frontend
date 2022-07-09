@@ -1,0 +1,16 @@
+
+@import 'about-us-layout.vars.module';
+
+.menu {
+  padding: 40px 60px;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 2px $menu-padding-mobile 32px;
+  }
+}
+
+.brand {
+  .menu {
+    background-color: var(--light-green);
+  }
+}

@@ -1,8 +1,11 @@
 @define-mixin hide-scrollbars {
+  overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
+  scrollbar-color: transparent transparent;
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
     display: none;
+    width: 0 !important;
   }
 }

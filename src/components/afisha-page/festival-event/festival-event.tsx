@@ -29,7 +29,7 @@ const getYesterday = (dateTime: string) => {
 export const FestivalEvent = forwardRef<HTMLElement, IProps>((props, ref) => {
   const { eventBody, isFirst, dateTime } = props;
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
-  const registration = isToday(new Date(dateTime)) || (isTomorrow(new Date(dateTime))&& new Date().getHours() >= 12);
+  const isRegistrationAlreadyOpen = isToday(new Date(dateTime)) || (isTomorrow(new Date(dateTime)) && new Date().getHours() >= 12);
 
   return (
     // TODO: тут происходит что-то непонятное: для чего этот компонент? зачем мы заворачиваем каждую карточку события в секцию? почему не редерим заголовки дат отдельным компонентом во вьюхе? семантически получается дичь
@@ -37,23 +37,25 @@ export const FestivalEvent = forwardRef<HTMLElement, IProps>((props, ref) => {
       {isFirst && (
         <div className={cx('header')}>
           {!isMobile && (
-            <>
-              <FestivalDate dateTime={dateTime} alignItems="bottom"/>
-            </>
+            <FestivalDate
+              dateTime={dateTime}
+              alignItems="bottom"
+            />
           )}
           <p className={cx({
-            opened: registration,
-            closed: !registration,
+            opened: isRegistrationAlreadyOpen,
+            closed: !isRegistrationAlreadyOpen,
           })}
           >
-            {registration && 'открыта регистрация'}
-            {!registration && (
-              <>
-                {'Регистрация откроется'}
-                <br/>
-                {`${format('d MMMM', getYesterday(dateTime))} в 12:00`}
-              </>
-            )}
+            {isRegistrationAlreadyOpen
+              ? 'открыта регистрация'
+              : (
+                <>
+                  Регистрация откроется
+                  <br/>
+                  {`${format('d MMMM', getYesterday(dateTime))} в 12:00`}
+                </>
+              )}
           </p>
         </div>
       )}
@@ -62,10 +64,10 @@ export const FestivalEvent = forwardRef<HTMLElement, IProps>((props, ref) => {
         className={cx('event')}
         time={format('H:mm', new Date(dateTime))}
         location={props.place}
-        title={eventBody.projectTitle}
+        title={eventBody.name}
         image={'image' in eventBody ? eventBody.image : undefined}
         description={eventBody.description}
-        registrationUrl={registration ? props.url : undefined}
+        registrationUrl={isRegistrationAlreadyOpen ? props.url : undefined}
         credits={props.eventBody.team}
       />
     </section>

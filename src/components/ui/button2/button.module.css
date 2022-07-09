@@ -55,6 +55,15 @@ $border-width: 1px;
   @mixin text;
 }
 
+.xs {
+  composes: common;
+
+  .text {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
 .s {
   composes: common;
   padding: 10px 8px;
