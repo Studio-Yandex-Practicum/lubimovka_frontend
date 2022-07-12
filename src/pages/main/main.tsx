@@ -172,9 +172,11 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
         )}
         <HomepageLayout.Content>
           {!!banners?.items.length && (
-            <TeaserList
-              items={banners.items}
-            />
+            <Section type="homepage-teasers">
+              <TeaserList
+                items={banners.items}
+              />
+            </Section>
           )}
           {!!short_list?.items.length && (
             <Section

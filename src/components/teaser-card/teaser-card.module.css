@@ -1,81 +1,56 @@
 .root {
-  display: block;
+  display: grid;
+  grid-template-areas:
+    "title       title"
+    "description image"
+    "action      image";
+  grid-template-columns: 1fr 486px;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+  }
 }
 
 .title {
   @mixin headline;
   @mixin headline6;
 
-  box-sizing: border-box;
-  padding: 20px 480px 20px 50px;
+  max-width: 570px;
+  margin-bottom: 20px;
   background-color: var(--beige);
+  grid-area: title;
 
   @media (max-width: $tablet-portrait) {
-    width: auto;
-    padding: 16px 16px 16px 0;
-  }
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 1fr 486px;
-
-  @media (max-width: $tablet-portrait) {
-    display: grid;
-    grid-template-columns: 1fr;
-
-    @media (max-width: $tablet-portrait) {
-      padding-bottom: 24px;
-    }
-  }
-}
-
-.item:last-of-type .container {
-  padding-bottom: 56px;
-
-  @media (max-width: $tablet-portrait) {
-    padding-bottom: 48px;
-  }
-}
-
-.content {
-  padding-left: 50px;
-
-  @media (max-width: $tablet-portrait) {
-    padding-left: 0;
+    max-width: auto;
+    margin-bottom: 16px;
   }
 }
 
 .description {
   @mixin text;
   @mixin textLarge;
-  @mixin limitText;
 
   max-width: 384px;
   margin: 0 0 24px 62px;
-  -webkit-line-clamp: 15;
+  grid-area: description;
 
   @media (max-width: $tablet-portrait) {
     @mixin textMedium;
 
-    margin: 0;
-    margin-bottom: 28px;
+    max-width: auto;
+    margin: 0 0 28px;
   }
 }
 
-.button {
-  margin-bottom: 20px;
+.action {
+  grid-area: action;
 
   @media (max-width: $tablet-portrait) {
     margin: 0 20px 16px auto;
+    text-align: right;
   }
 }
 
-.link {
-  list-style: none;
-  transition: all .3s;
-
-  &:hover {
-    opacity: .9;
-  }
+.image-container {
+  grid-area: image;
 }

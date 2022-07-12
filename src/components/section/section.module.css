@@ -86,6 +86,15 @@
   }
 }
 
+.homepage-teasers {
+  composes: common;
+  padding: 60px 32px;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 36px 24px;
+  }
+}
+
 .places {
   composes: common;
   padding: 65px 60px 105px 60px;
