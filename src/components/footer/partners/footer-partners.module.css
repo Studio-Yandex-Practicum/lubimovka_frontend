@@ -1,6 +1,4 @@
 .partners {
-  display: flex;
-  align-items: flex-start;
   grid-area: partners;
 
   @media (max-width: $tablet-portrait) {
@@ -12,8 +10,9 @@
   @mixin text;
   @mixin textCaption;
 
+  display: block;
   max-width: 100px;
-  margin-right: 44px;
+  margin-bottom: 28px;
 
   @media (max-width: $tablet-portrait) {
     display: none;

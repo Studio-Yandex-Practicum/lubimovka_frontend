@@ -22,6 +22,7 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { PlayList } from 'components/play-list';
 import { EventList } from 'components/event-list';
 import { EventCard } from 'components/event-card';
+import PartnerCard from 'components/partner-card';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
 import { format } from 'shared/helpers/format-date';
@@ -234,11 +235,13 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             >
               <PartnerList>
                 {partners[group].map((partner) => (
-                  <PartnerList.Item
-                    key={partner.name}
-                    logo={partner.image}
-                    name={partner.name}
-                  />
+                  <PartnerList.Item key={partner.name}>
+                    <PartnerCard
+                      logo={partner.image}
+                      name={partner.name}
+                      url={partner.url}
+                    />
+                  </PartnerList.Item>
                 ))}
               </PartnerList>
             </Section>

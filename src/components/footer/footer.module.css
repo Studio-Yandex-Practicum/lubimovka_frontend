@@ -1,10 +1,11 @@
 .footer {
   display: grid;
   padding: 42px 32px 54px;
+  column-gap: 50px;
   grid-template:
-    "logo partners partners   partners"
-    "logo address  navigation projects"
-    "logo footnote footnote   footnote" 1fr / min-content 1fr 356px 272px;
+    "logo .        .          ."
+    ".    navigation projects partners"
+    ".    footnote   footnote footnote" 1fr / 93px 356px 308px;
 
   @media (max-width: $tablet-portrait) {
     @mixin textMedium;
@@ -12,7 +13,6 @@
     padding: 0;
     grid-template:
       "logo"
-      "address"
       "navigation"
       "projects"
       "partners"
@@ -23,7 +23,6 @@
 .logo {
   width: 93px;
   height: 80px;
-  margin-right: 82px;
   grid-area: logo;
 
   @media (max-width: $tablet-portrait) {

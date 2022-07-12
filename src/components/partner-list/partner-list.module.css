@@ -1,11 +1,26 @@
-.list {
-  display: flex;
-  flex-wrap: wrap;
+.common {
+  display: grid;
   padding: 0;
   margin: 0;
+  grid-template-columns: repeat(4, 1fr);
 
   @media (max-width: $tablet-portrait) {
-    display: flex;
-    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
   }
+}
+
+.m {
+  composes: common;
+  column-gap: 20px;
+  row-gap: 80px;
+
+  @media (max-width: $tablet-portrait) {
+    row-gap: 40px;
+  }
+}
+
+.s {
+  composes: common;
+  column-gap: 20px;
+  row-gap: 20px;
 }

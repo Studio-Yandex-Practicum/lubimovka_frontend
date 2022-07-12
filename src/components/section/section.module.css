@@ -48,16 +48,19 @@
   composes: common;
   padding: 100px 60px 30px;
 
+  @media (max-width: $tablet-portrait) {
+    padding: 56px 24px;
+  }
+
   .title {
     @mixin headline;
     @mixin headline6;
 
     max-width: 334px;
-    margin-bottom: 16px;
+    margin-bottom: 48px;
 
     @media (max-width: $tablet-portrait) {
       max-width: 255px;
-      margin-bottom: 24px;
     }
   }
 }

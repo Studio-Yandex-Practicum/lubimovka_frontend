@@ -8,6 +8,7 @@ import { WhatWeDoPoster } from 'components/what-we-do-page/poster';
 import { WhatWeDoContacts } from 'components/what-we-do-page/contacts';
 import { Section } from 'components/section';
 import { PartnerList } from 'components/partner-list';
+import PartnerCard from 'components/partner-card';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
 import { partnerTypes } from 'shared/constants/partner-types';
@@ -41,11 +42,13 @@ const AboutUs = ({ partners }: InferGetServerSidePropsType<typeof getServerSideP
           >
             <PartnerList>
               {partners[group].map((partner) => (
-                <PartnerList.Item
-                  key={partner.name}
-                  logo={partner.image}
-                  name={partner.name}
-                />
+                <PartnerList.Item key={partner.name}>
+                  <PartnerCard
+                    logo={partner.image}
+                    name={partner.name}
+                    url={partner.url}
+                  />
+                </PartnerList.Item>
               ))}
             </PartnerList>
           </Section>

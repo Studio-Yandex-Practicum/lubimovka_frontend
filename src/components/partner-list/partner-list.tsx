@@ -6,15 +6,20 @@ import type { FC } from 'react';
 
 import style from './partner-list.module.css';
 
+interface PartnerListProps {
+  size?: 's' | 'm'
+}
+
 const cx = classNames.bind(style);
 
-export const Component: FC = (props)=> {
+export const Component: FC<PartnerListProps> = (props)=> {
   const {
+    size = 'm',
     children,
   } = props;
 
   return (
-    <ul className={cx('list')}>
+    <ul className={cx(size)}>
       {children}
     </ul>
   );
