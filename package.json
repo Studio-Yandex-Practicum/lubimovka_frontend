@@ -12,13 +12,8 @@
     "type-check": "tsc --noEmit --incremental",
     "storybook": "start-storybook -s public -p 3001",
     "build-storybook": "build-storybook -s public",
-    "update-typings": "node scripts/update-typings.js",
-    "update-git-hooks": "scripts/update-git-hooks.sh",
-    "start-testing-server": "node scripts/start-testing-server",
-    "cypress": "cypress open",
-    "cypress:headless": "cypress run",
-    "e2e": "NEXT_PUBLIC_API_BASE_URL=http://localhost:3003/api start-server-and-test start-testing-server http://localhost:3002 cypress",
-    "e2e:headless": "NEXT_PUBLIC_API_BASE_URL=http://localhost:3003/api start-server-and-test start-testing-server http://localhost:3002 cypress:headless"
+    "update-typings": "node ops/update-typings.js",
+    "e2e": "NEXT_PUBLIC_API_BASE_URL=http://localhost:3003/api node ops/e2e-run-tests"
   },
   "repository": {
     "type": "git",

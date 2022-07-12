@@ -1,3 +1,4 @@
+const cypress = require('cypress');
 const express = require('express');
 const next = require('next');
 
@@ -26,10 +27,23 @@ app
       return handle(request, response);
     });
 
-    server.listen(port, (error) => {
+    const instance = server.listen(port, async (error) => {
       if (error) {
         throw error;
       }
+
       log(`Testing server is ready on http://${hostname}:${port}`);
+
+      const result = await cypress.run();
+
+      instance.close(() => {
+        if (result.failures) {
+          log('Could not execute tests');
+          log(result.message);
+          process.exit(result.failures);
+        }
+
+        process.exit(result.totalFailed);
+      });
     });
   });
