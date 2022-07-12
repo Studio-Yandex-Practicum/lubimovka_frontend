@@ -3,6 +3,7 @@
   border-top: 1px solid var(--coal);
 
   @media (max-width: $tablet-portrait) {
+    position: relative;
     min-width: 302px;
     border-top: 0;
 
