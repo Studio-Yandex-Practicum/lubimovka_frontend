@@ -249,14 +249,17 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 
 export const getServerSideProps  = async () => {
   let pageData;
-  let partners = [];
+  let partners: Partner[] = [];
 
   try {
     pageData = await fetcher<MainPageData>('/main/');
-    partners = await fetcher<Partner[]>('/info/partners/');
-  } catch {
-    throw new InternalServerError();
+  } catch (error) {
+    throw new InternalServerError(JSON.stringify(error));
   }
+
+  try {
+    partners = await fetcher<Partner[]>('/info/partners/');
+  } catch {}
 
   return {
     props: {
