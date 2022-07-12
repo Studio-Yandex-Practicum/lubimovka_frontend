@@ -1,5 +1,6 @@
 .root {
   display: grid;
+  align-content: flex-start;
   grid-template-areas:
     "image summary"
     "image actions";
