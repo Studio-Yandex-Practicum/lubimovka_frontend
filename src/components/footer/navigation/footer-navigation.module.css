@@ -1,15 +1,10 @@
 @value partners from '../partners/footer-partners.module.css';
 
 .navigation {
-  margin: 50px 50px 102px 0;
   grid-area: navigation;
 
   @media (max-width: $tablet-portrait) {
     padding: 0 56px;
     margin: 56px 0 0;
   }
-}
-
-.partners ~ .navigation {
-  margin: 62px 50px 0 0;
 }

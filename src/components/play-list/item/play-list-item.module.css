@@ -1,3 +1,7 @@
 .root {
   display: block;
+
+  @media (max-width: $tablet-portrait) {
+    min-width: 240px;
+  }
 }

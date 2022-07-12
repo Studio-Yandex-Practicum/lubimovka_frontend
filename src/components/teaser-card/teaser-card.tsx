@@ -2,7 +2,8 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 
 import type { FC } from 'react';
 import type { Url } from 'shared/types';
@@ -33,39 +34,40 @@ export const TeaserCard: FC<TeaserCardProps> = (props) => {
       <h3 className={cx('title')}>
         {title}
       </h3>
-      <div className={cx('container')}>
-        <div className={cx('content')}>
-          <p className={cx('description')}>
-            {description}
-          </p>
-          {/* TODO: заменить компонент кнопки */}
+      <p className={cx('description')}>
+        {description}
+      </p>
+      <div className={cx('action')}>
+        <Link
+          href={url}
+          passHref
+        >
           <Button
-            label={actionText}
-            iconPlace="left"
-            icon="arrow-right"
-            gap="4px"
-            border="bottomLeft"
-            isLink
-            href={url}
-            className={cx('button')}
-            target="_blank"
-          />
-        </div>
-        <Link href={url}>
-          <a
-            className={cx('link')}
+            size="s"
+            icon={(
+              <Icon
+                glyph="arrow-right"
+                width="100%"
+                height="100%"
+              />
+            )}
+            border="bottom-left"
+            upperCase
             target="_blank"
           >
-            <Image
-              src={image}
-              alt={title}
-              width={486}
-              height={228}
-              layout="responsive"
-              objectFit="cover"
-            />
-          </a>
+            {actionText}
+          </Button>
         </Link>
+      </div>
+      <div className={cx('image-container')}>
+        <Image
+          src={image}
+          alt={title}
+          width={486}
+          height={228}
+          layout="responsive"
+          objectFit="cover"
+        />
       </div>
     </div>
   );

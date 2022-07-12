@@ -11,6 +11,7 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
   | 'homepage-feed'
   | 'places'
   | 'homepage-shortlist'
+  | 'homepage-teasers'
   | 'author-call-to-email'
   | 'blog-entries'
   | 'news'

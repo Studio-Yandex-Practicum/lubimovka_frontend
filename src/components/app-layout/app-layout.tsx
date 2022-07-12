@@ -12,6 +12,7 @@ import { BurgerButton } from 'components/ui/burger-button';
 import { PartnerList } from 'components/partner-list';
 import { FooterCopyright } from 'components/footer-copyright';
 import { DonationLink } from 'components/donation-link';
+import PartnerCard from 'components/partner-card';
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
 import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
 import { socialLinkItems } from 'shared/constants/social-link-items';
@@ -109,16 +110,17 @@ export const AppLayout = (props: AppLayoutProps) => {
       {children}
       <Page.Footer>
         <Footer>
-          {!hiddenPartners && (
+          {!hiddenPartners && partners && partners.length > 0 && (
             <Footer.Partners>
-              <PartnerList>
-                {partners && partners.length > 0 && partners.map((partner) => (
-                  <PartnerList.Item
-                    view="compact"
-                    key={partner.name}
-                    logo={partner.logo}
-                    name={partner.name}
-                  />
+              <PartnerList size="s">
+                {partners.map((partner) => (
+                  <PartnerList.Item key={partner.name}>
+                    <PartnerCard
+                      logo={partner.logo}
+                      name={partner.name}
+                      url={partner.url}
+                    />
+                  </PartnerList.Item>
                 ))}
               </PartnerList>
             </Footer.Partners>

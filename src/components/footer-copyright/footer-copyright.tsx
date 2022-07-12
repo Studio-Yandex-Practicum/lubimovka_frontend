@@ -57,11 +57,12 @@ export const FooterCopyright: FC<IFooterCopyright> = (props) => {
             вёрстка и разработка
           </dt>
           <dd>
-            студенты&nbsp;
+            студенты
+            {' '}
             <InfoLink
               isOutsideLink
               href="https://practicum.yandex.ru"
-              label="Яндекс.Практикума"
+              label="Яндекс Практикума"
               hoverStyle="bottomLine"
               size="xs"
               textDecoration="textDecorationNone"
