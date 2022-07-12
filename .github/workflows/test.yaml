@@ -27,4 +27,4 @@ jobs:
           npm run lint:css
           npm run type-check
       - name: Run tests
-        run: npm run e2e:headless
+        run: npm run e2e
