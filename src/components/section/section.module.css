@@ -80,6 +80,10 @@
 .homepage-feed {
   composes: common;
   padding: 60px 56px;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 36px 24px;
+  }
 }
 
 .places {

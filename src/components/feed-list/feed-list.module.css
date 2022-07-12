@@ -1,0 +1,13 @@
+.root {
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin hide-scrollbars;
+
+    display: flex;
+    padding: 0 24px;
+    margin: 0 -24px;
+    overflow-y: auto;
+  }
+}

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 import { HomepageLayout } from 'components/homepage-layout';
-import { HomepageFeedList } from 'components/homepage-feed-list';
+import { FeedList } from 'components/feed-list';
 import { NewsCard } from 'components/news-card';
 import { BlogCard } from 'components/ui/blog-card';
 import { TeaserList } from 'components/teaser-list';
@@ -139,10 +139,10 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                 </Link>
               )}
             >
-              <HomepageFeedList>
+              <FeedList>
                 {blog ? (
                   blog.items.map((entry) => (
-                    <HomepageFeedList.Item key={entry.id}>
+                    <FeedList.Item key={entry.id}>
                       <BlogCard
                         id={entry.id}
                         image={entry.image}
@@ -150,12 +150,12 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                         heading={entry.title}
                         description={entry.description}
                       />
-                    </HomepageFeedList.Item>
+                    </FeedList.Item>
                   ))
                 ) : (
                   // @ts-ignore
                   news.items.map((entry) => (
-                    <HomepageFeedList.Item key={entry.id}>
+                    <FeedList.Item key={entry.id}>
                       <NewsCard
                         view="compact"
                         title={entry.title}
@@ -163,10 +163,10 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                         date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
                         href={`/news/${entry.id}`}
                       />
-                    </HomepageFeedList.Item>
+                    </FeedList.Item>
                   ))
                 )}
-              </HomepageFeedList>
+              </FeedList>
             </HomepageFeedSection>
           </HomepageLayout.Feed>
         )}

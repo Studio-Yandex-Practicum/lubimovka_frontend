@@ -1,18 +1,18 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
-import { HomepageFeedListItem } from './item';
+import { FeedListItem } from './item';
 
-import styles from './homepage-feed-list.module.css';
+import styles from './feed-list.module.css';
 
-interface HomepageFeedListProps {
+interface FeedListProps {
   children: ReactNode | ReactNode[]
   className?: string
 }
 
 const cx = classNames.bind(styles);
 
-const Component = (props: HomepageFeedListProps) => {
+const Component = (props: FeedListProps) => {
   const {
     children,
     className,
@@ -25,6 +25,6 @@ const Component = (props: HomepageFeedListProps) => {
   );
 };
 
-export const HomepageFeedList = Object.assign(Component, {
-  Item: HomepageFeedListItem,
+export const FeedList = Object.assign(Component, {
+  Item: FeedListItem,
 });
