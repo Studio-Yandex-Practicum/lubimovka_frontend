@@ -2,7 +2,7 @@ import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 import { HomepageLayout } from 'components/homepage-layout';
-import { HomepageFeedList } from 'components/homepage-feed-list';
+import { FeedList } from 'components/feed-list';
 import { NewsCard } from 'components/news-card';
 import { BlogCard } from 'components/ui/blog-card';
 import { TeaserList } from 'components/teaser-list';
@@ -22,6 +22,7 @@ import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { PlayList } from 'components/play-list';
 import { EventList } from 'components/event-list';
 import { EventCard } from 'components/event-card';
+import PartnerCard from 'components/partner-card';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
 import { format } from 'shared/helpers/format-date';
@@ -139,10 +140,10 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                 </Link>
               )}
             >
-              <HomepageFeedList>
+              <FeedList>
                 {blog ? (
                   blog.items.map((entry) => (
-                    <HomepageFeedList.Item key={entry.id}>
+                    <FeedList.Item key={entry.id}>
                       <BlogCard
                         id={entry.id}
                         image={entry.image}
@@ -150,12 +151,12 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                         heading={entry.title}
                         description={entry.description}
                       />
-                    </HomepageFeedList.Item>
+                    </FeedList.Item>
                   ))
                 ) : (
                   // @ts-ignore
                   news.items.map((entry) => (
-                    <HomepageFeedList.Item key={entry.id}>
+                    <FeedList.Item key={entry.id}>
                       <NewsCard
                         view="compact"
                         title={entry.title}
@@ -163,18 +164,20 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                         date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
                         href={`/news/${entry.id}`}
                       />
-                    </HomepageFeedList.Item>
+                    </FeedList.Item>
                   ))
                 )}
-              </HomepageFeedList>
+              </FeedList>
             </HomepageFeedSection>
           </HomepageLayout.Feed>
         )}
         <HomepageLayout.Content>
           {!!banners?.items.length && (
-            <TeaserList
-              items={banners.items}
-            />
+            <Section type="homepage-teasers">
+              <TeaserList
+                items={banners.items}
+              />
+            </Section>
           )}
           {!!short_list?.items.length && (
             <Section
@@ -232,11 +235,13 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             >
               <PartnerList>
                 {partners[group].map((partner) => (
-                  <PartnerList.Item
-                    key={partner.name}
-                    logo={partner.image}
-                    name={partner.name}
-                  />
+                  <PartnerList.Item key={partner.name}>
+                    <PartnerCard
+                      logo={partner.image}
+                      name={partner.name}
+                      url={partner.url}
+                    />
+                  </PartnerList.Item>
                 ))}
               </PartnerList>
             </Section>
@@ -249,14 +254,17 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 
 export const getServerSideProps  = async () => {
   let pageData;
-  let partners = [];
+  let partners: Partner[] = [];
 
   try {
     pageData = await fetcher<MainPageData>('/main/');
-    partners = await fetcher<Partner[]>('/info/partners/');
-  } catch {
-    throw new InternalServerError();
+  } catch (error) {
+    throw new InternalServerError(JSON.stringify(error));
   }
+
+  try {
+    partners = await fetcher<Partner[]>('/info/partners/');
+  } catch {}
 
   return {
     props: {

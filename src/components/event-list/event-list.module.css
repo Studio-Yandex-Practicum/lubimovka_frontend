@@ -1,30 +1,10 @@
 .root {
-  position: relative;
   display: grid;
-  justify-content: center;
   padding: 0;
   margin: 0;
-  column-gap: 120px;
-  grid-row-gap: 48px;
-  grid-template-columns: repeat(2, minmax(364px, max-content));
-  row-gap: 74px;
+  grid-template-columns: repeat(2, 1fr);
 
   @media (max-width: $tablet-portrait) {
-    grid-template-columns: repeat(1, minmax(320px, 1fr));
-    row-gap: 0;
-  }
-
-  &::before {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 1px;
-    height: calc(100%);
-    background-color: var(--coal);
-    content: '';
-
-    @media (max-width: $tablet-portrait) {
-      display: none;
-    }
+    display: block;
   }
 }
