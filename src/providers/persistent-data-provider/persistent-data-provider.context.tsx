@@ -8,8 +8,9 @@ export type Settings = {
     forDirectors: string
     forAuthors: string
     forVolunteers: string
-    charity: string
+    sponsorship: string
     playAcceptance: string
+    requestDonationReport: string
   },
   pressCenter: {
     contactPerson: string

@@ -9,11 +9,14 @@ const cx = cn.bind(styles);
 
 interface IReportProps {
   text: string;
-  email: string;
+  email?: string;
 }
 
 export const Report: FC<IReportProps> = (props) => {
-  const { text, email } = props;
+  const {
+    text,
+    email = '#',
+  } = props;
 
   return (
     <div className={cx('reportContainer')}>

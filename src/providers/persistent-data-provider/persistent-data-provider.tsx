@@ -65,10 +65,11 @@ export const PersistentDataProvider: FC = (props) => {
       emailAddresses: {
         forDirectorsAndActors: response.email_on_project_page,
         forDirectors: response.email_on_what_we_do_page,
-        charity: response.email_on_trustees_page,
+        sponsorship: response.email_on_trustees_page,
         forVolunteers: response.email_on_about_festival_page,
         playAcceptance: response.email_on_acceptance_of_plays_page,
         forAuthors: response.email_on_author_page,
+        requestDonationReport: response.email_on_support_page,
       },
       pressCenter: {
         contactPerson: response.for_press.pr_director.pr_director_name,
