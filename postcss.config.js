@@ -24,7 +24,6 @@ module.exports = {
     'postcss-nested',
     ['postcss-pxtorem', {
       propList: ['*'],
-      selectorBlackList: ['iframe'],
       minPixelValue: 1,
     }]
   ],
