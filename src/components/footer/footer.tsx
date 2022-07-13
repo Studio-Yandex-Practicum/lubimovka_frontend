@@ -9,24 +9,29 @@ import { FooterPartners } from './partners';
 import Logo from 'shared/images/full-logo.svg';
 import styles from './footer.module.css';
 
-interface IFooterProps {
-  children?: ReactNode,
-  className?: string,
+interface FooterProps {
+  className?: string
+  privacyPolicyUrl?: string
+  children?: ReactNode
 }
 
 const cx = classNames.bind(styles);
 
-export const Footer = (props: IFooterProps): JSX.Element => {
+export const Footer = (props: FooterProps): JSX.Element => {
   const {
-    children,
     className,
+    privacyPolicyUrl,
+    children,
   } = props;
 
   return (
     <footer className={cx('footer', className)}>
       <Logo className={cx('logo')}/>
       {children}
-      <FooterCopyright className={cx('footnote')}/>
+      <FooterCopyright
+        className={cx('footnote')}
+        privacyPolicyUrl={privacyPolicyUrl}
+      />
     </footer>
   );
 };

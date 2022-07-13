@@ -5,14 +5,18 @@ import { InfoLink } from 'components/ui/info-link';
 
 import styles from './footer-copyright.module.css';
 
-interface IFooterCopyright {
-  className?: string,
+interface FooterCopyright {
+  className?: string
+  privacyPolicyUrl?: string
 }
 
 const cx = classNames.bind(styles);
 
-export const FooterCopyright: FC<IFooterCopyright> = (props) => {
-  const { className } = props;
+export const FooterCopyright: FC<FooterCopyright> = (props) => {
+  const {
+    className,
+    privacyPolicyUrl,
+  } = props;
   const currentYear = new Date().getFullYear();
 
   return (
@@ -26,15 +30,17 @@ export const FooterCopyright: FC<IFooterCopyright> = (props) => {
         {' '}
         {currentYear}
       </div>
-      <InfoLink
-        className={cx('footnoteLink')}
-        isOutsideLink
-        href="/privacy-policy"
-        label="Политика конфиденциальности"
-        hoverStyle="bottomLine"
-        size="xs"
-        textDecoration="textDecorationNone"
-      />
+      {privacyPolicyUrl && (
+        <InfoLink
+          className={cx('footnoteLink')}
+          isOutsideLink
+          href={privacyPolicyUrl}
+          label="Политика конфиденциальности"
+          hoverStyle="bottomLine"
+          size="xs"
+          textDecoration="textDecorationNone"
+        />
+      )}
       <dl className={cx('credits')}>
         <div className={cx('shishki')}>
           <dt className={cx('term')}>

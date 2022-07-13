@@ -18,6 +18,7 @@ export type Settings = {
     facebookGalleryUrl: string
   },
   canProposePlay: boolean
+  privacyPolicyUrl: string
 }
 
 export type PersistentDataContextType = {
