@@ -19,7 +19,7 @@ const Sponsors = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
       <AboutUsLayout>
         <SponsorsSection
           title="Попечители фестиваля"
-          description="Здесь представлены частные лица и организации, которые помогают Любимовке, внося существенные пожертвования на развитие фестиваля."
+          description="Здесь представлены частные лица и организации, которые помогают Любимовке на постоянной и безвозмездной основе."
           callToEmail="Если вы хотите стать попечителем фестиваля, напишите нам на "
           callToEmailAddress={settings?.emailAddresses.charity}
         >

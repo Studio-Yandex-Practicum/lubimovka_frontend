@@ -1,15 +1,15 @@
 import { FC, ReactNode } from 'react';
 import cn from 'classnames';
 
-import style from './ideology-text-item.module.css';
+import style from './mission-text-item.module.css';
 
-interface ITextItemProps {
+interface TextItemProps {
   number: string
   title: string
   children: ReactNode
 }
 
-const TextItem: FC<ITextItemProps> = (props) => {
+const TextItem: FC<TextItemProps> = (props) => {
   const { number, title, children } = props;
 
   return (

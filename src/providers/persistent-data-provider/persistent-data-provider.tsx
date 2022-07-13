@@ -65,7 +65,7 @@ export const PersistentDataProvider: FC = (props) => {
       emailAddresses: {
         forDirectorsAndActors: response.email_on_project_page,
         forDirectors: response.email_on_what_we_do_page,
-        charity: response.email_on_sponsors_page,
+        charity: response.email_on_trustees_page,
         forVolunteers: response.email_on_about_festival_page,
         playAcceptance: response.email_on_acceptance_of_plays_page,
         forAuthors: response.email_on_author_page,
@@ -77,6 +77,7 @@ export const PersistentDataProvider: FC = (props) => {
         facebookGalleryUrl: response.for_press.photo_gallery_facebook_link,
       },
       canProposePlay: response.plays_reception_is_open,
+      privacyPolicyUrl: response.url_to_privacy_policy,
     });
   };
 
