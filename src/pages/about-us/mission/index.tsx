@@ -3,16 +3,16 @@ import { NextPage } from 'next';
 import { SEO } from 'components/seo';
 import { AppLayout } from 'components/app-layout';
 import { AboutUsLayout } from 'components/about-us-layout';
-import IdeologySection from 'components/ideology-section';
+import MissionSection from 'components/mission-section';
 
-import { ideologyItems } from 'shared/constants/ideology-items';
+import missionItems from 'shared/constants/mission-items';
 
-const Ideology: NextPage = () => (
+const Mission: NextPage = () => (
   <AppLayout>
-    <SEO title="Идеология"/>
+    <SEO title="Миссия"/>
     <AboutUsLayout>
-      {ideologyItems.map((item) => (
-        <IdeologySection
+      {missionItems.map((item) => (
+        <MissionSection
           key={item.id}
           data={item}
         />
@@ -21,4 +21,4 @@ const Ideology: NextPage = () => (
   </AppLayout>
 );
 
-export default Ideology;
+export default Mission;

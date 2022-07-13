@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import cn from 'classnames';
 
-import TextItem from '../ideology-text-item';
+import TextItem from '../mission-text-item';
 
-import style from './ideology-section.module.css';
+import style from './mission-section.module.css';
 
 interface ITextItemData {
   id: number;
@@ -12,7 +12,7 @@ interface ITextItemData {
   text: Array<string>;
 }
 
-export interface ITextSectionData {
+export interface TextSectionData {
   id: number;
   number: string;
   title: string;
@@ -20,11 +20,11 @@ export interface ITextSectionData {
   content: Array<ITextItemData>;
 }
 
-interface ITextSectionProps {
-  data: ITextSectionData
+interface TextSectionProps {
+  data: TextSectionData
 }
 
-const TextSection: FC<ITextSectionProps> = ({ data }) => {
+const TextSection: FC<TextSectionProps> = ({ data }) => {
   const { number, title, image, content } = data;
 
   return (

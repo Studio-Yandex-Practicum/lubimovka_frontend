@@ -1,4 +1,4 @@
-export const ideologyItems = [
+const missionItems = [
   {
     id: 1,
     number: '1',
@@ -52,3 +52,5 @@ export const ideologyItems = [
     ]
   }
 ];
+
+export default missionItems;
