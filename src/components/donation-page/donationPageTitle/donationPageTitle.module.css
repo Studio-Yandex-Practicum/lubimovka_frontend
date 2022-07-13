@@ -72,16 +72,6 @@
   padding: 49px 0 0 0;
 }
 
-.iframe {
-  width: 510px;
-  height: 492px;
-  background: transparent !important;
-
-  @media (max-width: $tablet-portrait) {
-    display: none;
-  }
-}
-
 .qrcodeContainer {
   display: flex;
   flex-flow: row nowrap;
