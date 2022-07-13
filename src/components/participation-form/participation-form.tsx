@@ -14,36 +14,37 @@ import type { Nullable } from 'shared/types';
 import styles from './participation-form.module.css';
 
 interface IParticipationFormProps {
-  firstName: string,
-  firstNameError?: string,
-  onFirstNameChange: (value: string) => void,
-  lastName: string,
-  lastNameError?: string,
-  onLastNameChange: (value: string) => void,
-  birthYear: string,
-  birthYearError?: string,
-  onBirthYearChange: (value: string) => void,
-  city: string,
-  cityError?: string,
-  onCityChange: (value: string) => void,
-  phoneNumber: string,
-  phoneNumberError?: string,
-  onPhoneNumberChange: (value: string) => void,
-  email: string,
-  emailError?: string,
-  onEmailChange: (value: string) => void,
-  title: string,
-  titleError?: string,
-  onTitleChange: (value: string) => void,
-  year: string,
-  yearError?: string,
-  onYearChange: (value: string) => void,
-  fileName?: string,
-  fileError?: string,
-  onFileChange: (file: Nullable<File>) => void,
-  genericError?: string,
-  canSubmit: boolean,
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void,
+  firstName: string
+  firstNameError?: string
+  onFirstNameChange: (value: string) => void
+  lastName: string
+  lastNameError?: string
+  onLastNameChange: (value: string) => void
+  birthYear: string
+  birthYearError?: string
+  onBirthYearChange: (value: string) => void
+  city: string
+  cityError?: string
+  onCityChange: (value: string) => void
+  phoneNumber: string
+  phoneNumberError?: string
+  onPhoneNumberChange: (value: string) => void
+  email: string
+  emailError?: string
+  onEmailChange: (value: string) => void
+  title: string
+  titleError?: string
+  onTitleChange: (value: string) => void
+  year: string
+  yearError?: string
+  onYearChange: (value: string) => void
+  fileName?: string
+  fileError?: string
+  onFileChange: (file: Nullable<File>) => void
+  genericError?: string
+  canSubmit: boolean
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  privacyPolicyUrl?: string
 }
 
 const ACCEPTABLE_FILE_TYPES = '.doc, .docx, .txt, .odt, .pdf';
@@ -82,6 +83,7 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
     genericError,
     canSubmit,
     onSubmit,
+    privacyPolicyUrl = '#',
   } = props;
 
   return (
@@ -235,7 +237,7 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
       <Form.Disclaimer>
         Нажимая на кнопку «Отправить» вы даёте согласие
         {' '}
-        <Link href="/privacy-policy">
+        <Link href={privacyPolicyUrl}>
           <a>
             на обработку персональных данных
           </a>

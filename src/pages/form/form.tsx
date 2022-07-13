@@ -7,6 +7,7 @@ import PlayProposalLayout from 'components/play-proposal-layout';
 import PlayProposalTitle from 'components/play-proposal-title';
 import { ParticipationForm } from 'components/participation-form';
 import { SEO } from 'components/seo';
+import { usePersistentData } from 'providers/persistent-data-provider';
 import {
   validYearRegexp,
   validEmailRegexp,
@@ -98,7 +99,7 @@ const participationFormReducer = (state: ParticipationFormState, action: Partici
 
 const Participation = () => {
   const [participationFormState, dispatch] = useReducer(participationFormReducer, initialParticipationFormState);
-
+  const { settings } = usePersistentData();
   const {
     firstName,
     lastName,
@@ -339,6 +340,7 @@ const Participation = () => {
               genericError={genericError}
               canSubmit={canSubmit}
               onSubmit={handleSubmit}
+              privacyPolicyUrl={settings?.privacyPolicyUrl}
             />
           </PlayProposalLayout.Form>
         </PlayProposalLayout.Column>
