@@ -7,5 +7,5 @@ export type BlogItemYearsMonthsOutput = {
      * Максимальный год равен текущему году
      */
     year: number;
-    month: number;
+    months: Array<number>;
 };
