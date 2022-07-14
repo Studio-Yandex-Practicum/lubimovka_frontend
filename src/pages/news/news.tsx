@@ -15,48 +15,56 @@ import { fetcher } from 'services/fetcher';
 import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/news';
 import { format } from 'shared/helpers/format-date';
-import { getYearRange } from 'shared/helpers/get-year-range';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 
-import type { PaginatedNewsItemListList } from 'api-typings';
+import type { InferGetServerSidePropsType } from 'next';
+import type { PaginatedNewsItemListList, NewsItemYearsMonthsOutput } from 'api-typings';
 import type { SelectOptionCheckHandler } from 'components/select';
 
 import styles from 'components/news-layout/news-layout.module.css';
 
 const cx = classNames.bind(styles);
 
-// TODO: Получать список лет из API
-const fromYear = 2013;
-const monthOptions = months.map((month, index) => ({
+const defaultMonthOptions = months.map((month, index) => ({
   text: month,
   value: index + 1,
 }));
-const yearOptions = getYearRange(fromYear).map((year) => ({
-  text: year.toString(),
-  value: year,
-}));
 
-const News = () => {
+const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { filters } = props;
+  const lastYear = filters[0].year;
   const {
     entries,
     handleShouldLoadEntries,
     hasMoreEntries,
     selectedMonth,
     setSelectedMonth,
-    selectedYear,
+    selectedYear = lastYear,
     setSelectedYear,
     pending,
   } = useNews();
 
   const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>();
 
+  const yearOptions = filters.map(({ year }) => ({
+    text: year.toString(),
+    value: year,
+  }));
+
+  const selectedYearOption = useMemo(() => (
+    yearOptions.find(({ value }) => value === (selectedYear))
+  ), [selectedYear]);
+
+  let monthOptions = defaultMonthOptions;
+
+  if (selectedYear) {
+    const filteredMonths = filters.find(({ year }) => year === selectedYear)!.months;
+    monthOptions = defaultMonthOptions.filter(({ value }) => filteredMonths.includes(value));
+  }
+
   const selectedMonthOption = useMemo(() => (
     monthOptions.find(({ value }) => value === selectedMonth)
   ), [selectedMonth]);
-
-  const selectedYearOption = useMemo(() => (
-    yearOptions.find(({ value }) => value === selectedYear)
-  ), [selectedYear]);
 
   const lastNewsIndex = useMemo(() => entries.length - 1, [entries]);
 
@@ -69,7 +77,12 @@ const News = () => {
   const handleYearChange: SelectOptionCheckHandler<number> = ({ value }) => {
     if (selectedYear === value) return;
 
+    const shouldResetMonth = !value || (selectedMonth && !filters.find(({ year }) => year === value)!.months.includes(selectedMonth));
+
     setSelectedYear(value);
+    if (shouldResetMonth) {
+      setSelectedMonth(null);
+    }
   };
 
   useEffect(() => {
@@ -80,9 +93,7 @@ const News = () => {
 
   return (
     <AppLayout>
-      <SEO
-        title="Новости"
-      />
+      <SEO title="Новости"/>
       <NewsLayout>
         <PageTitle className={cx('title')}>
           Новости
@@ -150,19 +161,23 @@ const News = () => {
 };
 
 export const getServerSideProps = async () => {
-  let response;
+  let entries;
+  let next;
+  let filters;
 
   try {
-    response = await fetcher<PaginatedNewsItemListList>(`/news/?limit=${entriesPerPage}`);
+    filters = await fetcher<NewsItemYearsMonthsOutput[]>('/news/years-months/');
+    ({ results: entries, next } = await fetcher<PaginatedNewsItemListList>(`/news/?limit=${entriesPerPage}`));
   } catch {
     throw new InternalServerError();
   }
 
   return {
     props: {
+      filters,
       preloadedNewsState: {
-        entries: response.results,
-        hasMoreEntries: !!response.next,
+        entries,
+        hasMoreEntries: !!next,
       }
     }
   };

@@ -62,7 +62,7 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
         action={(
           <ShareLinks
             firstLine="Поделиться"
-            secondLine="новостью в соцсетях"
+            secondLine="новостью"
           />
         )}
       />
