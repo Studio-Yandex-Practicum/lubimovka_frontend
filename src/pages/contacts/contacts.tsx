@@ -241,7 +241,7 @@ const Contacts: NextPage = () => {
               </Form.Actions>
               <Form.Disclaimer>
                 {'Нажимая на кнопку «Отправить» вы даёте согласие '}
-                <Link href="/privacy-policy">
+                <Link href={settings?.privacyPolicyUrl ?? '#'}>
                   <a>
                     на обработку персональных данных
                   </a>
