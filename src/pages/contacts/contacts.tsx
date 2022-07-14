@@ -7,7 +7,8 @@ import ContactsTitle from 'components/contacts-title';
 import Form from 'components/ui/form/form';
 import TextInput from 'components/ui/text-input/text-input';
 import TextArea from 'components/ui/text-area';
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 import { CallToEmail } from 'components/call-to-email';
 import { SEO } from 'components/seo';
 import { usePersistentData } from 'providers/persistent-data-provider';
@@ -228,20 +229,27 @@ const Contacts: NextPage = () => {
               </Form.Field>
               <Form.Actions>
                 <Button
-                  type="submit"
-                  iconPlace="right"
-                  icon={formSuccessfullySent ? 'ok' : 'arrow-right'}
                   size="l"
+                  type="submit"
+                  icon={(
+                    <Icon
+                      glyph={formSuccessfullySent ? 'ok' : 'arrow-right'}
+                      width="100%"
+                      height="100%"
+                    />
+                  )}
+                  iconPosition="right"
                   border="full"
-                  label={formSuccessfullySent ? 'Отправлено' : 'Отправить'}
-                  align="space-between"
-                  width="100%"
                   disabled={!canSubmit}
-                />
+                  upperCase
+                  fullWidth
+                >
+                  {formSuccessfullySent ? 'Отправлено' : 'Отправить'}
+                </Button>
               </Form.Actions>
               <Form.Disclaimer>
                 {'Нажимая на кнопку «Отправить» вы даёте согласие '}
-                <Link href="/privacy-policy">
+                <Link href={settings?.privacyPolicyUrl ?? '#'}>
                   <a>
                     на обработку персональных данных
                   </a>

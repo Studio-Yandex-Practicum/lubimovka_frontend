@@ -1,11 +1,11 @@
-import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import cn from 'classnames/bind';
 
 import { Icon } from 'components/ui/icon';
 
-import qrcode from '../../../../public/images/donation/lubimovka-qrcode.jpeg';
+import type { VFC } from 'react';
+
 import styles from './donationPageTitle.module.css';
 
 const cx = cn.bind(styles);
@@ -16,7 +16,7 @@ interface IDonationPageTitleProps {
   footnote: string;
 }
 
-export const DonationPageTitle: FC<IDonationPageTitleProps> = (props) => {
+export const DonationPageTitle: VFC<IDonationPageTitleProps> = (props) => {
   const { header, text, footnote } = props;
 
   return (
@@ -34,18 +34,12 @@ export const DonationPageTitle: FC<IDonationPageTitleProps> = (props) => {
         </p>
       </div>
       <div className={cx('advertisement')}>
-        <iframe
-          className={cx('iframe')}
-          src="https://goody.im/form/9bc4b4afb926640f7ef3fa8f/frame"
-          name="goody_container_form"
-          frameBorder="no"
-        />
         <div className={cx('qrcodeContainer')}>
           <Link href="https://qr.nspk.ru/AS10004LII9QK8KP8ADRSSI2TIAV1NNF?type=01&bank=100000000007&crc=D63D">
             <a>
               <div className={cx('qrcode')}>
                 <Image
-                  src={qrcode}
+                  src="/images/donation/qrcode.jpeg"
                   alt="QR-code для отправки доната"
                   layout="fill"
                   objectFit="cover"

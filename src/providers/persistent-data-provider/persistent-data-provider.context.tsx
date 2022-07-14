@@ -8,8 +8,9 @@ export type Settings = {
     forDirectors: string
     forAuthors: string
     forVolunteers: string
-    charity: string
+    sponsorship: string
     playAcceptance: string
+    requestDonationReport: string
   },
   pressCenter: {
     contactPerson: string
@@ -18,6 +19,7 @@ export type Settings = {
     facebookGalleryUrl: string
   },
   canProposePlay: boolean
+  privacyPolicyUrl: string
 }
 
 export type PersistentDataContextType = {

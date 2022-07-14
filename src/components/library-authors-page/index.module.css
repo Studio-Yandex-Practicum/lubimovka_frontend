@@ -49,13 +49,11 @@
   z-index: 1;
   top: 0;
   left: 0;
-  height: calc(100% - 270px);
 
   @media (max-width: $tablet-portrait) {
     top: 47px;
     left: 0;
     width: 100%;
-    height: calc(100% - 166px);
   }
 }
 

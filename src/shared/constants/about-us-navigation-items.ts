@@ -15,8 +15,8 @@ export const aboutUsNavigationItems = [
     href: '/about-us/sponsors'
   },
   {
-    id: 'ideology',
-    text: 'Идеология',
-    href: '/about-us/ideology'
+    id: 'mission',
+    text: 'Миссия',
+    href: '/about-us/mission'
   }
 ];

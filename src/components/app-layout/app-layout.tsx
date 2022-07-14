@@ -42,7 +42,7 @@ export const AppLayout = (props: AppLayoutProps) => {
     navbarProps,
     headBanner,
   } = props;
-  const { projects, partners } = usePersistentData();
+  const { projects, partners, settings } = usePersistentData();
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
@@ -109,7 +109,7 @@ export const AppLayout = (props: AppLayoutProps) => {
       </Page.Navbar>
       {children}
       <Page.Footer>
-        <Footer>
+        <Footer privacyPolicyUrl={settings?.privacyPolicyUrl}>
           {!hiddenPartners && partners && partners.length > 0 && (
             <Footer.Partners>
               <PartnerList size="s">
@@ -203,7 +203,7 @@ export const AppLayout = (props: AppLayoutProps) => {
                 </Menu>
               </OverlayNav.Socials>
               <OverlayNav.Copyright>
-                <FooterCopyright/>
+                <FooterCopyright privacyPolicyUrl={settings?.privacyPolicyUrl}/>
               </OverlayNav.Copyright>
             </OverlayNav>
           </Page.OverlayMenu>
