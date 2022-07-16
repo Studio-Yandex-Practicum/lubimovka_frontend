@@ -10,7 +10,7 @@ import overlayActionsStyles from './type/overlay-actions.module.css';
 import overlaySocialLinksStyles from './type/overlay-social-links.module.css';
 import socialLinksStyles from './type/social-links.module.css';
 import footerNavigationStyles from './type/footer-navigation.module.css';
-import historyStyles from './type/history.module.css';
+import yearsStyles from './type/years.module.css';
 import footerProjectListStyles from './type/footer-project-list.module.css';
 import aboutUsNavigationStyles from './type/about-us-navigation.module.css';
 
@@ -20,7 +20,7 @@ export const styles = {
   'overlay-actions': overlayActionsStyles,
   'overlay-social-links': overlaySocialLinksStyles,
   'social-links': socialLinksStyles,
-  history: historyStyles,
+  years: yearsStyles,
   'footer-navigation': footerNavigationStyles,
   'footer-project-list': footerProjectListStyles,
   'about-us-navigation': aboutUsNavigationStyles,

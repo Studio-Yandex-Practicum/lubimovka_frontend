@@ -1,8 +1,6 @@
-import { useRouter } from 'next/router';
-
 import { AppLayout } from 'components/app-layout/index';
 import { SEO } from 'components/seo';
-import { HistoryHeader } from 'components/history-page/header';
+import { Menu } from 'components/ui/menu';
 import { HistoryTitle } from 'components/history-page/title';
 import { HistoryItself } from 'components/history-page/itself';
 
@@ -22,24 +20,23 @@ const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
     defaultYear
   } = props;
 
-  const router = useRouter();
-  const [year] = years;
-
-  function selectYear(year: number) {
-    router.push(`/history/${year}`, undefined, { scroll: true });
-  }
-
   return (
     <AppLayout>
       <SEO title="История фестиваля"/>
-      <HistoryHeader
-        years={years}
-        selectYear={selectYear}
-        currentYear={defaultYear || year}
-      />
+      <Menu type="years">
+        {years.map((year) => (
+          <Menu.Item
+            key={year}
+            href={`/history/${year}`}
+            current={year === defaultYear}
+          >
+            {year}
+          </Menu.Item>
+        ))}
+      </Menu>
       <HistoryTitle
         data={festival}
-        currentYear={defaultYear || year}
+        currentYear={defaultYear}
       />
       <HistoryItself data={itselfData}/>
     </AppLayout>
