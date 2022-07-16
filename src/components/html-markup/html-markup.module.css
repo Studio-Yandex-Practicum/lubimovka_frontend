@@ -1,4 +1,6 @@
-.root {
+/* stylelint-disable no-descending-specificity */
+
+.common {
   @mixin text;
   @mixin textLarge;
 
@@ -21,6 +23,16 @@
     font-size: 40px;
     font-weight: 400;
     line-height: 40px;
+
+    @media (max-width: $tablet-portrait) {
+      font-size: 28px;
+      line-height: 32px;
+    }
+  }
+
+  h4 {
+    margin: 24px 0;
+    font-weight: 400;
   }
 
   ul {
@@ -41,36 +53,57 @@
     @mixin headline6;
 
     position: relative;
-    width: 45.83%;
-    padding: 56px 18.75% 72px 31.25%;
+    padding: 56px 270px 72px 450px;
     margin: 55px auto;
     background-color: var(--light-green);
-    white-space: pre-wrap;
     word-break: break-word;
 
     @media (max-width: $tablet-portrait) {
       @mixin headline7;
 
-      width: 66.4%;
-      padding: 56px 13% 72px 20.5%;
+      padding: 56px 54px 72px 85px;
       margin: 72px auto 0;
     }
+
+    ::before {
+      position: absolute;
+      top: 56px;
+      bottom: 72px;
+      left: 420px;
+      width: 1px;
+      background-color: var(--coal);
+      content: '';
+
+      @media (max-width: $tablet-portrait) {
+        top: 66px;
+        left: 0;
+        width: 56px;
+        height: 1px;
+      }
+    }
+
+    > p {
+      margin: 0;
+    }
+  }
+}
+
+.default {
+  composes: common;
+}
+
+.centered {
+  composes: common;
+
+  > *:not(blockquote) {
+    max-width: 840px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
-  blockquote::before {
-    position: absolute;
-    width: 0;
-    height: calc(100% - 56px - 72px);
-    border-left: 1px solid black;
-    margin-left: -30px;
-    content: '';
-
-    @media (max-width: $tablet-portrait) {
-      top: 66px;
-      left: 0;
-      width: 20.5%;
-      border-top: 1px solid black;
-      border-left: 0;
+  @media (max-width: $tablet-portrait) {
+    > *:not(blockquote) {
+      max-width: 366px;
     }
   }
 }

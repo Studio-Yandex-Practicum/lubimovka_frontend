@@ -1,9 +1,10 @@
+$padding-bottom: 82px;
+
 .title {
   @mixin headline;
   @mixin headline3;
 
   max-width: 570px;
-  margin-top: 18px;
   grid-area: title;
   word-break: break-word;
 
@@ -19,8 +20,7 @@
   @mixin headline6;
 
   max-width: 480px;
-  margin-top: 22px;
-  margin-left: 60px;
+  margin: 0 0 0 60px;
   grid-area: description;
   word-break: break-word;
 
@@ -28,7 +28,6 @@
     @mixin headline7;
 
     max-width: 305px;
-    margin-top: 22px;
   }
 }
 
@@ -41,7 +40,6 @@
   justify-self: center;
 
   @media (max-width: $tablet-portrait) {
-    padding-top: 24px;
     padding-left: 60px;
     justify-self: start;
   }
@@ -53,7 +51,7 @@
   justify-self: center;
 
   @media (max-width: $tablet-portrait) {
-    margin: 24px 0 75px 60px !important;
+    margin: 0 0 0 60px;
     justify-self: start;
   }
 }
@@ -62,14 +60,13 @@
   position: relative;
   width: 690px;
   height: 421px;
-  margin-top: 30px;
+  margin: 0 0 -$padding-bottom;
   grid-area: cover;
 
   @media (max-width: $tablet-portrait) {
     width: 357px;
     height: 218px;
-    margin-top: 40px;
-    margin-left: 30px;
+    margin: 0 0 0 30px;
     justify-self: end;
   }
 }
@@ -77,13 +74,14 @@
 .common {
   display: grid;
   box-sizing: border-box;
-  padding-left: 150px;
+  padding: 18px 0 $padding-bottom 150px;
   grid-column-gap: 30px;
   grid-template-areas:
     'title       title       .'
     'description description cover'
     'date        author      cover';
   grid-template-columns: 1fr 1fr min-content;
+  row-gap: 28px;
 
   @media (max-width: $tablet-portrait) {
     padding-left: 24px;

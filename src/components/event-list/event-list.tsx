@@ -8,13 +8,18 @@ import style from './event-list.module.css';
 
 const cx = classNames.bind(style);
 
-const Component: FC = (props) => {
+interface EventListProps {
+  variant?: 'default' | 'compact'
+}
+
+const Component: FC<EventListProps> = (props) => {
   const {
+    variant = 'default',
     children,
   } = props;
 
   return (
-    <ul className={cx('root')}>
+    <ul className={cx(variant)}>
       {children}
     </ul>
   );

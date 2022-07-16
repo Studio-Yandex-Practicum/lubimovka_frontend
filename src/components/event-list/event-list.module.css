@@ -1,10 +1,46 @@
-.root {
+/* stylelint-disable no-descending-specificity */
+
+.common {
   display: grid;
   padding: 0;
   margin: 0;
-  grid-template-columns: repeat(2, 1fr);
 
   @media (max-width: $tablet-portrait) {
     display: block;
+  }
+}
+
+.item {
+  display: block;
+}
+
+.compact {
+  composes: common;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 33.3%);
+
+  .item {
+    padding: 28px;
+
+    &:not(:nth-child(3n)) {
+      border-right: 1px solid var(--coal);
+    }
+
+    &:last-child {
+      border: 0;
+    }
+
+    &:only-child {
+      width: 100%;
+    }
+
+    @media (max-width: $tablet-portrait) {
+      padding: 32px 24px;
+      border-bottom: 1px solid var(--coal);
+
+      &:not(:nth-child(3n)) {
+        border-right: 0;
+      }
+    }
   }
 }
