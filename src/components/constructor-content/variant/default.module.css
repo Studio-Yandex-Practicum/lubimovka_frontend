@@ -48,12 +48,21 @@
   .title {
     flex: 1 0 450px;
     margin: 0 60px 0 0;
+
+    @media (max-width: $tablet-portrait) {
+      margin: 0 0 34px;
+    }
   }
 
   .inner {
     display: flex;
     max-width: 930px;
     margin: 0 auto;
+
+    @media (max-width: $tablet-portrait) {
+      display: block;
+      max-width: auto;
+    }
   }
 }
 
