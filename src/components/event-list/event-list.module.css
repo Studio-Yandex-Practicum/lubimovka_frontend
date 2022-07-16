@@ -44,3 +44,25 @@
     }
   }
 }
+
+.default {
+  composes: common;
+  grid-template-columns: repeat(2, 1fr);
+
+  .item {
+    padding: 36px 60px;
+
+    &:nth-child(odd) {
+      border-right: 1px solid var(--coal);
+    }
+
+    @media (max-width: $tablet-portrait) {
+      padding: 32px 24px;
+      border-top: var(--coal) solid 1px;
+
+      &:nth-child(odd) {
+        border-right: 0;
+      }
+    }
+  }
+}
