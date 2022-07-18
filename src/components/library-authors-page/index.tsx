@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import cn from 'classnames';
 
 import { Menu } from 'components/ui/menu';
 import LibraryForm from 'components/library-form';
@@ -37,22 +36,18 @@ const AuthorsPage: FC<IAuthorsPageProps> = ({ letters, authors, isLoading,onLett
       <div className={styles.content}>
         <div className={styles.menuWrap}>
           <div className={styles.menu}>
-            <Menu type="history">
+            {/* TODO: убрать дублирование на страницах библиотеки */}
+            <Menu type="library-navigation">
               <Menu.Item
                 href="/library"
-                current={false}
               >
-                <p className={cn(styles.tabLink)}>
-                  Пьесы
-                </p>
+                Пьесы
               </Menu.Item>
               <Menu.Item
                 href="/library/authors"
                 current
               >
-                <p className={cn(styles.tabLink, styles.active)}>
-                  Авторы
-                </p>
+                Авторы
               </Menu.Item>
             </Menu>
           </div>

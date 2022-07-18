@@ -1,15 +1,12 @@
 .menu {
+  @mixin hide-scrollbars;
+
   display: flex;
-  overflow: auto;
   align-items: center;
   padding: 0;
   margin: 0;
+  overflow-y: auto;
   scroll-behavior: smooth;
-
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
 }
 
 .item {
@@ -27,6 +24,7 @@
   display: flex;
   align-items: center;
   color: var(--coal);
+  opacity: .2;
   text-decoration: none;
   white-space: nowrap;
 
@@ -41,6 +39,7 @@
     visibility: hidden;
 
     @media (min-width: 1440px) {
+      /* TODO: подозрительные стили */
       width: 1.11vw;
       height: 2.85vw;
     }
@@ -59,6 +58,8 @@
   }
 
   &:hover {
+    opacity: 1;
+
     &::before,
     &::after {
       visibility: visible;
@@ -68,6 +69,8 @@
 
 .current {
   .link {
+    opacity: 1;
+
     &::before,
     &::after {
       visibility: visible;
