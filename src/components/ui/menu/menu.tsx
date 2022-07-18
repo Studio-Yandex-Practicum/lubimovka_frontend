@@ -13,6 +13,7 @@ import footerNavigationStyles from './type/footer-navigation.module.css';
 import yearsStyles from './type/years.module.css';
 import footerProjectListStyles from './type/footer-project-list.module.css';
 import aboutUsNavigationStyles from './type/about-us-navigation.module.css';
+import libraryNavigationStyles from './type/library-navigation.module.css';
 
 export const styles = {
   'main-navigation': mainNavigationStyles,
@@ -24,6 +25,7 @@ export const styles = {
   'footer-navigation': footerNavigationStyles,
   'footer-project-list': footerProjectListStyles,
   'about-us-navigation': aboutUsNavigationStyles,
+  'library-navigation': libraryNavigationStyles,
 };
 
 export type MenuType = keyof typeof styles;

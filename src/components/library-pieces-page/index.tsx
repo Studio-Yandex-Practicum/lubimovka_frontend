@@ -1,6 +1,5 @@
 import { FC, useState, useEffect, Dispatch, } from 'react';
 import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
-import cn from 'classnames';
 
 import LibraryForm from 'components/library-form/library-form';
 import LibraryFilter from 'components/library-filter/library-filter';
@@ -50,22 +49,17 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
       <div className={styles.content}>
         <div className={styles.sidebar}>
           <div className={styles.menu}>
-            <Menu type="history">
+            <Menu type="library-navigation">
               <Menu.Item
                 href="/library"
                 current
               >
-                <p className={cn(styles.tabLink, styles.active)}>
-                  Пьесы
-                </p>
+                Пьесы
               </Menu.Item>
               <Menu.Item
                 href="/library/authors"
-                current={false}
               >
-                <p className={cn(styles.tabLink)}>
-                  Авторы
-                </p>
+                Авторы
               </Menu.Item>
             </Menu>
           </div>
