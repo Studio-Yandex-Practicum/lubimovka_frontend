@@ -1,13 +1,16 @@
-import { FC, useCallback, useMemo, useState } from 'react';
-import cn from 'classnames';
+import HorizontalScroll from 'react-scroll-horizontal';
+import { useMemo, useState, Fragment } from 'react';
 import classNames from 'classnames/bind';
 
+import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
-import { SliderYears } from 'components/ui/slider-years';
 import VolunteersList from 'components/team-page/volunteers/list';
 import { InfoLink } from 'components/ui/info-link';
 import { usePersistentData } from 'providers/persistent-data-provider';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
+import * as breakpoints from 'shared/breakpoints';
 
+import type { FC } from 'react';
 import type { Volunteers } from 'api-typings';
 
 import styles from './volunteers-section.module.css';
@@ -24,6 +27,9 @@ const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
   // TODO: отрефакторить компонент, привести к композиции, передавать email в качестве пропса
   const { settings } = usePersistentData();
 
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+  const MenuContainer = isMobile ? Fragment : HorizontalScroll;
+
   const years = useMemo(() => {
     return Array.from(new Set(cards.map(card => card.year))).sort().reverse();
   }, [cards]);
@@ -34,9 +40,9 @@ const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
     return cards.filter(card => card.year === currentYear);
   }, [currentYear]);
 
-  const changeYearHandler = useCallback((year:number)=> {
+  const handleYearChange = (year: number) => () => {
     setCurrentYear(year);
-  }, []);
+  };
 
   return (
     <section className={styles.section}>
@@ -44,12 +50,25 @@ const VolunteersSection: FC<VolunteersSectionProps> = (props) => {
         <h2 className={styles.title}>
           Волонтёры
         </h2>
-        <SliderYears
-          className={cn(styles.yearsContainer)}
-          years={years}
-          onClick={changeYearHandler}
-          currentYear={currentYear}
-        />
+        {/* TODO: быстрое и грязное решения для горизонтальной прокрутки меню, нужен рефакторинг */}
+        <MenuContainer
+          reverseScroll
+          style={{
+            height: '6.063rem',
+          }}
+        >
+          <Menu type="years">
+            {years.map((year) => (
+              <Menu.Item
+                key={year}
+                current={year === currentYear}
+                onClick={handleYearChange(year)}
+              >
+                {year}
+              </Menu.Item>
+            ))}
+          </Menu>
+        </MenuContainer>
         <VolunteersList cards={selectedCards} currentYear={currentYear}/>
         {settings?.emailAddresses.forVolunteers && (
           <div className={styles.infoBlock}>

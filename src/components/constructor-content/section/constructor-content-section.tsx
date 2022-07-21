@@ -6,13 +6,13 @@ import { useConstructorContent } from '../constructor-content.context';
 import type { FC } from 'react';
 
 interface ConstructorContentSectionProps {
-  type:  'plain-text' | 'html-markup' | 'plays' | 'persons' | 'images' | 'videos' | 'link'
+  variant: 'default' | 'events' | 'event' | 'link' | 'html-markup' | 'image-carousel' | 'plays' | 'persons'
   title?: string
 }
 
 export const ConstructorContentSection: FC<ConstructorContentSectionProps> = (props) => {
   const {
-    type,
+    variant = 'default',
     title,
     children,
   } = props;
@@ -20,13 +20,15 @@ export const ConstructorContentSection: FC<ConstructorContentSectionProps> = (pr
   const cx = useMemo(() => classNames.bind(styles), [styles]);
 
   return (
-    <section className={cx(type)}>
-      {title && (
-        <h2 className={cx('title')}>
-          {title}
-        </h2>
-      )}
-      {children}
+    <section className={cx(variant)}>
+      <div className={cx('inner')}>
+        {title && (
+          <h2 className={cx('title')}>
+            {title}
+          </h2>
+        )}
+        {children}
+      </div>
     </section>
   );
 };

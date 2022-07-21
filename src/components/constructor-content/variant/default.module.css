@@ -1,81 +1,96 @@
 .default-padding {
-  padding: 0 32px;
+  padding: 64px 32px;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 56px 24px;
+  }
 }
 
 .root {
   background-color: var(--white);
 }
 
-.section {
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
 .title {
   @mixin headline;
   @mixin headline4;
 
-  max-width: 716px;
-  margin: 0 auto;
+  max-width: 720px;
+  margin: 0 auto 48px;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    margin: 0 0 34px;
+  }
 }
 
-.html-markup {
-  composes: section default-padding;
-  margin-bottom: 98px;
+.section {
+  &:not(.darkened):not(.brand) + &:not(.darkened):not(.brand) {
+    padding-top: 0;
+  }
+}
 
-  &:first-child {
-    padding-top: 72px;
+.default {
+  composes: section default-padding;
+}
+
+.darkened {
+  background-color: var(--beige);
+}
+
+.brand {
+  background-color: var(--light-green);
+}
+
+.event {
+  composes: section default-padding;
+
+  .title {
+    flex: 1 0 450px;
+    margin: 0 60px 0 0;
+
+    @media (max-width: $tablet-portrait) {
+      margin: 0 0 34px;
+    }
+  }
+
+  .inner {
+    display: flex;
+    max-width: 930px;
+    margin: 0 auto;
+
+    @media (max-width: $tablet-portrait) {
+      display: block;
+      max-width: auto;
+    }
   }
 }
 
 .events {
-  composes: section default-padding;
-  margin-bottom: 94px;
-}
+  composes: section;
+  padding: 64px 0;
 
-.plays,
-.persons,
-.videos {
-  composes: section default-padding;
-}
-
-.plays,
-.persons {
-  padding: 120px 0;
-  background-color: var(--beige);
-}
-
-.persons {
   .title {
-    margin-bottom: 58px;
-  }
-}
-
-.plays {
-  .title {
-    margin-bottom: 48px;
-  }
-}
-
-.videos {
-  .title {
-    margin-bottom: 44px;
+    padding: 0 32px;
   }
 }
 
 .link {
-  composes: section;
+  composes: section brand;
   padding: 70px 270px 140px 362px;
-  margin-bottom: 74px;
-  background-color: var(--light-green);
 
   @media (max-width: $tablet-portrait) {
     padding: 56px 26px 72px;
   }
 
+  .inner {
+    max-width: 808px;
+    margin: 0 auto;
+  }
+
   .title {
-    margin-bottom: 20px;
+    max-width: 468px;
+    margin: 0 0 20px;
 
     @media (max-width: $tablet-portrait) {
       margin-bottom: 16px;
@@ -83,24 +98,50 @@
   }
 }
 
-.photo-carousel {
-  composes: section;
-  max-width: 716px;
-  margin: 0 auto 80px;
+.html-markup {
+  composes: section default-padding;
+
+  @media (max-width: $tablet-portrait) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.image {
+  composes: section default-padding;
+
+  .inner {
+    max-width: 660px;
+    margin: 0 auto;
+  }
+
+  .title {
+    @mixin visually-hidden;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.image-carousel {
+  composes: section default-padding;
+
+  .inner {
+    max-width: 716px;
+    margin: 0 auto;
+  }
 
   .title {
     @mixin visually-hidden;
   }
 }
 
-.html-markup-content {
-  h3,
-  h4,
-  p,
-  ul,
-  ol {
-    max-width: 840px;
-    margin-right: auto;
-    margin-left: auto;
-  }
+.image-gallery {
+  padding: 64px 0;
+}
+
+.plays,
+.persons {
+  composes: section darkened default-padding;
 }

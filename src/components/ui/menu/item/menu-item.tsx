@@ -8,19 +8,25 @@ import { useMenu } from '../menu.context';
 import type { ReactNode } from 'react';
 import type { LinkProps } from 'next/link';
 
-interface MenuItemProps extends Pick<LinkProps, 'href'> {
-  current?: boolean
+interface MenuItemProps {
   mods?: Record<string, boolean>
+  current?: boolean
   children: ReactNode
 }
 
-export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
+interface MenuItemLinkProps extends MenuItemProps, Pick<LinkProps, 'href'> {}
+
+interface MenuItemButtonProps extends MenuItemProps {
+  onClick: () => void
+}
+
+export const MenuItem = forwardRef<HTMLLIElement, MenuItemLinkProps | MenuItemButtonProps>((props, ref) => {
   const {
-    href,
     current = false,
     mods = {},
     children,
   } = props;
+
   const { type } = useMenu();
   const cx = classNames.bind(styles[type]);
 
@@ -35,11 +41,21 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) =>
       )}
       ref={ref}
     >
-      <Link href={href}>
-        <a className={cx('link')}>
+      {'href' in props ? (
+        <Link href={props.href}>
+          <a className={cx('link')}>
+            {children}
+          </a>
+        </Link>
+      ) : (
+        <button
+          className={cx('link')}
+          type="button"
+          onClick={props.onClick}
+        >
           {children}
-        </a>
-      </Link>
+        </button>
+      )}
     </li>
   );
 });

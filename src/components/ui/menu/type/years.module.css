@@ -1,0 +1,83 @@
+.menu {
+  @mixin hide-scrollbars;
+
+  display: flex;
+  align-items: center;
+  padding: 36px 24px 36px 718px;
+  border-bottom: 1px solid var(--coal);
+  margin: 0;
+  overflow-y: auto;
+  scroll-snap-type: x proximity;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 16px 24px;
+  }
+}
+
+.item {
+  display: block;
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.link {
+  @mixin headline;
+  @mixin headline6;
+
+  display: flex;
+  align-items: center;
+
+  /* TODO: в меню добавили возможность вместо ссылки использовать кнопку, нужен рефакторинг нейминга классов */
+  border: 0;
+  background: 0;
+  color: var(--coal);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &::before,
+  &::after {
+    display: block;
+    width: .6em;
+    height: 1.6em;
+    box-sizing: border-box;
+    border: 1px solid currentColor;
+    content: "";
+    visibility: hidden;
+
+    @media (min-width: 1440px) {
+      width: 1.11vw;
+      height: 2.85vw;
+    }
+  }
+
+  &::before {
+    border-right: 0;
+    border-bottom-left-radius: 200% 100%;
+    border-top-left-radius: 200% 100%;
+  }
+
+  &::after {
+    border-left: 0;
+    border-bottom-right-radius: 200% 100%;
+    border-top-right-radius: 200% 100%;
+  }
+
+  &:hover {
+    &::before,
+    &::after {
+      visibility: visible;
+    }
+  }
+}
+
+.current {
+  .link {
+    &::before,
+    &::after {
+      visibility: visible;
+    }
+  }
+}

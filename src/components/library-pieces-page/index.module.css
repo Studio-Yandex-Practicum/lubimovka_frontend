@@ -259,16 +259,3 @@
 
   text-align: center;
 }
-
-.tabLink {
-  margin: 0;
-  opacity: .2;
-
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.active {
-  opacity: 1;
-}

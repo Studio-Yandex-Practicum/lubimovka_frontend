@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { Fragment, useMemo } from 'react';
+import { Fragment } from 'react';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 
@@ -7,7 +7,6 @@ import { PhotoGallery } from 'components/photo-gallery';
 import { ImageSlider } from 'components/ui/image-slider';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { BasicPlayCard } from 'components/ui/basic-play-card';
-import { PerformanceSection } from 'components/performance-section';
 import { EventCard } from 'components/event-card';
 import { PersonCard } from 'components/ui/person-card';
 import { PersonCardList } from 'components/person-card-list';
@@ -24,7 +23,7 @@ import type { FC } from 'react';
 import type { ConstructorBlock } from './constructor-content.types';
 
 import defaultStyles from './variant/default.module.css';
-import projectStyles from './variant/project.module.css';
+import { EventList } from 'components/event-list';
 
 enum Variant {
   Default = 'default',
@@ -38,7 +37,6 @@ interface ConstructorContentProps {
 
 const variants = {
   default: defaultStyles,
-  project: projectStyles,
 };
 
 export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
@@ -46,55 +44,73 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
     variant = Variant.Default,
     blocks,
   } = props;
-  const cx = useMemo(() => classNames.bind(variants[variant]), [variant]);
+  const cx = classNames.bind(variants.default);
 
   return (
     <ConstructorContentContextProvider
       value={{
-        styles: variants[variant],
+        styles: variants.default,
       }}
     >
       <div className={cx('root')}>
         {blocks.map(({ content_type, content_item }, index) => (
           <Fragment key={index}>
             {content_type === ConstructorBlockType.HtmlMarkup && (
-              <ConstructorContentSection type="html-markup">
+              <ConstructorContentSection
+                variant="html-markup"
+              >
                 <HTMLMarkup
+                  variant="centered"
                   markup={content_item.rich_text}
                   className={cx('html-markup-content')}
                 />
               </ConstructorContentSection>
             )}
-            {content_type === ConstructorBlockType.Images && (
+            {content_type === ConstructorBlockType.Images && content_item.items.length === 1 && (
               <ConstructorContentSection
-                type={variant === Variant.Project ? 'photo-gallery' : 'photo-carousel'}
+                variant="image"
                 title={content_item.title}
               >
-                {variant === Variant.Project ? (
-                  <PhotoGallery
-                    photos={content_item.items.map(({ image, title }) => ({
-                      url: image,
-                      description: title,
-                    }))}
-                  />
-                ) : (
-                  <ImageSlider>
-                    {content_item.items.map(({ image, title }) => (
-                      <Image
-                        key={image}
-                        src={image}
-                        alt={title}
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    ))}
-                  </ImageSlider>
-                )}
+                <img
+                  src={content_item.items[0].image}
+                  alt={content_item.items[0].title}
+                />
+              </ConstructorContentSection>
+            )}
+            {content_type === ConstructorBlockType.Images && content_item.items.length > 1 && variant === Variant.Default && (
+              <ConstructorContentSection
+                variant="image-carousel"
+                title={content_item.title}
+              >
+                <ImageSlider>
+                  {content_item.items.map(({ image, title }) => (
+                    <Image
+                      key={image}
+                      src={image}
+                      alt={title}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  ))}
+                </ImageSlider>
+              </ConstructorContentSection>
+            )}
+            {content_type === ConstructorBlockType.Images && content_item.items.length > 1 && variant === Variant.Project && (
+              <ConstructorContentSection
+                variant="image-gallery"
+                title={content_item.title}
+              >
+                <PhotoGallery
+                  photos={content_item.items.map(({ image, title }) => ({
+                    url: image,
+                    description: title,
+                  }))}
+                />
               </ConstructorContentSection>
             )}
             {content_type === ConstructorBlockType.Plays && (
               <ConstructorContentSection
-                type="plays"
+                variant="plays"
                 title={content_item.title}
               >
                 <BasicPlayCardList>
@@ -112,47 +128,71 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                 </BasicPlayCardList>
               </ConstructorContentSection>
             )}
-            {content_type === ConstructorBlockType.Events && (
-              <PerformanceSection
-                className={cx('events')}
+            {content_type === ConstructorBlockType.Events && content_item.items.length === 1 && (
+              <ConstructorContentSection
+                variant="event"
                 title={content_item.title}
               >
-                {content_item.items.map(({
-                  id,
-                  type,
-                  date_time,
-                  event_body: {
-                    id: performanceId,
-                    name,
-                    team,
-                    image,
-                    description,
-                    project_title,
-                  },
-                  url,
-                  paid
-                }) => (
-                  <EventCard
-                    key={id}
-                    date={format('d MMMM', new Date(date_time))}
-                    time={format('H:mm', new Date(date_time))}
-                    title={name}
-                    team={team}
-                    imageUrl={image}
-                    projectTitle={project_title}
-                    description={description}
-                    {...type === 'PERFORMANCE' ? {
-                      performanceUrl: `/performances/${performanceId}`,
-                    } : {}}
-                    actionUrl={url}
-                    paid={paid}
-                  />
-                ))}
-              </PerformanceSection>
+                <EventCard
+                  date={format('d MMMM', new Date(content_item.items[0].date_time))}
+                  time={format('H:mm', new Date(content_item.items[0].date_time))}
+                  title={content_item.items[0].event_body.name}
+                  team={content_item.items[0].event_body.team}
+                  imageUrl={content_item.items[0].event_body.image}
+                  projectTitle={content_item.items[0].event_body.project_title}
+                  description={content_item.items[0].event_body.description}
+                  {...content_item.items[0].type === 'PERFORMANCE' ? {
+                    performanceUrl: `/performances/${content_item.items[0].event_body.id}`,
+                  } : {}}
+                  actionUrl={content_item.items[0].url}
+                  paid={content_item.items[0].paid}
+                />
+              </ConstructorContentSection>
+            )}
+            {content_type === ConstructorBlockType.Events && content_item.items.length > 1 && (
+              <ConstructorContentSection
+                variant="events"
+                title={content_item.title}
+              >
+                <EventList variant="compact">
+                  {content_item.items.map(({
+                    id,
+                    type,
+                    date_time,
+                    event_body: {
+                      id: performanceId,
+                      name,
+                      team,
+                      image,
+                      description,
+                      project_title,
+                    },
+                    url,
+                    paid
+                  }) => (
+                    <EventList.Item key={id}>
+                      <EventCard
+                        date={format('d MMMM', new Date(date_time))}
+                        time={format('H:mm', new Date(date_time))}
+                        title={name}
+                        team={team}
+                        imageUrl={image}
+                        projectTitle={project_title}
+                        description={description}
+                        {...type === 'PERFORMANCE' ? {
+                          performanceUrl: `/performances/${performanceId}`,
+                        } : {}}
+                        actionUrl={url}
+                        paid={paid}
+                      />
+                    </EventList.Item>
+                  ))}
+                </EventList>
+              </ConstructorContentSection>
             )}
             {content_type === ConstructorBlockType.Persons && (
               <ConstructorContentSection
-                type="persons"
+                variant="persons"
                 title={content_item.title}
               >
                 <PersonCardList>
@@ -170,7 +210,6 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
             )}
             {content_type === ConstructorBlockType.Videos && (
               <ConstructorContentSection
-                type="videos"
                 title={content_item.title}
               >
                 <VideoList>
@@ -185,7 +224,8 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
             )}
             {content_type === ConstructorBlockType.Link && (
               <ConstructorContentSection
-                type="link"
+                variant="link"
+                colors="brand"
                 title={content_item.title}
               >
                 <ConstructorLink

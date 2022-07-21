@@ -143,16 +143,3 @@
     margin-bottom: 0;
   }
 }
-
-.tabLink {
-  margin: 0;
-  opacity: .2;
-
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.active {
-  opacity: 1;
-}
