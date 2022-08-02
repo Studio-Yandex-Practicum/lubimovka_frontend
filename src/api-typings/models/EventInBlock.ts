@@ -2,8 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Event } from './Event';
 import type { event_type } from './event_type';
-import type { EventPerformance } from './EventPerformance';
 
 /**
  * Returns Performance in EventsBlock.
@@ -14,8 +14,8 @@ export type EventInBlock = {
      * Выберите тип события
      */
     type: event_type;
-    event_body: EventPerformance;
-    date_time: string;
+    event_body: Event;
+    date_time?: string | null;
     paid?: boolean;
     url: string;
 };

@@ -5,7 +5,7 @@
 export type BlogItemRole = {
     name: string;
     /**
-     * Если пустое, то заполняется автоматически
+     * Заполняется автоматически
      */
     slug: string;
     readonly persons: Array<string>;

@@ -7,7 +7,7 @@ import type { FC } from 'react';
 import type { PersistentDataContextType } from './persistent-data-provider.context';
 import {
   PaginatedProjectListList,
-  Partner as PartnerResponse,
+  PartnerListOutput as Partner,
   Settings as SettingsResponse,
 } from 'api-typings';
 
@@ -19,7 +19,7 @@ export const PersistentDataProvider: FC = (props) => {
   const [settings, setSettings] = useState<PersistentDataContextType['settings']>();
 
   const fetchPartners = async () => {
-    let response: PartnerResponse[];
+    let response: Partner[];
 
     try {
       response = await fetcher('/info/partners/?in_footer_partner=true');
@@ -63,13 +63,14 @@ export const PersistentDataProvider: FC = (props) => {
 
     setSettings({
       emailAddresses: {
-        forDirectorsAndActors: response.email_on_project_page,
-        forDirectors: response.email_on_what_we_do_page,
-        sponsorship: response.email_on_trustees_page,
-        forVolunteers: response.email_on_about_festival_page,
-        playAcceptance: response.email_on_acceptance_of_plays_page,
-        forAuthors: response.email_on_author_page,
-        requestDonationReport: response.email_on_support_page,
+        forDirectorsAndActors: response.reading_email,
+        forDirectors: response.reading_email,
+        sponsorship: response.trustee_email,
+        forVolunteers: response.volunteer_email,
+        playAcceptance: response.submit_play_email,
+        forBlogAuthors: response.blog_author_email,
+        forPlayAuthors: response.play_author_email,
+        requestDonationReport: response.trustee_email,
       },
       pressCenter: {
         contactPerson: response.for_press.pr_director.pr_director_name,

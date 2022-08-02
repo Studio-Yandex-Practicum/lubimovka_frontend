@@ -9,7 +9,7 @@ import type { Url } from 'shared/types';
 import styles from './performance-event-list-item.module.css';
 
 interface PerformanceEventListProps {
-  date: string
+  date?: string
   ticketsUrl: Url
 }
 
@@ -20,9 +20,11 @@ export const PerformanceEventListItem: FC<PerformanceEventListProps> = (props) =
 
   return (
     <li className={cx('root')}>
-      <time className={cx('date')}>
-        {date}
-      </time>
+      {date && (
+        <time className={cx('date')}>
+          {date}
+        </time>
+      )}
       <div>
         <Button
           className={cx('action')}

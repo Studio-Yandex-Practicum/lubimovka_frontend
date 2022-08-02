@@ -7,8 +7,8 @@ export type Participation = {
     year: number;
     birth_year: number;
     readonly url_file_in_storage: string;
-    readonly created: string;
     readonly modified: string;
+    readonly created: string;
     first_name: string;
     last_name: string;
     city: string;
@@ -19,7 +19,7 @@ export type Participation = {
     email: string;
     title: string;
     /**
-     * Файл в одно из форматов ('doc', 'docx', 'txt', 'odt', 'pdf')
+     * Файл должен быть в одном из поддерживаемых форматов: ('doc', 'docx', 'txt', 'odt', 'pdf')
      */
     file: string;
     readonly exported_to_google: boolean;

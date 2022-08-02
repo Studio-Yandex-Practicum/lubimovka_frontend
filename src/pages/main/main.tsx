@@ -30,7 +30,11 @@ import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { partnerTypes } from 'shared/constants/partner-types';
 
 import type { InferGetServerSidePropsType } from 'next';
-import type { Main as MainPageData, Partner, partner_type } from 'api-typings';
+import type {
+  Main as MainPageData,
+  partner_type as PartnerType,
+  PartnerListOutput as Partner,
+} from 'api-typings';
 
 import styles from 'components/homepage-layout/homepage-layout.module.css';
 
@@ -49,7 +53,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     partners,
   } = props;
 
-  const getPartnersGroups = () => Object.keys(partners) as partner_type[];
+  const getPartnersGroups = () => Object.keys(partners) as PartnerType[];
 
   return (
     <AppLayout
@@ -269,8 +273,7 @@ export const getServerSideProps  = async () => {
   return {
     props: {
       ...pageData,
-      // TODO: договориться с бекендерами передавать массив значений для фильтра партнеров и избавиться от костыля с фильтрацией
-      partners: groupPartnersByType(partners.filter(({ type }) => type !== 'general')),
+      partners: groupPartnersByType(partners),
     },
   };
 };
@@ -278,14 +281,14 @@ export const getServerSideProps  = async () => {
 export default Main;
 
 function groupPartnersByType(partners: Partner[]) {
-  return partners.reduce<Record<partner_type, Partner[]>>((groups, partner) => {
+  return partners.reduce<Record<PartnerType, Partner[]>>((groups, partner) => {
     groups[partner.type] = groups[partner.type] ? [
       ...groups[partner.type],
       partner,
     ] : [partner];
 
     return groups;
-  }, {} as Record<partner_type, Partner[]>);
+  }, {} as Record<PartnerType, Partner[]>);
 }
 
 function getPartnerGroupTitle(partnerType: keyof typeof partnerTypes) {

@@ -78,12 +78,12 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
             links={notPinnedLinks}
           />
         )}
-        {settings?.emailAddresses.forAuthors && (
+        {settings?.emailAddresses.forPlayAuthors && (
           <Section type="author-call-to-email">
             <CallToEmail
               type="author"
               description="Это ваша страница? Если вы хотите внести изменения, пожалуйста, напишите нам на "
-              email={settings.emailAddresses.forAuthors}
+              email={settings.emailAddresses.forPlayAuthors}
             />
           </Section>
         )}

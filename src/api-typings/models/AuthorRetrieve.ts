@@ -2,11 +2,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Achievement } from './Achievement';
 import type { AuthorOtherPlay } from './AuthorOtherPlay';
 import type { AuthorPlay } from './AuthorPlay';
 import type { OtherLink } from './OtherLink';
 import type { SocialNetwork } from './SocialNetwork';
-import type { Achievement } from './Achievement';
 
 export type AuthorRetrieve = {
     /**
@@ -17,7 +17,7 @@ export type AuthorRetrieve = {
     readonly city: string;
     quote: string;
     biography: string;
-    readonly achievements: Array<Achievement>;
+    achievements: Array<Achievement>;
     social_networks: Array<SocialNetwork>;
     readonly email: string;
     other_links: Array<OtherLink>;

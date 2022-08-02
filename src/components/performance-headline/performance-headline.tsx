@@ -8,8 +8,8 @@ import styles from './performance-headline.module.css';
 
 interface PerformanceHeadlineProps {
   title: string
-  description: string
-  text: string
+  description?: string
+  text?: string
   cover: Url
   actions: ReactNode | ReactNode[]
   className?: string
@@ -38,9 +38,11 @@ export const PerformanceHeadline: FC<PerformanceHeadlineProps> = (props) => {
         <h1 className={cx('title')}>
           {title}
         </h1>
-        <p className={cx('description')}>
-          {description}
-        </p>
+        {description && (
+          <p className={cx('description')}>
+            {description}
+          </p>
+        )}
         <div className={cx('actions')}>
           {actions}
         </div>
@@ -54,9 +56,11 @@ export const PerformanceHeadline: FC<PerformanceHeadlineProps> = (props) => {
             objectFit="cover"
           />
         </div>
-        <p className={cx('text')}>
-          {text}
-        </p>
+        {text && (
+          <p className={cx('text')}>
+            {text}
+          </p>
+        )}
       </div>
     </div>
   );

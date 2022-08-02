@@ -5,13 +5,13 @@
 import type { Role } from './Role';
 
 /**
- * Performance serializer for afisha page.
+ * Event content serializer for afisha page.
  */
-export type EventPerformance = {
-    readonly id: number;
+export type Event = {
+    id: number;
     name: string;
-    description?: string;
+    description: string;
     team: Array<Role>;
-    image: string;
+    image?: string | null;
     readonly project_title: string;
 };
