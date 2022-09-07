@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { fetcher } from 'services/fetcher';
+import { getSettings } from 'services/api/settings';
 import { PersistentDataContext } from './persistent-data-provider.context';
 
 import type { FC } from 'react';
@@ -8,7 +9,6 @@ import type { PersistentDataContextType } from './persistent-data-provider.conte
 import {
   PaginatedProjectListList,
   PartnerListOutput as Partner,
-  Settings as SettingsResponse,
 } from 'api-typings';
 
 export const PersistentDataProvider: FC = (props) => {
@@ -52,41 +52,11 @@ export const PersistentDataProvider: FC = (props) => {
     })));
   };
 
-  const fetchSettings = async () => {
-    let response: SettingsResponse;
-
-    try {
-      response = await fetcher('/info/settings/');
-    } catch {
-      return;
-    }
-
-    setSettings({
-      emailAddresses: {
-        forDirectorsAndActors: response.reading_email,
-        forDirectors: response.reading_email,
-        sponsorship: response.trustee_email,
-        forVolunteers: response.volunteer_email,
-        playAcceptance: response.submit_play_email,
-        forBlogAuthors: response.blog_author_email,
-        forPlayAuthors: response.play_author_email,
-        requestDonationReport: response.trustee_email,
-      },
-      pressCenter: {
-        contactPerson: response.for_press.pr_director.pr_director_name,
-        contactPersonPhoto: response.for_press.pr_director.pr_director_photo_link,
-        contactEmail: response.for_press.pr_director.pr_director_email,
-        facebookGalleryUrl: response.for_press.photo_gallery_facebook_link,
-      },
-      canProposePlay: response.plays_reception_is_open,
-      privacyPolicyUrl: response.url_to_privacy_policy,
-    });
-  };
-
   useEffect(() => {
     fetchProjects();
     fetchPartners();
-    fetchSettings();
+    // TODO: обработать ошибку промиса
+    getSettings().then(setSettings);
   }, []);
 
   return (
