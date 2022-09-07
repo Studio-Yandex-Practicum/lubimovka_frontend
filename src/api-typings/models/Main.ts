@@ -10,6 +10,7 @@ import type { MainNews } from './MainNews';
 import type { MainPlaces } from './MainPlaces';
 import type { MainShortList } from './MainShortList';
 import type { MainVideoArchive } from './MainVideoArchive';
+import type { PartnersSettings } from './PartnersSettings';
 
 export type Main = {
     first_screen?: MainFirstScreen;
@@ -20,4 +21,5 @@ export type Main = {
     short_list?: MainShortList;
     places?: MainPlaces;
     video_archive?: MainVideoArchive;
+    show_partners: PartnersSettings;
 };

@@ -6,6 +6,6 @@
  * Сериализатор для станицы fo-press.
  */
 export type PressRelease = {
-    image: string;
     text: string;
+    press_release_image?: string;
 };

@@ -14,6 +14,7 @@ export type Festival = {
     plays_count?: number;
     selected_plays_count?: number;
     selectors_count?: number;
+    selectors_page_link?: string | null;
     volunteers_count?: number;
     events_count?: number;
     cities_count?: number;
@@ -21,6 +22,6 @@ export type Festival = {
     blog_entries?: string;
     festival_image?: string;
     readonly images: Array<Nested>;
-    readonly plays_links: Array<InfoLink>;
-    readonly additional_links: Array<InfoLink>;
+    plays_links: Array<InfoLink>;
+    additional_links: Array<InfoLink>;
 };

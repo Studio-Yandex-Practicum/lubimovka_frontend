@@ -6,7 +6,8 @@ export type Settings = {
   emailAddresses: {
     forDirectorsAndActors: string
     forDirectors: string
-    forAuthors: string
+    forBlogAuthors: string
+    forPlayAuthors: string
     forVolunteers: string
     sponsorship: string
     playAcceptance: string

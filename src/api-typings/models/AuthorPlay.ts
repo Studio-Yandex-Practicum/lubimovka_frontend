@@ -10,11 +10,11 @@ import type { AuthorForPlay } from './AuthorForPlay';
  * Используется для сортировки выдачи пьес.
  */
 export type AuthorPlay = {
-    id: number;
+    readonly id: number;
     name: string;
     authors: Array<AuthorForPlay>;
     city?: string;
     year?: number;
-    url_download: string;
+    readonly url_download: string;
     url_reading?: string;
 };

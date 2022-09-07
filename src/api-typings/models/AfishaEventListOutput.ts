@@ -21,5 +21,4 @@ export type AfishaEventListOutput = {
     date_time: string;
     paid?: boolean;
     url: string;
-    place: string;
 };

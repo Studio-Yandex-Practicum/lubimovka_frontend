@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Error from 'next/error';
 import classNames from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
@@ -15,30 +14,19 @@ import { Icon } from 'components/ui/icon';
 import { ForPressHero } from 'components/for-press-hero';
 import { fetcher } from 'services/fetcher';
 import { usePersistentData } from 'providers/persistent-data-provider';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
 import type { SelectOption, SelectOptionCheckHandler } from 'components/select';
 import type { PressRelease as PressReleaseResponse } from 'api-typings';
-import type { Url } from 'shared/types';
 
 import styles from 'components/press-release-layout/press-release-layout.module.css';
 
 const cx = classNames.bind(styles);
 
-type PressRelease = {
-  cover: Url
-  content: string
-}
-
 const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
   const { settings } = usePersistentData();
-
-  if ('errorCode' in props) {
-    return (
-      <Error statusCode={props.errorCode}/>
-    );
-  }
 
   let yearOptions: SelectOption<number>[] = [];
   let selectedYearOption: SelectOption<number> | undefined;
@@ -151,59 +139,53 @@ const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSidePr
 
 const fetchPressReleaseYears = async () => {
   // TODO: использовать тип из кодогенерации
-  let response: Record<'years', number[]>;
+  const { years } = await fetcher<Record<'years', number[]>>('/info/press-releases/years/');
 
-  try {
-    response = await fetcher('/info/press-releases/years/');
-  } catch (error) {
-    return;
-  }
-
-  return response.years;
+  return years;
 };
 
-const fetchPressRelease = async (year: number): Promise<PressRelease | undefined> => {
-  try {
-    const response = await fetcher<PressReleaseResponse>(`/info/press-releases/${year}/`);
-    return {
-      cover: response.image,
-      content: response.text,
-    };
-  } catch (error) {
-    return;
-  }
+const fetchPressRelease = async (year: number) => {
+  const response = await fetcher<PressReleaseResponse>(`/info/press-releases/${year}/`);
+
+  return {
+    cover: response.press_release_image,
+    content: response.text,
+  };
 };
 
 export const getServerSideProps = async ({ params }: GetServerSidePropsContext) => {
-  const serverErrorResult = {
-    props: {
-      errorCode: 500,
-    },
-  } as const;
-  const pressReleaseYears = await fetchPressReleaseYears();
+  let pressReleaseYears;
 
-  if (!pressReleaseYears) {
-    return serverErrorResult;
+  try {
+    pressReleaseYears = await fetchPressReleaseYears();
+  } catch {
+    throw new InternalServerError();
   }
 
-  if (pressReleaseYears.length > 0) {
-    pressReleaseYears.sort((a, b) => a - b);
-
-    const selectedPressReleaseYear = params?.year ? Number(params.year) : pressReleaseYears[pressReleaseYears.length - 1];
-    const pressRelease = await fetchPressRelease(selectedPressReleaseYear);
-
+  if (pressReleaseYears.length === 0) {
     return {
       props: {
-        pressReleaseYears,
-        selectedPressReleaseYear,
-        ...pressRelease
+        pressReleaseYears: null,
       }
     };
   }
 
+  pressReleaseYears.sort((a, b) => a - b);
+
+  const selectedPressReleaseYear = params?.year ? Number(params.year) : pressReleaseYears[pressReleaseYears.length - 1];
+  let pressRelease;
+
+  try {
+    pressRelease = await fetchPressRelease(selectedPressReleaseYear);
+  } catch {
+    throw new InternalServerError();
+  }
+
   return {
     props: {
-      pressReleaseYears: null,
+      pressReleaseYears,
+      selectedPressReleaseYear,
+      ...pressRelease
     }
   };
 };
