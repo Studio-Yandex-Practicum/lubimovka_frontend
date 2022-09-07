@@ -1,10 +1,12 @@
 import { createContext, useContext } from 'react';
 
-import type { Project, Partner } from 'shared/types';
+import type { Project } from 'shared/types';
+import type { Partner } from 'core/partner';
+import type { Settings } from 'core/settings';
 
 export type PersistentDataContextType = {
   projects?: Project[]
-  partners?: Partner[]
+  generalPartners?: Partner[]
   settings?: Settings
 }
 
