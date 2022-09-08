@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-import type { Project } from 'shared/types';
+import type { Project } from 'core/project';
 import type { Partner } from 'core/partner';
 import type { Settings } from 'core/settings';
 

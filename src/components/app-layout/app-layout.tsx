@@ -143,10 +143,10 @@ export const AppLayout = (props: AppLayoutProps) => {
                 <Menu.Item href="/projects">
                   Все проекты
                 </Menu.Item>
-                {projects.map((item, index) => (
+                {projects.map((item) => (
                   <Menu.Item
-                    key={index}
-                    href={`/projects/${item.slug}`}
+                    key={item.id}
+                    href={`/projects/${item.id}`}
                   >
                     {item.title}
                   </Menu.Item>
