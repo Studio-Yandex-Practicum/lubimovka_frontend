@@ -6,12 +6,11 @@ import { Breadcrumb } from 'components/breadcrumb';
 import { ProjectHeadline } from 'components/project-headline';
 import { ConstructorContent } from 'components/constructor-content';
 import { SEO } from 'components/seo';
-import { fetcher } from 'services/fetcher';
+import { getProject } from 'services/api/project';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { notFoundResult } from 'shared/constants/server-side-props';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import type { Project as ProjectModel } from 'api-typings';
 
 const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {
@@ -55,10 +54,13 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
 
 export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'id', string>>) => {
   const { id: projectId } = params!;
-  let project;
 
   try {
-    project = await fetcher<ProjectModel>(`/projects/${projectId}/`);
+    return {
+      props: {
+        ...await getProject(projectId),
+      },
+    };
   } catch ({ statusCode }) {
     switch (statusCode) {
     case 404:
@@ -67,12 +69,6 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       throw new InternalServerError();
     }
   }
-
-  return {
-    props: {
-      ...project,
-    },
-  };
 };
 
 export default Project;

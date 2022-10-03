@@ -25,15 +25,14 @@ import { EventCard } from 'components/event-card';
 import PartnerCard from 'components/partner-card';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
+import { getPartners } from 'services/api/partner';
 import { format } from 'shared/helpers/format-date';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
-import { partnerTypes } from 'shared/constants/partner-types';
+import { partnerTypes, Partner, PartnerType } from 'core/partner';
 
 import type { InferGetServerSidePropsType } from 'next';
 import type {
   Main as MainPageData,
-  partner_type as PartnerType,
-  PartnerListOutput as Partner,
 } from 'api-typings';
 
 import styles from 'components/homepage-layout/homepage-layout.module.css';
@@ -241,7 +240,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                 {partners[group].map((partner) => (
                   <PartnerList.Item key={partner.name}>
                     <PartnerCard
-                      logo={partner.image}
+                      logo={partner.logo}
                       name={partner.name}
                       url={partner.url}
                     />
@@ -267,7 +266,7 @@ export const getServerSideProps  = async () => {
   }
 
   try {
-    partners = await fetcher<Partner[]>('/info/partners/');
+    partners = await getPartners();
   } catch {}
 
   return {

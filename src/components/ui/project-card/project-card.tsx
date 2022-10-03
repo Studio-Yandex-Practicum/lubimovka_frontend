@@ -9,25 +9,25 @@ import styles from './project-card.module.css';
 
 const cx = classNames.bind(styles);
 
-export interface IProjectCardProps {
-  id: number,
-  title: string;
-  description: string;
-  image: Url;
-  even?: boolean;
+export interface ProjectCardProps {
+  title: string
+  description: string
+  image: Url
+  even?: boolean
+  url: string
 }
 
-export const ProjectCard: FC<IProjectCardProps> = (props) => {
+export const ProjectCard: FC<ProjectCardProps> = (props) => {
   const {
-    id,
     title,
     description,
     image,
     even,
+    url,
   } = props;
 
   return (
-    <Link href={`/projects/${id}`}>
+    <Link href={url}>
       <a className={cx('link')}>
         <article
           className={cx(
@@ -36,7 +36,11 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
           )}
         >
           <div className={cx('imageContainer')}>
-            <img className={cx('image')} src={image} alt={title}/>
+            <img
+              className={cx('image')}
+              src={image}
+              alt={title}
+            />
           </div>
           <h2 className={cx('title')}>
             {title}
