@@ -21,8 +21,4 @@ export type PartnerListOutput = {
      * Поле не обязательное
      */
     description?: string;
-    /**
-     * Поставьте галочку, чтобы показать логотип партнёра внизу страницы
-     */
-    in_footer_partner?: boolean;
 };
