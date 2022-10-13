@@ -85,6 +85,7 @@
   position: relative;
   width: 220px;
   height: 220px;
+  cursor: pointer;
 
   @media (max-width: $tablet-portrait) {
     width: 250px;
