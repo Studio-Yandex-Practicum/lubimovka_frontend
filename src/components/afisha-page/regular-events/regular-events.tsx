@@ -46,8 +46,8 @@ export const RegularEvents: FC = () => {
             {...event.type === 'PERFORMANCE' ? {
               performanceUrl: `/performances/${event.eventBody.id}`,
             } : {}}
-            actionUrl={event.url}
-            paid={event.paid}
+            actionUrl={event.actionUrl}
+            actionText={event.actionText}
             ref={ref}
           />
         );
