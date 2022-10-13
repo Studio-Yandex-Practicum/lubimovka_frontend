@@ -1,10 +1,10 @@
 import type { Url } from 'shared/types';
 
-export type PartnerType = 'festival' | 'info'
+import { PartnerType } from './constants';
 
 export type Partner = {
   name: string,
   logo: Url,
-  type: PartnerType,
+  type: keyof typeof PartnerType,
   url?: Url,
 }

@@ -3,8 +3,8 @@ import { fetcher } from 'services/fetcher';
 import type { Settings as SettingsDTO } from 'api-typings';
 import type { Settings } from 'core/settings';
 
-export async function getSettings() {
-  return mapDTOToSettings(await fetcher('/info/settings/'));
+export function getSettings() {
+  return fetcher<SettingsDTO>('/info/settings/').then(mapDTOToSettings);
 }
 
 function mapDTOToSettings(dto: SettingsDTO): Settings {

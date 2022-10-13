@@ -6,8 +6,8 @@ import { Breadcrumb } from 'components/breadcrumb';
 import { ProjectHeadline } from 'components/project-headline';
 import { ConstructorContent } from 'components/constructor-content';
 import { SEO } from 'components/seo';
-import { getProject } from 'services/api/project';
-import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { HttpRequestError } from 'services/fetcher';
+import { getProject } from 'services/api/projects';
 import { notFoundResult } from 'shared/constants/server-side-props';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
@@ -54,20 +54,23 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
 
 export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'id', string>>) => {
   const { id: projectId } = params!;
+  const project = await getProject(projectId);
 
   try {
     return {
-      props: {
-        ...await getProject(projectId),
-      },
+      props: project,
     };
-  } catch ({ statusCode }) {
-    switch (statusCode) {
-    case 404:
-      return notFoundResult;
-    default:
-      throw new InternalServerError();
+  } catch (error) {
+    if (error instanceof HttpRequestError) {
+      switch (error.statusCode) {
+      case 404:
+        return notFoundResult;
+      default:
+        throw error;
+      }
     }
+
+    throw error;
   }
 };
 

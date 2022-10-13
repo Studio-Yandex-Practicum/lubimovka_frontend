@@ -6,10 +6,8 @@ import { ProjectCardList } from 'components/project-card-list';
 import { ProjectCard } from 'components/ui/project-card';
 import { PageTitle } from 'components/page-title';
 import { SEO } from 'components/seo';
-import { getProjects } from 'services/api/project';
+import { getProjects } from 'services/api/projects';
 import { isEven } from 'shared/helpers/is-even';
-
-import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 const Projects = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { projects } = props;
@@ -44,15 +42,13 @@ const Projects = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
 };
 
 export const getServerSideProps = async () => {
-  try {
-    return {
-      props: {
-        projects: await getProjects(),
-      }
-    };
-  } catch {
-    throw new InternalServerError();
-  }
+  const projects = await getProjects();
+
+  return {
+    props: {
+      projects,
+    }
+  };
 };
 
 export default Projects;

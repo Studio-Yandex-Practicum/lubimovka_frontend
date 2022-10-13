@@ -25,10 +25,9 @@ import { EventCard } from 'components/event-card';
 import PartnerCard from 'components/partner-card';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
-import { getPartners } from 'services/api/partner';
+import { getPartners } from 'services/api/partners';
 import { format } from 'shared/helpers/format-date';
-import { InternalServerError } from 'shared/helpers/internal-server-error';
-import { partnerTypes, Partner, PartnerType } from 'core/partner';
+import { Partner, PartnerType } from 'core/partner';
 
 import type { InferGetServerSidePropsType } from 'next';
 import type {
@@ -52,7 +51,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     partners,
   } = props;
 
-  const getPartnersGroups = () => Object.keys(partners) as PartnerType[];
+  const getPartnersGroups = () => Object.keys(partners) as (keyof typeof PartnerType)[];
 
   return (
     <AppLayout
@@ -256,18 +255,14 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 };
 
 export const getServerSideProps  = async () => {
-  let pageData;
   let partners: Partner[] = [];
-
-  try {
-    pageData = await fetcher<MainPageData>('/main/');
-  } catch (error) {
-    throw new InternalServerError(JSON.stringify(error));
-  }
+  const pageData = await fetcher<MainPageData>('/main/');
 
   try {
     partners = await getPartners();
-  } catch {}
+  } catch {
+    // ничего не делаем
+  }
 
   return {
     props: {
@@ -280,16 +275,16 @@ export const getServerSideProps  = async () => {
 export default Main;
 
 function groupPartnersByType(partners: Partner[]) {
-  return partners.reduce<Record<PartnerType, Partner[]>>((groups, partner) => {
+  return partners.reduce<Record<keyof typeof PartnerType, Partner[]>>((groups, partner) => {
     groups[partner.type] = groups[partner.type] ? [
       ...groups[partner.type],
       partner,
     ] : [partner];
 
     return groups;
-  }, {} as Record<PartnerType, Partner[]>);
+  }, {} as Record<keyof typeof PartnerType, Partner[]>);
 }
 
-function getPartnerGroupTitle(partnerType: keyof typeof partnerTypes) {
-  return partnerTypes[partnerType];
+function getPartnerGroupTitle(partnerType: keyof typeof PartnerType) {
+  return PartnerType[partnerType];
 }

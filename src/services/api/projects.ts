@@ -7,15 +7,13 @@ export function getProjects() {
   return fetcher<ProjectListDTO>('/projects/?limit=9999').then(mapDTOToProjects);
 };
 
-function mapDTOToProjects(dto: ProjectListDTO): Project[] {
-  const { results } = dto;
-
-  return results ? results.map((result) => ({
+function mapDTOToProjects({ results = [] }: ProjectListDTO): Project[] {
+  return results.map((result) => ({
     id: result.id.toString(),
     title: result.title,
     description: result.intro,
     image: result.image,
-  })) : [];
+  }));
 };
 
 export function getProject(projectId: string) {
