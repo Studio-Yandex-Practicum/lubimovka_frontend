@@ -59,11 +59,11 @@ export const HistoryItself: FC<IHistoryItself>= ({ data }) => {
       </p>
       <p className={style.text2}>
         Более подробно об истории, знаковых пьесах, памятных событиях фестиваля можно прочитать в специальном номере журнала «Театр.» (№48), который вышел в 2022 году. Это первая за тридцать лет существования «Любимовки» попытка сохранить всю хронологию и программы, увидеть весь объём фестиваля как явления культуры.
-        Приобрести журнал можно
+        Прочитать журнал можно
         {' '}
         <a
           className={style.link}
-          href="http://oteatre.info/gde-kupit"
+          href="https://lubimovka.art/files/history/Theatre_48.pdf"
           target="_blank"
           rel="noreferrer"
         >
