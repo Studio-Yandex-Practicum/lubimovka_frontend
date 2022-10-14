@@ -37,9 +37,8 @@ export type AfishaEvent = {
   type: EventType;
   readonly eventBody: EventTypeObjects;
   dateTime: string;
-  paid?: boolean;
-  url: string;
-  place: string;
+  actionUrl: string;
+  actionText: string;
 };
 
 export type AfishaEvents = {

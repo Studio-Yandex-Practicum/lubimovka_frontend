@@ -69,7 +69,6 @@ export type { PaginatedProjectListList } from './models/PaginatedProjectListList
 export type { Participation } from './models/Participation';
 export type { partner_type } from './models/partner_type';
 export type { PartnerListOutput } from './models/PartnerListOutput';
-export type { PartnersSettings } from './models/PartnersSettings';
 export type { Performance } from './models/Performance';
 export type { PerformanceMediaReview } from './models/PerformanceMediaReview';
 export type { PerformanceReview } from './models/PerformanceReview';

@@ -1,6 +1,4 @@
-import type { PartnerType } from './types';
-
-export const partnerTypes: Record<PartnerType, string> = <const>{
-  festival: 'Партнёры фестиваля',
-  info: 'Информационные партнёры',
-};
+export enum PartnerType {
+  festival = 'Партнёры фестиваля',
+  info = 'Информационные партнёры',
+}

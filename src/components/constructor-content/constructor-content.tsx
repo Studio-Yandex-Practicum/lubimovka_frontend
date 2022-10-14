@@ -144,8 +144,8 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                   {...content_item.items[0].type === 'PERFORMANCE' ? {
                     performanceUrl: `/performances/${content_item.items[0].event_body.id}`,
                   } : {}}
-                  actionUrl={content_item.items[0].url}
-                  paid={content_item.items[0].paid}
+                  actionUrl={content_item.items[0].action_url}
+                  actionText={content_item.items[0].action_text}
                 />
               </ConstructorContentSection>
             )}
@@ -167,8 +167,8 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                       description,
                       project_title,
                     },
-                    url,
-                    paid
+                    action_url,
+                    action_text,
                   }) => (
                     <EventList.Item key={id}>
                       <EventCard
@@ -182,8 +182,8 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                         {...type === 'PERFORMANCE' ? {
                           performanceUrl: `/performances/${performanceId}`,
                         } : {}}
-                        actionUrl={url}
-                        paid={paid}
+                        actionUrl={action_url}
+                        actionText={action_text}
                       />
                     </EventList.Item>
                   ))}

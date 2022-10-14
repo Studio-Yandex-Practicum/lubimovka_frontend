@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import { getSettings } from 'services/api/settings';
-import { getPartners } from 'services/api/partner';
-import { getProjects } from 'services/api/project';
+import { getPartners } from 'services/api/partners';
+import { getProjects } from 'services/api/projects';
+
 import { PersistentDataContext } from './persistent-data-provider.context';
 
 import type { FC } from 'react';
@@ -15,14 +16,14 @@ export const PersistentDataProvider: FC = (props) => {
   const [state, setState] = useState<PersistentDataContextType>({});
 
   useEffect(() => {
-    // TODO: обработать ошибку промиса
     Promise.all([
       getProjects(),
       getPartners({ onlyGeneral: true }),
       getSettings(),
     ]).then(([projects, generalPartners, settings]) => {
       setState({ projects, generalPartners, settings });
-    });
+    // eslint-disable-next-line no-console
+    }).catch(console.error);
   }, []);
 
   return (

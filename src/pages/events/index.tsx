@@ -5,15 +5,8 @@ import { AfishaProvider } from 'components/afisha-page/afisha-provider';
 import { fetchEvents, fetchInfo } from 'components/afisha-page/utils/fetchData';
 import { RegularEvents } from 'components/afisha-page/regular-events';
 import { SEO } from 'components/seo';
-import { notFoundResult } from 'shared/constants/server-side-props';
 
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import type { AfishaEvents, AfishaInfo } from 'shared/types';
-
-interface IProps {
-  info: AfishaInfo;
-  events: AfishaEvents
-}
+import type { InferGetServerSidePropsType } from 'next';
 
 const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {
@@ -40,19 +33,15 @@ const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
   );
 };
 
-export const getServerSideProps: GetServerSideProps<IProps> = async () => {
-  try {
-    const info = await fetchInfo();
-    const events = await fetchEvents();
+export const getServerSideProps = async () => {
+  const info = await fetchInfo();
+  const events = await fetchEvents();
 
-    return {
-      props: {
-        info,
-        events
-      }
-    };
-  } catch {
-    return notFoundResult;
+  return {
+    props: {
+      info,
+      events
+    }
   };
 };
 

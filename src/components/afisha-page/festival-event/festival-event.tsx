@@ -63,11 +63,10 @@ export const FestivalEvent = forwardRef<HTMLElement, IProps>((props, ref) => {
         key={props.id}
         className={cx('event')}
         time={format('H:mm', new Date(dateTime))}
-        location={props.place}
         title={eventBody.name}
         image={'image' in eventBody ? eventBody.image : undefined}
         description={eventBody.description}
-        registrationUrl={isRegistrationAlreadyOpen ? props.url : undefined}
+        actionUrl={isRegistrationAlreadyOpen ? props.actionUrl : undefined}
         credits={props.eventBody.team}
       />
     </section>

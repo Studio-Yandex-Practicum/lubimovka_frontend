@@ -1,5 +1,14 @@
 import { addApiBaseUrlToPath } from 'shared/helpers/url';
 
+export class HttpRequestError extends Error {
+  constructor (public statusCode: number, public data: unknown) {
+    super(`The request failed with HTTP status ${statusCode}`);
+    this.name = 'HttpRequestError';
+    this.statusCode = statusCode;
+    this.data = data;
+  }
+}
+
 const fetchResource = (httpClient: typeof fetch) => async <T>(path: string, options?: RequestInit) => (
   httpClient(addApiBaseUrlToPath(path), options)
     .then((response) => handleResponse<T>(response))
@@ -15,10 +24,7 @@ async function handleResponse<T>(response: Response) {
   } catch {}
 
   if (!response.ok) {
-    throw {
-      statusCode: response.status,
-      data,
-    };
+    throw new HttpRequestError(response.status, data);
   }
 
   return data as T;
