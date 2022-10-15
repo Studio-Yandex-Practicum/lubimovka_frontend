@@ -14,4 +14,5 @@ LubimovkaMore.args = {
   title: 'Любимовка.Ещё',
   description: 'Межсезонные читки и обсуждение пьес из списка отмеченных отборщиками Любимовки. Можно слушать, обсуждать и даже участвовать',
   image: 'http://rtcam.ru/images/lubimovka/projects/praktika.jpg',
+  url: '/'
 };
