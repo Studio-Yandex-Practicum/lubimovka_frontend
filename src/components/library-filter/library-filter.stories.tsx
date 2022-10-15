@@ -11,7 +11,11 @@ export default {
   component: LibraryFilter
 } as ComponentMeta<typeof LibraryFilter>;
 
-const Template: ComponentStory<typeof LibraryFilter> = (args) => <LibraryFilter {...args} years={fakeYears} programmes={fakeProgrammes}/>;
+const Template: ComponentStory<typeof LibraryFilter> = (args) => <LibraryFilter {...args}/>;
 
 export const Default = Template.bind({});
+Default.args = {
+  years: fakeYears,
+  programmes: fakeProgrammes
+};
 
