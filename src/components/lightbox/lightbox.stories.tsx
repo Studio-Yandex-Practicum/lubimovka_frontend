@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Story, ComponentMeta } from '@storybook/react';
 import Image from 'next/image';
-
 import { Lightbox } from './lightbox';
 
 const fakeImages = Array.from({ length: 8 }, () => ({
