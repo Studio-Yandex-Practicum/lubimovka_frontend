@@ -19,7 +19,6 @@ const Donation = () => {
         <DonationPageTitle
           header={mockData.donationPageTitle.header}
           text={mockData.donationPageTitle.text}
-          footnote={mockData.donationPageTitle.footnote}
         />
         <Opportunities
           data={mockData.opportunities}
