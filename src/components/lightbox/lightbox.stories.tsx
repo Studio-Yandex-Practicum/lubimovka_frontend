@@ -35,6 +35,7 @@ const Template: Story = () => {
             alt={`Изображениe ${index}`}
             layout="fill"
             objectFit="cover"
+            unoptimized
           />
         ))}
       </Lightbox>
