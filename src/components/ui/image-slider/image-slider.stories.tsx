@@ -41,6 +41,7 @@ Default.args = {
       alt={image.description}
       layout="fill"
       objectFit="cover"
+      unoptimized
     />
   ))
 };
