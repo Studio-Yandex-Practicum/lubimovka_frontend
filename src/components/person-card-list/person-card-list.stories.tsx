@@ -2,6 +2,7 @@ import { ComponentMeta, Story } from '@storybook/react';
 import { PersonCard, IPersonCardProps } from 'components/ui/person-card';
 import { Participant } from 'components/ui/person-card/person-card.stories';
 import { PersonCardList } from 'components/person-card-list';
+import { randomId } from '../../shared/helpers';
 
 export default {
   title: 'ui/PersonCardList',
@@ -18,8 +19,8 @@ export default {
 
 const ListTemplate: Story = ({ items, ...args }) => (
   <PersonCardList {...args}>
-    {(items as IPersonCardProps[]).map((item, idx) => (
-      <PersonCard key={idx} {...item}/>
+    {(items as IPersonCardProps[]).map((item) => (
+      <PersonCard key={randomId()} {...item}/>
     ))}
   </PersonCardList>
 );
