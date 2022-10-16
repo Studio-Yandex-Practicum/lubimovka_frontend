@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Story, ComponentMeta } from '@storybook/react';
 import Image from 'next/image';
 import { Lightbox } from './lightbox';
+import { randomId } from '../../shared/helpers';
 
 const fakeImages = Array.from({ length: 8 }, () => ({
   image: 'https://source.unsplash.com/random',
@@ -29,7 +30,7 @@ const Template: Story = () => {
       >
         {fakeImages.map((image, index) => (
           <Image
-            key={index}
+            key={randomId()}
             src={image.image}
             alt={`Изображениe ${index}`}
             layout="fill"
