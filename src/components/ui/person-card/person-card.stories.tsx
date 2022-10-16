@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { PersonCard } from './person-card';
 
 export default {
@@ -18,7 +17,7 @@ const Template: ComponentStory<typeof PersonCard> = (args) => <PersonCard {...ar
 export const Volunteer = Template.bind({});
 Volunteer.args = {
   name: 'Тереза Шимчак',
-  image: '/images/person/person.jpg',
+  image: 'https://source.unsplash.com/random',
   response: 'Очень интересный фестиваль',
   handleClick: exampleHandler
 };
@@ -26,7 +25,7 @@ Volunteer.args = {
 export const Participant = Template.bind({});
 Participant.args = {
   name: 'Тереза Шимчак',
-  image: '/images/person/person.jpg',
+  image: 'https://source.unsplash.com/random',
   about: 'Драматург, сценарист, преподаватель',
   participant: true,
 };

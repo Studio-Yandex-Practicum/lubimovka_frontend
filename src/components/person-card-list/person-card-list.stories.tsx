@@ -1,6 +1,4 @@
-/* eslint-disable react/prop-types */
 import { ComponentMeta, Story } from '@storybook/react';
-
 import { PersonCard, IPersonCardProps } from 'components/ui/person-card';
 import { Participant } from 'components/ui/person-card/person-card.stories';
 import { PersonCardList } from 'components/person-card-list';
