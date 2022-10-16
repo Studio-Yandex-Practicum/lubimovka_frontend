@@ -42,6 +42,7 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
               objectFit="cover"
               priority
               onLoadingComplete={handleImageLoad}
+              unoptimized={process.env.STORYBOOK ? true: false}
             />
           </div>
           <div className={styles.content}>
