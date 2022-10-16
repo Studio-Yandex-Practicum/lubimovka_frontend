@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Story, ComponentMeta } from '@storybook/react';
-
 import { Modal } from './modal';
 
 export default {

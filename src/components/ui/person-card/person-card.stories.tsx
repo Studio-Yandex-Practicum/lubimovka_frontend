@@ -7,10 +7,8 @@ export default {
 
 } as ComponentMeta<typeof PersonCard>;
 
-const exampleHandler = () => {
-  // eslint-disable-next-line no-console
-  console.log('Click!');
-};
+// eslint-disable-next-line no-console
+const exampleHandler = () => console.log('Click!');
 
 const Template: ComponentStory<typeof PersonCard> = (args) => <PersonCard {...args}/>;
 

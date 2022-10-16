@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { BasicPlayCard } from './basic-play-card';
 
 export default {

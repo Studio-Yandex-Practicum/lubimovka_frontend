@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { Button } from './button';
 
 export default {
@@ -120,8 +119,8 @@ FormButtonDisabled.args = {
   disabled: true,
 };
 
-export const BackButton_Link = Template.bind({});
-BackButton_Link.args = {
+export const BackButtonLink = Template.bind({});
+BackButtonLink.args = {
   size: 's',
   iconPlace: 'right',
   icon: 'arrow-left',

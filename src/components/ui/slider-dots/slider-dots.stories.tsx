@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { SliderDots } from './slider-dots';
 
 export default {

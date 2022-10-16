@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { BlogCard } from './blog-card';
 
-const faceData = {
+const fakeData = {
   image: 'https://source.unsplash.com/random',
   author: 'Лара Бессмертная',
   heading: '«Человек является источником жеста, смысла, правды»',
@@ -31,7 +31,7 @@ export default {
 const Template: ComponentStory<typeof BlogCard> = (args) => <BlogCard {...args}/>;
 
 export const onlyFirstBlogCard = Template.bind({});
-onlyFirstBlogCard.args = faceData;
+onlyFirstBlogCard.args = fakeData;
 onlyFirstBlogCard.decorators = [
   (Story) => (
     <div style={style}>
@@ -41,7 +41,7 @@ onlyFirstBlogCard.decorators = [
 ];
 
 export const squareAspectRatioBlogCard = Template.bind({});
-squareAspectRatioBlogCard.args = faceData;
+squareAspectRatioBlogCard.args = fakeData;
 squareAspectRatioBlogCard.decorators = [
   (Story) => (
     <div style={style}>
@@ -52,7 +52,7 @@ squareAspectRatioBlogCard.decorators = [
 ];
 
 export const gridBlogCard = Template.bind({});
-gridBlogCard.args = faceData;
+gridBlogCard.args = fakeData;
 gridBlogCard.decorators = [
   (Story) => (
     <div style={style}>

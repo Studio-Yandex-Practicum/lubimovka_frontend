@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import LibraryFilter from './library-filter';
 
 export default {

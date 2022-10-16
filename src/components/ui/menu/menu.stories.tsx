@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
 import { Menu } from './menu';
+import { randomId } from '../../../shared/helpers';
 
 const demoItems = [
   {
@@ -46,7 +46,7 @@ const Template: ComponentStory<typeof Menu> = (args) => (
   <Menu type={args.type}>
     {demoItems.map(item => (
       <Menu.Item
-        key={item.text}
+        key={randomId()}
         href={item.href}
       >
         {item.text}

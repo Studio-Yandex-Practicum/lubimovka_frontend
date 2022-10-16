@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Image from 'next/image';
-
 import { ImageSlider } from './image-slider';
+import { randomId } from '../../../shared/helpers';
 
 const fakeData = [
   {
@@ -34,9 +34,9 @@ const Template: ComponentStory<typeof ImageSlider> = (args) => <ImageSlider {...
 
 export const Default = Template.bind({});
 Default.args = {
-  children: fakeData.map((image, index) => (
+  children: fakeData.map((image) => (
     <Image
-      key={index}
+      key={randomId()}
       src={image.image}
       alt={image.description}
       layout="fill"

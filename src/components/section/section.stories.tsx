@@ -17,11 +17,7 @@ export default {
   ],
 } as ComponentMeta<typeof Section>;
 
-const Template: ComponentStory<typeof Section> = ({ ...args }) => {
-  return (
-    <Section {...args}/>
-  );
-};
+const Template: ComponentStory<typeof Section> = ({ ...args }) => <Section {...args}/>;
 
 export const BasicPlayCard = Template.bind({});
 BasicPlayCard.parameters = {
