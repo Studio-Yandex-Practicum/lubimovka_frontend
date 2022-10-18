@@ -44,6 +44,7 @@ export const AppLayout = (props: AppLayoutProps) => {
   } = props;
   const { projects, generalPartners, settings } = usePersistentData();
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
+  const isFestivalRuns = settings?.canProposePlay || false;
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
 
@@ -178,10 +179,12 @@ export const AppLayout = (props: AppLayoutProps) => {
               </OverlayNav.Menu>
               <OverlayNav.Actions>
                 <Menu type="overlay-actions">
-                  <Menu.Item href={participationFormPath}>
-                    Подать пьесу
-                    <Icon glyph="arrow-right"/>
-                  </Menu.Item>
+                  {isFestivalRuns && (
+                    <Menu.Item href={participationFormPath}>
+                      Подать пьесу
+                      <Icon glyph="arrow-right"/>
+                    </Menu.Item>
+                  )}
                   <Menu.Item href={donationPath}>
                     Поддержать
                     <Icon glyph="arrow-right"/>
