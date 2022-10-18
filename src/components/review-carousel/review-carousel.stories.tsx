@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ReviewCarousel } from './review-carousel';
 import { ReviewCard } from 'components/review-card';
-import { randomId } from '../../shared/helpers';
+import { randomId } from 'shared/helpers';
 
 const reviewCardArgs = [
   {

@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Image from 'next/image';
 import { ImageSlider } from './image-slider';
-import { randomId } from '../../../shared/helpers';
+import { randomId } from 'shared/helpers';
 
 const fakeData = [
   {

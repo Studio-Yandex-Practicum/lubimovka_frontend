@@ -2,7 +2,7 @@ import { ComponentMeta, Story } from '@storybook/react';
 import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { CardDefault } from '../basic-play-card/basic-play-card.stories';
-import { randomId } from '../../../shared/helpers';
+import { randomId } from 'shared/helpers';
 
 export default {
   title: 'ui/BasicPlayCardList',

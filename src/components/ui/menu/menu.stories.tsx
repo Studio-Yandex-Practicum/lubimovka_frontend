@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Menu } from './menu';
-import { randomId } from '../../../shared/helpers';
+import { randomId } from 'shared/helpers';
 
 const demoItems = [
   {
