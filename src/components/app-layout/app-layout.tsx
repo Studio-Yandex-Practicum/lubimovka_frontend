@@ -44,7 +44,7 @@ export const AppLayout = (props: AppLayoutProps) => {
   } = props;
   const { projects, generalPartners, settings } = usePersistentData();
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
-  const isFestivalRuns = settings?.canProposePlay || false;
+  const isFestivalRuns = settings?.canProposePlay;
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
 
