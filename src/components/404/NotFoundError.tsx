@@ -12,7 +12,6 @@ import { participationFormPath } from 'shared/constants/participation-form-path'
 
 export default function NotFoundError() {
   const { settings } = usePersistentData();
-  const isFestivalRuns = settings?.canProposePlay;
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
   return (
@@ -48,7 +47,7 @@ export default function NotFoundError() {
               label={'На главную'}
             />
           </li>
-          {isFestivalRuns && (
+          {settings?.canProposePlay && (
             <li className={classes.listItem}>
               <Button
                 border="bottomLeft"
