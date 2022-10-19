@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ReviewCarousel } from './review-carousel';
 import { ReviewCard } from 'components/review-card';
-import { randomId } from 'shared/helpers';
 
 const reviewCardArgs = [
   {
@@ -30,8 +29,8 @@ export default {
 
 const Template: ComponentStory<typeof ReviewCarousel> = (args) => (
   <ReviewCarousel {...args}>
-    {reviewCardArgs.map((cardArgs) => (
-      <ReviewCard key={randomId()} {...cardArgs}/>
+    {reviewCardArgs.map((cardArgs, index) => (
+      <ReviewCard key={index} {...cardArgs}/>
     ))}
   </ReviewCarousel>
 );

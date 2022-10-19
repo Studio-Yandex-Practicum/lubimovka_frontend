@@ -2,7 +2,6 @@ import { ComponentMeta, Story } from '@storybook/react';
 import { BasicPlayCard, IBasicPlayCardProps } from 'components/ui/basic-play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { CardDefault } from '../basic-play-card/basic-play-card.stories';
-import { randomId } from 'shared/helpers';
 
 export default {
   title: 'ui/BasicPlayCardList',
@@ -19,8 +18,8 @@ export default {
 
 const ListTemplate: Story = ({ items }) => (
   <BasicPlayCardList>
-    {(items as IBasicPlayCardProps[]).map((item) => (
-      <BasicPlayCard key={randomId()} {...item}/>
+    {(items as IBasicPlayCardProps[]).map((item, index) => (
+      <BasicPlayCard key={index} {...item}/>
     ))}
   </BasicPlayCardList>
 );
