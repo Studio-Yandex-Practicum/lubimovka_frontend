@@ -37,7 +37,6 @@ export const PersonCard: React.FC<IPersonCardProps> = (props) => {
             alt={name}
             layout="fill"
             objectFit="cover"
-            unoptimized={Boolean(process.env.STORYBOOK)}
           />
         ) : (
           <Logo className={cx('logo')}/>

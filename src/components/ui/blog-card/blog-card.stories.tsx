@@ -30,16 +30,6 @@ export default {
 
 const Template: ComponentStory<typeof BlogCard> = (args) => <BlogCard {...args}/>;
 
-export const onlyFirstBlogCard = Template.bind({});
-onlyFirstBlogCard.args = fakeData;
-onlyFirstBlogCard.decorators = [
-  (Story) => (
-    <div style={style}>
-      <Story/>
-    </div>
-  )
-];
-
 export const squareAspectRatioBlogCard = Template.bind({});
 squareAspectRatioBlogCard.args = fakeData;
 squareAspectRatioBlogCard.decorators = [
