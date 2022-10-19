@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { BlogCard } from './blog-card';
 
 const fakeData = {
-  image: 'https://source.unsplash.com/random',
+  image: '/',
   author: 'Лара Бессмертная',
   heading: '«Человек является источником жеста, смысла, правды»',
   description: 'МК «Документальность в современном театре и современном искусстве»',
