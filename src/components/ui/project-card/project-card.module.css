@@ -8,13 +8,19 @@
 }
 
 .card {
+  width: 100%;
   flex-flow: column nowrap;
 
   @media (min-width: $tablet-portrait) {
     display: flex;
     height: 500px;
     flex-flow: column wrap;
+    justify-content: center;
     margin: 0;
+
+    /* &:nth-child(2n) {
+     justify-content: flex-end;
+   } */
   }
 }
 
@@ -25,19 +31,23 @@
   height: 100%;
 
   @media (max-width: $tablet-portrait) {
-    width: 100%;
+    width: 214px;
     height: 297px;
+
+    &:nth-child(2n) {
+      margin-left: auto;
+    }
   }
 }
 
 .image {
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: cover;
   transition: transform .4s cubic-bezier(.6, 0, .5, 1);
 
   @media (max-width: $tablet-portrait) {
-    width: 214px;
+    /* width: 214px; */
   }
 }
 
@@ -53,7 +63,7 @@
   width: 50%;
   box-sizing: border-box;
   align-items: center;
-  padding: 55px 80px 0 32px;
+  padding: 45px 15px 0 32px;
   hyphens: auto;
 
   @media (max-width: $tablet-portrait) {
