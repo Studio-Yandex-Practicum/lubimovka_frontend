@@ -35,6 +35,7 @@
 .image {
   min-width: 100%;
   min-height: 100%;
+  object-fit: cover;
   object-position: center;
   transition: transform .4s cubic-bezier(.6, 0, .5, 1);
 }
