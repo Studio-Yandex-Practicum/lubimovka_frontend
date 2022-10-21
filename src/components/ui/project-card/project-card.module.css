@@ -15,12 +15,7 @@
     display: flex;
     height: 500px;
     flex-flow: column wrap;
-    justify-content: center;
     margin: 0;
-
-    /* &:nth-child(2n) {
-     justify-content: flex-end;
-   } */
   }
 }
 
@@ -32,11 +27,7 @@
 
   @media (max-width: $tablet-portrait) {
     width: 214px;
-    height: 297px;
-
-    &:nth-child(2n) {
-      margin-left: auto;
-    }
+    height: 295px;
   }
 }
 
@@ -45,10 +36,6 @@
   min-height: 100%;
   object-fit: cover;
   transition: transform .4s cubic-bezier(.6, 0, .5, 1);
-
-  @media (max-width: $tablet-portrait) {
-    /* width: 214px; */
-  }
 }
 
 .image:hover {
@@ -100,7 +87,7 @@
 }
 
 .even {
-  .image {
+  .imageContainer {
     @media (max-width: $tablet-portrait) {
       margin-left: auto;
     }
