@@ -239,8 +239,10 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                 {partners[group].map((partner) => (
                   <PartnerList.Item key={partner.name}>
                     <PartnerCard
+                      variant="regular"
                       logo={partner.logo}
                       name={partner.name}
+                      description={partner.description}
                       url={partner.url}
                     />
                   </PartnerList.Item>
