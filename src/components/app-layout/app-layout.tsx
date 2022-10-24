@@ -178,10 +178,12 @@ export const AppLayout = (props: AppLayoutProps) => {
               </OverlayNav.Menu>
               <OverlayNav.Actions>
                 <Menu type="overlay-actions">
-                  <Menu.Item href={participationFormPath}>
-                    Подать пьесу
-                    <Icon glyph="arrow-right"/>
-                  </Menu.Item>
+                  {settings?.canProposePlay && (
+                    <Menu.Item href={participationFormPath}>
+                      Подать пьесу
+                      <Icon glyph="arrow-right"/>
+                    </Menu.Item>
+                  )}
                   <Menu.Item href={donationPath}>
                     Поддержать
                     <Icon glyph="arrow-right"/>
