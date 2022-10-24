@@ -110,14 +110,17 @@ export const AppLayout = (props: AppLayoutProps) => {
       {children}
       <Page.Footer>
         <Footer privacyPolicyUrl={settings?.privacyPolicyUrl}>
-          {!hiddenPartners && generalPartners && generalPartners.length > 0 && (
+          {!hiddenPartners && generalPartners && generalPartners?.length > 0 && (
             <Footer.Partners>
               <PartnerList size="s">
                 {generalPartners.map((partner) => (
                   <PartnerList.Item key={partner.name}>
                     <PartnerCard
+                      variant="compact"
+                      titleTag="p"
                       logo={partner.logo}
                       name={partner.name}
+                      description={partner.description}
                       url={partner.url}
                     />
                   </PartnerList.Item>
