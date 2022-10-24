@@ -7,7 +7,7 @@ import type { Partner } from 'core/partner';
 
 export function getPartners({ onlyGeneral = false }  = {}) {
   const params = objectToQueryString({
-    is_general: onlyGeneral,
+    ...onlyGeneral && { is_general: true },
   });
 
   return fetcher<PartnerDTO[]>(`/info/partners/${params}`).then(mapDTOToPartner);
