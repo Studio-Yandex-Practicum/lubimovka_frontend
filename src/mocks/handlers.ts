@@ -1,1 +1,5 @@
-export const handlers = [];
+import { eventHandlers } from './handlers/events';
+
+export const handlers = [
+  ...eventHandlers,
+];

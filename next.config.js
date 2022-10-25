@@ -1,4 +1,4 @@
-const { apiBaseUrl } = require('./config/vars');
+const { apiBaseUrl, environment } = require('./config/vars');
 
 module.exports = {
   webpack(config) {
@@ -27,6 +27,7 @@ module.exports = {
       '2022.lubimovka.ru',
       'stage.dev.lubimovka.ru',
       'test.dev.lubimovka.ru',
+      ...environment === 'development' ? ['source.unsplash.com'] : [],
     ],
   },
   experimental: {
