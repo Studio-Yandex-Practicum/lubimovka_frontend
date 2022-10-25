@@ -32,6 +32,7 @@ module.exports = {
   experimental: {
     scrollRestoration: true,
     outputStandalone: true,
+    esmExternals: false,
   },
   async rewrites() {
     return {
