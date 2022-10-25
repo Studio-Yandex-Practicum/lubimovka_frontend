@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
+    "@faker-js/faker": "7.6.0",
     "@storybook/addon-actions": "6.3.8",
     "@storybook/addon-essentials": "6.3.8",
     "@storybook/addon-links": "6.3.8",
