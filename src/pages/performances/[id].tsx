@@ -40,6 +40,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
   const {
     title,
     description,
+    intro,
     play,
     team,
     images_in_block,
@@ -65,15 +66,15 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
           className={cx('headline')}
           title={title}
           description={description}
-          text={description}
+          text={intro}
           cover={main_image}
           actions={(
             <PerformanceEventList>
               {events.map(({ date, ticketsUrl }) => (
                 <PerformanceEventList.Item
                   key={date}
-                  date={format('d MMMM H:mm', new Date(date))}
                   ticketsUrl={ticketsUrl}
+                  {...date ? { date: format('d MMMM H:mm', new Date(date)) } : {}}
                 />
               ))}
             </PerformanceEventList>
@@ -205,6 +206,7 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
   return {
     props: {
       title: performanceResponse.name,
+      intro: performanceResponse.intro,
       description: performanceResponse.description,
       play: performanceResponse.play,
       team: performanceResponse.team,

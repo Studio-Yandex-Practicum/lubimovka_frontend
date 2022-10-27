@@ -259,13 +259,13 @@ const Contacts: NextPage = () => {
           </ContactsLayout.Form>
         </ContactsLayout.Column>
         <ContactsLayout.Column>
-          {settings?.emailAddresses.forAuthors && (
+          {settings?.emailAddresses.forPlayAuthors && (
             <ContactsLayout.CallToEmail>
               <CallToEmail
                 type="contacts"
                 title="Для авторов"
                 description="Если вы хотите внести изменения в свою страницу: добавить пьесы, ссылки на статьи или публикации, напишите нам. Приложите файлы и ссылки."
-                email={settings.emailAddresses.forAuthors}
+                email={settings.emailAddresses.forPlayAuthors}
               />
             </ContactsLayout.CallToEmail>
           )}

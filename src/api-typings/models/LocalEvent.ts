@@ -7,9 +7,6 @@
  */
 export type LocalEvent = {
     readonly id: number;
-    date_time: string;
-    paid?: boolean;
-    url: string;
-    place: string;
-    pinned_on_main?: boolean;
+    date_time?: string | null;
+    readonly url: string;
 };

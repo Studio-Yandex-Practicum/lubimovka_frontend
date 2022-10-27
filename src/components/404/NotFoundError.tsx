@@ -7,8 +7,11 @@ import classes from './NotFoundError.module.css';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import * as breakpoints from 'shared/breakpoints';
 import { Button } from 'components/ui/button';
+import { usePersistentData } from 'providers/persistent-data-provider';
+import { participationFormPath } from 'shared/constants/participation-form-path';
 
 export default function NotFoundError() {
+  const { settings } = usePersistentData();
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
   return (
@@ -44,18 +47,20 @@ export default function NotFoundError() {
               label={'На главную'}
             />
           </li>
-          <li className={classes.listItem}>
-            <Button
-              border="bottomLeft"
-              isLink
-              size={'s'}
-              className={classes.link}
-              iconPlace={'left'}
-              icon={'arrow-right'}
-              href={'/form'}
-              label={'Подать пьесу'}
-            />
-          </li>
+          {settings?.canProposePlay && (
+            <li className={classes.listItem}>
+              <Button
+                border="bottomLeft"
+                isLink
+                size={'s'}
+                className={classes.link}
+                iconPlace={'left'}
+                icon={'arrow-right'}
+                href={participationFormPath}
+                label={'Подать пьесу'}
+              />
+            </li>
+          )}
           <li className={classes.listItem}>
             <Button
               border="bottomLeft"

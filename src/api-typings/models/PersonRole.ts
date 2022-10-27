@@ -5,7 +5,7 @@
 export type PersonRole = {
     name: string;
     /**
-     * Если пустое, то заполняется автоматически
+     * Заполняется автоматически
      */
     slug: string;
 };

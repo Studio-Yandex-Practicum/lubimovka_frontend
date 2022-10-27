@@ -17,7 +17,7 @@ import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { notFoundResult } from 'shared/constants/server-side-props';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import type { NewsItemDetailed } from 'api-typings';
+import type { NewsItemDetail } from 'api-typings';
 
 import styles from 'components/article-layout/article-layout.module.css';
 
@@ -94,7 +94,7 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
   let data;
 
   try {
-    data = await fetcher<NewsItemDetailed>(`/news/${id}/`);
+    data = await fetcher<NewsItemDetail>(`/news/${id}/`);
   } catch ({ statusCode }) {
     switch (statusCode) {
     case 404:

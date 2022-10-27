@@ -42,7 +42,7 @@ export const AppLayout = (props: AppLayoutProps) => {
     navbarProps,
     headBanner,
   } = props;
-  const { projects, partners, settings } = usePersistentData();
+  const { projects, generalPartners, settings } = usePersistentData();
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
@@ -110,14 +110,17 @@ export const AppLayout = (props: AppLayoutProps) => {
       {children}
       <Page.Footer>
         <Footer privacyPolicyUrl={settings?.privacyPolicyUrl}>
-          {!hiddenPartners && partners && partners.length > 0 && (
+          {!hiddenPartners && generalPartners && generalPartners?.length > 0 && (
             <Footer.Partners>
               <PartnerList size="s">
-                {partners.map((partner) => (
+                {generalPartners.map((partner) => (
                   <PartnerList.Item key={partner.name}>
                     <PartnerCard
+                      variant="compact"
+                      titleTag="p"
                       logo={partner.logo}
                       name={partner.name}
+                      description={partner.description}
                       url={partner.url}
                     />
                   </PartnerList.Item>
@@ -143,10 +146,10 @@ export const AppLayout = (props: AppLayoutProps) => {
                 <Menu.Item href="/projects">
                   Все проекты
                 </Menu.Item>
-                {projects.map((item, index) => (
+                {projects.map((item) => (
                   <Menu.Item
-                    key={index}
-                    href={`/projects/${item.slug}`}
+                    key={item.id}
+                    href={`/projects/${item.id}`}
                   >
                     {item.title}
                   </Menu.Item>
@@ -178,10 +181,12 @@ export const AppLayout = (props: AppLayoutProps) => {
               </OverlayNav.Menu>
               <OverlayNav.Actions>
                 <Menu type="overlay-actions">
-                  <Menu.Item href={participationFormPath}>
-                    Подать пьесу
-                    <Icon glyph="arrow-right"/>
-                  </Menu.Item>
+                  {settings?.canProposePlay && (
+                    <Menu.Item href={participationFormPath}>
+                      Подать пьесу
+                      <Icon glyph="arrow-right"/>
+                    </Menu.Item>
+                  )}
                   <Menu.Item href={donationPath}>
                     Поддержать
                     <Icon glyph="arrow-right"/>

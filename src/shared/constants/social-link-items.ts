@@ -20,11 +20,6 @@ export const socialLinkItems= [
   {
     text: 'tlgrm',
     href: 'https://t.me/lubimovka',
-    mobileOrder: 5,
-  },
-  {
-    text: 'vk',
-    href: 'https://vk.com/festival.lubimovka',
     mobileOrder: 4,
   },
 ];

@@ -10,8 +10,8 @@ import type { AuthorForPlay } from './AuthorForPlay';
  * Используется для сортировки выдачи других пьес (не пьес Любимовки).
  */
 export type AuthorOtherPlay = {
-    id: number;
+    readonly id: number;
     name: string;
     authors: Array<AuthorForPlay>;
-    url_download: string;
+    readonly url_download: string;
 };

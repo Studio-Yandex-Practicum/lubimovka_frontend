@@ -3,9 +3,10 @@
 /* eslint-disable */
 
 /**
- * Сериализатор Изображения.
+ * Сериализатор блока изображений.
  */
-export type Image = {
+export type BlockImages = {
+    block_images_description: string;
     /**
      * Загрузите фотографию
      */

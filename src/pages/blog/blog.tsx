@@ -59,7 +59,7 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   const selectedMonthOption = useMemo(() => monthOptions.find(({ value }) => value === selectedMonth), [selectedMonth]);
   const selectedYearOption = useMemo(() => yearOptions.find(({ value }) => value === selectedYear), [selectedYear]);
   const lastEntryIndex = useMemo(() => entries.length - 1, [entries]);
-  const callToActionEmail = settings?.emailAddresses.forAuthors;
+  const callToActionEmail = settings?.emailAddresses.forBlogAuthors;
 
   const handleMonthChange: SelectOptionCheckHandler<number> = ({ value }) => {
     if (selectedMonth === value) return;

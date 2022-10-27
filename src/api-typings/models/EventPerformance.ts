@@ -10,7 +10,7 @@ import type { Role } from './Role';
 export type EventPerformance = {
     readonly id: number;
     name: string;
-    description: string;
+    description?: string;
     team: Array<Role>;
     image: string;
     readonly project_title: string;

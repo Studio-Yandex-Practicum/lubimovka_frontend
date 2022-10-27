@@ -19,7 +19,6 @@ export type AfishaEvent = {
      */
     readonly event_body: Event_Type_objects;
     date_time: string;
-    paid?: boolean;
-    url: string;
-    place: string;
+    action_url: string;
+    action_text: string;
 };

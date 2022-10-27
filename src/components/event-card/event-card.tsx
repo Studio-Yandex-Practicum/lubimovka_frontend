@@ -13,17 +13,17 @@ import type { CreditsRole } from 'components/credits-list';
 import styles from './event-card.module.css';
 
 interface EventCardProps {
+  className?: string
   imageUrl?: Url
   date: string
   time: string
   title: string
   team: CreditsRole[]
-  description: string
+  description?: string
   projectTitle?: string
   performanceUrl?: string
   actionUrl: Url
-  paid?: boolean
-  className?: string
+  actionText: string
 }
 
 const cx = classNames.bind(styles);
@@ -39,7 +39,7 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
     projectTitle,
     performanceUrl,
     actionUrl,
-    paid,
+    actionText,
     className
   } = props;
 
@@ -76,18 +76,20 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
           size="s"
           roles={team}
         />
-        <div className={cx('description')}>
-          <p>
-            {description}
-          </p>
-          {projectTitle && (
+        {description && (
+          <div className={cx('description')}>
             <p>
-              читка проекта
-              {' '}
-              {projectTitle}
+              {description}
             </p>
-          )}
-        </div>
+            {projectTitle && (
+              <p>
+                читка проекта
+                {' '}
+                {projectTitle}
+              </p>
+            )}
+          </div>
+        )}
       </div>
       <div className={cx('actions')}>
         {performanceUrl && (
@@ -127,7 +129,7 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
           href={actionUrl}
           target="_blank"
         >
-          {paid ? 'Билеты' : 'Регистрация'}
+          {actionText}
         </Button>
       </div>
     </div>

@@ -8,12 +8,12 @@ import type { NewsItemList } from './NewsItemList';
 /**
  * Add `contents` field to any serializer.
  */
-export type NewsItemDetailed = {
+export type NewsItemDetail = {
     readonly id: number;
     title: string;
     description: string;
     image?: string;
     pub_date: string;
     readonly contents: Array<BaseContent>;
-    readonly other_news: Array<NewsItemList>;
+    other_news: Array<NewsItemList>;
 };

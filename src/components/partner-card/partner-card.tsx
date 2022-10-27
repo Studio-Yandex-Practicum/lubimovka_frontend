@@ -7,16 +7,20 @@ import type { VFC } from 'react';
 import styles from './partner-card.module.css';
 
 interface PartnerCardProps {
-  name?: string
+  variant?: 'regular' | 'compact'
+  titleTag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  name: string
   description?: string
   logo: Url
-  url?: Url
+  url: Url
 }
 
 const cx = classNames.bind(styles);
 
 const PartnerCard: VFC<PartnerCardProps> = (props) => {
   const {
+    variant = 'regular',
+    titleTag: TitleTag = 'h3',
     name,
     description,
     logo,
@@ -24,7 +28,7 @@ const PartnerCard: VFC<PartnerCardProps> = (props) => {
   } = props;
 
   return (
-    <div className={cx('root')}>
+    <div className={cx('root', [variant])}>
       <div className={cx('logo-canvas')}>
         <Image
           className={cx('logo')}
@@ -34,23 +38,21 @@ const PartnerCard: VFC<PartnerCardProps> = (props) => {
           objectFit="contain"
         />
       </div>
-      {description && (
-        <span className={cx('description')}>
-          {description}
-        </span>
-      )}
-      {url && (
-        <a
-          className={cx('link')}
-          href={url}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span className={cx('hidden-text')}>
-            {name}
-          </span>
-        </a>
-      )}
+      <a
+        className={cx('link')}
+        href={url}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <TitleTag className={cx('title')}>
+          {name}
+        </TitleTag>
+        {description && (
+          <p className={cx('description')}>
+            {description}
+          </p>
+        )}
+      </a>
     </div>
   );
 };

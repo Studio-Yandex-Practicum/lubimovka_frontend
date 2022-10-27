@@ -25,12 +25,14 @@ import { EventCard } from 'components/event-card';
 import PartnerCard from 'components/partner-card';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
+import { getPartners } from 'services/api/partners';
 import { format } from 'shared/helpers/format-date';
-import { InternalServerError } from 'shared/helpers/internal-server-error';
-import { partnerTypes } from 'shared/constants/partner-types';
+import { Partner, PartnerType } from 'core/partner';
 
 import type { InferGetServerSidePropsType } from 'next';
-import type { Main as MainPageData, Partner, partner_type } from 'api-typings';
+import type {
+  Main as MainPageData,
+} from 'api-typings';
 
 import styles from 'components/homepage-layout/homepage-layout.module.css';
 
@@ -49,7 +51,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     partners,
   } = props;
 
-  const getPartnersGroups = () => Object.keys(partners) as partner_type[];
+  const getPartnersGroups = () => Object.keys(partners) as (keyof typeof PartnerType)[];
 
   return (
     <AppLayout
@@ -105,8 +107,8 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                       {...event.type === 'PERFORMANCE' ? {
                         performanceUrl: `/performances/${event.event_body.id}`,
                       } : {}}
-                      actionUrl={event.url}
-                      paid={event.paid}
+                      actionUrl={event.action_url}
+                      actionText={event.action_text}
                     />
                   </EventList.Item>
                 ))}
@@ -237,8 +239,10 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                 {partners[group].map((partner) => (
                   <PartnerList.Item key={partner.name}>
                     <PartnerCard
-                      logo={partner.image}
+                      variant="regular"
+                      logo={partner.logo}
                       name={partner.name}
+                      description={partner.description}
                       url={partner.url}
                     />
                   </PartnerList.Item>
@@ -253,24 +257,19 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 };
 
 export const getServerSideProps  = async () => {
-  let pageData;
   let partners: Partner[] = [];
+  const pageData = await fetcher<MainPageData>('/main/');
 
   try {
-    pageData = await fetcher<MainPageData>('/main/');
-  } catch (error) {
-    throw new InternalServerError(JSON.stringify(error));
+    partners = await getPartners();
+  } catch {
+    // ничего не делаем
   }
-
-  try {
-    partners = await fetcher<Partner[]>('/info/partners/');
-  } catch {}
 
   return {
     props: {
       ...pageData,
-      // TODO: договориться с бекендерами передавать массив значений для фильтра партнеров и избавиться от костыля с фильтрацией
-      partners: groupPartnersByType(partners.filter(({ type }) => type !== 'general')),
+      partners: groupPartnersByType(partners),
     },
   };
 };
@@ -278,16 +277,16 @@ export const getServerSideProps  = async () => {
 export default Main;
 
 function groupPartnersByType(partners: Partner[]) {
-  return partners.reduce<Record<partner_type, Partner[]>>((groups, partner) => {
+  return partners.reduce<Record<keyof typeof PartnerType, Partner[]>>((groups, partner) => {
     groups[partner.type] = groups[partner.type] ? [
       ...groups[partner.type],
       partner,
     ] : [partner];
 
     return groups;
-  }, {} as Record<partner_type, Partner[]>);
+  }, {} as Record<keyof typeof PartnerType, Partner[]>);
 }
 
-function getPartnerGroupTitle(partnerType: keyof typeof partnerTypes) {
-  return partnerTypes[partnerType];
+function getPartnerGroupTitle(partnerType: keyof typeof PartnerType) {
+  return PartnerType[partnerType];
 }

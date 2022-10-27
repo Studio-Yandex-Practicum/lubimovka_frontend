@@ -10,4 +10,5 @@ export type Nested = {
      * Загрузите фотографию
      */
     image: string;
+    festival: number;
 };
