@@ -28,7 +28,7 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
 
   return (
     <Link href={url}>
-      <a className={cx('link')}>
+      <a className={cx('root')}>
         <article
           className={cx(
             'card',
