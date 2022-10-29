@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ReviewCarousel } from './review-carousel';
-import { ReviewCard } from 'components/review-card';
 
-const reviewCardArgs = [
+import { ReviewCarousel } from './review-carousel';
+import { ReviewCard } from '../review-card';
+
+const demoReviews = [
   {
     text: 'Что-то похожее на эффект от мультфильмов типа «Сауз Парк» или про коня Боджэка возникает — я думаю, и пьеса написана с этой интонацией американских взрослых мультсериалов. И как хорошо все это с куклой-носочком. Так все чисто сделано!',
     author: 'Наталья Зайцева',
@@ -29,8 +30,8 @@ export default {
 
 const Template: ComponentStory<typeof ReviewCarousel> = (args) => (
   <ReviewCarousel {...args}>
-    {reviewCardArgs.map((cardArgs, index) => (
-      <ReviewCard key={index} {...cardArgs}/>
+    {demoReviews.map((demoReview, index) => (
+      <ReviewCard key={index} {...demoReview}/>
     ))}
   </ReviewCarousel>
 );
