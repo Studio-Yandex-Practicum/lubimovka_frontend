@@ -8,7 +8,7 @@ import { PerformanceDetails } from 'components/performance-details';
 import { CreditsList } from 'components/credits-list';
 import { HTMLMarkup } from 'components/html-markup';
 import { ShareLinks } from 'components/share-links';
-import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { PlayCard } from 'components/play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
@@ -108,8 +108,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             title="Почитать пьесу"
             titleTag="h6"
           >
-            <BasicPlayCard
-              type="performance"
+            <PlayCard
               play={{
                 title: play.name,
                 city: play.city,

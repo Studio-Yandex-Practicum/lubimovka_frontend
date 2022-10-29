@@ -1,15 +1,21 @@
-import React, { FC } from 'react';
+import React, { Fragment } from 'react';
 import cn from 'classnames/bind';
 
-import { Button } from '../button';
-import { InfoLink } from '../info-link';
+import { Button } from '../ui/button';
+import { InfoLink } from '../ui/info-link';
 
-import styles from './basic-play-card.module.css';
+import type { FC } from 'react';
+
+import styles from './play-card.module.css';
 
 const cx  = cn.bind(styles);
 
-export interface IBasicPlayCardProps {
-  type?: 'performance';
+type Author = {
+  slug: string,
+  name: string,
+}
+
+export interface PlayCardProps {
   play: {
     title: string;
     city?: string;
@@ -21,12 +27,7 @@ export interface IBasicPlayCardProps {
   };
 }
 
-type Author = {
-  slug: string,
-  name: string,
-}
-
-export const BasicPlayCard: FC<IBasicPlayCardProps> = ({ play }) => {
+export const PlayCard: FC<PlayCardProps> = ({ play }) => {
   const {
     title,
     city,
@@ -35,23 +36,6 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = ({ play }) => {
     downloadUrl,
     authors
   } = play;
-
-  const authorsHiddenLabel = (
-    <React.Fragment>
-      {authors.length > 1
-        ? (
-          <dt className={cx('hiddenText')}>
-            Авторы:
-          </dt>
-        )
-        :          (
-          <dt className={cx('hiddenText')}>
-            Автор:
-          </dt>
-        )
-      }
-    </React.Fragment>
-  );
 
   return (
     <article
@@ -93,7 +77,15 @@ export const BasicPlayCard: FC<IBasicPlayCardProps> = ({ play }) => {
         </div>
       </div>
       <dl className={cx('info')}>
-        {authorsHiddenLabel}
+        {authors.length > 1 ? (
+          <dt className={cx('hiddenText')}>
+            Авторы:
+          </dt>
+        ) : (
+          <dt className={cx('hiddenText')}>
+            Автор:
+          </dt>
+        )}
         {authors.map((author) => (
           <dd className={cx('author', authors.length > 1 && 'authorMultiple')} key={author.slug}>
             <InfoLink

@@ -3,7 +3,7 @@ import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 
 import LibraryForm from 'components/library-form/library-form';
 import LibraryFilter from 'components/library-filter/library-filter';
-import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { PlayCard } from 'components/play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import { Menu } from 'components/ui/menu';
 import { Icon } from 'components/ui/icon';
@@ -96,7 +96,7 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
               }
               <BasicPlayCardList>
                 {items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
-                  <BasicPlayCard
+                  <PlayCard
                     key={id}
                     play={{
                       title: name,
@@ -127,7 +127,7 @@ const LibraryPage: FC<ILibraryPageProps> = ({ isLoading, items, years, programme
           ) : (
             <>
               {items.map(({ id, name, city, year, url_download, url_reading, authors }) => (
-                <BasicPlayCard
+                <PlayCard
                   key={id}
                   play={{
                     title: name,
