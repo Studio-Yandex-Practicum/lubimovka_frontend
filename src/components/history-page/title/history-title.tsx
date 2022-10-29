@@ -85,7 +85,7 @@ export const HistoryTitle: FC<IHistoryTitle> = ({ data, currentYear }) => {
               />
             </div>
             <p className={cn(style.element)}>
-              пьес прошли отбор
+              пьес прозвучало на фестивале
             </p>
           </div>
           <div className={cn(style.card)}>
