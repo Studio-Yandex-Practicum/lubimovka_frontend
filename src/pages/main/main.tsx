@@ -18,7 +18,7 @@ import { HomepageHeadline } from 'components/homepage-headline';
 import { HomepageEventsSection } from 'components/homepage-events-section';
 import { AppLayout } from 'components/app-layout';
 import { Banner } from 'components/banner';
-import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { PlayCard } from 'components/play-card';
 import { PlayList } from 'components/play-list';
 import { EventList } from 'components/event-list';
 import { EventCard } from 'components/event-card';
@@ -189,7 +189,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
               <PlayList>
                 {short_list.items.map((item) => (
                   <PlayList.Item key={item.id}>
-                    <BasicPlayCard
+                    <PlayCard
                       play={{
                         title: item.name,
                         city: item.city,
