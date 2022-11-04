@@ -141,6 +141,11 @@ $border-width: 1px;
   border-left-color: transparent;
 }
 
+.common.border-top-left {
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+
 .common.full-width {
   width: 100%;
 }
