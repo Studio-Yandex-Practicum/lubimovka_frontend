@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
 
-import { Button } from '../../ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 import { Url } from 'shared/types/common';
 
 import styles from './for-press-hero-description.module.css';
@@ -24,17 +25,22 @@ export const ForPressHeroDescription: FC<IForPressHeroDescriptionProps> = ({ dat
         {data.description}
       </p>
       <Button
-        className={cx('button')}
-        align="start"
         size="s"
-        view="primary"
-        iconPlace="left"
-        icon="arrow-right"
-        label="Фотоальбомы"
-        border="bottomLeft"
-        isLink
+        border="bottom-left"
+        className="button"
+        icon={(
+          <Icon
+            glyph="arrow-right"
+            width="100%"
+            height="100%"
+          />
+        )}
+        style={{ textTransform: 'uppercase', paddingLeft: '0' }}
+        iconPosition="left"
         href={data.link}
-      />
+      >
+        Фотоальбомы
+      </Button>
     </div>
   );
 };

@@ -44,9 +44,3 @@
     display: flex;
   }
 }
-
-.button {
-  @media (max-width: $tablet-portrait) {
-    width: 183px;
-  }
-}

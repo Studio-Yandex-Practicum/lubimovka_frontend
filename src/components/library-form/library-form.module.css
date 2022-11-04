@@ -35,8 +35,3 @@
     width: 256px;
   }
 }
-
-.button {
-  width: 120px;
-  column-gap: 3px !important;
-}

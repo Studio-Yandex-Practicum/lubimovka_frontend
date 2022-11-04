@@ -65,10 +65,16 @@
   @mixin headline4;
   @mixin headline;
 
-  padding: 0;
+  padding: 10px 3px;
 
   &:hover {
     color: var(--white);
+  }
+
+  span {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 400;
   }
 }
 
@@ -76,6 +82,7 @@
   @mixin textHistorySmall;
   @mixin text;
 
+  max-width: 84px;
   padding: 0;
   margin-bottom: 10px;
 

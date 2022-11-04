@@ -1,7 +1,7 @@
 import { FC, useRef, ChangeEvent, DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 import { Nullable } from 'shared/types';
 
@@ -75,13 +75,21 @@ export const FileInput: FC<IFileInputProps> = (props) => {
       )}
       <Button
         className={cx('button')}
-        label={fileName ? 'Заменить файл' : 'Добавить файл'}
         size="s"
-        icon="plus"
-        iconPlace="left"
-        border="bottomLeft"
+        border="bottom-left"
+        icon={(
+          <Icon
+            glyph="plus"
+            width="100%"
+            height="100%"
+          />
+        )}
+        style={{ textTransform: 'uppercase' }}
+        iconPosition="left"
         onClick={handleClick}
-      />
+      >
+        {fileName ? 'Заменить файл' : 'Добавить файл'}
+      </Button>
       {accept && (
         <p className={cx('note')}>
           Только файлы формата

@@ -2,7 +2,8 @@ import React, { FC, useCallback, Dispatch, useContext } from 'react';
 
 import { Droplist, DroplistOption, } from 'components/ui/droplist';
 import { Tag } from 'components/ui/tag';
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 import { Action } from 'components/library-filter/library-filter-reducer';
 import { LibraryFiltersProviderContext } from 'providers/library-filters-provider';
 import { IProgram } from 'pages/library';
@@ -60,40 +61,60 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
           ))}
         </ul>
       </div>
+
       {(filterState.festival.length > 0 || filterState.program.length > 0) && (
         <>
           <div className={style.buttonWrap}>
             <Button
               onClick={handleResetClick}
-              label="Очистить"
               size="s"
-              icon="cross"
-              iconPlace="left"
-              border="bottomLeft"
-              width="143px"
-              align="start"
-              gap="3px"
-            />
+              icon={(
+                <Icon
+                  glyph="cross"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              iconPosition="left"
+              border="bottom-left"
+              style={{ textTransform: 'uppercase', paddingLeft: '0' }}
+            >
+              Очистить
+            </Button>
           </div>
           <div className={style.mobileButtons}>
             <Button
               onClick={handleResetClick}
               size="l"
-              iconPlace="right"
-              icon="cross"
-              label="Очистить"
+              icon={(
+                <Icon
+                  glyph="cross"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              iconPosition="right"
               border="full"
-              className={style.button}
-            />
+              style={{ textTransform: 'uppercase' }}
+            >
+              Очистить
+            </Button>
             <Button
               onClick={onCheckResults}
               size="l"
-              iconPlace="right"
-              icon="arrow-right"
-              label="Посмотреть"
+              icon={(
+                <Icon
+                  glyph="arrow-right"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              iconPosition="right"
               border="full"
-              className={style.button}
-            />
+              style={{ textTransform: 'uppercase' }}
+            >
+              Посмотреть
+            </Button>
           </div>
         </>
       )}

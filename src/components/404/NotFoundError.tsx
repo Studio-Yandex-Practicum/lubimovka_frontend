@@ -6,7 +6,8 @@ import Lines from 'shared/images/404lines.svg';
 import classes from './NotFoundError.module.css';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import * as breakpoints from 'shared/breakpoints';
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { participationFormPath } from 'shared/constants/participation-form-path';
 
@@ -37,41 +38,62 @@ export default function NotFoundError() {
         <ul className={classes.list}>
           <li className={classes.listItem}>
             <Button
-              border="bottomLeft"
-              isLink
-              size={'s'}
+              size="s"
+              border="bottom-left"
               className={classes.link}
-              iconPlace={'left'}
-              icon={'arrow-right'}
-              href={'/'}
-              label={'На главную'}
-            />
+              icon={(
+                <Icon
+                  glyph="arrow-right"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              style={{ textTransform: 'uppercase', paddingLeft: '0' }}
+              iconPosition="left"
+              href="/"
+            >
+              На главную
+            </Button>
           </li>
           {settings?.canProposePlay && (
             <li className={classes.listItem}>
               <Button
-                border="bottomLeft"
-                isLink
-                size={'s'}
+                size="s"
+                border="bottom-left"
                 className={classes.link}
-                iconPlace={'left'}
-                icon={'arrow-right'}
+                icon={(
+                  <Icon
+                    glyph="arrow-right"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+                style={{ textTransform: 'uppercase', paddingLeft: '0' }}
+                iconPosition="left"
                 href={participationFormPath}
-                label={'Подать пьесу'}
-              />
+              >
+                Подать пьесу
+              </Button>
             </li>
           )}
           <li className={classes.listItem}>
             <Button
-              border="bottomLeft"
-              isLink
-              size={'s'}
+              size="s"
+              border="bottom-left"
               className={classes.link}
-              iconPlace={'left'}
-              icon={'arrow-right'}
-              href={'/donation'}
-              label={'Поддержать'}
-            />
+              icon={(
+                <Icon
+                  glyph="arrow-right"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              style={{ textTransform: 'uppercase', paddingLeft: '0' }}
+              iconPosition="left"
+              href="/donation"
+            >
+              Поддержать
+            </Button>
           </li>
         </ul>
       </div>

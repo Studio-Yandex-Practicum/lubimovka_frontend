@@ -3,7 +3,8 @@ import { useState, useMemo } from 'react';
 import cn from 'classnames/bind';
 import * as breakpoints from 'shared/breakpoints.js';
 import { AuthorPlays } from 'components/author-page/plays';
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 import { Tag } from 'components/ui/tag';
 import { InfoLink } from 'components/ui/info-link';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
@@ -66,13 +67,20 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
         <div className={cx('button')}>
           <Button
             size="s"
-            iconPlace="right"
-            icon="arrow-left"
-            label="Библиотека"
-            border="bottomRight"
-            isLink
+            border="right-bottom"
+            icon={(
+              <Icon
+                glyph="arrow-left"
+                width="100%"
+                height="100%"
+              />
+            )}
+            style={{ textTransform: 'uppercase', paddingRight: '0' }}
+            iconPosition="right"
             href="/library/authors"
-          />
+          >
+            Библиотека
+          </Button>
         </div>
 
         {image && (
@@ -119,16 +127,23 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
               {availableButton
               && (
                 <Button
-                  width="100%"
+                  fullWidth
                   size="s"
-                  iconPlace="right"
-                  icon={isExpand ? 'arrow-down' : 'arrow-up'}
-                  label={isExpand ? 'Полный текст' : 'Свернуть'}
-                  border="topLeft"
+                  border="top-left"
+                  icon={(
+                    <Icon
+                      glyph={isExpand ? 'arrow-down' : 'arrow-up'}
+                      width="100%"
+                      height="100%"
+                    />
+                  )}
+                  style={{ textTransform: 'uppercase', paddingRight: '0' }}
+                  iconPosition="right"
                   onClick={() => setExpand(!isExpand)}
-                />
-              )
-              }
+                >
+                  {isExpand ? 'Полный текст' : 'Свернуть'}
+                </Button>
+              )}
             </div>
           )}
 

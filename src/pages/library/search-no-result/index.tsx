@@ -5,7 +5,8 @@ import { useRouter } from 'next/router';
 import * as breakpoints from 'shared/breakpoints.js';
 import { AppLayout } from 'components/app-layout';
 import { SEO } from 'components/seo';
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import LibraryForm from 'components/library-form/library-form';
 
@@ -44,14 +45,21 @@ const SearchResult: NextPage = () => {
           <div className={style.buttonWrapper}>
             {isMobile !== null && (
               <Button
+                size="s"
+                border="right-bottom"
+                icon={(
+                  <Icon
+                    glyph="arrow-left"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+                style={{ textTransform: 'uppercase', paddingLeft: '0' }}
+                iconPosition="right"
                 href="/library"
-                isLink
-                label={isMobile ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
-                width="max-content"
-                icon="arrow-left"
-                iconPlace="right"
-                border="bottomRight"
-              />
+              >
+                {isMobile ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
+              </Button>
             )}
           </div>
           <div className={style.topWrapper}>

@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import cn from 'classnames/bind';
 
-import { Button } from '../ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 import { InfoLink } from '../ui/info-link';
 
 import type { FC } from 'react';
@@ -49,30 +50,42 @@ export const PlayCard: FC<PlayCardProps> = ({ play }) => {
           {readingUrl && (
             <Button
               className={cx('buttonCustom')}
-              width="100%"
+              fullWidth
               size="l"
-              view="primary"
-              iconPlace="right"
-              icon="arrow-45"
-              label="Смотреть читку"
               border="top"
-              isLink
+              icon={(
+                <Icon
+                  glyph="arrow-45"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              style={{ textTransform: 'uppercase' }}
+              iconPosition="right"
               href={readingUrl}
-            />
+            >
+              Смотреть читку
+            </Button>
           )}
           {downloadUrl && (
             <Button
               className={cx('buttonCustom')}
-              width="100%"
+              fullWidth
               size="l"
-              view="primary"
-              iconPlace="right"
-              icon="arrow-down"
-              label="Скачать пьесу"
               border="top"
-              isLink
+              icon={(
+                <Icon
+                  glyph="arrow-down"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              style={{ textTransform: 'uppercase' }}
+              iconPosition="right"
               href={downloadUrl}
-            />
+            >
+              Скачать пьесу
+            </Button>
           )}
         </div>
       </div>

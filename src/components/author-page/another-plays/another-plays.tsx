@@ -1,6 +1,7 @@
 import cn from 'classnames/bind';
 
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 
 import styles from './another-plays.module.css';
 
@@ -34,11 +35,18 @@ export const AnotherPlays: FC<AnotherPlaysProps> = ({ links }) => {
               <a className={cx('downloadButton')} href={link.href} download>
                 <Button
                   size="l"
-                  iconPlace="right"
-                  icon="arrow-down"
-                  label="Скачать"
-                  border="none"
-                />
+                  icon={(
+                    <Icon
+                      glyph="arrow-down"
+                      width="100%"
+                      height="100%"
+                    />
+                  )}
+                  iconPosition="right"
+                  href="https://t.me/lubimovka"
+                >
+                  Скачать
+                </Button>
               </a>
             )}
           </li>
