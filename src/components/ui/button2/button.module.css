@@ -66,7 +66,7 @@ $border-width: 1px;
 
 .s {
   composes: common;
-  padding: 10px 8px;
+  padding: 6px;
 
   .icon-left:not(:only-child) {
     margin-right: 8px;

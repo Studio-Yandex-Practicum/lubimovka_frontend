@@ -14,6 +14,7 @@ interface CommonProps {
   upperCase?: boolean
   disabled?: boolean
   className?: string
+  style?: Record<string, string>
 }
 
 interface AnchorProps extends CommonProps {
