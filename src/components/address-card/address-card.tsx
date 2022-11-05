@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
 import { Icon } from 'components/ui/icon';
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 
 import type { FC } from 'react';
 import type { Url } from 'shared/types';

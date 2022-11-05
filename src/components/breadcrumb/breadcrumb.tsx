@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 
 interface BreadcrumbProps {

@@ -1,149 +1,177 @@
-.button {
-  @mixin text;
-  @mixin textButton;
-  @mixin textSmallButton;
+$border-width: 1px;
 
+.common {
   position: relative;
-  z-index: 1;
-  display: grid;
+  display: inline-flex;
   box-sizing: border-box;
   align-items: center;
-  border: 0;
-  background-color: transparent;
+  justify-content: space-between;
+  border: $border-width solid;
+  background: 0;
+  color: inherit;
   cursor: pointer;
-  grid-template-columns: max-content max-content;
-  grid-template-rows: 100%;
-
-  &::before {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: var(--coal);
-    content: '';
-    transition: width .2s ease-in, transform .1s linear;
-  }
+  isolation: isolate;
+  text-decoration: none;
 
   &:hover {
-    color: var(--beige);
+    border-color: transparent;
+    color: var(--white);
 
     &::before {
-      width: 100%;
-    }
-  }
-
-  &:active::before {
-    transform: scale(1.075);
-  }
-
-  &:disabled {
-    cursor: default;
-  }
-
-  &:disabled:hover {
-    color: var(--coal);
-
-    &::before {
-      width: 0;
+      position: absolute;
+      z-index: -1;
+      top: -$border-width;
+      left: -$border-width;
+      display: block;
+      width: calc(100% + $border-width);
+      height: calc(100% + $border-width);
+      animation: .3s background-slide ease;
+      background-color: var(--coal);
+      content: '';
+      transform-origin: left;
     }
   }
 }
 
-.l.button,
-.l.button.addon {
-  @mixin textLargeButton;
-
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 16px 18px 16px;
+.icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  font-size: 0;
+  line-height: 0;
 }
 
-.secondary {
-  background-color: var(--light-green);
+.icon-left {
+  composes: icon;
 }
 
-.left.button.addon {
-  padding-left: 0;
+.icon-right {
+  composes: icon;
+  order: 1;
 }
 
-.left.button.l {
-  padding-left: 16px;
+.text {
+  @mixin text;
 }
 
-.topLeft {
-  padding: 8px 9px 8px 12px;
-  border-top: 1px solid var(--coal);
-  border-left: 1px solid var(--coal);
-}
+.xs {
+  composes: common;
 
-.topLeft.addon {
-  padding: 0 0 6px 9px;
-}
-
-.topLeft.addon .label,
-.topRight.addon .label {
-  padding-top: 5px;
-}
-
-.topRight {
-  padding: 8px 9px 8px 12px;
-  border-top: 1px solid var(--coal);
-  border-right: 1px solid var(--coal);
-}
-
-.topRight.addon {
-  padding: 0 0 6px 9px;
-}
-
-.bottomLeft {
-  padding: 7px 12px 9px 9px;
-  border-bottom: 1px solid var(--coal);
-  border-left: 1px solid var(--coal);
-}
-
-.bottomLeft.addon {
-  @media (max-width: 1440px) {
-    padding: 3px 4px 2px 8px;
+  .text {
+    font-size: 14px;
+    line-height: 16px;
   }
 }
 
-.bottomLeft.addon.leftAddon {
-  padding-right: 12px;
-  padding-left: 0;
+.s {
+  composes: common;
+  padding: 6px;
+
+  .icon-left:not(:only-child) {
+    margin-right: 8px;
+  }
+
+  .icon-right:not(:only-child) {
+    margin-left: 8px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
-.bottomRight {
-  padding: 7px 10px 9px 10px;
-  border-right: 1px solid var(--coal);
-  border-bottom: 1px solid var(--coal);
+.m {
+  composes: common;
+  padding: 8px;
+
+  .icon-left:not(:only-child) {
+    margin-right: 8px;
+  }
+
+  .icon-right:not(:only-child) {
+    margin-left: 8px;
+  }
+
+  .text {
+    font-size: 20px;
+    line-height: 28px;
+  }
 }
 
-.bottomRight.addon {
-  padding: 2px 0 4px 10px;
+.l {
+  composes: common;
+  padding: 16px;
+
+  .icon-left:not(:only-child) {
+    margin-right: 16px;
+  }
+
+  .icon-right:not(:only-child) {
+    margin-left: 16px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 22px;
+  }
 }
 
-.top {
+.common.border-none {
+  border-color: transparent;
+}
+
+.common.border-full {
+  border-color: var(--coal);
+}
+
+.common.border-right-bottom-left {
+  border-color: var(--coal);
+  border-top-color: transparent;
+}
+
+.common.border-bottom-left {
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+
+.common.border-right-bottom {
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+.common.border-top-left {
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.common.border-top {
+  border-color: transparent;
   border-top: 1px solid var(--coal);
 }
 
-.full {
-  border: 1px solid var(--coal);
+.common.full-width {
+  width: 100%;
 }
 
-.none {
-  padding: 4px 4px 7px 4px;
-  border: 0;
+.common.upper-case {
+  .text {
+    text-transform: uppercase;
+  }
 }
 
-.none.addon {
-  padding: 0;
+.common.disabled {
+  color: var(--gray);
+  pointer-events: none;
 }
 
-.link {
-  display: flex;
-  width: min-content;
-  color: inherit;
-  text-decoration: none;
+@keyframes background-slide {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
 }

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { forwardRef } from 'react';
 
 import { CreditsList } from 'components/credits-list';
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 
 import type { Url } from 'shared/types';

@@ -1,83 +1,77 @@
-import React, { FC, ButtonHTMLAttributes } from 'react';
-import Link from 'next/link';
-import cn from 'classnames/bind';
+import { forwardRef } from 'react';
+import classNames from 'classnames/bind';
 
-import { Icon, IIconProps } from '../icon';
+import type { ReactNode, PropsWithChildren } from 'react';
 
 import styles from './button.module.css';
 
-interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  type?: 'submit' | 'reset' | 'button';
-  view?: 'primary' | 'secondary',
-  iconPlace?: 'left' | 'right',
-  icon?: IIconProps['glyph'],
-  size?: 's' | 'l';
-  border?: 'none' | 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' | 'top' | 'full';
-  label: string;
-  width?: string
-  className?: string,
-  isLink?: boolean,
-  href?: string,
-  align?: 'start' | 'end' | 'center' | 'space-between',
-  gap?: string
+interface CommonProps {
+  size?: 'xs' | 's' | 'm' | 'l'
+  icon?: ReactNode
+  iconPosition?: 'left' | 'right'
+  border?: 'full' | 'right-bottom-left' | 'bottom-left' | 'right-bottom' | 'none' | 'top-left' | 'top'
+  fullWidth?: boolean
+  upperCase?: boolean
+  disabled?: boolean
+  className?: string
+  style?: Record<string, string>
+}
+
+interface AnchorProps extends CommonProps {
+  href?: string
   target?: '_blank' | '_self' | '_parent' | '_top'
 }
 
-const cx = cn.bind(styles);
+interface ButtonProps extends CommonProps {
+  type: 'submit' | 'reset' | 'button';
+  onClick: () => void
+}
 
-export const Button: FC<IButtonProps> = (props) => {
+const cx = classNames.bind(styles);
+
+export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, PropsWithChildren<ButtonProps | AnchorProps>>((props, ref) => {
   const {
-    type = 'button',
-    view = 'primary',
-    href = '/',
-    size,
-    isLink,
-    icon,
-    iconPlace,
-    label,
-    width,
-    align = 'space-between',
+    className,
+    size = 'm',
     border = 'none',
-    disabled = false,
-    className = '',
-    gap = '0',
-    target,
-    ...restButtonProps
+    fullWidth,
+    upperCase,
+    disabled,
+    icon,
+    iconPosition = 'left',
+    children,
+    ...restProps
   } = props;
 
-  const classes = cx('button', view, border, icon && 'addon', iconPlace, iconPlace, size, [className]);
-  const style = { width: width, justifyContent: align, columnGap: gap };
-  const buttonChildren = (
-    <React.Fragment>
-      {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
-      {<span className={styles.label}>
-        {label}
-      </span>}
-      {iconPlace === 'right' && icon && <Icon glyph={icon}/>}
-    </React.Fragment>
-  );
+  const isLink = 'href' in props;
+  const Tag = isLink ? 'a' : 'button';
 
   return (
-    !isLink ? (
-      <button
-        className={classes}
-        type={type}
-        disabled={disabled}
-        style={style}
-        {...restButtonProps}
-      >
-        {buttonChildren}
-      </button>
-    ) : (
-      <Link href={href} {...restButtonProps}>
-        <a
-          style={style}
-          target={target}
-          className={cx(classes, 'link')}
-        >
-          {buttonChildren}
-        </a>
-      </Link>
-    )
+    <Tag
+      className={cx(
+        size,
+        `border-${border}`,
+        {
+          'full-width': fullWidth,
+          'upper-case': upperCase,
+          disabled,
+        },
+        className,
+      )}
+      // @ts-expect-error
+      ref={ref}
+      {...restProps}
+    >
+      {icon && (
+        <span className={cx(`icon-${iconPosition}`)}>
+          {icon}
+        </span>
+      )}
+      <span className={cx('text')}>
+        {children}
+      </span>
+    </Tag>
   );
-};
+});
+
+Button.displayName = 'Button';

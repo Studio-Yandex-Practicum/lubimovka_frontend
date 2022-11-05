@@ -1,6 +1,6 @@
 import cn from 'classnames/bind';
 
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 
 import styles from './another-plays.module.css';

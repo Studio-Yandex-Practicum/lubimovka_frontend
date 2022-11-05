@@ -6,7 +6,7 @@ import Lines from 'shared/images/404lines.svg';
 import classes from './NotFoundError.module.css';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import * as breakpoints from 'shared/breakpoints';
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { participationFormPath } from 'shared/constants/participation-form-path';

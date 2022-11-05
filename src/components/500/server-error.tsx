@@ -4,7 +4,7 @@ import SmallLogo from 'shared/images/compact-logo.svg';
 import classes from './server-error.module.css';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import * as breakpoints from 'shared/breakpoints';
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 
 export default function ServerError() {

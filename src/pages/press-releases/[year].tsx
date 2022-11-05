@@ -8,7 +8,7 @@ import { PageTitle } from 'components/page-title';
 import { Filter } from 'components/filter';
 import { Select } from 'components/select';
 import { SEO } from 'components/seo';
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { HTMLMarkup } from 'components/html-markup';
 import { Icon } from 'components/ui/icon';
 import { ForPressHero } from 'components/for-press-hero';

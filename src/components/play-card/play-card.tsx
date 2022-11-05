@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import cn from 'classnames/bind';
 
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 import { InfoLink } from '../ui/info-link';
 

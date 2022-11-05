@@ -7,7 +7,7 @@ import ContactsTitle from 'components/contacts-title';
 import Form from 'components/ui/form/form';
 import TextInput from 'components/ui/text-input/text-input';
 import TextArea from 'components/ui/text-area';
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 import { CallToEmail } from 'components/call-to-email';
 import { SEO } from 'components/seo';

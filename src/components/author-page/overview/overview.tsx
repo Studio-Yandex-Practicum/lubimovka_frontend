@@ -3,7 +3,7 @@ import { useState, useMemo } from 'react';
 import cn from 'classnames/bind';
 import * as breakpoints from 'shared/breakpoints.js';
 import { AuthorPlays } from 'components/author-page/plays';
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 import { Tag } from 'components/ui/tag';
 import { InfoLink } from 'components/ui/info-link';

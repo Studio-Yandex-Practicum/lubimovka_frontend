@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
 
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 import { addBaseUrlToPath } from 'shared/helpers/url';
 import { getShareUrls } from 'shared/constants/share-urls';

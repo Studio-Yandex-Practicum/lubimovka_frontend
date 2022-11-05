@@ -1,7 +1,7 @@
 import React, { FC, useState, ChangeEvent, FormEvent, useCallback } from 'react';
 import { useRouter } from 'next/router';
 
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 
 import style from './library-form.module.css';

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
 
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 import { Festival } from 'api-typings';
 

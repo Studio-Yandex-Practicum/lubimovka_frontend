@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import { forwardRef } from 'react';
 
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 
 import styles from './homepage-headline.module.css';

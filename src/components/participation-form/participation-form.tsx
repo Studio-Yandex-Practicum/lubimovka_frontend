@@ -5,7 +5,7 @@ import Form from 'components/ui/form';
 import { FormField } from 'components/form-field';
 import TextInput from 'components/ui/text-input';
 import { FileInput } from 'components/ui/file-input';
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 
 import type { FC } from 'react';

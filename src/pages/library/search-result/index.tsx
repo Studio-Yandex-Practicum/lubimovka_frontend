@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import * as breakpoints from 'shared/breakpoints.js';
 import { AppLayout } from 'components/app-layout';
 import { SEO } from 'components/seo';
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 import LibraryForm from 'components/library-form/library-form';
 import { PlayCard } from 'components/play-card';

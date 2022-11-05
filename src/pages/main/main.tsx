@@ -6,7 +6,7 @@ import { FeedList } from 'components/feed-list';
 import { NewsCard } from 'components/news-card';
 import { BlogCard } from 'components/ui/blog-card';
 import { TeaserList } from 'components/teaser-list';
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 import { Section } from 'components/section';
 import { PartnerList } from 'components/partner-list';

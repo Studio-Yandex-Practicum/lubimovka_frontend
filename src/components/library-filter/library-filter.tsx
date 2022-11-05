@@ -2,7 +2,7 @@ import React, { FC, useCallback, Dispatch, useContext } from 'react';
 
 import { Droplist, DroplistOption, } from 'components/ui/droplist';
 import { Tag } from 'components/ui/tag';
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 import { Action } from 'components/library-filter/library-filter-reducer';
 import { LibraryFiltersProviderContext } from 'providers/library-filters-provider';

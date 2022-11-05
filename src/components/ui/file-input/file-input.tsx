@@ -1,7 +1,7 @@
 import { FC, useRef, ChangeEvent, DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 
-import { Button } from 'components/ui/button2';
+import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
 import { Nullable } from 'shared/types';
 
