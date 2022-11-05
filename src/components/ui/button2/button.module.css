@@ -146,6 +146,11 @@ $border-width: 1px;
   border-bottom-color: transparent;
 }
 
+.common.border-top {
+  border-color: transparent;
+  border-top: 1px solid var(--coal);
+}
+
 .common.full-width {
   width: 100%;
 }

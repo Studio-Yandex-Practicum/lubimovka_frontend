@@ -9,7 +9,7 @@ interface CommonProps {
   size?: 'xs' | 's' | 'm' | 'l'
   icon?: ReactNode
   iconPosition?: 'left' | 'right'
-  border?: 'full' | 'right-bottom-left' | 'bottom-left' | 'right-bottom' | 'none' | 'top-left'
+  border?: 'full' | 'right-bottom-left' | 'bottom-left' | 'right-bottom' | 'none' | 'top-left' | 'top'
   fullWidth?: boolean
   upperCase?: boolean
   disabled?: boolean
