@@ -105,6 +105,9 @@
 }
 
 .listItem {
+  padding-left: 0;
+  text-transform: uppercase;
+
   @media (max-width: $tablet-portrait) {
     margin-bottom: 42px;
   }

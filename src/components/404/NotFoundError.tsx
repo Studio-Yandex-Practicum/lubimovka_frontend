@@ -48,7 +48,6 @@ export default function NotFoundError() {
                   height="100%"
                 />
               )}
-              style={{ textTransform: 'uppercase', paddingLeft: '0' }}
               iconPosition="left"
               href="/"
             >
@@ -68,7 +67,7 @@ export default function NotFoundError() {
                     height="100%"
                   />
                 )}
-                style={{ textTransform: 'uppercase', paddingLeft: '0' }}
+
                 iconPosition="left"
                 href={participationFormPath}
               >
@@ -88,7 +87,6 @@ export default function NotFoundError() {
                   height="100%"
                 />
               )}
-              style={{ textTransform: 'uppercase', paddingLeft: '0' }}
               iconPosition="left"
               href="/donation"
             >
