@@ -12,6 +12,7 @@ $border-width: 1px;
   cursor: pointer;
   isolation: isolate;
   text-decoration: none;
+  transition: transform .1s linear;
 
   &:hover {
     border-color: transparent;
@@ -30,6 +31,10 @@ $border-width: 1px;
       content: '';
       transform-origin: left;
     }
+  }
+
+  &:active::before {
+    transform: scale(1.075);
   }
 }
 
