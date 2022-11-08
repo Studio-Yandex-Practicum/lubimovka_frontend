@@ -10,13 +10,18 @@ import styles from './performance-event-list-item.module.css';
 
 interface PerformanceEventListProps {
   date?: string
-  ticketsUrl: Url
+  actionUrl: Url
+  actionText: string
 }
 
 const cx = classNames.bind(styles);
 
 export const PerformanceEventListItem: FC<PerformanceEventListProps> = (props) => {
-  const { date, ticketsUrl } = props;
+  const {
+    date,
+    actionText,
+    actionUrl,
+  } = props;
 
   return (
     <li className={cx('root')}>
@@ -39,10 +44,10 @@ export const PerformanceEventListItem: FC<PerformanceEventListProps> = (props) =
             />
           )}
           iconPosition="right"
-          href={ticketsUrl}
+          href={actionUrl}
           target="_blank"
         >
-          Билеты
+          {actionText}
         </Button>
       </div>
     </li>

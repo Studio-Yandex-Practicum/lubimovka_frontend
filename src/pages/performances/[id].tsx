@@ -70,10 +70,11 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
           cover={main_image}
           actions={(
             <PerformanceEventList>
-              {events.map(({ date, ticketsUrl }) => (
+              {events.map(({ date, actionText, actionUrl }) => (
                 <PerformanceEventList.Item
                   key={date}
-                  ticketsUrl={ticketsUrl}
+                  actionText={actionText}
+                  actionUrl={actionUrl}
                   {...date ? { date: format('d MMMM H:mm', new Date(date)) } : {}}
                 />
               ))}
@@ -229,9 +230,10 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
 };
 
 function toEvents(events: LocalEvent[]) {
-  return events.map(({ date_time, url }) => ({
+  return events.map(({ date_time, action_text, action_url }) => ({
     date: date_time,
-    ticketsUrl: url,
+    actionText: action_text,
+    actionUrl: action_url,
   }));
 }
 
