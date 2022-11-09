@@ -1,5 +1,6 @@
 import React, { FC, useState, ChangeEvent, FormEvent, useCallback } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
@@ -40,24 +41,25 @@ const LibraryForm: FC = () => {
         onChange={handleChange}
         placeholder="Автор или название пьесы"
       />
-      <Button
-        size="s"
-        type="submit"
-        border="none"
-        icon={(
-          <Icon
-            glyph="arrow-right"
-            width="100%"
-            height="100%"
-          />
-        )}
-        upperCase
-        iconPosition="left"
-        href={`/library/search-result${urlQuery}`}
-        disabled={!urlQuery}
-      >
-        Искать
-      </Button>
+      <Link href={`/library/search-result${urlQuery}`} passHref>
+        <Button
+          size="s"
+          type="submit"
+          border="none"
+          icon={(
+            <Icon
+              glyph="arrow-right"
+              width="100%"
+              height="100%"
+            />
+          )}
+          upperCase
+          iconPosition="left"
+          disabled={!urlQuery}
+        >
+          Искать
+        </Button>
+      </Link>
     </form>
   );
 };
