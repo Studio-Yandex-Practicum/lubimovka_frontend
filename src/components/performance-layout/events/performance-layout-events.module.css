@@ -2,15 +2,13 @@
 
 .root {
   width: $left-column-width-tablet-portrait;
-  margin: 0 $column-gap-tablet-portrait 144px 0;
+  margin: 0 $column-gap-tablet-portrait 100px 0;
   float: left;
 
   @media (max-width: $tablet-portrait) {
     width: auto;
-    order: 5;
-    padding: 58px $page-padding-smartphone 72px;
-    margin: 0 -$page-padding-smartphone 24px;
-    background-color: var(--white);
+    order: 2;
+    margin: 0 0 38px 60px;
     float: none;
   }
 }
