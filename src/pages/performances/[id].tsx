@@ -66,20 +66,20 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
           className={cx('headline')}
           title={title}
           description={description}
-          text={intro}
           cover={main_image}
-          actions={(
-            <PerformanceEventList>
-              {events.map(({ date, ticketsUrl }) => (
-                <PerformanceEventList.Item
-                  key={date}
-                  ticketsUrl={ticketsUrl}
-                  {...date ? { date: format('d MMMM H:mm', new Date(date)) } : {}}
-                />
-              ))}
-            </PerformanceEventList>
-          )}
         />
+        <PerformanceLayout.Events>
+          <PerformanceEventList>
+            {events.map(({ date, actionText, actionUrl }) => (
+              <PerformanceEventList.Item
+                key={date}
+                actionText={actionText}
+                actionUrl={actionUrl}
+                {...date ? { date: format('d MMMM H:mm', new Date(date)) } : {}}
+              />
+            ))}
+          </PerformanceEventList>
+        </PerformanceLayout.Events>
         <PerformanceLayout.Summary>
           <PerformanceDetails
             className={cx('details')}
@@ -91,6 +91,19 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             roles={team}
           />
         </PerformanceLayout.Summary>
+        {main_image && (
+          <PerformanceLayout.Cover>
+            <Image
+              src={main_image}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+          </PerformanceLayout.Cover>
+        )}
+        <PerformanceLayout.Intro>
+          {intro}
+        </PerformanceLayout.Intro>
         <PerformanceLayout.Content>
           {video && (
             <Video
@@ -103,7 +116,6 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             markup={text}
           />
           <Section
-            className={cx('play')}
             type="play"
             title="Почитать пьесу"
             titleTag="h6"
@@ -229,9 +241,10 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
 };
 
 function toEvents(events: LocalEvent[]) {
-  return events.map(({ date_time, url }) => ({
+  return events.map(({ date_time, action_text, action_url }) => ({
     date: date_time,
-    ticketsUrl: url,
+    actionText: action_text,
+    actionUrl: action_url,
   }));
 }
 
