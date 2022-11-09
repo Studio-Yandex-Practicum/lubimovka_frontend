@@ -93,3 +93,8 @@
     margin: 20px auto;
   }
 }
+
+.button {
+  padding-left: 0;
+  text-transform: uppercase;
+}

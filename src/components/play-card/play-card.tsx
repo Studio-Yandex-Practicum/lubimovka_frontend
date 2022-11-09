@@ -60,7 +60,7 @@ export const PlayCard: FC<PlayCardProps> = ({ play }) => {
                   height="100%"
                 />
               )}
-              style={{ textTransform: 'uppercase' }}
+              upperCase
               iconPosition="right"
               href={readingUrl}
             >
@@ -80,7 +80,7 @@ export const PlayCard: FC<PlayCardProps> = ({ play }) => {
                   height="100%"
                 />
               )}
-              style={{ textTransform: 'uppercase' }}
+              upperCase
               iconPosition="right"
               href={downloadUrl}
             >

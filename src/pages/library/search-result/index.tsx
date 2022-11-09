@@ -97,9 +97,9 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
                     height="100%"
                   />
                 )}
-                style={{ textTransform: 'uppercase', paddingLeft: '0' }}
                 iconPosition="right"
                 href="/library"
+                upperCase
               >
                 {isMobile ? 'БИБЛИОТЕКА':'ВЕРНУТЬСЯ В БИБЛИОТЕКУ'}
               </Button>

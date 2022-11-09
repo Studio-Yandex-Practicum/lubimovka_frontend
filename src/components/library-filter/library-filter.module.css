@@ -30,6 +30,10 @@
 .buttonWrap {
   display: block;
 
+  button {
+    padding-left: 0;
+  }
+
   @media (max-width: $tablet-portrait) {
     display: none;
   }

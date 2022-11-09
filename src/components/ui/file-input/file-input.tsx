@@ -84,7 +84,7 @@ export const FileInput: FC<IFileInputProps> = (props) => {
             height="100%"
           />
         )}
-        style={{ textTransform: 'uppercase' }}
+        upperCase
         iconPosition="left"
         onClick={handleClick}
       >

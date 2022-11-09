@@ -4,6 +4,7 @@
 
 .personalInfo {
   display: grid;
+  align-items: start;
   grid-template-areas:
     'button photo fullName'
     'button photo city'
@@ -44,6 +45,7 @@
 }
 
 .button {
+  padding-right: 0;
   margin: 30px;
   grid-area: button;
 
@@ -206,6 +208,10 @@
 
 .descriptionExpanded {
   max-height: 200px;
+}
+
+.descriptionButton {
+  padding-right: 0;
 }
 
 .authorLinks {

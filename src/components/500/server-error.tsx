@@ -1,3 +1,4 @@
+import cn from 'classnames/bind';
 import Link from 'next/link';
 import Logo from 'shared/images/full-logo.svg';
 import SmallLogo from 'shared/images/compact-logo.svg';
@@ -6,6 +7,10 @@ import { useMediaQuery } from 'shared/hooks/use-media-query';
 import * as breakpoints from 'shared/breakpoints';
 import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
+
+import styles from './server-error.module.css';
+
+const cx = cn.bind(styles);
 
 export default function ServerError() {
 
@@ -29,6 +34,7 @@ export default function ServerError() {
             Чтобы узнать новости фестиваля, перейдите в наш Телеграм-канал
           </p>
           <Button
+            className={cx('button')}
             size="s"
             border="bottom-left"
             icon={(
@@ -38,7 +44,6 @@ export default function ServerError() {
                 height="100%"
               />
             )}
-            style={{ textTransform: 'uppercase', paddingLeft: '0' }}
             iconPosition="left"
             href="https://t.me/lubimovka"
           >
@@ -50,6 +55,7 @@ export default function ServerError() {
             Или перезагрузите страницу
           </p>
           <Button
+            className={cx('button')}
             size="s"
             border="bottom-left"
             icon={(
@@ -59,7 +65,6 @@ export default function ServerError() {
                 height="100%"
               />
             )}
-            style={{ textTransform: 'uppercase', paddingLeft: '0' }}
             iconPosition="left"
             href="https://t.me/lubimovka"
             onClick={()=>document.location.reload()}

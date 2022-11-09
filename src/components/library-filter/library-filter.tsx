@@ -77,7 +77,7 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
               )}
               iconPosition="left"
               border="bottom-left"
-              style={{ textTransform: 'uppercase', paddingLeft: '0' }}
+              upperCase
             >
               Очистить
             </Button>
@@ -95,7 +95,7 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
               )}
               iconPosition="right"
               border="full"
-              style={{ textTransform: 'uppercase' }}
+              upperCase
             >
               Очистить
             </Button>
@@ -111,7 +111,7 @@ const LibraryFilter: FC<LibraryFilterProps> = ({ years, programmes, filterDispat
               )}
               iconPosition="right"
               border="full"
-              style={{ textTransform: 'uppercase' }}
+              upperCase
             >
               Посмотреть
             </Button>

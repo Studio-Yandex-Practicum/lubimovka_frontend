@@ -27,7 +27,7 @@ export const ForPressHeroDescription: FC<IForPressHeroDescriptionProps> = ({ dat
       <Button
         size="s"
         border="bottom-left"
-        className="button"
+        className={cx('button')}
         icon={(
           <Icon
             glyph="arrow-right"
@@ -35,9 +35,9 @@ export const ForPressHeroDescription: FC<IForPressHeroDescriptionProps> = ({ dat
             height="100%"
           />
         )}
-        style={{ textTransform: 'uppercase', paddingLeft: '0' }}
         iconPosition="left"
         href={data.link}
+        upperCase
       >
         Фотоальбомы
       </Button>

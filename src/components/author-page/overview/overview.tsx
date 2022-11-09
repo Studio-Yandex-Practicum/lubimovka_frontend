@@ -64,24 +64,23 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
   return (
     <section className={cx('overview')}>
       <div className={cx(image ? 'personalInfo' : 'personalInfoNoPhoto')}>
-        <div className={cx('button')}>
-          <Button
-            size="s"
-            border="right-bottom"
-            icon={(
-              <Icon
-                glyph="arrow-left"
-                width="100%"
-                height="100%"
-              />
-            )}
-            style={{ textTransform: 'uppercase', paddingRight: '0' }}
-            iconPosition="right"
-            href="/library/authors"
-          >
-            Библиотека
-          </Button>
-        </div>
+        <Button
+          className={cx('button')}
+          size="s"
+          border="right-bottom"
+          icon={(
+            <Icon
+              glyph="arrow-left"
+              width="100%"
+              height="100%"
+            />
+          )}
+          iconPosition="right"
+          href="/library/authors"
+          upperCase
+        >
+          Библиотека
+        </Button>
 
         {image && (
           <div className={cx('photoBox')}>
@@ -127,6 +126,7 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
               {availableButton
               && (
                 <Button
+                  className={cx('descriptionButton')}
                   fullWidth
                   size="s"
                   border="top-left"
@@ -137,9 +137,9 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
                       height="100%"
                     />
                   )}
-                  style={{ textTransform: 'uppercase', paddingRight: '0' }}
                   iconPosition="right"
                   onClick={() => setExpand(!isExpand)}
+                  upperCase
                 >
                   {isExpand ? 'Полный текст' : 'Свернуть'}
                 </Button>

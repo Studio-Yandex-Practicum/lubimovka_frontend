@@ -51,7 +51,7 @@ const LibraryForm: FC = () => {
             height="100%"
           />
         )}
-        style={{ textTransform: 'uppercase' }}
+        upperCase
         iconPosition="left"
         href={`/library/search-result${urlQuery}`}
         disabled={!urlQuery}
