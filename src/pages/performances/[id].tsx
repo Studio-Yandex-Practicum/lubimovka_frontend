@@ -230,7 +230,15 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       video: performanceResponse.video,
       text: performanceResponse.text,
       ageRestriction: performanceResponse.age_limit,
-      duration: toDuration(performanceResponse.duration),
+      duration: performanceResponse.duration > 0
+        ? formatDuration({
+          hours: Math.floor(performanceResponse.duration / 3600),
+          minutes: Math.floor(performanceResponse.duration % 3600 / 60),
+        },
+        {
+          locale: ru
+        })
+        : undefined,
       events: toEvents(performanceResponse.events),
       // TODO: сейчас в ответе API возвращаются списки отзывов с пагинацией, которая фронтенду не нужна, нужно обсудить с бекендерами
       mediaReviews: mediaReviewsResponse.results
@@ -266,10 +274,3 @@ function toReviews(reviews: PerformanceReview[]) {
     ...url ? { href: url } : {}
   }));
 };
-
-function toDuration(d?:number) {
-  if(d) {
-    return formatDuration({ hours: Math.floor(d / 3600), minutes: Math.floor(d % 3600 / 60) }, { locale: ru });
-  }
-  return undefined;
-}
