@@ -83,7 +83,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         <PerformanceLayout.Summary>
           <PerformanceDetails
             className={cx('details')}
-            duration={duration}
+            duration={String(duration)}
             ageRestriction={ageRestriction}
           />
           <CreditsList

@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 import type { ForPress } from './ForPress';
+import type { ProjectList } from './ProjectList';
 
 export type Settings = {
     play_author_email: string;
@@ -15,4 +16,5 @@ export type Settings = {
     url_to_privacy_policy: string;
     for_press: ForPress;
     plays_reception_is_open: boolean;
+    projects: Array<ProjectList>;
 };

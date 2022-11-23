@@ -18,6 +18,7 @@ export type Performance = {
     team: Array<Role>;
     images_in_block: Array<BlockImages>;
     events: Array<LocalEvent>;
+    readonly duration: number;
     status?: StatusEnum;
     name: string;
     main_image: string;
@@ -30,9 +31,5 @@ export type Performance = {
     intro?: string;
     text: string;
     age_limit?: AgeLimitEnum;
-    /**
-     * Введите продолжительность в формате ЧЧ:ММ
-     */
-    duration?: string;
     creator: number;
 };
