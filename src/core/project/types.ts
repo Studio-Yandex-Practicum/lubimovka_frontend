@@ -1,4 +1,4 @@
-import type { BaseContent } from 'api-typings';
+import type { BaseContent } from '__generated__/api-typings';
 
 export type Project = {
   id: string

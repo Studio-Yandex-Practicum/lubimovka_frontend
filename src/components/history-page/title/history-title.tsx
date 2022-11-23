@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button/button';
-import { Festival } from 'api-typings';
+import { Festival } from '__generated__/api-typings';
 
 import style from './history-title.module.css';
 

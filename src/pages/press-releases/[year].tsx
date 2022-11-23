@@ -18,7 +18,7 @@ import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
 import type { SelectOption, SelectOptionCheckHandler } from 'components/select';
-import type { PressRelease as PressReleaseResponse } from 'api-typings';
+import type { PressRelease as PressReleaseResponse } from '__generated__/api-typings';
 
 import styles from 'components/press-release-layout/press-release-layout.module.css';
 

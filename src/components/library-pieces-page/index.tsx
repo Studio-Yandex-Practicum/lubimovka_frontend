@@ -11,7 +11,7 @@ import { DroplistOption } from 'components/ui/droplist';
 import LibraryFiltersModal from './library-filters-modal';
 import LibraryPreloader from './library-preloader/library-preloader';
 import LibraryTagsMobile from 'components/library-tags-mobile/library-tags-mobile';
-import { Play } from 'api-typings';
+import { Play } from '__generated__/api-typings';
 import { Action } from 'components/library-filter/library-filter-reducer';
 import { IProgram } from 'pages/library';
 

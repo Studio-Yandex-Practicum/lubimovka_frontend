@@ -32,7 +32,7 @@ import { Partner, PartnerType } from 'core/partner';
 import type { InferGetServerSidePropsType } from 'next';
 import type {
   Main as MainPageData,
-} from 'api-typings';
+} from '__generated__/api-typings';
 
 import styles from 'components/homepage-layout/homepage-layout.module.css';
 

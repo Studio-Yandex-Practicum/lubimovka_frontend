@@ -2,7 +2,7 @@ import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { PlayCard } from 'components/play-card';
-import { Play } from 'api-typings';
+import { Play } from '__generated__/api-typings';
 
 import styles from './plays.module.css';
 

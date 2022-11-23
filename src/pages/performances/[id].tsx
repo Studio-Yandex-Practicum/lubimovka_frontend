@@ -30,7 +30,7 @@ import type {
   LocalEvent,
   PerformanceMediaReview,
   PerformanceReview,
-} from 'api-typings';
+} from '__generated__/api-typings';
 
 import styles from 'components/performance-layout/performance-layout.module.css';
 

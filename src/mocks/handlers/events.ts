@@ -4,7 +4,7 @@ import { addApiBaseUrlToPath } from 'shared/helpers/url';
 import { randomEvents } from 'mocks/data/events';
 import { paginate } from 'mocks/helpers/paginate';
 
-import type { AfishaEventListOutput } from 'api-typings';
+import type { AfishaEventListOutput } from '__generated__/api-typings';
 
 export const eventHandlers = [
   rest.get<AfishaEventListOutput>(addApiBaseUrlToPath('/afisha/events/'), (req, res, ctx) => {

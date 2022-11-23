@@ -12,7 +12,7 @@ import type { BlogEntry } from 'shared/types/domain';
 import type {
   BlogItemListOutput,
   PaginatedBlogItemListOutputList,
-} from 'api-typings';
+} from '__generated__/api-typings';
 
 const defaultBlogState = {
   entries: [] as BlogEntry[],
