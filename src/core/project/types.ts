@@ -1,4 +1,3 @@
-import type { Url } from 'shared/types';
 import type { BaseContent } from 'api-typings';
 
 export type Project = {

@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
 
 import type { FC } from 'react';
-import type { Url } from 'shared/types';
 
 import styles from './performance-headline.module.css';
 

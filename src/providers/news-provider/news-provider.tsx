@@ -9,7 +9,6 @@ import { entriesPerPage } from 'shared/constants/news';
 import { NewsContext } from './news-provider.context';
 
 import type { PaginatedNewsItemListList, NewsItemList } from 'api-typings';
-import type { Nullable } from 'shared/types';
 
 const defaultNewsState = {
   entries: [] as NewsItemList[],

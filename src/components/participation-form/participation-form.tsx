@@ -9,7 +9,6 @@ import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 
 import type { FC } from 'react';
-import type { Nullable } from 'shared/types';
 
 import styles from './participation-form.module.css';
 

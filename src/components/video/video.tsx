@@ -4,7 +4,6 @@ import classNames from 'classnames/bind';
 import { Spinner } from 'components/spinner';
 
 import type { HTMLAttributes, ReactEventHandler } from 'react';
-import { Url } from 'shared/types';
 
 import styles from './video.module.css';
 

@@ -2,7 +2,6 @@ import Image from 'next/image';
 import classNames from 'classnames/bind';
 
 import type { FC } from 'react';
-import type  { Url } from 'shared/types';
 
 import styles from './banner.module.css';
 

@@ -2,7 +2,6 @@ import { createContext, useContext } from 'react';
 
 import type { BlogEntry } from 'shared/types/domain';
 import type { BlogState } from './blog-provider';
-import type { Nullable } from 'shared/types';
 
 type BlogContextState = {
   setPreloadedState: (value: Partial<BlogState>) => void
