@@ -1,4 +1,4 @@
-const { apiBaseUrl, environment } = require('./config/vars');
+const { apiBaseUrl, environment } = require('./config/env');
 
 module.exports = {
   webpack(config) {

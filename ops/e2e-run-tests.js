@@ -4,7 +4,7 @@ const next = require('next');
 const { setupServer } = require('msw/node');
 const { rest } = require('msw');
 
-const { environment } = require('../config/vars');
+const { environment } = require('../config/env');
 const { log } = console;
 
 const hostname = 'localhost';

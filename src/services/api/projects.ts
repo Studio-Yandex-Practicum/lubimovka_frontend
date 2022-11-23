@@ -1,7 +1,7 @@
 import { fetcher } from 'services/fetcher';
 
 import type { Project, ProjectDetailed } from 'core/project';
-import type { PaginatedProjectListList as ProjectListDTO, Project as ProjectDTO } from 'api-typings';
+import type { PaginatedProjectListList as ProjectListDTO, Project as ProjectDTO } from '__generated__/api-typings';
 
 export function getProjects() {
   return fetcher<ProjectListDTO>('/projects/?limit=9999').then(mapDTOToProjects);

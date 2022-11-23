@@ -30,7 +30,7 @@ import type {
   LocalEvent,
   PerformanceMediaReview,
   PerformanceReview,
-} from 'api-typings';
+} from '__generated__/api-typings';
 
 import styles from 'components/performance-layout/performance-layout.module.css';
 
@@ -83,7 +83,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         <PerformanceLayout.Summary>
           <PerformanceDetails
             className={cx('details')}
-            duration={duration}
+            duration={String(duration)}
             ageRestriction={ageRestriction}
           />
           <CreditsList

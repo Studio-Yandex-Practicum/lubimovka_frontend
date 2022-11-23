@@ -18,7 +18,7 @@ import { usePersistentData } from 'providers/persistent-data-provider';
 import styles from 'components/author-page/author.module.css';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import type { AuthorRetrieve, Play } from 'api-typings';
+import type { AuthorRetrieve, Play } from '__generated__/api-typings';
 
 const cx = cn.bind(styles);
 

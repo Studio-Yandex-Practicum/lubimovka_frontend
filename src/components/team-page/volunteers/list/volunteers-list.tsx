@@ -5,7 +5,7 @@ import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 
 import { PersonCard } from 'components/ui/person-card/person-card';
 import { FeedbackPopup } from 'components/ui/feedback-popup';
-import { Volunteers } from 'api-typings';
+import { Volunteers } from '__generated__/api-typings';
 
 import styles from './volunteers-list.module.css';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
