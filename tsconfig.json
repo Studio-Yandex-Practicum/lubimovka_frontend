@@ -19,7 +19,6 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "incremental": true,
-    "isolatedModules": true
   },
   "include": [
     "next-env.d.ts",
