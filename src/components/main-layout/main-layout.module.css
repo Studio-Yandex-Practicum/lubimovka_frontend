@@ -1,4 +1,4 @@
-@import './homepage-layout.vars.module.css';
+@import './main-layout.vars.module.css';
 
 .root {
   display: grid;

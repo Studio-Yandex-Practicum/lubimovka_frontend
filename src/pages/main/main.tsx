@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 
-import { HomepageLayout } from 'components/homepage-layout';
+import { MainLayout } from 'components/main-layout';
 import { FeedList } from 'components/feed-list';
 import { NewsCard } from 'components/news-card';
 import { BlogCard } from 'components/ui/blog-card';
@@ -34,7 +34,7 @@ import type {
   Main as MainPageData,
 } from '__generated__/api-typings';
 
-import styles from 'components/homepage-layout/homepage-layout.module.css';
+import styles from 'components/main-layout/main-layout.module.css';
 
 const cx = classNames.bind(styles);
 
@@ -64,7 +64,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
       ) : undefined}
     >
       <SEO title="Главная"/>
-      <HomepageLayout>
+      <MainLayout>
         {first_screen && (
           <HomepageHeadline
             className={cx('headline')}
@@ -74,7 +74,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           />
         )}
         {!!afisha?.items.length && (
-          <HomepageLayout.Events>
+          <MainLayout.Events>
             <HomepageEventsSection
               title={afisha.afisha_today ? (
                 <>
@@ -114,10 +114,10 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                 ))}
               </EventList>
             </HomepageEventsSection>
-          </HomepageLayout.Events>
+          </MainLayout.Events>
         )}
         {(blog || news) && (
-          <HomepageLayout.Feed>
+          <MainLayout.Feed>
             <HomepageFeedSection
               title={blog ? 'Дневник фестиваля' : 'Новости'}
               action={(
@@ -171,9 +171,9 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                 )}
               </FeedList>
             </HomepageFeedSection>
-          </HomepageLayout.Feed>
+          </MainLayout.Feed>
         )}
-        <HomepageLayout.Content>
+        <MainLayout.Content>
           {!!banners?.items.length && (
             <Section type="homepage-teasers">
               <TeaserList
@@ -250,8 +250,8 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
               </PartnerList>
             </Section>
           ))}
-        </HomepageLayout.Content>
-      </HomepageLayout>
+        </MainLayout.Content>
+      </MainLayout>
     </AppLayout>
   );
 };
