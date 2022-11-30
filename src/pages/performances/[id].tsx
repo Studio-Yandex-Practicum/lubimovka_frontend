@@ -121,6 +121,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             titleTag="h6"
           >
             <PlayCard
+              className={cx('card_in_performance')}
               play={{
                 title: play.name,
                 city: play.city,
