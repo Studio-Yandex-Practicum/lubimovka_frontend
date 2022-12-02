@@ -1,5 +1,3 @@
-@value partners from '../partners/footer-partners.module.css';
-
 .navigation {
   grid-area: navigation;
 
