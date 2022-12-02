@@ -1,6 +1,3 @@
 :root {
-  --page-content-max-width: 1440px;
-  --page-content-min-width: 414px;
-  --page-navbar-extended-height: 123px;
-  --head-banner-height-tablet-portrait: 40vh;
+  --height-navbar-tablet-portrait: 60px;
 }

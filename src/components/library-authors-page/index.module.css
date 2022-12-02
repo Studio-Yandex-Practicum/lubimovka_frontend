@@ -17,7 +17,7 @@
 
 .top {
   position: sticky;
-  top: 0;
+  top: var(--height-navbar-tablet-portrait);
   width: 100%;
   height: 0;
   background-color: var(--white);
@@ -59,7 +59,7 @@
 
 .menu {
   position: sticky;
-  top: 0;
+  top: var(--height-navbar-tablet-portrait);
   left: auto;
   height: 62px;
   box-sizing: border-box;
@@ -101,6 +101,7 @@
 .search {
   position: sticky;
   z-index: 3;
+  top: calc(var(--height-navbar-tablet-portrait) + 30px);
   top: 30px;
   width: 800px;
   height: 52px;

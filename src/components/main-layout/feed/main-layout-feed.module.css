@@ -1,9 +1,9 @@
-@import '../homepage-layout.vars.module.css';
+@import '../main-layout.vars.module.css';
 
 .root {
   position: sticky;
   z-index: 1;
-  top: 0;
+  top: var(--height-navbar-tablet-portrait);
   width: $aside-visible-width;
   height: 100vh;
   background-color: var(--light-green);
