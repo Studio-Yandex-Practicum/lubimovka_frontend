@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button/button';
-import { Festival } from 'api-typings';
+import { Festival } from '__generated__/api-typings';
 
 import style from './history-title.module.css';
 
@@ -85,7 +85,7 @@ export const HistoryTitle: FC<IHistoryTitle> = ({ data, currentYear }) => {
               />
             </div>
             <p className={cn(style.element)}>
-              пьес прошли отбор
+              пьес прозвучало на фестивале
             </p>
           </div>
           <div className={cn(style.card)}>

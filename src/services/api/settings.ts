@@ -1,6 +1,6 @@
 import { fetcher } from 'services/fetcher';
 
-import type { Settings as SettingsDTO } from 'api-typings';
+import type { Settings as SettingsDTO } from '__generated__/api-typings';
 import type { Settings } from 'core/settings';
 
 export function getSettings() {

@@ -8,8 +8,7 @@ import { isNil } from 'shared/helpers/is-nil';
 import { entriesPerPage } from 'shared/constants/news';
 import { NewsContext } from './news-provider.context';
 
-import type { PaginatedNewsItemListList, NewsItemList } from 'api-typings';
-import type { Nullable } from 'shared/types';
+import type { PaginatedNewsItemListList, NewsItemList } from '__generated__/api-typings';
 
 const defaultNewsState = {
   entries: [] as NewsItemList[],

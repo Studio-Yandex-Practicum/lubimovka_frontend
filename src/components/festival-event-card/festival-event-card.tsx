@@ -5,7 +5,6 @@ import { Icon } from 'components/ui/icon';
 import { CreditsList } from 'components/credits-list';
 
 import type { VFC } from 'react';
-import type { Url } from 'shared/types';
 import type { CreditsRole } from 'components/credits-list';
 
 import styles from './festival-event-card.module.css';
