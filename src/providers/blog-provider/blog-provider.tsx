@@ -12,7 +12,8 @@ import type { BlogEntry } from 'shared/types/domain';
 import type {
   BlogItemListOutput,
   PaginatedBlogItemListOutputList,
-} from '__generated__/api-typings';
+} from 'api-typings';
+import type { Nullable } from 'shared/types';
 
 const defaultBlogState = {
   entries: [] as BlogEntry[],

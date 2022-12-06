@@ -6,6 +6,7 @@ import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 
 import type { FC } from 'react';
+import type { Url } from 'shared/types';
 
 import styles from './teaser-card.module.css';
 

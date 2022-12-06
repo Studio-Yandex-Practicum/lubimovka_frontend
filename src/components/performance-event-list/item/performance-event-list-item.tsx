@@ -4,23 +4,19 @@ import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 
 import type { FC } from 'react';
+import type { Url } from 'shared/types';
 
 import styles from './performance-event-list-item.module.css';
 
 interface PerformanceEventListProps {
   date?: string
-  actionUrl: Url
-  actionText: string
+  ticketsUrl: Url
 }
 
 const cx = classNames.bind(styles);
 
 export const PerformanceEventListItem: FC<PerformanceEventListProps> = (props) => {
-  const {
-    date,
-    actionText,
-    actionUrl,
-  } = props;
+  const { date, ticketsUrl } = props;
 
   return (
     <li className={cx('root')}>
@@ -43,10 +39,10 @@ export const PerformanceEventListItem: FC<PerformanceEventListProps> = (props) =
             />
           )}
           iconPosition="right"
-          href={actionUrl}
+          href={ticketsUrl}
           target="_blank"
         >
-          {actionText}
+          Билеты
         </Button>
       </div>
     </li>

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import settings from 'settings';
 
 import type { FC } from 'react';
+import type { Url } from 'shared/types';
 
 interface SEOProps {
   title: string

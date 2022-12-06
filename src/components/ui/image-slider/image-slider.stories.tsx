@@ -3,7 +3,20 @@ import Image from 'next/image';
 
 import { ImageSlider } from './image-slider';
 
-const demoImages = Array.from({ length: 5 }, (_, index) => `https://source.unsplash.com/random?${index}`);
+const fakeData = [
+  {
+    image: 'https://source.unsplash.com/random',
+    description: 'Фото намбер уан'
+  },
+  {
+    image: 'https://source.unsplash.com/random',
+    description: 'Фото намбер ту'
+  },
+  {
+    image: 'https://source.unsplash.com/random',
+    description: 'Фото намбер фри'
+  }
+];
 
 export default {
   title: 'UI/ImageSlider',
@@ -21,11 +34,11 @@ const Template: ComponentStory<typeof ImageSlider> = (args) => <ImageSlider {...
 
 export const Default = Template.bind({});
 Default.args = {
-  children: demoImages.map((demoImage, index) => (
+  children: fakeData.map((image, index) => (
     <Image
       key={index}
-      src={demoImage}
-      alt=""
+      src={image.image}
+      alt={image.description}
       layout="fill"
       objectFit="cover"
     />

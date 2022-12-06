@@ -1,0 +1,42 @@
+.root {
+  box-sizing: border-box;
+  padding: 66px 80px;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 32px 24px;
+  }
+}
+
+.container {
+  max-width: 882px;
+  margin-left: auto;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: 305px;
+    margin-left: initial;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline1;
+
+  max-width: 800px;
+  margin-bottom: 15px;
+  color: var(--coal);
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    max-width: 305px;
+    margin-bottom: 12px;
+  }
+}
+
+.action {
+  max-width: 360px;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: 244px;
+  }
+}

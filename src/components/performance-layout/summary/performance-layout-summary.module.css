@@ -1,16 +1,11 @@
 @import '../performance-layout.vars.module.css';
 
 .root {
-  width: $left-column-width-tablet-portrait;
-  margin: 0 $column-gap-tablet-portrait 144px 0;
-  float: left;
+  grid-area: summary;
 
   @media (max-width: $tablet-portrait) {
-    width: auto;
-    order: 5;
     padding: 58px $page-padding-smartphone 72px;
     margin: 0 -$page-padding-smartphone 24px;
     background-color: var(--white);
-    float: none;
   }
 }

@@ -1,3 +1,5 @@
+import { Url } from './common';
+
 export type BlogEntry = {
   id: number
   publicationDate: string

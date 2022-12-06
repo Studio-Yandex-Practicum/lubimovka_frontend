@@ -16,6 +16,8 @@ import {
 import { fetcher } from 'services/fetcher';
 import { snakeToCamel } from 'shared/helpers/snake-to-camel';
 
+import type { Nullable } from 'shared/types';
+
 interface ParticipationFormFields {
   firstName: string
   lastName: string

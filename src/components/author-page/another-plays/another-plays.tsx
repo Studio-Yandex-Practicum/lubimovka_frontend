@@ -5,6 +5,7 @@ import { Button } from 'components/ui/button';
 import styles from './another-plays.module.css';
 
 import type { FC } from 'react';
+import type { Url } from 'shared/types';
 
 const cx = cn.bind(styles);
 

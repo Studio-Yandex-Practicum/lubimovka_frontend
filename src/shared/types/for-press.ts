@@ -1,3 +1,5 @@
+import { Url, Email } from './common';
+
 export type ForPressProps = {
   metaTitle: string,
   title: string,

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { InfoLink } from 'components/ui/info-link';
-import { OtherLink } from '__generated__/api-typings';
+import { OtherLink } from 'api-typings';
 
 import styles from './information.module.css';
 

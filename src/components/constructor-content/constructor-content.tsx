@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { PhotoGallery } from 'components/photo-gallery';
 import { ImageSlider } from 'components/ui/image-slider';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
-import { PlayCard } from 'components/play-card';
+import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { EventCard } from 'components/event-card';
 import { PersonCard } from 'components/ui/person-card';
 import { PersonCardList } from 'components/person-card-list';
@@ -115,7 +115,7 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
               >
                 <BasicPlayCardList>
                   {content_item.items.map(({ id, name, city, year, authors }) => (
-                    <PlayCard
+                    <BasicPlayCard
                       key={id}
                       play={{
                         title: name,

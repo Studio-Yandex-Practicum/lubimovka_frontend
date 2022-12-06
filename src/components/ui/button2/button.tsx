@@ -16,14 +16,14 @@ interface CommonProps {
   className?: string
 }
 
-interface AnchorProps extends CommonProps {
+interface ButtonProps extends CommonProps {
   href?: string
   target?: '_blank' | '_self' | '_parent' | '_top'
 }
 
-interface ButtonProps extends CommonProps {
+interface AnchorProps extends CommonProps {
   type: 'submit' | 'reset' | 'button';
-  onClick: () => void
+  onCLick: () => void
 }
 
 const cx = classNames.bind(styles);

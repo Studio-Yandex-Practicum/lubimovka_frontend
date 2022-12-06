@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
 import { NavbarSection } from './section';
@@ -7,15 +8,16 @@ import { NavbarActions } from './actions';
 import styles from './navbar.module.css';
 
 export interface NavbarProps {
-  view?: 'regular' | 'expanded',
+  view?: 'normal' | 'expanded',
   colors?: 'default' | 'brand',
+  children?: ReactNode,
 }
 
 const cx = classNames.bind(styles);
 
-export const Navbar = (props: React.PropsWithChildren<NavbarProps>) => {
+export const Navbar = (props: NavbarProps) => {
   const {
-    view = 'regular',
+    view = 'normal',
     colors = 'default',
     children,
   } = props;

@@ -7,7 +7,7 @@ import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 
-import type { PaginatedAuthorListList, AuthorList, AuthorLetters } from '__generated__/api-typings';
+import type { PaginatedAuthorListList, AuthorList, AuthorLetters } from 'api-typings';
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
 type Letters = 'А' | 'Б' | 'В' | 'Г' | 'Д' | 'Е' | 'Ж' | 'З' | 'И' | 'К' | 'Л' | 'М' | 'Н' |

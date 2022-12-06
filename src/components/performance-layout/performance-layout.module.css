@@ -1,25 +1,29 @@
 @import './performance-layout.vars.module.css';
 
 .root {
+  display: grid;
   padding: 0 $page-padding-tablet-portrait;
+  grid-template:
+    "headline      headline"
+    "summary       content"
+    "gallery       gallery"
+    "media-reviews media-reviews"
+    "reviews       reviews"
+    "bottom-image  bottom-image"
+    "share         share";
 
   @media (max-width: $tablet-portrait) {
-    display: flex;
-    flex-direction: column;
+    display: block;
     padding: 40px $page-padding-smartphone 0;
   }
 }
 
 .headline {
-  width: $left-column-width-tablet-portrait;
-  margin: 62px $column-gap-tablet-portrait 100px 0;
-  float: left;
+  margin-bottom: 68px;
+  grid-area: headline;
 
   @media (max-width: $tablet-portrait) {
-    width: auto;
-    order: 1;
-    margin: 0 0 30px 0;
-    float: none;
+    margin-bottom: 100px;
   }
 }
 
@@ -35,4 +39,8 @@
 
 .text {
   margin-bottom: 80px;
+}
+
+.play {
+  margin-bottom: 144px;
 }

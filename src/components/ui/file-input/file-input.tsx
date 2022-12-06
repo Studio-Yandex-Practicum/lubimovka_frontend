@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
+import { Nullable } from 'shared/types';
 
 import styles from './file-input.module.css';
 

@@ -2,6 +2,8 @@ import { FC } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
+import { Url } from '../../../../shared/types/common';
+
 import styles from './opportunity.module.css';
 
 const cx = cn.bind(styles);

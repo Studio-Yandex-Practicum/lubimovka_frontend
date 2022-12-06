@@ -8,7 +8,7 @@ import { PerformanceDetails } from 'components/performance-details';
 import { CreditsList } from 'components/credits-list';
 import { HTMLMarkup } from 'components/html-markup';
 import { ShareLinks } from 'components/share-links';
-import { PlayCard } from 'components/play-card';
+import { BasicPlayCard } from 'components/ui/basic-play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
 import { PhotoGallery } from 'components/photo-gallery';
@@ -30,7 +30,7 @@ import type {
   LocalEvent,
   PerformanceMediaReview,
   PerformanceReview,
-} from '__generated__/api-typings';
+} from 'api-typings';
 
 import styles from 'components/performance-layout/performance-layout.module.css';
 
@@ -66,24 +66,24 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
           className={cx('headline')}
           title={title}
           description={description}
+          text={intro}
           cover={main_image}
+          actions={(
+            <PerformanceEventList>
+              {events.map(({ date, ticketsUrl }) => (
+                <PerformanceEventList.Item
+                  key={date}
+                  ticketsUrl={ticketsUrl}
+                  {...date ? { date: format('d MMMM H:mm', new Date(date)) } : {}}
+                />
+              ))}
+            </PerformanceEventList>
+          )}
         />
-        <PerformanceLayout.Events>
-          <PerformanceEventList>
-            {events.map(({ date, actionText, actionUrl }) => (
-              <PerformanceEventList.Item
-                key={date}
-                actionText={actionText}
-                actionUrl={actionUrl}
-                {...date ? { date: format('d MMMM H:mm', new Date(date)) } : {}}
-              />
-            ))}
-          </PerformanceEventList>
-        </PerformanceLayout.Events>
         <PerformanceLayout.Summary>
           <PerformanceDetails
             className={cx('details')}
-            duration={String(duration)}
+            duration={duration}
             ageRestriction={ageRestriction}
           />
           <CreditsList
@@ -91,19 +91,6 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             roles={team}
           />
         </PerformanceLayout.Summary>
-        {main_image && (
-          <PerformanceLayout.Cover>
-            <Image
-              src={main_image}
-              alt=""
-              layout="fill"
-              objectFit="cover"
-            />
-          </PerformanceLayout.Cover>
-        )}
-        <PerformanceLayout.Intro>
-          {intro}
-        </PerformanceLayout.Intro>
         <PerformanceLayout.Content>
           {video && (
             <Video
@@ -116,11 +103,13 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             markup={text}
           />
           <Section
+            className={cx('play')}
             type="play"
             title="Почитать пьесу"
             titleTag="h6"
           >
-            <PlayCard
+            <BasicPlayCard
+              type="performance"
               play={{
                 title: play.name,
                 city: play.city,
@@ -241,10 +230,9 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
 };
 
 function toEvents(events: LocalEvent[]) {
-  return events.map(({ date_time, action_text, action_url }) => ({
+  return events.map(({ date_time, url }) => ({
     date: date_time,
-    actionText: action_text,
-    actionUrl: action_url,
+    ticketsUrl: url,
   }));
 }
 

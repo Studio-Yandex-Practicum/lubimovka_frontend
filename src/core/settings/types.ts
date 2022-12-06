@@ -1,20 +1,22 @@
+import type { Url } from 'shared/types';
+
 export type Settings = {
   emailAddresses: {
-    forDirectorsAndActors: Email
-    forDirectors: Email
-    forBlogAuthors: Email
-    forPlayAuthors: Email
-    forVolunteers: Email
-    sponsorship: Email
-    playAcceptance: Email
-    requestDonationReport: Email
+    forDirectorsAndActors: string
+    forDirectors: string
+    forBlogAuthors: string
+    forPlayAuthors: string
+    forVolunteers: string
+    sponsorship: string
+    playAcceptance: string
+    requestDonationReport: string
   },
   pressCenter: {
     contactPerson: string
     contactPersonPhoto: Url
-    contactEmail: Email
-    facebookGalleryUrl: Url
+    contactEmail: string
+    facebookGalleryUrl: string
   },
   canProposePlay: boolean
-  privacyPolicyUrl: Url
+  privacyPolicyUrl: string
 }

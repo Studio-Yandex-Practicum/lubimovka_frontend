@@ -1,0 +1,7 @@
+.root {
+  height: var(--head-banner-height-tablet-portrait);
+
+  @media (max-width: $tablet-portrait) {
+    height: 360px;
+  }
+}

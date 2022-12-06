@@ -17,7 +17,7 @@ import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { notFoundResult } from 'shared/constants/server-side-props';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import type { NewsItemDetail } from '__generated__/api-typings';
+import type { NewsItemDetail } from 'api-typings';
 
 import styles from 'components/article-layout/article-layout.module.css';
 

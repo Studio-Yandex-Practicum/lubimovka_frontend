@@ -2,10 +2,9 @@
 
 .gallery {
   margin: 0 -$page-padding-tablet-portrait 146px;
-  clear: both;
+  grid-area: gallery;
 
   @media (max-width: $tablet-portrait) {
-    order: 7;
     margin: 0 -$page-padding-smartphone 105px;
   }
 }

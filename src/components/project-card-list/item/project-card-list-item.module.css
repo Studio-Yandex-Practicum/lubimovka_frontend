@@ -9,7 +9,7 @@
   }
 
   @media (max-width: $tablet-portrait) {
-    width: 100%;
+    width: unset;
 
     &:nth-child(3n) {
       margin-right: unset;

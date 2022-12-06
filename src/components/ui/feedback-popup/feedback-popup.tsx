@@ -6,7 +6,7 @@ import { SliderButton } from '../slider-button';
 import { SliderDots } from '../slider-dots';
 import { IconButton } from 'components/ui/icon-button';
 import { Icon } from '../icon';
-import { Volunteers } from '__generated__/api-typings';
+import { Volunteers } from 'api-typings';
 
 import styles from './feedback-popup.module.css';
 

@@ -13,7 +13,7 @@
     "storybook": "start-storybook -s public -p 3001",
     "build-storybook": "build-storybook -s public",
     "update-typings": "node ops/update-typings.js",
-    "e2e": "NEXT_PUBLIC_BASE_URL=http://localhost:3002 NEXT_PUBLIC_API_BASE_URL=http://localhost:3003/api node ops/e2e-run-tests"
+    "e2e": "NEXT_PUBLIC_API_BASE_URL=http://localhost:3003/api node ops/e2e-run-tests"
   },
   "repository": {
     "type": "git",
@@ -39,7 +39,6 @@
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
-    "@faker-js/faker": "7.6.0",
     "@storybook/addon-actions": "6.3.8",
     "@storybook/addon-essentials": "6.3.8",
     "@storybook/addon-links": "6.3.8",
@@ -49,11 +48,13 @@
     "@types/react-dom": "17.0.11",
     "@typescript-eslint/eslint-plugin": "4.31.0",
     "babel-loader": "8.2.2",
+    "connect": "3.7.0",
     "cypress": "10.0.1",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4",
+    "fetch-mock": "9.11.0",
     "lint-staged": "11.1.2",
-    "msw": "0.47.4",
+    "nock": "13.2.4",
     "openapi-typescript-codegen": "0.20.1",
     "postcss": "8.3.9",
     "postcss-flexbugs-fixes": "5.0.2",
@@ -74,8 +75,5 @@
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
     "pre-push": "npm run type-check"
-  },
-  "msw": {
-    "workerDirectory": "public"
   }
 }

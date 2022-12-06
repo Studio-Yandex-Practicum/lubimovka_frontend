@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { FestivalTeams } from '__generated__/api-typings';
+import { FestivalTeams } from 'api-typings';
 import PersonsList from '../../../persons-list';
 
 import styles from './art-directorate-section.module.css';

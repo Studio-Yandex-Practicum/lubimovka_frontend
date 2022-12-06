@@ -4,11 +4,7 @@ import { PersistentDataProvider } from 'providers/persistent-data-provider';
 import { NewsProvider } from 'providers/news-provider';
 import { BlogProvider } from 'providers/blog-provider';
 
-if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
-  import('mocks').then(({ setupMocks }) => setupMocks());
-}
-
-export const App = ({ Component, pageProps }: AppProps) => {
+export const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const {
     preloadedNewsState,
     ...restPageProps

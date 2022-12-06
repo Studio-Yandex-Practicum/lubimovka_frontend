@@ -9,7 +9,7 @@ import VolunteersSection from 'components/team-page/volunteers/section/volunteer
 import { fetcher } from 'services/fetcher';
 
 import type { InferGetServerSidePropsType } from 'next';
-import type { FestivalTeams, Volunteers } from '__generated__/api-typings';
+import type { FestivalTeams, Volunteers } from 'api-typings';
 
 const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();

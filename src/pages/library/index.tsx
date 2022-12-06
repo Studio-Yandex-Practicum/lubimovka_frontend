@@ -13,7 +13,7 @@ import LibraryFiltersProvider from 'providers/library-filters-provider';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import type { PaginatedPlayList, Play, PlayFilters } from '__generated__/api-typings';
+import type { PaginatedPlayList, Play, PlayFilters } from 'api-typings';
 
 // TODO: скорее всего, этому интерфейсу здесь не место, потому что он никак не используется
 export interface IProgram {

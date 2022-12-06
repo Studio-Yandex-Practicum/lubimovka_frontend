@@ -3,9 +3,9 @@
 .root {
   min-width: 0;
   margin: 0 -$page-padding-tablet-portrait 112px;
+  grid-area: media-reviews;
 
   @media (max-width: $tablet-portrait) {
-    order: 8;
     margin: 0 -$page-padding-smartphone 76px;
   }
 }

@@ -7,7 +7,7 @@ import { usePersistentData } from 'providers/persistent-data-provider';
 import { fetcher } from 'services/fetcher';
 
 import type { InferGetServerSidePropsType } from 'next';
-import type { Sponsor } from '__generated__/api-typings';
+import type { Sponsor } from 'api-typings';
 
 const Sponsors = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { sponsors } = props;

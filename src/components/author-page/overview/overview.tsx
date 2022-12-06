@@ -10,7 +10,7 @@ import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { numberOfCharacters } from 'shared/constants/numbers';
 
 import type { FC } from 'react';
-import type { OtherLink, Play, SocialNetwork, Achievement } from '__generated__/api-typings';
+import type { OtherLink, Play, SocialNetwork, Achievement } from 'api-typings';
 
 import styles from './overview.module.css';
 import { Link } from '../../ui/link';

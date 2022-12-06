@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
 
-import { PlayCard } from 'components/play-card';
-import { Play } from '__generated__/api-typings';
+import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { Play } from 'api-typings';
 
 import styles from './plays.module.css';
 
@@ -17,11 +17,8 @@ export const AuthorPlays: FC<IAuthorPlays> = ({ plays }) => {
     <div className={cx('playsContainer')}>
       <ul className={cx('list')}>
         {plays.map((item, index) => (
-          <li
-            key={index}
-            className={cx('item')}
-          >
-            <PlayCard play={{
+          <li className={cx('item')} key={index}>
+            <BasicPlayCard play={{
               title: item.name,
               city: item.city,
               year: item.year,

@@ -3,8 +3,6 @@ import '../src/shared/styles/fonts.css';
 import '../src/shared/styles/palette.css';
 import '../src/shared/styles/vars.css';
 
-import './next-image-stub';
-
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {

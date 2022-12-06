@@ -1,4 +1,4 @@
-import { AfishaEventListOutput, AfishaInfoOutput } from '__generated__/api-typings';
+import { AfishaEventListOutput, AfishaInfoOutput } from 'api-typings';
 import { fetcher } from 'services/fetcher';
 import { snakeToCamelObject } from 'shared/helpers/snake-to-camel';
 import { AfishaEvents, AfishaInfo } from 'shared/types';

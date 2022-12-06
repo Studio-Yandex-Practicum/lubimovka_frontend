@@ -18,7 +18,7 @@ import { format } from 'shared/helpers/format-date';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import type { InferGetServerSidePropsType } from 'next';
-import type { PaginatedNewsItemListList, NewsItemYearsMonthsOutput } from '__generated__/api-typings';
+import type { PaginatedNewsItemListList, NewsItemYearsMonthsOutput } from 'api-typings';
 import type { SelectOptionCheckHandler } from 'components/select';
 
 import styles from 'components/news-layout/news-layout.module.css';

@@ -4,9 +4,14 @@
 .common {
   display: flex;
   align-items: flex-start;
+  border-bottom: 1px solid var(--coal);
+
+  @media (max-width: $tablet-portrait) {
+    border: 0;
+  }
 }
 
-.regular {
+.normal {
   composes: common;
   padding-left: 30px;
 
@@ -27,7 +32,7 @@
   .section {
     &:not(:last-child)::after {
       bottom: 10px;
-      height: 40px;
+      height: 65%;
     }
   }
 
@@ -36,7 +41,7 @@
   }
 
   .logotype {
-    padding-top: 20px;
+    padding-top: 19px;
     margin-right: 50px;
 
     @media (max-width: $tablet-portrait) {

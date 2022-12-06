@@ -2,7 +2,7 @@ import { objectToQueryString } from '@funboxteam/diamonds';
 
 import { fetcher } from 'services/fetcher';
 
-import type { PartnerListOutput as PartnerDTO } from '__generated__/api-typings';
+import type { PartnerListOutput as PartnerDTO } from 'api-typings';
 import type { Partner } from 'core/partner';
 
 export function getPartners({ onlyGeneral = false }  = {}) {

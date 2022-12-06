@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import classNames from 'classnames/bind';
 
+import type { Url } from 'shared/types';
 import type { VFC } from 'react';
 
 import styles from './partner-card.module.css';

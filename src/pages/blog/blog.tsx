@@ -24,7 +24,7 @@ import { entriesPerPage } from 'shared/constants/blog';
 
 import type { BlogState } from 'providers/blog-provider';
 import type { BlogEntry } from 'shared/types/domain';
-import type { PaginatedBlogItemListOutputList, BlogItemListOutput } from '__generated__/api-typings';
+import type { PaginatedBlogItemListOutputList, BlogItemListOutput } from 'api-typings';
 import type { SelectOptionCheckHandler } from 'components/select';
 
 import styles from 'components/blog-layout/blog-layout.module.css';

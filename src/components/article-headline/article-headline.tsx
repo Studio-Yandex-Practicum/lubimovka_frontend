@@ -2,6 +2,7 @@ import cn from 'classnames/bind';
 import Image from 'next/image';
 
 import { InfoLink } from 'components/ui/info-link';
+import { Url } from 'shared/types';
 
 import type { FC } from 'react';
 

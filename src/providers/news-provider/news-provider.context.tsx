@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
 
-import type { NewsItemList } from '__generated__/api-typings';
+import type { NewsItemList } from 'api-typings';
+import { Nullable } from 'shared/types';
 
 type NewsContext = {
   entries: NewsItemList[]

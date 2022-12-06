@@ -2,13 +2,13 @@ const { generate } = require('openapi-typescript-codegen');
 const fs = require('fs');
 
 const openApiSchemeUrl = 'https://stage.dev.lubimovka.ru/api/v1/schema';
-const outputDir = 'src/__generated__/api-typings';
+const typingsDir = 'src/api-typings';
 
-fs.rmSync(outputDir, { recursive: true, force: true });
+fs.rmSync(typingsDir, { recursive: true, force: true });
 
 generate({
   input: openApiSchemeUrl,
-  output: outputDir,
+  output: typingsDir,
   useUnionTypes: true,
   exportCore: false,
   exportServices: false,

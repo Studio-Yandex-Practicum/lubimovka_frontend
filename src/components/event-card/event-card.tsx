@@ -7,6 +7,7 @@ import { CreditsList } from 'components/credits-list';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 
+import type { Url } from 'shared/types';
 import type { CreditsRole } from 'components/credits-list';
 
 import styles from './event-card.module.css';

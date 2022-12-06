@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 
 import { Lightbox } from 'components/lightbox';
+import { Url } from 'shared/types';
 
 import styles from './photo-gallery.module.css';
 
