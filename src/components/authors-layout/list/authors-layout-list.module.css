@@ -1,0 +1,16 @@
+.root {
+  position: relative;
+  margin-left: 360px;
+  grid-area: list;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0 56px;
+    margin: 0;
+  }
+}
+
+.spinner {
+  width: 64px;
+
+  --delay: 200ms;
+}
