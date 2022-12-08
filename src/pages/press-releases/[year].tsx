@@ -6,7 +6,7 @@ import { AppLayout } from 'components/app-layout';
 import { PressReleaseLayout } from 'components/press-release-layout';
 import { PageTitle } from 'components/page-title';
 import { Filter } from 'components/filter';
-import { Select } from 'components/select';
+import { Select } from 'components/ui/select';
 import { SEO } from 'components/seo';
 import { Button } from 'components/ui/button2';
 import { HTMLMarkup } from 'components/html-markup';
@@ -17,7 +17,7 @@ import { usePersistentData } from 'providers/persistent-data-provider';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
-import type { SelectOption, SelectOptionCheckHandler } from 'components/select';
+import type { SelectOption, SelectOptionCheckHandler } from 'components/ui/select';
 import type { PressRelease as PressReleaseResponse } from '__generated__/api-typings';
 
 import styles from 'components/press-release-layout/press-release-layout.module.css';
