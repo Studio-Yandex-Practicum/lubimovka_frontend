@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 
-import { styles } from '../menu';
+import { styles } from '../menu.styles';
 import { useMenu } from '../menu.context';
 
 import type { ReactNode } from 'react';
