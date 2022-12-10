@@ -36,3 +36,12 @@
 .text {
   margin-bottom: 80px;
 }
+
+.card_in_performance {
+  max-width: 240px;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: 244px;
+    margin: 0 auto;
+  }
+}

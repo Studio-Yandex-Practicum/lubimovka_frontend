@@ -16,6 +16,7 @@ type Author = {
 }
 
 export interface PlayCardProps {
+  className?: string
   play: {
     title: string;
     city?: string;
@@ -27,7 +28,7 @@ export interface PlayCardProps {
   };
 }
 
-export const PlayCard: FC<PlayCardProps> = ({ play }) => {
+export const PlayCard: FC<PlayCardProps> = ({ play, className }) => {
   const {
     title,
     city,
@@ -39,7 +40,7 @@ export const PlayCard: FC<PlayCardProps> = ({ play }) => {
 
   return (
     <article
-      className={cx('card')}
+      className={cx('card', className)}
     >
       <div className={cx('container')}>
         <h6 className={cx('title')}>
