@@ -26,9 +26,9 @@ interface IParticipationFormProps {
   city: string
   cityError?: string
   onCityChange: (value: string) => void
+  phoneNumberInputRef: React.RefObject<HTMLInputElement>
   phoneNumber: string
   phoneNumberError?: string
-  onPhoneNumberChange: (value: string) => void
   email: string
   emailError?: string
   onEmailChange: (value: string) => void
@@ -65,9 +65,8 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
     city,
     cityError,
     onCityChange,
-    phoneNumber,
+    phoneNumberInputRef,
     phoneNumberError,
-    onPhoneNumberChange,
     email,
     emailError,
     onEmailChange,
@@ -147,11 +146,10 @@ export const ParticipationForm: FC<IParticipationFormProps> = (props) => {
             hiddenCaption
           >
             <TextInput
+              inputRef={phoneNumberInputRef}
               type="tel"
-              value={phoneNumber}
               placeholder="Номер телефона"
               errorText={phoneNumberError}
-              onChange={onPhoneNumberChange}
             />
           </FormField>
         </Form.Field>
