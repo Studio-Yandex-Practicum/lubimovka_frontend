@@ -35,6 +35,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-focus-lock": "2.6.0",
+    "react-imask": "6.4.3",
     "react-scroll-horizontal": "1.6.6"
   },
   "devDependencies": {
