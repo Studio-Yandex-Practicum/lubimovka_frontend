@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { useIMask } from 'react-imask';
 
 import { AppLayout } from 'components/app-layout';
 import PlayProposalLayout from 'components/play-proposal-layout';
@@ -67,6 +68,31 @@ const initialParticipationFormState: ParticipationFormState = {
   file: { value: null, wasChanged: false },
 };
 
+const phoneMaskOptions = {
+  mask: [
+    {
+      mask: '+0 000 000-00-00',
+      startsWith: '7',
+    },
+    {
+      mask: '+0DD',
+      blocks: {
+        DD: {
+          mask: /^[\d- ()]{0,15}$/
+        },
+      },
+      startsWith: '',
+    },
+  ],
+  dispatch: function (appended: string, dynamicMasked: { value: string, compiledMasks: { startsWith: string }[] }) {
+    const number = (dynamicMasked.value + appended).replace(/\D/g,'');
+
+    return dynamicMasked.compiledMasks.find(function (m) {
+      return number.indexOf(m.startsWith) === 0;
+    });
+  }
+};
+
 const participationFormReducer = (state: ParticipationFormState, action: ParticipationFormAction) => {
   switch (action.type) {
   case ParticipationFormActionType.FieldChange:
@@ -112,6 +138,15 @@ const Participation = () => {
     file,
     genericError,
   } = participationFormState;
+
+  const { ref: phoneNumberInputRef } = useIMask<typeof phoneMaskOptions>(phoneMaskOptions, {
+    onAccept: (value) => {
+      if (phoneNumber.value === value) {
+        return;
+      }
+      handleFieldChange('phoneNumber')(value);
+    },
+  });
 
   const router = useRouter();
 
@@ -203,16 +238,6 @@ const Participation = () => {
       if (!value) {
         return 'Файл обязателен';
       }
-
-      const { name } = value as Exclude<ParticipationFormFields['file'], null>;
-
-      if (/[а-яА-ЯЁё]/.test(name)) {
-        return 'Файл содержит кириллицу, пожалуйста, переименуйте его.';
-      }
-      if (/[^A-Za-z._-]/.test(name)) {
-        return 'Пожалуйста, используйте только латинские символы и знаки - и _';
-      }
-      break;
     default:
       return;
     }
@@ -322,8 +347,8 @@ const Participation = () => {
               city={city.value}
               cityError={city.wasChanged ? city.error : undefined}
               onCityChange={handleFieldChange('city')}
+              phoneNumberInputRef={phoneNumberInputRef}
               phoneNumber={phoneNumber.value}
-              onPhoneNumberChange={handleFieldChange('phoneNumber')}
               phoneNumberError={phoneNumber.wasChanged ? phoneNumber.error : undefined}
               email={email.value}
               onEmailChange={handleFieldChange('email')}
