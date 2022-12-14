@@ -14,7 +14,7 @@ const fetchResource = (httpClient: typeof fetch) => async <T>(path: string, opti
     .then((response) => handleResponse<T>(response))
 );
 
-export const fetcher = fetchResource(getHttpClientByEnvironment());
+export const fetcher = fetchResource(fetch);
 
 async function handleResponse<T>(response: Response) {
   let data;
@@ -28,14 +28,4 @@ async function handleResponse<T>(response: Response) {
   }
 
   return data as T;
-};
-
-function getHttpClientByEnvironment() {
-  let httpClient = fetch;
-
-  if (process.env.NEXT_PUBLIC_MOCKS === 'true') {
-    httpClient = require('mocks/fetch-mock').default;
-  }
-
-  return httpClient;
 };

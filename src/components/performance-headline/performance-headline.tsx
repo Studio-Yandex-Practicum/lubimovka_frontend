@@ -1,8 +1,6 @@
 import classNames from 'classnames/bind';
-import Image from 'next/image';
 
-import type { FC, ReactNode } from 'react';
-import type { Url } from 'shared/types';
+import type { FC } from 'react';
 
 import styles from './performance-headline.module.css';
 
@@ -11,7 +9,6 @@ interface PerformanceHeadlineProps {
   description?: string
   text?: string
   cover: Url
-  actions: ReactNode | ReactNode[]
   className?: string
 }
 
@@ -21,18 +18,13 @@ export const PerformanceHeadline: FC<PerformanceHeadlineProps> = (props) => {
   const {
     title,
     description,
-    cover,
     text,
-    actions,
     className,
   } = props;
 
   return (
     <div
-      className={cx(
-        'root',
-        className
-      )}
+      className={cx(className)}
     >
       <div>
         <h1 className={cx('title')}>
@@ -43,25 +35,12 @@ export const PerformanceHeadline: FC<PerformanceHeadlineProps> = (props) => {
             {description}
           </p>
         )}
-        <div className={cx('actions')}>
-          {actions}
-        </div>
       </div>
-      <div>
-        <div className={cx('image')}>
-          <Image
-            src={cover}
-            alt=""
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
-        {text && (
-          <p className={cx('text')}>
-            {text}
-          </p>
-        )}
-      </div>
+      {text && (
+        <p className={cx('text')}>
+          {text}
+        </p>
+      )}
     </div>
   );
 };

@@ -1,0 +1,10 @@
+.root {
+  display: grid;
+  grid-template:
+    "pagination pagination"
+    "list       heading" / 1fr auto;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+  }
+}

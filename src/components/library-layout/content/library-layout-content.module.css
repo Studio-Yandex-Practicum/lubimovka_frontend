@@ -1,0 +1,4 @@
+.root {
+  z-index: 1;
+  grid-area: content;
+}

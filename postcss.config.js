@@ -1,6 +1,9 @@
 const path = require('path');
 
 const breakpoints = require('./src/shared/breakpoints');
+const heights = require('./src/shared/heights');
+
+const variables = Object.assign({}, breakpoints, heights);
 
 module.exports = {
   plugins: [
@@ -19,7 +22,7 @@ module.exports = {
     }],
     'postcss-import',
     ['postcss-simple-vars', {
-      variables: breakpoints,
+      variables,
     }],
     'postcss-nested',
     ['postcss-pxtorem', {

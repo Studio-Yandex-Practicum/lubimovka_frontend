@@ -6,7 +6,7 @@ import { AppLayout } from 'components/app-layout';
 import { SEO } from 'components/seo';
 import { Button } from 'components/ui/button';
 import LibraryForm from 'components/library-form/library-form';
-import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { PlayCard } from 'components/play-card';
 import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
 import SearchResultAuthors from 'components/search-result-authors/search-result-authors';
 import { fetcher } from 'services/fetcher';
@@ -122,7 +122,7 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
                   };
 
                   return (
-                    <BasicPlayCard key={playFromServer.id} play={play}/>
+                    <PlayCard key={playFromServer.id} play={play}/>
                   );
                 })}
               </BasicPlayCardList>
@@ -141,7 +141,7 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
                 };
 
                 return (
-                  <BasicPlayCard key={playFromServer.id} play={play}/>
+                  <PlayCard key={playFromServer.id} play={play}/>
                 );
               })}
 

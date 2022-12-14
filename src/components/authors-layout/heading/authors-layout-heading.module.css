@@ -1,0 +1,23 @@
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-right: 270px;
+  grid-area: heading;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+    margin: 0;
+  }
+}
+
+.inner {
+  position: sticky;
+  bottom: 32px;
+  align-self: flex-end;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0 36px;
+  }
+}

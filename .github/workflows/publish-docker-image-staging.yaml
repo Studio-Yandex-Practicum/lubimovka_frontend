@@ -1,0 +1,52 @@
+name: Publish staging Docker image
+concurrency:
+  group: stage_deploy
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - develop
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: lubimovka_frontend
+
+jobs:
+  push_to_registry:
+    name: Build and push Docker image
+    runs-on: ubuntu-latest
+    environment: stage_deploy
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Log in to Github Packages Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set environment variables
+        run: |
+          echo REPOSITORY_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+
+      - name: Build and publish to Github Packages Registry
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: config/docker/Dockerfile
+          labels: runnumber=${GITHUB_RUN_ID}
+          push: true
+          build-args: |
+            BASE_URL=${{ secrets.STAGING_BASE_URL }}
+            API_BASE_URL=${{ secrets.STAGING_API_BASE_URL }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.REPOSITORY_OWNER }}/${{ env.IMAGE_NAME }}:stage
+            ${{ env.REGISTRY }}/${{ env.REPOSITORY_OWNER }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.REPOSITORY_OWNER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+

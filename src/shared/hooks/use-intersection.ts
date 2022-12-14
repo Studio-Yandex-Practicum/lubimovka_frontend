@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState, useCallback, RefCallback } from 'react';
 
-import { Nullable } from 'shared/types';
-
 export const useIntersection = <T extends Element>(options?: IntersectionObserverInit) => {
   const observerRef = useRef<IntersectionObserver>();
   const [targetNode, setTargetNode] = useState<Nullable<T>>(null);

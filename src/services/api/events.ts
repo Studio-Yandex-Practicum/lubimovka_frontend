@@ -2,7 +2,7 @@ import { objectToQueryString } from '@funboxteam/diamonds';
 
 import { fetcher } from 'services/fetcher';
 
-import type { PaginatedAfishaEventListOutputList as EventsDTO } from 'api-typings';
+import type { PaginatedAfishaEventListOutputList as EventsDTO } from '__generated__/api-typings';
 import type { Event } from 'core/events';
 
 export function getEvents({ page = 1, perPage = 10 } = {}) {
