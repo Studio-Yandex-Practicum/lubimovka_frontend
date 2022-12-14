@@ -238,16 +238,6 @@ const Participation = () => {
       if (!value) {
         return 'Файл обязателен';
       }
-
-      const { name } = value as Exclude<ParticipationFormFields['file'], null>;
-
-      if (/[а-яА-ЯЁё]/.test(name)) {
-        return 'Файл содержит кириллицу, пожалуйста, переименуйте его.';
-      }
-      if (/[^A-Za-z._-]/.test(name)) {
-        return 'Пожалуйста, используйте только латинские символы и знаки - и _';
-      }
-      break;
     default:
       return;
     }
