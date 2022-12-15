@@ -44,6 +44,7 @@ jobs:
           build-args: |
             BASE_URL=${{ secrets.PRODUCTION_BASE_URL }}
             API_BASE_URL=${{ secrets.PRODUCTION_API_BASE_URL }}
+            GA_TRACKING_ID=${{ secrets.GA_TRACKING_ID }}
           tags: |
             ${{ env.REGISTRY }}/${{ env.REPOSITORY_OWNER }}/${{ env.IMAGE_NAME }}:production
             ${{ env.REGISTRY }}/${{ env.REPOSITORY_OWNER }}/${{ env.IMAGE_NAME }}:latest
