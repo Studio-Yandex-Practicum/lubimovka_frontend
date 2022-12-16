@@ -3,8 +3,6 @@ import classNames from 'classnames/bind';
 
 import { InfoLink } from 'components/ui/info-link';
 
-import type { Url } from 'shared/types';
-
 import styles from './media-review-card.module.css';
 
 interface MediaReviewCardProps {

@@ -1,3 +1,5 @@
 $page-padding-smartphone: 24px;
 $page-padding-tablet-portrait: 120px;
-$layout-column-gap-tablet-portrait: 80px;
+$column-gap-tablet-portrait: 80px;
+$left-column-width-tablet-portrait: calc(51% - $column-gap-tablet-portrait); /* Устанавливаем ширину блоков левой колонки с float: left в 51%, чтобы они не размещались в строку  */
+$right-column-width-tablet-portrait: 49%;

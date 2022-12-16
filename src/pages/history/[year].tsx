@@ -15,7 +15,7 @@ import * as breakpoints from 'shared/breakpoints';
 import itselfData from 'components/history-page/assets/mock-data-itself.json';
 
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import type { Festival, Years } from 'api-typings';
+import type { Festival, Years } from '__generated__/api-typings';
 
 const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {

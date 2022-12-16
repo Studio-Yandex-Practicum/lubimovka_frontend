@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
 
-import { Url, Email } from '../../shared/types/common';
 import { ForPressHeroTitle } from 'components/for-press-hero/for-press-hero-title';
 import { ForPressHeroDescription } from 'components/for-press-hero/for-press-hero-description';
 import { ForPressHeroPrContact } from 'components/for-press-hero/for-press-hero-pr-contact';

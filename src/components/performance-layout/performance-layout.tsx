@@ -7,6 +7,9 @@ import { PerformanceLayoutMediaReviews } from './media-reviews';
 import { PerformanceLayoutReviews } from './reviews';
 import { PerformanceLayoutBottomImage } from './bottom-image';
 import { PerformanceLayoutShare } from './share';
+import { PerformanceLayoutEvents } from './events';
+import { PerformanceLayoutIntro } from './intro';
+import { PerformanceLayoutCover } from './cover';
 
 import type { ReactNode } from 'react';
 
@@ -38,5 +41,8 @@ export const PerformanceLayout = Object.assign(Component, {
   Reviews: PerformanceLayoutReviews,
   BottomImage: PerformanceLayoutBottomImage,
   Share: PerformanceLayoutShare,
+  Events: PerformanceLayoutEvents,
+  Intro: PerformanceLayoutIntro,
+  Cover: PerformanceLayoutCover,
 });
 

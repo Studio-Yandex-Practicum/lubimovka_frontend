@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import cn from 'classnames/bind';
 
-import { Url } from '../../../shared/types/common';
 import { Opportunity } from './opportunity/opportunity';
 
 import styles from './opportunities.module.css';
