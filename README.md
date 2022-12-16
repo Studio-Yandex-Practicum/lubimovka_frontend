@@ -42,6 +42,15 @@ npm run dev
 npm run build
 ```
 
+### Переменные окружения
+
+- `NEXT_PUBLIC_MOCKS` – boolean, включает моки;
+- `NEXT_PUBLIC_BASE_URL`;
+- `NEXT_PUBLIC_API_BASE_URL`;
+- `NEXT_PUBLIC_GA_TRACKING_ID` – идентификатор ресурса Google Analytics;
+
+[Как добавить переменную окружения локально?](https://nextjs.org/docs/basic-features/environment-variables)
+
 ### Базовые команды
 
 #### Проверка кода:
