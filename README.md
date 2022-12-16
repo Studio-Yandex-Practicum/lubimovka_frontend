@@ -21,6 +21,14 @@ cd lubimovka_frontend
 npm install
 ```
 
+### Настройка переменных окружения
+
+- `NEXT_PUBLIC_BASE_URL`;
+- `NEXT_PUBLIC_API_BASE_URL`;
+- `NEXT_PUBLIC_API_MOCKING` – в значении `enabled` включает моки;
+
+[Как добавить переменную окружения локально?](https://nextjs.org/docs/basic-features/environment-variables)
+
 ### Запуск окружения разработки
 
 ```bash

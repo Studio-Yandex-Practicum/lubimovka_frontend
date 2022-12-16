@@ -1,9 +1,9 @@
 .root {
   min-width: 0;
   margin-bottom: 64px;
-  grid-area: reviews;
 
   @media (max-width: $tablet-portrait) {
+    order: 9;
     margin-bottom: 0;
   }
 }

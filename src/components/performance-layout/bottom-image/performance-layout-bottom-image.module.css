@@ -2,9 +2,9 @@
   position: relative;
   height: 404px;
   margin-bottom: 60px;
-  grid-area: bottom-image;
 
   @media (max-width: $tablet-portrait) {
     height: 252px;
+    order: 11;
   }
 }

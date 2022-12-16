@@ -8,7 +8,7 @@ import type {
   VideosBlock,
   ContentUnitRichText,
   Link,
-} from 'api-typings';
+} from '__generated__/api-typings';
 
 export type ConstructorBlock = {
   content_type: ConstructorBlockType.Images

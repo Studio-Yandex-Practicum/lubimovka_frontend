@@ -1,0 +1,20 @@
+.root {
+  position: sticky;
+  z-index: 3;
+  top: calc(var(--height-navbar-tablet-portrait) + var(--height-library-navigation-menu-tablet-portrait));
+  display: flex;
+  border-bottom: 1px solid var(--coal);
+  margin: 20px 0 52px;
+  background-color: var(--beige);
+  grid-area: pagination;
+  place-content: center;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin hide-scrollbars;
+
+    position: static;
+    display: block;
+    margin: 0 0 56px;
+    overflow-x: auto;
+  }
+}

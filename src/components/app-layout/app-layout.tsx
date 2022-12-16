@@ -23,25 +23,20 @@ import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 import * as breakpoints from 'shared/breakpoints.js';
 
-import type { ReactNode } from 'react';
 import type { NavbarProps } from 'components/navbar';
 
-type disallowedNavbarProps = 'children' | 'view'
-
 interface AppLayoutProps {
-  hiddenPartners?: boolean
-  navbarProps?: Exclude<NavbarProps, disallowedNavbarProps>
-  headBanner?: ReactNode
-  children: ReactNode
+  noNavbar?: boolean
+  navbarProps?: Pick<NavbarProps, 'colors'>
 }
 
-export const AppLayout = (props: AppLayoutProps) => {
+export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (props) => {
   const {
     children,
-    hiddenPartners,
+    noNavbar,
     navbarProps,
-    headBanner,
   } = props;
+
   const { projects, generalPartners, settings } = usePersistentData();
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
@@ -59,58 +54,51 @@ export const AppLayout = (props: AppLayoutProps) => {
 
   return (
     <Page>
-      {headBanner && (
-        <Page.HeadBanner>
-          {headBanner}
-        </Page.HeadBanner>
-      )}
-      <Page.Navbar>
-        <Navbar
-          view={headBanner ? 'expanded' : 'normal'}
-          {...navbarProps}
-        >
-          <Navbar.Logotype>
-            <Logotype
-              href="/"
-              title="Фестиваль Любимовка"
-              full={navbarProps?.view === 'expanded'}
-            />
-          </Navbar.Logotype>
-          <Navbar.Actions>
-            <Navbar.Section primary>
-              <Menu type="main-navigation">
-                {mainNavigationItems
-                  .filter(item => !item.mobileOnly)
-                  .map((item) => (
-                    <Menu.Item
-                      key={item.href}
-                      href={item.href}
-                      current={router.asPath.startsWith(item.href)}
-                    >
+      {noNavbar || (
+        <Page.Navbar>
+          <Navbar {...navbarProps}>
+            <Navbar.Logotype>
+              <Logotype
+                href="/"
+                title="Фестиваль Любимовка"
+              />
+            </Navbar.Logotype>
+            <Navbar.Actions>
+              <Navbar.Section primary>
+                <Menu type="main-navigation">
+                  {mainNavigationItems
+                    .filter(item => !item.mobileOnly)
+                    .map((item) => (
+                      <Menu.Item
+                        key={item.href}
+                        href={item.href}
+                        current={router.asPath.startsWith(item.href)}
+                      >
+                        {item.text}
+                      </Menu.Item>
+                    ))}
+                </Menu>
+              </Navbar.Section>
+              <Navbar.Section>
+                <Menu type="social-links">
+                  {socialLinkItems.map((item) => (
+                    <Menu.Item key={item.href} href={item.href}>
                       {item.text}
                     </Menu.Item>
                   ))}
-              </Menu>
-            </Navbar.Section>
-            <Navbar.Section>
-              <Menu type="social-links">
-                {socialLinkItems.map((item) => (
-                  <Menu.Item key={item.href} href={item.href}>
-                    {item.text}
-                  </Menu.Item>
-                ))}
-              </Menu>
-            </Navbar.Section>
-            <Navbar.Section>
-              <DonationLink href={donationPath}/>
-            </Navbar.Section>
-          </Navbar.Actions>
-        </Navbar>
-      </Page.Navbar>
+                </Menu>
+              </Navbar.Section>
+              <Navbar.Section>
+                <DonationLink href={donationPath}/>
+              </Navbar.Section>
+            </Navbar.Actions>
+          </Navbar>
+        </Page.Navbar>
+      )}
       {children}
       <Page.Footer>
         <Footer privacyPolicyUrl={settings?.privacyPolicyUrl}>
-          {!hiddenPartners && generalPartners && generalPartners?.length > 0 && (
+          {generalPartners && generalPartners?.length > 0 && (
             <Footer.Partners>
               <PartnerList size="s">
                 {generalPartners.map((partner) => (

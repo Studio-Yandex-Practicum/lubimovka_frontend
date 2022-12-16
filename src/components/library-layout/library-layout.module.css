@@ -1,0 +1,107 @@
+.common {
+  position: relative;
+  display: grid;
+  column-gap: 30px;
+  grid-template-columns: 330px 1fr;
+  isolation: isolate;
+
+  --height-library-navigation-menu-tablet-portrait: 80px;
+
+  @media (max-width: $tablet-portrait) {
+    grid-template-columns: 1fr;
+  }
+
+  &::before {
+    position: sticky;
+    z-index: 2;
+    top: var(--height-navbar-tablet-portrait);
+    display: block;
+    height: var(--height-library-navigation-menu-tablet-portrait);
+    margin-bottom: calc(-1 * var(--height-library-navigation-menu-tablet-portrait));
+    background-color: var(--beige);
+    content: '';
+    grid-area: backdrop;
+  }
+}
+
+.authors {
+  composes: common;
+  grid-template-areas:
+    "backdrop   backdrop"
+    "navigation heading"
+    ".          heading"
+    ".          search"
+    "pagination pagination"
+    "content    content";
+  grid-template-rows: repeat(5, auto) 1fr;
+
+  @media (max-width: $tablet-portrait) {
+    grid-template-areas:
+      "heading"
+      "search"
+      "navigation"
+      "pagination"
+      "content";
+  }
+}
+
+.plays {
+  composes: common;
+  grid-template-areas:
+    "navigation heading"
+    "sidebar    heading"
+    "sidebar    content";
+}
+
+.heading {
+  padding: 60px 0 20px;
+  grid-area: heading;
+
+  @media (max-width: $tablet-portrait) {
+    padding: 0 24px;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline1;
+
+  position: relative;
+  z-index: 3;
+  margin: 0 0 16px;
+  text-align: center;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline4;
+
+    margin-bottom: 8px;
+    text-align: left;
+  }
+}
+
+.search {
+  position: sticky;
+  z-index: 3;
+  top: calc(var(--height-navbar-tablet-portrait) + 24px);
+  grid-area: search;
+
+  @media (max-width: $tablet-portrait) {
+    position: static;
+    padding: 0 24px;
+  }
+}
+
+.navigation {
+  position: sticky;
+  z-index: 3;
+  top: var(--height-navbar-tablet-portrait);
+  display: flex;
+  height: var(--height-library-navigation-menu-tablet-portrait);
+  padding: 0 0 0 30px;
+  grid-area: navigation;
+
+  @media (max-width: $tablet-portrait) {
+    position: static;
+    border-bottom: 1px solid var(--coal);
+  }
+}

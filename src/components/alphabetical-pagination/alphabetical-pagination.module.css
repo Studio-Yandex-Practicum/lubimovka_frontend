@@ -1,0 +1,36 @@
+.list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: block;
+
+  &:not(:last-child) {
+    margin-right: 12px;
+  }
+}
+
+.link {
+  @mixin text;
+
+  display: block;
+  padding: 12px 10px;
+  color: inherit;
+  font-size: 20px;
+  line-height: 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &.current {
+    background-color: var(--coal);
+    color: var(--white);
+    pointer-events: none;
+  }
+
+  &.disabled {
+    color: var(--gray);
+    pointer-events: none;
+  }
+}

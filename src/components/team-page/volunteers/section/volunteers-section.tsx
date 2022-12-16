@@ -11,7 +11,7 @@ import { useMediaQuery } from 'shared/hooks/use-media-query';
 import * as breakpoints from 'shared/breakpoints';
 
 import type { FC } from 'react';
-import type { Volunteers } from 'api-typings';
+import type { Volunteers } from '__generated__/api-typings';
 
 import styles from './volunteers-section.module.css';
 
