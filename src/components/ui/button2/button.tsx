@@ -13,22 +13,23 @@ interface CommonProps {
   fullWidth?: boolean
   upperCase?: boolean
   disabled?: boolean
+  pressed?: boolean
   className?: string
 }
 
-interface AnchorProps extends CommonProps {
+interface AnchorProps extends PropsWithChildren<CommonProps> {
   href?: string
   target?: '_blank' | '_self' | '_parent' | '_top'
 }
 
-interface ButtonProps extends CommonProps {
+export interface ButtonProps extends PropsWithChildren<CommonProps> {
   type: 'submit' | 'reset' | 'button';
   onClick: () => void
 }
 
 const cx = classNames.bind(styles);
 
-export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, PropsWithChildren<ButtonProps | AnchorProps>>((props, ref) => {
+export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps | AnchorProps>((props, ref) => {
   const {
     className,
     size = 'm',
@@ -36,6 +37,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, PropsWit
     fullWidth,
     upperCase,
     disabled,
+    pressed,
     icon,
     iconPosition = 'left',
     children,
@@ -54,6 +56,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, PropsWit
           'full-width': fullWidth,
           'upper-case': upperCase,
           disabled,
+          pressed,
         },
         className,
       )}

@@ -1,94 +1,16 @@
-.common {
-  @mixin text;
-
-  position: relative;
-  font-size: 20px;
-  line-height: 28px;
-  user-select: none;
-}
-
-.closed {
-  composes: common;
-}
-
-.handle {
-  @mixin limitText;
-
-  position: relative;
-  display: block;
-  width: 100%;
-  padding: 8px 42px 8px 16px;
-  border: 1px solid var(--coal);
-  border-top: 0;
-  background: 0;
-  font: inherit;
-  text-align: left;
-
-  &:hover {
-    background-color: var(--coal);
-    color: var(--white);
-  }
-
-  &::after {
-    position: absolute;
-    top: 50%;
-    right: 8px;
-    display: block;
-    width: 20px;
-    height: 20px;
-    background-color: var(--coal);
-    background-color: currentColor;
-    content: '';
-    mask: url('../../shared/icons/arrow-down.svg') 100% 100%;
-    mask-size: cover;
-    transform: translateY(-50%);
-  }
-}
-
-.dropdown {
-  top: 100%;
-  display: none;
-  width: 100%;
-  max-height: 260px;
-  box-sizing: border-box;
+.list {
   padding: 0;
-  border: 1px solid var(--coal);
-  border-top: 0;
   margin: 0;
-  background-color: var(--beige);
-  overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--coal);
-  }
-
-  &::-webkit-scrollbar-track {
-    background: 0;
-  }
-}
-
-.opened {
-  composes: common;
-
-  .dropdown {
-    position: absolute;
-    z-index: 1;
-    display: block;
-  }
-
-  .handle {
-    background-color: var(--coal);
-    color: var(--white);
-  }
 }
 
 .option-common {
+  @mixin text;
+
   display: block;
   padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 28px;
 }
 
 .option-regular {
@@ -110,5 +32,11 @@
     border-radius: 5px;
     content: '';
     transform: translateY(-50%);
+  }
+}
+
+.brand {
+  .popup {
+    background-color: var(--beige);
   }
 }

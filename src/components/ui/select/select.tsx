@@ -1,5 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import classNames from 'classnames/bind';
+
+import { Dropdown } from 'components/ui/dropdown';
+import { Icon } from 'components/ui/icon';
 
 import styles from './select.module.css';
 
@@ -11,8 +14,9 @@ export type SelectOption<ValueType = string | number> = {
 export type SelectOptionCheckHandler<ValueType = string | number> = (option: SelectOption<ValueType | null>) => void
 
 interface SelectProps<T> {
-  clearable?: boolean,
-  placeholder: string,
+  colors?: 'default' | 'brand'
+  clearable?: boolean
+  placeholder: string
   options: SelectOption<T>[]
   selectedOption?: SelectOption<T>
   onChange: SelectOptionCheckHandler<T>
@@ -26,9 +30,8 @@ const emptyOption = {
 };
 
 export const Select = <ValueType,>(props: SelectProps<ValueType>) => {
-  const [opened, setOpened] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
   const {
+    colors = 'default',
     clearable = false,
     placeholder,
     options,
@@ -36,52 +39,46 @@ export const Select = <ValueType,>(props: SelectProps<ValueType>) => {
     onChange,
   } = props;
 
+  const [opened, setOpened] = useState(false);
+
   const handleOptionCheck = (option: SelectOption<ValueType | null>) => () => {
     if (onChange) {
       onChange(option);
     }
-    closeDropdown();
-  };
-
-  const toggleDropdown = () => {
-    setOpened((opened) => !opened);
-  };
-
-  const closeDropdown = () => {
     setOpened(false);
   };
 
-  const handleClickOutside = (event: MouseEvent | KeyboardEvent) => {
-    if (containerRef.current && containerRef.current.contains(event.target as Node)) {
-      return;
-    }
-    closeDropdown();
-  };
+  const handleDropdownOpen = useCallback(() => {
+    setOpened(true);
+  }, []);
 
-  useEffect(() => {
-    (['click', 'keyup'] as const).forEach((event) => {
-      window.addEventListener(event, handleClickOutside, true);
-    });
-
-    return () => {
-      (['click', 'keyup'] as const).forEach((event) => {
-        window.removeEventListener(event, handleClickOutside, true);
-      });
-    };
+  const handleDropdownClose = useCallback(() => {
+    setOpened(false);
   }, []);
 
   return (
-    <div
-      className={cx(opened ? 'opened' : 'closed')}
-      ref={containerRef}
+    <Dropdown
+      className={cx([colors])}
+      opened={opened}
+      buttonProps={{
+        icon: (
+          <Icon
+            glyph="arrow-down"
+            width="100%"
+            height="100%"
+          />
+        ),
+        iconPosition: 'right',
+        border: 'right-bottom-left',
+        children: selectedOption?.text || placeholder,
+      }}
+      popupProps={{
+        className: cx('popup'),
+      }}
+      onOpen={handleDropdownOpen}
+      onClose={handleDropdownClose}
     >
-      <button
-        className={cx('handle')}
-        onClick={toggleDropdown}
-      >
-        {selectedOption?.text || placeholder}
-      </button>
-      <ul className={cx('dropdown')}>
+      <ul className={cx('list')}>
         {clearable && selectedOption && (
           <li
             className={cx('option-regular')}
@@ -90,9 +87,9 @@ export const Select = <ValueType,>(props: SelectProps<ValueType>) => {
             {emptyOption.text}
           </li>
         )}
-        {options.map((option, index) => (
+        {options.map((option) => (
           <li
-            key={index}
+            key={`${option.value}`}
             className={cx(option === selectedOption ? 'option-selected' : 'option-regular')}
             onMouseDown={handleOptionCheck(option)}
           >
@@ -100,6 +97,6 @@ export const Select = <ValueType,>(props: SelectProps<ValueType>) => {
           </li>
         ))}
       </ul>
-    </div>
+    </Dropdown>
   );
 };

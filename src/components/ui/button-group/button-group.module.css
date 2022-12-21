@@ -1,0 +1,29 @@
+@value tablet-portrait from 'shared/styles/media.module.css';
+
+$item-gap: 8px;
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -$item-gap -$item-gap 0;
+
+  @media tablet-portrait {
+    flex-wrap: nowrap;
+    margin: 0;
+  }
+}
+
+.item {
+  display: block;
+  margin: 0 $item-gap $item-gap 0;
+
+  @media tablet-portrait {
+    margin: 0;
+  }
+
+  &:not(:last-child) {
+    @media tablet-portrait {
+      margin: 0 $item-gap 0 0;
+    }
+  }
+}

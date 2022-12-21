@@ -1,0 +1,19 @@
+.window {
+  position: relative;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-self: flex-start;
+  padding: 102px 24px;
+  background-color: var(--beige);
+}
+
+.close {
+  position: absolute;
+  top: 32px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background-color: var(--light-green);
+  font-size: 0;
+}

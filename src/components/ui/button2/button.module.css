@@ -53,6 +53,7 @@ $border-width: 1px;
 
 .text {
   @mixin text;
+  @mixin text-truncate;
 }
 
 .xs {
@@ -155,6 +156,11 @@ $border-width: 1px;
   border-color: var(--gray);
   color: var(--gray);
   pointer-events: none;
+}
+
+.common.pressed {
+  background-color: var(--coal);
+  color: var(--white);
 }
 
 @keyframes background-slide {

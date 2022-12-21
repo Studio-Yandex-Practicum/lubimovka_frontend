@@ -2,7 +2,7 @@ import { FC, useState, useReducer, useEffect } from 'react';
 import { objectToQueryString } from '@funboxteam/diamonds';
 
 import { fetcher } from 'services/fetcher';
-import { useDidMountEffect } from 'shared/hooks/use-did-mount-effect';
+import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
 import { omit } from 'shared/helpers/omit';
 import { isNil } from 'shared/helpers/is-nil';
 import { entriesPerPage } from 'shared/constants/news';
@@ -124,7 +124,7 @@ export const NewsProvider: FC<NewsProviderProps> = (props) => {
     dispatch({ type: NewsActionType.SetPreloadedNews, payload: preloadedNewsState });
   }, [preloadedNewsState]);
 
-  useDidMountEffect(() => {
+  useEffectAfterMount(() => {
     if (selectedMonth && !selectedYear) {
       return;
     }
@@ -132,7 +132,7 @@ export const NewsProvider: FC<NewsProviderProps> = (props) => {
     dispatch({ type: NewsActionType.Reset });
   }, [selectedMonth, selectedYear]);
 
-  useDidMountEffect(() => {
+  useEffectAfterMount(() => {
     if (!news.offset && !filterWasChanged) {
       return;
     }

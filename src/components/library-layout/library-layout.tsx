@@ -4,10 +4,6 @@ import { useRouter } from 'next/router';
 import { Menu } from 'components/ui/menu';
 import LibraryForm from 'components/library-form';
 
-import { LibraryLayoutSidebar } from './sidebar';
-import { LibraryLayoutContent } from './content';
-import { LibraryLayoutPagination } from './pagination';
-
 import styles from './library-layout.module.css';
 
 interface LibraryLayoutProps {
@@ -27,7 +23,7 @@ const libraryNavigationItems = [
 
 const cx = classNames.bind(styles);
 
-const Component: React.FC<LibraryLayoutProps> = (props) => {
+export const LibraryLayout: React.FC<LibraryLayoutProps> = (props) => {
   const {
     variant,
     children,
@@ -62,9 +58,3 @@ const Component: React.FC<LibraryLayoutProps> = (props) => {
     </div>
   );
 };
-
-export const LibraryLayout = Object.assign(Component, {
-  Sidebar: LibraryLayoutSidebar,
-  Content: LibraryLayoutContent,
-  Pagination: LibraryLayoutPagination,
-});

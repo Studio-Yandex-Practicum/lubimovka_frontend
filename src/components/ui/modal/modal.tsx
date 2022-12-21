@@ -1,26 +1,25 @@
-import { ReactNode, FC, KeyboardEvent } from 'react';
 import classNames from 'classnames/bind';
 import FocusLock from 'react-focus-lock';
 
 import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
-import { ModalBackdrop, IModalBackdropProps } from './backdrop';
 import { Portal } from 'components/ui/portal';
+
+import type { ModalBackdropProps } from './backdrop';
 
 import styles from './modal.module.css';
 
 const cx = classNames.bind(styles);
 
-interface IModalProps {
-  children: ReactNode,
+interface ModalProps {
   isOpen: boolean,
   onClose: () => void,
-  Backdrop?: FC<IModalBackdropProps>,
+  backdrop?: React.FC<ModalBackdropProps>,
 }
 
-export const Modal = (props: IModalProps): JSX.Element | null=> {
+export const Modal: React.FC<ModalProps> = (props) => {
   const {
     children,
-    Backdrop,
+    backdrop: Backdrop,
     isOpen,
     onClose,
   } = props;
@@ -29,7 +28,7 @@ export const Modal = (props: IModalProps): JSX.Element | null=> {
 
   if (!isOpen) return null;
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Escape') {
       onClose();
     }
@@ -51,5 +50,3 @@ export const Modal = (props: IModalProps): JSX.Element | null=> {
     </Portal>
   );
 };
-
-Modal.Backdrop = ModalBackdrop;

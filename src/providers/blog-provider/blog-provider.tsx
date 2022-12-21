@@ -3,7 +3,7 @@ import { objectToQueryString } from '@funboxteam/diamonds';
 
 import { omit } from 'shared/helpers/omit';
 import { isNil } from 'shared/helpers/is-nil';
-import { useDidMountEffect } from 'shared/hooks/use-did-mount-effect';
+import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
 import { fetcher } from 'services/fetcher';
 import { entriesPerPage } from 'shared/constants/blog';
 import { BlogContext } from './blog-provider.context';
@@ -106,7 +106,7 @@ export const BlogProvider: FC = (props) => {
     setPending(false);
   };
 
-  useDidMountEffect(() => {
+  useEffectAfterMount(() => {
     if (selectedMonth && !selectedYear) {
       return;
     }
@@ -114,7 +114,7 @@ export const BlogProvider: FC = (props) => {
     dispatch({ type: BlogActionType.Reset });
   }, [selectedYear, selectedMonth]);
 
-  useDidMountEffect(() => {
+  useEffectAfterMount(() => {
     if (!blog.offset && !filterWasChanged) {
       return;
     }

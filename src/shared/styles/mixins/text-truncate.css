@@ -1,0 +1,13 @@
+@define-mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@define-mixin text-truncate-multiline $line-count {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line-count;
+  word-break: break-word;
+}

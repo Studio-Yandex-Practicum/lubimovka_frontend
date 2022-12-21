@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
-import { SEO } from 'components/seo';
-import { AppLayout } from 'components/app-layout';
 import { objectToQueryString } from '@funboxteam/diamonds';
 import Link from 'next/link';
+import { encode } from 'querystring';
 
+import { SEO } from 'components/seo';
+import { AppLayout } from 'components/app-layout';
 import { AuthorsLayout } from 'components/authors-layout/authors-layout';
 import { AlphabeticalPagination } from 'components/alphabetical-pagination';
 import { AuthorList } from 'components/author-list';
@@ -62,7 +63,7 @@ const Authors = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
       <SEO title="Авторы"/>
       <AppLayout>
         <LibraryLayout variant="authors">
-          <LibraryLayout.Content>
+          <LibraryLayout.Slot area="content">
             <AuthorsLayout>
               <AuthorsLayout.Heading>
                 <AuthorListHeading
@@ -88,14 +89,14 @@ const Authors = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
                 </AuthorList>
               </AuthorsLayout.List>
             </AuthorsLayout>
-          </LibraryLayout.Content>
-          <LibraryLayout.Pagination>
+          </LibraryLayout.Slot>
+          <LibraryLayout.Slot area="pagination">
             <AlphabeticalPagination
               currentLetter={currentLetter}
               availableLetters={availableLetters}
               onLetterChange={setCurrentLetter}
             />
-          </LibraryLayout.Pagination>
+          </LibraryLayout.Slot>
         </LibraryLayout>
       </AppLayout>
     </>
@@ -103,16 +104,14 @@ const Authors = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
 };
 
 export const getServerSideProps: GetServerSideProps<AuthorsProps> = async (ctx) => {
-  const paramLetter = (Array.isArray(ctx.query.letter) ? ctx.query.letter[0] : ctx.query.letter)?.toLowerCase();
-  const decodedParamLetter = paramLetter ? decodeURIComponent(paramLetter) : undefined;
+  const searchParams = new URLSearchParams(encode(ctx.query));
   const availableLetters = await getAvailableAuthorsPaginationLetters();
   const fallbackLetter = availableLetters[0] || alphabeticalPaginationLetters[0];
+  const targetLetter = searchParams.get('letter');
 
-  if (
-    decodedParamLetter
-      && (!availableLetters.includes(decodedParamLetter)
-      || !(alphabeticalPaginationLetters as readonly string[]).includes(decodedParamLetter))
-  ) {
+  if (targetLetter
+      && (!availableLetters.includes(targetLetter)
+      || !(alphabeticalPaginationLetters).includes(targetLetter))) {
     return {
       redirect: {
         destination: `/library/authors/${objectToQueryString({ letter: fallbackLetter })}`,
@@ -121,14 +120,14 @@ export const getServerSideProps: GetServerSideProps<AuthorsProps> = async (ctx) 
     };
   }
 
-  const currentLetter = decodedParamLetter || fallbackLetter;
+  const currentLetter = targetLetter || fallbackLetter;
   const authors = await getAuthors({ letter: currentLetter });
 
   return {
     props: {
       authors,
       currentLetter,
-      availableLetters: availableLetters as AlphabeticalPaginationLetter[],
+      availableLetters: availableLetters,
     }
   };
 };
