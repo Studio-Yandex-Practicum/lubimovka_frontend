@@ -25,7 +25,7 @@ export const Lightbox = (props: ILightboxProps): JSX.Element => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      Backdrop={Modal.Backdrop}
+      backdrop={Modal.Backdrop}
     >
       <LightboxImageSlider
         className={cx('slider')}

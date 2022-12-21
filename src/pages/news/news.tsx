@@ -5,7 +5,7 @@ import { AppLayout } from 'components/app-layout';
 import { NewsLayout } from 'components/news-layout';
 import { PageTitle } from 'components/page-title';
 import { Filter } from 'components/filter';
-import { Select } from 'components/select';
+import { Select } from 'components/ui/select';
 import { NewsList } from 'components/news-list';
 import { NewsCard } from 'components/news-card';
 import { SEO } from 'components/seo';
@@ -19,7 +19,7 @@ import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import type { InferGetServerSidePropsType } from 'next';
 import type { PaginatedNewsItemListList, NewsItemYearsMonthsOutput } from '__generated__/api-typings';
-import type { SelectOptionCheckHandler } from 'components/select';
+import type { SelectOptionCheckHandler } from 'components/ui/select';
 
 import styles from 'components/news-layout/news-layout.module.css';
 

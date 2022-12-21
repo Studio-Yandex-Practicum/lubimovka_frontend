@@ -9,6 +9,7 @@
 
   @media (max-width: $tablet-portrait) {
     position: static;
+    z-index: auto;
     border: 0;
   }
 }

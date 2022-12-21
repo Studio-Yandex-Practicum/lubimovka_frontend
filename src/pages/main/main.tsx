@@ -172,7 +172,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                 title={short_list.title}
                 type="homepage-shortlist"
               >
-                <PlayList>
+                <PlayList variant="scrollable">
                   {short_list.items.map((item) => (
                     <PlayList.Item key={item.id}>
                       <PlayCard

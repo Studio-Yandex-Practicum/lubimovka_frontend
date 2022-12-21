@@ -1,0 +1,42 @@
+.list {
+  padding: 0;
+  margin: 0;
+}
+
+.option-common {
+  @mixin text;
+
+  display: block;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.option-regular {
+  composes: option-common;
+}
+
+.option-selected {
+  composes: option-common;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--coal);
+    border-radius: 5px;
+    content: '';
+    transform: translateY(-50%);
+  }
+}
+
+.brand {
+  .popup {
+    background-color: var(--beige);
+  }
+}

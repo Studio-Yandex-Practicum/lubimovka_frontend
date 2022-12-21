@@ -35,7 +35,7 @@
 .title {
   @mixin headline;
   @mixin headline7;
-  @mixin truncated-text 6;
+  @mixin text-truncate-multiline 6;
 
   margin: 24px 31px auto 24px;
 

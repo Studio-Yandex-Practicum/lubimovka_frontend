@@ -1,3 +1,5 @@
+@value tablet-portrait from 'shared/styles/media.module.css';
+
 .common {
   position: relative;
   display: grid;
@@ -7,7 +9,7 @@
 
   --height-library-navigation-menu-tablet-portrait: 80px;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     grid-template-columns: 1fr;
   }
 
@@ -24,40 +26,11 @@
   }
 }
 
-.authors {
-  composes: common;
-  grid-template-areas:
-    "backdrop   backdrop"
-    "navigation heading"
-    ".          heading"
-    ".          search"
-    "pagination pagination"
-    "content    content";
-  grid-template-rows: repeat(5, auto) 1fr;
-
-  @media (max-width: $tablet-portrait) {
-    grid-template-areas:
-      "heading"
-      "search"
-      "navigation"
-      "pagination"
-      "content";
-  }
-}
-
-.plays {
-  composes: common;
-  grid-template-areas:
-    "navigation heading"
-    "sidebar    heading"
-    "sidebar    content";
-}
-
 .heading {
   padding: 60px 0 20px;
   grid-area: heading;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     padding: 0 24px;
   }
 }
@@ -71,9 +44,10 @@
   margin: 0 0 16px;
   text-align: center;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     @mixin headline4;
 
+    z-index: auto;
     margin-bottom: 8px;
     text-align: left;
   }
@@ -82,11 +56,11 @@
 .search {
   position: sticky;
   z-index: 3;
-  top: calc(var(--height-navbar-tablet-portrait) + 24px);
   grid-area: search;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     position: static;
+    z-index: auto;
     padding: 0 24px;
   }
 }
@@ -100,8 +74,145 @@
   padding: 0 0 0 30px;
   grid-area: navigation;
 
-  @media (max-width: $tablet-portrait) {
-    position: static;
+  @media tablet-portrait {
+    z-index: 1;
+    top: 0;
     border-bottom: 1px solid var(--coal);
   }
+}
+
+.content {
+  z-index: 1;
+  grid-area: content;
+
+  @media tablet-portrait {
+    z-index: auto;
+  }
+}
+
+.pagination {
+  position: sticky;
+  z-index: 3;
+  top: calc(var(--height-navbar-tablet-portrait) + var(--height-library-navigation-menu-tablet-portrait));
+  display: flex;
+  border-bottom: 1px solid var(--coal);
+  margin: 20px 0 52px;
+  background-color: var(--beige);
+  grid-area: pagination;
+  place-content: center;
+
+  @media tablet-portrait {
+    @mixin hide-scrollbars;
+
+    top: var(--height-library-navigation-menu-tablet-portrait);
+    display: block;
+    margin: 0 0 56px;
+    overflow-x: auto;
+  }
+}
+
+.authors {
+  composes: common;
+  grid-template-areas:
+    "backdrop   backdrop"
+    "navigation heading"
+    ".          heading"
+    ".          search"
+    "pagination pagination"
+    "content    content";
+  grid-template-rows: repeat(5, auto) 1fr;
+
+  @media tablet-portrait {
+    grid-template-areas:
+      "heading"
+      "search"
+      "navigation"
+      "pagination"
+      "content";
+  }
+
+  .search {
+    top: calc(var(--height-navbar-tablet-portrait) + 24px);
+  }
+}
+
+.plays {
+  composes: common;
+  grid-template-areas:
+    "backdrop   backdrop"
+    "navigation heading"
+    "filter    heading"
+    "filter    search"
+    "filter    content";
+  grid-template-rows: repeat(4, auto) 1fr;
+
+  @media tablet-portrait {
+    grid-template-areas:
+      "heading"
+      "search"
+      "navigation"
+      "filter"
+      "content";
+  }
+
+  .search {
+    top: calc(var(--height-navbar-tablet-portrait) + 48px);
+  }
+
+  .navigation {
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--coal);
+
+    @media tablet-portrait {
+      border: 0;
+    }
+  }
+
+  .filter {
+    @mixin hide-scrollbars;
+
+    position: sticky;
+    top: calc(var(--height-navbar-tablet-portrait) + var(--height-library-navigation-menu-tablet-portrait));
+    height: calc(100vh - var(--height-navbar-tablet-portrait) - var(--height-library-navigation-menu-tablet-portrait));
+    box-sizing: border-box;
+    align-self: flex-start;
+    padding: 30px 0 30px 30px;
+    grid-area: filter;
+    overflow-y: auto;
+
+    @media tablet-portrait {
+      position: static;
+      height: auto;
+      padding: 16px 24px;
+      overflow-x: auto;
+    }
+  }
+
+  .content {
+    padding-right: 28px;
+    margin-top: 56px;
+
+    @media tablet-portrait {
+      padding: 0;
+    }
+  }
+}
+
+.filter-toggler {
+  position: fixed;
+  z-index: 2;
+  top: 32px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background-color: var(--light-green);
+  font-size: 0;
+}
+
+.spinner {
+  width: 64px;
+  margin: 0 auto;
+
+  --delay: 200ms;
 }

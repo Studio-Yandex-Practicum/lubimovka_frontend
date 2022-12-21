@@ -3,6 +3,6 @@
 
   @media (max-width: $tablet-portrait) {
     position: relative;
-    min-width: 240px;
+    width: 244px;
   }
 }

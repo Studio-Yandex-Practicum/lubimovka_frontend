@@ -1,6 +1,8 @@
 import { createContext, useContext } from 'react';
 
-import { MenuType } from './menu';
+import { styles } from './menu.styles';
+
+export type MenuType = keyof typeof styles;
 
 type MenuContext = {
   type: MenuType;

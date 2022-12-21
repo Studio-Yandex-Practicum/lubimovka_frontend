@@ -2,23 +2,22 @@ import classNames from 'classnames/bind';
 
 import { PlayListItem } from './item';
 
-import type { ReactNode } from 'react';
-
 import style from './play-list.module.css';
 
 const cx = classNames.bind(style);
 
 interface PlayListProps {
-  children: ReactNode,
+  variant?: 'regular' | 'scrollable'
 }
 
-const Component = (props: PlayListProps) => {
+const Component = (props: React.PropsWithChildren<PlayListProps>) => {
   const {
+    variant = 'regular',
     children,
   } = props;
 
   return (
-    <ul className={cx('root')}>
+    <ul className={cx(variant)}>
       {children}
     </ul>
   );

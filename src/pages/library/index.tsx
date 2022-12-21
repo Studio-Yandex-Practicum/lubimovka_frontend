@@ -1,127 +1,320 @@
-import { useEffect, useState, useReducer, useRef } from 'react';
+import { useCallback, useState, useRef, useMemo } from 'react';
+import { useRouter } from 'next/router';
+import { debounce } from '@funboxteam/diamonds';
+import { encode } from 'querystring';
+import isEqual from 'lodash/isEqual';
+import Error from 'next/error';
 
 import { AppLayout } from 'components/app-layout';
-import LibraryPage from 'components/library-pieces-page';
+import { LibraryLayout } from 'components/library-layout';
 import { SEO } from 'components/seo';
-import { fetcher } from 'services/fetcher';
-import reducer from 'components/library-filter/library-filter-reducer';
-// TODO: непонятно, зачем нам еще одна реализация, если утилита есть в пакете funbox/diamonds
-// причем сейчас queryParser делает все противоположно своему названию — превращает объект в строку
-// и лежит хелпер внутри компонента, нужно унести
-import queryParser from 'components/library-pieces-page/library-query-parser';
-import LibraryFiltersProvider from 'providers/library-filters-provider';
-import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { Filter } from 'components/filter';
+import { MultipleSelect } from 'components/ui/multiple-select';
+import { Checkbox } from 'components/ui/checkbox';
+import { PlayCard } from 'components/play-card';
+import { PlayList } from 'components/play-list';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
+import { ButtonGroup } from 'components/ui/button-group';
+import { CheckboxGroup } from 'components/ui/checkbox-group';
+import { PlayFilterDialog } from 'components/play-filter-dialog';
+import { objectMap } from 'shared/helpers/object-map';
+import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
+import breakpoints from 'shared/breakpoints';
+
+import { getPlays, getPlayFilters } from 'services/api/plays';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import type { PaginatedPlayList, Play, PlayFilters } from '__generated__/api-typings';
 
-// TODO: скорее всего, этому интерфейсу здесь не место, потому что он никак не используется
-export interface IProgram {
-  'pk': number,
-  'name': string
-}
+type PlaysViewProps = InferGetServerSidePropsType<typeof getServerSideProps>
+type FilterState = PlaysViewProps['defaultFilterState'];
+type FilterParam = keyof FilterState;
 
-const Library = ({ pieces, years, programs, defaultState }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const isInitial = useRef<boolean>(true); //  TODO: Судя по неймингу, эта переменная нужна, чтобы скипнуть первый рендер в useEffect, но в проекте есть хук для этого
-  const [piecesState, setPiecesState] = useState<Play[]>(pieces);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [filterState, filterDispatcher] = useReducer(reducer, defaultState);
+const Plays = (props: PlaysViewProps) => {
+  const router = useRouter();
 
-  useEffect(() => {
-    if(isInitial.current) {
-      isInitial.current = false;
+  const [filterState, setFilterState] = useState(props.defaultFilterState);
+  const savedFilterState = useRef<FilterState>(props.defaultFilterState);
+  const [plays, setPlays] = useState(props.plays);
+  const [isFilterDialogOpen, setFilterDialogOpen] = useState(false);
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+  const FilterContainer = isMobile ? PlayFilterDialog : LibraryLayout.Slot;
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorOccurred, setErrorOccurred] = useState(false);
+
+  const isFiltersApplied = Object.values(filterState).some((options) => options.some((o) => o.selected));
+
+  const handleOptionChange = useCallback((param: FilterParam, selected: boolean, option) => {
+    setFilterState(objectMap(filterState,
+      (key, options) => key === param
+        ? options.map((o) => ({ ...o, selected: o.value === option.value ? selected : o.selected }))
+        : options
+    ));
+  }, [filterState]);
+
+  const fetchPlaysDebounced = useCallback(debounce(
+    async (searchParams) => {
+      let result;
+
+      try {
+        result = await getPlays(searchParams);
+      } catch {
+        setErrorOccurred(true);
+        return;
+      }
+
+      setPlays(result);
+      setIsLoading(false); // TODO: проверять handle запроса, перед обновлением стейта
+    }, 500), []);
+
+  const selectedFilterOptions = useMemo(
+    () => objectMap(filterState, (param, options) => options.filter((o) => o.selected)
+    ), [filterState]);
+
+  const resetFilters = () => {
+    setFilterState(objectMap(filterState, (key, options) => options.map((o) => ({ ...o, selected: false }))));
+  };
+
+  const openFilterDialog = useCallback(() => {
+    savedFilterState.current = filterState;
+    setFilterDialogOpen(true);
+  }, [filterState]);
+
+  const handleFilterConfirm = useCallback(() => {
+    setFilterDialogOpen(false);
+  }, []);
+
+  const handleFilterCancel = useCallback(() => {
+    setFilterState(savedFilterState.current);
+    setFilterDialogOpen(false);
+  }, []);
+
+  useEffectAfterMount(() => {
+    if (isMobile && (isFilterDialogOpen || isEqual(savedFilterState.current, filterState))) {
       return;
     }
 
-    setIsLoading(true);
-
-    const searchParams = {
-      ...filterState,
-      festival: filterState.festival.map(({ text }) => text),
+    const searchParamsToFilterStateMap = {
+      year: filterState.festivalYearOptions,
+      program: filterState.festivalProgramOptions,
     };
+    const searchParams = objectMap(searchParamsToFilterStateMap, (param, options) => options.filter((o) => o.selected).map((o) => o.value));
 
-    // TODO: тут нужен рефакторинг. Сча вообще не понятно, почему мы не можем просто `/library?${query}`, где query — или undefined или строка параметров запроса с ?
-    const parsedQuery = queryParser(searchParams);
-    const urlWithQuery = parsedQuery ? `/library?${parsedQuery}` : '/library/';
+    router.replace({ query: { ...router.query, ...searchParams } }, undefined, { shallow: true });
 
-    fetchPlays(searchParams)
-      .then((response) => {
-        window.history.replaceState('/library', document.title, urlWithQuery);
-        setPiecesState(response);
-        setIsLoading(false);
-      })
-      .catch(() => {
-        // TODO: Хм, а мы не хотим, например, показать 500, если запрос завершился ошибкой?
-        setPiecesState(pieces);
-        setIsLoading(false);
-      });
-  }, [pieces, filterState]);
+    setIsLoading(true);
+    fetchPlaysDebounced({ years: searchParams.year, programIds: searchParams.program });
+  }, [filterState, isFilterDialogOpen]);
+
+  if (errorOccurred) {
+    return (
+      <Error statusCode={500}/>
+    );
+  }
 
   return (
-    <LibraryFiltersProvider value={filterState}>
+    <>
+      <SEO title="Пьесы"/>
       <AppLayout>
-        <SEO title="Пьесы"/>
-        <LibraryPage
-          isLoading={isLoading}
-          items={piecesState}
-          years={years.flat()}
-          programmes={programs.flat()}
-          filterDispatcher={filterDispatcher}
-        />
+        <LibraryLayout variant="plays">
+          <FilterContainer
+            area="filter"
+            open={isFilterDialogOpen}
+            onClose={handleFilterCancel}
+          >
+            <Filter variant="vertical">
+              <Filter.List
+                caption="Годы фестиваля"
+                addon={(
+                  <ButtonGroup>
+                    {selectedFilterOptions.festivalYearOptions.map((option) => (
+                      <ButtonGroup.Item key={option.value}>
+                        <Button
+                          pressed
+                          size="s"
+                          icon={(
+                            <Icon
+                              glyph="cross"
+                              width="100%"
+                              height="100%"
+                            />
+                          )}
+                          iconPosition="right"
+                          onClick={() => handleOptionChange('festivalYearOptions', false, option)}
+                        >
+                          {option.text}
+                        </Button>
+                      </ButtonGroup.Item>
+                    ))}
+                  </ButtonGroup>
+                )}
+              >
+                <MultipleSelect>
+                  {filterState.festivalYearOptions.map((option) => (
+                    <MultipleSelect.Option key={option.value}>
+                      <Checkbox
+                        checked={option.selected}
+                        onChange={(selected) => { handleOptionChange('festivalYearOptions', selected, option); }}
+                      >
+                        <MultipleSelect.OptionText>
+                          {option.text}
+                        </MultipleSelect.OptionText>
+                      </Checkbox>
+                    </MultipleSelect.Option>
+                  ))}
+                </MultipleSelect>
+              </Filter.List>
+              <Filter.List caption="Программа">
+                <CheckboxGroup>
+                  {filterState.festivalProgramOptions.map((option) => (
+                    <CheckboxGroup.Item key={option.value}>
+                      <Checkbox
+                        variant="pseudo-button"
+                        checked={option.selected}
+                        onChange={(selected) => { handleOptionChange('festivalProgramOptions', selected, option); }}
+                      >
+                        {option.text}
+                      </Checkbox>
+                    </CheckboxGroup.Item>
+                  ))}
+                </CheckboxGroup>
+              </Filter.List>
+              {(isFiltersApplied || isMobile) && (
+                <Filter.Actions>
+                  {isFiltersApplied && (
+                    <Button
+                      border="bottom-left"
+                      upperCase
+                      size="s"
+                      icon={(
+                        <Icon
+                          glyph="cross"
+                          width="100%"
+                          height="100%"
+                        />
+                      )}
+                      {...isMobile && {
+                        fullWidth: true,
+                        iconPosition: 'right',
+                      }}
+                      onClick={resetFilters}
+                    >
+                      Очистить
+                    </Button>
+                  )}
+                  {isMobile && !isEqual(savedFilterState.current, filterState) && (
+                    <Button
+                      border="bottom-left"
+                      upperCase
+                      size="s"
+                      fullWidth
+                      iconPosition="right"
+                      icon={(
+                        <Icon
+                          glyph="arrow-right"
+                          width="100%"
+                          height="100%"
+                        />
+                      )}
+                      onClick={handleFilterConfirm}
+                    >
+                      Посмотреть
+                    </Button>
+                  )}
+                </Filter.Actions>
+              )}
+            </Filter>
+          </FilterContainer>
+          {isMobile && (
+            <LibraryLayout.Slot area="filter">
+              <ButtonGroup>
+                {Object.entries(selectedFilterOptions).map(([param, options]) => options.map((option) => (
+                  <ButtonGroup.Item key={option.value}>
+                    <Button
+                      pressed
+                      size="s"
+                      icon={(
+                        <Icon
+                          glyph="cross"
+                          width="100%"
+                          height="100%"
+                        />
+                      )}
+                      iconPosition="right"
+                      onClick={() => handleOptionChange(param as FilterParam , false, option)}
+                    >
+                      {option.text}
+                    </Button>
+                  </ButtonGroup.Item>
+                )))}
+              </ButtonGroup>
+            </LibraryLayout.Slot>
+          )}
+          <LibraryLayout.Slot area="content">
+            {isLoading ? (
+              <LibraryLayout.Spinner/>
+            ) : (
+              <PlayList>
+                {plays.map((play) => (
+                  <PlayList.Item key={play.id}>
+                    <PlayCard
+                      play={{
+                        title: play.title,
+                        city: play.city,
+                        year: play.year ? Number(play.year) : undefined,
+                        readingUrl: play.readingUrl,
+                        downloadUrl: play.readingUrl,
+                        authors: play.authors.map((author) => ({
+                          name: author.fullName,
+                          slug: author.slug,
+                        })),
+                      }}
+                    />
+                  </PlayList.Item>
+                ))}
+              </PlayList>
+            )}
+          </LibraryLayout.Slot>
+          {isMobile && (
+            <LibraryLayout.FilterToggler
+              onClick={openFilterDialog}
+            />
+          )}
+        </LibraryLayout>
       </AppLayout>
-    </LibraryFiltersProvider>
+    </>
   );
 };
 
-// TODO: Record<string, string[] – повзаимствовал из типов queryParser, но здесь нужен рефакторинг
-async function fetchPlays(params: Record<string, string[]>) {
-  const parsedQuery = queryParser(params);
-  // TODO: сходу не разобрался, почему в сгенерированных типах поля PaginatedPlayList не обязательные, добавил Required в качестве временного решения
-  // ?limit=50 временный костыль по просьбе бекенда на время, пока не реализован бесконечный скролл
-  const { results } = await fetcher<Required<PaginatedPlayList>>(`/library/plays/?limit=50${parsedQuery ? `&${parsedQuery}` : ''}`);
+export default Plays;
 
-  return results;
-}
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const searchParams = new URLSearchParams(encode(ctx.query));
 
-export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
-  const {
-    program,
-    festival
-  } = query;
+  const filters = await getPlayFilters();
+  const plays = await getPlays();
 
-  const programState = (typeof program === 'string' && program.split(',')) || [];
-  const festivalState = (typeof festival === 'string' && festival.split(',')) || [];
+  const defaultFestivalYearOptions = filters.years.map((year) => ({
+    text: year.toString(),
+    value: year,
+    selected: searchParams.getAll('year').includes(year),
+  }));
 
-  let years;
-  let programs;
-  let results;
-
-  try {
-    ({ years, programs } = await fetcher<PlayFilters>('/library/playfilters/'));
-    // TODO: разобраться почему поля в сгенерированных типах необязательные
-    results = await fetchPlays({ festival: festivalState, program: programState });
-  } catch (error) {
-    throw new InternalServerError();
-  }
+  const defaultFestivalProgramOptions = filters.programs.map((program) => ({
+    text: program.title,
+    value: program.id,
+    selected: searchParams.getAll('program').includes(program.id),
+  }));
 
   return {
     props: {
-      years: years.map((year) => ({
-        value: year,
-        text: year.toString(),
-      })),
-      // TODO: нейминг максимально непрозрачный, без чтения кода невозможно понять, что значит pieces
-      pieces: results,
-      defaultState: {
-        program: programState,
-        festival: festivalState.map(el=>({
-          value: Number(el),
-          text: el,
-        })),
+      defaultFilterState: {
+        festivalYearOptions: defaultFestivalYearOptions,
+        festivalProgramOptions: defaultFestivalProgramOptions,
       },
-      programs,
+      plays,
     }
   };
 };
-
-export default Library;

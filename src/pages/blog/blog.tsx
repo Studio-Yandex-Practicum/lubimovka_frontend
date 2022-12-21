@@ -7,7 +7,7 @@ import { AppLayout } from 'components/app-layout/index';
 import { BlogEntryList } from 'components/blog-entry-list';
 import { BlogCard } from 'components/ui/blog-card';
 import { Filter } from 'components/filter';
-import { Select } from 'components/select';
+import { Select } from 'components/ui/select';
 import { BlogLayout } from 'components/blog-layout';
 import { PageTitle } from 'components/page-title';
 import { Spinner } from 'components/spinner';
@@ -25,7 +25,7 @@ import { entriesPerPage } from 'shared/constants/blog';
 import type { BlogState } from 'providers/blog-provider';
 import type { BlogEntry } from 'shared/types/domain';
 import type { PaginatedBlogItemListOutputList, BlogItemListOutput } from '__generated__/api-typings';
-import type { SelectOptionCheckHandler } from 'components/select';
+import type { SelectOptionCheckHandler } from 'components/ui/select';
 
 import styles from 'components/blog-layout/blog-layout.module.css';
 
