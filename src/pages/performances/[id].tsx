@@ -21,6 +21,8 @@ import { format } from 'shared/helpers/format-date';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
+import { formatDuration } from 'date-fns';
+import ru from 'date-fns/locale/ru';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type {
@@ -228,7 +230,15 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       video: performanceResponse.video,
       text: performanceResponse.text,
       ageRestriction: performanceResponse.age_limit,
-      duration: performanceResponse.duration,
+      duration: performanceResponse.duration > 0
+        ? formatDuration({
+          hours: Math.floor(performanceResponse.duration / 3600),
+          minutes: Math.floor(performanceResponse.duration % 3600 / 60),
+        },
+        {
+          locale: ru
+        })
+        : undefined,
       events: toEvents(performanceResponse.events),
       // TODO: сейчас в ответе API возвращаются списки отзывов с пагинацией, которая фронтенду не нужна, нужно обсудить с бекендерами
       mediaReviews: mediaReviewsResponse.results
