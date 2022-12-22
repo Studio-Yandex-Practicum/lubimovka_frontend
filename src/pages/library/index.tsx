@@ -1,6 +1,6 @@
 import { useCallback, useState, useRef, useMemo } from 'react';
 import { useRouter } from 'next/router';
-import { debounce } from '@funboxteam/diamonds';
+import debounce from 'lodash/debounce';
 import { encode } from 'querystring';
 import isEqual from 'lodash/isEqual';
 import Error from 'next/error';
@@ -36,12 +36,15 @@ const Plays = (props: PlaysViewProps) => {
 
   const [filterState, setFilterState] = useState(props.defaultFilterState);
   const savedFilterState = useRef<FilterState>(props.defaultFilterState);
+
+  const fetchPlaysRequestHandle = useRef({});
+
   const [plays, setPlays] = useState(props.plays);
   const [isFilterDialogOpen, setFilterDialogOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const FilterContainer = isMobile ? PlayFilterDialog : LibraryLayout.Slot;
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [processing, setProcessing] = useState(false);
   const [errorOccurred, setErrorOccurred] = useState(false);
 
   const isFiltersApplied = Object.values(filterState).some((options) => options.some((o) => o.selected));
@@ -58,6 +61,11 @@ const Plays = (props: PlaysViewProps) => {
     async (searchParams) => {
       let result;
 
+      const requestHandle = {};
+      fetchPlaysRequestHandle.current = requestHandle;
+
+      setProcessing(true);
+
       try {
         result = await getPlays(searchParams);
       } catch {
@@ -65,9 +73,13 @@ const Plays = (props: PlaysViewProps) => {
         return;
       }
 
+      if (requestHandle !== fetchPlaysRequestHandle.current) {
+        return;
+      }
+
       setPlays(result);
-      setIsLoading(false); // TODO: проверять handle запроса, перед обновлением стейта
-    }, 500), []);
+      setProcessing(false);
+    }, 800), []);
 
   const selectedFilterOptions = useMemo(
     () => objectMap(filterState, (param, options) => options.filter((o) => o.selected)
@@ -104,7 +116,6 @@ const Plays = (props: PlaysViewProps) => {
 
     router.replace({ query: { ...router.query, ...searchParams } }, undefined, { shallow: true });
 
-    setIsLoading(true);
     fetchPlaysDebounced({ years: searchParams.year, programIds: searchParams.program });
   }, [filterState, isFilterDialogOpen]);
 
@@ -253,7 +264,7 @@ const Plays = (props: PlaysViewProps) => {
             </LibraryLayout.Slot>
           )}
           <LibraryLayout.Slot area="content">
-            {isLoading ? (
+            {processing ? (
               <LibraryLayout.Spinner/>
             ) : (
               <PlayList>
