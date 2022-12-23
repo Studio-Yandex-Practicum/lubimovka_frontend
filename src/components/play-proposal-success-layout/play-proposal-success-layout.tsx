@@ -9,7 +9,7 @@ export const PlayProposalSuccessLayout: FC = () => {
   return (
     <section className={cx('container')}>
       <h1 className={cx('title')}>
-        Спасибо, мы получили вашу пьесу, скоро начнется отбор. Следите за
+        Спасибо, мы получили вашу пьесу. Следите за
         новостями в наших соцсетях!
       </h1>
       <img
