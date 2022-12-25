@@ -1,3 +1,5 @@
+@value tablet-portrait from 'shared/styles/media.module.css';
+
 .common {
   box-sizing: border-box;
 }
@@ -9,7 +11,7 @@
   max-width: 716px;
   margin: 0 auto 48px;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     @mixin headline6;
 
     max-width: 366px;
@@ -23,7 +25,7 @@
     max-width: 450px;
     margin: 0 auto 48px 300px;
 
-    @media (max-width: $tablet-portrait) {
+    @media tablet-portrait {
       max-width: 366px;
       margin: 0 auto 22px 24px;
     }
@@ -37,7 +39,7 @@
     max-width: 450px;
     margin: 0 auto 58px 300px;
 
-    @media (max-width: $tablet-portrait) {
+    @media tablet-portrait {
       max-width: 366px;
       margin: 0 auto 24px 24px;
     }
@@ -48,7 +50,7 @@
   composes: common;
   padding: 100px 60px 30px;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     padding: 56px 24px;
   }
 
@@ -59,7 +61,7 @@
     max-width: 334px;
     margin-bottom: 48px;
 
-    @media (max-width: $tablet-portrait) {
+    @media tablet-portrait {
       max-width: 255px;
     }
   }
@@ -71,7 +73,7 @@
   .title {
     @mixin visually-hidden;
 
-    @media (max-width: $tablet-portrait) {
+    @media tablet-portrait {
       @mixin undo-visually-hidden;
 
       max-width: 366px;
@@ -84,7 +86,7 @@
   composes: common;
   padding: 60px 56px;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     padding: 36px 24px;
   }
 }
@@ -93,7 +95,7 @@
   composes: common;
   padding: 60px 32px;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     padding: 36px 24px;
   }
 }
@@ -109,7 +111,7 @@
 
     margin-bottom: 74px;
 
-    @media (max-width: $tablet-portrait) {
+    @media tablet-portrait {
       @mixin headline4;
 
       margin-bottom: 40px;
@@ -120,7 +122,7 @@
 .homepage-shortlist {
   padding: 90px 60px 102px 60px;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     padding: 40px 30px 40px 30px;
   }
 
@@ -131,7 +133,7 @@
     max-width: 682px;
     margin-bottom: 50px;
 
-    @media (max-width: $tablet-portrait) {
+    @media tablet-portrait {
       @mixin headline4;
 
       margin-bottom: 24px;
@@ -143,7 +145,7 @@
   padding: 90px 70px 114px 840px;
   background-color: var(--beige);
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     padding: 80px 24px;
   }
 }
@@ -151,7 +153,7 @@
 .blog-entries {
   padding: 0 90px;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     padding: 0 24px;
   }
 }
@@ -159,7 +161,19 @@
 .news {
   padding: 0 90px;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     padding: 0 24px;
+  }
+}
+
+.author-plays {
+  padding: 130px 30px;
+  background-color: var(--beige);
+
+  @media tablet-portrait {
+    @mixin hide-scrollbars;
+
+    overflow: scroll;
+    padding: 10px 0 80px 25px;
   }
 }

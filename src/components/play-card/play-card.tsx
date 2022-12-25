@@ -1,107 +1,106 @@
-import React, { Fragment } from 'react';
 import cn from 'classnames/bind';
 
-import { Button } from '../ui/button';
-import { InfoLink } from '../ui/info-link';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
+import { InfoLink } from 'components/ui/info-link';
 
-import type { FC } from 'react';
+import type { Play } from 'core/play';
 
 import styles from './play-card.module.css';
+import React from 'react';
 
 const cx  = cn.bind(styles);
 
-type Author = {
-  slug: string,
-  name: string,
-}
-
-export interface PlayCardProps {
+export interface PlayCardProps extends Omit<Play, 'id'> {
   className?: string
-  play: {
-    title: string;
-    city?: string;
-    year?: number;
-    // Для полей readingUrl и downloadUrl null лишний, нужно попросить бекендеров убрать nullable у этих полей
-    readingUrl?: string | null;
-    downloadUrl?: string | null;
-    authors: Author[];
-  };
+  titleTag?: React.ElementType
 }
 
-export const PlayCard: FC<PlayCardProps> = ({ play, className }) => {
+export const PlayCard: React.FC<PlayCardProps> = (props) => {
   const {
+    className,
     title,
+    titleTag: TitleTag = 'h3',
+    authors,
     city,
     year,
     readingUrl,
     downloadUrl,
-    authors
-  } = play;
+  } = props;
 
   return (
-    <article
-      className={cx('card', className)}
-    >
-      <div className={cx('container')}>
-        <h6 className={cx('title')}>
+    <div className={cx('root', className)}>
+      <div className={cx('tile')}>
+        <TitleTag className={cx('title')}>
           {title}
-        </h6>
-        <div>
+        </TitleTag>
+        <div className={cx('actions')}>
           {readingUrl && (
-            <Button
-              className={cx('buttonCustom')}
-              width="100%"
-              size="l"
-              view="primary"
-              iconPlace="right"
-              icon="arrow-45"
-              label="Смотреть читку"
-              border="top"
-              isLink
-              href={readingUrl}
-            />
+            <span className={cx('action')}>
+              <Button
+                href={readingUrl}
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                size="l"
+                icon={(
+                  <Icon
+                    glyph="arrow-45"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+                iconPosition="right"
+                fullWidth
+                upperCase
+              >
+                Смотреть читку
+              </Button>
+            </span>
           )}
           {downloadUrl && (
-            <Button
-              className={cx('buttonCustom')}
-              width="100%"
-              size="l"
-              view="primary"
-              iconPlace="right"
-              icon="arrow-down"
-              label="Скачать пьесу"
-              border="top"
-              isLink
-              href={downloadUrl}
-            />
+            <span className={cx('action')}>
+              <Button
+                href={downloadUrl}
+                size="l"
+                icon={(
+                  <Icon
+                    glyph="arrow-down"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+                iconPosition="right"
+                fullWidth
+                upperCase
+              >
+                Скачать пьесу
+              </Button>
+            </span>
           )}
         </div>
       </div>
-      <dl className={cx('info')}>
-        {authors.length > 1 ? (
-          <dt className={cx('hiddenText')}>
-            Авторы:
-          </dt>
-        ) : (
-          <dt className={cx('hiddenText')}>
-            Автор:
-          </dt>
-        )}
+      <dl>
+        <dt className={cx('semantic-only-note')}>
+          {authors.length === 1 ? 'Автор' : 'Авторы'}
+        </dt>
         {authors.map((author) => (
-          <dd className={cx('author', authors.length > 1 && 'authorMultiple')} key={author.slug}>
+          <dd
+            key={author.slug}
+            className={cx('author')}
+          >
             <InfoLink
-              className={cx('author', authors.length > 1 && 'authorMultiple')}
-              href={`/${author.slug}`}
-              label={author.name}
+              className={cx('author')}
               size="l"
+              href={`/${author.slug}`}
+              label={author.fullName}
             />
           </dd>
         )
         )}
         {city && (
           <>
-            <dt className={cx('hiddenText')}>
-              Город:
+            <dt className={cx('semantic-only-note')}>
+              Город
             </dt>
             <dd className={cx('city')}>
               {city}
@@ -110,8 +109,8 @@ export const PlayCard: FC<PlayCardProps> = ({ play, className }) => {
         )}
         {year && (
           <>
-            <dt className={cx('hiddenText')}>
-              Год:
+            <dt className={cx('semantic-only-note')}>
+              Год
             </dt>
             <dd className={cx('year')}>
               {year}
@@ -119,6 +118,6 @@ export const PlayCard: FC<PlayCardProps> = ({ play, className }) => {
           </>
         )}
       </dl>
-    </article>
+    </div>
   );
 };

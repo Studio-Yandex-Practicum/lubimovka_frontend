@@ -217,6 +217,7 @@ const Plays = (props: PlaysViewProps) => {
                   )}
                   {isMobile && !isEqual(savedFilterState.current, filterState) && (
                     <Button
+                      type="button"
                       border="bottom-left"
                       upperCase
                       size="s"
@@ -244,6 +245,7 @@ const Plays = (props: PlaysViewProps) => {
                 {Object.entries(selectedFilterOptions).map(([param, options]) => options.map((option) => (
                   <ButtonGroup.Item key={option.value}>
                     <Button
+                      type="button"
                       pressed
                       size="s"
                       icon={(
@@ -271,17 +273,12 @@ const Plays = (props: PlaysViewProps) => {
                 {plays.map((play) => (
                   <PlayList.Item key={play.id}>
                     <PlayCard
-                      play={{
-                        title: play.title,
-                        city: play.city,
-                        year: play.year ? Number(play.year) : undefined,
-                        readingUrl: play.readingUrl,
-                        downloadUrl: play.readingUrl,
-                        authors: play.authors.map((author) => ({
-                          name: author.fullName,
-                          slug: author.slug,
-                        })),
-                      }}
+                      title={play.title}
+                      city={play.city}
+                      year={play.year}
+                      readingUrl={play.readingUrl}
+                      downloadUrl={play.downloadUrl}
+                      authors={play.authors}
                     />
                   </PlayList.Item>
                 ))}

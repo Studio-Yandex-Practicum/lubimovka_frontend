@@ -176,14 +176,15 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                   {short_list.items.map((item) => (
                     <PlayList.Item key={item.id}>
                       <PlayCard
-                        play={{
-                          title: item.name,
-                          city: item.city,
-                          year: item.year,
-                          readingUrl: item.url_reading,
-                          downloadUrl: item.url_download,
-                          authors: item.authors,
-                        }}
+                        title={item.name}
+                        city={item.city}
+                        year={item.year?.toString()}
+                        readingUrl={item.url_reading}
+                        downloadUrl={item.url_download}
+                        authors={item.authors.map((author) => ({
+                          slug: author.slug,
+                          fullName: author.name,
+                        }))}
                       />
                     </PlayList.Item>
                   ))}

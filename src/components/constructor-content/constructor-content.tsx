@@ -114,15 +114,19 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                 title={content_item.title}
               >
                 <BasicPlayCardList>
-                  {content_item.items.map(({ id, name, city, year, authors }) => (
+                  {content_item.items.map(({ id, name, city, year, authors, url_download, url_download_from }) => (
                     <PlayCard
                       key={id}
-                      play={{
-                        title: name,
-                        city,
-                        year,
-                        authors: authors,
-                      }}
+                      title={name}
+                      city={city}
+                      year={year?.toString()}
+                      authors={authors.map((author) => ({
+                        fullName: author.name,
+                        slug: author.slug,
+                      }))}
+                      // TODO: непонятно, такое url_download, а что url_download_from. Оставлю пока наугад.
+                      downloadUrl={url_download}
+                      readingUrl={url_download_from}
                     />
                   ))}
                 </BasicPlayCardList>

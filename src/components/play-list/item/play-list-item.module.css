@@ -1,8 +1,0 @@
-.root {
-  display: block;
-
-  @media (max-width: $tablet-portrait) {
-    position: relative;
-    width: 244px;
-  }
-}

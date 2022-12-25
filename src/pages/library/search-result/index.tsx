@@ -108,43 +108,40 @@ const SearchResult: NextPage = ( { data }:InferGetServerSidePropsType<typeof get
             </div>
           </div>
           <section className={style.result}>
+            {/* TODO: Тут что-то пошло не так: зачем мы рендерим два одинаковых блока? */}
             <div className={style.pieces}>
               <BasicPlayCardList>
-                {data.plays.map((playFromServer: Play) => {
-
-                  const play = {
-                    title: playFromServer.name,
-                    city: playFromServer.city,
-                    year: playFromServer.year,
-                    readingUrl: playFromServer.url_reading,
-                    downloadUrl: playFromServer.url_download,
-                    authors: playFromServer.authors,
-                  };
-
-                  return (
-                    <PlayCard key={playFromServer.id} play={play}/>
-                  );
-                })}
+                {data.plays.map((playFromServer: Play) => (
+                  <PlayCard
+                    key={playFromServer.id}
+                    title={playFromServer.name}
+                    city={playFromServer.city}
+                    year={playFromServer.year.toString()}
+                    readingUrl={playFromServer.url_reading}
+                    downloadUrl={playFromServer.url_download}
+                    authors={playFromServer.authors.map((author) => ({
+                      fullName: author.name,
+                      slug: author.slug,
+                    }))}
+                  />
+                ))}
               </BasicPlayCardList>
             </div>
             <div className={style.piecesMobile}>
-
-              {data.plays.map((playFromServer: Play) => {
-
-                const play = {
-                  title: playFromServer.name,
-                  city: playFromServer.city,
-                  year: playFromServer.year,
-                  readingUrl: playFromServer.url_reading,
-                  downloadUrl: playFromServer.url_download,
-                  authors: playFromServer.authors,
-                };
-
-                return (
-                  <PlayCard key={playFromServer.id} play={play}/>
-                );
-              })}
-
+              {data.plays.map((playFromServer: Play) => (
+                <PlayCard
+                  key={playFromServer.id}
+                  title={playFromServer.name}
+                  city={playFromServer.city}
+                  year={playFromServer.year.toString()}
+                  readingUrl={playFromServer.url_reading}
+                  downloadUrl={playFromServer.url_download}
+                  authors={playFromServer.authors.map((author) => ({
+                    fullName: author.name,
+                    slug: author.slug,
+                  }))}
+                />
+              ))}
             </div>
             <div className={style.authors}>
               <ul className={style.authorsList}>

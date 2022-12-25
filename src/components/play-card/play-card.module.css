@@ -1,35 +1,15 @@
-.card {
-  display: flex;
-  flex-direction: column;
-}
+@value tablet-portrait from 'shared/styles/media.module.css';
 
-.container {
+.tile {
   display: flex;
   min-height: 300px;
   flex-direction: column;
-  justify-content: space-between;
+  margin: 0 0 16px;
   background-color: var(--light-green);
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     min-height: 340px;
   }
-}
-
-.buttonCustom {
-  height: 56px;
-  opacity: 0;
-  transition: visibility .5s ease-in-out, opacity .5s ease-in-out;
-  visibility: hidden;
-
-  @media (max-width: $tablet-portrait) {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-.container:hover .buttonCustom {
-  opacity: 1;
-  visibility: visible;
 }
 
 .title {
@@ -37,56 +17,44 @@
   @mixin headline7;
   @mixin text-truncate-multiline 6;
 
-  margin: 24px 31px auto 24px;
+  margin: 24px 30px auto 24px;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     margin: 16px 46px auto 16px;
   }
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 16px 0 auto;
+.actions {
+  visibility: hidden;
 
-  @media (max-width: $tablet-portrait) {
-    margin-top: 24px;
+  .tile:hover & {
+    visibility: visible;
+  }
+
+  @media tablet-portrait {
+    visibility: visible;
   }
 }
 
+.action {
+  display: block;
+  border-top: 1px solid var(--coal);
+}
+
 .author {
-  display: inline;
-  max-width: 190px;
-  padding: 2px 4px;
-  margin: -2px -4px;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
-.authorMultiple {
-  max-width: 238px;
-}
-
-.authorName {
   @mixin headline;
   @mixin headline7;
-}
 
-.authorName:hover {
-  background-color: var(--coal);
-  color: var(--white);
-  cursor: pointer;
+  display: inline-block;
 }
 
 .city {
   @mixin text;
   @mixin textSmall;
 
-  margin: 0;
-  margin-top: 4px;
+  margin: 4px 0 0;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     margin-top: 8px;
   }
 }
@@ -98,6 +66,6 @@
   margin: 0;
 }
 
-.hiddenText {
+.semantic-only-note {
   @mixin visually-hidden;
 }
