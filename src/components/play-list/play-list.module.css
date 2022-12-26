@@ -1,5 +1,7 @@
 @value tablet-portrait from 'shared/styles/media.module.css';
 
+$item-width: 240px;
+
 .common {
   display: grid;
   padding: 0;
@@ -21,13 +23,15 @@
 
 .regular {
   composes: common;
-  grid-template-columns: repeat(auto-fill, 240px);
-
-  @media tablet-portrait {
-    justify-items: center;
-  }
+  grid-template-columns: repeat(auto-fill, $item-width);
+  place-content: center;
 }
 
 .item {
   display: block;
+  width: $item-width;
+}
+
+.common.processing {
+  opacity: .2;
 }

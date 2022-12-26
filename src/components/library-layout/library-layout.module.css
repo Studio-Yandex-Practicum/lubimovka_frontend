@@ -209,10 +209,3 @@
   background-color: var(--light-green);
   font-size: 0;
 }
-
-.spinner {
-  width: 64px;
-  margin: 0 auto;
-
-  --delay: 200ms;
-}
