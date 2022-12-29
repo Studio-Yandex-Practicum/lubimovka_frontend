@@ -5,31 +5,49 @@ import { fetcher } from 'services/fetcher';
 import type { Play, PlayFilters } from 'core/play';
 import type { FestivalYear, FestivalProgram } from 'core/festival';
 import type { PaginatedPlayList as PlayListDTO, PlayFilters as PlayFiltersDTO } from '__generated__/api-typings';
+import type { DTOPagination } from './types';
 
-export function getPlays(params: { years?: FestivalYear[], programIds?: Pick<FestivalProgram, 'id'>[] } = {}) {
-  const { years = [], programIds = [] } = params;
+interface GetPlaysParams {
+  years?: FestivalYear[]
+  programIds?: FestivalProgram['id'][]
+  limit: number,
+  offset?: number,
+}
+
+export function getPlays(params: GetPlaysParams) {
+  const {
+    years = [],
+    programIds = [],
+    limit,
+    offset,
+  } = params;
+
   const searchParams = objectToQueryString({
-    limit: 50,
     ...years.length && { festival: years?.join(',') },
-    ...programIds.length && { program: programIds?.join(',') }
+    ...programIds.length && { program: programIds?.join(',') },
+    limit,
+    ...offset && { offset }
   });
 
   return fetcher<PlayListDTO>(`/library/plays/${searchParams}`).then(mapDTOToPlays);
 }
 
-function mapDTOToPlays({ results = [] }: PlayListDTO): Play[] {
-  return results.map((result) => ({
-    id: result.id,
-    title: result.name,
-    authors: result.authors.map((author) => ({
-      slug: author.slug,
-      fullName: author.name,
+function mapDTOToPlays({ results = [], ...pagination }: PlayListDTO): { plays: Play[], pagination: DTOPagination } {
+  return {
+    plays: results.map((result) => ({
+      id: result.id,
+      title: result.name,
+      authors: result.authors.map((author) => ({
+        slug: author.slug,
+        fullName: author.name,
+      })),
+      city: result.city,
+      ...result.year && { year: result.year.toString() },
+      downloadUrl: result.url_download,
+      readingUrl: result.url_reading,
     })),
-    city: result.city,
-    ...result.year && { year: result.year.toString() },
-    downloadUrl: result.url_download,
-    readingUrl: result.url_reading,
-  }));
+    pagination,
+  };
 }
 
 export function getPlayFilters() {

@@ -1,38 +1,37 @@
 import { useState, useMemo } from 'react';
-
 import cn from 'classnames/bind';
-import * as breakpoints from 'shared/breakpoints.js';
-import { AuthorPlays } from 'components/author-page/plays';
+
 import { Button } from 'components/ui/button';
 import { Tag } from 'components/ui/tag';
 import { InfoLink } from 'components/ui/info-link';
+import { PlayCard } from 'components/play-card';
+import { PlayList } from 'components/play-list';
+import { Section } from 'components/section';
+import { Link } from 'components/ui/link';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { numberOfCharacters } from 'shared/constants/numbers';
+import * as breakpoints from 'shared/breakpoints.js';
 
-import type { FC } from 'react';
 import type { OtherLink, Play, SocialNetwork, Achievement } from '__generated__/api-typings';
 
 import styles from './overview.module.css';
-import { Link } from '../../ui/link';
 
 const cx = cn.bind(styles);
 
 interface IAuthorOverview {
-  props: {
-    image: string,
-    name: string,
-    city: string,
-    quote: string,
-    biography: string,
-    other_links: OtherLink[],
-    achievements: Array<Achievement>,
-    social_networks: SocialNetwork[],
-    email: string,
-    plays: Play[],
-  }
+  image: string,
+  name: string,
+  city: string,
+  quote: string,
+  biography: string,
+  other_links: OtherLink[],
+  achievements: Array<Achievement>,
+  social_networks: SocialNetwork[],
+  email: string,
+  plays: Play[],
 }
 
-export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
+export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
   const {
     image,
     name,
@@ -104,13 +103,27 @@ export const AuthorOverview: FC<IAuthorOverview> = ({ props }) => {
 
       <div className={cx('overviewInfo')}>
         <div className={cx('descriptionWrapper')}>
-
           {availablePlays && (
-            <AuthorPlays
-              plays={plays}
-            />
+            <Section type="author-plays">
+              <PlayList>
+                {plays.map((play) => (
+                  <PlayList.Item key={play.id}>
+                    <PlayCard
+                      title={play.name}
+                      city={play.city}
+                      year={play.year?.toString()}
+                      readingUrl={play.url_reading}
+                      downloadUrl={play.url_download}
+                      authors={play.authors.map((author) => ({
+                        fullName: author.name,
+                        slug: author.slug,
+                      }))}
+                    />
+                  </PlayList.Item>
+                ))}
+              </PlayList>
+            </Section>
           )}
-
           {biography && (
             <div className={cx('descriptionSet')}>
               <pre className={cx('description', isExpand ? 'descriptionExpanded' : '')}>

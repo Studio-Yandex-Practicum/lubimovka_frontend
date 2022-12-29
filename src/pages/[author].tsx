@@ -2,12 +2,13 @@ import cn from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
 import { AuthorOverview } from 'components/author-page/overview';
-import { AuthorPlays } from 'components/author-page/plays';
 import { AnotherPlays } from 'components/author-page/another-plays';
 import { AuthorInformation } from 'components/author-page/information';
 import { CallToEmail } from 'components/call-to-email';
 import { Section } from 'components/section';
 import { SEO } from 'components/seo';
+import { PlayCard } from 'components/play-card';
+import { PlayList } from 'components/play-list';
 import { fetcher } from 'services/fetcher';
 import * as breakpoints from 'shared/breakpoints.js';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
@@ -50,23 +51,37 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
       <SEO title={name}/>
       <div className={cx('author')}>
         <AuthorOverview
-          props={{
-            image,
-            name,
-            city,
-            quote,
-            biography,
-            other_links: additionalLinks,
-            achievements,
-            social_networks,
-            email,
-            plays,
-          }}
+          image={image}
+          name={name}
+          city={city}
+          quote={quote}
+          biography={biography}
+          other_links={additionalLinks}
+          achievements={achievements}
+          social_networks={social_networks}
+          email={email}
+          plays={plays}
         />
         {!isMobile && plays.length > 0 && (
-          <AuthorPlays
-            plays={plays}
-          />
+          <Section type="author-plays">
+            <PlayList>
+              {plays.map((play) => (
+                <PlayList.Item key={play.id}>
+                  <PlayCard
+                    title={play.name}
+                    city={play.city}
+                    year={play.year?.toString()}
+                    readingUrl={play.url_reading}
+                    downloadUrl={play.url_download}
+                    authors={play.authors.map((author) => ({
+                      fullName: author.name,
+                      slug: author.slug,
+                    }))}
+                  />
+                </PlayList.Item>
+              ))}
+            </PlayList>
+          </Section>
         )}
         {additionalPlayLinks.length > 0 && (
           <AnotherPlays

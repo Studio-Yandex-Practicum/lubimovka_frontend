@@ -4,14 +4,14 @@ import { useCallback, useEffect, useRef } from 'react';
 import { Button } from 'components/ui/button2';
 
 import type { FC } from 'react';
-import type { ButtonProps } from 'components/ui/button2';
+import type { ButtonOwnProps } from 'components/ui/button2';
 
 import styles from './dropdown.module.css';
 
 interface DropdownProps {
   className?: string
   opened: boolean
-  buttonProps: Omit<ButtonProps, 'onClick' | 'type' | 'fullWidth' | 'pressed'>
+  buttonProps: Omit<ButtonOwnProps, 'fullWidth' | 'pressed'>
   popupProps?: {
     className?: string
   }

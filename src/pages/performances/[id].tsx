@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import classNames from 'classnames/bind';
+import { formatDuration } from 'date-fns';
+import ru from 'date-fns/locale/ru';
 
 import { AppLayout } from 'components/app-layout';
 import { PerformanceLayout } from 'components/performance-layout';
@@ -19,10 +21,9 @@ import { ReviewCard } from 'components/review-card';
 import { SEO } from 'components/seo';
 import { format } from 'shared/helpers/format-date';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { isNonEmpty } from 'shared/helpers/is-non-empty';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
-import { formatDuration } from 'date-fns';
-import ru from 'date-fns/locale/ru';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type {
@@ -124,14 +125,15 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
           >
             <PlayCard
               className={cx('card_in_performance')}
-              play={{
-                title: play.name,
-                city: play.city,
-                year: play.year,
-                readingUrl: play.url_reading,
-                downloadUrl: play.url_download,
-                authors: play.authors
-              }}
+              title={play.name}
+              city={play.city}
+              year={play.year?.toString()}
+              readingUrl={play.url_reading}
+              downloadUrl={play.url_download}
+              authors={play.authors.map((author) => ({
+                fullName: author.name,
+                slug: author.slug,
+              }))}
             />
           </Section>
         </PerformanceLayout.Content>
@@ -142,7 +144,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             }))}
           />
         </PerformanceLayout.Gallery>
-        {mediaReviews && mediaReviews.length > 0 && (
+        {isNonEmpty(mediaReviews) && (
           <PerformanceLayout.MediaReviews>
             <ReviewCarousel
               title="Рецензии"
@@ -159,7 +161,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             </ReviewCarousel>
           </PerformanceLayout.MediaReviews>
         )}
-        {reviews && reviews.length > 0 && (
+        {isNonEmpty(reviews) && (
           <PerformanceLayout.Reviews>
             <ReviewCarousel
               title="Отзывы зрителей"
@@ -230,15 +232,7 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       video: performanceResponse.video,
       text: performanceResponse.text,
       ageRestriction: performanceResponse.age_limit,
-      duration: performanceResponse.duration > 0
-        ? formatDuration({
-          hours: Math.floor(performanceResponse.duration / 3600),
-          minutes: Math.floor(performanceResponse.duration % 3600 / 60),
-        },
-        {
-          locale: ru
-        })
-        : undefined,
+      duration: formatPerformanceDuration(performanceResponse.duration),
       events: toEvents(performanceResponse.events),
       // TODO: сейчас в ответе API возвращаются списки отзывов с пагинацией, которая фронтенду не нужна, нужно обсудить с бекендерами
       mediaReviews: mediaReviewsResponse.results
@@ -274,3 +268,10 @@ function toReviews(reviews: PerformanceReview[]) {
     ...url ? { href: url } : {}
   }));
 };
+
+function formatPerformanceDuration(durationInMs: number) {
+  return formatDuration({
+    hours: Math.floor(durationInMs / 3600),
+    minutes: Math.floor(durationInMs % 3600 / 60),
+  }, { locale: ru });
+}

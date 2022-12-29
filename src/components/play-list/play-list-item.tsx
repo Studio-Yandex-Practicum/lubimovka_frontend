@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 
 import type { FC } from 'react';
 
-import style from './play-list-item.module.css';
+import style from './play-list.module.css';
 
 const cx = classNames.bind(style);
 
@@ -12,7 +12,7 @@ export const PlayListItem: FC = (props) => {
   } = props;
 
   return (
-    <li className={cx('root')}>
+    <li className={cx('item')}>
       {children}
     </li>
   );

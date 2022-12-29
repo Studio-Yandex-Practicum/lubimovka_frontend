@@ -73,6 +73,7 @@
     border-bottom: 1px solid var(--coal);
     animation: navbar .1s linear;
     background-color: var(--beige);
+    will-change: transform;
 
     @media (max-width: $tablet-portrait) {
       position: static;

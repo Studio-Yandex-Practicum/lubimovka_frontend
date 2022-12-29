@@ -1,13 +1,11 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames/bind';
-
-import type { ReactNode, PropsWithChildren } from 'react';
 
 import styles from './button.module.css';
 
-interface CommonProps {
+export interface ButtonOwnProps {
   size?: 'xs' | 's' | 'm' | 'l'
-  icon?: ReactNode
+  icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
   border?: 'full' | 'right-bottom-left' | 'bottom-left' | 'right-bottom' | 'none'
   fullWidth?: boolean
@@ -15,22 +13,25 @@ interface CommonProps {
   disabled?: boolean
   pressed?: boolean
   className?: string
+  children: React.ReactNode
 }
 
-interface AnchorProps extends PropsWithChildren<CommonProps> {
-  href?: string
-  target?: '_blank' | '_self' | '_parent' | '_top'
-}
+type ClickHandler = NonNullable<React.ComponentPropsWithoutRef<'button'>['onClick']>
 
-export interface ButtonProps extends PropsWithChildren<CommonProps> {
-  type: 'submit' | 'reset' | 'button';
-  onClick: () => void
+type HTMLProps = {
+  a: Pick<React.ComponentPropsWithoutRef<'a'>, 'href' | 'target' | 'download' | 'rel'>
+  button: { type: 'button', onClick: ClickHandler } | { type: 'reset' | 'submit', onClick?: ClickHandler }
 }
+type DisallowProps<P> = {[K in keyof P]?: never}
+type DisallowedProps<E extends keyof HTMLProps> = HTMLProps[keyof (Omit<HTMLProps, E>)]
+type PolymorphicProps<E extends keyof HTMLProps> = { as?: E } & HTMLProps[E] & DisallowProps<DisallowedProps<E>>
+type ButtonProps = ButtonOwnProps & (PolymorphicProps<'a'> | PolymorphicProps<'button'>)
 
 const cx = classNames.bind(styles);
 
-export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps | AnchorProps>((props, ref) => {
+const Component = (props: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>) => {
   const {
+    as: Tag = 'href' in props ? 'a' : 'button',
     className,
     size = 'm',
     border = 'none',
@@ -41,11 +42,8 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
     icon,
     iconPosition = 'left',
     children,
-    ...restProps
+    ...HTMLProps
   } = props;
-
-  const isLink = 'href' in props;
-  const Tag = isLink ? 'a' : 'button';
 
   return (
     <Tag
@@ -60,9 +58,9 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         },
         className,
       )}
-      // @ts-expect-error
+      // @ts-ignore
       ref={ref}
-      {...restProps}
+      {...HTMLProps}
     >
       {icon && (
         <span className={cx(`icon-${iconPosition}`)}>
@@ -74,6 +72,8 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       </span>
     </Tag>
   );
-});
+};
+
+export const Button = forwardRef(Component);
 
 Button.displayName = 'Button';

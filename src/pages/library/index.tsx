@@ -1,6 +1,6 @@
-import { useCallback, useState, useRef, useMemo } from 'react';
+import { useCallback, useState, useRef, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { debounce } from '@funboxteam/diamonds';
+import debounce from 'lodash/debounce';
 import { encode } from 'querystring';
 import isEqual from 'lodash/isEqual';
 import Error from 'next/error';
@@ -18,9 +18,12 @@ import { Icon } from 'components/ui/icon';
 import { ButtonGroup } from 'components/ui/button-group';
 import { CheckboxGroup } from 'components/ui/checkbox-group';
 import { PlayFilterDialog } from 'components/play-filter-dialog';
+import { PaginationSentinel } from 'components/pagination-sentinel';
 import { objectMap } from 'shared/helpers/object-map';
 import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
+import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
+import { remToPx } from 'shared/helpers/rem-to-px';
 import breakpoints from 'shared/breakpoints';
 
 import { getPlays, getPlayFilters } from 'services/api/plays';
@@ -31,32 +34,62 @@ type PlaysViewProps = InferGetServerSidePropsType<typeof getServerSideProps>
 type FilterState = PlaysViewProps['defaultFilterState'];
 type FilterParam = keyof FilterState;
 
+const PLAYS_PER_PAGE = 28;
+const RANDOM_PLAYS_COUNT = 50;
+const PLAY_LIST_Y_OFFSET_IN_REM = 9.25; // TODO: здесь магическое число в качестве быстрого решения, нужен рефакторинг
+
+enum SearchParam {
+  Year = 'year',
+  Program = 'program',
+  Page = 'page',
+}
+
 const Plays = (props: PlaysViewProps) => {
   const router = useRouter();
 
   const [filterState, setFilterState] = useState(props.defaultFilterState);
   const savedFilterState = useRef<FilterState>(props.defaultFilterState);
+
+  const fetchPlaysRequestHandle = useRef({});
+
   const [plays, setPlays] = useState(props.plays);
+
+  const [pagination, setPagination] = useState(props.pagination);
+  const [paginationSentinelRef, shouldLoadMorePlays] = useIntersectionObserver({ rootMargin: '0px 0px 50% 0px' });
+
   const [isFilterDialogOpen, setFilterDialogOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const FilterContainer = isMobile ? PlayFilterDialog : LibraryLayout.Slot;
+  const shouldScrollPlayListOnChange = useRef(false);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [processing, setProcessing] = useState(false);
   const [errorOccurred, setErrorOccurred] = useState(false);
 
   const isFiltersApplied = Object.values(filterState).some((options) => options.some((o) => o.selected));
 
-  const handleOptionChange = useCallback((param: FilterParam, selected: boolean, option) => {
-    setFilterState(objectMap(filterState,
-      (key, options) => key === param
-        ? options.map((o) => ({ ...o, selected: o.value === option.value ? selected : o.selected }))
-        : options
-    ));
-  }, [filterState]);
+  const handleOptionChange = useCallback((param: FilterParam, selected: boolean, option, shouldSaveFilterState = true) => {
+    setFilterState((filterState) => {
+      if (shouldSaveFilterState) {
+        savedFilterState.current = filterState;
+      };
+      return {
+        ...filterState,
+        [param]: filterState[param].map((o) => ({ ...o, selected: o.value === option.value ? selected : o.selected }))
+      };});
+    setPagination((pagination) => ({
+      ...pagination,
+      currentPage: 1,
+    }));
+  }, []);
 
   const fetchPlaysDebounced = useCallback(debounce(
     async (searchParams) => {
-      let result;
+      let result: Awaited<ReturnType<typeof getPlays>>;
+
+      const requestHandle = {};
+      fetchPlaysRequestHandle.current = requestHandle;
+
+      setProcessing(true);
 
       try {
         result = await getPlays(searchParams);
@@ -65,9 +98,14 @@ const Plays = (props: PlaysViewProps) => {
         return;
       }
 
-      setPlays(result);
-      setIsLoading(false); // TODO: проверять handle запроса, перед обновлением стейта
-    }, 500), []);
+      if (requestHandle !== fetchPlaysRequestHandle.current) {
+        return;
+      }
+
+      setPlays((plays) => searchParams.offset ? plays.concat(result.plays) : result.plays);
+      setPagination((pagination) => ({ ...pagination, ...result.pagination }));
+      setProcessing(false);
+    }, 800, { leading: true }), []);
 
   const selectedFilterOptions = useMemo(
     () => objectMap(filterState, (param, options) => options.filter((o) => o.selected)
@@ -75,6 +113,7 @@ const Plays = (props: PlaysViewProps) => {
 
   const resetFilters = () => {
     setFilterState(objectMap(filterState, (key, options) => options.map((o) => ({ ...o, selected: false }))));
+    savedFilterState.current = filterState;
   };
 
   const openFilterDialog = useCallback(() => {
@@ -91,22 +130,61 @@ const Plays = (props: PlaysViewProps) => {
     setFilterDialogOpen(false);
   }, []);
 
+  useEffect(() => {
+    if (!shouldLoadMorePlays || !pagination.next) {
+      return;
+    }
+
+    setPagination((pagination) => ({
+      ...pagination,
+      currentPage: pagination.currentPage + 1,
+    }));
+  }, [shouldLoadMorePlays, pagination.next]);
+
   useEffectAfterMount(() => {
     if (isMobile && (isFilterDialogOpen || isEqual(savedFilterState.current, filterState))) {
       return;
     }
 
     const searchParamsToFilterStateMap = {
-      year: filterState.festivalYearOptions,
-      program: filterState.festivalProgramOptions,
+      [SearchParam.Year]: filterState.festivalYearOptions,
+      [SearchParam.Program]: filterState.festivalProgramOptions,
     };
-    const searchParams = objectMap(searchParamsToFilterStateMap, (param, options) => options.filter((o) => o.selected).map((o) => o.value));
 
-    router.replace({ query: { ...router.query, ...searchParams } }, undefined, { shallow: true });
+    const searchParams = {
+      ...objectMap(searchParamsToFilterStateMap, (param, options) => options.filter((o) => o.selected).map((o) => o.value)),
+    };
 
-    setIsLoading(true);
-    fetchPlaysDebounced({ years: searchParams.year, programIds: searchParams.program });
-  }, [filterState, isFilterDialogOpen]);
+    router.replace({
+      query: {
+        ...router.query,
+        ...searchParams,
+      }
+    }, undefined, { shallow: true });
+
+    const limit = isFiltersApplied ? PLAYS_PER_PAGE : RANDOM_PLAYS_COUNT;
+
+    fetchPlaysDebounced({
+      years: searchParams.year,
+      programIds: searchParams.program,
+      limit,
+      offset: (pagination.currentPage - 1) * limit,
+    });
+  }, [filterState, isFilterDialogOpen, pagination.currentPage]);
+
+  useEffect(() => {
+    shouldScrollPlayListOnChange.current = !isMobile;
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!shouldScrollPlayListOnChange.current) {
+      return;
+    }
+    const playListYOffsetInPx = remToPx(PLAY_LIST_Y_OFFSET_IN_REM);
+    if (window.pageYOffset > playListYOffsetInPx) {
+      window.scrollTo({ top: playListYOffsetInPx });
+    }
+  }, [filterState]);
 
   if (errorOccurred) {
     return (
@@ -132,6 +210,7 @@ const Plays = (props: PlaysViewProps) => {
                     {selectedFilterOptions.festivalYearOptions.map((option) => (
                       <ButtonGroup.Item key={option.value}>
                         <Button
+                          type="button"
                           pressed
                           size="s"
                           icon={(
@@ -185,6 +264,7 @@ const Plays = (props: PlaysViewProps) => {
                 <Filter.Actions>
                   {isFiltersApplied && (
                     <Button
+                      type="button"
                       border="bottom-left"
                       upperCase
                       size="s"
@@ -206,6 +286,7 @@ const Plays = (props: PlaysViewProps) => {
                   )}
                   {isMobile && !isEqual(savedFilterState.current, filterState) && (
                     <Button
+                      type="button"
                       border="bottom-left"
                       upperCase
                       size="s"
@@ -233,6 +314,7 @@ const Plays = (props: PlaysViewProps) => {
                 {Object.entries(selectedFilterOptions).map(([param, options]) => options.map((option) => (
                   <ButtonGroup.Item key={option.value}>
                     <Button
+                      type="button"
                       pressed
                       size="s"
                       icon={(
@@ -243,7 +325,7 @@ const Plays = (props: PlaysViewProps) => {
                         />
                       )}
                       iconPosition="right"
-                      onClick={() => handleOptionChange(param as FilterParam , false, option)}
+                      onClick={() => handleOptionChange(param as FilterParam , false, option, !isFilterDialogOpen)}
                     >
                       {option.text}
                     </Button>
@@ -253,28 +335,22 @@ const Plays = (props: PlaysViewProps) => {
             </LibraryLayout.Slot>
           )}
           <LibraryLayout.Slot area="content">
-            {isLoading ? (
-              <LibraryLayout.Spinner/>
-            ) : (
-              <PlayList>
-                {plays.map((play) => (
-                  <PlayList.Item key={play.id}>
-                    <PlayCard
-                      play={{
-                        title: play.title,
-                        city: play.city,
-                        year: play.year ? Number(play.year) : undefined,
-                        readingUrl: play.readingUrl,
-                        downloadUrl: play.readingUrl,
-                        authors: play.authors.map((author) => ({
-                          name: author.fullName,
-                          slug: author.slug,
-                        })),
-                      }}
-                    />
-                  </PlayList.Item>
-                ))}
-              </PlayList>
+            <PlayList processing={processing && pagination.currentPage === 1}>
+              {plays.map((play) => (
+                <PlayList.Item key={play.id}>
+                  <PlayCard
+                    title={play.title}
+                    city={play.city}
+                    year={play.year}
+                    readingUrl={play.readingUrl}
+                    downloadUrl={play.downloadUrl}
+                    authors={play.authors}
+                  />
+                </PlayList.Item>
+              ))}
+            </PlayList>
+            {!processing && isFiltersApplied && (
+              <PaginationSentinel ref={paginationSentinelRef}/>
             )}
           </LibraryLayout.Slot>
           {isMobile && (
@@ -293,19 +369,29 @@ export default Plays;
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const searchParams = new URLSearchParams(encode(ctx.query));
 
+  const currentPage = Number(searchParams.get(SearchParam.Page)) || 1;
+  const limit = Object.keys(SearchParam).some((p) => searchParams.has(SearchParam[p as keyof typeof SearchParam])) ? PLAYS_PER_PAGE : RANDOM_PLAYS_COUNT;
+
+  const playParams = {
+    years: searchParams.getAll(SearchParam.Year),
+    programIds: searchParams.getAll('program'),
+    limit,
+    ...currentPage && { offset: PLAYS_PER_PAGE * (currentPage - 1) }
+  };
+
+  const { plays, pagination } = await getPlays(playParams);
   const filters = await getPlayFilters();
-  const plays = await getPlays();
 
   const defaultFestivalYearOptions = filters.years.map((year) => ({
     text: year.toString(),
     value: year,
-    selected: searchParams.getAll('year').includes(year),
+    selected: searchParams.getAll(SearchParam.Year).includes(year),
   }));
 
   const defaultFestivalProgramOptions = filters.programs.map((program) => ({
     text: program.title,
     value: program.id,
-    selected: searchParams.getAll('program').includes(program.id),
+    selected: searchParams.getAll(SearchParam.Program).includes(program.id),
   }));
 
   return {
@@ -315,6 +401,10 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
         festivalProgramOptions: defaultFestivalProgramOptions,
       },
       plays,
+      pagination: {
+        ...pagination,
+        currentPage,
+      }
     }
   };
 };

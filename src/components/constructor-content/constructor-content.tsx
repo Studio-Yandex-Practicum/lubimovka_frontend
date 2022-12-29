@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { PhotoGallery } from 'components/photo-gallery';
 import { ImageSlider } from 'components/ui/image-slider';
-import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
+import { PlayList } from 'components/play-list';
 import { PlayCard } from 'components/play-card';
 import { EventCard } from 'components/event-card';
 import { PersonCard } from 'components/ui/person-card';
@@ -113,19 +113,24 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                 variant="plays"
                 title={content_item.title}
               >
-                <BasicPlayCardList>
-                  {content_item.items.map(({ id, name, city, year, authors }) => (
-                    <PlayCard
-                      key={id}
-                      play={{
-                        title: name,
-                        city,
-                        year,
-                        authors: authors,
-                      }}
-                    />
+                <PlayList variant="scrollable">
+                  {content_item.items.map(({ id, name, city, year, authors, url_download, url_download_from }) => (
+                    <PlayList.Item key={id}>
+                      <PlayCard
+                        title={name}
+                        city={city}
+                        year={year?.toString()}
+                        authors={authors.map((author) => ({
+                          fullName: author.name,
+                          slug: author.slug,
+                        }))}
+                        // TODO: непонятно, такое url_download, а что url_download_from. Оставлю пока наугад.
+                        downloadUrl={url_download}
+                        readingUrl={url_download_from}
+                      />
+                    </PlayList.Item>
                   ))}
-                </BasicPlayCardList>
+                </PlayList>
               </ConstructorContentSection>
             )}
             {content_type === ConstructorBlockType.Events && content_item.items.length === 1 && (

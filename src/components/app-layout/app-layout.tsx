@@ -21,6 +21,7 @@ import { participationFormPath } from 'shared/constants/participation-form-path'
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
+import { isNonEmpty } from 'shared/helpers/is-non-empty';
 import * as breakpoints from 'shared/breakpoints.js';
 
 import type { NavbarProps } from 'components/navbar';
@@ -28,6 +29,7 @@ import type { NavbarProps } from 'components/navbar';
 interface AppLayoutProps {
   noNavbar?: boolean
   navbarProps?: Pick<NavbarProps, 'colors'>
+  navbarAddon?: React.ReactNode
 }
 
 export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (props) => {
@@ -35,6 +37,7 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
     children,
     noNavbar,
     navbarProps,
+    navbarAddon,
   } = props;
 
   const { projects, generalPartners, settings } = usePersistentData();
@@ -57,14 +60,17 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
       {noNavbar || (
         <Page.Navbar>
           <Navbar {...navbarProps}>
-            <Navbar.Logotype>
+            <Navbar.Slot area="logotype">
               <Logotype
                 href="/"
                 title="Фестиваль Любимовка"
               />
-            </Navbar.Logotype>
-            <Navbar.Actions>
-              <Navbar.Section primary>
+            </Navbar.Slot>
+            <Navbar.Slot area="actions">
+              <Navbar.ActionsSlot
+                type="main-navigation"
+                as="nav"
+              >
                 <Menu type="main-navigation">
                   {mainNavigationItems
                     .filter(item => !item.mobileOnly)
@@ -78,8 +84,8 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
                       </Menu.Item>
                     ))}
                 </Menu>
-              </Navbar.Section>
-              <Navbar.Section>
+              </Navbar.ActionsSlot>
+              <Navbar.ActionsSlot>
                 <Menu type="social-links">
                   {socialLinkItems.map((item) => (
                     <Menu.Item key={item.href} href={item.href}>
@@ -87,18 +93,23 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
                     </Menu.Item>
                   ))}
                 </Menu>
-              </Navbar.Section>
-              <Navbar.Section>
+              </Navbar.ActionsSlot>
+              <Navbar.ActionsSlot>
                 <DonationLink href={donationPath}/>
-              </Navbar.Section>
-            </Navbar.Actions>
+              </Navbar.ActionsSlot>
+            </Navbar.Slot>
+            {navbarAddon && (
+              <Navbar.Slot area="addon">
+                {navbarAddon}
+              </Navbar.Slot>
+            )}
           </Navbar>
         </Page.Navbar>
       )}
       {children}
       <Page.Footer>
         <Footer privacyPolicyUrl={settings?.privacyPolicyUrl}>
-          {generalPartners && generalPartners?.length > 0 && (
+          {isNonEmpty(generalPartners) && (
             <Footer.Partners>
               <PartnerList size="s">
                 {generalPartners.map((partner) => (
@@ -129,7 +140,7 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
             </Menu>
           </Footer.Navigation>
           <Footer.Projects>
-            {projects && projects.length > 0 && (
+            {isNonEmpty(projects) && (
               <Menu type="footer-project-list">
                 <Menu.Item href="/projects">
                   Все проекты

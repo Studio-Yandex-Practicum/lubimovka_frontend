@@ -14,6 +14,7 @@ import { LibraryLayout } from 'components/library-layout';
 import { getAuthors, getAvailableAuthorsPaginationLetters } from 'services/api/authors';
 import { alphabeticalPaginationLetters } from 'shared/constants/alphabetical-pagination-letters';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
+import { remToPx } from 'shared/helpers/rem-to-px';
 import breakpoints from 'shared/breakpoints';
 
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -52,7 +53,7 @@ const Authors = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
     if (!shouldScrollAuthorListOnChange.current) {
       return;
     }
-    const authorListYOffsetInPx = convertRemToPixels(authorListYOffsetInRem);
+    const authorListYOffsetInPx = remToPx(authorListYOffsetInRem);
     if (window.pageYOffset > authorListYOffsetInPx) {
       window.scrollTo({ top: authorListYOffsetInPx });
     }
@@ -133,7 +134,3 @@ export const getServerSideProps: GetServerSideProps<AuthorsProps> = async (ctx) 
 };
 
 export default Authors;
-
-function convertRemToPixels(rem: number) {
-  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-};

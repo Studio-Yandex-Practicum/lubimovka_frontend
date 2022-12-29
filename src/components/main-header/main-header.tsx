@@ -57,15 +57,18 @@ export const MainHeader: React.VFC<MainHeaderProps> = (props) => {
         )}
       >
         <Navbar view={isContainerElInViewport ? 'expanded' : 'regular'}>
-          <Navbar.Logotype>
+          <Navbar.Slot area="logotype">
             <Logotype
               href="/"
               title="Фестиваль Любимовка"
               full={isContainerElInViewport}
             />
-          </Navbar.Logotype>
-          <Navbar.Actions>
-            <Navbar.Section primary>
+          </Navbar.Slot>
+          <Navbar.Slot area="actions">
+            <Navbar.ActionsSlot
+              type="main-navigation"
+              as="nav"
+            >
               <Menu type="main-navigation">
                 {mainNavigationItems
                   .filter(item => !item.mobileOnly)
@@ -79,8 +82,8 @@ export const MainHeader: React.VFC<MainHeaderProps> = (props) => {
                     </Menu.Item>
                   ))}
               </Menu>
-            </Navbar.Section>
-            <Navbar.Section>
+            </Navbar.ActionsSlot>
+            <Navbar.ActionsSlot>
               <Menu type="social-links">
                 {socialLinkItems.map((item) => (
                   <Menu.Item key={item.href} href={item.href}>
@@ -88,11 +91,11 @@ export const MainHeader: React.VFC<MainHeaderProps> = (props) => {
                   </Menu.Item>
                 ))}
               </Menu>
-            </Navbar.Section>
-            <Navbar.Section>
+            </Navbar.ActionsSlot>
+            <Navbar.ActionsSlot>
               <DonationLink href={donationPath}/>
-            </Navbar.Section>
-          </Navbar.Actions>
+            </Navbar.ActionsSlot>
+          </Navbar.Slot>
         </Navbar>
       </div>
       <div className={cx('content')}>
