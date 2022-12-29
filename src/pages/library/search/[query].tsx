@@ -1,10 +1,11 @@
 import { encode } from 'querystring';
 import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 
 import { AppLayout } from 'components/app-layout';
 import { SEO } from 'components/seo';
 import { SearchLayout } from 'components/search-layout';
-import LibraryForm from 'components/library-form';
+import { LibrarySearchForm } from 'components/library-search-form';
 import { PlayList } from 'components/play-list';
 import { PlayCard } from 'components/play-card';
 import { AlphabeticalAuthorList } from 'components/alphabetical-author-list';
@@ -37,7 +38,9 @@ const Search  = (props: SearchProps) => {
     authors,
   } = props;
 
-  const hasResults = isNonEmpty(plays) && isNonEmpty(authors);
+  const searchParams = useMemo(() => new URLSearchParams(encode(router.query)), [router]);
+  const query = searchParams.get('query') as string;
+  const hasResults = isNonEmpty(plays) || isNonEmpty(authors);
 
   return (
     <>
@@ -61,7 +64,7 @@ const Search  = (props: SearchProps) => {
           </SearchLayout.Slot>
           <SearchLayout.Slot area="message">
             По запросу «
-            {router.query.query}
+            {query}
             » мы
             {' '}
             {!hasResults && 'ничего не'}
@@ -69,7 +72,7 @@ const Search  = (props: SearchProps) => {
             нашли
           </SearchLayout.Slot>
           <SearchLayout.Slot area="search">
-            <LibraryForm/>
+            <LibrarySearchForm/>
           </SearchLayout.Slot>
           <SearchLayout.Slot area="content">
             {isNonEmpty(plays) && (

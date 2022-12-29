@@ -1,0 +1,49 @@
+.root {
+  display: flex;
+  border-bottom: 1px solid var(--coal);
+}
+
+.input {
+  @mixin text;
+  @mixin textMedium;
+
+  max-width: 460px;
+  height: 32px;
+  box-sizing: border-box;
+  flex: 1 0;
+  padding: 0 4px 8px;
+  border: 0;
+  background: 0;
+  font-size: 16px;
+  line-height: 1;
+  outline: 0;
+}
+
+.submit-button {
+  display: flex;
+  padding: 4px 10px 4px 0;
+  border: 0;
+  border-left: 1px solid var(--coal);
+  background: 0;
+  outline: 0;
+  place-items: center;
+  text-transform: uppercase;
+
+  &:disabled {
+    border-left-color: var(--gray);
+    color: var(--gray);
+    pointer-events: none;
+  }
+
+  &:hover {
+    background-color: var(--coal);
+    color: var(--white);
+    cursor: pointer;
+  }
+}
+
+.submit-button-icon {
+  width: 25px;
+  height: 25px;
+  margin: 0 4px 0 0;
+}

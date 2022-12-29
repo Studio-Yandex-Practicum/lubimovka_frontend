@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
 
 import { Menu } from 'components/ui/menu';
-import LibraryForm from 'components/library-form';
+import { LibrarySearchForm } from 'components/library-search-form';
 
 import styles from './library-layout.module.css';
 
@@ -52,7 +52,7 @@ export const LibraryLayout: React.FC<LibraryLayoutProps> = (props) => {
         </h1>
       </div>
       <div className={cx('search')}>
-        <LibraryForm/>
+        <LibrarySearchForm/>
       </div>
       {children}
     </div>

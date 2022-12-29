@@ -67,11 +67,15 @@ const Plays = (props: PlaysViewProps) => {
 
   const isFiltersApplied = Object.values(filterState).some((options) => options.some((o) => o.selected));
 
-  const handleOptionChange = useCallback((param: FilterParam, selected: boolean, option) => {
-    setFilterState((filterState) => ({
-      ...filterState,
-      [param]: filterState[param].map((o) => ({ ...o, selected: o.value === option.value ? selected : o.selected }))
-    }));
+  const handleOptionChange = useCallback((param: FilterParam, selected: boolean, option, shouldSaveFilterState = true) => {
+    setFilterState((filterState) => {
+      if (shouldSaveFilterState) {
+        savedFilterState.current = filterState;
+      };
+      return {
+        ...filterState,
+        [param]: filterState[param].map((o) => ({ ...o, selected: o.value === option.value ? selected : o.selected }))
+      };});
     setPagination((pagination) => ({
       ...pagination,
       currentPage: 1,
@@ -109,6 +113,7 @@ const Plays = (props: PlaysViewProps) => {
 
   const resetFilters = () => {
     setFilterState(objectMap(filterState, (key, options) => options.map((o) => ({ ...o, selected: false }))));
+    savedFilterState.current = filterState;
   };
 
   const openFilterDialog = useCallback(() => {
@@ -320,7 +325,7 @@ const Plays = (props: PlaysViewProps) => {
                         />
                       )}
                       iconPosition="right"
-                      onClick={() => handleOptionChange(param as FilterParam , false, option)}
+                      onClick={() => handleOptionChange(param as FilterParam , false, option, !isFilterDialogOpen)}
                     >
                       {option.text}
                     </Button>
