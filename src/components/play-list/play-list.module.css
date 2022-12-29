@@ -7,6 +7,8 @@ $item-width: 240px;
   padding: 0;
   margin: 0;
   gap: 24px;
+  grid-template-columns: repeat(auto-fill, $item-width);
+  place-content: center;
 }
 
 .scrollable {
@@ -23,8 +25,6 @@ $item-width: 240px;
 
 .regular {
   composes: common;
-  grid-template-columns: repeat(auto-fill, $item-width);
-  place-content: center;
 }
 
 .item {
