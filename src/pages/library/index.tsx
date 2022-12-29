@@ -41,6 +41,7 @@ const PLAY_LIST_Y_OFFSET_IN_REM = 9.25; // TODO: здесь магическое
 enum SearchParam {
   Year = 'year',
   Program = 'program',
+  Page = 'page',
 }
 
 const Plays = (props: PlaysViewProps) => {
@@ -363,11 +364,11 @@ export default Plays;
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const searchParams = new URLSearchParams(encode(ctx.query));
 
-  const currentPage = Number(searchParams.get('page')) || 1;
+  const currentPage = Number(searchParams.get(SearchParam.Page)) || 1;
   const limit = Object.keys(SearchParam).some((p) => searchParams.has(SearchParam[p as keyof typeof SearchParam])) ? PLAYS_PER_PAGE : RANDOM_PLAYS_COUNT;
 
   const playParams = {
-    years: searchParams.getAll('year'),
+    years: searchParams.getAll(SearchParam.Year),
     programIds: searchParams.getAll('program'),
     limit,
     ...currentPage && { offset: PLAYS_PER_PAGE * (currentPage - 1) }
@@ -379,13 +380,13 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const defaultFestivalYearOptions = filters.years.map((year) => ({
     text: year.toString(),
     value: year,
-    selected: searchParams.getAll('year').includes(year),
+    selected: searchParams.getAll(SearchParam.Year).includes(year),
   }));
 
   const defaultFestivalProgramOptions = filters.programs.map((program) => ({
     text: program.title,
     value: program.id,
-    selected: searchParams.getAll('program').includes(program.id),
+    selected: searchParams.getAll(SearchParam.Program).includes(program.id),
   }));
 
   return {

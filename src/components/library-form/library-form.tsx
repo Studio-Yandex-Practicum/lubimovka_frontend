@@ -7,19 +7,16 @@ import style from './library-form.module.css';
 
 const LibraryForm: FC = () => {
   const router = useRouter();
-  const [searchInput, setSearchInput] = useState<string>('');
+  const [query, setQuery] = useState<string>('');
 
-  const [urlQuery, setUrlQuery] = useState<string>('');
-
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>): void => {
-    setSearchInput(e.target.value);
-    setUrlQuery(encodeURI(`?q=${e.target.value}`));
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
   }, []);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(urlQuery) {
-      router.push(`/library/search-result${urlQuery}`);
+    if (query) {
+      router.push(`/library/search/${query}`);
     }
   };
 
@@ -35,7 +32,7 @@ const LibraryForm: FC = () => {
         type="text"
         spellCheck={false}
         className={style.searchInput}
-        value={searchInput}
+        value={query}
         onChange={handleChange}
         placeholder="Автор или название пьесы"
       />
@@ -46,10 +43,10 @@ const LibraryForm: FC = () => {
         type="submit"
         iconPlace="left"
         border="none"
-        isLink={Boolean(urlQuery)}
-        href={`/library/search-result${urlQuery}`}
+        isLink={Boolean(query)}
+        href={`/library/search/${query}`}
         align="start"
-        disabled={!urlQuery}
+        disabled={!query}
         className={style.button}
       />
     </form>

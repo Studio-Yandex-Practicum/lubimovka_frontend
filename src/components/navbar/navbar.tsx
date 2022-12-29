@@ -1,9 +1,5 @@
 import classNames from 'classnames/bind';
 
-import { NavbarSection } from './section';
-import { NavbarLogotype } from './logotype';
-import { NavbarActions } from './actions';
-
 import styles from './navbar.module.css';
 
 export interface NavbarProps {
@@ -30,7 +26,3 @@ export const Navbar = (props: React.PropsWithChildren<NavbarProps>) => {
     </div>
   );
 };
-
-Navbar.Section = NavbarSection;
-Navbar.Logotype = NavbarLogotype;
-Navbar.Actions = NavbarActions;

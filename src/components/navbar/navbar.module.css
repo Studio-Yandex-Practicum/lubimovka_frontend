@@ -1,16 +1,69 @@
-@value section, primary from 'section/navbar-section.module.css';
-@value logotype from 'logotype/navbar-logotype.module.css';
+@value tablet-portrait from 'shared/styles/media.module.css';
 
 .common {
   display: flex;
   align-items: flex-start;
 }
 
+.logotype {
+  display: flex;
+  align-self: center;
+  margin-right: 25px;
+  place-content: center;
+
+  @media tablet-portrait {
+    margin-right: 18px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  height: 59px;
+  flex-grow: 1;
+  place-content: stretch;
+
+  @media tablet-portrait {
+    display: none;
+  }
+}
+
+.actions-slot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+
+  &:not(:last-child)::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 1px;
+    height: 80%;
+    background-color: var(--coal);
+    content: '';
+  }
+}
+
+.action-slot-regular {
+  composes: actions-slot;
+}
+
+.action-slot-main-navigation {
+  composes: actions-slot;
+  flex-grow: 1;
+  padding-right: 30px;
+}
+
 .regular {
   composes: common;
   padding-left: 30px;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     padding: 32px 24px 24px;
   }
 }
@@ -20,18 +73,18 @@
   padding-left: 25px;
   border: 0;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     padding: 24px;
   }
 
-  .section {
+  .actions-slot-regular {
     &:not(:last-child)::after {
       bottom: 10px;
       height: 40px;
     }
   }
 
-  .primary {
+  .action-slot-main-navigation {
     padding-right: 16px;
   }
 
@@ -39,15 +92,15 @@
     padding-top: 20px;
     margin-right: 50px;
 
-    @media (max-width: $tablet-portrait) {
+    @media tablet-portrait {
       padding-top: 0;
       margin-right: 0;
     }
   }
 }
 
-.brand {
-  @media (max-width: $tablet-portrait) {
+.common.brand {
+  @media tablet-portrait {
     background-color: var(--light-green);
   }
 }

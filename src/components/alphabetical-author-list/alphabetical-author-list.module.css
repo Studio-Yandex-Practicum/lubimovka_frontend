@@ -1,0 +1,23 @@
+.letter {
+  @mixin headline;
+  @mixin headline4;
+
+  text-transform: uppercase;
+}
+
+.list {
+  padding: 0;
+  margin: 14px 0 60px;
+
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.item {
+  display: block;
+
+  &:not(:last-child) {
+    margin: 0 0 12px;
+  }
+}

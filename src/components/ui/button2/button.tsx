@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 
 import styles from './button.module.css';
 
-interface ButtonOwnProps {
+export interface ButtonOwnProps {
   size?: 'xs' | 's' | 'm' | 'l'
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
@@ -16,9 +16,11 @@ interface ButtonOwnProps {
   children: React.ReactNode
 }
 
+type ClickHandler = NonNullable<React.ComponentPropsWithoutRef<'button'>['onClick']>
+
 type HTMLProps = {
   a: Pick<React.ComponentPropsWithoutRef<'a'>, 'href' | 'target' | 'download' | 'rel'>
-  button: Required<Pick<React.ComponentPropsWithoutRef<'button'>, 'type' | 'onClick'>>
+  button: { type: 'button', onClick: ClickHandler } | { type: 'reset' | 'submit', onClick?: ClickHandler }
 }
 type DisallowProps<P> = {[K in keyof P]?: never}
 type DisallowedProps<E extends keyof HTMLProps> = HTMLProps[keyof (Omit<HTMLProps, E>)]
