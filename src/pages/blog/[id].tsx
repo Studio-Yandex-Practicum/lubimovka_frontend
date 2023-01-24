@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import format from 'date-fns/format';
 
 import { AppLayout } from 'components/app-layout';
 import { ArticleHeadline } from 'components/article-headline';
@@ -13,7 +14,6 @@ import { Breadcrumb } from 'components/breadcrumb';
 import { ShareLinks } from 'components/share-links';
 import { ArticleCreditsList } from 'components/article-credits-list';
 import { fetcher } from 'services/fetcher';
-import { format } from 'shared/helpers/format-date';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 
@@ -53,7 +53,7 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
         variant="blog"
         title={title}
         description={description}
-        date={format('d MMMM yyyy', new Date(date))}
+        date={format(new Date(date), 'd MMMM yyyy')}
         cover={image}
         author={author}
         authorUrl={authorUrl}

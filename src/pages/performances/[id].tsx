@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import classNames from 'classnames/bind';
-import { formatDuration } from 'date-fns';
-import ru from 'date-fns/locale/ru';
+import { formatDuration, format } from 'date-fns';
 
 import { AppLayout } from 'components/app-layout';
 import { PerformanceLayout } from 'components/performance-layout';
@@ -19,7 +18,6 @@ import { ReviewCarousel } from 'components/review-carousel';
 import { MediaReviewCard } from 'components/media-review-card';
 import { ReviewCard } from 'components/review-card';
 import { SEO } from 'components/seo';
-import { format } from 'shared/helpers/format-date';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { isNonEmpty } from 'shared/helpers/is-non-empty';
 import { fetcher } from 'services/fetcher';
@@ -78,7 +76,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
                 key={date}
                 actionText={actionText}
                 actionUrl={actionUrl}
-                {...date ? { date: format('d MMMM H:mm', new Date(date)) } : {}}
+                {...date && { date: format(new Date(date), 'd MMMM H:mm') }}
               />
             ))}
           </PerformanceEventList>
@@ -273,5 +271,5 @@ function formatPerformanceDuration(durationInMs: number) {
   return formatDuration({
     hours: Math.floor(durationInMs / 3600),
     minutes: Math.floor(durationInMs % 3600 / 60),
-  }, { locale: ru });
+  });
 }
