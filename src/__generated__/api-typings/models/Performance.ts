@@ -16,7 +16,8 @@ export type Performance = {
     readonly id: number;
     play: Play;
     team: Array<Role>;
-    images_in_block: Array<BlockImages>;
+    gallery_title: string;
+    gallery_images: Array<BlockImages>;
     events: Array<LocalEvent>;
     readonly duration: number;
     status?: StatusEnum;

@@ -44,7 +44,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
     intro,
     play,
     team,
-    images_in_block,
+    gallery_images,
     main_image,
     bottom_image,
     video,
@@ -137,8 +137,8 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         </PerformanceLayout.Content>
         <PerformanceLayout.Gallery>
           <ImageGallery
-            items={images_in_block.map(({ image }) => ({
-              url: image,
+            items={gallery_images.map(({ url }) => ({
+              url,
             }))}
           />
         </PerformanceLayout.Gallery>
@@ -224,7 +224,7 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       description: performanceResponse.description,
       play: performanceResponse.play,
       team: performanceResponse.team,
-      images_in_block: performanceResponse.images_in_block,
+      gallery_images: performanceResponse.gallery_images,
       main_image: performanceResponse.main_image,
       bottom_image: performanceResponse.bottom_image,
       video: performanceResponse.video,

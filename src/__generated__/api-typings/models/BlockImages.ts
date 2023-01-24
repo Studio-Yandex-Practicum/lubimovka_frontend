@@ -6,9 +6,5 @@
  * Сериализатор блока изображений.
  */
 export type BlockImages = {
-    block_images_description: string;
-    /**
-     * Загрузите фотографию
-     */
-    image: string;
+    readonly url: string;
 };
