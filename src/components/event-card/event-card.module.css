@@ -27,6 +27,7 @@
 }
 
 .summary {
+  min-width: 0;
   grid-area: summary;
 }
 

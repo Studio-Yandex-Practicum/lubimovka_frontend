@@ -1,0 +1,93 @@
+@value tablet-portrait from 'shared/styles/media.module.css';
+
+$control-size: 48px;
+
+.panel-hidden {
+  @media tablet-portrait {
+    display: none;
+  }
+}
+
+.panel-header {
+  padding: 0 0 8px 0;
+  border-bottom: 1px solid var(--coal);
+
+  @media tablet-portrait {
+    text-align: center;
+  }
+}
+
+.panel-inner {
+  @media tablet-portrait {
+    padding: 0 24px;
+  }
+}
+
+.panel-title {
+  margin: 0;
+}
+
+.controls {
+  display: none;
+
+  @media tablet-portrait {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+    margin-bottom: -$control-size;
+  }
+}
+
+.button {
+  position: relative;
+  display: flex;
+  width: $control-size;
+  height: $control-size;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: 0;
+  font-size: 0;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid var(--coal);
+    border-right: 1px solid var(--coal);
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-radius: 50%;
+    content: '';
+  }
+}
+
+.forward {
+  composes: button;
+
+  &::after {
+    transform: rotate(45deg);
+  }
+}
+
+.backward {
+  composes: button;
+
+  &::after {
+    transform: rotate(-135deg);
+  }
+}
+
+.button-icon {
+  display: flex;
+  width: 24px;
+  height: 24px;
+}
+
+.button:disabled {
+  visibility: hidden;
+}
