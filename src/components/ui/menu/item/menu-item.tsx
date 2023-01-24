@@ -43,7 +43,10 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemLinkProps | MenuItemBu
     >
       {'href' in props ? (
         <Link href={props.href}>
-          <a className={cx('link')}>
+          <a
+            draggable={false}
+            className={cx('link')}
+          >
             {children}
           </a>
         </Link>

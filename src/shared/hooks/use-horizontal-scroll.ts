@@ -2,11 +2,18 @@ import { useEffect, useRef, useCallback } from 'react';
 
 type Timeout = ReturnType<typeof setTimeout>
 
+type DragStats = {
+  x: number
+  scrollLeft: number
+}
+
 const horizontalWheelScrollDelayInMs = 500;
+const horizontalDraggingSpeedMultiplier = 2;
 
 export const useHorizontalScroll = <T extends HTMLElement = HTMLElement>() => {
   const elementRef = useRef<T>(null);
   const timerRef = useRef<Nullable<Timeout>>(null);
+  const dragStats = useRef<Nullable<DragStats>>(null);
 
   const handleWheel = useCallback((event: WheelEvent) => {
     const element = elementRef.current;
@@ -44,6 +51,38 @@ export const useHorizontalScroll = <T extends HTMLElement = HTMLElement>() => {
     }, horizontalWheelScrollDelayInMs);
   }, []);
 
+  const handleMouseDown = useCallback((event: MouseEvent) => {
+    const element = elementRef.current;
+
+    if (!element) {
+      return;
+    }
+
+    dragStats.current = {
+      x: event.pageX - element.offsetLeft,
+      scrollLeft: element.scrollLeft,
+    };
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    dragStats.current = null;
+  }, []);
+
+  const handleMouseDrag = useCallback((event: MouseEvent) => {
+    const element = elementRef.current;
+
+    if (!element || !dragStats.current) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const x = event.pageX - element.offsetLeft;
+    const offset = (x - dragStats.current.x) * horizontalDraggingSpeedMultiplier;
+
+    element.scrollLeft = dragStats.current.scrollLeft - offset;
+  }, []);
+
   useEffect(() => {
     const element = elementRef.current;
 
@@ -53,12 +92,20 @@ export const useHorizontalScroll = <T extends HTMLElement = HTMLElement>() => {
 
     document.addEventListener('scroll', disablePointerEvents);
     element.addEventListener('wheel', handleWheel);
+    element.addEventListener('mousedown', handleMouseDown);
+    element.addEventListener('mouseup', handleMouseLeave);
+    element.addEventListener('mouseleave', handleMouseLeave);
+    element.addEventListener('mousemove', handleMouseDrag);
 
     return () => {
       document.removeEventListener('scroll', disablePointerEvents);
       element.removeEventListener('wheel', handleWheel);
+      element.removeEventListener('mouseup', handleMouseLeave);
+      element.removeEventListener('mouseleave', handleMouseLeave);
+      element.removeEventListener('mousedown', handleMouseDown);
+      element.removeEventListener('mousemove', handleMouseDrag);
     };
-  }, [disablePointerEvents, handleWheel]);
+  }, [disablePointerEvents, handleWheel, handleMouseDown, handleMouseLeave, handleMouseDrag]);
 
   return elementRef;
 };
