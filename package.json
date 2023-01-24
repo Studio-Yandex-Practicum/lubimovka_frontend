@@ -30,16 +30,13 @@
     "classnames": "2.3.1",
     "date-fns": "2.29.3",
     "express": "4.17.2",
-    "http-proxy-middleware": "2.0.1",
     "keen-slider": "5.5.1",
     "lodash": "4.17.21",
     "next": "12.0.8",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-focus-lock": "2.6.0",
-    "react-imask": "6.4.3",
-    "react-scroll-horizontal": "1.6.6",
-    "yup": "0.32.11"
+    "react-imask": "6.4.3"
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
