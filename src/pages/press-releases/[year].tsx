@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import classNames from 'classnames/bind';
+import { encode } from 'querystring';
 
 import { AppLayout } from 'components/app-layout';
 import { PressReleaseLayout } from 'components/press-release-layout';
@@ -23,6 +24,10 @@ import styles from 'components/press-release-layout/press-release-layout.module.
 
 const cx = classNames.bind(styles);
 
+enum SearchParam {
+  Year = 'year',
+}
+
 const PressRelease = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
   const { settings } = usePersistentData();
@@ -39,7 +44,7 @@ const PressRelease = (props: InferGetServerSidePropsType<typeof getServerSidePro
     selectedFestivalYearOption = festivalYearOptions.find(({ value }) => value === selectedFestivalYear);
   }
 
-  const handleYearChange: SelectOptionCheckHandler<number> = ({ value }) => {
+  const handleYearChange: SelectOptionCheckHandler<string> = ({ value }) => {
     router.push(`/press-releases/${value}`, undefined, { scroll: false });
   };
 
@@ -65,7 +70,7 @@ const PressRelease = (props: InferGetServerSidePropsType<typeof getServerSidePro
           }
         }}
         />
-        {isNonEmpty(festivalYearOptions) && isNonEmpty(pressRelease)  && (
+        {isNonEmpty(festivalYearOptions) && isNonEmpty(pressRelease) && (
           <PressReleaseLayout>
             <PressReleaseLayout.Slot area="title">
               <PageTitle>
@@ -87,7 +92,7 @@ const PressRelease = (props: InferGetServerSidePropsType<typeof getServerSidePro
                 className={cx('year')}
                 caption="Выберите год фестиваля"
               >
-                <Select<number>
+                <Select<string>
                   placeholder="Выберите год"
                   options={festivalYearOptions}
                   selectedOption={selectedFestivalYearOption}
@@ -131,7 +136,7 @@ const PressRelease = (props: InferGetServerSidePropsType<typeof getServerSidePro
   );
 };
 
-export const getServerSideProps  = async ({ params }: GetServerSidePropsContext) => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const festivalYears = await getFestivalYears();
 
   if (!isNonEmpty(festivalYears)) {
@@ -142,11 +147,13 @@ export const getServerSideProps  = async ({ params }: GetServerSidePropsContext)
     };
   }
 
-  festivalYears.sort((a, b) => a - b);
+  festivalYears.sort();
 
-  const selectedFestivalYear = params?.year ? Number(params.year) : festivalYears[festivalYears.length - 1];
+  const searchParams = new URLSearchParams(encode(ctx.params));
+  const selectedFestivalYear = searchParams.get(SearchParam.Year) || festivalYears[festivalYears.length - 1];
+
   const festivalYearOptions = festivalYears.map((year) => ({
-    text: String(year),
+    text: year,
     value: year,
   }));
 

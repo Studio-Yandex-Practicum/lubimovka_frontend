@@ -25,7 +25,6 @@ import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
 import { remToPx } from 'shared/helpers/rem-to-px';
 import breakpoints from 'shared/breakpoints';
-
 import { getPlays, getPlayFilters } from 'services/api/plays';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
@@ -41,7 +40,6 @@ const PLAY_LIST_Y_OFFSET_IN_REM = 9.25; // TODO: здесь магическое
 enum SearchParam {
   Year = 'year',
   Program = 'program',
-  Page = 'page',
 }
 
 const Plays = (props: PlaysViewProps) => {
@@ -131,7 +129,7 @@ const Plays = (props: PlaysViewProps) => {
     setFilterDialogOpen(false);
   }, []);
 
-  useEffect(() => {
+  useEffectAfterMount(() => {
     if (!shouldLoadMorePlays || !pagination.next) {
       return;
     }
@@ -370,21 +368,19 @@ export default Plays;
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const searchParams = new URLSearchParams(encode(ctx.query));
 
-  const currentPage = Number(searchParams.get(SearchParam.Page)) || 1;
   const limit = Object.keys(SearchParam).some((p) => searchParams.has(SearchParam[p as keyof typeof SearchParam])) ? PLAYS_PER_PAGE : RANDOM_PLAYS_COUNT;
 
-  const playParams = {
+  const playsQueryParams = {
     years: searchParams.getAll(SearchParam.Year),
     programIds: searchParams.getAll('program'),
     limit,
-    ...currentPage && { offset: PLAYS_PER_PAGE * (currentPage - 1) }
   };
 
-  const { plays, pagination } = await getPlays(playParams);
+  const { plays, pagination } = await getPlays(playsQueryParams);
   const filters = await getPlayFilters();
 
   const defaultFestivalYearOptions = filters.years.map((year) => ({
-    text: year.toString(),
+    text: year,
     value: year,
     selected: searchParams.getAll(SearchParam.Year).includes(year),
   }));
@@ -404,7 +400,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
       plays,
       pagination: {
         ...pagination,
-        currentPage,
+        currentPage: 1,
       }
     }
   };

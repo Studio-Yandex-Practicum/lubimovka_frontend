@@ -3,4 +3,4 @@ export type FestivalProgram = {
   title: string
 }
 
-export type FestivalYear = number;
+export type FestivalYear = string;
