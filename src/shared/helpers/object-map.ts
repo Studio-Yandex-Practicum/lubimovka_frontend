@@ -1,7 +1,3 @@
-export function objectMap<T extends {}, R, K extends keyof T = keyof T>(o: T, iteratee: (k: K, v: T[K]) => R): Record<K, R> {
-  const keys = Object.keys(o) as K[];
-  return keys.reduce((acc, key) => {
-    acc[key] = iteratee(key, o[key]);
-    return acc;
-  }, {} as Record<K, R>);
+export function objectMap<T extends object, K extends keyof T, R>(o: T, iteratee: (k: K, v: T[K]) => R): Record<K, R> {
+  return Object.fromEntries((<Array<[K, T[K]]>>Object.entries(o)).map(([k, v]) => [k, iteratee(k, v)])) as Record<K, R>;
 }

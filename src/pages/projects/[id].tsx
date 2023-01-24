@@ -6,7 +6,7 @@ import { Breadcrumb } from 'components/breadcrumb';
 import { ProjectHeadline } from 'components/project-headline';
 import { ConstructorContent } from 'components/constructor-content';
 import { SEO } from 'components/seo';
-import { HttpRequestError } from 'services/fetcher';
+import { isHttpRequestError } from 'services/fetcher';
 import { getProject } from 'services/api/projects';
 import { notFoundResult } from 'shared/constants/server-side-props';
 
@@ -61,8 +61,8 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       props: project,
     };
   } catch (error) {
-    if (error instanceof HttpRequestError) {
-      switch (error.statusCode) {
+    if (isHttpRequestError(error)) {
+      switch (error.response.statusCode) {
       case 404:
         return notFoundResult;
       default:
