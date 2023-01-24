@@ -71,7 +71,8 @@ const Plays = (props: PlaysViewProps) => {
     setFilterState((filterState) => {
       if (shouldSaveFilterState) {
         savedFilterState.current = filterState;
-      };
+      }
+
       return {
         ...filterState,
         [param]: filterState[param].map((o) => ({ ...o, selected: o.value === option.value ? selected : o.selected }))

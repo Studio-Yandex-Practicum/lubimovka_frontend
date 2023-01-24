@@ -39,8 +39,7 @@ export const RegularEvents: FC = () => {
             title={event.eventBody.name}
             team={event.eventBody.team}
             projectTitle={event.eventBody.projectTitle}
-            // TODO: разобраться, сча в схеме API нет поля с изображением
-            // @ts-expect-error
+            // @ts-expect-error: TODO: разобраться, сча в схеме API нет поля с изображением
             imageUrl={event.eventBody.image}
             description={event.eventBody.description}
             {...event.type === 'PERFORMANCE' ? {

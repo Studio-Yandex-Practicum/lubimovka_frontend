@@ -216,4 +216,4 @@ function toBlogEntries(array: BlogItemListOutput[]): BlogEntry[] {
     author: author_url_title,
     cover: image,
   }));
-};
+}

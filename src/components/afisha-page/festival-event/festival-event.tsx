@@ -16,7 +16,7 @@ import { FestivalDate } from '../festival-date';
 
 interface IProps extends AfishaEvent {
   isFirst: boolean;
-};
+}
 
 const cx = cn.bind(styles);
 

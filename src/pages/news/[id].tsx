@@ -53,7 +53,7 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
         cover={image}
       />
       <ConstructorContent
-        // @ts-expect-error
+        // @ts-ignore: TODO
         blocks={constructorBlocks}
       />
       <ArticleFootnote

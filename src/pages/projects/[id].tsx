@@ -44,7 +44,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
         </ProjectLayout.Description>
         <ConstructorContent
           variant="project"
-          // @ts-expect-error
+          // @ts-expect-error: TODO: В документации API нет описания ответов с блоками конструктора
           blocks={contents}
         />
       </ProjectLayout>

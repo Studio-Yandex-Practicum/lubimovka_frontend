@@ -9,7 +9,7 @@ import styles from './festival-date.module.css';
 interface IProps {
   dateTime: string;
   alignItems?: 'bottom' | 'center' | 'top'
-};
+}
 
 const cx = cn.bind(styles);
 

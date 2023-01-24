@@ -59,7 +59,7 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
         authorUrl={authorUrl}
       />
       <ConstructorContent
-        // @ts-expect-error
+        // @ts-expect-error: TODO: В документации API нет описания ответов с блоками конструктора
         blocks={constructorBlocks}
       />
       <ArticleFootnote

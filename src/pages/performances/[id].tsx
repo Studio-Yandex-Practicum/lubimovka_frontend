@@ -259,7 +259,7 @@ function toMediaReviews(reviews: PerformanceMediaReview[]) {
     text,
     ...url ? { href: url } : {}
   }));
-};
+}
 
 function toReviews(reviews: PerformanceReview[]) {
   return reviews.map(({ reviewer_name, url, text }) => ({
@@ -267,7 +267,7 @@ function toReviews(reviews: PerformanceReview[]) {
     text,
     ...url ? { href: url } : {}
   }));
-};
+}
 
 function formatPerformanceDuration(durationInMs: number) {
   return formatDuration({

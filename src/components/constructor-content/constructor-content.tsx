@@ -1,4 +1,4 @@
-//@ts-nocheck
+//@ts-nocheck: TODO: В документации API нет описания ответов с блоками конструктора
 import { Fragment } from 'react';
 import classNames from 'classnames/bind';
 import Image from 'next/image';

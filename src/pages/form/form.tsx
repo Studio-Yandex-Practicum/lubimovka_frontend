@@ -284,7 +284,7 @@ const Participation = () => {
           return;
         }
 
-        for (let field in errors as Record<string, string[]>) {
+        for (const field in errors as Record<string, string[]>) {
           const [error] = (errors as Record<string, string[]>)[field];
           dispatch({
             type: ParticipationFormActionType.FieldError,

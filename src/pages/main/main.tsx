@@ -81,8 +81,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                   {afisha.items.map((event) => (
                     <EventList.Item key={event.id}>
                       <EventCard
-                        // TODO: разобраться, сча в схеме API нет поля с изображением
-                        // @ts-expect-error
+                        // @ts-ignore: TODO: разобраться, сча в схеме API нет поля с изображением
                         imageUrl={event.event_body.image}
                         date={format('d MMMM', new Date(event.date_time))}
                         time={format('H:mm', new Date(event.date_time))}
@@ -142,7 +141,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                       </FeedList.Item>
                     ))
                   ) : (
-                    // @ts-ignore
+                    // @ts-ignore: TODO: Сходу не понял, почему добавлен игнор, нужно исправить
                     news.items.map((entry) => (
                       <FeedList.Item key={entry.id}>
                         <NewsCard
