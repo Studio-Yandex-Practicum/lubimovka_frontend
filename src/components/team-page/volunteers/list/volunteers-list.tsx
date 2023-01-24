@@ -1,15 +1,16 @@
-import React, { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames';
 import { disableBodyScroll, enableBodyScroll } from '@funboxteam/diamonds';
 
 import { PersonCard } from 'components/ui/person-card/person-card';
 import { FeedbackPopup } from 'components/ui/feedback-popup';
-import { Volunteers } from '__generated__/api-typings';
-
-import styles from './volunteers-list.module.css';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import breakpoints from 'shared/breakpoints';
+
+import type { Volunteers } from '__generated__/api-typings';
+
+import styles from './volunteers-list.module.css';
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +19,7 @@ interface VolunteersCardsProps {
   currentYear: number
 }
 
-const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
+const VolunteersList: React.FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
@@ -62,7 +63,7 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
     }
   };
 
-  const handleOverlayClose = (evt: MouseEvent)  => {
+  const handleOverlayClose = (evt: MouseEvent) => {
     const target = evt.target as HTMLElement;
     if (target.classList.contains('keen-slider__slide')) {
       closeFeedbackPopup();
@@ -100,7 +101,6 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
           ))}
         </div>
       )}
-
       {!isMobile && (
         <ul className={styles.container}>
           {cards.map((card, idx) => (
@@ -116,7 +116,6 @@ const VolunteersList: FC<VolunteersCardsProps> = ({ cards, currentYear }) => {
           ))}
         </ul>
       )}
-
       <FeedbackPopup
         currentYear={currentYear}
         cards={cards}

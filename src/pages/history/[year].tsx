@@ -60,7 +60,7 @@ const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
 
 export default History;
 
-export const getServerSideProps = async ({ params }:  GetServerSidePropsContext<Record<'year', string>>) => {
+export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'year', string>>) => {
   let years;
   let festival;
   let defaultYear;

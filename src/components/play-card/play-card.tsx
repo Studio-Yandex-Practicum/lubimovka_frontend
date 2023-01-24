@@ -9,7 +9,7 @@ import type { Play } from 'core/play';
 import styles from './play-card.module.css';
 import React from 'react';
 
-const cx  = cn.bind(styles);
+const cx = cn.bind(styles);
 
 export interface PlayCardProps extends Omit<Play, 'id'> {
   className?: string
