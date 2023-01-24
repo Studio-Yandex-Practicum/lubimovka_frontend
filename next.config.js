@@ -1,6 +1,10 @@
 const { apiBaseUrl, environment } = require('./config/env');
 
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+const config = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -46,3 +50,5 @@ module.exports = {
     };
   },
 };
+
+module.exports = withBundleAnalyzer(config);
