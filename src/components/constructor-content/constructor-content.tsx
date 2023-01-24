@@ -1,4 +1,4 @@
-// @ts-nocheck TODO:
+// @ts-nocheck: TODO
 import { Fragment } from 'react';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
@@ -139,8 +139,10 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                 title={content_item.title}
               >
                 <EventCard
-                  date={format(new Date(content_item.items[0].date_time), 'd MMMM')}
-                  time={format(new Date(content_item.items[0].date_time), 'H:mm')}
+                  {...content_item.items[0].date_time && {
+                    date: format(new Date(content_item.items[0].date_time), 'd MMMM'),
+                    time: format(new Date(content_item.items[0].date_time), 'H:mm'),
+                  }}
                   title={content_item.items[0].event_body.name}
                   team={content_item.items[0].event_body.team}
                   imageUrl={content_item.items[0].event_body.image}
@@ -177,8 +179,10 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                   }) => (
                     <EventList.Item key={id}>
                       <EventCard
-                        date={format(new Date(date_time), 'd MMMM')}
-                        time={format(new Date(date_time), 'H:mm')}
+                        {...date_time && {
+                          date: format(new Date(date_time), 'd MMMM'),
+                          time: format(new Date(date_time), 'H:mm'),
+                        }}
                         title={name}
                         team={team}
                         imageUrl={image}
@@ -215,6 +219,7 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
             )}
             {content_type === ConstructorBlockType.Videos && (
               <ConstructorContentSection
+                variant="default"
                 title={content_item.title}
               >
                 <VideoList>
@@ -230,7 +235,6 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
             {content_type === ConstructorBlockType.Link && (
               <ConstructorContentSection
                 variant="link"
-                colors="brand"
                 title={content_item.title}
               >
                 <ConstructorLink
