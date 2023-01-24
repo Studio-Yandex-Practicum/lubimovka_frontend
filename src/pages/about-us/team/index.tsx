@@ -107,23 +107,25 @@ const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           onClose={handleFeedbackDialogClose}
         >
           <FeedbackCarousel initialItemIndex={currentItemIndex}>
-            {({ handleForward, handleBackward, totalItems, currentItemIndex, handleCurrentItemChange }) => getVolunteersByYear(currentYear).filter(hasFeedback).map((item, index) => (
+            {({ loaded, handleForward, handleBackward, currentItemIndex, handleCurrentItemChange }) => getVolunteersByYear(currentYear).filter(hasFeedback).map((item, index, items) => (
               <FeedbackCarousel.Item key={index}>
-                <FeedbackCard
-                  author={`${item.person.first_name} ${item.person.last_name}`}
-                  photoUrl={item.person.image}
-                  tldr={item.review_title}
-                  text={item.review_text!} // TODO: уточнить у бекендеров, почему текст отзыва опциональный
-                  onForward={handleForward}
-                  onBackward={handleBackward}
-                  pagination={totalItems && (
-                    <SliderDots
-                      currentSlide={currentItemIndex}
-                      count={totalItems}
-                      onClick={handleCurrentItemChange}
-                    />
-                  )}
-                />
+                {loaded && (
+                  <FeedbackCard
+                    author={`${item.person.first_name} ${item.person.last_name}`}
+                    photoUrl={item.person.image}
+                    tldr={item.review_title}
+                    text={item.review_text!} // TODO: уточнить у бекендеров, почему текст отзыва опциональный
+                    onForward={handleForward}
+                    onBackward={handleBackward}
+                    pagination={(
+                      <SliderDots
+                        currentSlide={currentItemIndex}
+                        count={items.length}
+                        onClick={handleCurrentItemChange}
+                      />
+                    )}
+                  />
+                )}
               </FeedbackCarousel.Item>
             ))}
           </FeedbackCarousel>

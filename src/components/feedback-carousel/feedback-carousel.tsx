@@ -1,18 +1,24 @@
 import { useKeenSlider } from 'keen-slider/react';
 import { useState } from 'react';
 
-import type KeenSlider from 'keen-slider';
+type ChildrenProps = {
+  currentItemIndex: number
+} & ({
+  loaded: true
+  handleCurrentItemChange: (index: number) => void
+  handleForward: () => void
+  handleBackward: () => void
+} | {
+  loaded: false
+  handleCurrentItemChange?: never
+  handleForward?: never
+  handleBackward?: never
+})
 
 interface FeedbackCarouselProps {
-  className?: string;
-  initialItemIndex?: number;
-  children: (childrenProps: {
-    totalItems: number
-    currentItemIndex: number
-    handleCurrentItemChange: KeenSlider['moveToSlideRelative'],
-    handleForward: KeenSlider['next'],
-    handleBackward: KeenSlider['prev'],
-  }) => void;
+  className?: string
+  initialItemIndex?: number
+  children: (childrenProps: ChildrenProps) => void
 }
 
 export const FeedbackCarousel = (props: FeedbackCarouselProps) => {
@@ -23,25 +29,30 @@ export const FeedbackCarousel = (props: FeedbackCarouselProps) => {
   } = props;
 
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-
-  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+  const [loaded, setLoaded] = useState(false);
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    spacing: 15,
+    slides: {
+      spacing: 15,
+    },
     initial: initialItemIndex,
+    created() {
+      setLoaded(true);
+    },
     slideChanged(s) {
-      setCurrentSlideIndex(s.details().relativeSlide);
+      setCurrentSlideIndex(s.track.details.rel);
     },
   });
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'ArrowLeft') {
-      slider.prev();
+      instanceRef.current?.prev();
 
       return;
     }
 
     if (event.key === 'ArrowRight') {
-      slider.next();
+      instanceRef.current?.next();
 
       return;
     }
@@ -57,11 +68,15 @@ export const FeedbackCarousel = (props: FeedbackCarouselProps) => {
         className="keen-slider"
       >
         {children({
-          totalItems: slider?.details().size,
+          ...loaded && !!instanceRef.current ? {
+            loaded: true,
+            handleCurrentItemChange: instanceRef.current?.moveToIdx,
+            handleForward: instanceRef.current?.next,
+            handleBackward: instanceRef.current?.prev,
+          } : {
+            loaded: false,
+          },
           currentItemIndex: currentSlideIndex,
-          handleCurrentItemChange: slider?.moveToSlideRelative,
-          handleForward: slider?.next,
-          handleBackward: slider?.prev,
         })}
       </div>
     </div>

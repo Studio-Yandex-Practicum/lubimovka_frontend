@@ -1,7 +1,4 @@
-import { FC } from 'react';
-
 import { PersonCard } from '../ui/person-card/person-card';
-import 'keen-slider/keen-slider.min.css';
 import { Sponsor } from '__generated__/api-typings';
 
 import style from './persons-list.module.css';
@@ -25,10 +22,10 @@ const getClass = (number:number) => {
   return 'four';
 };
 
-const PersonsList: FC<PersonsListProps> = ({ persons }) => {
+const PersonsList: React.FC<PersonsListProps> = ({ persons }) => {
 
   return (
-    <ul className={cn(style.personsList,style[getClass(persons.length)])}>
+    <ul className={cn(style.personsList, style[getClass(persons.length)])}>
       {persons.map((person) => (
         <li key={person.id} className={style.personsListItem}>
           <PersonCard

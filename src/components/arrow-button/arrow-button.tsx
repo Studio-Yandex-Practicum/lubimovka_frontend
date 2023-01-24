@@ -9,6 +9,7 @@ interface ImageCarouselButtonProps {
   size?: 's' | 'm'
   disabled?: boolean
   text: string
+  className?: string
   onClick: () => void
 }
 
@@ -20,13 +21,14 @@ export const ArrowButton: React.FC<ImageCarouselButtonProps> = (props) => {
     size = 'm',
     disabled,
     text,
+    className,
     onClick,
   } = props;
 
   return (
     <button
       type="button"
-      className={cx(variant, size)}
+      className={cx(variant, size, className)}
       disabled={disabled}
       onClick={onClick}
     >

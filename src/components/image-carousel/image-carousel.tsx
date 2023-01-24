@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import { useKeenSlider } from 'keen-slider/react';
+import { useState } from 'react';
 
 import { ArrowButton } from 'components/arrow-button';
 
@@ -20,21 +21,25 @@ export const ImageCarousel = (props: ImageCarouselProps) => {
     children,
   } = props;
 
-  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+  const [loaded, setLoaded] = useState(false);
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    spacing: 15,
+    slides: {
+      spacing: 15,
+    },
     initial: initialSlideIndex,
+    created() {
+      setLoaded(true);
+    },
   });
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'ArrowLeft') {
-      slider.prev();
-
       return;
     }
 
     if (event.key === 'ArrowRight') {
-      slider.next();
+      instanceRef.current?.next();
 
       return;
     }
@@ -48,20 +53,20 @@ export const ImageCarousel = (props: ImageCarouselProps) => {
       <div ref={sliderRef} className={cx('keen-slider')}>
         {children}
       </div>
-      {slider && (
+      {loaded && instanceRef.current && (
         <>
           <div className={cx('backward')}>
             <ArrowButton
               variant="backward"
               text="Предыдущий слайд"
-              onClick={slider.prev}
+              onClick={instanceRef.current?.prev}
             />
           </div>
           <div className={cx('forward')}>
             <ArrowButton
               variant="forward"
               text="Следующий слайд"
-              onClick={slider.next}
+              onClick={instanceRef.current?.next}
             />
           </div>
         </>
