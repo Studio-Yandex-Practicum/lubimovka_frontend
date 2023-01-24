@@ -1,4 +1,0 @@
-.button {
-  @mixin sliderButtonAnimationBase;
-  @mixin sliderButtonAnimationOutline;
-}
