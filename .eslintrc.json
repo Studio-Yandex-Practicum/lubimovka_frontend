@@ -22,6 +22,7 @@
     "operator-linebreak":  ["error", "before"],
     "quote-props": ["error", "as-needed"],
     "no-trailing-spaces": "error",
+    "no-multi-spaces": "error",
     "no-mixed-operators": "error",
     "no-nested-ternary": ["warn"],
     "no-var": "error",
@@ -45,6 +46,7 @@
       "afterOpening": "never",
       "beforeClosing": "never"
     }],
+    "react/jsx-props-no-multi-spaces": "error",
     "react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
     "react/jsx-max-props-per-line": ["error", {
       "maximum": 1,
@@ -62,11 +64,16 @@
     "react/jsx-closing-bracket-location": ["error", "line-aligned"],
     "react/jsx-one-expression-per-line": "error",
     "react/jsx-boolean-value": ["error", "never"],
+    "react/jsx-no-useless-fragment": ["error"],
+    "react/jsx-newline": ["error", {
+      "prevent": true
+    }],
     "react/self-closing-comp": ["error", {
       "component": true,
       "html": true
     }],
     "react/no-array-index-key": "warn",
+    "react/jsx-handler-names": "warn",
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/ban-ts-comment": ["error", {
@@ -74,6 +81,7 @@
       "ts-ignore": "allow-with-description",
       "ts-nocheck": "allow-with-description",
       "ts-check": "allow-with-description"
-    }]
+    }],
+    "@typescript-eslint/consistent-type-imports": "warn"
   }
 }
