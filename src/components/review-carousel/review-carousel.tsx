@@ -1,11 +1,10 @@
-import { FC, Children, useState } from 'react';
+import React, { useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames/bind';
 
-import { SliderButton } from 'components/ui/slider-button';
 import { SliderDots } from 'components/ui/slider-dots';
-
-import type KeenSlider from 'keen-slider/react';
+import { ArrowButton } from 'components/arrow-button';
+import breakpoints from 'shared/breakpoints';
 
 import styles from './review-carousel.module.css';
 
@@ -16,7 +15,7 @@ interface IReviewCarousel {
 
 const cx = classNames.bind(styles);
 
-export const ReviewCarousel: FC<IReviewCarousel> = (props) => {
+export const ReviewCarousel: React.FC<IReviewCarousel> = (props) => {
   const {
     title,
     mode,
@@ -28,47 +27,31 @@ export const ReviewCarousel: FC<IReviewCarousel> = (props) => {
     single: 2,
   }[mode];
 
+  const [loaded, setLoaded] = useState(false);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [carouselRef, carousel] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
-    slidesPerView,
-    spacing: 30,
-    centered: mode === 'single',
-    slideChanged(carousel) {
-      setCurrentSlideIndex(carousel.details().relativeSlide);
+    slides: {
+      perView: slidesPerView,
+      spacing: 30,
+      origin: mode === 'single' ? 'center' : 'auto'
+    },
+    created() {
+      setLoaded(true);
+    },
+    slideChanged(s) {
+      setCurrentSlideIndex(s.track.details.rel);
     },
     breakpoints: {
-      '(max-width: 728px)': {
-        slidesPerView: 1,
+      [`(max-width: ${breakpoints['tablet-portrait']})`]: {
+        slides: { perView: 1 },
       }
     }
   });
 
-  const handleDotClick = (dotIndex: number) => {
-    const { slidesPerView } = carousel.details();
-    const slideIndex = mode === 'single'
-      ? dotIndex
-      : (slidesPerView * (dotIndex + 1)) - slidesPerView + 1;
-    carousel.moveToSlideRelative(slideIndex);
-  };
-
-  const handleNextClick = () => {
-    const { slidesPerView, absoluteSlide } = carousel.details();
-    mode === 'single'
-      ? carousel.next()
-      : carousel.moveToSlide(absoluteSlide + slidesPerView);
-  };
-
-  const handlePrevClick = () => {
-    const { slidesPerView, absoluteSlide } = carousel.details();
-    mode === 'single'
-      ? carousel.prev()
-      : carousel.moveToSlide(absoluteSlide - slidesPerView);
-  };
-
-  const lastSlideReached = carousel && (mode === 'single'
-    ? currentSlideIndex === carousel.details().size - 1
-    : currentSlideIndex === carousel.details().size - carousel.details().slidesPerView);
+  const lastSlideReached = !!instanceRef.current && (mode === 'single'
+    ? currentSlideIndex === instanceRef.current.slides.length - 1
+    : currentSlideIndex === instanceRef.current.slides.length - slidesPerView);
 
   return (
     <div className={cx(mode)}>
@@ -76,27 +59,29 @@ export const ReviewCarousel: FC<IReviewCarousel> = (props) => {
         <h2 className={cx('title')}>
           {title}
         </h2>
-        {carousel && (
+        {loaded && instanceRef.current && (
           <>
             <SliderDots
               className={cx('dots')}
-              count={mode === 'single' ? carousel.details().size : getSlidesGroups(carousel).length}
-              currentSlide={mode === 'single' ? currentSlideIndex : getSlideGroupIndex(carousel, currentSlideIndex)}
-              onClick={handleDotClick}
+              count={instanceRef.current?.track.details.maxIdx + 1}
+              currentSlide={instanceRef.current?.track.details.abs}
+              onClick={instanceRef.current?.moveToIdx}
             />
             <div className={cx('arrows')}>
-              <SliderButton
-                ariaLabel="Предыдущий отзыв"
-                direction="left"
-                className={cx('arrow', 'arrowLeft')}
-                onClick={handlePrevClick}
+              <ArrowButton
+                text="Предыдущий отзыв"
+                variant="backward"
+                size="s"
+                className={cx('arrow')}
+                onClick={instanceRef.current?.prev}
                 disabled={currentSlideIndex === 0}
               />
-              <SliderButton
-                ariaLabel="Следующий отзыв"
-                direction="right"
-                className={cx('arrow', 'arrowRight')}
-                onClick={handleNextClick}
+              <ArrowButton
+                variant="forward"
+                size="s"
+                text="Следующий отзыв"
+                className={cx('arrow')}
+                onClick={instanceRef.current?.next}
                 disabled={lastSlideReached}
               />
             </div>
@@ -104,10 +89,10 @@ export const ReviewCarousel: FC<IReviewCarousel> = (props) => {
         )}
       </div>
       <div
-        ref={carouselRef}
+        ref={sliderRef}
         className={cx('keen-slider', 'slider')}
       >
-        {Children.map(children, (slide, index) => (
+        {React.Children.map(children, (slide, index) => (
           <div className={cx('slide', { active: index === currentSlideIndex }, 'keen-slider__slide')}>
             {slide}
           </div>
@@ -116,15 +101,3 @@ export const ReviewCarousel: FC<IReviewCarousel> = (props) => {
     </div>
   );
 };
-
-function getSlidesGroups(carouselInstance: KeenSlider) {
-  const { size, slidesPerView } = carouselInstance.details();
-
-  return Array.from(Array(size).keys()).filter((x, index) => index % slidesPerView === 0);
-}
-
-function getSlideGroupIndex(carouselInstance: KeenSlider, slideIndex: number) {
-  const { slidesPerView } = carouselInstance.details();
-
-  return Math.ceil(slideIndex / slidesPerView);
-}

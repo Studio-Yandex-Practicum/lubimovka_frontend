@@ -35,6 +35,7 @@
   color: var(--coal);
   cursor: pointer;
   text-decoration: none;
+  user-select: none;
   white-space: nowrap;
 
   &::before,

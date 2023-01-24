@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import classNames from 'classnames/bind';
+import { format } from 'date-fns';
 
 import { AppLayout } from 'components/app-layout';
 import { NewsLayout } from 'components/news-layout';
@@ -14,7 +15,6 @@ import { useIntersection } from 'shared/hooks/use-intersection';
 import { fetcher } from 'services/fetcher';
 import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/news';
-import { format } from 'shared/helpers/format-date';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import type { InferGetServerSidePropsType } from 'next';
@@ -142,7 +142,7 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
               <NewsCard
                 title={entry.title}
                 description={entry.description}
-                date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
+                date={entry.pub_date && format(new Date(entry.pub_date), 'd MMMM yyyy')}
                 href={`/news/${entry.id}`}
               />
             </NewsList.Item>

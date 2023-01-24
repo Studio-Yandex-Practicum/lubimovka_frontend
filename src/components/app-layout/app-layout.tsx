@@ -27,7 +27,7 @@ import * as breakpoints from 'shared/breakpoints.js';
 import type { NavbarProps } from 'components/navbar';
 
 interface AppLayoutProps {
-  noNavbar?: boolean
+  customNavbar?: React.ReactNode
   navbarProps?: Pick<NavbarProps, 'colors'>
   navbarAddon?: React.ReactNode
 }
@@ -35,7 +35,7 @@ interface AppLayoutProps {
 export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (props) => {
   const {
     children,
-    noNavbar,
+    customNavbar,
     navbarProps,
     navbarAddon,
   } = props;
@@ -57,8 +57,8 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
 
   return (
     <Page>
-      {noNavbar || (
-        <Page.Navbar>
+      <Page.Navbar custom={!!customNavbar}>
+        {customNavbar ? customNavbar : (
           <Navbar {...navbarProps}>
             <Navbar.Slot area="logotype">
               <Logotype
@@ -104,8 +104,8 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
               </Navbar.Slot>
             )}
           </Navbar>
-        </Page.Navbar>
-      )}
+        )}
+      </Page.Navbar>
       {children}
       <Page.Footer>
         <Footer privacyPolicyUrl={settings?.privacyPolicyUrl}>

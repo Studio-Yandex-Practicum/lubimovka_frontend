@@ -6,7 +6,7 @@ import { useConstructorContent } from '../constructor-content.context';
 import type { FC } from 'react';
 
 interface ConstructorContentSectionProps {
-  variant: 'default' | 'events' | 'event' | 'link' | 'html-markup' | 'image-carousel' | 'image-gallery' |  'image' | 'plays' | 'persons'
+  variant: 'default' | 'events' | 'event' | 'link' | 'html-markup' | 'image-carousel' | 'image-gallery' | 'image' | 'plays' | 'persons'
   title?: string
 }
 

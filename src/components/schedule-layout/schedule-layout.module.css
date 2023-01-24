@@ -1,0 +1,19 @@
+@value tablet-portrait from 'shared/styles/media.module.css';
+
+.root {
+  display: grid;
+  padding: 60px 32px;
+
+  @media tablet-portrait {
+    padding: 0;
+  }
+}
+
+.headline {
+  margin: 0 144px 112px 92px;
+
+  @media tablet-portrait {
+    border-bottom: 1px solid var(--coal);
+    margin: 0 0 56px 0;
+  }
+}

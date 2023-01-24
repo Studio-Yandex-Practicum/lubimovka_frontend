@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { format } from 'date-fns';
 
 import { MainLayout } from 'components/main-layout';
 import { FeedList } from 'components/feed-list';
@@ -24,7 +25,6 @@ import PartnerCard from 'components/partner-card';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
 import { getPartners } from 'services/api/partners';
-import { format } from 'shared/helpers/format-date';
 import { PartnerType } from 'core/partner';
 
 import type { InferGetServerSidePropsType } from 'next';
@@ -49,15 +49,18 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   return (
     <>
       <SEO title="Главная"/>
-      <AppLayout noNavbar={!!first_screen}>
-        {first_screen && (
-          <MainHeader
-            cover={first_screen.image}
-            title={first_screen.title}
-            actionText={first_screen.url_title}
-            actionUrl={first_screen.url}
-          />
-        )}
+      <AppLayout
+        {...first_screen && {
+          customNavbar: (
+            <MainHeader
+              cover={first_screen.image}
+              title={first_screen.title}
+              actionText={first_screen.url_title}
+              actionUrl={first_screen.url}
+            />
+          )
+        }}
+      >
         <MainLayout>
           {!!afisha?.items.length && (
             <MainLayout.Events>
@@ -66,7 +69,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                   <>
                     Афиша на сегодня,
                     {' '}
-                    {format('d MMMM', new Date())}
+                    {format(new Date(), 'd MMMM')}
                   </>
                 ) : (
                   <>
@@ -81,11 +84,10 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                   {afisha.items.map((event) => (
                     <EventList.Item key={event.id}>
                       <EventCard
-                        // TODO: разобраться, сча в схеме API нет поля с изображением
-                        // @ts-expect-error
+                        // @ts-ignore: TODO: разобраться, сча в схеме API нет поля с изображением
                         imageUrl={event.event_body.image}
-                        date={format('d MMMM', new Date(event.date_time))}
-                        time={format('H:mm', new Date(event.date_time))}
+                        date={format(new Date(event.date_time), 'd MMMM')}
+                        time={format(new Date(event.date_time), 'H:mm')}
                         title={event.event_body.name}
                         team={event.event_body.team}
                         projectTitle={event.event_body.project_title}
@@ -142,14 +144,14 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                       </FeedList.Item>
                     ))
                   ) : (
-                    // @ts-ignore
+                    // @ts-ignore: TODO: Сходу не понял, почему добавлен игнор, нужно исправить
                     news.items.map((entry) => (
                       <FeedList.Item key={entry.id}>
                         <NewsCard
                           view="compact"
                           title={entry.title}
                           description={entry.description}
-                          date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
+                          date={entry.pub_date && format(new Date(entry.pub_date), 'd MMMM yyyy')}
                           href={`/news/${entry.id}`}
                         />
                       </FeedList.Item>

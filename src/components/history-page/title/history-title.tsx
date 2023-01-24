@@ -1,8 +1,10 @@
-import React, { FC } from 'react';
+import { useState, useEffect } from 'react';
 import cn from 'classnames';
 
 import { Button } from 'components/ui/button/button';
-import { Festival } from '__generated__/api-typings';
+import { isNonEmpty } from 'shared/helpers/is-non-empty';
+
+import type { Festival } from '__generated__/api-typings';
 
 import style from './history-title.module.css';
 
@@ -14,9 +16,10 @@ interface IHistoryTitle {
 const iconPlace = 'right';
 const icon = 'arrow-right';
 const alignStart = 'start';
+// TODO: TT заменить на локальное изображение
 const imageUrl = 'https://s1.hostingkartinok.com/uploads/images/2021/12/fb0c8e1baf21b0ca306ee98a6678c0d8.png';
 
-export const HistoryTitle: FC<IHistoryTitle> = ({ data, currentYear }) => {
+export const HistoryTitle: React.FC<IHistoryTitle> = ({ data, currentYear }) => {
   const {
     plays_count,
     selected_plays_count,
@@ -31,20 +34,25 @@ export const HistoryTitle: FC<IHistoryTitle> = ({ data, currentYear }) => {
     additional_links,
     description
   } = data;
+
   const startDate = new Date(start_date).toLocaleDateString('ru-Ru', {
     timeZone: 'Europe/Moscow',
     month: 'long',
     day: 'numeric'
   });
+
   const finishDate = new Date(end_date).toLocaleDateString('ru-Ru', {
     timeZone: 'Europe/Moscow',
     month: 'long',
     day: 'numeric'
   });
-  const [urlVolonters, setUrlVolonters] = React.useState(`/about-us/team/?year=${currentYear}`);
-  React.useEffect(() => {
+
+  const [urlVolonters, setUrlVolonters] = useState(`/about-us/team/?year=${currentYear}`);
+
+  useEffect(() => {
     setUrlVolonters(`/about-us/team/?year=${currentYear}`);
   }, [currentYear]);
+
   return (
     <section className={style.section}>
       <img src={festival_image ||imageUrl} alt="Изображение" className={style.image}/>
@@ -154,7 +162,7 @@ export const HistoryTitle: FC<IHistoryTitle> = ({ data, currentYear }) => {
           </div>
         </div>
         <div className={style.links}>
-          {plays_links.length > 0 && (
+          {isNonEmpty(plays_links) && (
             <div className={style.subsection}>
               <h2 className={style.subtitle}>
                 Пьесы
@@ -176,12 +184,11 @@ export const HistoryTitle: FC<IHistoryTitle> = ({ data, currentYear }) => {
               ))}
             </div>
           )}
-          {additional_links.length > 0 && (
+          {isNonEmpty(additional_links) && (
             <div className={style.subsection}>
               <h2 className={style.subtitle}>
                 Дополнительно
               </h2>
-
               {additional_links.map(({ title, link }) => (
                 <div className={style.buttonDisplay} key={title}>
                   <Button

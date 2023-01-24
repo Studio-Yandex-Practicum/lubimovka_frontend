@@ -10,6 +10,6 @@ export type OrderedPlay = {
     authors: Array<AuthorForPlay>;
     city?: string;
     year?: number;
-    url_download: string;
-    url_download_from: string;
+    readonly url_download: string;
+    url_reading: string;
 };

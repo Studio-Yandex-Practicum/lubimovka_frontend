@@ -165,7 +165,7 @@ const Contacts: NextPage = () => {
     } catch ([ status, errors ]) {
       // TODO: добавить проверку типов выброшенного исключения, пока считаем, что всегда получаем ответ API
 
-      for (let field in errors as Record<string, string[]>) {
+      for (const field in errors as Record<string, string[]>) {
         dispatch({
           type: ContactFormActionTypes.FieldError,
           payload: {

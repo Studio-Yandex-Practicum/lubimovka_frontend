@@ -1,12 +1,22 @@
 import { addApiBaseUrlToPath } from 'shared/helpers/url';
 
-export class HttpRequestError extends Error {
-  constructor (public statusCode: number, public data: unknown) {
-    super(`The request failed with HTTP status ${statusCode}`);
+type ErrorResponse = {
+  statusCode: number
+  payload: unknown
+}
+
+export class HttpRequestError<T extends ErrorResponse = ErrorResponse> extends Error {
+  response: T;
+
+  constructor (response: T) {
+    super(`The request failed with HTTP status ${response.statusCode}`);
     this.name = 'HttpRequestError';
-    this.statusCode = statusCode;
-    this.data = data;
+    this.response = response;
   }
+}
+
+export function isHttpRequestError<T extends ErrorResponse>(error: unknown): error is HttpRequestError<T> {
+  return error instanceof HttpRequestError;
 }
 
 const fetchResource = (httpClient: typeof fetch) => async <T>(path: string, options?: RequestInit) => (
@@ -17,15 +27,17 @@ const fetchResource = (httpClient: typeof fetch) => async <T>(path: string, opti
 export const fetcher = fetchResource(fetch);
 
 async function handleResponse<T>(response: Response) {
-  let data;
+  let payload;
 
   try {
-    data = await response.json();
-  } catch {}
-
-  if (!response.ok) {
-    throw new HttpRequestError(response.status, data);
+    payload = await response.json();
+  } catch (error) {
+    throw error;
   }
 
-  return data as T;
-};
+  if (!response.ok) {
+    throw new HttpRequestError({ statusCode: response.status, payload });
+  }
+
+  return payload as T;
+}

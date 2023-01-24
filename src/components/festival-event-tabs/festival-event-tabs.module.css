@@ -1,0 +1,39 @@
+@value tablet-portrait from 'shared/styles/media.module.css';
+
+$control-size: 48px;
+
+.panel-hidden {
+  @media tablet-portrait {
+    display: none;
+  }
+}
+
+.panel-header {
+  padding: 0 0 8px 0;
+  border-bottom: 1px solid var(--coal);
+
+  @media tablet-portrait {
+    text-align: center;
+  }
+}
+
+.panel-inner {
+  @media tablet-portrait {
+    padding: 0 24px;
+  }
+}
+
+.panel-title {
+  margin: 0;
+}
+
+.controls {
+  display: none;
+
+  @media tablet-portrait {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+    margin-bottom: -$control-size;
+  }
+}

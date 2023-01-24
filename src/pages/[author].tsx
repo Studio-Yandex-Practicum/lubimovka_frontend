@@ -146,4 +146,4 @@ function toAdditionalPlayLinks(plays: Play[]) {
     title: name,
     ...url_download ? { href: url_download } : {},
   }));
-};
+}

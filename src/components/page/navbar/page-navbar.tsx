@@ -1,26 +1,24 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './page-navbar.module.css';
 
 interface PageNavbarProps {
-  hidden?: boolean
+  custom?: boolean
 }
 
 const cx = classNames.bind(styles);
 
-export const PageNavbar: FC<PageNavbarProps> = (props) => {
+export const PageNavbar: React.FC<PageNavbarProps> = (props) => {
   const {
+    custom,
     children,
-    hidden,
   } = props;
 
   return (
     <header
-      className={cx(
-        'root',
-        { hidden }
-      )}
+      {...!custom && {
+        className: cx('root')
+      }}
     >
       {children}
     </header>

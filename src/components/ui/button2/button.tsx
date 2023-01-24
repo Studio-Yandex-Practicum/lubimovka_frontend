@@ -58,7 +58,7 @@ const Component = (props: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement
         },
         className,
       )}
-      // @ts-ignore
+      // @ts-ignore: TODO
       ref={ref}
       {...HTMLProps}
     >

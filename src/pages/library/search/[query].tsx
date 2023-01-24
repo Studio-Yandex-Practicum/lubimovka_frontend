@@ -30,7 +30,7 @@ interface SearchProps {
 
 const BREADCRUMB_PATH = '/library';
 
-const Search  = (props: SearchProps) => {
+const Search = (props: SearchProps) => {
   const router = useRouter();
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const {

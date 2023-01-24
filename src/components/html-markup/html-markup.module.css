@@ -86,6 +86,10 @@
       margin: 0;
     }
   }
+
+  a {
+    color: currentColor;
+  }
 }
 
 .default {

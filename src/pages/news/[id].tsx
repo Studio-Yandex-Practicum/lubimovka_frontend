@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-
+import format from 'date-fns/format';
 import { AppLayout } from 'components/app-layout';
 import { ArticleHeadline } from 'components/article-headline';
 import { ArticleFootnote } from 'components/article-footnote';
@@ -12,7 +12,6 @@ import { PageBreadcrumbs } from 'components/page';
 import { Breadcrumb } from 'components/breadcrumb';
 import { SEO } from 'components/seo';
 import { fetcher } from 'services/fetcher';
-import { format } from 'shared/helpers/format-date';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { notFoundResult } from 'shared/constants/server-side-props';
 
@@ -49,11 +48,11 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
         variant="news"
         title={title}
         description={description}
-        date={format('d MMMM yyyy', new Date(date))}
+        date={format(new Date(date), 'd MMMM yyyy')}
         cover={image}
       />
       <ConstructorContent
-        // @ts-expect-error
+        // @ts-ignore: TODO
         blocks={constructorBlocks}
       />
       <ArticleFootnote
@@ -77,7 +76,7 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
                 <NewsCard
                   title={entry.title}
                   description={entry.description}
-                  date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
+                  date={entry.pub_date && format(new Date(entry.pub_date), 'd MMMM yyyy')}
                   href={`/news/${entry.id}`}
                 />
               </NewsList.Item>

@@ -60,7 +60,7 @@
 
 .arrows {
   display: flex;
-  margin-left: 21px;
+  margin-left: 20px;
 
   @media (max-width: $tablet-portrait) {
     margin-left: auto;
@@ -68,11 +68,7 @@
 }
 
 .arrow {
-  position: relative;
-  width: 48px;
-  height: 48px;
-}
-
-.arrowRight {
-  margin-left: 21px;
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
 }

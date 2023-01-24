@@ -73,7 +73,6 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
             href="/library/authors"
           />
         </div>
-
         {image && (
           <div className={cx('photoBox')}>
             <img
@@ -89,7 +88,6 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
         <p className={cx('city')}>
           {city}
         </p>
-
         {quote
           && (
             <div className={cx('quote')}>
@@ -100,7 +98,6 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
           )
         }
       </div>
-
       <div className={cx('overviewInfo')}>
         <div className={cx('descriptionWrapper')}>
           {availablePlays && (
@@ -144,7 +141,6 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               }
             </div>
           )}
-
           {availablePins && (
             <div className={cx('authorLinks')}>
               {pinnedLinks
@@ -165,7 +161,6 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
             </div>
           )}
         </div>
-
         <div className={cx('overviewSet')}>
           {availableTags && (
             <div className={cx('overviewTagsBlock')}>
@@ -189,7 +184,6 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               </div>
             </div>
           )}
-
           {availableSocialNetworks && (
             <div className={cx('overviewSocialWrapper')}>
               <h2 className={cx('overviewSocialLinkHeading')}>
@@ -214,7 +208,6 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               </div>
             </div>
           )}
-
           {email && (
             <div className={cx('overviewSocialWrapper')}>
               <p className={cx('email')}>

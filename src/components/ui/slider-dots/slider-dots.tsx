@@ -4,7 +4,7 @@ import cn from 'classnames';
 import styles from './slider-dots.module.css';
 
 interface ISliderDotsProps {
-  className: string;
+  className?: string;
   count: number;
   currentSlide: number;
   onClick: (index: number) => void;

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import classNames from 'classnames/bind';
-import { formatDuration } from 'date-fns';
-import ru from 'date-fns/locale/ru';
+import { formatDuration, format } from 'date-fns';
 
 import { AppLayout } from 'components/app-layout';
 import { PerformanceLayout } from 'components/performance-layout';
@@ -13,13 +12,12 @@ import { ShareLinks } from 'components/share-links';
 import { PlayCard } from 'components/play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
-import { PhotoGallery } from 'components/photo-gallery';
+import { ImageGallery } from 'components/image-gallery';
 import { PerformanceEventList } from 'components/performance-event-list';
 import { ReviewCarousel } from 'components/review-carousel';
 import { MediaReviewCard } from 'components/media-review-card';
 import { ReviewCard } from 'components/review-card';
 import { SEO } from 'components/seo';
-import { format } from 'shared/helpers/format-date';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { isNonEmpty } from 'shared/helpers/is-non-empty';
 import { fetcher } from 'services/fetcher';
@@ -46,7 +44,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
     intro,
     play,
     team,
-    images_in_block,
+    gallery_images,
     main_image,
     bottom_image,
     video,
@@ -78,7 +76,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
                 key={date}
                 actionText={actionText}
                 actionUrl={actionUrl}
-                {...date ? { date: format('d MMMM H:mm', new Date(date)) } : {}}
+                {...date && { date: format(new Date(date), 'd MMMM H:mm') }}
               />
             ))}
           </PerformanceEventList>
@@ -138,9 +136,9 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
           </Section>
         </PerformanceLayout.Content>
         <PerformanceLayout.Gallery>
-          <PhotoGallery
-            photos={images_in_block.map(({ image }) => ({
-              url: image,
+          <ImageGallery
+            items={gallery_images.map(({ url }) => ({
+              url,
             }))}
           />
         </PerformanceLayout.Gallery>
@@ -226,7 +224,7 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       description: performanceResponse.description,
       play: performanceResponse.play,
       team: performanceResponse.team,
-      images_in_block: performanceResponse.images_in_block,
+      gallery_images: performanceResponse.gallery_images,
       main_image: performanceResponse.main_image,
       bottom_image: performanceResponse.bottom_image,
       video: performanceResponse.video,
@@ -259,7 +257,7 @@ function toMediaReviews(reviews: PerformanceMediaReview[]) {
     text,
     ...url ? { href: url } : {}
   }));
-};
+}
 
 function toReviews(reviews: PerformanceReview[]) {
   return reviews.map(({ reviewer_name, url, text }) => ({
@@ -267,11 +265,11 @@ function toReviews(reviews: PerformanceReview[]) {
     text,
     ...url ? { href: url } : {}
   }));
-};
+}
 
 function formatPerformanceDuration(durationInMs: number) {
   return formatDuration({
     hours: Math.floor(durationInMs / 3600),
     minutes: Math.floor(durationInMs % 3600 / 60),
-  }, { locale: ru });
+  });
 }

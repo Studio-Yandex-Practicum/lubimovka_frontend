@@ -103,7 +103,7 @@
 .places {
   composes: common;
   padding: 65px 60px 105px 60px;
-  background-color: white;
+  background-color: var(--white);
 
   .title {
     @mixin headline;
@@ -175,5 +175,20 @@
 
     overflow: scroll;
     padding: 10px 0 80px 25px;
+  }
+}
+
+.volunteers {
+  padding: 124px 0 148px;
+  background-color: var(--light-green);
+
+  .title {
+    margin: 0 210px 0 720px;
+  }
+
+  .note {
+    max-width: 428px;
+    padding: 0 210px;
+    margin-top: 92px;
   }
 }

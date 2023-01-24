@@ -29,7 +29,7 @@ export const HomepageEventsSection: FC<HomepageEventsSectionProps> = (props) => 
           {title}
         </h2>
         <Link
-          href="/events"
+          href="/schedule"
           passHref
         >
           <Button

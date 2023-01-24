@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding-left: 26px;
+}
+
+.asterisk {
+  width: 24px;
+  height: 24px;
+  margin: 0 0 2px -26px;
+}

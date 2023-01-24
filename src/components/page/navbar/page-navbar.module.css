@@ -1,13 +1,13 @@
+@value tablet-portrait from 'shared/styles/media.module.css';
+
 .root {
   position: sticky;
   z-index: 2;
   top: 0;
-  display: flex;
-  flex-direction: column;
   border-bottom: 1px solid var(--coal);
   background-color: var(--beige);
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     position: static;
     z-index: auto;
     border: 0;

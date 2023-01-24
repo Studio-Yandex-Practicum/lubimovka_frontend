@@ -15,5 +15,6 @@ Default.args = {
   name: 'Тереза Шимчак',
   image: 'https://source.unsplash.com/random/210×265/?person',
   response: 'Очень интересный фестиваль',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleClick: () => {},
 };

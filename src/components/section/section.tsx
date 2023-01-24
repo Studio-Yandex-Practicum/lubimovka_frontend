@@ -1,10 +1,10 @@
-import { ReactNode, HTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './section.module.css';
 
-interface SectionProps extends HTMLAttributes<HTMLElement> {
-  type?: 'plays'
+export interface SectionProps {
+  type?:
+  | 'plays'
   | 'persons'
   | 'partners'
   | 'play'
@@ -16,19 +16,21 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
   | 'blog-entries'
   | 'news'
   | 'author-plays'
+  | 'volunteers'
   title?: string
-  titleTag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  children: ReactNode
+  titleTag?: React.ElementType
+  note?: React.ReactNode
   className?: string
 }
 
 const cx = classNames.bind(styles);
 
-export const Section = (props: SectionProps) => {
+export const Section: React.FC<SectionProps> = (props) => {
   const {
     type,
     title,
     titleTag: TitleTag = 'h2',
+    note,
     children,
     className,
     ...restProps
@@ -48,6 +50,11 @@ export const Section = (props: SectionProps) => {
         </TitleTag>
       )}
       {children}
+      {note && (
+        <div className={cx('note')}>
+          {note}
+        </div>
+      )}
     </section>
   );
 };

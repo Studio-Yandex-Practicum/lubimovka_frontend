@@ -30,7 +30,6 @@ export const WhatWeDoDesc = () => (
         />
       </div>
     </aside>
-
     <aside className={cx('content', 'selected')}>
       <Image
         src="/images/what-we-do/desc-img-two.jpg"

@@ -33,7 +33,6 @@ export const WhatWeDoSelection = (): JSX.Element => (
           </p>
         </div>
       </li>
-
       <li className={cx('item')}>
         <span className={cx('number')}>
           2
@@ -53,7 +52,6 @@ export const WhatWeDoSelection = (): JSX.Element => (
           </p>
         </div>
       </li>
-
       <li className={cx('item')}>
         <span className={cx('number')}>
           3

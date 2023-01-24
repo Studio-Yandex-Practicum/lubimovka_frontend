@@ -1,6 +1,10 @@
 const { apiBaseUrl, environment } = require('./config/env');
 
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+const config = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -45,4 +49,15 @@ module.exports = {
       ],
     };
   },
+  async redirects() {
+    return [
+      {
+        source: '/events/:path*',
+        destination: '/schedule/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
+
+module.exports = withBundleAnalyzer(config);

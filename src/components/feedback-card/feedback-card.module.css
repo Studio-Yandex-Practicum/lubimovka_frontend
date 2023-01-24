@@ -1,0 +1,50 @@
+.root {
+  position: relative;
+}
+
+.author {
+  display: flex;
+  min-height: 76px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.photo {
+  position: relative;
+  overflow: hidden;
+  width: 76px;
+  height: 76px;
+  margin: 0 0 16px;
+  border-radius: 50%;
+}
+
+.tldr,
+.text {
+  @mixin text;
+  @mixin textLarge;
+}
+
+.tldr + .text {
+  margin-top: 32px;
+}
+
+.control {
+  position: absolute;
+  top: 68px;
+}
+
+.forward {
+  composes: control;
+  right: 65px;
+}
+
+.backward {
+  composes: control;
+  left: 65px;
+}
+
+.pagination {
+  margin-top: 48px;
+}

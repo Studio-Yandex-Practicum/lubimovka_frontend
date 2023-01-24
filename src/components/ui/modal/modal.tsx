@@ -39,12 +39,16 @@ export const Modal: React.FC<ModalProps> = (props) => {
       <FocusLock returnFocus>
         <div
           role="dialog"
-          className={cx('container')}
+          className={cx('root')}
           tabIndex={-1}
           onKeyDown={handleKeyDown}
         >
           {Backdrop && <Backdrop onClick={onClose}/>}
-          {children}
+          <div className={cx('inner')}>
+            <div className={cx('content')}>
+              {children}
+            </div>
+          </div>
         </div>
       </FocusLock>
     </Portal>
