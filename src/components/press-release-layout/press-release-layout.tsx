@@ -1,17 +1,12 @@
 import classNames from 'classnames/bind';
 
-import { PressReleaseLayoutTitle } from './title';
-import { PressReleaseLayoutContent } from './content';
-import { PressReleaseLayoutCover } from './cover';
-import { PressReleaseLayoutActions } from './actions';
-
 import type { FC } from 'react';
 
 import styles from './press-release-layout.module.css';
 
 const cx = classNames.bind(styles);
 
-const Component: FC = (props) => {
+export const PressReleaseLayout: FC = (props) => {
   const { children } = props;
 
   return (
@@ -20,13 +15,3 @@ const Component: FC = (props) => {
     </div>
   );
 };
-
-Component.displayName = 'PressReleaseLayout';
-
-export const PressReleaseLayout = Object.assign(Component, {
-  Title: PressReleaseLayoutTitle,
-  Cover: PressReleaseLayoutCover,
-  Content: PressReleaseLayoutContent,
-  Actions: PressReleaseLayoutActions,
-});
-

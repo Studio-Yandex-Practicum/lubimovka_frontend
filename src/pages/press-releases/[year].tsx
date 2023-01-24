@@ -67,20 +67,20 @@ const PressRelease = (props: InferGetServerSidePropsType<typeof getServerSidePro
         />
         {isNonEmpty(festivalYearOptions) && isNonEmpty(pressRelease)  && (
           <PressReleaseLayout>
-            <PressReleaseLayout.Title>
+            <PressReleaseLayout.Slot area="title">
               <PageTitle>
                 Пресс-релизы
               </PageTitle>
-            </PressReleaseLayout.Title>
+            </PressReleaseLayout.Slot>
             {pressRelease.imageUrl && (
-              <PressReleaseLayout.Cover>
+              <PressReleaseLayout.Slot area="image">
                 <Image
                   alt=""
                   src={pressRelease.imageUrl}
                   layout="fill"
                   objectFit="cover"
                 />
-              </PressReleaseLayout.Cover>
+              </PressReleaseLayout.Slot>
             )}
             <Filter className={cx('filter')}>
               <Filter.Field
@@ -95,7 +95,7 @@ const PressRelease = (props: InferGetServerSidePropsType<typeof getServerSidePro
                 />
               </Filter.Field>
             </Filter>
-            <PressReleaseLayout.Actions>
+            <PressReleaseLayout.Slot area="actions">
               <Button
                 icon={(
                   <Icon
@@ -116,13 +116,13 @@ const PressRelease = (props: InferGetServerSidePropsType<typeof getServerSidePro
                 </span>
                 в .pdf
               </Button>
-            </PressReleaseLayout.Actions>
+            </PressReleaseLayout.Slot>
             {pressRelease.text && (
-              <PressReleaseLayout.Content>
+              <PressReleaseLayout.Slot area="content">
                 <HTMLMarkup
                   markup={pressRelease.text}
                 />
-              </PressReleaseLayout.Content>
+              </PressReleaseLayout.Slot>
             )}
           </PressReleaseLayout>
         )}
