@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 
 import { Section } from 'components/section';
 import { Menu } from 'components/ui/menu';
+import { useHorizontalScroll } from 'shared/hooks/use-horizontal-scroll';
 
 import type { SectionProps } from 'components/section';
 
@@ -24,12 +25,17 @@ export const VolunteerSection: React.FC<VolunteerSectionProps> = (props) => {
     ...restSectionProps
   } = props;
 
+  const menuRef = useHorizontalScroll<HTMLUListElement>();
+
   return (
     <Section
       type="volunteers"
       {...restSectionProps}
     >
-      <Menu type="years">
+      <Menu
+        type="years"
+        ref={menuRef}
+      >
         {festivalYears.map((year) => (
           <Menu.Item
             key={year}

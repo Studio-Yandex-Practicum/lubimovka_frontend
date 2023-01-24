@@ -1,20 +1,16 @@
-import HorizontalScroll from 'react-scroll-horizontal';
-import { Fragment } from 'react';
-
 import { AppLayout } from 'components/app-layout/index';
 import { SEO } from 'components/seo';
 import { Menu } from 'components/ui/menu';
 import { HistoryTitle } from 'components/history-page/title';
 import { HistoryItself } from 'components/history-page/itself';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
+import { useHorizontalScroll } from 'shared/hooks/use-horizontal-scroll';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
-import * as breakpoints from 'shared/breakpoints';
 
 import itselfData from 'components/history-page/assets/mock-data-itself.json';
 
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type { Festival, Years } from '__generated__/api-typings';
 
 const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -24,20 +20,16 @@ const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
     defaultYear
   } = props;
 
-  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
-  const MenuContainer = isMobile ? Fragment : HorizontalScroll;
+  const menuRef = useHorizontalScroll<HTMLUListElement>();
 
   return (
-    <AppLayout>
+    <>
       <SEO title="История фестиваля"/>
-      {/* TODO: быстрое и грязное решения для горизонтальной прокрутки меню, нужен рефакторинг */}
-      <MenuContainer
-        reverseScroll
-        style={{
-          height: '6.063rem',
-        }}
-      >
-        <Menu type="years">
+      <AppLayout>
+        <Menu
+          ref={menuRef}
+          type="years"
+        >
           {years.map((year) => (
             <Menu.Item
               key={year}
@@ -48,13 +40,13 @@ const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
             </Menu.Item>
           ))}
         </Menu>
-      </MenuContainer>
-      <HistoryTitle
-        data={festival}
-        currentYear={defaultYear}
-      />
-      <HistoryItself data={itselfData}/>
-    </AppLayout>
+        <HistoryTitle
+          data={festival}
+          currentYear={defaultYear}
+        />
+        <HistoryItself data={itselfData}/>
+      </AppLayout>
+    </>
   );
 };
 
