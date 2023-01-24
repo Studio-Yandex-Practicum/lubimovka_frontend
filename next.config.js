@@ -49,6 +49,15 @@ const config = {
       ],
     };
   },
+  async redirects() {
+    return [
+      {
+        source: '/events/:path*',
+        destination: '/schedule/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = withBundleAnalyzer(config);
