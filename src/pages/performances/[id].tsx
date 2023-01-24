@@ -12,7 +12,7 @@ import { ShareLinks } from 'components/share-links';
 import { PlayCard } from 'components/play-card';
 import { Video } from 'components/video';
 import { Section } from 'components/section';
-import { PhotoGallery } from 'components/photo-gallery';
+import { ImageGallery } from 'components/image-gallery';
 import { PerformanceEventList } from 'components/performance-event-list';
 import { ReviewCarousel } from 'components/review-carousel';
 import { MediaReviewCard } from 'components/media-review-card';
@@ -136,8 +136,8 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
           </Section>
         </PerformanceLayout.Content>
         <PerformanceLayout.Gallery>
-          <PhotoGallery
-            photos={images_in_block.map(({ image }) => ({
+          <ImageGallery
+            items={images_in_block.map(({ image }) => ({
               url: image,
             }))}
           />

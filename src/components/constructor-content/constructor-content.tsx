@@ -1,10 +1,10 @@
-// @ts-nocheck: TODO
+// @ts-nocheck TODO:
 import { Fragment } from 'react';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 import format from 'date-fns/format';
 
-import { PhotoGallery } from 'components/photo-gallery';
+import { ImageGallery } from 'components/image-gallery';
 import { ImageSlider } from 'components/ui/image-slider';
 import { PlayList } from 'components/play-list';
 import { PlayCard } from 'components/play-card';
@@ -100,8 +100,8 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                 variant="image-gallery"
                 title={content_item.title}
               >
-                <PhotoGallery
-                  photos={content_item.items.map(({ image, title }) => ({
+                <ImageGallery
+                  items={content_item.items.map(({ image, title }) => ({
                     url: image,
                     description: title,
                   }))}

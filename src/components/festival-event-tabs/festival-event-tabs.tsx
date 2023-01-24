@@ -1,11 +1,10 @@
 import React, { cloneElement } from 'react';
 import classNames from 'classnames/bind';
 
-import { FestivalEventTabsButton } from './festival-event-tabs-button';
-
 import type { FestivalEventTabsPanelProps } from './festival-event-tabs-panel';
 
 import styles from './festival-event-tabs.module.css';
+import { ArrowButton } from 'components/arrow-button';
 
 interface FestivalEventTabsProps {
   children: React.ReactElement<FestivalEventTabsPanelProps>[]
@@ -35,14 +34,16 @@ export const FestivalEventTabs: React.FC<FestivalEventTabsProps> = (props) => {
   return (
     <div className={cx('root')}>
       <div className={cx('controls')}>
-        <FestivalEventTabsButton
+        <ArrowButton
           variant="backward"
+          size="s"
           onClick={goToPrevious}
           disabled={selectedTabIndex === 0}
           text="Перейти к предыдущей дате"
         />
-        <FestivalEventTabsButton
+        <ArrowButton
           variant="forward"
+          size="s"
           onClick={goToNext}
           disabled={selectedTabIndex === tabs.length - 1}
           text="Перейти к следующей дате"

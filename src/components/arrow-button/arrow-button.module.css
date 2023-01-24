@@ -1,0 +1,123 @@
+.button {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: 0;
+  border-radius: 50%;
+  font-size: 0;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    border: 1px solid var(--coal);
+    border-top: 1px solid var(--coal);
+    background: 0;
+    border-radius: 50%;
+    content: '';
+    transform: translate(-50%, -50%);
+  }
+
+  &::before {
+    visibility: hidden;
+  }
+
+  &:hover {
+    color: var(--white);
+    cursor: pointer;
+    transition-delay: .15s;
+
+    &::after {
+      animation: fill .05s;
+      animation-delay: .15s;
+      animation-fill-mode: forwards;
+    }
+
+    &::before {
+      transition: .15s transform linear;
+      visibility: visible;
+    }
+
+    &.backward {
+      &::before {
+        transform: translate(-50%, -50%) rotate(-180deg);
+      }
+    }
+
+    &.forward {
+      &::before {
+        transform: translate(-50%, -50%) rotate(180deg);
+      }
+    }
+  }
+
+  &:active {
+    &::after {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+}
+
+.forward {
+  composes: button;
+
+  &::before,
+  &::after {
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+  }
+}
+
+.backward {
+  composes: button;
+
+  &::before,
+  &::after {
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
+  }
+}
+
+.button-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 24px;
+  height: 24px;
+}
+
+.button:disabled {
+  visibility: hidden;
+}
+
+.button.s {
+  width: 48px;
+  height: 48px;
+
+  &::after {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.button.m {
+  width: 66px;
+  height: 66px;
+  background-color: var(--beige);
+
+  &::before,
+  &::after {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@keyframes fill {
+  to {
+    background-color: var(--coal);
+    clip-path: none;
+  }
+}

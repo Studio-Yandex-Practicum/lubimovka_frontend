@@ -1,0 +1,59 @@
+.root {
+  position: relative;
+  max-width: 100%;
+  height: min-content;
+  box-sizing: border-box;
+}
+
+.close {
+  position: absolute;
+  z-index: 1;
+  border: 0;
+  cursor: pointer;
+  font-size: 0;
+}
+
+.plays-filter {
+  composes: root;
+  min-height: 100vh;
+  padding: 102px 24px;
+  background-color: var(--beige);
+
+  .close {
+    top: 32px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    background-color: var(--light-green);
+  }
+}
+
+.feedback {
+  composes: root;
+  width: 780px;
+  padding: 68px 56px;
+  background-color: var(--beige);
+
+  .close {
+    display: none;
+  }
+}
+
+.lightbox {
+  composes: root;
+  width: 780px;
+
+  .close {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--beige);
+    border-radius: 20px;
+
+    &:hover {
+      background-color: var(--coal);
+      color: var(--white);
+    }
+  }
+}

@@ -1,0 +1,50 @@
+.tile {
+  position: relative;
+  margin: 0 0 16px;
+  background-color: var(--gray);
+}
+
+.action {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: var(--beige);
+  border-radius: 22px;
+  font-size: 0;
+}
+
+.name {
+  @mixin headline;
+
+  margin: 0 0 16px;
+}
+
+.role {
+  margin-left: 32px;
+}
+
+.s {
+  .tile {
+    height: 228px;
+  }
+
+  .name {
+    @mixin headline7;
+  }
+}
+
+.m {
+  .tile {
+    height: 265px;
+  }
+
+  .name {
+    @mixin headline6;
+  }
+}

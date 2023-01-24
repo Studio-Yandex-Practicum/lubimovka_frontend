@@ -1,4 +1,4 @@
-.container {
+.root {
   position: fixed;
   z-index: 1;
   top: 0;
@@ -6,7 +6,21 @@
   display: flex;
   width: 100%;
   height: 100%;
+  flex-direction: column;
   align-items: center;
+}
+
+.inner {
+  @mixin hide-scrollbars;
+
+  display: flex;
+  width: 100%;
   justify-content: center;
+  margin: auto 0;
   overflow-y: auto;
+  pointer-events: none;
+}
+
+.content {
+  pointer-events: auto;
 }
