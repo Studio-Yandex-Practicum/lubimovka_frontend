@@ -49,15 +49,18 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   return (
     <>
       <SEO title="Главная"/>
-      <AppLayout noNavbar={!!first_screen}>
-        {first_screen && (
-          <MainHeader
-            cover={first_screen.image}
-            title={first_screen.title}
-            actionText={first_screen.url_title}
-            actionUrl={first_screen.url}
-          />
-        )}
+      <AppLayout
+        {...first_screen && {
+          customNavbar: (
+            <MainHeader
+              cover={first_screen.image}
+              title={first_screen.title}
+              actionText={first_screen.url_title}
+              actionUrl={first_screen.url}
+            />
+          )
+        }}
+      >
         <MainLayout>
           {!!afisha?.items.length && (
             <MainLayout.Events>
