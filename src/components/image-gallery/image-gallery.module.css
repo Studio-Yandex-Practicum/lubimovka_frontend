@@ -12,6 +12,21 @@
   }
 }
 
+.title {
+  @mixin headline;
+  @mixin headline4;
+
+  max-width: 568px;
+  margin: 0 auto 40px 362px;
+
+  @media (max-width: $tablet-portrait) {
+    @mixin headline6;
+
+    max-width: 369px;
+    margin: 0 22px 34px;
+  }
+}
+
 .item {
   position: relative;
   overflow: hidden;
