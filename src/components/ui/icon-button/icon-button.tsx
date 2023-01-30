@@ -1,5 +1,6 @@
-import { ButtonHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
+
+import type { ButtonHTMLAttributes } from 'react';
 
 import styles from './icon-button.module.css';
 
@@ -23,7 +24,7 @@ export const IconButton = (props: IIconButtonProps): JSX.Element => {
     ...restProps
   } = props;
 
-  return(
+  return (
     <button
       className={cx(className, 'button', [view])}
       type={type}

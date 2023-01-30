@@ -1,8 +1,9 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { InfoLink } from 'components/ui/info-link';
-import { OtherLink } from '__generated__/api-typings';
+
+import type { OtherLink } from '__generated__/api-typings';
+import type { FC } from 'react';
 
 import styles from './information.module.css';
 

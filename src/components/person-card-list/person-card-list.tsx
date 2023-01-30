@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
+
+import type { ReactNode } from 'react';
 
 import styles from './person-card-list.module.css';
 

@@ -1,5 +1,5 @@
-import { Modal } from 'components/ui/modal';
 import { DialogWindow } from 'components/dialog-window';
+import { Modal } from 'components/ui/modal';
 
 interface PlayFilterDialogProps {
   open?: boolean

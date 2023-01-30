@@ -1,17 +1,17 @@
+
 import { AppLayout } from 'components/app-layout/index';
+import itselfData from 'components/history-page/assets/mock-data-itself.json';
+import { HistoryItself } from 'components/history-page/itself';
+import { HistoryTitle } from 'components/history-page/title';
 import { SEO } from 'components/seo';
 import { Menu } from 'components/ui/menu';
-import { HistoryTitle } from 'components/history-page/title';
-import { HistoryItself } from 'components/history-page/itself';
-import { useHorizontalScroll } from 'shared/hooks/use-horizontal-scroll';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { useHorizontalScroll } from 'shared/hooks/use-horizontal-scroll';
 
-import itselfData from 'components/history-page/assets/mock-data-itself.json';
-
-import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type { Festival, Years } from '__generated__/api-typings';
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
 const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {

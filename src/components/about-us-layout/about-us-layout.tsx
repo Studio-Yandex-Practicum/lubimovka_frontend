@@ -1,14 +1,14 @@
-import { useRouter } from 'next/router';
 import classNames from 'classnames/bind';
+import { useRouter } from 'next/router';
+import { useEffect, useRef } from 'react';
 
 import { Menu } from 'components/ui/menu';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
-import { remToPx } from 'shared/helpers/rem-to-px';
-
-import { aboutUsNavigationItems } from 'shared/constants/about-us-navigation-items';
 import breakpoints from 'shared/breakpoints';
+import { aboutUsNavigationItems } from 'shared/constants/about-us-navigation-items';
+import { remToPx } from 'shared/helpers/rem-to-px';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
-import { FC, useEffect, useRef } from 'react';
+import type { FC } from 'react';
 
 import styles from './about-us-layout.module.css';
 import vars from './about-us-layout.vars.module.css';

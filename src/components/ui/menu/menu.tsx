@@ -1,11 +1,11 @@
-import { forwardRef, ReactNode } from 'react';
 import classNames from 'classnames/bind';
+import { forwardRef } from 'react';
 
 import { MenuProvider } from './menu.context';
+import { styles } from './menu.styles';
 
 import type { MenuType } from './menu.context';
-
-import { styles } from './menu.styles';
+import type { ReactNode } from 'react';
 
 interface MenuProps {
   type: MenuType,

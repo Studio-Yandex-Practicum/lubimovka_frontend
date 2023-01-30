@@ -1,6 +1,7 @@
-import { useCallback } from 'react';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
+import { useCallback } from 'react';
+
 import { alphabeticalPaginationLetters } from 'shared/constants/alphabetical-pagination-letters';
 
 import type { VFC } from 'react';

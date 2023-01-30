@@ -1,10 +1,11 @@
-import React, { cloneElement } from 'react';
 import classNames from 'classnames/bind';
+import React, { cloneElement } from 'react';
+
+import { ArrowButton } from 'components/arrow-button';
 
 import type { FestivalEventTabsPanelProps } from './festival-event-tabs-panel';
 
 import styles from './festival-event-tabs.module.css';
-import { ArrowButton } from 'components/arrow-button';
 
 interface FestivalEventTabsProps {
   children: React.ReactElement<FestivalEventTabsPanelProps>[]

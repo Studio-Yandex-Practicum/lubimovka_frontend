@@ -1,5 +1,7 @@
-import { ReactNode, HTMLAttributes, Children } from 'react';
 import classNames from 'classnames/bind';
+import { Children } from 'react';
+
+import type { HTMLAttributes,ReactNode } from 'react';
 
 import styles from './video-list.module.css';
 

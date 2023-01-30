@@ -1,5 +1,7 @@
-import { forwardRef, ReactNode } from 'react';
 import classNames from 'classnames/bind';
+import { forwardRef } from 'react';
+
+import type { ReactNode } from 'react';
 
 import styles from './blog-entry-list-item.module.css';
 

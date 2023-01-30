@@ -1,7 +1,9 @@
 import classNames from 'classnames/bind';
-import { ChangeEventHandler, useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { Icon } from 'components/ui/icon';
+
+import type { ChangeEventHandler } from 'react';
 
 import styles from './checkbox.module.css';
 

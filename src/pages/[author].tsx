@@ -1,25 +1,24 @@
 import cn from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
-import { AuthorOverview } from 'components/author-page/overview';
 import { AnotherPlays } from 'components/author-page/another-plays';
+import styles from 'components/author-page/author.module.css';
 import { AuthorInformation } from 'components/author-page/information';
+import { AuthorOverview } from 'components/author-page/overview';
 import { CallToEmail } from 'components/call-to-email';
-import { Section } from 'components/section';
-import { SEO } from 'components/seo';
 import { PlayCard } from 'components/play-card';
 import { PlayList } from 'components/play-list';
+import { Section } from 'components/section';
+import { SEO } from 'components/seo';
+import { usePersistentData } from 'providers/persistent-data-provider';
 import { fetcher } from 'services/fetcher';
 import * as breakpoints from 'shared/breakpoints.js';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
-import { usePersistentData } from 'providers/persistent-data-provider';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
-import styles from 'components/author-page/author.module.css';
-
-import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type { AuthorRetrieve, Play } from '__generated__/api-typings';
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
 const cx = cn.bind(styles);
 

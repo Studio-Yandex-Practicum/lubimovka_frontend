@@ -1,4 +1,5 @@
 import cn from 'classnames/bind';
+import React from 'react';
 
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
@@ -7,7 +8,6 @@ import { InfoLink } from 'components/ui/info-link';
 import type { Play } from 'core/play';
 
 import styles from './play-card.module.css';
-import React from 'react';
 
 const cx = cn.bind(styles);
 

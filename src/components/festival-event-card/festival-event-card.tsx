@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
 
+import { CreditsList } from 'components/credits-list';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
-import { CreditsList } from 'components/credits-list';
 
-import type { VFC } from 'react';
 import type { CreditsRole } from 'components/credits-list';
+import type { VFC } from 'react';
 
 import styles from './festival-event-card.module.css';
 

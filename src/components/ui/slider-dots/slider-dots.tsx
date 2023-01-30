@@ -1,5 +1,6 @@
-import { FC } from 'react';
 import cn from 'classnames';
+
+import type { FC } from 'react';
 
 import styles from './slider-dots.module.css';
 

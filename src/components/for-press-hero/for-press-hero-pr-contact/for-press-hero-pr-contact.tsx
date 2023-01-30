@@ -1,8 +1,9 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
 import { InfoLink } from 'components/ui/info-link';
+
+import type { FC } from 'react';
 
 import styles from './for-press-hero-pr-contact.module.css';
 

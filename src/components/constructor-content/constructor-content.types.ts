@@ -1,13 +1,12 @@
-import { ConstructorBlockType } from './constructor-content.const';
-
+import type { ConstructorBlockType } from './constructor-content.const';
 import type {
+  ContentUnitRichText,
+  EventsBlock,
   ImagesBlock,
+  Link,
   PersonsBlock,
   PlaysBlock,
-  EventsBlock,
   VideosBlock,
-  ContentUnitRichText,
-  Link,
 } from '__generated__/api-typings';
 
 export type ConstructorBlock = {

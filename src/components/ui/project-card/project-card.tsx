@@ -1,8 +1,9 @@
-import Link from 'next/link';
-import { FC } from 'react';
 import classNames from 'classnames/bind';
+import Link from 'next/link';
 
 import { Icon } from 'components/ui/icon';
+
+import type { FC } from 'react';
 
 import styles from './project-card.module.css';
 

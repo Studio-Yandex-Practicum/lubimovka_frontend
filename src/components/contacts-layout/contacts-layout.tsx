@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
 
-import ContactsLayoutTitle from './title';
-import ContactsLayoutForm from './form';
-import { ContactsLayoutColumn } from './column';
 import { ContactsLayoutCallToEmail } from './call-to-email';
+import { ContactsLayoutColumn } from './column';
+import ContactsLayoutForm from './form';
+import ContactsLayoutTitle from './title';
 
 import styles from './contacts-layout.module.css';
 

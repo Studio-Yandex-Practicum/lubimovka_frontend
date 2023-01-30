@@ -1,8 +1,11 @@
-import React, { FC } from 'react';
-import Link from 'next/link';
 import classNames from 'classnames/bind';
+import Link from 'next/link';
+import React from 'react';
 
-import { Icon, IIconProps } from '../icon';
+import { Icon } from '../icon';
+
+import type { IIconProps } from '../icon';
+import type { FC } from 'react';
 
 import styles from './info-link.module.css';
 

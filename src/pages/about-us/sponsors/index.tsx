@@ -1,13 +1,14 @@
-import { AppLayout } from 'components/app-layout';
+
 import { AboutUsLayout } from 'components/about-us-layout';
-import SponsorsSection from 'components/sponsors-section/sponsors-section';
+import { AppLayout } from 'components/app-layout';
 import PersonsList from 'components/persons-list/persons-list';
 import { SEO } from 'components/seo';
+import SponsorsSection from 'components/sponsors-section/sponsors-section';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { fetcher } from 'services/fetcher';
 
-import type { InferGetServerSidePropsType } from 'next';
 import type { Sponsor } from '__generated__/api-typings';
+import type { InferGetServerSidePropsType } from 'next';
 
 const Sponsors = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { sponsors } = props;

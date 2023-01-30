@@ -1,13 +1,13 @@
 
 import { AppLayout } from 'components/app-layout';
-import { PageBreadcrumbs } from 'components/page';
-import { ProjectLayout } from 'components/project-layout';
 import { Breadcrumb } from 'components/breadcrumb';
-import { ProjectHeadline } from 'components/project-headline';
 import { ConstructorContent } from 'components/constructor-content';
+import { PageBreadcrumbs } from 'components/page';
+import { ProjectHeadline } from 'components/project-headline';
+import { ProjectLayout } from 'components/project-layout';
 import { SEO } from 'components/seo';
-import { isHttpRequestError } from 'services/fetcher';
 import { getProject } from 'services/api/projects';
+import { isHttpRequestError } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';

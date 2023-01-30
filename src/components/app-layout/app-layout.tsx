@@ -1,28 +1,28 @@
-import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { useCallback, useEffect, useState } from 'react';
 
-import Page from 'components/page';
-import { Menu } from 'components/ui/menu';
-import { Icon } from 'components/ui/icon';
-import { Navbar } from 'components/navbar';
-import { Logotype } from 'components/logotype';
-import { Footer } from 'components/footer';
-import { OverlayNav } from 'components/overlay-nav';
-import { BurgerButton } from 'components/ui/burger-button';
-import { PartnerList } from 'components/partner-list';
-import { FooterCopyright } from 'components/footer-copyright';
 import { DonationLink } from 'components/donation-link';
+import { Footer } from 'components/footer';
+import { FooterCopyright } from 'components/footer-copyright';
+import { Logotype } from 'components/logotype';
+import { Navbar } from 'components/navbar';
+import { OverlayNav } from 'components/overlay-nav';
+import Page from 'components/page';
 import PartnerCard from 'components/partner-card';
-import { mainNavigationItems } from 'shared/constants/main-navigation-items';
-import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
-import { socialLinkItems } from 'shared/constants/social-link-items';
-import { donationPath } from 'shared/constants/donation-path';
-import { participationFormPath } from 'shared/constants/participation-form-path';
+import { PartnerList } from 'components/partner-list';
+import { BurgerButton } from 'components/ui/burger-button';
+import { Icon } from 'components/ui/icon';
+import { Menu } from 'components/ui/menu';
 import { usePersistentData } from 'providers/persistent-data-provider';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
-import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
-import { isNonEmpty } from 'shared/helpers/is-non-empty';
 import * as breakpoints from 'shared/breakpoints.js';
+import { donationPath } from 'shared/constants/donation-path';
+import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
+import { mainNavigationItems } from 'shared/constants/main-navigation-items';
+import { participationFormPath } from 'shared/constants/participation-form-path';
+import { socialLinkItems } from 'shared/constants/social-link-items';
+import { isNonEmpty } from 'shared/helpers/is-non-empty';
+import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
 import type { NavbarProps } from 'components/navbar';
 
@@ -52,7 +52,9 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
   useDisableBodyScroll(!!isMobile && isOverlayMenuOpen);
 
   useEffect(() => {
-    if (!isMobile) setIsOverlayMenuOpen(false);
+    if (!isMobile) {
+      setIsOverlayMenuOpen(false);
+    }
   }, [isMobile]);
 
   return (

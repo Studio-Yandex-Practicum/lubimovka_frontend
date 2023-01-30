@@ -1,7 +1,8 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
+
+import type { FC } from 'react';
 
 import styles from './for-press-hero-description.module.css';
 

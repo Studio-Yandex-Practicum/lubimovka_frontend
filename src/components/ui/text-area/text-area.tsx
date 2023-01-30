@@ -1,5 +1,6 @@
-import { InputHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
+
+import type { InputHTMLAttributes } from 'react';
 
 import styles from './text-area.module.css';
 
@@ -19,7 +20,9 @@ const TextArea = (props: ITextAreaProps): JSX.Element => {
   } = props;
 
   const handleChange = ({ target: { value } }: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (!onChange) return;
+    if (!onChange) {
+      return;
+    }
 
     onChange(value);
   };

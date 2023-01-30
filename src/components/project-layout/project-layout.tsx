@@ -1,7 +1,8 @@
-import { ReactNode } from 'react';
 
-import { ProjectLayoutStorey } from './storey';
 import { ProjectLayoutDescription } from './description';
+import { ProjectLayoutStorey } from './storey';
+
+import type { ReactNode } from 'react';
 
 interface IProjectLayoutProps {
   children: ReactNode;

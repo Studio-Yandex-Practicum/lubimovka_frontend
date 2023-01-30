@@ -1,7 +1,8 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import { InfoLink } from 'components/ui/info-link';
+
+import type { FC } from 'react';
 
 import styles from './footer-copyright.module.css';
 

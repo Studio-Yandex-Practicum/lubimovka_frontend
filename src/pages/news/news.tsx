@@ -1,27 +1,26 @@
-import { useEffect, useMemo } from 'react';
 import classNames from 'classnames/bind';
 import { format } from 'date-fns';
+import { useEffect, useMemo } from 'react';
 
 import { AppLayout } from 'components/app-layout';
-import { NewsLayout } from 'components/news-layout';
-import { PageTitle } from 'components/page-title';
 import { Filter } from 'components/filter';
-import { Select } from 'components/ui/select';
-import { NewsList } from 'components/news-list';
 import { NewsCard } from 'components/news-card';
+import { NewsLayout } from 'components/news-layout';
+import styles from 'components/news-layout/news-layout.module.css';
+import { NewsList } from 'components/news-list';
+import { PageTitle } from 'components/page-title';
 import { SEO } from 'components/seo';
+import { Select } from 'components/ui/select';
 import { useNews } from 'providers/news-provider';
-import { useIntersection } from 'shared/hooks/use-intersection';
 import { fetcher } from 'services/fetcher';
 import { months } from 'shared/constants/months';
 import { entriesPerPage } from 'shared/constants/news';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { useIntersection } from 'shared/hooks/use-intersection';
 
-import type { InferGetServerSidePropsType } from 'next';
-import type { PaginatedNewsItemListList, NewsItemYearsMonthsOutput } from '__generated__/api-typings';
+import type { NewsItemYearsMonthsOutput,PaginatedNewsItemListList } from '__generated__/api-typings';
 import type { SelectOptionCheckHandler } from 'components/ui/select';
-
-import styles from 'components/news-layout/news-layout.module.css';
+import type { InferGetServerSidePropsType } from 'next';
 
 const cx = classNames.bind(styles);
 
@@ -69,13 +68,17 @@ const News = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   const lastNewsIndex = useMemo(() => entries.length - 1, [entries]);
 
   const handleMonthChange: SelectOptionCheckHandler<number> = ({ value }) => {
-    if (selectedMonth === value) return;
+    if (selectedMonth === value) {
+      return;
+    }
 
     setSelectedMonth(value);
   };
 
   const handleYearChange: SelectOptionCheckHandler<number> = ({ value }) => {
-    if (selectedYear === value) return;
+    if (selectedYear === value) {
+      return;
+    }
 
     const shouldResetMonth = !value || (selectedMonth && !filters.find(({ year }) => year === value)!.months.includes(selectedMonth));
 

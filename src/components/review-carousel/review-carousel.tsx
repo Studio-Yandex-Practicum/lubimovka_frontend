@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useKeenSlider } from 'keen-slider/react';
 import classNames from 'classnames/bind';
+import { useKeenSlider } from 'keen-slider/react';
+import React, { useState } from 'react';
 
-import { SliderDots } from 'components/ui/slider-dots';
 import { ArrowButton } from 'components/arrow-button';
+import { SliderDots } from 'components/ui/slider-dots';
 import breakpoints from 'shared/breakpoints';
 
 import styles from './review-carousel.module.css';

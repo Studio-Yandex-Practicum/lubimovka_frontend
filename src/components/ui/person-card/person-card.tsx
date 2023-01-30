@@ -1,11 +1,12 @@
-import React from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
+import React from 'react';
+
+import Logo from 'shared/images/compact-logo.svg';
 
 import { Icon } from '../icon';
 
 import styles from './person-card.module.css';
-import Logo from 'shared/images/compact-logo.svg';
 
 const cx = cn.bind(styles);
 

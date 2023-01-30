@@ -3,8 +3,8 @@ import { useCallback, useEffect, useRef } from 'react';
 
 import { Button } from 'components/ui/button2';
 
-import type { FC } from 'react';
 import type { ButtonOwnProps } from 'components/ui/button2';
+import type { FC } from 'react';
 
 import styles from './dropdown.module.css';
 

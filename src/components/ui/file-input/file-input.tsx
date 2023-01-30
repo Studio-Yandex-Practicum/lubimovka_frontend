@@ -1,8 +1,10 @@
-import { FC, useRef, ChangeEvent, DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
+import { useRef } from 'react';
 
 import { Button } from 'components/ui/button';
 import { Icon } from 'components/ui/icon';
+
+import type { ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
 
 import styles from './file-input.module.css';
 
@@ -25,13 +27,17 @@ export const FileInput: FC<IFileInputProps> = (props) => {
   const nativeInputRef = useRef<HTMLInputElement>(null);
 
   const handleChange = ({ target: { files } }: ChangeEvent<HTMLInputElement>) => {
-    if (!files?.length || !onChange) return;
+    if (!files?.length || !onChange) {
+      return;
+    }
 
     onChange(files[0]);
   };
 
   const handleClear = () => {
-    if (!onChange) return;
+    if (!onChange) {
+      return;
+    }
 
     onChange(null);
   };

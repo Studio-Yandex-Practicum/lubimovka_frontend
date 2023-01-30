@@ -1,6 +1,7 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
+
+import type { FC } from 'react';
 
 import styles from './opportunity.module.css';
 

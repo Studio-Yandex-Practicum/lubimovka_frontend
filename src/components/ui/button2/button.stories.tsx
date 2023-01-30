@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from './button';
 import { Icon } from '../icon';
 
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { ComponentMeta,ComponentStory } from '@storybook/react';
 
 export default {
   title: 'UI/Button',

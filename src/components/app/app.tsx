@@ -1,10 +1,10 @@
-import setDefaultOptions from 'date-fns/setDefaultOptions';
 import { ru } from 'date-fns/locale';
+import setDefaultOptions from 'date-fns/setDefaultOptions';
 
 import { GoogleAnalyticsScript } from 'components/google-analytics-script';
-import { PersistentDataProvider } from 'providers/persistent-data-provider';
-import { NewsProvider } from 'providers/news-provider';
 import { BlogProvider } from 'providers/blog-provider';
+import { NewsProvider } from 'providers/news-provider';
+import { PersistentDataProvider } from 'providers/persistent-data-provider';
 
 import { googleAnalyticsTrackingId } from '../../../config/env';
 

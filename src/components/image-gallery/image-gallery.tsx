@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
+import { useState } from 'react';
 
-import { Modal } from 'components/ui/modal';
 import { DialogWindow } from 'components/dialog-window';
 import { ImageCarousel } from 'components/image-carousel';
+import { Modal } from 'components/ui/modal';
 
 import styles from './image-gallery.module.css';
 

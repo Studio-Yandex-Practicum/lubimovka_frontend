@@ -1,5 +1,6 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
+
+import type { FC } from 'react';
 
 import styles from './performance-layout-bottom-image.module.css';
 

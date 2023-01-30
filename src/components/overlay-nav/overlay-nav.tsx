@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
 
+import { OverlayNavActions } from './actions';
+import { OverlayNavCopyright } from './copyright';
 import { OverlayNavLogotype } from './logotype';
 import { OverlayNavMenu } from './menu';
-import { OverlayNavActions } from './actions';
 import { OverlayNavSocials } from './socials';
-import { OverlayNavCopyright } from './copyright';
 
 import styles from './overlay-nav.module.css';
 

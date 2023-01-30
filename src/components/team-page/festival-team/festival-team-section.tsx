@@ -1,7 +1,9 @@
-import React, { FC, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import PersonsList from 'components/persons-list';
-import { FestivalTeams } from '__generated__/api-typings';
+
+import type { FestivalTeams } from '__generated__/api-typings';
+import type { FC } from 'react';
 
 import styles from './festival-team-section.module.css';
 

@@ -1,7 +1,9 @@
-import React, { FC } from 'react';
 import cn from 'classnames/bind';
+import React from 'react';
 
 import { Icon } from '../icon';
+
+import type { FC } from 'react';
 
 import styles from './tag.module.css';
 
@@ -21,7 +23,7 @@ export const Tag: FC<ITagProps> = (props) => {
 
   const handleClick = React.useCallback((e:React.MouseEvent) => {
     e.preventDefault();
-    if(cb) {
+    if (cb) {
       cb(label, counter);
     }
   },[cb, counter, label]);

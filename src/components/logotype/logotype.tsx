@@ -1,9 +1,12 @@
-import { FC } from 'react';
-import Link, { LinkProps } from 'next/link';
 import classNames from 'classnames/bind';
+import Link from 'next/link';
 
 import CompactLogo from 'shared/images/compact-logo.svg';
 import FullLogo from 'shared/images/full-logo.svg';
+
+import type { LinkProps } from 'next/link';
+import type { FC } from 'react';
+
 import styles from './logotype.module.css';
 
 interface ILogotypeProps extends Pick<LinkProps, 'href'> {

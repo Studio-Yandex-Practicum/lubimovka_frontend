@@ -1,7 +1,8 @@
-import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
 import { NewsListItem } from './item';
+
+import type { ReactNode } from 'react';
 
 import styles from './news-list.module.css';
 

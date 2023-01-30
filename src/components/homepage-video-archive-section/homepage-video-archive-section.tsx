@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import classNames from 'classnames/bind';
+import Image from 'next/image';
 
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';

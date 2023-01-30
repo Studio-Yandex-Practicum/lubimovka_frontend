@@ -1,6 +1,6 @@
-import { FC, SVGProps } from 'react';
-
 import icons from 'shared/icons';
+
+import type { FC, SVGProps } from 'react';
 
 export interface IIconProps extends SVGProps<SVGSVGElement> {
   glyph: keyof typeof icons,

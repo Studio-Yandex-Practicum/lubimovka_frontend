@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import classNames from 'classnames/bind';
+import { useState } from 'react';
 
 import { Spinner } from 'components/spinner';
 

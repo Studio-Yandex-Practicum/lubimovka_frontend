@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import { useKeenSlider } from 'keen-slider/react';
+import React, { useState } from 'react';
 
 import { ArrowButton } from 'components/arrow-button';
 import { SliderDots } from 'components/ui/slider-dots';

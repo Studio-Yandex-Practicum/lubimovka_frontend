@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 
-import PlayProposalLayoutImage from './image/play-proposal-layout-image';
 import PlayProposalLayoutColumn from './column/play-proposal-layout-column';
 import PlayProposalForm from './form/play-proposal-layout-form';
+import PlayProposalLayoutImage from './image/play-proposal-layout-image';
 
 import styles from './play-proposal-layout.module.css';
 

@@ -1,24 +1,24 @@
 import classNames from 'classnames/bind';
 import format from 'date-fns/format';
+
 import { AppLayout } from 'components/app-layout';
-import { ArticleHeadline } from 'components/article-headline';
 import { ArticleFootnote } from 'components/article-footnote';
-import { ShareLinks } from 'components/share-links';
-import { ConstructorContent } from 'components/constructor-content';
-import { Section } from 'components/section';
-import { NewsList } from 'components/news-list';
-import { NewsCard } from 'components/news-card';
-import { PageBreadcrumbs } from 'components/page';
-import { Breadcrumb } from 'components/breadcrumb';
-import { SEO } from 'components/seo';
-import { fetcher } from 'services/fetcher';
-import { InternalServerError } from 'shared/helpers/internal-server-error';
-import { notFoundResult } from 'shared/constants/server-side-props';
-
-import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import type { NewsItemDetail } from '__generated__/api-typings';
-
+import { ArticleHeadline } from 'components/article-headline';
 import styles from 'components/article-layout/article-layout.module.css';
+import { Breadcrumb } from 'components/breadcrumb';
+import { ConstructorContent } from 'components/constructor-content';
+import { NewsCard } from 'components/news-card';
+import { NewsList } from 'components/news-list';
+import { PageBreadcrumbs } from 'components/page';
+import { Section } from 'components/section';
+import { SEO } from 'components/seo';
+import { ShareLinks } from 'components/share-links';
+import { fetcher } from 'services/fetcher';
+import { notFoundResult } from 'shared/constants/server-side-props';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
+
+import type { NewsItemDetail } from '__generated__/api-typings';
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
 const cx = classNames.bind(styles);
 

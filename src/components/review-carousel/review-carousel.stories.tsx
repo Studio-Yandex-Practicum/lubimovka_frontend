@@ -1,7 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ReviewCarousel } from './review-carousel';
 import { ReviewCard } from '../review-card';
+
+import type { ComponentMeta,ComponentStory } from '@storybook/react';
 
 const demoReviews = [
   {

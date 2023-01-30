@@ -1,29 +1,30 @@
 // @ts-nocheck TODO:
-import { Fragment } from 'react';
 import classNames from 'classnames/bind';
-import Image from 'next/image';
 import format from 'date-fns/format';
+import Image from 'next/image';
+import { Fragment } from 'react';
 
-import { ImageGallery } from 'components/image-gallery';
-import { ImageSlider } from 'components/ui/image-slider';
-import { PlayList } from 'components/play-list';
-import { PlayCard } from 'components/play-card';
+import { ConstructorLink } from 'components/constructor-link';
 import { EventCard } from 'components/event-card';
-import { PersonCard } from 'components/ui/person-card';
+import { EventList } from 'components/event-list';
+import { HTMLMarkup } from 'components/html-markup';
+import { ImageGallery } from 'components/image-gallery';
 import { PersonCardList } from 'components/person-card-list';
+import { PlayCard } from 'components/play-card';
+import { PlayList } from 'components/play-list';
+import { ImageSlider } from 'components/ui/image-slider';
+import { PersonCard } from 'components/ui/person-card';
 import { Video } from 'components/video';
 import { VideoList } from 'components/video-list';
-import { HTMLMarkup } from 'components/html-markup';
-import { ConstructorLink } from 'components/constructor-link';
-import { ConstructorContentSection } from './section';
+
 import { ConstructorBlockType } from './constructor-content.const';
 import { ConstructorContentContextProvider } from './constructor-content.context';
+import { ConstructorContentSection } from './section';
 
-import type { FC } from 'react';
 import type { ConstructorBlock } from './constructor-content.types';
+import type { FC } from 'react';
 
 import defaultStyles from './variant/default.module.css';
-import { EventList } from 'components/event-list';
 
 enum Variant {
   Default = 'default',

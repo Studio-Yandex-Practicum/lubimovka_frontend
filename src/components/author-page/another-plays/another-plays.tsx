@@ -2,9 +2,9 @@ import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
 
-import styles from './another-plays.module.css';
-
 import type { FC } from 'react';
+
+import styles from './another-plays.module.css';
 
 const cx = cn.bind(styles);
 

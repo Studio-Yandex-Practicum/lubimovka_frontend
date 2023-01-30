@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 import FocusLock from 'react-focus-lock';
 
-import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 import { Portal } from 'components/ui/portal';
+import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 
 import type { ModalBackdropProps } from './backdrop';
 
@@ -26,7 +26,9 @@ export const Modal: React.FC<ModalProps> = (props) => {
 
   useDisableBodyScroll(isOpen);
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Escape') {

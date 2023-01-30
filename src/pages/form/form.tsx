@@ -1,34 +1,34 @@
+import entries from 'lodash/entries';
+import Error from 'next/error';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
-import { useIMask } from 'react-imask';
 import { useState } from 'react';
-import Error from 'next/error';
-import entries from 'lodash/entries';
+import { useIMask } from 'react-imask';
 
 import { AppLayout } from 'components/app-layout';
+import { FormField } from 'components/form-field';
 import PlayProposalLayout from 'components/play-proposal-layout';
 import PlayProposalTitle from 'components/play-proposal-title';
-import Form from 'components/ui/form';
-import { FormField } from 'components/form-field';
-import TextInput from 'components/ui/text-input';
-import { FileInput } from 'components/ui/file-input';
-import { Button } from 'components/ui/button2';
-import { Icon } from 'components/ui/icon';
 import { SEO } from 'components/seo';
+import { Button } from 'components/ui/button2';
+import { FileInput } from 'components/ui/file-input';
+import Form from 'components/ui/form';
+import { Icon } from 'components/ui/icon';
+import TextInput from 'components/ui/text-input';
 import { usePersistentData } from 'providers/persistent-data-provider';
+import { postParticipation } from 'services/api/participation';
+import { isHttpRequestError } from 'services/fetcher';
 import {
-  validYearRegexp,
   validEmailRegexp,
   validPhoneNumberRegexp,
+  validYearRegexp,
 } from 'shared/constants/regexps';
 import { snakeToCamelCase } from 'shared/helpers/snake-to-camel-case';
-import { postParticipation } from 'services/api/participation';
 import { useForm } from 'shared/hooks/use-form';
-import { isHttpRequestError } from 'services/fetcher';
 
 import type { ParticipationFormFields } from 'core/participation';
-import type { ParticipationErrorDTO, ParticipationDTOFields } from 'services/api/participation';
+import type { ParticipationDTOFields,ParticipationErrorDTO } from 'services/api/participation';
 
 const CURRENT_YEAR = new Date().getFullYear().toString();
 const ACCEPTABLE_FILE_TYPES = '.doc, .docx, .txt, .odt, .pdf';
@@ -192,6 +192,7 @@ const Participation = () => {
       await postParticipation(form.values);
     } catch (error) {
       handleSubmitError(error);
+
       return;
     }
 

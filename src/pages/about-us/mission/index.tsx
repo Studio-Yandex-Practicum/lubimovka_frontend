@@ -1,11 +1,11 @@
-import { NextPage } from 'next';
 
-import { SEO } from 'components/seo';
-import { AppLayout } from 'components/app-layout';
 import { AboutUsLayout } from 'components/about-us-layout';
+import { AppLayout } from 'components/app-layout';
 import MissionSection from 'components/mission-section';
-
+import { SEO } from 'components/seo';
 import missionItems from 'shared/constants/mission-items';
+
+import type { NextPage } from 'next';
 
 const Mission: NextPage = () => (
   <AppLayout>

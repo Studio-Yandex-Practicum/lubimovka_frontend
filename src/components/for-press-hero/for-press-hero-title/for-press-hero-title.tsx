@@ -1,5 +1,6 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
+
+import type { FC } from 'react';
 
 import styles from './for-press-hero-title.module.css';
 

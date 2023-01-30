@@ -1,7 +1,9 @@
-import React, { FC } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import cn from 'classnames';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+
+import type { FC } from 'react';
 
 import styles from './blog-card.module.css';
 

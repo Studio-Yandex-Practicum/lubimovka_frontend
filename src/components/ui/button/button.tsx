@@ -1,8 +1,11 @@
-import React, { FC, ButtonHTMLAttributes } from 'react';
-import Link from 'next/link';
 import cn from 'classnames/bind';
+import Link from 'next/link';
+import React from 'react';
 
-import { Icon, IIconProps } from '../icon';
+import { Icon } from '../icon';
+
+import type { IIconProps } from '../icon';
+import type { ButtonHTMLAttributes,FC } from 'react';
 
 import styles from './button.module.css';
 

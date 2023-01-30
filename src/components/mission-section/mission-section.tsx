@@ -1,7 +1,8 @@
-import { FC } from 'react';
 import cn from 'classnames';
 
 import TextItem from '../mission-text-item';
+
+import type { FC } from 'react';
 
 import style from './mission-section.module.css';
 

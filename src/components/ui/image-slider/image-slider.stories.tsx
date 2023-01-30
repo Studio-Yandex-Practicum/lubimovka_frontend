@@ -1,7 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Image from 'next/image';
 
 import { ImageSlider } from './image-slider';
+
+import type { ComponentMeta,ComponentStory } from '@storybook/react';
 
 const demoImages = Array.from({ length: 5 }, (_, index) => `https://source.unsplash.com/random?${index}`);
 

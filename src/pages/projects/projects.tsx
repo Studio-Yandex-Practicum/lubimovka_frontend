@@ -1,13 +1,14 @@
-import { InferGetServerSidePropsType } from 'next';
 
 import { AppLayout } from 'components/app-layout';
-import { ProjectsLayout } from 'components/projects-layout';
-import { ProjectCardList } from 'components/project-card-list';
-import { ProjectCard } from 'components/ui/project-card';
 import { PageTitle } from 'components/page-title';
+import { ProjectCardList } from 'components/project-card-list';
+import { ProjectsLayout } from 'components/projects-layout';
 import { SEO } from 'components/seo';
+import { ProjectCard } from 'components/ui/project-card';
 import { getProjects } from 'services/api/projects';
 import { isEven } from 'shared/helpers/is-even';
+
+import type { InferGetServerSidePropsType } from 'next';
 
 const Projects = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { projects } = props;
