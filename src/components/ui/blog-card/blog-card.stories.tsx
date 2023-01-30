@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { BlogCard } from './blog-card';
 
 import type { ComponentMeta,ComponentStory } from '@storybook/react';

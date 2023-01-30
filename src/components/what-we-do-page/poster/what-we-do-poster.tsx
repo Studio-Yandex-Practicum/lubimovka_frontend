@@ -1,5 +1,4 @@
 import cn from 'classnames/bind';
-import React from 'react';
 
 import styles from './what-we-do-poster.module.css';
 

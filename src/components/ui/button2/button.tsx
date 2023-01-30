@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import styles from './button.module.css';
 

@@ -1,6 +1,4 @@
-import React from 'react';
-
-import PersonsList from '../../../persons-list';
+import PersonsList from 'components/persons-list';
 
 import type { FestivalTeams } from '__generated__/api-typings';
 import type { FC } from 'react';

@@ -1,6 +1,5 @@
 import cn from 'classnames/bind';
 import Link from 'next/link';
-import React from 'react';
 
 import { Icon } from '../icon';
 
@@ -51,13 +50,13 @@ export const Button: FC<IButtonProps> = (props) => {
   const classes = cx('button', view, border, icon && 'addon', iconPlace, iconPlace, size, [className]);
   const style = { width: width, justifyContent: align, columnGap: gap };
   const buttonChildren = (
-    <React.Fragment>
+    <>
       {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
       {<span className={styles.label}>
         {label}
       </span>}
       {iconPlace === 'right' && icon && <Icon glyph={icon}/>}
-    </React.Fragment>
+    </>
   );
 
   return (

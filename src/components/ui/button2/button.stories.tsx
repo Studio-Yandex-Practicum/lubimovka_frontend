@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Button } from './button';
 import { Icon } from '../icon';
 

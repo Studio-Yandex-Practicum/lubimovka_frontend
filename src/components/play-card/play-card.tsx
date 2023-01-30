@@ -1,5 +1,4 @@
 import cn from 'classnames/bind';
-import React from 'react';
 
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';

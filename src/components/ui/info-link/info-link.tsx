@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
-import React from 'react';
 
 import { Icon } from '../icon';
 
@@ -55,7 +54,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
   );
 
   const linkChildren = (
-    <React.Fragment>
+    <>
       {iconPlace === 'left' && icon && (
         <Icon className={cx(iconClassName)} glyph={icon}/>
       )}
@@ -65,7 +64,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
       {iconPlace === 'right' && icon && (
         <Icon className={cx(iconClassName)} glyph={icon}/>
       )}
-    </React.Fragment>
+    </>
   );
 
   return (
