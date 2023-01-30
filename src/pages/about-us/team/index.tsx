@@ -136,15 +136,8 @@ const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 };
 
 export const getServerSideProps = async () => {
-  let team;
-  let volunteers;
-
-  try {
-    team = await fetcher<FestivalTeams[]>('/info/about-festival/team/');
-    volunteers = await fetcher<Volunteers[]>('/info/about-festival/volunteers/'); // TODO: TT не получать всех волонтеров разом, разбить на отдельные запросы
-  } catch (error) {
-    throw error;
-  }
+  const team = await fetcher<FestivalTeams[]>('/info/about-festival/team/');
+  const volunteers = await fetcher<Volunteers[]>('/info/about-festival/volunteers/'); // TODO: TT не получать всех волонтеров разом, разбить на отдельные запросы
 
   const { art: artDirectorate, fest: restTeam } = team.reduce<Record<string, FestivalTeams[]>>((acc, entry) => {
     (acc[entry.team] || (acc[entry.team] = [])).push(entry);

@@ -32,13 +32,7 @@ const Sponsors = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
 };
 
 export const getServerSideProps = async () => {
-  let sponsors;
-
-  try {
-    sponsors = await fetcher<Sponsor[]>('/info/about-festival/sponsors/');
-  } catch (error) {
-    throw error;
-  }
+  const sponsors = await fetcher<Sponsor[]>('/info/about-festival/sponsors/');
 
   return {
     props: {
