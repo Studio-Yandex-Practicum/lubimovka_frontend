@@ -1,14 +1,16 @@
-import { FC, useState, useReducer, useEffect } from 'react';
 import { objectToQueryString } from '@funboxteam/diamonds';
+import { useState, useReducer, useEffect } from 'react';
 
 import { fetcher } from 'services/fetcher';
-import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
-import { omit } from 'shared/helpers/omit';
-import { isNil } from 'shared/helpers/is-nil';
 import { entriesPerPage } from 'shared/constants/news';
+import { isNil } from 'shared/helpers/is-nil';
+import { omit } from 'shared/helpers/omit';
+import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
+
 import { NewsContext } from './news-provider.context';
 
 import type { PaginatedNewsItemListList, NewsItemList } from '__generated__/api-typings';
+import type { FC } from 'react';
 
 const defaultNewsState = {
   entries: [] as NewsItemList[],
@@ -67,7 +69,7 @@ const newsReducer = (state: NewsState, action: NewsAction) => {
     };
   default:
     return state;
-  };
+  }
 };
 
 interface NewsProviderProps {
@@ -119,7 +121,9 @@ export const NewsProvider: FC<NewsProviderProps> = (props) => {
   };
 
   useEffect(() => {
-    if (!preloadedNewsState) return;
+    if (!preloadedNewsState) {
+      return;
+    }
 
     dispatch({ type: NewsActionType.SetPreloadedNews, payload: preloadedNewsState });
   }, [preloadedNewsState]);

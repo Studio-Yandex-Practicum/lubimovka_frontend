@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState, useCallback, RefCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
+
+import type { RefCallback } from 'react';
 
 export const useIntersection = <T extends Element>(options?: IntersectionObserverInit) => {
   const observerRef = useRef<IntersectionObserver>();
@@ -20,7 +22,7 @@ export const useIntersection = <T extends Element>(options?: IntersectionObserve
   useEffect(() => {
     if ('IntersectionObserver' in window) {
       observerRef.current = new IntersectionObserver(handleIntersection, options);
-    };
+    }
   }, [options]);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export const useIntersection = <T extends Element>(options?: IntersectionObserve
 
     if (!observer || targetNode === null) {
       return;
-    };
+    }
 
     setIsIntersecting(false);
     observer.disconnect();

@@ -1,4 +1,4 @@
-import { PartnerType } from './constants';
+import type { PartnerType } from './constants';
 
 export type Partner = {
   name: string,

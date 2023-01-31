@@ -1,8 +1,8 @@
 import { rest } from 'msw';
 
-import { addApiBaseUrlToPath } from 'shared/helpers/url';
 import { randomEvents } from 'mocks/data/events';
 import { paginate } from 'mocks/helpers/paginate';
+import { addApiBaseUrlToPath } from 'shared/helpers/url';
 
 import type { AfishaEventListOutput } from '__generated__/api-typings';
 

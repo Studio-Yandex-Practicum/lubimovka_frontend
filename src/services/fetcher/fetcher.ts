@@ -8,7 +8,7 @@ type ErrorResponse = {
 export class HttpRequestError<T extends ErrorResponse = ErrorResponse> extends Error {
   response: T;
 
-  constructor (response: T) {
+  constructor(response: T) {
     super(`The request failed with HTTP status ${response.statusCode}`);
     this.name = 'HttpRequestError';
     this.response = response;

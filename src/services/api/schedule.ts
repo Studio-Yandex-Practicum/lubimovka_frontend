@@ -1,15 +1,14 @@
 import { objectToQueryString } from '@funboxteam/diamonds';
 
-import { fetcher } from 'services/fetcher';
 import { EventType, ScheduleMode } from 'core/schedule';
+import { fetcher } from 'services/fetcher';
 
-import type { ScheduleMeta } from 'core/schedule';
-import type { Event } from 'core/schedule';
+import type { Paginate } from './types';
 import type {
   AfishaInfoOutput as ScheduleMetaDTO,
   PaginatedAfishaEventListOutputList as ScheduleDTO,
 } from '__generated__/api-typings';
-import type { Paginate } from './types';
+import type { ScheduleMeta , Event } from 'core/schedule';
 
 export function getScheduleMeta(): Promise<ScheduleMeta> {
   return fetcher<ScheduleMetaDTO>('/afisha/info/').then(mapDTOToScheduleMeta);

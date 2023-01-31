@@ -2,10 +2,10 @@ import { objectToQueryString } from '@funboxteam/diamonds';
 
 import { fetcher } from 'services/fetcher';
 
-import type { Play, PlayFilters } from 'core/play';
-import type { FestivalProgram, FestivalYear } from 'core/festival';
-import type { PaginatedPlayList as PlayListDTO, PlayFilters as PlayFiltersDTO } from '__generated__/api-typings';
 import type { DTOPagination } from './types';
+import type { PaginatedPlayList as PlayListDTO, PlayFilters as PlayFiltersDTO } from '__generated__/api-typings';
+import type { FestivalProgram, FestivalYear } from 'core/festival';
+import type { Play, PlayFilters } from 'core/play';
 
 interface GetPlaysParams {
   years?: FestivalYear[]
