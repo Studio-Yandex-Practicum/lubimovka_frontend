@@ -11,8 +11,8 @@ import styles from './play-card.module.css';
 const cx = cn.bind(styles);
 
 export interface PlayCardProps extends Omit<Play, 'id'> {
-  className?: string
-  titleTag?: React.ElementType
+  className?: string;
+  titleTag?: React.ElementType;
 }
 
 export const PlayCard: React.FC<PlayCardProps> = (props) => {
@@ -41,13 +41,7 @@ export const PlayCard: React.FC<PlayCardProps> = (props) => {
                 target="_blank"
                 rel="nofollow noopener noreferrer"
                 size="l"
-                icon={(
-                  <Icon
-                    glyph="arrow-45"
-                    width="100%"
-                    height="100%"
-                  />
-                )}
+                icon={<Icon glyph="arrow-45" width="100%" height="100%"/>}
                 iconPosition="right"
                 fullWidth
                 upperCase
@@ -61,13 +55,7 @@ export const PlayCard: React.FC<PlayCardProps> = (props) => {
               <Button
                 href={downloadUrl}
                 size="l"
-                icon={(
-                  <Icon
-                    glyph="arrow-down"
-                    width="100%"
-                    height="100%"
-                  />
-                )}
+                icon={<Icon glyph="arrow-down" width="100%" height="100%"/>}
                 iconPosition="right"
                 fullWidth
                 upperCase
@@ -78,45 +66,28 @@ export const PlayCard: React.FC<PlayCardProps> = (props) => {
           )}
         </div>
       </div>
-      <dl>
-        <dt className={cx('semantic-only-note')}>
-          {authors.length === 1 ? 'Автор' : 'Авторы'}
-        </dt>
+      <div className={cx('info')}>
         {authors.map((author) => (
-          <dd
-            key={author.slug}
-            className={cx('author')}
-          >
+          <span key={author.slug} className={cx('author')}>
             <InfoLink
               className={cx('author')}
               size="l"
               href={`/${author.slug}`}
               label={author.fullName}
             />
-          </dd>
-        )
-        )}
+          </span>
+        ))}
         {city && (
-          <>
-            <dt className={cx('semantic-only-note')}>
-              Город
-            </dt>
-            <dd className={cx('city')}>
-              {city}
-            </dd>
-          </>
+          <span className={cx('city')}>
+            {city}
+          </span>
         )}
         {year && (
-          <>
-            <dt className={cx('semantic-only-note')}>
-              Год
-            </dt>
-            <dd className={cx('year')}>
-              {year}
-            </dd>
-          </>
+          <span className={cx('year')}>
+            {year}
+          </span>
         )}
-      </dl>
+      </div>
     </div>
   );
 };

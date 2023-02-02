@@ -41,6 +41,11 @@
   border-top: 1px solid var(--coal);
 }
 
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
 .author {
   @mixin headline;
   @mixin headline7;

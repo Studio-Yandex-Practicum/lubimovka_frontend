@@ -16,13 +16,12 @@ type GalleryImage = {
 }
 
 interface ImageGalleryProps {
-  title?: string
   items: GalleryImage[]
   className?: string
 }
 
 export const ImageGallery: React.VFC<ImageGalleryProps> = (props) => {
-  const { className, title, items } = props;
+  const { className, items } = props;
   const [fullscreenMode, setFullscreenMode] = useState(false);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
@@ -35,11 +34,6 @@ export const ImageGallery: React.VFC<ImageGalleryProps> = (props) => {
 
   return (
     <div>
-      {title && (
-        <h2 className={cx('title')}>
-          {title}
-        </h2>
-      )}
       <ul className={cx('list', className)}>
         {items.map(({ url, description = '' }, index) => (
           <li
