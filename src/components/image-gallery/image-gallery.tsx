@@ -16,7 +16,8 @@ type GalleryImage = {
 }
 
 interface ImageGalleryProps {
-  items: GalleryImage[]
+  items: GalleryImage[],
+  title: string,
   className?: string
 }
 
