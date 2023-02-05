@@ -8,7 +8,7 @@ $item-gap: 8px;
   margin: 0 -$item-gap -$item-gap 0;
 
   @media tablet-portrait {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     margin: 0;
   }
 }
@@ -23,7 +23,7 @@ $item-gap: 8px;
 
   &:not(:last-child) {
     @media tablet-portrait {
-      margin: 0 $item-gap 0 0;
+      margin: 0 $item-gap $item-gap 0;
     }
   }
 }

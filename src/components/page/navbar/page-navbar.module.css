@@ -11,5 +11,6 @@
     position: static;
     z-index: auto;
     border: 0;
+    background-color: #fff;
   }
 }

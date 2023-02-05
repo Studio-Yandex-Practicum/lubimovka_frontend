@@ -44,6 +44,10 @@
 .info {
   display: flex;
   flex-direction: column;
+
+  @media tablet-portrait {
+    gap: 8px;
+  }
 }
 
 .author {
@@ -58,10 +62,6 @@
   @mixin textSmall;
 
   margin: 4px 0 0;
-
-  @media tablet-portrait {
-    margin-top: 8px;
-  }
 }
 
 .year {

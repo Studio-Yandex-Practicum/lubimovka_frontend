@@ -32,6 +32,7 @@
 
   @media tablet-portrait {
     padding: 0 24px;
+    background-color: #fff;
   }
 }
 
@@ -63,6 +64,7 @@
     position: static;
     z-index: auto;
     padding: 0 24px;
+    background-color: #fff;
   }
 }
 
@@ -79,6 +81,7 @@
     z-index: 1;
     top: 0;
     border-bottom: 1px solid var(--coal);
+    background-color: #fff;
   }
 }
 
@@ -108,6 +111,7 @@
     top: var(--height-library-navigation-menu-tablet-portrait);
     display: block;
     margin: 0 0 56px;
+    background-color: #fff;
     overflow-x: auto;
   }
 }
@@ -115,21 +119,21 @@
 .authors {
   composes: common;
   grid-template-areas:
-    "backdrop   backdrop"
-    "navigation heading"
-    ".          heading"
-    ".          search"
-    "pagination pagination"
-    "content    content";
+    'backdrop   backdrop'
+    'navigation heading'
+    '.          heading'
+    '.          search'
+    'pagination pagination'
+    'content    content';
   grid-template-rows: repeat(5, auto) 1fr;
 
   @media tablet-portrait {
     grid-template-areas:
-      "heading"
-      "search"
-      "navigation"
-      "pagination"
-      "content";
+      'heading'
+      'search'
+      'navigation'
+      'pagination'
+      'content';
   }
 
   .search {
@@ -141,20 +145,20 @@
 .plays {
   composes: common;
   grid-template-areas:
-    "backdrop   backdrop"
-    "navigation heading"
-    "filter    heading"
-    "filter    search"
-    "filter    content";
+    'backdrop   backdrop'
+    'navigation heading'
+    'filter    heading'
+    'filter    search'
+    'filter    content';
   grid-template-rows: repeat(4, auto) 1fr;
 
   @media tablet-portrait {
     grid-template-areas:
-      "heading"
-      "search"
-      "navigation"
-      "filter"
-      "content";
+      'heading'
+      'search'
+      'navigation'
+      'filter'
+      'content';
   }
 
   .search {
@@ -183,10 +187,12 @@
     overflow-y: auto;
 
     @media tablet-portrait {
-      position: static;
+      position: sticky;
+      z-index: 1;
+      top: 9.8%;
       height: auto;
       padding: 16px 24px;
-      overflow-x: auto;
+      background-color: #fff;
     }
   }
 
@@ -196,6 +202,7 @@
 
     @media tablet-portrait {
       padding: 0;
+      margin-top: 0;
     }
   }
 }

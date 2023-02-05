@@ -89,8 +89,14 @@
   composes: common;
   flex-direction: column;
 
+  @media tablet-portrait {
+    width: 80%;
+    margin: 0 auto;
+    overflow-x: auto;
+  }
+
   .field:not(:last-child),
   .list:not(:last-child) {
-    margin-bottom: 56px;
+    margin-bottom: 60px;
   }
 }

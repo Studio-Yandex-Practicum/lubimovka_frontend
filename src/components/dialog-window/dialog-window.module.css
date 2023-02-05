@@ -16,12 +16,12 @@
 .plays-filter {
   composes: root;
   min-height: 100vh;
-  padding: 102px 24px;
+  padding: 102px 24px 60px 24px;
   background-color: var(--beige);
 
   .close {
     top: 32px;
-    right: 24px;
+    right: 80px;
     width: 44px;
     height: 44px;
     background-color: var(--light-green);

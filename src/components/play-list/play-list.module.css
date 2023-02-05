@@ -25,6 +25,10 @@ $item-width: 240px;
 
 .regular {
   composes: common;
+
+  @media tablet-portrait {
+    padding-top: 16px;
+  }
 }
 
 .item {

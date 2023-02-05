@@ -47,7 +47,7 @@ export const LibrarySearchForm: React.VFC = () => {
         spellCheck={false}
         value={query}
         onChange={handleQueryChange}
-        placeholder={value ? value : 'Введите автора или название пьесы'}
+        placeholder={value ? value : 'Автор или название пьесы'}
       />
       <button
         className={cx('submit-button')}
