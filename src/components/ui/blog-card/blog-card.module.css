@@ -43,7 +43,7 @@
   @mixin textSmall;
 
   align-self: flex-start;
-  padding: 16px 0 16px;
+  padding: 16px 0;
 
   @media (max-width: 576px) {
     padding-left: 30px;

@@ -1,12 +1,14 @@
-import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
 import { FooterCopyright } from 'components/footer-copyright';
-import { FooterNavigation } from './navigation';
-import { FooterProjects } from './projects';
-import { FooterPartners } from './partners';
-
 import Logo from 'shared/images/full-logo.svg';
+
+import { FooterNavigation } from './navigation';
+import { FooterPartners } from './partners';
+import { FooterProjects } from './projects';
+
+import type { ReactNode } from 'react';
+
 import styles from './footer.module.css';
 
 interface FooterProps {

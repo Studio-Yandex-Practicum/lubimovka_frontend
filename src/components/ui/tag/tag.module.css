@@ -3,7 +3,7 @@
   @mixin textMedium;
 
   display: inline-block;
-  padding: 4px 8px 8px 8px;
+  padding: 4px 8px 8px;
   border: 1px solid var(--coal);
   border-top: none;
   text-align: left;

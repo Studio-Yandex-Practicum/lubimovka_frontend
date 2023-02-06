@@ -1,39 +1,38 @@
-import Image from 'next/image';
 import classNames from 'classnames/bind';
-import { formatDuration, format } from 'date-fns';
+import { format,formatDuration } from 'date-fns';
+import Image from 'next/image';
 
 import { AppLayout } from 'components/app-layout';
-import { PerformanceLayout } from 'components/performance-layout';
-import { PerformanceHeadline } from 'components/performance-headline';
-import { PerformanceDetails } from 'components/performance-details';
 import { CreditsList } from 'components/credits-list';
 import { HTMLMarkup } from 'components/html-markup';
-import { ShareLinks } from 'components/share-links';
-import { PlayCard } from 'components/play-card';
-import { Video } from 'components/video';
-import { Section } from 'components/section';
 import { ImageGallery } from 'components/image-gallery';
-import { PerformanceEventList } from 'components/performance-event-list';
-import { ReviewCarousel } from 'components/review-carousel';
 import { MediaReviewCard } from 'components/media-review-card';
+import { PerformanceDetails } from 'components/performance-details';
+import { PerformanceEventList } from 'components/performance-event-list';
+import { PerformanceHeadline } from 'components/performance-headline';
+import { PerformanceLayout } from 'components/performance-layout';
+import styles from 'components/performance-layout/performance-layout.module.css';
+import { PlayCard } from 'components/play-card';
 import { ReviewCard } from 'components/review-card';
+import { ReviewCarousel } from 'components/review-carousel';
+import { Section } from 'components/section';
 import { SEO } from 'components/seo';
-import { InternalServerError } from 'shared/helpers/internal-server-error';
-import { isNonEmpty } from 'shared/helpers/is-non-empty';
+import { ShareLinks } from 'components/share-links';
+import { Video } from 'components/video';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { isNonEmpty } from 'shared/helpers/is-non-empty';
 
-import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type {
-  Performance as PerformanceResponse,
+  LocalEvent,
   PaginatedPerformanceMediaReviewList,
   PaginatedPerformanceReviewList,
-  LocalEvent,
   PerformanceMediaReview,
+  Performance as PerformanceResponse,
   PerformanceReview,
 } from '__generated__/api-typings';
-
-import styles from 'components/performance-layout/performance-layout.module.css';
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
 const cx = classNames.bind(styles);
 

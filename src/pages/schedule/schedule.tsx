@@ -1,25 +1,25 @@
-import { useCallback, useState } from 'react';
-import Error from 'next/error';
 import { format } from 'date-fns';
+import Error from 'next/error';
+import { useCallback, useState } from 'react';
 
 import { AppLayout } from 'components/app-layout';
-import { SEO } from 'components/seo';
-import { ScheduleLayout } from 'components/schedule-layout';
-import { ScheduleHeadline } from 'components/schedule-headline';
-import { EventList } from 'components/event-list';
 import { EventCard } from 'components/event-card';
+import { EventList } from 'components/event-list';
+import { FestivalDate } from 'components/festival-date';
 import { FestivalEventCard } from 'components/festival-event-card';
 import { FestivalEventTabs } from 'components/festival-event-tabs';
 import { PaginationSentinel } from 'components/pagination-sentinel';
+import { ScheduleHeadline } from 'components/schedule-headline';
+import { ScheduleLayout } from 'components/schedule-layout';
+import { SEO } from 'components/seo';
+import { ScheduleMode } from 'core/schedule';
 import { getSchedule, getScheduleMeta } from 'services/api/schedule';
 import { isNonEmpty } from 'shared/helpers/is-non-empty';
-import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
 import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
-import { ScheduleMode } from 'core/schedule';
+import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
 
-import type { InferGetServerSidePropsType } from 'next';
 import type { Event } from 'core/schedule';
-import { FestivalDate } from 'components/festival-date';
+import type { InferGetServerSidePropsType } from 'next';
 
 const EVENTS_PER_PAGE = 15;
 const REMAINING_TAB_COUNT_BEFORE_LOAD_EVENTS = 2;
@@ -49,6 +49,7 @@ const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
       result = await getSchedule(options);
     } catch {
       setErrorOccurred(true);
+
       return;
     }
 

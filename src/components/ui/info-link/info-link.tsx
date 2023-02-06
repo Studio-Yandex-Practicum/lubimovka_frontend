@@ -1,26 +1,28 @@
-import React, { FC } from 'react';
-import Link from 'next/link';
 import classNames from 'classnames/bind';
+import Link from 'next/link';
 
-import { Icon, IIconProps } from '../icon';
+import { Icon } from '../icon';
+
+import type { IIconProps } from '../icon';
+import type { FC } from 'react';
 
 import styles from './info-link.module.css';
 
 const cx = classNames.bind(styles);
 
 export interface ILinkProps {
-  isOutsideLink?: boolean;
-  href?: string;
-  label: string;
-  icon?: IIconProps['glyph'],
-  iconPlace?: 'iconNone' | 'left' | 'right';
-  hoverStyle?: 'invert' | 'bottomLine' | 'bottomLineAndInvert';
-  size?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'number';
-  textDecoration?: 'textDecorationNone' | 'underline';
-  textTransform?: 'uppercase';
-  border?: 'borderNone' | 'borderBottomLeft' | 'borderTop';
-  className?: string;
-  iconClassName?: string;
+  isOutsideLink?: boolean
+  href?: string
+  label: string
+  icon?: IIconProps['glyph']
+  iconPlace?: 'iconNone' | 'left' | 'right'
+  hoverStyle?: 'invert' | 'bottomLine' | 'bottomLineAndInvert'
+  size?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'number'
+  textDecoration?: 'textDecorationNone' | 'underline'
+  textTransform?: 'uppercase'
+  border?: 'borderNone' | 'borderBottomLeft' | 'borderTop'
+  className?: string
+  iconClassName?: string
 }
 
 export const InfoLink: FC<ILinkProps> = (props) => {
@@ -52,7 +54,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
   );
 
   const linkChildren = (
-    <React.Fragment>
+    <>
       {iconPlace === 'left' && icon && (
         <Icon className={cx(iconClassName)} glyph={icon}/>
       )}
@@ -62,7 +64,7 @@ export const InfoLink: FC<ILinkProps> = (props) => {
       {iconPlace === 'right' && icon && (
         <Icon className={cx(iconClassName)} glyph={icon}/>
       )}
-    </React.Fragment>
+    </>
   );
 
   return (

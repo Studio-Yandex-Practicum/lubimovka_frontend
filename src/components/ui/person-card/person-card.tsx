@@ -1,21 +1,21 @@
-import React from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
+
+import Logo from 'shared/images/compact-logo.svg';
 
 import { Icon } from '../icon';
 
 import styles from './person-card.module.css';
-import Logo from 'shared/images/compact-logo.svg';
 
 const cx = cn.bind(styles);
 
 export interface IPersonCardProps {
-  participant?: boolean,
-  name: string,
-  image?: string,
-  about?: string,
-  response?: string,
-  handleClick?: React.MouseEventHandler<HTMLButtonElement>,
+  participant?: boolean
+  name: string
+  image?: string
+  about?: string
+  response?: string
+  handleClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export const PersonCard: React.FC<IPersonCardProps> = (props) => {

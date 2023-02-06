@@ -1,4 +1,4 @@
-@import '../performance-layout.vars.module.css';
+@import url("../performance-layout.vars.module.css");
 
 .root {
   min-width: 0;

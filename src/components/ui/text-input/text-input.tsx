@@ -1,5 +1,6 @@
-import { ChangeEvent, InputHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
+
+import type { ChangeEvent, InputHTMLAttributes } from 'react';
 
 import styles from './text-input.module.css';
 
@@ -20,7 +21,9 @@ const TextInput = (props: ITextInputProps): JSX.Element => {
   } = props;
 
   const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
-    if (!onChange) return;
+    if (!onChange) {
+      return;
+    }
 
     onChange(value);
   };

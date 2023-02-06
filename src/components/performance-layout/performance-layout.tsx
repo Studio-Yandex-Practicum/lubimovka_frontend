@@ -1,22 +1,22 @@
 import classNames from 'classnames/bind';
 
+import { PerformanceLayoutBottomImage } from './bottom-image';
 import { PerformanceLayoutContent } from './content';
-import { PerformanceLayoutSummary } from './summary';
+import { PerformanceLayoutCover } from './cover';
+import { PerformanceLayoutEvents } from './events';
 import { PerformanceLayoutGallery } from './gallery';
+import { PerformanceLayoutIntro } from './intro';
 import { PerformanceLayoutMediaReviews } from './media-reviews';
 import { PerformanceLayoutReviews } from './reviews';
-import { PerformanceLayoutBottomImage } from './bottom-image';
 import { PerformanceLayoutShare } from './share';
-import { PerformanceLayoutEvents } from './events';
-import { PerformanceLayoutIntro } from './intro';
-import { PerformanceLayoutCover } from './cover';
+import { PerformanceLayoutSummary } from './summary';
 
 import type { ReactNode } from 'react';
 
 import styles from './performance-layout.module.css';
 
 interface IPerformanceLayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const cx = classNames.bind(styles);

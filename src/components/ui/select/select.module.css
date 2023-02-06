@@ -28,9 +28,9 @@
     display: block;
     width: 10px;
     height: 10px;
-    background-color: var(--coal);
     border-radius: 5px;
-    content: '';
+    background-color: var(--coal);
+    content: "";
     transform: translateY(-50%);
   }
 }

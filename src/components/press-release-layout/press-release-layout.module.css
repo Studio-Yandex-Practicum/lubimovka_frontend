@@ -1,4 +1,4 @@
-@value tablet-portrait from 'shared/styles/media.module.css';
+@value tablet-portrait from "shared/styles/media.module.css";
 
 $page-margin-tablet-portrait: 120px;
 $page-margin-smartphone: 24px;

@@ -1,33 +1,32 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import Error from 'next/error';
-import { useMemo, useEffect } from 'react';
 import classNames from 'classnames/bind';
+import Error from 'next/error';
+import { useEffect,useMemo } from 'react';
 
 import { AppLayout } from 'components/app-layout/index';
 import { BlogEntryList } from 'components/blog-entry-list';
-import { BlogCard } from 'components/ui/blog-card';
-import { Filter } from 'components/filter';
-import { Select } from 'components/ui/select';
 import { BlogLayout } from 'components/blog-layout';
-import { PageTitle } from 'components/page-title';
-import { Spinner } from 'components/spinner';
+import styles from 'components/blog-layout/blog-layout.module.css';
 import { CallToEmail } from 'components/call-to-email';
+import { Filter } from 'components/filter';
+import { PageTitle } from 'components/page-title';
 import { SEO } from 'components/seo';
+import { Spinner } from 'components/spinner';
+import { BlogCard } from 'components/ui/blog-card';
+import { Select } from 'components/ui/select';
 import { useBlog } from 'providers/blog-provider';
 import { usePersistentData } from 'providers/persistent-data-provider';
-import { useIntersection } from 'shared/hooks/use-intersection';
+import { fetcher } from 'services/fetcher';
+import { entriesPerPage } from 'shared/constants/blog';
+import { months } from 'shared/constants/months';
 import { getYearRange } from 'shared/helpers/get-year-range';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
-import { fetcher } from 'services/fetcher';
-import { months } from 'shared/constants/months';
-import { entriesPerPage } from 'shared/constants/blog';
+import { useIntersection } from 'shared/hooks/use-intersection';
 
+import type { BlogItemListOutput,PaginatedBlogItemListOutputList } from '__generated__/api-typings';
+import type { SelectOptionCheckHandler } from 'components/ui/select';
+import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import type { BlogState } from 'providers/blog-provider';
 import type { BlogEntry } from 'shared/types/domain';
-import type { PaginatedBlogItemListOutputList, BlogItemListOutput } from '__generated__/api-typings';
-import type { SelectOptionCheckHandler } from 'components/ui/select';
-
-import styles from 'components/blog-layout/blog-layout.module.css';
 
 const cx = classNames.bind(styles);
 
@@ -62,13 +61,17 @@ const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   const callToActionEmail = settings?.emailAddresses.forBlogAuthors;
 
   const handleMonthChange: SelectOptionCheckHandler<number> = ({ value }) => {
-    if (selectedMonth === value) return;
+    if (selectedMonth === value) {
+      return;
+    }
 
     setSelectedMonth(value);
   };
 
   const handleYearChange: SelectOptionCheckHandler<number> = ({ value }) => {
-    if (selectedYear === value) return;
+    if (selectedYear === value) {
+      return;
+    }
 
     setSelectedYear(value);
   };

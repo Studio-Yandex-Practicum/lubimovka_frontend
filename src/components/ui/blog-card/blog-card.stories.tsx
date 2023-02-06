@@ -1,7 +1,6 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { BlogCard } from './blog-card';
+
+import type { ComponentMeta,ComponentStory } from '@storybook/react';
 
 export default {
   component: BlogCard,

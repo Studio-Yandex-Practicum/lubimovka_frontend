@@ -1,34 +1,34 @@
-import { useState, useMemo } from 'react';
 import cn from 'classnames/bind';
+import { useMemo,useState } from 'react';
 
-import { Button } from 'components/ui/button';
-import { Tag } from 'components/ui/tag';
-import { InfoLink } from 'components/ui/info-link';
 import { PlayCard } from 'components/play-card';
 import { PlayList } from 'components/play-list';
 import { Section } from 'components/section';
+import { Button } from 'components/ui/button';
+import { InfoLink } from 'components/ui/info-link';
 import { Link } from 'components/ui/link';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
-import { numberOfCharacters } from 'shared/constants/numbers';
+import { Tag } from 'components/ui/tag';
 import * as breakpoints from 'shared/breakpoints.js';
+import { numberOfCharacters } from 'shared/constants/numbers';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
-import type { OtherLink, Play, SocialNetwork, Achievement } from '__generated__/api-typings';
+import type { Achievement,OtherLink, Play, SocialNetwork } from '__generated__/api-typings';
 
 import styles from './overview.module.css';
 
 const cx = cn.bind(styles);
 
 interface IAuthorOverview {
-  image: string,
-  name: string,
-  city: string,
-  quote: string,
-  biography: string,
-  other_links: OtherLink[],
-  achievements: Array<Achievement>,
-  social_networks: SocialNetwork[],
-  email: string,
-  plays: Play[],
+  image: string
+  name: string
+  city: string
+  quote: string
+  biography: string
+  other_links: OtherLink[]
+  achievements: Array<Achievement>
+  social_networks: SocialNetwork[]
+  email: string
+  plays: Play[]
 }
 
 export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {

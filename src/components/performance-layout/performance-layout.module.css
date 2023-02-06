@@ -1,4 +1,4 @@
-@import './performance-layout.vars.module.css';
+@import url("./performance-layout.vars.module.css");
 
 .root {
   padding: 0 $page-padding-tablet-portrait;
@@ -18,7 +18,7 @@
   @media (max-width: $tablet-portrait) {
     width: auto;
     order: 1;
-    margin: 0 0 30px 0;
+    margin: 0 0 30px;
     float: none;
   }
 }

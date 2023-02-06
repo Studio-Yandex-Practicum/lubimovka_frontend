@@ -2,18 +2,15 @@
   display: grid;
   background-color: var(--beige);
   gap: 0 120px;
-  grid-template-areas:
+  grid-template:
     ".     title"
-    "intro image";
-  grid-template-columns: repeat(2, 1fr);
+    "intro image" / 1fr 1fr;
 
   @media (max-width: $tablet-portrait) {
-    grid-template-areas:
-      "title"
-      "intro"
-      "image";
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, min-content) 450px;
+    grid-template:
+      "title" min-content
+      "intro" min-content
+      "image" 450px;
   }
 }
 

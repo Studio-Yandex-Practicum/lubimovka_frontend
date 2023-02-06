@@ -1,17 +1,19 @@
-import React, { FC } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import cn from 'classnames';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+
+import type { FC } from 'react';
 
 import styles from './blog-card.module.css';
 
 export interface BlogCardProps {
-  image: string;
-  author: string;
-  heading: string;
-  description: string;
-  id: number;
-  firstCardSizeMode?: 'regular' | 'big';
+  image: string
+  author: string
+  heading: string
+  description: string
+  id: number
+  firstCardSizeMode?: 'regular' | 'big'
 }
 
 export const BlogCard: FC<BlogCardProps> = (props) => {
@@ -19,10 +21,10 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
 
   const link = `/blog/${encodeURIComponent(id)}`;
 
-  const [imgWidth, setImgWidth] = React.useState<number>();
-  const [imgHeight, setImgHeight] = React.useState<number>();
+  const [imgWidth, setImgWidth] = useState<number>();
+  const [imgHeight, setImgHeight] = useState<number>();
 
-  const handleImageLoad = (e: { naturalWidth: number, naturalHeight: number }) => {
+  const handleImageLoad = (e: { naturalWidth: number; naturalHeight: number }) => {
     setImgWidth(e.naturalWidth);
     setImgHeight(e.naturalHeight);
   };

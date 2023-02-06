@@ -1,5 +1,4 @@
-
-@import 'about-us-layout.vars.module';
+@import url("about-us-layout.vars.module");
 
 .menu {
   padding: 40px 60px;

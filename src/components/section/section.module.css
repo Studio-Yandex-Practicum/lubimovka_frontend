@@ -1,4 +1,4 @@
-@value tablet-portrait from 'shared/styles/media.module.css';
+@value tablet-portrait from "shared/styles/media.module.css";
 
 .common {
   box-sizing: border-box;
@@ -102,7 +102,7 @@
 
 .places {
   composes: common;
-  padding: 65px 60px 105px 60px;
+  padding: 65px 60px 105px;
   background-color: var(--white);
 
   .title {
@@ -120,10 +120,10 @@
 }
 
 .homepage-shortlist {
-  padding: 90px 60px 102px 60px;
+  padding: 90px 60px 102px;
 
   @media tablet-portrait {
-    padding: 40px 30px 40px 30px;
+    padding: 40px 30px;
   }
 
   .title {

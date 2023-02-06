@@ -6,4 +6,4 @@ export async function setupMocks() {
     const { server } = await import ('mocks/server');
     server.listen();
   }
-};
+}

@@ -1,6 +1,8 @@
-import { FC, PropsWithChildren } from 'react';
-import _Link, { LinkProps } from 'next/link';
 import classNames from 'classnames/bind';
+import _Link from 'next/link';
+
+import type { LinkProps } from 'next/link';
+import type { FC, PropsWithChildren } from 'react';
 
 import styles from './link.module.css';
 

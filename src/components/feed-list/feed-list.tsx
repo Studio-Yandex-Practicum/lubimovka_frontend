@@ -1,7 +1,8 @@
-import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
 import { FeedListItem } from './item';
+
+import type { ReactNode } from 'react';
 
 import styles from './feed-list.module.css';
 

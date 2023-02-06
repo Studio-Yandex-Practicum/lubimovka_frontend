@@ -1,16 +1,16 @@
-import { useReducer, useState } from 'react';
 import Link from 'next/link';
+import { useReducer, useState } from 'react';
 
 import { AppLayout } from 'components/app-layout';
+import { CallToEmail } from 'components/call-to-email';
 import ContactsLayout from 'components/contacts-layout';
 import ContactsTitle from 'components/contacts-title';
-import Form from 'components/ui/form/form';
-import TextInput from 'components/ui/text-input/text-input';
-import TextArea from 'components/ui/text-area';
-import { Button } from 'components/ui/button2';
-import { Icon } from 'components/ui/icon';
-import { CallToEmail } from 'components/call-to-email';
 import { SEO } from 'components/seo';
+import { Button } from 'components/ui/button2';
+import Form from 'components/ui/form/form';
+import { Icon } from 'components/ui/icon';
+import TextArea from 'components/ui/text-area';
+import TextInput from 'components/ui/text-input/text-input';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { fetcher } from 'services/fetcher';
 import { validEmailRegexp } from 'shared/constants/regexps';
@@ -18,9 +18,9 @@ import { validEmailRegexp } from 'shared/constants/regexps';
 import type { NextPage } from 'next';
 
 interface ContactFormFields {
-  name: string,
-  email: string,
-  message: string,
+  name: string
+  email: string
+  message: string
 }
 
 enum ContactFormActionTypes {
@@ -30,15 +30,15 @@ enum ContactFormActionTypes {
 }
 
 type ContactFormAction<K extends keyof ContactFormFields = keyof ContactFormFields> =
-  { type: ContactFormActionTypes.FieldChange, payload: { field: K, value: ContactFormFields[K], error?: string } }
-  | { type: ContactFormActionTypes.FieldError, payload: { field: K, error: string } }
+  { type: ContactFormActionTypes.FieldChange; payload: { field: K; value: ContactFormFields[K]; error?: string } }
+  | { type: ContactFormActionTypes.FieldError; payload: { field: K; error: string } }
   | { type: ContactFormActionTypes.Reset }
 
 type ContactFormStateFields<T> = {
   [K in keyof T]: {
-    value: T[K],
-    wasChanged: boolean,
-    error?: string,
+    value: T[K]
+    wasChanged: boolean
+    error?: string
   }
 }
 
@@ -162,7 +162,7 @@ const Contacts: NextPage = () => {
         },
         body: JSON.stringify(data),
       });
-    } catch ([ status, errors ]) {
+    } catch ([status, errors]) {
       // TODO: добавить проверку типов выброшенного исключения, пока считаем, что всегда получаем ответ API
 
       for (const field in errors as Record<string, string[]>) {

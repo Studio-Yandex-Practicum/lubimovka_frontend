@@ -4,7 +4,7 @@
     padding-bottom: calc(100% / 720 * 280);
     background-image: url("/images/contacts/play-script.jpg");
     background-size: cover;
-    content: '';
+    content: "";
 
     @media (max-width: $tablet-portrait) {
       margin-right: -24px;

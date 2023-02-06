@@ -14,7 +14,8 @@
     gap: 16px 32px;
     grid-template:
       "image time-location title       .       ."
-      "image time-location description credits actions" 1fr / minmax(0, 147px) minmax(0, 12.5%) minmax(0, 27.5%) minmax(0, 30%) minmax(0, 17.5%);
+      "image time-location description credits actions" 1fr
+      / minmax(0, 147px) minmax(0, 12.5%) minmax(0, 27.5%) minmax(0, 30%) minmax(0, 17.5%);
   }
 }
 

@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import PersonsList from 'components/persons-list';
 
-import { FestivalTeams } from '__generated__/api-typings';
-import PersonsList from '../../../persons-list';
+import type { FestivalTeams } from '__generated__/api-typings';
+import type { FC } from 'react';
 
 import styles from './art-directorate-section.module.css';
 

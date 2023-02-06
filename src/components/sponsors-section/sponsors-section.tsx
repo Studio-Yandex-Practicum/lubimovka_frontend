@@ -6,10 +6,10 @@ import type { FC } from 'react';
 import style from './sponsors-section.module.css';
 
 interface SponsorsSectionProps {
-  title: string,
-  callToEmail: string,
-  callToEmailAddress?: string,
-  description: string,
+  title: string
+  callToEmail: string
+  callToEmailAddress?: string
+  description: string
 }
 
 const SponsorsSection: FC<SponsorsSectionProps> = (props) => {

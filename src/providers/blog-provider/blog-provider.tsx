@@ -1,18 +1,20 @@
-import { FC, useReducer, useState } from 'react';
 import { objectToQueryString } from '@funboxteam/diamonds';
+import { useReducer, useState } from 'react';
 
-import { omit } from 'shared/helpers/omit';
-import { isNil } from 'shared/helpers/is-nil';
-import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
 import { fetcher } from 'services/fetcher';
 import { entriesPerPage } from 'shared/constants/blog';
+import { isNil } from 'shared/helpers/is-nil';
+import { omit } from 'shared/helpers/omit';
+import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
+
 import { BlogContext } from './blog-provider.context';
 
-import type { BlogEntry } from 'shared/types/domain';
 import type {
   BlogItemListOutput,
   PaginatedBlogItemListOutputList,
 } from '__generated__/api-typings';
+import type { FC } from 'react';
+import type { BlogEntry } from 'shared/types/domain';
 
 const defaultBlogState = {
   entries: [] as BlogEntry[],
@@ -25,13 +27,13 @@ enum BlogActionType {
   IncreaseOffset,
   Reset,
   SetPreloadedState,
-};
+}
 
 export type BlogState = typeof defaultBlogState;
-type BlogAction = { type: BlogActionType.AddEntries, payload: { entries: BlogEntry[], hasMoreEntries: boolean }}
+type BlogAction = { type: BlogActionType.AddEntries; payload: { entries: BlogEntry[]; hasMoreEntries: boolean }}
   | { type: BlogActionType.IncreaseOffset }
   | { type: BlogActionType.Reset }
-  | { type: BlogActionType.SetPreloadedState, payload: Partial<BlogState> }
+  | { type: BlogActionType.SetPreloadedState; payload: Partial<BlogState> }
 
 const blogReducer = (state: BlogState, action: BlogAction) => {
   switch (action.type) {
@@ -78,7 +80,7 @@ export const BlogProvider: FC = (props) => {
     dispatch({ type: BlogActionType.SetPreloadedState, payload: state });
   };
 
-  const fetchBlogEntries = async ()  => {
+  const fetchBlogEntries = async () => {
     const params = omit({
       offset: blog.offset,
       limit: entriesPerPage,
@@ -91,6 +93,7 @@ export const BlogProvider: FC = (props) => {
       response = await fetcher<PaginatedBlogItemListOutputList>(`/blog/${objectToQueryString(params)}`);
     } catch {
       setErrorCode(500);
+
       return;
     }
 
@@ -161,4 +164,4 @@ function toBlogEntries(array: BlogItemListOutput[]): BlogEntry[] {
     author: author_url_title,
     cover: image,
   }));
-};
+}

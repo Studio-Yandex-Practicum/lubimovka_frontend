@@ -5,7 +5,7 @@ import styles from './overlay-nav-actions.module.css';
 const cx = classNames.bind(styles);
 
 interface IOverlayNavActionsProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const OverlayNavActions = (props: IOverlayNavActionsProps): JSX.Element => {

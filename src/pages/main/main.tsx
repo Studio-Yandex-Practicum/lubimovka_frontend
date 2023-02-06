@@ -1,35 +1,35 @@
-import Link from 'next/link';
 import { format } from 'date-fns';
+import Link from 'next/link';
 
-import { MainLayout } from 'components/main-layout';
-import { FeedList } from 'components/feed-list';
-import { NewsCard } from 'components/news-card';
-import { BlogCard } from 'components/ui/blog-card';
-import { TeaserList } from 'components/teaser-list';
-import { Button } from 'components/ui/button2';
-import { Icon } from 'components/ui/icon';
-import { Section } from 'components/section';
-import { PartnerList } from 'components/partner-list';
-import { AddressList } from 'components/address-list';
 import { AddressCard } from 'components/address-card';
-import { MainHeader } from 'components/main-header';
+import { AddressList } from 'components/address-list';
+import { AppLayout } from 'components/app-layout';
+import { EventCard } from 'components/event-card';
+import { EventList } from 'components/event-list';
+import { FeedList } from 'components/feed-list';
+import { HomepageEventsSection } from 'components/homepage-events-section';
 import { HomepageFeedSection } from 'components/homepage-feed-section';
 import { HomepageVideoArchiveSection } from 'components/homepage-video-archive-section';
-import { HomepageEventsSection } from 'components/homepage-events-section';
-import { AppLayout } from 'components/app-layout';
+import { MainHeader } from 'components/main-header';
+import { MainLayout } from 'components/main-layout';
+import { NewsCard } from 'components/news-card';
+import PartnerCard from 'components/partner-card';
+import { PartnerList } from 'components/partner-list';
 import { PlayCard } from 'components/play-card';
 import { PlayList } from 'components/play-list';
-import { EventList } from 'components/event-list';
-import { EventCard } from 'components/event-card';
-import PartnerCard from 'components/partner-card';
+import { Section } from 'components/section';
 import { SEO } from 'components/seo';
-import { fetcher } from 'services/fetcher';
-import { getPartners } from 'services/api/partners';
+import { TeaserList } from 'components/teaser-list';
+import { BlogCard } from 'components/ui/blog-card';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 import { PartnerType } from 'core/partner';
+import { getPartners } from 'services/api/partners';
+import { fetcher } from 'services/fetcher';
 
-import type { InferGetServerSidePropsType } from 'next';
-import type { Partner } from 'core/partner';
 import type { Main as MainPageData } from '__generated__/api-typings';
+import type { Partner } from 'core/partner';
+import type { InferGetServerSidePropsType } from 'next';
 
 const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {

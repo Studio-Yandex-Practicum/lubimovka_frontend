@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
 
-import { Menu } from 'components/ui/menu';
 import { LibrarySearchForm } from 'components/library-search-form';
+import { Menu } from 'components/ui/menu';
 
 import styles from './library-layout.module.css';
 

@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 import styles from './form-field.module.css';
 

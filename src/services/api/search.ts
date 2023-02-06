@@ -1,9 +1,10 @@
-import { fetcher } from 'services/fetcher';
 import { objectToQueryString } from '@funboxteam/diamonds';
 
-import type { Play } from 'core/play';
-import type { Author } from 'core/author';
+import { fetcher } from 'services/fetcher';
+
 import type { SearchResult as SearchDTO } from '__generated__/api-typings';
+import type { Author } from 'core/author';
+import type { Play } from 'core/play';
 
 type SearchResults = {
   plays: Play[]

@@ -27,7 +27,7 @@ $border-width: 1px;
       height: calc(100% + 2 * $border-width);
       animation: .3s background-slide ease;
       background-color: var(--coal);
-      content: '';
+      content: "";
       transform-origin: left;
     }
   }

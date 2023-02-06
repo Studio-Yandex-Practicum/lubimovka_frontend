@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 
-import { MainLayoutFeed } from './feed';
 import { MainLayoutContent } from './content';
 import { MainLayoutEvents } from './events';
+import { MainLayoutFeed } from './feed';
 
 import type { FC } from 'react';
 

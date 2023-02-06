@@ -9,7 +9,7 @@
 
   position: relative;
   display: grid;
-  max-width: calc((var(--card-width) * var(--columns-count)) + (var(--column-gap) * (var(--columns-count) - 1)) + (var(--padding) * 2));
+  max-width: calc((var(--card-width) * var(--columns-count)) + (var(--column-gap) * (var(--columns-count) - 1)) + (var(--padding) * 2)); /* stylelint-disable-line max-line-length */
   box-sizing: border-box;
   justify-content: center;
   padding: 0 var(--padding);

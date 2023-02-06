@@ -1,31 +1,32 @@
-import { useCallback, useState, useRef, useMemo, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import debounce from 'lodash/debounce';
 import { encode } from 'querystring';
+
+import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import Error from 'next/error';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect,useMemo, useRef, useState } from 'react';
 
 import { AppLayout } from 'components/app-layout';
-import { LibraryLayout } from 'components/library-layout';
-import { SEO } from 'components/seo';
 import { Filter } from 'components/filter';
-import { MultipleSelect } from 'components/ui/multiple-select';
-import { Checkbox } from 'components/ui/checkbox';
-import { PlayCard } from 'components/play-card';
-import { PlayList } from 'components/play-list';
-import { Button } from 'components/ui/button2';
-import { Icon } from 'components/ui/icon';
-import { ButtonGroup } from 'components/ui/button-group';
-import { CheckboxGroup } from 'components/ui/checkbox-group';
-import { PlayFilterDialog } from 'components/play-filter-dialog';
+import { LibraryLayout } from 'components/library-layout';
 import { PaginationSentinel } from 'components/pagination-sentinel';
-import { objectMap } from 'shared/helpers/object-map';
-import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
-import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
-import { remToPx } from 'shared/helpers/rem-to-px';
+import { PlayCard } from 'components/play-card';
+import { PlayFilterDialog } from 'components/play-filter-dialog';
+import { PlayList } from 'components/play-list';
+import { SEO } from 'components/seo';
+import { ButtonGroup } from 'components/ui/button-group';
+import { Button } from 'components/ui/button2';
+import { Checkbox } from 'components/ui/checkbox';
+import { CheckboxGroup } from 'components/ui/checkbox-group';
+import { Icon } from 'components/ui/icon';
+import { MultipleSelect } from 'components/ui/multiple-select';
+import { getPlayFilters,getPlays } from 'services/api/plays';
 import breakpoints from 'shared/breakpoints';
-import { getPlays, getPlayFilters } from 'services/api/plays';
+import { objectMap } from 'shared/helpers/object-map';
+import { remToPx } from 'shared/helpers/rem-to-px';
+import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
+import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
@@ -74,7 +75,8 @@ const Plays = (props: PlaysViewProps) => {
       return {
         ...filterState,
         [param]: filterState[param].map((o) => ({ ...o, selected: o.value === option.value ? selected : o.selected }))
-      };});
+      };
+    });
     setPagination((pagination) => ({
       ...pagination,
       currentPage: 1,
@@ -94,6 +96,7 @@ const Plays = (props: PlaysViewProps) => {
         result = await getPlays(searchParams);
       } catch {
         setErrorOccurred(true);
+
         return;
       }
 
@@ -234,7 +237,9 @@ const Plays = (props: PlaysViewProps) => {
                     <MultipleSelect.Option key={option.value}>
                       <Checkbox
                         checked={option.selected}
-                        onChange={(selected) => { handleOptionChange('festivalYearOptions', selected, option); }}
+                        onChange={(selected) => {
+                          handleOptionChange('festivalYearOptions', selected, option);
+                        }}
                       >
                         <MultipleSelect.OptionText>
                           {option.text}
@@ -251,7 +256,9 @@ const Plays = (props: PlaysViewProps) => {
                       <Checkbox
                         variant="pseudo-button"
                         checked={option.selected}
-                        onChange={(selected) => { handleOptionChange('festivalProgramOptions', selected, option); }}
+                        onChange={(selected) => {
+                          handleOptionChange('festivalProgramOptions', selected, option);
+                        }}
                       >
                         {option.text}
                       </Checkbox>

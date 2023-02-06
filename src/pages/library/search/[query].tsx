@@ -1,23 +1,24 @@
 import { encode } from 'querystring';
+
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-import { AppLayout } from 'components/app-layout';
-import { SEO } from 'components/seo';
-import { SearchLayout } from 'components/search-layout';
-import { LibrarySearchForm } from 'components/library-search-form';
-import { PlayList } from 'components/play-list';
-import { PlayCard } from 'components/play-card';
 import { AlphabeticalAuthorList } from 'components/alphabetical-author-list';
+import { AppLayout } from 'components/app-layout';
 import { Breadcrumb } from 'components/breadcrumb';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
+import { LibrarySearchForm } from 'components/library-search-form';
+import { PlayCard } from 'components/play-card';
+import { PlayList } from 'components/play-list';
+import { SearchLayout } from 'components/search-layout';
+import { SEO } from 'components/seo';
 import { getSearchResults } from 'services/api/search';
-import { isNonEmpty } from 'shared/helpers/is-non-empty';
 import breakpoints from 'shared/breakpoints';
+import { isNonEmpty } from 'shared/helpers/is-non-empty';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
-import type { GetServerSideProps } from 'next';
-import type { Play } from 'core/play';
 import type { Author } from 'core/author';
+import type { Play } from 'core/play';
+import type { GetServerSideProps } from 'next';
 
 enum QueryParam {
   Query = 'query',

@@ -1,8 +1,9 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
 import { InfoLink } from 'components/ui/info-link';
+
+import type { FC } from 'react';
 
 import styles from './for-press-hero-pr-contact.module.css';
 
@@ -10,13 +11,13 @@ const cx = cn.bind(styles);
 
 export interface IForPressHeroPrContactProps {
   data: {
-    name: string,
-    nameDative: string,
-    email: string,
-    role: string,
-    photo: Url,
-   },
-   customClass?: string;
+    name: string
+    nameDative: string
+    email: string
+    role: string
+    photo: Url
+   }
+   customClass?: string
 }
 
 export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, customClass }) => {

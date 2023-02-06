@@ -1,5 +1,5 @@
 @define-mixin text {
-  font-family: "Formular", Arial, sans-serif;
+  font-family: Formular, Arial, sans-serif;
   font-style: normal;
   font-weight: 300;
 }

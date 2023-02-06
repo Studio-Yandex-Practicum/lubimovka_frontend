@@ -1,8 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
+import { useEffect,useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 interface IPortalProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const Portal = ({ children }: IPortalProps): JSX.Element | null => {
@@ -19,6 +19,7 @@ export const Portal = ({ children }: IPortalProps): JSX.Element | null => {
 
   useEffect(() => {
     ref.current && document.body.appendChild(ref.current);
+
     return () => {
       ref.current && document.body.removeChild(ref.current);
     };

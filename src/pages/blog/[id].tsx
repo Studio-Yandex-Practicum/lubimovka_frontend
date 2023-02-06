@@ -2,25 +2,24 @@ import classNames from 'classnames/bind';
 import format from 'date-fns/format';
 
 import { AppLayout } from 'components/app-layout';
-import { ArticleHeadline } from 'components/article-headline';
-import { ArticleFootnote } from 'components/article-footnote';
-import { ConstructorContent } from 'components/constructor-content';
-import { SEO } from 'components/seo';
-import { Section } from 'components/section';
-import { BlogEntryList } from 'components/blog-entry-list';
-import { BlogCard } from 'components/ui/blog-card';
-import { PageBreadcrumbs } from 'components/page';
-import { Breadcrumb } from 'components/breadcrumb';
-import { ShareLinks } from 'components/share-links';
 import { ArticleCreditsList } from 'components/article-credits-list';
+import { ArticleFootnote } from 'components/article-footnote';
+import { ArticleHeadline } from 'components/article-headline';
+import styles from 'components/article-layout/article-layout.module.css';
+import { BlogEntryList } from 'components/blog-entry-list';
+import { Breadcrumb } from 'components/breadcrumb';
+import { ConstructorContent } from 'components/constructor-content';
+import { PageBreadcrumbs } from 'components/page';
+import { Section } from 'components/section';
+import { SEO } from 'components/seo';
+import { ShareLinks } from 'components/share-links';
+import { BlogCard } from 'components/ui/blog-card';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 
-import type { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
 import type { BlogItemDetailOutput } from '__generated__/api-typings';
-
-import styles from 'components/article-layout/article-layout.module.css';
+import type { GetServerSidePropsContext,InferGetServerSidePropsType } from 'next';
 
 const cx = classNames.bind(styles);
 

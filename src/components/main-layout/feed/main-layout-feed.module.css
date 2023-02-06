@@ -1,4 +1,4 @@
-@import '../main-layout.vars.module.css';
+@import url("../main-layout.vars.module.css");
 
 .root {
   position: sticky;

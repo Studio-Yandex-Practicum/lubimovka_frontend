@@ -5,7 +5,7 @@ import type { FC } from 'react';
 import styles from './form-fieldset.module.css';
 
 interface FormFieldsetProps extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
-  legend: string;
+  legend: string
 }
 
 const cx = classNames.bind(styles);

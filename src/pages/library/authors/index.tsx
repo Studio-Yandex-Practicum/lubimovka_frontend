@@ -1,24 +1,25 @@
-import { useEffect, useState, useRef } from 'react';
-import { objectToQueryString } from '@funboxteam/diamonds';
-import Link from 'next/link';
 import { encode } from 'querystring';
 
-import { SEO } from 'components/seo';
-import { AppLayout } from 'components/app-layout';
-import { AuthorsLayout } from 'components/authors-layout/authors-layout';
+import { objectToQueryString } from '@funboxteam/diamonds';
+import Link from 'next/link';
+import { useEffect, useRef,useState } from 'react';
+
 import { AlphabeticalPagination } from 'components/alphabetical-pagination';
+import { AppLayout } from 'components/app-layout';
 import { AuthorList } from 'components/author-list';
 import { AuthorListHeading } from 'components/author-list-heading';
-import { Button } from 'components/ui/button2';
+import { AuthorsLayout } from 'components/authors-layout/authors-layout';
 import { LibraryLayout } from 'components/library-layout';
+import { SEO } from 'components/seo';
+import { Button } from 'components/ui/button2';
 import { getAuthors, getAvailableAuthorsPaginationLetters } from 'services/api/authors';
-import { alphabeticalPaginationLetters } from 'shared/constants/alphabetical-pagination-letters';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
-import { remToPx } from 'shared/helpers/rem-to-px';
 import breakpoints from 'shared/breakpoints';
+import { alphabeticalPaginationLetters } from 'shared/constants/alphabetical-pagination-letters';
+import { remToPx } from 'shared/helpers/rem-to-px';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import type { Author } from 'core/author';
+import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import type { AlphabeticalPaginationLetter } from 'shared/constants/alphabetical-pagination-letters';
 
 interface AuthorsProps {

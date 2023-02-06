@@ -1,41 +1,42 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 
-import { ForPressHeroTitle } from 'components/for-press-hero/for-press-hero-title';
 import { ForPressHeroDescription } from 'components/for-press-hero/for-press-hero-description';
 import { ForPressHeroPrContact } from 'components/for-press-hero/for-press-hero-pr-contact';
+import { ForPressHeroTitle } from 'components/for-press-hero/for-press-hero-title';
+
+import type { FC } from 'react';
 
 import styles from './for-press-hero.module.css';
 
 const cx = cn.bind(styles);
 
 export interface ForPressHeroProps {
-  customClass?: string;
+  customClass?: string
   data: {
-    forPressHeroTitle: ForPressHeroTitle;
-    forPressHeroDescription: ForPressHeroDescription;
-    prPerson: PRPerson;
+    forPressHeroTitle: ForPressHeroTitle
+    forPressHeroDescription: ForPressHeroDescription
+    prPerson: PRPerson
   }
 }
 
 export type ForPressHeroTitle = {
-  title: string;
+  title: string
 }
 
 export type ForPressHeroDescription = {
-  description: string,
-  link: Url,
+  description: string
+  link: Url
 }
 
 export type PRPerson = {
-  name: string,
-  nameDative: string,
-  email: Email,
-  role: string,
-  photo: string,
+  name: string
+  nameDative: string
+  email: Email
+  role: string
+  photo: string
 }
 
-export const ForPressHero: FC<ForPressHeroProps> = ( { data } ) => {
+export const ForPressHero: FC<ForPressHeroProps> = ({ data }) => {
 
   return (
     <section className={cx('hero')}>

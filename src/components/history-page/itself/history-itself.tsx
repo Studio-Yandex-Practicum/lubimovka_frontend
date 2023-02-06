@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 import style from './history-itself.module.css';
 
 interface ImageItemData {
-  imageUrl1: string,
-  imageUrl2: string,
+  imageUrl1: string
+  imageUrl2: string
   imageUrl3: string
 }
 
@@ -16,6 +16,7 @@ interface IHistoryItself {
 
 export const HistoryItself: FC<IHistoryItself>= ({ data }) => {
   const { historyImages } = data;
+
   return (
     <section className={style.section}>
       <div className={style.contentTop}>

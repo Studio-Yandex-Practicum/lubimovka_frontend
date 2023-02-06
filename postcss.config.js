@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const path = require('path');
 
-const breakpoints = require('./src/shared/breakpoints');
-const heights = require('./src/shared/heights');
-
-const variables = Object.assign({}, breakpoints, heights);
+const variables = {
+  ...require('./src/shared/breakpoints'),
+  ...require('./src/shared/heights'),
+};
 
 module.exports = {
   plugins: [
@@ -28,6 +30,6 @@ module.exports = {
     ['postcss-pxtorem', {
       propList: ['*'],
       minPixelValue: 1,
-    }]
+    }],
   ],
 };

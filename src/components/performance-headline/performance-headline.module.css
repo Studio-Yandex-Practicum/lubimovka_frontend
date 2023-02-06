@@ -1,4 +1,4 @@
-@import '../performance-layout/performance-layout.vars.module.css';
+@import url("../performance-layout/performance-layout.vars.module.css");
 
 .title {
   @mixin headline;

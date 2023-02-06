@@ -1,4 +1,4 @@
-@value tablet-portrait from 'shared/styles/media.module.css';
+@value tablet-portrait from "shared/styles/media.module.css";
 
 .common {
   display: flex;
@@ -45,7 +45,7 @@
     width: 1px;
     height: 80%;
     background-color: var(--coal);
-    content: '';
+    content: "";
   }
 }
 

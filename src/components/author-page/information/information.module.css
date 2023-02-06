@@ -42,7 +42,7 @@
   @mixin textLarge;
 
   margin: 4px 6px 9px;
-  font-feature-settings: 'ss01' on;
+  font-feature-settings: "ss01" on;
 }
 
 .anchor {

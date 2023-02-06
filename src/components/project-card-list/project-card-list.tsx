@@ -1,7 +1,8 @@
-import { HTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 
 import { ProjectCardListItem } from './item';
+
+import type { HTMLAttributes } from 'react';
 
 import styles from './project-card-list.module.css';
 
@@ -14,7 +15,7 @@ export const ProjectCardList = (props: HTMLAttributes<HTMLUListElement>): JSX.El
     ...restProps
   } = props;
 
-  return(
+  return (
     <ul
       className={cx(
         'list',

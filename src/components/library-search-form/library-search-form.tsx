@@ -1,6 +1,6 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import classNames from 'classnames/bind';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect,useRef, useState } from 'react';
 
 import { Icon } from 'components/ui/icon';
 

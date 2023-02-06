@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 
-import type { Project } from 'core/project';
 import type { Partner } from 'core/partner';
+import type { Project } from 'core/project';
 import type { Settings } from 'core/settings';
 
 export type PersistentDataContextType = {

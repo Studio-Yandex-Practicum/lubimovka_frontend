@@ -5,7 +5,7 @@ import styles from './overlay-nav-socials.module.css';
 const cx = classNames.bind(styles);
 
 interface IOverlayNavSocialsProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const OverlayNavSocials = (props: IOverlayNavSocialsProps): JSX.Element => {

@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { PersonCard } from './person-card';
+
+import type { ComponentMeta,ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/PersonCard',

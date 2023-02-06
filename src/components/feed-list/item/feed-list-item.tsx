@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 
-import styles from './feed-list-item.module.css';
-
 import type { FC } from 'react';
+
+import styles from './feed-list-item.module.css';
 
 const cx = classNames.bind(styles);
 

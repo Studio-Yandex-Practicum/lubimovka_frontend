@@ -1,16 +1,17 @@
-import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 
-import { BlogLayoutTitle } from './title';
+import { BlogLayoutCallToAction } from './call-to-action';
+import { BlogLayoutDescription } from './description';
 import { BlogLayoutFilter } from './filter';
 import { BlogLayoutMain } from './main';
-import { BlogLayoutDescription } from './description';
-import { BlogLayoutCallToAction } from './call-to-action';
+import { BlogLayoutTitle } from './title';
+
+import type { ReactNode } from 'react';
 
 import styles from './blog-layout.module.css';
 
 interface BlogLayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const cx = classNames.bind(styles);

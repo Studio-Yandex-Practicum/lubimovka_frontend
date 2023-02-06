@@ -1,7 +1,8 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button';
+
+import type { FC } from 'react';
 
 import styles from './for-press-hero-description.module.css';
 
@@ -9,10 +10,10 @@ const cx = cn.bind(styles);
 
 export interface IForPressHeroDescriptionProps {
   data: {
-    description: string,
-    link: Url,
-   },
-   customClass?: string;
+    description: string
+    link: Url
+   }
+   customClass?: string
 }
 
 export const ForPressHeroDescription: FC<IForPressHeroDescriptionProps> = ({ data, customClass }) => {

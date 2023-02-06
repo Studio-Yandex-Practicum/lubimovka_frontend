@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import type { VFC, ReactNode } from 'react';
+import type { ReactNode,VFC } from 'react';
 
 import styles from './article-footnote.module.css';
 

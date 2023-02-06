@@ -3,8 +3,8 @@ import classNames from 'classnames/bind';
 import styles from './navbar.module.css';
 
 export interface NavbarProps {
-  view?: 'regular' | 'expanded',
-  colors?: 'default' | 'brand',
+  view?: 'regular' | 'expanded'
+  colors?: 'default' | 'brand'
 }
 
 const cx = classNames.bind(styles);

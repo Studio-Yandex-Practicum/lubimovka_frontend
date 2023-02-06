@@ -2,16 +2,16 @@ import { objectToQueryString } from '@funboxteam/diamonds';
 
 import { fetcher } from 'services/fetcher';
 
-import type { Play, PlayFilters } from 'core/play';
-import type { FestivalProgram, FestivalYear } from 'core/festival';
-import type { PaginatedPlayList as PlayListDTO, PlayFilters as PlayFiltersDTO } from '__generated__/api-typings';
 import type { DTOPagination } from './types';
+import type { PaginatedPlayList as PlayListDTO, PlayFilters as PlayFiltersDTO } from '__generated__/api-typings';
+import type { FestivalProgram, FestivalYear } from 'core/festival';
+import type { Play, PlayFilters } from 'core/play';
 
 interface GetPlaysParams {
   years?: FestivalYear[]
   programIds?: FestivalProgram['id'][]
-  limit: number,
-  offset?: number,
+  limit: number
+  offset?: number
 }
 
 export function getPlays(params: GetPlaysParams) {
@@ -32,7 +32,7 @@ export function getPlays(params: GetPlaysParams) {
   return fetcher<PlayListDTO>(`/library/plays/${searchParams}`).then(mapDTOToPlays);
 }
 
-function mapDTOToPlays({ results = [], ...pagination }: PlayListDTO): { plays: Play[], pagination: DTOPagination } {
+function mapDTOToPlays({ results = [], ...pagination }: PlayListDTO): { plays: Play[]; pagination: DTOPagination } {
   return {
     plays: results.map((result) => ({
       id: result.id,

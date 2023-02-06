@@ -1,5 +1,6 @@
-import { FC, HTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
+
+import type { FC, HTMLAttributes } from 'react';
 
 import styles from './page-title.module.css';
 

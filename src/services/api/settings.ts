@@ -28,4 +28,4 @@ function mapDTOToSettings(dto: SettingsDTO): Settings {
     canProposePlay: dto.plays_reception_is_open,
     privacyPolicyUrl: dto.url_to_privacy_policy,
   };
-};
+}

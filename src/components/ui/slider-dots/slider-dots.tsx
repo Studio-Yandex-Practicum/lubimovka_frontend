@@ -1,13 +1,14 @@
-import { FC } from 'react';
 import cn from 'classnames';
+
+import type { FC } from 'react';
 
 import styles from './slider-dots.module.css';
 
 interface ISliderDotsProps {
-  className?: string;
-  count: number;
-  currentSlide: number;
-  onClick: (index: number) => void;
+  className?: string
+  count: number
+  currentSlide: number
+  onClick: (index: number) => void
 }
 
 export const SliderDots: FC<ISliderDotsProps> = ({ className, count, currentSlide, onClick }) => {

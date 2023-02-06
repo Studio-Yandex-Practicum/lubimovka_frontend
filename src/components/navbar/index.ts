@@ -1,6 +1,6 @@
 import { Navbar as Component } from './navbar';
-import { NavbarSlot } from './navbar-slot';
 import { NavbarActionsSlot } from './navbar-actions-slot';
+import { NavbarSlot } from './navbar-slot';
 
 export const Navbar = Object.assign(Component, {
   Slot: NavbarSlot,

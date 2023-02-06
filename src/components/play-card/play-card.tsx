@@ -7,7 +7,6 @@ import { InfoLink } from 'components/ui/info-link';
 import type { Play } from 'core/play';
 
 import styles from './play-card.module.css';
-import React from 'react';
 
 const cx = cn.bind(styles);
 

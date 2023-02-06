@@ -4,8 +4,8 @@ import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 
 interface BreadcrumbProps {
-  text: string,
-  path: string,
+  text: string
+  path: string
 }
 
 export const Breadcrumb = (props: BreadcrumbProps) => {

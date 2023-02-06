@@ -1,24 +1,27 @@
+import cn from 'classnames';
+
 import { PersonCard } from '../ui/person-card/person-card';
-import { Sponsor } from '__generated__/api-typings';
+
+import type { Sponsor } from '__generated__/api-typings';
 
 import style from './persons-list.module.css';
-import cn from 'classnames';
 
 interface PersonsListProps {
   persons: Array<Sponsor>
 }
 
 const getClass = (number:number) => {
-  if(number < 4) {
+  if (number < 4) {
     return 'linear';
   }
 
-  if(number === 5) {
+  if (number === 5) {
     return 'five';
   }
-  if(number % 3 === 0 && number < 16) {
+  if (number % 3 === 0 && number < 16) {
     return 'three';
   }
+
   return 'four';
 };
 

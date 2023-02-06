@@ -52,7 +52,9 @@ function groupByAlphabet(authors: Author[]) {
 
     if (result[group]) {
       result[group].push(author);
-    } else result[group] = [author];
+    } else {
+      result[group] = [author];
+    }
 
     return result;
   }, {} as Record<string, Author[]>);

@@ -1,26 +1,26 @@
-import { SEO } from 'components/seo';
 import { useRouter } from 'next/router';
 import { useMemo, useState } from 'react';
 
-import { AppLayout } from 'components/app-layout';
 import { AboutUsLayout } from 'components/about-us-layout';
-import { VolunteerList } from 'components/volunteer-list';
-import { PersonCard } from 'components/person-card';
-import { Modal } from 'components/ui/modal';
+import { AppLayout } from 'components/app-layout';
 import { DialogWindow } from 'components/dialog-window';
-import { FeedbackCarousel } from 'components/feedback-carousel';
 import { FeedbackCard } from 'components/feedback-card';
-import { SliderDots } from 'components/ui/slider-dots';
+import { FeedbackCarousel } from 'components/feedback-carousel';
+import { HTMLMarkup } from 'components/html-markup';
 import { Note } from 'components/note';
+import { PersonCard } from 'components/person-card';
+import { SEO } from 'components/seo';
 import ArtDirectorateSection from 'components/team-page/art-directorate/section/art-directorate-section';
 import FestivalTeamSection from 'components/team-page/festival-team/festival-team-section';
+import { Modal } from 'components/ui/modal';
+import { SliderDots } from 'components/ui/slider-dots';
+import { VolunteerList } from 'components/volunteer-list';
 import { VolunteerSection } from 'components/volunteer-section';
-import { HTMLMarkup } from 'components/html-markup';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { fetcher } from 'services/fetcher';
 
-import type { InferGetServerSidePropsType } from 'next';
 import type { FestivalTeams, Volunteers } from '__generated__/api-typings';
+import type { InferGetServerSidePropsType } from 'next';
 
 const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {
@@ -136,15 +136,8 @@ const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 };
 
 export const getServerSideProps = async () => {
-  let team;
-  let volunteers;
-
-  try {
-    team = await fetcher<FestivalTeams[]>('/info/about-festival/team/');
-    volunteers = await fetcher<Volunteers[]>('/info/about-festival/volunteers/'); // TODO: TT не получать всех волонтеров разом, разбить на отдельные запросы
-  } catch (error) {
-    throw error;
-  }
+  const team = await fetcher<FestivalTeams[]>('/info/about-festival/team/');
+  const volunteers = await fetcher<Volunteers[]>('/info/about-festival/volunteers/'); // TODO: TT не получать всех волонтеров разом, разбить на отдельные запросы
 
   const { art: artDirectorate, fest: restTeam } = team.reduce<Record<string, FestivalTeams[]>>((acc, entry) => {
     (acc[entry.team] || (acc[entry.team] = [])).push(entry);

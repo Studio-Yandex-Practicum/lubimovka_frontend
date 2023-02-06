@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { ProjectCard } from './project-card';
+
+import type { ComponentMeta,ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/ProjectCard',

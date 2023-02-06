@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import classNames from 'classnames/bind';
+import { useState } from 'react';
 
 import { Spinner } from 'components/spinner';
 
@@ -8,7 +8,7 @@ import type { HTMLAttributes, ReactEventHandler } from 'react';
 import styles from './video.module.css';
 
 interface VideoProps extends HTMLAttributes<HTMLIFrameElement>{
-  src: Url,
+  src: Url
 }
 const cx = classNames.bind(styles);
 

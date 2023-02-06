@@ -1,12 +1,12 @@
-import { forwardRef } from 'react';
-import Link from 'next/link';
 import classNames from 'classnames/bind';
+import Link from 'next/link';
+import { forwardRef } from 'react';
 
-import { styles } from '../menu.styles';
 import { useMenu } from '../menu.context';
+import { styles } from '../menu.styles';
 
-import type { ReactNode } from 'react';
 import type { LinkProps } from 'next/link';
+import type { ReactNode } from 'react';
 
 interface MenuItemProps {
   mods?: Record<string, boolean>

@@ -8,7 +8,7 @@ type ErrorResponse = {
 export class HttpRequestError<T extends ErrorResponse = ErrorResponse> extends Error {
   response: T;
 
-  constructor (response: T) {
+  constructor(response: T) {
     super(`The request failed with HTTP status ${response.statusCode}`);
     this.name = 'HttpRequestError';
     this.response = response;
@@ -27,13 +27,7 @@ const fetchResource = (httpClient: typeof fetch) => async <T>(path: string, opti
 export const fetcher = fetchResource(fetch);
 
 async function handleResponse<T>(response: Response) {
-  let payload;
-
-  try {
-    payload = await response.json();
-  } catch (error) {
-    throw error;
-  }
+  const payload = await response.json();
 
   if (!response.ok) {
     throw new HttpRequestError({ statusCode: response.status, payload });

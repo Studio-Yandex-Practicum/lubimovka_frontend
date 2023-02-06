@@ -4,9 +4,9 @@ import Image from 'next/image';
 import styles from './project-headline.module.css';
 
 interface ProjectHeadlineProps {
-  title: string;
-  intro: string;
-  image: Url;
+  title: string
+  intro: string
+  image: Url
 }
 
 const cx = classNames.bind(styles);

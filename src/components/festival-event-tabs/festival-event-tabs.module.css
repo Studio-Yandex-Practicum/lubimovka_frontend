@@ -1,4 +1,4 @@
-@value tablet-portrait from 'shared/styles/media.module.css';
+@value tablet-portrait from "shared/styles/media.module.css";
 
 $control-size: 48px;
 
@@ -9,7 +9,7 @@ $control-size: 48px;
 }
 
 .panel-header {
-  padding: 0 0 8px 0;
+  padding: 0 0 8px;
   border-bottom: 1px solid var(--coal);
 
   @media tablet-portrait {

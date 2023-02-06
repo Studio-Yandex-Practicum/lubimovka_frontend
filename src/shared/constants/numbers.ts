@@ -1,1 +1,1 @@
-export const numberOfCharacters: number = 305;
+export const numberOfCharacters = 305;

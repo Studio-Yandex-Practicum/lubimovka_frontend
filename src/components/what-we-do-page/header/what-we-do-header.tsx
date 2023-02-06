@@ -1,6 +1,6 @@
 
-import Image from 'next/image';
 import cn from 'classnames/bind';
+import Image from 'next/image';
 
 import styles from './what-we-do-header.module.css';
 

@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 
 import { PageBurgerButton } from './burger-button';
-import { PageNavbar } from './navbar';
 import { PageFooter } from './footer';
+import { PageNavbar } from './navbar';
 import { PageOverlayMenu } from './overlay-menu';
 
 import styles from './page.module.css';

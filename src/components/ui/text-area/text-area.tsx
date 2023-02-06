@@ -1,14 +1,15 @@
-import { InputHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
+
+import type { InputHTMLAttributes } from 'react';
 
 import styles from './text-area.module.css';
 
 const cx = classNames.bind(styles);
 
 interface ITextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
-  errorText?: string;
-  onChange?: (value: string) => void;
-  rows?: number;
+  errorText?: string
+  onChange?: (value: string) => void
+  rows?: number
 }
 
 const TextArea = (props: ITextAreaProps): JSX.Element => {
@@ -19,7 +20,9 @@ const TextArea = (props: ITextAreaProps): JSX.Element => {
   } = props;
 
   const handleChange = ({ target: { value } }: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (!onChange) return;
+    if (!onChange) {
+      return;
+    }
 
     onChange(value);
   };

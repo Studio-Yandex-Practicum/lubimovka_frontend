@@ -1,7 +1,8 @@
-import React, { FC, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import PersonsList from 'components/persons-list';
-import { FestivalTeams } from '__generated__/api-typings';
+
+import type { FestivalTeams } from '__generated__/api-typings';
 
 import styles from './festival-team-section.module.css';
 
@@ -9,7 +10,7 @@ interface FestivalTeamSectionProps {
   cards: Array<FestivalTeams>
 }
 
-const FestivalTeamSection: FC<FestivalTeamSectionProps> = (props) => {
+const FestivalTeamSection: React.FC<FestivalTeamSectionProps> = (props) => {
   const { cards } = props;
 
   const selectedCards = useMemo(()=> {

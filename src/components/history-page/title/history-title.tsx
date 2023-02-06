@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import cn from 'classnames';
+import { useEffect,useState } from 'react';
 
 import { Button } from 'components/ui/button/button';
 import { isNonEmpty } from 'shared/helpers/is-non-empty';
@@ -9,8 +9,8 @@ import type { Festival } from '__generated__/api-typings';
 import style from './history-title.module.css';
 
 interface IHistoryTitle {
-  data: Festival,
-  currentYear: number,
+  data: Festival
+  currentYear: number
 }
 
 const iconPlace = 'right';

@@ -1,20 +1,20 @@
-@value tablet-portrait from 'shared/styles/media.module.css';
+@value tablet-portrait from "shared/styles/media.module.css";
 
 .root {
   display: grid;
-  grid-template-areas:
-    '.    title'
-    'note announce'
-    'note registration';
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
+  grid-template:
+    ".    title"
+    "note announce"
+    "note registration" / 1fr 1fr;
   row-gap: 8px;
 
   @media tablet-portrait {
     padding: 0 24px 30px;
-    grid-template-areas: 'title' 'announce' 'registration' 'note';
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, auto);
+    grid-template:
+      "title"
+      "announce"
+      "registration"
+      "note";
     row-gap: 24px;
   }
 }

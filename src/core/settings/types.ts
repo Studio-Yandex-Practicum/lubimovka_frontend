@@ -8,13 +8,13 @@ export type Settings = {
     sponsorship: Email
     playAcceptance: Email
     requestDonationReport: Email
-  },
+  }
   pressCenter: {
     contactPerson: string
     contactPersonPhoto: Url
     contactEmail: Email
     facebookGalleryUrl: Url
-  },
+  }
   canProposePlay: boolean
   privacyPolicyUrl: Url
 }

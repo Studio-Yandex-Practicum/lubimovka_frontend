@@ -1,14 +1,15 @@
 import Link from 'next/link';
 
-import Logo from 'shared/images/full-logo.svg';
-import SmallLogo from 'shared/images/compact-logo.svg';
-import Lines from 'shared/images/404lines.svg';
-import classes from './NotFoundError.module.css';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
-import * as breakpoints from 'shared/breakpoints';
 import { Button } from 'components/ui/button';
 import { usePersistentData } from 'providers/persistent-data-provider';
+import * as breakpoints from 'shared/breakpoints';
 import { participationFormPath } from 'shared/constants/participation-form-path';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
+import Lines from 'shared/images/404lines.svg';
+import SmallLogo from 'shared/images/compact-logo.svg';
+import Logo from 'shared/images/full-logo.svg';
+
+import classes from './NotFoundError.module.css';
 
 export default function NotFoundError() {
   const { settings } = usePersistentData();

@@ -5,7 +5,7 @@ import styles from './contacts-title.module.css';
 const cx = classNames.bind(styles);
 
 interface IContactsTitleProps {
-  id: string;
+  id: string
 }
 
 const ContactsTitle = (props: IContactsTitleProps): JSX.Element => {

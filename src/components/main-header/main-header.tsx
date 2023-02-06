@@ -2,16 +2,16 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import { Navbar } from 'components/navbar';
-import { Menu } from 'components/ui/menu';
-import { Logotype } from 'components/logotype';
 import { DonationLink } from 'components/donation-link';
+import { Logotype } from 'components/logotype';
+import { Navbar } from 'components/navbar';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
-import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
+import { Menu } from 'components/ui/menu';
+import { donationPath } from 'shared/constants/donation-path';
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
 import { socialLinkItems } from 'shared/constants/social-link-items';
-import { donationPath } from 'shared/constants/donation-path';
+import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
 
 import styles from './main-header.module.css';
 
@@ -35,7 +35,7 @@ export const MainHeader: React.VFC<MainHeaderProps> = (props) => {
   } = props;
 
   const router = useRouter();
-  const [containerElRef, isContainerElInViewport] = useIntersectionObserver({ threshold: .1 });
+  const [containerElRef, isContainerElInViewport] = useIntersectionObserver({ threshold: 0.1 });
 
   return (
     <div

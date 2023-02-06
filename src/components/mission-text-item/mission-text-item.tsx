@@ -1,5 +1,6 @@
-import { FC, ReactNode } from 'react';
 import cn from 'classnames';
+
+import type { FC, ReactNode } from 'react';
 
 import style from './mission-text-item.module.css';
 

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import { getSettings } from 'services/api/settings';
 import { getPartners } from 'services/api/partners';
 import { getProjects } from 'services/api/projects';
+import { getSettings } from 'services/api/settings';
 
 import { PersistentDataContext } from './persistent-data-provider.context';
 
-import type { FC } from 'react';
 import type { PersistentDataContextType } from './persistent-data-provider.context';
+import type { FC } from 'react';
 
 // TODO: хранить данные в LocalStorage
 

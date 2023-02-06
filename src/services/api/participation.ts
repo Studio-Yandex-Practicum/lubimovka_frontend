@@ -24,13 +24,13 @@ export function postParticipation(fields: ParticipationFormFields) {
 export type ParticipationDTOFields = 'first_name' | 'last_name' | 'birth_year' | 'city' | 'phone_number' | 'email' | 'title' | 'year' | 'file'
 
 export type ParticipationErrorDTO = {
-  statusCode: 400,
+  statusCode: 400
   payload: {
     non_field_errors: string[]
     detail?: never
   }
 } | {
-  statusCode: 400,
+  statusCode: 400
   payload: {
     non_field_errors?: never
     detail?: never
@@ -38,7 +38,7 @@ export type ParticipationErrorDTO = {
     [field in ParticipationDTOFields]?: string[]
   }
 } | {
-  statusCode: 403,
+  statusCode: 403
   payload: {
     detail: string
     non_field_errors?: never
