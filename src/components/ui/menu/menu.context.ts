@@ -5,7 +5,7 @@ import type { styles } from './menu.styles';
 export type MenuType = keyof typeof styles;
 
 type MenuContext = {
-  type: MenuType;
+  type: MenuType
 }
 
 const MenuContext = createContext<MenuContext | undefined>(undefined);

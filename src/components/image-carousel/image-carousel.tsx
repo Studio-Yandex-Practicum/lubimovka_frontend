@@ -9,9 +9,9 @@ import styles from './image-carousel.module.css';
 const cx = classNames.bind(styles);
 
 interface ImageCarouselProps {
-  className?: string;
-  initialSlideIndex?: number;
-  children: React.ReactNode;
+  className?: string
+  initialSlideIndex?: number
+  children: React.ReactNode
 }
 
 export const ImageCarousel = (props: ImageCarouselProps) => {

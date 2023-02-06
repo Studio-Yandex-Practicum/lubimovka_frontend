@@ -19,16 +19,16 @@ import styles from './overview.module.css';
 const cx = cn.bind(styles);
 
 interface IAuthorOverview {
-  image: string,
-  name: string,
-  city: string,
-  quote: string,
-  biography: string,
-  other_links: OtherLink[],
-  achievements: Array<Achievement>,
-  social_networks: SocialNetwork[],
-  email: string,
-  plays: Play[],
+  image: string
+  name: string
+  city: string
+  quote: string
+  biography: string
+  other_links: OtherLink[]
+  achievements: Array<Achievement>
+  social_networks: SocialNetwork[]
+  email: string
+  plays: Play[]
 }
 
 export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {

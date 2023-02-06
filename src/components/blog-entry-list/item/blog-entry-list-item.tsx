@@ -6,7 +6,7 @@ import type { ReactNode } from 'react';
 import styles from './blog-entry-list-item.module.css';
 
 interface BlogEntryListItemProps {
-  children: ReactNode | ReactNode[],
+  children: ReactNode | ReactNode[]
 }
 
 const cx = classNames.bind(styles);

@@ -5,11 +5,11 @@ import type { ButtonHTMLAttributes } from 'react';
 import styles from './icon-button.module.css';
 
 interface IIconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  type: 'button' | 'submit' | 'reset';
-  view: 'ghost' | 'light';
-  ariaLabel: string;
-  icon: React.ReactNode;
+  className?: string
+  type: 'button' | 'submit' | 'reset'
+  view: 'ghost' | 'light'
+  ariaLabel: string
+  icon: React.ReactNode
 }
 
 const cx = classNames.bind(styles);

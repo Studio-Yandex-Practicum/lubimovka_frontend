@@ -9,9 +9,9 @@ import type { ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes } from 're
 import styles from './file-input.module.css';
 
 interface IFileInputProps extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onChange'> {
-  fileName?: string,
-  errorText?: string,
-  onChange?: (file: Nullable<File>) => void;
+  fileName?: string
+  errorText?: string
+  onChange?: (file: Nullable<File>) => void
 }
 
 const cx = classNames.bind(styles);

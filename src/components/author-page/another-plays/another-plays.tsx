@@ -14,7 +14,7 @@ type PlayLink = {
 }
 
 interface AnotherPlaysProps {
-  links: PlayLink[];
+  links: PlayLink[]
 }
 
 export const AnotherPlays: FC<AnotherPlaysProps> = ({ links }) => {

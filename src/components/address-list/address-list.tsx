@@ -9,7 +9,7 @@ import style from './address-list.module.css';
 const cx = classNames.bind(style);
 
 interface AddressListProps {
-  children: ReactNode,
+  children: ReactNode
 }
 
 const Component = (props: AddressListProps): JSX.Element => {

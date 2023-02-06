@@ -4,7 +4,7 @@ type ErrorMessage = string
 
 interface AnyValues {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [field: string]: any;
+  [field: string]: any
 }
 
 interface Config<Values> {

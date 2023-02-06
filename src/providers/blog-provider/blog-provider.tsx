@@ -30,10 +30,10 @@ enum BlogActionType {
 }
 
 export type BlogState = typeof defaultBlogState;
-type BlogAction = { type: BlogActionType.AddEntries, payload: { entries: BlogEntry[], hasMoreEntries: boolean }}
+type BlogAction = { type: BlogActionType.AddEntries; payload: { entries: BlogEntry[]; hasMoreEntries: boolean }}
   | { type: BlogActionType.IncreaseOffset }
   | { type: BlogActionType.Reset }
-  | { type: BlogActionType.SetPreloadedState, payload: Partial<BlogState> }
+  | { type: BlogActionType.SetPreloadedState; payload: Partial<BlogState> }
 
 const blogReducer = (state: BlogState, action: BlogAction) => {
   switch (action.type) {

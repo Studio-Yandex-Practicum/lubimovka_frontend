@@ -9,7 +9,7 @@ import styles from './play-proposal-layout.module.css';
 const cx = classNames.bind(styles);
 
 interface IPlayProposalLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const PlayProposalLayout = (props: IPlayProposalLayoutProps): JSX.Element => {

@@ -10,10 +10,10 @@ import type { FC } from 'react';
 import styles from './logotype.module.css';
 
 interface ILogotypeProps extends Pick<LinkProps, 'href'> {
-  title?: string,
-  className?: string,
-  full?: boolean,
-  onClick?: React.MouseEventHandler,
+  title?: string
+  className?: string
+  full?: boolean
+  onClick?: React.MouseEventHandler
 }
 
 const cx = classNames.bind(styles);

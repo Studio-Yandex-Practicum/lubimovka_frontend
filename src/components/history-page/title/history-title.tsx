@@ -9,8 +9,8 @@ import type { Festival } from '__generated__/api-typings';
 import style from './history-title.module.css';
 
 interface IHistoryTitle {
-  data: Festival,
-  currentYear: number,
+  data: Festival
+  currentYear: number
 }
 
 const iconPlace = 'right';

@@ -10,7 +10,7 @@ import styles from './information.module.css';
 const cx = cn.bind(styles);
 
 interface IAuthorInformation {
-  links: OtherLink[],
+  links: OtherLink[]
 }
 
 export const AuthorInformation: FC<IAuthorInformation> = ({ links }) => {

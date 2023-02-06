@@ -20,7 +20,7 @@ type ClickHandler = NonNullable<React.ComponentPropsWithoutRef<'button'>['onClic
 
 type HTMLProps = {
   a: Pick<React.ComponentPropsWithoutRef<'a'>, 'href' | 'target' | 'download' | 'rel'>
-  button: { type: 'button', onClick: ClickHandler } | { type: 'reset' | 'submit', onClick?: ClickHandler }
+  button: { type: 'button'; onClick: ClickHandler } | { type: 'reset' | 'submit'; onClick?: ClickHandler }
 }
 type DisallowProps<P> = {[K in keyof P]?: never}
 type DisallowedProps<E extends keyof HTMLProps> = HTMLProps[keyof (Omit<HTMLProps, E>)]

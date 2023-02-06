@@ -11,13 +11,13 @@ const cx = cn.bind(styles);
 
 export interface IForPressHeroPrContactProps {
   data: {
-    name: string,
-    nameDative: string,
-    email: string,
-    role: string,
-    photo: Url,
-   },
-   customClass?: string;
+    name: string
+    nameDative: string
+    email: string
+    role: string
+    photo: Url
+   }
+   customClass?: string
 }
 
 export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, customClass }) => {

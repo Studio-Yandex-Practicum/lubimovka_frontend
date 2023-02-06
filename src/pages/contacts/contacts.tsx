@@ -18,9 +18,9 @@ import { validEmailRegexp } from 'shared/constants/regexps';
 import type { NextPage } from 'next';
 
 interface ContactFormFields {
-  name: string,
-  email: string,
-  message: string,
+  name: string
+  email: string
+  message: string
 }
 
 enum ContactFormActionTypes {
@@ -30,15 +30,15 @@ enum ContactFormActionTypes {
 }
 
 type ContactFormAction<K extends keyof ContactFormFields = keyof ContactFormFields> =
-  { type: ContactFormActionTypes.FieldChange, payload: { field: K, value: ContactFormFields[K], error?: string } }
-  | { type: ContactFormActionTypes.FieldError, payload: { field: K, error: string } }
+  { type: ContactFormActionTypes.FieldChange; payload: { field: K; value: ContactFormFields[K]; error?: string } }
+  | { type: ContactFormActionTypes.FieldError; payload: { field: K; error: string } }
   | { type: ContactFormActionTypes.Reset }
 
 type ContactFormStateFields<T> = {
   [K in keyof T]: {
-    value: T[K],
-    wasChanged: boolean,
-    error?: string,
+    value: T[K]
+    wasChanged: boolean
+    error?: string
   }
 }
 

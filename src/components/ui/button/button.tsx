@@ -9,18 +9,18 @@ import type { ButtonHTMLAttributes,FC } from 'react';
 import styles from './button.module.css';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  type?: 'submit' | 'reset' | 'button';
-  view?: 'primary' | 'secondary',
-  iconPlace?: 'left' | 'right',
-  icon?: IIconProps['glyph'],
-  size?: 's' | 'l';
-  border?: 'none' | 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' | 'top' | 'full';
-  label: string;
+  type?: 'submit' | 'reset' | 'button'
+  view?: 'primary' | 'secondary'
+  iconPlace?: 'left' | 'right'
+  icon?: IIconProps['glyph']
+  size?: 's' | 'l'
+  border?: 'none' | 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' | 'top' | 'full'
+  label: string
   width?: string
-  className?: string,
-  isLink?: boolean,
-  href?: string,
-  align?: 'start' | 'end' | 'center' | 'space-between',
+  className?: string
+  isLink?: boolean
+  href?: string
+  align?: 'start' | 'end' | 'center' | 'space-between'
   gap?: string
   target?: '_blank' | '_self' | '_parent' | '_top'
 }

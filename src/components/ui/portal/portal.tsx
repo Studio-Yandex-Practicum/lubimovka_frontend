@@ -2,7 +2,7 @@ import { useEffect,useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 interface IPortalProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const Portal = ({ children }: IPortalProps): JSX.Element | null => {

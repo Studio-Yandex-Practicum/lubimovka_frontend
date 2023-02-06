@@ -8,9 +8,9 @@ import type { MenuType } from './menu.context';
 import type { ReactNode } from 'react';
 
 interface MenuProps {
-  type: MenuType,
-  className?: string,
-  children: ReactNode,
+  type: MenuType
+  className?: string
+  children: ReactNode
 }
 
 export const Component = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {

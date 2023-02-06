@@ -5,9 +5,9 @@ import type { FC } from 'react';
 import styles from './form-field.module.css';
 
 interface IFormField {
-  caption: string,
-  hiddenCaption?: boolean,
-  className?: string,
+  caption: string
+  hiddenCaption?: boolean
+  className?: string
 }
 
 const cx = classNames.bind(styles);

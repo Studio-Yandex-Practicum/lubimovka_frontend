@@ -61,7 +61,7 @@ const phoneMaskOptions = {
       startsWith: '',
     },
   ],
-  dispatch: function (appended: string, dynamicMasked: { value: string, compiledMasks: { startsWith: string }[] }) {
+  dispatch: function (appended: string, dynamicMasked: { value: string; compiledMasks: { startsWith: string }[] }) {
     const number = (dynamicMasked.value + appended).replace(/\D/g,'');
 
     return dynamicMasked.compiledMasks.find(function (m) {

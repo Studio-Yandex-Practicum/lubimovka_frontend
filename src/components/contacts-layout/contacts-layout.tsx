@@ -10,7 +10,7 @@ import styles from './contacts-layout.module.css';
 const cx = classNames.bind(styles);
 
 interface IContactsLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const ContactsLayout = (props: IContactsLayoutProps): JSX.Element => {

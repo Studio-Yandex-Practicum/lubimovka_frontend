@@ -10,10 +10,10 @@ import styles from './tag.module.css';
 const cx = cn.bind(styles);
 
 interface ITagProps {
-  label: string;
-  selected: boolean;
-  isIcon?: boolean;
-  cb?: (value: string, counter: number | undefined) => void;
+  label: string
+  selected: boolean
+  isIcon?: boolean
+  cb?: (value: string, counter: number | undefined) => void
   counter?: number
 }
 export const Tag: FC<ITagProps> = (props) => {

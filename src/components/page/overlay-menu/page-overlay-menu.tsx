@@ -5,8 +5,8 @@ import styles from './page-overlay-menu.module.css';
 const cx = classNames.bind(styles);
 
 interface IPageOverlayMenuProps {
-  isOpen: boolean;
-  children: React.ReactNode;
+  isOpen: boolean
+  children: React.ReactNode
 }
 
 export const PageOverlayMenu = (props: IPageOverlayMenuProps): JSX.Element => {

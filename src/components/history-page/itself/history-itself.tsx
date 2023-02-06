@@ -3,8 +3,8 @@ import type { FC } from 'react';
 import style from './history-itself.module.css';
 
 interface ImageItemData {
-  imageUrl1: string,
-  imageUrl2: string,
+  imageUrl1: string
+  imageUrl2: string
   imageUrl3: string
 }
 

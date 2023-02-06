@@ -18,7 +18,7 @@ import styles from './blog-entry-list.module.css';
 import blogEntryListVars from './blog-entry-list.vars.module.css';
 
 interface BlogEntryListProps {
-  children: ReactNode | ReactNode[],
+  children: ReactNode | ReactNode[]
 }
 
 const cx = classNames.bind(styles);

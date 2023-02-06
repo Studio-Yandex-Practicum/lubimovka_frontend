@@ -10,10 +10,10 @@ const cx = cn.bind(styles);
 
 export interface IForPressHeroDescriptionProps {
   data: {
-    description: string,
-    link: Url,
-   },
-   customClass?: string;
+    description: string
+    link: Url
+   }
+   customClass?: string
 }
 
 export const ForPressHeroDescription: FC<IForPressHeroDescriptionProps> = ({ data, customClass }) => {

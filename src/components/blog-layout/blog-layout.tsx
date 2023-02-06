@@ -11,7 +11,7 @@ import type { ReactNode } from 'react';
 import styles from './blog-layout.module.css';
 
 interface BlogLayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const cx = classNames.bind(styles);

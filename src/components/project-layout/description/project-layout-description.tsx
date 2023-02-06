@@ -5,7 +5,7 @@ import { ProjectLayoutStorey } from '../storey';
 import styles from './project-layout-description.module.css';
 
 interface IProjectLayoutDescriptionProps {
-  children: string,
+  children: string
 }
 
 const cx = classNames.bind(styles);

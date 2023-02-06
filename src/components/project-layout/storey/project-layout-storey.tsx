@@ -5,7 +5,7 @@ import type { FC } from 'react';
 import styles from './project-layout-storey.module.css';
 
 interface IProjectLayoutStoreyProps {
-  type?: 'description' | 'videos' | 'photos' | 'plays' | 'performances' | 'persons' | 'text',
+  type?: 'description' | 'videos' | 'photos' | 'plays' | 'performances' | 'persons' | 'text'
 }
 
 const cx = classNames.bind(styles);

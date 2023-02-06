@@ -7,8 +7,8 @@ import styles from './person-card-list.module.css';
 const cx = classNames.bind(styles);
 
 interface IPersonCardListProps extends React.HTMLAttributes<HTMLDivElement> {
-  expanded?: boolean;
-  children: ReactNode;
+  expanded?: boolean
+  children: ReactNode
 }
 
 export const PersonCardList = (props: IPersonCardListProps): JSX.Element => {

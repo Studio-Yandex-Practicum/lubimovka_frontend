@@ -13,7 +13,7 @@ enum Area {
 }
 
 interface SearchLayoutProps {
-  area: `${Area}`,
+  area: `${Area}`
 }
 
 export const SearchLayoutSlot: React.FC<SearchLayoutProps> = (props) => {

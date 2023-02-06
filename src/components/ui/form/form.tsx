@@ -5,7 +5,7 @@ import { FormField } from './field';
 import { FormFieldset } from './fieldset';
 
 interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const Component = (props: FormProps) => {

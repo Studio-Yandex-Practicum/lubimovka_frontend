@@ -10,12 +10,12 @@ import styles from './person-card.module.css';
 const cx = cn.bind(styles);
 
 export interface IPersonCardProps {
-  participant?: boolean,
-  name: string,
-  image?: string,
-  about?: string,
-  response?: string,
-  handleClick?: React.MouseEventHandler<HTMLButtonElement>,
+  participant?: boolean
+  name: string
+  image?: string
+  about?: string
+  response?: string
+  handleClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export const PersonCard: React.FC<IPersonCardProps> = (props) => {

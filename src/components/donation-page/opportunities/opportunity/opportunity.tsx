@@ -8,9 +8,9 @@ import styles from './opportunity.module.css';
 const cx = cn.bind(styles);
 
 interface IOpportunityProps {
-  title: string;
-  picture: Url;
-  kickies: string[];
+  title: string
+  picture: Url
+  kickies: string[]
 }
 
 export const Opportunity: FC<IOpportunityProps> = (props) => {

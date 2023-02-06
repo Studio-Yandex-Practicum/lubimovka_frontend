@@ -11,7 +11,7 @@ import styles from './overlay-nav.module.css';
 const cx = classNames.bind(styles);
 
 interface IOverlayNavProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const OverlayNav = (props: IOverlayNavProps): JSX.Element => {

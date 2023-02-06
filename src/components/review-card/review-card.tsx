@@ -5,8 +5,8 @@ import type { FC } from 'react';
 import styles from './review-card.module.css';
 
 interface IReviewCardProps {
-  text: string,
-  author: string,
+  text: string
+  author: string
 }
 
 const cx = classNames.bind(styles);

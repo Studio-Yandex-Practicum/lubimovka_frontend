@@ -7,9 +7,9 @@ import styles from './text-area.module.css';
 const cx = classNames.bind(styles);
 
 interface ITextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
-  errorText?: string;
-  onChange?: (value: string) => void;
-  rows?: number;
+  errorText?: string
+  onChange?: (value: string) => void
+  rows?: number
 }
 
 const TextArea = (props: ITextAreaProps): JSX.Element => {

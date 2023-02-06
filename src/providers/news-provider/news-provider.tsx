@@ -28,12 +28,12 @@ enum NewsActionType {
 }
 
 type NewsState = typeof defaultNewsState;
-type NewsAction = { type: NewsActionType.AddNews, payload: NewsState['entries']}
-  | { type: NewsActionType.SetOffset, payload: NewsState['offset'] }
-  | { type: NewsActionType.SetHasMoreEntries, payload: NewsState['hasMoreEntries'] }
+type NewsAction = { type: NewsActionType.AddNews; payload: NewsState['entries']}
+  | { type: NewsActionType.SetOffset; payload: NewsState['offset'] }
+  | { type: NewsActionType.SetHasMoreEntries; payload: NewsState['hasMoreEntries'] }
   | { type: NewsActionType.IncreaseOffset }
   | { type: NewsActionType.Reset }
-  | { type: NewsActionType.SetPreloadedNews, payload: Partial<NewsState> }
+  | { type: NewsActionType.SetPreloadedNews; payload: Partial<NewsState> }
 
 const newsReducer = (state: NewsState, action: NewsAction) => {
   switch (action.type) {

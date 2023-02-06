@@ -5,7 +5,7 @@ import styles from './play-proposal-layout-image.module.css';
 const cx = classNames.bind(styles);
 
 interface IPlayProposalLayoutImageProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const PlayProposalLayoutImage = (props: IPlayProposalLayoutImageProps): JSX.Element => {

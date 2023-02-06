@@ -30,8 +30,8 @@ function mapDTOToScheduleMeta(dto: ScheduleMetaDTO): ScheduleMeta {
 type PaginatedSchedule = Paginate<Event[], 'events'>
 
 interface GetScheduleOptions {
-  limit: number,
-  offset?: number,
+  limit: number
+  offset?: number
 }
 
 export async function getSchedule(options: GetScheduleOptions): Promise<PaginatedSchedule> {

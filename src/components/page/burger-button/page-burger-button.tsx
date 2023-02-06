@@ -5,7 +5,7 @@ import styles from './page-burger-button.module.css';
 const cx = classNames.bind(styles);
 
 interface IPageBurgerButtonProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const PageBurgerButton = (props: IPageBurgerButtonProps): JSX.Element => {

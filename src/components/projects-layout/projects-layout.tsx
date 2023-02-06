@@ -8,7 +8,7 @@ import type { ReactNode } from 'react';
 import styles from './projects-layout.module.css';
 
 interface IProjectsLayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const cx = classNames.bind(styles);

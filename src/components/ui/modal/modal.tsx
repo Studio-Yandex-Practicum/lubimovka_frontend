@@ -11,9 +11,9 @@ import styles from './modal.module.css';
 const cx = classNames.bind(styles);
 
 interface ModalProps {
-  isOpen: boolean,
-  onClose: () => void,
-  backdrop?: React.FC<ModalBackdropProps>,
+  isOpen: boolean
+  onClose: () => void
+  backdrop?: React.FC<ModalBackdropProps>
 }
 
 export const Modal: React.FC<ModalProps> = (props) => {

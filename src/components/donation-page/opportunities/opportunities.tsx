@@ -10,10 +10,10 @@ const cx = cn.bind(styles);
 
 interface IOpportunityProps {
   data: {
-    title: string;
-    picture: Url;
-    kickies: string[];
-  }[];
+    title: string
+    picture: Url
+    kickies: string[]
+  }[]
 }
 
 export const Opportunities: FC<IOpportunityProps> = (props) => {

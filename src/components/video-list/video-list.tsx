@@ -8,7 +8,7 @@ import styles from './video-list.module.css';
 const cx = classNames.bind(styles);
 
 interface IVideoListProps extends HTMLAttributes<HTMLUListElement> {
-  children: ReactNode,
+  children: ReactNode
 }
 
 export const VideoList = (props: IVideoListProps): JSX.Element => {

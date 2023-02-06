@@ -11,8 +11,8 @@ import styles from './image-gallery.module.css';
 const cx = classNames.bind(styles);
 
 type GalleryImage = {
-  url: Url,
-  description?: string,
+  url: Url
+  description?: string
 }
 
 interface ImageGalleryProps {

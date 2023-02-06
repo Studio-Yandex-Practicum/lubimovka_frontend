@@ -11,18 +11,18 @@ import styles from './info-link.module.css';
 const cx = classNames.bind(styles);
 
 export interface ILinkProps {
-  isOutsideLink?: boolean;
-  href?: string;
-  label: string;
-  icon?: IIconProps['glyph'],
-  iconPlace?: 'iconNone' | 'left' | 'right';
-  hoverStyle?: 'invert' | 'bottomLine' | 'bottomLineAndInvert';
-  size?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'number';
-  textDecoration?: 'textDecorationNone' | 'underline';
-  textTransform?: 'uppercase';
-  border?: 'borderNone' | 'borderBottomLeft' | 'borderTop';
-  className?: string;
-  iconClassName?: string;
+  isOutsideLink?: boolean
+  href?: string
+  label: string
+  icon?: IIconProps['glyph']
+  iconPlace?: 'iconNone' | 'left' | 'right'
+  hoverStyle?: 'invert' | 'bottomLine' | 'bottomLineAndInvert'
+  size?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'number'
+  textDecoration?: 'textDecorationNone' | 'underline'
+  textTransform?: 'uppercase'
+  border?: 'borderNone' | 'borderBottomLeft' | 'borderTop'
+  className?: string
+  iconClassName?: string
 }
 
 export const InfoLink: FC<ILinkProps> = (props) => {

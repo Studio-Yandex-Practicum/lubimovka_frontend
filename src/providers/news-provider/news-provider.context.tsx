@@ -6,11 +6,11 @@ type NewsContext = {
   entries: NewsItemList[]
   hasMoreEntries: boolean
   handleShouldLoadEntries: () => void
-  selectedMonth?: Nullable<number>,
+  selectedMonth?: Nullable<number>
   setSelectedMonth: (value: Nullable<number>) => void
-  selectedYear?: Nullable<number>,
+  selectedYear?: Nullable<number>
   setSelectedYear: (value: Nullable<number>) => void
-  pending: boolean,
+  pending: boolean
 }
 
 export const NewsContext = createContext<NewsContext | undefined>(undefined);

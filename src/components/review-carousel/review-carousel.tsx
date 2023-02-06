@@ -9,8 +9,8 @@ import breakpoints from 'shared/breakpoints';
 import styles from './review-carousel.module.css';
 
 interface IReviewCarousel {
-  title: string,
-  mode: 'single' | 'multiple',
+  title: string
+  mode: 'single' | 'multiple'
 }
 
 const cx = classNames.bind(styles);

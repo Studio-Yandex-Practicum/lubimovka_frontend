@@ -16,7 +16,7 @@ import type { ReactNode } from 'react';
 import styles from './performance-layout.module.css';
 
 interface IPerformanceLayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const cx = classNames.bind(styles);
