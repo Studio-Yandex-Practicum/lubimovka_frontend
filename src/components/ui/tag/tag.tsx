@@ -1,4 +1,5 @@
 import cn from 'classnames/bind';
+import { useCallback } from 'react';
 
 import { Icon } from '../icon';
 
@@ -20,7 +21,7 @@ export const Tag: FC<ITagProps> = (props) => {
     label, selected, cb, isIcon, counter
   } = props;
 
-  const handleClick = React.useCallback((e:React.MouseEvent) => {
+  const handleClick = useCallback((e:React.MouseEvent) => {
     e.preventDefault();
     if (cb) {
       cb(label, counter);

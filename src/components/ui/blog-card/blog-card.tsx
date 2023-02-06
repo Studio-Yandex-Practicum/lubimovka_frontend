@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import type { FC } from 'react';
 
@@ -20,8 +21,8 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
 
   const link = `/blog/${encodeURIComponent(id)}`;
 
-  const [imgWidth, setImgWidth] = React.useState<number>();
-  const [imgHeight, setImgHeight] = React.useState<number>();
+  const [imgWidth, setImgWidth] = useState<number>();
+  const [imgHeight, setImgHeight] = useState<number>();
 
   const handleImageLoad = (e: { naturalWidth: number, naturalHeight: number }) => {
     setImgWidth(e.naturalWidth);

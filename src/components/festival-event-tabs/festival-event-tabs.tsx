@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { cloneElement } from 'react';
+import React, { cloneElement } from 'react';
 
 import { ArrowButton } from 'components/arrow-button';
 
