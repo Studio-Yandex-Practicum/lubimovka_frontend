@@ -3,7 +3,7 @@
   background-color: var(--beige);
 
   @media (max-width: $tablet-portrait) {
-    padding: 40px 24px 0 24px;
+    padding: 40px 24px 0;
   }
 }
 

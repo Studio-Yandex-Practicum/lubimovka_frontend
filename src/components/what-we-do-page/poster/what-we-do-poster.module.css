@@ -6,7 +6,7 @@
 
   @media (max-width: $tablet-portrait) {
     display: block;
-    padding: 56px 24px 72px 24px;
+    padding: 56px 24px 72px;
     padding-bottom: 72px;
     margin: 0;
   }

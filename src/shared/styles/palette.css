@@ -1,9 +1,9 @@
 :root {
   --true-black: #000;
-  --true-black-60: rgba(0, 0, 0, .6);
+  --true-black-60: rgb(0 0 0 / 60%);
   --white: #fff;
   --black: #333;
-  --black-15: rgba(51, 51, 51, .15);
+  --black-15: rgb(51 51 51 / 15%);
   --blue: #1ea7fd;
   --coal: #242424;
   --beige: #ecebe8;

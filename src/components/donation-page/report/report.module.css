@@ -3,10 +3,10 @@
   flex-flow: row nowrap;
   align-items: flex-end;
   justify-content: center;
-  padding: 213px 0 204px 0;
+  padding: 213px 0 204px;
 
   @media (max-width: $tablet-portrait) {
-    padding: 150px 0 100px 0;
+    padding: 150px 0 100px;
   }
 }
 

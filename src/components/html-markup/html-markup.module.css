@@ -72,7 +72,7 @@
       left: 420px;
       width: 1px;
       background-color: var(--coal);
-      content: '';
+      content: "";
 
       @media (max-width: $tablet-portrait) {
         top: 66px;

@@ -1,4 +1,4 @@
-@value tablet-portrait from 'shared/styles/media.module.css';
+@value tablet-portrait from "shared/styles/media.module.css";
 
 .common {
   position: relative;
@@ -21,7 +21,7 @@
     height: var(--height-library-navigation-menu-tablet-portrait);
     margin-bottom: calc(-1 * var(--height-library-navigation-menu-tablet-portrait));
     background-color: var(--beige);
-    content: '';
+    content: "";
     grid-area: backdrop;
   }
 }

@@ -10,7 +10,7 @@
   margin: 0 0 110px 380px;
 
   @media (max-width: $tablet-portrait) {
-    margin: 0 24px 32px 24px;
+    margin: 0 24px 32px;
   }
 }
 

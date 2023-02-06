@@ -16,7 +16,7 @@
     height: 1.6em;
     box-sizing: border-box;
     border: 1px solid currentColor;
-    content: '';
+    content: "";
     visibility: hidden;
   }
 

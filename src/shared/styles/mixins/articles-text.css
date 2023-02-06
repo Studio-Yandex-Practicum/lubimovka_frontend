@@ -1,8 +1,8 @@
 @define-mixin articlesText {
   margin: 0 0 16px;
   color: var(--coal);
-  font-family: 'Formular', Arial, sans-serif;
-  font-feature-settings: 'ss01' on;
+  font-family: Formular, Arial, sans-serif;
+  font-feature-settings: "ss01" on;
   font-size: 20px;
   font-style: normal;
   font-weight: 300;

@@ -3,13 +3,13 @@
   box-sizing: border-box;
   flex-direction: column;
   align-items: flex-start;
-  padding: 15px 30px 26px 30px;
+  padding: 15px 30px 26px;
   border-bottom: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
 
   @media (max-width: $tablet-portrait) {
     min-height: auto;
-    padding: 16px 25px 20px 25px;
+    padding: 16px 25px 20px;
   }
 }
 

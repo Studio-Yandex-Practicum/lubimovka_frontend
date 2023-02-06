@@ -2,8 +2,8 @@
   @mixin text;
 
   width: intrinsic;
-  width: -moz-max-content;
-  width: -webkit-max-content;
+  width: max-content;
+  width: max-content;
   box-sizing: border-box;
   padding: 0;
   margin: 0;

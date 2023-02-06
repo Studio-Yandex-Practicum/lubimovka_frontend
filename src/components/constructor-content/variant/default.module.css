@@ -25,7 +25,7 @@
 }
 
 .section {
-  &:not(.darkened):not(.brand) + &:not(.darkened):not(.brand) {
+  &:not(.darkened, .brand) + &:not(.darkened, .brand) {
     padding-top: 0;
   }
 }

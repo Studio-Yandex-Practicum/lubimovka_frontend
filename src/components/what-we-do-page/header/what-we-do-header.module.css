@@ -19,7 +19,7 @@
   @media (max-width: $tablet-portrait) {
     @mixin headline4;
 
-    margin: 0 24px 30px 24px;
+    margin: 0 24px 30px;
   }
 }
 

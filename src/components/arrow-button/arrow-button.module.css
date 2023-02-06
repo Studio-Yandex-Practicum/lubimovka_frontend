@@ -5,8 +5,8 @@
   align-items: center;
   justify-content: center;
   border: 0;
-  background: 0;
   border-radius: 50%;
+  background: 0;
   font-size: 0;
 
   &::before,
@@ -16,10 +16,10 @@
     left: 50%;
     display: block;
     border: 1px solid var(--coal);
+    border-radius: 50%;
     border-top: 1px solid var(--coal);
     background: 0;
-    border-radius: 50%;
-    content: '';
+    content: "";
     transform: translate(-50%, -50%);
   }
 

@@ -42,7 +42,7 @@
     height: 24px;
     box-sizing: border-box;
     border: 1px solid currentColor;
-    content: '';
+    content: "";
     visibility: hidden;
 
     @media (max-width: $tablet-portrait) {

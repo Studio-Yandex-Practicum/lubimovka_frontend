@@ -11,7 +11,7 @@ $particle-amplitude: 1.5;
 .inner::after {
   display: block;
   animation: $particle-animation;
-  content: '';
+  content: "";
 }
 
 .particle {

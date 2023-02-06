@@ -48,8 +48,8 @@
     right: 16px;
     width: 40px;
     height: 40px;
-    background-color: var(--beige);
     border-radius: 20px;
+    background-color: var(--beige);
 
     &:hover {
       background-color: var(--coal);

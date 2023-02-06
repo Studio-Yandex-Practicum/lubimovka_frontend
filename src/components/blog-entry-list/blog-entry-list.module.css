@@ -1,4 +1,4 @@
-@import "./blog-entry-list.vars.module";
+@import url("./blog-entry-list.vars.module");
 
 .root {
   display: grid;
