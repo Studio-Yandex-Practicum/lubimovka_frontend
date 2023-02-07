@@ -21,6 +21,7 @@ setDefaultOptions({
 export const App = ({ Component, pageProps }: AppProps) => {
   const {
     preloadedNewsState,
+    defaultBlogState,
     ...restPageProps
   } = pageProps;
 
@@ -31,7 +32,7 @@ export const App = ({ Component, pageProps }: AppProps) => {
       )}
       <PersistentDataProvider>
         <NewsProvider preloadedNewsState={preloadedNewsState}>
-          <BlogProvider>
+          <BlogProvider preloadedState={defaultBlogState}>
             <Component {...restPageProps}/>
           </BlogProvider>
         </NewsProvider>

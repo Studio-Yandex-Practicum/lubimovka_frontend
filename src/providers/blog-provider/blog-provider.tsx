@@ -1,167 +1,94 @@
-import { objectToQueryString } from '@funboxteam/diamonds';
-import { useReducer, useState } from 'react';
+import { useState, useCallback } from 'react';
 
-import { fetcher } from 'services/fetcher';
-import { entriesPerPage } from 'shared/constants/blog';
-import { isNil } from 'shared/helpers/is-nil';
-import { omit } from 'shared/helpers/omit';
+import { entriesPerPage } from 'core/blog';
+import { getBlogEntries } from 'services/api/blog';
 import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
 
 import { BlogContext } from './blog-provider.context';
 
-import type {
-  BlogItemListOutput,
-  PaginatedBlogItemListOutputList,
-} from '__generated__/api-typings';
-import type { FC } from 'react';
-import type { BlogEntry } from 'shared/types/domain';
+import type { BlogEntry } from 'core/blog';
+import type { Pagination } from 'core/pagination';
 
-const defaultBlogState = {
-  entries: [] as BlogEntry[],
-  offset: 0,
-  hasMoreEntries: false,
-};
-
-enum BlogActionType {
-  AddEntries,
-  IncreaseOffset,
-  Reset,
-  SetPreloadedState,
+interface BlogProviderProps {
+  preloadedState: {
+    entries: BlogEntry[]
+    pagination: Pagination
+  }
 }
 
-export type BlogState = typeof defaultBlogState;
-type BlogAction = { type: BlogActionType.AddEntries; payload: { entries: BlogEntry[]; hasMoreEntries: boolean }}
-  | { type: BlogActionType.IncreaseOffset }
-  | { type: BlogActionType.Reset }
-  | { type: BlogActionType.SetPreloadedState; payload: Partial<BlogState> }
-
-const blogReducer = (state: BlogState, action: BlogAction) => {
-  switch (action.type) {
-  case BlogActionType.AddEntries:
-    return {
-      ...state,
-      entries: [
-        ...state.entries,
-        ...action.payload.entries,
-      ],
-      hasMoreEntries: action.payload.hasMoreEntries,
-    };
-  case BlogActionType.IncreaseOffset:
-    return {
-      ...state,
-      offset: state.offset + entriesPerPage,
-    };
-  case BlogActionType.Reset:
-    return defaultBlogState;
-  case BlogActionType.SetPreloadedState:
-    return {
-      ...defaultBlogState,
-      ...action.payload,
-    };
-  default:
-    return state;
-  }
+const defaultState = {
+  entries: [],
+  pagination: {
+    offset: 0,
+    total: 0,
+  },
 };
 
-export const BlogProvider: FC = (props) => {
-  const { children } = props;
-  const [blog, dispatch] = useReducer(blogReducer, defaultBlogState);
-  const [selectedMonth, setSelectedMonth] = useState<Nullable<number>>(null);
-  const [selectedYear, setSelectedYear] = useState<Nullable<number>>(null);
-  const [errorCode, setErrorCode] = useState<number>();
-  const [filterWasChanged, setFilterWasChanged] = useState(false);
+export const BlogProvider: React.FC<BlogProviderProps> = (props) => {
+  const { children, preloadedState = defaultState } = props;
+  const [entries, setEntries] = useState(preloadedState.entries || []);
+  const [pagination, setPagination] = useState(preloadedState.pagination);
+  const [month, setMonth] = useState<Nullable<number>>(null);
+  const [year, setYear] = useState<Nullable<number>>(null);
   const [pending, setPending] = useState(false);
+  const [errorOccurred, setErrorOccurred] = useState(false);
 
-  const handleShouldLoadEntries = () => {
-    dispatch({ type: BlogActionType.IncreaseOffset });
-  };
-
-  const setPreloadedState = (state: Partial<BlogState>) => {
-    dispatch({ type: BlogActionType.SetPreloadedState, payload: state });
-  };
-
-  const fetchBlogEntries = async () => {
-    const params = omit({
-      offset: blog.offset,
-      limit: entriesPerPage,
-      month: selectedMonth,
-      year: selectedYear,
-    }, isNil);
-    let response;
+  const fetchEntries = useCallback(async (options) => {
+    let result: Awaited<ReturnType<typeof getBlogEntries>>;
+    setPending(true);
 
     try {
-      response = await fetcher<PaginatedBlogItemListOutputList>(`/blog/${objectToQueryString(params)}`);
+      result = await getBlogEntries(options);
     } catch {
-      setErrorCode(500);
+      setErrorOccurred(true);
 
       return;
     }
 
-    const {
-      results,
-      next
-    } = response;
-
-    if (results) {
-      dispatch({ type: BlogActionType.AddEntries, payload: { entries: toBlogEntries(results), hasMoreEntries: !!next } });
-    }
-
+    setEntries((entries) => options.offset ? entries.concat(result.entries) : result.entries);
+    setPagination((pagination) => ({ ...pagination, ...result.pagination }));
     setPending(false);
-  };
+  }, []);
 
-  useEffectAfterMount(() => {
-    if (selectedMonth && !selectedYear) {
+  const loadMoreEntries = useCallback(() => {
+    const offset = pagination.offset + entriesPerPage;
+
+    if (pagination.total < offset) {
       return;
     }
-    setFilterWasChanged(true);
-    dispatch({ type: BlogActionType.Reset });
-  }, [selectedYear, selectedMonth]);
+
+    setPagination((pagination) => ({
+      ...pagination,
+      offset,
+    }));
+  }, [pagination.total]);
 
   useEffectAfterMount(() => {
-    if (!blog.offset && !filterWasChanged) {
-      return;
-    }
-    setPending(true);
-    fetchBlogEntries();
-    if (filterWasChanged) {
-      setFilterWasChanged(false);
-    }
-  }, [blog.offset, filterWasChanged]);
+    fetchEntries({ month, year });
+  }, [month, year]);
+
+  useEffectAfterMount(() => {
+    fetchEntries({
+      month,
+      year,
+      offset: pagination.offset,
+    });
+  }, [pagination.offset, month, year]);
 
   return (
     <BlogContext.Provider
       value={{
-        setPreloadedState,
-        entries: blog.entries,
-        hasMoreEntries: blog.hasMoreEntries,
-        handleShouldLoadEntries,
-        selectedMonth,
-        setSelectedMonth,
-        selectedYear,
-        setSelectedYear,
+        entries,
+        loadMoreEntries,
+        month,
+        setMonth,
+        year,
+        setYear,
         pending,
-        errorCode,
+        errorOccurred,
       }}
     >
       {children}
     </BlogContext.Provider>
   );
 };
-
-function toBlogEntries(array: BlogItemListOutput[]): BlogEntry[] {
-  return array.map(({
-    id,
-    pub_date,
-    title,
-    description,
-    author_url_title,
-    image
-  }) => ({
-    id,
-    publicationDate: pub_date,
-    title,
-    description,
-    author: author_url_title,
-    cover: image,
-  }));
-}
