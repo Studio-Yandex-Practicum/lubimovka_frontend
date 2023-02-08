@@ -1,8 +1,6 @@
 import Head from 'next/head';
 
-import settings from 'settings';
-
-import type { FC } from 'react';
+import settings from 'core/settings/constants';
 
 interface SEOProps {
   title: string
@@ -10,7 +8,7 @@ interface SEOProps {
   image?: Url
 }
 
-export const SEO: FC<SEOProps> = (props) => {
+export const SEO: React.FC<SEOProps> = (props) => {
   const { defaultMeta } = settings;
   const {
     title,
