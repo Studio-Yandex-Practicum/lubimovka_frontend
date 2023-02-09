@@ -8,7 +8,7 @@ import type { FC } from 'react';
 import styles from './blog-card.module.css';
 
 export interface BlogCardProps {
-  image: string
+  image?: string
   author: string
   heading: string
   description: string
@@ -33,19 +33,21 @@ export const BlogCard: FC<BlogCardProps> = (props) => {
     <Link href={link}>
       <a className={cn(styles.cardLinkWrapper, styles[firstCardSizeMode])}>
         <article className={styles.card}>
-          <div className={styles.imgContainer}>
-            <Image
-              className={styles.img}
-              src={image}
-              alt={`изображение статьи: ${heading}`}
-              width={imgWidth || 100}
-              height={imgHeight || 100}
-              layout="responsive"
-              objectFit="cover"
-              priority
-              onLoadingComplete={handleImageLoad}
-            />
-          </div>
+          {image && (
+            <div className={styles.imgContainer}>
+              <Image
+                className={styles.img}
+                src={image}
+                alt={`изображение статьи: ${heading}`}
+                width={imgWidth || 100}
+                height={imgHeight || 100}
+                layout="responsive"
+                objectFit="cover"
+                priority
+                onLoadingComplete={handleImageLoad}
+              />
+            </div>
+          )}
           <div className={styles.content}>
             <p className={styles.author}>
               {author}
