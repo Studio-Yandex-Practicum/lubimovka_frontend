@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
+    "@evilmartians/lefthook": "1.2.8",
     "@faker-js/faker": "7.6.0",
     "@next/bundle-analyzer": "13.1.2",
     "@storybook/addon-actions": "6.3.8",
@@ -57,7 +58,6 @@
     "eslint": "8.3.0",
     "eslint-config-next": "13.1.1",
     "eslint-plugin-import": "2.27.5",
-    "lefthook": "1.2.8",
     "msw": "0.47.4",
     "npm-run-all": "4.1.5",
     "openapi-typescript-codegen": "0.20.1",
