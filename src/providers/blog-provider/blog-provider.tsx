@@ -6,12 +6,12 @@ import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
 
 import { BlogContext } from './blog-provider.context';
 
-import type { BlogEntry } from 'core/blog';
+import type { BlogEntryPreview } from 'core/blog';
 import type { Pagination } from 'core/pagination';
 
 interface BlogProviderProps {
   preloadedState: {
-    entries: BlogEntry[]
+    entries: BlogEntryPreview[]
     pagination: Pagination
   }
 }
@@ -61,7 +61,7 @@ export const BlogProvider: React.FC<BlogProviderProps> = (props) => {
       ...pagination,
       offset,
     }));
-  }, [pagination.total]);
+  }, [pagination]);
 
   useEffectAfterMount(() => {
     fetchEntries({ month, year });
@@ -73,13 +73,14 @@ export const BlogProvider: React.FC<BlogProviderProps> = (props) => {
       year,
       offset: pagination.offset,
     });
-  }, [pagination.offset, month, year]);
+  }, [pagination.offset]);
 
   return (
     <BlogContext.Provider
       value={{
         entries,
         loadMoreEntries,
+        pagination,
         month,
         setMonth,
         year,

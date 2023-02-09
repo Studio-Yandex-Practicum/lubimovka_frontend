@@ -16,33 +16,24 @@ import { BlogCard } from 'components/ui/blog-card';
 import { Select } from 'components/ui/select';
 import { useBlog } from 'providers/blog-provider';
 import { usePersistentData } from 'providers/persistent-data-provider';
-import { getBlogEntries } from 'services/api/blog';
+import { getBlogEntries, getBlogFilters } from 'services/api/blog';
 import { months } from 'shared/constants/months';
-import { getYearRange } from 'shared/helpers/get-year-range';
 import { isNonEmpty } from 'shared/helpers/is-non-empty';
 import { useIntersection } from 'shared/hooks/use-intersection';
 
 import type { SelectOptionCheckHandler } from 'components/ui/select';
-import type { GetServerSideProps } from 'next';
+import type { InferGetServerSidePropsType } from 'next';
+
+type BlogProps = Omit<InferGetServerSidePropsType<typeof getServerSideProps>, 'preloadedBlogState'>
 
 const cx = classNames.bind(styles);
 
-const fromYear = 2013;
-
-const monthOptions = months.map((month, index) => ({
-  text: month,
-  value: index + 1,
-}));
-
-const yearOptions = getYearRange(fromYear).map((year) => ({
-  text: year.toString(),
-  value: year,
-}));
-
-const Blog = () => {
+const Blog: React.FC<BlogProps> = (props) => {
+  const { filters } = props;
   const {
     entries,
     loadMoreEntries,
+    pagination,
     month,
     setMonth,
     year,
@@ -50,10 +41,24 @@ const Blog = () => {
     pending,
     errorOccurred,
   } = useBlog();
+
   const { settings } = usePersistentData();
+
   const [paginationSentinelRef, shouldLoadEntries] = useIntersection<HTMLLIElement>();
+
+  const monthOptions = useMemo(() => months.map((month, index) => ({
+    text: month,
+    value: index + 1,
+  })), []);
+
+  const yearOptions = useMemo(() => filters.year.map((year) => ({
+    text: year.toString(),
+    value: year,
+  })), []);
+
   const selectedMonthOption = useMemo(() => monthOptions.find(({ value }) => value === month), [month]);
   const selectedYearOption = useMemo(() => yearOptions.find(({ value }) => value === year), [year]);
+
   const callToActionEmail = settings?.emailAddresses.forBlogAuthors;
 
   const handleMonthChange: SelectOptionCheckHandler<number> = ({ value }) => {
@@ -138,29 +143,32 @@ const Blog = () => {
             </Filter>
           </BlogLayout.Filter>
           <BlogLayout.Main>
-            {pending && (
-              <Spinner className={cx('spinner')}/>
-            )}
-            {!pending && (isNonEmpty(entries) ? (
-              <BlogEntryList>
-                {entries.map((entry) => (
-                  <BlogEntryList.Item key={entry.id}>
-                    <BlogCard
-                      id={entry.id}
-                      image={entry.cover}
-                      author={entry.author}
-                      heading={entry.title}
-                      description={entry.description}
-                    />
-                  </BlogEntryList.Item>
-                ))}
+            {(!pending || (pending && pagination.offset > 0)) && isNonEmpty(entries) && (
+              <>
+                <BlogEntryList>
+                  {entries.map((entry) => (
+                    <BlogEntryList.Item key={entry.id}>
+                      <BlogCard
+                        id={entry.id}
+                        image={entry.cover}
+                        author={entry.author}
+                        heading={entry.title}
+                        description={entry.description}
+                      />
+                    </BlogEntryList.Item>
+                  ))}
+                </BlogEntryList>
                 <PaginationSentinel ref={paginationSentinelRef}/>
-              </BlogEntryList>
-            ) : (
+              </>
+            )}
+            {!pending && !isNonEmpty(entries) && (
               <p className={cx('no-result')}>
                 Ничего не найдено.
               </p>
-            ))}
+            )}
+            {pending && (
+              <Spinner className={cx('spinner')}/>
+            )}
           </BlogLayout.Main>
         </BlogLayout>
       </AppLayout>
@@ -170,15 +178,17 @@ const Blog = () => {
 
 export default Blog;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps = async () => {
+  const filters = await getBlogFilters();
   const { entries, pagination } = await getBlogEntries();
 
   return {
     props: {
-      defaultBlogState: {
+      preloadedBlogState: {
         entries,
         pagination,
-      }
+      },
+      filters,
     }
   };
 };

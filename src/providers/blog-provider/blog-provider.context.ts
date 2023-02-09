@@ -1,10 +1,12 @@
 import { createContext, useContext } from 'react';
 
-import type { BlogEntry } from 'core/blog';
+import type { BlogEntryPreview } from 'core/blog';
+import type { Pagination } from 'core/pagination';
 
 type BlogContextState = {
-  entries: BlogEntry[]
+  entries: BlogEntryPreview[]
   loadMoreEntries: () => void
+  pagination: Pagination
   month: Nullable<number>
   setMonth: (value: Nullable<number>) => void
   year: Nullable<number>

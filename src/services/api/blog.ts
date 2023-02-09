@@ -6,9 +6,12 @@ import { fetcher } from 'services/fetcher';
 import type {
   PaginatedBlogItemListOutputList as BlogEntryListDTO,
   BlogItemList as BlogEntryDTO,
+  BlogItemYearsMonthsOutput,
 } from '__generated__/api-typings';
-import type { BlogEntry } from 'core/blog';
+import type { BlogEntry, BlogFilters } from 'core/blog';
 import type { Pagination } from 'core/pagination';
+
+type BlogFiltersDTO = BlogItemYearsMonthsOutput[]
 
 interface GetBlogEntriesParams {
   month?: number
@@ -54,5 +57,15 @@ function mapDTOToBlogEntry(dto: BlogEntryDTO): BlogEntry {
     description: dto.description,
     author: dto.author_url_title,
     cover: dto.image,
+  };
+}
+
+export function getBlogFilters() {
+  return fetcher<BlogFiltersDTO>('/blog/years-months/').then(mapDTOToBlogFilters);
+}
+
+function mapDTOToBlogFilters(dto: BlogFiltersDTO): Omit<BlogFilters, 'month'> {
+  return {
+    year: dto.map((item) => item.year),
   };
 }

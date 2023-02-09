@@ -6,3 +6,8 @@ export type BlogEntry = {
   author: string
   cover: Url
 };
+
+export type BlogFilters = {
+  year: number[]
+  month: number[]
+}
