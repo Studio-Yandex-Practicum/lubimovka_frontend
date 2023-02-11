@@ -119,21 +119,21 @@
 .authors {
   composes: common;
   grid-template-areas:
-    'backdrop   backdrop'
-    'navigation heading'
-    '.          heading'
-    '.          search'
-    'pagination pagination'
-    'content    content';
+    "backdrop   backdrop"
+    "navigation heading"
+    ".          heading"
+    ".          search"
+    "pagination pagination"
+    "content    content";
   grid-template-rows: repeat(5, auto) 1fr;
 
   @media tablet-portrait {
     grid-template-areas:
-      'heading'
-      'search'
-      'navigation'
-      'pagination'
-      'content';
+      "heading"
+      "search"
+      "navigation"
+      "pagination"
+      "content";
   }
 
   .search {
@@ -145,20 +145,20 @@
 .plays {
   composes: common;
   grid-template-areas:
-    'backdrop   backdrop'
-    'navigation heading'
-    'filter    heading'
-    'filter    search'
-    'filter    content';
+    "backdrop   backdrop"
+    "navigation heading"
+    "filter    heading"
+    "filter    search"
+    "filter    content";
   grid-template-rows: repeat(4, auto) 1fr;
 
   @media tablet-portrait {
     grid-template-areas:
-      'heading'
-      'search'
-      'navigation'
-      'filter'
-      'content';
+      "heading"
+      "search"
+      "navigation"
+      "filter"
+      "content";
   }
 
   .search {

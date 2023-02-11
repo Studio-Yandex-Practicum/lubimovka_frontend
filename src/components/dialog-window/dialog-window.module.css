@@ -16,7 +16,7 @@
 .plays-filter {
   composes: root;
   min-height: 100vh;
-  padding: 102px 24px 60px 24px;
+  padding: 102px 24px 60px;
   background-color: var(--beige);
 
   .close {

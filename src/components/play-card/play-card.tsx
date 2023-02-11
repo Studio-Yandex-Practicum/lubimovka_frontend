@@ -11,8 +11,8 @@ import styles from './play-card.module.css';
 const cx = cn.bind(styles);
 
 export interface PlayCardProps extends Omit<Play, 'id'> {
-  className?: string;
-  titleTag?: React.ElementType;
+  className?: string
+  titleTag?: React.ElementType
 }
 
 export const PlayCard: React.FC<PlayCardProps> = (props) => {
