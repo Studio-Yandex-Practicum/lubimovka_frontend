@@ -3,220 +3,193 @@ import Error from 'next/error';
 import { useEffect,useMemo } from 'react';
 
 import { AppLayout } from 'components/app-layout/index';
+import { BlogEntryCard } from 'components/blog-entry-card';
 import { BlogEntryList } from 'components/blog-entry-list';
 import { BlogLayout } from 'components/blog-layout';
 import styles from 'components/blog-layout/blog-layout.module.css';
 import { CallToEmail } from 'components/call-to-email';
 import { Filter } from 'components/filter';
 import { PageTitle } from 'components/page-title';
+import { PaginationSentinel } from 'components/pagination-sentinel';
 import { SEO } from 'components/seo';
 import { Spinner } from 'components/spinner';
-import { BlogCard } from 'components/ui/blog-card';
 import { Select } from 'components/ui/select';
 import { useBlog } from 'providers/blog-provider';
 import { usePersistentData } from 'providers/persistent-data-provider';
-import { fetcher } from 'services/fetcher';
-import { entriesPerPage } from 'shared/constants/blog';
+import { getBlogEntries, getBlogFilters } from 'services/api/blog';
 import { months } from 'shared/constants/months';
-import { getYearRange } from 'shared/helpers/get-year-range';
-import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { isNonEmpty } from 'shared/helpers/is-non-empty';
 import { useIntersection } from 'shared/hooks/use-intersection';
 
-import type { BlogItemListOutput,PaginatedBlogItemListOutputList } from '__generated__/api-typings';
 import type { SelectOptionCheckHandler } from 'components/ui/select';
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import type { BlogState } from 'providers/blog-provider';
-import type { BlogEntry } from 'shared/types/domain';
+import type { InferGetServerSidePropsType } from 'next';
+
+type BlogProps = Omit<InferGetServerSidePropsType<typeof getServerSideProps>, 'preloadedBlogState'>
 
 const cx = classNames.bind(styles);
 
-const fromYear = 2013;
-const monthOptions = months.map((month, index) => ({
-  text: month,
-  value: index + 1,
-}));
-const yearOptions = getYearRange(fromYear).map((year) => ({
-  text: year.toString(),
-  value: year,
-}));
-
-const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Blog: React.FC<BlogProps> = (props) => {
+  const { filters } = props;
   const {
-    setPreloadedState,
     entries,
-    hasMoreEntries,
-    handleShouldLoadEntries,
-    selectedMonth,
-    setSelectedMonth,
-    selectedYear,
-    setSelectedYear,
+    loadMoreEntries,
+    pagination,
+    month,
+    setMonth,
+    year,
+    setYear,
     pending,
-    errorCode,
+    errorOccurred,
   } = useBlog();
+
   const { settings } = usePersistentData();
-  const [bottomBoundaryRef, shouldLoadEntries] = useIntersection<HTMLLIElement>();
-  const selectedMonthOption = useMemo(() => monthOptions.find(({ value }) => value === selectedMonth), [selectedMonth]);
-  const selectedYearOption = useMemo(() => yearOptions.find(({ value }) => value === selectedYear), [selectedYear]);
-  const lastEntryIndex = useMemo(() => entries.length - 1, [entries]);
+
+  const [paginationSentinelRef, shouldLoadEntries] = useIntersection<HTMLLIElement>();
+
+  const monthOptions = useMemo(() => months.map((month, index) => ({
+    text: month,
+    value: index + 1,
+  })), []);
+
+  const yearOptions = useMemo(() => filters.year.map((year) => ({
+    text: year.toString(),
+    value: year,
+  })), []);
+
+  const selectedMonthOption = useMemo(() => monthOptions.find(({ value }) => value === month), [month]);
+  const selectedYearOption = useMemo(() => yearOptions.find(({ value }) => value === year), [year]);
+
   const callToActionEmail = settings?.emailAddresses.forBlogAuthors;
 
   const handleMonthChange: SelectOptionCheckHandler<number> = ({ value }) => {
-    if (selectedMonth === value) {
+    if (month === value) {
       return;
     }
 
-    setSelectedMonth(value);
+    setMonth(value);
   };
 
   const handleYearChange: SelectOptionCheckHandler<number> = ({ value }) => {
-    if (selectedYear === value) {
+    if (year === value) {
       return;
     }
 
-    setSelectedYear(value);
+    setYear(value);
   };
 
   useEffect(() => {
-    if (!entries.length && props.entries) {
-      setPreloadedState({
-        entries: props.entries,
-        hasMoreEntries: props.hasMoreEntries,
-      });
+    if (!pending && shouldLoadEntries) {
+      loadMoreEntries();
     }
-  }, []);
+  }, [shouldLoadEntries]);
 
-  useEffect(() => {
-    if (!pending && shouldLoadEntries && hasMoreEntries) {
-      handleShouldLoadEntries();
-    }
-  }, [pending, hasMoreEntries, shouldLoadEntries]);
-
-  if (errorCode) {
+  if (errorOccurred) {
     return (
-      <Error statusCode={errorCode}/>
+      <Error statusCode={500}/>
     );
   }
 
   return (
-    <AppLayout>
-      <SEO
-        title="Блог"
-      />
-      <BlogLayout>
-        <BlogLayout.Title>
-          <PageTitle>
-            Блог Любимовки
-          </PageTitle>
-        </BlogLayout.Title>
-        <BlogLayout.Description>
-          Журналисты, театроведы, критики, искусствоведы и студенты профильных вузов ведут журнал фестиваля Любимовка
-          под руководством Анны Юсиной.
-        </BlogLayout.Description>
-        {callToActionEmail && (
-          <BlogLayout.CallToAction>
-            <CallToEmail
-              type="blog"
-              description="Если вы хотите стать автором, пишите на "
-              email={callToActionEmail}
-            />
-          </BlogLayout.CallToAction>
-        )}
-        <BlogLayout.Filter>
-          <Filter>
-            <Filter.Field
-              className={cx('month-field')}
-              caption="Выберите месяц"
-              hiddenCaption
-            >
-              <Select<number>
-                clearable
-                placeholder="Месяц"
-                options={monthOptions}
-                selectedOption={selectedMonthOption}
-                onChange={handleMonthChange}
+    <>
+      <SEO title="Блог"/>
+      <AppLayout>
+        <BlogLayout>
+          <BlogLayout.Title>
+            <PageTitle>
+              Блог Любимовки
+            </PageTitle>
+          </BlogLayout.Title>
+          <BlogLayout.Description>
+            Журналисты, театроведы, критики, искусствоведы и студенты профильных вузов ведут журнал фестиваля Любимовка
+            под руководством Анны Юсиной.
+          </BlogLayout.Description>
+          {callToActionEmail && (
+            <BlogLayout.CallToAction>
+              <CallToEmail
+                type="blog"
+                description="Если вы хотите стать автором, пишите на "
+                email={callToActionEmail}
               />
-            </Filter.Field>
-            <Filter.Field
-              className={cx('year-field')}
-              caption="Выберите месяц"
-              hiddenCaption
-            >
-              <Select<number>
-                clearable
-                placeholder="Год"
-                options={yearOptions}
-                selectedOption={selectedYearOption}
-                onChange={handleYearChange}
-              />
-            </Filter.Field>
-          </Filter>
-        </BlogLayout.Filter>
-        <BlogLayout.Main>
-          {pending && (
-            <Spinner className={cx('spinner')}/>
+            </BlogLayout.CallToAction>
           )}
-          {!entries.length && !pending && (
-            <p className={cx('no-result')}>
-              Ничего не найдено.
-            </p>
-          )}
-          <BlogEntryList>
-            {entries.map((entry, index) => (
-              <BlogEntryList.Item
-                key={entry.id}
-                {...index === lastEntryIndex ? {
-                  ref: bottomBoundaryRef,
-                } : {}}
+          <BlogLayout.Filter>
+            <Filter>
+              <Filter.Field
+                className={cx('month-field')}
+                caption="Выберите месяц"
+                hiddenCaption
               >
-                <BlogCard
-                  id={entry.id}
-                  image={entry.cover}
-                  author={entry.author}
-                  heading={entry.title}
-                  description={entry.description}
+                <Select<number>
+                  clearable
+                  placeholder="Месяц"
+                  options={monthOptions}
+                  selectedOption={selectedMonthOption}
+                  onChange={handleMonthChange}
                 />
-              </BlogEntryList.Item>
-            ))}
-          </BlogEntryList>
-        </BlogLayout.Main>
-      </BlogLayout>
-    </AppLayout>
+              </Filter.Field>
+              <Filter.Field
+                className={cx('year-field')}
+                caption="Выберите месяц"
+                hiddenCaption
+              >
+                <Select<number>
+                  clearable
+                  placeholder="Год"
+                  options={yearOptions}
+                  selectedOption={selectedYearOption}
+                  onChange={handleYearChange}
+                />
+              </Filter.Field>
+            </Filter>
+          </BlogLayout.Filter>
+          <BlogLayout.Main>
+            {(!pending || (pending && pagination.offset > 0)) && isNonEmpty(entries) && (
+              <>
+                <BlogEntryList>
+                  {entries.map((entry) => (
+                    <BlogEntryList.Item key={entry.id}>
+                      <BlogEntryCard
+                        authorFullName={entry.authorFullName}
+                        authorUrl={entry.authorUrl}
+                        title={entry.title}
+                        description={entry.description}
+                        image={entry.image}
+                        viewUrl={`/blog/${entry.id}`}
+                      />
+                    </BlogEntryList.Item>
+                  ))}
+                </BlogEntryList>
+                <PaginationSentinel ref={paginationSentinelRef}/>
+              </>
+            )}
+            {!pending && !isNonEmpty(entries) && (
+              <p className={cx('no-result')}>
+                Ничего не найдено.
+              </p>
+            )}
+            {pending && (
+              <Spinner className={cx('spinner')}/>
+            )}
+          </BlogLayout.Main>
+        </BlogLayout>
+      </AppLayout>
+    </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps<Partial<BlogState>> = async () => {
-  let response;
-
-  try {
-    response = await fetcher<PaginatedBlogItemListOutputList>(`/blog/?limit=${entriesPerPage}`);
-  } catch {
-    throw new InternalServerError();
-  }
-
-  return {
-    props: {
-      entries: response.results ? toBlogEntries(response.results) : [],
-      hasMoreEntries: !!response.next,
-    }
-  };
 };
 
 export default Blog;
 
-function toBlogEntries(array: BlogItemListOutput[]): BlogEntry[] {
-  return array.map(({
-    id,
-    pub_date,
-    title,
-    description,
-    author_url_title,
-    image
-  }) => ({
-    id,
-    publicationDate: pub_date,
-    title,
-    description,
-    author: author_url_title,
-    cover: image,
-  }));
-}
+export const getServerSideProps = async () => {
+  const filters = await getBlogFilters();
+  const { entries, pagination } = await getBlogEntries();
+
+  return {
+    props: {
+      preloadedBlogState: {
+        entries,
+        pagination,
+      },
+      filters,
+    }
+  };
+};

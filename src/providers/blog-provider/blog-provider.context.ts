@@ -1,19 +1,18 @@
 import { createContext, useContext } from 'react';
 
-import type { BlogState } from './blog-provider';
-import type { BlogEntry } from 'shared/types/domain';
+import type { BlogEntryPreview } from 'core/blog';
+import type { Pagination } from 'core/pagination';
 
 type BlogContextState = {
-  setPreloadedState: (value: Partial<BlogState>) => void
-  entries: BlogEntry[]
-  hasMoreEntries: boolean
-  handleShouldLoadEntries: () => void
-  selectedMonth?: Nullable<number>
-  setSelectedMonth: (value: Nullable<number>) => void
-  selectedYear?: Nullable<number>
-  setSelectedYear: (value: Nullable<number>) => void
+  entries: BlogEntryPreview[]
+  loadMoreEntries: () => void
+  pagination: Pagination
+  month: Nullable<number>
+  setMonth: (value: Nullable<number>) => void
+  year: Nullable<number>
+  setYear: (value: Nullable<number>) => void
   pending: boolean
-  errorCode?: number
+  errorOccurred: boolean
 }
 
 export const BlogContext = createContext<BlogContextState | undefined>(undefined);

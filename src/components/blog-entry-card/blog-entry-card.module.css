@@ -1,0 +1,79 @@
+@value tablet-portrait from "shared/styles/media.module.css";
+
+.image-holder {
+  width: 100%;
+  height: auto;
+  order: 1;
+  margin: 0 0 16px;
+}
+
+.image {
+  transition: transform 400ms cubic-bezier(.6, 0, .5, 1);
+  will-change: transform;
+}
+
+.author {
+  @mixin textSmall;
+
+  order: 2;
+  margin: 0 0 16px;
+
+  a& {
+    position: relative;
+    z-index: 1;
+    align-self: flex-start;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media tablet-portrait {
+    margin-left: 28px;
+  }
+}
+
+.link {
+  order: 3;
+  text-decoration: none;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: "";
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline5;
+
+  margin: 0 0 16px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+
+  @media tablet-portrait {
+    @mixin headline6;
+  }
+}
+
+.description {
+  order: 4;
+  margin: 0 0 0 28px;
+
+  @mixin textSmall;
+}
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    .image {
+      transform: scale(1.2);
+    }
+  }
+}

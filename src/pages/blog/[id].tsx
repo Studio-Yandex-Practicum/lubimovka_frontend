@@ -6,6 +6,7 @@ import { ArticleCreditsList } from 'components/article-credits-list';
 import { ArticleFootnote } from 'components/article-footnote';
 import { ArticleHeadline } from 'components/article-headline';
 import styles from 'components/article-layout/article-layout.module.css';
+import { BlogEntryCard } from 'components/blog-entry-card';
 import { BlogEntryList } from 'components/blog-entry-list';
 import { Breadcrumb } from 'components/breadcrumb';
 import { ConstructorContent } from 'components/constructor-content';
@@ -13,7 +14,6 @@ import { PageBreadcrumbs } from 'components/page';
 import { Section } from 'components/section';
 import { SEO } from 'components/seo';
 import { ShareLinks } from 'components/share-links';
-import { BlogCard } from 'components/ui/blog-card';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
@@ -81,14 +81,15 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
           title="Другие записи"
         >
           <BlogEntryList>
-            {suggestedBlogEntries.map(({ id, image, author_url_title, title, description }) => (
+            {suggestedBlogEntries.map(({ id, image, author_url_title, author_url, title, description }) => (
               <BlogEntryList.Item key={id}>
-                <BlogCard
-                  id={id}
+                <BlogEntryCard
                   image={image}
-                  author={author_url_title}
-                  heading={title}
+                  authorFullName={author_url_title}
+                  authorUrl={author_url}
+                  title={title}
                   description={description}
+                  viewUrl={`/blog/${id}`}
                 />
               </BlogEntryList.Item>
             ))}
