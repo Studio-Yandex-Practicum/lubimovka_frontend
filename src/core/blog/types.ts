@@ -1,10 +1,10 @@
-export type BlogEntry = {
+export type BlogEntryPreview = {
   id: number
-  publicationDate: string
   title: string
   description: string
-  author: string
-  cover: Url
+  authorFullName: string
+  authorUrl?: Url
+  image: Url
 };
 
 export type BlogFilters = {

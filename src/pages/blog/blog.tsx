@@ -3,6 +3,7 @@ import Error from 'next/error';
 import { useEffect,useMemo } from 'react';
 
 import { AppLayout } from 'components/app-layout/index';
+import { BlogEntryCard } from 'components/blog-entry-card';
 import { BlogEntryList } from 'components/blog-entry-list';
 import { BlogLayout } from 'components/blog-layout';
 import styles from 'components/blog-layout/blog-layout.module.css';
@@ -12,7 +13,6 @@ import { PageTitle } from 'components/page-title';
 import { PaginationSentinel } from 'components/pagination-sentinel';
 import { SEO } from 'components/seo';
 import { Spinner } from 'components/spinner';
-import { BlogCard } from 'components/ui/blog-card';
 import { Select } from 'components/ui/select';
 import { useBlog } from 'providers/blog-provider';
 import { usePersistentData } from 'providers/persistent-data-provider';
@@ -148,12 +148,13 @@ const Blog: React.FC<BlogProps> = (props) => {
                 <BlogEntryList>
                   {entries.map((entry) => (
                     <BlogEntryList.Item key={entry.id}>
-                      <BlogCard
-                        id={entry.id}
-                        image={entry.cover}
-                        author={entry.author}
-                        heading={entry.title}
+                      <BlogEntryCard
+                        authorFullName={entry.authorFullName}
+                        authorUrl={entry.authorUrl}
+                        title={entry.title}
                         description={entry.description}
+                        image={entry.image}
+                        viewUrl={`/blog/${entry.id}`}
                       />
                     </BlogEntryList.Item>
                   ))}

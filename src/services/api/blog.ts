@@ -8,7 +8,7 @@ import type {
   BlogItemList as BlogEntryDTO,
   BlogItemYearsMonthsOutput,
 } from '__generated__/api-typings';
-import type { BlogEntry, BlogFilters } from 'core/blog';
+import type { BlogEntryPreview, BlogFilters } from 'core/blog';
 import type { Pagination } from 'core/pagination';
 
 type BlogFiltersDTO = BlogItemYearsMonthsOutput[]
@@ -21,7 +21,7 @@ interface GetBlogEntriesParams {
 }
 
 type PaginatedBlogEntries = {
-  entries: BlogEntry[]
+  entries: BlogEntryPreview[]
   pagination: Pagination
 }
 
@@ -49,14 +49,14 @@ export async function getBlogEntries(params: GetBlogEntriesParams = {}): Promise
   }));
 }
 
-function mapDTOToBlogEntry(dto: BlogEntryDTO): BlogEntry {
+function mapDTOToBlogEntry(dto: BlogEntryDTO): BlogEntryPreview {
   return {
     id: dto.id,
-    publicationDate: dto.pub_date,
     title: dto.title,
     description: dto.description,
-    author: dto.author_url_title,
-    cover: dto.image,
+    authorFullName: dto.author_url_title,
+    authorUrl: dto.author_url,
+    image: dto.image,
   };
 }
 

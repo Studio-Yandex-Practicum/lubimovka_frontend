@@ -375,11 +375,12 @@ export default Plays;
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const searchParams = new URLSearchParams(encode(ctx.query));
 
-  const limit = Object.keys(SearchParam).some((p) => searchParams.has(SearchParam[p as keyof typeof SearchParam])) ? PLAYS_PER_PAGE : RANDOM_PLAYS_COUNT;
+  const hasFiltersApplied = Object.keys(SearchParam).some((p) => searchParams.has(SearchParam[p as keyof typeof SearchParam]));
+  const limit = hasFiltersApplied ? PLAYS_PER_PAGE : RANDOM_PLAYS_COUNT;
 
   const playsQueryParams = {
     years: searchParams.getAll(SearchParam.Year),
-    programIds: searchParams.getAll('program'),
+    programIds: searchParams.getAll(SearchParam.Program),
     limit,
   };
 

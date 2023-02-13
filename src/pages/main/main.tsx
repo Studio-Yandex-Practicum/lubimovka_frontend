@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { AddressCard } from 'components/address-card';
 import { AddressList } from 'components/address-list';
 import { AppLayout } from 'components/app-layout';
+import { BlogEntryCard } from 'components/blog-entry-card';
 import { EventCard } from 'components/event-card';
 import { EventList } from 'components/event-list';
 import { FeedList } from 'components/feed-list';
@@ -20,7 +21,6 @@ import { PlayList } from 'components/play-list';
 import { Section } from 'components/section';
 import { SEO } from 'components/seo';
 import { TeaserList } from 'components/teaser-list';
-import { BlogCard } from 'components/ui/blog-card';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 import { PartnerType } from 'core/partner';
@@ -134,12 +134,13 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                   {blog ? (
                     blog.items.map((entry) => (
                       <FeedList.Item key={entry.id}>
-                        <BlogCard
-                          id={entry.id}
+                        <BlogEntryCard
                           image={entry.image}
-                          author={entry.author_url_title}
-                          heading={entry.title}
+                          authorFullName={entry.author_url_title}
+                          authorUrl={entry.author_url}
+                          title={entry.title}
                           description={entry.description}
+                          viewUrl={`/blog/${entry.id}`}
                         />
                       </FeedList.Item>
                     ))
