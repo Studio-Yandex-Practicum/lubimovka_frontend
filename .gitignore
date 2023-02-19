@@ -18,3 +18,7 @@ storybook-static
 tsconfig.tsbuildinfo
 
 screenshots
+
+/test-results/
+/playwright-report/
+/playwright/.cache/

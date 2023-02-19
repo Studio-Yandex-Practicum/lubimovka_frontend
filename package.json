@@ -14,7 +14,8 @@
     "storybook": "start-storybook -s public -p 3001",
     "build-storybook": "build-storybook -s public",
     "update-typings": "node ops/update-typings.js",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "test:e2e": "playwright test"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
     "@evilmartians/lefthook": "1.2.8",
     "@faker-js/faker": "7.6.0",
     "@next/bundle-analyzer": "13.1.2",
+    "@playwright/test": "1.30.0",
     "@storybook/addon-actions": "6.3.8",
     "@storybook/addon-essentials": "6.3.8",
     "@storybook/addon-links": "6.3.8",
