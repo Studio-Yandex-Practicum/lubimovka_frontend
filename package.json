@@ -14,7 +14,6 @@
     "storybook": "start-storybook -s public -p 3001",
     "build-storybook": "build-storybook -s public",
     "update-typings": "node ops/update-typings.js",
-    "e2e": "NEXT_PUBLIC_BASE_URL=http://localhost:3002 NEXT_PUBLIC_API_BASE_URL=http://localhost:3003/api node ops/e2e-run-tests",
     "analyze": "ANALYZE=true next build"
   },
   "repository": {
