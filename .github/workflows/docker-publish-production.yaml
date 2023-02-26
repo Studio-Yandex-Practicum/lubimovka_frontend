@@ -1,4 +1,5 @@
 name: Publish production Docker image
+
 concurrency:
   group: prod_deploy
   cancel-in-progress: true

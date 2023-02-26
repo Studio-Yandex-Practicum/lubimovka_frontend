@@ -1,12 +1,12 @@
 name: Publish staging Docker image
+
 concurrency:
   group: stage_deploy
   cancel-in-progress: true
 
 on:
   push:
-    branches:
-      - develop
+    branches: [ $default-branch ]
 
 env:
   REGISTRY: ghcr.io

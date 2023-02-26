@@ -1,4 +1,5 @@
 name: Deploy staging
+
 concurrency:
   group: stage_deploy
   cancel-in-progress: true
