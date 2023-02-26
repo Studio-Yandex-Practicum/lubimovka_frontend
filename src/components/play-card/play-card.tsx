@@ -68,7 +68,7 @@ export const PlayCard: React.FC<PlayCardProps> = (props) => {
       </div>
       <div className={cx('info')}>
         {authors.map((author) => (
-          <span key={author.slug} className={cx('author')}>
+          <span key={author.slug}>
             <InfoLink
               className={cx('author')}
               size="l"

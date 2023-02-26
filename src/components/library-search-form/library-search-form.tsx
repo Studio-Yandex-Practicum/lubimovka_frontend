@@ -14,13 +14,13 @@ const cx = classNames.bind(styles);
 
 export const LibrarySearchForm: React.VFC = () => {
   const router = useRouter();
-  const [query, setQuery] = useState('');
-  const inputElRef = useRef<HTMLInputElement>(null);
   const searchParams = useMemo(
     () => new URLSearchParams(encode(router.query)),
     [router]
   );
   const value = searchParams.get('query') as string;
+  const [query, setQuery] = useState(value ? value : '');
+  const inputElRef = useRef<HTMLInputElement>(null);
 
   const handleQueryChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +47,7 @@ export const LibrarySearchForm: React.VFC = () => {
         spellCheck={false}
         value={query}
         onChange={handleQueryChange}
-        placeholder={value ? value : 'Автор или название пьесы'}
+        placeholder='Автор или название пьесы'
       />
       <button
         className={cx('submit-button')}

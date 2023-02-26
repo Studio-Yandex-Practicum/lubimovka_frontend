@@ -8,7 +8,7 @@ $item-gap: 8px;
   margin: 0 -$item-gap -$item-gap 0;
 
   @media tablet-portrait {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin: 0;
   }
 }

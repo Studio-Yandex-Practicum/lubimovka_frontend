@@ -5,7 +5,6 @@ import { PlayCard } from 'components/play-card';
 import { PlayList } from 'components/play-list';
 import { Section } from 'components/section';
 import { Button } from 'components/ui/button';
-import { Icon } from 'components/ui/icon';
 import { InfoLink } from 'components/ui/info-link';
 import { Link } from 'components/ui/link';
 import { Tag } from 'components/ui/tag';
@@ -228,16 +227,16 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
                 E-mail для связи
               </p>
               {!isOpen ? (
-                <button
-                  className={cx('email-button')}
-                  type="button"
+                <Button
                   onClick={showEmail}
-                >
-                  <span className={cx('email-button-icon')}>
-                    <Icon glyph="arrow-right" width="100%" height="100%"/>
-                  </span>
-                  Показать
-                </button>
+                  type="button"
+                  align="start"
+                  label="Показать"
+                  icon="arrow-right"
+                  iconPlace="left"
+                  size="s"
+                  border="bottomLeft"
+                />
               ) : (
                 <InfoLink
                   isOutsideLink

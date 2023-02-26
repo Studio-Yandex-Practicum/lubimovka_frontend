@@ -44,10 +44,6 @@
 .info {
   display: flex;
   flex-direction: column;
-
-  @media tablet-portrait {
-    gap: 8px;
-  }
 }
 
 .author {

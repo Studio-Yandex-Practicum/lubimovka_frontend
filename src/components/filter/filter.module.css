@@ -52,6 +52,10 @@
   padding: 0;
   border: 0;
   margin: 0;
+
+  @media tablet-portrait {
+    width: 80%;
+  }
 }
 
 .list-caption {

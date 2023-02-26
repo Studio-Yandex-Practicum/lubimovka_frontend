@@ -32,7 +32,7 @@
 
   @media tablet-portrait {
     padding: 0 24px;
-    background-color: #fff;
+    background-color: var(--white);
   }
 }
 
@@ -64,7 +64,7 @@
     position: static;
     z-index: auto;
     padding: 0 24px;
-    background-color: #fff;
+    background-color: var(--white);
   }
 }
 
@@ -81,7 +81,7 @@
     z-index: 1;
     top: 0;
     border-bottom: 1px solid var(--coal);
-    background-color: #fff;
+    background-color: var(--white);
   }
 }
 
@@ -111,7 +111,7 @@
     top: var(--height-library-navigation-menu-tablet-portrait);
     display: block;
     margin: 0 0 56px;
-    background-color: #fff;
+    background-color: var(--white);
     overflow-x: auto;
   }
 }
@@ -191,8 +191,8 @@
       z-index: 1;
       top: 9.8%;
       height: auto;
-      padding: 16px 24px;
-      background-color: #fff;
+      padding: 8px 24px;
+      background-color: var(--white);
     }
   }
 
