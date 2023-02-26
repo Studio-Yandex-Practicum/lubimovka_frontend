@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ develop ]
   pull_request:
-    branches: [ $default-branch ]
+    branches: [ develop ]
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -29,13 +29,15 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - run: npm run lint
-    - run: npm run build --if-present
+    - run: npm run build
       env:
-        CI: true
+        NODE_ENV: test
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+      env:
+        NODE_ENV: test
     - uses: actions/upload-artifact@v3
       if: always()
       with:
