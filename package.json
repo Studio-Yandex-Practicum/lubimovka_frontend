@@ -15,7 +15,7 @@
     "build-storybook": "build-storybook -s public",
     "update-typings": "node ops/update-typings.js",
     "analyze": "ANALYZE=true next build",
-    "test:e2e": "playwright test"
+    "test:e2e": "NODE_ENV=test playwright test"
   },
   "repository": {
     "type": "git",
