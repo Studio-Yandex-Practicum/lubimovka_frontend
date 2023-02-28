@@ -6,7 +6,7 @@ concurrency:
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ develop ]
 
 env:
   REGISTRY: ghcr.io
