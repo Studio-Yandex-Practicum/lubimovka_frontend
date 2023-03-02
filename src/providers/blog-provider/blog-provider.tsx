@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 import { entriesPerPage } from 'core/blog';
 import { getBlogEntries } from 'services/api/blog';
@@ -10,24 +10,16 @@ import type { BlogEntryPreview } from 'core/blog';
 import type { Pagination } from 'core/pagination';
 
 interface BlogProviderProps {
-  preloadedState: {
+  preloadedState?: {
     entries: BlogEntryPreview[]
     pagination: Pagination
   }
 }
 
-const defaultState = {
-  entries: [],
-  pagination: {
-    offset: 0,
-    total: 0,
-  },
-};
-
 export const BlogProvider: React.FC<BlogProviderProps> = (props) => {
-  const { children, preloadedState = defaultState } = props;
-  const [entries, setEntries] = useState(preloadedState.entries || []);
-  const [pagination, setPagination] = useState(preloadedState.pagination);
+  const { children, preloadedState } = props;
+  const [entries, setEntries] = useState<BlogEntryPreview[]>([]);
+  const [pagination, setPagination] = useState({ offset: 0, total: 0 });
   const [month, setMonth] = useState<Nullable<number>>(null);
   const [year, setYear] = useState<Nullable<number>>(null);
   const [pending, setPending] = useState(false);
@@ -74,6 +66,15 @@ export const BlogProvider: React.FC<BlogProviderProps> = (props) => {
       offset: pagination.offset,
     });
   }, [pagination.offset]);
+
+  useEffect(() => {
+    if (!preloadedState) {
+      return;
+    }
+
+    setEntries(preloadedState.entries);
+    setPagination(preloadedState.pagination);
+  }, [preloadedState]);
 
   return (
     <BlogContext.Provider
