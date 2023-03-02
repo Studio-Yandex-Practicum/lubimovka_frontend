@@ -48,6 +48,7 @@ export const MainHeader: React.VFC<MainHeaderProps> = (props) => {
           alt=""
           layout="fill"
           objectFit="cover"
+          sizes="100vw"
         />
       </div>
       <div
