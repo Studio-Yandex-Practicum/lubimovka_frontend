@@ -5,7 +5,7 @@
   z-index: 1;
   top: var(--height-navbar-tablet-portrait);
   width: $aside-visible-width;
-  height: 100vh;
+  height: calc(100vh - var(--height-navbar-tablet-portrait));
   background-color: var(--light-green);
   grid-area: feed;
   -ms-overflow-style: none;
