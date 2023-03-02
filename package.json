@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint:js": "next lint",
-    "lint:css": "stylelint **/*.css --cache --allow-empty-input --fix",
+    "lint:css": "stylelint src/**/*.css --cache --allow-empty-input --fix",
     "lint": "npm-run-all lint:*",
     "type-check": "tsc --noEmit --incremental",
     "storybook": "start-storybook -s public -p 3001",
