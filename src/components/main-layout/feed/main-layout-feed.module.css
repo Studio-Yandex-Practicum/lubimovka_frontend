@@ -1,30 +1,33 @@
 @import url("../main-layout.vars.module.css");
 
+@value tablet-portrait from "shared/styles/media.module.css";
+
 .root {
   position: sticky;
   z-index: 1;
   top: var(--height-navbar-tablet-portrait);
   width: $aside-visible-width;
-  height: 100vh;
+  height: calc(100vh - var(--height-navbar-tablet-portrait));
   background-color: var(--light-green);
   grid-area: feed;
   -ms-overflow-style: none;
   overflow-x: hidden;
   scrollbar-width: none;
-  transition: margin, width;
   transition-duration: .2s;
+  transition-property: margin, width;
+  transition-timing-function: cubic-bezier(.6, 0, .5, 1);
+
+  @media tablet-portrait {
+    position: static;
+    width: initial;
+    height: initial;
+  }
 
   @media (min-width: $tablet-portrait) {
     &:hover {
       width: $aside-width;
       margin-left: calc($aside-visible-width - $aside-width);
     }
-  }
-
-  @media (max-width: $tablet-portrait) {
-    position: static;
-    width: initial;
-    height: initial;
   }
 
   &::-webkit-scrollbar {
@@ -36,7 +39,7 @@
   width: $aside-width;
   overflow-y: auto;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     width: initial;
   }
 }

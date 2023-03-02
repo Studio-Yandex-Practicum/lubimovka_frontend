@@ -1,10 +1,15 @@
 @value tablet-portrait from "shared/styles/media.module.css";
 
 .image-holder {
+  position: relative;
   width: 100%;
-  height: auto;
   order: 1;
   margin: 0 0 16px;
+  aspect-ratio: 4 / 3;
+
+  @supports not (aspect-ratio: 1) {
+    padding-top: 75%;
+  }
 }
 
 .image {

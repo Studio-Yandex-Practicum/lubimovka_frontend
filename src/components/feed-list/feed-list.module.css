@@ -1,4 +1,6 @@
-.root {
+@value tablet-portrait from "shared/styles/media.module.css";
+
+.common {
   padding: 0;
   margin: 0;
 
@@ -9,5 +11,41 @@
     padding: 0 24px;
     margin: 0 -24px;
     overflow-y: auto;
+  }
+}
+
+.item {
+  display: block;
+
+  @media (max-width: $tablet-portrait) {
+    position: relative;
+    min-width: 302px;
+    border-top: 0;
+
+    &:not(:last-child) {
+      margin-right: 32px;
+    }
+  }
+}
+
+.news {
+  composes: common;
+
+  .item {
+    border-top: 1px solid var(--coal);
+  }
+}
+
+.blog {
+  composes: common;
+
+  .item {
+    &:not(:first-child) {
+      margin-top: 72px;
+
+      @media tablet-portrait {
+        margin-top: 0;
+      }
+    }
   }
 }

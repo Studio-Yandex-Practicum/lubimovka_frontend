@@ -130,7 +130,9 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                   </Link>
                 )}
               >
-                <FeedList>
+                <FeedList
+                  variant={blog ? 'blog' : 'news'}
+                >
                   {blog ? (
                     blog.items.map((entry) => (
                       <FeedList.Item key={entry.id}>
