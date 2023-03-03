@@ -1,10 +1,8 @@
 import entries from 'lodash/entries';
 import Error from 'next/error';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { useIMask } from 'react-imask';
 
 import { AppLayout } from 'components/app-layout';
 import { FormField } from 'components/form-field';
@@ -15,6 +13,7 @@ import { Button } from 'components/ui/button2';
 import { FileInput } from 'components/ui/file-input';
 import Form from 'components/ui/form';
 import { Icon } from 'components/ui/icon';
+import { PhoneNumberInput } from 'components/ui/phone-number-input';
 import TextInput from 'components/ui/text-input';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { postParticipation } from 'services/api/participation';
@@ -45,31 +44,6 @@ const initialFormValues: ParticipationFormFields = {
   file: null,
 };
 
-const phoneMaskOptions = {
-  mask: [
-    {
-      mask: '+0 000 000-00-00',
-      startsWith: '7',
-    },
-    {
-      mask: '+0DD',
-      blocks: {
-        DD: {
-          mask: /^[\d- ()]{0,15}$/
-        },
-      },
-      startsWith: '',
-    },
-  ],
-  dispatch: function (appended: string, dynamicMasked: { value: string; compiledMasks: { startsWith: string }[] }) {
-    const number = (dynamicMasked.value + appended).replace(/\D/g,'');
-
-    return dynamicMasked.compiledMasks.find(function (m) {
-      return number.indexOf(m.startsWith) === 0;
-    });
-  }
-};
-
 const validate = (values: ParticipationFormFields) => {
   const errors = {} as Record<keyof ParticipationFormFields, string>;
 
@@ -94,7 +68,7 @@ const validate = (values: ParticipationFormFields) => {
   } else if (!validYearRegexp.test(values.birthYear)) {
     errors.birthYear = 'Убедитесь, что это значение больше либо равно 1900';
   } else if (values.birthYear > CURRENT_YEAR) {
-    errors.birthYear = `Убедитесь, что это значение больше либо равно ${CURRENT_YEAR}`;
+    errors.birthYear = `Убедитесь, что это значение меньше либо равно ${CURRENT_YEAR}`;
   }
 
   if (!values.city.length) {
@@ -128,7 +102,7 @@ const validate = (values: ParticipationFormFields) => {
   } else if (!validYearRegexp.test(values.year)) {
     errors.year = 'Убедитесь, что это значение больше либо равно 1900';
   } else if (values.year > CURRENT_YEAR) {
-    errors.year = `Убедитесь, что это значение больше либо равно ${CURRENT_YEAR}`;
+    errors.year = `Убедитесь, что это значение меньше либо равно ${CURRENT_YEAR}`;
   }
 
   if (!values.file) {
@@ -145,15 +119,6 @@ const Participation = () => {
     validate: validate,
   });
   const { settings } = usePersistentData();
-
-  const { ref: phoneNumberInputRef } = useIMask<typeof phoneMaskOptions>(phoneMaskOptions, {
-    onAccept: (value) => {
-      if (form.values.phoneNumber === value) {
-        return;
-      }
-      form.setFieldValue('phoneNumber', value);
-    },
-  });
 
   const router = useRouter();
 
@@ -215,14 +180,6 @@ const Participation = () => {
         title="Подать пьесу"
       />
       <PlayProposalLayout>
-        <PlayProposalLayout.Image>
-          <Image
-            src="/images/form/play-script.jpg"
-            alt="Напечатанная читка в руках человека"
-            layout="fill"
-            objectFit="cover"
-          />
-        </PlayProposalLayout.Image>
         <PlayProposalLayout.Column>
           <PlayProposalTitle/>
           <PlayProposalLayout.Form>
@@ -262,6 +219,7 @@ const Participation = () => {
                     <TextInput
                       value={form.values.birthYear}
                       placeholder="Год рождения"
+                      mask="9999"
                       errorText={form.touched.birthYear ? form.errors.birthYear : ''}
                       onChange={(value) => form.setFieldValue('birthYear', value)}
                     />
@@ -285,10 +243,8 @@ const Participation = () => {
                     caption="Номер телефона"
                     hiddenCaption
                   >
-                    <TextInput
-                      inputRef={phoneNumberInputRef}
-                      type="tel"
-                      placeholder="Номер телефона"
+                    <PhoneNumberInput
+                      value={form.values.phoneNumber}
                       errorText={form.touched.phoneNumber ? form.errors.phoneNumber : ''}
                     />
                   </FormField>
@@ -299,6 +255,7 @@ const Participation = () => {
                     hiddenCaption
                   >
                     <TextInput
+                      type="email"
                       value={form.values.email}
                       placeholder="E-mail"
                       errorText={form.touched.email ? form.errors.email : ''}
@@ -329,6 +286,7 @@ const Participation = () => {
                     <TextInput
                       value={form.values.year}
                       placeholder="Год написания"
+                      mask="9999"
                       errorText={form.touched.year ? form.errors.year : ''}
                       onChange={(value) => form.setFieldValue('year', value)}
                     />
