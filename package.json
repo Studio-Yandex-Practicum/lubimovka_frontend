@@ -37,7 +37,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-focus-lock": "2.6.0",
-    "react-hook-mask": "1.1.11"
+    "react-hook-mask": "1.1.11",
+    "swr": "2.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
