@@ -29,7 +29,7 @@ export const PerformanceDetails = (props: PerformanceDetailsProps): JSX.Element 
           {duration}
         </div>
       )}
-      {ageRestriction && (
+      {ageRestriction !== null && ageRestriction !== undefined && (
         <div className={cx('ageRestriction')}>
           {ageRestriction}
           <span>
