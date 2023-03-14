@@ -19,6 +19,10 @@
   margin: auto 0;
   overflow-y: auto;
   pointer-events: none;
+
+  @media (max-width: $tablet-portrait) {
+    display: inline-block;
+  }
 }
 
 .content {

@@ -45,7 +45,7 @@
 
   .close {
     top: 16px;
-    right: 16px;
+    right: 95px;
     width: 40px;
     height: 40px;
     border-radius: 20px;
@@ -54,6 +54,11 @@
     &:hover {
       background-color: var(--coal);
       color: var(--white);
+    }
+
+    @media (max-width: $tablet-portrait) {
+      width: 25px;
+      height: 25px;
     }
   }
 }

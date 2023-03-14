@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import { DialogWindow } from 'components/dialog-window';
-import { ImageCarousel } from 'components/image-carousel';
 import { Modal } from 'components/ui/modal';
+
+import { ImageSlider } from '../ui/image-slider';
 
 import styles from './image-gallery.module.css';
 
@@ -70,20 +71,19 @@ export const ImageGallery: React.VFC<ImageGalleryProps> = (props) => {
           variant="lightbox"
           onClose={toggleFullscreenMode}
         >
-          <ImageCarousel
-            initialSlideIndex={currentSlideIndex}
+          <ImageSlider
+            initialSlide={currentSlideIndex}
           >
-            {items.map(({ url, description = '' }) => (
-              <ImageCarousel.Slide key={url}>
-                <Image
-                  src={url}
-                  alt={description}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </ImageCarousel.Slide>
+            {items.map(({ url, description= '' }) => (
+              <Image
+                key={url}
+                src={url}
+                alt={description}
+                layout="fill"
+                objectFit="cover"
+              />
             ))}
-          </ImageCarousel>
+          </ImageSlider>
         </DialogWindow>
       </Modal>
     </div>
