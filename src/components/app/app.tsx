@@ -1,9 +1,9 @@
 import { ru } from 'date-fns/locale';
 import setDefaultOptions from 'date-fns/setDefaultOptions';
+import { SWRConfig } from 'swr';
 
 import { GoogleAnalyticsScript } from 'components/google-analytics-script';
 import { BlogProvider } from 'providers/blog-provider';
-import { NewsProvider } from 'providers/news-provider';
 import { PersistentDataProvider } from 'providers/persistent-data-provider';
 
 import { googleAnalyticsTrackingId } from '../../../config/env';
@@ -20,7 +20,6 @@ setDefaultOptions({
 
 export const App = ({ Component, pageProps }: AppProps) => {
   const {
-    preloadedNewsState,
     preloadedBlogState,
     ...restPageProps
   } = pageProps;
@@ -30,13 +29,17 @@ export const App = ({ Component, pageProps }: AppProps) => {
       {googleAnalyticsTrackingId && (
         <GoogleAnalyticsScript googleAnalyticsTrackingId={googleAnalyticsTrackingId}/>
       )}
-      <PersistentDataProvider>
-        <NewsProvider preloadedNewsState={preloadedNewsState}>
+      <SWRConfig
+        value={{
+          revalidateIfStale: false
+        }}
+      >
+        <PersistentDataProvider>
           <BlogProvider preloadedState={preloadedBlogState}>
             <Component {...restPageProps}/>
           </BlogProvider>
-        </NewsProvider>
-      </PersistentDataProvider>
+        </PersistentDataProvider>
+      </SWRConfig>
     </>
   );
 };

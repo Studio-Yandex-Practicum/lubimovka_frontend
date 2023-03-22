@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 
 import { entriesPerPage } from 'core/blog';
 import { getBlogEntries } from 'services/api/blog';
-import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
+import { useEffectSkipMount } from 'shared/hooks/use-effect-skip-mount';
 
 import { BlogContext } from './blog-provider.context';
 
@@ -55,11 +55,11 @@ export const BlogProvider: React.FC<BlogProviderProps> = (props) => {
     }));
   }, [pagination]);
 
-  useEffectAfterMount(() => {
+  useEffectSkipMount(() => {
     fetchEntries({ month, year });
   }, [month, year]);
 
-  useEffectAfterMount(() => {
+  useEffectSkipMount(() => {
     fetchEntries({
       month,
       year,

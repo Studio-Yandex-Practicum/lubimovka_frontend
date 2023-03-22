@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
+import isEmpty from 'lodash/isEmpty';
 import Error from 'next/error';
-import { useEffect,useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { AppLayout } from 'components/app-layout/index';
 import { BlogEntryCard } from 'components/blog-entry-card';
@@ -12,14 +13,11 @@ import { Filter } from 'components/filter';
 import { PageTitle } from 'components/page-title';
 import { PaginationSentinel } from 'components/pagination-sentinel';
 import { SEO } from 'components/seo';
-import { Spinner } from 'components/spinner';
 import { Select } from 'components/ui/select';
 import { useBlog } from 'providers/blog-provider';
 import { usePersistentData } from 'providers/persistent-data-provider';
 import { getBlogEntries, getBlogFilters } from 'services/api/blog';
-import { months } from 'shared/constants/months';
-import { isNonEmpty } from 'shared/helpers/is-non-empty';
-import { useIntersection } from 'shared/hooks/use-intersection';
+import { MONTHS } from 'shared/constants/months';
 
 import type { SelectOptionCheckHandler } from 'components/ui/select';
 import type { InferGetServerSidePropsType } from 'next';
@@ -44,9 +42,7 @@ const Blog: React.FC<BlogProps> = (props) => {
 
   const { settings } = usePersistentData();
 
-  const [paginationSentinelRef, shouldLoadEntries] = useIntersection<HTMLLIElement>();
-
-  const monthOptions = useMemo(() => months.map((month, index) => ({
+  const monthOptions = useMemo(() => MONTHS.map((month, index) => ({
     text: month,
     value: index + 1,
   })), []);
@@ -76,12 +72,6 @@ const Blog: React.FC<BlogProps> = (props) => {
 
     setYear(value);
   };
-
-  useEffect(() => {
-    if (!pending && shouldLoadEntries) {
-      loadMoreEntries();
-    }
-  }, [shouldLoadEntries]);
 
   if (errorOccurred) {
     return (
@@ -143,7 +133,7 @@ const Blog: React.FC<BlogProps> = (props) => {
             </Filter>
           </BlogLayout.Filter>
           <BlogLayout.Main>
-            {(!pending || (pending && pagination.offset > 0)) && isNonEmpty(entries) && (
+            {(!pending || (pending && pagination.offset > 0)) && !isEmpty(entries) && (
               <>
                 <BlogEntryList>
                   {entries.map((entry) => (
@@ -159,16 +149,16 @@ const Blog: React.FC<BlogProps> = (props) => {
                     </BlogEntryList.Item>
                   ))}
                 </BlogEntryList>
-                <PaginationSentinel ref={paginationSentinelRef}/>
+                <PaginationSentinel
+                  pending={pending}
+                  loadMoreCallback={loadMoreEntries}
+                />
               </>
             )}
-            {!pending && !isNonEmpty(entries) && (
+            {!pending && isEmpty(entries) && (
               <p className={cx('no-result')}>
                 Ничего не найдено.
               </p>
-            )}
-            {pending && (
-              <Spinner className={cx('spinner')}/>
             )}
           </BlogLayout.Main>
         </BlogLayout>

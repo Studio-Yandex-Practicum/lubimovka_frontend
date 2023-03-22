@@ -24,7 +24,7 @@ import { getPlayFilters,getPlays } from 'services/api/plays';
 import breakpoints from 'shared/breakpoints';
 import { objectMap } from 'shared/helpers/object-map';
 import { remToPx } from 'shared/helpers/rem-to-px';
-import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
+import { useEffectSkipMount } from 'shared/hooks/use-effect-skip-mount';
 import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 
@@ -132,7 +132,7 @@ const Plays = (props: PlaysViewProps) => {
     setFilterDialogOpen(false);
   }, []);
 
-  useEffectAfterMount(() => {
+  useEffectSkipMount(() => {
     if (!shouldLoadMorePlays || !pagination.next) {
       return;
     }
@@ -143,7 +143,7 @@ const Plays = (props: PlaysViewProps) => {
     }));
   }, [shouldLoadMorePlays, pagination.next]);
 
-  useEffectAfterMount(() => {
+  useEffectSkipMount(() => {
     if (isMobile && (isFilterDialogOpen || isEqual(savedFilterState.current, filterState))) {
       return;
     }

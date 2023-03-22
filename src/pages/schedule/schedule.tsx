@@ -15,7 +15,7 @@ import { SEO } from 'components/seo';
 import { ScheduleMode } from 'core/schedule';
 import { getSchedule, getScheduleMeta } from 'services/api/schedule';
 import { isNonEmpty } from 'shared/helpers/is-non-empty';
-import { useEffectAfterMount } from 'shared/hooks/use-effect-after-mount';
+import { useEffectSkipMount } from 'shared/hooks/use-effect-skip-mount';
 import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
 
 import type { Event } from 'core/schedule';
@@ -77,7 +77,7 @@ const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
     setSelectedTabIndex(tabIndex);
   };
 
-  useEffectAfterMount(() => {
+  useEffectSkipMount(() => {
     if (!shouldLoadMoreEvents) {
       return;
     }
@@ -85,7 +85,7 @@ const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
     handleShouldLoadMoreEvents();
   }, [shouldLoadMoreEvents]);
 
-  useEffectAfterMount(() => {
+  useEffectSkipMount(() => {
     fetchSchedule({
       limit: EVENTS_PER_PAGE,
       offset: EVENTS_PER_PAGE * (pagination.currentPage - 1),
