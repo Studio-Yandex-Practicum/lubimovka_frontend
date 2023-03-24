@@ -4,7 +4,6 @@ import { SWRConfig } from 'swr';
 
 import { GoogleAnalyticsScript } from 'components/google-analytics-script';
 import { BlogProvider } from 'providers/blog-provider';
-import { PersistentDataProvider } from 'providers/persistent-data-provider';
 
 import { googleAnalyticsTrackingId } from '../../../config/env';
 
@@ -34,11 +33,9 @@ export const App = ({ Component, pageProps }: AppProps) => {
           revalidateIfStale: false
         }}
       >
-        <PersistentDataProvider>
-          <BlogProvider preloadedState={preloadedBlogState}>
-            <Component {...restPageProps}/>
-          </BlogProvider>
-        </PersistentDataProvider>
+        <BlogProvider preloadedState={preloadedBlogState}>
+          <Component {...restPageProps}/>
+        </BlogProvider>
       </SWRConfig>
     </>
   );

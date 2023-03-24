@@ -15,8 +15,8 @@ import { PaginationSentinel } from 'components/pagination-sentinel';
 import { SEO } from 'components/seo';
 import { Select } from 'components/ui/select';
 import { useBlog } from 'providers/blog-provider';
-import { usePersistentData } from 'providers/persistent-data-provider';
 import { getBlogEntries, getBlogFilters } from 'services/api/blog';
+import { useSettings } from 'services/api/settings-adapter';
 import { MONTHS } from 'shared/constants/months';
 
 import type { SelectOptionCheckHandler } from 'components/ui/select';
@@ -40,7 +40,7 @@ const Blog: React.FC<BlogProps> = (props) => {
     errorOccurred,
   } = useBlog();
 
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
 
   const monthOptions = useMemo(() => MONTHS.map((month, index) => ({
     text: month,

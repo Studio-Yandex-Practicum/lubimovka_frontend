@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { Button } from 'components/ui/button';
-import { usePersistentData } from 'providers/persistent-data-provider';
+import { useSettings } from 'services/api/settings-adapter';
 import * as breakpoints from 'shared/breakpoints';
 import { participationFormPath } from 'shared/constants/participation-form-path';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
@@ -12,7 +12,7 @@ import Logo from 'shared/images/full-logo.svg';
 import classes from './NotFoundError.module.css';
 
 export default function NotFoundError() {
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
   return (

@@ -16,7 +16,7 @@ import { Modal } from 'components/ui/modal';
 import { SliderDots } from 'components/ui/slider-dots';
 import { VolunteerList } from 'components/volunteer-list';
 import { VolunteerSection } from 'components/volunteer-section';
-import { usePersistentData } from 'providers/persistent-data-provider';
+import { useSettings } from 'services/api/settings-adapter';
 import { fetcher } from 'services/fetcher';
 
 import type { FestivalTeams, Volunteers } from '__generated__/api-typings';
@@ -40,7 +40,7 @@ const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   const [currentItemIndex, setCurrenItemIndex] = useState(0);
   const [feedbackDialogOpen, setFeedbackDialogOpen] = useState(false);
 
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
 
   const showFeedbackDialog = (index: number) => () => {
     setCurrenItemIndex(index);

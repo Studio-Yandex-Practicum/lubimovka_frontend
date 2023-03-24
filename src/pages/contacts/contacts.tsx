@@ -11,7 +11,7 @@ import Form from 'components/ui/form/form';
 import { Icon } from 'components/ui/icon';
 import TextArea from 'components/ui/text-area';
 import TextInput from 'components/ui/text-input/text-input';
-import { usePersistentData } from 'providers/persistent-data-provider';
+import { useSettings } from 'services/api/settings-adapter';
 import { fetcher } from 'services/fetcher';
 import { validEmailRegexp } from 'shared/constants/regexps';
 
@@ -81,7 +81,7 @@ const contactFormReducer = (state: ContactFormState, action: ContactFormAction) 
 const Contacts: NextPage = () => {
   const [contactFormState, dispatch] = useReducer(contactFormReducer, initialContactFormState);
   const [formSuccessfullySent, setFormSuccessfullySent] = useState(false);
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
 
   const {
     name,

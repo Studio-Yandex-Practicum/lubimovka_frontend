@@ -1,3 +1,4 @@
+import isEmpty from 'lodash/isEmpty';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -13,14 +14,14 @@ import { PartnerList } from 'components/partner-list';
 import { BurgerButton } from 'components/ui/burger-button';
 import { Icon } from 'components/ui/icon';
 import { Menu } from 'components/ui/menu';
-import { usePersistentData } from 'providers/persistent-data-provider';
+import { usePartners } from 'services/api/partners-adapter';
+import { useSettings } from 'services/api/settings-adapter';
 import * as breakpoints from 'shared/breakpoints.js';
 import { donationPath } from 'shared/constants/donation-path';
 import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
 import { participationFormPath } from 'shared/constants/participation-form-path';
 import { socialLinkItems } from 'shared/constants/social-link-items';
-import { isNonEmpty } from 'shared/helpers/is-non-empty';
 import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 
@@ -30,6 +31,7 @@ interface AppLayoutProps {
   customNavbar?: React.ReactNode
   navbarProps?: Pick<NavbarProps, 'colors'>
   navbarAddon?: React.ReactNode
+  hiddenPartners?: boolean
 }
 
 export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (props) => {
@@ -38,9 +40,10 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
     customNavbar,
     navbarProps,
     navbarAddon,
+    hiddenPartners,
   } = props;
-
-  const { projects, generalPartners, settings } = usePersistentData();
+  const { settings } = useSettings();
+  const { partners } = usePartners({ onlyGeneral: true });
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
@@ -111,10 +114,10 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
       {children}
       <Page.Footer>
         <Footer privacyPolicyUrl={settings?.privacyPolicyUrl}>
-          {isNonEmpty(generalPartners) && (
+          {!hiddenPartners && partners && !isEmpty(partners) && (
             <Footer.Partners>
               <PartnerList size="s">
-                {generalPartners.map((partner) => (
+                {partners.map((partner) => (
                   <PartnerList.Item key={partner.name}>
                     <PartnerCard
                       variant="compact"
@@ -142,12 +145,12 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
             </Menu>
           </Footer.Navigation>
           <Footer.Projects>
-            {isNonEmpty(projects) && (
+            {!isEmpty(settings?.projects) && (
               <Menu type="footer-project-list">
                 <Menu.Item href="/projects">
                   Все проекты
                 </Menu.Item>
-                {projects.map((item) => (
+                {settings?.projects.map((item) => (
                   <Menu.Item
                     key={item.id}
                     href={`/projects/${item.id}`}

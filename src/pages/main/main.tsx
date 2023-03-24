@@ -24,7 +24,7 @@ import { TeaserList } from 'components/teaser-list';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 import { PartnerType } from 'core/partner';
-import { getPartners } from 'services/api/partners';
+import { fetchPartners } from 'services/api/partners-adapter';
 import { fetcher } from 'services/fetcher';
 
 import type { Main as MainPageData } from '__generated__/api-typings';
@@ -50,6 +50,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     <>
       <SEO title="Главная"/>
       <AppLayout
+        hiddenPartners
         {...first_screen && {
           customNavbar: (
             <MainHeader
@@ -254,7 +255,7 @@ export const getServerSideProps = async () => {
   const pageData = await fetcher<MainPageData>('/main/');
 
   try {
-    partners = await getPartners();
+    partners = await fetchPartners();
   } catch {
     // ничего не делаем
   }
