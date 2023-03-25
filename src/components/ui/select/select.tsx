@@ -11,11 +11,10 @@ export type SelectOption<ValueType = string | number> = {
   value: ValueType
 }
 
-export type SelectOptionCheckHandler<ValueType = string | number> = (option: SelectOption<ValueType | null>) => void
+export type SelectOptionCheckHandler<ValueType = string | number> = (option: SelectOption<ValueType>) => void
 
 interface SelectProps<T> {
   colors?: 'default' | 'brand'
-  clearable?: boolean
   placeholder: string
   options: SelectOption<T>[]
   selectedOption?: SelectOption<T>
@@ -24,15 +23,9 @@ interface SelectProps<T> {
 
 const cx = classNames.bind(styles);
 
-const emptyOption = {
-  text: '-',
-  value: null,
-};
-
 export const Select = <ValueType,>(props: SelectProps<ValueType>) => {
   const {
     colors = 'default',
-    clearable = false,
     placeholder,
     options,
     selectedOption,
@@ -41,7 +34,7 @@ export const Select = <ValueType,>(props: SelectProps<ValueType>) => {
 
   const [opened, setOpened] = useState(false);
 
-  const handleOptionCheck = (option: SelectOption<ValueType | null>) => () => {
+  const handleOptionCheck = (option: SelectOption<ValueType>) => () => {
     if (onChange) {
       onChange(option);
     }
@@ -79,14 +72,6 @@ export const Select = <ValueType,>(props: SelectProps<ValueType>) => {
       onClose={handleDropdownClose}
     >
       <ul className={cx('list')}>
-        {clearable && selectedOption && (
-          <li
-            className={cx('option-regular')}
-            onMouseDown={handleOptionCheck(emptyOption)}
-          >
-            {emptyOption.text}
-          </li>
-        )}
         {options.map((option) => (
           <li
             key={`${option.value}`}

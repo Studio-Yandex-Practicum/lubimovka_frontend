@@ -1,1 +1,1 @@
-export const entriesPerPage = 12;
+export const BLOG_ENTRIES_PER_PAGE = 12;

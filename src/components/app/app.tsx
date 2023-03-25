@@ -3,7 +3,6 @@ import setDefaultOptions from 'date-fns/setDefaultOptions';
 import { SWRConfig } from 'swr';
 
 import { GoogleAnalyticsScript } from 'components/google-analytics-script';
-import { BlogProvider } from 'providers/blog-provider';
 
 import { googleAnalyticsTrackingId } from '../../../config/env';
 
@@ -19,7 +18,6 @@ setDefaultOptions({
 
 export const App = ({ Component, pageProps }: AppProps) => {
   const {
-    preloadedBlogState,
     ...restPageProps
   } = pageProps;
 
@@ -33,9 +31,7 @@ export const App = ({ Component, pageProps }: AppProps) => {
           revalidateIfStale: false
         }}
       >
-        <BlogProvider preloadedState={preloadedBlogState}>
-          <Component {...restPageProps}/>
-        </BlogProvider>
+        <Component {...restPageProps}/>
       </SWRConfig>
     </>
   );
