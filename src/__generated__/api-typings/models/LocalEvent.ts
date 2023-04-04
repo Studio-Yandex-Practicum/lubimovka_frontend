@@ -8,6 +8,6 @@
 export type LocalEvent = {
     readonly id: number;
     date_time?: string | null;
-    action_url: string;
+    action_url?: string | null;
     action_text: string;
 };

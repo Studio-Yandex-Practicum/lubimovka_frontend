@@ -16,6 +16,6 @@ export type EventInBlock = {
     type: event_type;
     event_body: Event;
     date_time?: string | null;
-    action_url: string;
+    action_url?: string | null;
     action_text: string;
 };

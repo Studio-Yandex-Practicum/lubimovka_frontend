@@ -17,4 +17,5 @@ export type Settings = {
     for_press: ForPress;
     plays_reception_is_open: boolean;
     projects: Array<ProjectList>;
+    email_to_send_questions: string;
 };
