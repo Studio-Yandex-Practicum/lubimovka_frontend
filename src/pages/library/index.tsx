@@ -25,7 +25,6 @@ import breakpoints from 'shared/breakpoints';
 import { objectMap } from 'shared/helpers/object-map';
 import { remToPx } from 'shared/helpers/rem-to-px';
 import { useEffectSkipMount } from 'shared/hooks/use-effect-skip-mount';
-import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
@@ -54,7 +53,6 @@ const Plays = (props: PlaysViewProps) => {
   const [plays, setPlays] = useState(props.plays);
 
   const [pagination, setPagination] = useState(props.pagination);
-  const [paginationSentinelRef, shouldLoadMorePlays] = useIntersectionObserver({ rootMargin: '0px 0px 50% 0px' });
 
   const [isFilterDialogOpen, setFilterDialogOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
@@ -132,8 +130,8 @@ const Plays = (props: PlaysViewProps) => {
     setFilterDialogOpen(false);
   }, []);
 
-  useEffectSkipMount(() => {
-    if (!shouldLoadMorePlays || !pagination.next) {
+  const handleLoadMore = () => {
+    if (!pagination.next) {
       return;
     }
 
@@ -141,7 +139,7 @@ const Plays = (props: PlaysViewProps) => {
       ...pagination,
       currentPage: pagination.currentPage + 1,
     }));
-  }, [shouldLoadMorePlays, pagination.next]);
+  };
 
   useEffectSkipMount(() => {
     if (isMobile && (isFilterDialogOpen || isEqual(savedFilterState.current, filterState))) {
@@ -356,7 +354,9 @@ const Plays = (props: PlaysViewProps) => {
               ))}
             </PlayList>
             {!processing && isFiltersApplied && (
-              <PaginationSentinel ref={paginationSentinelRef}/>
+              <PaginationSentinel
+                loadMoreCallback={handleLoadMore}
+              />
             )}
           </LibraryLayout.Slot>
           {isMobile && (

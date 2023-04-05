@@ -9,12 +9,15 @@ import styles from './pagination-sentinel.module.css';
 const cx = classNames.bind(styles);
 
 interface PaginationSentinelProps {
-  pending: boolean
+  pending?: boolean
   loadMoreCallback: () => void
 }
 
 export const PaginationSentinel: React.VFC<PaginationSentinelProps> = (props) => {
-  const { pending, loadMoreCallback } = props;
+  const {
+    pending = false,
+    loadMoreCallback,
+  } = props;
   const [sentinelRef, sentinelIsOnScreen] = useIntersection<HTMLSpanElement>();
 
   useEffect(() => {
