@@ -5,15 +5,15 @@ import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 
 import type { CreditsRole } from 'components/credits-list';
-import type { VFC } from 'react';
 
 import styles from './festival-event-card.module.css';
 
 export interface FestivalEventCardProps {
   image?: Url
   time: string
+  location: string
   title: string
-  description: string
+  description?: string
   credits: CreditsRole[]
   actionUrl?: Url
   className?: string
@@ -21,10 +21,11 @@ export interface FestivalEventCardProps {
 
 const cx = classNames.bind(styles);
 
-export const FestivalEventCard: VFC<FestivalEventCardProps> = (props) => {
+export const FestivalEventCard: React.VFC<FestivalEventCardProps> = (props) => {
   const {
     image,
     time,
+    location,
     title,
     description,
     credits,
@@ -55,10 +56,18 @@ export const FestivalEventCard: VFC<FestivalEventCardProps> = (props) => {
         <dd className={cx('time')}>
           {time}
         </dd>
+        <dt className={cx('hiddenText')}>
+          Место
+        </dt>
+        <dd className={cx('location')}>
+          {location}
+        </dd>
       </dl>
-      <p className={cx('description')}>
-        {description}
-      </p>
+      {description && (
+        <p className={cx('description')}>
+          {description}
+        </p>
+      )}
       <CreditsList
         size="s"
         className={cx('credits')}

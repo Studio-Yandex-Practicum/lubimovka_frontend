@@ -71,12 +71,12 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
         />
         <PerformanceLayout.Events>
           <PerformanceEventList>
-            {events.map(({ date, actionText, actionUrl }) => (
+            {events.map((event) => (
               <PerformanceEventList.Item
-                key={date}
-                actionText={actionText}
-                actionUrl={actionUrl}
-                {...date && { date: format(new Date(date), 'd MMMM H:mm') }}
+                key={event.date}
+                actionText={event.actionText}
+                actionUrl={event.actionUrl}
+                date={format(new Date(event.date), 'd MMMM H:mm')}
               />
             ))}
           </PerformanceEventList>
@@ -246,10 +246,10 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
 };
 
 function toEvents(events: LocalEvent[]) {
-  return events.map(({ date_time, action_text, action_url }) => ({
-    date: date_time,
-    actionText: action_text,
-    actionUrl: action_url,
+  return events.map((event) => ({
+    date: event.date_time as string, // TODO: уточнить у бекенда, почему дата события может быть опциональной
+    actionText: event.action_text ?? undefined,
+    actionUrl: event.action_url ?? undefined,
   }));
 }
 

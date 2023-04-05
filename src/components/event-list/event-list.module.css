@@ -12,6 +12,7 @@
 
 .item {
   display: block;
+  box-sizing: border-box;
 }
 
 .compact {

@@ -77,7 +77,6 @@
   grid-area: announce;
 
   @media tablet-portrait {
-    padding: 0;
-    justify-self: flex-end;
+    padding-left: 120px;
   }
 }

@@ -17,10 +17,11 @@ interface EventCardProps {
   date: string
   time: string
   title: string
+  type: string
   team: CreditsRole[]
   description?: string
-  projectTitle?: string
-  performanceUrl?: string
+  aboutText?: string
+  aboutUrl?: string
   actionUrl: Url
   actionText: string
 }
@@ -33,10 +34,11 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
     date,
     time,
     title,
+    type,
     team,
     description,
-    projectTitle,
-    performanceUrl,
+    aboutUrl,
+    aboutText,
     actionUrl,
     actionText,
     className
@@ -76,24 +78,18 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
           roles={team}
         />
         {description && (
-          <div className={cx('description')}>
-            <p>
-              {description}
-            </p>
-            {projectTitle && (
-              <p>
-                читка проекта
-                {' '}
-                {projectTitle}
-              </p>
-            )}
-          </div>
+          <p className={cx('description')}>
+            {description}
+          </p>
         )}
+        <p className={cx('type')}>
+          {type}
+        </p>
       </div>
       <div className={cx('actions')}>
-        {performanceUrl && (
+        {aboutUrl && aboutText && (
           <Link
-            href={performanceUrl}
+            href={aboutUrl}
             passHref
           >
             <Button
@@ -109,7 +105,7 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
                 />
               )}
             >
-              О спектакле
+              {aboutText}
             </Button>
           </Link>
         )}
