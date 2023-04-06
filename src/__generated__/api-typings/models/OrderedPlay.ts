@@ -4,6 +4,9 @@
 
 import type { AuthorForPlay } from './AuthorForPlay';
 
+/**
+ * Serializer mixin to generate URLs with domain.
+ */
 export type OrderedPlay = {
     readonly id: number;
     name: string;

@@ -19,6 +19,7 @@ export type AfishaEventListOutput = {
      */
     readonly event_body: Event_Type_objects;
     date_time: string;
-    action_url: string;
-    action_text: string;
+    readonly action_url: string;
+    readonly action_text: string;
+    opening_date_time: string;
 };

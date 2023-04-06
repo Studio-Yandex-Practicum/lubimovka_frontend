@@ -10,7 +10,7 @@ import { PlayCard } from 'components/play-card';
 import { PlayList } from 'components/play-list';
 import { Section } from 'components/section';
 import { SEO } from 'components/seo';
-import { usePersistentData } from 'providers/persistent-data-provider';
+import { useSettings } from 'services/api/settings-adapter';
 import { fetcher } from 'services/fetcher';
 import * as breakpoints from 'shared/breakpoints.js';
 import { notFoundResult } from 'shared/constants/server-side-props';
@@ -24,7 +24,7 @@ const cx = cn.bind(styles);
 
 const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
 
   const {
     name,

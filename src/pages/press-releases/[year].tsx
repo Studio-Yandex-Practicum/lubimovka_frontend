@@ -15,8 +15,8 @@ import { SEO } from 'components/seo';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 import { Select } from 'components/ui/select';
-import { usePersistentData } from 'providers/persistent-data-provider';
 import { getFestivalYears, getPressRelease } from 'services/api/press-releases';
+import { useSettings } from 'services/api/settings-adapter';
 import { isNonEmpty } from 'shared/helpers/is-non-empty';
 
 import type { SelectOptionCheckHandler } from 'components/ui/select';
@@ -30,7 +30,7 @@ enum SearchParam {
 
 const PressRelease = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
 
   const {
     festivalYearOptions,

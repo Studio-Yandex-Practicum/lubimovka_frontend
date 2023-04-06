@@ -51,7 +51,7 @@ export const FestivalEventTabs: React.FC<FestivalEventTabsProps> = (props) => {
         />
       </div>
       {tabs.map((tab, currentTabIndex) => (
-        cloneElement(tab, { hidden: currentTabIndex !== selectedTabIndex })
+        cloneElement(tab, { active: currentTabIndex === selectedTabIndex })
       ))}
     </div>
   );

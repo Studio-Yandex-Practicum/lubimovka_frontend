@@ -12,6 +12,6 @@ export type EventPerformance = {
     name: string;
     description?: string;
     team: Array<Role>;
-    image: string;
+    image?: string;
     readonly project_title: string;
 };

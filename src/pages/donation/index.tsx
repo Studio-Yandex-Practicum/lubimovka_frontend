@@ -3,12 +3,12 @@ import { DonationPageTitle } from 'components/donation-page/donationPageTitle';
 import { Opportunities } from 'components/donation-page/opportunities';
 import { Report } from 'components/donation-page/report';
 import { SEO } from 'components/seo';
-import { usePersistentData } from 'providers/persistent-data-provider';
+import { useSettings } from 'services/api/settings-adapter';
 
 import mockData from './assets/mock-donation-data.json';
 
 const Donation = () => {
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
 
   return (
     <AppLayout>

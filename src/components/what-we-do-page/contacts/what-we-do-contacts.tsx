@@ -2,7 +2,7 @@ import cn from 'classnames/bind';
 
 import { Icon } from 'components/ui/icon';
 import { InfoLink } from 'components/ui/info-link';
-import { usePersistentData } from 'providers/persistent-data-provider';
+import { useSettings } from 'services/api/settings-adapter';
 
 import styles from './what-we-do-contacts.module.css';
 
@@ -10,7 +10,7 @@ const cx = cn.bind(styles);
 
 export const WhatWeDoContacts = () => {
   // TODO: отрефакторить компонент, передавать email в качестве пропса
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
 
   if (!settings?.emailAddresses.forDirectors) {
     return null;

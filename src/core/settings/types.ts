@@ -1,3 +1,5 @@
+import type { Project } from 'core/project';
+
 export type Settings = {
   emailAddresses: {
     forDirectorsAndActors: Email
@@ -17,4 +19,5 @@ export type Settings = {
   }
   canProposePlay: boolean
   privacyPolicyUrl: Url
+  projects: Omit<Project, 'image' | 'description'>[]
 }

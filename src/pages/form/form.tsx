@@ -15,8 +15,8 @@ import Form from 'components/ui/form';
 import { Icon } from 'components/ui/icon';
 import { PhoneNumberInput } from 'components/ui/phone-number-input';
 import TextInput from 'components/ui/text-input';
-import { usePersistentData } from 'providers/persistent-data-provider';
 import { postParticipation } from 'services/api/participation';
+import { useSettings } from 'services/api/settings-adapter';
 import { isHttpRequestError } from 'services/fetcher';
 import {
   validEmailRegexp,
@@ -118,7 +118,7 @@ const Participation = () => {
     initialValues: initialFormValues,
     validate: validate,
   });
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
 
   const router = useRouter();
 

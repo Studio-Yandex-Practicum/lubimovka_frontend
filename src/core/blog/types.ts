@@ -8,6 +8,6 @@ export type BlogEntryPreview = {
 };
 
 export type BlogFilters = {
-  year: number[]
-  month: number[]
+  month?: string
+  year?: string
 }

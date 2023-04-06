@@ -7,3 +7,8 @@ export type Partner = {
   type: keyof typeof PartnerType
   url: Url
 }
+
+export type PartnerFilters = {
+  onlyGeneral?: boolean
+  type?: keyof typeof PartnerType
+};

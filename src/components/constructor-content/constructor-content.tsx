@@ -16,13 +16,13 @@ import { ImageSlider } from 'components/ui/image-slider';
 import { PersonCard } from 'components/ui/person-card';
 import { Video } from 'components/video';
 import { VideoList } from 'components/video-list';
+import { EventType } from 'core/schedule';
 
 import { ConstructorBlockType } from './constructor-content.const';
 import { ConstructorContentContextProvider } from './constructor-content.context';
 import { ConstructorContentSection } from './section';
 
 import type { ConstructorBlock } from './constructor-content.types';
-import type { FC } from 'react';
 
 import defaultStyles from './variant/default.module.css';
 
@@ -40,7 +40,7 @@ const variants = {
   default: defaultStyles,
 };
 
-export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
+export const ConstructorContent: React.FC<ConstructorContentProps> = (props) => {
   const {
     variant = Variant.Default,
     blocks,
@@ -145,12 +145,19 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                     time: format(new Date(content_item.items[0].date_time), 'H:mm'),
                   }}
                   title={content_item.items[0].event_body.name}
+                  type={(content_item.items[0].type === EventType.Performance && 'Спектакль')
+                    || (content_item.items[0].type === EventType.Workshop && 'Мастер-класс')
+                    || (content_item.items[0].type === EventType.Reading && `Читка${content_item.items[0].event_body.project_title
+                      ? ` проекта ${content_item.items[0].event_body.project_title}`
+                      : ''}`)
+                    || ''}
                   team={content_item.items[0].event_body.team}
                   imageUrl={content_item.items[0].event_body.image}
                   projectTitle={content_item.items[0].event_body.project_title}
                   description={content_item.items[0].event_body.description}
                   {...content_item.items[0].type === 'PERFORMANCE' ? {
-                    performanceUrl: `/performances/${content_item.items[0].event_body.id}`,
+                    aboutUrl: `/performances/${content_item.items[0].event_body.id}`,
+                    aboutText: 'О спектакле',
                   } : {}}
                   actionUrl={content_item.items[0].action_url}
                   actionText={content_item.items[0].action_text}
@@ -185,12 +192,17 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                           time: format(new Date(date_time), 'H:mm'),
                         }}
                         title={name}
+                        type={(type === EventType.Performance && 'Спектакль')
+                          || (type === EventType.Workshop && 'Мастер-класс')
+                          || (type === EventType.Reading && `Читка${project_title ? ` проекта ${project_title}` : ''}`)
+                          || ''}
                         team={team}
                         imageUrl={image}
                         projectTitle={project_title}
                         description={description}
                         {...type === 'PERFORMANCE' ? {
-                          performanceUrl: `/performances/${performanceId}`,
+                          aboutUrl: `/performances/${performanceId}`,
+                          aboutText: 'О спектакле',
                         } : {}}
                         actionUrl={action_url}
                         actionText={action_text}

@@ -24,7 +24,8 @@ import { TeaserList } from 'components/teaser-list';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 import { PartnerType } from 'core/partner';
-import { getPartners } from 'services/api/partners';
+import { EventType } from 'core/schedule';
+import { fetchPartners } from 'services/api/partners-adapter';
 import { fetcher } from 'services/fetcher';
 
 import type { Main as MainPageData } from '__generated__/api-typings';
@@ -50,6 +51,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     <>
       <SEO title="Главная"/>
       <AppLayout
+        hiddenPartners
         {...first_screen && {
           customNavbar: (
             <MainHeader
@@ -89,11 +91,15 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                         date={format(new Date(event.date_time), 'd MMMM')}
                         time={format(new Date(event.date_time), 'H:mm')}
                         title={event.event_body.name}
+                        type={(event.type === EventType.Performance && 'Спектакль')
+                          || (event.type === EventType.Workshop && 'Мастер-класс')
+                          || (event.type === EventType.Reading && `Читка${event.event_body.project_title ? ` проекта ${event.event_body.project_title}` : ''}`)
+                          || ''}
                         team={event.event_body.team}
-                        projectTitle={event.event_body.project_title}
                         description={event.event_body.description}
                         {...event.type === 'PERFORMANCE' ? {
-                          performanceUrl: `/performances/${event.event_body.id}`,
+                          aboutText: 'О спектакле',
+                          aboutUrl: `/performances/${event.event_body.id}`,
                         } : {}}
                         actionUrl={event.action_url}
                         actionText={event.action_text}
@@ -254,7 +260,7 @@ export const getServerSideProps = async () => {
   const pageData = await fetcher<MainPageData>('/main/');
 
   try {
-    partners = await getPartners();
+    partners = await fetchPartners();
   } catch {
     // ничего не делаем
   }

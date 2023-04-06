@@ -8,9 +8,9 @@ import type { FC } from 'react';
 import styles from './performance-event-list-item.module.css';
 
 interface PerformanceEventListProps {
-  date?: string
-  actionUrl: Url
-  actionText: string
+  date: string
+  actionUrl?: Url
+  actionText?: string
 }
 
 const cx = classNames.bind(styles);
@@ -29,26 +29,28 @@ export const PerformanceEventListItem: FC<PerformanceEventListProps> = (props) =
           {date}
         </time>
       )}
-      <div>
-        <Button
-          className={cx('action')}
-          border="full"
-          size="l"
-          upperCase
-          icon={(
-            <Icon
-              glyph="arrow-right"
-              width="100%"
-              height="100%"
-            />
-          )}
-          iconPosition="right"
-          href={actionUrl}
-          target="_blank"
-        >
-          {actionText}
-        </Button>
-      </div>
+      {actionText && actionUrl && (
+        <div>
+          <Button
+            className={cx('action')}
+            border="full"
+            size="l"
+            upperCase
+            icon={(
+              <Icon
+                glyph="arrow-right"
+                width="100%"
+                height="100%"
+              />
+            )}
+            iconPosition="right"
+            href={actionUrl}
+            target="_blank"
+          >
+            {actionText}
+          </Button>
+        </div>
+      )}
     </li>
   );
 };

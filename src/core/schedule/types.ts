@@ -1,15 +1,15 @@
-import type { ScheduleMode, EventType } from './constants';
+import type { ScheduleMode } from './constants';
 
 export type ScheduleMeta = {
-  mode: ScheduleMode.Festival
-  scheduleAnnounce: string
-  scheduleNote?: string
-  registrationAnnounce?: string
-} | {
   mode: ScheduleMode.Regular
   scheduleAnnounce: string
   scheduleNote?: never
   registrationAnnounce?: never
+} | {
+  mode: ScheduleMode.Festival
+  scheduleAnnounce: string
+  scheduleNote?: string
+  registrationAnnounce?: string
 }
 
 type EventPersonGroup = {
@@ -17,29 +17,29 @@ type EventPersonGroup = {
   persons: string[]
 }
 
-type EventConditionalParams = {
-  type: `${EventType.Reading}`
-  project: string
-  performanceId: string
-  coverImageUrl?: never
-} | {
-  type: `${EventType.Workshop}`
-  project?: never
-  performanceId?: never
-  coverImageUrl?: never
-} | {
-  type: `${EventType.Performance}`
-  coverImageUrl: Url
-  project?: never
-  performanceId?: never
+export type RegularEvent = {
+  id: number
+  type: string
+  title: string
+  description?: string
+  artworkUrl?: Url
+  team: EventPersonGroup[]
+  date: DateTimeIsoString
+  performanceId?: number
+  aboutText?: string
+  aboutUrl?: Url
+  actionText: string
+  actionUrl: Url
 }
 
-export type Event = {
+export type FestivalEvent = {
   id: number
   title: string
   description?: string
-  date: DateTimeIsoString
+  location: string
+  artworkUrl?: Url
   team: EventPersonGroup[]
-  actionText: string
-  actionUrl: Url
-} & EventConditionalParams
+  date: DateTimeIsoString
+  registrationOpeningDate: DateTimeIsoString
+  registrationUrl?: Url
+}

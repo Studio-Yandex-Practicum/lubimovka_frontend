@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export const useEffectAfterMount = (effect: React.EffectCallback, deps?: React.DependencyList) => {
+export const useEffectSkipMount = (effect: React.EffectCallback, deps?: React.DependencyList) => {
   const mounted = useRef(false);
 
   useEffect(() => {
