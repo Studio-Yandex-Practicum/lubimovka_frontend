@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useReducer, useState } from 'react';
+import { useState } from 'react';
 
 import { AppLayout } from 'components/app-layout';
 import { CallToEmail } from 'components/call-to-email';
@@ -11,149 +11,75 @@ import Form from 'components/ui/form/form';
 import { Icon } from 'components/ui/icon';
 import TextArea from 'components/ui/text-area';
 import TextInput from 'components/ui/text-input/text-input';
-import { useSettings } from 'services/api/settings-adapter';
 import { fetcher } from 'services/fetcher';
 import { validEmailRegexp } from 'shared/constants/regexps';
 
+import { useSettings } from '../../services/api/settings-adapter';
+import { useForm } from '../../shared/hooks/use-form';
+
 import type { NextPage } from 'next';
-
-interface ContactFormFields {
-  name: string
-  email: string
-  message: string
-}
-
-enum ContactFormActionTypes {
-  FieldChange,
-  FieldError,
-  Reset,
-}
-
-type ContactFormAction<K extends keyof ContactFormFields = keyof ContactFormFields> =
-  { type: ContactFormActionTypes.FieldChange; payload: { field: K; value: ContactFormFields[K]; error?: string } }
-  | { type: ContactFormActionTypes.FieldError; payload: { field: K; error: string } }
-  | { type: ContactFormActionTypes.Reset }
-
-type ContactFormStateFields<T> = {
-  [K in keyof T]: {
-    value: T[K]
-    wasChanged: boolean
-    error?: string
-  }
-}
-
-type ContactFormState = ContactFormStateFields<ContactFormFields>
 
 const CONTACT_FORM_RESET_TIMEOUT = 10000;
 
-const initialContactFormState: ContactFormState = {
-  name: { value: '', wasChanged: false },
-  email: { value: '', wasChanged: false },
-  message: { value: '', wasChanged: false },
+type ContactFormFields = {
+  name:string
+  email:string
+  message:string
+}
+const initialFormValues: ContactFormFields = {
+  name:'',
+  email:'',
+  message:''
 };
+const validate = (values: ContactFormFields) => {
+  const errors = {} as Record<keyof ContactFormFields, string>;
 
-const contactFormReducer = (state: ContactFormState, action: ContactFormAction) => {
-  switch (action.type) {
-  case ContactFormActionTypes.FieldChange:
-    return {
-      ...state,
-      [action.payload.field]: {
-        value: action.payload.value,
-        wasChanged: true,
-        error: action.payload.error,
-      },
-    };
-  case ContactFormActionTypes.FieldError:
-    return {
-      ...state,
-      [action.payload.field]: {
-        ...state[action.payload.field],
-        error: action.payload.error,
-      },
-    };
-  case ContactFormActionTypes.Reset:
-    return initialContactFormState;
-  default:
-    return state;
+  if (!values.name.length) {
+    errors.name = 'Это поле не может быть пустым';
+  } else if (values.name.length < 2) {
+    errors.name = 'Имя должно состоять более чем из 2 символов';
+  } if (values.name.length > 50) {
+    errors.name = 'Имя должно состоять менее чем из 50 символов';
   }
+
+  if (!values.email.length) {
+    errors.email = 'Это поле не может быть пустым';
+  } else if (!validEmailRegexp.test(values.email)) {
+    errors.email = 'Введите правильный адрес электронной почты';
+  }
+
+  if (!values.message.length) {
+    errors.message = 'Это поле не может быть пустым';
+  } else if (values.message.length < 2) {
+    errors.message = 'Вопрос должен состоять более чем из 2 символов';
+  } if (values.message.length > 50) {
+    errors.message = 'Вопрос должен состоять менее чем из 500 символов';
+  }
+
+  return errors;
 };
 
 const Contacts: NextPage = () => {
-  const [contactFormState, dispatch] = useReducer(contactFormReducer, initialContactFormState);
   const [formSuccessfullySent, setFormSuccessfullySent] = useState(false);
   const { settings } = useSettings();
 
-  const {
-    name,
-    email,
-    message,
-  } = contactFormState;
-
-  const getFieldError = <K extends keyof ContactFormFields>(field: K, value: ContactFormFields[K]) => {
-    switch (field) {
-    case 'name':
-      if (!value.length) {
-        return 'Это поле не может быть пустым';
-      }
-      if (value.length < 2) {
-        return 'Имя должно состоять более чем из 2 символов';
-      }
-      if (value.length > 50) {
-        return 'Имя должно состоять менее чем из 50 символов';
-      }
-      break;
-    case 'email':
-      if (!value.length) {
-        return 'Это поле не может быть пустым';
-      }
-
-      if (!validEmailRegexp.test(value)) {
-        return 'Введите правильный адрес электронной почты';
-      }
-      break;
-    case 'message':
-      if (!value.length) {
-        return 'Это поле не может быть пустым';
-      }
-      if (value.length < 2) {
-        return 'Вопрос должен состоять более чем из 2 символов';
-      }
-      if (value.length > 500) {
-        return 'Вопрос должен состоять менее чем из 500 символов';
-      }
-      break;
-    default:
-      return;
-    }
-  };
-
-  const handleFieldChange = <K extends keyof ContactFormFields>(field: K) => (value: ContactFormFields[K]) => {
-    dispatch({
-      type: ContactFormActionTypes.FieldChange,
-      payload: {
-        field,
-        value,
-        error: getFieldError(field, value),
-      },
-    });
-  };
+  const form = useForm<ContactFormFields>({
+    initialValues:initialFormValues,
+    validate: validate
+  });
 
   const resetContactForm = () => {
-    dispatch({
-      type: ContactFormActionTypes.Reset,
-    });
     setFormSuccessfullySent(false);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const data = {
-      author_name: name.value,
-      author_email: email.value,
-      question: message.value,
+    const data= {
+      author_name: form.values.name,
+      author_email: form.values.email,
+      question: form.values.message,
     };
-
     try {
       await fetcher('/feedback/questions/', {
         method: 'POST',
@@ -165,20 +91,6 @@ const Contacts: NextPage = () => {
     } catch ([status, errors]) {
       // TODO: добавить проверку типов выброшенного исключения, пока считаем, что всегда получаем ответ API
 
-      for (const field in errors as Record<string, string[]>) {
-        dispatch({
-          type: ContactFormActionTypes.FieldError,
-          payload: {
-            field: {
-              author_name: 'name',
-              author_email: 'email',
-              question: 'message',
-            }[field] as keyof ContactFormFields,
-            error: (errors as Record<string, string[]>)[field][0],
-          },
-        });
-      }
-
       return;
     }
 
@@ -186,9 +98,8 @@ const Contacts: NextPage = () => {
     setTimeout(() => resetContactForm(), CONTACT_FORM_RESET_TIMEOUT);
   };
 
-  const canSubmit = name.wasChanged && !name.error
-    && email.wasChanged && !email.error
-    && message.wasChanged && !message.error;
+  const canSubmit:boolean = !form.nonFieldError && (Object.keys(form.values) as Array<keyof ContactFormFields>)
+    .every((field:keyof ContactFormFields) => form.touched[field] && !form.errors[field]);
 
   return (
     <AppLayout>
@@ -204,26 +115,26 @@ const Contacts: NextPage = () => {
             <Form aria-labelledby="contact" onSubmit={handleSubmit}>
               <Form.Field>
                 <TextInput
-                  value={name.value}
+                  value={form.values.name}
                   placeholder="Ваше имя"
-                  errorText={name.wasChanged ? name.error : undefined}
-                  onChange={handleFieldChange('name')}
+                  errorText={form.touched.name ? form.errors.name : ''}
+                  onChange={(value) => form.setFieldValue('name', value)}
                 />
               </Form.Field>
               <Form.Field>
                 <TextInput
-                  value={email.value}
+                  value={form.values.email}
                   placeholder="E-mail для ответа"
-                  errorText={email.wasChanged ? email.error : undefined}
-                  onChange={handleFieldChange('email')}
+                  errorText={form.touched.email ? form.errors.email : ''}
+                  onChange={(value) => form.setFieldValue('email', value)}
                 />
               </Form.Field>
               <Form.Field>
                 <TextArea
-                  value={message.value}
+                  value={form.values.message}
                   placeholder="Текст сообщения"
-                  errorText={message.wasChanged ? message.error : undefined}
-                  onChange={handleFieldChange('message')}
+                  errorText={form.touched.message ? form.errors.message : ''}
+                  onChange={(value) => form.setFieldValue('message', value)}
                   rows={4}
                 />
               </Form.Field>
