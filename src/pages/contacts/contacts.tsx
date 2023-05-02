@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { AppLayout } from 'components/app-layout';
 import { CallToEmail } from 'components/call-to-email';
@@ -11,28 +11,26 @@ import Form from 'components/ui/form/form';
 import { Icon } from 'components/ui/icon';
 import TextArea from 'components/ui/text-area';
 import TextInput from 'components/ui/text-input/text-input';
-import { fetcher } from 'services/fetcher';
 import { validEmailRegexp } from 'shared/constants/regexps';
 
+import { postQuestions } from '../../services/api/questions';
 import { useSettings } from '../../services/api/settings-adapter';
+import { isHttpRequestError } from '../../services/fetcher';
 import { useForm } from '../../shared/hooks/use-form';
 
+import type { questionsFormFields } from '../../core/questions';
+import type { QuestionsErrorDTO } from '../../services/api/questions';
 import type { NextPage } from 'next';
 
 const CONTACT_FORM_RESET_TIMEOUT = 10000;
 
-type ContactFormFields = {
-  name:string
-  email:string
-  message:string
-}
-const initialFormValues: ContactFormFields = {
+const initialFormValues: questionsFormFields = {
   name:'',
   email:'',
   message:''
 };
-const validate = (values: ContactFormFields) => {
-  const errors = {} as Record<keyof ContactFormFields, string>;
+const validate = (values: questionsFormFields) => {
+  const errors = {} as Record<keyof questionsFormFields, string>;
 
   if (!values.name.length) {
     errors.name = 'Это поле не может быть пустым';
@@ -52,7 +50,7 @@ const validate = (values: ContactFormFields) => {
     errors.message = 'Это поле не может быть пустым';
   } else if (values.message.length < 2) {
     errors.message = 'Вопрос должен состоять более чем из 2 символов';
-  } if (values.message.length > 50) {
+  } if (values.message.length > 500) {
     errors.message = 'Вопрос должен состоять менее чем из 500 символов';
   }
 
@@ -61,35 +59,43 @@ const validate = (values: ContactFormFields) => {
 
 const Contacts: NextPage = () => {
   const [formSuccessfullySent, setFormSuccessfullySent] = useState(false);
+  const [canSubmit, setCanSubmit] = useState<boolean>(false);
   const { settings } = useSettings();
 
-  const form = useForm<ContactFormFields>({
+  const form = useForm<questionsFormFields>({
     initialValues:initialFormValues,
     validate: validate
   });
 
   const resetContactForm = () => {
+    form.resetForm();
     setFormSuccessfullySent(false);
+  };
+
+  const handleSubmitError = (error: unknown) => {
+    if (isHttpRequestError<QuestionsErrorDTO>(error)) {
+      if (error.response.statusCode === 400 && error.response.payload.non_field_errors) {
+        const [errorMessage] = error.response.payload.non_field_errors;
+        form.setNonFieldError(errorMessage);
+
+        return;
+      }
+
+      if (error.response.statusCode === 403) {
+        form.setNonFieldError(error.response.payload.detail);
+
+        return;
+      }
+    }
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const data= {
-      author_name: form.values.name,
-      author_email: form.values.email,
-      question: form.values.message,
-    };
     try {
-      await fetcher('/feedback/questions/', {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify(data),
-      });
-    } catch ([status, errors]) {
-      // TODO: добавить проверку типов выброшенного исключения, пока считаем, что всегда получаем ответ API
+      await postQuestions(form.values);
+    } catch (error) {
+      handleSubmitError(error);
 
       return;
     }
@@ -98,8 +104,10 @@ const Contacts: NextPage = () => {
     setTimeout(() => resetContactForm(), CONTACT_FORM_RESET_TIMEOUT);
   };
 
-  const canSubmit:boolean = !form.nonFieldError && (Object.keys(form.values) as Array<keyof ContactFormFields>)
-    .every((field:keyof ContactFormFields) => form.touched[field] && !form.errors[field]);
+  useEffect(() => {
+    const formReady = form.getReadyStatus();
+    formReady ? setCanSubmit(true) : setCanSubmit(false);
+  },[formSuccessfullySent, form]);
 
   return (
     <AppLayout>
