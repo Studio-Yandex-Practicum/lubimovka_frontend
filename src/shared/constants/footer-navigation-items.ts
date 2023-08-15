@@ -23,10 +23,10 @@ export const footerNavigationItems = [
     text: 'О фестивале',
     href: '/about-us',
   },
-  {
-    text: 'Организаторы',
-    href: '/about-us/team',
-  },
+  // {
+  //   text: 'Организаторы',
+  //   href: '/about-us/team',
+  // },
   {
     text: 'История',
     href: '/history',
