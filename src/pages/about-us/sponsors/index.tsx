@@ -48,6 +48,8 @@
 
 // export default Sponsors;
 
+// TODO: вернуть компонент и добавить возможность отображения раздела по условию из settings, которые будут приходить с бэкэнда
+
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 

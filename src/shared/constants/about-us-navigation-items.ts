@@ -3,7 +3,7 @@ export const aboutUsNavigationItems = [
     id: 'about-us',
     text: 'Что мы делаем',
     href: '/about-us'
-  },
+  }, // TODO: вернуть разделы и добавить возможность их отображения по условию из settings, которые будут приходить с бэкэнда
   // {
   //   id: 'team',
   //   text: 'Организаторы',
