@@ -22,11 +22,11 @@ export const footerNavigationItems = [
   {
     text: 'О фестивале',
     href: '/about-us',
-  },
-  {
-    text: 'Организаторы',
-    href: '/about-us/team',
-  },
+  },// TODO: вернуть раздел и добавить возможность его отображения по условию из settings, которые будут приходить с бэкэнда
+  // {
+  //   text: 'Организаторы',
+  //   href: '/about-us/team',
+  // },
   {
     text: 'История',
     href: '/history',

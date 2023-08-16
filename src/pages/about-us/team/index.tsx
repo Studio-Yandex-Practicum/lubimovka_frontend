@@ -1,46 +1,63 @@
-import { SEO } from 'components/seo';
+// import { SEO } from 'components/seo';
 
-import { AppLayout } from 'components/app-layout';
-import { AboutUsLayout } from 'components/about-us-layout';
-import ArtDirectorateSection from 'components/team-page/art-directorate/section/art-directorate-section';
-import FestivalTeamSection from 'components/team-page/festival-team/festival-team-section';
-import { fetcher } from 'services/fetcher';
+// import { AppLayout } from 'components/app-layout';
+// import { AboutUsLayout } from 'components/about-us-layout';
+// import ArtDirectorateSection from 'components/team-page/art-directorate/section/art-directorate-section';
+// import FestivalTeamSection from 'components/team-page/festival-team/festival-team-section';
+// import { fetcher } from 'services/fetcher';
 
-import type { InferGetServerSidePropsType } from 'next';
-import type { FestivalTeams } from 'api-typings';
+// import type { InferGetServerSidePropsType } from 'next';
+// import type { FestivalTeams } from 'api-typings';
 
-const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const {
-    artDirectorate,
-    restTeam,
-  } = props;
+// const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+//   const {
+//     artDirectorate,
+//     restTeam,
+//   } = props;
 
-  return (
-    <AppLayout>
-      <SEO title="Организаторы"/>
-      <AboutUsLayout>
-        <ArtDirectorateSection cards={artDirectorate}/>
-        <FestivalTeamSection cards={restTeam}/>
-      </AboutUsLayout>
-    </AppLayout>
-  );
-};
+//   return (
+//     <AppLayout>
+//       <SEO title="Организаторы"/>
+//       <AboutUsLayout>
+//         <ArtDirectorateSection cards={artDirectorate}/>
+//         <FestivalTeamSection cards={restTeam}/>
+//       </AboutUsLayout>
+//     </AppLayout>
+//   );
+// };
 
-export const getServerSideProps = async () => {
-  const team = await fetcher<FestivalTeams[]>('/info/about-festival/team/');
+// export const getServerSideProps = async () => {
+//   const team = await fetcher<FestivalTeams[]>('/info/about-festival/team/');
 
-  const { art: artDirectorate, fest: restTeam } = team.reduce<Record<string, FestivalTeams[]>>((acc, entry) => {
-    (acc[entry.team] || (acc[entry.team] = [])).push(entry);
+//   const { art: artDirectorate, fest: restTeam } = team.reduce<Record<string, FestivalTeams[]>>((acc, entry) => {
+//     (acc[entry.team] || (acc[entry.team] = [])).push(entry);
 
-    return acc;
-  }, {});
+//     return acc;
+//   }, {});
 
-  return {
-    props: {
-      artDirectorate,
-      restTeam,
-    },
-  };
+//   return {
+//     props: {
+//       artDirectorate,
+//       restTeam,
+//     },
+//   };
+// };
+
+// export default Team;
+
+// TODO: вернуть компонент и добавить возможность отображения раздела по условию из settings, которые будут приходить с бэкэнда
+
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+const Team = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/about-us/404');
+  }, [router]);
+
+  return null;
 };
 
 export default Team;

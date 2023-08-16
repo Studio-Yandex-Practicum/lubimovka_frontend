@@ -1,49 +1,66 @@
-import { AppLayout } from 'components/app-layout';
-import { AboutUsLayout } from 'components/about-us-layout';
-import SponsorsSection from 'components/sponsors-section/sponsors-section';
-import PersonsList from 'components/persons-list/persons-list';
-import { SEO } from 'components/seo';
-import { usePersistentData } from 'providers/persistent-data-provider';
-import { fetcher } from 'services/fetcher';
+// import { AppLayout } from 'components/app-layout';
+// import { AboutUsLayout } from 'components/about-us-layout';
+// import SponsorsSection from 'components/sponsors-section/sponsors-section';
+// import PersonsList from 'components/persons-list/persons-list';
+// import { SEO } from 'components/seo';
+// import { usePersistentData } from 'providers/persistent-data-provider';
+// import { fetcher } from 'services/fetcher';
 
-import type { InferGetServerSidePropsType } from 'next';
-import type { Sponsor } from 'api-typings';
+// import type { InferGetServerSidePropsType } from 'next';
+// import type { Sponsor } from 'api-typings';
 
-const Sponsors = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { sponsors } = props;
-  const { settings } = usePersistentData();
+// const Sponsors = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+//   const { sponsors } = props;
+//   const { settings } = usePersistentData();
 
-  return (
-    <AppLayout>
-      <SEO title="Попечители"/>
-      <AboutUsLayout>
-        <SponsorsSection
-          title="Попечители фестиваля"
-          description="Здесь представлены частные лица и организации, которые помогают Любимовке на постоянной и безвозмездной основе."
-          callToEmail="Если вы хотите стать попечителем фестиваля, напишите нам на "
-          callToEmailAddress={settings?.emailAddresses.sponsorship}
-        >
-          <PersonsList persons={sponsors}/>
-        </SponsorsSection>
-      </AboutUsLayout>
-    </AppLayout>
-  );
-};
+//   return (
+//     <AppLayout>
+//       <SEO title="Попечители"/>
+//       <AboutUsLayout>
+//         <SponsorsSection
+//           title="Попечители фестиваля"
+//           description="Здесь представлены частные лица и организации, которые помогают Любимовке на постоянной и безвозмездной основе."
+//           callToEmail="Если вы хотите стать попечителем фестиваля, напишите нам на "
+//           callToEmailAddress={settings?.emailAddresses.sponsorship}
+//         >
+//           <PersonsList persons={sponsors}/>
+//         </SponsorsSection>
+//       </AboutUsLayout>
+//     </AppLayout>
+//   );
+// };
 
-export const getServerSideProps = async () => {
-  let sponsors;
+// export const getServerSideProps = async () => {
+//   let sponsors;
 
-  try {
-    sponsors = await fetcher<Sponsor[]>('/info/about-festival/sponsors/');
-  } catch (error) {
-    throw error;
-  }
+//   try {
+//     sponsors = await fetcher<Sponsor[]>('/info/about-festival/sponsors/');
+//   } catch (error) {
+//     throw error;
+//   }
 
-  return {
-    props: {
-      sponsors,
-    }
-  };
+//   return {
+//     props: {
+//       sponsors,
+//     }
+//   };
+// };
+
+// export default Sponsors;
+
+// TODO: вернуть компонент и добавить возможность отображения раздела по условию из settings, которые будут приходить с бэкэнда
+
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+const Sponsors = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/about-us/404');
+  }, [router]);
+
+  return null;
 };
 
 export default Sponsors;
