@@ -28,107 +28,87 @@ interface EventCardProps {
 
 const cx = classNames.bind(styles);
 
-export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref) => {
-  const {
-    imageUrl,
-    date,
-    time,
-    title,
-    type,
-    team,
-    description,
-    aboutUrl,
-    aboutText,
-    actionUrl,
-    actionText,
-    className
-  } = props;
+export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(
+  (props, ref) => {
+    const {
+      imageUrl,
+      date,
+      time,
+      title,
+      type,
+      team,
+      description,
+      aboutUrl,
+      aboutText,
+      actionUrl,
+      actionText,
+      className,
+    } = props;
 
-  return (
-    <div
-      className={cx('root', className)}
-      ref={ref}
-    >
-      {imageUrl && (
-        <div className={cx('image')}>
-          <Image
-            className={cx('image')}
-            src={imageUrl}
-            layout="fill"
-            objectFit="cover"
-            alt=""
-          />
-        </div>
-      )}
-      <div className={cx('summary')}>
-        <time className={cx('date-time')}>
-          <span className={cx('date')}>
-            {date}
-          </span>
-          <span>
-            {time}
-          </span>
-        </time>
-        <h3 className={cx('title')}>
-          {title}
-        </h3>
-        <CreditsList
-          className={cx('credits')}
-          size="s"
-          roles={team}
-        />
-        {description && (
-          <p className={cx('description')}>
-            {description}
-          </p>
-        )}
-        <p className={cx('type')}>
-          {type}
-        </p>
-      </div>
-      <div className={cx('actions')}>
-        {aboutUrl && aboutText && (
-          <Link
-            href={aboutUrl}
-            passHref
-          >
-            <Button
-              className={cx('action')}
-              size="s"
-              border="bottom-left"
-              upperCase
-              icon={(
-                <Icon
-                  glyph="arrow-right"
-                  width="100%"
-                  height="100%"
-                />
-              )}
-            >
-              {aboutText}
-            </Button>
-          </Link>
-        )}
-        <Button
-          className={cx('action')}
-          size="s"
-          border="bottom-left"
-          upperCase
-          icon={(
-            <Icon
-              glyph="arrow-right"
-              width="100%"
-              height="100%"
+    return (
+      <div className={cx('root', className)} ref={ref}>
+        {imageUrl && (
+          <div className={cx('image')}>
+            <Image
+              className={cx('image')}
+              src={imageUrl}
+              layout="fill"
+              objectFit="cover"
+              alt=""
             />
+          </div>
+        )}
+        <div className={cx('summary')}>
+          <time className={cx('date-time')}>
+            <span className={cx('date')}>
+              {date}
+            </span>
+            <span>
+              {time}
+            </span>
+          </time>
+          <h3 className={cx('title')}>
+            {title}
+          </h3>
+          <CreditsList className={cx('credits')} size="s" roles={team}/>
+          {description && (
+            <p className={cx('description')}>
+              {description}
+            </p>
           )}
-          href={actionUrl}
-          target="_blank"
-        >
-          {actionText}
-        </Button>
+          <p className={cx('type')}>
+            {type}
+          </p>
+        </div>
+        <div className={cx('actions')}>
+          {aboutUrl && aboutText && (
+            <Link href={aboutUrl} passHref>
+              <Button
+                className={cx('action')}
+                size="s"
+                border="bottom-left"
+                upperCase
+                icon={<Icon glyph="arrow-right" width="100%" height="100%"/>}
+              >
+                {aboutText}
+              </Button>
+            </Link>
+          )}
+          <Button
+            className={cx('action')}
+            size="s"
+            border="bottom-left"
+            upperCase
+            icon={<Icon glyph="arrow-right" width="100%" height="100%"/>}
+            href={actionUrl}
+            target="_blank"
+          >
+            {actionText}
+          </Button>
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+);
 
 EventCard.displayName = 'EventCard';

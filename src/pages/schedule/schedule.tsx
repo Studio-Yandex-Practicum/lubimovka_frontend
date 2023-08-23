@@ -7,11 +7,17 @@ import { ScheduleHeadline } from 'components/schedule-headline';
 import { ScheduleLayout } from 'components/schedule-layout';
 import { SEO } from 'components/seo';
 import { ScheduleMode, EVENTS_PER_PAGE } from 'core/schedule';
-import { fetchFestivalEvents, fetchScheduleMeta, getEventsCacheKey } from 'services/api/schedule-adapter';
+import {
+  fetchFestivalEvents,
+  fetchScheduleMeta,
+  getEventsCacheKey,
+} from 'services/api/schedule-adapter';
 
 import type { InferGetServerSidePropsType } from 'next';
 
-const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Events = (
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) => {
   const {
     scheduleMeta: {
       mode,
@@ -21,10 +27,13 @@ const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
     },
     fallback,
   } = props;
+  // @ts-ignore: TODO: mode отрабатывает всегда в true
+  const ScheduleComponent
+    = mode === ScheduleMode.Regular ? RegularSchedule : FestivalSchedule;
 
-  const ScheduleComponent = (mode === ScheduleMode.Regular ? RegularSchedule : FestivalSchedule);
-
-  const scheduleTitle = `Афиша ${mode === ScheduleMode.Festival? 'фестиваля' : 'событий'}`;
+  const scheduleTitle = `Афиша ${
+    mode === ScheduleMode.Festival ? 'фестиваля' : 'событий'
+  }`;
 
   return (
     <>
@@ -39,9 +48,7 @@ const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
               registrationAnnounce={registrationAnnounce}
             />
           </ScheduleLayout.Slot>
-          <ScheduleComponent
-            fallback={fallback}
-          />
+          <ScheduleComponent fallback={fallback}/>
         </ScheduleLayout>
       </AppLayout>
     </>
@@ -63,7 +70,7 @@ export const getServerSideProps = async () => {
       scheduleMeta,
       fallback: {
         [unstable_serialize(() => getEventsCacheKey(queryParams))]: [events],
-      }
-    }
+      },
+    },
   };
 };

@@ -1,5 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { apiBaseUrl, environment } = require('./config/env');
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires,import/order
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
@@ -31,7 +33,8 @@ const config = {
       '2022.lubimovka.ru',
       'stage.dev.lubimovka.ru',
       'test.dev.lubimovka.ru',
-      ...environment === 'development' ? ['source.unsplash.com'] : [],
+      'robinson.net',
+      ...(environment === 'development' ? ['source.unsplash.com'] : []),
     ],
   },
   experimental: {
@@ -45,7 +48,7 @@ const config = {
         {
           source: '/press-releases/:year/download',
           destination: `${apiBaseUrl}/info/press-releases/:year/download/`,
-        }
+        },
       ],
     };
   },

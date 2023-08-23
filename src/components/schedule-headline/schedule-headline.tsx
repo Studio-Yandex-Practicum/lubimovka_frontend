@@ -13,12 +13,7 @@ interface ScheduleHeadlineProps extends Omit<ScheduleMeta, 'mode'> {
 const cx = classNames.bind(styles);
 
 export const ScheduleHeadline: React.VFC<ScheduleHeadlineProps> = (props) => {
-  const {
-    title,
-    scheduleAnnounce,
-    scheduleNote,
-    registrationAnnounce,
-  } = props;
+  const { title, scheduleAnnounce, scheduleNote, registrationAnnounce } = props;
 
   return (
     <div className={cx('root')}>

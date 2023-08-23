@@ -13,7 +13,10 @@ import type { RegularEvent } from 'core/schedule';
 export const RegularSchedule = withSWRFallback(() => {
   const { data, isLoading, setSize } = useRegularEvents();
 
-  const events = data?.reduce((acc, page) => acc.concat(page.results), [] as RegularEvent[]);
+  const events = data?.reduce(
+    (acc, page) => acc.concat(page.results),
+    [] as RegularEvent[]
+  );
 
   const handleLoadMore = useCallback(() => {
     setSize((size) => size + 1);
@@ -31,7 +34,7 @@ export const RegularSchedule = withSWRFallback(() => {
             <EventCard
               title={event.title}
               type={event.type}
-              imageUrl={event.artworkUrl}
+              imageUrl={event.image}
               date={format(new Date(event.date), 'd MMMM')}
               time={format(new Date(event.date), 'H:mm')}
               team={event.team}

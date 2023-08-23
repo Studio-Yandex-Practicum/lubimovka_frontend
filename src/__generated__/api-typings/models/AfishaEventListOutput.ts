@@ -2,24 +2,22 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { event_type } from './event_type';
-import type { Event_Type_objects } from './Event_Type_objects';
+import type { Role } from './Role';
 
 /**
  * Afisha event Output serializer.
  */
 export type AfishaEventListOutput = {
     readonly id: number;
-    /**
-     * Выберите тип события
-     */
-    type: event_type;
-    /**
-     * The response is different based on event type.
-     */
-    readonly event_body: Event_Type_objects;
+    readonly title: string;
+    readonly type: string;
+    readonly description: string;
+    readonly image: string;
     date_time: string;
-    readonly action_url: string;
-    readonly action_text: string;
+    location?: string | null;
+    readonly action_url: string | null;
+    readonly action_text: string | null;
     opening_date_time: string;
+    readonly performance_id: number | null;
+    team: Array<Role>;
 };

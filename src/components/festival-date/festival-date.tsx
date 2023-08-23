@@ -11,11 +11,7 @@ interface FestivalDateProps {
 const cx = classNames.bind(styles);
 
 export const FestivalDate: React.VFC<FestivalDateProps> = (props) => {
-  const {
-    day,
-    month,
-    dateTime,
-  } = props;
+  const { day, month, dateTime } = props;
 
   return (
     <time className={cx('root')} dateTime={dateTime}>

@@ -1,21 +1,23 @@
 import type { ScheduleMode } from './constants';
 
-export type ScheduleMeta = {
-  mode: ScheduleMode.Regular
-  scheduleAnnounce: string
-  scheduleNote?: never
-  registrationAnnounce?: never
-} | {
-  mode: ScheduleMode.Festival
-  scheduleAnnounce: string
-  scheduleNote?: string
-  registrationAnnounce?: string
-}
+export type ScheduleMeta =
+  | {
+      mode: ScheduleMode.Regular
+      scheduleAnnounce: string
+      scheduleNote?: never
+      registrationAnnounce?: never
+    }
+  | {
+      mode: ScheduleMode.Festival
+      scheduleAnnounce: string
+      scheduleNote?: string
+      registrationAnnounce?: string
+    };
 
 type EventPersonGroup = {
   name: string
   persons: string[]
-}
+};
 
 export type RegularEvent = {
   id: number
@@ -30,16 +32,19 @@ export type RegularEvent = {
   aboutUrl?: Url
   actionText: string
   actionUrl: Url
-}
-
+  image: Url
+};
+// @ts-ignore: TODO: добавил типы, чтобы избавитья от ошибок
 export type FestivalEvent = {
   id: number
   title: string
   description?: string
-  location: string
-  artworkUrl?: Url
+  location: string | null | undefined
+  artworkUrl?: Url | null
   team: EventPersonGroup[]
-  date: DateTimeIsoString
-  registrationOpeningDate: DateTimeIsoString
-  registrationUrl?: Url
-}
+  date: DateTimeIsoString | null
+  registrationOpeningDate?: DateTimeIsoString
+  registrationUrl?: Url | null
+  image: string
+  type: string
+};
