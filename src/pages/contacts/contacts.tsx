@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import Link from 'next/link';
 import { useReducer, useState } from 'react';
 
@@ -17,6 +18,10 @@ import { validEmailRegexp } from 'shared/constants/regexps';
 
 import type { NextPage } from 'next';
 
+interface ErrorResponse {
+  statusCode: number
+  payload: unknown
+}
 interface ContactFormFields {
   name: string
   email: string
@@ -162,10 +167,12 @@ const Contacts: NextPage = () => {
         },
         body: JSON.stringify(data),
       });
-    } catch ([status, errors]) {
+    } catch (err) {
       // TODO: добавить проверку типов выброшенного исключения, пока считаем, что всегда получаем ответ API
+      const error = err as { response: ErrorResponse };
+      const payload = error.response.payload;
 
-      for (const field in errors as Record<string, string[]>) {
+      for (const field in payload as Record<string, string[]>) {
         dispatch({
           type: ContactFormActionTypes.FieldError,
           payload: {
@@ -174,7 +181,7 @@ const Contacts: NextPage = () => {
               author_email: 'email',
               question: 'message',
             }[field] as keyof ContactFormFields,
-            error: (errors as Record<string, string[]>)[field][0],
+            error: (payload as Record<string, string[]>)[field][0],
           },
         });
       }
