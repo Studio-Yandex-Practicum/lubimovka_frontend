@@ -273,7 +273,7 @@ const Participation = () => {
                     <TextInput
                       value={form.values.title}
                       placeholder="Название"
-                      errorText={form.touched.email ? form.errors.title : ''}
+                      errorText={form.touched.title ? form.errors.title : ''}
                       onChange={(value) => form.setFieldValue('title', value)}
                     />
                   </FormField>
