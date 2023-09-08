@@ -90,18 +90,18 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                         imageUrl={event.event_body.image}
                         date={format(new Date(event.date_time), 'd MMMM')}
                         time={format(new Date(event.date_time), 'H:mm')}
-                        title={event.event_body.name}
+                        title={event.title}
                         type={(event.type === EventType.Performance && 'Спектакль')
                           || (event.type === EventType.Workshop && 'Мастер-класс')
-                          || (event.type === EventType.Reading && `Читка${event.event_body.project_title ? ` проекта ${event.event_body.project_title}` : ''}`)
+                          || (event.type === EventType.Reading && `Читка${event.title ? ` проекта ${event.title}` : ''}`)
                           || ''}
-                        team={event.event_body.team}
-                        description={event.event_body.description}
+                        team={event.team}
+                        description={event.description}
                         {...event.type === 'PERFORMANCE' ? {
                           aboutText: 'О спектакле',
-                          aboutUrl: `/performances/${event.event_body.id}`,
+                          aboutUrl: `/performances/${event.performance_id}`,
                         } : {}}
-                        actionUrl={event.action_url}
+                        actionUrl={event.action_url || ''}
                         actionText={event.action_text}
                       />
                     </EventList.Item>
