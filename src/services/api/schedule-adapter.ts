@@ -1,9 +1,8 @@
 import { stringify } from 'querystring';
 
-import useSWRInfinite from 'swr/infinite';
-
 import { EVENTS_PER_PAGE, ScheduleMode, EventType } from 'core/schedule';
 import { fetcher } from 'services/fetch';
+import useSWRInfinite from 'swr/infinite';
 
 import type {
   PaginatedAfishaEventListOutputList as EventsDTO,
@@ -78,21 +77,20 @@ function mapDTOToRegularEvents(dto: EventsDTO): PaginatedRegularEvents {
         || (event.type === EventType.Workshop && 'Мастер-класс')
         || (event.type === EventType.Reading
           && `Читка${
-            event.event_body.project_title
-              ? ` проекта ${event.event_body.project_title}`
+            event.title
+              ? ` проекта ${event.title}`
               : ''
           }`)
         || '',
-      title: event.event_body.name,
-      description: event.event_body.description,
-      // @ts-ignore: TODO: event_body теперь нет в ответе от бека, но это запрос не относиться к афишам
-      artworkUrl: event.event_body.image,
-      team: event.event_body.team,
+      title: event.title,
+      description: event.description,
+      artworkUrl: event.image,
+      team: event.team,
       date: event.date_time,
       ...(event.type === EventType.Performance
         ? {
           aboutText: 'О спектакле',
-          aboutUrl: `/performances/${event.event_body.id}`,
+          aboutUrl: `/performances/${event.performance_id}`,
         }
         : {}),
       actionText: event.action_text,
@@ -121,7 +119,6 @@ export const fetchFestivalEvents = (
 
 function mapDTOToFestivalEvents(dto: EventsDTO): PaginatedFestivalEvents {
   const { results = [], ...pagination } = dto;
-  // @ts-ignore: TODO: location: string | null | undefined , если проставить такие типы для поля, то дальше сыпытся ошибки в другом месте (FestivalSchedule)
 
   return {
     results: results.map((event) => ({
@@ -132,7 +129,7 @@ function mapDTOToFestivalEvents(dto: EventsDTO): PaginatedFestivalEvents {
       artworkUrl: event.action_url,
       team: event.team,
       date: event.date_time,
-      registrationOpeningDate: event.opening_date_time,
+      registrationOpeningDate: event.opening_date_time || '',
       registrationUrl: event.action_url,
       image: event.image,
       type: event.type,

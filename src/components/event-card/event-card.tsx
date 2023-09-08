@@ -1,11 +1,10 @@
 import classNames from 'classnames/bind';
-import Image from 'next/image';
-import Link from 'next/link';
-import { forwardRef } from 'react';
-
 import { CreditsList } from 'components/credits-list';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
+import Image from 'next/image';
+import Link from 'next/link';
+import { forwardRef } from 'react';
 
 import type { CreditsRole } from 'components/credits-list';
 
@@ -22,8 +21,8 @@ interface EventCardProps {
   description?: string
   aboutText?: string
   aboutUrl?: string
-  actionUrl: Url
-  actionText: string
+  actionText?: string | null
+  actionUrl?: Url
 }
 
 const cx = classNames.bind(styles);

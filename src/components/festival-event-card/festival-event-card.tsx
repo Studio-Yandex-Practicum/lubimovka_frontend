@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-
 import { CreditsList } from 'components/credits-list';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
@@ -11,11 +10,11 @@ import styles from './festival-event-card.module.css';
 export interface FestivalEventCardProps {
   image?: Url
   time: string
-  location: string
+  location?: string | null
   title: string
   description?: string
   credits: CreditsRole[]
-  actionUrl?: Url
+  actionUrl?: Url | null
   className?: string
 }
 

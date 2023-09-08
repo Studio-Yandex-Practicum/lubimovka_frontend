@@ -1,11 +1,11 @@
-import { format } from 'date-fns';
-import isEmpty from 'lodash/isEmpty';
-import { useCallback } from 'react';
 
 import { EventCard } from 'components/event-card';
 import { EventList } from 'components/event-list';
 import { PaginationSentinel } from 'components/pagination-sentinel';
+import { format } from 'date-fns';
 import { withSWRFallback } from 'hocs/with-swr-fallback';
+import isEmpty from 'lodash/isEmpty';
+import { useCallback } from 'react';
 import { useRegularEvents } from 'services/api/schedule-adapter';
 
 import type { RegularEvent } from 'core/schedule';
@@ -41,7 +41,7 @@ export const RegularSchedule = withSWRFallback(() => {
               description={event.description}
               aboutText={event.aboutText}
               aboutUrl={event.aboutUrl}
-              actionUrl={event.actionUrl}
+              actionUrl={event.actionUrl || ''}
               actionText={event.actionText}
             />
           </EventList.Item>

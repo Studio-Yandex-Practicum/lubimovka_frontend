@@ -30,20 +30,20 @@ export type RegularEvent = {
   performanceId?: number
   aboutText?: string
   aboutUrl?: Url
-  actionText: string
-  actionUrl: Url
-  image: Url
+  actionText?: string | null
+  actionUrl?: Url | null
+  image?: Url
 };
 // @ts-ignore: TODO: добавил типы, чтобы избавитья от ошибок
 export type FestivalEvent = {
   id: number
   title: string
   description?: string
-  location: string | null | undefined
+  location?: string | null
   artworkUrl?: Url | null
   team: EventPersonGroup[]
-  date: DateTimeIsoString | null
-  registrationOpeningDate?: DateTimeIsoString
+  date: DateTimeIsoString
+  registrationOpeningDate: DateTimeIsoString
   registrationUrl?: Url | null
   image: string
   type: string
