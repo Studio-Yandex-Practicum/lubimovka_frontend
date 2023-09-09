@@ -15,6 +15,7 @@ import TextInput from 'components/ui/text-input/text-input';
 import { useSettings } from 'services/api/settings-adapter';
 import { fetcher, isHttpRequestError } from 'services/fetcher';
 import { validEmailRegexp } from 'shared/constants/regexps';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import type { NextPage } from 'next';
 
@@ -165,24 +166,28 @@ const Contacts: NextPage = () => {
       });
     } catch (err) {
       if (isHttpRequestError(err)) {
-        const payload = err.response.payload;
+        const { statusCode } = err.response;
 
-        for (const field in payload as Record<string, string[]>) {
-          dispatch({
-            type: ContactFormActionTypes.FieldError,
-            payload: {
-              field: {
-                author_name: 'name',
-                author_email: 'email',
-                question: 'message',
-              }[field] as keyof ContactFormFields,
-              error: (payload as Record<string, string[]>)[field][0],
-            },
-          });
+        if (statusCode === 400) {
+          const payload = err.response.payload;
+
+          for (const field in payload as Record<string, string[]>) {
+            dispatch({
+              type: ContactFormActionTypes.FieldError,
+              payload: {
+                field: {
+                  author_name: 'name',
+                  author_email: 'email',
+                  question: 'message',
+                }[field] as keyof ContactFormFields,
+                error: (payload as Record<string, string[]>)[field][0],
+              },
+            });
+          }
+        } else {
+          throw new InternalServerError();
         }
       }
-
-      return;
     }
 
     setFormSuccessfullySent(true);
