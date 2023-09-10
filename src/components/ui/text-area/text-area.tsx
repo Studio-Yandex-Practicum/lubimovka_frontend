@@ -8,6 +8,10 @@ const cx = classNames.bind(styles);
 
 interface ITextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   errorText?: string
+  minWidth?: string
+  maxWidth?: string
+  minHeight?: string
+  maxHeight?: string
   onChange?: (value: string) => void
   rows?: number
 }
@@ -16,6 +20,10 @@ const TextArea = (props: ITextAreaProps): JSX.Element => {
   const {
     errorText,
     onChange,
+    minWidth,
+    maxWidth,
+    minHeight,
+    maxHeight,
     ...restProps
   } = props;
 
@@ -31,6 +39,7 @@ const TextArea = (props: ITextAreaProps): JSX.Element => {
     <>
       <textarea
         className={cx('input', { invalid: !!errorText })}
+        style={{ minWidth, maxWidth, minHeight, maxHeight }}
         onChange={handleChange}
         {...restProps}
       />
