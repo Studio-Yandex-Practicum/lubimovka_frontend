@@ -27,15 +27,14 @@ const fetchResource = (httpClient: typeof fetch) => async <T>(path: string, opti
 export const fetcher = fetchResource(fetch);
 
 async function handleResponse<T>(response: Response) {
-  return response.json()
-    .then((payload) => {
-      if (!response.ok) {
-        throw new HttpRequestError({ statusCode: response.status, payload });
-      }
+  try {
+    const payload = await response.json();
+    if (!response.ok) {
+      throw new HttpRequestError({ statusCode: response.status, payload });
+    }
 
-      return payload as T;
-    })
-    .catch((payload) => {
-      return payload as T;
-    });
+    return payload as T;
+  } catch (err) {
+    return err as T;
+  }
 }
