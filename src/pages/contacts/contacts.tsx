@@ -221,10 +221,6 @@ const Contacts: NextPage = () => {
               <Form.Field>
                 <TextArea
                   value={message.value}
-                  minWidth="325px"
-                  maxWidth="325px"
-                  minHeight="150px"
-                  maxHeight="450px"
                   placeholder="Текст сообщения"
                   errorText={message.wasChanged ? message.error : undefined}
                   onChange={handleFieldChange('message')}
