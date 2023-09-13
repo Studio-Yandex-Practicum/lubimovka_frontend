@@ -152,16 +152,17 @@ const Participation = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (canSubmit) {
+      try {
+        await postParticipation(form.values);
+      } catch (error) {
+        handleSubmitError(error);
 
-    try {
-      await postParticipation(form.values);
-    } catch (error) {
-      handleSubmitError(error);
+        return;
+      }
 
-      return;
+      router.push('/form/success');
     }
-
-    router.push('/form/success');
   };
 
   const canSubmit = !form.nonFieldError
@@ -246,6 +247,7 @@ const Participation = () => {
                     <PhoneNumberInput
                       value={form.values.phoneNumber}
                       errorText={form.touched.phoneNumber ? form.errors.phoneNumber : ''}
+                      onChange={(value) => form.setFieldValue('phoneNumber', '+7' + value)}
                     />
                   </FormField>
                 </Form.Field>
