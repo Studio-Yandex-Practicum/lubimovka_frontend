@@ -1,4 +1,5 @@
 import cn from 'classnames/bind';
+import Link from 'next/link';
 import { useMemo,useState } from 'react';
 
 import { PlayCard } from 'components/play-card';
@@ -6,7 +7,6 @@ import { PlayList } from 'components/play-list';
 import { Section } from 'components/section';
 import { Button } from 'components/ui/button';
 import { InfoLink } from 'components/ui/info-link';
-import { Link } from 'components/ui/link';
 import { Tag } from 'components/ui/tag';
 import * as breakpoints from 'shared/breakpoints.js';
 import { numberOfCharacters } from 'shared/constants/numbers';
@@ -171,7 +171,7 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
                 {achievements.map((item, idx) => (
                   <div className={cx('tag')} key={idx}>
                     <Link href={`library/?festival=${item.year}&program=${item.id}`}>
-                      <a>
+                      <a className={cx('tagLink')}>
                         <Tag
                           label={`${item.name} ${item.year}`}
                           selected={false}
