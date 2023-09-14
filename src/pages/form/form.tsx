@@ -157,13 +157,12 @@ const Participation = () => {
     }
     try {
       await postParticipation(form.values);
+      router.push('/form/success');
     } catch (error) {
       handleSubmitError(error);
 
       return;
     }
-
-    router.push('/form/success');
   };
 
   const canSubmit = !form.nonFieldError
