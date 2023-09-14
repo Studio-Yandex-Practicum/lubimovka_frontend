@@ -152,17 +152,18 @@ const Participation = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (canSubmit) {
-      try {
-        await postParticipation(form.values);
-      } catch (error) {
-        handleSubmitError(error);
-
-        return;
-      }
-
-      router.push('/form/success');
+    if (!canSubmit) {
+      return;
     }
+    try {
+      await postParticipation(form.values);
+    } catch (error) {
+      handleSubmitError(error);
+
+      return;
+    }
+
+    router.push('/form/success');
   };
 
   const canSubmit = !form.nonFieldError
@@ -174,6 +175,15 @@ const Participation = () => {
       <Error statusCode={500}/>
     );
   }
+
+  const handleInput = (
+    input: keyof ParticipationFormFields,
+    value: ParticipationFormFields[keyof ParticipationFormFields]
+  ) => {
+    return input === 'phoneNumber'
+      ? form.setFieldValue(input, '+7' + value)
+      : form.setFieldValue(input, value);
+  };
 
   return (
     <AppLayout>
@@ -195,7 +205,7 @@ const Participation = () => {
                       value={form.values.firstName}
                       placeholder="Имя"
                       errorText={form.touched.firstName ? form.errors.firstName : ''}
-                      onChange={(value) => form.setFieldValue('firstName', value)}
+                      onChange={(value) => handleInput('firstName', value)}
                     />
                   </FormField>
                 </Form.Field>
@@ -208,7 +218,7 @@ const Participation = () => {
                       value={form.values.lastName}
                       placeholder="Фамилия"
                       errorText={form.touched.lastName ? form.errors.lastName : ''}
-                      onChange={(value) => form.setFieldValue('lastName', value)}
+                      onChange={(value) => handleInput('lastName', value)}
                     />
                   </FormField>
                 </Form.Field>
@@ -222,7 +232,7 @@ const Participation = () => {
                       placeholder="Год рождения"
                       mask="9999"
                       errorText={form.touched.birthYear ? form.errors.birthYear : ''}
-                      onChange={(value) => form.setFieldValue('birthYear', value)}
+                      onChange={(value) => handleInput('birthYear', value)}
                     />
                   </FormField>
                 </Form.Field>
@@ -235,7 +245,7 @@ const Participation = () => {
                       value={form.values.city}
                       placeholder="Город проживания"
                       errorText={form.touched.city ? form.errors.city : ''}
-                      onChange={(value) => form.setFieldValue('city', value)}
+                      onChange={(value) => handleInput('city', value)}
                     />
                   </FormField>
                 </Form.Field>
@@ -247,7 +257,7 @@ const Participation = () => {
                     <PhoneNumberInput
                       value={form.values.phoneNumber}
                       errorText={form.touched.phoneNumber ? form.errors.phoneNumber : ''}
-                      onChange={(value) => form.setFieldValue('phoneNumber', '+7' + value)}
+                      onChange={(value) => handleInput('phoneNumber', value)}
                     />
                   </FormField>
                 </Form.Field>
@@ -261,7 +271,7 @@ const Participation = () => {
                       value={form.values.email}
                       placeholder="E-mail"
                       errorText={form.touched.email ? form.errors.email : ''}
-                      onChange={(value) => form.setFieldValue('email', value)}
+                      onChange={(value) => handleInput('email', value)}
                     />
                   </FormField>
                 </Form.Field>
@@ -276,7 +286,7 @@ const Participation = () => {
                       value={form.values.title}
                       placeholder="Название"
                       errorText={form.touched.title ? form.errors.title : ''}
-                      onChange={(value) => form.setFieldValue('title', value)}
+                      onChange={(value) => handleInput('title', value)}
                     />
                   </FormField>
                 </Form.Field>
@@ -290,7 +300,7 @@ const Participation = () => {
                       placeholder="Год написания"
                       mask="9999"
                       errorText={form.touched.year ? form.errors.year : ''}
-                      onChange={(value) => form.setFieldValue('year', value)}
+                      onChange={(value) => handleInput('year', value)}
                     />
                   </FormField>
                 </Form.Field>
@@ -303,7 +313,7 @@ const Participation = () => {
                       accept={ACCEPTABLE_FILE_TYPES}
                       fileName={form.values.file?.name}
                       errorText={form.touched.file ? form.errors.file : ''}
-                      onChange={(value) => form.setFieldValue('file', value)}
+                      onChange={(value) => handleInput('file', value)}
                     />
                   </FormField>
                 </Form.Field>
