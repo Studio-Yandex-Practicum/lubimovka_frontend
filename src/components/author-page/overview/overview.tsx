@@ -12,7 +12,12 @@ import * as breakpoints from 'shared/breakpoints.js';
 import { numberOfCharacters } from 'shared/constants/numbers';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 
-import type { Achievement,OtherLink, Play, SocialNetwork } from '__generated__/api-typings';
+import type {
+  OtherLink,
+  Play,
+  SocialNetwork,
+  Achievement,
+} from '__generated__/api-typings';
 
 import styles from './overview.module.css';
 
@@ -46,12 +51,21 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
   } = props;
 
   const [isExpand, setExpand] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+  const showEmail = () => setIsOpen(true);
 
-  const pinnedLinks = useMemo(() => otherLinks.filter((item) => {
-    return item.is_pinned;
-  }), [otherLinks]);
+  const isMobile = useMediaQuery(
+    `(max-width: ${breakpoints['tablet-portrait']})`
+  );
+
+  const pinnedLinks = useMemo(
+    () =>
+      otherLinks.filter((item) => {
+        return item.is_pinned;
+      }),
+    [otherLinks]
+  );
 
   const availablePins = pinnedLinks.length > 0;
   const availableButton = biography.length > numberOfCharacters;
@@ -88,15 +102,13 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
         <p className={cx('city')}>
           {city}
         </p>
-        {quote
-          && (
-            <div className={cx('quote')}>
-              <p className={cx('quoteText')}>
-                {quote}
-              </p>
-            </div>
-          )
-        }
+        {quote && (
+          <div className={cx('quote')}>
+            <p className={cx('quoteText')}>
+              {`« ${quote.replace(/["']/g, '')} »`}
+            </p>
+          </div>
+        )}
       </div>
       <div className={cx('overviewInfo')}>
         <div className={cx('descriptionWrapper')}>
@@ -123,11 +135,15 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
           )}
           {biography && (
             <div className={cx('descriptionSet')}>
-              <pre className={cx('description', isExpand ? 'descriptionExpanded' : '')}>
+              <pre
+                className={cx(
+                  'description',
+                  isExpand ? 'descriptionExpanded' : ''
+                )}
+              >
                 {biography}
               </pre>
-              {availableButton
-              && (
+              {availableButton && (
                 <Button
                   width="100%"
                   size="s"
@@ -137,27 +153,24 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
                   border="topLeft"
                   onClick={() => setExpand(!isExpand)}
                 />
-              )
-              }
+              )}
             </div>
           )}
           {availablePins && (
             <div className={cx('authorLinks')}>
-              {pinnedLinks
-                .map((item, idx) => (
-                  <div className={cx('linkHeading')} key={idx}>
-                    <InfoLink
-                      label={item.name}
-                      href={item.link}
-                      icon="arrow-right"
-                      iconPlace="right"
-                      size="xl"
-                      border="borderTop"
-                      iconClassName={cx('link')}
-                    />
-                  </div>
-                )
-                )}
+              {pinnedLinks.map((item, idx) => (
+                <div className={cx('linkHeading')} key={idx}>
+                  <InfoLink
+                    label={item.name}
+                    href={item.link}
+                    icon="arrow-right"
+                    iconPlace="right"
+                    size="xl"
+                    border="borderTop"
+                    iconClassName={cx('link')}
+                  />
+                </div>
+              ))}
             </div>
           )}
         </div>
@@ -170,7 +183,9 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               <div className={cx('tagWrapper')}>
                 {achievements.map((item, idx) => (
                   <div className={cx('tag')} key={idx}>
-                    <Link href={`library/?festival=${item.year}&program=${item.id}`}>
+                    <Link
+                      href={`library/?festival=${item.year}&program=${item.id}`}
+                    >
                       <a>
                         <Tag
                           label={`${item.name} ${item.year}`}
@@ -179,8 +194,7 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
                       </a>
                     </Link>
                   </div>
-                )
-                )}
+                ))}
               </div>
             </div>
           )}
@@ -203,8 +217,7 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
                       border="borderBottomLeft"
                     />
                   </div>
-                )
-                )}
+                ))}
               </div>
             </div>
           )}
@@ -213,13 +226,26 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               <p className={cx('email')}>
                 E-mail для связи
               </p>
-              <InfoLink
-                isOutsideLink
-                href={`mailto:${email}`}
-                label={email}
-                size="l"
-                textDecoration="underline"
-              />
+              {!isOpen ? (
+                <Button
+                  onClick={showEmail}
+                  type="button"
+                  align="start"
+                  label="Показать"
+                  icon="arrow-right"
+                  iconPlace="left"
+                  size="s"
+                  border="bottomLeft"
+                />
+              ) : (
+                <InfoLink
+                  isOutsideLink
+                  href={`mailto:${email}`}
+                  label={email}
+                  size="l"
+                  textDecoration="underline"
+                />
+              )}
             </div>
           )}
         </div>

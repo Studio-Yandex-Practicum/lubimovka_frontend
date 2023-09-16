@@ -41,6 +41,11 @@
   border-top: 1px solid var(--coal);
 }
 
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
 .author {
   @mixin headline;
   @mixin headline7;
@@ -53,10 +58,6 @@
   @mixin textSmall;
 
   margin: 4px 0 0;
-
-  @media tablet-portrait {
-    margin-top: 8px;
-  }
 }
 
 .year {

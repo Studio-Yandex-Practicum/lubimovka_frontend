@@ -108,7 +108,7 @@
   @mixin text;
   @mixin textMedium;
 
-  padding: 0 40px;
+  padding: 0 30px;
   margin: 0 0 56px;
   grid-area: city;
 
@@ -141,7 +141,7 @@
 
   width: 100%;
   max-width: 600px;
-  margin: 0 10px;
+  margin: 0;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline7;
@@ -284,7 +284,7 @@
   @mixin headline;
   @mixin headline7;
 
-  margin: 6px 0;
+  margin: 16px 0;
 }
 
 .overviewTagsHeading {

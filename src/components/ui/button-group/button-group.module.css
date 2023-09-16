@@ -23,7 +23,7 @@ $item-gap: 8px;
 
   &:not(:last-child) {
     @media tablet-portrait {
-      margin: 0 $item-gap 0 0;
+      margin: 0 $item-gap $item-gap 0;
     }
   }
 }

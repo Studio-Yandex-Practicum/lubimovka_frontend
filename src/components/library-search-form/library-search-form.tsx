@@ -1,6 +1,8 @@
+import { encode } from 'querystring';
+
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect,useRef, useState } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 
 import { Icon } from 'components/ui/icon';
 
@@ -12,12 +14,20 @@ const cx = classNames.bind(styles);
 
 export const LibrarySearchForm: React.VFC = () => {
   const router = useRouter();
-  const [query, setQuery] = useState('');
+  const searchParams = useMemo(
+    () => new URLSearchParams(encode(router.query)),
+    [router]
+  );
+  const value = searchParams.get('query') as string;
+  const [query, setQuery] = useState(value ? value : '');
   const inputElRef = useRef<HTMLInputElement>(null);
 
-  const handleQueryChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  }, []);
+  const handleQueryChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setQuery(e.target.value);
+    },
+    []
+  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,11 +39,7 @@ export const LibrarySearchForm: React.VFC = () => {
   useEffect(() => inputElRef.current?.focus(), [router.asPath]);
 
   return (
-    <form
-      className={cx('root')}
-      noValidate
-      onSubmit={handleSubmit}
-    >
+    <form className={cx('root')} noValidate onSubmit={handleSubmit}>
       <input
         ref={inputElRef}
         className={cx('input')}
@@ -41,7 +47,7 @@ export const LibrarySearchForm: React.VFC = () => {
         spellCheck={false}
         value={query}
         onChange={handleQueryChange}
-        placeholder="Автор или название пьесы"
+        placeholder='Автор или название пьесы'
       />
       <button
         className={cx('submit-button')}
@@ -49,11 +55,7 @@ export const LibrarySearchForm: React.VFC = () => {
         disabled={!canSubmit}
       >
         <span className={cx('submit-button-icon')}>
-          <Icon
-            glyph="arrow-right"
-            width="100%"
-            height="100%"
-          />
+          <Icon glyph="arrow-right" width="100%" height="100%"/>
         </span>
         Искать
       </button>

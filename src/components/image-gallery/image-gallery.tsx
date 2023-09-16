@@ -17,13 +17,13 @@ type GalleryImage = {
 }
 
 interface ImageGalleryProps {
-  title?: string
   items: GalleryImage[]
+  title: string
   className?: string
 }
 
 export const ImageGallery: React.VFC<ImageGalleryProps> = (props) => {
-  const { className, title, items } = props;
+  const { className, items, title } = props;
   const [fullscreenMode, setFullscreenMode] = useState(false);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 

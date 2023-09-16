@@ -23,7 +23,7 @@ const cn = classNames.bind(styles);
 
 const outsideClickEvents = ['mousedown', 'touchstart'];
 
-export const Dropdown: FC<DropdownProps> = (props) => {
+export const Dropdown : FC<DropdownProps> = (props) => {
   const {
     className,
     opened,
