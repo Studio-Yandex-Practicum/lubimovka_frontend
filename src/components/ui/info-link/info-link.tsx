@@ -17,10 +17,10 @@ export interface ILinkProps {
   icon?: IIconProps['glyph']
   iconPlace?: 'iconNone' | 'left' | 'right'
   hoverStyle?: 'invert' | 'bottomLine' | 'bottomLineAndInvert'
-  size?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'number'
+  size?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'number' | 'textMedium'
   textDecoration?: 'textDecorationNone' | 'underline'
   textTransform?: 'uppercase'
-  border?: 'borderNone' | 'borderBottomLeft' | 'borderTop'
+  border?: 'borderNone' | 'borderBottomLeft' | 'borderTop' | 'borderLeftBottomRight'
   className?: string
   iconClassName?: string
 }

@@ -170,14 +170,12 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               <div className={cx('tagWrapper')}>
                 {achievements.map((item, idx) => (
                   <div className={cx('tag')} key={idx}>
-                    <Link href={`library/?festival=${item.year}&program=${item.id}`}>
-                      <a className={cx('tagLink')}>
-                        <Tag
-                          label={`${item.name} ${item.year}`}
-                          selected={false}
-                        />
-                      </a>
-                    </Link>
+                    <InfoLink
+                      label={`${item.name} ${item.year}`}
+                      href={`library/?festival=${item.year}&program=${item.id}`}
+                      border='borderLeftBottomRight'
+                      size='textMedium'
+                    />
                   </div>
                 )
                 )}
