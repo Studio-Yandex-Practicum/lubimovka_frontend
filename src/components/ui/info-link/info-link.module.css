@@ -129,9 +129,9 @@
 .borderLeftBottomRight {
   display: inline-block;
   padding: 4px 8px 8px;
+  border-right: 1px solid var(--coal);
   border-bottom: 1px solid var(--coal);
   border-left: 1px solid var(--coal);
-  border-right: 1px solid var(--coal);
 }
 
 .borderTop {
@@ -156,7 +156,6 @@
 .m {
   @mixin textHistorySmall;
 }
-
 
 .l {
   @mixin headline;
