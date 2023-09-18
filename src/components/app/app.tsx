@@ -1,8 +1,8 @@
 import { ru } from 'date-fns/locale';
 import setDefaultOptions from 'date-fns/setDefaultOptions';
 import { SWRConfig } from 'swr';
-import { AppContextProvider } from 'components/app-context/app-context';
 
+import { AppContextProvider } from 'components/app-context/app-context';
 import { GoogleAnalyticsScript } from 'components/google-analytics-script';
 
 import { googleAnalyticsTrackingId } from '../../../config/env';

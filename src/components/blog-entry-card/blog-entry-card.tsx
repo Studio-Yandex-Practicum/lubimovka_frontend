@@ -3,10 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useContext } from 'react';
 
+import { AppContext } from 'components/app-context/app-context';
+
 import type { BlogEntryPreview } from 'core/blog';
 
 import styles from './blog-entry-card.module.css';
-import { AppContext } from 'components/app-context/app-context';
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +17,7 @@ interface BlogEntryCardProps extends Omit<BlogEntryPreview, 'id'> {
 
 export const BlogEntryCard: React.VFC<BlogEntryCardProps> = (props) => {
 
-  const {someData, setSomeData} = useContext(AppContext);
+  const { setSomeData } = useContext(AppContext);
 
   const {
     authorFullName,
