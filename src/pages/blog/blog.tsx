@@ -3,7 +3,7 @@ import isNil from 'lodash/isNil';
 import omitBy from 'lodash/omitBy';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
-import { useMemo, useState, useEffect, useCallback } from 'react';
+import { useMemo, useState, useEffect, useCallback, useContext } from 'react';
 import { unstable_serialize } from 'swr/infinite';
 
 import { AppLayout } from 'components/app-layout/index';
@@ -23,6 +23,7 @@ import { useBlog, fetchBlogFilters, fetchBlogEntries, getBlogEntriesCacheKey } f
 import { useSettings } from 'services/api/settings-adapter';
 import { MONTHS } from 'shared/constants/months';
 import { safelyGetQueryParamAsString } from 'shared/helpers/query-params';
+import { AppContext } from 'components/app-context/app-context';
 
 import type { SelectOptionCheckHandler } from 'components/ui/select';
 import type { BlogFilters } from 'core/blog';
@@ -49,6 +50,13 @@ const Blog: React.FC<BlogProps> = (props) => {
   const [year, setYear] = useState<BlogFilters['year']>(safelyGetQueryParamAsString(router.query.year));
   const { isLoading, data, error, setSize } = useBlog({ month, year });
   const { settings } = useSettings();
+  const {someData, setSomeData} = useContext(AppContext);
+
+  if (someData !== null) {
+    const card = document.getElementById(someData);
+    card?.scrollIntoView();
+    console.log('card >>', card);
+  }
 
   const callToActionEmail = settings?.emailAddresses.forBlogAuthors;
 

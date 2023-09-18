@@ -1,6 +1,7 @@
 import { ru } from 'date-fns/locale';
 import setDefaultOptions from 'date-fns/setDefaultOptions';
 import { SWRConfig } from 'swr';
+import { AppContextProvider } from 'components/app-context/app-context';
 
 import { GoogleAnalyticsScript } from 'components/google-analytics-script';
 
@@ -31,7 +32,9 @@ export const App = ({ Component, pageProps }: AppProps) => {
           revalidateIfStale: false
         }}
       >
-        <Component {...restPageProps}/>
+        <AppContextProvider>
+          <Component {...restPageProps}/>
+        </AppContextProvider>
       </SWRConfig>
     </>
   );

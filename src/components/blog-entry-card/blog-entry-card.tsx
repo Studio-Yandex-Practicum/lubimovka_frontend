@@ -1,10 +1,12 @@
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useContext } from 'react';
 
 import type { BlogEntryPreview } from 'core/blog';
 
 import styles from './blog-entry-card.module.css';
+import { AppContext } from 'components/app-context/app-context';
 
 const cx = classNames.bind(styles);
 
@@ -13,6 +15,9 @@ interface BlogEntryCardProps extends Omit<BlogEntryPreview, 'id'> {
 }
 
 export const BlogEntryCard: React.VFC<BlogEntryCardProps> = (props) => {
+
+  const {someData, setSomeData} = useContext(AppContext);
+
   const {
     authorFullName,
     authorUrl,
@@ -26,7 +31,7 @@ export const BlogEntryCard: React.VFC<BlogEntryCardProps> = (props) => {
   const authorNameProps = authorUrl ? { href: authorUrl } : {};
 
   return (
-    <article className={cx('root')}>
+    <article className={cx('root')} onClick={()=>setSomeData(viewUrl)} id={viewUrl}>
       <Link href={viewUrl}>
         <a className={cx('link')}>
           <h2 className={cx('title')}>
