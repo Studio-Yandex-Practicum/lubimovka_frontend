@@ -6,8 +6,6 @@ import { PlayList } from 'components/play-list';
 import { Section } from 'components/section';
 import { Button } from 'components/ui/button';
 import { InfoLink } from 'components/ui/info-link';
-import { Link } from 'components/ui/link';
-import { Tag } from 'components/ui/tag';
 import * as breakpoints from 'shared/breakpoints.js';
 import { numberOfCharacters } from 'shared/constants/numbers';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
@@ -170,14 +168,12 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               <div className={cx('tagWrapper')}>
                 {achievements.map((item, idx) => (
                   <div className={cx('tag')} key={idx}>
-                    <Link href={`library/?festival=${item.year}&program=${item.id}`}>
-                      <a>
-                        <Tag
-                          label={`${item.name} ${item.year}`}
-                          selected={false}
-                        />
-                      </a>
-                    </Link>
+                    <InfoLink
+                      label={`${item.name} ${item.year}`}
+                      href={`library/?festival=${item.year}&program=${item.id}`}
+                      border='borderLeftBottomRight'
+                      size='textMedium'
+                    />
                   </div>
                 )
                 )}
