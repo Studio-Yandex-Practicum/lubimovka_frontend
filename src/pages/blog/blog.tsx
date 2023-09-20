@@ -52,11 +52,16 @@ const Blog: React.FC<BlogProps> = (props) => {
   const { settings } = useSettings();
   const { someData } = useContext(AppContext);
 
-  if (someData !== null) {
-    const card = document.getElementById(someData);
-    card?.scrollIntoView();
+  const getCard = () => {
+    if (someData !== null) {
+      const card = document.getElementById(someData);
+      card?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-  }
+  useEffect(()=>{
+    getCard();
+  });
 
   const callToActionEmail = settings?.emailAddresses.forBlogAuthors;
 
