@@ -3,10 +3,9 @@ import isNil from 'lodash/isNil';
 import omitBy from 'lodash/omitBy';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
-import { useMemo, useState, useEffect, useCallback, useContext } from 'react';
+import { useMemo, useState, useEffect, useCallback } from 'react';
 import { unstable_serialize } from 'swr/infinite';
 
-import { AppContext } from 'components/app-context/app-context';
 import { AppLayout } from 'components/app-layout/index';
 import { BlogEntryCard } from 'components/blog-entry-card';
 import { BlogEntryList } from 'components/blog-entry-list';
@@ -22,6 +21,7 @@ import { BLOG_ENTRIES_PER_PAGE } from 'core/blog';
 import { withSWRFallback } from 'hocs/with-swr-fallback';
 import { useBlog, fetchBlogFilters, fetchBlogEntries, getBlogEntriesCacheKey } from 'services/api/blog-adapter';
 import { useSettings } from 'services/api/settings-adapter';
+import { useCard } from 'services/api/use-card';
 import { MONTHS } from 'shared/constants/months';
 import { safelyGetQueryParamAsString } from 'shared/helpers/query-params';
 
@@ -50,17 +50,13 @@ const Blog: React.FC<BlogProps> = (props) => {
   const [year, setYear] = useState<BlogFilters['year']>(safelyGetQueryParamAsString(router.query.year));
   const { isLoading, data, error, setSize } = useBlog({ month, year });
   const { settings } = useSettings();
-  const { someData } = useContext(AppContext);
-
-  const getCard = () => {
-    if (someData !== null) {
-      const card = document.getElementById(someData);
-      card?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const [card] = useCard();
 
   useEffect(()=>{
-    getCard();
+    if (card) {
+      const element = document.getElementById(card);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 
   const callToActionEmail = settings?.emailAddresses.forBlogAuthors;
