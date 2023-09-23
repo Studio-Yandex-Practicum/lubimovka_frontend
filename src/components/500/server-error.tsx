@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 import * as breakpoints from 'shared/breakpoints';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 import SmallLogo from 'shared/images/compact-logo.svg';
@@ -30,28 +31,41 @@ export default function ServerError() {
             Чтобы узнать новости фестиваля, перейдите в наш Телеграм-канал
           </p>
           <Button
-            border="bottomLeft"
-            isLink
-            size={'s'}
-            iconPlace={'left'}
-            icon={'arrow-right'}
+            size='s'
+            border='bottom-left'
             href={'https://t.me/lubimovka'}
-            label={'TLGRM'}
-          />
+            icon={(
+              <Icon
+                glyph="arrow-right"
+                width="100%"
+                height="100%"
+              />
+            )}
+            iconPosition="left"
+          >
+            {'TLGRM'}
+          </Button>
         </div>
         <div className={classes.rightBlock}>
           <p className={classes.text}>
             Или перезагрузите страницу
           </p>
           <Button
-            border="bottomLeft"
-            size={'s'}
-            iconPlace={'left'}
-            icon={'arrow-right'}
-            type={'button'}
-            label={'Перезагрузить'}
+            size="s"
+            border='bottom-left'
+            type='button'
             onClick={()=>document.location.reload()}
-          />
+            icon={(
+              <Icon
+                glyph="arrow-right"
+                width="100%"
+                height="100%"
+              />
+            )}
+            iconPosition="left"
+          >
+            {'ПЕРЕЗАГРУЗИТЬ'}
+          </Button>
         </div>
       </div>
     </section>

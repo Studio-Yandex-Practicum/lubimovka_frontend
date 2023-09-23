@@ -21,9 +21,11 @@
   }
 }
 
-.footnoteLink {
+.footnoteLink.footnoteLink {
+  padding: 0;
+
   @media (max-width: $tablet-portrait) {
-    text-decoration: underline;
+    border-bottom-color: var(--coal);
   }
 }
 

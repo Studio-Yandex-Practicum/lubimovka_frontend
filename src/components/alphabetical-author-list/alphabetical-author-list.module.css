@@ -9,7 +9,7 @@
   padding: 0;
   margin: 14px 0 60px;
 
-  :last-child {
+  :first-child {
     margin-bottom: 0;
   }
 }
@@ -19,5 +19,15 @@
 
   &:not(:last-child) {
     margin: 0 0 12px;
+  }
+}
+
+.link.link {
+  padding: 0;
+
+  :first-child {
+    font-family: "PP Neue Machina", Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: -.01em;
   }
 }

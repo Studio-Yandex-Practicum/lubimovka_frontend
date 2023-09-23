@@ -42,10 +42,17 @@
 }
 
 .author {
-  @mixin headline;
-  @mixin headline7;
+  padding: 0;
+  margin-inline-start: 0;
 
   display: inline-block;
+
+  :first-child {
+    font-family: "PP Neue Machina", Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 24px;
+  }
 }
 
 .city {

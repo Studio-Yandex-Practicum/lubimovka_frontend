@@ -2,7 +2,6 @@ import cn from 'classnames/bind';
 
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
-import { InfoLink } from 'components/ui/info-link';
 
 import type { Play } from 'core/play';
 
@@ -87,12 +86,14 @@ export const PlayCard: React.FC<PlayCardProps> = (props) => {
             key={author.slug}
             className={cx('author')}
           >
-            <InfoLink
-              className={cx('author')}
-              size="l"
+            <Button
               href={`/${author.slug}`}
-              label={author.fullName}
-            />
+              size="m"
+              className={cx('author')}
+              animation='invert'
+            >
+              {author.fullName}
+            </Button>
           </dd>
         )
         )}

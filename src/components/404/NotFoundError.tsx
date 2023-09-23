@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 import { useSettings } from 'services/api/settings-adapter';
 import * as breakpoints from 'shared/breakpoints';
 import { participationFormPath } from 'shared/constants/participation-form-path';
@@ -38,41 +39,56 @@ export default function NotFoundError() {
         <ul className={classes.list}>
           <li className={classes.listItem}>
             <Button
-              border="bottomLeft"
-              isLink
-              size={'s'}
-              className={classes.link}
-              iconPlace={'left'}
-              icon={'arrow-right'}
+              size="s"
+              border='bottom-left'
               href={'/'}
-              label={'На главную'}
-            />
+              icon={(
+                <Icon
+                  glyph="arrow-right"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              iconPosition="left"
+            >
+              {'НА ГЛАВНУЮ'}
+            </Button>
           </li>
           {settings?.canProposePlay && (
             <li className={classes.listItem}>
               <Button
-                border="bottomLeft"
-                isLink
-                size={'s'}
-                className={classes.link}
-                iconPlace={'left'}
-                icon={'arrow-right'}
+                size="s"
+                border='bottom-left'
                 href={participationFormPath}
-                label={'Подать пьесу'}
-              />
+                icon={(
+                  <Icon
+                    glyph="arrow-right"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+                iconPosition="left"
+              >
+                {'ПОДАТЬ ПЬЕСУ'}
+              </Button>
             </li>
           )}
           <li className={classes.listItem}>
             <Button
-              border="bottomLeft"
-              isLink
-              size={'s'}
-              className={classes.link}
-              iconPlace={'left'}
-              icon={'arrow-right'}
+              size="s"
+              border='bottom-left'
               href={'/donation'}
-              label={'Поддержать'}
-            />
+              icon={(
+                <Icon
+                  glyph="arrow-right"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              iconPosition="left"
+            >
+              {'ПОДДЕРЖАТЬ'}
+            </Button>
           </li>
         </ul>
       </div>

@@ -1,6 +1,7 @@
 import cn from 'classnames/bind';
 
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 
 import type { FC } from 'react';
 
@@ -30,15 +31,23 @@ export const AnotherPlays: FC<AnotherPlaysProps> = ({ links }) => {
               {link.title}
             </p>
             {link.href && (
-              <a className={cx('downloadButton')} href={link.href} download>
-                <Button
-                  size="l"
-                  iconPlace="right"
-                  icon="arrow-down"
-                  label="Скачать"
-                  border="none"
-                />
-              </a>
+              <Button
+                size='l'
+                border='none'
+                href={link.href}
+                icon={(
+                  <Icon
+                    glyph="arrow-down"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+                iconPosition='right'
+                className={cx('downloadButton')}
+                download
+              >
+                {'СКАЧАТЬ'}
+              </Button>
             )}
           </li>
         ))}

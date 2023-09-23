@@ -2,41 +2,80 @@ $border-width: 1px;
 
 .common {
   position: relative;
+  z-index: 0;
   display: inline-flex;
   box-sizing: border-box;
   align-items: center;
   justify-content: space-between;
   border: $border-width solid;
-  background: 0;
+  background-color: transparent;
   color: inherit;
   cursor: pointer;
   isolation: isolate;
   text-decoration: none;
+}
+
+.animation-slide {
+  &::before {
+    position: absolute;
+    z-index: -1;
+    top: -$border-width;
+    left: -$border-width;
+    width: 0;
+    height: calc(100% + $border-width * 2);
+    transition: width .2s ease-in;
+    background-color: var(--coal);
+    content: "";
+  }
 
   &:hover {
-    border-color: transparent;
     color: var(--white);
 
     &::before {
-      position: absolute;
-      z-index: -1;
-      top: -$border-width;
-      left: -$border-width;
-      display: block;
-      width: calc(100% + 2 * $border-width);
-      height: calc(100% + 2 * $border-width);
-      animation: .3s background-slide ease;
-      background-color: var(--coal);
-      content: "";
-      transform-origin: left;
+      width: calc(100% + $border-width * 2);
     }
   }
 }
 
+.animation-bottomLine {
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: var(--coal);
+    content: "";
+    transition: width .5s ease-in;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.animation-invert {
+  transition: background-color .2s ease-in, color .2s ease-in;
+
+  &:hover {
+    background-color: var(--coal);
+    color: var(--white);
+  }
+}
+
+.icon-position-left {
+  padding: 2px 14px 5px 0;
+}
+
+.icon-position-right {
+  padding: 2px 0 5px 14px;
+}
+
 .icon {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   flex-shrink: 0;
   font-size: 0;
   line-height: 0;
@@ -83,6 +122,16 @@ $border-width: 1px;
   }
 }
 
+.sm {
+  composes: common;
+  padding: 4px 8px 8px 8px;
+
+  .text {
+    font-size: 18px;
+    line-height: 23px;
+  }
+}
+
 .m {
   composes: common;
   padding: 8px;
@@ -119,6 +168,23 @@ $border-width: 1px;
   }
 }
 
+.xxl {
+  composes: common;
+  padding: 0;
+
+  .icon-right:not(:only-child) {
+    margin-left: 8px;
+    margin-bottom: 8px
+  }
+
+  .text {
+    @mixin headline4;
+    font-family: "PP Neue Machina", Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: -.01em;
+  }
+}
+
 .common.border-none {
   border-color: transparent;
 }
@@ -133,12 +199,34 @@ $border-width: 1px;
 }
 
 .common.border-bottom-left {
+  border-color: var(--coal);
   border-top-color: transparent;
   border-right-color: transparent;
 }
 
 .common.border-right-bottom {
+  border-color: var(--coal);
   border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+.common.border-top-left {
+  border-color: var(--coal);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.common.border-top {
+  border-color: var(--coal);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+
+.common.border-bottom {
+  border-color: var(--coal);
+  border-top-color: transparent;
+  border-right-color: transparent;
   border-left-color: transparent;
 }
 
@@ -161,14 +249,4 @@ $border-width: 1px;
 .common.pressed {
   background-color: var(--coal);
   color: var(--white);
-}
-
-@keyframes background-slide {
-  from {
-    transform: scaleX(0);
-  }
-
-  to {
-    transform: scaleX(1);
-  }
 }

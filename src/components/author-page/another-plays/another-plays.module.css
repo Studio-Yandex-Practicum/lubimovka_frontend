@@ -63,5 +63,8 @@
 
 .downloadButton {
   margin: 5px 0;
-  text-decoration: none;
+}
+
+.downloadButton.downloadButton :first-child {
+  margin-left: 0;
 }

@@ -105,6 +105,7 @@
 }
 
 .listItem {
+  margin-right: 8px;
   @media (max-width: $tablet-portrait) {
     margin-bottom: 42px;
   }
@@ -140,55 +141,5 @@
   @media (max-width: 1400px) {
     top: 728px;
     left: -160px;
-  }
-}
-
-.link {
-  position: relative;
-  z-index: 1;
-  box-sizing: border-box;
-  padding-right: 23px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #242424;
-  border-left: 1px solid #242424;
-  margin-right: 8px;
-  color: #333;
-  text-decoration: none;
-  text-transform: uppercase;
-
-  &::before {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: var(--coal);
-    content: "";
-    transition: width .2s ease-in, transform .1s linear;
-  }
-
-  &:hover {
-    color: var(--beige);
-
-    &::before {
-      width: 100%;
-    }
-  }
-
-  &:active::before {
-    transform: scale(1.075);
-  }
-
-  &:disabled {
-    cursor: default;
-  }
-
-  &:disabled:hover {
-    color: var(--coal);
-
-    &::before {
-      width: 0;
-    }
   }
 }

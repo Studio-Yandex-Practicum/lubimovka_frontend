@@ -46,17 +46,31 @@
 }
 
 .link {
+  padding: 0;
   display: inline-flex;
   align-items: flex-end;
   text-decoration-line: underline;
 
-  > svg {
+  :last-child {
+    font-family: "PP Neue Machina", Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: -.01em;
+    font-size: 1.75rem;
+    line-height: 2rem;
+
+    @media (max-width: $tablet-portrait) {
+      @mixin headline7;
+    }
+  }
+
+  :first-child {
     width: 25px;
     height: 25px;
   }
 
   @media (max-width: $tablet-portrait) {
-    > svg {
+    :first-child {
       width: 20px;
       height: 20px;
     }
