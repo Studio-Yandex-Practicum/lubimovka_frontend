@@ -53,9 +53,9 @@
 }
 
 .mailLink {
+  padding: 0;
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  padding: 0;
 }
 
 .mainText {

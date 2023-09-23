@@ -106,6 +106,7 @@
 
 .listItem {
   margin-right: 8px;
+
   @media (max-width: $tablet-portrait) {
     margin-bottom: 42px;
   }

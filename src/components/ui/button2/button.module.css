@@ -23,9 +23,9 @@ $border-width: 1px;
     left: -$border-width;
     width: 0;
     height: calc(100% + $border-width * 2);
-    transition: width .2s ease-in;
     background-color: var(--coal);
     content: "";
+    transition: width .2s ease-in;
   }
 
   &:hover {
@@ -124,7 +124,7 @@ $border-width: 1px;
 
 .sm {
   composes: common;
-  padding: 4px 8px 8px 8px;
+  padding: 4px 8px 8px;
 
   .text {
     font-size: 18px;
@@ -173,12 +173,13 @@ $border-width: 1px;
   padding: 0;
 
   .icon-right:not(:only-child) {
+    margin-bottom: 8px;
     margin-left: 8px;
-    margin-bottom: 8px
   }
 
   .text {
     @mixin headline4;
+
     font-family: "PP Neue Machina", Arial, sans-serif;
     font-weight: 400;
     letter-spacing: -.01em;
@@ -212,14 +213,14 @@ $border-width: 1px;
 
 .common.border-top-left {
   border-color: var(--coal);
-  border-bottom-color: transparent;
   border-right-color: transparent;
+  border-bottom-color: transparent;
 }
 
 .common.border-top {
   border-color: var(--coal);
-  border-bottom-color: transparent;
   border-right-color: transparent;
+  border-bottom-color: transparent;
   border-left-color: transparent;
 }
 

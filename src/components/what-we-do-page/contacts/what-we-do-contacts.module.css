@@ -46,17 +46,17 @@
 }
 
 .link {
-  padding: 0;
   display: inline-flex;
   align-items: flex-end;
+  padding: 0;
   text-decoration-line: underline;
 
   :last-child {
     font-family: "PP Neue Machina", Arial, sans-serif;
+    font-size: 1.75rem;
     font-style: normal;
     font-weight: normal;
     letter-spacing: -.01em;
-    font-size: 1.75rem;
     line-height: 2rem;
 
     @media (max-width: $tablet-portrait) {

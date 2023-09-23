@@ -14,9 +14,6 @@ interface IHistoryTitle {
   currentYear: number
 }
 
-const iconPlace = 'right';
-const icon = 'arrow-right';
-const alignStart = 'start';
 // TODO: TT заменить на локальное изображение
 const imageUrl = 'https://s1.hostingkartinok.com/uploads/images/2021/12/fb0c8e1baf21b0ca306ee98a6678c0d8.png';
 

@@ -203,19 +203,19 @@
 }
 
 .buttonToggle {
+  align-items: flex-start;
   padding-top: 0;
   padding-right: 0;
   padding-bottom: 4px;
-  align-items: flex-start;
 
   :last-child {
     padding-top: 7px;
   }
 
   :first-child {
-    padding-top: 0;
     width: 24px;
     height: 24px;
+    padding-top: 0;
   }
 }
 

@@ -47,10 +47,10 @@ $padding-bottom: 82px;
 
 .author {
   align-self: center;
-  grid-area: author;
-  justify-self: center;
   padding: 0;
   padding-left: 4px;
+  grid-area: author;
+  justify-self: center;
 
   @media (max-width: $tablet-portrait) {
     margin: 0 0 0 60px;

@@ -42,10 +42,9 @@
 }
 
 .author {
+  display: inline-block;
   padding: 0;
   margin-inline-start: 0;
-
-  display: inline-block;
 
   :first-child {
     font-family: "PP Neue Machina", Arial, sans-serif;

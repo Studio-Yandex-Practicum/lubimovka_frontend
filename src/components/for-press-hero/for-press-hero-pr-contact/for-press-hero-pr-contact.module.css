@@ -37,9 +37,9 @@
 .description {
   @mixin text;
   @mixin textSmall;
-  margin-left: 0;
 
   max-width: 269px;
+  margin-left: 0;
 }
 
 .hiddenText {
