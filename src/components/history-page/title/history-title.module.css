@@ -61,27 +61,9 @@
   display: inline-block;
 }
 
-.button.link.title {
-  @mixin headline4;
-  @mixin headline;
-
-  padding: 0;
-
-  &:hover {
-    color: var(--white);
-  }
-}
-
 .button.link.subtitle {
-  @mixin textHistorySmall;
-  @mixin text;
-
   padding: 0;
   margin-bottom: 10px;
-
-  &:hover {
-    color: var(--white);
-  }
 }
 
 .links {

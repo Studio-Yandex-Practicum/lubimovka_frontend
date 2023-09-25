@@ -4,10 +4,11 @@ import { forwardRef } from 'react';
 import styles from './button.module.css';
 
 export interface ButtonOwnProps {
-  size?: 'xs' | 's' | 'm' | 'l'
+  size?: 'xs' | 's' | 'sm' | 'm' | 'l' | 'xxl'
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
-  border?: 'full' | 'right-bottom-left' | 'bottom-left' | 'right-bottom' | 'none'
+  border?: 'full' | 'right-bottom-left' | 'bottom-left' | 'right-bottom' | 'none' | 'top-left' | 'top' | 'bottom'
+  animation?: 'invert' | 'slide' | 'bottomLine'
   fullWidth?: boolean
   upperCase?: boolean
   disabled?: boolean
@@ -20,7 +21,7 @@ type ClickHandler = NonNullable<React.ComponentPropsWithoutRef<'button'>['onClic
 
 type HTMLProps = {
   a: Pick<React.ComponentPropsWithoutRef<'a'>, 'href' | 'target' | 'download' | 'rel'>
-  button: { type: 'button'; onClick: ClickHandler } | { type: 'reset' | 'submit'; onClick?: ClickHandler }
+  button: { type: 'button'; onClick?: ClickHandler } | { type: 'reset' | 'submit'; onClick?: ClickHandler }
 }
 type DisallowProps<P> = {[K in keyof P]?: never}
 type DisallowedProps<E extends keyof HTMLProps> = HTMLProps[keyof (Omit<HTMLProps, E>)]
@@ -35,6 +36,7 @@ const Component = (props: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement
     className,
     size = 'm',
     border = 'none',
+    animation = 'slide',
     fullWidth,
     upperCase,
     disabled,
@@ -50,6 +52,8 @@ const Component = (props: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement
       className={cx(
         size,
         `border-${border}`,
+        `animation-${animation}`,
+        `icon-position-${iconPosition}`,
         {
           'full-width': fullWidth,
           'upper-case': upperCase,

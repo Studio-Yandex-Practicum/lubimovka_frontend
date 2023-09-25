@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import { InfoLink } from 'components/ui/info-link';
+import { Button } from 'components/ui/button2';
 
 import type { Author } from 'core/author';
 
@@ -29,13 +29,15 @@ export const AlphabeticalAuthorList: React.VFC<AlphabeticalAuthorListProps> = (p
                 key={author.slug}
                 className={cx('item')}
               >
-                <InfoLink
+                <Button
+                  size="m"
+                  border='none'
                   href={`/${author.slug}`}
-                  label={author.fullName}
-                  size="l"
+                  animation='invert'
+                  className={cx('link')}
                 >
                   {author.fullName}
-                </InfoLink>
+                </Button>
               </li>
             ))}
           </ul>

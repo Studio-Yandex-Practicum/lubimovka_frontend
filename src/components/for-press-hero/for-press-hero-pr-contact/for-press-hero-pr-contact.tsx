@@ -1,7 +1,7 @@
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
-import { InfoLink } from 'components/ui/info-link';
+import { Button } from 'components/ui/button2';
 
 import type { FC } from 'react';
 
@@ -44,13 +44,15 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, c
           Email:
         </dt>
         <dd className={cx('email')}>
-          <InfoLink
-            isOutsideLink
+          <Button
+            border='none'
+            size="m"
+            animation='invert'
             href={`mailto:${data.email}`}
-            label={data.email}
-            size= "l"
-            textDecoration="underline"
-          />
+            className={cx('button')}
+          >
+            {data.email}
+          </Button>
         </dd>
         <dt className={cx('hiddenText')}>
           Должность:

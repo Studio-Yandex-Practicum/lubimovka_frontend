@@ -1,6 +1,7 @@
 import cn from 'classnames/bind';
 
-import { InfoLink } from 'components/ui/info-link';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 
 import type { OtherLink } from '__generated__/api-typings';
 import type { FC } from 'react';
@@ -24,15 +25,23 @@ export const AuthorInformation: FC<IAuthorInformation> = ({ links }) => {
         {links
           .map((item, idx) => (
             <div className={cx('anchorHeading')} key={idx}>
-              <InfoLink
-                label={item.name}
+              <Button
+                size="m"
+                border="top"
+                fullWidth
                 href={item.link}
-                icon="arrow-right"
-                iconPlace="right"
-                size="xl"
-                border="borderTop"
-                iconClassName={cx('anchor')}
-              />
+                icon={(
+                  <Icon
+                    glyph="arrow-right"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+                iconPosition="right"
+                animation='invert'
+              >
+                {item.name}
+              </Button>
             </div>
           ))
         }

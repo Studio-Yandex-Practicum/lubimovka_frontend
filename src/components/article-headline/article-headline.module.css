@@ -47,6 +47,8 @@ $padding-bottom: 82px;
 
 .author {
   align-self: center;
+  padding: 0;
+  padding-left: 4px;
   grid-area: author;
   justify-self: center;
 

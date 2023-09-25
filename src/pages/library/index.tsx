@@ -212,7 +212,7 @@ const Plays = (props: PlaysViewProps) => {
                         <Button
                           type="button"
                           pressed
-                          size="s"
+                          size="m"
                           icon={(
                             <Icon
                               glyph="cross"
@@ -282,6 +282,7 @@ const Plays = (props: PlaysViewProps) => {
                       {...isMobile && {
                         fullWidth: true,
                         iconPosition: 'right',
+                        border: 'full'
                       }}
                       onClick={resetFilters}
                     >
@@ -291,7 +292,7 @@ const Plays = (props: PlaysViewProps) => {
                   {isMobile && !isEqual(savedFilterState.current, filterState) && (
                     <Button
                       type="button"
-                      border="bottom-left"
+                      border="full"
                       upperCase
                       size="s"
                       fullWidth

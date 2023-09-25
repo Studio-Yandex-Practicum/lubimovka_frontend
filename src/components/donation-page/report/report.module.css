@@ -23,11 +23,21 @@
   }
 }
 
-.reportEmail {
-  @mixin headline;
-  @mixin headline5;
+.reportEmail.reportEmail {
+  padding: 0;
 
-  @media (max-width: $tablet-portrait) {
-    @mixin headline6;
+  :first-child {
+    @mixin headline;
+    @mixin headline5;
+
+    @media (max-width: $tablet-portrait) {
+      @mixin headline6;
+    }
+  }
+
+  &:hover {
+    :first-child {
+      color: var(--white);
+    }
   }
 }

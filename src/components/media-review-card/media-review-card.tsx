@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
-import { InfoLink } from 'components/ui/info-link';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 
 import type { FC } from 'react';
 
@@ -35,17 +36,23 @@ export const MediaReviewCard: FC<MediaReviewCardProps> = (props) => {
       </p>
       {href && (
         <div className={cx('action')}>
-          <InfoLink
-            isOutsideLink
+          <Button
+            size='s'
+            border='bottom-left'
             href={href}
-            label="Читать полностью"
-            icon="arrow-45"
-            iconPlace="left"
-            size="s"
-            textTransform="uppercase"
-            border="borderBottomLeft"
+            icon={(
+              <Icon
+                glyph='arrow-45'
+                width="100%"
+                height="100%"
+              />
+            )}
+            iconPosition='left'
             className={cx('action')}
-          />
+            upperCase
+          >
+            {'Читать полностью'}
+          </Button>
         </div>
       )}
     </article>

@@ -1,6 +1,7 @@
 import cn from 'classnames/bind';
 
-import { Button } from 'components/ui/button';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 
 import type { FC } from 'react';
 
@@ -24,17 +25,22 @@ export const ForPressHeroDescription: FC<IForPressHeroDescriptionProps> = ({ dat
         {data.description}
       </p>
       <Button
-        className={cx('button')}
-        align="start"
         size="s"
-        view="primary"
-        iconPlace="left"
-        icon="arrow-right"
-        label="Фотоальбомы"
-        border="bottomLeft"
-        isLink
+        border='bottom-left'
         href={data.link}
-      />
+        icon={(
+          <Icon
+            glyph="arrow-right"
+            width="100%"
+            height="100%"
+          />
+        )}
+        iconPosition="left"
+        upperCase
+        className={cx('button')}
+      >
+        {'Фотоальбомы'}
+      </Button>
     </div>
   );
 };

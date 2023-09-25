@@ -202,6 +202,23 @@
   max-height: 200px;
 }
 
+.buttonToggle {
+  align-items: flex-start;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 4px;
+
+  :last-child {
+    padding-top: 7px;
+  }
+
+  :first-child {
+    width: 24px;
+    height: 24px;
+    padding-top: 0;
+  }
+}
+
 .authorLinks {
   max-width: 479px;
   padding: 80px 0 0;
@@ -280,6 +297,15 @@
   margin: 0 8px 8px 0;
 }
 
+.overviewSocialLinkButton {
+  padding: 0;
+  padding-right: 10px;
+}
+
+.overviewSocialLinkButton.overviewSocialLinkButton :first-child {
+  margin-right: 0;
+}
+
 .overviewSocialLinkHeading {
   @mixin headline;
   @mixin headline7;
@@ -292,6 +318,15 @@
   @mixin headline7;
 
   margin: 6px 0;
+}
+
+.overviewEmaillLink.overviewEmaillLink {
+  padding: 0;
+  text-decoration: underline;
+
+  :first-child {
+    font-family: "PP Neue Machina", Arial, sans-serif;
+  }
 }
 
 .overviewTagsHeading {
