@@ -3,6 +3,7 @@
 .common {
   @mixin text;
   @mixin textLarge;
+
   color: var(--coal);
 
   big {
