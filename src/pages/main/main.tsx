@@ -24,7 +24,6 @@ import { TeaserList } from 'components/teaser-list';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 import { PartnerType } from 'core/partner';
-import { EventType } from 'core/schedule';
 import { fetchPartners } from 'services/api/partners-adapter';
 import { fetcher } from 'services/fetcher';
 
@@ -86,20 +85,16 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                   {afisha.items.map((event) => (
                     <EventList.Item key={event.id}>
                       <EventCard
-                        // @ts-ignore: TODO: разобраться, сча в схеме API нет поля с изображением
-                        imageUrl={event.event_body.image}
+                        imageUrl={event.image}
                         date={format(new Date(event.date_time), 'd MMMM')}
                         time={format(new Date(event.date_time), 'H:mm')}
-                        title={event.event_body.name}
-                        type={(event.type === EventType.Performance && 'Спектакль')
-                          || (event.type === EventType.Workshop && 'Мастер-класс')
-                          || (event.type === EventType.Reading && `Читка${event.event_body.project_title ? ` проекта ${event.event_body.project_title}` : ''}`)
-                          || ''}
-                        team={event.event_body.team}
-                        description={event.event_body.description}
-                        {...event.type === 'PERFORMANCE' ? {
+                        title={event.title}
+                        type={event.type}
+                        team={event.team}
+                        description={event.description}
+                        {...event.performance_id ? {
                           aboutText: 'О спектакле',
-                          aboutUrl: `/performances/${event.event_body.id}`,
+                          aboutUrl: `/performances/${event.id}`,
                         } : {}}
                         actionUrl={event.action_url}
                         actionText={event.action_text}

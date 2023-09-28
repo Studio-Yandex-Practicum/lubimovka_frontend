@@ -22,8 +22,8 @@ interface EventCardProps {
   description?: string
   aboutText?: string
   aboutUrl?: string
-  actionUrl: Url
-  actionText: string
+  actionUrl: Url | null
+  actionText: string | null
 }
 
 const cx = classNames.bind(styles);
@@ -109,23 +109,25 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
             </Button>
           </Link>
         )}
-        <Button
-          className={cx('action')}
-          size="s"
-          border="bottom-left"
-          upperCase
-          icon={(
-            <Icon
-              glyph="arrow-right"
-              width="100%"
-              height="100%"
-            />
-          )}
-          href={actionUrl}
-          target="_blank"
-        >
-          {actionText}
-        </Button>
+        {actionUrl && actionText && (
+          <Button
+            className={cx('action')}
+            size="s"
+            border="bottom-left"
+            upperCase
+            icon={(
+              <Icon
+                glyph="arrow-right"
+                width="100%"
+                height="100%"
+              />
+            )}
+            href={actionUrl}
+            target="_blank"
+          >
+            {actionText}
+          </Button>
+        )}
       </div>
     </div>
   );
