@@ -2,9 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { EventInBlock } from './EventInBlock';
+import type { BaseEvent } from './BaseEvent';
 
 export type EventsBlock = {
     title: string;
-    items: Array<EventInBlock>;
+    items: Array<BaseEvent>;
 };

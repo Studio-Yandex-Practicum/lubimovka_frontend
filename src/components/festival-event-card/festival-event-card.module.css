@@ -117,6 +117,10 @@
   grid-area: actions;
 }
 
+.button {
+  padding: 0 2px 2px 0;
+}
+
 .card:not(:first-of-type) {
   border-top: 1px solid var(--coal);
 

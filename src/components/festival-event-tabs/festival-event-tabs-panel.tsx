@@ -26,9 +26,15 @@ export const FestivalEventTabsPanel: React.FC<FestivalEventTabsPanelProps> = (pr
         <h2 className={cx('panel-title')}>
           {title}
         </h2>
-        <p className={cx('panel-status')}>
-          {registrationOpen ? 'открыта регистрация' : `Регистрация откроется ${registrationOpeningDate}`}
-        </p>
+        {registrationOpen ? (
+          <p className={cx('panel-status-open')}>
+            открыта регистрация
+          </p>
+        ) : (
+          <p className={cx('panel-status-close')}>
+            {`Регистрация откроется ${registrationOpeningDate}`}
+          </p>
+        )}
       </div>
       <div className={cx('panel-inner')}>
         {children}

@@ -18,4 +18,7 @@ export type Settings = {
     plays_reception_is_open: boolean;
     projects: Array<ProjectList>;
     email_to_send_questions: string;
+    show_team: boolean;
+    show_sponsors: boolean;
+    show_volunteers: boolean;
 };
