@@ -5,7 +5,7 @@ import style from './play-list.module.css';
 const cx = classNames.bind(style);
 
 interface PlayListProps {
-  variant: 'regular' | 'scrollable'
+  variant?: 'regular' | 'scrollable'
   processing?: boolean
 }
 
