@@ -6,18 +6,18 @@ const cx = classNames.bind(style);
 
 interface PlayListProps {
   variant: 'regular' | 'scrollable'
-  className?: boolean
+  processing?: boolean
 }
 
 export const PlayList = (props: React.PropsWithChildren<PlayListProps>) => {
   const {
     variant = 'regular',
-    className,
+    processing,
     children,
   } = props;
 
   return (
-    <ul className={cx(variant, className)}>
+    <ul className={cx(variant, { processing })}>
       {children}
     </ul>
   );
