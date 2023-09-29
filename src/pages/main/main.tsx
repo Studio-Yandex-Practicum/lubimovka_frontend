@@ -94,7 +94,7 @@ const Main = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                         description={event.description}
                         {...event.performance_id ? {
                           aboutText: 'О спектакле',
-                          aboutUrl: `/performances/${event.id}`,
+                          aboutUrl: `/performances/${event.performance_id}`,
                         } : {}}
                         actionUrl={event.action_url}
                         actionText={event.action_text}

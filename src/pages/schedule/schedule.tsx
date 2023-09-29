@@ -2,7 +2,6 @@ import { unstable_serialize } from 'swr/infinite';
 
 import { AppLayout } from 'components/app-layout';
 import { FestivalSchedule } from 'components/festival-schedule';
-// import { RegularSchedule } from 'components/regular-schedule';
 import { ScheduleHeadline } from 'components/schedule-headline';
 import { ScheduleLayout } from 'components/schedule-layout';
 import { SEO } from 'components/seo';
