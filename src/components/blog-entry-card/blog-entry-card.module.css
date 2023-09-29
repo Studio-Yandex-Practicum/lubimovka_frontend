@@ -65,8 +65,12 @@
 }
 
 .description {
+  overflow: hidden;
   order: 4;
   margin: 0 0 0 28px;
+  hyphens: auto;
+  white-space: wrap;
+  word-break: break-all;
 
   @mixin textSmall;
 }
