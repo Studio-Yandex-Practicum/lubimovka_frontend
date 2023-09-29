@@ -20,7 +20,7 @@
   @mixin textCaption;
 
   position: relative;
-  color: inherit;
+  color: var(--coal);
   text-decoration: none;
 
   &:hover::after {

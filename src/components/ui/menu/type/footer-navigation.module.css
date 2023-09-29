@@ -11,13 +11,13 @@
 
 .item {
   display: block;
-}
 
-.item:not(:first-child) {
-  margin-top: 15px;
+  &:not(:first-child) {
+    margin-top: 15px;
 
-  @media (max-width: $tablet-portrait) {
-    margin-top: 13px;
+    @media (max-width: $tablet-portrait) {
+      margin-top: 13px;
+    }
   }
 }
 
@@ -28,18 +28,18 @@
   position: relative;
   color: var(--coal);
   text-decoration: none;
-}
 
-.link:hover::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  animation: underline .5s;
-  background-color: var(--coal);
-  content: "";
-  transform-origin: 0;
+  &:hover::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    animation: underline .5s;
+    background-color: var(--coal);
+    content: "";
+    transform-origin: 0;
+  }
 }
 
 @keyframes underline {
