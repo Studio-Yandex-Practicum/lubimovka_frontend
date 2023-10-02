@@ -3,7 +3,7 @@ import isNil from 'lodash/isNil';
 import omitBy from 'lodash/omitBy';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
-import { useMemo, useState, useEffect, useCallback } from 'react';
+import { useMemo, useState, useEffect, useCallback, useLayoutEffect } from 'react';
 import { unstable_serialize } from 'swr/infinite';
 
 import { AppLayout } from 'components/app-layout/index';
@@ -52,12 +52,16 @@ const Blog: React.FC<BlogProps> = (props) => {
   const { settings } = useSettings();
   const [card] = useCard();
 
-  useEffect(()=>{
-    if (card) {
-      const element = document.getElementById(card);
-      element?.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      const element = document.getElementById('link');
+
+      if (element !== null) {
+        element.click();
+      }
+
+    },1000);
+  },[]);
 
   const callToActionEmail = settings?.emailAddresses.forBlogAuthors;
 
@@ -127,6 +131,9 @@ const Blog: React.FC<BlogProps> = (props) => {
       <AppLayout>
         <BlogLayout>
           <BlogLayout.Title>
+            {
+              card ? <a href={`#${card}`} id='link'/> : null
+            }
             <PageTitle>
               Блог Любимовки
             </PageTitle>
