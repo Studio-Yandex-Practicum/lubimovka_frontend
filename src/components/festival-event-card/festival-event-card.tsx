@@ -11,11 +11,11 @@ import styles from './festival-event-card.module.css';
 export interface FestivalEventCardProps {
   image?: Url
   time: string
-  location: string
+  location?: string | null
   title: string
   description?: string
   credits: CreditsRole[]
-  actionUrl?: Url
+  actionUrl?: Url | null
   className?: string
 }
 
@@ -86,7 +86,9 @@ export const FestivalEventCard: React.VFC<FestivalEventCardProps> = (props) => {
               />
             )}
             href={actionUrl}
+            className={cx('button')}
             target="_blank"
+            upperCase
           >
             Регистрация
           </Button>
