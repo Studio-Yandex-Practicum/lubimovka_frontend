@@ -45,6 +45,7 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
   const { settings } = useSettings();
   const { partners } = usePartners({ onlyGeneral: true });
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
 
@@ -59,6 +60,20 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
       setIsOverlayMenuOpen(false);
     }
   }, [isMobile]);
+
+  useEffect(() => {
+    const onChange = () => {
+      setScrollPosition(window.scrollY);
+      if (screen.orientation.type === 'landscape-primary') {
+        window.scroll(0, scrollPosition * (window.outerWidth / window.outerHeight));
+      }
+    };
+    screen.orientation.addEventListener('change', onChange);
+
+    return () => {
+      screen.orientation.removeEventListener('change', onChange);
+    };
+  }, [scrollPosition]);
 
   return (
     <Page>
@@ -227,3 +242,4 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
     </Page>
   );
 };
+
