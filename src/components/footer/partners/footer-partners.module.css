@@ -13,6 +13,7 @@
   display: block;
   max-width: 100px;
   margin-bottom: 28px;
+  color: var(--coal);
 
   @media (max-width: $tablet-portrait) {
     display: none;
