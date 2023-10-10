@@ -2,13 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type Participation = {
-    readonly id: number;
+export type ParticipationRequest = {
     year: number;
     birth_year: number;
-    readonly url_file_in_storage: string;
-    readonly modified: string;
-    readonly created: string;
     first_name: string;
     last_name: string;
     city: string;
@@ -21,8 +17,5 @@ export type Participation = {
     /**
      * Файл должен быть в одном из поддерживаемых форматов: ('doc', 'docx', 'txt', 'odt', 'pdf')
      */
-    file: string;
-    readonly exported_to_google: boolean;
-    readonly saved_to_storage: boolean;
-    readonly sent_to_email: boolean;
+    file: Blob;
 };

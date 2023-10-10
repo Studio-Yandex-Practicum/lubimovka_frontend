@@ -60,7 +60,7 @@ export type { PaginatedPerformanceMediaReviewList } from './models/PaginatedPerf
 export type { PaginatedPerformanceReviewList } from './models/PaginatedPerformanceReviewList';
 export type { PaginatedPlayList } from './models/PaginatedPlayList';
 export type { PaginatedProjectListList } from './models/PaginatedProjectListList';
-export type { Participation } from './models/Participation';
+export type { ParticipationRequest } from './models/ParticipationRequest';
 export type { partner_type } from './models/partner_type';
 export type { PartnerListOutput } from './models/PartnerListOutput';
 export type { Performance } from './models/Performance';
@@ -78,7 +78,7 @@ export type { PressRelease } from './models/PressRelease';
 export type { ProgramType } from './models/ProgramType';
 export type { Project } from './models/Project';
 export type { ProjectList } from './models/ProjectList';
-export type { Question } from './models/Question';
+export type { QuestionRequest } from './models/QuestionRequest';
 export type { Role } from './models/Role';
 export type { SearchResult } from './models/SearchResult';
 export type { Selectors } from './models/Selectors';
