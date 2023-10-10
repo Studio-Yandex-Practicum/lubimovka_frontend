@@ -2,10 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type Question = {
-    readonly id: number;
-    readonly created: string;
-    readonly modified: string;
+export type QuestionRequest = {
     question: string;
     author_name: string;
     author_email: string;
