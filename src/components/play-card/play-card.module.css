@@ -8,7 +8,8 @@
   background-color: var(--light-green);
 
   @media tablet-portrait {
-    min-height: 340px;
+    min-height: 342px;
+    margin: 0 0 24px;
   }
 }
 
