@@ -4,8 +4,7 @@ import { Opportunities } from 'components/donation-page/opportunities';
 import { Report } from 'components/donation-page/report';
 import { SEO } from 'components/seo';
 import { useSettings } from 'services/api/settings-adapter';
-
-import mockData from './assets/mock-donation-data.json';
+import { opportunities } from 'shared/constants/donation-opportunities';
 
 const Donation = () => {
   const { settings } = useSettings();
@@ -17,14 +16,14 @@ const Donation = () => {
       />
       <main>
         <DonationPageTitle
-          header={mockData.donationPageTitle.header}
-          text={mockData.donationPageTitle.text}
+          header="Любимовка существует благодаря энтузиазму"
+          text={'А также поддержке фондов, партнёров и пожертвований, которые покрывают неизбежные затраты.\r\n\nВход на все мероприятия фестиваля всегда был и будет бесплатным.'}
         />
         <Opportunities
-          data={mockData.opportunities}
+          data={opportunities}
         />
         <Report
-          text={mockData.report.text}
+          text="Вся отчётность о расходовании народных денег будет всегда доступна любому интересующемуся в самом подробном виде. Пишите на "
           email={settings?.emailAddresses.requestDonationReport}
         />
       </main>
