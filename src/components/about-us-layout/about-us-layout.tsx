@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef } from 'react';
 
 import { Menu } from 'components/ui/menu';
+import { useSettings } from 'services/api/settings-adapter';
 import breakpoints from 'shared/breakpoints';
 import { aboutUsNavigationItems } from 'shared/constants/about-us-navigation-items';
 import { remToPx } from 'shared/helpers/rem-to-px';
@@ -27,6 +28,7 @@ export const AboutUsLayout: FC<AboutUsLayoutProps> = (props) => {
     colors,
   } = props;
   const router = useRouter();
+  const { settings } = useSettings();
   const menuRef = useRef<HTMLUListElement>(null);
   const currentMenuItemRef = useRef<HTMLLIElement>(null);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
@@ -51,18 +53,27 @@ export const AboutUsLayout: FC<AboutUsLayoutProps> = (props) => {
           {aboutUsNavigationItems
             .map((item) => {
               const current = router.asPath === item.href;
+              if (item.id === 'team') {
+                item.show = settings?.showTeam;
+              } else if (item.id === 'sponsors') {
+                item.show = settings?.showSponsors;
+              } else {
+                item.show = true;
+              }
 
-              return (
-                <Menu.Item
-                  key={item.href}
-                  href={item.href}
-                  current={current}
-                  {...current ? {
-                    ref: currentMenuItemRef,
-                  } : {}}
-                >
-                  {item.text}
-                </Menu.Item>
+              return (item.show
+                && (
+                  <Menu.Item
+                    key={item.href}
+                    href={item.href}
+                    current={current}
+                    {...current ? {
+                      ref: currentMenuItemRef,
+                    } : {}}
+                  >
+                    {item.text}
+                  </Menu.Item>
+                )
               );
             })}
         </Menu>

@@ -1,4 +1,10 @@
-export const footerNavigationItems = [
+type TFooterNavigationItems = {
+  text: string
+  href: string
+  show?: boolean
+}
+
+export const footerNavigationItems: TFooterNavigationItems[] = [
   {
     text: 'Любимовка',
     href: '/',
