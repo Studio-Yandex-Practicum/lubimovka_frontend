@@ -29,6 +29,9 @@ const mapDTOToSettings = (dto: SettingsDTO): Settings => ({
     facebookGalleryUrl: dto.for_press.photo_gallery_facebook_link,
   },
   canProposePlay: dto.plays_reception_is_open,
+  showSponsors: dto.show_sponsors,
+  showTeam: dto.show_team,
+  showVolunteers: dto.show_volunteers,
   privacyPolicyUrl: dto.url_to_privacy_policy,
   projects: dto.projects.map((project) => ({
     id: project.id.toString(),

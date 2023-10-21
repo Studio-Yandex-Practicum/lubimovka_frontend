@@ -18,6 +18,9 @@ export type Settings = {
     facebookGalleryUrl: Url
   }
   canProposePlay: boolean
+  showSponsors: boolean
+  showTeam: boolean
+  showVolunteers: boolean
   privacyPolicyUrl: Url
   projects: Omit<Project, 'image' | 'description'>[]
 }
