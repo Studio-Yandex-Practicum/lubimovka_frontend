@@ -16,7 +16,7 @@
 
   display: flex;
   align-items: flex-start;
-  color: inherit;
+  color: var(--coal);
   text-decoration: none;
   white-space: nowrap;
 

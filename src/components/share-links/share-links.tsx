@@ -36,7 +36,7 @@ export const ShareLinks: FC<ShareLinksProps> = (props) => {
             <Button
               key={url}
               className={cx('link')}
-              size="xs"
+              size="s"
               border="bottom-left"
               icon={(
                 <Icon
@@ -46,6 +46,7 @@ export const ShareLinks: FC<ShareLinksProps> = (props) => {
                 />
               )}
               href={url}
+              animation='invert'
             >
               {text}
             </Button>

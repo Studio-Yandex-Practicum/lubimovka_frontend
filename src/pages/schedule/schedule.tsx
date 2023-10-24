@@ -2,11 +2,10 @@ import { unstable_serialize } from 'swr/infinite';
 
 import { AppLayout } from 'components/app-layout';
 import { FestivalSchedule } from 'components/festival-schedule';
-import { RegularSchedule } from 'components/regular-schedule';
 import { ScheduleHeadline } from 'components/schedule-headline';
 import { ScheduleLayout } from 'components/schedule-layout';
 import { SEO } from 'components/seo';
-import { ScheduleMode, EVENTS_PER_PAGE } from 'core/schedule';
+import { EVENTS_PER_PAGE } from 'core/schedule';
 import { fetchFestivalEvents, fetchScheduleMeta, getEventsCacheKey } from 'services/api/schedule-adapter';
 
 import type { InferGetServerSidePropsType } from 'next';
@@ -14,17 +13,12 @@ import type { InferGetServerSidePropsType } from 'next';
 const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {
     scheduleMeta: {
-      mode,
       scheduleAnnounce,
       scheduleNote,
       registrationAnnounce,
     },
     fallback,
   } = props;
-
-  const ScheduleComponent = (mode === ScheduleMode.Regular ? RegularSchedule : FestivalSchedule);
-
-  const scheduleTitle = `Афиша ${mode === ScheduleMode.Festival? 'фестиваля' : 'событий'}`;
 
   return (
     <>
@@ -33,13 +27,13 @@ const Events = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
         <ScheduleLayout>
           <ScheduleLayout.Slot area="headline">
             <ScheduleHeadline
-              title={scheduleTitle}
+              title='Афиша фестиваля'
               scheduleAnnounce={scheduleAnnounce}
               scheduleNote={scheduleNote}
               registrationAnnounce={registrationAnnounce}
             />
           </ScheduleLayout.Slot>
-          <ScheduleComponent
+          <FestivalSchedule
             fallback={fallback}
           />
         </ScheduleLayout>

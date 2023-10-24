@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -21,6 +22,8 @@ import { useForm } from '../../shared/hooks/use-form';
 import type { questionsFormFields } from '../../core/questions';
 import type { QuestionsErrorDTO } from '../../services/api/questions';
 import type { NextPage } from 'next';
+
+import styles from './contacts.module.css';
 
 const CONTACT_FORM_RESET_TIMEOUT = 10000;
 
@@ -146,7 +149,7 @@ const Contacts: NextPage = () => {
                   rows={4}
                 />
               </Form.Field>
-              <Form.Actions>
+              <Form.Actions className={styles.container}>
                 <Button
                   size="l"
                   type="submit"
@@ -166,7 +169,7 @@ const Contacts: NextPage = () => {
                   {formSuccessfullySent ? 'Отправлено' : 'Отправить'}
                 </Button>
               </Form.Actions>
-              <Form.Disclaimer>
+              <Form.Disclaimer className={styles.container}>
                 {'Нажимая на кнопку «Отправить» вы даёте согласие '}
                 <Link href={settings?.privacyPolicyUrl ?? '#'}>
                   <a>

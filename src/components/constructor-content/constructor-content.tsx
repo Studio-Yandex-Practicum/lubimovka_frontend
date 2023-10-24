@@ -16,7 +16,6 @@ import { ImageSlider } from 'components/ui/image-slider';
 import { PersonCard } from 'components/ui/person-card';
 import { Video } from 'components/video';
 import { VideoList } from 'components/video-list';
-import { EventType } from 'core/schedule';
 
 import { ConstructorBlockType } from './constructor-content.const';
 import { ConstructorContentContextProvider } from './constructor-content.context';
@@ -144,19 +143,13 @@ export const ConstructorContent: React.FC<ConstructorContentProps> = (props) => 
                     date: format(new Date(content_item.items[0].date_time), 'd MMMM'),
                     time: format(new Date(content_item.items[0].date_time), 'H:mm'),
                   }}
-                  title={content_item.items[0].event_body.name}
-                  type={(content_item.items[0].type === EventType.Performance && 'Спектакль')
-                    || (content_item.items[0].type === EventType.Workshop && 'Мастер-класс')
-                    || (content_item.items[0].type === EventType.Reading && `Читка${content_item.items[0].event_body.project_title
-                      ? ` проекта ${content_item.items[0].event_body.project_title}`
-                      : ''}`)
-                    || ''}
-                  team={content_item.items[0].event_body.team}
-                  imageUrl={content_item.items[0].event_body.image}
-                  projectTitle={content_item.items[0].event_body.project_title}
-                  description={content_item.items[0].event_body.description}
-                  {...content_item.items[0].type === 'PERFORMANCE' ? {
-                    aboutUrl: `/performances/${content_item.items[0].event_body.id}`,
+                  title={content_item.items[0].title}
+                  type={content_item.items[0].type}
+                  team={content_item.items[0].team}
+                  imageUrl={content_item.items[0].image}
+                  description={content_item.items[0].description}
+                  {...content_item.items[0].performance_id ? {
+                    aboutUrl: `/performances/${content_item.items[0].performance_id}`,
                     aboutText: 'О спектакле',
                   } : {}}
                   actionUrl={content_item.items[0].action_url}
@@ -174,14 +167,11 @@ export const ConstructorContent: React.FC<ConstructorContentProps> = (props) => 
                     id,
                     type,
                     date_time,
-                    event_body: {
-                      id: performanceId,
-                      name,
-                      team,
-                      image,
-                      description,
-                      project_title,
-                    },
+                    performance_id,
+                    title,
+                    team,
+                    image,
+                    description,
                     action_url,
                     action_text,
                   }) => (
@@ -191,17 +181,13 @@ export const ConstructorContent: React.FC<ConstructorContentProps> = (props) => 
                           date: format(new Date(date_time), 'd MMMM'),
                           time: format(new Date(date_time), 'H:mm'),
                         }}
-                        title={name}
-                        type={(type === EventType.Performance && 'Спектакль')
-                          || (type === EventType.Workshop && 'Мастер-класс')
-                          || (type === EventType.Reading && `Читка${project_title ? ` проекта ${project_title}` : ''}`)
-                          || ''}
+                        title={title}
+                        type={type}
                         team={team}
                         imageUrl={image}
-                        projectTitle={project_title}
                         description={description}
-                        {...type === 'PERFORMANCE' ? {
-                          aboutUrl: `/performances/${performanceId}`,
+                        {...performance_id ? {
+                          aboutUrl: `/performances/${performance_id}`,
                           aboutText: 'О спектакле',
                         } : {}}
                         actionUrl={action_url}

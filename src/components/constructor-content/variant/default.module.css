@@ -16,6 +16,8 @@
 
   max-width: 720px;
   margin: 0 auto 48px;
+  hyphens: auto;
+  word-break: break-all;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;

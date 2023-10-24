@@ -39,8 +39,19 @@
   @mixin textSmall;
 
   max-width: 269px;
+  margin-left: 0;
 }
 
 .hiddenText {
   @mixin visually-hidden;
+}
+
+.button {
+  padding: 0;
+  text-decoration: underline;
+
+  :first-child {
+    font-family: "PP Neue Machina", Arial, sans-serif;
+    font-weight: 400;
+  }
 }

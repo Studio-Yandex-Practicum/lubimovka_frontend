@@ -26,6 +26,7 @@ export const SEO: React.FC<SEOProps> = (props) => {
       <title>
         {`${title} - ${settings.defaultMeta.title}`}
       </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
       <meta name="description" content={description}/>
       <meta name="image" content={image}/>
       <meta property="og:title" content={title}/>

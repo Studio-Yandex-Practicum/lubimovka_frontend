@@ -4,10 +4,8 @@ import { useMemo,useState } from 'react';
 import { PlayCard } from 'components/play-card';
 import { PlayList } from 'components/play-list';
 import { Section } from 'components/section';
-import { Button } from 'components/ui/button';
-import { InfoLink } from 'components/ui/info-link';
-import { Link } from 'components/ui/link';
-import { Tag } from 'components/ui/tag';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 import * as breakpoints from 'shared/breakpoints.js';
 import { numberOfCharacters } from 'shared/constants/numbers';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
@@ -64,14 +62,21 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
       <div className={cx(image ? 'personalInfo' : 'personalInfoNoPhoto')}>
         <div className={cx('button')}>
           <Button
-            size="s"
-            iconPlace="right"
-            icon="arrow-left"
-            label="Библиотека"
-            border="bottomRight"
-            isLink
-            href="/library/authors"
-          />
+            size='s'
+            border='right-bottom'
+            href={'/library/authors'}
+            icon={(
+              <Icon
+                glyph="arrow-left"
+                width="100%"
+                height="100%"
+              />
+            )}
+            iconPosition='right'
+            upperCase
+          >
+            {'Библиотека'}
+          </Button>
         </div>
         {image && (
           <div className={cx('photoBox')}>
@@ -129,14 +134,25 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               {availableButton
               && (
                 <Button
-                  width="100%"
-                  size="s"
-                  iconPlace="right"
-                  icon={isExpand ? 'arrow-down' : 'arrow-up'}
-                  label={isExpand ? 'Полный текст' : 'Свернуть'}
-                  border="topLeft"
+                  fullWidth
+                  size='s'
+                  border='top-left'
+                  type='button'
                   onClick={() => setExpand(!isExpand)}
-                />
+                  icon={(
+                    <Icon
+                      glyph={isExpand ? 'arrow-down' : 'arrow-up'}
+                      width="100%"
+                      height="100%"
+                    />
+                  )}
+                  iconPosition='right'
+                  className={cx('buttonToggle')}
+                  upperCase
+                  animation='invert'
+                >
+                  {isExpand ? 'Полный текст' : 'Свернуть'}
+                </Button>
               )
               }
             </div>
@@ -146,15 +162,23 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               {pinnedLinks
                 .map((item, idx) => (
                   <div className={cx('linkHeading')} key={idx}>
-                    <InfoLink
-                      label={item.name}
+                    <Button
+                      fullWidth
+                      size='m'
+                      border='top'
                       href={item.link}
-                      icon="arrow-right"
-                      iconPlace="right"
-                      size="xl"
-                      border="borderTop"
-                      iconClassName={cx('link')}
-                    />
+                      icon={(
+                        <Icon
+                          glyph='arrow-right'
+                          width="100%"
+                          height="100%"
+                        />
+                      )}
+                      iconPosition='right'
+                      animation='invert'
+                    >
+                      {item.name}
+                    </Button>
                   </div>
                 )
                 )}
@@ -170,14 +194,14 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               <div className={cx('tagWrapper')}>
                 {achievements.map((item, idx) => (
                   <div className={cx('tag')} key={idx}>
-                    <Link href={`library/?festival=${item.year}&program=${item.id}`}>
-                      <a>
-                        <Tag
-                          label={`${item.name} ${item.year}`}
-                          selected={false}
-                        />
-                      </a>
-                    </Link>
+                    <Button
+                      size='sm'
+                      border='right-bottom-left'
+                      href={`library/?festival=${item.year}&program=${item.id}`}
+                      animation='invert'
+                    >
+                      {`${item.name} ${item.year}`}
+                    </Button>
                   </div>
                 )
                 )}
@@ -192,16 +216,24 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               <div className={cx('overviewSocialLinkBlock')}>
                 {socialNetworks.map((item, idx) => (
                   <div className={cx('overviewSocialLink')} key={idx}>
-                    <InfoLink
+                    <Button
                       key={idx}
-                      href={item.link}
-                      label={item.name}
-                      isOutsideLink
-                      icon="arrow-right"
-                      iconPlace="left"
                       size="s"
-                      border="borderBottomLeft"
-                    />
+                      border='bottom-left'
+                      href={item.link}
+                      icon={(
+                        <Icon
+                          glyph="arrow-right"
+                          width="100%"
+                          height="100%"
+                        />
+                      )}
+                      iconPosition="left"
+                      animation='invert'
+                      className={cx('overviewSocialLinkButton')}
+                    >
+                      {item.name}
+                    </Button>
                   </div>
                 )
                 )}
@@ -213,13 +245,15 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
               <p className={cx('email')}>
                 E-mail для связи
               </p>
-              <InfoLink
-                isOutsideLink
+              <Button
+                size="m"
+                border='none'
                 href={`mailto:${email}`}
-                label={email}
-                size="l"
-                textDecoration="underline"
-              />
+                animation='invert'
+                className={cx('overviewEmaillLink')}
+              >
+                {email}
+              </Button>
             </div>
           )}
         </div>
