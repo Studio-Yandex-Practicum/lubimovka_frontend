@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import Link from 'next/link';
 
 import { FooterCopyright } from 'components/footer-copyright';
 import Logo from 'shared/images/full-logo.svg';
@@ -28,7 +29,9 @@ export const Footer = (props: FooterProps): JSX.Element => {
 
   return (
     <footer className={cx('footer', className)}>
-      <Logo className={cx('logo')}/>
+      <Link href="/">
+        <Logo className={cx('logo')}/>
+      </Link>
       {children}
       <FooterCopyright
         className={cx('footnote')}
