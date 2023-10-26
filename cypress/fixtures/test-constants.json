@@ -1,0 +1,25 @@
+{
+    "errorMessages": {
+        "empty": "Это поле не может быть пустым",
+        "minLengh": "Это поле должно содержать минимум 2 символа",
+        "maxLengthFifty": "Это поле должно содержать максимум 50 символов",
+        "maxLengthTwoHundred": "Это поле должно содержать максимум 200 символов",
+        "minYear": "Убедитесь, что это значение больше либо равно 1900",
+        "incorrectPhone": "Некорректный номер телефона",
+        "incorrectEmail": "Введите правильный адрес электронной почты",
+        "noFile": "Файл обязателен"
+    },
+    "classes": {
+        "input" : {
+            "name": ":nth-child(1) > .form-fieldset_content__6DaOu > :nth-child(1) > label > .text-input_input__XcJF1",
+            "surname": ":nth-child(1) > .form-fieldset_content__6DaOu > :nth-child(2) > label > .text-input_input__XcJF1",
+            "city": ":nth-child(4) > label > .text-input_input__XcJF1",
+            "yearBirth": ":nth-child(3) > label > .text-input_input__XcJF1",
+            "yearPlay": ":nth-child(2) > .form-fieldset_content__6DaOu > :nth-child(2) > label > .text-input_input__XcJF1",
+            "title": ":nth-child(2) > .form-fieldset_content__6DaOu > :nth-child(1) > label > .text-input_input__XcJF1",
+            "email": ":nth-child(6) > label > .text-input_input__XcJF1",
+            "phone": ":nth-child(5) > label > .text-input_input__XcJF1"
+        },
+        "error" : ".text-input_error__7FtZe"
+    }
+}
