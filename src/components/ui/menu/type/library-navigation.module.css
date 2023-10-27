@@ -34,7 +34,7 @@
   &::after {
     display: block;
     width: .6em;
-    height: 1.6em;
+    height: 1.5em;
     box-sizing: border-box;
     border: 1px solid currentColor;
     content: "";

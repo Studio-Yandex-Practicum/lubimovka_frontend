@@ -32,6 +32,7 @@
 
   @media tablet-portrait {
     padding: 0 24px;
+    background-color: var(--white);
   }
 }
 
@@ -63,6 +64,7 @@
     position: static;
     z-index: auto;
     padding: 0 24px;
+    background-color: var(--white);
   }
 }
 
@@ -76,9 +78,11 @@
   grid-area: navigation;
 
   @media tablet-portrait {
-    z-index: 1;
+    z-index: 2;
     top: 0;
-    border-bottom: 1px solid var(--coal);
+    box-sizing: border-box;
+    padding-top: 26px;
+    background-color: var(--white);
   }
 }
 
@@ -93,7 +97,7 @@
 
 .pagination {
   position: sticky;
-  z-index: 3;
+  z-index: 1;
   top: calc(var(--height-navbar-tablet-portrait) + var(--height-library-navigation-menu-tablet-portrait));
   display: flex;
   border-bottom: 1px solid var(--coal);
@@ -107,8 +111,14 @@
 
     top: var(--height-library-navigation-menu-tablet-portrait);
     display: block;
-    margin: 0 0 56px;
+    margin: 0;
+    background-color: var(--white);
     overflow-x: auto;
+
+    nav {
+      border-top: 1px solid var(--coal);
+      margin-top: 16px;
+    }
   }
 }
 
@@ -135,6 +145,12 @@
   .search {
     top: calc(var(--height-navbar-tablet-portrait) + 24px);
     max-width: 580px;
+  }
+
+  .content {
+    @media tablet-portrait {
+      padding-top: 56px;
+    }
   }
 }
 
@@ -183,9 +199,11 @@
     overflow-y: auto;
 
     @media tablet-portrait {
-      position: static;
+      z-index: 1;
+      top: 80px;
       height: auto;
-      padding: 16px 24px;
+      padding: 10px 24px 16px;
+      background-color: var(--white);
       overflow-x: auto;
     }
   }
