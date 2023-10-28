@@ -44,69 +44,81 @@ const initialFormValues: ParticipationFormFields = {
   file: null,
 };
 
+const errorMessage = {
+  empty: 'Это поле не может быть пустым',
+  minLengh: 'Это поле должно содержать минимум 2 символа',
+  maxLengthFifty: 'Это поле должно содержать максимум 50 символов',
+  maxLengthTwoHundred: 'Это поле должно содержать максимум 200 символов',
+  minYear: 'Убедитесь, что это значение больше либо равно 1900',
+  maxYear: `Убедитесь, что это значение меньше либо равно ${CURRENT_YEAR}`,
+  incorrectPhone: 'Некорректный номер телефона',
+  incorrectEmail: 'Введите правильный адрес электронной почты',
+  noFile: 'Файл обязателен'
+};
+
 const validate = (values: ParticipationFormFields) => {
   const errors = {} as Record<keyof ParticipationFormFields, string>;
 
   if (!values.firstName.length) {
-    errors.firstName = 'Это поле не может быть пустым';
+    errors.firstName = errorMessage.empty;
   } else if (values.firstName.length < 2) {
-    errors.firstName = 'Имя должно состоять более чем из 2 символов';
+    errors.firstName = errorMessage.minLengh;
   } if (values.firstName.length > 50) {
-    errors.firstName = 'Имя должно состоять менее чем из 50 символов';
+    errors.firstName = errorMessage.maxLengthFifty;
   }
 
   if (!values.lastName.length) {
-    errors.lastName = 'Это поле не может быть пустым';
+    errors.lastName = errorMessage.empty;
   } else if (values.lastName.length < 2) {
-    errors.lastName = 'Фамилия должна содержать минимум 2 символа';
+    errors.lastName = errorMessage.minLengh;
   } else if (values.lastName.length > 50) {
-    errors.lastName = 'Фамилия должна состоять менее чем из 50 символов';
+    errors.lastName = errorMessage.maxLengthFifty;
   }
 
   if (!values.birthYear.length) {
-    errors.birthYear = 'Это поле не может быть пустым';
+    errors.birthYear = errorMessage.empty;
   } else if (!validYearRegexp.test(values.birthYear)) {
-    errors.birthYear = 'Убедитесь, что это значение больше либо равно 1900';
+    errors.birthYear = errorMessage.minYear;
   } else if (values.birthYear > CURRENT_YEAR) {
-    errors.birthYear = `Убедитесь, что это значение меньше либо равно ${CURRENT_YEAR}`;
+    errors.birthYear = errorMessage.maxYear;
   }
 
   if (!values.city.length) {
-    errors.city = 'Это поле не может быть пустым';
+    errors.city = errorMessage.empty;
   } else if (values.city.length < 2) {
-    errors.city = 'Город должен содержать минимум 2 символа';
+    errors.city = errorMessage.minLengh;
   } else if (values.city.length > 50) {
-    errors.city = 'Город должен состоять менее чем из 50 символов';
+    errors.city = errorMessage.maxLengthFifty;
   }
 
   if (!values.phoneNumber.length) {
-    errors.phoneNumber = 'Это поле не может быть пустым';
+    errors.phoneNumber = errorMessage.empty;
   } else if (!validPhoneNumberRegexp.test(values.phoneNumber)) {
-    errors.phoneNumber = 'Некорректный номер телефона';
+    errors.phoneNumber = errorMessage.incorrectPhone;
   }
 
   if (!values.email.length) {
-    errors.email = 'Это поле не может быть пустым';
+    errors.email = errorMessage.empty;
   } else if (!validEmailRegexp.test(values.email)) {
-    errors.email = 'Введите правильный адрес электронной почты';
+    errors.email = errorMessage.incorrectEmail;
   }
 
   if (!values.title.length) {
-    errors.title = 'Это поле не может быть пустым';
+    errors.title = errorMessage.empty;
   } else if (values.title.length > 200) {
-    errors.title = 'Название пьесы должно состоять менее чем из 200 символов';
+    errors.title = errorMessage.maxLengthTwoHundred;
   }
 
   if (!values.year.length) {
-    errors.year = 'Это поле не может быть пустым';
+    errors.year = errorMessage.empty;
   } else if (!validYearRegexp.test(values.year)) {
-    errors.year = 'Убедитесь, что это значение больше либо равно 1900';
+    errors.year = errorMessage.minYear;
   } else if (values.year > CURRENT_YEAR) {
-    errors.year = `Убедитесь, что это значение меньше либо равно ${CURRENT_YEAR}`;
+    errors.year = errorMessage.maxYear;
   }
 
   if (!values.file) {
-    errors.file = 'Файл обязателен';
+    errors.file = errorMessage.noFile;
   }
 
   return errors;
