@@ -1,3 +1,4 @@
+
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
 import { useEffect, useRef } from 'react';
@@ -7,6 +8,7 @@ import { useSettings } from 'services/api/settings-adapter';
 import breakpoints from 'shared/breakpoints';
 import { aboutUsNavigationItems } from 'shared/constants/about-us-navigation-items';
 import { remToPx } from 'shared/helpers/rem-to-px';
+import { showTeamsSponsorsVolunteers } from 'shared/helpers/show-teams-sponsors-volunteers';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 
 import type { FC } from 'react';
@@ -53,15 +55,9 @@ export const AboutUsLayout: FC<AboutUsLayoutProps> = (props) => {
           {aboutUsNavigationItems
             .map((item) => {
               const current = router.asPath === item.href;
-              if (item.id === 'team') {
-                item.show = settings?.showTeam;
-              } else if (item.id === 'sponsors') {
-                item.show = settings?.showSponsors;
-              } else {
-                item.show = true;
-              }
+              const shouldShow = showTeamsSponsorsVolunteers(item, settings);
 
-              return (item.show
+              return (shouldShow
                 && (
                   <Menu.Item
                     key={item.href}

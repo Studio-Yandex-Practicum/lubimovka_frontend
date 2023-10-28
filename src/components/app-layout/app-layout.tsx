@@ -150,13 +150,9 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
           <Footer.Navigation>
             <Menu type="footer-navigation">
               {footerNavigationItems.map((item) => {
-                if (item.href === '/about-us/team') {
-                  item.show = settings?.showTeam;
-                } else {
-                  item.show = true;
-                }
+                const shouldShow = item.href !== '/about-us/team' || settings?.showTeam;
 
-                return (item.show
+                return (shouldShow
                   && (
                     <Menu.Item
                       key={item.href}

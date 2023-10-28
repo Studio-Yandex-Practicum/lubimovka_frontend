@@ -1,11 +1,10 @@
-type TAboutUsNavigationItems = {
+export type TAboutUsNavigationItem = {
   id: string
   text: string
   href: string
-  show?: boolean
 }
 
-export const aboutUsNavigationItems: TAboutUsNavigationItems[] = [
+export const aboutUsNavigationItems: TAboutUsNavigationItem[] = [
   {
     id: 'about-us',
     text: 'Что мы делаем',
