@@ -1,11 +1,14 @@
+
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';
 import { useEffect, useRef } from 'react';
 
 import { Menu } from 'components/ui/menu';
+import { useSettings } from 'services/api/settings-adapter';
 import breakpoints from 'shared/breakpoints';
 import { aboutUsNavigationItems } from 'shared/constants/about-us-navigation-items';
 import { remToPx } from 'shared/helpers/rem-to-px';
+import { showTeamsSponsorsVolunteers } from 'shared/helpers/show-teams-sponsors-volunteers';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 
 import type { FC } from 'react';
@@ -27,6 +30,7 @@ export const AboutUsLayout: FC<AboutUsLayoutProps> = (props) => {
     colors,
   } = props;
   const router = useRouter();
+  const { settings } = useSettings();
   const menuRef = useRef<HTMLUListElement>(null);
   const currentMenuItemRef = useRef<HTMLLIElement>(null);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
@@ -51,18 +55,21 @@ export const AboutUsLayout: FC<AboutUsLayoutProps> = (props) => {
           {aboutUsNavigationItems
             .map((item) => {
               const current = router.asPath === item.href;
+              const shouldShow = showTeamsSponsorsVolunteers(item, settings);
 
-              return (
-                <Menu.Item
-                  key={item.href}
-                  href={item.href}
-                  current={current}
-                  {...current ? {
-                    ref: currentMenuItemRef,
-                  } : {}}
-                >
-                  {item.text}
-                </Menu.Item>
+              return (shouldShow
+                && (
+                  <Menu.Item
+                    key={item.href}
+                    href={item.href}
+                    current={current}
+                    {...current ? {
+                      ref: currentMenuItemRef,
+                    } : {}}
+                  >
+                    {item.text}
+                  </Menu.Item>
+                )
               );
             })}
         </Menu>

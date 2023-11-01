@@ -149,14 +149,20 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
           )}
           <Footer.Navigation>
             <Menu type="footer-navigation">
-              {footerNavigationItems.map((item, index) => (
-                <Menu.Item
-                  key={index}
-                  href={item.href}
-                >
-                  {item.text}
-                </Menu.Item>
-              ))}
+              {footerNavigationItems.map((item) => {
+                const shouldShow = item.href !== '/about-us/team' || settings?.showTeam;
+
+                return (shouldShow
+                  && (
+                    <Menu.Item
+                      key={item.href}
+                      href={item.href}
+                    >
+                      {item.text}
+                    </Menu.Item>
+                  )
+                );
+              })}
             </Menu>
           </Footer.Navigation>
           <Footer.Projects>
