@@ -52,8 +52,5 @@ jobs:
             # Создание сети вынесено отдельно для возможности независимо перезапускать контейнеры (через external networks)
             docker network create stage_swag_network || true
 
-            cp -rf ${{ env.DEPLOY_PATH }}/stage/lubimovka-frontend.service /etc/systemd/system/lubimovka-frontend.service
             systemctl daemon-reload
             systemctl restart lubimovka-frontend.service
-
-            rm ${{ env.DEPLOY_PATH }}/stage/lubimovka-frontend.service
