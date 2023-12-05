@@ -7,7 +7,8 @@
     {
       "files": ["src/pages/**/*", "src/components/**/*.stories.*"],
       "rules": {
-        "import/no-default-export": "off"
+        "import/no-default-export": "off",
+        "no-trailing-spaces": "off"
       }
     }
   ]
