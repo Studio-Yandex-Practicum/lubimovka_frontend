@@ -23,7 +23,7 @@ module.exports = {
     }],
     'operator-linebreak': ['error', 'before'],
     'quote-props': ['error', 'as-needed'],
-    'no-trailing-spaces': 'error',
+    'no-trailing-spaces': 'warn',
     'no-multi-spaces': 'error',
     'no-mixed-operators': 'error',
     'no-nested-ternary': ['warn'],
