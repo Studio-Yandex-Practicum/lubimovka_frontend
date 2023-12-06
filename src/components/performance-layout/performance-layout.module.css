@@ -1,29 +1,25 @@
-@import './performance-layout.vars.module.css';
+@import url("./performance-layout.vars.module.css");
 
 .root {
-  display: grid;
   padding: 0 $page-padding-tablet-portrait;
-  grid-template:
-    "headline      headline"
-    "summary       content"
-    "gallery       gallery"
-    "media-reviews media-reviews"
-    "reviews       reviews"
-    "bottom-image  bottom-image"
-    "share         share";
 
   @media (max-width: $tablet-portrait) {
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 40px $page-padding-smartphone 0;
   }
 }
 
 .headline {
-  margin-bottom: 68px;
-  grid-area: headline;
+  width: $left-column-width-tablet-portrait;
+  margin: 62px $column-gap-tablet-portrait 100px 0;
+  float: left;
 
   @media (max-width: $tablet-portrait) {
-    margin-bottom: 100px;
+    width: auto;
+    order: 1;
+    margin: 0 0 30px;
+    float: none;
   }
 }
 
@@ -41,6 +37,11 @@
   margin-bottom: 80px;
 }
 
-.play {
-  margin-bottom: 144px;
+.card_in_performance {
+  max-width: 240px;
+
+  @media (max-width: $tablet-portrait) {
+    max-width: 244px;
+    margin: 0 auto;
+  }
 }

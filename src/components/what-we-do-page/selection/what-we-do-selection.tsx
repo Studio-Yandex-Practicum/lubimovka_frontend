@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames/bind';
 
 import styles from './what-we-do-selection.module.css';
@@ -33,7 +32,6 @@ export const WhatWeDoSelection = (): JSX.Element => (
           </p>
         </div>
       </li>
-
       <li className={cx('item')}>
         <span className={cx('number')}>
           2
@@ -53,7 +51,6 @@ export const WhatWeDoSelection = (): JSX.Element => (
           </p>
         </div>
       </li>
-
       <li className={cx('item')}>
         <span className={cx('number')}>
           3

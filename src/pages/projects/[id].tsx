@@ -1,13 +1,13 @@
 
 import { AppLayout } from 'components/app-layout';
-import { PageBreadcrumbs } from 'components/page';
-import { ProjectLayout } from 'components/project-layout';
 import { Breadcrumb } from 'components/breadcrumb';
-import { ProjectHeadline } from 'components/project-headline';
 import { ConstructorContent } from 'components/constructor-content';
+import { PageBreadcrumbs } from 'components/page';
+import { ProjectHeadline } from 'components/project-headline';
+import { ProjectLayout } from 'components/project-layout';
 import { SEO } from 'components/seo';
-import { HttpRequestError } from 'services/fetcher';
 import { getProject } from 'services/api/projects';
+import { isHttpRequestError } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
@@ -44,7 +44,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
         </ProjectLayout.Description>
         <ConstructorContent
           variant="project"
-          // @ts-expect-error
+          // @ts-expect-error: TODO: В документации API нет описания ответов с блоками конструктора
           blocks={contents}
         />
       </ProjectLayout>
@@ -61,8 +61,8 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       props: project,
     };
   } catch (error) {
-    if (error instanceof HttpRequestError) {
-      switch (error.statusCode) {
+    if (isHttpRequestError(error)) {
+      switch (error.response.statusCode) {
       case 404:
         return notFoundResult;
       default:

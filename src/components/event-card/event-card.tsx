@@ -7,7 +7,6 @@ import { CreditsList } from 'components/credits-list';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 
-import type { Url } from 'shared/types';
 import type { CreditsRole } from 'components/credits-list';
 
 import styles from './event-card.module.css';
@@ -18,12 +17,13 @@ interface EventCardProps {
   date: string
   time: string
   title: string
+  type: string
   team: CreditsRole[]
   description?: string
-  projectTitle?: string
-  performanceUrl?: string
-  actionUrl: Url
-  actionText: string
+  aboutText?: string
+  aboutUrl?: string
+  actionUrl: Url | null
+  actionText: string | null
 }
 
 const cx = classNames.bind(styles);
@@ -34,10 +34,11 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
     date,
     time,
     title,
+    type,
     team,
     description,
-    projectTitle,
-    performanceUrl,
+    aboutUrl,
+    aboutText,
     actionUrl,
     actionText,
     className
@@ -77,24 +78,18 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
           roles={team}
         />
         {description && (
-          <div className={cx('description')}>
-            <p>
-              {description}
-            </p>
-            {projectTitle && (
-              <p>
-                читка проекта
-                {' '}
-                {projectTitle}
-              </p>
-            )}
-          </div>
+          <p className={cx('description')}>
+            {description}
+          </p>
         )}
+        <p className={cx('type')}>
+          {type}
+        </p>
       </div>
       <div className={cx('actions')}>
-        {performanceUrl && (
+        {aboutUrl && aboutText && (
           <Link
-            href={performanceUrl}
+            href={aboutUrl}
             passHref
           >
             <Button
@@ -110,27 +105,29 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
                 />
               )}
             >
-              О спектакле
+              {aboutText}
             </Button>
           </Link>
         )}
-        <Button
-          className={cx('action')}
-          size="s"
-          border="bottom-left"
-          upperCase
-          icon={(
-            <Icon
-              glyph="arrow-right"
-              width="100%"
-              height="100%"
-            />
-          )}
-          href={actionUrl}
-          target="_blank"
-        >
-          {actionText}
-        </Button>
+        {actionUrl && actionText && (
+          <Button
+            className={cx('action')}
+            size="s"
+            border="bottom-left"
+            upperCase
+            icon={(
+              <Icon
+                glyph="arrow-right"
+                width="100%"
+                height="100%"
+              />
+            )}
+            href={actionUrl}
+            target="_blank"
+          >
+            {actionText}
+          </Button>
+        )}
       </div>
     </div>
   );

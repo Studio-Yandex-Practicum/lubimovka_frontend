@@ -58,10 +58,15 @@
   justify-content: center;
   padding: 10px;
   border: 0;
-  background-color: var(--beige);
   border-radius: 50%;
+  background-color: var(--beige);
   cursor: pointer;
-  transition: padding 400ms cubic-bezier(.6, 0, .5, 1), width 400ms cubic-bezier(.6, 0, .5, 1), height 400ms cubic-bezier(.6, 0, .5, 1), top 400ms cubic-bezier(.6, 0, .5, 1), left 400ms cubic-bezier(.6, 0, .5, 1);
+  transition:
+    padding 400ms cubic-bezier(.6, 0, .5, 1),
+    width 400ms cubic-bezier(.6, 0, .5, 1),
+    height 400ms cubic-bezier(.6, 0, .5, 1),
+    top 400ms cubic-bezier(.6, 0, .5, 1),
+    left 400ms cubic-bezier(.6, 0, .5, 1);
 
   @media (max-width: $tablet-portrait) {
     top: 208px;

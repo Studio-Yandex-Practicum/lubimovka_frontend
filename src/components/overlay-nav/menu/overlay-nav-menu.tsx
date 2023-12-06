@@ -5,7 +5,7 @@ import styles from './overlay-nav-menu.module.css';
 const cx = classNames.bind(styles);
 
 interface IOverlayNavMenuProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const OverlayNavMenu = (props: IOverlayNavMenuProps): JSX.Element => {

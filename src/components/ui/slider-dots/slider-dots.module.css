@@ -8,9 +8,9 @@
   height: 6px;
   padding: 0;
   border: 1px solid var(--coal);
+  border-radius: 50%;
   margin: 0 8px;
   background: transparent;
-  border-radius: 50%;
   cursor: pointer;
 
   &:hover {

@@ -16,6 +16,8 @@
 
   max-width: 720px;
   margin: 0 auto 48px;
+  hyphens: auto;
+  word-break: break-all;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
@@ -25,7 +27,7 @@
 }
 
 .section {
-  &:not(.darkened):not(.brand) + &:not(.darkened):not(.brand) {
+  &:not(.darkened, .brand) + &:not(.darkened, .brand) {
     padding-top: 0;
   }
 }

@@ -1,5 +1,6 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
+
+import type { FC } from 'react';
 
 import styles from './for-press-hero-title.module.css';
 
@@ -7,9 +8,9 @@ const cx = cn.bind(styles);
 
 export interface IForPressHeroTitleProps {
   data: {
-    title: string,
-   },
-   customClass?: string;
+    title: string
+   }
+   customClass?: string
 }
 
 export const ForPressHeroTitle: FC<IForPressHeroTitleProps> = ({ data, customClass }) => {

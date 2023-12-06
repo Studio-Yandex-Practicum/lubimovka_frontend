@@ -1,0 +1,9 @@
+$item-gap: 12px;
+
+.item {
+  display: block;
+
+  &:not(:last-child) {
+    margin: 0 0 $item-gap;
+  }
+}

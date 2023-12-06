@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { Icon } from './icon';
+
+import type { ComponentMeta,ComponentStory } from '@storybook/react';
 
 export default {
   title: 'UI/Icon',

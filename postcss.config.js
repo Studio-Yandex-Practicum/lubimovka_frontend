@@ -1,6 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const path = require('path');
 
-const breakpoints = require('./src/shared/breakpoints');
+const variables = {
+  ...require('./src/shared/breakpoints'),
+  ...require('./src/shared/heights'),
+};
 
 module.exports = {
   plugins: [
@@ -19,12 +24,12 @@ module.exports = {
     }],
     'postcss-import',
     ['postcss-simple-vars', {
-      variables: breakpoints,
+      variables,
     }],
     'postcss-nested',
     ['postcss-pxtorem', {
       propList: ['*'],
       minPixelValue: 1,
-    }]
+    }],
   ],
 };

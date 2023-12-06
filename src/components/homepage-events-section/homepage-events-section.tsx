@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 
-import { FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import styles from './homepage-events-section.module.css';
 
@@ -29,7 +29,7 @@ export const HomepageEventsSection: FC<HomepageEventsSectionProps> = (props) => 
           {title}
         </h2>
         <Link
-          href="/events"
+          href="/schedule"
           passHref
         >
           <Button

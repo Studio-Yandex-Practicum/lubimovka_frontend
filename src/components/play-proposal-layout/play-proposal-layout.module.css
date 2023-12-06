@@ -1,9 +1,30 @@
+@value tablet-portrait from "shared/styles/media.module.css";
+
 .layout {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     padding: 0 24px;
     grid-template-columns: 100%;
+  }
+
+  &::before {
+    position: sticky;
+    top: var(--height-navbar-tablet-portrait);
+    display: block;
+    width: 660px;
+    height: calc(100vh - var(--height-navbar-tablet-portrait));
+    background-image: url("./play-proposal-layout.assets/artwork-tablet-portrait.jpg");
+    background-size: cover;
+    content: "";
+
+    @media tablet-portrait {
+      position: static;
+      width: calc(100% + 24px);
+      height: 152px;
+      margin-top: 10px;
+      background-image: url("./play-proposal-layout.assets/artwork-mobile.jpg");
+    }
   }
 }

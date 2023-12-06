@@ -5,7 +5,7 @@ import styles from './overlay-nav-logotype.module.css';
 const cx = classNames.bind(styles);
 
 interface IOverlayNavLogotypeProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const OverlayNavLogotype = (props: IOverlayNavLogotypeProps): JSX.Element => {

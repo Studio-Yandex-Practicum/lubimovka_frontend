@@ -1,0 +1,14 @@
+@import url("../performance-layout.vars.module.css");
+
+.root {
+  width: $left-column-width-tablet-portrait;
+  margin: 0 $column-gap-tablet-portrait 100px 0;
+  float: left;
+
+  @media (max-width: $tablet-portrait) {
+    width: auto;
+    order: 2;
+    margin: 0 0 38px 60px;
+    float: none;
+  }
+}

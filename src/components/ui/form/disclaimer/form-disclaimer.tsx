@@ -1,16 +1,19 @@
 import classNames from 'classnames/bind';
 
-import type { FC } from 'react';
-
 import styles from './form-disclaimer.module.css';
+
+interface FormDisclaimerProps {
+  children: React.ReactNode
+  className?: string
+}
 
 const cx = classNames.bind(styles);
 
-export const FormDisclaimer: FC = (props) => {
-  const { children } = props;
+export const FormDisclaimer = (props: FormDisclaimerProps) => {
+  const { children, className } = props;
 
   return (
-    <p className={cx('root')}>
+    <p className={cx('root', className)}>
       {children}
     </p>
   );

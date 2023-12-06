@@ -1,9 +1,6 @@
 import Head from 'next/head';
 
-import settings from 'settings';
-
-import type { FC } from 'react';
-import type { Url } from 'shared/types';
+import settings from 'core/settings/constants';
 
 interface SEOProps {
   title: string
@@ -11,7 +8,7 @@ interface SEOProps {
   image?: Url
 }
 
-export const SEO: FC<SEOProps> = (props) => {
+export const SEO: React.FC<SEOProps> = (props) => {
   const { defaultMeta } = settings;
   const {
     title,
@@ -29,6 +26,7 @@ export const SEO: FC<SEOProps> = (props) => {
       <title>
         {`${title} - ${settings.defaultMeta.title}`}
       </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
       <meta name="description" content={description}/>
       <meta name="image" content={image}/>
       <meta property="og:title" content={title}/>

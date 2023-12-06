@@ -1,6 +1,7 @@
-.button {
-  justify-content: start;
-  gap: 3px;
+.button.button {
+  :first-child {
+    margin-right: 0;
+  }
 }
 
 .input {

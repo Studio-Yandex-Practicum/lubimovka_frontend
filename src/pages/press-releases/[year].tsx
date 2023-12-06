@@ -1,193 +1,171 @@
+import { encode } from 'querystring';
+
+import classNames from 'classnames/bind';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import classNames from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
-import { PressReleaseLayout } from 'components/press-release-layout';
-import { PageTitle } from 'components/page-title';
 import { Filter } from 'components/filter';
-import { Select } from 'components/select';
+import { ForPressHero } from 'components/for-press-hero';
+import { HTMLMarkup } from 'components/html-markup';
+import { PageTitle } from 'components/page-title';
+import { PressReleaseLayout } from 'components/press-release-layout';
+import styles from 'components/press-release-layout/press-release-layout.module.css';
 import { SEO } from 'components/seo';
 import { Button } from 'components/ui/button2';
-import { HTMLMarkup } from 'components/html-markup';
 import { Icon } from 'components/ui/icon';
-import { ForPressHero } from 'components/for-press-hero';
-import { fetcher } from 'services/fetcher';
-import { usePersistentData } from 'providers/persistent-data-provider';
-import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { Select } from 'components/ui/select';
+import { getFestivalYears, getPressRelease } from 'services/api/press-releases';
+import { useSettings } from 'services/api/settings-adapter';
+import { isNonEmpty } from 'shared/helpers/is-non-empty';
 
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
-import type { SelectOption, SelectOptionCheckHandler } from 'components/select';
-import type { PressRelease as PressReleaseResponse } from 'api-typings';
-
-import styles from 'components/press-release-layout/press-release-layout.module.css';
+import type { SelectOptionCheckHandler } from 'components/ui/select';
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
 const cx = classNames.bind(styles);
 
-const PressReleases = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const router = useRouter();
-  const { settings } = usePersistentData();
+enum SearchParam {
+  Year = 'year',
+}
 
-  let yearOptions: SelectOption<number>[] = [];
-  let selectedYearOption: SelectOption<number> | undefined;
+const PressRelease = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const router = useRouter();
+  const { settings } = useSettings();
 
   const {
-    pressReleaseYears,
-    // @ts-ignore
-    selectedPressReleaseYear, cover, content,
+    festivalYearOptions,
+    selectedFestivalYear,
+    pressRelease,
   } = props;
 
-  if (pressReleaseYears) {
-    yearOptions = pressReleaseYears.map((year) => ({
-      text: year.toString(),
-      value: year,
-    }));
-    selectedYearOption = yearOptions.find(({ value }) => value === selectedPressReleaseYear);
+  let selectedFestivalYearOption;
+
+  if (isNonEmpty(festivalYearOptions)) {
+    selectedFestivalYearOption = festivalYearOptions.find(({ value }) => value === selectedFestivalYear);
   }
 
-  const handleYearChange: SelectOptionCheckHandler<number> = ({ value }) => {
+  const handleYearChange: SelectOptionCheckHandler<string> = ({ value }) => {
     router.push(`/press-releases/${value}`, undefined, { scroll: false });
   };
 
   return (
-    <AppLayout>
-      <SEO
-        title="Пресс-релизы"
-      />
-      <ForPressHero data={{
-        forPressHeroTitle: {
-          title: 'Для прессы',
-        },
-        forPressHeroDescription: {
-          description: 'Фотографии можно скачать в альбомах на странице фестиваля в Facebook.',
-          link: settings?.pressCenter.facebookGalleryUrl || '',
-        },
-        prPerson: {
-          // TODO: отрефакторить и отобразить процесс получение данных нормально, например, добавить в общую раскладку спиннер
-          name: '',
-          nameDative: settings?.pressCenter.contactPerson || '',
-          email: settings?.pressCenter.contactEmail || '',
-          role: 'PR-директор фестиваля, координатор по связям со СМИ',
-          photo: settings?.pressCenter.contactPersonPhoto || '',
-        }
-      }}
-      />
-      {pressReleaseYears && (
-        <PressReleaseLayout>
-          <PressReleaseLayout.Title>
-            <PageTitle>
-              Пресс-релизы
-            </PageTitle>
-          </PressReleaseLayout.Title>
-          {cover && (
-            <PressReleaseLayout.Cover>
-              <Image
-                alt=""
-                src={cover}
-                layout="fill"
-                objectFit="cover"
-              />
-            </PressReleaseLayout.Cover>
-          )}
-          <Filter className={cx('filter')}>
-            <Filter.Field
-              className={cx('year')}
-              caption="Выберите год фестиваля"
-            >
-              <Select<number>
-                placeholder="Выберите год"
-                options={yearOptions}
-                selectedOption={selectedYearOption}
-                onChange={handleYearChange}
-              />
-            </Filter.Field>
-          </Filter>
-          <PressReleaseLayout.Actions>
-            <Button
-              icon={(
-                <Icon
-                  glyph="arrow-down"
-                  width="100%"
-                  height="100%"
+    <>
+      <SEO title="Пресс-релизы"/>
+      <AppLayout>
+        <ForPressHero data={{
+          forPressHeroTitle: {
+            title: 'Для прессы',
+          },
+          forPressHeroDescription: {
+            description: 'Фотографии можно скачать в альбомах на странице фестиваля в Facebook.',
+            link: settings?.pressCenter.facebookGalleryUrl || '',
+          },
+          prPerson: {
+            // TODO: отрефакторить и отобразить процесс получение данных нормально, например, добавить в общую раскладку спиннер
+            name: '',
+            nameDative: settings?.pressCenter.contactPerson || '',
+            email: settings?.pressCenter.contactEmail || '',
+            role: 'PR-директор фестиваля, координатор по связям со СМИ',
+            photo: settings?.pressCenter.contactPersonPhoto || '',
+          }
+        }}
+        />
+        {isNonEmpty(festivalYearOptions) && isNonEmpty(pressRelease) && (
+          <PressReleaseLayout>
+            <PressReleaseLayout.Slot area="title">
+              <PageTitle>
+                Пресс-релизы
+              </PageTitle>
+            </PressReleaseLayout.Slot>
+            {pressRelease.imageUrl && (
+              <PressReleaseLayout.Slot area="image">
+                <Image
+                  alt=""
+                  src={pressRelease.imageUrl}
+                  layout="fill"
+                  objectFit="cover"
                 />
-              )}
-              iconPosition="right"
-              border="right-bottom-left"
-              href={`/press-releases/${selectedPressReleaseYear}/download`}
-            >
-              Скачать пресс-релиз
-              {' '}
-              <span className={cx('additional-note')}>
-                {`${selectedPressReleaseYear} года`}
+              </PressReleaseLayout.Slot>
+            )}
+            <Filter className={cx('filter')}>
+              <Filter.Field
+                className={cx('year')}
+                caption="Выберите год фестиваля"
+              >
+                <Select<string>
+                  placeholder="Выберите год"
+                  options={festivalYearOptions}
+                  selectedOption={selectedFestivalYearOption}
+                  onChange={handleYearChange}
+                />
+              </Filter.Field>
+            </Filter>
+            <PressReleaseLayout.Slot area="actions">
+              <Button
+                icon={(
+                  <Icon
+                    glyph="arrow-down"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+                iconPosition="right"
+                border="right-bottom-left"
+                href={`/press-releases/${selectedFestivalYear}/download`}
+              >
+                Скачать пресс-релиз
                 {' '}
-              </span>
-              в .pdf
-            </Button>
-          </PressReleaseLayout.Actions>
-          {content && (
-            <PressReleaseLayout.Content>
-              <HTMLMarkup
-                markup={content}
-              />
-            </PressReleaseLayout.Content>
-          )}
-        </PressReleaseLayout>
-      )}
-    </AppLayout>
+                <span className={cx('additional-note')}>
+                  {`${selectedFestivalYear} года`}
+                  {' '}
+                </span>
+                в .pdf
+              </Button>
+            </PressReleaseLayout.Slot>
+            {pressRelease.text && (
+              <PressReleaseLayout.Slot area="content">
+                <HTMLMarkup
+                  markup={pressRelease.text}
+                />
+              </PressReleaseLayout.Slot>
+            )}
+          </PressReleaseLayout>
+        )}
+      </AppLayout>
+    </>
   );
 };
 
-const fetchPressReleaseYears = async () => {
-  // TODO: использовать тип из кодогенерации
-  const { years } = await fetcher<Record<'years', number[]>>('/info/press-releases/years/');
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const festivalYears = await getFestivalYears();
 
-  return years;
-};
-
-const fetchPressRelease = async (year: number) => {
-  const response = await fetcher<PressReleaseResponse>(`/info/press-releases/${year}/`);
-
-  return {
-    cover: response.press_release_image,
-    content: response.text,
-  };
-};
-
-export const getServerSideProps = async ({ params }: GetServerSidePropsContext) => {
-  let pressReleaseYears;
-
-  try {
-    pressReleaseYears = await fetchPressReleaseYears();
-  } catch {
-    throw new InternalServerError();
-  }
-
-  if (pressReleaseYears.length === 0) {
+  if (!isNonEmpty(festivalYears)) {
     return {
       props: {
-        pressReleaseYears: null,
-      }
+        festivalYearOptions: null,
+      },
     };
   }
 
-  pressReleaseYears.sort((a, b) => a - b);
+  festivalYears.sort();
 
-  const selectedPressReleaseYear = params?.year ? Number(params.year) : pressReleaseYears[pressReleaseYears.length - 1];
-  let pressRelease;
+  const searchParams = new URLSearchParams(encode(ctx.params));
+  const selectedFestivalYear = searchParams.get(SearchParam.Year) || festivalYears[festivalYears.length - 1];
 
-  try {
-    pressRelease = await fetchPressRelease(selectedPressReleaseYear);
-  } catch {
-    throw new InternalServerError();
-  }
+  const festivalYearOptions = festivalYears.map((year) => ({
+    text: year,
+    value: year,
+  }));
+
+  const pressRelease = await getPressRelease(selectedFestivalYear);
 
   return {
     props: {
-      pressReleaseYears,
-      selectedPressReleaseYear,
-      ...pressRelease
+      festivalYearOptions,
+      selectedFestivalYear,
+      pressRelease: pressRelease,
     }
   };
 };
 
-export default PressReleases;
+export default PressRelease;

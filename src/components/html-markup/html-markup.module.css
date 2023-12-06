@@ -4,6 +4,8 @@
   @mixin text;
   @mixin textLarge;
 
+  color: var(--coal);
+
   big {
     margin: 24px 0;
     font-size: 28px;
@@ -72,7 +74,7 @@
       left: 420px;
       width: 1px;
       background-color: var(--coal);
-      content: '';
+      content: "";
 
       @media (max-width: $tablet-portrait) {
         top: 66px;
@@ -85,6 +87,10 @@
     > p {
       margin: 0;
     }
+  }
+
+  a {
+    color: currentColor;
   }
 }
 

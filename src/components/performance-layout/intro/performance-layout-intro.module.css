@@ -1,0 +1,20 @@
+@import url("../performance-layout.vars.module.css");
+
+.root {
+  @mixin text;
+
+  display: inline-block;
+  width: $right-column-width-tablet-portrait;
+  margin-bottom: 68px;
+  font-size: 28px;
+  line-height: 32px;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+    width: auto;
+    order: 4;
+    margin-bottom: 100px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

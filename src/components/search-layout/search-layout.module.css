@@ -1,0 +1,54 @@
+@value tablet-portrait from "shared/styles/media.module.css";
+
+.root {
+  padding: 64px 120px;
+
+  @media tablet-portrait {
+    padding: 24px;
+  }
+}
+
+.breadcrumb {
+  margin: 0 0 32px;
+
+  @media tablet-portrait {
+    display: none;
+  }
+}
+
+.message {
+  @mixin headline;
+  @mixin headline3;
+
+  max-width: 740px;
+  margin: 0 0 24px;
+
+  @media tablet-portrait {
+    @mixin headline4;
+  }
+}
+
+.search {
+  max-width: 500px;
+  margin: 0 0 64px;
+}
+
+.content {
+  display: grid;
+  grid-gap: 96px;
+  grid-template-columns: 780px 1fr;
+
+  @media tablet-portrait {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0 64px;
+
+    > * &:not(:last-child) {
+      margin-bottom: 100px;
+    }
+  }
+}
+
+.not-found-note {
+  max-width: 500px;
+}

@@ -1,0 +1,81 @@
+@value tablet-portrait from "shared/styles/media.module.css";
+
+.tile {
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  margin: 0 0 16px;
+  background-color: var(--light-green);
+
+  @media tablet-portrait {
+    min-height: 342px;
+    margin: 0 0 24px;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline7;
+  @mixin text-truncate-multiline 6;
+
+  margin: 24px 30px auto 24px;
+
+  @media tablet-portrait {
+    margin: 16px 46px auto 16px;
+  }
+}
+
+.actions {
+  visibility: hidden;
+
+  .tile:hover & {
+    visibility: visible;
+  }
+
+  @media tablet-portrait {
+    visibility: visible;
+  }
+}
+
+.action {
+  display: block;
+  border-top: 1px solid var(--coal);
+}
+
+.author {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0;
+  margin-inline-start: 0;
+  overflow-x: hidden;
+
+  :first-child {
+    font-family: "PP Neue Machina", Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 24px;
+    text-overflow: ellipsis;
+  }
+}
+
+.city {
+  @mixin text;
+  @mixin textSmall;
+
+  margin: 4px 0 0;
+
+  @media tablet-portrait {
+    margin-top: 8px;
+  }
+}
+
+.year {
+  @mixin text;
+  @mixin textSmall;
+
+  margin: 0;
+}
+
+.semantic-only-note {
+  @mixin visually-hidden;
+}

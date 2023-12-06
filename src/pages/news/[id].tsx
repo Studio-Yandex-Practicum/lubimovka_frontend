@@ -1,25 +1,24 @@
 import classNames from 'classnames/bind';
+import format from 'date-fns/format';
 
 import { AppLayout } from 'components/app-layout';
-import { ArticleHeadline } from 'components/article-headline';
 import { ArticleFootnote } from 'components/article-footnote';
-import { ShareLinks } from 'components/share-links';
-import { ConstructorContent } from 'components/constructor-content';
-import { Section } from 'components/section';
-import { NewsList } from 'components/news-list';
-import { NewsCard } from 'components/news-card';
-import { PageBreadcrumbs } from 'components/page';
-import { Breadcrumb } from 'components/breadcrumb';
-import { SEO } from 'components/seo';
-import { fetcher } from 'services/fetcher';
-import { format } from 'shared/helpers/format-date';
-import { InternalServerError } from 'shared/helpers/internal-server-error';
-import { notFoundResult } from 'shared/constants/server-side-props';
-
-import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import type { NewsItemDetail } from 'api-typings';
-
+import { ArticleHeadline } from 'components/article-headline';
 import styles from 'components/article-layout/article-layout.module.css';
+import { Breadcrumb } from 'components/breadcrumb';
+import { ConstructorContent } from 'components/constructor-content';
+import { NewsCard } from 'components/news-card';
+import { NewsList } from 'components/news-list';
+import { PageBreadcrumbs } from 'components/page';
+import { Section } from 'components/section';
+import { SEO } from 'components/seo';
+import { ShareLinks } from 'components/share-links';
+import { fetcher } from 'services/fetcher';
+import { notFoundResult } from 'shared/constants/server-side-props';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
+
+import type { NewsItemDetail } from '__generated__/api-typings';
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
 const cx = classNames.bind(styles);
 
@@ -49,11 +48,11 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
         variant="news"
         title={title}
         description={description}
-        date={format('d MMMM yyyy', new Date(date))}
+        date={format(new Date(date), 'd MMMM yyyy')}
         cover={image}
       />
       <ConstructorContent
-        // @ts-expect-error
+        // @ts-ignore: TODO
         blocks={constructorBlocks}
       />
       <ArticleFootnote
@@ -77,7 +76,7 @@ const NewsArticle = (props: InferGetServerSidePropsType<typeof getServerSideProp
                 <NewsCard
                   title={entry.title}
                   description={entry.description}
-                  date={entry.pub_date && format('d MMMM yyyy', new Date(entry.pub_date))}
+                  date={entry.pub_date && format(new Date(entry.pub_date), 'd MMMM yyyy')}
                   href={`/news/${entry.id}`}
                 />
               </NewsList.Item>

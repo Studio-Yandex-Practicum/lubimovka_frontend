@@ -1,22 +1,23 @@
-import type { Url } from 'shared/types';
+import type { Project } from 'core/project';
 
 export type Settings = {
   emailAddresses: {
-    forDirectorsAndActors: string
-    forDirectors: string
-    forBlogAuthors: string
-    forPlayAuthors: string
-    forVolunteers: string
-    sponsorship: string
-    playAcceptance: string
-    requestDonationReport: string
-  },
+    forDirectorsAndActors: Email
+    forDirectors: Email
+    forBlogAuthors: Email
+    forPlayAuthors: Email
+    forVolunteers: Email
+    sponsorship: Email
+    playAcceptance: Email
+    requestDonationReport: Email
+  }
   pressCenter: {
     contactPerson: string
     contactPersonPhoto: Url
-    contactEmail: string
-    facebookGalleryUrl: string
-  },
+    contactEmail: Email
+    facebookGalleryUrl: Url
+  }
   canProposePlay: boolean
-  privacyPolicyUrl: string
+  privacyPolicyUrl: Url
+  projects: Omit<Project, 'image' | 'description'>[]
 }

@@ -1,8 +1,8 @@
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
-import { InfoLink } from 'components/ui/info-link';
-import { Url } from 'shared/types';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 
 import type { FC } from 'react';
 
@@ -57,15 +57,23 @@ export const ArticleHeadline: FC<ArticleHeadlineProps> = (props) => {
         {date}
       </time>
       {author && (
-        <InfoLink
-          className={cx('author')}
-          isOutsideLink
-          label={author}
-          icon={'arrow-45'}
-          iconPlace={'right'}
-          size={'m'}
+        <Button
+          size="s"
+          border="none"
           href={authorUrl}
-        />
+          icon={(
+            <Icon
+              glyph="arrow-45"
+              width="100%"
+              height="100%"
+            />
+          )}
+          iconPosition="right"
+          animation='invert'
+          className={cx('author')}
+        >
+          {author}
+        </Button>
       )}
     </section>
   );

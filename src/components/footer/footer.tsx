@@ -1,12 +1,15 @@
-import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
+import Link from 'next/link';
 
 import { FooterCopyright } from 'components/footer-copyright';
-import { FooterNavigation } from './navigation';
-import { FooterProjects } from './projects';
-import { FooterPartners } from './partners';
-
 import Logo from 'shared/images/full-logo.svg';
+
+import { FooterNavigation } from './navigation';
+import { FooterPartners } from './partners';
+import { FooterProjects } from './projects';
+
+import type { ReactNode } from 'react';
+
 import styles from './footer.module.css';
 
 interface FooterProps {
@@ -26,7 +29,9 @@ export const Footer = (props: FooterProps): JSX.Element => {
 
   return (
     <footer className={cx('footer', className)}>
-      <Logo className={cx('logo')}/>
+      <Link href="/">
+        <Logo className={cx('logo')}/>
+      </Link>
       {children}
       <FooterCopyright
         className={cx('footnote')}

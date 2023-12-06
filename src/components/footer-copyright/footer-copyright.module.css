@@ -17,13 +17,15 @@
   margin: 0 32px 0 0;
 
   @media (max-width: $tablet-portrait) {
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
   }
 }
 
-.footnoteLink {
+.footnoteLink.footnoteLink {
+  padding: 0;
+
   @media (max-width: $tablet-portrait) {
-    text-decoration: underline;
+    border-bottom-color: var(--coal);
   }
 }
 
@@ -34,13 +36,13 @@
   @media (max-width: $tablet-portrait) {
     width: 254px;
     flex-direction: column;
-    margin: 59px 0 0 0;
+    margin: 59px 0 0;
   }
 
   dt {
     &::after {
       display: inline;
-      content: ' –';
+      content: " –";
     }
   }
 
@@ -66,10 +68,10 @@
     width: 27px;
     height: 25px;
     margin-right: 4px;
-    background-image: url('./footer-copyright.assets/shishki.svg');
+    background-image: url("./footer-copyright.assets/shishki.svg");
     background-repeat: no-repeat;
     background-size: contain;
-    content: '';
+    content: "";
     grid-area: logo;
 
     @media (max-width: $tablet-portrait) {

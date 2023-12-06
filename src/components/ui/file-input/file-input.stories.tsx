@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { FileInput } from './file-input';
+
+import type { ComponentMeta,ComponentStory } from '@storybook/react';
 
 export default {
   title: 'UI/FileInput',

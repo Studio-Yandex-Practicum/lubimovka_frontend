@@ -1,0 +1,80 @@
+@value tablet-portrait from "shared/styles/media.module.css";
+
+$control-size: 48px;
+
+.panel {
+  &:not(:first-child) {
+    margin-bottom: 140px;
+
+    @media tablet-portrait {
+      margin-bottom: 0;
+    }
+  }
+
+  @media tablet-portrait {
+    display: none;
+  }
+}
+
+.panel-active {
+  composes: panel;
+
+  @media tablet-portrait {
+    display: block;
+  }
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-right: 118px;
+  border-bottom: 1px solid var(--coal);
+
+  @media tablet-portrait {
+    flex-direction: column;
+    align-items: center;
+    padding-right: 0;
+    text-align: center;
+  }
+}
+
+.panel-title {
+  padding: 0 0 8px;
+  margin: 0;
+}
+
+.panel-status-open {
+  padding: 4px 25px;
+  margin: 0;
+  background-color: var(--coal);
+  color: var(--beige);
+}
+
+.panel-status-close {
+  max-width: 200px;
+  margin: 0 0 0 20px;
+
+  @media tablet-portrait {
+    margin: 0;
+  }
+}
+
+.panel-inner {
+  padding: 0 118px 0 58px;
+
+  @media tablet-portrait {
+    padding: 0 24px;
+  }
+}
+
+.controls {
+  display: none;
+
+  @media tablet-portrait {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+    margin-bottom: -$control-size;
+  }
+}

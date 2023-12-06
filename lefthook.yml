@@ -1,0 +1,14 @@
+pre-push:
+  commands:
+    type-check:
+      run: npm run type-check
+
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: npx eslint {staged_files}
+    stylelint:
+      glob: "*.css"
+      run: npx stylelint {staged_files}

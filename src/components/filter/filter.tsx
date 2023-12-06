@@ -1,32 +1,24 @@
 import classNames from 'classnames/bind';
 
-import { FilterField } from './field';
-
-import type { PropsWithChildren } from 'react';
-
 import styles from './filter.module.css';
 
 interface FilterProps {
   className?: string
+  variant?: 'horizontal' | 'vertical'
 }
 
 const cx = classNames.bind(styles);
 
-const Component = (props: PropsWithChildren<FilterProps>) => {
+export const Filter = (props: React.PropsWithChildren<FilterProps>) => {
   const {
     children,
     className,
+    variant = 'horizontal'
   } = props;
 
   return (
-    <div className={cx('root', className)}>
+    <div className={cx(variant, className)}>
       {children}
     </div>
   );
 };
-
-Component.displayName = 'Filter';
-
-export const Filter = Object.assign(Component, {
-  Field: FilterField,
-});

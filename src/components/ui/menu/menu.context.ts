@@ -1,9 +1,11 @@
 import { createContext, useContext } from 'react';
 
-import { MenuType } from './menu';
+import type { styles } from './menu.styles';
+
+export type MenuType = keyof typeof styles;
 
 type MenuContext = {
-  type: MenuType;
+  type: MenuType
 }
 
 const MenuContext = createContext<MenuContext | undefined>(undefined);

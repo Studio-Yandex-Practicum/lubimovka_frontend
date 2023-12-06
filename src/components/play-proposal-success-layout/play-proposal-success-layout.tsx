@@ -1,5 +1,6 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
+
+import type { FC } from 'react';
 
 import styles from './play-proposal-success-layout.module.css';
 
@@ -9,7 +10,7 @@ export const PlayProposalSuccessLayout: FC = () => {
   return (
     <section className={cx('container')}>
       <h1 className={cx('title')}>
-        Спасибо, мы получили вашу пьесу, скоро начнется отбор. Следите за
+        Спасибо, мы получили вашу пьесу. Следите за
         новостями в наших соцсетях!
       </h1>
       <img

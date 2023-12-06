@@ -1,29 +1,29 @@
-//@ts-nocheck
-import { Fragment } from 'react';
+// @ts-nocheck TODO:
 import classNames from 'classnames/bind';
+import format from 'date-fns/format';
 import Image from 'next/image';
+import { Fragment } from 'react';
 
-import { PhotoGallery } from 'components/photo-gallery';
-import { ImageSlider } from 'components/ui/image-slider';
-import { BasicPlayCardList } from 'components/ui/basic-play-card-list';
-import { BasicPlayCard } from 'components/ui/basic-play-card';
+import { ConstructorLink } from 'components/constructor-link';
 import { EventCard } from 'components/event-card';
-import { PersonCard } from 'components/ui/person-card';
+import { EventList } from 'components/event-list';
+import { HTMLMarkup } from 'components/html-markup';
+import { ImageGallery } from 'components/image-gallery';
 import { PersonCardList } from 'components/person-card-list';
+import { PlayCard } from 'components/play-card';
+import { PlayList } from 'components/play-list';
+import { ImageSlider } from 'components/ui/image-slider';
+import { PersonCard } from 'components/ui/person-card';
 import { Video } from 'components/video';
 import { VideoList } from 'components/video-list';
-import { HTMLMarkup } from 'components/html-markup';
-import { ConstructorLink } from 'components/constructor-link';
-import { format } from 'shared/helpers/format-date';
-import { ConstructorContentSection } from './section';
+
 import { ConstructorBlockType } from './constructor-content.const';
 import { ConstructorContentContextProvider } from './constructor-content.context';
+import { ConstructorContentSection } from './section';
 
-import type { FC } from 'react';
 import type { ConstructorBlock } from './constructor-content.types';
 
 import defaultStyles from './variant/default.module.css';
-import { EventList } from 'components/event-list';
 
 enum Variant {
   Default = 'default',
@@ -39,7 +39,7 @@ const variants = {
   default: defaultStyles,
 };
 
-export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
+export const ConstructorContent: React.FC<ConstructorContentProps> = (props) => {
   const {
     variant = Variant.Default,
     blocks,
@@ -100,8 +100,8 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                 variant="image-gallery"
                 title={content_item.title}
               >
-                <PhotoGallery
-                  photos={content_item.items.map(({ image, title }) => ({
+                <ImageGallery
+                  items={content_item.items.map(({ image, title }) => ({
                     url: image,
                     description: title,
                   }))}
@@ -113,19 +113,24 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                 variant="plays"
                 title={content_item.title}
               >
-                <BasicPlayCardList>
-                  {content_item.items.map(({ id, name, city, year, authors }) => (
-                    <BasicPlayCard
-                      key={id}
-                      play={{
-                        title: name,
-                        city,
-                        year,
-                        authors: authors,
-                      }}
-                    />
+                <PlayList variant="scrollable">
+                  {content_item.items.map(({ id, name, city, year, authors, url_download, url_reading }) => (
+                    <PlayList.Item key={id}>
+                      <PlayCard
+                        title={name}
+                        city={city}
+                        year={year?.toString()}
+                        authors={authors.map((author) => ({
+                          fullName: author.name,
+                          slug: author.slug,
+                        }))}
+                        // TODO: непонятно, такое url_download, а что url_download_from. Оставлю пока наугад.
+                        downloadUrl={url_download}
+                        readingUrl={url_reading}
+                      />
+                    </PlayList.Item>
                   ))}
-                </BasicPlayCardList>
+                </PlayList>
               </ConstructorContentSection>
             )}
             {content_type === ConstructorBlockType.Events && content_item.items.length === 1 && (
@@ -134,15 +139,18 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                 title={content_item.title}
               >
                 <EventCard
-                  date={format('d MMMM', new Date(content_item.items[0].date_time))}
-                  time={format('H:mm', new Date(content_item.items[0].date_time))}
-                  title={content_item.items[0].event_body.name}
-                  team={content_item.items[0].event_body.team}
-                  imageUrl={content_item.items[0].event_body.image}
-                  projectTitle={content_item.items[0].event_body.project_title}
-                  description={content_item.items[0].event_body.description}
-                  {...content_item.items[0].type === 'PERFORMANCE' ? {
-                    performanceUrl: `/performances/${content_item.items[0].event_body.id}`,
+                  {...content_item.items[0].date_time && {
+                    date: format(new Date(content_item.items[0].date_time), 'd MMMM'),
+                    time: format(new Date(content_item.items[0].date_time), 'H:mm'),
+                  }}
+                  title={content_item.items[0].title}
+                  type={content_item.items[0].type}
+                  team={content_item.items[0].team}
+                  imageUrl={content_item.items[0].image}
+                  description={content_item.items[0].description}
+                  {...content_item.items[0].performance_id ? {
+                    aboutUrl: `/performances/${content_item.items[0].performance_id}`,
+                    aboutText: 'О спектакле',
                   } : {}}
                   actionUrl={content_item.items[0].action_url}
                   actionText={content_item.items[0].action_text}
@@ -159,28 +167,28 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
                     id,
                     type,
                     date_time,
-                    event_body: {
-                      id: performanceId,
-                      name,
-                      team,
-                      image,
-                      description,
-                      project_title,
-                    },
+                    performance_id,
+                    title,
+                    team,
+                    image,
+                    description,
                     action_url,
                     action_text,
                   }) => (
                     <EventList.Item key={id}>
                       <EventCard
-                        date={format('d MMMM', new Date(date_time))}
-                        time={format('H:mm', new Date(date_time))}
-                        title={name}
+                        {...date_time && {
+                          date: format(new Date(date_time), 'd MMMM'),
+                          time: format(new Date(date_time), 'H:mm'),
+                        }}
+                        title={title}
+                        type={type}
                         team={team}
                         imageUrl={image}
-                        projectTitle={project_title}
                         description={description}
-                        {...type === 'PERFORMANCE' ? {
-                          performanceUrl: `/performances/${performanceId}`,
+                        {...performance_id ? {
+                          aboutUrl: `/performances/${performance_id}`,
+                          aboutText: 'О спектакле',
                         } : {}}
                         actionUrl={action_url}
                         actionText={action_text}
@@ -210,6 +218,7 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
             )}
             {content_type === ConstructorBlockType.Videos && (
               <ConstructorContentSection
+                variant="default"
                 title={content_item.title}
               >
                 <VideoList>
@@ -225,7 +234,6 @@ export const ConstructorContent: FC<ConstructorContentProps> = (props) => {
             {content_type === ConstructorBlockType.Link && (
               <ConstructorContentSection
                 variant="link"
-                colors="brand"
                 title={content_item.title}
               >
                 <ConstructorLink

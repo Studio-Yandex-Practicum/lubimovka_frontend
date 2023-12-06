@@ -1,5 +1,14 @@
-@import '../performance-layout.vars.module.css';
+@import url("../performance-layout.vars.module.css");
 
 .root {
-  grid-area: content;
+  display: inline-block;
+  width: $right-column-width-tablet-portrait;
+  margin-bottom: 144px;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+    width: auto;
+    order: 6;
+    margin-bottom: 100px;
+  }
 }

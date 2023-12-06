@@ -1,18 +1,15 @@
 import classNames from 'classnames/bind';
 
 import { PageBurgerButton } from './burger-button';
-import { PageNavbar } from './navbar';
 import { PageFooter } from './footer';
+import { PageNavbar } from './navbar';
 import { PageOverlayMenu } from './overlay-menu';
-import { PageHeadBanner } from './head-banner';
-
-import type { FC } from 'react';
 
 import styles from './page.module.css';
 
 const cx = classNames.bind(styles);
 
-const Component: FC = (props) => {
+const Component: React.FC = (props) => {
   const { children } = props;
 
   return (
@@ -29,5 +26,4 @@ export default Object.assign(Component, {
   Navbar: PageNavbar,
   Footer: PageFooter,
   OverlayMenu: PageOverlayMenu,
-  HeadBanner: PageHeadBanner,
 });

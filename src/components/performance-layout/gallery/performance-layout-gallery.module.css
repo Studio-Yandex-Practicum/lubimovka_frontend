@@ -1,10 +1,11 @@
-@import '../performance-layout.vars.module.css';
+@import url("../performance-layout.vars.module.css");
 
 .gallery {
   margin: 0 -$page-padding-tablet-portrait 146px;
-  grid-area: gallery;
+  clear: both;
 
   @media (max-width: $tablet-portrait) {
+    order: 7;
     margin: 0 -$page-padding-smartphone 105px;
   }
 }

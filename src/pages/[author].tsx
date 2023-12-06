@@ -1,30 +1,30 @@
 import cn from 'classnames/bind';
 
 import { AppLayout } from 'components/app-layout';
-import { AuthorOverview } from 'components/author-page/overview';
-import { AuthorPlays } from 'components/author-page/plays';
 import { AnotherPlays } from 'components/author-page/another-plays';
+import styles from 'components/author-page/author.module.css';
 import { AuthorInformation } from 'components/author-page/information';
+import { AuthorOverview } from 'components/author-page/overview';
 import { CallToEmail } from 'components/call-to-email';
+import { PlayCard } from 'components/play-card';
+import { PlayList } from 'components/play-list';
 import { Section } from 'components/section';
 import { SEO } from 'components/seo';
+import { useSettings } from 'services/api/settings-adapter';
 import { fetcher } from 'services/fetcher';
 import * as breakpoints from 'shared/breakpoints.js';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
-import { usePersistentData } from 'providers/persistent-data-provider';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
-import styles from 'components/author-page/author.module.css';
-
+import type { AuthorRetrieve, Play } from '__generated__/api-typings';
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import type { AuthorRetrieve, Play } from 'api-typings';
 
 const cx = cn.bind(styles);
 
 const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
 
   const {
     name,
@@ -50,23 +50,37 @@ const Author = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =
       <SEO title={name}/>
       <div className={cx('author')}>
         <AuthorOverview
-          props={{
-            image,
-            name,
-            city,
-            quote,
-            biography,
-            other_links: additionalLinks,
-            achievements,
-            social_networks,
-            email,
-            plays,
-          }}
+          image={image}
+          name={name}
+          city={city}
+          quote={quote}
+          biography={biography}
+          other_links={additionalLinks}
+          achievements={achievements}
+          social_networks={social_networks}
+          email={email}
+          plays={plays}
         />
         {!isMobile && plays.length > 0 && (
-          <AuthorPlays
-            plays={plays}
-          />
+          <Section type="author-plays">
+            <PlayList>
+              {plays.map((play) => (
+                <PlayList.Item key={play.id}>
+                  <PlayCard
+                    title={play.name}
+                    city={play.city}
+                    year={play.year?.toString()}
+                    readingUrl={play.url_reading}
+                    downloadUrl={play.url_download}
+                    authors={play.authors.map((author) => ({
+                      fullName: author.name,
+                      slug: author.slug,
+                    }))}
+                  />
+                </PlayList.Item>
+              ))}
+            </PlayList>
+          </Section>
         )}
         {additionalPlayLinks.length > 0 && (
           <AnotherPlays
@@ -131,4 +145,4 @@ function toAdditionalPlayLinks(plays: Play[]) {
     title: name,
     ...url_download ? { href: url_download } : {},
   }));
-};
+}

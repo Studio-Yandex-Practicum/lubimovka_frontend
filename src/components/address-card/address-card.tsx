@@ -1,10 +1,9 @@
 import classNames from 'classnames/bind';
 
-import { Icon } from 'components/ui/icon';
 import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 
 import type { FC } from 'react';
-import type { Url } from 'shared/types';
 
 import styles from './address-card.module.css';
 

@@ -1,44 +1,38 @@
-import { AppProps } from 'next/app';
-import Script from 'next/script';
+import { ru } from 'date-fns/locale';
+import setDefaultOptions from 'date-fns/setDefaultOptions';
+import { SWRConfig } from 'swr';
 
-import { PersistentDataProvider } from 'providers/persistent-data-provider';
-import { NewsProvider } from 'providers/news-provider';
-import { BlogProvider } from 'providers/blog-provider';
+import { GoogleAnalyticsScript } from 'components/google-analytics-script';
 
-import { googleAnalyticsTrackingId } from '../../../config/vars';
+import { googleAnalyticsTrackingId } from '../../../config/env';
 
-export const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+import type { AppProps } from 'next/app';
+
+if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
+  import('mocks').then(({ setupMocks }) => setupMocks());
+}
+
+setDefaultOptions({
+  locale: ru,
+});
+
+export const App = ({ Component, pageProps }: AppProps) => {
   const {
-    preloadedNewsState,
     ...restPageProps
   } = pageProps;
 
   return (
     <>
       {googleAnalyticsTrackingId && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsTrackingId}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', '${googleAnalyticsTrackingId}');
-            `}
-          </Script>
-        </>
+        <GoogleAnalyticsScript googleAnalyticsTrackingId={googleAnalyticsTrackingId}/>
       )}
-      <PersistentDataProvider>
-        <NewsProvider preloadedNewsState={preloadedNewsState}>
-          <BlogProvider>
-            <Component {...restPageProps}/>
-          </BlogProvider>
-        </NewsProvider>
-      </PersistentDataProvider>
+      <SWRConfig
+        value={{
+          revalidateIfStale: false
+        }}
+      >
+        <Component {...restPageProps}/>
+      </SWRConfig>
     </>
   );
 };

@@ -1,16 +1,15 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './modal-backdrop.module.css';
 
 const cx = classNames.bind(styles);
 
-export interface IModalBackdropProps {
-  className?: string;
-  onClick?: () => void;
+export interface ModalBackdropProps {
+  className?: string
+  onClick?: () => void
 }
 
-export const ModalBackdrop: FC<IModalBackdropProps> = (props) => {
+export const ModalBackdrop: React.FC<ModalBackdropProps> = (props) => {
   const { className, onClick } = props;
 
   return (

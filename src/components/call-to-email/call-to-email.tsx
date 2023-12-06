@@ -1,8 +1,8 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
 
 import { Icon } from 'components/ui/icon';
-import { Email } from 'shared/types';
+
+import type { FC } from 'react';
 
 import styles from './call-to-email.module.css';
 

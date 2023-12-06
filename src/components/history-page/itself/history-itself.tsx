@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 import style from './history-itself.module.css';
 
 interface ImageItemData {
-  imageUrl1: string,
-  imageUrl2: string,
+  imageUrl1: string
+  imageUrl2: string
   imageUrl3: string
 }
 
@@ -16,6 +16,7 @@ interface IHistoryItself {
 
 export const HistoryItself: FC<IHistoryItself>= ({ data }) => {
   const { historyImages } = data;
+
   return (
     <section className={style.section}>
       <div className={style.contentTop}>
@@ -63,7 +64,7 @@ export const HistoryItself: FC<IHistoryItself>= ({ data }) => {
         {' '}
         <a
           className={style.link}
-          href="https://lubimovka.art/files/history/Theatre_48.pdf"
+          href="https://lubimovka.art/media/filer_public/9d/7b/9d7b8913-b0fe-4adf-9abf-b2e6de119b98/theatre_48.pdf"
           target="_blank"
           rel="noreferrer"
         >

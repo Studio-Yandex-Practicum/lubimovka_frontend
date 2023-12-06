@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 type Predicate<T = any> = (entry: T) => boolean;
 
 export const omit = <T extends Record<string, any>>(

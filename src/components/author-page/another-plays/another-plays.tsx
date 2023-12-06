@@ -1,11 +1,11 @@
 import cn from 'classnames/bind';
 
-import { Button } from 'components/ui/button';
-
-import styles from './another-plays.module.css';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 
 import type { FC } from 'react';
-import type { Url } from 'shared/types';
+
+import styles from './another-plays.module.css';
 
 const cx = cn.bind(styles);
 
@@ -15,7 +15,7 @@ type PlayLink = {
 }
 
 interface AnotherPlaysProps {
-  links: PlayLink[];
+  links: PlayLink[]
 }
 
 export const AnotherPlays: FC<AnotherPlaysProps> = ({ links }) => {
@@ -31,15 +31,23 @@ export const AnotherPlays: FC<AnotherPlaysProps> = ({ links }) => {
               {link.title}
             </p>
             {link.href && (
-              <a className={cx('downloadButton')} href={link.href} download>
-                <Button
-                  size="l"
-                  iconPlace="right"
-                  icon="arrow-down"
-                  label="Скачать"
-                  border="none"
-                />
-              </a>
+              <Button
+                size='l'
+                border='none'
+                href={link.href}
+                icon={(
+                  <Icon
+                    glyph="arrow-down"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+                iconPosition='right'
+                className={cx('downloadButton')}
+                download
+              >
+                {'СКАЧАТЬ'}
+              </Button>
             )}
           </li>
         ))}

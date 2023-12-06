@@ -4,42 +4,36 @@
 
 .personalInfo {
   display: grid;
-  grid-template-areas:
-    'button photo fullName'
-    'button photo city'
-    'button photo quote';
-  grid-template-columns: 2fr 6fr 9fr;
-  grid-template-rows: auto;
+  grid-template:
+    "button photo fullName"
+    "button photo city"
+    "button photo quote" / 2fr 6fr 9fr;
 
   @media (max-width: $tablet-portrait) {
     background-color: var(--light-green);
-    grid-template-areas:
-      'button'
-      'photo'
-      'fullName'
-      'city'
-      'quote';
-    grid-template-columns: 10fr;
+    grid-template:
+      "button"
+      "photo"
+      "fullName"
+      "city"
+      "quote";
   }
 }
 
 .personalInfoNoPhoto {
   display: grid;
-  grid-template-areas:
-    'button photo fullName'
-    'button photo city'
-    'button quote empty';
-  grid-template-columns: 2fr 6fr 9fr;
-  grid-template-rows: auto;
+  grid-template:
+    "button photo fullName"
+    "button photo city"
+    "button quote empty" / 2fr 6fr 9fr;
 
   @media (max-width: $tablet-portrait) {
     background-color: var(--light-green);
-    grid-template-areas:
-      'button'
-      'fullName'
-      'city'
-      'quote';
-    grid-template-columns: 10fr;
+    grid-template:
+      "button"
+      "fullName"
+      "city"
+      "quote";
   }
 }
 
@@ -114,7 +108,7 @@
   @mixin text;
   @mixin textMedium;
 
-  padding: 0 40px 0;
+  padding: 0 40px;
   margin: 0 0 56px;
   grid-area: city;
 
@@ -200,12 +194,29 @@
   white-space: pre-wrap;
 
   @media (max-width: $tablet-portrait) {
-    padding: 56px 0 0 0;
+    padding: 56px 0 0;
   }
 }
 
 .descriptionExpanded {
   max-height: 200px;
+}
+
+.buttonToggle {
+  align-items: flex-start;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 4px;
+
+  :last-child {
+    padding-top: 7px;
+  }
+
+  :first-child {
+    width: 24px;
+    height: 24px;
+    padding-top: 0;
+  }
 }
 
 .authorLinks {
@@ -221,11 +232,18 @@
   @mixin text;
   @mixin textLarge;
 
-  font-feature-settings: 'ss01' on;
+  font-feature-settings: "ss01" on;
 }
 
 .link {
   min-width: 25px;
+}
+
+.tagLink {
+  display: inline-block;
+  border-bottom: 1px solid currentColor;
+  color: inherit;
+  text-decoration: none;
 }
 
 .overviewContacts {
@@ -245,7 +263,7 @@
 
   @media (max-width: $tablet-portrait) {
     max-width: 300px;
-    padding: 0 25px 100px 25px;
+    padding: 0 25px 100px;
     grid-column: auto;
     grid-row: 1/2;
     justify-self: center;
@@ -267,7 +285,7 @@
 }
 
 .overviewTagsBlock {
-  margin: 0 0 53px;
+  margin: 0 0 45px;
 }
 
 .overviewSocialLinkBlock {
@@ -277,6 +295,15 @@
 .overviewSocialLink {
   display: inline-block;
   margin: 0 8px 8px 0;
+}
+
+.overviewSocialLinkButton {
+  padding: 0;
+  padding-right: 10px;
+}
+
+.overviewSocialLinkButton.overviewSocialLinkButton :first-child {
+  margin-right: 0;
 }
 
 .overviewSocialLinkHeading {
@@ -291,6 +318,15 @@
   @mixin headline7;
 
   margin: 6px 0;
+}
+
+.overviewEmaillLink.overviewEmaillLink {
+  padding: 0;
+  text-decoration: underline;
+
+  :first-child {
+    font-family: "PP Neue Machina", Arial, sans-serif;
+  }
 }
 
 .overviewTagsHeading {

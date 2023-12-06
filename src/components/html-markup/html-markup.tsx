@@ -1,19 +1,23 @@
 import classNames from 'classnames/bind';
 
-import type { FC } from 'react';
-
 import styles from './html-markup.module.css';
 
-interface HTMLMarkupProps {
+type HTMLMarkupProps = {
   variant?: 'default' | 'centered'
-  markup: string
   className?: string
-}
+} & ({
+  children: React.ReactNode
+  markup?: never
+} | {
+  children?: never
+  markup: string
+})
 
 const cx = classNames.bind(styles);
 
-export const HTMLMarkup: FC<HTMLMarkupProps> = (props) => {
+export const HTMLMarkup = (props: HTMLMarkupProps) => {
   const {
+    children,
     variant = 'default',
     markup,
     className,
@@ -25,9 +29,13 @@ export const HTMLMarkup: FC<HTMLMarkupProps> = (props) => {
         variant,
         className
       )}
-      dangerouslySetInnerHTML={{
-        __html: markup,
-      }}
-    />
+      {...markup && !children ? {
+        dangerouslySetInnerHTML: {
+          __html: markup,
+        }
+      } : {}}
+    >
+      {children}
+    </div>
   );
 };

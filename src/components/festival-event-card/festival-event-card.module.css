@@ -1,3 +1,7 @@
+/* TODO: переписать с desktop-first подходом */
+
+@value tablet-portrait from "shared/styles/media.module.css";
+
 .root {
   display: grid;
   padding-bottom: 48px;
@@ -14,7 +18,8 @@
     gap: 16px 32px;
     grid-template:
       "image time-location title       .       ."
-      "image time-location description credits actions" 1fr / minmax(0, 147px) minmax(0, 12.5%) minmax(0, 27.5%) minmax(0, 30%) minmax(0, 17.5%);
+      "image time-location description credits actions" 1fr
+      / minmax(0, 147px) minmax(0, 12.5%) minmax(0, 27.5%) minmax(0, 30%) minmax(0, 17.5%);
   }
 }
 
@@ -66,14 +71,14 @@
 
 .time {
   @mixin headline;
-  @mixin headline7;
+  @mixin headline6;
 
-  margin-top: 19px;
+  margin: 16px 0 0;
 
-  @media (min-width: $tablet-portrait) {
-    @mixin headline6;
+  @media tablet-portrait {
+    @mixin headline7;
 
-    margin-top: 15px;
+    margin-top: 18px;
   }
 }
 
@@ -81,8 +86,10 @@
   @mixin text;
   @mixin textSmall;
 
-  @media (min-width: $tablet-portrait) {
-    margin: 16px 0 0;
+  margin: 16px 0 0;
+
+  @media tablet-portrait {
+    margin: 0;
   }
 }
 
@@ -108,6 +115,10 @@
   align-items: flex-start;
   justify-content: flex-end;
   grid-area: actions;
+}
+
+.button {
+  padding: 0 2px 2px 0;
 }
 
 .card:not(:first-of-type) {

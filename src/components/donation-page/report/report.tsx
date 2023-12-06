@@ -1,15 +1,16 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 
-import { InfoLink } from 'components/ui/info-link';
+import { Button } from 'components/ui/button2';
+
+import type { FC } from 'react';
 
 import styles from './report.module.css';
 
 const cx = cn.bind(styles);
 
 interface IReportProps {
-  text: string;
-  email?: string;
+  text: string
+  email?: string
 }
 
 export const Report: FC<IReportProps> = (props) => {
@@ -22,13 +23,15 @@ export const Report: FC<IReportProps> = (props) => {
     <div className={cx('reportContainer')}>
       <p className={cx('reportText')}>
         {text}
-        <InfoLink
-          className={cx('reportEmail')}
-          isOutsideLink
+        <Button
+          border="bottom"
+          size="s"
           href={`mailto:${email}`}
-          label={email}
-          textDecoration="underline"
-        />
+          className={cx('reportEmail')}
+          animation='invert'
+        >
+          {email}
+        </Button>
       </p>
     </div>
   );

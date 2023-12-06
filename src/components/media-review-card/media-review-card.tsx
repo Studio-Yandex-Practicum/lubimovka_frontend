@@ -1,16 +1,16 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
 
-import { InfoLink } from 'components/ui/info-link';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
 
-import type { Url } from 'shared/types';
+import type { FC } from 'react';
 
 import styles from './media-review-card.module.css';
 
 interface MediaReviewCardProps {
-  logo?: Url,
-  text: string,
-  href?: Url,
+  logo?: Url
+  text: string
+  href?: Url
 }
 
 const cx = classNames.bind(styles);
@@ -36,17 +36,23 @@ export const MediaReviewCard: FC<MediaReviewCardProps> = (props) => {
       </p>
       {href && (
         <div className={cx('action')}>
-          <InfoLink
-            isOutsideLink
+          <Button
+            size='s'
+            border='bottom-left'
             href={href}
-            label="Читать полностью"
-            icon="arrow-45"
-            iconPlace="left"
-            size="s"
-            textTransform="uppercase"
-            border="borderBottomLeft"
+            icon={(
+              <Icon
+                glyph='arrow-45'
+                width="100%"
+                height="100%"
+              />
+            )}
+            iconPosition='left'
             className={cx('action')}
-          />
+            upperCase
+          >
+            {'Читать полностью'}
+          </Button>
         </div>
       )}
     </article>

@@ -1,49 +1,51 @@
-import { useCallback, useEffect, useState } from 'react';
+import isEmpty from 'lodash/isEmpty';
 import { useRouter } from 'next/router';
+import { useCallback, useEffect, useState } from 'react';
 
-import Page from 'components/page';
-import { Menu } from 'components/ui/menu';
-import { Icon } from 'components/ui/icon';
-import { Navbar } from 'components/navbar';
-import { Logotype } from 'components/logotype';
-import { Footer } from 'components/footer';
-import { OverlayNav } from 'components/overlay-nav';
-import { BurgerButton } from 'components/ui/burger-button';
-import { PartnerList } from 'components/partner-list';
-import { FooterCopyright } from 'components/footer-copyright';
 import { DonationLink } from 'components/donation-link';
+import { Footer } from 'components/footer';
+import { FooterCopyright } from 'components/footer-copyright';
+import { Logotype } from 'components/logotype';
+import { Navbar } from 'components/navbar';
+import { OverlayNav } from 'components/overlay-nav';
+import Page from 'components/page';
 import PartnerCard from 'components/partner-card';
-import { mainNavigationItems } from 'shared/constants/main-navigation-items';
-import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
-import { socialLinkItems } from 'shared/constants/social-link-items';
-import { donationPath } from 'shared/constants/donation-path';
-import { participationFormPath } from 'shared/constants/participation-form-path';
-import { usePersistentData } from 'providers/persistent-data-provider';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
-import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
+import { PartnerList } from 'components/partner-list';
+import { BurgerButton } from 'components/ui/burger-button';
+import { Icon } from 'components/ui/icon';
+import { Menu } from 'components/ui/menu';
+import { usePartners } from 'services/api/partners-adapter';
+import { useSettings } from 'services/api/settings-adapter';
 import * as breakpoints from 'shared/breakpoints.js';
+import { donationPath } from 'shared/constants/donation-path';
+import { footerNavigationItems } from 'shared/constants/footer-navigation-items';
+import { mainNavigationItems } from 'shared/constants/main-navigation-items';
+import { participationFormPath } from 'shared/constants/participation-form-path';
+import { socialLinkItems } from 'shared/constants/social-link-items';
+import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
 
-import type { ReactNode } from 'react';
 import type { NavbarProps } from 'components/navbar';
 
-type disallowedNavbarProps = 'children' | 'view'
-
 interface AppLayoutProps {
+  customNavbar?: React.ReactNode
+  navbarProps?: Pick<NavbarProps, 'colors'>
+  navbarAddon?: React.ReactNode
   hiddenPartners?: boolean
-  navbarProps?: Exclude<NavbarProps, disallowedNavbarProps>
-  headBanner?: ReactNode
-  children: ReactNode
 }
 
-export const AppLayout = (props: AppLayoutProps) => {
+export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (props) => {
   const {
     children,
-    hiddenPartners,
+    customNavbar,
     navbarProps,
-    headBanner,
+    navbarAddon,
+    hiddenPartners,
   } = props;
-  const { projects, generalPartners, settings } = usePersistentData();
+  const { settings } = useSettings();
+  const { partners } = usePartners({ onlyGeneral: true });
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
   const router = useRouter();
 
@@ -54,66 +56,83 @@ export const AppLayout = (props: AppLayoutProps) => {
   useDisableBodyScroll(!!isMobile && isOverlayMenuOpen);
 
   useEffect(() => {
-    if (!isMobile) setIsOverlayMenuOpen(false);
+    if (!isMobile) {
+      setIsOverlayMenuOpen(false);
+    }
   }, [isMobile]);
+
+  useEffect(() => {
+    const onChange = () => {
+      setScrollPosition(window.scrollY);
+      if (screen.orientation.type === 'landscape-primary') {
+        window.scroll(0, scrollPosition * (window.outerWidth / window.outerHeight));
+      }
+    };
+    screen.orientation.addEventListener('change', onChange);
+
+    return () => {
+      screen.orientation.removeEventListener('change', onChange);
+    };
+  }, [scrollPosition]);
 
   return (
     <Page>
-      {headBanner && (
-        <Page.HeadBanner>
-          {headBanner}
-        </Page.HeadBanner>
-      )}
-      <Page.Navbar>
-        <Navbar
-          view={headBanner ? 'expanded' : 'normal'}
-          {...navbarProps}
-        >
-          <Navbar.Logotype>
-            <Logotype
-              href="/"
-              title="Фестиваль Любимовка"
-              full={navbarProps?.view === 'expanded'}
-            />
-          </Navbar.Logotype>
-          <Navbar.Actions>
-            <Navbar.Section primary>
-              <Menu type="main-navigation">
-                {mainNavigationItems
-                  .filter(item => !item.mobileOnly)
-                  .map((item) => (
-                    <Menu.Item
-                      key={item.href}
-                      href={item.href}
-                      current={router.asPath.startsWith(item.href)}
-                    >
+      <Page.Navbar custom={!!customNavbar}>
+        {customNavbar ? customNavbar : (
+          <Navbar {...navbarProps}>
+            <Navbar.Slot area="logotype">
+              <Logotype
+                href="/"
+                title="Фестиваль Любимовка"
+              />
+            </Navbar.Slot>
+            <Navbar.Slot area="actions">
+              <Navbar.ActionsSlot
+                type="main-navigation"
+                as="nav"
+              >
+                <Menu type="main-navigation">
+                  {mainNavigationItems
+                    .filter(item => !item.mobileOnly)
+                    .map((item) => (
+                      <Menu.Item
+                        key={item.href}
+                        href={item.href}
+                        current={router.asPath.startsWith(item.href)}
+                      >
+                        {item.text}
+                      </Menu.Item>
+                    ))}
+                </Menu>
+              </Navbar.ActionsSlot>
+              <Navbar.ActionsSlot>
+                <Menu type="social-links">
+                  {socialLinkItems.map((item) => (
+                    <Menu.Item key={item.href} href={item.href}>
                       {item.text}
                     </Menu.Item>
                   ))}
-              </Menu>
-            </Navbar.Section>
-            <Navbar.Section>
-              <Menu type="social-links">
-                {socialLinkItems.map((item) => (
-                  <Menu.Item key={item.href} href={item.href}>
-                    {item.text}
-                  </Menu.Item>
-                ))}
-              </Menu>
-            </Navbar.Section>
-            <Navbar.Section>
-              <DonationLink href={donationPath}/>
-            </Navbar.Section>
-          </Navbar.Actions>
-        </Navbar>
+                </Menu>
+              </Navbar.ActionsSlot>
+              <Navbar.ActionsSlot>
+                <DonationLink href={donationPath}/>
+              </Navbar.ActionsSlot>
+            </Navbar.Slot>
+            {navbarAddon && (
+              <Navbar.Slot area="addon">
+                {navbarAddon}
+              </Navbar.Slot>
+            )}
+          </Navbar>
+        )}
       </Page.Navbar>
       {children}
       <Page.Footer>
         <Footer privacyPolicyUrl={settings?.privacyPolicyUrl}>
-          {!hiddenPartners && generalPartners && generalPartners?.length > 0 && (
+          {!hiddenPartners && partners && !isEmpty(partners) && (
             <Footer.Partners>
               <PartnerList size="s">
-                {generalPartners.map((partner) => (
+                {partners.map((partner) => (
                   <PartnerList.Item key={partner.name}>
                     <PartnerCard
                       variant="compact"
@@ -141,12 +160,12 @@ export const AppLayout = (props: AppLayoutProps) => {
             </Menu>
           </Footer.Navigation>
           <Footer.Projects>
-            {projects && projects.length > 0 && (
+            {!isEmpty(settings?.projects) && (
               <Menu type="footer-project-list">
                 <Menu.Item href="/projects">
                   Все проекты
                 </Menu.Item>
-                {projects.map((item) => (
+                {settings?.projects.map((item) => (
                   <Menu.Item
                     key={item.id}
                     href={`/projects/${item.id}`}
@@ -223,3 +242,4 @@ export const AppLayout = (props: AppLayoutProps) => {
     </Page>
   );
 };
+

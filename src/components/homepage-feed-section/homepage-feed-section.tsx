@@ -7,8 +7,8 @@ import type { FC, ReactNode } from 'react';
 import styles from './homepage-feed-section.module.css';
 
 interface HomepageFeedSectionProps {
-  title: string,
-  action: ReactNode,
+  title: string
+  action: ReactNode
 }
 
 const cx = classNames.bind(styles);

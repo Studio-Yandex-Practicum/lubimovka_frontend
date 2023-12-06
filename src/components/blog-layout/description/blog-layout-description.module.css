@@ -25,8 +25,8 @@
     width: 25px;
     height: 25px;
     background-color: var(--coal);
-    content: '';
-    mask: url('../../../shared/icons/asterisk.svg') no-repeat 100% 100%;
+    content: "";
+    mask: url("../../../shared/icons/asterisk.svg") no-repeat 100% 100%;
     mask-size: cover;
 
     @media (max-width: $tablet-portrait) {

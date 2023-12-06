@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const OverlayNavCopyright: FC = (props) => {
   const { children } = props;

@@ -3,4 +3,4 @@ export class InternalServerError extends Error {
     super(message);
     this.name = 'Internal server error';
   }
-};
+}

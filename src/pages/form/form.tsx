@@ -1,321 +1,200 @@
-import { useReducer } from 'react';
+import entries from 'lodash/entries';
+import Error from 'next/error';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
-import { useIMask } from 'react-imask';
+import { useState } from 'react';
 
 import { AppLayout } from 'components/app-layout';
+import { FormField } from 'components/form-field';
 import PlayProposalLayout from 'components/play-proposal-layout';
 import PlayProposalTitle from 'components/play-proposal-title';
-import { ParticipationForm } from 'components/participation-form';
 import { SEO } from 'components/seo';
-import { usePersistentData } from 'providers/persistent-data-provider';
+import { Button } from 'components/ui/button2';
+import { FileInput } from 'components/ui/file-input';
+import Form from 'components/ui/form';
+import { Icon } from 'components/ui/icon';
+import { PhoneNumberInput } from 'components/ui/phone-number-input';
+import TextInput from 'components/ui/text-input';
+import { postParticipation } from 'services/api/participation';
+import { useSettings } from 'services/api/settings-adapter';
+import { isHttpRequestError } from 'services/fetcher';
 import {
-  validYearRegexp,
   validEmailRegexp,
   validPhoneNumberRegexp,
+  validYearRegexp,
 } from 'shared/constants/regexps';
-import { fetcher } from 'services/fetcher';
-import { snakeToCamel } from 'shared/helpers/snake-to-camel';
+import { snakeToCamelCase } from 'shared/helpers/snake-to-camel-case';
+import { useForm } from 'shared/hooks/use-form';
 
-import type { Nullable } from 'shared/types';
-
-interface ParticipationFormFields {
-  firstName: string
-  lastName: string
-  birthYear: string
-  city: string
-  phoneNumber: string
-  email: string
-  title: string
-  year: string
-  file: Nullable<File>
-}
-
-enum ParticipationFormActionType {
-  FieldChange,
-  FieldError,
-  GenericError,
-}
-
-type ParticipationFormAction<K extends keyof ParticipationFormFields = keyof ParticipationFormFields> =
-  { type: ParticipationFormActionType.FieldChange, payload: { field: K, value: ParticipationFormFields[K], error?: string } }
-  | { type: ParticipationFormActionType.FieldError, payload: { field: K, error: string } }
-  | { type: ParticipationFormActionType.GenericError, payload: string }
-
-type ParticipationFormStateFields<T> = {
-  [K in keyof T]: {
-    value: T[K]
-    wasChanged: boolean
-    error?: string
-  }
-}
-
-type ParticipationFormState = ParticipationFormStateFields<ParticipationFormFields> & {
-  genericError?: string
-};
+import type { ParticipationFormFields } from 'core/participation';
+import type { ParticipationDTOFields,ParticipationErrorDTO } from 'services/api/participation';
 
 const CURRENT_YEAR = new Date().getFullYear().toString();
+const ACCEPTABLE_FILE_TYPES = '.doc, .docx, .txt, .odt, .pdf';
 
-const initialParticipationFormState: ParticipationFormState = {
-  firstName: { value: '', wasChanged: false },
-  lastName: { value: '', wasChanged: false },
-  birthYear: { value: '', wasChanged: false },
-  city: { value: '', wasChanged: false },
-  phoneNumber: { value: '', wasChanged: false },
-  email: { value: '', wasChanged: false },
-  title: { value: '', wasChanged: false },
-  year: { value: '', wasChanged: false },
-  file: { value: null, wasChanged: false },
+const initialFormValues: ParticipationFormFields = {
+  firstName: '',
+  lastName: '',
+  birthYear: '',
+  city: '',
+  phoneNumber: '',
+  email: '',
+  title: '',
+  year: '',
+  file: null,
 };
 
-const phoneMaskOptions = {
-  mask: [
-    {
-      mask: '+0 000 000-00-00',
-      startsWith: '7',
-    },
-    {
-      mask: '+0DD',
-      blocks: {
-        DD: {
-          mask: /^[\d- ()]{0,15}$/
-        },
-      },
-      startsWith: '',
-    },
-  ],
-  dispatch: function (appended: string, dynamicMasked: { value: string, compiledMasks: { startsWith: string }[] }) {
-    const number = (dynamicMasked.value + appended).replace(/\D/g,'');
-
-    return dynamicMasked.compiledMasks.find(function (m) {
-      return number.indexOf(m.startsWith) === 0;
-    });
-  }
+const errorMessage = {
+  empty: 'Это поле не может быть пустым',
+  minLengh: 'Это поле должно содержать минимум 2 символа',
+  maxLengthFifty: 'Это поле должно содержать максимум 50 символов',
+  maxLengthTwoHundred: 'Это поле должно содержать максимум 200 символов',
+  minYear: 'Убедитесь, что это значение больше либо равно 1900',
+  maxYear: `Убедитесь, что это значение меньше либо равно ${CURRENT_YEAR}`,
+  incorrectPhone: 'Некорректный номер телефона',
+  incorrectEmail: 'Введите правильный адрес электронной почты',
+  noFile: 'Файл обязателен'
 };
 
-const participationFormReducer = (state: ParticipationFormState, action: ParticipationFormAction) => {
-  switch (action.type) {
-  case ParticipationFormActionType.FieldChange:
-    return {
-      ...state,
-      genericError: '',
-      [action.payload.field]: {
-        value: action.payload.value,
-        wasChanged: true,
-        error: action.payload.error,
-      },
-    };
-  case ParticipationFormActionType.FieldError:
-    return {
-      ...state,
-      [action.payload.field]: {
-        ...state[action.payload.field],
-        error: action.payload.error,
-      },
-    };
-  case ParticipationFormActionType.GenericError:
-    return {
-      ...state,
-      genericError: action.payload,
-    };
-  default:
-    return state;
+const validate = (values: ParticipationFormFields) => {
+  const errors = {} as Record<keyof ParticipationFormFields, string>;
+
+  if (!values.firstName.length) {
+    errors.firstName = errorMessage.empty;
+  } else if (values.firstName.length < 2) {
+    errors.firstName = errorMessage.minLengh;
+  } if (values.firstName.length > 50) {
+    errors.firstName = errorMessage.maxLengthFifty;
   }
+
+  if (!values.lastName.length) {
+    errors.lastName = errorMessage.empty;
+  } else if (values.lastName.length < 2) {
+    errors.lastName = errorMessage.minLengh;
+  } else if (values.lastName.length > 50) {
+    errors.lastName = errorMessage.maxLengthFifty;
+  }
+
+  if (!values.birthYear.length) {
+    errors.birthYear = errorMessage.empty;
+  } else if (!validYearRegexp.test(values.birthYear)) {
+    errors.birthYear = errorMessage.minYear;
+  } else if (values.birthYear > CURRENT_YEAR) {
+    errors.birthYear = errorMessage.maxYear;
+  }
+
+  if (!values.city.length) {
+    errors.city = errorMessage.empty;
+  } else if (values.city.length < 2) {
+    errors.city = errorMessage.minLengh;
+  } else if (values.city.length > 50) {
+    errors.city = errorMessage.maxLengthFifty;
+  }
+
+  if (!values.phoneNumber.length) {
+    errors.phoneNumber = errorMessage.empty;
+  } else if (!validPhoneNumberRegexp.test(values.phoneNumber)) {
+    errors.phoneNumber = errorMessage.incorrectPhone;
+  }
+
+  if (!values.email.length) {
+    errors.email = errorMessage.empty;
+  } else if (!validEmailRegexp.test(values.email)) {
+    errors.email = errorMessage.incorrectEmail;
+  }
+
+  if (!values.title.length) {
+    errors.title = errorMessage.empty;
+  } else if (values.title.length > 200) {
+    errors.title = errorMessage.maxLengthTwoHundred;
+  }
+
+  if (!values.year.length) {
+    errors.year = errorMessage.empty;
+  } else if (!validYearRegexp.test(values.year)) {
+    errors.year = errorMessage.minYear;
+  } else if (values.year > CURRENT_YEAR) {
+    errors.year = errorMessage.maxYear;
+  }
+
+  if (!values.file) {
+    errors.file = errorMessage.noFile;
+  }
+
+  return errors;
 };
 
 const Participation = () => {
-  const [participationFormState, dispatch] = useReducer(participationFormReducer, initialParticipationFormState);
-  const { settings } = usePersistentData();
-  const {
-    firstName,
-    lastName,
-    birthYear,
-    city,
-    phoneNumber,
-    email,
-    title,
-    year,
-    file,
-    genericError,
-  } = participationFormState;
-
-  const { ref: phoneNumberInputRef } = useIMask<typeof phoneMaskOptions>(phoneMaskOptions, {
-    onAccept: (value) => {
-      if (phoneNumber.value === value) {
-        return;
-      }
-      handleFieldChange('phoneNumber')(value);
-    },
+  const [errorOccurred, setErrorOccurred] = useState(false);
+  const form = useForm<ParticipationFormFields>({
+    initialValues: initialFormValues,
+    validate: validate,
   });
+  const { settings } = useSettings();
 
   const router = useRouter();
 
-  const getFieldError = <K extends keyof ParticipationFormFields>(field: K, value: ParticipationFormFields[K]) => {
-    switch (field) {
-    case 'firstName':
-      if (!(value as ParticipationFormFields['firstName']).length) {
-        return 'Это поле не может быть пустым';
-      }
-      if ((value as ParticipationFormFields['firstName']).length < 2) {
-        return 'Имя должно состоять более чем из 2 символов';
-      }
-      if ((value as ParticipationFormFields['firstName']).length > 50) {
-        return 'Имя должно состоять менее чем из 50 символов';
-      }
-      break;
-    case 'lastName':
-      if (!(value as ParticipationFormFields['lastName']).length) {
-        return 'Это поле не может быть пустым';
-      }
-      if ((value as ParticipationFormFields['lastName']).length < 2) {
-        return 'Фамилия должна содержать минимум 2 символа';
-      }
-      if ((value as ParticipationFormFields['lastName']).length > 50) {
-        return 'Фамилия должна состоять менее чем из 50 символов';
-      }
-      break;
-    case 'birthYear':
-      if (!(value as ParticipationFormFields['birthYear']).length) {
-        return 'Это поле не может быть пустым';
+  const handleSubmitError = (error: unknown) => {
+    if (isHttpRequestError<ParticipationErrorDTO>(error)) {
+      if (error.response.statusCode === 400 && error.response.payload.non_field_errors) {
+        const [errorMessage] = error.response.payload.non_field_errors;
+
+        form.setNonFieldError(errorMessage);
+
+        return;
       }
 
-      if (!validYearRegexp.test((value as ParticipationFormFields['birthYear']))) {
-        return 'Убедитесь, что это значение больше либо равно 1900';
-      }
-      if ((value as ParticipationFormFields['birthYear']) > CURRENT_YEAR) {
-        return `Убедитесь, что это значение больше либо равно ${CURRENT_YEAR}`;
-      }
-      break;
-    case 'city':
-      if (!(value as ParticipationFormFields['city']).length) {
-        return 'Это поле не может быть пустым';
-      }
-      if ((value as ParticipationFormFields['city']).length < 2) {
-        return 'Город должен содержать минимум 2 символа';
-      }
-      if ((value as ParticipationFormFields['city']).length > 50) {
-        return 'Город должен состоять менее чем из 50 символов';
-      }
-      break;
-    case 'phoneNumber':
-      if (!(value as ParticipationFormFields['phoneNumber']).length) {
-        return 'Это поле не может быть пустым';
-      }
-      if (!validPhoneNumberRegexp.test((value as ParticipationFormFields['phoneNumber']))) {
-        return 'Некорректный номер телефона';
-      }
-      break;
-    case 'email':
-      if (!(value as ParticipationFormFields['email']).length) {
-        return 'Это поле не может быть пустым';
-      }
-      if (!validEmailRegexp.test((value as ParticipationFormFields['email']))) {
-        return 'Введите правильный адрес электронной почты';
-      }
-      break;
-    case 'title':
-      if (!(value as ParticipationFormFields['title']).length) {
-        return 'Это поле не может быть пустым';
-      }
-      if ((value as ParticipationFormFields['title']).length > 200) {
-        return 'Название пьесы должно состоять менее чем из 200 символов';
-      }
-      break;
-    case 'year':
-      if (!(value as ParticipationFormFields['year']).length) {
-        return 'Это поле не может быть пустым';
+      if (error.response.statusCode === 400 && !error.response.payload.non_field_errors) {
+        (entries(error.response.payload)).forEach(([field, [errorMessage]]) => {
+          form.setFieldError(snakeToCamelCase(field as ParticipationDTOFields), errorMessage);
+        });
+
+        return;
       }
 
-      if (!validYearRegexp.test((value as ParticipationFormFields['year']))) {
-        return 'Убедитесь, что это значение больше либо равно 1900';
-      }
+      if (error.response.statusCode === 403) {
+        form.setNonFieldError(error.response.payload.detail);
 
-      if ((value as ParticipationFormFields['year']) > CURRENT_YEAR) {
-        return `Убедитесь, что это значение больше либо равно ${CURRENT_YEAR}`;
+        return;
       }
-      break;
-    case 'file':
-      if (!value) {
-        return 'Файл обязателен';
-      }
-    default:
-      return;
     }
-  };
 
-  const handleFieldChange = <K extends keyof ParticipationFormFields>(field: K) => (value: ParticipationFormFields[K]) => {
-    dispatch({
-      type: ParticipationFormActionType.FieldChange,
-      payload: {
-        field,
-        value,
-        error: getFieldError(field, value),
-      },
-    });
+    setErrorOccurred(true);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const data = new FormData();
-
-    data.append('first_name', firstName.value);
-    data.append('last_name', lastName.value);
-    data.append('birth_year', birthYear.value);
-    data.append('city', city.value);
-    data.append('phone_number', phoneNumber.value);
-    data.append('email', email.value);
-    data.append('title', title.value);
-    data.append('year', year.value);
-    data.append('file', file.value!);
-
-    try {
-      await fetcher('/feedback/participation/', {
-        method: 'POST',
-        body: data,
-      });
-    } catch ({ statusCode, data: errors }) {
-      switch (statusCode) {
-      case 400:
-        if ('non_field_errors' in (errors as Record<string, string[]>)) {
-          const [error] = (errors as Record<string, string[]>)['non_field_errors'];
-          dispatch({
-            type: ParticipationFormActionType.GenericError,
-            payload: error,
-          });
-          return;
-        }
-
-        for (let field in errors as Record<string, string[]>) {
-          const [error] = (errors as Record<string, string[]>)[field];
-          dispatch({
-            type: ParticipationFormActionType.FieldError,
-            payload: {
-              field: snakeToCamel(field) as keyof ParticipationFormFields,
-              error,
-            },
-          });
-        }
-        break;
-      }
+    if (!canSubmit) {
       return;
     }
+    try {
+      await postParticipation(form.values);
+      router.push('/form/success');
+    } catch (error) {
+      handleSubmitError(error);
 
-    router.push('/form/success');
+      return;
+    }
   };
 
-  const canSubmit = (
-    firstName.wasChanged && !firstName.error
-    && lastName.wasChanged && !lastName.error
-    && birthYear.wasChanged && !birthYear.error
-    && city.wasChanged && !city.error
-    && phoneNumber.wasChanged && !phoneNumber.error
-    && email.wasChanged && !email.error
-    && title.wasChanged && !title.error
-    && year.wasChanged && !year.error
-    && file.wasChanged && !file.error
-    && !genericError
-  );
+  const canSubmit = !form.nonFieldError
+    && (Object.keys(form.values) as Array<keyof ParticipationFormFields>)
+      .every((field) => form.touched[field] && !form.errors[field]);
+
+  if (errorOccurred) {
+    return (
+      <Error statusCode={500}/>
+    );
+  }
+
+  const handleInput = (
+    input: keyof ParticipationFormFields,
+    value: ParticipationFormFields[keyof ParticipationFormFields]
+  ) => {
+    return input === 'phoneNumber'
+      ? form.setFieldValue(input, '+7' + value)
+      : form.setFieldValue(input, value);
+  };
 
   return (
     <AppLayout>
@@ -323,50 +202,168 @@ const Participation = () => {
         title="Подать пьесу"
       />
       <PlayProposalLayout>
-        <PlayProposalLayout.Image>
-          <Image
-            src="/images/form/play-script.jpg"
-            alt="Напечатанная читка в руках человека"
-            layout="fill"
-            objectFit="cover"
-          />
-        </PlayProposalLayout.Image>
         <PlayProposalLayout.Column>
           <PlayProposalTitle/>
           <PlayProposalLayout.Form>
-            <ParticipationForm
-              firstName={firstName.value}
-              onFirstNameChange={handleFieldChange('firstName')}
-              firstNameError={firstName.wasChanged ? firstName.error : undefined}
-              lastName={lastName.value}
-              onLastNameChange={handleFieldChange('lastName')}
-              lastNameError={lastName.wasChanged ? lastName.error : undefined}
-              birthYear={birthYear.value}
-              onBirthYearChange={handleFieldChange('birthYear')}
-              birthYearError={birthYear.wasChanged ? birthYear.error : undefined}
-              city={city.value}
-              cityError={city.wasChanged ? city.error : undefined}
-              onCityChange={handleFieldChange('city')}
-              phoneNumberInputRef={phoneNumberInputRef}
-              phoneNumber={phoneNumber.value}
-              phoneNumberError={phoneNumber.wasChanged ? phoneNumber.error : undefined}
-              email={email.value}
-              onEmailChange={handleFieldChange('email')}
-              emailError={email.wasChanged ? email.error : undefined}
-              title={title.value}
-              titleError={title.wasChanged ? title.error : undefined}
-              onTitleChange={handleFieldChange('title')}
-              year={year.value}
-              yearError={year.wasChanged ? year.error : undefined}
-              onYearChange={handleFieldChange('year')}
-              fileName={file.value ? file.value.name : undefined}
-              fileError={file.wasChanged ? file.error : undefined}
-              onFileChange={handleFieldChange('file')}
-              genericError={genericError}
-              canSubmit={canSubmit}
-              onSubmit={handleSubmit}
-              privacyPolicyUrl={settings?.privacyPolicyUrl}
-            />
+            <Form onSubmit={handleSubmit}>
+              <Form.Fieldset legend="О вас">
+                <Form.Field>
+                  <FormField
+                    caption="Имя"
+                    hiddenCaption
+                  >
+                    <TextInput
+                      value={form.values.firstName}
+                      placeholder="Имя"
+                      errorText={form.touched.firstName ? form.errors.firstName : ''}
+                      onChange={(value) => handleInput('firstName', value)}
+                    />
+                  </FormField>
+                </Form.Field>
+                <Form.Field>
+                  <FormField
+                    caption="Фамилия"
+                    hiddenCaption
+                  >
+                    <TextInput
+                      value={form.values.lastName}
+                      placeholder="Фамилия"
+                      errorText={form.touched.lastName ? form.errors.lastName : ''}
+                      onChange={(value) => handleInput('lastName', value)}
+                    />
+                  </FormField>
+                </Form.Field>
+                <Form.Field>
+                  <FormField
+                    caption="Год рождения"
+                    hiddenCaption
+                  >
+                    <TextInput
+                      value={form.values.birthYear}
+                      placeholder="Год рождения"
+                      mask="9999"
+                      errorText={form.touched.birthYear ? form.errors.birthYear : ''}
+                      onChange={(value) => handleInput('birthYear', value)}
+                    />
+                  </FormField>
+                </Form.Field>
+                <Form.Field>
+                  <FormField
+                    caption="Город проживания"
+                    hiddenCaption
+                  >
+                    <TextInput
+                      value={form.values.city}
+                      placeholder="Город проживания"
+                      errorText={form.touched.city ? form.errors.city : ''}
+                      onChange={(value) => handleInput('city', value)}
+                    />
+                  </FormField>
+                </Form.Field>
+                <Form.Field>
+                  <FormField
+                    caption="Номер телефона"
+                    hiddenCaption
+                  >
+                    <PhoneNumberInput
+                      value={form.values.phoneNumber}
+                      errorText={form.touched.phoneNumber ? form.errors.phoneNumber : ''}
+                      onChange={(value) => handleInput('phoneNumber', value)}
+                    />
+                  </FormField>
+                </Form.Field>
+                <Form.Field>
+                  <FormField
+                    caption="E-mail"
+                    hiddenCaption
+                  >
+                    <TextInput
+                      type="email"
+                      value={form.values.email}
+                      placeholder="E-mail"
+                      errorText={form.touched.email ? form.errors.email : ''}
+                      onChange={(value) => handleInput('email', value)}
+                    />
+                  </FormField>
+                </Form.Field>
+              </Form.Fieldset>
+              <Form.Fieldset legend="О пьесе">
+                <Form.Field>
+                  <FormField
+                    caption="Название пьесы"
+                    hiddenCaption
+                  >
+                    <TextInput
+                      value={form.values.title}
+                      placeholder="Название"
+                      errorText={form.touched.title ? form.errors.title : ''}
+                      onChange={(value) => handleInput('title', value)}
+                    />
+                  </FormField>
+                </Form.Field>
+                <Form.Field>
+                  <FormField
+                    caption="Год написания пьесы"
+                    hiddenCaption
+                  >
+                    <TextInput
+                      value={form.values.year}
+                      placeholder="Год написания"
+                      mask="9999"
+                      errorText={form.touched.year ? form.errors.year : ''}
+                      onChange={(value) => handleInput('year', value)}
+                    />
+                  </FormField>
+                </Form.Field>
+                <Form.Field>
+                  <FormField
+                    caption="Файл пьесы"
+                    hiddenCaption
+                  >
+                    <FileInput
+                      accept={ACCEPTABLE_FILE_TYPES}
+                      fileName={form.values.file?.name}
+                      errorText={form.touched.file ? form.errors.file : ''}
+                      onChange={(value) => handleInput('file', value)}
+                    />
+                  </FormField>
+                </Form.Field>
+              </Form.Fieldset>
+              <Form.Actions>
+                <Button
+                  type="submit"
+                  icon={(
+                    <Icon
+                      glyph="arrow-right"
+                      width="100%"
+                      height="100%"
+                    />
+                  )}
+                  iconPosition="right"
+                  size="l"
+                  border="full"
+                  upperCase
+                  fullWidth
+                  disabled={!canSubmit}
+                >
+                  Отправить
+                </Button>
+              </Form.Actions>
+              <Form.Disclaimer>
+                Нажимая на кнопку «Отправить» вы даёте согласие
+                {' '}
+                <Link href={settings?.privacyPolicyUrl ?? '#'}>
+                  <a>
+                    на обработку персональных данных
+                  </a>
+                </Link>
+              </Form.Disclaimer>
+              {form.nonFieldError && (
+                <Form.Error>
+                  {form.nonFieldError}
+                </Form.Error>
+              )}
+            </Form>
           </PlayProposalLayout.Form>
         </PlayProposalLayout.Column>
       </PlayProposalLayout>

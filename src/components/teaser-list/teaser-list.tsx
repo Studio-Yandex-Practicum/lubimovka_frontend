@@ -2,8 +2,8 @@ import classNames from 'classnames/bind';
 
 import { TeaserCard } from 'components/teaser-card/teaser-card';
 
+import type { Banner } from '__generated__/api-typings';
 import type { FC } from 'react';
-import type { Banner } from 'api-typings';
 
 import styles from './teaser-list.module.css';
 

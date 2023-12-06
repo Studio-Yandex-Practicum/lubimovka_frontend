@@ -1,12 +1,14 @@
-import { ReactNode, HTMLAttributes, Children } from 'react';
 import classNames from 'classnames/bind';
+import { Children } from 'react';
+
+import type { HTMLAttributes,ReactNode } from 'react';
 
 import styles from './video-list.module.css';
 
 const cx = classNames.bind(styles);
 
 interface IVideoListProps extends HTMLAttributes<HTMLUListElement> {
-  children: ReactNode,
+  children: ReactNode
 }
 
 export const VideoList = (props: IVideoListProps): JSX.Element => {

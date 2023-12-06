@@ -1,0 +1,46 @@
+.control {
+  @mixin visually-hidden;
+}
+
+.text {
+  @mixin text;
+}
+
+.checkmark {
+  display: flex;
+
+  .icon {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+    border: 1px solid var(--coal);
+    margin-right: 16px;
+  }
+
+  .text {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+.pseudo-button {
+  display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 4px 8px 8px;
+  border: 1px solid var(--coal);
+  border-top: 0;
+  cursor: pointer;
+
+  @mixin text-truncate;
+
+  .text {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  &.checked {
+    background-color: var(--coal);
+    color: var(--white);
+  }
+}

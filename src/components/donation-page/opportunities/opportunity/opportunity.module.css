@@ -1,9 +1,9 @@
 .opportunityWrapper {
   padding: 0;
-  margin: 177px 0 0 0;
+  margin: 177px 0 0;
 
   @media (max-width: $tablet-portrait) {
-    margin: 58px 0 0 0;
+    margin: 58px 0 0;
   }
 }
 
@@ -79,13 +79,13 @@
 .kickies {
   display: grid;
   padding: 0;
-  margin: 73px 32px 0 32px;
+  margin: 73px 32px 0;
   gap: 119px 0;
   grid-template-columns: repeat(5, 1fr);
   list-style: none;
 
   @media (max-width: $tablet-portrait) {
-    margin: 24px 0 0 0;
+    margin: 24px 0 0;
     gap: 24px 0;
     grid-template-columns: 1fr;
   }

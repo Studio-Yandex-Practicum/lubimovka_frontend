@@ -2,13 +2,10 @@ import { defineConfig } from 'cypress';
 
 export default defineConfig({
   e2e: {
-    specPattern: 'tests/e2e/**/*.cy.{js,jsx,ts,tsx}',
-    baseUrl: 'http://localhost:3002',
-    supportFile: 'config/cypress/support/index.ts',
+    baseUrl: 'http://localhost:3000',
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+    },
   },
-  fixturesFolder: 'tests/e2e/fixtures',
-  viewportHeight: 768,
-  viewportWidth: 1024,
-  video: false,
-  screenshotsFolder: 'screenshots'
 });

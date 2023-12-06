@@ -1,65 +1,70 @@
-import { forwardRef } from 'react';
 import classNames from 'classnames/bind';
-
-import type { ReactNode, PropsWithChildren } from 'react';
+import { forwardRef } from 'react';
 
 import styles from './button.module.css';
 
-interface CommonProps {
-  size?: 'xs' | 's' | 'm' | 'l'
-  icon?: ReactNode
+export interface ButtonOwnProps {
+  size?: 'xs' | 's' | 'sm' | 'm' | 'l' | 'xxl'
+  icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
-  border?: 'full' | 'right-bottom-left' | 'bottom-left' | 'right-bottom' | 'none'
+  border?: 'full' | 'right-bottom-left' | 'bottom-left' | 'right-bottom' | 'none' | 'top-left' | 'top' | 'bottom'
+  animation?: 'invert' | 'slide' | 'bottomLine'
   fullWidth?: boolean
   upperCase?: boolean
   disabled?: boolean
+  pressed?: boolean
   className?: string
+  children: React.ReactNode
 }
 
-interface ButtonProps extends CommonProps {
-  href?: string
-  target?: '_blank' | '_self' | '_parent' | '_top'
-}
+type ClickHandler = NonNullable<React.ComponentPropsWithoutRef<'button'>['onClick']>
 
-interface AnchorProps extends CommonProps {
-  type: 'submit' | 'reset' | 'button';
-  onCLick: () => void
+type HTMLProps = {
+  a: Pick<React.ComponentPropsWithoutRef<'a'>, 'href' | 'target' | 'download' | 'rel'>
+  button: { type: 'button'; onClick?: ClickHandler } | { type: 'reset' | 'submit'; onClick?: ClickHandler }
 }
+type DisallowProps<P> = {[K in keyof P]?: never}
+type DisallowedProps<E extends keyof HTMLProps> = HTMLProps[keyof (Omit<HTMLProps, E>)]
+type PolymorphicProps<E extends keyof HTMLProps> = { as?: E } & HTMLProps[E] & DisallowProps<DisallowedProps<E>>
+type ButtonProps = ButtonOwnProps & (PolymorphicProps<'a'> | PolymorphicProps<'button'>)
 
 const cx = classNames.bind(styles);
 
-export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, PropsWithChildren<ButtonProps | AnchorProps>>((props, ref) => {
+const Component = (props: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>) => {
   const {
+    as: Tag = 'href' in props ? 'a' : 'button',
     className,
     size = 'm',
     border = 'none',
+    animation = 'slide',
     fullWidth,
     upperCase,
     disabled,
+    pressed,
     icon,
     iconPosition = 'left',
     children,
-    ...restProps
+    ...HTMLProps
   } = props;
-
-  const isLink = 'href' in props;
-  const Tag = isLink ? 'a' : 'button';
 
   return (
     <Tag
       className={cx(
         size,
         `border-${border}`,
+        `animation-${animation}`,
+        `icon-position-${iconPosition}`,
         {
           'full-width': fullWidth,
           'upper-case': upperCase,
           disabled,
+          pressed,
         },
         className,
       )}
-      // @ts-expect-error
+      // @ts-ignore: TODO
       ref={ref}
-      {...restProps}
+      {...HTMLProps}
     >
       {icon && (
         <span className={cx(`icon-${iconPosition}`)}>
@@ -71,6 +76,8 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, PropsWit
       </span>
     </Tag>
   );
-});
+};
+
+export const Button = forwardRef(Component);
 
 Button.displayName = 'Button';

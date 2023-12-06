@@ -5,7 +5,7 @@ import styles from './contacts-layout-title.module.css';
 const cx = classNames.bind(styles);
 
 interface IContactsLayoutTitleProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const ContactsLayoutTitle = (props: IContactsLayoutTitleProps): JSX.Element => {

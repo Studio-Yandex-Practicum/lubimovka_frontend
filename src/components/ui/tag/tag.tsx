@@ -1,17 +1,19 @@
-import React, { FC } from 'react';
 import cn from 'classnames/bind';
+import { useCallback } from 'react';
 
 import { Icon } from '../icon';
+
+import type { FC } from 'react';
 
 import styles from './tag.module.css';
 
 const cx = cn.bind(styles);
 
 interface ITagProps {
-  label: string;
-  selected: boolean;
-  isIcon?: boolean;
-  cb?: (value: string, counter: number | undefined) => void;
+  label: string
+  selected: boolean
+  isIcon?: boolean
+  cb?: (value: string, counter: number | undefined) => void
   counter?: number
 }
 export const Tag: FC<ITagProps> = (props) => {
@@ -19,9 +21,9 @@ export const Tag: FC<ITagProps> = (props) => {
     label, selected, cb, isIcon, counter
   } = props;
 
-  const handleClick = React.useCallback((e:React.MouseEvent) => {
+  const handleClick = useCallback((e:React.MouseEvent) => {
     e.preventDefault();
-    if(cb) {
+    if (cb) {
       cb(label, counter);
     }
   },[cb, counter, label]);

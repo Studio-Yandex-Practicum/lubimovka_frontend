@@ -47,6 +47,8 @@ $padding-bottom: 82px;
 
 .author {
   align-self: center;
+  padding: 0;
+  padding-left: 4px;
   grid-area: author;
   justify-self: center;
 
@@ -75,11 +77,12 @@ $padding-bottom: 82px;
   display: grid;
   box-sizing: border-box;
   padding: 18px 0 $padding-bottom 150px;
+  color: var(--coal);
   grid-column-gap: 30px;
   grid-template-areas:
-    'title       title       .'
-    'description description cover'
-    'date        author      cover';
+    "title       title       ."
+    "description description cover"
+    "date        author      cover";
   grid-template-columns: 1fr 1fr min-content;
   row-gap: 28px;
 
@@ -87,11 +90,11 @@ $padding-bottom: 82px;
     padding-left: 24px;
     grid-column-gap: 0;
     grid-template-areas:
-      'cover'
-      'date'
-      'title'
-      'description'
-      'author';
+      "cover"
+      "date"
+      "title"
+      "description"
+      "author";
     grid-template-columns: 1fr;
   }
 }

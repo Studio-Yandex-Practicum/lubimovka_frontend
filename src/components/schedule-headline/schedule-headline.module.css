@@ -1,0 +1,82 @@
+@value tablet-portrait from "shared/styles/media.module.css";
+
+.root {
+  display: grid;
+  grid-template:
+    ".    title"
+    "note announce"
+    "note registration" / 1fr 1fr;
+  row-gap: 8px;
+
+  @media tablet-portrait {
+    padding: 0 24px 30px;
+    grid-template:
+      "title"
+      "announce"
+      "registration"
+      "note";
+    row-gap: 24px;
+  }
+}
+
+.title {
+  @mixin headline;
+  @mixin headline1;
+
+  grid-area: title;
+
+  @media tablet-portrait {
+    @mixin headline4;
+  }
+}
+
+.paragraph {
+  @mixin text;
+  @mixin textSmall;
+
+  margin: 0;
+
+  + .paragraph {
+    margin-top: 8px;
+
+    @media tablet-portrait {
+      margin-top: 0;
+    }
+  }
+}
+
+.schedule-note {
+  display: flex;
+  flex-direction: column;
+  grid-area: note;
+
+  @media tablet-portrait {
+    padding-left: 0;
+  }
+}
+
+.schedule-note-text {
+  composes: paragraph;
+  max-width: 320px;
+  margin-left: 24px;
+
+  @media tablet-portrait {
+    padding-left: 20px;
+  }
+}
+
+.registration-announce {
+  composes: paragraph;
+  padding: 0 0 0 64px;
+  grid-area: registration;
+}
+
+.schedule-announce {
+  composes: paragraph;
+  padding: 24px 0 0 64px;
+  grid-area: announce;
+
+  @media tablet-portrait {
+    padding-left: 120px;
+  }
+}

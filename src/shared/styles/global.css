@@ -9,4 +9,11 @@ html {
 body {
   margin: 0;
   background-color: var(--beige);
+  font-family: Formular, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+:root {
+  --height-navbar-tablet-portrait: $height-navbar-tablet-portrait;
 }

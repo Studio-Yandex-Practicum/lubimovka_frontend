@@ -1,4 +1,4 @@
-@import "./blog-entry-list.vars.module";
+@import url("./blog-entry-list.vars.module");
 
 .root {
   display: grid;
@@ -6,9 +6,12 @@
   margin: 0;
   grid-gap: $gap-tablet-portrait;
   grid-template-columns: repeat($column-count-tablet-portrait, 1fr);
-  grid-template-rows: masonry;
 
   @media (max-width: $tablet-portrait) {
     display: block;
   }
+}
+
+.column {
+  min-width: 0;
 }

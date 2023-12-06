@@ -1,9 +1,9 @@
 .root {
-  padding: 62px 0 108px 0;
+  padding: 62px 0 108px;
   background-color: var(--light-green);
 
   @media (max-width: $tablet-portrait) {
-    padding: 75px 0 100px 0;
+    padding: 75px 0 100px;
   }
 }
 

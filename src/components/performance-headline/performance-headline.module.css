@@ -1,20 +1,10 @@
-@import '../performance-layout/performance-layout.vars.module.css';
-
-.root {
-  display: grid;
-  grid-column-gap: $layout-column-gap-tablet-portrait;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  @media (max-width: $tablet-portrait) {
-    display: block;
-  }
-}
+@import url("../performance-layout/performance-layout.vars.module.css");
 
 .title {
   @mixin headline;
   @mixin headline2;
 
-  margin: 62px 0 36px;
+  margin: 0 0 36px;
   word-wrap: break-word;
 
   @media (max-width: $tablet-portrait) {
@@ -28,32 +18,10 @@
   @mixin headline;
   @mixin headline7;
 
-  min-height: 284px;
   padding-left: 60px;
-  margin-bottom: 24px;
 
   @media (max-width: $tablet-portrait) {
     min-height: initial;
-    padding-left: 60px;
-    margin-bottom: 30px;
-  }
-}
-
-.actions {
-  @media (max-width: $tablet-portrait) {
-    padding-left: 60px;
-    margin-bottom: 38px;
-  }
-}
-
-.image {
-  position: relative;
-  height: 614px;
-  margin-right: -$page-padding-tablet-portrait;
-
-  @media (max-width: $tablet-portrait) {
-    height: 450px;
-    margin-right: 0;
   }
 }
 

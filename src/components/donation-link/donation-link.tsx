@@ -1,7 +1,9 @@
-import Link, { LinkProps } from 'next/link';
 import cn from 'classnames/bind';
+import Link from 'next/link';
 
 import { Icon } from 'components/ui/icon';
+
+import type { LinkProps } from 'next/link';
 
 import styles from './donation-link.module.css';
 

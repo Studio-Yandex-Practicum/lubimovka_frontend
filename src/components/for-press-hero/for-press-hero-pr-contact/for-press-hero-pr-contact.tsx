@@ -1,9 +1,9 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
-import { Url } from 'shared/types';
-import { InfoLink } from 'components/ui/info-link';
+import { Button } from 'components/ui/button2';
+
+import type { FC } from 'react';
 
 import styles from './for-press-hero-pr-contact.module.css';
 
@@ -11,13 +11,13 @@ const cx = cn.bind(styles);
 
 export interface IForPressHeroPrContactProps {
   data: {
-    name: string,
-    nameDative: string,
-    email: string,
-    role: string,
-    photo: Url,
-   },
-   customClass?: string;
+    name: string
+    nameDative: string
+    email: string
+    role: string
+    photo: Url
+   }
+   customClass?: string
 }
 
 export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, customClass }) => {
@@ -44,13 +44,15 @@ export const ForPressHeroPrContact: FC<IForPressHeroPrContactProps> = ({ data, c
           Email:
         </dt>
         <dd className={cx('email')}>
-          <InfoLink
-            isOutsideLink
+          <Button
+            border='none'
+            size="m"
+            animation='invert'
             href={`mailto:${data.email}`}
-            label={data.email}
-            size= "l"
-            textDecoration="underline"
-          />
+            className={cx('button')}
+          >
+            {data.email}
+          </Button>
         </dd>
         <dt className={cx('hiddenText')}>
           Должность:

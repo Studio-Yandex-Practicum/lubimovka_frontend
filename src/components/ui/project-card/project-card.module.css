@@ -1,4 +1,4 @@
-.link {
+.root {
   display: flex;
   text-decoration: none;
 
@@ -8,37 +8,40 @@
 }
 
 .card {
-  flex-flow: column nowrap;
+  display: grid;
+  width: 100%;
+  height: 500px;
+  column-gap: 0;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content 1fr;
 
-  @media (min-width: $tablet-portrait) {
-    display: flex;
-    height: 500px;
-    flex-flow: column wrap;
-    margin: 0;
+  @media (max-width: $tablet-portrait) {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 295px min-content min-content;
   }
 }
 
 .imageContainer {
   display: flex;
   overflow: hidden;
-  width: 50%;
   height: 100%;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
 
   @media (max-width: $tablet-portrait) {
-    width: 100%;
-    height: 297px;
+    width: 214px;
+    height: 100%;
+    grid-row: 1 / 2;
   }
 }
 
 .image {
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform .4s cubic-bezier(.6, 0, .5, 1);
-
-  @media (max-width: $tablet-portrait) {
-    width: 214px;
-  }
 }
 
 .image:hover {
@@ -49,18 +52,24 @@
   @mixin headline;
   @mixin headline4;
 
-  display: flex;
-  width: 50%;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
   box-sizing: border-box;
   align-items: center;
-  padding: 55px 80px 0 32px;
+  padding: 45px 15px 0 32px;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
   hyphens: auto;
+  text-overflow: ellipsis;
 
   @media (max-width: $tablet-portrait) {
     @mixin headline6;
 
     width: 100%;
-    padding: 24px 0 17px 0;
+    padding: 24px 0 16px;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
   }
 }
 
@@ -68,9 +77,9 @@
   display: none;
 
   @media (max-width: $tablet-portrait) {
-    display: flex;
-    width: 25px;
-    height: 25px;
+    @mixin headline6;
+
+    display: inline;
     margin: 0 0 0 8px;
   }
 }
@@ -79,18 +88,24 @@
   @mixin headline;
   @mixin headline7;
 
-  width: 50%;
+  overflow: hidden;
+  width: 100%;
   box-sizing: border-box;
-  padding: 16px 18px 0 89px;
+  padding: 16px 20px 5px 89px;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  text-overflow: ellipsis;
 
   @media (max-width: $tablet-portrait) {
     width: 100%;
     padding: 0 0 0 62px;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
   }
 }
 
 .even {
-  .image {
+  .imageContainer {
     @media (max-width: $tablet-portrait) {
       margin-left: auto;
     }

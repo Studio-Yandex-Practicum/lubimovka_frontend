@@ -5,7 +5,7 @@ import styles from './contacts-layout-form.module.css';
 const cx = classNames.bind(styles);
 
 interface IContactsLayoutFormProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const ContactsLayoutForm = (props: IContactsLayoutFormProps): JSX.Element => {

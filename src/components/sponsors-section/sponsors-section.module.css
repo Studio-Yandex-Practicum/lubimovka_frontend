@@ -53,11 +53,9 @@
 }
 
 .mailLink {
-  display: inline-block;
-  border-bottom: 1px solid;
-  color: inherit;
-  line-height: .9;
-  text-decoration: none;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
 }
 
 .mainText {

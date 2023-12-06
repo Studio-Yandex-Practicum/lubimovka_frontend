@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
-import { addBaseUrlToPath } from 'shared/helpers/url';
 import { getShareUrls } from 'shared/constants/share-urls';
+import { addBaseUrlToPath } from 'shared/helpers/url';
 
 import type { FC } from 'react';
 
@@ -36,7 +36,7 @@ export const ShareLinks: FC<ShareLinksProps> = (props) => {
             <Button
               key={url}
               className={cx('link')}
-              size="xs"
+              size="s"
               border="bottom-left"
               icon={(
                 <Icon
@@ -46,6 +46,7 @@ export const ShareLinks: FC<ShareLinksProps> = (props) => {
                 />
               )}
               href={url}
+              animation='invert'
             >
               {text}
             </Button>

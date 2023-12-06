@@ -1,38 +1,38 @@
-import Image from 'next/image';
 import classNames from 'classnames/bind';
+import { format,formatDuration } from 'date-fns';
+import Image from 'next/image';
 
 import { AppLayout } from 'components/app-layout';
-import { PerformanceLayout } from 'components/performance-layout';
-import { PerformanceHeadline } from 'components/performance-headline';
-import { PerformanceDetails } from 'components/performance-details';
 import { CreditsList } from 'components/credits-list';
 import { HTMLMarkup } from 'components/html-markup';
-import { ShareLinks } from 'components/share-links';
-import { BasicPlayCard } from 'components/ui/basic-play-card';
-import { Video } from 'components/video';
-import { Section } from 'components/section';
-import { PhotoGallery } from 'components/photo-gallery';
-import { PerformanceEventList } from 'components/performance-event-list';
-import { ReviewCarousel } from 'components/review-carousel';
+import { ImageGallery } from 'components/image-gallery';
 import { MediaReviewCard } from 'components/media-review-card';
+import { PerformanceDetails } from 'components/performance-details';
+import { PerformanceEventList } from 'components/performance-event-list';
+import { PerformanceHeadline } from 'components/performance-headline';
+import { PerformanceLayout } from 'components/performance-layout';
+import styles from 'components/performance-layout/performance-layout.module.css';
+import { PlayCard } from 'components/play-card';
 import { ReviewCard } from 'components/review-card';
+import { ReviewCarousel } from 'components/review-carousel';
+import { Section } from 'components/section';
 import { SEO } from 'components/seo';
-import { format } from 'shared/helpers/format-date';
-import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { ShareLinks } from 'components/share-links';
+import { Video } from 'components/video';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
+import { isNonEmpty } from 'shared/helpers/is-non-empty';
 
-import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import type {
-  Performance as PerformanceResponse,
+  LocalEvent,
   PaginatedPerformanceMediaReviewList,
   PaginatedPerformanceReviewList,
-  LocalEvent,
   PerformanceMediaReview,
+  Performance as PerformanceResponse,
   PerformanceReview,
-} from 'api-typings';
-
-import styles from 'components/performance-layout/performance-layout.module.css';
+} from '__generated__/api-typings';
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
 const cx = classNames.bind(styles);
 
@@ -43,7 +43,8 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
     intro,
     play,
     team,
-    images_in_block,
+    gallery_images,
+    gallery_title,
     main_image,
     bottom_image,
     video,
@@ -66,24 +67,24 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
           className={cx('headline')}
           title={title}
           description={description}
-          text={intro}
           cover={main_image}
-          actions={(
-            <PerformanceEventList>
-              {events.map(({ date, ticketsUrl }) => (
-                <PerformanceEventList.Item
-                  key={date}
-                  ticketsUrl={ticketsUrl}
-                  {...date ? { date: format('d MMMM H:mm', new Date(date)) } : {}}
-                />
-              ))}
-            </PerformanceEventList>
-          )}
         />
+        <PerformanceLayout.Events>
+          <PerformanceEventList>
+            {events.map((event) => (
+              <PerformanceEventList.Item
+                key={event.date}
+                actionText={event.actionText}
+                actionUrl={event.actionUrl}
+                date={format(new Date(event.date), 'd MMMM H:mm')}
+              />
+            ))}
+          </PerformanceEventList>
+        </PerformanceLayout.Events>
         <PerformanceLayout.Summary>
           <PerformanceDetails
             className={cx('details')}
-            duration={duration}
+            duration={String(duration)}
             ageRestriction={ageRestriction}
           />
           <CreditsList
@@ -91,6 +92,19 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             roles={team}
           />
         </PerformanceLayout.Summary>
+        {main_image && (
+          <PerformanceLayout.Cover>
+            <Image
+              src={main_image}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+          </PerformanceLayout.Cover>
+        )}
+        <PerformanceLayout.Intro>
+          {intro}
+        </PerformanceLayout.Intro>
         <PerformanceLayout.Content>
           {video && (
             <Video
@@ -103,32 +117,33 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             markup={text}
           />
           <Section
-            className={cx('play')}
             type="play"
             title="Почитать пьесу"
             titleTag="h6"
           >
-            <BasicPlayCard
-              type="performance"
-              play={{
-                title: play.name,
-                city: play.city,
-                year: play.year,
-                readingUrl: play.url_reading,
-                downloadUrl: play.url_download,
-                authors: play.authors
-              }}
+            <PlayCard
+              className={cx('card_in_performance')}
+              title={play.name}
+              city={play.city}
+              year={play.year?.toString()}
+              readingUrl={play.url_reading}
+              downloadUrl={play.url_download}
+              authors={play.authors.map((author) => ({
+                fullName: author.name,
+                slug: author.slug,
+              }))}
             />
           </Section>
         </PerformanceLayout.Content>
         <PerformanceLayout.Gallery>
-          <PhotoGallery
-            photos={images_in_block.map(({ image }) => ({
-              url: image,
+          <ImageGallery
+            title={gallery_title}
+            items={gallery_images.map(({ url }) => ({
+              url,
             }))}
           />
         </PerformanceLayout.Gallery>
-        {mediaReviews && mediaReviews.length > 0 && (
+        {isNonEmpty(mediaReviews) && (
           <PerformanceLayout.MediaReviews>
             <ReviewCarousel
               title="Рецензии"
@@ -145,7 +160,7 @@ const Performance = (props: InferGetServerSidePropsType<typeof getServerSideProp
             </ReviewCarousel>
           </PerformanceLayout.MediaReviews>
         )}
-        {reviews && reviews.length > 0 && (
+        {isNonEmpty(reviews) && (
           <PerformanceLayout.Reviews>
             <ReviewCarousel
               title="Отзывы зрителей"
@@ -210,13 +225,14 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       description: performanceResponse.description,
       play: performanceResponse.play,
       team: performanceResponse.team,
-      images_in_block: performanceResponse.images_in_block,
+      gallery_images: performanceResponse.gallery_images,
+      gallery_title: performanceResponse.gallery_title,
       main_image: performanceResponse.main_image,
       bottom_image: performanceResponse.bottom_image,
       video: performanceResponse.video,
       text: performanceResponse.text,
       ageRestriction: performanceResponse.age_limit,
-      duration: performanceResponse.duration,
+      duration: formatPerformanceDuration(performanceResponse.duration),
       events: toEvents(performanceResponse.events),
       // TODO: сейчас в ответе API возвращаются списки отзывов с пагинацией, которая фронтенду не нужна, нужно обсудить с бекендерами
       mediaReviews: mediaReviewsResponse.results
@@ -230,9 +246,10 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
 };
 
 function toEvents(events: LocalEvent[]) {
-  return events.map(({ date_time, url }) => ({
-    date: date_time,
-    ticketsUrl: url,
+  return events.map((event) => ({
+    date: event.date_time as string, // TODO: уточнить у бекенда, почему дата события может быть опциональной
+    actionText: event.action_text ?? undefined,
+    actionUrl: event.action_url ?? undefined,
   }));
 }
 
@@ -242,7 +259,7 @@ function toMediaReviews(reviews: PerformanceMediaReview[]) {
     text,
     ...url ? { href: url } : {}
   }));
-};
+}
 
 function toReviews(reviews: PerformanceReview[]) {
   return reviews.map(({ reviewer_name, url, text }) => ({
@@ -250,4 +267,11 @@ function toReviews(reviews: PerformanceReview[]) {
     text,
     ...url ? { href: url } : {}
   }));
-};
+}
+
+function formatPerformanceDuration(durationInMs: number) {
+  return formatDuration({
+    hours: Math.floor(durationInMs / 3600),
+    minutes: Math.floor(durationInMs % 3600 / 60),
+  });
+}

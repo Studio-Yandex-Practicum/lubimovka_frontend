@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 
-import styles from './performance-layout-reviews.module.css';
-
 import type { FC } from 'react';
+
+import styles from './performance-layout-reviews.module.css';
 
 const cx = classNames.bind(styles);
 

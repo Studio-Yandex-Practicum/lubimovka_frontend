@@ -1,7 +1,8 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
 
-import { InfoLink } from 'components/ui/info-link';
+import { Button } from 'components/ui/button2';
+
+import type { FC } from 'react';
 
 import styles from './footer-copyright.module.css';
 
@@ -31,15 +32,17 @@ export const FooterCopyright: FC<FooterCopyright> = (props) => {
         {currentYear}
       </div>
       {privacyPolicyUrl && (
-        <InfoLink
-          className={cx('footnoteLink')}
-          isOutsideLink
-          href={privacyPolicyUrl}
-          label="Политика конфиденциальности"
-          hoverStyle="bottomLine"
+        <Button
+          border="none"
           size="xs"
-          textDecoration="textDecorationNone"
-        />
+          className={cx('footnoteLink')}
+          animation='bottomLine'
+          href={privacyPolicyUrl}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          {'Политика конфиденциальности'}
+        </Button>
       )}
       <dl className={cx('credits')}>
         <div className={cx('shishki')}>
@@ -47,15 +50,17 @@ export const FooterCopyright: FC<FooterCopyright> = (props) => {
             дизайн сайта
           </dt>
           <dd>
-            <InfoLink
-              isOutsideLink
-              href="https://shishki.co"
-              label="shishki.collective"
-              hoverStyle="bottomLine"
+            <Button
+              border="none"
               size="xs"
-              textDecoration="textDecorationNone"
               className={cx('footnoteLink')}
-            />
+              animation='bottomLine'
+              href="https://shishki.co"
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              {'shishki.collective'}
+            </Button>
           </dd>
         </div>
         <div>
@@ -65,15 +70,17 @@ export const FooterCopyright: FC<FooterCopyright> = (props) => {
           <dd>
             студенты
             {' '}
-            <InfoLink
-              isOutsideLink
-              href="https://practicum.yandex.ru"
-              label="Яндекс Практикума"
-              hoverStyle="bottomLine"
+            <Button
+              border="none"
               size="xs"
-              textDecoration="textDecorationNone"
               className={cx('footnoteLink')}
-            />
+              animation='bottomLine'
+              href="https://practicum.yandex.ru"
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              {'Яндекс Практикума'}
+            </Button>
           </dd>
         </div>
       </dl>

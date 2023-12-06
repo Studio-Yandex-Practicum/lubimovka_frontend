@@ -1,26 +1,30 @@
-import { useReducer, useState } from 'react';
+/* eslint-disable camelcase */
 import Link from 'next/link';
+import { useReducer, useState } from 'react';
 
 import { AppLayout } from 'components/app-layout';
+import { CallToEmail } from 'components/call-to-email';
 import ContactsLayout from 'components/contacts-layout';
 import ContactsTitle from 'components/contacts-title';
-import Form from 'components/ui/form/form';
-import TextInput from 'components/ui/text-input/text-input';
-import TextArea from 'components/ui/text-area';
-import { Button } from 'components/ui/button2';
-import { Icon } from 'components/ui/icon';
-import { CallToEmail } from 'components/call-to-email';
 import { SEO } from 'components/seo';
-import { usePersistentData } from 'providers/persistent-data-provider';
-import { fetcher } from 'services/fetcher';
+import { Button } from 'components/ui/button2';
+import Form from 'components/ui/form/form';
+import { Icon } from 'components/ui/icon';
+import TextArea from 'components/ui/text-area';
+import TextInput from 'components/ui/text-input/text-input';
+import { useSettings } from 'services/api/settings-adapter';
+import { fetcher, isHttpRequestError } from 'services/fetcher';
 import { validEmailRegexp } from 'shared/constants/regexps';
+import { InternalServerError } from 'shared/helpers/internal-server-error';
 
 import type { NextPage } from 'next';
 
+import styles from './contacts.module.css';
+
 interface ContactFormFields {
-  name: string,
-  email: string,
-  message: string,
+  name: string
+  email: string
+  message: string
 }
 
 enum ContactFormActionTypes {
@@ -30,15 +34,15 @@ enum ContactFormActionTypes {
 }
 
 type ContactFormAction<K extends keyof ContactFormFields = keyof ContactFormFields> =
-  { type: ContactFormActionTypes.FieldChange, payload: { field: K, value: ContactFormFields[K], error?: string } }
-  | { type: ContactFormActionTypes.FieldError, payload: { field: K, error: string } }
+  { type: ContactFormActionTypes.FieldChange; payload: { field: K; value: ContactFormFields[K]; error?: string } }
+  | { type: ContactFormActionTypes.FieldError; payload: { field: K; error: string } }
   | { type: ContactFormActionTypes.Reset }
 
 type ContactFormStateFields<T> = {
   [K in keyof T]: {
-    value: T[K],
-    wasChanged: boolean,
-    error?: string,
+    value: T[K]
+    wasChanged: boolean
+    error?: string
   }
 }
 
@@ -81,7 +85,7 @@ const contactFormReducer = (state: ContactFormState, action: ContactFormAction) 
 const Contacts: NextPage = () => {
   const [contactFormState, dispatch] = useReducer(contactFormReducer, initialContactFormState);
   const [formSuccessfullySent, setFormSuccessfullySent] = useState(false);
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
 
   const {
     name,
@@ -162,24 +166,30 @@ const Contacts: NextPage = () => {
         },
         body: JSON.stringify(data),
       });
-    } catch ([ status, errors ]) {
-      // TODO: добавить проверку типов выброшенного исключения, пока считаем, что всегда получаем ответ API
+    } catch (err) {
+      if (isHttpRequestError(err)) {
+        const { statusCode } = err.response;
 
-      for (let field in errors as Record<string, string[]>) {
-        dispatch({
-          type: ContactFormActionTypes.FieldError,
-          payload: {
-            field: {
-              author_name: 'name',
-              author_email: 'email',
-              question: 'message',
-            }[field] as keyof ContactFormFields,
-            error: (errors as Record<string, string[]>)[field][0],
-          },
-        });
+        if (statusCode === 400) {
+          const payload = err.response.payload;
+
+          for (const field in payload as Record<string, string[]>) {
+            dispatch({
+              type: ContactFormActionTypes.FieldError,
+              payload: {
+                field: {
+                  author_name: 'name',
+                  author_email: 'email',
+                  question: 'message',
+                }[field] as keyof ContactFormFields,
+                error: (payload as Record<string, string[]>)[field][0],
+              },
+            });
+          }
+        } else {
+          throw new InternalServerError();
+        }
       }
-
-      return;
     }
 
     setFormSuccessfullySent(true);
@@ -227,7 +237,7 @@ const Contacts: NextPage = () => {
                   rows={4}
                 />
               </Form.Field>
-              <Form.Actions>
+              <Form.Actions className={styles.container}>
                 <Button
                   size="l"
                   type="submit"
@@ -247,7 +257,7 @@ const Contacts: NextPage = () => {
                   {formSuccessfullySent ? 'Отправлено' : 'Отправить'}
                 </Button>
               </Form.Actions>
-              <Form.Disclaimer>
+              <Form.Disclaimer className={styles.container}>
                 {'Нажимая на кнопку «Отправить» вы даёте согласие '}
                 <Link href={settings?.privacyPolicyUrl ?? '#'}>
                   <a>

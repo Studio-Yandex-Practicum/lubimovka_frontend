@@ -1,14 +1,12 @@
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 
-import { Url } from 'shared/types/common';
-
 import styles from './project-headline.module.css';
 
 interface ProjectHeadlineProps {
-  title: string;
-  intro: string;
-  image: Url;
+  title: string
+  intro: string
+  image: Url
 }
 
 const cx = classNames.bind(styles);

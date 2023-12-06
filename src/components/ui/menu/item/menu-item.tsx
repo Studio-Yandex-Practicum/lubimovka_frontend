@@ -1,12 +1,12 @@
-import { forwardRef } from 'react';
-import Link from 'next/link';
 import classNames from 'classnames/bind';
+import Link from 'next/link';
+import { forwardRef } from 'react';
 
-import { styles } from '../menu';
 import { useMenu } from '../menu.context';
+import { styles } from '../menu.styles';
 
-import type { ReactNode } from 'react';
 import type { LinkProps } from 'next/link';
+import type { ReactNode } from 'react';
 
 interface MenuItemProps {
   mods?: Record<string, boolean>
@@ -43,7 +43,10 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemLinkProps | MenuItemBu
     >
       {'href' in props ? (
         <Link href={props.href}>
-          <a className={cx('link')}>
+          <a
+            draggable={false}
+            className={cx('link')}
+          >
             {children}
           </a>
         </Link>

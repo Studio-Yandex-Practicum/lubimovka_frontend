@@ -1,22 +1,21 @@
-import { useState, Children } from 'react';
 import classNames from 'classnames/bind';
 import { useKeenSlider } from 'keen-slider/react';
+import React, { useState } from 'react';
 
-import { SliderButton } from 'components/ui/slider-button';
+import { ArrowButton } from 'components/arrow-button';
 import { SliderDots } from 'components/ui/slider-dots';
 
 import styles from './image-slider.module.css';
 
 const cx = classNames.bind(styles);
 
-interface IImageSliderProps {
-  className?: string;
-  showDots?: boolean;
-  initialSlide?: number;
-  children: React.ReactNode;
+interface ImageSliderProps {
+  className?: string
+  showDots?: boolean
+  initialSlide?: number
 }
 
-export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
+export const ImageSlider: React.FC<ImageSliderProps> = (props) => {
   const {
     className,
     showDots = true,
@@ -25,53 +24,60 @@ export const ImageSlider = (props: IImageSliderProps): JSX.Element => {
   } = props;
 
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+  const [loaded, setLoaded] = useState(false);
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    spacing: 15,
+    slides: {
+      spacing: 15,
+    },
     initial: initialSlide,
+    created() {
+      setLoaded(true);
+    },
     slideChanged(s) {
-      setCurrentSlide(s.details().relativeSlide);
+      setCurrentSlide(s.track.details.rel);
     },
   });
 
   return (
     <div className={cx(className)}>
       <div className={cx('container')}>
-        {slider && (
-          <>
-            <div className={cx('arrow', 'arrowLeft')}>
-              <SliderButton
-                className={cx('arrowButton')}
-                ariaLabel="Предыдущий слайд"
-                direction="left"
-                onClick={slider.prev}
-              />
-            </div>
-            <div className={cx('arrow', 'arrowRight')}>
-              <SliderButton
-                className={cx('arrowButton')}
-                ariaLabel="Следующий слайд"
-                direction="right"
-                onClick={slider.next}
-              />
-            </div>
-          </>
-        )}
         <div ref={sliderRef} className={cx('keen-slider', 'slider')}>
-          {Children.map(children, (slide) => (
+          {React.Children.map(children, (slide) => (
             <div className={cx('keen-slider__slide', 'slide')}>
               {slide}
             </div>
           ))}
         </div>
+        {loaded && instanceRef.current && (
+          <>
+            <div className={cx('arrow', 'arrowLeft')}>
+              <ArrowButton
+                className={cx('arrowButton')}
+                variant="backward"
+                size="s"
+                text="Предыдущий слайд"
+                onClick={instanceRef.current.prev}
+              />
+            </div>
+            <div className={cx('arrow', 'arrowRight')}>
+              <ArrowButton
+                className={cx('arrowButton')}
+                variant="forward"
+                size="s"
+                text="Следующий слайд"
+                onClick={instanceRef.current.next}
+              />
+            </div>
+          </>
+        )}
       </div>
-      {slider && showDots && (
+      {loaded && instanceRef.current && showDots && (
         <SliderDots
           className={cx('dots')}
-          count={slider.details().size}
+          count={instanceRef.current?.slides.length}
           currentSlide={currentSlide}
-          onClick={(idx) => slider.moveToSlideRelative(idx)}
+          onClick={instanceRef.current?.moveToIdx}
         />
       )}
     </div>

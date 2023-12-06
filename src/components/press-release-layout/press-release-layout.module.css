@@ -1,4 +1,7 @@
-@import "./press-release-layout.vars.module";
+@value tablet-portrait from "shared/styles/media.module.css";
+
+$page-margin-tablet-portrait: 120px;
+$page-margin-smartphone: 24px;
 
 .root {
   display: grid;
@@ -6,25 +9,22 @@
   background-color: var(--white);
   grid-auto-columns: auto;
   grid-template-areas:
-    "title   title   cover"
+    "title   title   image"
     "filter  actions ."
     "content content content";
+  grid-template-columns: auto auto 1fr;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     display: block;
     padding: 44px $page-margin-smartphone 150px;
   }
-}
-
-.title {
-  grid-area: title;
 }
 
 .filter {
   margin: 32px 30px 0 0;
   grid-area: filter;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     margin-right: 0;
     margin-bottom: 28px;
   }
@@ -33,13 +33,43 @@
 .year {
   max-width: 148px;
 
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     max-width: initial;
   }
 }
 
 .additional-note {
-  @media (max-width: $tablet-portrait) {
+  @media tablet-portrait {
     @mixin visually-hidden;
   }
+}
+
+.title {
+  align-self: flex-end;
+  padding: 32px 0;
+  grid-area: title;
+}
+
+.image {
+  position: relative;
+  min-width: calc(720px - $page-margin-smartphone);
+  height: 268px;
+  margin-right: calc(-1 * $page-margin-tablet-portrait);
+  grid-area: image;
+
+  @media tablet-portrait {
+    min-width: initial;
+    margin: 0 -$page-margin-smartphone;
+  }
+}
+
+.content {
+  max-width: 840px;
+  margin: 64px auto 0;
+  grid-area: content;
+}
+
+.actions {
+  align-self: flex-end;
+  grid-area: actions;
 }

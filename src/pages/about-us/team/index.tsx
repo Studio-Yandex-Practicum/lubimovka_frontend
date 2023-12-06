@@ -56,7 +56,7 @@ const Team = () => {
   useEffect(() => {
     router.replace('/about-us/404');
   }, [router]);
-
+  
   return null;
 };
 

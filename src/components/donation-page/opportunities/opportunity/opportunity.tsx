@@ -1,17 +1,16 @@
-import { FC } from 'react';
 import cn from 'classnames/bind';
 import Image from 'next/image';
 
-import { Url } from '../../../../shared/types/common';
+import type { FC } from 'react';
 
 import styles from './opportunity.module.css';
 
 const cx = cn.bind(styles);
 
 interface IOpportunityProps {
-  title: string;
-  picture: Url;
-  kickies: string[];
+  title: string
+  picture: Url
+  kickies: string[]
 }
 
 export const Opportunity: FC<IOpportunityProps> = (props) => {

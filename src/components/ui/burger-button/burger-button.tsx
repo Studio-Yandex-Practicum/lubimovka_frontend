@@ -3,8 +3,8 @@ import classNames from 'classnames/bind';
 import styles from './burger-button.module.css';
 
 interface IBurgerButtonProps {
-  isOpen: boolean;
-  onClick: () => void;
+  isOpen: boolean
+  onClick: () => void
 }
 
 const cx = classNames.bind(styles);

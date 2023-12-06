@@ -1,23 +1,17 @@
-import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
-
-import { NavbarSection } from './section';
-import { NavbarLogotype } from './logotype';
-import { NavbarActions } from './actions';
 
 import styles from './navbar.module.css';
 
 export interface NavbarProps {
-  view?: 'normal' | 'expanded',
-  colors?: 'default' | 'brand',
-  children?: ReactNode,
+  view?: 'regular' | 'expanded'
+  colors?: 'default' | 'brand'
 }
 
 const cx = classNames.bind(styles);
 
-export const Navbar = (props: NavbarProps) => {
+export const Navbar = (props: React.PropsWithChildren<NavbarProps>) => {
   const {
-    view = 'normal',
+    view = 'regular',
     colors = 'default',
     children,
   } = props;
@@ -32,7 +26,3 @@ export const Navbar = (props: NavbarProps) => {
     </div>
   );
 };
-
-Navbar.Section = NavbarSection;
-Navbar.Logotype = NavbarLogotype;
-Navbar.Actions = NavbarActions;

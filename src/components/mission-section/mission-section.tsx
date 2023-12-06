@@ -1,23 +1,24 @@
-import { FC } from 'react';
 import cn from 'classnames';
 
 import TextItem from '../mission-text-item';
 
+import type { FC } from 'react';
+
 import style from './mission-section.module.css';
 
 interface ITextItemData {
-  id: number;
-  number: string;
-  title: string;
-  text: Array<string>;
+  id: number
+  number: string
+  title: string
+  text: Array<string>
 }
 
 export interface TextSectionData {
-  id: number;
-  number: string;
-  title: string;
-  image: string;
-  content: Array<ITextItemData>;
+  id: number
+  number: string
+  title: string
+  image: string
+  content: Array<ITextItemData>
 }
 
 interface TextSectionProps {

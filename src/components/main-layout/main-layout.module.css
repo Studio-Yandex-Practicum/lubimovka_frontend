@@ -1,0 +1,12 @@
+@import url("./main-layout.vars.module.css");
+
+.root {
+  display: grid;
+  grid-template:
+    "events   feed" auto
+    "content  feed" 1fr / 1fr auto;
+
+  @media (max-width: $tablet-portrait) {
+    display: block;
+  }
+}

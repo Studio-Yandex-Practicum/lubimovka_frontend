@@ -1,9 +1,10 @@
-import { GetServerSideProps } from 'next';
 
+import { AppLayout } from 'components/app-layout';
 import { PageTransition } from 'components/page-transition';
 import { PlayProposalSuccessLayout } from 'components/play-proposal-success-layout';
-import { AppLayout } from 'components/app-layout';
 import { SEO } from 'components/seo';
+
+import type { GetServerSideProps } from 'next';
 
 const PlayProposalSuccess = () => {
   return (

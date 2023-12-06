@@ -1,0 +1,24 @@
+@value tablet-portrait from "shared/styles/media.module.css";
+
+.root {
+  display: inline-block;
+
+  @media tablet-portrait {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+.day {
+  @mixin headline;
+  @mixin headline1;
+
+  @media tablet-portrait {
+    margin-right: 8px;
+  }
+}
+
+.month {
+  @mixin text;
+  @mixin textMedium;
+}

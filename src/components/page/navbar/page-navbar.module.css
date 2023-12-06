@@ -1,8 +1,16 @@
-.root {
-  display: flex;
-  flex-direction: column;
+@value tablet-portrait from "shared/styles/media.module.css";
 
-  @media (max-width: $tablet-portrait) {
-    order: -1;
+.root {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  border-bottom: 1px solid var(--coal);
+  background-color: var(--beige);
+
+  @media tablet-portrait {
+    position: static;
+    z-index: auto;
+    border: 0;
+    background-color: var(--white);
   }
 }

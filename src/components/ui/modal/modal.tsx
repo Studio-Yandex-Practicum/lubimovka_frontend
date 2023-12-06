@@ -1,35 +1,36 @@
-import { ReactNode, FC, KeyboardEvent } from 'react';
 import classNames from 'classnames/bind';
 import FocusLock from 'react-focus-lock';
 
-import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
-import { ModalBackdrop, IModalBackdropProps } from './backdrop';
 import { Portal } from 'components/ui/portal';
+import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
+
+import type { ModalBackdropProps } from './backdrop';
 
 import styles from './modal.module.css';
 
 const cx = classNames.bind(styles);
 
-interface IModalProps {
-  children: ReactNode,
-  isOpen: boolean,
-  onClose: () => void,
-  Backdrop?: FC<IModalBackdropProps>,
+interface ModalProps {
+  isOpen: boolean
+  onClose: () => void
+  backdrop?: React.FC<ModalBackdropProps>
 }
 
-export const Modal = (props: IModalProps): JSX.Element | null=> {
+export const Modal: React.FC<ModalProps> = (props) => {
   const {
     children,
-    Backdrop,
+    backdrop: Backdrop,
     isOpen,
     onClose,
   } = props;
 
   useDisableBodyScroll(isOpen);
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Escape') {
       onClose();
     }
@@ -40,16 +41,18 @@ export const Modal = (props: IModalProps): JSX.Element | null=> {
       <FocusLock returnFocus>
         <div
           role="dialog"
-          className={cx('container')}
+          className={cx('root')}
           tabIndex={-1}
           onKeyDown={handleKeyDown}
         >
           {Backdrop && <Backdrop onClick={onClose}/>}
-          {children}
+          <div className={cx('inner')}>
+            <div className={cx('content')}>
+              {children}
+            </div>
+          </div>
         </div>
       </FocusLock>
     </Portal>
   );
 };
-
-Modal.Backdrop = ModalBackdrop;

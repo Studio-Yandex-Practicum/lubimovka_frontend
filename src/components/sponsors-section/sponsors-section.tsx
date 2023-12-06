@@ -1,15 +1,15 @@
+import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
-import { InfoLink } from 'components/ui/info-link/info-link';
 
 import type { FC } from 'react';
 
 import style from './sponsors-section.module.css';
 
 interface SponsorsSectionProps {
-  title: string,
-  callToEmail: string,
-  callToEmailAddress?: string,
-  description: string,
+  title: string
+  callToEmail: string
+  callToEmailAddress?: string
+  description: string
 }
 
 const SponsorsSection: FC<SponsorsSectionProps> = (props) => {
@@ -29,13 +29,15 @@ const SponsorsSection: FC<SponsorsSectionProps> = (props) => {
             <Icon glyph={'asterisk'}/>
             <p className={style.accent}>
               {callToEmail}
-              <InfoLink
+              <Button
+                border="none"
+                size="m"
                 href={`mailto:${callToEmailAddress}`}
-                isOutsideLink
-                label={callToEmailAddress}
-                size={'xl'}
-                textDecoration={'underline'}
-              />
+                className={style.mailLink}
+                animation='invert'
+              >
+                {callToEmailAddress}
+              </Button>
             </p>
           </div>
         )}

@@ -1,14 +1,15 @@
-import { ButtonHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
+
+import type { ButtonHTMLAttributes } from 'react';
 
 import styles from './icon-button.module.css';
 
 interface IIconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  type: 'button' | 'submit' | 'reset';
-  view: 'ghost' | 'light';
-  ariaLabel: string;
-  icon: React.ReactNode;
+  className?: string
+  type: 'button' | 'submit' | 'reset'
+  view: 'ghost' | 'light'
+  ariaLabel: string
+  icon: React.ReactNode
 }
 
 const cx = classNames.bind(styles);
@@ -23,7 +24,7 @@ export const IconButton = (props: IIconButtonProps): JSX.Element => {
     ...restProps
   } = props;
 
-  return(
+  return (
     <button
       className={cx(className, 'button', [view])}
       type={type}

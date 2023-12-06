@@ -1,26 +1,25 @@
 import classNames from 'classnames/bind';
+import format from 'date-fns/format';
 
 import { AppLayout } from 'components/app-layout';
-import { ArticleHeadline } from 'components/article-headline';
-import { ArticleFootnote } from 'components/article-footnote';
-import { ConstructorContent } from 'components/constructor-content';
-import { SEO } from 'components/seo';
-import { Section } from 'components/section';
-import { BlogEntryList } from 'components/blog-entry-list';
-import { BlogCard } from 'components/ui/blog-card';
-import { PageBreadcrumbs } from 'components/page';
-import { Breadcrumb } from 'components/breadcrumb';
-import { ShareLinks } from 'components/share-links';
 import { ArticleCreditsList } from 'components/article-credits-list';
+import { ArticleFootnote } from 'components/article-footnote';
+import { ArticleHeadline } from 'components/article-headline';
+import styles from 'components/article-layout/article-layout.module.css';
+import { BlogEntryCard } from 'components/blog-entry-card';
+import { BlogEntryList } from 'components/blog-entry-list';
+import { Breadcrumb } from 'components/breadcrumb';
+import { ConstructorContent } from 'components/constructor-content';
+import { PageBreadcrumbs } from 'components/page';
+import { Section } from 'components/section';
+import { SEO } from 'components/seo';
+import { ShareLinks } from 'components/share-links';
 import { fetcher } from 'services/fetcher';
-import { format } from 'shared/helpers/format-date';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 
-import type { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next';
-import type { BlogItemDetailOutput } from 'api-typings';
-
-import styles from 'components/article-layout/article-layout.module.css';
+import type { BlogItemDetailOutput } from '__generated__/api-typings';
+import type { GetServerSidePropsContext,InferGetServerSidePropsType } from 'next';
 
 const cx = classNames.bind(styles);
 
@@ -53,13 +52,13 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
         variant="blog"
         title={title}
         description={description}
-        date={format('d MMMM yyyy', new Date(date))}
+        date={format(new Date(date), 'd MMMM yyyy')}
         cover={image}
         author={author}
         authorUrl={authorUrl}
       />
       <ConstructorContent
-        // @ts-expect-error
+        // @ts-expect-error: TODO: В документации API нет описания ответов с блоками конструктора
         blocks={constructorBlocks}
       />
       <ArticleFootnote
@@ -82,14 +81,15 @@ const BlogEntry = (props: InferGetServerSidePropsType<typeof getServerSideProps>
           title="Другие записи"
         >
           <BlogEntryList>
-            {suggestedBlogEntries.map(({ id, image, author_url_title, title, description }) => (
+            {suggestedBlogEntries.map(({ id, image, author_url_title, author_url, title, description }) => (
               <BlogEntryList.Item key={id}>
-                <BlogCard
-                  id={id}
+                <BlogEntryCard
                   image={image}
-                  author={author_url_title}
-                  heading={title}
+                  authorFullName={author_url_title}
+                  authorUrl={author_url}
+                  title={title}
                   description={description}
+                  viewUrl={`/blog/${id}`}
                 />
               </BlogEntryList.Item>
             ))}

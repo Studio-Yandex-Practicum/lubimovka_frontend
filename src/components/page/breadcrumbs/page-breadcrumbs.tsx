@@ -1,10 +1,11 @@
-import { FC } from 'react';
 import classNames from 'classnames/bind';
+
+import type { FC } from 'react';
 
 import styles from './page-breadcrumbs.module.css';
 
 interface IBreadcrumbsProps {
-  className?: string,
+  className?: string
 }
 
 const cx = classNames.bind(styles);

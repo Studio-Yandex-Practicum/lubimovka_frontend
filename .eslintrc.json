@@ -1,102 +1,14 @@
 {
   "extends": [
+    "./config/eslint/.eslintrc.js",
     "next/core-web-vitals"
   ],
-  "plugins": [
-    "@typescript-eslint"
-  ],
-  "rules": {
-    "indent": ["error", 2],
-
-    "quotes": ["error", "single"],
-
-    "jsx-quotes": ["error", "prefer-double"],
-
-    "semi": ["error", "always"],
-
-    "semi-spacing": ["error"],
-
-    "object-curly-spacing": ["error", "always"],
-
-    "object-curly-newline": ["error", {
-      "multiline": true,
-      "consistent": true
-    }],
-
-    "no-multiple-empty-lines": ["error", {
-      "max": 1,
-      "maxEOF": 1
-    }],
-
-    "operator-linebreak":  ["error", "before"],
-
-    "quote-props": ["error", "as-needed"],
-
-    "no-trailing-spaces": ["error"],
-
-    "no-mixed-operators": ["error"],
-
-    "no-nested-ternary": ["warn"],
-
-    "no-var": ["error"],
-
-    "camelcase": ["warn"],
-
-    "eol-last": ["error", "always"],
-
-    "no-console": ["error"],
-
-    "no-else-return": ["error"],
-
-    "no-unreachable": ["error"],
-
-    "react/jsx-indent": ["error", 2],
-
-    "react/jsx-curly-spacing": ["error", {
-      "when": "never",
-      "attributes": {
-        "allowMultiline": false
-      },
-      "children": true
-    }],
-
-    "react/jsx-tag-spacing": ["error", {
-      "closingSlash": "never",
-      "beforeSelfClosing": "never",
-      "afterOpening": "never",
-      "beforeClosing": "never"
-    }],
-
-    "react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
-
-    "react/jsx-max-props-per-line": ["error", {
-      "maximum": 1,
-      "when": "multiline"
-    }],
-
-    "react/jsx-wrap-multilines": ["error", {
-      "declaration": "parens-new-line",
-      "assignment": "parens-new-line",
-      "return": "parens-new-line",
-      "arrow": "parens-new-line",
-      "condition": "parens-new-line",
-      "logical": "parens-new-line",
-      "prop": "parens-new-line"
-    }],
-
-    "react/jsx-closing-bracket-location": ["error", "line-aligned"],
-
-    "react/jsx-one-expression-per-line": ["error"],
-
-    "react/jsx-boolean-value": ["error", "never"],
-
-    "react/self-closing-comp": ["error", {
-      "component": true,
-      "html": true
-    }],
-
-    "react/no-array-index-key": ["warn"],
-
-    "@typescript-eslint/no-unused-vars": ["error"]
-  }
+  "overrides": [
+    {
+      "files": ["src/pages/**/*", "src/components/**/*.stories.*"],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    }
+  ]
 }

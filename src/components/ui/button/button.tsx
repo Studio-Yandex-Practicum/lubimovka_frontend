@@ -1,24 +1,26 @@
-import React, { FC, ButtonHTMLAttributes } from 'react';
-import Link from 'next/link';
 import cn from 'classnames/bind';
+import Link from 'next/link';
 
-import { Icon, IIconProps } from '../icon';
+import { Icon } from '../icon';
+
+import type { IIconProps } from '../icon';
+import type { ButtonHTMLAttributes,FC } from 'react';
 
 import styles from './button.module.css';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  type?: 'submit' | 'reset' | 'button';
-  view?: 'primary' | 'secondary',
-  iconPlace?: 'left' | 'right',
-  icon?: IIconProps['glyph'],
-  size?: 's' | 'l';
-  border?: 'none' | 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' | 'top' | 'full';
-  label: string;
+  type?: 'submit' | 'reset' | 'button'
+  view?: 'primary' | 'secondary'
+  iconPlace?: 'left' | 'right'
+  icon?: IIconProps['glyph']
+  size?: 's' | 'l'
+  border?: 'none' | 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' | 'top' | 'full'
+  label: string
   width?: string
-  className?: string,
-  isLink?: boolean,
-  href?: string,
-  align?: 'start' | 'end' | 'center' | 'space-between',
+  className?: string
+  isLink?: boolean
+  href?: string
+  align?: 'start' | 'end' | 'center' | 'space-between'
   gap?: string
   target?: '_blank' | '_self' | '_parent' | '_top'
 }
@@ -48,13 +50,13 @@ export const Button: FC<IButtonProps> = (props) => {
   const classes = cx('button', view, border, icon && 'addon', iconPlace, iconPlace, size, [className]);
   const style = { width: width, justifyContent: align, columnGap: gap };
   const buttonChildren = (
-    <React.Fragment>
+    <>
       {iconPlace === 'left' && icon && <Icon glyph={icon}/>}
       {<span className={styles.label}>
         {label}
       </span>}
       {iconPlace === 'right' && icon && <Icon glyph={icon}/>}
-    </React.Fragment>
+    </>
   );
 
   return (

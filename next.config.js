@@ -1,6 +1,10 @@
-const { apiBaseUrl } = require('./config/vars');
+const { apiBaseUrl, environment } = require('./config/env');
 
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+const config = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -27,11 +31,13 @@ module.exports = {
       '2022.lubimovka.ru',
       'stage.dev.lubimovka.ru',
       'test.dev.lubimovka.ru',
+      ...environment === 'development' ? ['source.unsplash.com'] : [],
     ],
   },
   experimental: {
     scrollRestoration: true,
     outputStandalone: true,
+    esmExternals: false,
   },
   async rewrites() {
     return {
@@ -43,4 +49,18 @@ module.exports = {
       ],
     };
   },
+  async redirects() {
+    return [
+      {
+        source: '/events/:path*',
+        destination: '/schedule/:path*',
+        permanent: true,
+      },
+    ];
+  },
+  eslint: {
+    dirs: ['src'],
+  },
 };
+
+module.exports = withBundleAnalyzer(config);

@@ -1,15 +1,37 @@
-.root {
-  @mixin hide-scrollbars;
+@value tablet-portrait from "shared/styles/media.module.css";
 
+$item-width: 240px;
+
+.common {
   display: grid;
   padding: 0;
   margin: 0;
-  gap: 30px;
-  grid-template-columns: repeat(4, 1fr);
-  overflow-x: scroll;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, $item-width);
+  place-content: center;
+}
 
-  @media (max-width: $tablet-portrait) {
+.scrollable {
+  composes: common;
+
+  @media tablet-portrait {
+    @mixin hide-scrollbars;
+
     grid-auto-flow: column;
     grid-template-columns: auto;
+    overflow-x: scroll;
   }
+}
+
+.regular {
+  composes: common;
+}
+
+.item {
+  display: block;
+  width: $item-width;
+}
+
+.common.processing {
+  opacity: .2;
 }

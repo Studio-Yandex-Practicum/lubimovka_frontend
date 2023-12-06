@@ -1,17 +1,19 @@
 import Link from 'next/link';
 
-import Logo from 'shared/images/full-logo.svg';
-import SmallLogo from 'shared/images/compact-logo.svg';
-import Lines from 'shared/images/404lines.svg';
-import classes from './NotFoundError.module.css';
-import { useMediaQuery } from 'shared/hooks/use-media-query';
+import { Button } from 'components/ui/button2';
+import { Icon } from 'components/ui/icon';
+import { useSettings } from 'services/api/settings-adapter';
 import * as breakpoints from 'shared/breakpoints';
-import { Button } from 'components/ui/button';
-import { usePersistentData } from 'providers/persistent-data-provider';
 import { participationFormPath } from 'shared/constants/participation-form-path';
+import { useMediaQuery } from 'shared/hooks/use-media-query';
+import Lines from 'shared/images/404lines.svg';
+import SmallLogo from 'shared/images/compact-logo.svg';
+import Logo from 'shared/images/full-logo.svg';
+
+import classes from './NotFoundError.module.css';
 
 export default function NotFoundError() {
-  const { settings } = usePersistentData();
+  const { settings } = useSettings();
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
 
   return (
@@ -37,41 +39,56 @@ export default function NotFoundError() {
         <ul className={classes.list}>
           <li className={classes.listItem}>
             <Button
-              border="bottomLeft"
-              isLink
-              size={'s'}
-              className={classes.link}
-              iconPlace={'left'}
-              icon={'arrow-right'}
+              size="s"
+              border='bottom-left'
               href={'/'}
-              label={'На главную'}
-            />
+              icon={(
+                <Icon
+                  glyph="arrow-right"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              iconPosition="left"
+            >
+              {'НА ГЛАВНУЮ'}
+            </Button>
           </li>
           {settings?.canProposePlay && (
             <li className={classes.listItem}>
               <Button
-                border="bottomLeft"
-                isLink
-                size={'s'}
-                className={classes.link}
-                iconPlace={'left'}
-                icon={'arrow-right'}
+                size="s"
+                border='bottom-left'
                 href={participationFormPath}
-                label={'Подать пьесу'}
-              />
+                icon={(
+                  <Icon
+                    glyph="arrow-right"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+                iconPosition="left"
+              >
+                {'ПОДАТЬ ПЬЕСУ'}
+              </Button>
             </li>
           )}
           <li className={classes.listItem}>
             <Button
-              border="bottomLeft"
-              isLink
-              size={'s'}
-              className={classes.link}
-              iconPlace={'left'}
-              icon={'arrow-right'}
+              size="s"
+              border='bottom-left'
               href={'/donation'}
-              label={'Поддержать'}
-            />
+              icon={(
+                <Icon
+                  glyph="arrow-right"
+                  width="100%"
+                  height="100%"
+                />
+              )}
+              iconPosition="left"
+            >
+              {'ПОДДЕРЖАТЬ'}
+            </Button>
           </li>
         </ul>
       </div>

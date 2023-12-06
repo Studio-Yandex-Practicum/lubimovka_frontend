@@ -1,9 +1,9 @@
 .share {
   padding: 0 60px 0 362px;
   margin: 23px 0 139px;
-  grid-area: share;
 
   @media (max-width: $tablet-portrait) {
+    order: 11;
     padding: 0 24px 0 26px;
     margin: 25px 0 100px;
   }

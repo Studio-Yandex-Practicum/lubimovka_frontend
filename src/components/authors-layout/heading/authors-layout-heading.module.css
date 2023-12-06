@@ -1,0 +1,25 @@
+@value tablet-portrait from "shared/styles/media.module.css";
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-right: 270px;
+  grid-area: heading;
+
+  @media tablet-portrait {
+    display: block;
+    margin: 0 0 16px;
+  }
+}
+
+.inner {
+  position: sticky;
+  bottom: 32px;
+  align-self: flex-end;
+
+  @media tablet-portrait {
+    padding: 0 36px;
+  }
+}

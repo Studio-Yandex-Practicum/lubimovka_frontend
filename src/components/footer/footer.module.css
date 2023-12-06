@@ -30,8 +30,13 @@
   }
 }
 
+.logo:hover {
+  cursor: pointer;
+}
+
 .footnote {
   margin-top: 49px;
+  color: var(--coal);
   grid-area: footnote;
 
   @media (max-width: $tablet-portrait) {

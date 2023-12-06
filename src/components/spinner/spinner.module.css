@@ -1,4 +1,4 @@
-$particle-animation: particle 3s infinite ease-in-out;
+$particle-animation: particle 3s infinite ease-in-out, delay var(--delay) forwards ease;
 $particle-amplitude: 1.5;
 
 .inner {
@@ -11,12 +11,12 @@ $particle-amplitude: 1.5;
 .inner::after {
   display: block;
   animation: $particle-animation;
-  content: '';
+  content: "";
 }
 
 .particle {
   animation: $particle-animation;
-  animation-direction: reverse;
+  animation-direction: reverse, normal;
 }
 
 .inner::before,
@@ -44,5 +44,19 @@ $particle-amplitude: 1.5;
 
   100% {
     transform: none;
+  }
+}
+
+@keyframes delay {
+  0% {
+    opacity: 0;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

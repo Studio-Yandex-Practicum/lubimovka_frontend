@@ -1,9 +1,0 @@
-.section {
-  display: flex;
-  flex-direction: column;
-}
-
-.spinner {
-  width: 64px;
-  margin: 0 auto;
-}
