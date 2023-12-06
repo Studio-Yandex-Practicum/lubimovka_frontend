@@ -31,9 +31,9 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
-        if: github.event.inputs.git-ref != ''
-        with:
-          ref: ${{ github.event.inputs.git-ref }}
+        # if: github.event.inputs.git-ref != ''
+        # with:
+        #   ref: ${{ github.event.inputs.git-ref }}
 
       - name: Log in to Github Packages Registry
         uses: docker/login-action@v1
