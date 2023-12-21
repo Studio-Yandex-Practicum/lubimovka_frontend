@@ -33,7 +33,13 @@ const mapDTOToSettings = (dto: SettingsDTO): Settings => ({
   projects: dto.projects.map((project) => ({
     id: project.id.toString(),
     title: project.title,
-  }))
+  })),
+  permissions: {
+    team: dto.show_team,
+    sponsors: dto.show_sponsors,
+    mission: true,
+    'about-us': true,
+  }
 });
 
 export const useSettings = () => {

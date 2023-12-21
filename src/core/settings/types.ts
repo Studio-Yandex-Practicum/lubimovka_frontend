@@ -20,4 +20,7 @@ export type Settings = {
   canProposePlay: boolean
   privacyPolicyUrl: Url
   projects: Omit<Project, 'image' | 'description'>[]
+  permissions: {
+    [p:string]: boolean
+  }
 }
