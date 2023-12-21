@@ -1,9 +1,10 @@
 import cn from 'classnames';
-import { useEffect,useState } from 'react';
 
-import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
 import { isNonEmpty } from 'shared/helpers/is-non-empty';
+
+import { HistoryTitleCard, ICard } from './history-title-card';
+import { HistoryTitleLink, ILink } from './history-title-link';
 
 import type { Festival } from '__generated__/api-typings';
 
@@ -33,198 +34,83 @@ export const HistoryTitle: React.FC<IHistoryTitle> = ({ data, currentYear }) => 
     description
   } = data;
 
-  const startDate = new Date(start_date).toLocaleDateString('ru-Ru', {
+  const formatDate = (date: string) => new Date(date).toLocaleDateString('ru-Ru', {
     timeZone: 'Europe/Moscow',
     month: 'long',
     day: 'numeric'
   });
 
-  const finishDate = new Date(end_date).toLocaleDateString('ru-Ru', {
-    timeZone: 'Europe/Moscow',
-    month: 'long',
-    day: 'numeric'
-  });
+  const startDate = formatDate(start_date);
+  const finishDate = formatDate(end_date);
 
-  const [urlVolonters, setUrlVolonters] = useState(`/about-us/team/?year=${currentYear}`);
+  const urlVolonters = `/about-us/team/?year=${currentYear}`;
 
-  useEffect(() => {
-    setUrlVolonters(`/about-us/team/?year=${currentYear}`);
-  }, [currentYear]);
+  const cards: {[p:string]: ICard} = {
+    plays_count: {
+      count: plays_count,
+      title: 'пьес прислали на конкурс'
+    },
+    selected_plays_count: {
+      count: selected_plays_count,
+      title: 'пьес прозвучало на фестивале'
+    },
+    selectors_count: {
+      count: selectors_count,
+      title: 'отборщиков читали пьесы'
+    },
+    volunteers_count: {
+      count: volunteers_count,
+      title: 'волонтёров работали на фестивале',
+      buttonProps: {
+        href: urlVolonters,
+        iconPosition: 'right',
+        icon: <Icon
+          glyph="arrow-right"
+          width="100%"
+          height="100%"
+        />
+      }
+    },
+    events_count: {
+      count: events_count,
+      title: 'событий прошло в образовательной программе'
+    },
+    cities_count: {
+      count: cities_count,
+      title: 'число городов, откуда приехали авторы'
+    }
+  };
+
+  const links: {[p:string]: ILink} = {
+    plays_links: {
+      title: 'Пьесы',
+      linkList: plays_links
+    },
+    additional_links: {
+      title: 'Дополнительно',
+      linkList: additional_links
+    }
+  };
 
   return (
     <section className={style.section}>
       <img src={festival_image ||imageUrl} alt="Изображение" className={style.image}/>
       <div className={style.content}>
         <h2 className={cn(style.dataSubtitle)}>
-          {startDate}
-          {' '}
-          -
-          {' '}
-          {finishDate}
+          {`${startDate} - ${finishDate}`}
         </h2>
         <p className={cn(style.datatext)}>
           {description}
         </p>
         <div className={cn(style.gridcontent)}>
-          <div className={cn(style.card)}>
-            <div className={style.buttonDisplay}>
-              <Button
-                size='xxl'
-                border='none'
-                type='button'
-              >
-                {plays_count ? plays_count.toString() : ''}
-              </Button>
-            </div>
-            <p className={cn(style.element)}>
-              пьес прислали на конкурс
-            </p>
-          </div>
-          <div className={cn(style.card)}>
-            <div className={style.buttonDisplay}>
-              <Button
-                size='xxl'
-                border='none'
-                type='button'
-              >
-                {selected_plays_count ? selected_plays_count.toString() : ''}
-              </Button>
-            </div>
-            <p className={cn(style.element)}>
-              пьес прозвучало на фестивале
-            </p>
-          </div>
-          <div className={cn(style.card)}>
-            <div className={style.buttonDisplay}>
-              <Button
-                size='xxl'
-                border='none'
-                type='button'
-                icon={(
-                  <Icon
-                    glyph="arrow-right"
-                    width="100%"
-                    height="100%"
-                  />
-                )}
-                iconPosition='right'
-              >
-                {selectors_count ? selectors_count.toString() : ''}
-              </Button>
-            </div>
-            <p className={cn(style.element)}>
-              отборщиков читали пьесы
-            </p>
-          </div>
-          <div className={cn(style.card)}>
-            <div className={style.buttonDisplay}>
-              <Button
-                size='xxl'
-                border='none'
-                href={urlVolonters}
-                icon={(
-                  <Icon
-                    glyph="arrow-right"
-                    width="100%"
-                    height="100%"
-                  />
-                )}
-                iconPosition='right'
-              >
-                {volunteers_count ? volunteers_count.toString() : ''}
-              </Button>
-            </div>
-            <p className={cn(style.element)}>
-              волонтёров работали на фестивале
-            </p>
-          </div>
-          <div className={cn(style.card)}>
-            <div className={style.buttonDisplay}>
-              <Button
-                size='xxl'
-                border='none'
-                type='button'
-              >
-                {events_count ? events_count.toString() : ''}
-              </Button>
-            </div>
-            <p className={cn(style.element)}>
-              событий прошло в образовательной программе
-            </p>
-          </div>
-          <div className={cn(style.card)}>
-            <div className={style.buttonDisplay}>
-              <Button
-                size='xxl'
-                border='none'
-                type='button'
-              >
-                {cities_count ? cities_count.toString() : ''}
-              </Button>
-            </div>
-            <p className={cn(style.element)}>
-              число городов, откуда приехали авторы
-            </p>
-          </div>
+          {Object.keys(cards).map(cardKey => <HistoryTitleCard key={cardKey} item={cards[cardKey]}/>)}
         </div>
         <div className={style.links}>
-          {isNonEmpty(plays_links) && (
-            <div className={style.subsection}>
-              <h2 className={style.subtitle}>
-                Пьесы
-              </h2>
-              {plays_links.map(({ title, link }) => (
-                <div className={style.buttonDisplay} key={title}>
-                  <Button
-                    size='s'
-                    border='none'
-                    href={link}
-                    icon={(
-                      <Icon
-                        glyph="arrow-right"
-                        width="100%"
-                        height="100%"
-                      />
-                    )}
-                    iconPosition='right'
-                    className={cn(style.button, style.link, style.subtitle)}
-                  >
-                    {title}
-                  </Button>
-                </div>
-              ))}
-            </div>
-          )}
-          {isNonEmpty(additional_links) && (
-            <div className={style.subsection}>
-              <h2 className={style.subtitle}>
-                Дополнительно
-              </h2>
-              {additional_links.map(({ title, link }) => (
-                <div className={style.buttonDisplay} key={title}>
-                  <Button
-                    size='s'
-                    border='none'
-                    href={link}
-                    icon={(
-                      <Icon
-                        glyph="arrow-right"
-                        width="100%"
-                        height="100%"
-                      />
-                    )}
-                    iconPosition='right'
-                    className={cn(style.button, style.link, style.subtitle)}
-                  >
-                    {title}
-                  </Button>
-                </div>
-              ))}
-            </div>
-          )}
+          {Object.keys(links).map(linkKey => {
+            return isNonEmpty(links[linkKey].linkList) && <HistoryTitleLink key={linkKey} item={links[linkKey]}/>;
+          })}
         </div>
       </div>
     </section>
   );
 };
-
