@@ -60,6 +60,20 @@ export const useForm = <T extends AnyValues = AnyValues>(config: Config<T>) => {
     });
   };
 
+  const fieldIsReady = (field: string) => {
+    return !!(errors[field] === undefined && touched[field]);
+  };
+
+  const getReadyStatus = () => {
+    return Object.keys(values).every(fieldIsReady);
+  };
+
+  const resetForm = () => {
+    setValues(initialValues);
+    setTouched({});
+    setErrors({});
+  };
+
   useEffect(() => {
     if (!validate) {
       return;
@@ -81,5 +95,7 @@ export const useForm = <T extends AnyValues = AnyValues>(config: Config<T>) => {
     setFieldError,
     nonFieldError,
     setNonFieldError,
+    getReadyStatus,
+    resetForm,
   };
 };
