@@ -54,6 +54,7 @@
 
   @media (max-width: $tablet-portrait) {
     min-width: 244px;
+    max-width: 100%;
   }
 }
 
