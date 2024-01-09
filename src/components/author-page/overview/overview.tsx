@@ -1,6 +1,7 @@
 import cn from 'classnames/bind';
 import { useMemo,useState } from 'react';
 
+import { AuthorEmail } from 'components/author-email';
 import { PlayCard } from 'components/play-card';
 import { PlayList } from 'components/play-list';
 import { Section } from 'components/section';
@@ -242,18 +243,7 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
           )}
           {email && (
             <div className={cx('overviewSocialWrapper')}>
-              <p className={cx('email')}>
-                E-mail для связи
-              </p>
-              <Button
-                size="m"
-                border='none'
-                href={`mailto:${email}`}
-                animation='invert'
-                className={cx('overviewEmaillLink')}
-              >
-                {email}
-              </Button>
+              <AuthorEmail email={email}/>
             </div>
           )}
         </div>
