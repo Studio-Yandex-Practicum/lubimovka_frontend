@@ -34,6 +34,10 @@
   cursor: pointer;
 }
 
+.disabled {
+  pointer-events: none;
+}
+
 .footnote {
   margin-top: 49px;
   color: var(--coal);

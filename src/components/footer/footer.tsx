@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { FooterCopyright } from 'components/footer-copyright';
 import Logo from 'shared/images/full-logo.svg';
@@ -26,11 +27,17 @@ export const Footer = (props: FooterProps): JSX.Element => {
     privacyPolicyUrl,
     children,
   } = props;
+  const router = useRouter();
 
   return (
     <footer className={cx('footer', className)}>
       <Link href="/">
-        <Logo className={cx('logo')}/>
+        <a
+          aria-disabled={router.pathname === '/'}
+          className = {cx(`${router.pathname === '/' && 'disabled'}`)}
+        >
+          <Logo className={cx('logo')}/>
+        </a>
       </Link>
       {children}
       <FooterCopyright
