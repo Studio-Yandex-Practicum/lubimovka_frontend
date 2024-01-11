@@ -17,3 +17,8 @@ body {
 :root {
   --height-navbar-tablet-portrait: $height-navbar-tablet-portrait;
 }
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
