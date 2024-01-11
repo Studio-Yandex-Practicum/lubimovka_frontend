@@ -107,6 +107,8 @@ const validate = (values: ParticipationFormFields) => {
     errors.title = errorMessage.empty;
   } else if (values.title.length > 200) {
     errors.title = errorMessage.maxLengthTwoHundred;
+  } else if (values.title.length < 2) {
+    errors.title = errorMessage.minLengh;
   }
 
   if (!values.year.length) {
