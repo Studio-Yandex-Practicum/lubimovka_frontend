@@ -100,7 +100,7 @@ const Blog: React.FC<BlogProps> = (props) => {
   useEffect(() => {
     router.replace({
       query: omitBy({
-        month: (month && year) ? month : undefined,
+        month,
         year,
       }, isNil)
     });
@@ -199,7 +199,7 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
 
   const params = {
     limit: BLOG_ENTRIES_PER_PAGE,
-    ...month && year ? { month } : {},
+    month,
     year,
   };
 
