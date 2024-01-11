@@ -58,10 +58,11 @@
 }
 
 .buttonDisplay {
-  display: inline-block;
+  display: flex;
 }
 
 .button.link.subtitle {
+  overflow: hidden;
   padding: 0;
   margin-bottom: 10px;
 }
