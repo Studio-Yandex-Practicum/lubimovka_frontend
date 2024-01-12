@@ -108,7 +108,7 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
               <Navbar.ActionsSlot>
                 <Menu type="social-links">
                   {socialLinkItems.map((item) => (
-                    <Menu.Item key={item.href} href={item.href}>
+                    <Menu.Item key={item.href} href={item.href} target="_blank">
                       {item.text}
                     </Menu.Item>
                   ))}

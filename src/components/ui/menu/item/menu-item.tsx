@@ -14,7 +14,9 @@ interface MenuItemProps {
   children: ReactNode
 }
 
-interface MenuItemLinkProps extends MenuItemProps, Pick<LinkProps, 'href'> {}
+interface MenuItemLinkProps extends MenuItemProps, Pick<LinkProps, 'href'> {
+  target?: string
+}
 
 interface MenuItemButtonProps extends MenuItemProps {
   onClick: () => void
@@ -46,6 +48,7 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemLinkProps | MenuItemBu
           <a
             draggable={false}
             className={cx('link')}
+            target={props.target || '_self'}
           >
             {children}
           </a>
