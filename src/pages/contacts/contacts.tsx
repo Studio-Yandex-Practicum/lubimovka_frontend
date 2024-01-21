@@ -110,7 +110,9 @@ const Contacts: NextPage = () => {
       if (!value.length) {
         return 'Это поле не может быть пустым';
       }
-
+      if (value.length > 50) {
+        return 'Поле Email должно содержать не более 50 символов';
+      }
       if (!validEmailRegexp.test(value)) {
         return 'Введите правильный адрес электронной почты';
       }
