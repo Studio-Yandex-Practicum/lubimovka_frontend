@@ -218,7 +218,6 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
                     <Menu.Item
                       key={item.href}
                       href={item.href}
-                      mods={item.mods}
                     >
                       {item.text}
                       <Icon glyph="arrow-right"/>
