@@ -49,6 +49,7 @@ const errorMessage = {
   minLengh: 'Это поле должно содержать минимум 2 символа',
   maxLengthFifty: 'Это поле должно содержать максимум 50 символов',
   maxLengthTwoHundred: 'Это поле должно содержать максимум 200 символов',
+  maxLengthSixty: 'Это поле должно содержать максимум 60 символов',
   minYear: 'Убедитесь, что это значение больше либо равно 1900',
   maxYear: `Убедитесь, что это значение меньше либо равно ${CURRENT_YEAR}`,
   incorrectPhone: 'Некорректный номер телефона',
@@ -105,8 +106,10 @@ const validate = (values: ParticipationFormFields) => {
 
   if (!values.title.length) {
     errors.title = errorMessage.empty;
-  } else if (values.title.length > 200) {
-    errors.title = errorMessage.maxLengthTwoHundred;
+  } else if (values.title.length > 60) {
+    errors.title = errorMessage.maxLengthSixty;
+  } else if (values.title.length < 2) {
+    errors.title = errorMessage.minLengh;
   }
 
   if (!values.year.length) {
