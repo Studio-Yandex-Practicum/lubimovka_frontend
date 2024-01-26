@@ -20,6 +20,7 @@ export const Video = (props: VideoProps) => {
     ...restIFrameProps
   } = props;
   const [loading, setLoading] = useState(true);
+  const changeSrc = src.replace(/watch\?v=/, 'embed/');
 
   const handleIFrameLoad: ReactEventHandler<HTMLIFrameElement> = (event) => {
     setLoading(false);
@@ -39,7 +40,7 @@ export const Video = (props: VideoProps) => {
       <iframe
         onLoad={handleIFrameLoad}
         className={cx('iframe')}
-        src={src}
+        src={changeSrc}
         allowFullScreen
         {...restIFrameProps}
       />
