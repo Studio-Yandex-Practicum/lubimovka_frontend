@@ -21,7 +21,7 @@ export const WhatWeDoContacts = () => {
       <h3 className={cx('title')}>
         Конкурса для режиссеров читок на фестивале нет
       </h3>
-      <p className={cx('desc')}>
+      <div className={cx('desc')}>
         <span className={cx('asterisk')}>
           {<Icon
             glyph="asterisk"
@@ -53,7 +53,7 @@ export const WhatWeDoContacts = () => {
           {' '}
           про себя.
         </div>
-      </p>
+      </div>
     </section>
   );
 };
