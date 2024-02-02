@@ -9,6 +9,7 @@ import type { LinkProps } from 'next/link';
 import type { ReactNode } from 'react';
 
 interface MenuItemProps {
+  target?: string
   mods?: Record<string, boolean>
   current?: boolean
   children: ReactNode
@@ -22,6 +23,7 @@ interface MenuItemButtonProps extends MenuItemProps {
 
 export const MenuItem = forwardRef<HTMLLIElement, MenuItemLinkProps | MenuItemButtonProps>((props, ref) => {
   const {
+    target = '_self',
     current = false,
     mods = {},
     children,
@@ -46,6 +48,7 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemLinkProps | MenuItemBu
           <a
             draggable={false}
             className={cx('link')}
+            target={target}
           >
             {children}
           </a>
