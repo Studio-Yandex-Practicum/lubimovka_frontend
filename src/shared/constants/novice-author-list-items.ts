@@ -12,8 +12,6 @@ const noviceAuthorListItems = [
   'Елена Исаева',
   'братья Пресняковы',
   'братья Дурненковы',
-  'Юрий Клавдиев',
-  'Евгений Гришковец',
 ];
 
 export default noviceAuthorListItems;

@@ -110,7 +110,9 @@ const Contacts: NextPage = () => {
       if (!value.length) {
         return 'Это поле не может быть пустым';
       }
-
+      if (value.length > 50) {
+        return 'Поле Email должно содержать не более 50 символов';
+      }
       if (!validEmailRegexp.test(value)) {
         return 'Введите правильный адрес электронной почты';
       }
@@ -146,7 +148,7 @@ const Contacts: NextPage = () => {
     dispatch({
       type: ContactFormActionTypes.Reset,
     });
-    setFormSuccessfullySent(false);
+    setTimeout(() => setFormSuccessfullySent(false), CONTACT_FORM_RESET_TIMEOUT);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -193,7 +195,7 @@ const Contacts: NextPage = () => {
     }
 
     setFormSuccessfullySent(true);
-    setTimeout(() => resetContactForm(), CONTACT_FORM_RESET_TIMEOUT);
+    resetContactForm();
   };
 
   const canSubmit = name.wasChanged && !name.error

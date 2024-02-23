@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import CompactLogo from 'shared/images/compact-logo.svg';
 import FullLogo from 'shared/images/full-logo.svg';
@@ -25,14 +26,17 @@ export const Logotype: FC<ILogotypeProps> = (props) => {
     full,
     onClick,
   } = props;
+  const router = useRouter();
 
   return (
     <Link href={href}>
       <a
         onClick={onClick}
+        aria-disabled={router.pathname === '/'}
         className={cx(
           'link',
-          { full }
+          { full },
+          `${router.pathname === '/' && 'disabled'}`
         )}
         title={title}
       >

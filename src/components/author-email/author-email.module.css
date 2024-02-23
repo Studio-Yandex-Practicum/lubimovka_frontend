@@ -1,0 +1,15 @@
+.email {
+  @mixin headline;
+  @mixin headline7;
+
+  margin: 6px 0;
+}
+
+.overviewEmaillLink.overviewEmaillLink {
+  padding: 0;
+  text-decoration: underline;
+
+  :first-child {
+    font-family: "PP Neue Machina", Arial, sans-serif;
+  }
+}

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef } from 'react';
 
 import { Menu } from 'components/ui/menu';
+import { useSettings } from 'services/api/settings-adapter';
 import breakpoints from 'shared/breakpoints';
 import { aboutUsNavigationItems } from 'shared/constants/about-us-navigation-items';
 import { remToPx } from 'shared/helpers/rem-to-px';
@@ -27,10 +28,11 @@ export const AboutUsLayout: FC<AboutUsLayoutProps> = (props) => {
     colors,
   } = props;
   const router = useRouter();
+  const { settings } = useSettings();
   const menuRef = useRef<HTMLUListElement>(null);
   const currentMenuItemRef = useRef<HTMLLIElement>(null);
   const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
-
+  const permissions = settings?.permissions;
   useEffect(() => {
     if (menuRef.current && currentMenuItemRef.current) {
       const menuPaddingMobilePx = remToPx(menuPaddingMobileRem);
@@ -48,7 +50,7 @@ export const AboutUsLayout: FC<AboutUsLayoutProps> = (props) => {
           type="about-us-navigation"
           ref={menuRef}
         >
-          {aboutUsNavigationItems
+          {aboutUsNavigationItems.filter(item => permissions && permissions[item.id])
             .map((item) => {
               const current = router.asPath === item.href;
 

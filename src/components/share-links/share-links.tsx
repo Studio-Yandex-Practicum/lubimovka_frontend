@@ -38,6 +38,7 @@ export const ShareLinks: FC<ShareLinksProps> = (props) => {
               className={cx('link')}
               size="s"
               border="bottom-left"
+              target="_blank"
               icon={(
                 <Icon
                   glyph="arrow-right"

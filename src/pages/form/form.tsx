@@ -49,22 +49,29 @@ const errorMessage = {
   minLengh: 'Это поле должно содержать минимум 2 символа',
   maxLengthFifty: 'Это поле должно содержать максимум 50 символов',
   maxLengthTwoHundred: 'Это поле должно содержать максимум 200 символов',
+  maxLengthSixty: 'Это поле должно содержать максимум 60 символов',
   minYear: 'Убедитесь, что это значение больше либо равно 1900',
   maxYear: `Убедитесь, что это значение меньше либо равно ${CURRENT_YEAR}`,
   incorrectPhone: 'Некорректный номер телефона',
   incorrectEmail: 'Введите правильный адрес электронной почты',
-  noFile: 'Файл обязателен'
+  noFile: 'Файл обязателен',
+  correctData: 'Неверный формат заполнения'
 };
 
+const regExp = /[^a-zа-яё]/gi;
+
 const validate = (values: ParticipationFormFields) => {
+
   const errors = {} as Record<keyof ParticipationFormFields, string>;
 
   if (!values.firstName.length) {
     errors.firstName = errorMessage.empty;
   } else if (values.firstName.length < 2) {
     errors.firstName = errorMessage.minLengh;
-  } if (values.firstName.length > 50) {
+  } else if (values.firstName.length > 50) {
     errors.firstName = errorMessage.maxLengthFifty;
+  } else if (values.firstName.match(regExp)) {
+    errors.firstName = errorMessage.correctData;
   }
 
   if (!values.lastName.length) {
@@ -73,6 +80,8 @@ const validate = (values: ParticipationFormFields) => {
     errors.lastName = errorMessage.minLengh;
   } else if (values.lastName.length > 50) {
     errors.lastName = errorMessage.maxLengthFifty;
+  } else if (values.lastName.match(regExp)) {
+    errors.lastName = errorMessage.correctData;
   }
 
   if (!values.birthYear.length) {
@@ -89,6 +98,8 @@ const validate = (values: ParticipationFormFields) => {
     errors.city = errorMessage.minLengh;
   } else if (values.city.length > 50) {
     errors.city = errorMessage.maxLengthFifty;
+  } else if (values.city.match(regExp)) {
+    errors.city = errorMessage.correctData;
   }
 
   if (!values.phoneNumber.length) {
@@ -105,8 +116,12 @@ const validate = (values: ParticipationFormFields) => {
 
   if (!values.title.length) {
     errors.title = errorMessage.empty;
-  } else if (values.title.length > 200) {
-    errors.title = errorMessage.maxLengthTwoHundred;
+  } else if (values.title.length > 60) {
+    errors.title = errorMessage.maxLengthSixty;
+  } else if (values.title.length < 2) {
+    errors.title = errorMessage.minLengh;
+  } else if (values.title.match(regExp)) {
+    errors.title = errorMessage.correctData;
   }
 
   if (!values.year.length) {

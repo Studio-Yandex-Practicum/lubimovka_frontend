@@ -77,7 +77,7 @@ export const useBlog = (filters: BlogFilters) => {
     }
 
     return getBlogEntriesCacheKey({
-      month: (filters.month && filters.year) ? filters.month : undefined,
+      month: filters.month,
       year: filters.year,
       limit: BLOG_ENTRIES_PER_PAGE,
       offset: pageIndex * BLOG_ENTRIES_PER_PAGE,

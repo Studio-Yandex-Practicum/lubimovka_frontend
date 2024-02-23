@@ -24,12 +24,18 @@ const getClass = (number:number) => {
 
   return 'four';
 };
+const sortHandler = (a: Sponsor, b: Sponsor) => {
+  const Aname = `${a.person.first_name} ${a.person.last_name}`;
+  const Bname = `${b.person.first_name} ${b.person.last_name}`;
+
+  return Aname >= Bname ? 1 : -1;
+};
 
 const PersonsList: React.FC<PersonsListProps> = ({ persons }) => {
 
   return (
     <ul className={cn(style.personsList, style[getClass(persons.length)])}>
-      {persons.map((person) => (
+      {persons.sort(sortHandler).map((person) => (
         <li key={person.id} className={style.personsListItem}>
           <PersonCard
             participant
