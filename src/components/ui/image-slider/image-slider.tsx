@@ -23,7 +23,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = (props) => {
     children
   } = props;
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(initialSlide);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
