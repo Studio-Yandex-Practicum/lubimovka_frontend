@@ -118,7 +118,6 @@ export const MainHeader: React.VFC<MainHeaderProps> = (props) => {
             )}
             iconPosition="right"
             href={actionUrl}
-            target="_blank"
           >
             {actionText}
           </Button>

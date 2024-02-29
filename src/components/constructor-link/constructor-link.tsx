@@ -42,7 +42,7 @@ export const ConstructorLink: VFC<ConstructorLinkProps> = (props) => {
         )}
         iconPosition="right"
         href={url}
-        target="_blank"
+        target={/lubimovka\.art/i.test(url) ? '_self' : '_blank'}
       >
         {actionText}
       </Button>
