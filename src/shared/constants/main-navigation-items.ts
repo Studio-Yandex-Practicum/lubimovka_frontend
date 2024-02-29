@@ -33,6 +33,10 @@ export const mainNavigationItems = [
     href: '/contacts',
   },
   {
+    text: 'About the project',
+    href: '/projects/8',
+  },
+  {
     text: 'Для прессы',
     href: '/press-releases',
     mobileOnly: true,
