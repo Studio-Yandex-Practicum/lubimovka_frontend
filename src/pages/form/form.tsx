@@ -209,7 +209,7 @@ const Participation = () => {
 
   const canSubmit = !form.nonFieldError
     && (Object.keys(form.values) as Array<keyof ParticipationFormFields>)
-      .every((field) => form.touched[field] && !form.errors[field]);
+      .every((field) => !form.errors[field]);
 
   if (errorOccurred) {
     return (
@@ -316,19 +316,23 @@ const Participation = () => {
                     />
                   </FormField>
                 </Form.Field>
-                <Form.Field>
-                  <FormField
-                    caption="Псевдоним"
-                    hiddenCaption
-                  >
-                    <TextInput
-                      value={form.values.nickname}
-                      placeholder="Псевдоним"
-                      errorText={form.touched.nickname ? form.errors.nickname : ''}
-                      onChange={(value) => handleInput('nickname', value)}
-                    />
-                  </FormField>
-                </Form.Field>
+                {form.values.anonym
+                && (
+                  <Form.Field>
+                    <FormField
+                      caption="Псевдоним"
+                      hiddenCaption
+                    >
+                      <TextInput
+                        value={form.values.nickname}
+                        placeholder="Псевдоним"
+                        errorText={form.touched.nickname ? form.errors.nickname : ''}
+                        onChange={(value) => handleInput('nickname', value)}
+                      />
+                    </FormField>
+                  </Form.Field>
+                )
+                }
                 <Form.Field>
                   <FormField
                     caption="Хочу сохранить анонимность"
