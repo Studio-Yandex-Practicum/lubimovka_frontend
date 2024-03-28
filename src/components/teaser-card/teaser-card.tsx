@@ -52,7 +52,6 @@ export const TeaserCard: FC<TeaserCardProps> = (props) => {
             )}
             border="bottom-left"
             upperCase
-            target="_blank"
           >
             {actionText}
           </Button>

@@ -11,6 +11,8 @@ export function postParticipation(fields: ParticipationFormFields) {
   data.append('city', fields.city);
   data.append('phone_number', fields.phoneNumber);
   data.append('email', fields.email);
+  data.append('nickname', fields.nickname);
+  data.append('anonym', String(fields.anonym));
   data.append('title', fields.title);
   data.append('year', fields.year);
   data.append('file', fields.file!); // TODO: улучшить типизацию, здесь особенности реализации не должны влиять на опциональность поля
@@ -21,7 +23,7 @@ export function postParticipation(fields: ParticipationFormFields) {
   });
 }
 
-export type ParticipationDTOFields = 'first_name' | 'last_name' | 'birth_year' | 'city' | 'phone_number' | 'email' | 'title' | 'year' | 'file'
+export type ParticipationDTOFields = 'first_name' | 'last_name' | 'birth_year' | 'city' | 'phone_number' | 'email' | 'nickname' | 'anonym' | 'title' | 'year' | 'file'
 
 export type ParticipationErrorDTO = {
   statusCode: 400
