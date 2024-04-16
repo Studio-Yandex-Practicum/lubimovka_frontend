@@ -10,6 +10,7 @@ import PlayProposalLayout from 'components/play-proposal-layout';
 import PlayProposalTitle from 'components/play-proposal-title';
 import { SEO } from 'components/seo';
 import { Button } from 'components/ui/button2';
+import { Checkbox } from 'components/ui/checkbox';
 import { FileInput } from 'components/ui/file-input';
 import Form from 'components/ui/form';
 import { Icon } from 'components/ui/icon';
@@ -39,6 +40,8 @@ const initialFormValues: ParticipationFormFields = {
   city: '',
   phoneNumber: '',
   email: '',
+  nickname: '',
+  anonym: false,
   title: '',
   year: '',
   file: null,
@@ -47,9 +50,11 @@ const initialFormValues: ParticipationFormFields = {
 const errorMessage = {
   empty: 'Это поле не может быть пустым',
   minLengh: 'Это поле должно содержать минимум 2 символа',
+  minLenghThree: 'Это поле должно содержать минимум 3 символа',
   maxLengthFifty: 'Это поле должно содержать максимум 50 символов',
   maxLengthTwoHundred: 'Это поле должно содержать максимум 200 символов',
   maxLengthSixty: 'Это поле должно содержать максимум 60 символов',
+  maxLengthThirty: 'Это поле должно содержать максимум 30 символов',
   minYear: 'Убедитесь, что это значение больше либо равно 1900',
   maxYear: `Убедитесь, что это значение меньше либо равно ${CURRENT_YEAR}`,
   incorrectPhone: 'Некорректный номер телефона',
@@ -112,6 +117,16 @@ const validate = (values: ParticipationFormFields) => {
     errors.email = errorMessage.empty;
   } else if (!validEmailRegexp.test(values.email)) {
     errors.email = errorMessage.incorrectEmail;
+  }
+
+  if (!values.nickname.length && values.anonym) {
+    errors.nickname = errorMessage.empty;
+  } else if (values.nickname.length && values.nickname.length < 3) {
+    errors.nickname = errorMessage.minLenghThree;
+  } else if (values.nickname.length > 30) {
+    errors.nickname = errorMessage.maxLengthThirty;
+  } else if (values.nickname.match(regExp)) {
+    errors.nickname = errorMessage.correctData;
   }
 
   if (!values.title.length) {
@@ -194,7 +209,7 @@ const Participation = () => {
 
   const canSubmit = !form.nonFieldError
     && (Object.keys(form.values) as Array<keyof ParticipationFormFields>)
-      .every((field) => form.touched[field] && !form.errors[field]);
+      .every((field) => !form.errors[field]);
 
   if (errorOccurred) {
     return (
@@ -299,6 +314,36 @@ const Participation = () => {
                       errorText={form.touched.email ? form.errors.email : ''}
                       onChange={(value) => handleInput('email', value)}
                     />
+                  </FormField>
+                </Form.Field>
+                {form.values.anonym
+                && (
+                  <Form.Field>
+                    <FormField
+                      caption="Псевдоним"
+                      hiddenCaption
+                    >
+                      <TextInput
+                        value={form.values.nickname}
+                        placeholder="Псевдоним"
+                        errorText={form.touched.nickname ? form.errors.nickname : ''}
+                        onChange={(value) => handleInput('nickname', value)}
+                      />
+                    </FormField>
+                  </Form.Field>
+                )
+                }
+                <Form.Field>
+                  <FormField
+                    caption="Хочу сохранить анонимность"
+                    hiddenCaption
+                  >
+                    <Checkbox
+                      checked={form.values.anonym}
+                      onChange={(value) => handleInput('anonym', value)}
+                    >
+                      Хочу сохранить анонимность
+                    </Checkbox>
                   </FormField>
                 </Form.Field>
               </Form.Fieldset>
