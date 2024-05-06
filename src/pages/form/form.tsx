@@ -63,7 +63,9 @@ const errorMessage = {
   correctData: 'Неверный формат заполнения'
 };
 
-const regExp = /[^a-zа-яё]/gi;
+const excludedCanSubmitFields = ['city', 'phoneNumber'];
+
+const regExp = /[^a-zа-яё ]/gi;
 
 const validate = (values: ParticipationFormFields) => {
 
@@ -207,9 +209,9 @@ const Participation = () => {
     }
   };
 
-  const canSubmit = !form.nonFieldError
-    && (Object.keys(form.values) as Array<keyof ParticipationFormFields>)
-      .every((field) => !form.errors[field]);
+  const canSubmit = !form.nonFieldError && (Object.keys(form.values) as Array<keyof ParticipationFormFields>)
+    .filter((field) => !excludedCanSubmitFields.includes(field))
+    .every((field) => !form.errors[field]);
 
   if (errorOccurred) {
     return (
