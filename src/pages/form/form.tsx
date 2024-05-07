@@ -65,7 +65,7 @@ const errorMessage = {
 
 const excludedCanSubmitFields = ['city', 'phoneNumber'];
 
-const regExp = /[^a-zа-яё ]/gi;
+const regExp = /[^a-zа-яё\s\W]/gi;
 
 const validate = (values: ParticipationFormFields) => {
 
@@ -100,7 +100,7 @@ const validate = (values: ParticipationFormFields) => {
   }
 
   if (!values.city.length) {
-    errors.city = errorMessage.empty;
+    errors.city = '';
   } else if (values.city.length < 2) {
     errors.city = errorMessage.minLengh;
   } else if (values.city.length > 50) {
@@ -109,9 +109,7 @@ const validate = (values: ParticipationFormFields) => {
     errors.city = errorMessage.correctData;
   }
 
-  if (!values.phoneNumber.length) {
-    errors.phoneNumber = errorMessage.empty;
-  } else if (!validPhoneNumberRegexp.test(values.phoneNumber)) {
+  if (!validPhoneNumberRegexp.test(values.phoneNumber) && !values.phoneNumber.length) {
     errors.phoneNumber = errorMessage.incorrectPhone;
   }
 
