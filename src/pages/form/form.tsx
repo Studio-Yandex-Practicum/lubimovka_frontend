@@ -109,7 +109,7 @@ const validate = (values: ParticipationFormFields) => {
 
   if (values.phoneNumber.length > 30) {
     errors.phoneNumber = errorMessage.maxLengthThirty;
-  } else if (!validPhoneNumberRegexp.test(values.phoneNumber)) {
+  } else if (!validPhoneNumberRegexp.test(values.phoneNumber) && values.phoneNumber != '') {
     errors.phoneNumber = errorMessage.incorrectPhone;
   }
 
