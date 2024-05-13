@@ -21,6 +21,7 @@ import { useSettings } from 'services/api/settings-adapter';
 import { isHttpRequestError } from 'services/fetcher';
 import {
   validEmailRegexp,
+  validPhoneNumberRegexp,
   validYearRegexp,
 } from 'shared/constants/regexps';
 import { snakeToCamelCase } from 'shared/helpers/snake-to-camel-case';
@@ -108,6 +109,8 @@ const validate = (values: ParticipationFormFields) => {
 
   if (values.phoneNumber.length > 30) {
     errors.phoneNumber = errorMessage.maxLengthThirty;
+  } else if (!validPhoneNumberRegexp.test(values.phoneNumber)) {
+    errors.phoneNumber = errorMessage.incorrectPhone;
   }
 
   if (!values.email.length) {
