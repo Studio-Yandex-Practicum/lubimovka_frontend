@@ -21,7 +21,6 @@ import { useSettings } from 'services/api/settings-adapter';
 import { isHttpRequestError } from 'services/fetcher';
 import {
   validEmailRegexp,
-  validPhoneNumberRegexp,
   validYearRegexp,
 } from 'shared/constants/regexps';
 import { snakeToCamelCase } from 'shared/helpers/snake-to-camel-case';
@@ -107,8 +106,8 @@ const validate = (values: ParticipationFormFields) => {
     errors.city = errorMessage.correctData;
   }
 
-  if (values.phoneNumber.length && !validPhoneNumberRegexp.test(values.phoneNumber)) {
-    errors.phoneNumber = errorMessage.incorrectPhone;
+  if (values.phoneNumber.length > 30) {
+    errors.phoneNumber = errorMessage.maxLengthThirty;
   }
 
   if (!values.email.length) {
@@ -219,13 +218,7 @@ const Participation = () => {
     input: keyof ParticipationFormFields,
     value: ParticipationFormFields[keyof ParticipationFormFields]
   ) => {
-    if (input === 'phoneNumber') {
-      if (value != '') {
-        form.setFieldValue(input, '+7' + value);
-      }
-    } else {
-      form.setFieldValue(input, value);
-    }
+    form.setFieldValue(input, value);
   };
 
   return (
