@@ -63,7 +63,9 @@ const errorMessage = {
   correctData: 'Неверный формат заполнения'
 };
 
-const regExp = /[^a-zа-яё]/gi;
+const excludedCanSubmitFields = ['city', 'phoneNumber'];
+
+const regExp = /[^a-zа-яё\s\W]/gi;
 
 const validate = (values: ParticipationFormFields) => {
 
@@ -97,9 +99,7 @@ const validate = (values: ParticipationFormFields) => {
     errors.birthYear = errorMessage.maxYear;
   }
 
-  if (!values.city.length) {
-    errors.city = errorMessage.empty;
-  } else if (values.city.length < 2) {
+  if (values.city.length && values.city.length < 2) {
     errors.city = errorMessage.minLengh;
   } else if (values.city.length > 50) {
     errors.city = errorMessage.maxLengthFifty;
@@ -107,9 +107,9 @@ const validate = (values: ParticipationFormFields) => {
     errors.city = errorMessage.correctData;
   }
 
-  if (!values.phoneNumber.length) {
-    errors.phoneNumber = errorMessage.empty;
-  } else if (!validPhoneNumberRegexp.test(values.phoneNumber)) {
+  if (values.phoneNumber.length > 30) {
+    errors.phoneNumber = errorMessage.maxLengthThirty;
+  } else if (!validPhoneNumberRegexp.test(values.phoneNumber) && values.phoneNumber != '') {
     errors.phoneNumber = errorMessage.incorrectPhone;
   }
 
@@ -207,9 +207,9 @@ const Participation = () => {
     }
   };
 
-  const canSubmit = !form.nonFieldError
-    && (Object.keys(form.values) as Array<keyof ParticipationFormFields>)
-      .every((field) => !form.errors[field]);
+  const canSubmit = Object.keys(form.errors).length==0 && (Object.keys(form.values) as Array<keyof ParticipationFormFields>)
+    .filter((field) => !excludedCanSubmitFields.includes(field))
+    .every((field) => !form.errors[field]);
 
   if (errorOccurred) {
     return (
@@ -221,9 +221,7 @@ const Participation = () => {
     input: keyof ParticipationFormFields,
     value: ParticipationFormFields[keyof ParticipationFormFields]
   ) => {
-    return input === 'phoneNumber'
-      ? form.setFieldValue(input, '+7' + value)
-      : form.setFieldValue(input, value);
+    form.setFieldValue(input, value);
   };
 
   return (
