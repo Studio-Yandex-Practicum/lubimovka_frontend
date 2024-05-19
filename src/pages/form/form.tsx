@@ -119,9 +119,7 @@ const validate = (values: ParticipationFormFields) => {
     errors.email = errorMessage.incorrectEmail;
   }
 
-  if (!values.nickname.length && values.anonym) {
-    errors.nickname = errorMessage.empty;
-  } else if (values.nickname.length && values.nickname.length < 3) {
+  if (values.nickname.length && values.nickname.length < 3) {
     errors.nickname = errorMessage.minLenghThree;
   } else if (values.nickname.length > 30) {
     errors.nickname = errorMessage.maxLengthThirty;
