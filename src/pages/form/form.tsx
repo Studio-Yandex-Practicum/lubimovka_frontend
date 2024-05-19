@@ -336,7 +336,14 @@ const Participation = () => {
                   >
                     <Checkbox
                       checked={form.values.anonym}
-                      onChange={(value) => handleInput('anonym', value)}
+                      // onChange={(value) => handleInput('anonym', value)}
+                      onChange={(value) => {
+                        handleInput('anonym', value);
+                        if (!value) {
+                          form.setFieldValue('nickname', '');
+                          // form.setFieldValue('anonym', false);
+                        }
+                      }}
                     >
                       Хочу сохранить анонимность
                     </Checkbox>
