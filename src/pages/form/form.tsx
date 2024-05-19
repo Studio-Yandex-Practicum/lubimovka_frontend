@@ -126,15 +126,6 @@ const validate = (values: ParticipationFormFields) => {
   } else if (values.nickname.match(regExp)) {
     errors.nickname = errorMessage.correctData;
   }
-  // if (!values.nickname.length && values.anonym) {
-  //   errors.nickname = errorMessage.empty;
-  // } else if (values.nickname.length && values.nickname.length < 3) {
-  //   errors.nickname = errorMessage.minLenghThree;
-  // } else if (values.nickname.length > 30) {
-  //   errors.nickname = errorMessage.maxLengthThirty;
-  // } else if (values.nickname.match(regExp)) {
-  //   errors.nickname = errorMessage.correctData;
-  // }
 
   if (!values.title.length) {
     errors.title = errorMessage.empty;
