@@ -196,7 +196,8 @@ const Participation = () => {
       return;
     }
     try {
-      await postParticipation(form.values);
+      const participationData = form.values.anonym === false ? { ...form.values, nickname: '' } : form.values;
+      await postParticipation(participationData);
       router.push('/form/success');
     } catch (error) {
       handleSubmitError(error);
