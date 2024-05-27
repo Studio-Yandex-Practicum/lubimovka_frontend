@@ -196,7 +196,8 @@ const Participation = () => {
       return;
     }
     try {
-      await postParticipation(form.values);
+      const participationData = form.values.anonym === false ? { ...form.values, nickname: '' } : form.values;
+      await postParticipation(participationData);
       router.push('/form/success');
     } catch (error) {
       handleSubmitError(error);
@@ -336,14 +337,7 @@ const Participation = () => {
                   >
                     <Checkbox
                       checked={form.values.anonym}
-                      // onChange={(value) => handleInput('anonym', value)}
-                      onChange={(value) => {
-                        handleInput('anonym', value);
-                        if (!value) {
-                          form.setFieldValue('nickname', '');
-                          // form.setFieldValue('anonym', false);
-                        }
-                      }}
+                      onChange={(value) => handleInput('anonym', value)}
                     >
                       Хочу сохранить анонимность
                     </Checkbox>
