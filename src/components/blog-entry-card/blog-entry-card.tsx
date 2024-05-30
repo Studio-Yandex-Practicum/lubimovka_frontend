@@ -2,6 +2,8 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useCard } from 'services/api/use-card';
+
 import type { BlogEntryPreview } from 'core/blog';
 
 import styles from './blog-entry-card.module.css';
@@ -13,6 +15,9 @@ interface BlogEntryCardProps extends Omit<BlogEntryPreview, 'id'> {
 }
 
 export const BlogEntryCard: React.VFC<BlogEntryCardProps> = (props) => {
+
+  const [, setCard] = useCard();
+
   const {
     authorFullName,
     authorUrl,
@@ -26,7 +31,7 @@ export const BlogEntryCard: React.VFC<BlogEntryCardProps> = (props) => {
   const authorNameProps = authorUrl ? { href: authorUrl } : {};
 
   return (
-    <article className={cx('root')}>
+    <article className={cx('root')} id={viewUrl} onClick={()=>setCard(viewUrl)}>
       <Link href={viewUrl}>
         <a className={cx('link')}>
           <h2 className={cx('title')}>
