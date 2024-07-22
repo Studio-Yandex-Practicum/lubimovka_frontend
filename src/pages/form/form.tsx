@@ -154,6 +154,7 @@ const validate = (values: ParticipationFormFields) => {
 
 const Participation = () => {
   const [errorOccurred, setErrorOccurred] = useState(false);
+  const [requestActive, setRequestActive] = useState(false);
   const form = useForm<ParticipationFormFields>({
     initialValues: initialFormValues,
     validate: validate,
@@ -196,12 +197,15 @@ const Participation = () => {
       return;
     }
     try {
+      setRequestActive(true);
       await postParticipation(form.values);
       router.push('/form/success');
     } catch (error) {
       handleSubmitError(error);
 
       return;
+    } finally {
+      setRequestActive(false);
     }
   };
 
@@ -400,9 +404,11 @@ const Participation = () => {
                   border="full"
                   upperCase
                   fullWidth
-                  disabled={!canSubmit}
+                  disabled={!canSubmit || requestActive}
                 >
-                  Отправить
+                  {
+                    requestActive ? 'Отправляется' : 'Отправить'
+                  }
                 </Button>
               </Form.Actions>
               <Form.Disclaimer>
