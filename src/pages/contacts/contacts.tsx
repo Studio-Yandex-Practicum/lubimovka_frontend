@@ -152,7 +152,6 @@ const Contacts: NextPage = () => {
     setTimeout(() => setFormSuccessfullySent(false), CONTACT_FORM_RESET_TIMEOUT);
   };
 
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true); 
