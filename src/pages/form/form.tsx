@@ -119,9 +119,7 @@ const validate = (values: ParticipationFormFields) => {
     errors.email = errorMessage.incorrectEmail;
   }
 
-  if (!values.nickname.length && values.anonym) {
-    errors.nickname = errorMessage.empty;
-  } else if (values.nickname.length && values.nickname.length < 3) {
+  if (values.nickname.length && values.nickname.length < 3) {
     errors.nickname = errorMessage.minLenghThree;
   } else if (values.nickname.length > 30) {
     errors.nickname = errorMessage.maxLengthThirty;
@@ -156,6 +154,7 @@ const validate = (values: ParticipationFormFields) => {
 
 const Participation = () => {
   const [errorOccurred, setErrorOccurred] = useState(false);
+  const [requestActive, setRequestActive] = useState(false);
   const form = useForm<ParticipationFormFields>({
     initialValues: initialFormValues,
     validate: validate,
@@ -198,12 +197,15 @@ const Participation = () => {
       return;
     }
     try {
+      setRequestActive(true);
       await postParticipation(form.values);
       router.push('/form/success');
     } catch (error) {
       handleSubmitError(error);
 
       return;
+    } finally {
+      setRequestActive(false);
     }
   };
 
@@ -402,9 +404,11 @@ const Participation = () => {
                   border="full"
                   upperCase
                   fullWidth
-                  disabled={!canSubmit}
+                  disabled={!canSubmit || requestActive}
                 >
-                  Отправить
+                  {
+                    requestActive ? 'Отправляется' : 'Отправить'
+                  }
                 </Button>
               </Form.Actions>
               <Form.Disclaimer>
