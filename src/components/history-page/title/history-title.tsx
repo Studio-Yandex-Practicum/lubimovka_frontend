@@ -13,12 +13,13 @@ import style from './history-title.module.css';
 interface IHistoryTitle {
   data: Festival
   currentYear: number
+  showVolunteers: boolean
 }
 
 // TODO: TT заменить на локальное изображение
 const imageUrl = 'https://s1.hostingkartinok.com/uploads/images/2021/12/fb0c8e1baf21b0ca306ee98a6678c0d8.png';
 
-export const HistoryTitle: React.FC<IHistoryTitle> = ({ data, currentYear }) => {
+export const HistoryTitle: React.FC<IHistoryTitle> = ({ data, currentYear, showVolunteers }) => {
   const {
     plays_count,
     selected_plays_count,
@@ -33,7 +34,6 @@ export const HistoryTitle: React.FC<IHistoryTitle> = ({ data, currentYear }) => 
     additional_links,
     description
   } = data;
-
   const formatDate = (date: string) => new Date(date).toLocaleDateString('ru-Ru', {
     timeZone: 'Europe/Moscow',
     month: 'long',
@@ -61,7 +61,7 @@ export const HistoryTitle: React.FC<IHistoryTitle> = ({ data, currentYear }) => 
     volunteers_count: {
       count: volunteers_count,
       title: 'волонтёров работали на фестивале',
-      buttonProps: {
+      buttonProps: showVolunteers ? {
         href: urlVolonters,
         iconPosition: 'right',
         icon: <Icon
@@ -69,7 +69,7 @@ export const HistoryTitle: React.FC<IHistoryTitle> = ({ data, currentYear }) => 
           width="100%"
           height="100%"
         />
-      }
+      } : null
     },
     events_count: {
       count: events_count,
