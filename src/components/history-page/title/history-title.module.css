@@ -61,6 +61,10 @@
   display: flex;
 }
 
+.buttonDefault {
+  cursor: default;
+}
+
 .button.link.subtitle {
   overflow: hidden;
   padding: 0;
