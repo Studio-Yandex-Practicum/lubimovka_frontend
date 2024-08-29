@@ -17,7 +17,8 @@ const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
   const {
     years,
     festival,
-    defaultYear
+    defaultYear,
+    showVolunteers,
   } = props;
 
   const menuRef = useHorizontalScroll<HTMLUListElement>();
@@ -43,6 +44,7 @@ const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
         <HistoryTitle
           data={festival}
           currentYear={defaultYear}
+          showVolunteers={showVolunteers} 
         />
         <HistoryItself data={itselfData}/>
       </AppLayout>
@@ -68,7 +70,8 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       ? Number(params.year)
       : years[0];
 
-    festival = await fetcher<Festival>(`/info/festivals/${defaultYear}/`);
+    festival = await fetcher<Festival>(`/info/festivals/${defaultYear}/`);   
+
   } catch ({ statusCode }) {
     switch (statusCode) {
     case 404:
@@ -77,12 +80,15 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       throw new InternalServerError();
     }
   }
-
+  const settings = await fetcher<{ show_volunteers: boolean }>('/info/settings/');
+  const showVolunteers = settings.show_volunteers;
+  
   return {
     props: {
       festival,
       years,
       defaultYear,
+      showVolunteers,
     },
   };
 };
