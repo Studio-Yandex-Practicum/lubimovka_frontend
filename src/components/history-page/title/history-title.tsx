@@ -69,7 +69,7 @@ export const HistoryTitle: React.FC<IHistoryTitle> = ({ data, currentYear, showV
           width="100%"
           height="100%"
         />
-      } : null
+      } : undefined
     },
     events_count: {
       count: events_count,
