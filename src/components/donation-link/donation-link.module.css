@@ -38,6 +38,13 @@
       visibility: visible;
     }
   }
+  
+  &.active { 
+    &::before,
+    &::after {
+      visibility: visible;
+    }
+  }
 }
 
 .icon {
