@@ -22,6 +22,9 @@ export const HistoryTitleCard = ({ item }: {item: ICard}) => {
           type='button'
           size='xxl'
           border='none'
+          className={cn({
+            [style.buttonDefault]: !item.buttonProps, 
+          })}
           {...(item.count && item.buttonProps)}
         >
           {item.count ? item.count.toString() : '0'}
