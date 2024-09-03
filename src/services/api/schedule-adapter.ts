@@ -73,6 +73,7 @@ function mapDTOToFestivalEvents(dto: EventsDTO): PaginatedFestivalEvents {
       date: event.date_time,
       registrationOpeningDate: event.opening_date_time,
       registrationUrl: event.action_url,
+      performanceId: event.performance_id
     })),
     pagination,
   };

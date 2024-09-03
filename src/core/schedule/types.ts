@@ -19,4 +19,5 @@ export type FestivalEvent = {
   date: DateTimeIsoString
   registrationOpeningDate: DateTimeIsoString
   registrationUrl?: Url | null
+  performanceId: number | null
 }
