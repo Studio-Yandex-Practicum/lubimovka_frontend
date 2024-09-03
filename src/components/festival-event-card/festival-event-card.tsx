@@ -17,6 +17,7 @@ export interface FestivalEventCardProps {
   credits: CreditsRole[]
   aboutUrl?: string
   actionUrl?: Url | null
+  actionText?: string | null
   className?: string
 }
 
@@ -32,6 +33,7 @@ export const FestivalEventCard: React.VFC<FestivalEventCardProps> = (props) => {
     credits,
     aboutUrl,
     actionUrl,
+    actionText,
     className
   } = props;
 
@@ -95,7 +97,7 @@ export const FestivalEventCard: React.VFC<FestivalEventCardProps> = (props) => {
             О спектакле
           </Button>
         )}
-        {actionUrl && (
+        {actionUrl && actionText && (
           <Button
             size="s"
             border="bottom-left"
@@ -111,7 +113,7 @@ export const FestivalEventCard: React.VFC<FestivalEventCardProps> = (props) => {
             target="_blank"
             upperCase
           >
-            Регистрация
+            {actionText}
           </Button>
         )}
       </div>
