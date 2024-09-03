@@ -96,6 +96,7 @@ export const FestivalSchedule: React.VFC<FestivalScheduleProps> = withSWRFallbac
                   description={event.description}
                   aboutUrl={event.performanceId !== null ? (`/performances/${event.performanceId}`) : undefined}
                   actionUrl={event.registrationUrl}
+                  actionText={event.actionText}
                   credits={event.team}
                 />
               ))}
