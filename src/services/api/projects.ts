@@ -25,6 +25,7 @@ function mapDTOtoProjectDetailed(dto: ProjectDTO): ProjectDetailed {
     title: dto.title,
     intro: dto.intro,
     description: dto.description,
+    descriptionCaption: dto.description_caption,
     image: dto.image,
     contents: dto.contents,
   };
