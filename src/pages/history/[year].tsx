@@ -5,11 +5,11 @@ import { HistoryItself } from 'components/history-page/itself';
 import { HistoryTitle } from 'components/history-page/title';
 import { SEO } from 'components/seo';
 import { Menu } from 'components/ui/menu';
+import { fetchSettings } from 'services/api/settings-adapter';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { useHorizontalScroll } from 'shared/hooks/use-horizontal-scroll';
-import { fetchSettings } from 'services/api/settings-adapter';
 
 import type { Festival, Years } from '__generated__/api-typings';
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
@@ -81,7 +81,7 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       throw new InternalServerError();
     }
   }
-  const settings = await fetchSettings()
+  const settings = await fetchSettings(); // Semicolon added
   const showVolunteers = settings.permissions.volunteers;
   
   return {
