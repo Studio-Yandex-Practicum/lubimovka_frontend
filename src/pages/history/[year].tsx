@@ -9,6 +9,7 @@ import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 import { useHorizontalScroll } from 'shared/hooks/use-horizontal-scroll';
+import { fetchSettings } from 'services/api/settings-adapter';
 
 import type { Festival, Years } from '__generated__/api-typings';
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
@@ -80,8 +81,8 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       throw new InternalServerError();
     }
   }
-  const settings = await fetcher<{ show_volunteers: boolean }>('/info/settings/');
-  const showVolunteers = settings.show_volunteers;
+  const settings = await fetchSettings()
+  const showVolunteers = settings.permissions.volunteers;
   
   return {
     props: {
