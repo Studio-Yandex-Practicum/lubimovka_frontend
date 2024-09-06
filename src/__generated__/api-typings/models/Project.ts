@@ -14,6 +14,7 @@ export type Project = {
      * Короткое интро к проекту. Показывается в списке проектов с заголовком.
      */
     intro: string;
+    description_caption: string;
     description: string;
     image: string;
     readonly contents: Array<BaseContent>;
