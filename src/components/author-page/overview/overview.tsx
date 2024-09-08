@@ -198,7 +198,7 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
                     <Button
                       size='sm'
                       border='right-bottom-left'
-                      href={`library/?festival=${item.year}&program=${item.id}`}
+                      href={`library/?year=${item.year}&program=${item.id}`}
                       animation='invert'
                     >
                       {`${item.name} ${item.year}`}
@@ -222,6 +222,8 @@ export const AuthorOverview: React.FC<IAuthorOverview> = (props) => {
                       size="s"
                       border='bottom-left'
                       href={item.link}
+                      target='_blank'
+                      rel='noopener noreferrer'
                       icon={(
                         <Icon
                           glyph="arrow-right"

@@ -10,6 +10,7 @@ export type Project = {
 export type ProjectDetailed = {
   title: string
   intro: string
+  descriptionCaption: string
   description: string
   image: string
   contents: BaseContent[]

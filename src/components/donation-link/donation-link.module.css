@@ -32,7 +32,8 @@
     border-top-right-radius: 200% 100%;
   }
 
-  &:hover {
+  &:hover,
+  &.active { 
     &::before,
     &::after {
       visibility: visible;

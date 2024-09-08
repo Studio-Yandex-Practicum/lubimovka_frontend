@@ -15,7 +15,9 @@ export interface FestivalEventCardProps {
   title: string
   description?: string
   credits: CreditsRole[]
+  aboutUrl?: string
   actionUrl?: Url | null
+  actionText?: string | null
   className?: string
 }
 
@@ -29,7 +31,9 @@ export const FestivalEventCard: React.VFC<FestivalEventCardProps> = (props) => {
     title,
     description,
     credits,
+    aboutUrl,
     actionUrl,
+    actionText,
     className
   } = props;
 
@@ -73,8 +77,27 @@ export const FestivalEventCard: React.VFC<FestivalEventCardProps> = (props) => {
         className={cx('credits')}
         roles={credits}
       />
-      {actionUrl && (
-        <div className={cx('actions')}>
+      <div className={cx('actions')}>
+        {aboutUrl && (
+          <Button
+            size="s"
+            border="bottom-left"
+            icon={(
+              <Icon
+                glyph="arrow-right"
+                width="100%"
+                height="100%"
+              />
+            )}
+            href={aboutUrl}
+            className={cx('button')}
+            target="_blank"
+            upperCase
+          >
+            О спектакле
+          </Button>
+        )}
+        {actionUrl && actionText && (
           <Button
             size="s"
             border="bottom-left"
@@ -90,10 +113,11 @@ export const FestivalEventCard: React.VFC<FestivalEventCardProps> = (props) => {
             target="_blank"
             upperCase
           >
-            Регистрация
+            {actionText}
           </Button>
-        </div>
-      )}
+        )}
+      </div>
+
     </article>
   );
 };

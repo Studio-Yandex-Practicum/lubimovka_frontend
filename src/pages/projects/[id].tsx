@@ -16,6 +16,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
   const {
     title,
     intro,
+    descriptionCaption,
     description,
     image,
     contents,
@@ -39,9 +40,7 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
           intro={intro}
           image={image}
         />
-        <ProjectLayout.Description>
-          {description}
-        </ProjectLayout.Description>
+        <ProjectLayout.Description {...{ descriptionCaption, description }}/>
         <ConstructorContent
           variant="project"
           // @ts-expect-error: TODO: В документации API нет описания ответов с блоками конструктора
