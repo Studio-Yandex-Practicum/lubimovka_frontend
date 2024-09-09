@@ -13,7 +13,7 @@
   -ms-overflow-style: none;
   overflow-x: hidden;
   scrollbar-width: none;
-  transition-duration: .2s;
+  transition-duration: .4s;
   transition-property: margin, width;
   transition-timing-function: cubic-bezier(.6, 0, .5, 1);
 
@@ -32,6 +32,22 @@
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Псевдоэлемент для создания дополнительной зоны, где скрытие не будет происходить сразу */
+  &:after {
+    content: '';
+    position: absolute;
+    top: -40px;   /* 40px выше блока */
+    left: -40px;  /* 40px левее блока */
+    right: -40px; /* 40px правее блока */
+    bottom: -40px;/* 40px ниже блока */
+    z-index: -1;  /* Псевдоэлемент не будет влиять на другие элементы */
+  }
+
+  /* Если курсор покидает расширенную область, блок скрывается */
+  &:not(:hover):after {
+    transition-delay: .4s; /* Добавляем небольшую задержку перед скрытием */
   }
 }
 
