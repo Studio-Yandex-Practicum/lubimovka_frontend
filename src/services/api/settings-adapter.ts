@@ -35,8 +35,9 @@ const mapDTOToSettings = (dto: SettingsDTO): Settings => ({
     title: project.title,
   })),
   permissions: {
-    team: dto.show_team,
-    sponsors: dto.show_sponsors,
+    show_team: dto.show_team,
+    show_volunteers: dto.show_volunteers,
+    show_sponsors: dto.show_sponsors,
     mission: true,
     'about-us': true,
   }
