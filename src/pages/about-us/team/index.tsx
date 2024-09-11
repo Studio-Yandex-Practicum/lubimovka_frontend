@@ -20,7 +20,7 @@ const Team = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   const permissions = settings?.permissions;
 
   const router = useRouter();
-  if (permissions && !permissions.team) {
+  if (permissions && !permissions.show_team) {
     router.replace('/about-us/404');
   }
 
