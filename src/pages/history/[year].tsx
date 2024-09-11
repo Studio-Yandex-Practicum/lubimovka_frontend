@@ -82,7 +82,7 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
     }
   }
   const settings = await fetchSettings(); // Semicolon added
-  const showVolunteers = settings.permissions.volunteers;
+  const showVolunteers = settings.permissions.show_volunteers;
   
   return {
     props: {
