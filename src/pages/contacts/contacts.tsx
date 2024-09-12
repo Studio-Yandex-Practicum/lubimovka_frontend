@@ -82,6 +82,16 @@ const contactFormReducer = (state: ContactFormState, action: ContactFormAction) 
   }
 };
 
+const getSubmitButtonText = (formSuccessfullySent: boolean, isSubmitting: boolean) => {
+  if (formSuccessfullySent) {
+    return 'Отправлено';
+  } else if (isSubmitting) {
+    return 'Отправляется';
+  }
+
+  return 'Отправить';
+};
+
 const Contacts: NextPage = () => {
   const [contactFormState, dispatch] = useReducer(contactFormReducer, initialContactFormState);
   const [formSuccessfullySent, setFormSuccessfullySent] = useState(false);
@@ -154,7 +164,7 @@ const Contacts: NextPage = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsSubmitting(true); 
+    setIsSubmitting(true);
 
     const data = {
       author_name: name.value,
@@ -166,7 +176,7 @@ const Contacts: NextPage = () => {
       await fetcher('/feedback/questions/', {
         method: 'POST',
         headers: {
-          'Content-type': 'application/json',
+          'Content-type': 'application/json'
         },
         body: JSON.stringify(data),
       });
@@ -256,11 +266,11 @@ const Contacts: NextPage = () => {
                   )}
                   iconPosition="right"
                   border="full"
-                  disabled={!canSubmit || isSubmitting} 
+                  disabled={!canSubmit || isSubmitting}
                   upperCase
                   fullWidth
                 >
-                  {formSuccessfullySent ? 'Отправлено' : isSubmitting ? 'Отправляется' : 'Отправить'}
+                  {getSubmitButtonText(formSuccessfullySent, isSubmitting)}
                 </Button>
               </Form.Actions>
               <Form.Disclaimer className={styles.container}>
