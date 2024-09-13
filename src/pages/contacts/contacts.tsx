@@ -85,7 +85,7 @@ const contactFormReducer = (state: ContactFormState, action: ContactFormAction) 
 const getSubmitButtonText = (formSuccessfullySent: boolean, isSubmitting: boolean) => {
   if (formSuccessfullySent) {
     return 'Отправлено';
-  } else if (isSubmitting) {
+  } if (isSubmitting) {
     return 'Отправляется';
   }
 
