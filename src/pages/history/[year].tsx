@@ -5,6 +5,7 @@ import { HistoryItself } from 'components/history-page/itself';
 import { HistoryTitle } from 'components/history-page/title';
 import { SEO } from 'components/seo';
 import { Menu } from 'components/ui/menu';
+import { fetchSettings } from 'services/api/settings-adapter';
 import { fetcher } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
@@ -17,7 +18,8 @@ const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
   const {
     years,
     festival,
-    defaultYear
+    defaultYear,
+    showVolunteers,
   } = props;
 
   const menuRef = useHorizontalScroll<HTMLUListElement>();
@@ -43,6 +45,7 @@ const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
         <HistoryTitle
           data={festival}
           currentYear={defaultYear}
+          showVolunteers={showVolunteers} 
         />
         <HistoryItself data={itselfData}/>
       </AppLayout>
@@ -68,7 +71,8 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       ? Number(params.year)
       : years[0];
 
-    festival = await fetcher<Festival>(`/info/festivals/${defaultYear}/`);
+    festival = await fetcher<Festival>(`/info/festivals/${defaultYear}/`);   
+
   } catch ({ statusCode }) {
     switch (statusCode) {
     case 404:
@@ -77,12 +81,15 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
       throw new InternalServerError();
     }
   }
-
+  const settings = await fetchSettings(); // Semicolon added
+  const showVolunteers = settings.permissions.show_volunteers;
+  
   return {
     props: {
       festival,
       years,
       defaultYear,
+      showVolunteers,
     },
   };
 };

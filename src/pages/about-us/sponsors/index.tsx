@@ -17,7 +17,7 @@ const Sponsors = (props: InferGetServerSidePropsType<typeof getServerSideProps>)
   const permissions = settings?.permissions;
 
   const router = useRouter();
-  if (permissions && !permissions.sponsors) {
+  if (permissions && !permissions.show_sponsors) {
     router.replace('/about-us/404');
   }
 

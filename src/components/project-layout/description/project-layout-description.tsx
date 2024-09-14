@@ -5,21 +5,22 @@ import { ProjectLayoutStorey } from '../storey';
 import styles from './project-layout-description.module.css';
 
 interface IProjectLayoutDescriptionProps {
-  children: string
+  descriptionCaption: string
+  description: string
 }
 
 const cx = classNames.bind(styles);
 
-export const ProjectLayoutDescription = ({ children }: IProjectLayoutDescriptionProps): JSX.Element => {
+export const ProjectLayoutDescription = ({ descriptionCaption, description }: IProjectLayoutDescriptionProps): JSX.Element => {
 
   return (
     <ProjectLayoutStorey type="description">
       <section>
         <h2 className={cx('title')}>
-          О проекте
+          {descriptionCaption}
         </h2>
         <p className={cx('text')}>
-          {children}
+          {description}
         </p>
       </section>
     </ProjectLayoutStorey>
