@@ -23,7 +23,9 @@ import { mainNavigationItems } from 'shared/constants/main-navigation-items';
 import { participationFormPath } from 'shared/constants/participation-form-path';
 import { socialLinkItems } from 'shared/constants/social-link-items';
 import { useDisableBodyScroll } from 'shared/hooks/use-disable-body-scroll';
+import { useEffectSkipMount } from 'shared/hooks/use-effect-skip-mount';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
+import useOrientation from 'shared/hooks/use-orientation';
 
 import type { NavbarProps } from 'components/navbar';
 
@@ -42,12 +44,15 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
     navbarAddon,
     hiddenPartners,
   } = props;
+
+  const router = useRouter();
   const { settings } = useSettings();
   const { partners } = usePartners({ onlyGeneral: true });
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+  const screenOrientation = useOrientation();
+
   const [isOverlayMenuOpen, setIsOverlayMenuOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
-  const router = useRouter();
 
   const toggleOverlayMenu = useCallback(() => {
     setIsOverlayMenuOpen(!isOverlayMenuOpen);
@@ -61,26 +66,13 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
     }
   }, [isMobile]);
 
-  useEffect(() => {
-    const supported = window && 'screen' in window && 'orientation' in window.screen;
+  useEffectSkipMount(() => {
+    setScrollPosition(window.scrollY);
 
-    if (!supported) {
-      return;
+    if (screenOrientation === 'landscape-primary') {
+      window.scroll(0, scrollPosition * (window.outerWidth / window.outerHeight));
     }
-
-    const onChange = () => {
-      setScrollPosition(window.scrollY);
-      if (screen.orientation.type === 'landscape-primary') {
-        window.scroll(0, scrollPosition * (window.outerWidth / window.outerHeight));
-      }
-    };
-
-    screen.orientation.addEventListener('change', onChange);
-
-    return () => {
-      screen.orientation.removeEventListener('change', onChange);
-    };
-  }, [scrollPosition]);
+  }, [screenOrientation]);
 
   return (
     <Page>
