@@ -62,12 +62,19 @@ export const AppLayout: React.VFC<React.PropsWithChildren<AppLayoutProps>> = (pr
   }, [isMobile]);
 
   useEffect(() => {
+    const supported = window && 'screen' in window && 'orientation' in window.screen;
+
+    if (!supported) {
+      return;
+    }
+
     const onChange = () => {
       setScrollPosition(window.scrollY);
       if (screen.orientation.type === 'landscape-primary') {
         window.scroll(0, scrollPosition * (window.outerWidth / window.outerHeight));
       }
     };
+
     screen.orientation.addEventListener('change', onChange);
 
     return () => {
