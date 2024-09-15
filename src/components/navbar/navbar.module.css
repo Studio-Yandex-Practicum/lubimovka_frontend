@@ -42,7 +42,7 @@
     right: 0;
     bottom: 0;
     display: block;
-    width: 1px;
+    border-right: 1px solid black;
     height: 80%;
     background-color: var(--coal);
     content: "";
