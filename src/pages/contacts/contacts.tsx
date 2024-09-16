@@ -82,9 +82,21 @@ const contactFormReducer = (state: ContactFormState, action: ContactFormAction) 
   }
 };
 
+const getSubmitButtonText = (formSuccessfullySent: boolean, isSubmitting: boolean) => {
+  if (formSuccessfullySent) {
+    return 'Отправлено';
+  } 
+  if (isSubmitting) {
+    return 'Отправляется';
+  }
+
+  return 'Отправить';
+};
+
 const Contacts: NextPage = () => {
   const [contactFormState, dispatch] = useReducer(contactFormReducer, initialContactFormState);
   const [formSuccessfullySent, setFormSuccessfullySent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { settings } = useSettings();
 
   const {
@@ -153,6 +165,7 @@ const Contacts: NextPage = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsSubmitting(true);
 
     const data = {
       author_name: name.value,
@@ -168,6 +181,9 @@ const Contacts: NextPage = () => {
         },
         body: JSON.stringify(data),
       });
+
+      setFormSuccessfullySent(true);
+      resetContactForm();
     } catch (err) {
       if (isHttpRequestError(err)) {
         const { statusCode } = err.response;
@@ -192,10 +208,9 @@ const Contacts: NextPage = () => {
           throw new InternalServerError();
         }
       }
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setFormSuccessfullySent(true);
-    resetContactForm();
   };
 
   const canSubmit = name.wasChanged && !name.error
@@ -252,11 +267,11 @@ const Contacts: NextPage = () => {
                   )}
                   iconPosition="right"
                   border="full"
-                  disabled={!canSubmit}
+                  disabled={!canSubmit || isSubmitting}
                   upperCase
                   fullWidth
                 >
-                  {formSuccessfullySent ? 'Отправлено' : 'Отправить'}
+                  {getSubmitButtonText(formSuccessfullySent, isSubmitting)}
                 </Button>
               </Form.Actions>
               <Form.Disclaimer className={styles.container}>
