@@ -157,3 +157,12 @@
     }
   }
 }
+
+.timeZone {
+  @mixin text;
+  @mixin textMedium;
+
+  margin-left: 5px;
+  line-height: 30px;
+  vertical-align: super;
+}
