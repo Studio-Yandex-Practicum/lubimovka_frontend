@@ -13,7 +13,7 @@ import { PageBreadcrumbs } from 'components/page';
 import { Section } from 'components/section';
 import { SEO } from 'components/seo';
 import { ShareLinks } from 'components/share-links';
-import { fetcher } from 'services/fetcher';
+import { fetcher, HttpRequestError } from 'services/fetcher';
 import { notFoundResult } from 'shared/constants/server-side-props';
 import { InternalServerError } from 'shared/helpers/internal-server-error';
 
@@ -94,13 +94,17 @@ export const getServerSideProps = async ({ params }: GetServerSidePropsContext<R
 
   try {
     data = await fetcher<NewsItemDetail>(`/news/${id}/`);
-  } catch ({ statusCode }) {
-    switch (statusCode) {
-    case 404:
-      return notFoundResult;
-    default:
-      throw new InternalServerError();
+  } catch (error) {
+    if (error instanceof HttpRequestError) {
+      switch (error.response.statusCode) {
+      case 404:
+        return notFoundResult;
+      default:
+        throw new InternalServerError();
+      }
     }
+
+    throw error;
   }
 
   return {
