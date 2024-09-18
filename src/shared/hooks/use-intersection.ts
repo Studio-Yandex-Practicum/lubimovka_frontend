@@ -1,3 +1,4 @@
+import 'intersection-observer';
 import { useEffect, useRef, useState, useCallback } from 'react';
 
 import type { RefCallback } from 'react';
@@ -20,7 +21,7 @@ export const useIntersection = <T extends Element>(options?: IntersectionObserve
   };
 
   useEffect(() => {
-    if ('IntersectionObserver' in window) {
+    if (typeof IntersectionObserver !== 'undefined') {
       observerRef.current = new IntersectionObserver(handleIntersection, options);
     }
   }, [options]);
