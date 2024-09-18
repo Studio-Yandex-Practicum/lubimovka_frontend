@@ -42,8 +42,8 @@
     right: 0;
     bottom: 0;
     display: block;
-    border-right: 1px solid black;
     height: 80%;
+    border-right: 1px solid black;
     background-color: var(--coal);
     content: "";
   }
