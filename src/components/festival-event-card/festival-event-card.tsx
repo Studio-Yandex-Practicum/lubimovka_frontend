@@ -59,6 +59,9 @@ export const FestivalEventCard: React.VFC<FestivalEventCardProps> = (props) => {
         </dt>
         <dd className={cx('time')}>
           {time}
+          <span className={cx('timeZone')}>
+            мск
+          </span>
         </dd>
         <dt className={cx('hiddenText')}>
           Место
