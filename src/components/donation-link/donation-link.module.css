@@ -33,7 +33,7 @@
   }
 
   &:hover,
-  &.active { 
+  &.active {
     &::before,
     &::after {
       visibility: visible;

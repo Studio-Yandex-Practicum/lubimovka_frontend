@@ -11,7 +11,7 @@ import { Menu } from 'components/ui/menu';
 import { donationPath } from 'shared/constants/donation-path';
 import { mainNavigationItems } from 'shared/constants/main-navigation-items';
 import { socialLinkItems } from 'shared/constants/social-link-items';
-import { useIntersectionObserver } from 'shared/hooks/use-intersection-observer';
+import { useIntersection } from 'shared/hooks/use-intersection';
 
 import styles from './main-header.module.css';
 
@@ -35,7 +35,7 @@ export const MainHeader: React.VFC<MainHeaderProps> = (props) => {
   } = props;
 
   const router = useRouter();
-  const [containerElRef, isContainerElInViewport] = useIntersectionObserver({ threshold: 0.1 });
+  const [containerElRef, isContainerElInViewport] = useIntersection({ threshold: 0.1 });
 
   return (
     <div
