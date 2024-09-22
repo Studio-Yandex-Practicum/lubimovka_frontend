@@ -67,6 +67,9 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>((props, ref)
           </span>
           <span>
             {time}
+            <span className={cx('timeZone')}>
+              мск
+            </span>
           </span>
         </time>
         <h3 className={cx('title')}>
