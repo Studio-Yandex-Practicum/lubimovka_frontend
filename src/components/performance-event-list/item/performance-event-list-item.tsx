@@ -27,6 +27,9 @@ export const PerformanceEventListItem: FC<PerformanceEventListProps> = (props) =
       {date && (
         <time className={cx('date')}>
           {date}
+          <span className={cx('timeZone')}>
+            мск
+          </span>
         </time>
       )}
       {actionText && actionUrl && (

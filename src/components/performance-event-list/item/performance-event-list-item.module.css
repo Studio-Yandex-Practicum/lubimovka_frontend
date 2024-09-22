@@ -21,3 +21,13 @@
     min-width: 240px;
   }
 }
+
+.timeZone {
+  @mixin text;
+  @mixin textLarge;
+
+  margin-left: 5px;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: super;
+}

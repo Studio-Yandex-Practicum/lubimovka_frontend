@@ -113,9 +113,9 @@
 
 .timeZone {
   @mixin text;
-  @mixin textMedium;
+  @mixin textSmall;
 
   margin-left: 5px;
-  line-height: 30px;
+  line-height: 1;
   vertical-align: super;
 }
