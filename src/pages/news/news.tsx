@@ -34,11 +34,6 @@ const EMPTY_OPTION = {
   value: undefined,
 };
 
-const ALL_MONTH_OPTIONS = MONTHS.map((month, index) => ({
-  text: month,
-  value: String(index + 1),
-}));
-
 type NewsProps = Omit<InferGetServerSidePropsType<typeof getServerSideProps>, 'fallback'>
 
 const News = (props: NewsProps) => {
@@ -48,42 +43,73 @@ const News = (props: NewsProps) => {
   const [year, setYear] = useState<NewsFilters['year']>(safelyGetQueryParamAsString(router.query.year, undefined));
   const { isLoading, data, error, setSize } = useNews({ month, year });
 
-  const yearOptions = useMemo(() => [
-    ...year ? [EMPTY_OPTION] : [],
-    ...filters.map(({ year }) => ({
-      text: year,
-      value: year,
-    })),
-  ], [year]);
+  const yearOptions = useMemo(() => {
+    let yearsArray: {text: string; value: string }[] = [];
+
+    if (!month) {
+      yearsArray = filters.map(({ year }) => ({
+        text: year,
+        value: year,
+      }));
+    } else {
+      yearsArray = filters
+        .filter(({ months }) => months
+          .includes(month))
+        .map(({ year }) =>({
+          text: year,
+          value: year,
+        }));
+    }
+
+    return [
+      ...year ? [EMPTY_OPTION] : [],
+      ...yearsArray
+    ];
+  }, [month, year, filters]);
 
   const selectedYearOption = useMemo(() => (
     yearOptions.find((option) => option.value === year)
-  ), [year]);
+  ), [year, yearOptions]);
 
   const handleYearChange: SelectOptionCheckHandler<NewsFilters['year']> = ({ value }) => {
-    const shouldResetMonth = !value || (month && !filters.find(({ year }) => year === value)?.months.includes(month));
-
     setYear(value);
-
-    if (shouldResetMonth) {
-      setMonth(undefined);
-    }
   };
 
   const monthOptions = useMemo(() => {
-    const availableMonths = year === null
-      ? ALL_MONTH_OPTIONS.map(({ value }) => value)
-      : filters.find((filter) => filter.year === year)?.months;
+    let monthsArrays: {text: string; value: string }[] = [];
+
+    if (!year) {
+      const monthsArray = Array.from(
+        filters
+          .flatMap(({ months }) => months.map(month => (month))));
+
+      const uniqueMonthsArray = new Set(monthsArray);
+
+      monthsArrays = Array.from(uniqueMonthsArray)
+        .sort((a, b) => Number(a) - Number(b))
+        .map((month) =>({
+          text: MONTHS[Number(month)-1],
+          value: month,
+        }));
+
+    } else {
+      monthsArrays = filters
+        .find((option) => option.year === year)
+        ?.months.map((month) =>({
+          text: MONTHS[Number(month)-1],
+          value: month,
+        })) ?? [];
+    }
 
     return [
       ...month ? [EMPTY_OPTION] : [],
-      ...ALL_MONTH_OPTIONS.filter((option) => option.value === null || availableMonths?.includes(option.value)),
+      ...monthsArrays
     ];
-  }, [year, month]);
+  }, [year, month, filters]);
 
   const selectedMonthOption = useMemo(() => (
     monthOptions.find(({ value }) => value === month)
-  ), [month]);
+  ), [month, monthOptions]);
 
   const handleMonthChange: SelectOptionCheckHandler<NewsFilters['month']> = ({ value }) => {
     setMonth(value);
@@ -91,12 +117,12 @@ const News = (props: NewsProps) => {
 
   const handleLoadMore = useCallback(() => {
     setSize((size) => size + 1);
-  }, []);
+  }, [setSize]);
 
   useEffect(() => {
     router.replace({
       query: omitBy({
-        month: (month && year) ? month : null,
+        month,
         year,
       }, isNil)
     });
@@ -171,7 +197,7 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   const queryParams = {
     limit: NEWS_PER_PAGE,
     offset: 0,
-    ...month && year ? { month } : {},
+    month,
     year,
   };
 
