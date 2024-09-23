@@ -53,9 +53,10 @@ const Project = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
 
 export const getServerSideProps = async ({ params }: GetServerSidePropsContext<Record<'id', string>>) => {
   const { id: projectId } = params!;
-  const project = await getProject(projectId);
 
   try {
+    const project = await getProject(projectId);
+
     return {
       props: project,
     };
