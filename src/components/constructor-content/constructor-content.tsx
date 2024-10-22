@@ -1,9 +1,10 @@
-/* @ts-nocheck TODO: */
+// @ts-nocheck TODO:
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 import { useCallback } from 'react';
 
 import { ConstructorLink } from 'components/constructor-link';
+import { EmbedCode } from 'components/embed-code';
 import { EventCard } from 'components/event-card';
 import { EventList } from 'components/event-list';
 import { HTMLMarkup } from 'components/html-markup';
@@ -44,6 +45,7 @@ export const ConstructorContent: React.FC<ConstructorContentProps> = (props) => 
     variant = Variant.Default,
     blocks,
   } = props;
+
   const cx = classNames.bind(variants.default);
 
   const renderImageBlock = useCallback(({ content_item }, key) => {
@@ -294,6 +296,18 @@ export const ConstructorContent: React.FC<ConstructorContentProps> = (props) => 
             // TODO: получить текст ссылки в ответе API
             actionText="Перейти"
             url={content_item.url}
+          />
+        </ConstructorContentSection>
+      );
+    case ConstructorBlockType.EmbedCode:
+      return (
+        <ConstructorContentSection
+          key={key}
+          variant="embed-code"
+          title={content_item.title}
+        >
+          <EmbedCode
+            html={content_item.code}
           />
         </ConstructorContentSection>
       );
