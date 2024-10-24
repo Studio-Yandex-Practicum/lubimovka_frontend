@@ -6,4 +6,5 @@ export enum ConstructorBlockType {
   Persons = 'personsblock',
   HtmlMarkup = 'contentunitrichtext',
   Link = 'link',
+  EmbedCode = 'embedcode',
 }
