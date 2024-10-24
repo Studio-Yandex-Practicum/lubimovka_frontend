@@ -147,3 +147,16 @@
 .persons {
   composes: section darkened default-padding;
 }
+
+.embed-code {
+  composes: section default-padding;
+
+  .inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .title {
+    @mixin visually-hidden;
+  }
+}
