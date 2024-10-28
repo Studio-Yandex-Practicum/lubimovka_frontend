@@ -1,5 +1,10 @@
 export const aboutUsNavigationItems = [
   {
+    id: 'history',
+    text: 'История',
+    href: '/history',
+  },
+  {
     id: 'about-us',
     text: 'Что мы делаем',
     href: '/about-us'
