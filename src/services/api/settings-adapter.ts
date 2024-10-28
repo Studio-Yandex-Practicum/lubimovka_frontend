@@ -39,6 +39,7 @@ const mapDTOToSettings = (dto: SettingsDTO): Settings => ({
     show_volunteers: dto.show_volunteers,
     show_sponsors: dto.show_sponsors,
     mission: true,
+    history: true,
     'about-us': true,
   }
 });
