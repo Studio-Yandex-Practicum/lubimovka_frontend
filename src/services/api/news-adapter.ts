@@ -72,7 +72,7 @@ export const useNews = (filters: NewsFilters) => {
     }
 
     return getNewsCacheKey({
-      month: (filters.month && filters.year) ? filters.month : undefined,
+      month: filters.month,
       year: filters.year,
       limit: NEWS_PER_PAGE,
       offset: pageIndex * NEWS_PER_PAGE,
