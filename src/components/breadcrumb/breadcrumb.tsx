@@ -1,7 +1,10 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import { Button } from 'components/ui/button2';
 import { Icon } from 'components/ui/icon';
+import { useCard } from 'services/api/use-card';
 
 interface BreadcrumbProps {
   text: string
@@ -10,6 +13,12 @@ interface BreadcrumbProps {
 
 export const Breadcrumb = (props: BreadcrumbProps) => {
   const { text, path } = props;
+  const [, setCard] = useCard();
+  const router = useRouter();
+
+  useEffect(()=>{
+    setCard(router.asPath);
+  },[]);
 
   return (
     <Link
