@@ -294,7 +294,7 @@ export const ConstructorContent: React.FC<ConstructorContentProps> = (props) => 
           <ConstructorLink
             description={content_item.description}
             // TODO: получить текст ссылки в ответе API
-            actionText="Перейти"
+            actionText={content_item.title}
             url={content_item.url}
           />
         </ConstructorContentSection>
