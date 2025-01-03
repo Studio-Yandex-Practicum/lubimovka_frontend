@@ -19,13 +19,21 @@ import { SEO } from 'components/seo';
 import { Select } from 'components/ui/select';
 import { NEWS_PER_PAGE } from 'core/news';
 import { withSWRFallback } from 'hocs/with-swr-fallback';
-import { useNews, getNewsFilters, getNews, getNewsCacheKey } from 'services/api/news-adapter';
+import {
+  useNews,
+  getNewsFilters,
+  getNews,
+  getNewsCacheKey,
+} from 'services/api/news-adapter';
 import { MONTHS } from 'shared/constants/months';
 import { safelyGetQueryParamAsString } from 'shared/helpers/query-params';
 
 import type { SelectOptionCheckHandler } from 'components/ui/select';
 import type { NewsFilters } from 'core/news';
-import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import type {
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+} from 'next';
 
 const cx = classNames.bind(styles);
 
@@ -39,29 +47,42 @@ const ALL_MONTH_OPTIONS = MONTHS.map((month, index) => ({
   value: String(index + 1),
 }));
 
-type NewsProps = Omit<InferGetServerSidePropsType<typeof getServerSideProps>, 'fallback'>
+type NewsProps = Omit<
+  InferGetServerSidePropsType<typeof getServerSideProps>,
+  'fallback'
+>;
 
 const News = (props: NewsProps) => {
   const { filters } = props;
   const router = useRouter();
-  const [month, setMonth] = useState<NewsFilters['month']>(safelyGetQueryParamAsString(router.query.month, undefined));
-  const [year, setYear] = useState<NewsFilters['year']>(safelyGetQueryParamAsString(router.query.year, undefined));
+  const [month, setMonth] = useState<NewsFilters['month']>(
+    safelyGetQueryParamAsString(router.query.month, undefined)
+  );
+  const [year, setYear] = useState<NewsFilters['year']>(
+    safelyGetQueryParamAsString(router.query.year, undefined)
+  );
   const { isLoading, data, error, setSize } = useNews({ month, year });
 
-  const yearOptions = useMemo(() => [
-    ...year ? [EMPTY_OPTION] : [],
-    ...filters.map(({ year }) => ({
-      text: year,
-      value: year,
-    })),
-  ], [year]);
+  const yearOptions = useMemo(
+    () => [
+      ...(year ? [EMPTY_OPTION] : []),
+      ...filters.map(({ year }) => ({
+        text: year,
+        value: year,
+      })),
+    ],
+    [year]
+  );
 
-  const selectedYearOption = useMemo(() => (
-    yearOptions.find((option) => option.value === year)
-  ), [year]);
+  const selectedYearOption = useMemo(
+    () => yearOptions.find((option) => option.value === year),
+    [year]
+  );
 
-  const handleYearChange: SelectOptionCheckHandler<NewsFilters['year']> = ({ value }) => {
-    const shouldResetMonth = !value || (month && !filters.find(({ year }) => year === value)?.months.includes(month));
+  const handleYearChange: SelectOptionCheckHandler<NewsFilters['year']> = ({
+    value,
+  }) => {
+    const shouldResetMonth = !value ||(month && !filters.find(({ year }) => year === value)?.months.includes(month));
 
     setYear(value);
 
@@ -71,22 +92,31 @@ const News = (props: NewsProps) => {
   };
 
   const monthOptions = useMemo(() => {
-    const availableMonths = year === null
-      ? ALL_MONTH_OPTIONS.map(({ value }) => value)
-      : filters.find((filter) => filter.year === year)?.months;
+    const availableMonths
+      = year === null
+        ? ALL_MONTH_OPTIONS.map(({ value }) => value)
+        : filters.find((filter) => filter.year === year)?.months;
 
     return [
-      ...month ? [EMPTY_OPTION] : [],
-      ...ALL_MONTH_OPTIONS.filter((option) => option.value === null || availableMonths?.includes(option.value)),
+      ...(month ? [EMPTY_OPTION] : []),
+      ...ALL_MONTH_OPTIONS.filter(
+        (option) =>
+          option.value === null || availableMonths?.includes(option.value)
+      ),
     ];
   }, [year, month]);
 
-  const selectedMonthOption = useMemo(() => (
-    monthOptions.find(({ value }) => value === month)
-  ), [month]);
+  const selectedMonthOption = useMemo(
+    () => monthOptions.find(({ value }) => value === month),
+    [month]
+  );
 
-  const handleMonthChange: SelectOptionCheckHandler<NewsFilters['month']> = ({ value }) => {
-    setMonth(value);
+  const handleMonthChange: SelectOptionCheckHandler<NewsFilters['month']> = ({
+    value,
+  }) => {
+    if (year) {
+      setMonth(value);
+    }
   };
 
   const handleLoadMore = useCallback(() => {
@@ -95,17 +125,18 @@ const News = (props: NewsProps) => {
 
   useEffect(() => {
     router.replace({
-      query: omitBy({
-        month: (month && year) ? month : null,
-        year,
-      }, isNil)
+      query: omitBy(
+        {
+          month: month && year ? month : null,
+          year,
+        },
+        isNil
+      ),
     });
   }, [month, year]);
 
   if (error) {
-    return (
-      <Error statusCode={500}/>
-    );
+    return <Error statusCode={500}/>;
   }
 
   return (
@@ -126,6 +157,7 @@ const News = (props: NewsProps) => {
               options={monthOptions}
               selectedOption={selectedMonthOption}
               onChange={handleMonthChange}
+              disabled={!year}
             />
           </Filter.Field>
           <Filter.Field
@@ -138,20 +170,23 @@ const News = (props: NewsProps) => {
               options={yearOptions}
               selectedOption={selectedYearOption}
               onChange={handleYearChange}
+              disabled={false}
             />
           </Filter.Field>
         </Filter>
         <NewsList className={cx('list')}>
-          {data?.flat().map((page) => (page.results.map((item) => (
-            <NewsList.Item key={item.id}>
-              <NewsCard
-                title={item.title}
-                description={item.description}
-                date={item.date && format(new Date(item.date), 'd MMMM yyyy')}
-                href={`/news/${item.id}`}
-              />
-            </NewsList.Item>
-          ))))}
+          {data?.flat().map((page) =>
+            page.results.map((item) => (
+              <NewsList.Item key={item.id}>
+                <NewsCard
+                  title={item.title}
+                  description={item.description}
+                  date={item.date && format(new Date(item.date), 'd MMMM yyyy')}
+                  href={`/news/${item.id}`}
+                />
+              </NewsList.Item>
+            ))
+          )}
           <PaginationSentinel
             pending={isLoading}
             loadMoreCallback={handleLoadMore}
@@ -162,7 +197,9 @@ const News = (props: NewsProps) => {
   );
 };
 
-export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
+export const getServerSideProps = async ({
+  query,
+}: GetServerSidePropsContext) => {
   const filters = await getNewsFilters();
 
   const month = safelyGetQueryParamAsString(query.month, undefined);
@@ -171,7 +208,7 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   const queryParams = {
     limit: NEWS_PER_PAGE,
     offset: 0,
-    ...month && year ? { month } : {},
+    ...(month && year ? { month } : {}),
     year,
   };
 
@@ -183,7 +220,7 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
       fallback: {
         [unstable_serialize(() => getNewsCacheKey(queryParams))]: [news],
       },
-    }
+    },
   };
 };
 

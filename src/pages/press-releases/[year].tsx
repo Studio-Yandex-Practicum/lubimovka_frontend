@@ -97,6 +97,7 @@ const PressRelease = (props: InferGetServerSidePropsType<typeof getServerSidePro
                   options={festivalYearOptions}
                   selectedOption={selectedFestivalYearOption}
                   onChange={handleYearChange}
+                  disabled={false} 
                 />
               </Filter.Field>
             </Filter>
