@@ -147,6 +147,7 @@ const Blog: React.FC<BlogProps> = (props) => {
                   options={monthOptions}
                   selectedOption={selectedMonthOption}
                   onChange={handleMonthChange}
+                  disabled={!year}
                 />
               </Filter.Field>
               <Filter.Field
@@ -159,6 +160,7 @@ const Blog: React.FC<BlogProps> = (props) => {
                   options={yearOptions}
                   selectedOption={selectedYearOption}
                   onChange={handleYearChange}
+                  disabled={false}
                 />
               </Filter.Field>
             </Filter>
