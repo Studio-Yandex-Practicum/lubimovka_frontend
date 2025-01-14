@@ -79,7 +79,7 @@ const Authors = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
                   {authors.map((author) => (
                     <AuthorList.Item key={author.slug}>
                       <Link
-                        href={`/${author.slug}`}
+                        href={`/library/authors/${author.slug}`}
                         passHref
                       >
                         <Button size="m">

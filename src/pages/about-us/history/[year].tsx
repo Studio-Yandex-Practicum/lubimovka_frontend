@@ -1,4 +1,4 @@
-
+import { AboutUsLayout } from 'components/about-us-layout';
 import { AppLayout } from 'components/app-layout/index';
 import itselfData from 'components/history-page/assets/mock-data-itself.json';
 import { HistoryItself } from 'components/history-page/itself';
@@ -28,27 +28,30 @@ const History = (props: InferGetServerSidePropsType<typeof getServerSideProps>) 
     <>
       <SEO title="История фестиваля"/>
       <AppLayout>
-        <Menu
-          ref={menuRef}
-          type="years"
-        >
-          {years.map((year) => (
-            <Menu.Item
-              key={year}
-              href={`/history/${year}`}
-              current={year === defaultYear}
-            >
-              {year}
-            </Menu.Item>
-          ))}
-        </Menu>
-        <HistoryTitle
-          data={festival}
-          currentYear={defaultYear}
-          showVolunteers={showVolunteers}
-        />
-        <HistoryItself data={itselfData}/>
+        <AboutUsLayout>
+          <Menu
+            ref={menuRef}
+            type="years"
+          >
+            {years.map((year) => (
+              <Menu.Item
+                key={year}
+                href={`/about-us/history/${year}`}
+                current={year === defaultYear}
+              >
+                {year}
+              </Menu.Item>
+            ))}
+          </Menu>
+          <HistoryTitle
+            data={festival}
+            currentYear={defaultYear}
+            showVolunteers={showVolunteers}
+          />
+          <HistoryItself data={itselfData}/>
+        </AboutUsLayout>
       </AppLayout>
+
     </>
   );
 };

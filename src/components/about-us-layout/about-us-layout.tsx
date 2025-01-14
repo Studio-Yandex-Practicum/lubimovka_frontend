@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import { Menu } from 'components/ui/menu';
 import { useSettings } from 'services/api/settings-adapter';
 import breakpoints from 'shared/breakpoints';
-import { aboutUsNavigationItems } from 'shared/constants/about-us-navigation-items';
+import { aboutUsNavigationItems, historyRouteItems } from 'shared/constants/about-us-navigation-items';
 import { remToPx } from 'shared/helpers/rem-to-px';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 
@@ -50,9 +50,14 @@ export const AboutUsLayout: FC<AboutUsLayoutProps> = (props) => {
           type="about-us-navigation"
           ref={menuRef}
         >
-          {aboutUsNavigationItems.filter(item => permissions && permissions[item.id])
+          {aboutUsNavigationItems.filter(item => permissions && permissions[item.id]).concat(historyRouteItems)
             .map((item) => {
-              const current = router.asPath === item.href;
+              let current;
+              if (item.id === 'about-us') {
+                current = router.asPath === item.href;
+              } else {
+                current = router.asPath.startsWith(item.href);
+              }
 
               return (
                 <Menu.Item

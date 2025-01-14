@@ -17,10 +17,6 @@ export const mainNavigationItems = [
     href: '/projects',
   },
   {
-    text: 'История',
-    href: '/history',
-  },
-  {
     text: 'Блог',
     href: '/blog',
   },
