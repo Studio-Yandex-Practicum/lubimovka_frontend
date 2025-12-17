@@ -4,8 +4,6 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package*.json ./
 
-ENV CYPRESS_INSTALL_BINARY=0
-
 RUN npm ci
 
 FROM node:16-alpine AS builder
