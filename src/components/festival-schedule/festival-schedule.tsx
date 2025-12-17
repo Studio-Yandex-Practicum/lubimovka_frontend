@@ -4,11 +4,10 @@ import { useState, useCallback, useMemo } from 'react';
 import { FestivalDate } from 'components/festival-date';
 import { FestivalEventCard } from 'components/festival-event-card';
 import { FestivalEventTabs } from 'components/festival-event-tabs';
-import { PaginationSentinel } from 'components/pagination-sentinel';
+import { InfiniteScrollTrigger } from 'components/infinite-scroll-trigger';
+import { EVENTS_PER_PAGE, type FestivalEvent } from 'core/schedule';
 import { withSWRFallback } from 'hocs/with-swr-fallback';
 import { useFestivalEvents } from 'services/api/schedule-adapter';
-
-import type { FestivalEvent } from 'core/schedule';
 
 interface FestivalScheduleProps {
   fallback: object
@@ -19,6 +18,9 @@ const REMAINING_TAB_COUNT_BEFORE_LOAD_EVENTS = 2;
 export const FestivalSchedule: React.VFC<FestivalScheduleProps> = withSWRFallback(() => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
   const { data, isLoading, setSize } = useFestivalEvents();
+
+  const isEmpty = data?.[0]?.results.length === 0;
+  const isReachingEnd = isEmpty || (data && data[data.length - 1]?.results.length < EVENTS_PER_PAGE);
 
   const handleLoadMore = useCallback(() => {
     setSize((size) => size + 1);
@@ -104,9 +106,10 @@ export const FestivalSchedule: React.VFC<FestivalScheduleProps> = withSWRFallbac
           );
         })}
       </FestivalEventTabs>
-      <PaginationSentinel
-        pending={isLoading}
-        loadMoreCallback={handleLoadMore}
+      <InfiniteScrollTrigger
+        isLoading={isLoading}
+        onLoadNeeded={handleLoadMore}
+        hasMore={!isReachingEnd}
       />
     </>
   );

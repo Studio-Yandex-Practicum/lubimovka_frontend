@@ -1,6 +1,5 @@
 import { encode } from 'querystring';
 
-import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
@@ -8,8 +7,8 @@ import { useCallback, useEffect,useMemo, useRef, useState } from 'react';
 
 import { AppLayout } from 'components/app-layout';
 import { Filter } from 'components/filter';
+import { InfiniteScrollTrigger } from 'components/infinite-scroll-trigger';
 import { LibraryLayout } from 'components/library-layout';
-import { PaginationSentinel } from 'components/pagination-sentinel';
 import { PlayCard } from 'components/play-card';
 import { PlayFilterDialog } from 'components/play-filter-dialog';
 import { PlayList } from 'components/play-list';
@@ -24,6 +23,7 @@ import { getPlayFilters,getPlays } from 'services/api/plays';
 import breakpoints from 'shared/breakpoints';
 import { objectMap } from 'shared/helpers/object-map';
 import { remToPx } from 'shared/helpers/rem-to-px';
+import { useBoolean } from 'shared/hooks/use-boolean';
 import { useEffectSkipMount } from 'shared/hooks/use-effect-skip-mount';
 import { useMediaQuery } from 'shared/hooks/use-media-query';
 
@@ -45,110 +45,52 @@ enum SearchParam {
 const Plays = (props: PlaysViewProps) => {
   const router = useRouter();
 
-  const [filterState, setFilterState] = useState(props.defaultFilterState);
-  const savedFilterState = useRef<FilterState>(props.defaultFilterState);
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
+
+  const [filters, setFilters] = useState(props.defaultFilterState);
+  const filtersSnapshot = useRef<FilterState | null>(null);
 
   const fetchPlaysRequestHandle = useRef({});
 
   const [plays, setPlays] = useState(props.plays);
-
   const [pagination, setPagination] = useState(props.pagination);
 
-  const [isFilterDialogOpen, setFilterDialogOpen] = useState(false);
-  const isMobile = useMediaQuery(`(max-width: ${breakpoints['tablet-portrait']})`);
-  const FilterContainer = isMobile ? PlayFilterDialog : LibraryLayout.Slot;
-  const shouldScrollPlayListOnChange = useRef(false);
+  const {
+    value: isFiltersDialogOpen,
+    setTrue: showFilterDialog,
+    setFalse: closeFilterDialog,
+  } = useBoolean(false);
 
-  const [processing, setProcessing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [errorOccurred, setErrorOccurred] = useState(false);
 
-  const isFiltersApplied = Object.values(filterState).some((options) => options.some((o) => o.selected));
+  const handleFilterChange = useCallback(
+    (param: FilterParam, selected: boolean, option) => {
+      setFilters((pendingFilters) => {
+        return {
+          ...pendingFilters,
+          [param]: pendingFilters[param].map(
+            (pendingOption) => ({
+              ...pendingOption,
+              selected: pendingOption.value === option.value
+                ? selected
+                : pendingOption.selected,
+            }),
+          )
+        };
+      });
+      setPagination((pagination) => ({
+        ...pagination,
+        currentPage: 1,
+      }));
+    },
+    []
+  );
 
-  const handleOptionChange = useCallback((param: FilterParam, selected: boolean, option, shouldSaveFilterState = true) => {
-    setFilterState((filterState) => {
-      if (shouldSaveFilterState) {
-        savedFilterState.current = filterState;
-      }
-
-      return {
-        ...filterState,
-        [param]: filterState[param].map((o) => ({ ...o, selected: o.value === option.value ? selected : o.selected }))
-      };
-    });
-    setPagination((pagination) => ({
-      ...pagination,
-      currentPage: 1,
-    }));
-  }, []);
-
-  const fetchPlaysDebounced = useCallback(debounce(
-    async (searchParams) => {
-      let result: Awaited<ReturnType<typeof getPlays>>;
-
-      const requestHandle = {};
-      fetchPlaysRequestHandle.current = requestHandle;
-
-      setProcessing(true);
-
-      try {
-        result = await getPlays(searchParams);
-      } catch {
-        setErrorOccurred(true);
-
-        return;
-      }
-
-      if (requestHandle !== fetchPlaysRequestHandle.current) {
-        return;
-      }
-
-      setPlays((plays) => searchParams.offset ? plays.concat(result.plays) : result.plays);
-      setPagination((pagination) => ({ ...pagination, ...result.pagination }));
-      setProcessing(false);
-    }, 800, { leading: true }), []);
-
-  const selectedFilterOptions = useMemo(
-    () => objectMap(filterState, (param, options) => options.filter((o) => o.selected)
-    ), [filterState]);
-
-  const resetFilters = () => {
-    setFilterState(objectMap(filterState, (key, options) => options.map((o) => ({ ...o, selected: false }))));
-    savedFilterState.current = filterState;
-  };
-
-  const openFilterDialog = useCallback(() => {
-    savedFilterState.current = filterState;
-    setFilterDialogOpen(true);
-  }, [filterState]);
-
-  const handleFilterConfirm = useCallback(() => {
-    setFilterDialogOpen(false);
-  }, []);
-
-  const handleFilterCancel = useCallback(() => {
-    setFilterState(savedFilterState.current);
-    setFilterDialogOpen(false);
-  }, []);
-
-  const handleLoadMore = () => {
-    if (!pagination.next) {
-      return;
-    }
-
-    setPagination((pagination) => ({
-      ...pagination,
-      currentPage: pagination.currentPage + 1,
-    }));
-  };
-
-  useEffectSkipMount(() => {
-    if (isMobile && (isFilterDialogOpen || isEqual(savedFilterState.current, filterState))) {
-      return;
-    }
-
+  const fetchPlays = async () => {
     const searchParamsToFilterStateMap = {
-      [SearchParam.Year]: filterState.festivalYearOptions,
-      [SearchParam.Program]: filterState.festivalProgramOptions,
+      [SearchParam.Year]: filters.festivalYearOptions,
+      [SearchParam.Program]: filters.festivalProgramOptions,
     };
 
     const searchParams = {
@@ -163,28 +105,98 @@ const Plays = (props: PlaysViewProps) => {
     }, undefined, { shallow: true });
 
     const limit = isFiltersApplied ? PLAYS_PER_PAGE : RANDOM_PLAYS_COUNT;
+    const offset = (pagination.currentPage - 1) * limit;
 
-    fetchPlaysDebounced({
-      years: searchParams.year,
-      programIds: searchParams.program,
-      limit,
-      offset: (pagination.currentPage - 1) * limit,
-    });
-  }, [filterState, isFilterDialogOpen, pagination.currentPage]);
+    let result: Awaited<ReturnType<typeof getPlays>>;
 
-  useEffect(() => {
-    shouldScrollPlayListOnChange.current = !isMobile;
-  }, [isMobile]);
+    const requestHandle = {};
+    fetchPlaysRequestHandle.current = requestHandle;
 
-  useEffect(() => {
-    if (!shouldScrollPlayListOnChange.current) {
+    setIsLoading(true);
+
+    try {
+      result = await getPlays({
+        years: searchParams.year,
+        programIds: searchParams.program,
+        limit,
+        offset,
+      });
+    } catch {
+      setErrorOccurred(true);
+
       return;
     }
+
+    if (requestHandle !== fetchPlaysRequestHandle.current) {
+      return;
+    }
+
+    setPlays((plays) => offset ? plays.concat(result.plays) : result.plays);
+    setPagination((pagination) => ({ ...pagination, ...result.pagination }));
+    setIsLoading(false);
+  };
+
+  const clearFilters = () => {
+    setFilters(objectMap(filters, (key, options) => (
+      options.map((option) => ({ ...option, selected: false })
+      ))));
+  };
+
+  const handleShowFilters = () => {
+    filtersSnapshot.current = filters;
+    showFilterDialog();
+  };
+
+  const handleSubmitFilters = () => {
+    if (!isEqual(filtersSnapshot.current, filters)) {
+      fetchPlays();
+    }
+
+    filtersSnapshot.current = null;
+    closeFilterDialog();
+  };
+
+  const handleLoadNeeded = useCallback(() => {
+    setPagination((pagination) => ({
+      ...pagination,
+      currentPage: pagination.currentPage + 1,
+    }));
+  }, []);
+
+  useEffectSkipMount(() => {
+    if (isMobile && isFiltersDialogOpen) {
+      return;
+    }
+
+    fetchPlays();
+  }, [filters, pagination.currentPage]);
+
+  useEffect(() => {
+    if (isMobile) {
+      return;
+    }
+
     const playListYOffsetInPx = remToPx(PLAY_LIST_Y_OFFSET_IN_REM);
+
     if (window.pageYOffset > playListYOffsetInPx) {
       window.scrollTo({ top: playListYOffsetInPx });
     }
-  }, [filterState]);
+  }, [filters]);
+
+  useEffect(() => {
+    if (!isMobile && isFiltersDialogOpen) {
+      handleSubmitFilters();
+    }
+  }, [isMobile]);
+
+  const selectedFilterOptions = useMemo(
+    () => objectMap(filters, (param, options) => options.filter((o) => o.selected)
+    ), [filters]);
+
+  const FilterContainer = isMobile ? PlayFilterDialog : LibraryLayout.Slot;
+  const isFiltersApplied = Object.values(filters).some(
+    (options) => options.some(({ selected }) => selected)
+  );
 
   if (errorOccurred) {
     return (
@@ -199,8 +211,8 @@ const Plays = (props: PlaysViewProps) => {
         <LibraryLayout variant="plays">
           <FilterContainer
             area="filter"
-            open={isFilterDialogOpen}
-            onClose={handleFilterCancel}
+            open={isFiltersDialogOpen}
+            onClose={handleSubmitFilters}
           >
             <Filter variant="vertical">
               <Filter.List
@@ -221,7 +233,9 @@ const Plays = (props: PlaysViewProps) => {
                             />
                           )}
                           iconPosition="right"
-                          onClick={() => handleOptionChange('festivalYearOptions', false, option)}
+                          onClick={() => {
+                            handleFilterChange('festivalYearOptions', false, option);
+                          }}
                         >
                           {option.text}
                         </Button>
@@ -231,12 +245,12 @@ const Plays = (props: PlaysViewProps) => {
                 )}
               >
                 <MultipleSelect>
-                  {filterState.festivalYearOptions.map((option) => (
+                  {filters.festivalYearOptions.map((option) => (
                     <MultipleSelect.Option key={option.value}>
                       <Checkbox
                         checked={option.selected}
                         onChange={(selected) => {
-                          handleOptionChange('festivalYearOptions', selected, option);
+                          handleFilterChange('festivalYearOptions', selected, option);
                         }}
                       >
                         <MultipleSelect.OptionText>
@@ -249,13 +263,13 @@ const Plays = (props: PlaysViewProps) => {
               </Filter.List>
               <Filter.List caption="Программа">
                 <CheckboxGroup>
-                  {filterState.festivalProgramOptions.map((option) => (
+                  {filters.festivalProgramOptions.map((option) => (
                     <CheckboxGroup.Item key={option.value}>
                       <Checkbox
                         variant="pseudo-button"
                         checked={option.selected}
                         onChange={(selected) => {
-                          handleOptionChange('festivalProgramOptions', selected, option);
+                          handleFilterChange('festivalProgramOptions', selected, option);
                         }}
                       >
                         {option.text}
@@ -284,12 +298,12 @@ const Plays = (props: PlaysViewProps) => {
                         iconPosition: 'right',
                         border: 'full'
                       }}
-                      onClick={resetFilters}
+                      onClick={clearFilters}
                     >
                       Очистить
                     </Button>
                   )}
-                  {isMobile && !isEqual(savedFilterState.current, filterState) && (
+                  {isMobile && (
                     <Button
                       type="button"
                       border="full"
@@ -304,7 +318,7 @@ const Plays = (props: PlaysViewProps) => {
                           height="100%"
                         />
                       )}
-                      onClick={handleFilterConfirm}
+                      onClick={handleSubmitFilters}
                     >
                       Посмотреть
                     </Button>
@@ -330,7 +344,9 @@ const Plays = (props: PlaysViewProps) => {
                         />
                       )}
                       iconPosition="right"
-                      onClick={() => handleOptionChange(param as FilterParam , false, option, !isFilterDialogOpen)}
+                      onClick={() => {
+                        handleFilterChange(param as FilterParam , false, option);
+                      }}
                     >
                       {option.text}
                     </Button>
@@ -340,7 +356,7 @@ const Plays = (props: PlaysViewProps) => {
             </LibraryLayout.Slot>
           )}
           <LibraryLayout.Slot area="content">
-            <PlayList processing={processing && pagination.currentPage === 1}>
+            <PlayList processing={isLoading && pagination.currentPage === 1}>
               {plays.map((play) => (
                 <PlayList.Item key={play.id}>
                   <PlayCard
@@ -354,15 +370,17 @@ const Plays = (props: PlaysViewProps) => {
                 </PlayList.Item>
               ))}
             </PlayList>
-            {!processing && isFiltersApplied && (
-              <PaginationSentinel
-                loadMoreCallback={handleLoadMore}
+            {isFiltersApplied && !isLoading && (
+              <InfiniteScrollTrigger
+                isLoading={isLoading}
+                onLoadNeeded={handleLoadNeeded}
+                hasMore={Boolean(pagination.next)}
               />
             )}
           </LibraryLayout.Slot>
           {isMobile && (
             <LibraryLayout.FilterToggler
-              onClick={openFilterDialog}
+              onClick={handleShowFilters}
             />
           )}
         </LibraryLayout>
