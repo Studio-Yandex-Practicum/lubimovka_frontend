@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { Icon } from '../icon';
 
 import type { IIconProps } from '../icon';
-import type { ButtonHTMLAttributes,FC } from 'react';
+import type { ButtonHTMLAttributes, FC } from 'react';
 
 import styles from './button.module.css';
 
-interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   type?: 'submit' | 'reset' | 'button'
   view?: 'primary' | 'secondary'
   iconPlace?: 'left' | 'right'

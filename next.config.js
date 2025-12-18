@@ -1,11 +1,11 @@
-const { apiBaseUrl, environment } = require('./config/env');
-
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const { apiBaseUrl, environment } = require('./config/env');
+
 const config = {
-  webpack(config) {
+  webpack(config, { isServer }) {
     config.module.rules.push({
       test: /\.svg$/,
       issuer: /\.(js|ts)x?$/,
@@ -23,6 +23,18 @@ const config = {
       ],
     });
 
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        async_hooks: false,
+      };
+
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'msw/node': false,
+      };
+    }
+
     return config;
   },
   images: {
@@ -37,7 +49,7 @@ const config = {
   experimental: {
     scrollRestoration: true,
     outputStandalone: true,
-    esmExternals: false,
+    esmExternals: 'loose',
   },
   async rewrites() {
     return {
