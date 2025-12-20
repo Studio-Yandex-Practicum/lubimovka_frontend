@@ -13,8 +13,8 @@ import { BlogLayout } from 'components/blog-layout';
 import styles from 'components/blog-layout/blog-layout.module.css';
 import { CallToEmail } from 'components/call-to-email';
 import { Filter } from 'components/filter';
+import { InfiniteScrollTrigger } from 'components/infinite-scroll-trigger';
 import { PageTitle } from 'components/page-title';
-import { PaginationSentinel } from 'components/pagination-sentinel';
 import { SEO } from 'components/seo';
 import { Select } from 'components/ui/select';
 import { BLOG_ENTRIES_PER_PAGE } from 'core/blog';
@@ -47,8 +47,11 @@ const Blog: React.FC<BlogProps> = (props) => {
   const router = useRouter();
   const [month, setMonth] = useState<BlogFilters['month']>(safelyGetQueryParamAsString(router.query.month));
   const [year, setYear] = useState<BlogFilters['year']>(safelyGetQueryParamAsString(router.query.year));
-  const { isLoading, data, error, setSize } = useBlog({ month, year });
   const { settings } = useSettings();
+  const { isLoading, data, error, setSize } = useBlog({ month, year });
+
+  const isEmpty = data?.[0]?.results.length === 0;
+  const isReachingEnd = isEmpty || (data && data[data.length - 1]?.results.length < BLOG_ENTRIES_PER_PAGE);
 
   const callToActionEmail = settings?.emailAddresses.forBlogAuthors;
 
@@ -178,9 +181,10 @@ const Blog: React.FC<BlogProps> = (props) => {
                 </BlogEntryList.Item>
               ))))}
             </BlogEntryList>
-            <PaginationSentinel
-              pending={isLoading}
-              loadMoreCallback={handleLoadMore}
+            <InfiniteScrollTrigger
+              isLoading={isLoading}
+              onLoadNeeded={handleLoadMore}
+              hasMore={!isReachingEnd}
             />
           </BlogLayout.Main>
         </BlogLayout>

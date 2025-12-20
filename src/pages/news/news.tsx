@@ -9,12 +9,12 @@ import { unstable_serialize } from 'swr/infinite';
 
 import { AppLayout } from 'components/app-layout';
 import { Filter } from 'components/filter';
+import { InfiniteScrollTrigger } from 'components/infinite-scroll-trigger';
 import { NewsCard } from 'components/news-card';
 import { NewsLayout } from 'components/news-layout';
 import styles from 'components/news-layout/news-layout.module.css';
 import { NewsList } from 'components/news-list';
 import { PageTitle } from 'components/page-title';
-import { PaginationSentinel } from 'components/pagination-sentinel';
 import { SEO } from 'components/seo';
 import { Select } from 'components/ui/select';
 import { NEWS_PER_PAGE } from 'core/news';
@@ -47,6 +47,9 @@ const News = (props: NewsProps) => {
   const [month, setMonth] = useState<NewsFilters['month']>(safelyGetQueryParamAsString(router.query.month, undefined));
   const [year, setYear] = useState<NewsFilters['year']>(safelyGetQueryParamAsString(router.query.year, undefined));
   const { isLoading, data, error, setSize } = useNews({ month, year });
+
+  const isEmpty = data?.[0]?.results.length === 0;
+  const isReachingEnd = isEmpty || (data && data[data.length - 1]?.results.length < NEWS_PER_PAGE);
 
   const yearOptions = useMemo(() => [
     ...year ? [EMPTY_OPTION] : [],
@@ -152,9 +155,10 @@ const News = (props: NewsProps) => {
               />
             </NewsList.Item>
           ))))}
-          <PaginationSentinel
-            pending={isLoading}
-            loadMoreCallback={handleLoadMore}
+          <InfiniteScrollTrigger
+            isLoading={isLoading}
+            onLoadNeeded={handleLoadMore}
+            hasMore={!isReachingEnd}
           />
         </NewsList>
       </NewsLayout>
